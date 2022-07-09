@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2022-07-09 14:23+0900\n"
-"PO-Revision-Date: 2022-07-09 14:31+0900\n"
+"PO-Revision-Date: 2022-07-13 08:46+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -37,19 +37,19 @@ msgstr "関数型プログラミングの手法がJavaScriptに姿を現しは�
 
 #. type: Plain text
 #: text/chapter1.md:8
-#, fuzzy
 msgid ""
 "- Libraries such as [UnderscoreJS](https://underscorejs.org) allow the "
 "developer to leverage tried-and-trusted functions such as `map`, `filter` "
 "and `reduce` to create larger programs from smaller programs by composition:"
 msgstr ""
-"- [UnderscoreJS](http://underscorejs.org)などのライブラリは、 `map`や "
-"`filter`、 `reduce`といったよく知られた関数を活用して、小さいプログラムを組み"
-"合わせて大きなプログラムを作れるようにします。"
+"- [UnderscoreJS](https://underscorejs.org)などのライブラリがあれば、\n"
+"  開発者は`map`や `filter`、\n"
+"  `reduce`といった実績のある関数を活用して、\n"
+"  小さいプログラムを組み合わせることで大きなプログラムを作ることができます。"
 
 #. type: Plain text
 #: text/chapter1.md:18
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "    ```javascript\n"
 "    var sumOfPrimes =\n"
@@ -61,6 +61,7 @@ msgid ""
 "         .value();\n"
 "    ```\n"
 msgstr ""
+"    ```javascript\n"
 "    var sumOfPrimes =\n"
 "        _.chain(_.range(1000))\n"
 "         .filter(isPrime)\n"
@@ -68,10 +69,10 @@ msgstr ""
 "             return x + y;\n"
 "         })\n"
 "         .value();\n"
+"    ```\n"
 
 #. type: Plain text
 #: text/chapter1.md:20
-#, fuzzy
 msgid ""
 "- Asynchronous programming in NodeJS leans heavily on functions as first-"
 "class values to define callbacks."
@@ -86,10 +87,12 @@ msgid ""
 "    ```javascript\n"
 "    import { readFile, writeFile } from 'fs'\n"
 msgstr ""
+"    ```javascript\n"
+"    import { readFile, writeFile } from 'fs'\n"
 
 #. type: Plain text
 #: text/chapter1.md:34
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "    readFile(sourceFile, function (error, data) {\n"
 "      if (!error) {\n"
@@ -102,31 +105,30 @@ msgid ""
 "    });\n"
 "    ```\n"
 msgstr ""
-"    require('fs').readFile(sourceFile, function (error, data) {\n"
+"    readFile(sourceFile, function (error, data) {\n"
 "      if (!error) {\n"
-"        require('fs').writeFile(destFile, data, function (error) {\n"
+"        writeFile(destFile, data, function (error) {\n"
 "          if (!error) {\n"
 "            console.log(\"File copied\");\n"
 "          }\n"
 "        });\n"
 "      }\n"
 "    });\n"
+"    ```\n"
 
 #. type: Plain text
 #: text/chapter1.md:36
-#, fuzzy
 msgid ""
 "- Libraries such as [React](https://reactjs.org) and [virtual-dom](https://"
 "github.com/Matt-Esch/virtual-dom) model views as pure functions of "
 "application state."
 msgstr ""
-"- [React](http://facebook.github.io/react/)や[virtual-dom](https://github."
-"com/Matt-Esch/virtual-dom)などのライブラリは、アプリケーションの状態について"
-"の純粋な関数としてその外観をモデル化しています。"
+"- [React](https://reactjs.org)や\n"
+"  [virtual-dom](https://github.com/Matt-Esch/virtual-dom)などのライブラリは、\n"
+"  アプリケーションの状態についての純粋な関数としてその外観をモデル化しています。"
 
 #. type: Plain text
 #: text/chapter1.md:38
-#, fuzzy
 msgid ""
 "Functions enable a simple form of abstraction which can yield great "
 "productivity gains. However, functional programming in JavaScript has its "
@@ -134,14 +136,13 @@ msgid ""
 "of abstraction. Unrestricted JavaScript code also makes equational reasoning "
 "very difficult."
 msgstr ""
-"関数は単純な抽象化を可能にし、優れた生産性をもたらしてくれます。しかし、"
-"JavaScriptでの関数型プログラミングには欠点があります。JavaScriptは冗長で、型"
-"付けされず、強力な抽象化を欠いているのです。また、無秩序に書かれたJavaScript"
-"コードでは、式の理解がとても困難です。"
+"関数は単純な抽象化を可能にし、優れた生産性をもたらしてくれます。\n"
+"しかし、JavaScriptでの関数型プログラミングには欠点があります。\n"
+"JavaScriptは冗長で、型付けされず、強力な抽象化を欠いているのです。\n"
+"また、無秩序に書かれたJavaScriptコードでは、等式推論がとても困難です。"
 
 #. type: Plain text
 #: text/chapter1.md:40
-#, fuzzy
 msgid ""
 "PureScript is a programming language which aims to address these issues. It "
 "features lightweight syntax, which allows us to write very expressive code "
@@ -153,24 +154,24 @@ msgid ""
 "functional programming, and the fast-and-loose programming style of "
 "JavaScript."
 msgstr ""
-"PureScriptはこのような問題を解決すべく作られたプログラミング言語です。"
-"PureScriptは、とても表現力豊かでありながらわかりやすく読みやすいコードを書け"
-"るようにする、軽量な構文を備えています。強力な抽象化を提供する豊かな型システ"
-"ムも採用しています。また、JavaScriptやJavaScriptへとコンパイルされる他の言語"
-"と相互運用するときに重要な、高速で理解しやすいコードを生成します。PureScript"
-"をひとことで言えば、純粋関数型プログラミングの理論的な強力さと、JavaScriptの"
-"お手軽で緩いプログラミングスタイルとの、とても現実的なバランスを狙った言語だ"
-"ということを理解して頂けたらと思います。"
+"PureScriptはこのような問題を解決すべく作られたプログラミング言語です。\n"
+"PureScriptは、とても表現力豊かでありながらわかりやすく読みやすいコードを書けるようにする、\n"
+"軽量な構文を備えています。\n"
+"強力な抽象化を提供する豊かな型システムも採用しています。\n"
+"また、JavaScriptやJavaScriptへとコンパイルされる他の言語と相互運用するときに重要な、\n"
+"高速で理解しやすいコードを生成します。\n"
+"PureScriptをひとことで言えば、純粋関数型プログラミングの理論的な強力さと、\n"
+"JavaScriptのお手軽で緩いプログラミングスタイルとの、\n"
+"とても現実的なバランスを狙った言語だということを理解して頂けたらと思います。"
 
 #. type: Title ##
 #: text/chapter1.md:41
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Types and Type Inference"
 msgstr "型と型推論"
 
 #. type: Plain text
 #: text/chapter1.md:44
-#, fuzzy
 msgid ""
 "The debate over statically typed languages versus dynamically typed "
 "languages is well-documented. PureScript is a _statically typed_ language, "
@@ -180,16 +181,17 @@ msgid ""
 "PureScript, unlike in dynamically typed languages, types exist only at "
 "_compile-time_, and have no representation at runtime."
 msgstr ""
-"動的型付けの言語と静的型付けの言語をめぐる議論についてはよく知られています。"
-"PureScriptは**静的型付け**の言語、つまり正しいプログラムはコンパイラによって"
-"その動作を示すような**型**を与えられる言語です。逆にいえば、型を​​与えることが"
-"できないプログラムは**誤ったプログラム**であり、コンパイラによって拒否されま"
-"す。動的型付けの言語とは異なり、PureScriptでは型は**コンパイル時**のみに存在"
-"し、実行時には型の表現はありません。"
+"動的型付けの言語と静的型付けの言語をめぐる議論についてはよく知られています。\n"
+"PureScriptは**静的型付け**の言語、\n"
+"つまり正しいプログラムはコンパイラによってその動作を示すような**型**を与えられる言語です。\n"
+"逆にいえば、型を​​与えることができないプログラムは**誤ったプログラム**であり、\n"
+"コンパイラによって拒否されます。\n"
+"動的型付けの言語とは異なり、\n"
+"PureScriptでは型は**コンパイル時**のみに存在し、\n"
+"実行時には型の表現はありません。"
 
 #. type: Plain text
 #: text/chapter1.md:46
-#, fuzzy
 msgid ""
 "It is important to note that in many ways, the types in PureScript are "
 "unlike the types that you might have seen in other languages like Java or "
@@ -202,19 +204,20 @@ msgid ""
 "simple example, the following code defines a _number_, but there is no "
 "mention of the `Number` type anywhere in the code:"
 msgstr ""
-"PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、いろい"
-"ろな意味で異なっていることにも注意することが大切です。おおまかに言えば"
-"PureScriptの型はJavaやC#と同じ目的を持っているものの、PureScriptの型はMLと"
-"Haskellのような言語に影響を受けています。開発者がプログラムについての強い主張"
-"を表明できるので、PureScriptの型は表現力豊かなのです。最も重要なのは、"
-"PureScriptの型システムは**型推論**(type inference)をサポートしていることで"
-"す。型推論があれば明示的な型注釈は必要最低限となり、型システムを厄介者ではな"
-"く**道具**にしてくれます。簡単な例を示すと、次のコードは**数**を定義していま"
-"すが、それが `Number`型だという注釈はコードのどこにもありません。"
+"PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、\n"
+"いろいろな意味で異なっていることにも注意することが大切です。\n"
+"おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、\n"
+"PureScriptの型はMLとHaskellのような言語に影響を受けています。\n"
+"開発者がプログラムについての強い主張を表明できるので、PureScriptの型は表現力豊かなのです。\n"
+"最も重要なのは、PureScriptの型システムは**型推論**(type inference)をサポートしていることです。\n"
+"型推論があれば他の言語より遥かに少ない型注釈で住み、\n"
+"型システムを厄介者ではなく**道具**にしてくれます。\n"
+"簡単な例を示すと、次のコードは**数**を定義していますが、\n"
+"それが `Number`型だという注釈はコードのどこにもありません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter1.md:47
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "iAmANumber =\n"
 "  let square x = x * x\n"
@@ -226,19 +229,18 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:54
-#, fuzzy
 msgid ""
 "A more involved example shows that type-correctness can be confirmed without "
 "type annotations, even when there exist types which are _unknown to the "
 "compiler_:"
 msgstr ""
-"次のもっと複雑な例では、**コンパイラにとって未知**の型が存在しているときでさ"
-"えも、型注釈なしで型の正しさを確かめることができるということが示されていま"
-"す。"
+"次のもっと複雑な例では、\n"
+"**コンパイラにとって未知**の型が存在しているときでさえも、\n"
+"型注釈なしで型の正しさを確かめることができるということが示されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter1.md:55
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "iterate f 0 x = x\n"
 "iterate f n x = iterate f (n - 1) (f x)\n"
@@ -248,19 +250,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:61
-#, fuzzy
 msgid ""
 "Here, the type of `x` is unknown, but the compiler can still verify that "
 "`iterate` obeys the rules of the type system, no matter what type `x` might "
 "have."
 msgstr ""
-"ここで `x`の型は不明ですが、 `x`がどんな型を持っているかにかかわらず、 "
-"`iterate`が型システムの規則に従っていることをコンパイラは検証することができま"
-"す。"
+"ここで `x`の型は不明ですが、\n"
+"`x`がどんな型を持っているかにかかわらず、\n"
+"`iterate`が型システムの規則に従っていることをコンパイラは検証することができます。"
 
 #. type: Plain text
 #: text/chapter1.md:63
-#, fuzzy
 msgid ""
 "In this book, I will try to convince you (or reaffirm your belief) that "
 "static types are not only a means of gaining confidence in the correctness "
@@ -270,46 +270,45 @@ msgid ""
 "with a type checker can even make refactoring into an enjoyable, interactive "
 "experience."
 msgstr ""
-"静的型はプログラムの正しさについての確信を得るためだけではなく、その正しさに"
-"よって開発を助ける、ということをあなたに納得させる(もしくは、あなたの理解を確"
-"認する)ことをこの本では試みます。最も単純な抽象化を使わないかぎりJavaScriptで"
-"コードの大規模なリファクタリングすることは難しいですが、型検証器のある表現力"
-"豊かな型システムは、リファクタリングさえ楽しく対話的な体験にしてくれます。"
+"本書で納得していただきたい（または既にお持ちの信条に寄り添って改めて断言したい）ことは、\n"
+"静的型が単にプログラムの正しさに自信を持つためだけのものではなく、\n"
+"それ自身の正しさによって開発の手助けになるものでもあるということです。\n"
+"JavaScriptではごく単純な抽象化を施すのでも大規模なコードのリファクタリングをすることは難しいですが、\n"
+"型検証器のある表現力豊かな型システムは、\n"
+"リファクタリングさえ楽しく対話的な体験にしてくれます。"
 
 #. type: Plain text
 #: text/chapter1.md:65
-#, fuzzy
 msgid ""
 "In addition, the safety net provided by a type system enables more advanced "
 "forms of abstraction. In fact, PureScript provides a powerful form of "
 "abstraction which is fundamentally type-driven: type classes, made popular "
 "in the functional programming language Haskell."
 msgstr ""
-"加えて、型システムによって提供されたこのセーフティネットは、より高度な抽象化"
-"をも可能にします。実際に、関数型プログラミング言語Haskellによって知られるよう"
-"になった、型主導の強力な抽象化である『型クラス』をPureScriptは備えています。"
+"加えて、型システムによって提供されるこのセーフティネットは、\n"
+"より高度な抽象化をも可能にします。\n"
+"実際に、関数型プログラミング言語Haskellによって知られるようになった、\n"
+"型駆動の強力な抽象化の形式である『型クラス』をPureScriptは備えています。"
 
 #. type: Title ##
 #: text/chapter1.md:66
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Polyglot Web Programming"
 msgstr "多言語Webプログラミング"
 
 #. type: Plain text
 #: text/chapter1.md:69
-#, fuzzy
 msgid ""
 "Functional programming has its success stories - applications where it has "
 "been particularly successful: data analysis, parsing, compiler "
 "implementation, generic programming, parallelism, to name a few."
 msgstr ""
-"関数型プログラミングはすでに多くの成功を収めています。特に成功している応用例"
-"をいくつか挙げると、データ解析、構文解析、コンパイラの実装、ジェネリックプロ"
-"グラミング、並列処理などがあります。"
+"関数型プログラミングはすでに多くの成功を収めています。\n"
+"枚挙に暇がありませんが、特に成功している応用例をいくつか挙げると、\n"
+"データ解析、構文解析、コンパイラの実装、ジェネリックプログラミング、並列処理などがあります。"
 
 #. type: Plain text
 #: text/chapter1.md:71
-#, fuzzy
 msgid ""
 "It would be possible to practice end-to-end application development in a "
 "functional language like PureScript. PureScript provides the ability to "
@@ -317,134 +316,122 @@ msgid ""
 "functions, and then to use those functions in regular PureScript code. We'll "
 "see this approach later in the book."
 msgstr ""
-"PureScriptのような関数型言語は、アプリケーション開発の最初から最後までを​実施"
-"することが可能です。値や関数の型を提供することで既存のJavaScriptコードをイン"
-"ポートし、通常のPureScriptコードからこれらの関数を使用する機能をPureScriptは"
-"提供しています。この手法については本書の後半で見ていくことになります。"
+"PureScriptのような関数型言語は、\n"
+"アプリケーション開発の最初から最後までを​実施することが可能です。\n"
+"値や関数の型を提供することで既存のJavaScriptコードをインポートし、\n"
+"通常のPureScriptコードからこれらの関数を使用する機能をPureScriptは提供しています。\n"
+"この手法については本書の後半で見ていくことになります。"
 
 #. type: Plain text
 #: text/chapter1.md:73
-#, fuzzy
 msgid ""
 "However, one of PureScript's strengths is its interoperability with other "
 "languages which target JavaScript. Another approach would be to use "
 "PureScript for a subset of your application's development, and to use one or "
 "more other languages to write the rest of the JavaScript."
-msgstr ""
-"しかしながら、PureScriptの強みのひとつは、JavaScriptを対象とする他​​の言語との"
-"相互運用性にあります。アプリケーションの開発の一部にだけPureScriptを使用し、"
-"JavaScriptの残りの部分を記述するのに他の言語を使用するという方法もあります。"
+msgstr "しかしながら、PureScriptの強みのひとつは、JavaScriptを対象とする他​​の言語との相互運用性にあります。アプリケーションの開発の一部にだけPureScriptを使用し、JavaScriptの残りの部分を記述するのに他の言語を使用するという方法もあります。"
 
 #. type: Plain text
 #: text/chapter1.md:75
-#, fuzzy
 msgid "Here are some examples:"
 msgstr "いくつかの例を示します。"
 
 #. type: Plain text
 #: text/chapter1.md:79
-#, fuzzy
 msgid ""
 "- Core logic written in PureScript, with the user interface written in "
 "JavaScript.  - Application written in JavaScript or another compile-to-JS "
 "language, with tests written in PureScript.  - PureScript used to automate "
 "user interface tests for an existing application."
 msgstr ""
-"- 中核となる処理はPureScriptで記述し、ユーザーインターフェイスはJavaScriptで"
-"記述する - JavaScriptや、他のJavaScriptにコンパイルされる言語でアプリケーショ"
-"ンを書き、PureScriptでそのテストを書く - 既存のアプリケーションのユーザインタ"
-"フェースのテストを自動化するためにPureScriptを使用する"
+"- 中核となる処理はPureScriptで記述し、\n"
+"  ユーザーインターフェイスはJavaScriptで記述する\n"
+"- JavaScriptや、他のJavaScriptにコンパイルされる言語でアプリケーションを書き、\n"
+"  PureScriptでそのテストを書く\n"
+"- 既存のアプリケーションのユーザインタフェースのテストを自動化するためにPureScriptを使用する"
 
 #. type: Plain text
 #: text/chapter1.md:81
-#, fuzzy
 msgid ""
 "In this book, we'll focus on solving small problems with PureScript. The "
 "solutions could be integrated into a larger application, but we will also "
 "look at how to call PureScript code from JavaScript, and vice versa."
 msgstr ""
-"この本では小規模な課題をPureScriptで解決することに焦点を当てますが、ここで学"
-"ぶ手法は大規模なアプリケーションに組み込むこともできます。JavaScriptから"
-"PureScriptコードを呼び出す方法、およびその逆についても見ていきます。"
+"この本では小規模な課題をPureScriptで解決することに焦点を当てます。\n"
+"ここで学ぶ手法は大規模なアプリケーションに組み込むこともできますが、\n"
+"これについてはJavaScriptからPureScriptコードを呼び出す方法、およびその逆についても見ていきます。"
 
 #. type: Title ##
 #: text/chapter1.md:82
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Prerequisites"
 msgstr "ソフトウェア要件"
 
 #. type: Plain text
 #: text/chapter1.md:85
-#, fuzzy
 msgid ""
 "The software requirements for this book are minimal: the first chapter will "
 "guide you through setting up a development environment from scratch, and the "
 "tools we will use are available in the standard repositories of most modern "
 "operating systems."
 msgstr ""
-"この本でのソフトウェア要件は最小限です。第１章では開発環境の構築を一から案内"
-"します。これから使用するツールは、ほとんどの現代のオペレーティングシステムの"
-"標準リポジトリで使用できるものです。"
+"この本でのソフトウェア要件は最小限です。\n"
+"第1章では開発環境の構築を一から案内します。\n"
+"これから使用するツールは、ほとんどの現代のオペレーティングシステムの標準リポジトリで使用できるものです。"
 
 #. type: Plain text
 #: text/chapter1.md:87
-#, fuzzy
 msgid ""
 "The PureScript compiler itself can be downloaded as a binary distribution, "
 "or built from source on any system running an up-to-date installation of the "
 "GHC Haskell compiler, and we will walk through this process in the next "
 "chapter."
 msgstr ""
-"PureScriptコンパイラ自体は、コンパイル済みバイナリ形式でダウンロードすること"
-"もできますし、最新のHaskellコンパイラが稼働しているシステム上でソースからビル"
-"ドすることもできます。次の章ではこの手順を説明していきます。"
+"PureScriptコンパイラ自体はバイナリ形式でダウンロードすることもできますし、\n"
+"最新のHaskellコンパイラが稼働しているシステム上でソースからビルドすることもできます。\n"
+"次の章ではこの手順を説明していきます。"
 
 #. type: Plain text
 #: text/chapter1.md:90
-#, fuzzy
 msgid ""
 "The code in this version of the book is compatible with versions `0.15.*` of "
 "the PureScript compiler."
-msgstr ""
-"本書のこのバージョンのコードは、 `0.11.*`バージョンのPureScriptコンパイラと互"
-"換性があります。"
+msgstr "本書のこのバージョンのコードは`0.15.*`バージョンのPureScriptコンパイラと互換性があります。"
 
 #. type: Title ##
 #: text/chapter1.md:91
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "About You"
 msgstr "読者について"
 
 #. type: Plain text
 #: text/chapter1.md:94
-#, fuzzy
 msgid ""
 "I will assume that you are familiar with the basics of JavaScript. Any prior "
 "familiarity with common tools from the JavaScript ecosystem, such as NPM and "
 "Gulp, will be beneficial if you wish to customize the standard setup to your "
 "own needs, but such knowledge is not necessary."
 msgstr ""
-"読者はJavaScriptの基本をすでに理解しているものと仮定します。すでにNPMやBower"
-"のようなJavaScriptのエコシステムでの経験があれば、自身の好みに応じて標準設定"
-"をカスタマイズしたい場合などに役に立ちますが、そのような知識は必要ではありま"
-"せん。"
+"読者はJavaScriptの基本をすでに理解しているものと仮定します。\n"
+"すでにNPMやBowerのようなJavaScriptのエコシステムでの経験があれば、\n"
+"自身の好みに応じて標準設定をカスタマイズしたい場合などに役に立ちます。\n"
+"ですが、そのような知識は必須ではありません。"
 
 #. type: Plain text
 #: text/chapter1.md:96
-#, fuzzy
 msgid ""
 "No prior knowledge of functional programming is required, but it certainly "
 "won't hurt. New ideas will be accompanied by practical examples, so you "
 "should be able to form an intuition for the concepts from functional "
 "programming that we will use."
 msgstr ""
-"関数型プログラミングの予備知識は必要ありませんが、あっても害にはならないで"
-"しょう。実例には新しいアイデアがつきものですから、これから使う関数型プログラ"
-"ミングからこうした概念に対する直感的な理解を得ることができるはずです。"
+"関数型プログラミングの予備知識は必要ありませんが、\n"
+"あっても害にはならないでしょう。\n"
+"新しい考えかたは実例とともに登場するので、\n"
+"これから使う関数型プログラミングからこうした概念に対する直感的な理解を得ることができるはずです。"
 
 #. type: Plain text
 #: text/chapter1.md:98
-#, fuzzy
 msgid ""
 "Readers who are familiar with the Haskell programming language will "
 "recognize a lot of the ideas and syntax presented in this book, because "
@@ -453,23 +440,16 @@ msgid ""
 "PureScript and Haskell. It is not necessarily always appropriate to try to "
 "apply ideas from one language in the other, although many of the concepts "
 "presented here will have some interpretation in Haskell."
-msgstr ""
-"PureScriptはプログラミング言語Haskellに強く影響を受けているため、Haskellに通"
-"じている読者はこの本の中で提示された概念や構文の多くに見覚えがあるでしょう。"
-"しかしながら、読者はPureScriptとHaskellの間にはいくつか重要な違いがあることも"
-"理解しておかなければなりません。ここで紹介する概念の多くはHaskellでも同じよう"
-"に解釈できるとはいえ、どちらかの言語での考え方を他方の言語でそのまま応用しよ"
-"うとすることは、必ずしも適切ではありません。"
+msgstr "PureScriptはプログラミング言語Haskellに強く影響を受けているため、Haskellに通じている読者はこの本の中で提示された概念や構文の多くに見覚えがあるでしょう。しかしながら、読者はPureScriptとHaskellの間にはいくつか重要な違いがあることも理解しておかなければなりません。ここで紹介する概念の多くはHaskellでも同じように解釈できるとはいえ、どちらかの言語での考え方を他方の言語でそのまま応用しようとすることは、必ずしも適切ではありません。"
 
 #. type: Title ##
 #: text/chapter1.md:99
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "How to Read This Book"
 msgstr "本書の読み進めかた"
 
 #. type: Plain text
 #: text/chapter1.md:102
-#, fuzzy
 msgid ""
 "The chapters in this book are largely self contained. A beginner with little "
 "functional programming experience would be well-advised, however, to work "
@@ -480,16 +460,16 @@ msgid ""
 "able to gain a general understanding of the code in the later chapters of "
 "the book without reading the preceding chapters."
 msgstr ""
-"本書の各章は、概ね章ごとに完結しています。しかしながら、多少の関数型プログラ"
-"ミングの経験がある初心者でも、まずは各章を順番に進めていくことをおすすめしま"
-"す。最初の数章では、本書の後半の内容を理解するために必要な基礎知識を養いま"
-"す。関数型プログラミングの考え方に十分通じた読者(特にMLやHaskellのよう強く型"
-"付けされた言語での経験を持つ読者)なら、本書の前半の章を読まなくても、後半の章"
-"のコードの大まかな理解を得ることがおそらく可能でしょう。"
+"本書の各章は、概ね章ごとに完結しています。\n"
+"しかしながら、多少の関数型プログラミングの経験がある初心者でも、\n"
+"まずは各章を順番に進めていくことをおすすめします。\n"
+"最初の数章では、本書の後半の内容を理解するために必要な基礎知識を養います。\n"
+"関数型プログラミングの考え方に十分通じた読者\n"
+"（特にMLやHaskellのよう強く型付けされた言語での経験を持つ読者）なら、\n"
+"本書の前半の章を読まなくても、後半の章のコードの大まかな理解を得ることがおそらく可能でしょう。"
 
 #. type: Plain text
 #: text/chapter1.md:104
-#, fuzzy
 msgid ""
 "Each chapter will focus on a single practical example, providing the "
 "motivation for any new ideas introduced. Code for each chapter are available "
@@ -500,23 +480,19 @@ msgid ""
 "sections will contain shorter snippets which you can execute in the "
 "interactive mode PSCi to test your understanding."
 msgstr ""
-"各章ではそれぞれひとつの実用的な例に焦点をあて、新しい考え方を導入するための"
-"動機付けとして用います。各章のコードは本書の[GitHubのリポジトリ](https://"
-"github.com/paf31/purescript-book)から入手できます。各章にはソースコードから抜"
-"粋したコード片が掲載されていますが、完全に理解するためには本書に掲載された"
-"コードと平行してリポジトリのソースコードを読む必要があります。対話式環境 "
-"`PSCi`で実行し理解を確かめられるように、長めの節には短いコード片が掲載されて"
-"いることがあります。"
+"各章ではそれぞれひとつの実用的な例に焦点をあて、新しい考え方を導入するための動機付けとして用います。\n"
+"各章のコードは本書の[GitHubのリポジトリ](https://github.com/purescript-contrib/purescript-book)から入手できます。\n"
+"ソースコードから抜粋したコード片が掲載されている章もありますが、完全に理解するためには本書に掲載されたコードと平行してリポジトリのソースコードを読む必要があります。\n"
+"対話式環境PSCiで実行し理解を確かめられるように、長めの節には短いコード片が掲載されていることがあります。"
 
 #. type: Plain text
 #: text/chapter1.md:106
-#, fuzzy
 msgid "Code samples will appear in a monospaced font, as follows:"
 msgstr "コード例は次のように等幅フォントで示されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter1.md:107
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "module Example where\n"
 "\n"
@@ -526,13 +502,12 @@ msgid ""
 msgstr ""
 "module Example where\n"
 "\n"
-"import Control.Monad.Eff.Console (log)\n"
+"import Effect.Console (log)\n"
 "\n"
 "main = log \"Hello, World!\"\n"
 
 #. type: Plain text
 #: text/chapter1.md:116
-#, fuzzy
 msgid ""
 "Commands which should be typed at the command line will be preceded by a "
 "dollar symbol:"
@@ -540,13 +515,12 @@ msgstr "先頭にドル記号がついた行は、コマンドラインに入力
 
 #. type: Fenced code block (text)
 #: text/chapter1.md:117 text/chapter3.md:313
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ spago build\n"
-msgstr "$ pulp build\n"
+msgstr "$ spago build\n"
 
 #. type: Plain text
 #: text/chapter1.md:122
-#, fuzzy
 msgid ""
 "Usually, these commands will be tailored to Linux/Mac OS users, so Windows "
 "users may need to make small changes such as modifying the file separator, "
@@ -558,17 +532,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:124
-#, fuzzy
 msgid ""
 "Commands which should be typed at the PSCi interactive mode prompt will be "
 "preceded by an angle bracket:"
-msgstr ""
-"`pulp repl`対話式プロンプトに入力するコマンドは、行の先頭に山括弧が付けられて"
-"います。"
+msgstr "PSCi対話式モードプロンプトに入力するコマンドは、行の先頭に山括弧が付けられています。"
 
 #. type: Fenced code block (text)
 #: text/chapter1.md:125
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> 1 + 2\n"
 "3\n"
@@ -578,7 +549,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:131
-#, fuzzy
 msgid ""
 "Each chapter will contain exercises, labelled with their difficulty level. "
 "It is strongly recommended that you attempt the exercises in each chapter to "
@@ -589,29 +559,22 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:133
-#, fuzzy
 msgid ""
 "This book aims to provide an introduction to the PureScript language for "
 "beginners, but it is not the sort of book that provides a list of template "
 "solutions to problems. For beginners, this book should be a fun challenge, "
 "and you will get the most benefit if you read the material, attempt the "
 "exercises, and most importantly of all, try to write some code of your own."
-msgstr ""
-"この本は初心者にPureScriptへの導入を提供することを目的としており、問題につい"
-"てのお決まりの解決策の一覧を提供するような種類の本ではありません。初心者に"
-"とってこの本を読むのは楽しい挑戦になるはずですし、本書の内容を読み演習に挑戦"
-"すればだいたいの利益を得られるでしょうが、なにより重要なのは、あなたが自分自"
-"身のコードを書いてみることです。"
+msgstr "この本は初心者にPureScriptへの導入を提供することを目的としており、問題についてのお決まりの解決策の一覧を提供するような種類の本ではありません。初心者にとってこの本を読むのは楽しい挑戦になるはずですし、本書の内容を読み演習に挑戦すればだいたいの利益を得られるでしょうが、なにより重要なのは、あなたが自分自身のコードを書いてみることです。"
 
 #. type: Title ##
 #: text/chapter1.md:134
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Getting Help"
 msgstr "困ったときには"
 
 #. type: Plain text
 #: text/chapter1.md:137
-#, fuzzy
 msgid ""
 "If you get stuck at any point, there are a number of resources available "
 "online for learning PureScript:"
@@ -646,28 +609,47 @@ msgid ""
 "which allows users to compile PureScript code in the web browser, and "
 "contains several simple examples of code."
 msgstr ""
+"- [PureScriptのDiscordサーバ](https://discord.gg/vKn9up84bp)は抱えている\n"
+"  問題についてチャットするのに良い場所です。\n"
+"  サーバはPureScriptについてのチャット専用です。\n"
+"- [PurescriptのDiscourseフォーラム](https://discourse.purescript.org/)も\n"
+"  よくある問題への解決策を探すのに良い場所です。\n"
+"  メッセージ履歴が約2週間しか保たないSlackとは違い、\n"
+"  ここで質問した内容は将来の読者の助けとして使えるでしょう。\n"
+"- [PureScript: Jordan's Reference](https://github.com/jordanmartinez/purescript-jordans-reference)\n"
+"  は別のかなり深く踏み込んだ学習資料です。\n"
+"  この本の中のある概念が理解しにくかったら、\n"
+"  そちらの参考書の対応する節を読むとよいでしょう。\n"
+"- [Pursuit](https://pursuit.purescript.org)\n"
+"  はPureScriptの型と関数を検索できるデータベースです。\n"
+"  Pursuitのヘルプページを読むと\n"
+"  [どのような種類の検索ができるのかがわかります](https://pursuit.purescript.org/help/users)。\n"
+"- 非公式の[PureScript Cookbook](https://github.com/JordanMartinez/purescript-cookbook)は\n"
+"  「Xするにはどうするの？」といった類の質問にコードを混じえて答えを提供します。\n"
+"- [PureScriptドキュメントリポジトリ](https://github.com/purescript/documentation)には、\n"
+"  PureScriptの開発者や利用者が書いた幅広い話題の記事と例が集まっています。\n"
+"- [PureScriptのWebサイト](https://www.purescript.org)には、\n"
+"  コード例、映像、他の初心者向け資料を含むいくつかの学習資料へのリンクがあります。\n"
+"- [Try PureScript!](https://try.purescript.org)は\n"
+"  利用者がWebブラウザでPureScriptのコードをコンパイルすることができるWebサイトです。\n"
+"  いくつかの簡単なコードの例があります。"
 
 #. type: Plain text
 #: text/chapter1.md:148
-#, fuzzy
 msgid ""
 "If you prefer to learn by reading examples, the `purescript`, `purescript-"
 "node` and `purescript-contrib` GitHub organizations contain plenty of "
 "examples of PureScript code."
-msgstr ""
-"もしあなたが例を読んで学ぶことを好むなら、GitHubの `purescript`組織、 "
-"`purescript-node`組織および `purescript-contrib`組織にはPureScriptコードの例"
-"がたくさんあります。"
+msgstr "もしあなたが例を読んで学ぶことを好むなら、GitHubの `purescript`組織、 `purescript-node`組織および `purescript-contrib`組織にはPureScriptコードの例がたくさんあります。"
 
 #. type: Title ##
 #: text/chapter1.md:149
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "About the Author"
 msgstr "著者について"
 
 #. type: Plain text
 #: text/chapter1.md:152
-#, fuzzy
 msgid ""
 "I am the original developer of the PureScript compiler. I'm based in Los "
 "Angeles, California, and started programming at an early age in BASIC on an "
@@ -675,25 +657,21 @@ msgid ""
 "professionally in a variety of programming languages (including Java, Scala, "
 "C#, F#, Haskell and PureScript)."
 msgstr ""
-"私はPureScriptコンパイラの最初の開発者です。私はカリフォルニア州ロサンゼルス"
-"を拠点にしており、8ビットパーソナルコンピュータ、Amstrad CPC上のBASICでまだ幼"
-"い時にプログラミングを始めました。それ以来、私はいくつものプログラミング言語"
-"(JavaやScala、C#、F#、HaskellそしてPureScript)で業務に携わってきました。"
+"私はPureScriptコンパイラの最初の開発者です。私はカリフォルニア州ロサンゼルスを拠点にしており、8ビットパーソナルコンピュータ、Amstrad CPC上のBASICでまだ幼い時にプログラミングを始めました。\n"
+"それ以来、私はいくつものプログラミング言語（JavaやScala、C#、F#、Haskell、そしてPureScript）で業務に携わってきました。"
 
 #. type: Plain text
 #: text/chapter1.md:154
-#, fuzzy
 msgid ""
 "Not long into my professional career, I began to appreciate functional "
 "programming and its connections with mathematics, and enjoyed learning "
 "functional concepts using the Haskell programming language."
 msgstr ""
-"プロとしての経歴が始まって間もなく、私は関数型プログラミングと数学の関係を理"
-"解するようになり、そしてプログラミング言語Haskellとの恋に落ちました。"
+"プロとしての経歴が始まって間もなく、私は関数型プログラミングと数学の関係を理解するようになり、\n"
+"そしてプログラミング言語Haskellを使って関数型の概念の学習を楽しみました。"
 
 #. type: Plain text
 #: text/chapter1.md:156
-#, fuzzy
 msgid ""
 "I started working on the PureScript compiler in response to my experience "
 "with JavaScript. I found myself using functional programming techniques that "
@@ -705,34 +683,25 @@ msgid ""
 "semantics of JavaScript, while enjoying the syntax and type system of a "
 "language like Haskell."
 msgstr ""
-"JavaScriptでの経験をもとに、私はPureScriptコンパイラの開発を始めることにしま"
-"した。私は自分がHaskellのような言語から取り上げた関数型プログラミングの手法を"
-"使っていることに気が付きましたが、それを応用するためのもっと理にかなった環境"
-"を求めていました。そのとき検討した案のなかには、Haskellをその意味論を維持しな"
-"がらJavaScriptへとコンパイルするいろいろな試み(Fay、Haste、GHCJS)もありました"
-"が、私が興味を持っていたのは、この問題への別の切り口からのアプローチ、すなわ"
-"ちHaskellのような言語の構文と型システムを楽しみながらJavaScriptの意味論も維持"
-"するということが、どのようにすれば可能になるのかでした。"
+"JavaScriptでの経験をもとに、私はPureScriptコンパイラの開発を始めることにしました。\n"
+"気が付くとHaskellのような言語から取り上げた関数型プログラミングの手法を使っていましたが、それを応用するためのもっと理にかなった環境を求めていました。\n"
+"そのとき検討した案のなかには、Haskellからその意味論を維持しながらJavaScriptへとコンパイルするいろいろな試み（Fay、Haste、GHCJS）もありましたが、私が興味を持っていたのは、この問題への別の切り口からのアプローチ、すなわちHaskellのような言語の構文と型システムを楽しみながらJavaScriptの意味論も維持するということが、どのようにすれば可能になるのかでした。"
 
 #. type: Plain text
 #: text/chapter1.md:158
-#, fuzzy
 msgid ""
 "I maintain [a blog](https://blog.functorial.com), and can be [reached on "
 "Twitter](https://twitter.com/paf31)."
-msgstr ""
-"私は[ウェブサイト](http://blog.functorial.com)を運営しており、[Twitterで連絡"
-"をとる](http://twitter.com/paf31)こともできます。"
+msgstr "私は[ブログ](http://blog.functorial.com)を運営しており、[Twitterで連絡をとる](http://twitter.com/paf31)こともできます。"
 
 #. type: Title ##
 #: text/chapter1.md:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Acknowledgements"
 msgstr "謝辞"
 
 #. type: Plain text
 #: text/chapter1.md:162
-#, fuzzy
 msgid ""
 "I would like to thank the many contributors who helped PureScript to reach "
 "its current state. Without the huge collective effort which has been made on "
@@ -745,7 +714,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:164
-#, fuzzy
 msgid ""
 "The PureScript logo which appears on the cover of this book was created by "
 "Gareth Hughes, and is gratefully reused here under the terms of the "
@@ -758,7 +726,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:165
-#, fuzzy
 msgid ""
 "Finally, I would like to thank everyone who has given me feedback and "
 "corrections on the contents of this book."

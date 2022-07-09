@@ -1307,3 +1307,9 @@ Monad transformers are an excellent demonstration of the sort of expressive
 code that can be written by relying on advanced type system features such as
 higher-kinded polymorphism and multi-parameter type classes.
 
+
+- - -
+
+この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

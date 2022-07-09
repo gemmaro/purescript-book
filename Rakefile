@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require 'pathname'
+
 task default: :translate
 
-task translate: 'po4a.cfg' do |t|
+task translate: ['po4a.cfg', 'locales/ja.po'] do |t|
   sh "po4a #{t.source}"
 end
 
@@ -11,14 +13,14 @@ file 'po4a.cfg' do |t|
     [po_directory] locales
   END_CFG
 
-  Dir['text/chapter*.md'].each do |doc|
+  Pathname.glob('text/chapter*.md').reject { _1.to_s.match?(/.ja.md\Z/) }.each do |doc|
     content += <<~END_CFG
 
       [type:text] \\
         #{doc} \\
-        $lang:locales/$lang/#{doc} \\
-        opt:"--option markdown --keep 0" \\
-        add_$lang:locales/$lang/translators.add
+        $lang:#{doc.sub_ext(".$lang.md")} \\
+        add_$lang:locales/$lang.add \\
+        opt:"--option markdown --keep 0"
     END_CFG
   end
 

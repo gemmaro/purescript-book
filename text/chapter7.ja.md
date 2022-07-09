@@ -955,3 +955,9 @@ are a useful tool for the design of _domain specific languages_.
 
 In the next chapter, we will see a related idea, the class of _monads_, and
 extend our address book example to run in the browser!
+
+- - -
+
+この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

@@ -1033,3 +1033,9 @@ reasoning_, in which the properties of a programming language and its type
 system are used to enable logical reasoning about its programs. This is an
 important idea, and will be a theme which we will return to throughout the
 rest of the book.
+
+- - -
+
+この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
