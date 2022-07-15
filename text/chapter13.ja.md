@@ -1,6 +1,6 @@
 # Generative Testing
 
-## Chapter Goals
+## この章の目標
 
 In this chapter, we will see a particularly elegant application of type
 classes to the problem of testing. Instead of testing our code by telling
@@ -534,7 +534,7 @@ for web applications.
  1. (Medium) Use `all` to simplify the result of the `quickCheckPure` function - your new function should have type `List Result -> Boolean` and should return `true` if every test passes and `false` otherwise.
  1. (Medium) As another approach to simplifying the result of `quickCheckPure`, try writing a function `squashResults :: List Result -> Result`. Consider using the `First` monoid from `Data.Maybe.First` with the `foldMap` function to preserve the first error in case of failure.
 
-## Conclusion
+## まとめ
 
 In this chapter, we met the `quickcheck` package, which can be used to write
 tests in a declarative way using the paradigm of _generative testing_. In
@@ -552,5 +552,5 @@ particular:
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

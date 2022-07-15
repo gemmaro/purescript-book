@@ -1,6 +1,6 @@
 # Asynchronous Effects
 
-## Chapter Goals
+## この章の目標
 
 This chapter focuses on the `Aff` monad, which is similar to the `Effect`
 monad, but represents _asynchronous_ side-effects. We'll demonstrate
@@ -166,7 +166,7 @@ unit
 {"data":{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth", ...}}
 ```
 
-## Exercises
+## 演習
 
 1. (Easy) Write a function `writeGet` which makes an HTTP `GET` request to a
    provided url, and writes the response body to a file.
@@ -308,7 +308,7 @@ The expected output is:
 ["root.txt","a.txt","b/a.txt","b/b.txt","b/c/a.txt","c/a/a.txt"]
 ```
 
-## Conclusion
+## まとめ
 
 In this chapter we covered asynchronous effects and learned how to: - Run
 asynchronous code in the `Aff` monad with the `aff` library.  - Make HTTP
@@ -318,5 +318,5 @@ in parallel with the `parallel` library.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

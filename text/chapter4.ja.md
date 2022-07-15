@@ -1,6 +1,6 @@
 # Recursion, Maps And Folds
 
-## Chapter Goals
+## この章の目標
 
 In this chapter, we will look at how recursive functions can be used to
 structure algorithms. Recursion is a basic technique used in functional
@@ -839,7 +839,7 @@ you decide which version you find clearer.
      _Hint_: Try to write this function as an array comprehension using do notation.
  3. (Difficult) Write a function `largestSmallest` which takes a `Path` and returns an array containing the single largest and single smallest files in the `Path`. _Note_: consider the cases where there are zero or one files in the `Path` by returning an empty array or a one-element array respectively.
 
-## Conclusion
+## まとめ
 
 In this chapter, we covered the basics of recursion in PureScript, as a
 means of expressing algorithms concisely. We also introduced user-defined
@@ -852,5 +852,5 @@ to tail recursive form.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

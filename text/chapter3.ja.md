@@ -1,6 +1,6 @@
 # Functions and Records
 
-## Chapter Goals
+## この章の目標
 
 This chapter will introduce two building blocks of PureScript programs:
 functions and records. In addition, we'll see how to structure PureScript
@@ -919,7 +919,7 @@ understand, but it is often useful to think of functions as building blocks
 in this way - each function executing a single task, and solutions assembled
 using function composition.
 
-## Exercises
+## 演習
 
  1. (Easy) Test your understanding of the `findEntry` function by writing
     down the types of each of its major subexpressions. For example, the
@@ -945,7 +945,7 @@ using function composition.
     equality predicate. Note that the first element in each set of
     duplicates (closest to list head) is the one that is kept.
 
-## Conclusion
+## まとめ
 
 In this chapter, we covered several new functional programming concepts:
 
@@ -963,5 +963,5 @@ In the following chapters, we'll build on these ideas.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

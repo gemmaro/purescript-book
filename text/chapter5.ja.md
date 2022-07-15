@@ -1,6 +1,6 @@
 # Pattern Matching
 
-## Chapter Goals
+## この章の目標
 
 This chapter will introduce two new concepts: algebraic data types, and
 pattern matching. We will also briefly cover an interesting feature of the
@@ -138,7 +138,7 @@ true
 As this example demonstrates, guards appear on the left of the equals
 symbol, separated from the list of patterns by a pipe character (`|`).
 
-## Exercises
+## 演習
 
 1. (Easy) Write the `factorial` function using pattern matching. _Hint_:
    Consider the two corner cases of zero and non-zero inputs. _Note_: This
@@ -323,7 +323,7 @@ already sorted. Note that if the input array does not contain _exactly_ two
 elements, then this function simply returns it unchanged, even if it's
 unsorted.
 
-## Exercises
+## 演習
 
 1. (Easy) Write a function `sameCity` which uses record patterns to test
    whether two `Person` records belong to the same city.
@@ -568,7 +568,7 @@ constructor, then we bring the arguments of `Circle` (center and radius)
 into scope using two variable patterns, `c` and `r`. The other cases are
 similar.
 
-## Exercises
+## 演習
 
 1. (Easy) Write a function `circleAtOrigin` which constructs a `Circle` (of
    type `Shape`) centered at the origin with radius `10.0`.
@@ -667,7 +667,7 @@ Another application of newtypes is to attach different _behavior_ to an
 existing type without changing its representation at runtime. We cover that
 use case in the next chapter when we discuss _type classes_.
 
-## Exercises
+## 演習
 
 1. (Easy) Define `Watt` as a `newtype` of `Number`. Then define a
    `calculateWattage` function using this new `Watt` type and the above
@@ -739,7 +739,7 @@ next `Shape` in the array, and uses the `union` function to compute the
 union of the two bounding rectangles. The `shapeBounds` function computes
 the bounds of a single shape using pattern matching.
 
-## Exercises
+## 演習
 
 1. (Medium) Extend the vector graphics library with a new operation `area`
    which computes the area of a `Shape`. For the purpose of this exercise,
@@ -749,7 +749,7 @@ the bounds of a single shape using pattern matching.
    `shapeBounds` function to compute the bounds of a clipped picture. Note
    that this makes `Shape` into a recursive data type.
 
-## Conclusion
+## まとめ
 
 In this chapter, we covered pattern matching, a basic but powerful technique
 from functional programming. We saw how to use simple patterns as well as
@@ -771,5 +771,5 @@ matching.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

@@ -1,6 +1,6 @@
 # Type Classes
 
-## Chapter Goals
+## この章の目標
 
 This chapter will introduce a powerful form of abstraction which is enabled
 by PureScript's type system - type classes.
@@ -427,7 +427,7 @@ the work for you. Take a look at this [Type Class Deriving
 guide](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md).
 That information will help you solve the following exercises.
 
-## Exercises
+## 演習
 
 The following newtype represents a complex number:
 
@@ -553,7 +553,7 @@ instance might depend on many such instance relationships, but this
 complexity is not exposed to the developer.
 
 
-## Exercises
+## 演習
 
 1. (Easy) The following declaration defines a type of non-empty arrays of
    elements of type `a`:
@@ -814,7 +814,7 @@ Another reason to define a superclass relationship is in the case where
 there is a clear "is-a" relationship between the two classes. That is, every
 member of the subclass _is a_ member of the superclass as well.
 
-## Exercises
+## 演習
 
 1. (Medium) Define a partial function `unsafeMaximum :: Partial => Array Int
    -> Int` which finds the maximum of a non-empty array of integers. Test
@@ -1019,7 +1019,7 @@ The source code for this chapter includes several other examples of
     The newtype `Hour` and its `Eq` instance represent the type of integers modulo 12, so that 1 and 13 are identified as equal, for example. Prove that the type class law holds for your instance.
  1. (Difficult) Prove the type class laws for the `Hashable` instances for `Maybe`, `Either` and `Tuple`. _Note_: There is no test for this exercise.
 
-## Conclusion
+## まとめ
 
 In this chapter, we've been introduced to _type classes_, a type-oriented
 form of abstraction which enables powerful forms of code reuse. We've seen a
@@ -1037,5 +1037,5 @@ rest of the book.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

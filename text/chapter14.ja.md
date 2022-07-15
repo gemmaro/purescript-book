@@ -1,6 +1,6 @@
 # Domain-Specific Languages
 
-## Chapter Goals
+## この章の目標
 
 In this chapter, we will explore the implementation of _domain-specific
 languages_ (or _DSLs_) in PureScript, using a number of standard techniques.
@@ -890,7 +890,7 @@ names.
 
      _Hint_: use the `ask` action and the `ReaderT` monad transformer to interpret this action. Alternatively, you might prefer to use the `RWS` monad.
 
-## Conclusion
+## まとめ
 
 In this chapter, we developed a domain-specific language for creating HTML
 documents, by incrementally improving a naive implementation using some
@@ -919,5 +919,5 @@ working in a language with expressive types.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

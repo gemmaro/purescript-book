@@ -1,6 +1,6 @@
 # Monadic Adventures
 
-## Chapter Goals
+## この章の目標
 
 The goal of this chapter will be to learn about _monad transformers_, which
 provide a way to combine side-effects provided by different monads. The
@@ -1285,7 +1285,7 @@ Notice how we were able to use the notation afforded by the applicative operator
     from the previous exercise should be disallowed if cheat mode is not
     enabled.
 
-## Conclusion
+## まとめ
 
 This chapter was a practical demonstration of the techniques we've learned
 so far, using monad transformers to build a pure specification of our game,
@@ -1311,5 +1311,5 @@ higher-kinded polymorphism and multi-parameter type classes.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

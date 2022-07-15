@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2022-07-09 14:23+0900\n"
-"PO-Revision-Date: 2022-07-13 08:46+0900\n"
+"PO-Revision-Date: 2022-07-16 08:28+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -735,7 +735,7 @@ msgstr ""
 
 #. type: Title #
 #: text/chapter10.md:1
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "The Foreign Function Interface"
 msgstr "外部関数インタフェース"
 
@@ -744,29 +744,9 @@ msgstr "外部関数インタフェース"
 #: text/chapter13.md:3 text/chapter14.md:3 text/chapter2.md:3
 #: text/chapter3.md:3 text/chapter4.md:3 text/chapter5.md:3 text/chapter6.md:3
 #: text/chapter7.md:3 text/chapter8.md:3 text/chapter9.md:3
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Chapter Goals"
-msgstr ""
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter06.md:3  #-#-#-#-#\n"
-"章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:3 refs/ja2/src/chapter03.md:3 refs/ja2/src/chapter04.md:3 refs/ja2/src/chapter05.md:3 refs/ja2/src/chapter07.md:3 refs/ja2/src/chapter08.md:3 refs/ja2/src/chapter09.md:3 refs/ja2/src/chapter10.md:3 refs/ja2/src/chapter11.md:3 refs/ja2/src/chapter12.md:3 refs/ja2/src/chapter13.md:3 refs/ja2/src/chapter14.md:3  #-#-#-#-#\n"
-"この章の目標"
+msgstr "この章の目標"
 
 #. type: Plain text
 #: text/chapter10.md:6
@@ -776,9 +756,9 @@ msgid ""
 "_FFI_), which enables communication from PureScript code to JavaScript code, "
 "and vice versa. We will cover how to:"
 msgstr ""
-"この章では、PureScriptコードからJavaScriptコードへの呼び出し、およびその逆を"
-"可能にする、PureScriptの**外部関数インタフェース**(foreign function "
-"interface, FFI)を紹介します。これから扱うのは次のようなものです。"
+"この章でPureScriptの**外部関数インターフェース** (foreign function interface; FFI)を紹介します。\n"
+"これによりPureScriptコードからJavaScriptコードへの呼び出し、およびその逆が可能になります。\n"
+"これから扱うのは次のようなものです。"
 
 #. type: Plain text
 #: text/chapter10.md:10
@@ -1438,7 +1418,7 @@ msgstr ""
 #: text/chapter5.md:391 text/chapter5.md:463 text/chapter5.md:520
 #: text/chapter6.md:319 text/chapter6.md:411 text/chapter6.md:608
 #: text/chapter8.md:666 text/chapter8.md:973 text/chapter9.md:124
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Exercises"
 msgstr "演習"
 
@@ -3209,7 +3189,7 @@ msgstr ""
 #: text/chapter3.md:719 text/chapter4.md:631 text/chapter5.md:525
 #: text/chapter6.md:757 text/chapter7.md:691 text/chapter8.md:1000
 #: text/chapter9.md:225
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Conclusion"
 msgstr "まとめ"
 
@@ -13048,9 +13028,9 @@ msgstr ""
 
 #. type: Title #
 #: text/chapter2.md:1
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Getting Started"
-msgstr "開発環境の準備"
+msgstr "はじめよう"
 
 #. type: Plain text
 #: text/chapter2.md:6
@@ -13061,12 +13041,18 @@ msgid ""
 "youtube.com/watch?v=GPjPwb6d-70) helpful if that better suits your learning "
 "style."
 msgstr ""
+"この章では実際のPureScriptの開発環境を立ち上げ、\n"
+"いくつかの演習を解き、\n"
+"この本で提供されているテストを使って答えを確認します。\n"
+"もし学習の仕方が合っていれば\n"
+"[この章を通して進めるビデオ](https://www.youtube.com/watch?v=GPjPwb6d-70)\n"
+"が役に立つでしょう。"
 
 #. type: Title ##
 #: text/chapter2.md:7
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Environment Setup"
-msgstr "プロジェクトの準備"
+msgstr "環境構築"
 
 #. type: Plain text
 #: text/chapter2.md:10
@@ -13079,25 +13065,31 @@ msgid ""
 "contains unfamiliar syntax. We'll cover all of this in great detail in the "
 "upcoming chapters."
 msgstr ""
+"最初にドキュメンテーションリポジトリにあるこの\n"
+"[Getting Started Guide](https://github.com/purescript/documentation/blob/master/guides/Getting-Started.md)\n"
+"を通しで進め、環境の構築と言語の基礎を学んでください。\n"
+"[Project Euler](http://projecteuler.net/problem=1)\n"
+"への解答例にあるコードがわかりにくかったり見慣れない構文を含んでいたとしても心配要りません。\n"
+"来たる章でこの全ての内容をとても詳細に押さえていきます。"
 
 #. type: Title ##
 #: text/chapter2.md:11
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Solving Exercises"
-msgstr "演習"
+msgstr "演習を解く"
 
 #. type: Plain text
 #: text/chapter2.md:14
 msgid ""
 "Now that you've installed the necessary development tools, clone this book's "
 "repo."
-msgstr ""
+msgstr "ここまでで必要な開発ツールをインストールできているので、この本のリポジトリをクローンしてください。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:15
 #, no-wrap
 msgid "git clone https://github.com/purescript-contrib/purescript-book.git\n"
-msgstr ""
+msgstr "git clone https://github.com/purescript-contrib/purescript-book.git\n"
 
 #. type: Plain text
 #: text/chapter2.md:20
@@ -13111,6 +13103,12 @@ msgid ""
 "rendered markdown, and you probably don't need this clutter in your local "
 "repo):"
 msgstr ""
+"本のリポジトリにはPureScriptのコード例とそれぞれの章に付属する演習のための単体テストが含まれます。\n"
+"演習の解法を白紙に戻すために必要な初期設定があり、こうすることで解く準備ができます。\n"
+"`resetSolutions.sh`スクリプトを使ってこの工程を簡単にできます。\n"
+"その間に`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくのもよいでしょう。\n"
+"（これらのアンカーはコードスニペットを本の変換後のMarkdownにコピーするために使われており、\n"
+"自分のローカルリポジトリではこのアンカーが散らかっていないほうがよいでしょう。）"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:21
@@ -13122,11 +13120,16 @@ msgid ""
 "git add .\n"
 "git commit --all --message \"Exercises ready to be solved\"\n"
 msgstr ""
+"cd purescript-book\n"
+"./scripts/resetSolutions.sh\n"
+"./scripts/removeAnchors.sh\n"
+"git add .\n"
+"git commit --all --message \"Exercises ready to be solved\"\n"
 
 #. type: Plain text
 #: text/chapter2.md:30
 msgid "Now run the tests for this chapter:"
-msgstr ""
+msgstr "それではこの章のテストを走らせましょう。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:31
@@ -13135,11 +13138,13 @@ msgid ""
 "cd exercises/chapter2\n"
 "spago test\n"
 msgstr ""
+"cd exercises/chapter2\n"
+"spago test\n"
 
 #. type: Plain text
 #: text/chapter2.md:37
 msgid "You should see the following successful test output:"
-msgstr ""
+msgstr "以下の成功したテスト出力が出るでしょう。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:38
@@ -13151,6 +13156,11 @@ msgid ""
 "\n"
 "All 2 tests passed! ð\n"
 msgstr ""
+"→ Suite: Euler - Sum of Multiples\n"
+"  → Running: below 10✓ Passed: below 10\n"
+"  → Running: below 1000✓ Passed: below 1000\n"
+"\n"
+"All 2 tests passed! 🎉\n"
 
 #. type: Plain text
 #: text/chapter2.md:47
@@ -13162,6 +13172,11 @@ msgid ""
 "understanding how this test framework code works while reading these early "
 "chapters."
 msgstr ""
+"なお、`answer`節（`src/Euler.purs`にあります）は、\n"
+"あらゆる整数以下の3と5の倍数を見付けるように変更されています。\n"
+"この`answer`関数のためのテストスート（`test/Main.purs`にあります）は\n"
+"Getting Started Guideの冒頭にあるテストよりも網羅的です。\n"
+"はじめの章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。"
 
 #. type: Plain text
 #: text/chapter2.md:49
@@ -13170,17 +13185,20 @@ msgid ""
 "solutions in the `Test.MySolutions` module (`test/MySolutions.purs`), you "
 "can check your work against the provided test suite."
 msgstr ""
+"本の残りの部分には多くの演習が含まれます。\n"
+"`Test.MySolutions`モジュール (`test/MySolutions.purs`) に自分の解法を書けば、\n"
+"提供されているテストスートを使って確認できます。"
 
 #. type: Plain text
 #: text/chapter2.md:51
 msgid ""
 "Let's work through this next exercise together in test-driven-development "
 "style."
-msgstr ""
+msgstr "テスト駆動開発のスタイルでこの次の演習を一緒に進めてみましょう。"
 
 #. type: Title ##
 #: text/chapter2.md:52
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Exercise"
 msgstr "演習"
 
@@ -13191,18 +13209,14 @@ msgid ""
 "(or hypotenuse) of a right-angled triangle when given the lengths of the two "
 "other sides."
 msgstr ""
+"（やや難しい）直角三角形の対角線（あるいは斜辺）の長さを\n"
+"他の2つの辺の長さを使って計算する`diagonal`関数を書いてください。"
 
 #. type: Title ##
 #: text/chapter2.md:56
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Solution"
-msgstr ""
-"#-#-#-#-#  refs/ja2/src/chapter01.md:1 refs/ja2/src/chapter04.md:27  #-#-#-#-#\n"
-"はじめに\n"
-"#-#-#-#-#  refs/ja2/src/chapter02.md:9  #-#-#-#-#\n"
-"導入\n"
-"#-#-#-#-#  refs/ja2/src/chapter01.md:1 refs/ja2/src/chapter04.md:27  #-#-#-#-#\n"
-"はじめに"
+msgstr "解法"
 
 #. type: Plain text
 #: text/chapter2.md:59
@@ -13211,6 +13225,9 @@ msgid ""
 "block-comment down a few lines as shown below. Block comments start with `{-"
 "` and end with `-}`:"
 msgstr ""
+"この演習のテストを有効にするところから始めます。\n"
+"以下に示すようにブロックコメントの開始を数行下に下げてください。\n"
+"ブロックコメントは`{-`から始まり`-}`で終わります。"
 
 #. type: Fenced code block (hs)
 #: text/chapter2.md:60
@@ -13219,6 +13236,8 @@ msgid ""
 "{{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}\n"
 "    {-  Move this block comment starting point to enable more tests\n"
 msgstr ""
+"{{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}\n"
+"    {-  Move this block comment starting point to enable more tests\n"
 
 #. type: Plain text
 #: text/chapter2.md:66
@@ -13226,6 +13245,8 @@ msgid ""
 "If we attempt to run the test now, we'll encounter a compilation error "
 "because we have not yet implemented our `diagonal` function."
 msgstr ""
+"ここでテストを走らせようとすると、コンパイルエラーに直面します。\n"
+"なぜなら`diagonal`関数をまだ実装していないからです。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:67
@@ -13239,6 +13260,13 @@ msgid ""
 "\n"
 "  Unknown value diagonal\n"
 msgstr ""
+"$ spago test\n"
+"\n"
+"Error found:\n"
+"in module Test.Main\n"
+"at test/Main.purs:21:27 - 21:35 (line 21, column 27 - line 21, column 35)\n"
+"\n"
+"  Unknown value diagonal\n"
 
 #. type: Plain text
 #: text/chapter2.md:78
@@ -13246,20 +13274,25 @@ msgid ""
 "Let's first take a look at what happens with a faulty version of this "
 "function. Add the following code to `test/MySolutions.purs`:"
 msgstr ""
+"まずはこの関数が欠陥のあるバージョンであるときに何が起こるのか見てみましょう。\n"
+"以下のコードを`test/MySolutions.purs`に追加してください。"
 
 #. type: Fenced code block (hs)
 #: text/chapter2.md:79
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "import Data.Number (sqrt)\n"
 "\n"
 "diagonal w h = sqrt (w * w + h)\n"
-msgstr "diagonal w h = sqrt (w * w + h * h)\n"
+msgstr ""
+"import Data.Number (sqrt)\n"
+"\n"
+"diagonal w h = sqrt (w * w + h)\n"
 
 #. type: Plain text
 #: text/chapter2.md:86
 msgid "And check our work by running `spago test`:"
-msgstr ""
+msgstr "そして`spago test`を走らせて確認してください。"
 
 #. type: Fenced code block (hs)
 #: text/chapter2.md:87
@@ -13271,6 +13304,11 @@ msgid ""
 "\n"
 "2 tests failed:\n"
 msgstr ""
+"→ Suite: diagonal\n"
+"  → Running: 3 4 5☠ Failed: 3 4 5 because expected 5.0, got 3.605551275463989\n"
+"  → Running: 5 12 13☠ Failed: 5 12 13 because expected 13.0, got 6.082762530298219\n"
+"\n"
+"2 tests failed:\n"
 
 #. type: Plain text
 #: text/chapter2.md:96
@@ -13278,17 +13316,20 @@ msgid ""
 "Uh-oh, that's not quite right. Let's fix this with the correct application "
 "of the Pythagorean formula by changing the function to:"
 msgstr ""
+"あーあ、全然正しくありませんでした。\n"
+"ピタゴラスの定理を正しい適用することでこれを修正しましょう。\n"
+"関数を以下のように変えます。"
 
 #. type: Fenced code block (hs)
 #: text/chapter2.md:97
 #, no-wrap
 msgid "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
 
 #. type: Plain text
 #: text/chapter2.md:102
 msgid "Trying `spago test` again now shows all tests are passing:"
-msgstr ""
+msgstr "ここでもう一度`spago test`としてみると全てのテストが通っています。"
 
 #. type: Fenced code block (hs)
 #: text/chapter2.md:103
@@ -13303,25 +13344,33 @@ msgid ""
 "\n"
 "All 4 tests passed! ð\n"
 msgstr ""
+"→ Suite: Euler - Sum of Multiples\n"
+"  → Running: below 10✓ Passed: below 10\n"
+"  → Running: below 1000✓ Passed: below 1000\n"
+"→ Suite: diagonal\n"
+"  → Running: 3 4 5✓ Passed: 3 4 5\n"
+"  → Running: 5 12 13✓ Passed: 5 12 13\n"
+"\n"
+"All 4 tests passed! 🎉\n"
 
 #. type: Plain text
 #: text/chapter2.md:115
 msgid "Success! Now you're ready to try these next exercises on your own."
 msgstr ""
+"成功です！\n"
+"これで次の演習を自力で解くための準備ができました。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter2.md:120
-#, fuzzy
 msgid ""
 "(Easy) Write a function `circleArea` which computes the area of a circle "
 "with a given radius. Use the `pi` constant, which is defined in the "
 "`Numbers` module. _Hint_: don't forget to import `pi` by modifying the "
 "`import Data.Number` statement."
 msgstr ""
-"(簡単) `Math`モジュールで定義されている `pi`定数を使用し、指定された半径の円"
-"の面積を計算する関数 `circleArea`を書いてみましょう。また、 `PSCi`を使用して"
-"その関数をテストしてください。 (**ヒント**： `import math`文を修正して、 `pi`"
-"をインポートすることを忘れないようにしましょう)"
+"（簡単）指定された半径の円の面積を計算する関数`circleArea`を書いてみましょう。\n"
+"`Numbers`モジュールで定義されている `pi`定数を使用してください。\n"
+"**ヒント**： `import Data.Number`文を修正して、 `pi`をインポートすることを忘れないようにしましょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter2.md:120
@@ -13332,6 +13381,11 @@ msgid ""
 "usage and which module to import it from. _Note:_ Your IDE may support auto-"
 "importing of this function if you accept the auto-completion suggestion."
 msgstr ""
+"（やや難しい）`Int`を取って`100`で割ったあとの余りを返す関数`leftoverCents`を書いてみましょう。\n"
+"`rem`関数を使ってください。\n"
+"[Pursuit](https://pursuit.purescript.org/)でこの関数を検索して、\n"
+"使用法とどのモジュールからインポートしてくるか調べましょう。\n"
+"**補足**：自動補完の提案を受け付ければ、IDEでこの関数の自動的なインポートがサポートされているかもしれません。"
 
 #. type: Plain text
 #: text/chapter2.md:124
@@ -13340,6 +13394,8 @@ msgid ""
 "also learned how to write solutions to exercises and check these for "
 "correctness."
 msgstr ""
+"この章ではPureScriptコンパイラとSpagoツールをインストールしました。\n"
+"演習の解答の書き方と正しさの確認方法も学びました。"
 
 #. type: Plain text
 #: text/chapter2.md:126
@@ -13352,6 +13408,12 @@ msgid ""
 "github.com/purescript-contrib/purescript-book/issues). This reader feedback "
 "on which exercises could be made more approachable helps us improve the book."
 msgstr ""
+"この先の章にはより多くの演習があり、それらに取り組むうちに学習の助けになっているでしょう。\n"
+"演習のどこかでお手あげになったら、\n"
+"この本の[困ったときは](chapter1.ja.md#getting-help)の節に挙げられている\n"
+"コミュニティの資料のどれでも見てみるか、\n"
+"この[本のリポジトリ](https://github.com/purescript-contrib/purescript-book/issues)にイシューを報告することさえできます。\n"
+"こうした演習の敷居を下げることに繋がる読者のフィードバックが、本の向上の助けになっています。"
 
 #. type: Plain text
 #: text/chapter2.md:128
@@ -13364,13 +13426,18 @@ msgid ""
 "elegant solution (that still only requires knowledge of covered content), "
 "please send us a PR."
 msgstr ""
+"章の全ての演習を解いたら、`no-peeking/Solutions.purs`にあるものと解答とを比べられます。\n"
+"ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないことがないようにしてください。\n"
+"そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。\n"
+"演習のネタバレをするよりも、小さなヒントをあげたいからです。\n"
+"もっとエレガントな解法（とはいえ本の内容で押さえられている知識のみを必要とするもの）を見つけたときはPRを送ってください。"
 
 #. type: Plain text
 #: text/chapter2.md:129
 msgid ""
 "The repo is continuously being revised, so be sure to check for updates "
 "before starting each new chapter."
-msgstr ""
+msgstr "リポジトリは継続して改訂されているため、それぞれの新しい章を始める前に更新を確認するようにしてください。"
 
 #. type: Title #
 #: text/chapter3.md:1

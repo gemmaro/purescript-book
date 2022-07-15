@@ -1,6 +1,6 @@
 # Applicative Validation
 
-## Chapter Goals
+## この章の目標
 
 In this chapter, we will meet an important new abstraction - the
 _applicative functor_, described by the `Applicative` type class. Don't
@@ -932,7 +932,7 @@ the problem of _callback hell_ later in the book.
 Applicative functors are a natural way to capture side-effects which can be
 combined in parallel.
 
-## Conclusion
+## まとめ
 
 In this chapter, we covered a lot of new ideas:
 
@@ -959,5 +959,5 @@ extend our address book example to run in the browser!
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

@@ -1,6 +1,6 @@
-# The Foreign Function Interface
+# 外部関数インタフェース
 
-## Chapter Goals
+## この章の目標
 
 This chapter will introduce PureScript's _foreign function interface_ (or
 _FFI_), which enables communication from PureScript code to JavaScript code,
@@ -322,7 +322,7 @@ var curriedAdd = n => m =>
 The remaining examples in this book will use arrow functions instead of
 nested functions.
 
-## Exercises
+## 演習
 
 1. (Medium) Write a JavaScript function `volumeFn` in the `Test.MySolutions`
    module that finds the volume of a box. Use an `Fn` wrapper from
@@ -408,7 +408,7 @@ JavaScript code. We will describe this type safety concern in more detail
 later on in the JSON section, as well as cover techniques to protect against
 type mismatches.
 
-## Exercises
+## 演習
 
 1. (Medium) Write a JavaScript function `cumulativeSumsComplex` (and
    corresponding PureScript foreign import) that takes an `Array` of
@@ -591,7 +591,7 @@ export const unsafeHead = arr => {
 };
 ```
 
-## Exercises
+## 演習
 
 1. (Medium) Given a record that represents a quadratic polynomial `a*x^2 +
    b*x + c = 0`:
@@ -860,7 +860,7 @@ unit
 5.0
 ```
 
-## Exercises
+## 演習
 Exercises for the above sections are still on the ToDo list. If you have any
 ideas for good exercises, please make a suggestion.
 
@@ -1066,7 +1066,7 @@ Map String Int
 (Right (fromFoldable [(Tuple "Foo" 42),(Tuple "cat" 2),(Tuple "hat" 1)]))
 ```
 
-## Exercises
+## 演習
 
 1. (Medium) Write a JavaScript function and PureScript wrapper `valuesOfMap
    :: Map String Int -> Either JsonDecodeError (Set Int)` that returns a
@@ -1305,7 +1305,7 @@ alert $ "Error: " <> err <> ". Loading examplePerson"
  1. (Medium) Call this `confirm` function when a users clicks the "Reset"
     button to ask if they're sure they want to reset their address book.
 
-## Conclusion
+## まとめ
 
 In this chapter, we've learned how to work with foreign JavaScript code from
 PureScript and we've seen the issues involved with writing trustworthy code
@@ -1732,5 +1732,5 @@ generated automatically, whenever the `Main` module is defined.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

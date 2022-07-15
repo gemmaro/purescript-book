@@ -1,6 +1,6 @@
 # Canvas Graphics
 
-## Chapter Goals
+## この章の目標
 
 This chapter will be an extended example focussing on the `canvas` package,
 which provides a way to generate 2D graphics from PureScript using the HTML5
@@ -791,7 +791,7 @@ canvas.
      Implement this L-system again using this representation of the alphabet.
  1. (Difficult) Use a different monad `m` in the interpretation function. You might try using `Effect.Console` to write the L-system onto the console, or using `Effect.Random` to apply random "mutations" to the state type.
 
-## Conclusion
+## まとめ
 
 In this chapter, we learned how to use the HTML5 Canvas API from PureScript
 by using the `canvas` library. We also saw a practical demonstration of many
@@ -824,5 +824,5 @@ For examples of games rendered to the canvas, see the "Behavior" and
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。

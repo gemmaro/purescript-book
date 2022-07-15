@@ -1,6 +1,6 @@
 # The Effect Monad
 
-## Chapter Goals
+## この章の目標
 
 In the last chapter, we introduced applicative functors, an abstraction
 which we used to deal with _side-effects_: optional values, error messages
@@ -847,7 +847,7 @@ The `ST` effect is a good way to generate short JavaScript when working with
 locally-scoped mutable state, especially when used together with actions
 like `for`, `foreach`, and `while` which generate efficient loops.
 
-## Exercises
+## 演習
 
 1. (Medium) Rewrite the `safeDivide` function as `exceptionDivide` and throw
    an exception using `throwException` with the message `"div zero"` if the
@@ -1269,7 +1269,7 @@ Obviously, this user interface can be improved in a number of ways. The
 exercises will explore some ways in which we can make the application more
 usable.
 
-## Exercises
+## 演習
 
 Modify `src/Main.purs` in the following exercises. There are no unit tests
 for these exercises.
@@ -1299,7 +1299,7 @@ for these exercises.
 
     You will need to write a function which extracts the validation error for a particular `Field` from the `Errors` structure.
 
-## Conclusion
+## まとめ
 
 This chapter has covered a lot of ideas about handling side-effects in
 PureScript:
@@ -1322,5 +1322,5 @@ other use-cases.
 - - -
 
 この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-ライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
+翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
