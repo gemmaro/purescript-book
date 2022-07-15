@@ -26,7 +26,7 @@ they're less relevant to your learning objectives:
 - Understand the representation of PureScript values at runtime.  - Call
 PureScript functions from JavaScript.
 
-## Project Setup
+## プロジェクトの準備
 
 The source code for this module is a continuation of the source code from
 chapters 3, 7 and 8. As such, the source tree includes the appropriate

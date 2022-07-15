@@ -15,7 +15,7 @@ working with a virtual filesystem. We will apply the techniques learned in
 this chapter to write functions which compute properties of the files
 represented by a model of a filesystem.
 
-## Project Setup
+## プロジェクトの準備
 
 The source code for this chapter is contained in `src/Data/Path.purs` and
 `test/Examples.purs`. The `Data.Path` module contains a model of a virtual

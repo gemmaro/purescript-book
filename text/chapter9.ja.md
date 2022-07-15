@@ -8,7 +8,7 @@ examples of asynchronously interacting with the filesystem and making HTTP
 requests. We'll also cover how to manage sequential and parallel execution
 of asynchronous effects.
 
-## Project Setup
+## プロジェクトの準備
 
 New PureScript libraries introduced in this chapter are:
 

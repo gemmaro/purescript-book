@@ -18,7 +18,7 @@ original library. We will see how to use `quickcheck` to test a simple
 library, using Spago to integrate our test suite into our development
 process.
 
-## Project Setup
+## プロジェクトの準備
 
 This chapter's project adds `quickcheck` as a dependency.
 

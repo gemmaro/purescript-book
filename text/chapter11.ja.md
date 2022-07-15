@@ -8,7 +8,7 @@ motivating example will be a text adventure game which can be played on the
 console in NodeJS. The various side-effects of the game (logging, state, and
 configuration) will all be provided by a monad transformer stack.
 
-## Project Setup
+## プロジェクトの準備
 
 This module's project introduces the following new dependencies:
 

@@ -6,7 +6,7 @@ This chapter will be an extended example focussing on the `canvas` package,
 which provides a way to generate 2D graphics from PureScript using the HTML5
 Canvas API.
 
-## Project Setup
+## プロジェクトの準備
 
 This module's project introduces the following new dependencies:
 

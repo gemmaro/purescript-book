@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2022-07-09 14:23+0900\n"
-"PO-Revision-Date: 2022-07-16 08:28+0900\n"
+"PO-Revision-Date: 2022-07-18 16:30+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -812,7 +812,7 @@ msgstr ""
 #: text/chapter13.md:9 text/chapter14.md:16 text/chapter3.md:11
 #: text/chapter4.md:11 text/chapter5.md:13 text/chapter6.md:13
 #: text/chapter7.md:11 text/chapter8.md:9 text/chapter9.md:7
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Project Setup"
 msgstr "プロジェクトの準備"
 
@@ -13441,25 +13441,22 @@ msgstr "リポジトリは継続して改訂されているため、それぞれ
 
 #. type: Title #
 #: text/chapter3.md:1
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Functions and Records"
 msgstr "関数とレコード"
 
 #. type: Plain text
 #: text/chapter3.md:6
-#, fuzzy
 msgid ""
 "This chapter will introduce two building blocks of PureScript programs: "
 "functions and records. In addition, we'll see how to structure PureScript "
 "programs, and how to use types as an aid to program development."
 msgstr ""
-"この章では、関数およびレコードというPureScriptプログラムのふたつの構成要素を"
-"導入します。さらに、どのようにPureScriptプログラムを構造化するのか、どのよう"
-"に型をプログラム開発に役立てるかを見ていきます。　"
+"この章では、関数およびレコードというPureScriptプログラムの2つの構成要素を導入します。\n"
+"さらに、どのようにPureScriptプログラムを構造化するのか、どのように型をプログラム開発に役立てるかを見ていきます。"
 
 #. type: Plain text
 #: text/chapter3.md:8
-#, fuzzy
 msgid ""
 "We will build a simple address book application to manage a list of "
 "contacts. This code will introduce some new ideas from the syntax of "
@@ -13470,43 +13467,38 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:10
-#, fuzzy
 msgid ""
 "The front-end of our application will be the interactive mode PSCi, but it "
 "would be possible to build on this code to write a front-end in JavaScript. "
 "In fact, we will do exactly that in later chapters, adding form validation "
 "and save/restore functionality."
 msgstr ""
-"このアプリケーションのフロントエンドは対話式処理系 `PSCi`を使うようにしていま"
-"すが、JavaScriptでフロントエンドを書くこともできるでしょう。実際に後の章で、"
-"フォームの検証と保存および復元の機能追加について詳しく説明します。"
+"このアプリケーションのフロントエンドは対話式モードであるPSCiを使うようにしていますが、このコードを土台にJavaScriptでフロントエンドを書くこともできるでしょう。\n"
+"実際に後の章で、フォームの検証と保存および復元の機能を追加します。"
 
 #. type: Plain text
 #: text/chapter3.md:14
-#, fuzzy
 msgid ""
 "The source code for this chapter is contained in the file `src/Data/"
 "AddressBook.purs`. This file starts with a module declaration and its import "
 "list:"
 msgstr ""
-"この章のソースコードは `src/Data/AddressBook.purs`というファイルに含まれてい"
-"ます。このファイルは次のようなモジュール宣言とインポート一覧から始まります。"
+"この章のソースコードは `src/Data/AddressBook.purs`というファイルに含まれています。\n"
+"このファイルは次のようなモジュール宣言とインポート一覧から始まります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:15
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:imports}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:imports}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:20
-#, fuzzy
 msgid "Here, we import several modules:"
 msgstr "ここでは、いくつかのモジュールをインポートします。"
 
 #. type: Plain text
 #: text/chapter3.md:24
-#, fuzzy
 msgid ""
 "- The `Control.Plus` module, which defines the `empty` value.  - The `Data."
 "List` module, which is provided by the `lists` package which can be "
@@ -13514,18 +13506,13 @@ msgid ""
 "working with linked lists.  - The `Data.Maybe` module, which defines data "
 "types and functions for working with optional values."
 msgstr ""
-"- `Control.Plus`モジュールには後ほど使う `empty`値が定義されています。 - "
-"`purescript-lists`パッケージで提供されている `Data.List`モジュールをインポー"
-"トしています。 `purescript-lists`パッケージはbowerを使用してインストールする"
-"ことができ、連結リストを使うために必要ないくつかの関数が含まれています。 - "
-"`Data.Maybe`モジュールは、値が存在したりしなかったりするような、オプショナル"
-"な値を扱うためのデータ型と関数を定義しています。 - (訳者注・ダブルドット(..)"
-"を使用すると、指定された型コンストラクタのすべてのデータコンストラクタをイン"
-"ポートできます。)"
+"- `Control.Plus`モジュールには`empty`値が定義されています。\n"
+"- `Data.List`モジュールは`lists`パッケージで提供されておりSpagoを使ってインストールできます。\n"
+"  連結リストを使うために必要ないくつかの関数が含まれています。\n"
+"- `Data.Maybe`モジュールは、オプショナルな値を扱うためのデータ型と関数を定義しています。"
 
 #. type: Plain text
 #: text/chapter3.md:26
-#, fuzzy
 msgid ""
 "Notice that the imports for these modules are listed explicitly in "
 "parentheses. This is generally a good practice, as it helps to avoid "
@@ -13537,34 +13524,29 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:28
-#, fuzzy
 msgid ""
 "Assuming you have cloned the book's source code repository, the project for "
 "this chapter can be built using Spago, with the following commands:"
-msgstr ""
-"ソースコードリポジトリを複製したと仮定すると、この章のプロジェクトは次のコマ"
-"ンドを使用してPulpを使用して構築できます。"
+msgstr "ソースコードリポジトリを複製したと仮定すると、この章のプロジェクトは次のコマンドでSpagoを使用して構築できます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:29
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ cd chapter3\n"
 "$ spago build\n"
 msgstr ""
 "$ cd chapter3\n"
-"$ bower update\n"
-"$ pulp build\n"
+"$ spago build\n"
 
 #. type: Title ##
 #: text/chapter3.md:34
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Simple Types"
 msgstr "単純な型"
 
 #. type: Plain text
 #: text/chapter3.md:37
-#, fuzzy
 msgid ""
 "PureScript defines three built-in types which correspond to JavaScript's "
 "primitive types: numbers, strings and booleans. These are defined in the "
@@ -13572,15 +13554,13 @@ msgid ""
 "`Number`, `String`, and `Boolean`, respectively, and you can see them in "
 "PSCi by using the `:type` command to print the types of some simple values:"
 msgstr ""
-"JavaScriptのプリミティブ型に対応する組み込みデータ型として、PureScriptでは数"
-"値型と文字列型、真偽型の３つが定義されており、それぞれ `Number`、 `String`、 "
-"`Boolean`と呼ばれています。これらの型はすべてのモジュールに暗黙にインポートさ"
-"れる `Prim`モジュールで定義されています。`pulp repl`の `:type`コマンドを使用"
-"すると、簡単な値の型を確認できます。"
+"JavaScriptのプリミティブ型に対応する組み込みデータ型として、PureScriptでは数値型と文字列型、真偽型の３つが定義されています。\n"
+"これらは`Prim`モジュールで定義されており、全てのモジュールに暗黙にインポートされます。\n"
+"これらはそれぞれ `Number`、 `String`、 `Boolean`と呼ばれており、PSCiで`:type`コマンドを使うと簡単な値の型を表示させて確認できます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:38
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -13593,7 +13573,7 @@ msgid ""
 "> :type true\n"
 "Boolean\n"
 msgstr ""
-"$ pulp repl\n"
+"$ spago repl\n"
 "\n"
 "> :type 1.0\n"
 "Number\n"
@@ -13606,17 +13586,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:52
-#, fuzzy
 msgid ""
 "PureScript defines some other built-in types: integers, characters, arrays, "
 "records, and functions."
-msgstr ""
-"PureScriptには他にも、配列とレコード、関数などの組み込み型が定義されていま"
-"す。"
+msgstr "PureScriptには他にも、整数、文字、配列、レコード、関数といった組み込み型が定義されています。"
 
 #. type: Plain text
 #: text/chapter3.md:54
-#, fuzzy
 msgid ""
 "Integers are differentiated from floating point values of type `Number` by "
 "the lack of a decimal point:"
@@ -13626,7 +13602,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:55
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type 1\n"
 "Int\n"
@@ -13636,7 +13612,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:61
-#, fuzzy
 msgid ""
 "Character literals are wrapped in single quotes, unlike string literals "
 "which use double quotes:"
@@ -13646,7 +13621,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:62
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type 'a'\n"
 "Char\n"
@@ -13656,7 +13631,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:68
-#, fuzzy
 msgid ""
 "Arrays correspond to JavaScript arrays, but unlike in JavaScript, all "
 "elements of a PureScript array must have the same type:"
@@ -13666,7 +13640,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type [1, 2, 3]\n"
 "Array Int\n"
@@ -13684,22 +13658,20 @@ msgstr ""
 "Array Boolean\n"
 "\n"
 "> :type [1, false]\n"
-"Could not match type Int with Boolean.\n"
+"Could not match type Int with type Boolean.\n"
 
 #. type: Plain text
 #: text/chapter3.md:81
-#, fuzzy
 msgid ""
 "The error in the last example is an error from the type checker, which "
 "unsuccessfully attempted to _unify_ (i.e. make equal) the types of the two "
 "elements."
 msgstr ""
-"最後の例で起きているエラーは型検証器によって報告されたもので、配列の2つの要素"
-"の型を**単一化**(Unification)しようとして失敗したこと示しています。"
+"最後の例で起きているエラーは型検証器によって報告されたもので、\n"
+"配列の2つの要素の型を**単一化**（Unification、等価にするの意）しようとして失敗したことを示しています。"
 
 #. type: Plain text
 #: text/chapter3.md:83
-#, fuzzy
 msgid ""
 "Records correspond to JavaScript's objects, and record literals have the "
 "same syntax as JavaScript's object literals:"
@@ -13709,7 +13681,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:84
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> author = { name: \"Phil\", interests: [\"Functional Programming\", \"JavaScript\"] }\n"
 "\n"
@@ -13727,29 +13699,22 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:94
-#, fuzzy
 msgid ""
 "This type indicates that the specified object has two _fields_, a `name` "
 "field which has type `String`, and an `interests` field, which has type "
 "`Array String`, i.e. an array of `String`s."
-msgstr ""
-"この型が示しているのは、オブジェクト `author`は、 `String`型のフィールド "
-"`name` と `Array String`つまり `String`の配列の型のフィールド `interests` と"
-"いう２つの**フィールド**(field)を持っているということです。"
+msgstr "この型が示しているのは、指定されたオブジェクトは、 `String`型のフィールド `name` と `Array String`つまり `String`の配列の型のフィールド `interests` という２つの**フィールド** (field) を持っているということです。"
 
 #. type: Plain text
 #: text/chapter3.md:96
-#, fuzzy
 msgid ""
 "Fields of records can be accessed using a dot, followed by the label of the "
 "field to access:"
-msgstr ""
-"レコードのフィールドは、ドットに続けて参照したいフィールドのラベルを書くと参"
-"照することができます。"
+msgstr "レコードのフィールドは、ドットに続けて参照したいフィールドのラベルを書くと参照することができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:97
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> author.name\n"
 "\"Phil\"\n"
@@ -13765,7 +13730,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:106
-#, fuzzy
 msgid ""
 "PureScript's functions correspond to JavaScript's functions. The PureScript "
 "standard libraries provide plenty of examples of functions, and we will see "
@@ -13777,7 +13741,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:107
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "> :type flip\n"
@@ -13795,7 +13759,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:117
-#, fuzzy
 msgid ""
 "Functions can be defined at the top-level of a file by specifying arguments "
 "before the equals sign:"
@@ -13805,7 +13768,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:118
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "add :: Int -> Int -> Int\n"
 "add x y = x + y\n"
@@ -13815,7 +13778,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:124
-#, fuzzy
 msgid ""
 "Alternatively, functions can be defined inline, by using a backslash "
 "character followed by a space-delimited list of argument names. To enter a "
@@ -13823,38 +13785,34 @@ msgid ""
 "paste` command. In this mode, declarations are terminated using the _Control-"
 "D_ key sequence:"
 msgstr ""
-"バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数"
-"をインラインで定義することもできます。PSCiで複数行の宣言を入力するには、 `："
-"paste`コマンドを使用して\"paste mode\"に入ります。このモードでは、**Control-"
-"D**キーシーケンスを使用して宣言を終了します。"
+"バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数をインラインで定義することもできます。\n"
+"PSCiで複数行の宣言を入力するには、 `:paste`コマンドを使用して「貼り付けモード」に入ります。\n"
+"このモードでは、**Control-D**キーシーケンスを使用して宣言を終了します。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:125
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :paste\n"
 "â¦ add :: Int -> Int -> Int\n"
 "â¦ add = \\x y -> x + y\n"
 "â¦ ^D\n"
 msgstr ""
-"> :paste\n"
-"… add :: Int -> Int -> Int\n"
+"> :paste \n"
+"… add :: Int -> Int -> Int \n"
 "… add = \\x y -> x + y\n"
 "… ^D\n"
 
 #. type: Plain text
 #: text/chapter3.md:133
-#, fuzzy
 msgid ""
 "Having defined this function in PSCi, we can _apply_ it to its arguments by "
 "separating the two arguments from the function name by whitespace:"
-msgstr ""
-"`PSCi`でこの関数が定義されていると、次のように関数の隣に２つの引数を空白で区"
-"切って書くことで、関数をこれらの引数に**適用**(apply)することができます。"
+msgstr "PSCiでこの関数が定義されていると、次のように関数の隣に２つの引数を空白で区切って書くことで、関数をこれらの引数に**適用** (apply) することができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:134
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> add 10 20\n"
 "30\n"
@@ -13864,13 +13822,12 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:139
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Quantified Types"
 msgstr "量化された型"
 
 #. type: Plain text
 #: text/chapter3.md:142
-#, fuzzy
 msgid ""
 "In the previous section, we saw the types of some functions defined in the "
 "Prelude. For example, the `flip` function had the following type:"
@@ -13880,7 +13837,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:143
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type flip\n"
 "forall a b c. (a -> b -> c) -> b -> a -> c\n"
@@ -13890,37 +13847,32 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:149
-#, fuzzy
 msgid ""
 "The keyword `forall` here indicates that `flip` has a _universally "
 "quantified type_. It means that we can substitute any types for `a`, `b` and "
 "`c`, and `flip` will work with those types."
 msgstr ""
-"この `forall`キーワードは、 `flip`が**全称量化された型**(universally "
-"quantified type)を持っていることを示しています。これは、 `a`や `b`、 `c`をど"
-"の型に置き換えても、 `flip`はその型でうまく動作するという意味です。"
+"この `forall`キーワードは、 `flip`が**全称量化された型** (universally quantified type) を持っていることを示しています。\n"
+"これは、 `a`や `b`、 `c`をどの型に置き換えても、 `flip`はその型でうまく動作するという意味です。"
 
 #. type: Plain text
 #: text/chapter3.md:151
-#, fuzzy
 msgid ""
 "For example, we might choose the type `a` to be `Int`, `b` to be `String` "
 "and `c` to be `String`. In that case we could _specialize_ the type of "
 "`flip` to"
 msgstr ""
-"例えば、 `a`を `Int`、 `b`を `String`、 `c`を `String`というように選んでみた"
-"とします。この場合、 `flip`の型を次のように**特殊化**(specialize)することがで"
-"きます。"
+"例えば、 `a`を `Int`、 `b`を `String`、 `c`を `String`というように選んでみたとします。\n"
+"この場合、 `flip`の型を次のように**特殊化** (specialize) することができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:152
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "(Int -> String -> String) -> String -> Int -> String\n"
 msgstr "(Int -> String -> String) -> String -> Int -> String\n"
 
 #. type: Plain text
 #: text/chapter3.md:157
-#, fuzzy
 msgid ""
 "We don't have to indicate in code that we want to specialize a quantified "
 "type - it happens automatically. For example, we can just use `flip` as if "
@@ -13932,7 +13884,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:158
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> flip (\\n s -> show n <> s) \"Ten\" 10\n"
 "\n"
@@ -13944,7 +13896,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:165
-#, fuzzy
 msgid ""
 "While we can choose any types for `a`, `b` and `c`, we have to be "
 "consistent. The type of the function we passed to `flip` had to be "
@@ -13959,7 +13910,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:166
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> flip (\\n s -> show n <> s) 10 \"Ten\"\n"
 "\n"
@@ -13971,44 +13922,37 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:172
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Notes On Indentation"
 msgstr "字下げについての注意"
 
 #. type: Plain text
 #: text/chapter3.md:175
-#, fuzzy
 msgid ""
 "PureScript code is _indentation-sensitive_, just like Haskell, but unlike "
 "JavaScript. This means that the whitespace in your code is not meaningless, "
 "but rather is used to group regions of code, just like curly braces in C-"
 "like languages."
 msgstr ""
-"JavaScriptとは異なり、PureScriptのコードは字下げの大きさに影響されます"
-"(indentation-sensitive)。これはHaskellと同じようになっています。コード内の空"
-"白の多寡は無意味ではなく、Cのような言語で中括弧によってコードのまとまりを示し"
-"ているように、PureScriptでは空白がコードのまとまりを示すのに使われているとい"
-"うことです。"
+"JavaScriptとは異なり、PureScriptのコードは字下げの大きさに影響されます (indentation-sensitive)。\n"
+"これはHaskellと同じようになっています。\n"
+"コード内の空白の多寡は無意味ではなく、Cのような言語で中括弧によってコードのまとまりを示しているように、PureScriptでは空白がコードのまとまりを示すのに使われているということです。"
 
 #. type: Plain text
 #: text/chapter3.md:177
-#, fuzzy
 msgid ""
 "If a declaration spans multiple lines, then any lines except the first must "
 "be indented past the indentation level of the first line."
-msgstr ""
-"宣言が複数行にわたる場合は、２つめの行は最初の行の字下げより深く字下げしなけ"
-"ればなりません。"
+msgstr "宣言が複数行にわたる場合は、最初の行以外は最初の行の字下げより深く字下げしなければなりません。"
 
 #. type: Plain text
 #: text/chapter3.md:179
-#, fuzzy
 msgid "Therefore, the following is valid PureScript code:"
 msgstr "したがって、次は正しいPureScriptコードです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "add x y z = x +\n"
 "  y + z\n"
@@ -14018,13 +13962,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:186
-#, fuzzy
 msgid "But this is not valid code:"
 msgstr "しかし、次は正しいコードではありません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:187
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "add x y z = x +\n"
 "y + z\n"
@@ -14034,7 +13977,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:193
-#, fuzzy
 msgid ""
 "In the second case, the PureScript compiler will try to parse _two_ "
 "declarations, one for each line."
@@ -14044,19 +13986,18 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:195
-#, fuzzy
 msgid ""
 "Generally, any declarations defined in the same block should be indented at "
 "the same level. For example, in PSCi, declarations in a let statement must "
 "be indented equally. This is valid:"
 msgstr ""
-"一般に、同じブロック内で定義された宣言は同じ深さで字下げする必要があります。"
-"例えば `PSCi`でlet文の宣言は同じ深さで字下げしなければなりません。次は正しい"
-"コードです。"
+"一般に、同じブロック内で定義された宣言は同じ深さで字下げする必要があります。\n"
+"例えばPSCiでlet文の宣言は同じ深さで字下げしなければなりません。\n"
+"次は正しいコードです。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:196
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :paste\n"
 "â¦ x = 1\n"
@@ -14070,13 +14011,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:204
-#, fuzzy
 msgid "but this is not:"
 msgstr "しかし、これは正しくありません。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :paste\n"
 "â¦ x = 1\n"
@@ -14090,7 +14030,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:213
-#, fuzzy
 msgid ""
 "Certain PureScript keywords (such as `where`, `of` and `let`) introduce a "
 "new block of code, in which declarations must be further-indented:"
@@ -14101,7 +14040,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "example x y z = foo + bar\n"
 "  where\n"
@@ -14115,7 +14054,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:222
-#, fuzzy
 msgid ""
 "Note how the declarations for `foo` and `bar` are indented past the "
 "declaration of `example`."
@@ -14125,7 +14063,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:224
-#, fuzzy
 msgid ""
 "The only exception to this rule is the `where` keyword in the initial "
 "`module` declaration at the top of a source file."
@@ -14135,13 +14072,12 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:225
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Defining Our Types"
 msgstr "独自の型の定義"
 
 #. type: Plain text
 #: text/chapter3.md:228
-#, fuzzy
 msgid ""
 "A good first step when tackling a new problem in PureScript is to write out "
 "type definitions for any values you will be working with. First, let's "
@@ -14155,11 +14091,10 @@ msgstr ""
 #: text/chapter3.md:229
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:Entry}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:Entry}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:234
-#, fuzzy
 msgid ""
 "This defines a _type synonym_ called `Entry` - the type `Entry` is "
 "equivalent to the type on the right of the equals symbol: a record type with "
@@ -14167,43 +14102,37 @@ msgid ""
 "will have type `String`, and the `address` field will have type `Address`, "
 "defined as follows:"
 msgstr ""
-"これは `Entry`という**型同義語**(type synonym、型シノニム)を定義しています。 "
-"型 `Entry`は等号の右辺と同じ型ということです。レコードの型はいずれも文字列で"
-"ある `firstName`、 `lastName`、 `phone`という３つのフィールドからなります。前"
-"者の２つのフィールドは型 `String`を持ち、 `address`は以下のように定義された"
-"型 `Address`を持っています。"
+"これは `Entry`という**型同義語** (type synonym、型シノニム) を定義しています。\n"
+"型 `Entry`は等号の右辺と同じ型ということです。\n"
+"レコードの型はいずれも文字列である `firstName`、 `lastName`、 `phone`という３つのフィールドからなります。\n"
+"前者の２つのフィールドは型 `String`を持ち、 `address`は以下のように定義された型 `Address`を持っています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:235
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:Address}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:Address}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:240
-#, fuzzy
 msgid "Note that records can contain other records."
 msgstr "なお、レコードには他のレコードを含めることができます。"
 
 #. type: Plain text
 #: text/chapter3.md:242
-#, fuzzy
 msgid ""
 "Now let's define a third type synonym, for our address book data structure, "
 "which will be represented simply as a linked list of entries:"
-msgstr ""
-"それでは、２つめの型同義語も定義してみましょう。住所録のデータ構造としては、"
-"単に項目の連結リストとして格納することにします。"
+msgstr "それでは、3つめの型同義語も定義してみましょう。住所録のデータ構造としては、単に項目の連結リストとして格納することにします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:243
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:AddressBook}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:AddressBook}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:248
-#, fuzzy
 msgid ""
 "Note that `List Entry` is not the same as `Array Entry`, which represents an "
 "_array_ of entries."
@@ -14213,49 +14142,40 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:249
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Type Constructors and Kinds"
 msgstr "型構築子と種"
 
 #. type: Plain text
 #: text/chapter3.md:252
-#, fuzzy
 msgid ""
 "`List` is an example of a _type constructor_. Values do not have the type "
 "`List` directly, but rather `List a` for some type `a`. That is, `List` "
 "takes a _type argument_ `a` and _constructs_ a new type `List a`."
 msgstr ""
-"`List`は**型構築子**(type constructor、型コンストラクタ)の一例になっていま"
-"す。 `List`そのものは型ではなく、何らかの型 `a`があるとき `List a`が型になっ"
-"ています。つまり、 `List`は**型引数**(type argument)`a`をとり、新たな型 "
-"`List a`を構築するのです。"
+"`List`は**型構築子**（type constructor、型コンストラクタ）の一例になっています。\n"
+"`List`そのものは型ではなく、何らかの型 `a`があるとき `List a`が型になっています。\n"
+"つまり、 `List`は**型引数** (type argument) `a`をとり、新たな型 `List a`を**構築**するのです。"
 
 #. type: Plain text
 #: text/chapter3.md:254
-#, fuzzy
 msgid ""
 "Note that just like function application, type constructors are applied to "
 "other types simply by juxtaposition: the type `List Entry` is in fact the "
 "type constructor `List` _applied_ to the type `Entry` - it represents a list "
 "of entries."
-msgstr ""
-"ちょうど関数適用と同じように、型構築子は他の型に並べることで適用されることに"
-"注意してください。型 `List　Entry`は実は型構築子 `List`が型 `Entry`に**適用**"
-"されたものです。これは住所録項目のリストを表しています。"
+msgstr "ちょうど関数適用と同じように、型構築子は他の型に並べることで適用されることに注意してください。型 `List　Entry`は実は型構築子 `List`が型 `Entry`に**適用**されたものです。これは住所録項目のリストを表しています。"
 
 #. type: Plain text
 #: text/chapter3.md:256
-#, fuzzy
 msgid ""
 "If we try to incorrectly define a value of type `List` (by using the type "
 "annotation operator `::`), we will see a new type of error:"
-msgstr ""
-"(型注釈演算子 `::`を使って)もし型 `List`の値を間違って定義しようとすると、今"
-"まで見たことのないような種類のエラーが表示されるでしょう。"
+msgstr "（型注釈演算子 `::`を使って）もし型 `List`の値を間違って定義しようとすると、今まで見たことのないような種類のエラーが表示されるでしょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:257
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.List\n"
 "> Nil :: List\n"
@@ -14267,19 +14187,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:264
-#, fuzzy
 msgid ""
 "This is a _kind error_. Just like values are distinguished by their _types_, "
 "types are distinguished by their _kinds_, and just like ill-typed values "
 "result in _type errors_, _ill-kinded_ types result in _kind errors_."
 msgstr ""
-"これは**種エラー**(kind error)です。値がその**型**で区別されるのと同じよう"
-"に、型はその**種**(kind)によって区別され、間違った型の値が**型エラー**になる"
-"ように、**間違った種**の型は種エラーを引き起こします。"
+"これは**種エラー** (kind error) です。\n"
+"値がその**型**で区別されるのと同じように、型はその**種** (kind) によって区別され、間違った型の値が**型エラー**になるように、**間違った種**の型は**種エラー**を引き起こします。"
 
 #. type: Plain text
 #: text/chapter3.md:266
-#, fuzzy
 msgid ""
 "There is a special kind called `Type` which represents the kind of all types "
 "which have values, like `Number` and `String`."
@@ -14289,22 +14206,22 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:268
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "There are also kinds for type constructors. For example, the kind `Type -> Type` represents a function from types to types, just like `List`. So the error here occurred because values are expected to have types with kind `Type`, but `List` has kind `Type -> Type`.\n"
-msgstr "型構築子にも種があります。たとえば、種 `Type -> Type`はちょうど `List`のような型から型への関数を表しています。ここでエラーが発生したのは、値が種 `Type`であるような型を持つと期待されていたのに、 `List`は種 `Type -> Type`を持っているためです。\n"
+msgstr ""
+"型構築子にも種があります。\n"
+"たとえば、種 `Type -> Type`はちょうど `List`のような型から型への関数を表しています。\n"
+"ここでエラーが発生したのは、値が種 `Type`であるような型を持つと期待されていたのに、 `List`は種 `Type -> Type`を持っているためです。\n"
 
 #. type: Plain text
 #: text/chapter3.md:270
-#, fuzzy
 msgid ""
 "To find out the kind of a type, use the `:kind` command in PSCi. For example:"
-msgstr ""
-"`PSCi`で型の種を調べるには、 `:kind`命令を使用します。例えば次のようになりま"
-"す。"
+msgstr "PSCiで型の種を調べるには、 `:kind`命令を使用します。例えば次のようになります。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:271
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :kind Number\n"
 "Type\n"
@@ -14320,7 +14237,7 @@ msgstr ""
 "Type\n"
 "\n"
 "> import Data.List\n"
-"> :k List\n"
+"> :kind List\n"
 "Type -> Type\n"
 "\n"
 "> :kind List String\n"
@@ -14328,7 +14245,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:284
-#, fuzzy
 msgid ""
 "PureScript's _kind system_ supports other interesting kinds, which we will "
 "see later in the book."
@@ -14338,13 +14254,12 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:285
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Displaying Address Book Entries"
 msgstr "住所録の項目の表示"
 
 #. type: Plain text
 #: text/chapter3.md:288
-#, fuzzy
 msgid ""
 "Let's write our first function, which will render an address book entry as a "
 "string. We start by giving the function a type. This is optional, but good "
@@ -14353,106 +14268,95 @@ msgid ""
 "type annotation. A type declaration separates the name of a function from "
 "its type with the `::` symbol:"
 msgstr ""
-"それでは最初に、文字列で住所録の項目を表現するような関数を書いてみましょう。"
-"まずは関数に型を与えることから始めます。型の定義は省略することも可能ですが、"
-"ドキュメントとしても役立つので型を書いておくようにすると良いでしょう。型宣言"
-"は関数の名前とその型を `::`記号で区切るようにして書きます。"
+"それでは最初に、文字列で住所録の項目を表現するような関数を書いてみましょう。\n"
+"まずは関数に型を与えることから始めます。\n"
+"型の定義は省略することも可能ですが、ドキュメントとしても役立つので型を書いておくようにすると良いでしょう。\n"
+"実際、トップレベルの宣言に型註釈が含まれていないと、PureScriptコンパイラが警告を出します。\n"
+"型宣言は関数の名前とその型を `::`記号で区切るようにして書きます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:289
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showEntry_signature}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showEntry_signature}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:294
-#, fuzzy
 msgid ""
 "This type signature says that `showEntry` is a function, which takes an "
 "`Entry` as an argument and returns a `String`. Here is the code for "
 "`showEntry`:"
 msgstr ""
-"`showEntry`は引数として `Entry`を取り `string`を返す関数であるということを、"
-"この型シグネチャは言っています。 `showEntry`の定義は次のとおりです。"
+"`showEntry`は引数として `Entry`を取り `string`を返す関数であるということを、この型シグネチャは言っています。\n"
+"`showEntry`のコードは次のとおりです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:295
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showEntry_implementation}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showEntry_implementation}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:300
-#, fuzzy
 msgid ""
 "This function concatenates the three fields of the `Entry` record into a "
 "single string, using the `showAddress` function to turn the record inside "
 "the `address` field into a `String`. `showAddress` is defined similarly:"
-msgstr ""
-"この関数は `Entry`レコードの３つのフィールドを連結し、単一の文字列にします。"
-"ここで使用される `showAddress`は `address`フィールドを連接し、単一の文字列に"
-"する関数です。 `showAddress`の定義は次のとおりです。"
+msgstr "この関数は `Entry`レコードの3つのフィールドを連結し、単一の文字列にします。ここで使用される `showAddress`は `address`フィールドを連接し、単一の文字列にする関数です。 `showAddress`の定義は次のとおりです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:301
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showAddress}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showAddress}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:306
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "A function definition begins with the name of the function, followed by a list of argument names. The result of the function is specified after the equals sign. Fields are accessed with a dot, followed by the field name. In PureScript, string concatenation uses the diamond operator (`<>`), instead of the plus operator like in JavaScript.\n"
 msgstr "関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照することができます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（ `<>`）を使用します。\n"
 
 #. type: Title ##
 #: text/chapter3.md:307
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Test Early, Test Often"
 msgstr "はやめにテスト、たびたびテスト"
 
 #. type: Plain text
 #: text/chapter3.md:310
-#, fuzzy
 msgid ""
 "The PSCi interactive mode allows for rapid prototyping with immediate "
 "feedback, so let's use it to verify that our first few functions behave as "
 "expected."
 msgstr ""
-"`PSCi`対話式処理系では反応を即座に得られるので、試行錯誤を繰り返したいときに"
-"向いています。それではこの最初の関数が正しく動作するかを `PSCi`を使用して確認"
-"してみましょう。"
+"PSCi対話式モードでは反応を即座に得られるので、素早い試作開発に向いています。\n"
+"それではこの最初の関数が正しく動作するかをPSCiを使用して確認してみましょう。"
 
 #. type: Plain text
 #: text/chapter3.md:312
-#, fuzzy
 msgid "First, build the code you've written:"
-msgstr "まず、これまで書かれたコードをビルドします。"
+msgstr "まず、これまでに書いたコードをビルドします。"
 
 #. type: Plain text
 #: text/chapter3.md:318
-#, fuzzy
 msgid ""
 "Next, load PSCi, and use the `import` command to import your new module:"
-msgstr ""
-"次に、 `PSCi`を起動し、この新しいモジュールをインポートするために `import`命"
-"令を使います。"
+msgstr "次に、PSCiを起動し、この新しいモジュールをインポートするために `import`命令を使います。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:319
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
 "> import Data.AddressBook\n"
 msgstr ""
-"$ pulp repl\n"
+"$ spago repl\n"
 "\n"
 "> import Data.AddressBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:326
-#, fuzzy
 msgid ""
 "We can create an entry by using a record literal, which looks just like an "
 "anonymous object in JavaScript."
@@ -14462,19 +14366,18 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:327
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "> address = { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" }\n"
 msgstr "> address = { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" }\n"
 
 #. type: Plain text
 #: text/chapter3.md:332
-#, fuzzy
 msgid "Now, try applying our function to the example:"
 msgstr "​それでは、この例に関数を適用してみてください。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:333
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> showAddress address\n"
 "\n"
@@ -14486,17 +14389,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:340
-#, fuzzy
 msgid ""
 "Let's also test `showEntry` by creating an address book entry record "
 "containing our example address:"
-msgstr ""
-"そして、例で作成した `address`を含む住所録の `entry`レコードを作成し "
-"`showEntry`に適用させましょう。"
+msgstr "`showEntry`も、住所を含む住所録項目の記録例を作って試しましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:341
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> entry = { firstName: \"John\", lastName: \"Smith\", address: address }\n"
 "> showEntry entry\n"
@@ -14510,29 +14410,27 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:348
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Creating Address Books"
 msgstr "住所録の作成"
 
 #. type: Plain text
 #: text/chapter3.md:351
-#, fuzzy
 msgid ""
 "Now let's write some utility functions for working with address books. We "
 "will need a value which represents an empty address book: an empty list."
 msgstr ""
-"今度は住所録の操作を支援する関数をいくつか書いてみましょう。空の住所録を表す"
-"値として、空のリストを使います。"
+"今度は住所録の操作を支援する関数をいくつか書いてみましょう。\n"
+"空の住所録を表す値が必要ですが、これには空のリストを使います。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:352
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:emptyBook}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:emptyBook}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:357
-#, fuzzy
 msgid ""
 "We will also need a function for inserting a value into an existing address "
 "book. We will call this function `insertEntry`. Start by giving its type:"
@@ -14544,22 +14442,18 @@ msgstr ""
 #: text/chapter3.md:358
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry_signature}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry_signature}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:363
-#, fuzzy
 msgid ""
 "This type signature says that `insertEntry` takes an `Entry` as its first "
 "argument, and an `AddressBook` as a second argument, and returns a new "
 "`AddressBook`."
-msgstr ""
-"`insertEntry`は、最初の引数として `Entry`、第二引数として `AddressBook`を取"
-"り、新しい `AddressBook`を返すということを、この型シグネチャは言っています。"
+msgstr "この型シグネチャに書かれているのは、最初の引数として `Entry`、第二引数として `AddressBook`を取り、新しい `AddressBook`を返すということです。"
 
 #. type: Plain text
 #: text/chapter3.md:365
-#, fuzzy
 msgid ""
 "We don't modify the existing `AddressBook` directly. Instead, we return a "
 "new `AddressBook` which contains the same data. As such, `AddressBook` is an "
@@ -14568,26 +14462,25 @@ msgid ""
 "reason effectively about its behavior, so we prefer pure functions and "
 "immutable data where possible."
 msgstr ""
-"既存の `AddressBook`を直接変更することはしません。その代わりに、同じデータが"
-"含まれている新しい `AddressBook`を返すようにします。このように、 "
-"`AddressBook`は**永続データ構造**(persistent data structure)の一例となってい"
-"ます。これはPureScriptにおける重要な考え方です。変更はコードの副作用であり、"
-"コードの振る舞いについての判断するのを難しくします。そのため、我々は可能な限"
-"り純粋な関数や不変のデータを好むのです。"
+"既存の `AddressBook`を直接変更することはしません。\n"
+"その代わりに、同じデータが含まれている新しい `AddressBook`を返すようにします。\n"
+"このように、 `AddressBook`は**不変データ構造** (immutable data structure) の一例となっています。\n"
+"これはPureScriptにおける重要な考え方です。\n"
+"変更はコードの副作用であり、効率の良いコードの振る舞いの判断を妨げます。\n"
+"そのため、我々は可能な限り純粋な関数や不変のデータを好むのです。"
 
 #. type: Plain text
 #: text/chapter3.md:367
-#, fuzzy
 msgid ""
 "To implement `insertEntry`, we can use the `Cons` function from `Data.List`. "
 "To see its type, open PSCi and use the `:type` command:"
 msgstr ""
-"`Data.List`の `Cons`関数を使用すると `insertEntry`を実装できます。 `PSCi`を起"
-"動し `:type`コマンドを使って、この関数の型を見てみましょう。"
+"`insertEntry`を実装するのに`Data.List`の`Cons`関数が使えます。\n"
+"この関数の型を見るには、PSCiを起動し `:type`コマンドを使います。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:368
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -14596,7 +14489,7 @@ msgid ""
 "\n"
 "forall a. a -> List a -> List a\n"
 msgstr ""
-"$ pulp repl\n"
+"$ spago repl\n"
 "\n"
 "> import Data.List\n"
 "> :type Cons\n"
@@ -14605,7 +14498,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:378
-#, fuzzy
 msgid ""
 "This type signature says that `Cons` takes a value of some type `a`, and a "
 "list of elements of type `a`, and returns a new list with entries of the "
@@ -14617,26 +14509,24 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:379
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Entry -> List Entry -> List Entry\n"
 msgstr "Entry -> List Entry -> List Entry\n"
 
 #. type: Plain text
 #: text/chapter3.md:384
-#, fuzzy
 msgid "But `List Entry` is the same as `AddressBook`, so this is equivalent to"
 msgstr ""
 "しかし、 `List Entry`はまさに `AddressBook`ですから、次と同じになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:385
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Entry -> AddressBook -> AddressBook\n"
 msgstr "Entry -> AddressBook -> AddressBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:390
-#, fuzzy
 msgid ""
 "In our case, we already have the appropriate inputs: an `Entry`, and an "
 "`AddressBook`, so can apply `Cons` and get a new `AddressBook`, which is "
@@ -14648,19 +14538,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:392
-#, fuzzy
 msgid "Here is our implementation of `insertEntry`:"
 msgstr "`insertEntry`の実装は次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:393
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "insertEntry entry book = Cons entry book\n"
 msgstr "insertEntry entry book = Cons entry book\n"
 
 #. type: Plain text
 #: text/chapter3.md:398
-#, fuzzy
 msgid ""
 "This brings the two arguments `entry` and `book` into scope, on the left "
 "hand side of the equals symbol, and then applies the `Cons` function to "
@@ -14671,37 +14559,34 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:399
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Curried Functions"
 msgstr "カリー化された関数"
 
 #. type: Plain text
 #: text/chapter3.md:402
-#, fuzzy
 msgid ""
 "Functions in PureScript take exactly one argument. While it looks like the "
 "`insertEntry` function takes two arguments, it is in fact an example of a "
 "_curried function_."
 msgstr ""
-"PureScriptでは、関数は常にひとつの引数だけを取ります。 `insertEntry`関数は２"
-"つの引数を取るように見えますが、これは実際には**カリー化された関数**(curried "
-"function)の一例となっています。"
+"PureScriptでは、関数は常にひとつの引数だけを取ります。\n"
+"`insertEntry`関数は２つの引数を取るように見えますが、これは実際には**カリー化された関数** (curried function) の一例となっています。"
 
 #. type: Plain text
 #: text/chapter3.md:404
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "The `->` operator in the type of `insertEntry` associates to the right, which means that the compiler parses the type as\n"
 msgstr "`insertEntry`の型に含まれる `->`は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:405
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Entry -> (AddressBook -> AddressBook)\n"
 msgstr "Entry -> (AddressBook -> AddressBook)\n"
 
 #. type: Plain text
 #: text/chapter3.md:410
-#, fuzzy
 msgid ""
 "That is, `insertEntry` is a function which returns a function! It takes a "
 "single argument, an `Entry`, and returns a new function, which in turn takes "
@@ -14713,49 +14598,46 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:412
-#, fuzzy
 msgid ""
 "This means that we can _partially apply_ `insertEntry` by specifying only "
 "its first argument, for example. In PSCi, we can see the result type:"
 msgstr ""
-"これは例えば、最初の引数だけを与えると `insertEntry`を**部分適用**(partial "
-"application)できることを意味します。 `PSCi`でこの結果の型を見てみましょう。"
+"これは例えば、最初の引数だけを与えると `insertEntry`を**部分適用** (partial application) できることを意味します。\n"
+"PSCiでこの結果の型を見てみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:413
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type insertEntry entry\n"
 "\n"
 "AddressBook -> AddressBook\n"
 msgstr ""
-"> :type insertEntry example\n"
+"> :type insertEntry entry\n"
 "\n"
 "AddressBook -> AddressBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:420
-#, fuzzy
 msgid ""
 "As expected, the return type was a function. We can apply the resulting "
 "function to a second argument:"
 msgstr ""
-"期待したとおり、戻り値の型は関数になっていました。この結果の関数に、ふたつめ"
-"の引数を適用することもできます。"
+"期待したとおり、戻り値の型は関数になっていました。\n"
+"この結果の関数に、2つ目の引数を適用することもできます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:421
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type (insertEntry entry) emptyBook\n"
 "AddressBook\n"
 msgstr ""
-"> :type (insertEntry example) emptyBook\n"
+"> :type (insertEntry entry) emptyBook\n"
 "AddressBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:427
-#, fuzzy
 msgid ""
 "Note though that the parentheses here are unnecessary - the following is "
 "equivalent:"
@@ -14763,53 +14645,52 @@ msgstr "ここで括弧は不要であることにも注意してください。
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:428
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type insertEntry entry emptyBook\n"
 "AddressBook\n"
 msgstr ""
-"> :type (insertEntry example) emptyBook\n"
+"> :type insertEntry entry emptyBook\n"
 "AddressBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:434
-#, fuzzy
 msgid ""
 "This is because function application associates to the left, and this "
 "explains why we can just specify function arguments one after the other, "
 "separated by whitespace."
 msgstr ""
-"これは関数適用が左結合であるためで、なぜ単に空白で区切るだけで関数に引数を与"
-"えることができるのかも説明にもなっています。"
+"これは関数適用が左結合であるためで、\n"
+"なぜ単に空白で区切るだけで関数に引数を与えることができるのかの説明にもなっています。"
 
 #. type: Plain text
 #: text/chapter3.md:436
 #, no-wrap
 msgid "The `->` operator in function types is a _type constructor_ for functions. It takes two type arguments, the function's argument type and the return type. The left and right operands respectively.\n"
 msgstr ""
+"関数の型の`->`演算子は関数の**型構築子**です。\n"
+"この演算子は2つの型引数を取ります。\n"
+"左右の被演算子はそれぞれ関数の引数の型と返値の型です。\n"
 
 #. type: Plain text
 #: text/chapter3.md:438
-#, fuzzy
 msgid ""
 "Note that in the rest of the book, I will talk about things like \"functions "
 "of two arguments\". However, it is to be understood that this means a "
 "curried function, taking a first argument and returning a function that "
 "takes the second."
 msgstr ""
-"本書では今後、「２引数の関数」というように表現することがあることに注意してく"
-"ださい。これはあくまで、最初の引数を取り別の関数を返す、カリー化された関数を"
-"意味していると考えてください。"
+"本書では今後、「2引数の関数」というように表現することがあることに注意してください。\n"
+"しかしそれはカリー化された関数を意味していると考えるべきで、その関数は最初の引数を取り2つ目の引数を取る別の関数を返すのです。"
 
 #. type: Plain text
 #: text/chapter3.md:440
-#, fuzzy
 msgid "Now consider the definition of `insertEntry`:"
 msgstr "今度は `insertEntry`の定義について考えてみます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:441
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "insertEntry :: Entry -> AddressBook -> AddressBook\n"
 "insertEntry entry book = Cons entry book\n"
@@ -14819,7 +14700,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:447
-#, fuzzy
 msgid ""
 "If we explicitly parenthesize the right-hand side, we get `(Cons entry) "
 "book`. That is, `insertEntry entry` is a function whose argument is just "
@@ -14827,14 +14707,14 @@ msgid ""
 "same result for every input, then they are the same function! So we can "
 "remove the argument `book` from both sides:"
 msgstr ""
-"もし式の右辺に明示的に括弧をつけるなら、 `（Cons entry）book`となります。 "
-"`insertEntry entry`はその引数が単に関数 `(Cons entry)`に渡されるような関数だ"
-"ということです。この2つの関数はどんな入力についても同じ結果を返しますから、つ"
-"まりこれらは同じ関数です！よって、両辺から引数 `book`を削除できます。"
+"もし式の右辺に明示的に括弧をつけるなら、 `(Cons entry) book`となります。\n"
+"`insertEntry entry`はその引数が単に関数 `(Cons entry)`に渡されるような関数だということです。\n"
+"でもこの2つの関数はどんな入力についても同じ結果を返しますから、つまりこれらは同じ関数です！\n"
+"よって、両辺から引数 `book`を削除できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:448
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "insertEntry :: Entry -> AddressBook -> AddressBook\n"
 "insertEntry entry = Cons entry\n"
@@ -14844,45 +14724,38 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:454
-#, fuzzy
 msgid "But now, by the same argument, we can remove `entry` from both sides:"
-msgstr "そして、同様の理由で両辺から `entry`も削除することができます。"
+msgstr "しかし今や同様の議論により、両辺から `entry`も削除することができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:455
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:460
-#, fuzzy
 msgid ""
 "This process is called _eta conversion_, and can be used (along with some "
 "other techniques) to rewrite functions in _point-free form_, which means "
 "functions defined without reference to their arguments."
-msgstr ""
-"この処理は**イータ変換**(eta conversion)と呼ばれ、引数を参照することなく関数"
-"を定義する**ポイントフリー形式**(point-free form)へと関数を書き換えるのに使う"
-"ことができます。"
+msgstr "この処理は**イータ変換** (eta conversion) と呼ばれ、（その他の技法を併用して）引数を参照することなく関数を定義する**ポイントフリー形式** (point-free form) へと関数を書き換えるのに使うことができます。"
 
 #. type: Plain text
 #: text/chapter3.md:462
-#, fuzzy
 msgid ""
 "In the case of `insertEntry`, _eta conversion_ has resulted in a very clear "
 "definition of our function - \"`insertEntry` is just cons on lists\". "
 "However, it is arguable whether point-free form is better in general."
 msgstr ""
-"`insertEntry`の場合には、イータ変換によって「 `insertEntry`は単にリストに対す"
-"る `cons`だ」と関数の定義はとても明確になりました。しかしながら、常にポイント"
-"フリー形式のほうがいいのかどうかには議論の余地があります。"
+"`insertEntry`の場合には、イータ変換によって「`insertEntry`は単にリストに対するconsだ」となり、関数の定義はとても明確になりました。\n"
+"しかしながら、一般的にポイントフリー形式のほうがいいのかどうかには議論の余地があります。"
 
 #. type: Title ##
 #: text/chapter3.md:463
 #, no-wrap
 msgid "Property Accessors"
-msgstr ""
+msgstr "プロパティ取得子"
 
 #. type: Plain text
 #: text/chapter3.md:466
@@ -14891,12 +14764,14 @@ msgid ""
 "\"properties\") of a record. An inline function to extract an `Address` from "
 "an `Entry` could be written as:"
 msgstr ""
+"よくあるパターンの1つとして、レコード中の個別のフィールド（または「プロパティ」）を取得することがあります。\n"
+"`Entry`から`Address`を取り出すインライン関数は次のように書けます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:467
 #, no-wrap
 msgid "\\entry -> entry.address\n"
-msgstr ""
+msgstr "\\entry -> entry.address\n"
 
 #. type: Plain text
 #: text/chapter3.md:472
@@ -14906,35 +14781,36 @@ msgid ""
 "where an underscore acts as the anonymous function argument, so the inline "
 "function above is equivalent to:"
 msgstr ""
+"PureScriptでは[**プロパティ取得子**](https://github.com/purescript/documentation/blob/master/language/Syntax.md#property-accessors)という略記が使えます。\n"
+"この略記では下線文字は無名関数の引数として振舞うため、上記のインライン関数は次と等価です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:473
 #, no-wrap
 msgid "_.address\n"
-msgstr ""
+msgstr "_.address\n"
 
 #. type: Plain text
 #: text/chapter3.md:478
 msgid ""
 "This works with any number of levels or properties, so a function to extract "
 "the city associated with an `Entry` could be written as:"
-msgstr ""
+msgstr "これは何段階のプロパティでも動くため、`Entry`に関連付く街を取り出す関数は次のように書けます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:479
 #, no-wrap
 msgid "_.address.city\n"
-msgstr ""
+msgstr "_.address.city\n"
 
 #. type: Plain text
 #: text/chapter3.md:484 text/chapter5.md:246
-#, fuzzy
 msgid "For example:"
-msgstr "例えば次のようになります。"
+msgstr "以下は例です。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:485
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> address = { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" }\n"
 "> entry = { firstName: \"John\", lastName: \"Smith\", address: address }\n"
@@ -14944,56 +14820,50 @@ msgid ""
 "> _.address.city entry\n"
 "\"Faketown\"\n"
 msgstr ""
+"> address = { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" }\n"
 "> entry = { firstName: \"John\", lastName: \"Smith\", address: address }\n"
-"> showEntry entry\n"
+"> _.lastName entry\n"
+"\"Smith\"\n"
 "\n"
-"\"Smith, John: 123 Fake St., Faketown, CA\"\n"
+"> _.address.city entry\n"
+"\"Faketown\"\n"
 
 #. type: Title ##
 #: text/chapter3.md:495
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Querying the Address Book"
 msgstr "あなたの住所録は？"
 
 #. type: Plain text
 #: text/chapter3.md:498
-#, fuzzy
 msgid ""
 "The last function we need to implement for our minimal address book "
 "application will look up a person by name and return the correct `Entry`. "
 "This will be a nice application of building programs by composing small "
 "functions - a key idea from functional programming."
-msgstr ""
-"最小限の住所録アプリケーションの実装で必要になる最後の関数は、名前で人を検索"
-"し適切な `Entry`を返すものです。これは小さな関数を組み合わせることでプログラ"
-"ムを構築するという、関数型プログラミングで鍵となる考え方のよい応用例になるで"
-"しょう。"
+msgstr "最小限の住所録アプリケーションの実装で必要になる最後の関数は、名前で人を検索し適切な `Entry`を返すものです。これは小さな関数を組み合わせることでプログラムを構築するという、関数型プログラミングで鍵となる考え方のよい応用例になるでしょう。"
 
 #. type: Plain text
 #: text/chapter3.md:500
-#, fuzzy
 msgid ""
 "We can first filter the address book, keeping only those entries with the "
 "correct first and last names. Then we can simply return the head (i.e. "
 "first) element of the resulting list."
-msgstr ""
-"まずは住所録をフィルタリングし、該当する姓名を持つ項目だけを保持するようにす"
-"るのがいいでしょう。それから、結果のリストの先頭の(head)要素を返すだけです。"
+msgstr "まずは住所録をフィルタリングし、該当する姓名を持つ項目だけを保持するようにするのがいいでしょう。それから、結果のリストの先頭の (head) 要素を返すだけです。"
 
 #. type: Plain text
 #: text/chapter3.md:502
-#, fuzzy
 msgid ""
 "With this high-level specification of our approach, we can calculate the "
 "type of our function. First open PSCi, and find the types of the `filter` "
 "and `head` functions:"
 msgstr ""
-"この大まかな仕様に従って、この関数の型を計算することができます。まず `PSCi`を"
-"起動し、 `filter`関数と `head`関数の型を見てみましょう。"
+"この大まかな仕様に従って、この関数の型を計算することができます。\n"
+"まずPSCiを起動し、 `filter`関数と `head`関数の型を見てみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:503
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -15006,7 +14876,7 @@ msgid ""
 "\n"
 "forall a. List a -> Maybe a\n"
 msgstr ""
-"$ pulp repl\n"
+"$ spago repl\n"
 "\n"
 "> import Data.List\n"
 "> :type filter\n"
@@ -15019,53 +14889,42 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:517
-#, fuzzy
 msgid "Let's pick apart these two types to understand their meaning."
 msgstr ""
 "型の意味を理解するために、これらの2つの型の一部を取り出してみましょう。"
 
 #. type: Plain text
 #: text/chapter3.md:519
-#, fuzzy
 msgid ""
 "`filter` is a curried function of two arguments. Its first argument is a "
 "function, which takes an element of the list and returns a `Boolean` value "
 "as a result. Its second argument is a list of elements, and the return value "
 "is another list."
 msgstr ""
-"`filter`はカリー化された２引数の関数です。最初の引数は、リストの要素を取り "
-"`Boolean`値を結果として返す関数です。第２引数は要素のリストで、返り値は別のリ"
-"ストです。"
+"`filter`はカリー化された2引数の関数です。\n"
+"最初の引数は、リストの要素を取り `Boolean`値を結果として返す関数です。\n"
+"第2引数は要素のリストで、返り値は別のリストです。"
 
 #. type: Plain text
 #: text/chapter3.md:521
-#, fuzzy
 msgid ""
 "`head` takes a list as its argument, and returns a type we haven't seen "
 "before: `Maybe a`. `Maybe a` represents an optional value of type `a`, and "
 "provides a type-safe alternative to using `null` to indicate a missing value "
 "in languages like JavaScript. We will see it again in more detail in later "
 "chapters."
-msgstr ""
-"`head`は引数としてリストをとり、 `Maybe a`という今まで見たことがないような型"
-"を返します。 `Maybe a`は型 `a`のオプショナルな値、つまり `a`の値を持つか持た"
-"ないかのどちらかの値を示しており、JavaScriptのような言語で値がないことを示す"
-"ために使われる `null`の型安全な代替手段を提供します。これについては後の章で詳"
-"しく扱います。"
+msgstr "`head`は引数としてリストをとり、 `Maybe a`という今まで見たことがないような型を返します。 `Maybe a`は型 `a`のオプショナルな値、つまり `a`の値を持つか持たないかのどちらかの値を示しており、JavaScriptのような言語で値がないことを示すために使われる `null`の型安全な代替手段を提供します。これについては後の章で詳しく扱います。"
 
 #. type: Plain text
 #: text/chapter3.md:523
-#, fuzzy
 msgid ""
 "The universally quantified types of `filter` and `head` can be _specialized_ "
 "by the PureScript compiler, to the following types:"
-msgstr ""
-"`filter`と `head`の全称量化された型は、PureScriptコンパイラによって次のように"
-"**特殊化**(specialized)されます。"
+msgstr "`filter`と `head`の全称量化された型は、PureScriptコンパイラによって次のように**特殊化** (specialized) されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:524
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "filter :: (Entry -> Boolean) -> AddressBook -> AddressBook\n"
 "\n"
@@ -15077,7 +14936,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:531
-#, fuzzy
 msgid ""
 "We know that we will need to pass the first and last names that we want to "
 "search for, as arguments to our function."
@@ -15085,79 +14943,69 @@ msgstr "検索する関数の引数として姓と名前を渡す必要がある
 
 #. type: Plain text
 #: text/chapter3.md:533
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "We also know that we will need a function to pass to `filter`. Let's call this function `filterEntry`. `filterEntry` will have type `Entry -> Boolean`. The application `filter filterEntry` will then have type `AddressBook -> AddressBook`. If we pass the result of this function to the `head` function, we get our result of type `Maybe Entry`.\n"
 msgstr "`filter`に渡す関数も必要になることもわかります。この関数を `filterEntry`と呼ぶことにしましょう。 `filterEntry`は `Entry -> Boolean`という型を持っています。 `filter filterEntry`という関数適用の式は、 `AddressBook -> AddressBook`という型を持つでしょう。もしこの関数の結果を `head`関数に渡すと、型 `Maybe Entry`の結果を得ることになります。\n"
 
 #. type: Plain text
 #: text/chapter3.md:535
-#, fuzzy
 msgid ""
 "Putting these facts together, a reasonable type signature for our function, "
 "which we will call `findEntry`, is:"
 msgstr ""
-"これまでのことをまとめると、この `findEntry`関数の妥当な型シグネチャは次のよ"
-"うになります。"
+"これまでのことをまとめると、関数の妥当な型シグネチャは次のようになります。\n"
+"`findEntry`と呼ぶことにしましょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:536
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:findEntry_signature}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:findEntry_signature}}\n"
 
 #. type: Plain text
 #: text/chapter3.md:541
-#, fuzzy
 msgid ""
 "This type signature says that `findEntry` takes two strings, the first and "
 "last names, and a `AddressBook`, and returns an optional `Entry`. The "
 "optional result will contain a value only if the name is found in the "
 "address book."
 msgstr ""
-"`findEntry`は、姓と名前の2つの文字列、および `AddressBook`を引数にとり、 "
-"`Maybe Entry`という型の値を結果として返すということを、この型シグネチャは言っ"
-"ています。結果の `Maybe Entry`という型は、名前が住所録で発見された場合にのみ "
-"`Entry`の値を持ちます。"
+"`findEntry`は、姓と名前の2つの文字列、および `AddressBook`を引数にとり、 `Entry`のオプション型の値を結果として返すということを、この型シグネチャは言っています。\n"
+"オプショナルな結果は、名前が住所録で発見された場合にのみ値を持ちます。"
 
 #. type: Plain text
 #: text/chapter3.md:543
-#, fuzzy
 msgid "And here is the definition of `findEntry`:"
 msgstr "そして、 `findEntry`の定義は次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:544
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "findEntry firstName lastName book = head (filter filterEntry book)\n"
 "  where\n"
 "    filterEntry :: Entry -> Boolean\n"
 "    filterEntry entry = entry.firstName == firstName && entry.lastName == lastName\n"
 msgstr ""
-"findEntry firstName lastName book = head $ filter filterEntry book\n"
+"findEntry firstName lastName book = head (filter filterEntry book)\n"
 "  where\n"
 "    filterEntry :: Entry -> Boolean\n"
 "    filterEntry entry = entry.firstName == firstName && entry.lastName == lastName\n"
 
 #. type: Plain text
 #: text/chapter3.md:552
-#, fuzzy
 msgid "Let's go over this code step by step."
-msgstr "一歩づつこのコードの動きを調べてみましょう。"
+msgstr "一歩ずつこのコードを調べてみましょう。"
 
 #. type: Plain text
 #: text/chapter3.md:554
-#, fuzzy
 msgid ""
 "`findEntry` brings three names into scope: `firstName`, and `lastName`, both "
 "representing strings, and `book`, an `AddressBook`."
-msgstr ""
-"`findEntry`は、どちらも文字列型である `firstName`と `lastName`、 "
-"`AddressBook`型の `book`という3つの名前をスコープに導入します"
+msgstr "`findEntry`は、どちらも文字列型である `firstName`と `lastName`、 `AddressBook`型の `book`という3つの名前をスコープに導入します"
 
 #. type: Plain text
 #: text/chapter3.md:556
-#, fuzzy
 msgid ""
 "The right hand side of the definition combines the `filter` and `head` "
 "functions: first, the list of entries is filtered, and the `head` function "
@@ -15168,7 +15016,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:558
-#, fuzzy
 msgid ""
 "The predicate function `filterEntry` is defined as an auxiliary declaration "
 "inside a `where` clause. This way, the `filterEntry` function is available "
@@ -15186,7 +15033,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:560
-#, fuzzy
 msgid ""
 "Note that, just like for top-level declarations, it was not necessary to "
 "specify a type signature for `filterEntry`. However, doing so is recommended "
@@ -15198,7 +15044,7 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter3.md:561
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Infix Function Application"
 msgstr "中置の関数適用"
 
@@ -15210,14 +15056,15 @@ msgid ""
 "using the `insertEntry` function to add an `Entry` (`john`) to an empty "
 "`AddressBook`, we might write:"
 msgstr ""
+"これまでお話しした関数のほとんどは**前置**関数適用でした。\n"
+"関数名が引数の**前**に置かれていたということです。\n"
+"例えば`insertEntry`関数を使って`Entry` (`john`) を空の`AddressBook`に追加する場合、以下のように書けます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:565
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "> book1 = insertEntry john emptyBook\n"
-msgstr ""
-"> :type (insertEntry example) emptyBook\n"
-"AddressBook\n"
+msgstr "> book1 = insertEntry john emptyBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:570
@@ -15230,12 +15077,17 @@ msgid ""
 "aliases for their underlying _prefix_ implementations. For example, `==` is "
 "defined as an infix alias for the prefix `eq` function with the line:"
 msgstr ""
+"しかしこの章には**中置**[2引数演算子](https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators)の例も含まれています。\n"
+"例えば`filterEntry`の定義中の`==`演算子で、演算子が2つの引数の**間**に置かれています。\n"
+"実はこうした中置演算子はPureScriptのソースコードで、\n"
+"背後にある**前置**版の実装への中置別称として定義されています。\n"
+"例えば`==`は以下の行により前置の`eq`関数の中置別称として定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:571
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "infix 4 eq as ==\n"
-msgstr "infix 8 range as ..\n"
+msgstr "infix 4 eq as ==\n"
 
 #. type: Plain text
 #: text/chapter3.md:576
@@ -15244,6 +15096,8 @@ msgid ""
 "replaced with the `eq entry.firstName firstName`. We'll cover a few more "
 "examples of defining infix operators later in this section."
 msgstr ""
+"したがって`filterEntry`中の`entry.firstName == firstName`は`eq entry.firstName firstName`で置き換えられます。\n"
+"この節の後のほうで中置演算子を定義する例をもう少し押さえます。"
 
 #. type: Plain text
 #: text/chapter3.md:578
@@ -15251,6 +15105,8 @@ msgid ""
 "There are situations where putting a prefix function in an infix position as "
 "an operator leads to more readable code. One example is the `mod` function:"
 msgstr ""
+"前置関数を演算子としての中置の位置に置くとより読みやすいコードになる場面があります。\n"
+"その一例が`mod`関数です。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:579
@@ -15259,6 +15115,8 @@ msgid ""
 "> mod 8 3\n"
 "2\n"
 msgstr ""
+"> mod 8 3\n"
+"2\n"
 
 #. type: Plain text
 #: text/chapter3.md:585
@@ -15267,6 +15125,9 @@ msgid ""
 "is \"eight mod three\", which you can achieve by wrapping a prefix function "
 "in backticks (\\`):"
 msgstr ""
+"上の用例は正しく動きますが、読みづらいです。\n"
+"より馴染みのある表現の仕方は「8 mod 3」ですが、\n"
+"バックスラッシュ (\\`) の中に前置関数を包めばこのように書けます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:586
@@ -15275,6 +15136,8 @@ msgid ""
 "> 8 `mod` 3\n"
 "2\n"
 msgstr ""
+"> 8 `mod` 3\n"
+"2\n"
 
 #. type: Plain text
 #: text/chapter3.md:592
@@ -15282,14 +15145,18 @@ msgid ""
 "In the same way, wrapping `insertEntry` in backticks turns it into an infix "
 "operator, such that `book1` and `book2` below are equivalent:"
 msgstr ""
+"同様に、`insertEntry`をバックスラッシュで包むと中置演算子に変わります。\n"
+"例えば以下の`book1`と`book2`は等価です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:593
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "book1 = insertEntry john emptyBook\n"
 "book2 = john `insertEntry` emptyBook\n"
-msgstr "insertEntry entry book = Cons entry book\n"
+msgstr ""
+"book1 = insertEntry john emptyBook\n"
+"book2 = john `insertEntry` emptyBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:599
@@ -15297,7 +15164,7 @@ msgid ""
 "We can make an `AddressBook` with multiple entries by using multiple "
 "applications of `insertEntry` as a prefix function (`book3`) or as an infix "
 "operator (`book4`) as shown below:"
-msgstr ""
+msgstr "複数回`insertEntry`を適用することで複数の項目がある`AddressBook`を作ることができますが、以下のように前置関数 (`book3`) として適用するか中置演算子 (`book4`) として適用するかの2択があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:600
@@ -15306,6 +15173,8 @@ msgid ""
 "book3 = insertEntry john (insertEntry peggy (insertEntry ned emptyBook))\n"
 "book4 = john `insertEntry` (peggy `insertEntry` (ned `insertEntry` emptyBook))\n"
 msgstr ""
+"book3 = insertEntry john (insertEntry peggy (insertEntry ned emptyBook))\n"
+"book4 = john `insertEntry` (peggy `insertEntry` (ned `insertEntry` emptyBook))\n"
 
 #. type: Plain text
 #: text/chapter3.md:606
@@ -15317,54 +15186,58 @@ msgid ""
 "purescript/documentation/blob/master/language/Syntax.md#associativity) using "
 "`infixr`:"
 msgstr ""
+"`insertEntry`に中置演算子別称（または同義語）を定義することもできます。\n"
+"この演算子の名前に適当に`++`を選び、\n"
+"[優先度](https://github.com/purescript/documentation/blob/master/language/Syntax.md#precedence)を`5`にし、\n"
+"そして`infixr`を使って右[結合](https://github.com/purescript/documentation/blob/master/language/Syntax.md#associativity)とします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:607
 #, no-wrap
 msgid "infixr 5 insertEntry as ++\n"
-msgstr ""
+msgstr "infixr 5 insertEntry as ++\n"
 
 #. type: Plain text
 #: text/chapter3.md:612
 msgid "This new operator lets us rewrite the above `book4` example as:"
-msgstr ""
+msgstr "この新しい演算子で上の`book4`の例を次のように書き直せます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:613
 #, no-wrap
 msgid "book5 = john ++ (peggy ++ (ned ++ emptyBook))\n"
-msgstr ""
+msgstr "book5 = john ++ (peggy ++ (ned ++ emptyBook))\n"
 
 #. type: Plain text
 #: text/chapter3.md:618
 msgid ""
 "and the right associativity of our new `++` operator lets us get rid of the "
 "parentheses without changing the meaning:"
-msgstr ""
+msgstr "そして新しい`++`演算子が右結合なので意味を変えずに括弧を除去できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:619
 #, no-wrap
 msgid "book6 = john ++ peggy ++ ned ++ emptyBook\n"
-msgstr ""
+msgstr "book6 = john ++ peggy ++ ned ++ emptyBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:624
 msgid ""
 "Another common technique for eliminating parens is to use `apply`'s infix "
 "operator `$`, along with your standard prefix functions."
-msgstr ""
+msgstr "括弧を消去する他のよくある技法は、いつもの前置関数と一緒に`apply`の中置演算子`$`を使うというものです。"
 
 #. type: Plain text
 #: text/chapter3.md:626
 msgid "For example, the earlier `book3` example could be rewritten as:"
-msgstr ""
+msgstr "例えば前の`book3`の例は以下のように書き直せます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:626
 #, no-wrap
 msgid "book7 = insertEntry john $ insertEntry peggy $ insertEntry ned emptyBook\n"
-msgstr ""
+msgstr "book7 = insertEntry john $ insertEntry peggy $ insertEntry ned emptyBook\n"
 
 #. type: Plain text
 #: text/chapter3.md:631
@@ -15374,21 +15247,22 @@ msgid ""
 "the dollar sign as being drawn from two parens that are also being crossed-"
 "out, suggesting the parens are now unnecessary."
 msgstr ""
+"括弧を`$`で置き換えるのは大抵入力しやすくなりますし（議論の余地がありますが）読みやすくなります。\n"
+"この記号の意味を覚えるための記憶術として、ドル記号を2つの括弧に打ち消し線が引かれたものと見ることで、これで括弧が不必要になったのだと推測できるという方法があります。"
 
 #. type: Plain text
 #: text/chapter3.md:633
-#, fuzzy
 msgid ""
 "Note that `$` isn't special syntax that's hardcoded into the language. It's "
 "simply the infix operator for a regular function called `apply`, which is "
 "defined in `Data.Function` as follows:"
 msgstr ""
-"`($)`はPreludeで定義されている `apply`関数の別名で、次のように定義されていま"
-"す。"
+"なお、`($)`は言語にハードコードされた特別な構文ではありません。\n"
+"単に`apply`という名前の通常の関数のための中置演算子であって、`Data.Function`で以下のように定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:634
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "apply :: forall a b. (a -> b) -> a -> b\n"
 "apply f x = f x\n"
@@ -15405,36 +15279,39 @@ msgstr ""
 #, no-wrap
 msgid "The `apply` function takes another function (of type `(a -> b)`) as its first argument and a value (of type `a`) as its second argument, then calls that function with that value. If it seems like this function doesn't contribute anything meaningful, you are absolutely correct! Your program is logically identical without it (see [referential transparency](https://en.wikipedia.org/wiki/Referential_transparency)). The syntactic utility of this function comes from the special properties assigned to its infix operator. `$` is a right-associative (`infixr`), low precedence (`0`) operator, which lets us remove sets of parentheses for deeply-nested applications.\n"
 msgstr ""
+"`apply`関数は、他の関数（型は`(a -> b)`）を最初の引数に、値（型は`a`）を2つ目の引数に取って、その値に対して関数を呼びます。\n"
+"この関数が何ら意味のあることをしていないようだと思ったら、まったくもって正しいです！\n"
+"この関数がなくてもプログラムは論理的に同一です。\n"
+"（[参照透過性](https://en.wikipedia.org/wiki/Referential_transparency)も見てください。）\n"
+"この関数の構文的な利便性はその中置演算子に割り当てられた特別な性質からきています。\n"
+"`$`は右結合 (`infixr`) で低い優先度 (`0`) の演算子ですが、これにより深い入れ子になった適用から括弧の束を削除できるのです。\n"
 
 #. type: Plain text
 #: text/chapter3.md:644
 msgid ""
 "Another parens-busting opportunity for the `$` operator is in our earlier "
 "`findEntry` function:"
-msgstr ""
+msgstr "さらなる`$`演算子を使った括弧退治の機会は、以前の`findEntry`関数にあります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:644
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "findEntry firstName lastName book = head $ filter filterEntry book\n"
-msgstr ""
-"findEntry firstName lastName = head <<< filter filterEntry\n"
-"  where\n"
-"    ...\n"
+msgstr "findEntry firstName lastName book = head $ filter filterEntry book\n"
 
 #. type: Plain text
 #: text/chapter3.md:648
 msgid ""
 "We'll see an even more elegant way to rewrite this line with \"function "
 "composition\" in the next section."
-msgstr ""
+msgstr "この行をより簡潔に書き換える方法を次節の「関数合成」で見ていきます。"
 
 #. type: Plain text
 #: text/chapter3.md:650
 msgid ""
 "If you'd like to use a concise infix operator alias as a prefix function, "
 "you can surround it in parentheses:"
-msgstr ""
+msgstr "名前の短い中置演算子を前置関数として使いたければ括弧で囲むことができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:651
@@ -15446,6 +15323,11 @@ msgid ""
 "> (+) 8 3\n"
 "11\n"
 msgstr ""
+"> 8 + 3\n"
+"11\n"
+"\n"
+"> (+) 8 3\n"
+"11\n"
 
 #. type: Plain text
 #: text/chapter3.md:660
@@ -15458,6 +15340,9 @@ msgid ""
 "then binding that anonymous function to a name, so it's not so anonymous "
 "anymore):"
 msgstr ""
+"その代わりの手段として演算子は部分適用することができ、これには式を括弧で囲んで[演算子節](https://github.com/purescript/documentation/blob/master/language/Syntax.md#operator-sections)中の引数として`_`を使います。\n"
+"これは簡単な無名関数を作るより便利な方法として考えることができます。\n"
+"（以下の例ではそこから無名関数を名前に束縛しているので、もはや別に無名とも言えなくなっていますが。）"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:661
@@ -15467,13 +15352,16 @@ msgid ""
 "> add3 2\n"
 "5\n"
 msgstr ""
+"> add3 = (3 + _)\n"
+"> add3 2\n"
+"5\n"
 
 #. type: Plain text
 #: text/chapter3.md:668
 msgid ""
 "To summarize, the following are equivalent definitions of a function that "
 "adds `5` to its argument:"
-msgstr ""
+msgstr "まとめると、以下は引数に`5`を加える関数の等価な定義です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:669
@@ -15488,46 +15376,46 @@ msgid ""
 "add5   = (5 + _)\n"
 "add5 x = 5 `(+)` x  -- Yo Dawg, I herd you like infix, so we put infix in your infix!\n"
 msgstr ""
+"add5 x = 5 + x\n"
+"add5 x = add 5 x\n"
+"add5 x = (+) 5 x\n"
+"add5 x = 5 `add` x\n"
+"add5   = add 5\n"
+"add5   = \\x -> 5 + x\n"
+"add5   = (5 + _)\n"
+"add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、中置の中に中置を入れといたぜ！\n"
 
 #. type: Title ##
 #: text/chapter3.md:680
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Function Composition"
 msgstr "関数合成"
 
 #. type: Plain text
 #: text/chapter3.md:683
-#, fuzzy
 msgid ""
 "Just like we were able to simplify the `insertEntry` function by using eta "
 "conversion, we can simplify the definition of `findEntry` by reasoning about "
 "its arguments."
-msgstr ""
-"イータ変換を使うと `insertEntry`関数を簡略化できたのと同じように、引数をよく"
-"考察すると `findEntry`の定義を簡略化することができます。"
+msgstr "イータ変換を使うと `insertEntry`関数を簡略化できたのと同じように、引数をよく考察すると `findEntry`の定義を簡略化することができます。"
 
 #. type: Plain text
 #: text/chapter3.md:685
-#, fuzzy
 msgid ""
 "Note that the `book` argument is passed to the `filter filterEntry` "
 "function, and the result of this application is passed to `head`. In other "
 "words, `book` is passed to the _composition_ of the functions `filter "
 "filterEntry` and `head`."
-msgstr ""
-"引数 `book`が関数 `filter filterEntry`に渡され、この適用の結果が `head`に渡さ"
-"れることに注目してください。これは言いかたを変えれば、 `filter filterEntry`"
-"と `head`の**合成**(composition) に `book`は渡されるということです。"
+msgstr "引数 `book`が関数 `filter filterEntry`に渡され、この適用の結果が `head`に渡されることに注目してください。これは言いかたを変えれば、 `filter filterEntry`と `head`の**合成** (composition) に `book`が渡されるということです。"
 
 #. type: Plain text
 #: text/chapter3.md:687
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "In PureScript, the function composition operators are `<<<` and `>>>`. The first is \"backwards composition\", and the second is \"forwards composition\".\n"
 msgstr "PureScriptの関数合成演算子は `<<<`と `>>>`です。前者は「逆方向の合成」であり、後者は「順方向の合成」です。\n"
 
 #. type: Plain text
 #: text/chapter3.md:689
-#, fuzzy
 msgid ""
 "We can rewrite the right-hand side of `findEntry` using either operator. "
 "Using backwards-composition, the right-hand side would be"
@@ -15537,13 +15425,12 @@ msgstr ""
 
 #. type: Fenced code block
 #: text/chapter3.md:690
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "(head <<< filter filterEntry) book\n"
 msgstr "(head <<< filter filterEntry) book\n"
 
 #. type: Plain text
 #: text/chapter3.md:695
-#, fuzzy
 msgid ""
 "In this form, we can apply the eta conversion trick from earlier, to arrive "
 "at the final form of `findEntry`:"
@@ -15558,22 +15445,22 @@ msgid ""
 "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:findEntry_implementation}}\n"
 "    ...\n"
 msgstr ""
+"{{#include ../exercises/chapter3/src/Data/AddressBook.purs:findEntry_implementation}}\n"
+"    ...\n"
 
 #. type: Plain text
 #: text/chapter3.md:702
-#, fuzzy
 msgid "An equally valid right-hand side would be:"
-msgstr "右辺を次のようにしても同じです。"
+msgstr "右辺を次のようにしても同じく妥当です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:703
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "filter filterEntry >>> head\n"
 msgstr "filter filterEntry >>> head\n"
 
 #. type: Plain text
 #: text/chapter3.md:708
-#, fuzzy
 msgid ""
 "Either way, this gives a clear definition of the `findEntry` function: "
 "\"`findEntry` is the composition of a filtering function and the `head` "
@@ -15584,42 +15471,39 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:710
-#, fuzzy
 msgid ""
 "I will let you make your own decision which definition is easier to "
 "understand, but it is often useful to think of functions as building blocks "
 "in this way - each function executing a single task, and solutions assembled "
 "using function composition."
 msgstr ""
-"どちらの定義のほうがわかりやすいかの判断はお任せしますが、このように関数を部"
-"品として捉え、関数はひとつの役目だけをこなし、機能を関数合成で組み立てるとい"
-"うように考えると有用なことがよくあります。"
+"どちらの定義のほうがわかりやすいかの判断はお任せしますが、このように関数を部品として捉えると有用なことがよくあります。\n"
+"関数はひとつの役目だけをこなし、機能を関数合成で組み立てるというように。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter3.md:718
-#, fuzzy
 msgid ""
 "(Easy) Test your understanding of the `findEntry` function by writing down "
 "the types of each of its major subexpressions. For example, the type of the "
 "`head` function as used is specialized to `AddressBook -> Maybe Entry`. "
 "_Note_: There is no test for this exercise."
 msgstr ""
-"（簡単） `findEntry`関数の定義の主な部分式の型を書き下し、 `findEntry`関数に"
-"ついてよく理解しているか試してみましょう。たとえば、 `findEntry`の定義のなか"
-"にある `head`関数の型は `AddressBook -> Maybe Entry`と特殊化されています。"
+"（簡単） `findEntry`関数の定義の主な部分式の型を書き下し、 `findEntry`関数についてよく理解しているか試してみましょう。\n"
+"たとえば、 `findEntry`の定義のなかにある `head`関数の型は `AddressBook -> Maybe Entry`と特殊化されています。\n"
+"**補足**：この問題にはテストがありません。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter3.md:718
-#, fuzzy
 msgid ""
 "(Medium) Write a function `findEntryByStreet :: String -> AddressBook -> "
 "Maybe Entry` which looks up an `Entry` given a street address. _Hint_ "
 "reusing the existing code in `findEntry`. Test your function in PSCi and by "
 "running `spago test`."
 msgstr ""
-"（簡単） `findEntry`の既存のコードを再利用し、与えられた電話番号から `Entry`"
-"を検索する関数を書いてみましょう。また、 `PSCi`で実装した関数をテストしてみま"
-"しょう。"
+"（やや難しい）関数`findEntryByStreet :: String -> AddressBook -> Maybe Entry`を書いてください。\n"
+"この関数は与えられた通りの住所から`Entry`を見付け出します。\n"
+"**ヒント**：`findEntry`にある既存のコードを再利用してください。\n"
+"実装した関数をPSCiと`spago test`を走らせることでテストしてください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter3.md:718
@@ -15629,22 +15513,21 @@ msgid ""
 "notation); and a function that tests whether its given string argument is "
 "equal to the given street address."
 msgstr ""
+"（やや難しい）`filterEntry`を（`<<<`や`>>>`を使った）合成で置き換えて、`findEntryByStreet`を書き直してください。\n"
+"合成の対象は、プロパティ取得子（`_.`記法を使います）と、与えられた文字列引数が与えられた通りの住所に等しいかを判定する関数です。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter3.md:718
-#, fuzzy
 msgid ""
 "(Medium) Write a function `isInBook` which tests whether a name appears in a "
 "`AddressBook`, returning a Boolean value. _Hint_: Use PSCi to find the type "
 "of the `Data.List.null` function, which tests whether a list is empty or not."
 msgstr ""
-"（やや難しい） 指定された名前が `AddressBook`に存在するかどうかを調べて真偽値"
-"で返す関数を書いてみましょう。 (**ヒント**：リストが空かどうかを調べる `Data."
-"List.null`関数の型を `psci`で調べてみてみましょう)"
+"（やや難しい） 指定された名前が `AddressBook`に存在するかどうかを調べて真偽値で返す関数`isInBook`を書いてみましょう。\n"
+"**ヒント**：リストが空かどうかを調べる `Data.List.null`関数の型をPSCiで調べてみてみましょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter3.md:718
-#, fuzzy
 msgid ""
 "(Difficult) Write a function `removeDuplicates` which removes \"duplicate\" "
 "address book entries. We'll consider entries duplicated if they share the "
@@ -15654,21 +15537,20 @@ msgid ""
 "first element in each set of duplicates (closest to list head) is the one "
 "that is kept."
 msgstr ""
-"（難しい） 姓名が重複している項目を住所録から削除する関数 `removeDuplicates`"
-"を書いてみましょう。 (**ヒント**：値どうしの等価性を定義する述語関数に基づい"
-"てリストから重複要素を削除する関数 `Data.List.nubBy`の型を、 `psci`を使用して"
-"調べてみましょう)"
+"（難しい） 「重複」している項目を住所録から削除する関数 `removeDuplicates`を書いてみましょう。\n"
+"項目が同じ姓名を共有していれば`address`フィールドに関係なく、項目が重複していると考えます。\n"
+"**ヒント**：関数 `Data.List.nubBy`の型を、PSCiを使用して調べてみましょう。\n"
+"この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。\n"
+"なお、それぞれの重複する項目の集合における最初の要素（リストの先頭に最も近い）が保持する項目です。"
 
 #. type: Plain text
 #: text/chapter3.md:722
-#, fuzzy
 msgid ""
 "In this chapter, we covered several new functional programming concepts:"
 msgstr "この章では、関数型プログラミングの新しい概念をいくつか導入しました。"
 
 #. type: Plain text
 #: text/chapter3.md:730
-#, fuzzy
 msgid ""
 "- How to use the interactive mode PSCi to experiment with functions and test "
 "ideas.  - The role of types as both a correctness tool, and an "
@@ -15679,15 +15561,16 @@ msgid ""
 "conversion and function composition to refactor code into a clear "
 "specification."
 msgstr ""
-"- 対話的モード `PSCi`を使用して関数を調べるなど思いついたことを試す方法 - 検"
-"証や実装の道具としての型の役割 - 多引数関数を表現する、カリー化された関数の使"
-"用 - 関数合成で小さな部品を組み合わせてのプログラムの構築 - `where`節を利用し"
-"たコードの構造化 - `Maybe`型を使用してnull値を回避する方法 - イータ変換や関数"
-"合成のような手法を利用した、よりわかりやすいコードへの再構成"
+"- 対話的モードPSCiを使用して関数を調べるなど思いついたことを試す方法\n"
+"- 検証や実装の道具としての型の役割\n"
+"- 多引数関数を表現する、カリー化された関数の使用\n"
+"- 関数合成で小さな部品を組み合わせてのプログラムの構築\n"
+"- `where`節を利用したコードの構造化\n"
+"- `Maybe`型を使用してnull値を回避する方法\n"
+"- イータ変換や関数合成のような手法を利用した、よりわかりやすいコードへの再構成"
 
 #. type: Plain text
 #: text/chapter3.md:731
-#, fuzzy
 msgid "In the following chapters, we'll build on these ideas."
 msgstr "次の章からは、これらの考えかたに基づいて進めていきます。"
 

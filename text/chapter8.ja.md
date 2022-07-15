@@ -10,7 +10,7 @@ with side-effects in a more expressive way: _monads_.
 The goal of this chapter is to explain why monads are a useful abstraction,
 and their connection with _do notation_.
 
-## Project Setup
+## プロジェクトの準備
 
 The project adds the following dependencies:
 

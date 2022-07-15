@@ -18,7 +18,7 @@ The goal of the chapter will be to write a library to describe and
 manipulate simple vector graphics using algebraic types and pattern
 matching.
 
-## Project Setup
+## プロジェクトの準備
 
 The source code for this chapter is defined in the file
 `src/Data/Picture.purs`.
@@ -353,7 +353,7 @@ Here is an example. This function computes "longest zero suffix" of an array
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:lzs}}
 ```
 
-For example:
+以下は例です。
 
 ```text
 > lzs [1, 2, 3, 4]

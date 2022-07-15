@@ -19,7 +19,7 @@ types, and write functions to validate values for those types. The
 understanding is that these functions could be used, for example in a web
 user interface, to display errors to the user as part of a data entry form.
 
-## Project Setup
+## プロジェクトの準備
 
 The source code for this chapter is defined in the files
 `src/Data/AddressBook.purs` and `src/Data/AddressBook/Validation.purs`.

@@ -1,0 +1,4 @@
+PO4A-HEADER: position=`Data.Maybe`モジュールは; mode=after; beginboundary=^
+
+訳者注：ダブルドット (`..`) を使用すると、
+指定された型コンストラクタのすべてのデータコンストラクタをインポートできます。

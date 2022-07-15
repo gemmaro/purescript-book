@@ -19,4 +19,6 @@
 
 - - -
 
-[はじめに](chapter1.ja.md)
+* [はじめに](chapter1.ja.md)
+* [はじめよう](chapter2.ja.md)
+* [関数とレコード](chapter3.ja.md)

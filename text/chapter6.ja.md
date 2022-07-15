@@ -19,7 +19,7 @@ If you come from an Object Oriented background, please note that the word
 "class" means something _very_ different in this context than what you're
 used to. A type class serves a purpose more similar to an OO interface.
 
-## Project Setup
+## プロジェクトの準備
 
 The source code for this chapter is defined in the file
 `src/Data/Hashable.purs`.

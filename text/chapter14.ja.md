@@ -26,7 +26,7 @@ documents. Our aim will be to develop a type-safe language for describing
 correct HTML documents, and we will work by improving a naive implementation
 in small steps.
 
-## Project Setup
+## プロジェクトの準備
 
 The project accompanying this chapter adds one new dependency - the `free`
 library, which defines the _free monad_, one of the tools which we will be
