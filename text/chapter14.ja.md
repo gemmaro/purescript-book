@@ -300,7 +300,7 @@ benefits of the smart constructors approach - it allows us to separate the
 internal data representation for a module from the representation which is
 perceived by users of its external API.
 
- ## Exercises
+## 演習
 
  1. (Easy) Use the `Data.DOM.Smart` module to experiment by creating new
     HTML documents using `render`.
@@ -422,7 +422,7 @@ attributes instead:
 unit
 ```
 
- ## Exercises
+## 演習
 
  1. (Easy) Create a data type which represents either pixel or percentage
     lengths. Write an instance of `IsValue` for your type. Modify the
@@ -697,7 +697,7 @@ That's it! We can test our new monadic API in PSCi, as follows:
 unit
 ```
 
- ## Exercises
+## 演習
 
  1. (Medium) Add a new data constructor to the `ContentF` type to support a
     new action `comment`, which renders a comment in the generated
@@ -868,7 +868,7 @@ unit
 You can verify that multiple calls to `newName` do in fact result in unique
 names.
 
- ## Exercises
+## 演習
 
  1. (Medium) We can simplify the API further by hiding the `Element` type
     from its users. Make these changes in the following steps:
@@ -918,6 +918,7 @@ working in a language with expressive types.
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

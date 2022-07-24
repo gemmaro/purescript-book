@@ -1,87 +1,68 @@
-# Recursion, Maps And Folds
+# 再帰、マップ、畳み込み
 
 ## この章の目標
 
-In this chapter, we will look at how recursive functions can be used to
-structure algorithms. Recursion is a basic technique used in functional
-programming, which we will use throughout this book.
+この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて見ていきましょう。再帰は関数型プログラミングの基本的な手法であり、この本の全体に亙って使われます。
 
-We will also cover some standard functions from PureScript's standard
-libraries. We will see the `map` and `fold` functions, as well as some
-useful special cases, like `filter` and `concatMap`.
+また、PureScriptの標準ライブラリから標準的な関数をいくつか取り扱います。
+`map`や`fold`といった関数だけでなく、`filter`や`concatMap`といった特別な場合において便利なものについても見ていきます。
 
-The motivating example for this chapter is a library of functions for
-working with a virtual filesystem. We will apply the techniques learned in
-this chapter to write functions which compute properties of the files
-represented by a model of a filesystem.
+この章では、仮想的なファイルシステムを操作する関数のライブラリを動機付けに用います。この章で学ぶ手法を応用して、擬似的なファイルシステムによって表されるファイルのプロパティを計算する関数を記述します。
 
 ## プロジェクトの準備
 
-The source code for this chapter is contained in `src/Data/Path.purs` and
-`test/Examples.purs`. The `Data.Path` module contains a model of a virtual
-filesystem. You do not need to modify the contents of this module. Implement
-your solutions to the exercises in the `Test.MySolutions` module. Enable
-accompanying tests in the `Test.Main` module as you complete each exercise
-and check your work by running `spago test`.
+この章のソースコードは`src/Data/Path.purs`と`test/Examples.purs`に含まれています。
+`Data.Path`モジュールは仮想ファイルシステムのモデルを含みます。
+このモジュールの内容を変更する必要はありません。
+演習への解答は`Test.MySolutions`モジュールに実装してください。
+それぞれの演習を完了させつつ都度`Test.Main`モジュールにある対応するテストを有効にし、
+`spago test`を走らせることで解答を確認してください。
 
-The project has the following dependencies:
+このプロジェクトには以下の依存関係があります。
 
-- `maybe`, which defines the `Maybe` type constructor - `arrays`, which
-defines functions for working with arrays - `strings`, which defines
-functions for working with JavaScript strings - `foldable-traversable`,
-which defines functions for folding arrays and other data structures -
-`console`, which defines functions for printing to the console
+- `maybe`: `Maybe`型構築子が定義されています。
+- `arrays`: 配列を扱うための関数が定義されています。
+- `strings`: JavaScriptの文字列を扱うための関数が定義されています。
+- `foldable-traversable`: 配列やその他のデータ構造を畳み込む関数が定義されています。
+- `console`: コンソールへの出力を扱うための関数が定義されています。
 
 ## はじめに
 
-Recursion is an important technique in programming in general, but
-particularly common in pure functional programming, because, as we will see
-in this chapter, recursion helps to reduce the mutable state in our
-programs.
+再帰は一般のプログラミングでも重要な手法ですが、特に純粋関数型プログラミングでは当たり前のように用いられます。この章で見ていくように、再帰はプログラムの変更可能な状態を減らすために役立つからです。
 
-Recursion is closely linked to the _divide and conquer_ strategy: to solve a
-problem on certain inputs, we can break down the inputs into smaller parts,
-solve the problem on those parts, and then assemble a solution from the
-partial solutions.
+再帰は**分割統治** (divide and conquer) 戦略と密接な関係があります。
+分割統治とはすなわち、何らかの入力としての問題を解くにあたり、入力を小さな部分に分割し、それぞれの部分について問題を解いて、部分ごとの答えから最終的な答えを組み立てるということです。
 
-Let's see some simple examples of recursion in PureScript.
+それでは、PureScriptにおける再帰の簡単な例をいくつか見てみましょう。
 
-Here is the usual _factorial function_ example:
+次は**階乗関数** (factorial function) のよくある例です。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:factorial}}
 ```
 
-Here, we can see how the factorial function is computed by reducing the
-problem to a subproblem - that of computing the factorial of a smaller
-integer. When we reach zero, the answer is immediate.
+部分問題へ問題を分割することによって階乗関数がどのように計算されるかがわかります。より小さい数へと階乗を計算していくということです。ゼロに到達すると、答えは直ちに求まります。
 
-Here is another common example, which computes the _Fibonacci function_:
+次は、**フィボナッチ関数** (Fibonacci function) を計算するという、これまたよくある例です。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:fib}}
 ```
 
-Again, this problem is solved by considering the solutions to
-subproblems. In this case, there are two subproblems, corresponding to the
-expressions `fib (n - 1)` and `fib (n - 2)`. When these two subproblems are
-solved, we assemble the result by adding the partial results.
+やはり、部分問題の解決策を考えることで全体を解決していることがわかります。このとき、`fib (n - 1)`と`fib (n -
+2)`という式に対応した、２つの部分問題があります。これらの２つの部分問題が解決されていれば、この部分的な答えを加算することで、全体の答えを組み立てることができます。
 
-Note that, while the above examples of `factorial` and `fib` work as
-intended, a more idiomatic implementation would use pattern matching instead
-of `if`/`then`/`else`. Pattern matching techniques are discussed in a later
-chapter.
+なお上の`factorial`と`fib`の例は意図通りに動きますが、
+より慣習的な実装では`if`や`then`や`else`を使う代わりにパターン照合を使うものでしょう。
+パターン照合の技法は後の章でお話しします。
 
-## Recursion on Arrays
+## 配列上での再帰
 
-We are not limited to defining recursive functions over the `Int` type! We
-will see recursive functions defined over a wide array of data types when we
-cover _pattern matching_ later in the book, but for now, we will restrict
-ourselves to numbers and arrays.
+再帰関数の定義は、`Int`型だけに限定されるものではありません！
+本書の後半で**パターン照合** (pattern matching)
+を扱うときに、いろいろなデータ型の上での再帰関数について見ていきますが、ここでは数と配列に限っておきます。
 
-Just as we branch based on whether the input is non-zero, in the array case,
-we will branch based on whether the input is non-empty. Consider this
-function, which computes the length of an array using recursion:
+入力がゼロでないかどうかについて分岐するのと同じように、配列の場合も、配列が空でないかどうかについて分岐していきます。再帰を使用して配列の長さを計算する次の関数を考えてみます。
 
 ```haskell
 import Prelude
@@ -92,42 +73,34 @@ import Data.Maybe (fromMaybe)
 {{#include ../exercises/chapter4/test/Examples.purs:length}}
 ```
 
-In this function, we use an `if .. then .. else` expression to branch based
-on the emptiness of the array. The `null` function returns `true` on an
-empty array. Empty arrays have length zero, and a non-empty array has a
-length that is one more than the length of its tail.
+この関数では配列が空かどうかで分岐するために`if ... then ... else`式を使っています。
+この`null`関数は配列が空のときに`true`を返します。
+空の配列の長さはゼロであり、空でない配列の長さは配列の先頭を取り除いた残りの部分の長さより1大きいというわけです。
 
-The `tail` function returns a `Maybe` wrapping the given array without its
-first element. If the array is empty (i.e. it doesn't have a tail) `Nothing`
-is returned. The `fromMaybe` function takes a default value and a `Maybe`
-value. If the latter is `Nothing` it returns the default, in the other case
-it returns the value wrapped by `Just`.
+`tail`関数は与えられた配列から最初の要素を除いたものを`Maybe`に包んで返します。
+配列が空であれば（つまり尾鰭がありません）`Nothing`が返ります。
+`fromMaybe`関数は既定値と`Maybe`値を取ります。
+後者が`Nothing`であれば既定義を返し、そうでなければ`Just`に包まれた値を返します。
 
-This example is obviously a very impractical way to find the length of an
-array in JavaScript, but should provide enough help to allow you to complete
-the following exercises:
+JavaScriptで配列の長さを調べるのには、この例はどうみても実用的な方法とはいえませんが、次の演習を完了するための手がかりとしては充分でしょう。
 
- ## Exercises
+## 演習
 
- 1. (Easy) Write a recursive function `isEven` which returns `true` if and
-    only if its input is an even integer.
- 2. (Medium) Write a recursive function `countEven` which counts the number
-    of even integers in an array. _Hint_: the function `head` (also
-    available in `Data.Array`) can be used to find the first element in a
-    non-empty array.
+ 1. （簡単）入力が偶数であるとき、かつそのときに限り`true`に返すような再帰関数を書いてみましょう。
+ 2. （少し難しい）配列内の偶数の数を数える再帰関数`countEven`を書いてみましょう。
+    **ヒント**：`Data.Array`モジュールの`head`関数を使うと、空でない配列の最初の要素を見つけることができます。
 
-## Maps
+## マップ
 
-The `map` function is an example of a recursive function on arrays. It is
-used to transform the elements of an array by applying a function to each
-element in turn. Therefore, it changes the _contents_ of the array, but
-preserves its _shape_ (i.e. its length).
+`map`関数は配列に対する再帰関数のひとつです。
+この関数を使うと、配列の各要素に順番に関数を適用することで、配列の要素を変換することができます。
+そのため、配列の**内容**は変更されますが、その**形状**（ここでは「長さ」）は保存されます。
 
-When we cover _type classes_ later in the book we will see that the `map`
-function is an example of a more general pattern of shape-preserving
-functions which transform a class of type constructors called _functors_.
+本書の後半で**型クラス** (type class) の内容を押さえるとき、
+`map`関数が形状保存関数のより一般的な様式の一例であることを見ていきます。
+これは**関手** (functor) と呼ばれる型構築子のクラスを変換するものです。
 
-Let's try out the `map` function in PSCi:
+それでは、PSCiで`map`関数を試してみましょう。
 
 ```text
 $ spago repl
@@ -137,46 +110,45 @@ $ spago repl
 [2, 3, 4, 5, 6]
 ```
 
-Notice how `map` is used - we provide a function which should be "mapped
-over" the array in the first argument, and the array itself in its second.
+`map`がどのように使われているかに注目してください。
+最初の引数には配列上で「写す」関数、第2引数には配列そのものを渡します。
 
-## Infix Operators
+## 中置演算子
 
-The `map` function can also be written between the mapping function and the
-array, by wrapping the function name in backticks:
+バッククォートで関数名を囲むと、写す関数と配列の間に、`map`関数を書くことができます。
 
 ```text
 > (\n -> n + 1) `map` [1, 2, 3, 4, 5]
 [2, 3, 4, 5, 6]
 ```
 
-This syntax is called _infix function application_, and any function can be
-made infix in this way. It is usually most appropriate for functions with
-two arguments.
+この構文は**中置関数適用**と呼ばれ、どんな関数でもこのように中置することができます。
+普通は2引数の関数に対して使うのが最適でしょう。
 
-There is an operator which is equivalent to the `map` function when used with arrays, called `<$>`. This operator can be used infix like any other binary operator:
+配列を扱うときは、`map`関数と等価な`<$>`という演算子が存在します。この演算子は他の二項演算子と同じように中置で使用することができます。
 
 ```text
 > (\n -> n + 1) <$> [1, 2, 3, 4, 5]
 [2, 3, 4, 5, 6]
 ```
 
-Let's look at the type of `map`:
+それでは`map`の型を見てみましょう。
 
 ```text
 > :type map
 forall a b f. Functor f => (a -> b) -> f a -> f b
 ```
 
-The type of `map` is actually more general than we need in this chapter. For
-our purposes, we can treat `map` as if it had the following less general
-type:
+実は`map`の型は、この章で必要とされているものよりも一般的な型になっています。今回の目的では、`map`は次のようなもっと具体的な型であるかのように考えるとよいでしょう。
 
 ```text
 forall a b. (a -> b) -> Array a -> Array b
 ```
 
-This type says that we can choose any two types, `a` and `b`, with which to apply the `map` function. `a` is the type of elements in the source array, and `b` is the type of elements in the target array. In particular, there is no reason why `map` has to preserve the type of the array elements. We can use `map` or `<$>` to transform integers to strings, for example:
+この型では、`map`関数に適用するときには`a`と`b`という２つの型を自由に選ぶことができる、ということも示されています。
+`a`は元の配列の要素の型で、`b`は目的の配列の要素の型です。
+もっと言えば、`map`が配列の要素の型を保存する必要があるわけではありません。
+たとえば、`map`を使用すると数値を文字列に変換することができます。
 
 ```text
 > show <$> [1, 2, 3, 4, 5]
@@ -184,22 +156,24 @@ This type says that we can choose any two types, `a` and `b`, with which to appl
 ["1","2","3","4","5"]
 ```
 
-Even though the infix operator `<$>` looks like special syntax, it is in fact just an alias for a regular PureScript function. The function is simply _applied_ using infix syntax. In fact, the function can be used like a regular function by enclosing its name in parentheses. This means that we can used the parenthesized name `(<$>)` in place of `map` on arrays:
+中置演算子`<$>`は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。
+中置構文を使用した単なる**適用**にすぎません。
+実際、括弧でその名前を囲むと、この関数を通常の関数のように使用することができます。
+これは、`map`代わりに、括弧で囲まれた`(<$>)`という名前を使って配列に関数を適用できるということです。
 
 ```text
 > (<$>) show [1, 2, 3, 4, 5]
 ["1","2","3","4","5"]
 ```
 
-Infix function names are defined as _aliases_ for existing function
-names. For example, the `Data.Array` module defines an infix operator `(..)`
-as a synonym for the `range` function, as follows:
+中置関数は既存の関数名の別称として定義されます。
+たとえば、`Data.Array`モジュールでは次のように`range`関数の同義語として中置演算子`(..)`を定義しています。
 
 ```haskell
 infix 8 range as ..
 ```
 
-We can use this operator as follows:
+この演算子は次のように使うことができます。
 
 ```text
 > import Data.Array
@@ -211,33 +185,29 @@ We can use this operator as follows:
 ["1","2","3","4","5"]
 ```
 
-_Note_: Infix operators can be a great tool for defining domain-specific
-languages with a natural syntax. However, used excessively, they can render
-code unreadable to beginners, so it is wise to exercise caution when
-defining any new operators.
+**注意**： 独自の中置演算子は、自然な構文を持った領域特化言語を定義するのに優れた手段になりえます。
+ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。
 
-In the example above, we parenthesized the expression `1 .. 5`, but this was actually not necessary, because the `Data.Array` module assigns a higher precedence level to the `..` operator than that assigned to the `<$>` operator. In the example above, the precedence of the `..` operator was defined as `8`, the number after the `infix` keyword. This is higher than the precedence level of `<$>`, meaning that we do not need to add parentheses:
+上記の例では、`1 .. 5`という式は括弧で囲まれていましたが、実際にはこれは必要ありません。
+なぜなら、`Data.Array`モジュールは、`<$>`に割り当てられた優先順位より高い優先順位を`..`演算子に割り当てているからです。
+上の例では、`..`の優先順位は、予約語`infix`のあとに書かれた数の`8` と定義されていました。
+ここでは`<$>`の優先順位よりも高い優先順位を`..`に割り当てており、このため括弧を付け加える必要がないということです。
 
 ```text
 > show <$> 1 .. 5
 ["1","2","3","4","5"]
 ```
 
-If we wanted to assign an _associativity_ (left or right) to an infix
-operator, we could do so with the `infixl` and `infixr` keywords instead.
-Using `infix` assigns no associativity, meaning that you must parenthesize
-any expression using the same operator multiple times or using multiple
-operators of the same precedence.
+中置演算子に（左または右の）**結合性**を与えたい場合は、代わりに予約語`infixl`と`infixr`を使います。
+`infix`を使うと何ら結合性は割り当てられず、
+同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。
 
-## Filtering Arrays
+## 配列のフィルタリング
 
-The `Data.Array` module provides another function `filter`, which is
-commonly used together with `map`. It provides the ability to create a new
-array from an existing array, keeping only those elements which match a
-predicate function.
+`Data.Array`モジュールでは他にも、よく`map`と一緒に使われる関数`filter`も提供しています。
+この関数は、述語関数に適合する要素のみを残し、既存の配列から新しい配列を作成する機能を提供します。
 
-For example, suppose we wanted to compute an array of all numbers between 1
-and 10 which were even. We could do so as follows:
+たとえば、1から10までの数で、偶数であるような数の配列を計算したいとします。これは次のように行うことができます。
 
 ```text
 > import Data.Array
@@ -246,25 +216,23 @@ and 10 which were even. We could do so as follows:
 [2,4,6,8,10]
 ```
 
- ## Exercises
+## 演習
 
- 1. (Easy) Write a function `squared` which calculates the squares of an
-    array of numbers. _Hint_: Use the `map` or `<$>` function.
- 1. (Easy) Write a function `keepNonNegative` which removes the negative
-    numbers from an array of numbers. _Hint_: Use the `filter` function.
- 1. (Medium)
-    * Define an infix synonym `<$?>` for `filter`. _Note_: Infix synonyms
-      may not be defined in the REPL, but you can define it in a file.
-    * Write a `keepNonNegativeRewrite` function, which is the same as
-      `keepNonNegative`, but replaces `filter` with your new infix operator
-      `<$?>`.
-    * Experiment with the precedence level and associativity of your
-      operator in PSCi. _Note_: There are no unit tests for this step.
+ 1. （簡単）`map`関数や`<$>`関数を使用して、 配列に格納された数のそれぞれの平方を計算する関数`squared`を書いてみましょう。
+    **ヒント**：`map`や`<$>`といった関数を使ってください。
+ 1. （簡単）`filter`関数を使用して、数の配列から負の数を取り除く関数`keepNonNegative`を書いてみましょう。
+    **ヒント**：`filter`関数を使ってください。
+ 1. （やや難しい）
+    * `filter`の中置同義語`<$?>`を定義してください。
+      **補足**：中置同義語はREPLでは定義できないかもしれませんが、ファイルでは定義することができます。
+    * 関数`keepNonNegativeRewrite`を書いてください。
+      この関数は`filter`を自前の粗しい中置演算子`<$?>`で置き換えたところ以外は`keepNonNegative`と同じです。
+    * PSCiで自前の演算子の優先度合いと結合性を試してください。
+      **補足**：この問題のための単体試験はありません。
 
-## Flattening Arrays
+## 配列の平坦化
 
-Another standard function on arrays is the `concat` function, defined in
-`Data.Array`. `concat` flattens an array of arrays into a single array:
+配列に関する標準的な関数として`Data.Array`で定義されているものには、`concat`関数もあります。`concat`は配列の配列をひとつの配列へと平坦化します。
 
 ```text
 > import Data.Array
@@ -276,12 +244,10 @@ forall a. Array (Array a) -> Array a
 [1, 2, 3, 4, 5, 6]
 ```
 
-There is a related function called `concatMap` which is like a combination
-of the `concat` and `map` functions. Where `map` takes a function from
-values to values (possibly of a different type), `concatMap` takes a
-function from values to arrays of values.
+関連する関数として、`concat`と`map`を組み合わせたような`concatMap`と呼ばれる関数もあります。
+`map`は（相異なる型も可能な）値からの値への関数を引数に取りますが、それに対して`concatMap`は値から値の配列の関数を取ります。
 
-Let's see it in action:
+実際に動かして見てみましょう。
 
 ```text
 > import Data.Array
@@ -293,75 +259,70 @@ forall a b. (a -> Array b) -> Array a -> Array b
 [1,1,2,4,3,9,4,16,5,25]
 ```
 
-Here, we call `concatMap` with the function `\n -> [n, n * n]` which sends an integer to the array of two elements consisting of that integer and its square. The result is an array of ten integers: the integers from 1 to 5 along with their squares.
+ここでは、数をその数とその数の平方の2つの要素からなる配列に写す関数`\n -> [n, n * n]`を引数に`concatMap`を呼び出しています。
+結果は10個の整数の配列です。
+配列は1から5の数とそのそれぞれの数の平方からなります。
 
-Note how `concatMap` concatenates its results. It calls the provided
-function once for each element of the original array, generating an array
-for each. Finally, it collapses all of those arrays into a single array,
-which is its result.
+`concatMap`がどのように結果を連結しているのかに注目してください。
+渡された関数を元の配列のそれぞれの要素について一度づつ呼び出し、その関数はそれぞれ配列を生成します。
+最後にそれらの配列を単一の配列に押し潰し、それが結果となります。
 
-`map`, `filter` and `concatMap` form the basis for a whole range of
-functions over arrays called "array comprehensions".
+`map`と`filter`、`concatMap`は、「配列内包表記」(array comprehensions)
+と呼ばれる、配列に関するあらゆる関数の基盤を形成しています。
 
-## Array Comprehensions
+## 配列内包表記
 
-Suppose we wanted to find the factors of a number `n`. One simple way to do
-this would be by brute force: we could generate all pairs of numbers between
-1 and `n`, and try multiplying them together. If the product was `n`, we
-would have found a pair of factors of `n`.
+数`n`のふたつの因数を見つけたいとしましょう。これを行うための簡単​​な方法としては、総当りで調べる方法があります。つまり、`1`から`n`の数のすべての組み合わせを生成し、それを乗算してみるわけです。もしその積が`n`なら、`n`の因数の組み合わせを見つけたということになります。
 
-We can perform this computation using an array comprehension. We will do so
-in steps, using PSCi as our interactive development environment.
+配列内包表記を使用すると、この計算を実行することができます。
+PSCiを対話式の開発環境として使用し、ひとつづつこの手順を進めていきましょう。
 
-The first step is to generate an array of pairs of numbers below `n`, which
-we can do using `concatMap`.
+最初の手順では`n`以下の数の組み合わせの配列を生成しますが、これには`concatMap`を使えばよいです。
 
-Let's start by mapping each number to the array `1 .. n`:
+`1 .. n`のそれぞれの数を配列`1 .. n`へとマッピングすることから始めましょう。
 
 ```text
 > pairs n = concatMap (\i -> 1 .. n) (1 .. n)
 ```
 
-We can test our function
+この関数をテストしてみましょう。
 
 ```text
 > pairs 3
 [1,2,3,1,2,3,1,2,3]
 ```
 
-This is not quite what we want. Instead of just returning the second element
-of each pair, we need to map a function over the inner copy of `1 .. n`
-which will allow us to keep the entire pair:
+これは求めているものとはぜんぜん違います。
+単にそれぞれの組み合わせの2つ目の要素を返すのではなく、ペア全体を保持することができるように、内側の`1
+.. n`の複製について関数をマッピングする必要があります。
 
 ```text
 > :paste
-â¦ pairs' n =
-â¦   concatMap (\i ->
-â¦     map (\j -> [i, j]) (1 .. n)
-â¦   ) (1 .. n)
-â¦ ^D
+… pairs' n =
+…   concatMap (\i ->
+…     map (\j -> [i, j]) (1 .. n)
+…   ) (1 .. n)
+… ^D
 
 > pairs' 3
 [[1,1],[1,2],[1,3],[2,1],[2,2],[2,3],[3,1],[3,2],[3,3]]
 ```
 
-This is looking better. However, we are generating too many pairs: we keep
-both [1, 2] and [2, 1] for example. We can exclude the second case by making
-sure that `j` only ranges from `i` to `n`:
+いい感じになってきました。しかし、`[1, 2]`と`[2,
+1]`の両方があるように、重複した組み合わせが生成されています。`j`を`i`から`n`の範囲に限定することで、２つ目の場合を取り除くことができます。
 
 ```text
-> :paste
-â¦ pairs'' n =
-â¦   concatMap (\i ->
-â¦     map (\j -> [i, j]) (i .. n)
-â¦   ) (1 .. n)
-â¦ ^D
-> pairs'' 3
+:paste
+… pairs'' n =
+…   concatMap (\i ->
+…     map (\j -> [i, j]) (i .. n)
+…   ) (1 .. n)
+… ^D
+pairs'' 3
 [[1,1],[1,2],[1,3],[2,2],[2,3],[3,3]]
 ```
 
-Great! Now that we have all of the pairs of potential factors, we can use
-`filter` to choose the pairs which multiply to give `n`:
+すばらしいです！因数の候補のすべての組み合わせを手に入れたので、`filter`を使えば、その積が`n`であるような組み合わせを選び出すことができます。
 
 ```text
 > import Data.Foldable
@@ -372,66 +333,58 @@ Great! Now that we have all of the pairs of potential factors, we can use
 [[1,10],[2,5]]
 ```
 
-This code uses the `product` function from the `Data.Foldable` module in the
-`foldable-traversable` library.
+このコードでは、`foldable-traversable`ライブラリの`Data.Foldable`モジュールにある`product`関数を使っています。
 
-Excellent! We've managed to find the correct set of factor pairs without
-duplicates.
+うまくいきました！因数の組み合わせの正しい集合を重複なく見つけることができました。
 
-## Do Notation
+## do記法
 
-However, we can improve the readability of our code considerably. `map` and
-`concatMap` are so fundamental, that they (or rather, their generalizations
-`map` and `bind`) form the basis of a special syntax called _do notation_.
+しかし、このコードの可読性は大幅に向上することができます。
+`map`や`concatMap`は基本的な関数であり、**do記法** (do notation) と呼ばれる特別な構文の基礎になっています。
+（もっと厳密にいえば、それらの一般化である`map`と`bind`が基礎をなしています。）
 
-_Note_: Just like `map` and `concatMap` allowed us to write _array
-comprehensions_, the more general operators `map` and `bind` allow us to
-write so-called _monad comprehensions_. We'll see plenty more examples of
-_monads_ later in the book, but in this chapter, we will only consider
-arrays.
+**注意**：`map`と`concatMap`が**配列内包表記**を書けるようにしているように、もっと一般的な演算子である`map`と`bind`は**モナド内包表記**
+(monad comprehensions) と呼ばれているものを書けるようにします。
+本書の後半では**モナド** (monad) の例をたっぷり見ていくことになりますが、
+この章では配列のみを考えます。
 
-We can rewrite our `factors` function using do notation as follows:
+do記法を使うと、先ほどの`factors`関数を次のように書き直すことができます。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:factors}}
 ```
 
-The keyword `do` introduces a block of code which uses do notation. The
-block consists of expressions of a few types:
+キーワード`do`はdo記法を使うコードのブロックを導入します。このブロックは幾つかの種類の式で構成されています。
 
-- Expressions which bind elements of an array to a name. These are indicated
-  with the backwards-facing arrow `<-`, with a name on the left, and an
-  expression on the right whose type is an array.
-- Expressions which do not bind elements of the array to names. The `do`
-  *result* is an example of this kind of expression and is illustrated in
-  the last line, `pure [i, j]`.
-- Expressions which give names to expressions, using the `let` keyword.
+- 配列の要素を名前に束縛する式。これは後ろ向きの矢印`<-`で 示されていて、その左側は名前、右側は配列の型を持つ式です。
+- 名前に配列の要素を束縛しない式。
+  最後の行の`pure [i, j]`が、この種類の式の一例です。
+- `let`キーワードを使用し、式に名前を与える式。
 
-This new notation hopefully makes the structure of the algorithm clearer. If you mentally replace the arrow `<-` with the word "choose", you might read it as follows: "choose an element `i` between 1 and n, then choose an element `j` between `i` and `n`, and return `[i, j]`".
+この新しい記法を使うと、アルゴリズムの構造がわかりやすくなることがあります。
+心のなかで`<-`を「選ぶ」という単語に置き換えるとすると、「1からnの間の要素`i`を選び、それからiからnの間の要素`j`を選び、`[i, j]`を返す」というように読むことができるでしょう。
 
-In the last line, we use the `pure` function. This function can be evaluated
-in PSCi, but we have to provide a type:
+最後の行では、`pure`関数を使っています。
+この関数はPSCiで評価することができますが、型を明示する必要があります。
 
 ```text
 > pure [1, 2] :: Array (Array Int)
 [[1, 2]]
 ```
 
-In the case of arrays, `pure` simply constructs a singleton array. In fact,
-we could modify our `factors` function to use this form, instead of using
-`pure`:
+配列の場合、`pure`は単に1要素の配列を作成します。
+実際に、`factors`関数を変更して、`pure`の代わりにこの形式を使うようにすることもできます。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:factorsV2}}
 ```
 
-and the result would be the same.
+そして、結果は同じになります。
 
-## Guards
+## ガード
 
-One further change we can make to the `factors` function is to move the
-filter inside the array comprehension. This is possible using the `guard`
-function from the `Control.Alternative` module (from the `control` package):
+`factors`関数を更に改良する方法としては、このフィルタを配列内包表記の内側に移動するというものがあります。
+これは`control`ライブラリにある`Control.Alternative`モジュールの`guard`関数を使用することで可能になります。
 
 ```haskell
 import Control.Alternative (guard)
@@ -439,9 +392,8 @@ import Control.Alternative (guard)
 {{#include ../exercises/chapter4/test/Examples.purs:factorsV3}}
 ```
 
-Just like `pure`, we can apply the `guard` function in PSCi to understand
-how it works. The type of the `guard` function is more general than we need
-here:
+`pure`と同じように、どのように動作するかを理解するために、PSCiで`guard`関数を適用して調べてみましょう。
+`guard`関数の型は、ここで必要とされるものよりもっと一般的な型になっています。
 
 ```text
 > import Control.Alternative
@@ -450,14 +402,13 @@ here:
 forall m. Alternative m => Boolean -> m Unit
 ```
 
-In our case, we can assume that PSCi reported the following type:
+今回の場合は、PSCiは次の型を報告するものと考えてください。
 
 ```haskell
 Boolean -> Array Unit
 ```
 
-For our purposes, the following calculations tell us everything we need to
-know about the `guard` function on arrays:
+目的からすると、次の計算の結果から配列における`guard`関数について今知りたいことはすべてわかります。
 
 ```text
 > import Data.Array
@@ -469,43 +420,35 @@ know about the `guard` function on arrays:
 0
 ```
 
-That is, if `guard` is passed an expression which evaluates to `true`, then
-it returns an array with a single element. If the expression evaluates to
-`false`, then its result is empty.
+つまり、`guard`が`true`に評価される式を渡された場合、単一の要素を持つ配列を返すのです。もし式が`false`と評価された場合は、その結果は空です。
 
-This means that if the guard fails, then the current branch of the array
-comprehension will terminate early with no results. This means that a call
-to `guard` is equivalent to using `filter` on the intermediate
-array. Depending on the application, you might prefer to use `guard` instead
-of a `filter`. Try the two definitions of `factors` to verify that they give
-the same results.
+ガードが失敗した場合、配列内包表記の現在の分岐は、結果なしで早めに終了されることを意味します。
+これは、`guard`の呼び出しが、途中の配列に対して`filter`を使用するのと同じだということです。
+実践の場面にもよりますが、`filter`の代わりに`guard`を使いたいことは多いでしょう。
+これらが同じ結果になることを確認するために、`factors`の二つの定義を試してみてください。
 
- ## Exercises
+## 演習
 
- 1. (Easy) Write a function `isPrime` which tests if its integer argument is
-    prime or not. _Hint_: Use the `factors` function.
- 1. (Medium) Write a function `cartesianProduct` which uses do notation to
-    find the _cartesian product_ of two arrays, i.e. the set of all pairs of
-    elements `a`, `b`, where `a` is an element of the first array, and `b`
-    is an element of the second.
- 1. (Medium) Write a function `triples :: Int -> Array (Array Int)` which
-    takes a number `n` and returns all Pythagorean triples whose components
-    (the `a`, `b` and `c` values) are each less than or equal to `n`. A
-    _Pythagorean triple_ is an array of numbers `[a, b, c]` such that `aÂ² +
-    bÂ² = cÂ²`. _Hint_: Use the `guard` function in an array comprehension.
- 1. (Difficult) Write a function `primeFactors` which produces the [prime
-    factorization](https://www.mathsisfun.com/prime-factorization.html) of
-    `n`, i.e. the array of prime integers whose product is `n`. _Hint_: for
-    an integer greater than 1, break the problem down into two subproblems:
-    finding the first factor, and finding the remaining factors.
+ 1. （簡単）整数の引数が素数であるかどうかを調べる関数`isPrime`を定義してみましょう。
+    **ヒント**：`factors`関数を使ってください。
+ 1. （やや難しい）do記法を使い、2つの配列の**直積集合**を見つけるための関数`cartesianProduct`を書いてみましょう。
+    直積集合とは、要素`a`、`b`のすべての組み合わせの集合のことです。
+    ここで`a`は最初の配列の要素、`b`は2つ目の配列の要素です。
+ 1. （やや難しい）数値`n`を取って構成要素（値`a`, `b`, `c`）がそれぞれ`n`以下であるような全てのピタゴラスの三つ組
+    (pythagorean triples) を返す関数`triples :: Int -> Array (Array
+    Int)`を書いてください。
+    **ピタゴラスの三つ組** は数値の配列`[a, b, c]`で \\( a ^ 2 + b ^ 2 = c ^ 2 \\) です。
+    **ヒント**：配列内包表記で`guard`関数を使ってください。
+ 1. （難しい）`factors`関数を使用して、数`n`の[素因数分解](https://www.mathsisfun.com/prime-factorization.html)を求める関数`primeFactors`を定義してみましょう。
+    数`n`の素因数分解とは、素数の積が`n`であるような整数の配列のことです。
+    **ヒント**：1より大きい整数について、問題を2つの部分問題に分解してください。
+    最初の因数を探し、それから残りの因数を探すのです。
 
-## Folds
+## 畳み込み
 
-Left and right folds over arrays provide another class of interesting
-functions which can be implemented using recursion.
+配列における左右の畳み込みは、再帰を用いて実装される別の興味深い関数の集まりを提供します。
 
-Start by importing the `Data.Foldable` module, and inspecting the types of
-the `foldl` and `foldr` functions using PSCi:
+PSCiを使って、`Data.Foldable`モジュールをインポートし、`foldl`と`foldr`関数の型を調べることから始めましょう。
 
 ```text
 > import Data.Foldable
@@ -517,9 +460,8 @@ forall a b f. Foldable f => (b -> a -> b) -> b -> f a -> b
 forall a b f. Foldable f => (a -> b -> b) -> b -> f a -> b
 ```
 
-These types are actually more general than we are interested in right
-now. For the purposes of this chapter, we can assume that PSCi had given the
-following (more specific) answer:
+これらの型は、現在興味があるものよりも一般的です。
+この章の目的では、PSCiは以下の（より具体的な）答えを与えていたと考えておきましょう。
 
 ```text
 > :type foldl
@@ -529,32 +471,33 @@ forall a b. (b -> a -> b) -> b -> Array a -> b
 forall a b. (a -> b -> b) -> b -> Array a -> b
 ```
 
-In both of these cases, the type `a` corresponds to the type of elements of
-our array. The type `b` can be thought of as the type of an "accumulator",
-which will accumulate a result as we traverse the array.
+どちらの型でも、`a`は配列の要素の型に対応しています。
+型`b`は、配列を走査 (traverse) したときの結果を累積する「累積器」(accumulator) の型だと考えることができます。
 
-The difference between the `foldl` and `foldr` functions is the direction of
-the traversal. `foldl` folds the array "from the left", whereas `foldr`
-folds the array "from the right".
+`foldl`関数と`foldr`関数の違いは走査の方向です。
+`foldr`が「右から」配列を畳み込むのに対して、`foldl`は「左から」配列を畳み込みます。
 
-Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can just use the addition operator, and the initial value of the accumulator will be zero:
+実際にこれらの関数の動きを見てみましょう。
+`foldl`を使用して数の配列の和を求めてみます。
+型`a`は`Int`になり、結果の型`b`も`Int`として選択することができます。
+ここでは、次の要素を累積器に加算する`Int -> Int -> Int`という型の関数、`Int`型の累積器の初期値、
+和を求めたい`Int`の配列という、3つの引数を提供する必要があります。
+最初の引数としては、加算演算子を使用することができますし、累積器の初期値はゼロになります。
 
 ```text
 > foldl (+) 0 (1 .. 5)
 15
 ```
 
-In this case, it didn't matter whether we used `foldl` or `foldr`, because
-the result is the same, no matter what order the additions happen in:
+この場合では、引数が逆になっていても`(+)`関数は同じ結果を返すので、`foldl`と`foldr`のどちらでも問題ありません。
 
 ```text
 > foldr (+) 0 (1 .. 5)
 15
 ```
 
-Let's write an example where the choice of folding function does matter, in
-order to illustrate the difference. Instead of the addition function, let's
-use string concatenation to build a string:
+`foldl`と`foldr`の違いを説明するために、畳み込み関数の選択が影響する例も書いてみましょう。
+加算関数の代わりに、文字列連結を使用して文字列を作ってみます。
 
 ```text
 > foldl (\acc n -> acc <> show n) "" [1,2,3,4,5]
@@ -564,34 +507,32 @@ use string concatenation to build a string:
 "54321"
 ```
 
-This illustrates the difference between the two functions. The left fold
-expression is equivalent to the following application:
+これは、2つの関数の​​違いを示しています。左畳み込み式は、以下の関数適用と同等です。
 
 ```text
 ((((("" <> show 1) <> show 2) <> show 3) <> show 4) <> show 5)
 ```
 
-whereas the right fold is equivalent to this:
+それに対し、右畳み込みは以下に相当します。
 
 ```text
 ((((("" <> show 5) <> show 4) <> show 3) <> show 2) <> show 1)
 ```
 
-## Tail Recursion
+## 末尾再帰
 
-Recursion is a powerful technique for specifying algorithms, but comes with
-a problem: evaluating recursive functions in JavaScript can lead to stack
-overflow errors if our inputs are too large.
+再帰はアルゴリズムを定義するための強力な手法ですが、問題も抱えています。
+JavaScriptで再帰関数を評価するとき、入力が大きすぎるとスタックオーバーフローでエラーを起こす可能性があるのです。
 
-It is easy to verify this problem, with the following code in PSCi:
+PSCiで次のコードを入力すると、この問題を簡単に検証できます。
 
 ```text
 > :paste
-â¦ f n =
-â¦   if n == 0
-â¦     then 0
-â¦     else 1 + f (n - 1)
-â¦ ^D
+… f n =
+…   if n == 0
+…     then 0
+…     else 1 + f (n - 1)
+… ^D
 
 > f 10
 10
@@ -600,51 +541,43 @@ It is easy to verify this problem, with the following code in PSCi:
 RangeError: Maximum call stack size exceeded
 ```
 
-This is a problem. If we are going to adopt recursion as a standard
-technique from functional programming, then we need a way to deal with
-possibly unbounded recursion.
+これは問題です。関数型プログラミングの基本的な手法として再帰を採用しようとするなら、無限かもしれない再帰でも扱える方法が必要です。
 
-PureScript provides a partial solution to this problem in the form of _tail
-recursion optimization_.
+PureScriptは**末尾再帰最適化** (tail recursion optimization)
+の形でこの問題に対する部分的な解決策を提供しています。
 
-_Note_: more complete solutions to the problem can be implemented in
-libraries using so-called _trampolining_, but that is beyond the scope of
-this chapter. The interested reader can consult the documentation for the
-[`free`](https://pursuit.purescript.org/packages/purescript-free) and
-[`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec)
-packages.
+**注意**：この問題へのより完全な解決策としては、いわゆる**トランポリン** (trampolining)
+を使用したライブラリで実装する方法がありますが、それはこの章で扱う範囲を超えています。
+この内容に興味のある読者は
+[`free`](https://pursuit.purescript.org/packages/purescript-free)や
+[`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec)パッケージの
+ドキュメントを参照してみてください。
 
-The key observation which enables tail recursion optimization is the
-following: a recursive call in _tail position_ to a function can be replaced
-with a _jump_, which does not allocate a stack frame. A call is in _tail
-position_ when it is the last call made before a function returns. This is
-the reason why we observed a stack overflow in the example - the recursive
-call to `f` was _not_ in tail position.
+末尾再帰最適化を可能にする上で鍵となる観点は以下となります。
+**末尾位置** (tail position)
+にある関数の再帰的な呼び出しは、スタックフレームが確保されない**ジャンプ**に置き換えることができます。
+関数が戻るより前の最後の呼び出しであるとき、呼び出しが**末尾位置**にあるといいます。
+なぜこの例でスタックオーバーフローを観察したのかはこれが理由です。
+この`f`の再帰呼び出しは、末尾位置**ではない**からです。
 
-In practice, the PureScript compiler does not replace the recursive call
-with a jump, but rather replaces the entire recursive function with a _while
-loop_.
+実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を**whileループ**に置き換えます。
 
-Here is an example of a recursive function with all recursive calls in tail
-position:
+以下はすべての再帰呼び出しが末尾位置にある再帰関数の例です。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:factorialTailRec}}
 ```
 
-Notice that the recursive call to `factorialTailRec` is the last thing that
-happens in this function - it is in tail position.
+`fact`への再帰呼び出しは、この関数の中で起こる最後のものである、つまり末尾位置にあることに注意してください。
 
-## Accumulators
+## 累積器
 
-One common way to turn a function which is not tail recursive into a tail
-recursive function is to use an _accumulator parameter_. An accumulator
-parameter is an additional parameter which is added to a function which
-_accumulates_ a return value, as opposed to using the return value to
-accumulate the result.
+末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、**累積器引数** (accumulator parameter)
+を使用する方法があります。
+累積器引数は関数に追加される余剰の引数で返り値を**累積**するものです。
+これは結果を累積するために返り値を使うのとは対称的です。
 
-For example, consider again the `length` function presented in the beginning
-of the chapter:
+例えば章の初めに示した`length`関数を再考しましょう。
 
 ```haskell
 length :: forall a. Array a -> Int
@@ -654,83 +587,74 @@ length arr =
     else 1 + (length $ fromMaybe [] $ tail arr)
 ```
 
-This implementation is not tail recursive, so the generated JavaScript will
-cause a stack overflow when executed on a large input array. However, we can
-make it tail recursive, by introducing a second function argument to
-accumulate the result instead:
+この実装は末尾再帰ではないので、大きな入力配列に対して実行されると、
+生成されたJavaScriptはスタックオーバーフローを発生させるでしょう。
+しかし代わりに、結果を蓄積するための2つ目の引数を関数に導入することで、これを末尾再帰に変えることができます。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:lengthTailRec}}
 ```
 
-In this case, we delegate to the helper function `length'`, which is tail
-recursive - its only recursive call is in the last case, and is in tail
-position. This means that the generated code will be a _while loop_, and
-will not blow the stack for large inputs.
+ここでは、配列を逆転させる作業を補助関数`length'`に委譲しています。
+`length'`は末尾再帰です。
+その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。
+これは、生成されたコードが**whileループ**となり、大きな入力でもスタックが溢れないことを意味します。
 
-To understand the implementation of `lengthTailRec`, note that the helper
-function `length'` essentially uses the accumulator parameter to maintain an
-additional piece of state - the partial result. It starts out at 0, and
-grows by adding 1 for every element in the input array.
+`lengthTailRec`の実装を理解するために補助関数`length'`に着目しましょう。
+この関数は必然的に累積器引数を使って追加の状態……これは部分的な結果です……を維持しています。
+0から始まり、入力の配列中の全ての要素それぞれについて1ずつ足して成長していきます。
 
-Note also that while we might think of the accumulator as "state", there is
-no direct mutation going on.
+累積器を「状態」と考えることもできますが、直接に変更がされているわけではないことにも注意してください。
 
-## Prefer Folds to Explicit Recursion
+## 明示的な再帰より畳み込みを選ぶ
 
-If we can write our recursive functions using tail recursion, then we can
-benefit from tail recursion optimization, so it becomes tempting to try to
-write all of our functions in this form. However, it is often easy to forget
-that many functions can be written directly as a fold over an array or
-similar data structure. Writing algorithms directly in terms of combinators
-such as `map` and `fold` has the added advantage of code simplicity - these
-combinators are well-understood, and as such, communicate the _intent_ of
-the algorithm much better than explicit recursion.
+末尾再帰を使用して再帰関数を記述することができれば末尾再帰最適化の恩恵を受けることができるので、
+すべての関数をこの形で書こうとする誘惑にかられます。
+しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。
+`map`や`fold`のようなコンビネータを使って直接アルゴリズムを書くことには、コードの単純さという利点があります。
+これらのコンビネータはよく知られており、明示的な再帰よりもアルゴリズムの**意図**をよりはっきりとさせるのです。
 
-For example, we can reverse an array using `foldr`:
+例えば`foldr`を使って配列を反転できます。
 
 ```text
 > import Data.Foldable
 
 > :paste
-â¦ reverse :: forall a. Array a -> Array a
-â¦ reverse = foldr (\x xs -> xs <> [x]) []
-â¦ ^D
+… reverse :: forall a. Array a -> Array a
+… reverse = foldr (\x xs -> xs <> [x]) []
+… ^D
 
 > reverse [1, 2, 3]
 [3,2,1]
 ```
 
-Writing `reverse` in terms of `foldl` will be left as an exercise for the
-reader.
+`foldl`を使って`reverse`を書くことは、読者への課題として残しておきます。
 
- ## Exercises
+## 演習
 
- 1. (Easy) Write a function `allTrue` which uses `foldl` to test whether an
-    array of boolean values are all true.
- 2. (Medium - No Test) Characterize those arrays `xs` for which the function
-    `foldl (==) false xs` returns `true`. In other words, complete the
-    sentence: "The function returns `true` when `xs` contains ..."
- 3. (Medium) Write a function `fibTailRec` which is the same as `fib` but in
-    tail recursive form. _Hint_: Use an accumulator parameter.
- 4. (Medium) Write `reverse` in terms of `foldl`.
+ 1. （簡単）`foldl`を使って真偽値配列の値が全て真か検査する関数`allTrue`を書いてください。
+ 2. （やや難しい。テストなし）関数`foldl (==) false xs`が真を返すような配列`xs`とはどのようなものか説明してください。
+    言い換えると、次の文を完成させることになります。
+    「関数は`xs`が……を含むときに`true`を返す。」
+ 3. （やや難しい）末尾再帰の形式を取っていること以外は`fib`と同じような関数`fibTailRec`を書いてください。
+    **ヒント**：累積器引数を使ってください。
+ 4. （やや難しい）`foldl`を使って`reverse`を書いてみましょう。
 
-## A Virtual Filesystem
+## 仮想ファイルシステム
 
-In this section, we're going to apply what we've learned, writing functions
-which will work with a model of a filesystem. We will use maps, folds and
-filters to work with a predefined API.
+この節では、これまで学んだことを応用して、模擬的なファイルシステムで動作する関数を書いていきます。
+事前に定義されたAPIで動作するように、マップ、畳み込み、およびフィルタを使用します。
 
-The `Data.Path` module defines an API for a virtual filesystem, as follows:
+`Data.Path`モジュールでは、次のように仮想ファイルシステムのAPIが定義されています。
 
-- There is a type `Path` which represents a path in the filesystem.  - There
-is a path `root` which represents the root directory.  - The `ls` function
-enumerates the files in a directory.  - The `filename` function returns the
-file name for a `Path`.  - The `size` function returns the file size for a
-`Path` which represents a file.  - The `isDirectory` function tests whether
-a `Path` is a file or a directory.
+- ファイルシステム内のパスを表す型`Path`があります。
+- ルートディレクトリを表すパス`root`があります。
+- `ls`関数はディレクトリ内のファイルを列挙します。
+- `filename`関数は`Path`のファイル名を返します。
+- `size`関数は`Path`が示すファイルの大きさを返します。
+- `isDirectory`関数はファイルかディレクトリかを調べます。
 
-In terms of types, we have the following type definitions:
+型については、型定義は次のようになっています。
 
 ```haskell
 root :: Path
@@ -744,7 +668,7 @@ size :: Path -> Maybe Int
 isDirectory :: Path -> Boolean
 ```
 
-We can try out the API in PSCi:
+PSCiでこのAPIを試してみましょう。
 
 ```text
 $ spago repl
@@ -761,36 +685,34 @@ true
 [/bin/,/etc/,/home/]
 ```
 
-The `Test.Examples` module defines functions which use the `Data.Path`
-API. You do not need to modify the `Data.Path` module, or understand its
-implementation. We will work entirely in the `Test.Examples` module.
+`Test.Examples`モジュールでは`Data.Path`APIを使用する関数を定義しています。
+`Data.Path`モジュールを変更したり定義を理解したりする必要はありません。
+全て`Test.Examples`モジュールだけで作業を行います。
 
-## Listing All Files
+## すべてのファイルの一覧
 
-Let's write a function which performs a deep enumeration of all files inside
-a directory. This function will have the following type:
+それでは、内側のディレクトリまで、すべてのファイルを列挙する関数を書いてみましょう。
+この関数は以下のような型を持つでしょう。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_signature}}
 ```
 
-We can define this function by recursion. First, we can use `ls` to
-enumerate the immediate children of the directory. For each child, we can
-recursively apply `allFiles`, which will return an array of
-paths. `concatMap` will allow us to apply `allFiles` and flatten the results
-at the same time.
+再帰を使ってこの関数を定義することができます。
+まずは`ls`を使用してディレクトリの直接の子を列挙します。
+それぞれの子について再帰的に`allFiles`を適用すると、それぞれパスの配列が返ってくるでしょう。
+`concatMap`を適用すると、この結果を同時に平坦化することができます。
 
-Finally, we use the cons operator `:` to include the current file:
+最後に、cons演算子`:`を使って現在のファイルも含めます。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_implementation}}
 ```
 
-_Note_: the cons operator `:` actually has poor performance on immutable
-arrays, so it is not recommended in general. Performance can be improved by
-using other data structures, such as linked lists and sequences.
+**注意**：cons演算子`:`は、実際には不変な配列に対してパフォーマンスが悪いので、一般的には推奨されません。
+リンクリストやシーケンスなどの他のデータ構造を使用すると、パフォーマンスを向上させることができます。
 
-Let's try this function in PSCi:
+それではPSCiでこの関数を試してみましょう。
 
 ```text
 > import Test.Examples
@@ -801,32 +723,32 @@ Let's try this function in PSCi:
 [/,/bin/,/bin/cp,/bin/ls,/bin/mv,/etc/,/etc/hosts, ...]
 ```
 
-Great! Now let's see if we can write this function using an array
-comprehension using do notation.
+すばらしい！
+do記法で配列内包表記を使ってもこの関数を書くことができるので見ていきましょう。
 
-Recall that a backwards arrow corresponds to choosing an element from an
-array. The first step is to choose an element from the immediate children of
-the argument. Then we simply call the function recursively for that
-file. Since we are using do notation, there is an implicit call to
-`concatMap` which concatenates all of the recursive results.
+逆向きの矢印は配列から要素を選択するのに相当することを思い出してください。
+最初の手順は、引数の直接の子から要素を選択することです。
+それから、単にそのファイルに対してこの再帰関数を呼びします。
+do記法を使用しているので、再帰的な結果をすべて連結する`concatMap`が暗黙に呼び出されています。
 
-Here is the new version:
+新しいバージョンは次のようになります。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_2}}
 ```
 
-Try out the new version in PSCi - you should get the same result. I'll let
-you decide which version you find clearer.
+PSCiで新しいコードを試してみてください。
+同じ結果が返ってくるはずです。
+どちらのほうがわかりやすいかの選択はお任せします。
 
- ## Exercises
+## 演習
 
- 1. (Easy) Write a function `onlyFiles` which returns all _files_ (not
-    directories) in all subdirectories of a directory.
- 2. (Medium) Write a function `whereIs` to search for a file by name. The
-    function should return a value of type `Maybe Path`, indicating the
-    directory containing the file, if it exists. It should behave as
-    follows:
+ 1. （簡単）ディレクトリのすべてのサブディレクトリの中まで、
+    （ディレクトリを除く）すべてのファイルを返すような関数`onlyFiles`を書いてみてください。
+ 2. （やや難しい）ファイルを名前で検索する関数`whereIs`を書いてください。
+    この関数は型`Maybe Path`の値を返すものとします。
+    この値が存在するなら、そのファイルがそのディレクトリに含まれているということを表します。
+    この関数は次のように振る舞う必要があります。
 
      ```text
      > whereIs root "ls"
@@ -836,21 +758,22 @@ you decide which version you find clearer.
      Nothing
      ```
 
-     _Hint_: Try to write this function as an array comprehension using do notation.
- 3. (Difficult) Write a function `largestSmallest` which takes a `Path` and returns an array containing the single largest and single smallest files in the `Path`. _Note_: consider the cases where there are zero or one files in the `Path` by returning an empty array or a one-element array respectively.
+     **ヒント**：この関数をdo記法を使った配列内包表記で書いてみましょう。
+ 3. （難しい）`Path`を取って`Path`に最大のファイルと最小のファイルを1つずつ含む配列を返す関数`largestSmallest`を書いてください。
+    **補足**：空配列や1要素の配列を返すことで、
+    `Path`にゼロか1個のファイルがある場合についても考慮してください。
 
 ## まとめ
 
-In this chapter, we covered the basics of recursion in PureScript, as a
-means of expressing algorithms concisely. We also introduced user-defined
-infix operators, standard functions on arrays such as maps, filters and
-folds, and array comprehensions which combine these ideas. Finally, we
-showed the importance of using tail recursion in order to avoid stack
-overflow errors, and how to use accumulator parameters to convert functions
-to tail recursive form.
+この章では、アルゴリズムを簡潔に表現する手段として、PureScriptでの再帰の基本を説明しました。
+また、独自の中置演算子や、マップ、フィルタリングや畳み込みなどの配列に対する標準関数、
+およびこれらの概念を組み合わせた配列内包表記を導入しました。
+最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、
+累積器引数を使用して末尾再帰形に関数を変換する方法を示しました。
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

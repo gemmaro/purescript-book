@@ -4,16 +4,16 @@ require 'pathname'
 require 'rake/clean'
 
 CLEAN << 'po4a.cfg'
-PORT = ENV['PORT'] || 3000
+PORT = ENV['PORT'] || 3456
 
 task default: :watch
 
 task :watch do
-  sh <<~END_SHELL
-    echo locales/ja.po | entr rake translate | logger -s -t translate &
-    mdbook serve -p #{PORT} | logger -s -t serve &
-    wait
-  END_SHELL
+  sh 'echo locales/ja.po | entr rake translate'
+end
+
+task :serve do
+  sh "mdbook serve -p #{PORT}"
 end
 
 task translate: ['po4a.cfg', 'locales/ja.po'] do |t|

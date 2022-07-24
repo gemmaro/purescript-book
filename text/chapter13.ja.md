@@ -119,7 +119,7 @@ not equal to expected:
 Notice how the input `xs` and `ys` were generated as arrays of
 randomly-selected integers.
 
- ## Exercises
+## 演習
 
  1. (Easy) Write a property which asserts that merging an array with the
     empty array does not modify the original array. _Note_: This new
@@ -181,7 +181,7 @@ quickCheck \xs ys ->
 Here, `xs` and `ys` both have type `Array Int`, since the `ints` function
 has been used to disambiguate the unknown type.
 
- ## Exercises
+## 演習
 
  1. (Easy) Write a function `bools` which forces the types of `xs` and `ys`
     to be `Array Boolean`, and add additional properties which test
@@ -324,7 +324,7 @@ quickCheck \t a ->
 Here, the argument `t` is a randomly-generated tree of type `Tree Int`,
 where the type argument disambiguated by the identity function `treeOfInt`.
 
- ## Exercises
+## 演習
 
  1. (Medium) Create a newtype for `String` with an associated `Arbitrary`
     instance which generates collections of randomly-selected characters in
@@ -516,7 +516,7 @@ see an array of `Success` data constructors printed to the console.
 random input data for performance benchmarks, or generating sample form data
 for web applications.
 
- ## Exercises
+## 演習
 
  1. (Easy) Write `Coarbitrary` instances for the `Byte` and `Sorted` type
     constructors.
@@ -551,6 +551,7 @@ particular:
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

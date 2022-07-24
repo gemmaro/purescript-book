@@ -406,7 +406,7 @@ lifted were independent of one another. Since the `Monad` type class allows
 computations to depend on the results of previous computations, the same
 does not apply - a monad has to combine its side-effects in sequence.
 
- ## Exercises
+## 演習
 
  1. (Easy) Write a function `third` which returns the third element of an
     array with three or more elements. Your function should return an
@@ -1321,6 +1321,7 @@ other use-cases.
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

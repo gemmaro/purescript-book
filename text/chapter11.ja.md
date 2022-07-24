@@ -168,7 +168,7 @@ the numbers in several arrays as follows:
 21
 ```
 
- ## Exercises
+## 演習
 
  1. (Easy) What is the result of replacing `execState` with `runState` or
     `evalState` in our example above?
@@ -268,7 +268,7 @@ used to provide the global configuration:
 runReader :: forall r a. Reader r a -> r -> a
 ```
 
- ## Exercises
+## 演習
 
  In these exercises, we will use the `Reader` monad to build a small library for rendering documents with indentation. The "global configuration" will be a number indicating the current indentation level:
 
@@ -402,7 +402,7 @@ We can test our modified function in PSCi:
 Tuple 3 ["gcdLog 21 15","gcdLog 6 15","gcdLog 6 9","gcdLog 6 3","gcdLog 3 3"]
 ```
 
- ## Exercises
+## 演習
 
  1. (Medium) Rewrite the `sumArray` function above using the `Writer` monad
     and the `Additive Int` monoid from the `monoid` package.
@@ -706,7 +706,7 @@ transformer stacks, but quickly becomes inconvenient.
 Fortunately, as we will see, we can use the automatic code generation
 provided by type class inference to do most of this "heavy lifting" for us.
 
- ## Exercises
+## 演習
 
  1. (Easy) Use the `ExceptT` monad transformer over the `Identity` functor
     to write a function `safeDivide` which divides two numbers, throwing an
@@ -920,7 +920,7 @@ Again, this illustrates the power of reusability that monad transformers
 bring - we were able to write a backtracking parser in a declarative style
 with only a few lines of code, by reusing standard abstractions!
 
- ## Exercises
+## 演習
 
  1. (Easy) Remove the calls to the `lift` function from your implementation
     of the `string` parser. Verify that the new implementation type checks,
@@ -1214,7 +1214,7 @@ console interface, and displays the initial prompt:
 {{#include ../exercises/chapter11/src/Main.purs:runGame_attach_handler}}
 ```
 
- ## Exercises
+## 演習
 
  1. (Medium) Implement a new command `cheat`, which moves all game items
     from the game grid into the user's inventory. Create a function `cheat
@@ -1277,7 +1277,7 @@ The interesting part of our parser is constructing the `GameEnvironment`:
 
 Notice how we were able to use the notation afforded by the applicative operators to give a compact, declarative specification of our command line interface. In addition, it is simple to add new command line arguments, simply by adding a new function argument to `runGame`, and then using `<*>` to lift `runGame` over an additional argument in the definition of `env`.
 
- ## Exercises
+## 演習
 
  1. (Medium) Add a new Boolean-valued property `cheatMode` to the
     `GameEnvironment` record. Add a new command line flag `-c` to the
@@ -1310,6 +1310,7 @@ higher-kinded polymorphism and multi-parameter type classes.
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

@@ -1292,7 +1292,7 @@ Left errs -> alert $ "There are " <> show (length errs) <> " validation errors."
 alert $ "Error: " <> err <> ". Loading examplePerson"
 ```
 
- ## Exercises
+## 演習
 
  1. (Easy) Write a wrapper for the `removeItem` method on the `localStorage`
     object, and add your foreign function to the `Effect.Storage` module.
@@ -1648,7 +1648,7 @@ import { showNumber } from 'Data.Show'
 shout(showNumber)(42);
 ```
 
- ## Exercises
+## 演習
 
  1. (Easy) What are the runtime representations of these types?
 
@@ -1731,6 +1731,7 @@ generated automatically, whenever the `Main` module is defined.
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

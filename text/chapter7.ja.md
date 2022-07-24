@@ -491,7 +491,7 @@ But the `combineList` function works for any `Applicative`! We can use it to com
 We will see the `combineList` function again later, when we consider
 `Traversable` functors.
 
- ## Exercises
+## 演習
 
  1. (Medium) Write versions of the numeric operators `+`, `-`, `*` and `/`
     which work with optional arguments (i.e. arguments wrapped in `Maybe`)
@@ -691,7 +691,7 @@ pure ({ type: HomePhone, number: "555-555-5555" })
 invalid (["Field 'Number' did not match the required format"])
 ```
 
- ## Exercises
+## 演習
 
  1. (Easy) Write a regular expression `stateRegex :: Regex` to check that a
     string only contains two alphabetic characters. _Hint_: see the source
@@ -848,7 +848,7 @@ any type `a`. Generally, most "container" data type constructors have
 `Traversable` instances. As an example, the exercises will include writing a
 `Traversable` instance for a type of binary trees.
 
- ## Exercises
+## 演習
 
  1. (Easy) Write `Eq` and `Show` instances for the following binary tree
     data structure:
@@ -958,6 +958,7 @@ extend our address book example to run in the browser!
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。

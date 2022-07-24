@@ -24,7 +24,7 @@ used to. A type class serves a purpose more similar to an OO interface.
 The source code for this chapter is defined in the file
 `src/Data/Hashable.purs`.
 
-The project has the following dependencies:
+このプロジェクトには以下の依存関係があります。
 
 - `maybe`, which defines the `Maybe` data type, which represents optional
 values.  - `tuples`, which defines the `Tuple` data type, which represents
@@ -166,7 +166,7 @@ chapter will require you to copy the definition of a type into your
 MySolutions module so that you can define type class instances for that
 type.
 
- ## Exercises
+## 演習
 
 1. (Easy) Define a `Show` instance for `Point`. Match the same output as the
    `showPoint` function from the previous chapter. _Note:_ Point is now a
@@ -997,7 +997,7 @@ the `Hashable (Array a)` obeys the type class law as well.
 The source code for this chapter includes several other examples of
 `Hashable` instances, such as instances for the `Maybe` and `Tuple` type.
 
- ## Exercises
+## 演習
 
  1. (Easy) Use PSCi to test the hash functions for each of the defined
     instances. _Note_: There is no provided unit test for this exercise.
@@ -1036,6 +1036,7 @@ rest of the book.
 
 - - -
 
-この翻訳は[@aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあり、
-翻訳のライセンスは[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)にしたがいます。
+この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
+
+また、本翻訳も原文と原翻訳にしたがい、[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)の下に提供されています。
