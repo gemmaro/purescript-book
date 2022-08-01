@@ -1,17 +1,15 @@
-# SOME DESCRIPTIVE TITLE
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 実例によるPureScript
+# Copyright (C) 2022 gemmaro.
+# This file is distributed under the same license as the original document.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2022-07-09 14:23+0900\n"
-"PO-Revision-Date: 2022-07-24 23:08+0900\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-08-01 23:13+0900\n"
+"Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
+"Language-Team: Nothing\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17549,58 +17547,52 @@ msgstr ""
 
 #. type: Title #
 #: text/chapter5.md:1
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Pattern Matching"
 msgstr "パターン照合"
 
 #. type: Plain text
 #: text/chapter5.md:6
-#, fuzzy
 msgid ""
 "This chapter will introduce two new concepts: algebraic data types, and "
 "pattern matching. We will also briefly cover an interesting feature of the "
 "PureScript type system: row polymorphism."
 msgstr ""
-"この章では、代数的データ型とパターン照合という、ふたつの新しい概念を導入しま"
-"す。また、行多相というPureScriptの型システムの興味深い機能についても簡単に取"
-"り扱います。"
+"この章では、代数的データ型とパターン照合という、ふたつの新しい概念を導入します。\n"
+"また、行多相というPureScriptの型システムの興味深い機能についても簡単に取り扱います。"
 
 #. type: Plain text
 #: text/chapter5.md:8
-#, fuzzy
 msgid ""
 "Pattern matching is a common technique in functional programming and allows "
 "the developer to write compact functions which express potentially complex "
 "ideas, by breaking their implementation down into multiple cases."
 msgstr ""
-"**パターン照合**(Pattern matching)は関数​​型プログラミングにおける一般的な手法"
-"で、複数の場合に実装を分解することにより、開発者は潜在的に複雑な動作の関数を"
-"簡潔に書くことができます。\n"
+"**パターン照合** (pattern matching) は関数​​型プログラミングにおける一般的な手法で、\n"
+"複数の場合に実装を分解することにより、開発者は潜在的に複雑な動作の関数を簡潔に書くことができます。"
 
 #. type: Plain text
 #: text/chapter5.md:10
-#, fuzzy
 msgid ""
 "Algebraic data types are a feature of the PureScript type system which "
 "enable a similar level of expressiveness in the language of types - they are "
 "closely related to pattern matching."
 msgstr ""
-"代数的データ型はPureScriptの型システムの機能で、パターン照合とも密接に関連し"
-"ています。"
+"代数的データ型はPureScriptの型システムの機能であり、\n"
+"型のある言語において同様の水準の表現力を可能にしています。\n"
+"パターン照合とも密接に関連しています。"
 
 #. type: Plain text
 #: text/chapter5.md:12
-#, fuzzy
 msgid ""
 "The goal of the chapter will be to write a library to describe and "
 "manipulate simple vector graphics using algebraic types and pattern matching."
 msgstr ""
-"この章の目的は、代数的データ型やパターン照合を使用して、単純なベクターグラ"
-"フィックスを描画し操作するためのライブラリを書くことです。"
+"この章の目的は、代数的データ型やパターン照合を使用して、\n"
+"単純なベクターグラフィックスを描画し操作するためのライブラリを書くことです。"
 
 #. type: Plain text
 #: text/chapter5.md:16
-#, fuzzy
 msgid ""
 "The source code for this chapter is defined in the file `src/Data/Picture."
 "purs`."
@@ -17609,96 +17601,84 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:18
-#, fuzzy
 msgid ""
 "The `Data.Picture` module defines a data type `Shape` for simple shapes, and "
 "a type `Picture` for collections of shapes, along with functions for working "
 "with those types."
-msgstr ""
-"`Data.Picture`モジュールは、簡単な図形を表すデータ型 `Shape`や、図形の集合で"
-"ある型 `Picture`、及びこれらの型を扱うための関数を定義しています。"
+msgstr "`Data.Picture`モジュールは、簡単な図形を表すデータ型 `Shape`や、図形の集合である型 `Picture`、及びこれらの型を扱うための関数を定義しています。"
 
 #. type: Plain text
 #: text/chapter5.md:20
-#, fuzzy
 msgid ""
 "The module imports the `Data.Foldable` module, which provides functions for "
 "folding data structures:"
-msgstr ""
-"このモジュールでは、データ構造の畳込みを行う関数を提供する `Data.Foldable`モ"
-"ジュールもインポートします。"
+msgstr "このモジュールでは、データ構造の畳込みを行う関数を提供する `Data.Foldable`モジュールもインポートします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:21
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:module_picture}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:module_picture}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:26
-#, fuzzy
 msgid ""
 "The `Data.Picture` module also imports the `Number` module, but this time "
 "using the `as` keyword:"
-msgstr ""
-"`Data.Picture`モジュールでは、 `Global`と `Math`モジュールもインポートするた"
-"め `as`キーワードを使用します。"
+msgstr "`Data.Picture`モジュールは`Number`モジュールもインポートしますが、こちらは`as`キーワードを使います。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:27
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:picture_import_as}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:picture_import_as}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:32
-#, fuzzy
 msgid ""
 "This makes the types and functions in that module available for use, but "
 "only by using the _qualified name_, like `Number.max`. This can be useful to "
 "avoid overlapping imports, or just to make it clearer which modules certain "
 "things are imported from."
 msgstr ""
-"これは型や関数をモジュール内で使用できるようにしますが、`Global.infinity`や"
-"`Math.max`といった**修飾名**でのみ使用にできるようにします。これは重複したイ"
-"ンポートをさけ、使用するモジュールを明確にするのに有効な方法です。"
+"これは型や関数をモジュール内で使用できるようにしますが、\n"
+"それは`Number.max`のように**修飾名**を使ったときのみです。\n"
+"これは重複したインポートを避けたり、\n"
+"何らかのものがどのモジュールからインポートされたのかを明らかにするのに役立ちます。"
 
 #. type: Plain text
 #: text/chapter5.md:34
-#, fuzzy
 msgid ""
 "_Note_: it is not necessary to use the same module name as the original "
 "module for a qualified import. Shorter qualified names like `import Data."
 "Number as N` are possible, and quite common."
 msgstr ""
-"**注意**：同じモジュール名を修飾名に使用する場合には不要な作業です。一般的に"
-"は`import Math as M`などの短い名前がよく使われています。\n"
+"**注意**：元のモジュールと同じモジュール名を修飾名に使用するのは不要です。\n"
+"`import Math as M`などのより短い名前にすることは可能ですし、かなりよくあります。"
 
 #. type: Title ##
 #: text/chapter5.md:35
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Simple Pattern Matching"
 msgstr "単純なパターン照合"
 
 #. type: Plain text
 #: text/chapter5.md:38
-#, fuzzy
 msgid ""
 "Let's begin by looking at an example. Here is a function which computes the "
 "greatest common divisor of two integers using pattern matching:"
 msgstr ""
-"それではコード例を見ることから始めましょう。パターン照合を使用して2つの整数の"
-"最大公約数を計算する関数は、次のようになります。"
+"それではコード例を見ることから始めましょう。\n"
+"パターン照合を使用して2つの整数の最大公約数を計算する関数は、次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:39
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:gcd}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:gcd}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:44
-#, fuzzy
 msgid ""
 "This algorithm is called the Euclidean Algorithm. If you search for its "
 "definition online, you will likely find a set of mathematical equations "
@@ -17706,15 +17686,15 @@ msgid ""
 "matching: it allows you to define code by cases, writing simple, declarative "
 "code which looks like a specification of a mathematical function."
 msgstr ""
-"このアルゴリズムはユークリッドの互除法と呼ばれています。その定義をオンライン"
-"で検索すると、おそらく上記のコードによく似た数学の方程式が見つかるでしょう。"
-"パターン照合の利点のひとつは、上記のようにコードを場合分けして定義することが"
-"でき、数学関数の定義と似たような簡潔で宣言型なコードを書くことができることで"
-"す。"
+"このアルゴリズムはユークリッドの互除法と呼ばれています。\n"
+"その定義をオンラインで検索すると、\n"
+"おそらく上記のコードによく似た数学の方程式が見つかるでしょう。\n"
+"パターン照合の利点のひとつは、\n"
+"上記のようにコードを場合分けして定義することができ、\n"
+"数学関数の定義と似たような簡潔で宣言型なコードを書くことができることです。"
 
 #. type: Plain text
 #: text/chapter5.md:46
-#, fuzzy
 msgid ""
 "A function written using pattern matching works by pairing sets of "
 "conditions with their results. Each line is called an _alternative_ or a "
@@ -17725,23 +17705,23 @@ msgid ""
 "returned. Each case is tried in order, and the first case whose patterns "
 "match their inputs determines the return value."
 msgstr ""
-"パターン照合を使用して書かれた関数は、条件と結果の組み合わせによって動作しま"
-"す。この定義の各行は**選択肢**(alternative)や**場合**(case)と呼ばれています。"
-"等号の左辺の式は**パターン**と呼ばれており、それぞれの場合は空白で区切られた1"
-"つ以上のパターンで構成されています。等号の右側の式が評価され値が返される前に"
-"引数が満たさなければならない条件について、これらの場合は説明しています。それ"
-"ぞれの場合は上からこの順番に試されていき、最初に入力に適合した場合が返り値を"
-"決定します。"
+"パターン照合を使用して書かれた関数は、\n"
+"条件と結果の組み合わせによって動作します。\n"
+"この定義の各行は**選択肢** (alternative) や**場合** (case) と呼ばれています。\n"
+"等号の左辺の式は**パターン**と呼ばれており、\n"
+"それぞれの場合は空白で区切られた1つ以上のパターンで構成されています。\n"
+"場合の集まりは、等号の右側の式が評価され値が返される前に、\n"
+"引数が満たさなければならないどれかの条件を表現しています。\n"
+"それぞれの場合は上からこの順番に試されていき、\n"
+"最初に入力に適合した場合が返り値を決定します。"
 
 #. type: Plain text
 #: text/chapter5.md:48
-#, fuzzy
 msgid "For example, the `gcd` function is evaluated using the following steps:"
 msgstr "たとえば、 `gcd`関数は次の手順で評価されます。"
 
 #. type: Plain text
 #: text/chapter5.md:52
-#, fuzzy
 msgid ""
 "- The first case is tried: if the second argument is zero, the function "
 "returns `n` (the first argument).  - If not, the second case is tried: if "
@@ -17749,68 +17729,64 @@ msgid ""
 "- Otherwise, the function evaluates and returns the expression in the last "
 "line."
 msgstr ""
-"- まず最初の場合が試されます。第２引数がゼロの場合、関数は `n`（最初の引数）"
-"を返します。 - そうでなければ、2番目の場合が試されます。最初の引数がゼロの場"
-"合、関数は `m`（第２引数）を返します。 - それ以外の場合、関数は最後の行の式を"
-"評価して返します。"
+"- まず最初の場合が試されます。第2引数がゼロの場合、関数は `n`（最初の引数）を返します。\n"
+"- そうでなければ、2番目の場合が試されます。\n"
+"  最初の引数がゼロの場合、関数は `m`（第2引数）を返します。\n"
+"- それ以外の場合、関数は最後の行の式を評価して返します。"
 
 #. type: Plain text
 #: text/chapter5.md:54
-#, fuzzy
 msgid ""
 "Note that patterns can bind values to names - each line in the example binds "
 "one or both of the names `n` and `m` to the input values. As we learn about "
 "different kinds of patterns, we will see that different types of patterns "
 "correspond to different ways to choose names from the input arguments."
 msgstr ""
-"パターンは値を名前に束縛することができることに注意してください。この例の各行"
-"では `n`という名前と `m`という名前の両方、またはどちらか一方に、入力された値"
-"を束縛しています。これより、入力の引数から名前を選ぶためのさまざまな方法に対"
-"応した、さまざまな種類のパターンを見ていくことになります。"
+"パターンは値を名前に束縛することができることに注意してください。\n"
+"この例の各行では `n`という名前と `m`という名前の両方、\n"
+"またはどちらか一方に、入力された値を束縛しています。\n"
+"これよりさまざまな種類のパターンについて学びますが、\n"
+"これらのパターンは入力の引数から名前を選ぶさまざまな方法に対応付けられることがわかるでしょう。"
 
 #. type: Title ##
 #: text/chapter5.md:55
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Simple Patterns"
 msgstr "単純なパターン"
 
 #. type: Plain text
 #: text/chapter5.md:58
-#, fuzzy
 msgid "The example code above demonstrates two types of patterns:"
 msgstr "上記のコード例では、2種類のパターンを示しました。"
 
 #. type: Plain text
 #: text/chapter5.md:61
-#, fuzzy
 msgid ""
 "- Integer literals patterns, which match something of type `Int`, only if "
 "the value matches exactly.  - Variable patterns, which bind their argument "
 "to a name"
 msgstr ""
-"- `Int`型の値が正確に一致する場合にのみ適合する、数値リテラルパターン - 引数"
-"を名前に束縛する、変数パターン"
+"- `Int`型の値が正確に一致する場合にのみ適合する、整数リテラルパターン\n"
+"- 引数を名前に束縛する、変数パターン"
 
 #. type: Plain text
 #: text/chapter5.md:63
-#, fuzzy
 msgid "There are other types of simple patterns:"
 msgstr "単純なパターンには他にも種類があります。"
 
 #. type: Plain text
 #: text/chapter5.md:66
-#, fuzzy
 msgid ""
 "- `Number`, `String`, `Char` and `Boolean` literals - Wildcard patterns, "
 "indicated with an underscore (`_`), which match any argument, and which do "
 "not bind any names."
 msgstr ""
-"- 文字列リテラルと真偽リテラル - どんな引数とも適合するが名前に束縛はしない、"
-"アンダースコア（ `_`）で表されるワイルドカードパターン"
+"- `Number`、`String`、`Char`、そして`Boolean`といったリテラル\n"
+"- どんな引数とも適合するが名前に束縛はしない、\n"
+"  アンダースコア (`_`) で表されるワイルドカードパターン"
 
 #. type: Plain text
 #: text/chapter5.md:68
-#, fuzzy
 msgid ""
 "Here are two more examples which demonstrate using these simple patterns:"
 msgstr "ここではこれらの単純なパターンを使用した、さらに2つの例を示します。"
@@ -17823,48 +17799,51 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter5/src/ChapterExamples.purs:toString}}\n"
 msgstr ""
+"{{#include ../exercises/chapter5/src/ChapterExamples.purs:fromString}}\n"
+"\n"
+"{{#include ../exercises/chapter5/src/ChapterExamples.purs:toString}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:76
-#, fuzzy
 msgid "Try these functions in PSCi."
-msgstr "`PSCi`でこれらの関数を試してみてください。"
+msgstr "PSCiでこれらの関数を試してみてください。"
 
 #. type: Plain text
 #: text/chapter5.md:80
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "In the Euclidean algorithm example, we used an `if .. then .. else` expression to switch between the two alternatives when `m > n` and `m <= n`. Another option in this case would be to use a _guard_.\n"
-msgstr "ユークリッドの互除法の例では、 `m > n`のときと `m <= n`のときの２つに分岐するために `if .. then .. else`式を使っていました。こういうときには他に**ガード**(guard)を使うという選択肢もあります。\n"
+msgstr ""
+"ユークリッドの互除法の例では、\n"
+"`m > n`のときと `m <= n`のときの２つに分岐するために `if .. then .. else`式を使っていました。\n"
+"こういうときには他に**ガード** (guard) を使うという選択肢もあります。\n"
 
 #. type: Plain text
 #: text/chapter5.md:82
-#, fuzzy
 msgid ""
 "A guard is a boolean-valued expression which must be satisfied in addition "
 "to the constraints imposed by the patterns. Here is the Euclidean algorithm "
 "rewritten to use a guard:"
 msgstr ""
-"ガードは真偽値の式で、パターンによる制約に加えてそのガードが満たされたとき"
-"に、その場合の結果になります。ガードを使用してユークリッドの互除法を書き直す"
-"と、次のようになります。"
+"ガードはパターンによる制約に加えて満たされなくてはいけない真偽値の式です。\n"
+"ガードを使用してユークリッドの互除法を書き直すと、次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:83
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:gcdV2}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:gcdV2}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:88
-#, fuzzy
 msgid ""
 "In this case, the third line uses a guard to impose the extra condition that "
 "the first argument is strictly larger than the second. The guard in the "
 "final line uses the expression `otherwise`, which might seem like a keyword, "
 "but is in fact just a regular binding in `Prelude`:"
 msgstr ""
-"３行目ではガードを使用して、最初の引数が第２引数よりも厳密に大きいという条件"
-"を付け加えています。"
+"この場合、3行目ではガードを使用して、最初の引数が第2引数よりも厳密に大きいという条件を付け加えています。\n"
+"最後の行でのガードは式`otherwise`を使っており、キーワードのようにも見えますが、\n"
+"実際にはただの`Prelude`における通常の束縛なのです。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:88
@@ -17876,28 +17855,30 @@ msgid ""
 "> otherwise\n"
 "true\n"
 msgstr ""
+"> :type otherwise\n"
+"Boolean\n"
+"\n"
+"> otherwise\n"
+"true\n"
 
 #. type: Plain text
 #: text/chapter5.md:97
-#, fuzzy
 msgid ""
 "As this example demonstrates, guards appear on the left of the equals "
 "symbol, separated from the list of patterns by a pipe character (`|`)."
-msgstr ""
-"この例が示すように、ガードは等号の左側に現れ、パイプ文字（ `|`）でパターンの"
-"リストと区切られています。"
+msgstr "この例が示すように、ガードは等号の左側に現れ、パイプ文字 (`|`) でパターンのリストと区切られています。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:103
-#, fuzzy
 msgid ""
 "(Easy) Write the `factorial` function using pattern matching. _Hint_: "
 "Consider the two corner cases of zero and non-zero inputs. _Note_: This is a "
 "repeat of an example from the previous chapter, but see if you can rewrite "
 "it here on your own."
 msgstr ""
-"（簡単）パターン照合を使用して、階乗関数を書いてみましょう。**ヒント**:入力が"
-"ゼロのときとゼロでないときの、ふたつの場合を考えてみてください。"
+"（簡単）パターン照合を使用して、階乗関数`factorial`を書いてみましょう。\n"
+"**ヒント**:入力がゼロのときとゼロでないときの、ふたつのコーナーケースを考えてみてください。\n"
+"**補足**：これは前の章からの例の繰り返しですが、ここでは自力で書き直せるかやってみてください。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:103
@@ -17910,6 +17891,14 @@ msgid ""
 "cases. If it takes a long time to complete or crashes with an error about "
 "the call stack, try adding more corner cases."
 msgstr ""
+"（やや難しい）\\\\( (1 + x) ^ n \\\\)を多項式展開した式にある\n"
+"\\\\( x ^ k \\\\)の項の係数を求める関数`binomial`を書いてください。\n"
+"これは`n`要素の集合から`k`要素の部分集合を選ぶ方法の数と同じです。\n"
+"数式\\\\( n! / k! (n - k)! \\\\)を使ってください。\n"
+"ここで \\\\( ! \\\\) は前に書いた階乗関数です。\n"
+"**ヒント**：パターン照合を使ってコーナーケースを制御してください。\n"
+"長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、\n"
+"もっとコーナーケースを追加してみてください。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:103
@@ -17918,65 +17907,62 @@ msgid ""
 "wikipedia.org/wiki/Pascal%27s_rule) for computing the same binomial "
 "coefficients as the previous exercise."
 msgstr ""
+"（やや難しい）[**パスカルの法則**](https://en.wikipedia.org/wiki/Pascal%27s_rule)を使って\n"
+"前の演習の同じ2項係数を計算する関数`pascal`を書いてください。"
 
 #. type: Title ##
 #: text/chapter5.md:104
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Array Patterns"
-msgstr "配列リテラルパターン"
+msgstr "配列パターン"
 
 #. type: Plain text
 #: text/chapter5.md:107
-#, fuzzy
 msgid ""
 "_Array literal patterns_ provide a way to match arrays of a fixed length. "
 "For example, suppose we want to write a function `isEmpty` which identifies "
 "empty arrays. We could do this by using an empty array pattern (`[]`) in the "
 "first alternative:"
 msgstr ""
-"**配列リテラルパターン**(array literal patterns)は、固定長の配列に対して照合"
-"を行う方法を提供します。たとえば、空の配列であることを特定する関数 `isEmpty`"
-"を書きたいとします。最初の選択肢に空の配列パターン（ `[]`）を用いるとこれを実"
-"現できます。\n"
+"**配列リテラルパターン** (array literal patterns) は、固定長の配列に対して照合を行う方法を提供します。\n"
+"たとえば、空の配列であることを特定する関数 `isEmpty`を書きたいとします。\n"
+"最初の選択肢に空の配列パターン (`[]`) を用いるとこれを実現できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:108
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:isEmpty}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:isEmpty}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:113
-#, fuzzy
 msgid ""
 "Here is another function which matches arrays of length five, binding each "
 "of its five elements in a different way:"
-msgstr ""
-"次の関数では、長さ5の配列と適合し、配列の5つの要素をそれぞれ異なった方法で束"
-"縛しています。　　"
+msgstr "次の関数では、長さ5の配列と適合し、配列の5つの要素をそれぞれ異なった方法で束縛しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:114
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:takeFive}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:takeFive}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:119
-#, fuzzy
 msgid ""
 "The first pattern only matches arrays with five elements, whose first and "
 "second elements are 0 and 1 respectively. In that case, the function returns "
 "the product of the third and fourth elements. In every other case, the "
 "function returns zero. For example, in PSCi:"
 msgstr ""
-"最初のパターンは、第１要素と第２要素がそれぞれ0と1であるような、5要素の配列に"
-"のみ適合します。その場合、関数は第3要素と第4要素の積を返します。それ以外の場"
-"合は、関数は0を返します。 `PSCi`で試してみると、たとえば次のようになります。"
+"最初のパターンは、第1要素と第2要素がそれぞれ0と1であるような、5要素の配列にのみ適合します。\n"
+"その場合、関数は第3要素と第4要素の積を返します。\n"
+"それ以外の場合は、関数は0を返します。\n"
+"PSCiで試してみると、たとえば次のようになります。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:120
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :paste\n"
 "â¦ takeFive [0, 1, a, b, _] = a * b\n"
@@ -18008,7 +17994,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:137
-#, fuzzy
 msgid ""
 "Array literal patterns allow us to match arrays of a fixed length, but "
 "PureScript does _not_ provide any means of matching arrays of an unspecified "
@@ -18018,73 +18003,69 @@ msgid ""
 "structures exist which provide improved asymptotic performance for different "
 "operations."
 msgstr ""
-"配列のリテラルパターンでは、固定長の配列と一致させることはできますが、不特定"
-"の長さの配列を照合させる手段を提供していません。PureScriptでは、そのような方"
-"法で不変な配列を分解すると、実行速度が低下する可能性があるためです。不特定の"
-"長さの配列に対して照合を行うことができるデータ構造が必要な場合は、`Data.List`"
-"を使うことをお勧めします。そのほかの操作について、より優れた漸近性能を提供す"
-"るデータ構造も存在します。"
+"配列のリテラルパターンでは、固定長の配列と一致させることはできますが、\n"
+"PureScriptは不特定の長さの配列を照合させる手段を提供していません。\n"
+"そのような方法で不変な配列を分解すると、\n"
+"実行速度が低下する可能性があるためです。\n"
+"この種の照合を行うことができるデータ構造が必要な場合は、\n"
+"`Data.List`を使うことをお勧めします。\n"
+"そのほかの操作について、\n"
+"より優れた漸近性能を提供するデータ構造も存在します。"
 
 #. type: Title ##
 #: text/chapter5.md:138
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Record Patterns and Row Polymorphism"
 msgstr "レコードパターンと行多相"
 
 #. type: Plain text
 #: text/chapter5.md:141
-#, fuzzy
 msgid "_Record patterns_ are used to match - you guessed it - records."
-msgstr ""
-"**レコードパターン**(Record patterns)は(ご想像のとおり)レコードに照合しま"
-"す。\n"
+msgstr "**レコードパターン** (Record patterns) は（ご想像のとおり）レコードに照合します。"
 
 #. type: Plain text
 #: text/chapter5.md:143
-#, fuzzy
 msgid ""
 "Record patterns look just like record literals, but instead of values on the "
 "right of the colon, we specify a binder for each field."
 msgstr ""
-"レコードパターンはレコードリテラルに見た目が似ていますが、レコードリテラルで"
-"ラベルと式を**コロン**で区切るのとは異なり、レコードパターンではラベルとパ"
-"ターンを**等号**で区切ります。"
+"レコードパターンはレコードリテラルに見た目が似ていますが、\n"
+"レコードリテラルでラベルと式を**コロン**で区切るのとは異なり、\n"
+"レコードパターンではラベルとパターンを**等号**で区切ります。"
 
 #. type: Plain text
 #: text/chapter5.md:145
-#, fuzzy
 msgid ""
 "For example: this pattern matches any record which contains fields called "
 "`first` and `last`, and binds their values to the names `x` and `y` "
 "respectively:"
 msgstr ""
-"たとえば、次のパターンは `first`と `last`と呼ばれるフィールドが含まれた任意の"
-"レコードにマッチし、これらのフィールドの値はそれぞれ `x`と `y`という名前に束"
-"縛されます。"
+"たとえば、次のパターンは `first`と `last`と呼ばれるフィールドが含まれた任意のレコードにマッチし、\n"
+"これらのフィールドの値はそれぞれ `x`と `y`という名前に束縛されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:146
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:showPerson}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:showPerson}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:151
-#, fuzzy
 msgid ""
 "Record patterns provide a good example of an interesting feature of the "
 "PureScript type system: _row polymorphism_. Suppose we had defined "
 "`showPerson` without a type signature above. What would its inferred type "
 "have been? Interestingly, it is not the same as the type we gave:"
 msgstr ""
-"レコードパターンはPureScriptの型システムの興味深い機能である**行多相**(row "
-"polymorphism)の良い例となっています。もし上の`showPerson`を型シグネチャなしで"
-"定義していたとすると、この型はどのように推論されるのでしょうか？面白いこと"
-"に、推論される型は上で与えた型とは同じではありません。"
+"レコードパターンはPureScriptの型システムの興味深い機能である\n"
+"**行多相** (row polymorphism) の良い例となっています。\n"
+"もし上の`showPerson`を型シグネチャなしで定義していたとすると、\n"
+"この型はどのように推論されるのでしょうか？\n"
+"面白いことに、推論される型は上で与えた型とは同じではありません。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:152
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> showPerson { first: x, last: y } = y <> \", \" <> x\n"
 "\n"
@@ -18098,17 +18079,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:160
-#, fuzzy
 msgid ""
 "What is the type variable `r` here? Well, if we try `showPerson` in PSCi, we "
 "see something interesting:"
 msgstr ""
-"この型変数 `r`とは何でしょうか？`PSCi`で `showPerson`を使ってみると、面白いこ"
-"とがわかります。"
+"この型変数 `r`とは何でしょうか？\n"
+"PSCiで `showPerson`を使ってみると、面白いことがわかります。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:161
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> showPerson { first: \"Phil\", last: \"Freeman\" }\n"
 "\"Freeman, Phil\"\n"
@@ -18124,21 +18104,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:170
-#, fuzzy
 msgid ""
 "We are able to append additional fields to the record, and the `showPerson` "
 "function will still work. As long as the record contains the `first` and "
 "`last` fields of type `String`, the function application is well-typed. "
 "However, it is _not_ valid to call `showPerson` with too _few_ fields:"
 msgstr ""
-"レコードにそれ以外のフィールドが追加されていても、 `showPerson`関数はそのまま"
-"動作するのです。型が `String`であるようなフィールド `first`と `last`がレコー"
-"ドに少なくとも含まれていれば、関数適用は正しく型付けされます。しかし、フィー"
-"ルドが**不足**していると、 `showPerson`の呼び出しは**不正**となります。"
+"レコードにそれ以外のフィールドが追加されていても、\n"
+"`showPerson`関数はそのまま動作するのです。\n"
+"型が `String`であるようなフィールド `first`と `last`がレコードに少なくとも含まれていれば、\n"
+"関数適用は正しく型付けされます。\n"
+"しかし、フィールドが**不足**していると、 `showPerson`の呼び出しは**不正**となります。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:171
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> showPerson { first: \"Phil\" }\n"
 "\n"
@@ -18159,93 +18139,91 @@ msgid ""
 "variable `r`, `showPerson` only accepts records with _exactly_ a `first` and "
 "`last` field and no others."
 msgstr ""
+"`showPerson`の新しい型シグネチャを読むとこうです。\n"
+"「`String`な`first`と`last`フィールド**と他のフィールドを何でも**持つあらゆるレコードを取り、\n"
+"`String`を返す。」\n"
+"なお、この振舞いは元の`showPerson`のものとは異なります。\n"
+"行変数`r`がなければ`showPerson`は**厳密に**`first`と`last`フィールドしかないレコードのみを受け付けます。"
 
 #. type: Plain text
 #: text/chapter5.md:180
-#, fuzzy
 msgid "Note that we could have also written"
 msgstr "次のように書くことができることにも注意してください。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:181
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "> showPerson p = p.last <> \", \" <> p.first\n"
 msgstr "> showPerson p = p.last <> \", \" <> p.first\n"
 
 #. type: Plain text
 #: text/chapter5.md:186
-#, fuzzy
 msgid "and PSCi would have inferred the same type."
-msgstr "この場合も、 `PSCi`は先ほどと同じ型を推論するでしょう。"
+msgstr "この場合も、 PSCiは先ほどと同じ型を推論するでしょう。"
 
 #. type: Title ##
 #: text/chapter5.md:187
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Record Puns"
 msgstr "レコード同名利用"
 
 #. type: Plain text
 #: text/chapter5.md:190
-#, fuzzy
 msgid ""
 "Recall that the `showPerson` function matches a record inside its argument, "
 "binding the `first` and `last` fields to values named `x` and `y`. We could "
 "alternatively just reuse the field names themselves, and simplify this sort "
 "of pattern match as follows:"
 msgstr ""
-"`showPoint`関数は引数内のレコードと一致し、 `x`と `y`プロパティを同じ名前の値"
-"に束縛します。 PureScriptでは、このようなパターン一致を次のように単純化できま"
-"す。"
+"`showPerson`関数は引数内のレコードと一致し、\n"
+"`first`と`last`フィールドを`x`と `y`という名前の値に束縛していたのでした。\n"
+"別の方法として、フィールド名自体を再利用するだけで、このようなパターン一致を次のように単純化できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:191
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:showPersonV2}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:showPersonV2}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:196
-#, fuzzy
 msgid ""
 "Here, we only specify the names of the fields, and we do not need to specify "
 "the names of the values we want to introduce. This is called a _record pun_."
 msgstr ""
-"ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はあ"
-"りません。 これは**レコード同名利用**(record pun)と呼ばれます。"
+"ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。\n"
+"これは**レコード同名利用** (record pun) と呼ばれます。"
 
 #. type: Plain text
 #: text/chapter5.md:198
-#, fuzzy
 msgid ""
 "It is also possible to use record puns to _construct_ records. For example, "
 "if we have values named `first` and `last` in scope, we can construct a "
 "person record using `{ first, last }`:"
 msgstr ""
-"レコード同名利用をレコードの**構築**に使用することもできます。例えば、スコー"
-"プ内に `x`と `y`という名前の値があれば、 `Point {x、y}`を使って `Point`を作る"
-"ことができます。"
+"レコード同名利用をレコードの**構築**に使用することもできます。\n"
+"例えば、スコープ内に `first`と `last`という名前の値があれば、\n"
+"`{ first, last }`を使って人物レコードを作ることができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:199
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:unknownPerson}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:unknownPerson}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:204
-#, fuzzy
 msgid "This may improve readability of code in some circumstances."
 msgstr "これは、状況によってはコードの可読性を向上させるのに役立ちます。"
 
 #. type: Title ##
 #: text/chapter5.md:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Nested Patterns"
 msgstr "入れ子になったパターン"
 
 #. type: Plain text
 #: text/chapter5.md:208
-#, fuzzy
 msgid ""
 "Array patterns and record patterns both combine smaller patterns to build "
 "larger patterns. For the most part, the examples above have only used simple "
@@ -18253,58 +18231,52 @@ msgid ""
 "note that patterns can be arbitrarily _nested_, which allows functions to be "
 "defined using conditions on potentially complex data types."
 msgstr ""
-"配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大"
-"きなパターンを構成しています。これまでの例では配列パターンとレコードパターン"
-"の内部に単純なパターンを使用していましたが、パターンが自由に**入れ子**にする"
-"ことができることも知っておくのが大切です。入れ子になったパターンを使うと、潜"
-"在的に複雑なデータ型に対して関数が条件分岐できるようになります。"
+"配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大きなパターンを構成しています。\n"
+"これまでの例ではほとんどの場合で配列パターンとレコードパターンの内部に単純なパターンを使用していましたが、\n"
+"パターンが自由に**入れ子**にすることができることも知っておくのが大切です。\n"
+"入れ子になったパターンを使うと、\n"
+"潜在的に複雑なデータ型に対しての条件分岐を用いて関数を定義できるようになります。"
 
 #. type: Plain text
 #: text/chapter5.md:210
-#, fuzzy
 msgid "For example, this code combines two record patterns:"
-msgstr ""
-"たとえば、次のコードでは、レコードパターンと配列パターンを組み合わせて、レ"
-"コードの配列と照合させています。"
+msgstr "たとえば、このコードは2つのレコードパターンを結合します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:211
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:livesInLA}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:livesInLA}}\n"
 
 #. type: Title ##
 #: text/chapter5.md:215
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Named Patterns"
 msgstr "名前付きパターン"
 
 #. type: Plain text
 #: text/chapter5.md:218
-#, fuzzy
 msgid ""
 "Patterns can be _named_ to bring additional names into scope when using "
 "nested patterns. Any pattern can be named by using the `@` symbol."
 msgstr ""
-"パターンには**名前を付ける**ことができ、入れ子になったパターンを使うときにス"
-"コープに追加の名前を導入することができます。任意のパターンに名前を付けるに"
-"は、 `@`記号を使います。"
+"入れ子のパターンを使う場合、パターンには**名前を付け**て追加で名前をスコープに持ち込むことができます。\n"
+"任意のパターンに名前を付けるには、 `@`記号を使います。"
 
 #. type: Plain text
 #: text/chapter5.md:220
-#, fuzzy
 msgid ""
 "For example, this function sorts two-element arrays, naming the two "
 "elements, but also naming the array itself:"
 msgstr ""
-"たとえば、次のコードは1つ以上の要素を持つ任意の配列と適合しますが、配列の先頭"
-"を `x`という名前、配列全体を `arr`という名前に束縛します。"
+"たとえば、次の関数は2要素配列を整列するもので、2つの要素の名前を付けていますが、\n"
+"配列自身にも名前を付けています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:221
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:sortPair}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:sortPair}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:226
@@ -18314,51 +18286,52 @@ msgid ""
 "elements, then this function simply returns it unchanged, even if it's "
 "unsorted."
 msgstr ""
+"このようにすれば対が既に整列されているときに新しい配列を割り当てなくて済みます。\n"
+"なおもし入力の配列が**厳密に**2つの要素を含んでいなければ、\n"
+"たとえ整列されていなかったとしても、この関数は単に元のまま変えずに返しています。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:232
-#, fuzzy
 msgid ""
 "(Easy) Write a function `sameCity` which uses record patterns to test "
 "whether two `Person` records belong to the same city."
 msgstr ""
-"（簡単）レコードパターンを使って、2つの `Person`レコードが同じ都市にいるか探"
-"す関数 `sameCity`を定義してみましょう。"
+"（簡単）レコードパターンを使って、\n"
+"2つの `Person`レコードが同じ都市にいるか探す関数 `sameCity`を定義してみましょう。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:232
-#, fuzzy
 msgid ""
 "(Medium) What is the most general type of the `sameCity` function, taking "
 "into account row polymorphism? What about the `livesInLA` function defined "
 "above? _Note_: There is no test for this exercise."
 msgstr ""
-"（やや難しい）行多相を考慮すると、 `sameCity`関数の最も一般的な型は何でしょう"
-"か？先ほど定義した `livesInLA`関数についてはどうでしょうか？"
+"（やや難しい）行多相を考慮すると、 `sameCity`関数の最も一般的な型は何でしょうか？\n"
+"先ほど定義した `livesInLA`関数についてはどうでしょうか？\n"
+"**補足**：この演習にテストはありません。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:232
-#, fuzzy
 msgid ""
 "(Medium) Write a function `fromSingleton` which uses an array literal "
 "pattern to extract the sole member of a singleton array. If the array is not "
 "a singleton, your function should return a provided default value. Your "
 "function should have type `forall a. a -> Array a -> a`"
 msgstr ""
-"（やや難しい）配列リテラルパターンを使って、１要素の配列の唯一のメンバーを抽"
-"出する関数`fromSingleton`を書いてみましょう。１要素だけを持つ配列でない場合、"
-"関数は指定されたデフォルト値を返さなければなりません。この関数は `forall a. "
-"a -> Array a -> a`.という型を持っていなければなりません。"
+"（やや難しい）配列リテラルパターンを使って、\n"
+"1要素の配列の唯一のメンバーを抽出する関数`fromSingleton`を書いてみましょう。\n"
+"1要素だけを持つ配列でない場合、\n"
+"関数は指定されたデフォルト値を返さなければなりません。\n"
+"この関数は `forall a. a -> Array a -> a`という型を持っていなければなりません。"
 
 #. type: Title ##
 #: text/chapter5.md:233
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Case Expressions"
 msgstr "Case式"
 
 #. type: Plain text
 #: text/chapter5.md:236
-#, fuzzy
 msgid ""
 "Patterns do not only appear in top-level function declarations. It is "
 "possible to use patterns to match on an intermediate value in a computation, "
@@ -18367,21 +18340,20 @@ msgid ""
 "a function, and a `case` expression allows us to avoid naming a function "
 "just because we want to use a pattern."
 msgstr ""
-"パターンはソースコードの最上位にある関数だけに現れるわけではありません。 "
-"`case`式を使用すると計算の途中の値に対してパターン照合を使うことができます。"
-"case式には無名関数に似た種類の便利さがあります。関数に名前を与えることがいつ"
-"も望ましいわけではありません。パターン照合を使いたいためだけで関数に名前をつ"
-"けるようなことを避けられるようになります。"
+"パターンは最上位にある関数宣言だけに現れるわけではありません。\n"
+"`case`式を使って計算の途中の値に対してパターン照合を使うことができます。\n"
+"case式には無名関数に似た種類の便利さがあります。\n"
+"関数に名前を与えることがいつも望ましいわけではないように、\n"
+"パターン照合を使いたいためだけに関数に名前をつけるようなことを避けられるようになります。"
 
 #. type: Plain text
 #: text/chapter5.md:238
-#, fuzzy
 msgid ""
 "Here is an example. This function computes \"longest zero suffix\" of an "
 "array (the longest suffix which sums to zero):"
 msgstr ""
-"例を示しましょう。次の関数は、配列の\"longest zero suffix\"(和がゼロであるよ"
-"うな、最も長い配列の末尾)を計算します。"
+"例を示しましょう。\n"
+"次の関数は、配列の「最長ゼロ末尾」（和がゼロであるような、最も長い配列の末尾）を計算します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:239
@@ -18391,10 +18363,13 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter5/src/ChapterExamples.purs:lzs}}\n"
 msgstr ""
+"{{#include ../exercises/chapter5/src/ChapterExamples.purs:lzsImport}}\n"
+"\n"
+"{{#include ../exercises/chapter5/src/ChapterExamples.purs:lzs}}\n"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:247
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> lzs [1, 2, 3, 4]\n"
 "[]\n"
@@ -18410,40 +18385,38 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:256
-#, fuzzy
 msgid ""
 "This function works by case analysis. If the array is empty, our only option "
 "is to return an empty array. If the array is non-empty, we first use a "
 "`case` expression to split into two cases. If the sum of the array is zero, "
 "we return the whole array. If not, we recurse on the tail of the array."
 msgstr ""
-"この関数は場合ごとの分析によって動作します。もし配列が空なら、唯一の選択肢は"
-"空の配列を返すことです。配列が空でない場合は、さらに2つの場合に分けるためにま"
-"ず `case`式を使用します。配列の合計がゼロであれば、配列全体を返します。そうで"
-"なければ、配列の残りに対して再帰します。"
+"この関数は場合ごとの分析によって動作します。\n"
+"もし配列が空なら、唯一の選択肢は空の配列を返すことです。\n"
+"配列が空でない場合は、さらに2つの場合に分けるためにまず `case`式を使用します。\n"
+"配列の合計がゼロであれば、配列全体を返します。\n"
+"そうでなければ、配列の残りに対して再帰します。"
 
 #. type: Title ##
 #: text/chapter5.md:257
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Pattern Match Failures and Partial Functions"
-msgstr "パターン照合の失敗"
+msgstr "パターン照合の失敗と部分関数"
 
 #. type: Plain text
 #: text/chapter5.md:260
-#, fuzzy
 msgid ""
 "If patterns in a case expression are tried in order, then what happens in "
 "the case when none of the patterns in a case alternatives match their "
 "inputs? In this case, the case expression will fail at runtime with a "
 "_pattern match failure_."
 msgstr ""
-"case式のパターンを順番に照合していって、もし選択肢のいずれの場合も入力が適合"
-"しなかった時は何が起こるのでしょうか？この場合、**パターン照合失敗**によっ"
-"て、case式は実行時に失敗します。"
+"case式のパターンを順番に照合していって、\n"
+"もし選択肢のいずれの場合も入力が適合しなかった時は何が起こるのでしょうか？\n"
+"この場合、**パターン照合失敗**によって、case式は実行時に失敗します。"
 
 #. type: Plain text
 #: text/chapter5.md:262
-#, fuzzy
 msgid "We can see this behavior with a simple example:"
 msgstr "簡単な例でこの動作を見てみましょう。"
 
@@ -18455,22 +18428,23 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter5/src/ChapterExamples.purs:partialFunction}}\n"
 msgstr ""
+"{{#include ../exercises/chapter5/src/ChapterExamples.purs:unsafePartialImport}}\n"
+"\n"
+"{{#include ../exercises/chapter5/src/ChapterExamples.purs:partialFunction}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:270
-#, fuzzy
 msgid ""
 "This function contains only a single case, which only matches a single "
 "input, `true`. If we compile this file, and test in PSCi with any other "
 "argument, we will see an error at runtime:"
 msgstr ""
-"この関数はゼロの入力に対してのみ適合する単一の場合を含みます。このファイルを"
-"コンパイルして `PSCi`でそれ以外の値を与えてテストすると、実行時エラーが発生し"
-"ます。"
+"この関数は単一の場合しか含んでおらず、その場合では単一の入力である`true`にのみ照合します。\n"
+"このファイルをコンパイルして PSCiでそれ以外の値を与えてテストすると、実行時エラーが発生します。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:271
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> partialFunction false\n"
 "\n"
@@ -18482,18 +18456,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:278
-#, fuzzy
 msgid ""
 "Functions which return a value for any combination of inputs are called "
 "_total_ functions, and functions which do not are called _partial_."
 msgstr ""
-"どんな入力の組み合わせに対しても値を返すような関数は**全関数**(total "
-"function)と呼ばれ、そうでない関数は**部分関数**(partial function)と呼ばれてい"
-"ます。"
+"どんな入力の組み合わせに対しても値を返すような関数は**全関数** (total function) と呼ばれ、\n"
+"そうでない関数は**部分的** (partial) であると呼ばれます。"
 
 #. type: Plain text
 #: text/chapter5.md:280
-#, fuzzy
 msgid ""
 "It is generally considered better to define total functions where possible. "
 "If it is known that a function does not return a result for some valid set "
@@ -18502,15 +18473,14 @@ msgid ""
 "return a valid result. This way, the presence or absence of a value can be "
 "indicated in a type-safe way."
 msgstr ""
-"一般的には、可能な限り全関数として定義したほうが良いと考えられています。もし"
-"その関数が正しい入力に対して値を返さないことがあるとわかっているなら、大抵は "
-"`a`に対して型 `Maybe a`の返り値にし、失敗を示すときには `Nothing`を使うように"
-"したほうがよいでしょう。この方法なら、型安全な方法で値の有無を示すことができ"
-"ます。"
+"一般的には、可能な限り全関数として定義したほうが良いと考えられています。\n"
+"もし関数が何らかの妥当な入力の集合について結果を返さないことがわかっているなら、\n"
+"大抵は失敗であることを示すことができる値を返すほうがよいでしょう。\n"
+"例えば何らかの`a`についての型`Maybe a`で、妥当な結果を返せないときは`Nothing`を使います。\n"
+"この方法なら、型安全な方法で値の有無を示すことができます。"
 
 #. type: Plain text
 #: text/chapter5.md:282
-#, fuzzy
 msgid ""
 "The PureScript compiler will generate an error if it can detect that your "
 "function is not total due to an incomplete pattern match. The "
@@ -18519,15 +18489,16 @@ msgid ""
 "`unsafePartial` function above, then the compiler would generate the "
 "following error:"
 msgstr ""
-"PureScriptコンパイラは、パターンマッチが不完全で関数が全関数ではないことを検"
-"出するとエラーを生成します。部分関数が安全である場合、`unsafePartial`関数を"
-"使ってこれらのエラーを抑制することができます(その部分関数が安全だとあなたが言"
-"い切れるなら！)。もし上記の `unsafePartial`関数の呼び出しを取り除くと、コンパ"
-"イラは次のエラーを生成します。"
+"PureScriptコンパイラは、\n"
+"パターンマッチが不完全で関数が全関数ではないことを検出するとエラーを生成します。\n"
+"部分関数が安全である場合、\n"
+"`unsafePartial`関数を使ってこれらのエラーを抑制することができます。\n"
+"（その部分関数が安全だと言い切れるなら！）\n"
+"もし上記の `unsafePartial`関数の呼び出しを取り除くと、コンパイラは次のエラーを生成します。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:283
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "A case expression could not be determined to cover all inputs.\n"
 "The following additional cases are required to cover all inputs:\n"
@@ -18541,64 +18512,64 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:291
-#, fuzzy
 msgid ""
 "This tells us that the value `false` is not matched by any pattern. In "
 "general, these warnings might include multiple unmatched cases."
 msgstr ""
-"これは値`false`が、定義されたどのパターンとも一致しないことを示しています。こ"
-"れらの警告には、複数の不一致のケースが含まれることがあります。"
+"これは値`false`が、定義されたどのパターンとも一致しないことを示しています。\n"
+"一般的にこれらの警告には、複数の不一致のケースが含まれることがあります。"
 
 #. type: Plain text
 #: text/chapter5.md:293
-#, fuzzy
 msgid "If we also omit the type signature above:"
 msgstr "上記の型シグネチャも省略した場合は、次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:294
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "partialFunction true = true\n"
 msgstr "partialFunction true = true\n"
 
 #. type: Plain text
 #: text/chapter5.md:299
-#, fuzzy
 msgid "then PSCi infers a curious type:"
 msgstr "このとき、PSCiは興味深い型を推論します｡"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:300
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type partialFunction\n"
 "\n"
 "Partial => Boolean -> Boolean\n"
 msgstr ""
-":type partialFunction\n"
+"> :type partialFunction\n"
 "\n"
 "Partial => Boolean -> Boolean\n"
 
 #. type: Plain text
 #: text/chapter5.md:307
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "We will see more types which involve the `=>` symbol later on in the book (they are related to _type classes_), but for now, it suffices to observe that PureScript keeps track of partial functions using the type system, and that we must explicitly tell the type checker when they are safe.\n"
-msgstr "本書ではのちに`=>`記号を含むいろいろな型を見ることができます（これらは**型クラス**に関連しています）。しかし、今のところは、PureScriptは型システムを使って部分関数を追跡していること、開発者は型検証器にコードが安全であることを明示する必要があることを確認すれば十分です。\n"
+msgstr ""
+"本書ではのちに`=>`記号を含むいろいろな型を見ることになります。\n"
+"（これらは**型クラス**に関連しています。）\n"
+"しかし、今のところは、PureScriptは型システムを使って部分関数を追跡していることと、\n"
+"安全な場合に型検証器に明示する必要があることを確認すれば十分です。\n"
 
 #. type: Plain text
 #: text/chapter5.md:309
-#, fuzzy
 msgid ""
 "The compiler will also generate a warning in certain cases when it can "
 "detect that cases are _redundant_ (that is, a case only matches values which "
 "would have been matched by a prior case):"
 msgstr ""
-"コンパイラは、定義されたパターンが**冗長**であることを検出した場合（すでに定"
-"義されたパターンに一致するケースのみ）でも警告を生成します。"
+"コンパイラは、定義されたパターンが**冗長**であることを検出した場合\n"
+"（前の方に定義されたパターンに一致するケースのみ）でも警告を生成します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:310
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "redundantCase :: Boolean -> Boolean\n"
 "redundantCase true = true\n"
@@ -18612,7 +18583,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter5.md:318
-#, fuzzy
 msgid "In this case, the last case is correctly identified as redundant:"
 msgstr "このとき、最後のケースは冗長であると正しく検出されます。"
 
@@ -18624,92 +18594,87 @@ msgid ""
 "\n"
 "  false\n"
 msgstr ""
+"A case expression contains unreachable cases:\n"
+"\n"
+"  false\n"
 
 #. type: Plain text
 #: text/chapter5.md:326
-#, fuzzy
 msgid ""
 "_Note_: PSCi does not show warnings, so to reproduce this example, you will "
 "need to save this function as a file and compile it using `spago build`."
 msgstr ""
-"**注意**：PSCiは警告を表示しないので、この例を再現するには、この関数をファイ"
-"ルとして保存し、 `pulp build`を使ってコンパイルします。\n"
+"**注意**：PSCiは警告を表示しないので、\n"
+"この例を再現するには、この関数をファイルとして保存し、 `pulp build`を使ってコンパイルします。"
 
 #. type: Title ##
 #: text/chapter5.md:327
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Algebraic Data Types"
 msgstr "代数的データ型"
 
 #. type: Plain text
 #: text/chapter5.md:330
-#, fuzzy
 msgid ""
 "This section will introduce a feature of the PureScript type system called "
 "_Algebraic Data Types_ (or _ADTs_), which are fundamentally related to "
 "pattern matching."
 msgstr ""
-"この節では、PureScriptの型システムでパターン照合に原理的に関係している**代数"
-"的データ型**(Algebraic data type, ADT）と呼ばれる機能を導入します。"
+"この節では**代数的データ型** (algebraic data type, ADT) と呼ばれる、\n"
+"PureScriptの型システムの機能を導入します。\n"
+"この機能はパターン照合と地続きの関係があります。"
 
 #. type: Plain text
 #: text/chapter5.md:332
-#, fuzzy
 msgid ""
 "However, we'll first consider a motivating example, which will provide the "
 "basis of a solution to this chapter's problem of implementing a simple "
 "vector graphics library."
 msgstr ""
-"しかしまずは、ベクターグラフィックスライブラリの実装というこの章の課題を解決"
-"する基礎として、簡単な例を切り口にして考えていきましょう。"
+"しかしまずは切り口となる例について考えていきます。\n"
+"この例では単純なベクターグラフィックスライブラリの実装というこの章の課題を解決する基礎を提供します。"
 
 #. type: Plain text
 #: text/chapter5.md:334
-#, fuzzy
 msgid ""
 "Suppose we wanted to define a type to represent some simple shapes: lines, "
 "rectangles, circles, text, etc. In an object oriented language, we would "
 "probably define an interface or abstract class `Shape`, and one concrete "
 "subclass for each type of shape that we wanted to be able to work with."
 msgstr ""
-"直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとしま"
-"す。オブジェクト指向言語では、おそらくインタフェースもしくは抽象クラス "
-"`Shape`を定義し、使いたいそれぞれの図形について具体的なサブクラスを定義するで"
-"しょう。"
+"直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとします。\n"
+"オブジェクト指向言語では、おそらくインタフェースもしくは抽象クラス `Shape`を定義し、\n"
+"使いたいそれぞれの図形について具体的なサブクラスを定義するでしょう。"
 
 #. type: Plain text
 #: text/chapter5.md:336
-#, fuzzy
 msgid ""
 "However, this approach has one major drawback: to work with `Shape`s "
 "abstractly, it is necessary to identify all of the operations one might wish "
 "to perform, and to define them on the `Shape` interface. It becomes "
 "difficult to add new operations without breaking modularity."
 msgstr ""
-"しかしながら、この方針は大きな欠点をひとつ抱えています。 `Shape`を抽象的に扱"
-"うためには、実行したいと思う可能性のあるすべての操作を事前に把握し、 `Shape`"
-"インタフェースに定義する必要があるのです。このため、モジュール性を壊さずに新"
-"しい操作を追加することが難しくなります。"
+"しかしながら、この方針は大きな欠点をひとつ抱えています。\n"
+"`Shape`を抽象的に扱うためには、実行したいと思う可能性のあるすべての操作を事前に把握し、\n"
+"`Shape`インタフェースに定義する必要があるのです。\n"
+"このため、モジュール性を壊さずに新しい操作を追加することが難しくなります。"
 
 #. type: Plain text
 #: text/chapter5.md:338
-#, fuzzy
 msgid ""
 "Algebraic data types provide a type-safe way to solve this sort of problem, "
 "if the set of shapes is known in advance. It is possible to define new "
 "operations on `Shape` in a modular way, and still maintain type-safety."
 msgstr ""
-"もし図形の種類が事前にわかっているなら、代数的データ型はこうした問題を解決す"
-"る型安全な方法を提供します。モジュール性のある方法で `Shape`に新たな操作を定"
-"義し、型安全なまま保守することを可能にします。"
+"もし図形の種類が事前にわかっているなら、\n"
+"代数的データ型はこうした問題を解決する型安全な方法を提供します。\n"
+"モジュール性のある方法で `Shape`に新たな操作を定義し、\n"
+"型安全性が維持できます。"
 
 #. type: Plain text
 #: text/chapter5.md:340
-#, fuzzy
 msgid "Here is how `Shape` might be represented as an algebraic data type:"
-msgstr ""
-"代数的データ型として表現された `Shape`がどのように記述されるかを次に示しま"
-"す。"
+msgstr "代数的データ型としてどのように`Shape`が表現されるかを次に示します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:341
@@ -18719,10 +18684,12 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter5/src/Data/Picture.purs:Point}}\n"
 msgstr ""
+"{{#include ../exercises/chapter5/src/Data/Picture.purs:Shape}}\n"
+"\n"
+"{{#include ../exercises/chapter5/src/Data/Picture.purs:Point}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:348
-#, fuzzy
 msgid ""
 "This declaration defines `Shape` as a sum of different constructors, and for "
 "each constructor identifies the data that is included. A `Shape` is either a "
@@ -18730,14 +18697,14 @@ msgid ""
 "`Rectangle`, or a `Line`, or `Text`. There are no other ways to construct a "
 "value of type `Shape`."
 msgstr ""
-"この宣言ではいくつかの構築子の和として `Shape`を定義しており、各構築子に含ま"
-"れたデータはそれぞれ区別されます。 `Shape`は、中央 `Point`と半径を持つ "
-"`Circle`か、 `Rectangle`、 `Line`、 `Text`のいずれかです。他には `Shape`型の"
-"値を構築する方法はありません。"
+"この宣言では`Shape`をそれぞれの構築子の和として定義しており、\n"
+"各構築子では含まれるデータを指定します。\n"
+"`Shape`は、中央 `Point`と半径（数値）を持つ `Circle`か、\n"
+"`Rectangle`、 `Line`、 `Text`のいずれかです。\n"
+"他には `Shape`型の値を構築する方法はありません。"
 
 #. type: Plain text
 #: text/chapter5.md:350
-#, fuzzy
 msgid ""
 "An algebraic data type is introduced using the `data` keyword, followed by "
 "the name of the new type and any type arguments. The type's constructors (i."
@@ -18746,39 +18713,41 @@ msgid ""
 "constructors doesn't have to be restricted to primitive types: constructors "
 "can include records, arrays, or even other ADTs."
 msgstr ""
-"代数的データ型の定義は予約語 `data`から始まり、それに新しい型の名前と任意個の"
-"型引数が続きます。その型のデータ構築子は等号の後に定義され、パイプ文字（ `|"
-"`）で区切られます。"
+"代数的データ型の定義はキーワード `data`から始まり、\n"
+"それに新しい型の名前と任意個の型引数が続きます。\n"
+"その型の構築子（あるいは**データ構築子** (data constructor)）は等号の後に定義され、\n"
+"パイプ文字 (`|`) で区切られます。\n"
+"ADTの構築子が持つデータは原始型に限りません。\n"
+"構築子にはレコード、配列、また他のADTさえも含むことができます。"
 
 #. type: Plain text
 #: text/chapter5.md:352
-#, fuzzy
 msgid ""
 "Let's see another example from PureScript's standard libraries. We saw the "
 "`Maybe` type, which is used to define optional values, earlier in the book. "
 "Here is its definition from the `maybe` package:"
 msgstr ""
-"それではPureScriptの標準ライブラリから別の例を見てみましょう。オプショナルな"
-"値を定義するのに使われる `Maybe`型を本書の冒頭で扱いました。 `purescript-"
-"maybe`パッケージでは `Maybe`を次のように定義しています。"
+"それではPureScriptの標準ライブラリから別の例を見てみましょう。\n"
+"オプショナルな値を定義するのに使われる `Maybe`型を本書の冒頭で扱いました。\n"
+"`maybe`パッケージでは `Maybe`を次のように定義しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:353
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "data Maybe a = Nothing | Just a\n"
 msgstr "data Maybe a = Nothing | Just a\n"
 
 #. type: Plain text
 #: text/chapter5.md:358
-#, fuzzy
 msgid ""
 "This example demonstrates the use of a type parameter `a`. Reading the pipe "
 "character as the word \"or\", its definition almost reads like English: \"a "
 "value of type `Maybe a` is either `Nothing`, or `Just` a value of type `a`\"."
 msgstr ""
-"この例では型引数 `a`の使用方法を示しています。パイプ文字を「または」と読むこ"
-"とにすると、この定義は「 `Maybe a`型の値は、無い(`Nothing`)、またはただの"
-"(`Just`)型 `a`の値だ」と英語のように読むことができます。"
+"この例では型引数 `a`の使用方法を示しています。\n"
+"パイプ文字を「または」と読むことにすると、\n"
+"この定義は「 `Maybe a`型の値は、無い (`Nothing`) か、\n"
+"またはただの (`Just`) 型 `a`の値だ」とほぼ英語のように読むことができます。"
 
 #. type: Plain text
 #: text/chapter5.md:360
@@ -18787,100 +18756,98 @@ msgid ""
 "definition. `forall` syntax is necessary for functions, but is not used when "
 "defining ADTs with `data` or type aliases with `type`."
 msgstr ""
+"なおデータ定義のどこにも構文`forall a`を使っていません。\n"
+"`forall`構文は関数には必須ですが、`data`によるADTや`type`での型別称を定義するときは使われません。"
 
 #. type: Plain text
 #: text/chapter5.md:362
-#, fuzzy
 msgid ""
 "Data constructors can also be used to define recursive data structures. Here "
 "is one more example, defining a data type of singly-linked lists of elements "
 "of type `a`:"
 msgstr ""
-"データ構築子は再帰的なデータ構造を定義するために使用することもできます。更に"
-"例を挙げると、要素が型 `a`の単方向連結リストのデータ型を定義はこのようになり"
-"ます。"
+"データ構築子は再帰的なデータ構造を定義するために使用することもできます。\n"
+"更に例を挙げると、要素が型 `a`の単方向連結リストのデータ型を定義はこのようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:363
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "data List a = Nil | Cons a (List a)\n"
 msgstr "data List a = Nil | Cons a (List a)\n"
 
 #. type: Plain text
 #: text/chapter5.md:368
-#, fuzzy
 msgid ""
 "This example is taken from the `lists` package. Here, the `Nil` constructor "
 "represents an empty list, and `Cons` is used to create non-empty lists from "
 "a head element and a tail. Notice how the tail is defined using the data "
 "type `List a`, making this a recursive data type."
 msgstr ""
-"この例は `purescript-lists`パッケージから持ってきました。ここで `Nil`構築子は"
-"空のリストを表しており、 `Cons`は先頭となる要素と他の配列から空でないリストを"
-"作成するために使われます。 `Cons`の２つ目のフィールドでデータ型 `List a`を使"
-"用しており、再帰的なデータ型になっていることに注目してください。"
+"この例は `lists`パッケージから持ってきました。\n"
+"ここで `Nil`構築子は空のリストを表しており、\n"
+"`Cons`は先頭となる要素と尾鰭から空でないリストを作成するために使われます。\n"
+"`Cons`の2つ目のフィールドでデータ型 `List a`を使用しており、\n"
+"再帰的なデータ型になっていることに注目してください。"
 
 #. type: Title ##
 #: text/chapter5.md:369
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Using ADTs"
-msgstr "代数的データ型の使用"
+msgstr "ADTの使用"
 
 #. type: Plain text
 #: text/chapter5.md:372
-#, fuzzy
 msgid ""
 "It is simple enough to use the constructors of an algebraic data type to "
 "construct a value: simply apply them like functions, providing arguments "
 "corresponding to the data included with the appropriate constructor."
 msgstr ""
-"代数的データ型の構築子を使用して値を構築するのはとても簡単です。対応する構築"
-"子に含まれるデータに応じた引数を用意し、その構築子を単に関数のように適用する"
-"だけです。"
+"代数的データ型の構築子を使用して値を構築するのはとても簡単です。\n"
+"対応する構築子に含まれるデータに応じた引数を用意し、\n"
+"その構築子を単に関数のように適用するだけです。"
 
 #. type: Plain text
 #: text/chapter5.md:374
-#, fuzzy
 msgid ""
 "For example, the `Line` constructor defined above required two `Point`s, so "
 "to construct a `Shape` using the `Line` constructor, we have to provide two "
 "arguments of type `Point`:"
 msgstr ""
-"例えば、上で定義した `Line`構築子は２つの `Point`を必要としていますので、 "
-"`Line`構築子を使って `Shape`を構築するには、型 `Point`のふたつの引数を与えな"
-"ければなりません。"
+"例えば、上で定義した `Line`構築子は2つの `Point`を必要としていますので、\n"
+"`Line`構築子を使って `Shape`を構築するには、\n"
+"型 `Point`のふたつの引数を与えなければなりません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:375
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:exampleLine}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:exampleLine}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:380
-#, fuzzy
 msgid ""
 "So, constructing values of algebraic data types is simple, but how do we use "
 "them? This is where the important connection with pattern matching appears: "
 "the only way to consume a value of an algebraic data type is to use a "
 "pattern to match its constructor."
 msgstr ""
-"代数的データ型で値を構築することは簡単ですが、これをどうやって使ったらよいの"
-"でしょうか？ここで代数的データ型とパターン照合との重要な接点が見えてきます。"
-"代数的データ型の値がどの構築子から作られたかを調べたり、代数的データ型から"
-"フィールドの値を取り出す唯一の方法は、パターン照合を使用することです。"
+"さて、代数的データ型で値を構築することは簡単ですが、\n"
+"これをどうやって使ったらよいのでしょうか？\n"
+"ここで代数的データ型とパターン照合との重要な接点が見えてきます。\n"
+"代数的データ型の値を消費する唯一の方法は構築子に照合するパターンを使うことです。"
 
 #. type: Plain text
 #: text/chapter5.md:382
-#, fuzzy
 msgid ""
 "Let's see an example. Suppose we want to convert a `Shape` into a `String`. "
 "We have to use pattern matching to discover which constructor was used to "
 "construct the `Shape`. We can do this as follows:"
 msgstr ""
-"例を見てみましょう。 `Shape`を `String`に変換したいとしましょう。 `Shape`を構"
-"築するのにどの構築子が使用されたかを調べるには、パターン照合を使用しなければ"
-"なりません。これには次のようにします。"
+"例を見てみましょう。\n"
+"`Shape`を `String`に変換したいとします。\n"
+"`Shape`を構築するのにどの構築子が使用されたかを調べるには、\n"
+"パターン照合を使用しなければなりません。\n"
+"これには次のようにします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:383
@@ -18890,10 +18857,12 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter5/src/Data/Picture.purs:showPoint}}\n"
 msgstr ""
+"{{#include ../exercises/chapter5/src/Data/Picture.purs:showShape}}\n"
+"\n"
+"{{#include ../exercises/chapter5/src/Data/Picture.purs:showPoint}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:390
-#, fuzzy
 msgid ""
 "Each constructor can be used as a pattern, and the arguments to the "
 "constructor can themselves be bound using patterns of their own. Consider "
@@ -18902,62 +18871,58 @@ msgid ""
 "into scope using two variable patterns, `c` and `r`. The other cases are "
 "similar."
 msgstr ""
-"各構築子はパターンとして使用することができ、構築子への引数はそのパターンで束"
-"縛することができます。 `showShape`の最初の場合を考えてみましょう。もし "
-"`Shape`が `Circle`構築子適合した場合、２つの変数パターン `c`と `r`を使って "
-"`Circle`の引数（中心と半径）がスコープに導入されます。その他の場合も同様で"
-"す。"
+"各構築子はパターンとして使用することができ、\n"
+"構築子への引数はそのパターンで束縛することができます。\n"
+"`showShape`の最初の場合を考えてみましょう。\n"
+"もし `Shape`が `Circle`構築子適合した場合、\n"
+"2つの変数パターン `c`と `r`を使って\n"
+"`Circle`の引数（中心と半径）がスコープに導入されます。\n"
+"その他の場合も同様です。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:396
-#, fuzzy
 msgid ""
 "(Easy) Write a function `circleAtOrigin` which constructs a `Circle` (of "
 "type `Shape`) centered at the origin with radius `10.0`."
 msgstr ""
-"（簡単）半径 `10`で中心が原点にある円を表す `Shape`の値を構築してください。"
+"（簡単）`Circle`（型は`Shape`）を構築する関数`circleAtOrigin`を書いてください。\n"
+"中心は原点にあり、半径は`10.0`です。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:396
-#, fuzzy
 msgid ""
 "(Medium) Write a function `doubleScaleAndCenter` which scales the size of a "
 "`Shape` by a factor of `2.0` and centers it at the origin."
-msgstr ""
-"（やや難しい）引数の `Shape`を原点を中心として `2.0`倍に拡大する、 `Shape`か"
-"ら `Shape`への関数を書いてみましょう。"
+msgstr "（やや難しい）`Shape`を、原点を中心として`2.0`倍に拡大する関数`doubleScaleAndCenter`を書いてみましょう。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:396
-#, fuzzy
 msgid ""
 "(Medium) Write a function `shapeText` which extracts the text from a "
 "`Shape`. It should return `Maybe String`, and use the `Nothing` constructor "
 "if the input is not constructed using `Text`."
 msgstr ""
-"（やや難しい） `Shape`からテキストを抽出する関数を書いてください。この関数は "
-"`Maybe String`を返さなければならず、もし入力が `Text`を使用して構築されたので"
-"なければ、返り値には `Nothing`構築子を使ってください。"
+"（やや難しい） `Shape`からテキストを抽出する関数`shapeText`を書いてください。\n"
+"この関数は `Maybe String`を返しますが、\n"
+"もし入力が `Text`を使用して構築されたのでなければ、返り値には `Nothing`構築子を使ってください。"
 
 #. type: Title ##
 #: text/chapter5.md:397
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Newtypes"
-msgstr "newtype宣言"
+msgstr "Newtype"
 
 #. type: Plain text
 #: text/chapter5.md:400
-#, fuzzy
 msgid ""
 "There is a special case of algebraic data types, called _newtypes_. Newtypes "
 "are introduced using the `newtype` keyword instead of the `data` keyword."
 msgstr ""
-"代数的データ型の特別な場合に、**newtype**と呼ばれる重要なものあります。"
-"newtypeは予約語 `data`の代わりに予約語 `newtype`を使用して導入します。"
+"代数的データ型の特別な場合として、**newtype**と呼ばれるものがあります。\n"
+"newtypeはキーワード `data`の代わりにキーワード `newtype`を使用して導入します。"
 
 #. type: Plain text
 #: text/chapter5.md:402
-#, fuzzy
 msgid ""
 "Newtypes must define _exactly one_ constructor, and that constructor must "
 "take _exactly one_ argument. That is, a newtype gives a new name to an "
@@ -18966,39 +18931,38 @@ msgid ""
 "overhead. They are, however, distinct from the point of view of the type "
 "system. This gives an extra layer of type safety."
 msgstr ""
-"newtype宣言では**過不足なくひとつだけの**構築子を定義しなければならず、その構"
-"築子は**過不足なくひとつだけの**引数を取る必要があります。つまり、newtype宣言"
-"は既存の型に新しい名前を与えるものなのです。実際、newtypeの値は、元の型と同じ"
-"実行時表現を持っています。しかし、これらは型システムの観点から区別されます。"
+"newtype宣言では**過不足なくひとつだけの**構築子を定義しなければならず、\n"
+"その構築子は**過不足なくひとつだけの**引数を取る必要があります。\n"
+"つまり、newtype宣言は既存の型に新しい名前を与えるものなのです。\n"
+"実際、newtypeの値は、元の型と同じ実行時表現を持ってるので、実行時性能のオーバーヘッドがありません。\n"
+"しかし、これらは型システムの観点から区別されます。\n"
 "これは型安全性の追加の層を提供するのです。"
 
 #. type: Plain text
 #: text/chapter5.md:404
-#, fuzzy
 msgid ""
 "As an example, we might want to define newtypes as type-level aliases for "
 "`Number`, to ascribe units like volts, amps, and ohms:"
 msgstr ""
-"例として、ピクセルとインチのような単位を表現するために、 `Number`の型レベルの"
-"別名を定義したくなる場合があるかもしれません。"
+"例として、ボルト、アンペア、オームのような単位を表現するために、\n"
+"`Number`の型レベルの別名を定義したくなる場合があるかもしれません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:405
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:electricalUnits}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:electricalUnits}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:410
-#, fuzzy
 msgid "Then we define functions and values using these types:"
-msgstr "ここでは3つの関数が使われています。"
+msgstr "それからこれらの型を使う関数と値を定義します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:411
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:calculateCurrent}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:calculateCurrent}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:416
@@ -19006,6 +18970,8 @@ msgid ""
 "This prevents us from making silly mistakes, such as attempting to calculate "
 "the current produced by _two_ lightbulbs _without_ a voltage source."
 msgstr ""
+"これによりつまらないミスを防ぐことができます。\n"
+"例えば電源**なし**に**2つ**の電球により生み出される電流を計算しようとするなどです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:417
@@ -19023,13 +18989,24 @@ msgid ""
 "    Volt\n"
 "-}\n"
 msgstr ""
+"current :: Amp\n"
+"current = calculateCurrent lightbulb lightbulb\n"
+"{-\n"
+"TypesDoNotUnify:\n"
+"  current = calculateCurrent lightbulb lightbulb\n"
+"                             ^^^^^^^^^\n"
+"  Could not match type\n"
+"    Ohm\n"
+"  with type\n"
+"    Volt\n"
+"-}\n"
 
 #. type: Plain text
 #: text/chapter5.md:432
 msgid ""
 "If we instead just used `Number` without `newtype`, then the compiler can't "
 "help us catch this mistake:"
-msgstr ""
+msgstr "もし`newtype`なしに単に`Numebr`を使っていたら、コンパイラはこのミスを補足できません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:433
@@ -19048,6 +19025,18 @@ msgid ""
 "current :: Number\n"
 "current = calculateCurrent lightbulb lightbulb -- uncaught mistake\n"
 msgstr ""
+"-- これもコンパイルできますが、型安全ではありません。\n"
+"calculateCurrent :: Number -> Number -> Number\n"
+"calculateCurrent v r = v / r\n"
+"\n"
+"battery :: Number\n"
+"battery = 1.5\n"
+"\n"
+"lightbulb :: Number\n"
+"lightbulb = 500.0\n"
+"\n"
+"current :: Number\n"
+"current = calculateCurrent lightbulb lightbulb -- 補足されないミス\n"
 
 #. type: Plain text
 #: text/chapter5.md:449
@@ -19058,12 +19047,16 @@ msgid ""
 "definition (`err` and `a` are the type variables, and the `CouldError` "
 "constructor expects a _single_ value of type `Either err a`):"
 msgstr ""
+"なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、\n"
+"newtypeは任意の数の型変数を取ることが**できます**。\n"
+"例えば以下のnewtypeは妥当な定義です。\n"
+"（`err`と`a`は型変数で、`CouldError`構築子は型`Either err a`の**単一**の値を期待します。）"
 
 #. type: Fenced code block (Haskell)
 #: text/chapter5.md:450
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "newtype CouldError err a = CouldError (Either err a)\n"
-msgstr "newtype ExceptT e m a = ExceptT (m (Either e a))\n"
+msgstr "newtype CouldError err a = CouldError (Either err a)\n"
 
 #. type: Plain text
 #: text/chapter5.md:455
@@ -19072,12 +19065,15 @@ msgid ""
 "newtype itself, but this is not a requirement. For example, unique names are "
 "also valid:"
 msgstr ""
+"また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあることにも注意してください。\n"
+"ただこれは必須ではありません。\n"
+"例えば固有の名前であっても妥当です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:455
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/ChapterExamples.purs:Coulomb}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:Coulomb}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:460
@@ -19090,6 +19086,12 @@ msgid ""
 "idiomatic for them to share the same name. This is the case with `Amp` and "
 "`Volt` types above."
 msgstr ""
+"この場合`Coulomb`は**型構築子**（引数はゼロ）で`MakeCoulomb`は**データ構築子**です。\n"
+"これらの構築子は異なる名前空間に属しており、`Volt`の例でそうだったように、名前に一意性があります。\n"
+"これは全てのADTについて言えることです。\n"
+"なお、型構築子とデータ構築子は異なる名前を持つことができますが、\n"
+"実際には同じ名前を共有するのが普通です。\n"
+"上の`Amp`と`Volt`の場合がこれです。"
 
 #. type: Plain text
 #: text/chapter5.md:462
@@ -19098,6 +19100,8 @@ msgid ""
 "existing type without changing its representation at runtime. We cover that "
 "use case in the next chapter when we discuss _type classes_."
 msgstr ""
+"newtypeの別の応用は、実行時表現を変えることなく、既存の型に異なる**振舞い**を付加することです。\n"
+"その利用例については次章で**型クラス**をお話しするときに押さえます。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:466
@@ -19106,76 +19110,69 @@ msgid ""
 "`calculateWattage` function using this new `Watt` type and the above "
 "definitions `Amp` and `Volt`:"
 msgstr ""
+"（簡単）`Watt`を`Number`の`newtype`として定義してください。\n"
+"それからこの新しい`Watt`型と上の`Amp`と`Volt`の定義を使って`calculateWattage`関数を定義してください。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:466
 #, no-wrap
 msgid "calculateWattage :: Amp -> Volt -> Watt\n"
-msgstr ""
+msgstr "calculateWattage :: Amp -> Volt -> Watt\n"
 
 #. type: Plain text
 #: text/chapter5.md:470
 msgid ""
 "A wattage in `Watt`s can be calculated as the product of a given current in "
 "`Amp`s and a given voltage in `Volt`s."
-msgstr ""
+msgstr "`Watt`中のワット数は与えられた`Amp`中の電流と与えられた`Volt`の電圧の積で計算できます。"
 
 #. type: Title ##
 #: text/chapter5.md:471
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "A Library for Vector Graphics"
 msgstr "ベクターグラフィックスライブラリ"
 
 #. type: Plain text
 #: text/chapter5.md:474
-#, fuzzy
 msgid ""
 "Let's use the data types we have defined above to create a simple library "
 "for using vector graphics."
-msgstr ""
-"これまで定義してきたデータ型を使って、ベクターグラフィックスを扱う簡単なライ"
-"ブラリを作成していきましょう。"
+msgstr "これまで定義してきたデータ型を使って、ベクターグラフィックスを扱う簡単なライブラリを作成していきましょう。"
 
 #. type: Plain text
 #: text/chapter5.md:476
-#, fuzzy
 msgid "Define a type synonym for a `Picture` - just an array of `Shape`s:"
-msgstr ""
-"ただの `Shape`の配列であるような、 `Picture`という型同義語を定義しておきま"
-"す。"
+msgstr "ただの `Shape`の配列であるような、 `Picture`という型同義語を定義しておきます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:477
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:Picture}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:Picture}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:482
-#, fuzzy
 msgid ""
 "For debugging purposes, we'll want to be able to turn a `Picture` into "
 "something readable. The `showPicture` function lets us do that:"
 msgstr ""
-"デバッグしていると `Picture`を `String`として表示できるようにしたくなることも"
-"あるでしょう。これはパターン照合を使用して定義された `showPicture`関数で行う"
-"ことができます。"
+"デバッグしていると `Picture`を `String`として表示できるようにしたくなることもあるでしょう。\n"
+"これはパターン照合を使用して定義された `showPicture`関数で行うことができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:483
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:showPicture}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:showPicture}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:488
-#, fuzzy
 msgid ""
 "Let's try it out. Compile your module with `spago build` and open PSCi with "
 "`spago repl`:"
 msgstr ""
-"それを試してみましょう。 モジュールを `pulp build`でコンパイルし、 `pulp "
-"repl`でPSCiを開きます。"
+"試してみましょう。\n"
+"モジュールを `spago build`でコンパイルし、 `spago repl`でPSCiを開きます。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:489
@@ -19190,78 +19187,67 @@ msgid ""
 "\n"
 "[\"Line [start: (0.0, 0.0), end: (1.0, 1.0)]\"]\n"
 msgstr ""
-"$ pulp build\n"
-"$ pulp repl\n"
+"$ spago build\n"
+"$ spago repl\n"
 "\n"
 "> import Data.Picture\n"
 "\n"
-"> :paste\n"
-"… showPicture\n"
-"…   [ Line (Point { x: 0.0, y: 0.0 })\n"
-"…          (Point { x: 1.0, y: 1.0 })\n"
-"…   ]\n"
-"… ^D\n"
+"> showPicture [ Line { x: 0.0, y: 0.0 } { x: 1.0, y: 1.0 } ]\n"
 "\n"
 "[\"Line [start: (0.0, 0.0), end: (1.0, 1.0)]\"]\n"
 
 #. type: Title ##
 #: text/chapter5.md:500
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Computing Bounding Rectangles"
 msgstr "外接矩形の算出"
 
 #. type: Plain text
 #: text/chapter5.md:503
-#, fuzzy
 msgid ""
 "The example code for this module contains a function `bounds` which computes "
 "the smallest bounding rectangle for a `Picture`."
-msgstr ""
-"このモジュールのコード例には、 `Picture`の最小外接矩形を計算する関数 `bounds`"
-"が含まれています。"
+msgstr "このモジュールのコード例には、 `Picture`の最小外接矩形を計算する関数 `bounds`が含まれています。"
 
 #. type: Plain text
 #: text/chapter5.md:505
 msgid "The `Bounds` type defines a bounding rectangle."
-msgstr ""
+msgstr "`Bounds`型は外接矩形を定義します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:506
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:Bounds}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:Bounds}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:511
-#, fuzzy
 msgid ""
 "`bounds` uses the `foldl` function from `Data.Foldable` to traverse the "
 "array of `Shapes` in a `Picture`, and accumulate the smallest bounding "
 "rectangle:"
 msgstr ""
-"`Picture`内の `Shape`の配列を走査し、最小の外接矩形を累積するため、 `bounds`"
-"は `Data.Foldable`の `foldl`関数を使用しています。"
+"`Picture`内の `Shape`の配列を走査し、最小の外接矩形を累積するため、\n"
+"`bounds`は `Data.Foldable`の `foldl`関数を使用しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:512
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/src/Data/Picture.purs:bounds}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter5/src/Data/Picture.purs:bounds}}\n"
 
 #. type: Plain text
 #: text/chapter5.md:517
-#, fuzzy
 msgid ""
 "In the base case, we need to find the smallest bounding rectangle of an "
 "empty `Picture`, and the empty bounding rectangle defined by `emptyBounds` "
 "suffices."
 msgstr ""
-"畳み込みの初期値として空の `Picture`の最小外接矩形を求める必要がありますが、 "
+"基底の場合では、空の `Picture`の最小外接矩形を求める必要がありますが、\n"
 "`emptyBounds`で定義される空の外接矩形がその条件を満たしています。"
 
 #. type: Plain text
 #: text/chapter5.md:519
-#, fuzzy
 msgid ""
 "The accumulating function `combine` is defined in a `where` block. `combine` "
 "takes a bounding rectangle computed from `foldl`'s recursive call, and the "
@@ -19269,85 +19255,81 @@ msgid ""
 "union of the two bounding rectangles. The `shapeBounds` function computes "
 "the bounds of a single shape using pattern matching."
 msgstr ""
-"累積関数 `combine`は `where`ブロックで定義されています。 `combine`は `foldl`"
-"の再帰呼び出しで計算された外接矩形と、配列内の次の `Shape`を引数にとり、ユー"
-"ザ定義の演算子 `union`を使ってふたつの外接矩形の和を計算しています。 "
-"`shapeBounds`関数は、パターン照合を使用して、単一の図形の外接矩形を計算しま"
-"す。"
+"累積関数 `combine`は `where`ブロックで定義されています。\n"
+"`combine`は `foldl`の再帰呼び出しで計算された外接矩形と、\n"
+"配列内の次の `Shape`を引数にとり、\n"
+"ユーザ定義の演算子 `union`を使ってふたつの外接矩形の和を計算しています。\n"
+"`shapeBounds`関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:524
-#, fuzzy
 msgid ""
 "(Medium) Extend the vector graphics library with a new operation `area` "
 "which computes the area of a `Shape`. For the purpose of this exercise, the "
 "area of a line or a piece of text is assumed to be zero."
 msgstr ""
-"（やや難しい） ベクターグラフィックライブラリを拡張し、 `Shape`の面積を計算す"
-"る新しい操作 `area`を追加してください。この演習では、テキストの面積は0である"
-"ものとしてください。"
+"（やや難しい） ベクターグラフィックライブラリを拡張し、\n"
+"`Shape`の面積を計算する新しい操作 `area`を追加してください。\n"
+"この演習では、テキストの面積は0であるものとしてください。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:524
-#, fuzzy
 msgid ""
 "(Difficult) Extend the `Shape` type with a new data constructor `Clipped`, "
 "which clips another `Picture` to a rectangle. Extend the `shapeBounds` "
 "function to compute the bounds of a clipped picture. Note that this makes "
 "`Shape` into a recursive data type."
 msgstr ""
-"（難しい） `Shape`を拡張し、新しいデータ構築子 `Clipped`を追加してください。 "
-"`Clipped`は他の `Picture`を矩形に切り抜き出ます。切り抜かれた `Picture`の境界"
-"を計算できるよう、 `shapeBounds`関数を拡張してください。これは `Shape`を再帰"
-"的なデータ型にすることに注意してください。"
+"（難しい） `Shape`を拡張し、新しいデータ構築子 `Clipped`を追加してください。\n"
+"`Clipped`は他の `Picture`を矩形に切り抜きます。\n"
+"切り抜いてきた`Picture`の境界を計算できるよう、\n"
+"`shapeBounds`関数を拡張してください。\n"
+"なお、これにより`Shape`は再帰的なデータ型になります。"
 
 #. type: Plain text
 #: text/chapter5.md:528
-#, fuzzy
 msgid ""
 "In this chapter, we covered pattern matching, a basic but powerful technique "
 "from functional programming. We saw how to use simple patterns as well as "
 "array and record patterns to match parts of deep data structures."
 msgstr ""
-"この章では、関数型プログラミングから基本だが強力なテクニックであるパターン照"
-"合を扱いました。複雑なデータ構造の部分と照合するために、簡単なパターンだけで"
-"なく配列パターンやレコードパターンをどのように使用するかを見てきました。"
+"この章では、関数型プログラミングから基本だが強力なテクニックであるパターン照合を扱いました。\n"
+"複雑なデータ構造の部分と照合するために、\n"
+"簡単なパターンの使い方だけではなく、\n"
+"配列パターンやレコードパターンを使った深いデータ構造の一部の照合方法を見てきました。"
 
 #. type: Plain text
 #: text/chapter5.md:530
-#, fuzzy
 msgid ""
 "This chapter also introduced algebraic data types, which are closely related "
 "to pattern matching. We saw how algebraic data types allow concise "
 "descriptions of data structures, and provide a modular way to extend data "
 "types with new operations."
 msgstr ""
-"またこの章では、パターン照合に密接に関連する代数的データ型を導入しました。代"
-"数的データ型がデータ構造のわかりやすい記述をどのように可能にするか、新たな操"
-"作でデータ型を拡張するためのモジュール性のある方法を提供することを見てきまし"
-"た。"
+"またこの章では、パターン照合に密接に関連する代数的データ型を紹介しました。\n"
+"代数的データ型のおかげでデータ構造を簡潔に記述することができ、\n"
+"新たな操作でデータ型を拡張するためのモジュール性のある方法が提供されることを見てきました。"
 
 #. type: Plain text
 #: text/chapter5.md:532
-#, fuzzy
 msgid ""
 "Finally, we covered _row polymorphism_, a powerful type of abstraction which "
 "allows many idiomatic JavaScript functions to be given a type."
 msgstr ""
-"最後に、多くの既存のJavaScript関数に型を与えるために、強力な抽象化である行多"
-"相を扱いました。この本の後半ではこれらの概念を再び扱います。"
+"最後に強力な抽象化である**行多相**を扱いました。\n"
+"これにより多くの既存のJavaScript関数に型を与えられます。"
 
 #. type: Plain text
 #: text/chapter5.md:533
-#, fuzzy
 msgid ""
 "In the rest of the book, we will use ADTs and pattern matching extensively, "
 "so it will pay dividends to become familiar with them now. Try creating your "
 "own algebraic data types and writing functions to consume them using pattern "
 "matching."
 msgstr ""
-"本書では今後も代数的データ型とパターン照合を使用するので、今のうちにこれらに"
-"習熟しておくと後で役立つでしょう。これ以外にも独自の代数的データ型を作成し、"
+"本書では今後も代数的データ型とパターン照合をいろんなところで使用するので、\n"
+"今のうちにこれらに習熟しておくと後で実を結ぶことでしょう。\n"
+"これ以外にも独自の代数的データ型を作成し、\n"
 "パターン照合を使用してそれらを使う関数を書くことを試してみてください。"
 
 #. type: Title #
