@@ -24,3 +24,4 @@
 * [関数とレコード](chapter3.ja.md)
 * [再帰、マップ、畳み込み](chapter4.ja.md)
 * [パターン照合](chapter5.ja.md)
+* [型クラス](chapter6.ja.md)

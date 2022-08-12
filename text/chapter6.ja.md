@@ -1,63 +1,49 @@
-# Type Classes
+# 型クラス
 
 ## この章の目標
 
-This chapter will introduce a powerful form of abstraction which is enabled
-by PureScript's type system - type classes.
+この章では、PureScriptの型システムによって可能になる強力な抽象化の手法である、型クラスを導入します。
 
-This motivating example for this chapter will be a library for hashing data
-structures. We will see how the machinery of type classes allow us to hash
-complex data structures without having to think directly about the structure
-of the data itself.
+この章ではデータ構造をハッシュするためのライブラリを題材に説明していきます。データ自身の構造について直接考えることなく複雑な構造のデータのハッシュ値を求めるために、型クラスの仕組みがどのようにして働くのかを見ていきます。
 
-We will also see a collection of standard type classes from PureScript's
-Prelude and standard libraries. PureScript code leans heavily on the power
-of type classes to express ideas concisely, so it will be beneficial to
-familiarize yourself with these classes.
+また、PureScriptのPreludeや標準ライブラリに含まれる、標準的な型クラスも見ていきます。PureScriptのコードは概念を簡潔に表現するために型クラスの強力さに大きく依存しているので、これらのクラスに慣れておくと役に立つでしょう。
 
-If you come from an Object Oriented background, please note that the word
-"class" means something _very_ different in this context than what you're
-used to. A type class serves a purpose more similar to an OO interface.
+オブジェクト指向の方面から入って来た方は、
+「クラス」という単語がそれまで馴染みのあるものとこの文脈とでは
+**かなり**異なるものを意味していることに注意してください。
 
 ## プロジェクトの準備
 
-The source code for this chapter is defined in the file
-`src/Data/Hashable.purs`.
+この章のソースコードは、ファイル `src/data/Hashable.purs`で定義されています。
 
 このプロジェクトには以下の依存関係があります。
 
-- `maybe`, which defines the `Maybe` data type, which represents optional
-values.  - `tuples`, which defines the `Tuple` data type, which represents
-pairs of values.  - `either`, which defines the `Either` data type, which
-represents disjoint unions.  - `strings`, which defines functions which
-operate on strings.  - `functions`, which defines some helper functions for
-defining PureScript functions.
+- `maybe`: オプショナルな値を表す `Maybe`データ型が定義されています。
+- `tuples`: 値の組を表す `Tuple`データ型が定義されています。
+- `either`: 非交和を表す `Either`データ型が定義されています。
+- `strings`: 文字列を操作する関数が定義されています。
+- `functions`: PureScriptの記述用の補助関数が定義されています。
 
-The module `Data.Hashable` imports several modules provided by these
-packages.
+モジュール `Data.Hashable`では、これらのパッケージによって提供されるモジュールのいくつかをインポートしています。
 
-## Show Me!
+## 見せてください！
 
-Our first simple example of a type class is provided by a function we've
-seen several times already: the `show` function, which takes a value and
-displays it as a string.
+型クラスの最初の簡単な例は、すでに何回か見たことがある関数で提供されています。
+`show`は、何らかの値を取り、それを文字列として表示する関数です。
 
-`show` is defined by a type class in the `Prelude` module called `Show`,
-which is defined as follows:
+`show`は `Prelude`モジュールの `Show`と呼ばれる型クラスで次のように定義されています。
 
 ```haskell
 class Show a where
   show :: a -> String
 ```
 
-This code declares a new _type class_ called `Show`, which is parameterized
-by the type variable `a`.
+このコードでは、型変数 `a`でパラメータ化された、
+`Show`という新しい**型クラス** (type class) を宣言しています。
 
-A type class _instance_ contains implementations of the functions defined in
-a type class, specialized to a particular type.
+型クラス**インスタンス**には、型クラスで定義された関数の、その型に特殊化された実装が含まれています。
 
-For example, here is the definition of the `Show` type class instance for
-`Boolean` values, taken from the Prelude:
+例えば、Preludeにある `Boolean`値に対する `Show`型クラスインスタンスの定義は次の通りです。
 
 ```haskell
 instance showBoolean :: Show Boolean where
@@ -65,13 +51,11 @@ instance showBoolean :: Show Boolean where
   show false = "false"
 ```
 
-This code declares a type class instance called `showBoolean` - in
-PureScript, type class instances can be named to aid the readability of the
-generated JavaScript. We say that the `Boolean` type _belongs to the `Show`
-type class_.
+このコードは `showBool​​ean`という名前の型クラスのインスタンスを宣言します。
+PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前をつけます。このとき、**`Boolean`型は
+`Show`型クラスに属している**といいます。
 
-We can try out the `Show` type class in PSCi, by showing a few values with
-different types:
+PSCiで、いろいろな型の値を`Show`型クラスを利用して表示してみましょう。
 
 ```text
 > import Prelude
@@ -86,8 +70,7 @@ different types:
 "\"Hello World\""
 ```
 
-These examples demonstrate how to `show` values of various primitive types,
-but we can also `show` values with more complicated types:
+この例ではさまざまなプリミティブ型の値を `show`しましたが、もっと複雑な型を持つ値を `show`することもできます。
 
 ```text
 > import Data.Tuple
@@ -101,11 +84,12 @@ but we can also `show` values with more complicated types:
 "(Just \"testing\")"
 ```
 
-The output of `show` should be a string that you can paste back into the
-repl (or `.purs` file) to recreate the item being shown. Here we'll use
-`logShow`, which just calls `show` then `log`, to render the string without
-quotes. Ignore the `unit` print - that will covered in Chapter 8 when we
-examine `Effect`s, like `log`.
+`show`の出力は、REPLに（あるいは`.purs`ファイルに）もう一度貼り付ければ、
+表示されるものを再作成できるような文字列であるべきです。
+以下では`logShow`を使っていますが、これは単に`show`と`log`を順に呼び出して、
+引用符なしに文字列を表示するものです。
+`unit`の表示は無視してください。
+第8章で、`log`のような`Effect`を調べるときに押さえます。
 
 ```text
 > import Effect.Console
@@ -119,8 +103,7 @@ unit
 unit
 ```
 
-If we try to show a value of type `Data.Either`, we get an interesting error
-message:
+型 `Data.Either`の値を表示しようとすると、興味深いエラーメッセージが表示されます。
 
 ```text
 > import Data.Either
@@ -133,19 +116,22 @@ The inferred type
 has type variables which are not mentioned in the body of the type. Consider adding a type annotation.
 ```
 
-The problem here is not that there is no `Show` instance for the type we
-intended to `show`, but rather that PSCi was unable to infer the type. This
-is indicated by the _unknown type_ `a` in the inferred type.
+ここでの問題は `show`しようとしている型に対する `Show`インスタンスが存在しないということではなく、
+PSCiがこの型を推論できなかったということです。
+このエラーメッセージで**未知の型**`a`と表示されているのがそれです。
 
-We can annotate the expression with a type, using the `::` operator, so that
-PSCi can choose the correct type class instance:
+`::`演算子を使って式に対して型注釈を加えると、
+PSCiが正しい型クラスインスタンスを選ぶことができるようになります。
 
 ```text
 > show (Left 10 :: Either Int String)
 "(Left 10)"
 ```
 
-Some types do not have a `Show` instance defined at all. One example of this is the function type `->`. If we try to `show` a function from `Int` to `Int`, we get an appropriate error message from the type checker:
+`Show`インスタンスをまったく持っていない型もあります。
+関数の型 `->`がその一例です。
+`Int`から `Int`への関数を `show`しようとすると、
+型検証器によってその通りのエラーメッセージが表示されます。
 
 ```text
 > import Prelude
@@ -156,49 +142,46 @@ No type class instance was found for
   Data.Show.Show (Int -> Int)
 ```
 
-Type class instances can be defined in one of two places: in the same module
-that the type class is defined, or in the same module that the type
-"belonging to" the type class is defined. An instance defined in any other
-spot is called an ["orphan
-instance"](https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#orphan-instances)
-and is not allowed by the PureScript compiler. Some of the exercises in this
-chapter will require you to copy the definition of a type into your
-MySolutions module so that you can define type class instances for that
-type.
+型クラスインスタンスは次の2つのうちいずれかの形で定義されます。
+型クラスが定義されている同じモジュールで定義するか、
+型クラスに「属して」いる型と同じモジュールで定義するかです。
+これらとは別の場所で定義されるインスタンスは[「孤立インスタンス」](https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#orphan-instances)と呼ばれ、PureScriptコンパイラによって許されていません。
+この章の演習のいくつかでは、
+その型の型クラスインスタンスを定義できるように、
+型の定義を自分の`MySolutions`モジュールに複製する必要があります。
 
 ## 演習
 
-1. (Easy) Define a `Show` instance for `Point`. Match the same output as the
-   `showPoint` function from the previous chapter. _Note:_ Point is now a
-   `newtype` (instead of a `type` synonym), which allows us to customize how
-   to `show` it. Otherwise, we'd be stuck with the default `Show` instance
-   for records.
+1. （簡単）`Show`インスタンスを`Point`に定義してください。
+   前の章の`showPoint`関数と同じ出力に一致するようにしてください。
+   **補足**：`Point`はここでは（`type`同義語ではなく）`newtype`です。
+   そのため`show`の仕方を変えられます。
+   こうでもしないとレコードへの既定の`Show`インスタンスから逃れられません。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Point}}
     ```
 
-## Common Type Classes
+## よく見かける型クラス
 
-In this section, we'll look at some standard type classes defined in the
-Prelude and standard libraries. These type classes form the basis of many
-common patterns of abstraction in idiomatic PureScript code, so a basic
-understanding of their functions is highly recommended.
+この節では、Preludeや標準ライブラリで定義されている標準的な型クラスをいくつか見ていきましょう。
+これらの型クラスはPureScript特有の抽象化の多くのよくあるパターンの基礎を形成しているため、
+これらの関数の基本についてよく理解しておくことを強くお勧めします。
 
 ### Eq
 
-The `Eq` type class defines the `eq` function, which tests two values for
-equality. The `==` operator is actually just an alias for `eq`.
+`Eq`型クラスは、2つの値が等しいかどうかを調べる`eq`関数を定義しています。
+等値演算子(`==`)は`eq`の別名にすぎません。
 
 ```haskell
 class Eq a where
   eq :: a -> a -> Boolean
 ```
 
-Note that in either case, the two arguments must have the same type: it does
-not make sense to compare two values of different types for equality.
+異なる型の2つの値を比較しても意味がありませんから、
+いずれの演算子も2つの引数が同じ型を持つ必要があることに注意してください。
 
-Try out the `Eq` type class in PSCi:
+PSCiで `Eq`型クラスを試してみましょう。
 
 ```text
 > 1 == 2
@@ -210,7 +193,8 @@ true
 
 ### Ord
 
-The `Ord` type class defines the `compare` function, which can be used to compare two values, for types which support ordering. The comparison operators `<` and `>` along with their non-strict companions `<=` and `>=`, can be defined in terms of `compare`.
+`Ord`型クラスは順序付け可能な型に対して2つの値を比較する `compare`関数を定義します。
+比較演算子 `<`、 `>`と、その仲間の厳密な比較ではない`<=`、 `>=`も、`compare`を使って定義されます。
 
 ```haskell
 data Ordering = LT | EQ | GT
@@ -219,14 +203,13 @@ class Eq a <= Ord a where
   compare :: a -> a -> Ordering
 ```
 
-The `compare` function compares two values, and returns an `Ordering`, which
-has three alternatives:
+`compare`関数は2つの値を比較して `Ordering`の3つの値のうちいずれかを返します。
 
-- `LT` - if the first argument is less than the second.  - `EQ` - if the
-first argument is equal to the second.  - `GT` - if the first argument is
-greater than the second.
+- `LT`- 最初の引数が2番目の値より小さいとき
+- `EQ`- 最初の引数が2番目の値と等しい（または比較できない）とき
+- `GT`- 最初の引数が2番目の値より大きいとき
 
-Again, we can try out the `compare` function in PSCi:
+ここでも`compare`関数についてPSCiで試してみましょう。
 
 ```text
 > compare 1 2
@@ -238,65 +221,60 @@ LT
 
 ### Field
 
-The `Field` type class identifies those types which support numeric
-operators such as addition, subtraction, multiplication and division. It is
-provided to abstract over those operators, so that they can be reused where
-appropriate.
+`Field`型クラスは加算、減算、乗算、除算などの数値演算子を使用可能な型を示します。
+必要に応じて再利用できるように、これらの演算子を抽象化するわけです。
 
-_Note_: Just like the `Eq` and `Ord` type classes, the `Field` type class
-has special support in the PureScript compiler, so that simple expressions
-such as `1 + 2 * 3` get translated into simple JavaScript, as opposed to
-function calls which dispatch based on a type class implementation.
+**注意**：型クラス `Eq`や `Ord`のクラスとちょうど同じように、
+`Field`型のクラスはPureScriptコンパイラで特別に扱われ、
+`1 + 2 * 3`のような単純な式は単純なJavaScriptへと変換されます。
+型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。
 
 ```haskell
 class EuclideanRing a <= Field a
 ```
 
-The `Field` type class is composed from several more general
-_superclasses_. This allows us to talk abstractly about types which support
-some but not all of the `Field` operations. For example, a type of natural
-numbers would be closed under addition and multiplication, but not
-necessarily under subtraction, so that type might have an instance of the
-`Semiring` class (which is a superclass of `Num`), but not an instance of
-`Ring` or `Field`.
+`Field`型クラスは、いくつかのより抽象的な**上位クラス** (Super Class) が組み合わさってできています。
+これは、その型は`Field`型クラスの操作をすべてを提供しているわけではないが、
+その一部を提供する、というように抽象的に説明することができます。
+この型クラスは抽象的なすべてではないいくつかの数値演算子をサポートしています。
+例えば、自然数の型は加算および乗算については閉じていますが、
+減算については閉じていないため、
+この型は`Semiring`クラス（これは`Num`の上位クラスです）のインスタンスですが、
+`Ring`や`Field`のインスタンスではありません。
 
-Superclasses will be explained later in this chapter, but the full [numeric
-type class
-hierarchy](https://a-guide-to-the-purescript-numeric-hierarchy.readthedocs.io/en/latest/introduction.html)
-([cheatsheet](https://harry.garrood.me/numeric-hierarchy-overview/)) is
-beyond the scope of this chapter. The interested reader is encouraged to
-read the documentation for the superclasses of `Field` in `prelude`.
+上位クラスについては、この章の後半で詳しく説明します。
+しかし、すべての[数値型クラスの階層](https://a-guide-to-the-purescript-numeric-hierarchy.readthedocs.io/en/latest/introduction.html)（[チートシート](https://harry.garrood.me/numeric-hierarchy-overview/)）について述べるのはこの章の目的から外れています。
+この内容に興味のある読者は`prelude`内の `Field`に関するドキュメントを参照してください。
 
-### Semigroups and Monoids
+### 半群とモノイド
 
-The `Semigroup` type class identifies those types which support an `append`
-operation to combine two values:
+`Semigroup`（半群）型クラスは、2つの値を連結する演算子 `append`を提供する型を示します。
 
 ```haskell
 class Semigroup a where
   append :: a -> a -> a
 ```
 
-Strings form a semigroup under regular string concatenation, and so do
-arrays. Several other standard instances are provided by the `prelude`
-package.
+普通の文字列連結について文字列は半群をなし、同様に配列も半群をなします。
+その他の標準的なインスタンスの幾つかは、 `prelude`パッケージで提供されています。
 
-The `<>` concatenation operator, which we have already seen, is provided as an alias for `append`.
+以前に見た `<>`連結演算子は、 `append`の別名として提供されています。
 
-The `Monoid` type class (provided by the `prelude` package) extends the
-`Semigroup` type class with the concept of an empty value, called `mempty`:
+（`prelude`パッケージで提供されている）`Monoid`型クラスは、
+`mempty`と呼ばれる空の値の概念で `Semigroup`型クラスを拡張します。
 
 ```haskell
 class Semigroup m <= Monoid m where
   mempty :: m
 ```
 
-Again, strings and arrays are simple examples of monoids.
+ここでも文字列や配列はモノイドの簡単な例になっています。
 
-A `Monoid` type class instance for a type describes how to _accumulate_ a
-result with that type, by starting with an "empty" value, and combining new
-results. For example, we can write a function which concatenates an array of
-values in some monoid by using a fold. In PSCi:
+`Monoid`型クラスインスタンスでは、
+「空」の値から始めて新たな値を合成していき、
+その型で**累積**した結果を返すにはどうするかを記述する型クラスです。
+例えば、畳み込みを使っていくつかのモノイドの値の配列を連結する関数を書くことができます。
+PSCiで試すと次のようになります。
 
 ```haskell
 > import Prelude
@@ -310,21 +288,19 @@ values in some monoid by using a fold. In PSCi:
 [1,2,3,4,5,6]
 ```
 
-The `prelude` package provides many examples of monoids and semigroups,
-which we will use in the rest of the book.
+`prelude`パッケージにはモノイドと半群の多くの例を提供しており、
+以降もこれらを本書で扱っていきます。
 
 ### Foldable
 
-If the `Monoid` type class identifies those types which act as the result of
-a fold, then the `Foldable` type class identifies those type constructors
-which can be used as the source of a fold.
+`Monoid`型クラスは畳み込みの結果になるような型を示しますが、
+`Foldable`型クラスは、畳み込みの元のデータとして使えるような型構築子を示しています。
 
-The `Foldable` type class is provided in the `foldable-traversable` package,
-which also contains instances for some standard containers such as arrays
-and `Maybe`.
+また、 `Foldable`型クラスは、
+配列や `Maybe`などのいくつかの標準的なコンテナのインスタンスを含む
+`foldable-traversable`パッケージで提供されています。
 
-The type signatures for the functions belonging to the `Foldable` class are
-a little more complicated than the ones we've seen so far:
+`Foldable`クラスに属する関数の型シグネチャは、これまで見てきたものよりも少し複雑です。
 
 ```haskell
 class Foldable f where
@@ -333,14 +309,18 @@ class Foldable f where
   foldMap :: forall a m. Monoid m => (a -> m) -> f a -> m
 ```
 
-It is instructive to specialize to the case where `f` is the array type
-constructor. In this case, we can replace `f a` with `Array a` for any a,
-and we notice that the types of `foldl` and `foldr` become the types that we
-saw when we first encountered folds over arrays.
+この定義は `f`を配列の型構築子として特殊化して考えてみるとわかりやすくなります。
+この場合、すべての `a`について `f a`を `Array a`に置き換える事ができますが、
+`foldl`と `foldr`の型が、最初に見た配列に対する畳み込みの型になるとわかります。
 
-What about `foldMap`? Well, that becomes `forall a m. Monoid m => (a -> m) -> Array a -> m`. This type signature says that we can choose any type `m` for our result type, as long as that type is an instance of the `Monoid` type class. If we can provide a function which turns our array elements into values in that monoid, then we can accumulate over our array using the structure of the monoid, and return a single value.
+`foldMap`についてはどうでしょうか？
+これは `forall a m. Monoid m => (a -> m) -> Array a -> m`になります。
+この型シグネチャは、型 `m`が `Monoid`型クラスのインスタンスであれば
+どんな型でも返り値の型として選ぶことができると言っています。
+配列の要素をそのモノイドの値へと変換する関数を提供すれば、
+そのモノイドの構造を利用して配列を畳み込み、ひとつの値にして返すことができます。
 
-Let's try out `foldMap` in PSCi:
+それではPSCiで `foldMap`を試してみましょう。
 
 ```text
 > import Data.Foldable
@@ -349,30 +329,31 @@ Let's try out `foldMap` in PSCi:
 "12345"
 ```
 
-Here, we choose the monoid for strings, which concatenates strings together,
-and the `show` function which renders an `Int` as a `String`. Then, passing
-in an array of integers, we see that the results of `show`ing each integer
-have been concatenated into a single `String`.
+ここでは繋ぎ合わせるためのモノイドとして文字列を、
+そして`Int`を文字列として表示する `show`関数を選びました。
+それから、数の配列を渡すと、それぞれの数を `show`してひとつの文字列へと連結した結果が出力されました。
 
-But arrays are not the only types which are foldable. `foldable-traversable`
-also defines `Foldable` instances for types like `Maybe` and `Tuple`, and
-other libraries like `lists` define `Foldable` instances for their own data
-types. `Foldable` captures the notion of an _ordered container_.
+しかし畳み込み可能な型は配列だけではありません。
+`foldable-traversable`では `Maybe`や `Tuple`のような型の `Foldable`インスタンスが定義されており、
+`lists`のような他のライブラリでは、
+そのライブラリのそれぞれのデータ型に対して `Foldable`インスタンスが定義されています。
+`Foldable`は**順序付きコンテナ** (ordered container) の概念を捉えたものなのです。
 
-### Functor, and Type Class Laws
+### 関手と型クラス則
 
-The Prelude also defines a collection of type classes which enable a
-functional style of programming with side-effects in PureScript: `Functor`,
-`Applicative` and `Monad`. We will cover these abstractions later in the
-book, but for now, let's look at the definition of the `Functor` type class,
-which we have seen already in the form of the `map` function:
+PureScriptで副作用を伴う関数型プログラミングのスタイルを可能にするための
+`Functor`と `Applicative`、 `Monad`といった型クラスがPreludeでは定義されています。
+これらの抽象については本書で後ほど扱いますが、
+まずは`map`関数の形ですでに見てきた `Functor`型クラスの定義を見てみましょう。
 
 ```haskell
 class Functor f where
   map :: forall a b. (a -> b) -> f a -> f b
 ```
 
-The `map` function (and its alias `<$>`) allows a function to be "lifted" over a data structure. The precise definition of the word "lifted" here depends on the data structure in question, but we have already seen its behavior for some simple types:
+`map`関数（別名`<$>`）は関数をそのデータ構造まで「持ち上げる」(lift) ことができます。
+ここで「持ち上げ」という言葉の具体的な定義は問題のデータ構造に依りますが、
+すでにいくつかの単純な型についてその動作を見てきました。
 
 ```text
 > import Prelude
@@ -387,105 +368,97 @@ The `map` function (and its alias `<$>`) allows a function to be "lifted" over a
 (Just 7)
 ```
 
-How can we understand the meaning of the `map` function, when it acts on
-many different structures, each in a different way?
+`map`演算子は様々な構造の上でそれぞれ異なる振る舞いをしますが、 `map`演算子の意味はどのように理解すればいいのでしょうか。
 
-Well, we can build an intuition that the `map` function applies the function
-it is given to each element of a container, and builds a new container from
-the results, with the same shape as the original. But how do we make this
-concept precise?
+直感的には、 `map`演算子はコンテナのそれぞれの要素へ関数を適用し、
+その結果から元のデータと同じ形状を持った新しいコンテナを構築するものとできます。
+しかし、この着想を精密にするにはどうしたらいいでしょうか？
 
-Type class instances for `Functor` are expected to adhere to a set of
-_laws_, called the _functor laws_:
+`Functor`の型クラスのインスタンスは、
+**関手則** (functor laws) と呼ばれる法則を順守するものと期待されています。
 
 - `map identity xs = xs`
 - `map g (map f xs) = map (g <<< f) xs`
 
-The first law is the _identity law_. It states that lifting the identity
-function (the function which returns its argument unchanged) over a
-structure just returns the original structure. This makes sense since the
-identity function does not modify its input.
+最初の法則は**恒等射律** (identity law) です。
+これは、恒等関数（引数を変えずに返す関数）をその構造まで持ち上げると、
+元の構造をそのまま返すという意味です。
+恒等関数は入力を変更しませんから、これは理にかなっています。
 
-The second law is the _composition law_. It states that mapping one function
-over a structure, and then mapping a second, is the same thing as mapping
-the composition of the two functions over the structure.
+第二の法則は**合成律** (composition law) です。
+構造をひとつの関数で写してから2つめの関数で写すのは、
+2つの関数の合成で構造を写すのと同じだ、と言っています。
 
-Whatever "lifting" means in the general sense, it should be true that any
-reasonable definition of lifting a function over a data structure should
-obey these rules.
+「持ち上げ」の一般的な意味が何であれ、
+データ構造に対する持ち上げ関数の正しい定義はこれらの法則に従っていなければなりません。
 
-Many standard type classes come with their own set of similar laws. The laws
-given to a type class give structure to the functions of that type class and
-allow us to study its instances in generality. The interested reader can
-research the laws ascribed to the standard type classes that we have seen
-already.
+標準の型クラスの多くには、
+このような法則が付随しています。
+一般に、型クラスに与えられた法則は、
+型クラスの関数に構造を与え、
+普遍的にインスタンスについて調べられるようにします。
+興味のある読者は、すでに見てきた標準の型クラスに属する法則について調べてみてもよいでしょう。
 
-### Deriving Instances
+### インスタンスの導出
 
-Rather than writing instances manually, you can let the compiler do most of
-the work for you. Take a look at this [Type Class Deriving
-guide](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md).
-That information will help you solve the following exercises.
+インスタンスを手作業で描く代わりに、ほとんどの作業をコンパイラにさせることができます。
+この[型クラス導出手引き](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md)を見てください。
+そちらの情報が以下の演習を解く手助けになることでしょう。
 
 ## 演習
 
-The following newtype represents a complex number:
+（簡単）次のnewtypeは複素数を表します。
 
 ```haskell
 {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Complex}}
 ```
 
-1. (Easy) Define a `Show` instance for `Complex`. Match the output format
-   expected by the tests (e.g. `1.2+3.4i`, `5.6-7.8i`, etc.).
+1. （簡単）`Complex`に`Show`インスタンスを定義してください。
+   出力の形式はテストで期待される形式と一致させてください。
+   （例：`1.2+3.4i`、`5.6-7.7i`など）
 
-2. (Easy) Derive an `Eq` instance for `Complex`. _Note_: You may instead
-   write this instance manually, but why do more work if you don't have to?
+2. （簡単）`Eq`インスタンスを`Complex`に導出してください。
+   **補足**：代わりにこのインスタンスを手作業で書いてもよいですが、しなくていいのになぜするのですか？
 
-3. (Medium) Define a `Semiring` instance for `Complex`. _Note_: You can use
-   `wrap` and `over2` from
-   [`Data.Newtype`](https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype)
-   to create a more concise solution. If you do so, you will also need to
-   import `class Newtype` from `Data.Newtype` and derive a `Newtype`
-   instance for `Complex`.
+3. （やや難しい）`Semiring`インタンスを`Complex`に定義してください。
+   **補足**：[`Data.Newtype`](https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype)の`wrap`と`over2`を使ってより簡潔な解法をつくることができます。
+   もしそうするのでしたら、`Data.Newtype`から`class Newtype`をインポートしたり、
+   `Newtype`インスタンスを`Complex`に導出したりする必要も出てくるでしょう。
 
-4. (Easy) Derive (via `newtype`) a `Ring` instance for `Complex`. _Note_:
-   You may instead write this instance manually, but that's not as
-   convenient.
+4. （簡単）（`newtype`を介して）`Ring`インスタンスを`Complex`に導出してください。
+   **補足**：代わりにこのインスタンスを手作業で書くこともできますが、
+   そう手軽にはできません。
 
-    Here's the `Shape` ADT from the previous chapter:
+    以下は前章からの`Shape`のADTです。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Shape}}
     ```
 
-5. (Medium) Derive (via `Generic`) a `Show` instance for `Shape`. How does
-   the amount of code written and `String` output compare to `showShape`
-   from the previous chapter? _Hint_: See the [Deriving from
-   `Generic`](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md#deriving-from-generic)
-   section of the [Type Class
-   Deriving](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md)
-   guide.
+5. （やや難しい）（`Generic`を介して）`Show`インスタンスを`Shape`に導出してください。
+   コードの量はどのくらいになりましたか？
+   また、前の章の`showShape`と比較して`String`の出力はどうなりましたか？
+   **ヒント**：[型クラス導出](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md)手引きの[`Generic`から導出する](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md#deriving-from-generic)節を見てください。
 
-## Type Class Constraints
+## 型クラス制約
 
-Types of functions can be constrained by using type classes. Here is an
-example: suppose we want to write a function which tests if three values are
-equal, by using equality defined using an `Eq` type class instance.
+型クラスを使うと、関数の型に制約を加えることができます。
+例を示しましょう。
+`Eq`型クラスのインスタンスで定義された等値性を使って、3つの値が等しいかどうかを調べる関数を書きたいとします。
 
 ```haskell
 threeAreEqual :: forall a. Eq a => a -> a -> a -> Boolean
 threeAreEqual a1 a2 a3 = a1 == a2 && a2 == a3
 ```
 
-The type declaration looks like an ordinary polymorphic type defined using `forall`. However, there is a type class constraint `Eq a`, separated from the rest of the type by a double arrow `=>`.
+この型宣言は `forall`を使って定義された通常の多相型のようにも見えます。
+しかし、二重線矢印 `=>`で型の残りの部分から区切られた、型クラス制約 (type class constraint) `Eq a`があります。
 
-This type says that we can call `threeAreEqual` with any choice of type `a`,
-as long as there is an `Eq` instance available for `a` in one of the
-imported modules.
+インポートされたモジュールのどれかに `a`に対する `Eq`インスタンスが存在するなら、
+どんな型 `a`を選んでも `threeAsEqual`を呼び出すことができる、とこの型は言っています。
 
-Constrained types can contain several type class instances, and the types of
-the instances are not restricted to simple type variables. Here is another
-example which uses `Ord` and `Show` instances to compare two values:
+制約された型には複数の型クラスインスタンスを含めることができますし、インスタンスの型は単純な型変数に限定されません。 `Ord`と
+`Show`のインスタンスを使って2つの値を比較する例を次に示します。
 
 ```haskell
 showCompare :: forall a. Ord a => Show a => a -> a -> String
@@ -497,19 +470,17 @@ showCompare a1 a2 =
   show a1 <> " is equal to " <> show a2
 ```
 
-Note that multiple constraints can be specified by using the `=>` symbol multiple times, just like we specify curried functions
-of multiple arguments. But remember not to confuse the two symbols:
+`=>`シンボルを複数回使って複数の制約を指定できることに注意してください。
+複数の引数のカリー化された関数を定義するのと同様です。
+しかし、2つの記号を混同しないように注意してください。
 
-- `a -> b` denotes the type of functions from _type_ `a` to _type_ `b`,
-  whereas
-- `a => b` applies the _constraint_ `a` to the type `b`.
+- `a -> b`は**型**`a`から**型**`b`への関数の型を表します。一方で、
+- `a => b`は**制約**`a`を型`b`に適用します。
 
-The PureScript compiler will try to infer constrained types when a type
-annotation is not provided. This can be useful if we want to use the most
-general type possible for a function.
+PureScriptコンパイラは、型の注釈が提供されていない場合、制約付き型を推測しようとします。
+これは、関数に対して可能な最も一般的な型を使用したい場合に便利です。
 
-To see this, try using one of the standard type classes like `Semiring` in
-PSCi:
+PSCiで `Semiring`のような標準の型クラスのいずれかを使って、このことを試してみましょう。
 
 ```text
 > import Prelude
@@ -518,98 +489,100 @@ PSCi:
 forall a. Semiring a => a -> a
 ```
 
-Here, we might have annotated this function as `Int -> Int`, or `Number -> Number`, but PSCi shows us that the most general type works for any `Semiring`, allowing us to use our function with both `Int`s and `Number`s.
+ここで、この関数には`Int -> Int`または`Number -> Number`と注釈を付けることが考えられますが、
+最も一般的な型が`Semiring`で動作するため、
+PSCiでは`Int`と `Number`の両方で関数を実行させることができます。
 
-## Instance Dependencies
+## インスタンスの依存関係
 
-Just as the implementation of functions can depend on type class instances
-using constrained types, so can the implementation of type class instances
-depend on other type class instances. This provides a powerful form of
-program inference, in which the implementation of a program can be inferred
-using its types.
+制約された型を使うと関数の実装が型クラスインスタンスに依存できるように、
+型クラスインスタンスの実装は他の型クラスインスタンスに依存することができます。
+これにより、型を使ってプログラムの実装を推論するという、プログラム推論の強力な形式を提供します。
 
-For example, consider the `Show` type class. We can write a type class
-instance to `show` arrays of elements, as long as we have a way to `show`
-the elements themselves:
+`Show`型クラスを例に考えてみましょう。
+それぞれの要素を `show`する方法がある限り、
+その要素の配列を `show`する型クラスインスタンスを書くことができます。
 
 ```haskell
 instance showArray :: Show a => Show (Array a) where
   ...
 ```
 
-If a type class instance depends on multiple other instances, those instances should be grouped in parentheses and separated by
-commas on the left hand side of the `=>` symbol:
+型クラスインスタンスが複数の他のインスタンスに依存する場合、
+括弧で囲んでそれらのインスタンスをコンマで区切り、
+それを`=>`シンボルの左側に置く必要があります。
 
 ```haskell
 instance showEither :: (Show a, Show b) => Show (Either a b) where
   ...
 ```
 
-These two type class instances are provided in the `prelude` library.
+これらの2つの型クラスインスタンスは `prelude`ライブラリにあります。
 
-When the program is compiled, the correct type class instance for `Show` is
-chosen based on the inferred type of the argument to `show`. The selected
-instance might depend on many such instance relationships, but this
-complexity is not exposed to the developer.
+プログラムがコンパイルされると、
+`Show`の正しい型クラスのインスタンスは `show`の引数の推論された型に基づいて選ばれます。
+選択されたインスタンスが沢山のそうしたインスタンスの関係に依存しているかもしれませんが、
+このあたりの複雑さに開発者が関与することはありません。
 
 
 ## 演習
 
-1. (Easy) The following declaration defines a type of non-empty arrays of
-   elements of type `a`:
+1. （簡単）以下の宣言では型 `a`の要素の空でない配列の型を定義しています。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:NonEmpty}}
     ```
 
-    Write an `Eq` instance for the type `NonEmpty a` which reuses the instances for `Eq a` and `Eq (Array a)`. _Note:_ you may instead derive the `Eq` instance.
+    `Eq a`と`Eq (Array a)`へのインスタンスを再利用し、型`NonEmpty`に`Eq`インスタンスを書いてください。
+    **補足**：`Eq`インスタンスを導出することもできます。
 
-1. (Medium) Write a `Semigroup` instance for `NonEmpty a` by reusing the
-   `Semigroup` instance for `Array`.
+1. （やや難しい）`Array`への`Semigroup`インスタンスを再利用して、
+   `NonEmpty`への`Semigroup`インスタンスを書いてください。
 
-1. (Medium) Write a `Functor` instance for `NonEmpty`.
+1. （やや難しい）`NonEmpty`に`Functor`インスタンスを書いてください。
 
-1. (Medium) Given any type `a` with an instance of `Ord`, we can add a new
-   "infinite" value which is greater than any other value:
+1. （やや難しい）`Ord`のインスタンス付きのあらゆる型`a`が与えられているとすると、
+   新しくそれ以外のどんな値よりも大きい「無限の」値を付け加えられます。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Extended}}
     ```
 
-    Write an `Ord` instance for `Extended a` which reuses the `Ord` instance for `a`.
+    `a`への`Ord`インスタンスを再利用して、`Extended a`に`Ord`インスタンスを書いてください。
 
-1. (Difficult) Write a `Foldable` instance for `NonEmpty`. _Hint_: reuse the
-   `Foldable` instance for arrays.
+1. （難しい）`NonEmpty`に`Foldable`インスタンスを書いてください。
+   **ヒント**：配列への`Foldable`インスタンスを再利用してください。
 
-1. (Difficult) Given a type constructor `f` which defines an ordered
-   container (and so has a `Foldable` instance), we can create a new
-   container type which includes an extra element at the front:
+1. （難しい）順序付きコンテナを定義する（そして `Foldable`のインスタンスを持っている）ような型構築子 `f`が与えられたとき、
+   追加の要素を先頭に含めるような新たなコンテナ型を作ることができます。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:OneMore}}
     ```
 
-    The container `OneMore f` also has an ordering, where the new element comes before any element of `f`. Write a `Foldable` instance for `OneMore f`:
+   このコンテナ `OneMore f`もまた順序を持っています。
+   ここで、新しい要素は任意の `f`の要素よりも前にきます。
+   この `OneMore f`の `Foldable`インスタンスを書いてみましょう。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:OneMore_Foldable}}
       ...
     ```
 
-1. (Medium) Write a `dedupShapes :: Array Shape -> Array Shape` function
-   which removes duplicate `Shape`s from an array using the `nubEq`
-   function.
+1. （やや難しい）`nubEq`関数を使い、
+   配列から重複する`Shape`を削除する
+   `dedupShapes :: Array Shape -> Array Shape`関数を書いてください。
 
-1. (Medium) Write a `dedupShapesFast` function which is the same as
-   `dedupShapes`, but uses the more efficient `nub` function.
+1. （やや難しい）`dedupShapesFast`関数を書いてください。
+   `dedupShapes`とほぼ同じですが、より効率の良い`nub`関数を使います。
 
-## Multi Parameter Type Classes
+## 多変数型クラス
 
-It's not the case that a type class can only take a single type as an
-argument. This is the most common case, but in fact, a type class can be
-parameterized by _zero or more_ type arguments.
+型クラスは必ずしもひとつの型だけを型変数としてとるわけではありません。
+型変数がひとつだけなのが最も一般的ですが、
+実際には型クラスは**ゼロ個以上の**型変数を持つことができます。
 
-Let's see an example of a type class with two type arguments.
+それでは2つの型引数を持つ型クラスの例を見てみましょう。
 
 ```haskell
 module Stream where
@@ -628,21 +601,20 @@ instance streamString :: Stream String Char where
   uncons = String.uncons
 ```
 
-The `Stream` module defines a class `Stream` which identifies types which
-look like streams of elements, where elements can be pulled from the front
-of the stream using the `uncons` function.
+この `Stream`モジュールでは、
+要素のストリームのような型を示すクラス `Stream`が定義されています。
+`uncons`関数を使ってストリームの先頭から要素を取り出すことができます。
 
-Note that the `Stream` type class is parameterized not only by the type of
-the stream itself, but also by its elements. This allows us to define type
-class instances for the same stream type but different element types.
+`Stream`型クラスは、
+ストリーム自身の型だけでなくその要素の型も型変数として持っていることに注意してください。
+これによって、ストリームの型が同じでも要素の型について異なる型クラスインスタンスを定義することができます。
 
-The module defines two type class instances: an instance for arrays, where
-`uncons` removes the head element of the array using pattern matching, and
-an instance for String, which removes the first character from a String.
+このモジュールでは2つの型クラスインスタンスが定義されています。
+`uncons`がパターン照合で配列の先頭の要素を取り除くような配列のインスタンスと、
+文字列から最初の文字を取り除くような文字列のインスタンスです。
 
-We can write functions which work over arbitrary streams. For example, here
-is a function which accumulates a result in some `Monoid` based on the
-elements of a stream:
+任意のストリーム上で動作する関数を記述することができます。
+例えば、ストリームの要素に基づいて `Monoid`に結果を累積する関数は次のようになります。
 
 ```haskell
 import Prelude
@@ -655,21 +627,19 @@ foldStream f list =
     Just cons -> f cons.head <> foldStream f cons.tail
 ```
 
-Try using `foldStream` in PSCi for different types of `Stream` and different
-types of `Monoid`.
+PSCiで使って、異なる `Stream`の型や異なる `Monoid`の型について `foldStream`を呼び出してみましょう。
 
-## Functional Dependencies
+## 関数従属性
 
-Multi-parameter type classes can be very useful, but can easily lead to
-confusing types and even issues with type inference. As a simple example,
-consider writing a generic `tail` function on streams using the `Stream`
-class given above:
+多変数型クラスは非常に便利ですが、
+混乱しやすい型や型推論の問題にもつながります。
+簡単な例として、上記の `Stream`クラスを使って汎用的な`tail`関数をストリームに書くことを考えてみましょう。
 
 ```haskell
 genericTail xs = map _.tail (uncons xs)
 ```
 
-This gives a somewhat confusing error message:
+これはやや複雑なエラーメッセージを出力します。
 
 ```text
 The inferred type
@@ -679,12 +649,10 @@ The inferred type
 has type variables which are not mentioned in the body of the type. Consider adding a type annotation.
 ```
 
-The problem is that the `genericTail` function does not use the `element`
-type mentioned in the definition of the `Stream` type class, so that type is
-left unsolved.
+エラーは、 `genericTail`関数が `Stream`型クラスの定義で言及された `element`型を使用しないので、
+その型は未解決のままであることを指しています。
 
-Worse still, we cannot even use `genericTail` by applying it to a specific
-type of stream:
+さらに、特定の型のストリームに `genericTail`を適用することができません。
 
 ```text
 > map _.tail (uncons "testing")
@@ -696,23 +664,24 @@ The inferred type
 has type variables which are not mentioned in the body of the type. Consider adding a type annotation.
 ```
 
-Here, we might expect the compiler to choose the `streamString`
-instance. After all, a `String` is a stream of `Char`s, and cannot be a
-stream of any other type of elements.
+ここでは、コンパイラが `streamString`インスタンスを選択することを期待しています。
+結局のところ、 `String`は `Char`のストリームであり、他の型のストリームであってはなりません。
 
-The compiler is unable to make that deduction automatically, and cannot
-commit to the `streamString` instance. However, we can help the compiler by
-adding a hint to the type class definition:
+コンパイラは自動的にその推論を行うことができず、
+`streamString`インスタンスを割り当てることができません。
+しかし、型クラス定義にヒントを追加すると、コンパイラを助けることができます。
 
 ```haskell
 class Stream stream element | stream -> element where
   uncons :: stream -> Maybe { head :: element, tail :: stream }
 ```
 
-Here, `stream -> element` is called a _functional dependency_. A functional dependency asserts a functional relationship between the type arguments of a multi-parameter type class. This functional dependency tells the compiler that there is a function from stream types to (unique) element types, so if the compiler knows the stream type, then it can commit to the element type.
+ここで、 `stream -> element`は**関数従属性** (functional dependency) と呼ばれます。
+関数従属性は、多変数型クラスの型引数間の関数関係を宣言します。
+この関数の依存関係は、ストリーム型から（一意の）要素型への関数があることをコンパイラに伝えるので、
+コンパイラがストリーム型を知っていれば要素の型を割り当てられます。
 
-This hint is enough for the compiler to infer the correct type for our
-generic tail function above:
+このヒントは、コンパイラが上記の汎用的な尾鰭関数の正しい型を推論するのに十分です。
 
 ```text
 > :type genericTail
@@ -722,20 +691,18 @@ forall stream element. Stream stream element => stream -> Maybe stream
 (Just "esting")
 ```
 
-Functional dependencies can be quite useful when using multi-parameter type
-classes to design certain APIs.
+多種の型のクラスを使用して何らかのAPIを設計する場合、関数従属性は非常に有用です。
 
-## Nullary Type Classes
+## 型変数のない型クラス
 
-We can even define type classes with zero type arguments! These correspond
-to compile-time assertions about our functions, allowing us to track global
-properties of our code in the type system.
+ゼロ個の型変数を持つ型クラスを定義することもできます！
+これらは関数に対するコンパイル時のアサーションに対応しており、
+型システム内のコードの大域的な性質を追跡することができます。
 
-An important example is the `Partial` class which we saw earlier when
-discussing partial functions. Take for example the functions `head` and
-`tail` defined in `Data.Array.Partial` that allow us to get the head or tail
-of an array without wrapping them in a `Maybe`, so they can fail if the
-array is empty:
+重要な一例として、前に部分関数についてお話しした際に見た`Partial`クラスがあります。
+`Data.Array.Partial`に定義されている関数`head`と`tail`を例に取りましょう。
+この関数は配列の先頭と尾鰭を`Maybe`に包むことなく取得することができます。
+なので配列が空のときに失敗する可能性があります。
 
 ```haskell
 head :: forall a. Partial => Array a -> a
@@ -743,9 +710,9 @@ head :: forall a. Partial => Array a -> a
 tail :: forall a. Partial => Array a -> Array a
 ```
 
-Note that there is no instance defined for the `Partial` type class! Doing
-so would defeat its purpose: attempting to use the `head` function directly
-will result in a type error:
+`Partial`モジュールの `Partial`型クラスのインスタンスを定義していないことに注意してください。
+こうすると目的を達成できます。
+このままの定義では `head`関数を使用しようとすると型エラーになるのです。
 
 ```text
 > head [1, 2, 3]
@@ -755,25 +722,24 @@ No type class instance was found for
   Prim.Partial
 ```
 
-Instead, we can republish the `Partial` constraint for any functions making
-use of partial functions:
+代わりに、これらの部分関数を利用するすべての関数で `Partial`制約を再発行することができます。
 
 ```haskell
 secondElement :: forall a. Partial => Array a -> a
 secondElement xs = head (tail xs)
 ```
 
-We've already seen the `unsafePartial` function, which allows us to treat a
-partial function as a regular function (unsafely). This function is defined
-in the `Partial.Unsafe` module:
+前章で見た `unsafePartial`関数を使用し、
+部分関数を通常の関数（unsafely）として扱うことができます。
+この関数は `Partial.Unsafe`モジュールで定義されています。
 
 ```haskell
 unsafePartial :: forall a. (Partial => a) -> a
 ```
 
-Note that the `Partial` constraint appears _inside the parentheses_ on the
-left of the function arrow, but not in the outer `forall`. That is,
-`unsafePartial` is a function from partial values to regular values:
+`Partial`制約は関数の矢印の左側の括弧の中に現れますが、
+外側の `forall`では現れません。
+つまり、 `unsafePartial`は部分的な値から通常の値への関数です。
 
 ```text
 > unsafePartial head [1, 2, 3]
@@ -783,59 +749,60 @@ left of the function arrow, but not in the outer `forall`. That is,
 2
 ```
 
-## Superclasses
+## 上位クラス
 
-Just as we can express relationships between type class instances by making
-an instance dependent on another instance, we can express relationships
-between type classes themselves using so-called _superclasses_.
+インスタンスを別のインスタンスに依存させることによって型クラスのインスタンス間の関係を表現することができるように、
+いわゆる**上位クラス** (superclass) を使って型クラス間の関係を表現することができます。
 
-We say that one type class is a superclass of another if every instance of
-the second class is required to be an instance of the first, and we indicate
-a superclass relationship in the class definition by using a backwards
-facing double arrow.
+あるクラスのどんなインスタンスも、
+別のクラスのインスタンスである必要があるとき、
+後者の型クラスは前者の型クラスの上位クラスであるといい、
+クラス定義で逆向きの太い矢印を使って上位クラス関係を示します。
 
-We've already seen some examples of superclass relationships: the `Eq` class
-is a superclass of `Ord`, and the `Semigroup` class is a superclass of
-`Monoid`. For every type class instance of the `Ord` class, there must be a
-corresponding `Eq` instance for the same type. This makes sense, since in
-many cases, when the `compare` function reports that two values are
-incomparable, we often want to use the `Eq` class to determine if they are
-in fact equal.
+すでに上位クラスの関係の例を見掛けています。
+`Eq`クラスは `Ord`の上位クラスですし、`Semigroup`クラスは`Monoid`の上位クラスです。
+`Ord`クラスのすべての型クラスインスタンスについて、
+その同じ型に対応する `Eq`インスタンスが存在しなければなりません。
+`compare`関数が2つの値が比較できないと報告した時は、
+それらが実は同値であるかどうかを決定するために `Eq`クラスを使いたくなることが多いでしょうから、
+これは理にかなっています。
 
-In general, it makes sense to define a superclass relationship when the laws
-for the subclass mention the members of the superclass. For example, it is
-reasonable to assume, for any pair of `Ord` and `Eq` instances, that if two
-values are equal under the `Eq` instance, then the `compare` function should
-return `EQ`. In other words, `a == b` should be true exactly when `compare a
-b` evaluates to `EQ`. This relationship on the level of laws justifies the
-superclass relationship between `Eq` and `Ord`.
+一般に、下位クラスの法則が上位クラスのメンバに言及しているとき、
+上位クラス関係を定義するのは理にかなっています。
+例えば、 `Ord`と `Eq`のインスタンスのどんな組についても、
+もしふたつの値が `Eq`インスタンスのもとで同値であるなら、
+`compare`関数は `EQ`を返すはずだとみなすのは妥当です。
+言い換えれば、まさしく`a == b`ならば `compare a b == EQ`です。
+法則の階層上のこの関係は、 `Eq`と `Ord`の間の上位クラス関係を説明します。
 
-Another reason to define a superclass relationship is in the case where
-there is a clear "is-a" relationship between the two classes. That is, every
-member of the subclass _is a_ member of the superclass as well.
+上位クラス関係を定義する別の理由となるのは、
+この2つのクラスの間に明らかに "is-a" の関係があることです。
+下位クラスのすべてのメンバは、上位クラスのメンバでもあるということです。
 
 ## 演習
 
-1. (Medium) Define a partial function `unsafeMaximum :: Partial => Array Int
-   -> Int` which finds the maximum of a non-empty array of integers. Test
-   out your function in PSCi using `unsafePartial`. _Hint_: Use the
-   `maximum` function from `Data.Foldable`.
+1. （やや難しい）部分関数`unsafeMaximum :: Partial => Array Int -> Int`を定義してください。
+   この関数は整数の空でない配列の最大値を求めます。
+   `unsafePartial`を使ってPSCiで関数をテストしてください。
+   **ヒント**：`Data.Foldable`の `maximum`関数を使います。
 
-1. (Medium) The `Action` class is a multi-parameter type class which defines
-   an action of one type on another:
+1. （やや難しい）次の `Action`クラスは、ある型の別の型での動作 (action) を定義する、多変数型クラスです。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Action}}
     ```
 
-    An _action_ is a function which describes how monoidal values are used to determine how to modify a value of another type. There are two laws for the `Action` type class:
+   **動作**はどのようにモノイドな値を使って他の型の値を変更する方法を決められるのかを記述する関数です。
+   `Action`型クラスには2つの法則があります。
 
     - `act mempty a = a`
     - `act (m1 <> m2) a = act m1 (act m2 a)`
 
-    Applying an empty action is a no-op. And applying two actions in sequence is the same as applying the actions combined. That is, actions respect the operations defined by the `Monoid` class.
+    空の動作を提供しても何も起こりません。
+    そして2つの動作を連続で適用することは結合した動作を適用することと同じです。
+    つまり、動作は`Monoid`クラスで定義される操作に倣っています。
 
-    For example, the natural numbers form a monoid under multiplication:
+   たとえば、自然数は乗算のもとでモノイドを形成します。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Multiply}}
@@ -845,170 +812,175 @@ member of the subclass _is a_ member of the superclass as well.
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:monoidMultiply}}
     ```
 
-    Write an instance which implements this action:
+    この動作を実装するインスタンスを書いてください。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Multiply_Action}}
       ...
     ```
     
-    Remember, your instance must satisfy the laws listed above.
+    インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。
 
-1. (Difficult) There are actually multiple ways to implement an instance of
-   `Action Multiply Int`. How many can you think of? Purescript does not
-   allow multiple implementations of a same instance, so you will have to
-   replace your original implementation. _Note_: the tests cover 4
-   implementations.
+1. （難しい）実は`Action Multiply Int`のインスタンスを実装するには複数の方法があります。
+   どれだけ思い付きますか？
+   PureScriptは同じインスタンスの複数の実装を許さないため、
+   元の実装を置き換える必要があります。
+   **補足**：テストでは4つの実装を押さえています。
 
-1. (Medium) Write an `Action` instance which repeats an input string some
-   number of times:
+1. （やや難しい）入力の文字列を何回か繰り返す`Action`インスタンスを書いてください。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:actionMultiplyString}}
       ...
     ```
     
-    _Hint_: Search Pursuit for a helper-function with the signature [`String -> Int -> String`](https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String). Note that `String` might appear as a more generic type (such as `Monoid`).
+    **ヒント**：Pursuitでシグネチャが[`String -> Int -> String`](https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String)のお助け関数を検索してください。
+    なお`String`は（`Monoid`のような）より汎用的な型として現れます。
 
-    Does this instance satisfy the laws listed above?
+    このインスタンスは上に挙げた法則を満たすでしょうか？
 
-1. (Medium) Write an instance `Action m a => Action m (Array a)`, where the
-   action on arrays is defined by acting on each array element
-   independently.
+1. （やや難しい）インスタンス `Action m a => Action m (Array a)`を書いてみましょう。
+   ここで、 配列上の動作はそれぞれの要素を独立に実行するものとして定義されます。
 
-1. (Difficult) Given the following newtype, write an instance for `Action m
-   (Self m)`, where the monoid `m` acts on itself using `append`:
+1. （難しい）以下のnewtypeが与えらえているとき、
+   `Action m (Self m)`のインスタンスを書いてください。
+   ここでモノイド`m`は`append`を用いて自力で動作します。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Self}}
     ```
 
-    _Note_: The testing framework requires `Show` and `Eq` instances for the `Self` and `Multiply` types. You may either write these instances manually, or let the compiler handle this for you with [`derive newtype instance`](https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#derive-from-newtype) shorthand.
+    **補足**：テストフレームワークでは`Self`と`Multiply`型に`Show`と`Eq`インスタンスが必要になります。
+    手作業でこれらのインスタンスを書いてもよいですし、
+    [`derive newtype instance`](https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#derive-from-newtype)と書くだけでコンパイラに取り仕切ってもらうこともできます。
 
-1. (Difficult) Should the arguments of the multi-parameter type class
-   `Action` be related by some functional dependency? Why or why not?
-   _Note_: There is no test for this exercise.
+1. （難しい）多変数型のクラス `Action`の引数は、何らかの関数従属性によって関連づけられるべきですか。
+   なぜそうすべき、あるいはそうすべきでないでしょうか？
+   **補足**：この演習にはテストがありません。
 
-## A Type Class for Hashes
+## ハッシュの型クラス
 
-In the last section of this chapter, we will use the lessons from the rest
-of the chapter to create a library for hashing data structures.
+この最後の節では、章の残りを使ってデータ構造をハッシュするライブラリを作ります。
 
-Note that this library is for demonstration purposes only, and is not
-intended to provide a robust hashing mechanism.
+このライブラリの目的は説明だけであり、
+堅牢なハッシングの仕組みの提供を目的としていないことに注意してください。
 
-What properties might we expect of a hash function?
+ハッシュ関数に期待される性質とはどのようなものでしょうか？
 
-- A hash function should be deterministic, and map equal values to equal
-hash codes.  - A hash function should distribute its results approximately
-uniformly over some set of hash codes.
+- ハッシュ関数は決定的でなくてはなりません。
+  つまり、同じ値には同じハッシュ値を対応させなければなりません。
+- ハッシュ関数はいろいろなハッシュ値の集合で結果が一様に分布しなければなりません。
 
-The first property looks a lot like a law for a type class, whereas the
-second property is more along the lines of an informal contract, and
-certainly would not be enforceable by PureScript's type system. However,
-this should provide the intuition for the following type class:
+最初の性質はまさに型クラスの法則のように見える一方で、
+2番目の性質はよりくだけた規約の条項のようなもので、
+PureScriptの型システムによって確実に強制できるようなものではなさそうです。
+しかし、これは型クラスについて次のような直感的理解を与えるはずです。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:Hashable}}
 ```
 
-with the associated law that `a == b` implies `hash a == hash b`.
+これに、 `a == b`ならば `hash a == hash b`を示唆するという関係性の法則が付随しています。
 
-We'll spend the rest of this section building a library of instances and
-functions associated with the `Hashable` type class.
+この節の残りの部分を費やして、
+`Hashable`型クラスに関連付けられているインスタンスと関数のライブラリを構築していきます。
 
-We will need a way to combine hash codes in a deterministic way:
+決定的な方法でハッシュ値を結合する方法が必要になります。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:combineHashes}}
 ```
 
-The `combineHashes` function will mix two hash codes and redistribute the
-result over the interval 0-65535.
+`combineHashes`関数は2つのハッシュ値を混ぜて結果を0-65535の間に分布します。
 
-Let's write a function which uses the `Hashable` constraint to restrict the
-types of its inputs. One common task which requires a hashing function is to
-determine if two values hash to the same hash code. The `hashEqual` relation
-provides such a capability:
+それでは、入力の種類を制限する `Hashable`制約を使う関数を書いてみましょう。
+ハッシュ関数を必要とするよくある目的としては、
+2つの値が同じハッシュ値にハッシュされるかどうかを決定することです。
+`hashEqual`関係はそのような機能を提供します。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:hashEqual}}
 ```
 
-This function uses the `on` function from `Data.Function` to define
-hash-equality in terms of equality of hash codes, and should read like a
-declarative definition of hash-equality: two values are "hash-equal" if they
-are equal after each value has been passed through the `hash` function.
+この関数はハッシュコードの等値性を利用したハッシュ同値性を定義するために
+`Data.Function`の `on`関数を使っていますが、
+これはハッシュ同値性の宣言的な定義として読めるはずです。
+つまり、それぞれの値が `hash`関数に渡されたあとで2つの値が等しいなら、
+それらの値は「ハッシュ同値」です。
 
-Let's write some `Hashable` instances for some primitive types. Let's start
-with an instance for integers. Since a `HashCode` is really just a wrapped
-integer, this is simple - we can use the `hashCode` helper function:
+原始型の `Hashable`インスタンスをいくつか書いてみましょう。
+まずは整数のインスタンスです。
+`HashCode`は実際には単なるラップされた整数なので、これは簡単です。
+`hashCode`ヘルパー関数を使うことができます。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:hashInt}}
 ```
 
-We can also define a simple instance for `Boolean` values using pattern
-matching:
+パターン照合を使うと、`Boolean`値の単純なインスタンスを定義することもできます。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:hashBoolean}}
 ```
 
-With an instance for hashing integers, we can create an instance for hashing
-`Char`s by using the `toCharCode` function from `Data.Char`:
+整数のインスタンスでは、
+`Data.Char`の `toCharCode`関数を使うと`Char`をハッシュするインスタンスを作成できます。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:hashChar}}
 ```
 
-To define an instance for arrays, we can `map` the `hash` function over the
-elements of the array (if the element type is also an instance of
-`Hashable`) and then perform a left fold over the resulting hashes using the
-`combineHashes` function:
+（要素型が `Hashable`のインスタンスでもあるならば）配列の要素に `hash`関数を `map`してから、
+`combineHashes`関数を使って結果のハッシュを左側に畳み込むことで、
+配列のインスタンスを定義します。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:hashArray}}
 ```
 
-Notice how we build up instances using the simpler instances we have already
-written. Let's use our new `Array` instance to define an instance for
-`String`s, by turning a `String` into an array of `Char`s:
+すでに書いたものより単純なインスタンスを使用して、
+新たなインスタンスを構築しているやり方に注目してください。
+`String`を`Char`の配列に変換し、
+この新たな`Array`インスタンスを使って`String`のインスタンスを定義しましょう。
 
 ```haskell
 {{#include ../exercises/chapter6/src/Data/Hashable.purs:hashString}}
 ```
 
-How can we prove that these `Hashable` instances satisfy the type class law
-that we stated above? We need to make sure that equal values have equal hash
-codes. In cases like `Int`, `Char`, `String` and `Boolean`, this is simple
-because there are no values of those types which are equal in the sense of
-`Eq` but not equal identically.
+これらの `Hashable`インスタンスが
+先ほどの型クラスの法則を満たしていることを証明するにはどうしたらいいでしょうか。
+同じ値が等しいハッシュ値を持っていることを確認する必要があります。
+`Int`、 `Char`、 `String`、 `Boolean`の場合は、
+`Eq`の意味では同じ値でも厳密には同じではない、
+というような型の値は存在しないので簡単です。
 
-What about some more interesting types? To prove the type class law for the
-`Array` instance, we can use induction on the length of the array. The only
-array with length zero is `[]`. Any two non-empty arrays are equal only if
-they have equal head elements and equal tails, by the definition of `Eq` on
-arrays. By the inductive hypothesis, the tails have equal hashes, and we
-know that the head elements have equal hashes if the `Hashable a` instance
-must satisfy the law. Therefore, the two arrays have equal hashes, and so
-the `Hashable (Array a)` obeys the type class law as well.
+もっと面白い型についてはどうでしょうか。
+この場合、配列の長さに関する帰納を使うと、
+型クラスの法則を証明することができます。
+長さゼロの唯一の配列は `[]`です。
+配列の `Eq`の定義により、任意の二つの空でない配列は、
+それらの先頭の要素が同じで配列の残りの部分が等しいとき、
+またその時に限り等しくなります。
+この帰納的な仮定により、
+配列の残りの部分は同じハッシュ値を持ちますし、
+もし `Hashable a`インスタンスがこの法則を満たすなら、
+先頭の要素も同じハッシュ値をもつことがわかります。
+したがって、2つの配列は同じハッシュ値を持ち、
+`Hashable (Array a)`も同様に型クラス法則を満たしています。
 
-The source code for this chapter includes several other examples of
-`Hashable` instances, such as instances for the `Maybe` and `Tuple` type.
+この章のソースコードには、 `Maybe`と `Tuple`型のインスタンスなど、
+他にも `Hashable`インスタンスの例が含まれています。
 
 ## 演習
 
- 1. (Easy) Use PSCi to test the hash functions for each of the defined
-    instances. _Note_: There is no provided unit test for this exercise.
- 1. (Medium) Write a function `arrayHasDuplicates` which tests if an array
-    has any duplicate elements based on both hash and value equality. First
-    check for hash equality with the `hashEqual` function, then check for
-    value equality with `==` if a duplicate pair of hashes is found. _Hint_:
-    the `nubByEq` function in `Data.Array` should make this task much
-    simpler.
- 1. (Medium) Write a `Hashable` instance for the following newtype which
-    satisfies the type class law:
+ 1. （簡単）PSCiを使って、定義した各インスタンスのハッシュ関数をテストしてください。
+    **補足**：この演習には単体試験がありません。
+ 1. （やや難しい）ハッシュと値の同値性に基づいて
+    配列が重複する要素を持っているかどうかを調べる関数`arrayHasDuplicates`を書いてください。
+    まずハッシュ同値性を`hashEqual`関数で確認し、
+    それからもし重複するハッシュの対が見付かったら`==`で値の同値性を確認してください。
+    **ヒント**：`Data.Array`の `nubByEq`関数はこの問題をずっと簡単にしてくれるでしょう。
+ 1. （やや難しい）型クラスの法則を満たす、次のnewtypeの `Hashable`インスタンスを書いてください。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Hour}}
@@ -1016,23 +988,26 @@ The source code for this chapter includes several other examples of
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:eqHour}}
     ```
 
-    The newtype `Hour` and its `Eq` instance represent the type of integers modulo 12, so that 1 and 13 are identified as equal, for example. Prove that the type class law holds for your instance.
- 1. (Difficult) Prove the type class laws for the `Hashable` instances for `Maybe`, `Either` and `Tuple`. _Note_: There is no test for this exercise.
+   newtypeの `Hour`とその `Eq`インスタンスは、
+   12を法とする整数の型を表します。
+   したがって、例えば1と13は等しいと見なされます。
+   そのインスタンスが型クラスの法則を満たしていることを証明してください。
+ 1. （難しい）`Maybe`、`Either`そして`Tuple`への`Hashable`インスタンスについて
+    型クラスの法則を証明してください。
+    **補足**：この演習にテストはありません。
 
 ## まとめ
 
-In this chapter, we've been introduced to _type classes_, a type-oriented
-form of abstraction which enables powerful forms of code reuse. We've seen a
-collection of standard type classes from the PureScript standard libraries,
-and defined our own library based on a type class for computing hash codes.
+この章では、型に基づく抽象化で、
+コードの再利用のための強力な形式化を可能にする**型クラス**を導入しました。
+PureScriptの標準ライブラリから標準の型クラスを幾つか見てきました。
+また、ハッシュ値を計算する型クラスに基づく独自のライブラリを定義しました。
 
-This chapter also gave an introduction to the notion of type class laws, a
-technique for proving properties about code which uses type classes for
-abstraction. Type class laws are part of a larger subject called _equational
-reasoning_, in which the properties of a programming language and its type
-system are used to enable logical reasoning about its programs. This is an
-important idea, and will be a theme which we will return to throughout the
-rest of the book.
+この章では型クラス法則の考え方も導入しましたが、
+これは抽象化に型クラスを使うコードについての性質を証明する手法でした。
+型クラス法則は**等式推論** (equational reasoning) と呼ばれる大きな分野の一部であり、
+プログラミング言語の性質と型システムはプログラムについて論理的な推論をできるようにするために使われています。
+これは重要な考え方で、本書では今後あらゆる箇所で立ち返る話題となるでしょう。
 
 - - -
 

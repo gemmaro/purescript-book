@@ -6,7 +6,11 @@ require 'rake/clean'
 CLEAN << 'po4a.cfg'
 PORT = ENV['PORT'] || 3456
 
-task default: %i[version watch]
+task default: %i[po4a_version foreman_version start]
+
+task :start do
+  sh 'foreman start'
+end
 
 task :watch do
   sh 'echo locales/ja.po | entr rake translate'
@@ -20,7 +24,7 @@ task translate: ['po4a.cfg', 'locales/ja.po'] do |t|
   sh "po4a #{t.source}"
 end
 
-task :version do
+task :po4a_version do
   sh 'po4a --version > .po4a-version'
 end
 
@@ -39,4 +43,8 @@ file 'po4a.cfg' do |t|
   end
 
   File.write(t.name, content)
+end
+
+task :foreman_version do
+  sh 'foreman --version > .foreman-version'
 end
