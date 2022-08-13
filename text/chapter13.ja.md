@@ -500,10 +500,10 @@ operation is associative:
 > import Test.QuickCheck.LCG (mkSeed)
 
 > :paste
-â¦ quickCheckPure (mkSeed 12345) 10 \xs ys zs ->
-â¦   ((xs `merge` ys) `merge` zs) ==
-â¦     (xs `merge` (ys `merge` zs))
-â¦ ^D
+… quickCheckPure (mkSeed 12345) 10 \xs ys zs ->
+…   ((xs `merge` ys) `merge` zs) ==
+…     (xs `merge` (ys `merge` zs))
+… ^D
 
 Success : Success : ...
 ```

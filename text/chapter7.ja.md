@@ -323,21 +323,21 @@ or with _applicative do_
 ```text
 > import Data.Maybe
 
-> :pasteâ¦
-â¦ ado
-â¦   f <- Just "Phillip"
-â¦   m <- Just "A"
-â¦   l <- Just "Freeman"
-â¦   in fullName f m l
-â¦ ^D
+> :paste…
+… ado
+…   f <- Just "Phillip"
+…   m <- Just "A"
+…   l <- Just "Freeman"
+…   in fullName f m l
+… ^D
 (Just "Freeman, Phillip A")
 
-â¦ ado
-â¦   f <- Just "Phillip"
-â¦   m <- Nothing
-â¦   l <- Just "Freeman"
-â¦   in fullName f m l
-â¦ ^D
+… ado
+…   f <- Just "Phillip"
+…   m <- Nothing
+…   l <- Just "Freeman"
+…   in fullName f m l
+… ^D
 Nothing
 ```
 
@@ -356,9 +356,9 @@ convert optional inputs into computations which can signal an error using
 ```text
 > import Data.Either
 > :paste
-â¦ withError Nothing  err = Left err
-â¦ withError (Just a) _   = Right a
-â¦ ^D
+… withError Nothing  err = Left err
+… withError (Just a) _   = Right a
+… ^D
 ```
 
 _Note_: In the `Either err` applicative functor, the `Left` constructor
@@ -369,23 +369,23 @@ for each parameter:
 
 ```text
 > :paste
-â¦ fullNameEither first middle last =
-â¦   fullName <$> (first  `withError` "First name was missing")
-â¦            <*> (middle `withError` "Middle name was missing")
-â¦            <*> (last   `withError` "Last name was missing")
-â¦ ^D
+… fullNameEither first middle last =
+…   fullName <$> (first  `withError` "First name was missing")
+…            <*> (middle `withError` "Middle name was missing")
+…            <*> (last   `withError` "Last name was missing")
+… ^D
 ```
 
 or with _applicative do_
 
 ```text
 > :paste
-â¦ fullNameEither first middle last = ado
-â¦  f <- first  `withError` "First name was missing"
-â¦  m <- middle `withError` "Middle name was missing"
-â¦  l <- last   `withError` "Last name was missing"
-â¦  in fullName f m l
-â¦ ^D
+… fullNameEither first middle last = ado
+…  f <- first  `withError` "First name was missing"
+…  m <- middle `withError` "Middle name was missing"
+…  l <- last   `withError` "Last name was missing"
+…  in fullName f m l
+… ^D
 
 > :type fullNameEither
 Maybe String -> Maybe String -> Maybe String -> Either String String

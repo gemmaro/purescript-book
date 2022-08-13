@@ -153,15 +153,15 @@ to a repl-compatible `Effect`:
 $ spago repl
 
 > :pa
-â¦ import Prelude
-â¦ import Effect.Aff (launchAff_)
-â¦ import Effect.Class.Console (log)
-â¦ import Test.HTTP (getUrl)
-â¦
-â¦ launchAff_ do
-â¦   str <- getUrl "https://reqres.in/api/users/1"
-â¦   log str
-â¦
+… import Prelude
+… import Effect.Aff (launchAff_)
+… import Effect.Class.Console (log)
+… import Test.HTTP (getUrl)
+…
+… launchAff_ do
+…   str <- getUrl "https://reqres.in/api/users/1"
+…   log str
+…
 unit
 {"data":{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth", ...}}
 ```

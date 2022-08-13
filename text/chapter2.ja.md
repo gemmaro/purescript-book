@@ -53,8 +53,8 @@ spago test
 
 ```sh
 → Suite: Euler - Sum of Multiples
-  → Running: below 10✓ Passed: below 10
-  → Running: below 1000✓ Passed: below 1000
+  ✓ Passed: below 10
+  ✓ Passed: below 1000
 
 All 2 tests passed! 🎉
 ```
@@ -113,8 +113,8 @@ diagonal w h = sqrt (w * w + h)
 
 ```hs
 → Suite: diagonal
-  → Running: 3 4 5☠ Failed: 3 4 5 because expected 5.0, got 3.605551275463989
-  → Running: 5 12 13☠ Failed: 5 12 13 because expected 13.0, got 6.082762530298219
+  ☠ Failed: 3 4 5 because expected 5.0, got 3.605551275463989
+  ☠ Failed: 5 12 13 because expected 13.0, got 6.082762530298219
 
 2 tests failed:
 ```
@@ -131,11 +131,11 @@ diagonal w h = sqrt (w * w + h)
 
 ```hs
 → Suite: Euler - Sum of Multiples
-  → Running: below 10✓ Passed: below 10
-  → Running: below 1000✓ Passed: below 1000
+  ✓ Passed: below 10
+  ✓ Passed: below 1000
 → Suite: diagonal
-  → Running: 3 4 5✓ Passed: 3 4 5
-  → Running: 5 12 13✓ Passed: 5 12 13
+  ✓ Passed: 3 4 5
+  ✓ Passed: 5 12 13
 
 All 4 tests passed! 🎉
 ```

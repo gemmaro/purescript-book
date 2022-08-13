@@ -160,11 +160,11 @@ the numbers in several arrays as follows:
 
 ```text
 > :paste
-â¦ execState (do
-â¦   sumArray [1, 2, 3]
-â¦   sumArray [4, 5]
-â¦   sumArray [6]) 0
-â¦ ^D
+… execState (do
+…   sumArray [1, 2, 3]
+…   sumArray [4, 5]
+…   sumArray [6]) 0
+… ^D
 21
 ```
 
@@ -1242,7 +1242,7 @@ in the `Split` module), which adds the side-effect of reading from command
 line options. It provides the following handler:
 
 ```haskell
-customExecParser :: forall a. ParserPrefs â ParserInfo a â Effect a
+customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
 ```
 
 This is best illustrated by example. The application's `main` function is

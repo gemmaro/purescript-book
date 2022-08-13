@@ -81,19 +81,19 @@ $ spago repl
 > import Effect.Console
 
 > :paste
-â¦ log $ render $ Element
-â¦   { name: "p"
-â¦   , attribs: [
-â¦       Attribute
-â¦         { key: "class"
-â¦         , value: "main"
-â¦         }
-â¦     ]
-â¦   , content: Just [
-â¦       TextContent "Hello World!"
-â¦     ]
-â¦   }
-â¦ ^D
+… log $ render $ Element
+…   { name: "p"
+…   , attribs: [
+…       Attribute
+…         { key: "class"
+…         , value: "main"
+…         }
+…     ]
+…   , content: Just [
+…       TextContent "Hello World!"
+…     ]
+…   }
+… ^D
 
 <p class="main">Hello World!</p>
 unit
@@ -411,12 +411,12 @@ attributes instead:
 > import Effect.Console
 
 > :paste
-â¦ log $ render $ img
-â¦   [ src    := "cat.jpg"
-â¦   , width  := 100
-â¦   , height := 200
-â¦   ]
-â¦ ^D
+… log $ render $ img
+…   [ src    := "cat.jpg"
+…   , width  := 100
+…   , height := 200
+…   ]
+… ^D
 
 <img src="cat.jpg" width="100" height="200" />
 unit
@@ -688,10 +688,10 @@ That's it! We can test our new monadic API in PSCi, as follows:
 > import Effect.Console
 
 > :paste
-â¦ log $ render $ p [] $ do
-â¦   elem $ img [ src := "cat.jpg" ]
-â¦   text "A cat"
-â¦ ^D
+… log $ render $ p [] $ do
+…   elem $ img [ src := "cat.jpg" ]
+…   text "A cat"
+… ^D
 
 <p><img src="cat.jpg" />A cat</p>
 unit
@@ -853,13 +853,13 @@ element and the target of a hyperlink:
 > import Effect.Console
 
 > :paste
-â¦ render $ p [ ] $ do
-â¦   top <- newName
-â¦   elem $ a [ name := top ] $
-â¦     text "Top"
-â¦   elem $ a [ href := AnchorHref top ] $
-â¦     text "Back to top"
-â¦ ^D
+… render $ p [ ] $ do
+…   top <- newName
+…   elem $ a [ name := top ] $
+…     text "Top"
+…   elem $ a [ href := AnchorHref top ] $
+…     text "Back to top"
+… ^D
 
 <p><a name="name0">Top</a><a href="#name0">Back to top</a></p>
 unit

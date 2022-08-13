@@ -806,11 +806,11 @@ $ spago repl
 > import Effect.Class.Console
 > import Effect.Aff
 > :pa
-â¦ launchAff_ do
-â¦   log "waiting"
-â¦   sleep 300
-â¦   log "done waiting"
-â¦
+… launchAff_ do
+…   log "waiting"
+…   sleep 300
+…   log "done waiting"
+…
 waiting
 unit
 done waiting
@@ -852,10 +852,10 @@ import Test.Examples
 import Effect.Class.Console
 import Effect.Aff
 > :pa
-â¦ launchAff_ do
-â¦   res <- diagonalAsync 300 3.0 4.0
-â¦   logShow res
-â¦
+… launchAff_ do
+…   res <- diagonalAsync 300 3.0 4.0
+…   logShow res
+…
 unit
 5.0
 ```

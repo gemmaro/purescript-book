@@ -28,9 +28,13 @@ task :po4a_version do
   sh 'po4a --version > .po4a-version'
 end
 
-file 'po4a.cfg' do |t|
+file 'po4a.cfg' => __FILE__ do |t|
   content = <<~END_CFG
     [po_directory] locales
+    [options] --master-charset UTF-8 \\
+       --localized-charset UTF-8 \\
+       --addendum-charset UTF-8 \\
+       --master-language en
   END_CFG
 
   Pathname.glob('text/chapter*.md').reject { _1.to_s.match?(/.ja.md\Z/) }.each do |doc|
