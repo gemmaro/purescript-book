@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-13 14:10+0900\n"
+"POT-Creation-Date: 2022-08-13 14:34+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12657,7 +12657,7 @@ msgstr ""
 #: text/chapter3.md:554
 #, markdown-text
 msgid ""
-"`findEntry` brings three names into scope: `firstName`, and `lastName`, both "
+"`findEntry` brings three names into scope: `firstName` and `lastName`, both "
 "representing strings, and `book`, an `AddressBook`."
 msgstr ""
 

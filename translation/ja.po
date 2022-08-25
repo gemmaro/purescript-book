@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2022-08-13 14:10+0900\n"
-"PO-Revision-Date: 2022-08-13 14:15+0900\n"
+"POT-Creation-Date: 2022-08-13 14:34+0900\n"
+"PO-Revision-Date: 2022-08-25 14:18+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: Nothing\n"
 "Language: ja\n"
@@ -15191,11 +15191,12 @@ msgstr "一歩ずつこのコードを調べてみましょう。"
 #. type: Plain text
 #: text/chapter3.md:554
 msgid ""
-"`findEntry` brings three names into scope: `firstName`, and `lastName`, both "
+"`findEntry` brings three names into scope: `firstName` and `lastName`, both "
 "representing strings, and `book`, an `AddressBook`."
 msgstr ""
-"`findEntry`は、どちらも文字列型である `firstName`と `lastName`、 "
-"`AddressBook`型の `book`という3つの名前をスコープに導入します"
+"`findEntry`は、\n"
+"どちらも文字列型である `firstName`と `lastName`、\n"
+"`AddressBook`型の `book`という3つの名前をスコープに導入します。"
 
 #. type: Plain text
 #: text/chapter3.md:556
@@ -17027,7 +17028,9 @@ msgid ""
 "triple_ is an array of numbers `[a, b, c]` such that `a² + b² = c²`. _Hint_: "
 "Use the `guard` function in an array comprehension."
 msgstr ""
-"（やや難しい）数値`n`を取って構成要素（値`a`, `b`, `c`）がそれぞれ`n`以下であるような全てのピタゴラスの三つ組 (pythagorean triples) を返す関数`triples :: Int -> Array (Array Int)`を書いてください。\n"
+"（やや難しい）数値`n`を取って構成要素（値`a`, `b`, `c`）がそれぞれ`n`以下であ"
+"るような全てのピタゴラスの三つ組 (pythagorean triples) を返す関数`triples :: "
+"Int -> Array (Array Int)`を書いてください。\n"
 "**ピタゴラスの三つ組** は数値の配列`[a, b, c]`で `a² + b² = c²` です。\n"
 "**ヒント**：配列内包表記で`guard`関数を使ってください。"
 
@@ -22423,13 +22426,12 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter7.md:1 text/chapter7.md:387
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Applicative Validation"
-msgstr "Applicativeによる検証"
+msgstr "アプリカティブによる検証"
 
 #. type: Plain text
 #: text/chapter7.md:6
-#, fuzzy
 msgid ""
 "In this chapter, we will meet an important new abstraction - the "
 "_applicative functor_, described by the `Applicative` type class. Don't "
@@ -22438,28 +22440,29 @@ msgid ""
 "convert code which usually involves a lot of boilerplate checking into a "
 "simple, declarative description of our form."
 msgstr ""
-"この章では、`Applicative`型クラスによって表現される**Applicative関手"
-"**(applicative functor)という重要な抽象化と新たに出会うことになります。名前が"
-"難しそうに思えても心配しないでください。フォームデータの検証という実用的な例"
-"を使ってこの概念を説明していきます。Applicative関手を使うと、大量の決まり文句"
-"を伴うような入力項目の内容を検証するためのコードを、簡潔で宣言的な記述へと変"
-"えることができるようになります。"
+"この章では、\n"
+"`Applicative`型クラスによって表現される**アプリカティブ関手** (applicative "
+"functor)\n"
+"という重要な抽象化と新たに出会うことになります。\n"
+"名前が難しそうに思えても心配しないでください。\n"
+"フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。\n"
+"アプリカティブ関手を使うと、\n"
+"通常であれば大量の決まり文句を伴うようなコードを、\n"
+"簡潔で宣言的な記述へと変えることができるようになります。"
 
 #. type: Plain text
 #: text/chapter7.md:8
-#, fuzzy
 msgid ""
 "We will also meet another type class, `Traversable`, which describes "
 "_traversable functors_, and see how this concept also arises very naturally "
 "from solutions to real-world problems."
 msgstr ""
-"また、**Traversable関手**(traversable functor)を表現する`Traversable`という別"
-"の型クラスにも出会います。現実の問題への解決策からこの概念が自然に生じるとい"
-"うことがわかるでしょう。"
+"また、**巡回可能関手** (traversable functor) を表現する`Traversable`という別"
+"の型クラスにも出会います。\n"
+"現実の問題への解決策からこの概念が自然に生じるということがわかるでしょう。"
 
 #. type: Plain text
 #: text/chapter7.md:10
-#, fuzzy
 msgid ""
 "The example code for this chapter will be a continuation of the address book "
 "example from chapter 3. This time, we will extend our address book data "
@@ -22467,90 +22470,89 @@ msgid ""
 "understanding is that these functions could be used, for example in a web "
 "user interface, to display errors to the user as part of a data entry form."
 msgstr ""
-"この章では第3章に引き続き住所録を例として扱います。今回は住所録のデータ型を拡"
-"張し、これらの型の値を検証する関数を書きます。これらの関数は、例えばデータ入"
-"力フォームの一部で、使用者へエラーを表示するウェブユーザインタフェースで使わ"
-"れると考えてください。　　　　"
+"この章では第3章に引き続き住所録を例として扱います。\n"
+"今回は住所録のデータ型を拡張し、\n"
+"これらの型の値を検証する関数を書きます。\n"
+"これらの関数は、例えばデータ入力フォームの一部で、\n"
+"使用者へエラーを表示するウェブユーザインタフェースで使われると考えてくださ"
+"い。"
 
 #. type: Plain text
 #: text/chapter7.md:14
-#, fuzzy
 msgid ""
 "The source code for this chapter is defined in the files `src/Data/"
 "AddressBook.purs` and `src/Data/AddressBook/Validation.purs`."
 msgstr ""
-"この章のソース·コードは、ふたつのファイル`src/Data/AddressBook.purs`および"
-"`src/Data/AddressBook/Validation.purs`で定義されています。"
+"この章のソースコードは、ふたつのファイル`src/Data/AddressBook.purs`\n"
+"および`src/Data/AddressBook/Validation.purs`で定義されています。"
 
 #. type: Plain text
 #: text/chapter7.md:16
-#, fuzzy
 msgid ""
 "The project has a number of dependencies, many of which we have seen before. "
 "There are two new dependencies:"
 msgstr ""
-"このプロジェクトは多くのBower依存関係を持っていますが、その大半はすでに見てき"
-"たものです。新しい依存関係は２つです。"
+"このプロジェクトは多くの依存関係を持っていますが、\n"
+"その大半はすでに見てきたものです。\n"
+"新しい依存関係は2つです。"
 
 #. type: Plain text
 #: text/chapter7.md:19
-#, fuzzy
 msgid ""
 "- `control`, which defines functions for abstracting control flow using type "
 "classes like `Applicative`.  - `validation`, which defines a functor for "
 "_applicative validation_, the subject of this chapter."
 msgstr ""
-"- `purescript-control` - `Applicative`のような型クラスを使用して制御フローを"
-"抽象化する関数が定義されています - `purescript-validation` - この章の主題であ"
-"る **`Applicative`による検証** のための関手が定義されています。"
+"- `control` - `Applicative`のような、型クラスを使用して制御フローを抽象化する"
+"関数が定義されています\n"
+"- `validation` - この章の主題である **アプリカティブによる検証** のための関手"
+"が定義されています。"
 
 #. type: Plain text
 #: text/chapter7.md:21
-#, fuzzy
 msgid ""
 "The `Data.AddressBook` module defines data types and `Show` instances for "
 "the types in our project, and the `Data.AddressBook.Validation` module "
 "contains validation rules for those types."
 msgstr ""
-"`Data.AddressBook`モジュールには、このプロジェクトのデータ型とそれらの型に対"
-"する`Show`インスタンスが定義されており、`Data.AddressBook.Validation`モジュー"
-"ルにはそれらの型の検証規則含まれています。"
+"`Data.AddressBook`モジュールには、\n"
+"このプロジェクトのデータ型とそれらの型に対する`Show`インスタンスが定義されて"
+"おり、\n"
+"`Data.AddressBook.Validation`モジュールにはそれらの型の検証規則が含まれていま"
+"す。"
 
 #. type: Title ##
 #: text/chapter7.md:22
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Generalizing Function Application"
 msgstr "関数適用の一般化"
 
 #. type: Plain text
 #: text/chapter7.md:25
-#, fuzzy
 msgid ""
 "To explain the concept of an _applicative functor_, let's consider the type "
 "constructor `Maybe` that we met earlier."
 msgstr ""
-"**Applicative関手**の概念を理解するために、まずは以前扱った型構築子`Maybe`に"
-"ついて考えてみましょう。\n"
+"**アプリカティブ関手**の概念を理解するために、\n"
+"以前扱った型構築子`Maybe`について考えてみましょう。"
 
 #. type: Plain text
 #: text/chapter7.md:27
-#, fuzzy
 msgid ""
 "The source code for this module defines a function `address` which has the "
 "following type:"
 msgstr ""
-"このモジュールのソースコードでは、次のような型を持つ`address`関数が定義されて"
-"います。"
+"このモジュールのソースコードでは、\n"
+"次のような型を持つ`address`関数が定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:28
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:address_anno}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:address_anno}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:33
-#, fuzzy
 msgid ""
 "This function is used to construct a value of type `Address` from three "
 "strings: a street name, a city, and a state."
@@ -22560,13 +22562,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:35
-#, fuzzy
 msgid "We can apply this function easily and see the result in PSCi:"
-msgstr "この関数は簡単に適用できますので、`PSCi`でどうなるか見てみましょう。"
+msgstr ""
+"この関数は簡単に適用できますので、\n"
+"PSCiでどうなるか見てみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:36
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.AddressBook\n"
 "\n"
@@ -22576,32 +22579,32 @@ msgstr ""
 "> import Data.AddressBook\n"
 "\n"
 "> address \"123 Fake St.\" \"Faketown\" \"CA\"\n"
-"Address { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" }\n"
+"{ street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" }\n"
 
 #. type: Plain text
 #: text/chapter7.md:44
-#, fuzzy
 msgid ""
 "However, suppose we did not necessarily have a street, city, or state, and "
 "wanted to use the `Maybe` type to indicate a missing value in each of the "
 "three cases."
 msgstr ""
-"しかし、通り、市、州の三つすべてが必ずしも入力されないものとすると、三つの場"
-"合がそれぞれ省略可能であることを示すために`Maybe`型を使用したくなります。"
+"しかし、通り、市、州の三つすべてが必ずしも入力されないものとすると、\n"
+"三つの場合がそれぞれ省略可能であることを示すために`Maybe`型を使用したくなります。"
 
 #. type: Plain text
 #: text/chapter7.md:46
-#, fuzzy
 msgid ""
 "In one case, we might have a missing city. If we try to apply our function "
 "directly, we will receive an error from the type checker:"
 msgstr ""
-"考えられる場合としては、市が省略されている場合があるでしょう。もし`address`関"
-"数を直接適用しようとすると、型検証器からエラーが表示されます。"
+"考えられる場合としては、\n"
+"市が省略されている場合があるでしょう。\n"
+"もし`address`関数を直接適用しようとすると、\n"
+"型検証器からエラーが表示されます。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:47
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.Maybe\n"
 "> address (Just \"123 Fake St.\") Nothing (Just \"CA\")\n"
@@ -22617,34 +22620,39 @@ msgstr ""
 "> import Data.Maybe\n"
 "> address (Just \"123 Fake St.\") Nothing (Just \"CA\")\n"
 "\n"
-"Could not match type Maybe String with type String\n"
+"Could not match type\n"
+"\n"
+"  Maybe String\n"
+"\n"
+"with type\n"
+"\n"
+"  String\n"
 
 #. type: Plain text
 #: text/chapter7.md:61
-#, fuzzy
 msgid ""
 "Of course, this is an expected type error - `address` takes strings as "
 "arguments, not values of type `Maybe String`."
 msgstr ""
-"`address`は`Maybe String`型ではなく文字列型の引数を取るので、もちろんこれは型"
-"エラーになります。"
+"`address`は`Maybe String`型ではなく文字列型の引数を取るので、\n"
+"もちろんこれは期待通り型エラーになります。"
 
 #. type: Plain text
 #: text/chapter7.md:63
-#, fuzzy
 msgid ""
 "However, it is reasonable to expect that we should be able to \"lift\" the "
 "`address` function to work with optional values described by the `Maybe` "
 "type. In fact, we can, and the `Control.Apply` provides the function `lift3` "
 "function which does exactly what we need:"
 msgstr ""
-"しかし、もし`address`関数を「持ち上げる」ことができれば、`Maybe`型で示される"
-"省略可能な値を扱うことができるはずだと期待することは理にかなっています。実際"
-"に、`Control.Apply`で提供されている関数`lift3`が、まさに求めているものです。"
+"しかし、もし`address`関数を「持ち上げる」ことができれば、\n"
+"`Maybe`型で示される省略可能な値を扱うことができるはずだと期待することは理にかなっています。\n"
+"実際にそれは可能で、\n"
+"`Control.Apply`で提供されている関数`lift3`が、まさに求めているものです。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Control.Apply\n"
 "> lift3 address (Just \"123 Fake St.\") Nothing (Just \"CA\")\n"
@@ -22658,66 +22666,64 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:72
-#, fuzzy
 msgid ""
 "In this case, the result is `Nothing`, because one of the arguments (the "
 "city) was missing. If we provide all three arguments using the `Just` "
 "constructor, then the result will contain a value as well:"
 msgstr ""
-"このとき、引数のひとつ(市)が欠落していたので、結果は`Nothing`になります。もし"
-"3つの引数すべてが`Just`構築子を使って与えられれば、結果は値を含むことになりま"
-"す。"
+"このとき、引数のひとつ（市）が欠落していたので、\n"
+"結果は`Nothing`になります。\n"
+"もし3つの引数すべてが`Just`構築子を使って与えられれば、\n"
+"結果は値を含むことになります。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:73
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> lift3 address (Just \"123 Fake St.\") (Just \"Faketown\") (Just \"CA\")\n"
 "\n"
 "Just ({ street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" })\n"
 msgstr ""
 "> lift3 address (Just \"123 Fake St.\") (Just \"Faketown\") (Just \"CA\")\n"
-"  \n"
-"Just (Address { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" })\n"
+"\n"
+"Just ({ street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" })\n"
 
 #. type: Plain text
 #: text/chapter7.md:80
-#, fuzzy
 msgid ""
 "The name of the function `lift3` indicates that it can be used to lift "
 "functions of 3 arguments. There are similar functions defined in `Control."
 "Apply` for functions of other numbers of arguments."
 msgstr ""
-"`lift3`という関数の名前は、3引数の関数を持ち上げるために使用できることを示し"
-"ています。関数を持ち上げる同様の関数で、引数の数が異なるものが、`Control."
-"Apply`で定義されています。"
+"`lift3`という関数の名前は、\n"
+"3引数の関数を持ち上げるために使用できることを示しています。\n"
+"関数を持ち上げる同様の関数で、\n"
+"引数の数が異なるものが`Control.Apply`で定義されています。"
 
 #. type: Title ##
 #: text/chapter7.md:81
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Lifting Arbitrary Functions"
 msgstr "任意個の引数を持つ関数の持ち上げ"
 
 #. type: Plain text
 #: text/chapter7.md:84
-#, fuzzy
 msgid ""
 "So, we can lift functions with small numbers of arguments by using `lift2`, "
 "`lift3`, etc. But how can we generalize this to arbitrary functions?"
 msgstr ""
-"これで、`lift2`や`lift3`のような関数を使えば、引数が2個や3個の関数を持ち上げ"
-"ることができるのはわかりました。でも、これを任意個の引数の関数へと一般化する"
-"ことはできるのでしょうか。"
+"これで、`lift2`や`lift3`のような関数を使えば、\n"
+"引数が2個や3個の関数を持ち上げることができるのはわかりました。\n"
+"でも、これを任意個の引数の関数へと一般化することはできるのでしょうか。"
 
 #. type: Plain text
 #: text/chapter7.md:86
-#, fuzzy
 msgid "It is instructive to look at the type of `lift3`:"
 msgstr "`lift3`の型を見てみるとわかりやすいでしょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:87
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :type lift3\n"
 "forall a b c d f. Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d\n"
@@ -22727,48 +22733,45 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:93
-#, fuzzy
 msgid ""
 "In the `Maybe` example above, the type constructor `f` is `Maybe`, so that "
 "`lift3` is specialized to the following type:"
-msgstr ""
-"上の`Maybe`の例では型構築子`f`は`Maybe`ですから、`lift3`は次のように特殊化さ"
-"れます。"
+msgstr "上の`Maybe`の例では型構築子`f`は`Maybe`ですから、`lift3`は次のように特殊化されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:94
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "forall a b c d. (a -> b -> c -> d) -> Maybe a -> Maybe b -> Maybe c -> Maybe d\n"
 msgstr "forall a b c d. (a -> b -> c -> d) -> Maybe a -> Maybe b -> Maybe c -> Maybe d\n"
 
 #. type: Plain text
 #: text/chapter7.md:99
-#, fuzzy
 msgid ""
 "This type says that we can take any function with three arguments, and lift "
 "it to give a new function whose argument and result types are wrapped with "
 "`Maybe`."
 msgstr ""
-"この型が言っているのは、3引数の任意の関数を取り、その関数を引数と返り値が"
-"`Maybe`で包まれた新しい関数へと持ち上げる、ということです。"
+"この型が言っているのは、\n"
+"3引数の任意の関数を取り、\n"
+"その関数を引数と返り値が`Maybe`で包まれた新しい関数へと持ち上げる、ということです。"
 
 #. type: Plain text
 #: text/chapter7.md:101
-#, fuzzy
 msgid ""
 "Certainly, this is not possible for every type constructor `f`, so what is "
 "it about the `Maybe` type which allowed us to do this? Well, in specializing "
 "the type above, we removed a type class constraint on `f` from the `Apply` "
 "type class. `Apply` is defined in the Prelude as follows:"
 msgstr ""
-"もちろんどんな型構築子`f`についても持ち上げができるわけではないのですが、それ"
-"では`Maybe`型を持ち上げができるようにしているものは何なのでしょうか。さて、先"
-"ほどの型の特殊化では、`f`に対する型クラス制約から`Apply`型クラスを取り除いて"
-"いました。`Apply`はPreludeで次のように定義されています。"
+"もちろんどんな型構築子`f`についても持ち上げができるわけではないのですが、\n"
+"それでは`Maybe`型を持ち上げができるようにしているものは何なのでしょうか。\n"
+"さて、先ほどの型の特殊化では、\n"
+"`f`に対する型クラス制約から`Apply`型クラスを取り除いていました。\n"
+"`Apply`はPreludeで次のように定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:102
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class Functor f where\n"
 "  map :: forall a b. (a -> b) -> f a -> f b\n"
@@ -22778,17 +22781,20 @@ msgid ""
 msgstr ""
 "class Functor f where\n"
 "  map :: forall a b. (a -> b) -> f a -> f b\n"
+"\n"
 "class Functor f <= Apply f where\n"
 "  apply :: forall a b. f (a -> b) -> f a -> f b\n"
 
 #. type: Plain text
 #: text/chapter7.md:111
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "The `Apply` type class is a subclass of `Functor`, and defines an additional function `apply`. As `<$>` was defined as an alias for `map`, the `Prelude` module defines `<*>` as an alias for `apply`. As we'll see, these two operators are often used together.\n"
 msgstr ""
-"`Apply`型クラスは`Functor`の下位クラスであり、追加の関数`apply`が定義しています。\n"
-"`Prelude`モジュールでは`<$>`を、`map`の別名として、`<*>`を`apply`の別名として定義しています。\n"
-"`map`とよく似た型を持つ追加の関数`apply`が定義されています。\n"
+"`Apply`型クラスは`Functor`の下位クラスであり、\n"
+"追加の関数`apply`が定義しています。\n"
+"`<$>`が`map`の別名として定義されているように、\n"
+"`Prelude`モジュールで`<*>`を`apply`の別名として定義しています。\n"
+"これから見ていきますが、これら2つの演算子はよく一緒に使われます。\n"
 
 #. type: Plain text
 #: text/chapter7.md:113
@@ -22800,10 +22806,11 @@ msgid ""
 "almost always used for the latter, so you don't need to worry about name "
 "collisions."
 msgstr ""
+"なおこの[`apply`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Apply#v:apply)は`Data.Function`の[`apply`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply)（中置で`$`）とは異なります。\n"
+"運良く後者はほぼ常に中置記法として使われるので、名前の衝突については心配ご無用です。"
 
 #. type: Plain text
 #: text/chapter7.md:115
-#, fuzzy
 msgid ""
 "The type of `apply` looks a lot like the type of `map`. The difference "
 "between `map` and `apply` is that `map` takes a function as an argument, "
@@ -22811,14 +22818,15 @@ msgid ""
 "`f`. We'll see how this is used soon, but first, let's see how to implement "
 "the `Apply` type class for the `Maybe` type:"
 msgstr ""
-"`map`と`apply`の違いは、`map`がただの関数を引数に取るのに対し、`apply`の最初"
-"の引数は型構築子`f`で包まれているという点です。 これをどのように使うのかはこ"
-"れからすぐに見ていきますが、その前にまず`Maybe`型について`Apply`型クラスをど"
-"う実装するのかを見ていきましょう。"
+"`apply`の型は`map`の型と実によく似ています。\n"
+"`map`と`apply`の違いは、`map`がただの関数を引数に取るのに対し、\n"
+"`apply`の最初の引数は型構築子`f`で包まれているという点です。\n"
+"これをどのように使うのかはこれからすぐに見ていきますが、\n"
+"その前にまず`Maybe`型について`Apply`型クラスをどう実装するのかを見ていきましょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:116
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance functorMaybe :: Functor Maybe where\n"
 "  map f (Just a) = Just (f a)\n"
@@ -22838,52 +22846,63 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:127
-#, fuzzy
 msgid ""
 "This type class instance says that we can apply an optional function to an "
 "optional value, and the result is defined only if both are defined."
 msgstr ""
-"この型クラスのインスタンスが言っているのは、任意のオプショナルな値にオプショ"
-"ナルな関数を適用することができ、その両方が定義されている時に限り結果も定義さ"
-"れる、ということです。"
+"この型クラスのインスタンスが言っているのは、\n"
+"任意のオプショナルな値にオプショナルな関数を適用することができ、\n"
+"その両方が定義されている時に限り結果も定義される、ということです。"
 
 #. type: Plain text
 #: text/chapter7.md:129
-#, fuzzy
 msgid ""
 "Now we'll see how `map` and `apply` can be used together to lift functions "
 "of arbitrary number of arguments."
-msgstr ""
-"それでは、`map`と`apply`を一緒に使ってどうやって引数が任意個の関数を持ち上げ"
-"るのかを見ていきましょう。"
+msgstr "それでは、`map`と`apply`を一緒に使ってどうやって引数が任意個の関数を持ち上げるのかを見ていきましょう。"
 
 #. type: Plain text
 #: text/chapter7.md:131
-#, fuzzy
 msgid "For functions of one argument, we can just use `map` directly."
-msgstr "１引数の関数については、`map`をそのまま使うだけです。"
+msgstr "1引数の関数については、`map`をそのまま使うだけです。"
 
 #. type: Plain text
 #: text/chapter7.md:133
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "For functions of two arguments, we have a curried function `g` with type `a -> b -> c`, say. This is equivalent to the type `a -> (b -> c)`, so we can apply `map` to `g` to get a new function of type `f a -> f (b -> c)` for any type constructor `f` with a `Functor` instance. Partially applying this function to the first lifted argument (of type `f a`), we get a new wrapped function of type `f (b -> c)`. If we also have an `Apply` instance for `f`, we can then use `apply` to apply the second lifted argument (of type `f b`) to get our final value of type `f c`.\n"
-msgstr "２引数の関数についても考えてみます。型`a -> b -> c`を持つカリー化された関数`f`があるとしましょう。これは型`a -> (b -> c)`と同じですから、`map`を`f`に適用すると型`f a -> f (b -> c)`の新たな関数を得ることになります。持ち上げられた(型`f a`の)最初の引数にその関数を部分適用すると、型`f (b -> c)`の新たな包まれた関数が得られます。それから、２番目の持ち上げられた(型`f b`の)引数へ`apply`を適用することができ、型`f c`の最終的な値を得ます。\n"
+msgstr ""
+"2引数関数については型`a -> b -> c`のカリー化された関数`g`があるとします。\n"
+"これは型`a -> (b -> c)`と同じですから、\n"
+"`Functor`インスタンス付きのあらゆる型構築子`f`について、\n"
+"`map`を`f`に適用すると型`f a -> f (b -> c)`の新たな関数を得ることになります。\n"
+"持ち上げられた（型`f a`の）最初の引数にその関数を部分適用すると、\n"
+"型`f (b -> c)`の新たな包まれた関数が得られます。\n"
+"`f`に`Apply`インスタンスもあるならば、\n"
+"そこから、2番目の持ち上げられた（型`f b`の）引数へ`apply`を適用することができ、\n"
+"型`f c`の最終的な値を得ます。\n"
 
 #. type: Plain text
 #: text/chapter7.md:135
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Putting this all together, we see that if we have values `x :: f a` and `y :: f b`, then the expression `(g <$> x) <*> y` has type `f c` (remember, this expression is equivalent to `apply (map g x) y`). The precedence rules defined in the Prelude allow us to remove the parentheses: `g <$> x <*> y`.\n"
-msgstr "まとめると、`x :: f a`と`y :: f b`があるとき、式`(f <$> x) <*> y`の型は`f c`になります(この式は`apply (map f x)  y`と同じ意味だということを思い出しましょう)。Preludeで定義された優先順位の規則に従うと、`f <$> x <*> y`というように括弧を外すことができます。\n"
+msgstr ""
+"まとめると、`x :: f a`と`y :: f b`があるとき、\n"
+"式`(g <$> x) <*> y`の型は`f c`になります。\n"
+"（この式は`apply (map g x)  y`と同じ意味だということを思い出しましょう。）\n"
+"Preludeで定義された優先順位の規則に従うと、`g <$> x <*> y`というように括弧を外すことができます。\n"
 
 #. type: Plain text
 #: text/chapter7.md:137
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "In general, we can use `<$>` on the first argument, and `<*>` for the remaining arguments, as illustrated here for `lift3`:\n"
-msgstr "一般的にいえば、最初の引数に`<$>`を使い、残りの引数に対しては`<*>`を使います。`lift3`で説明すると次のようになります。\n"
+msgstr ""
+"一般的にいえば、最初の引数に`<$>`を使い、\n"
+"残りの引数に対しては`<*>`を使います。\n"
+"`lift3`で説明すると次のようになります。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:138
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "lift3 :: forall a b c d f\n"
 "       . Apply f\n"
@@ -22901,27 +22920,28 @@ msgstr ""
 "      -> f b\n"
 "      -> f c\n"
 "      -> f d\n"
-"lift3 f x y z = f <$> x <*> y <*> z \n"
+"lift3 f x y z = f <$> x <*> y <*> z\n"
 
 #. type: Plain text
 #: text/chapter7.md:150
-#, fuzzy
 msgid ""
 "It is left as an exercise for the reader to verify the types involved in "
 "this expression."
 msgstr ""
-"この式の型がちゃんと整合しているかの確認は、読者への演習として残しておきま"
-"す。"
+"この式の型がちゃんと整合しているかの確認は、\n"
+"読者への演習として残しておきます。"
 
 #. type: Plain text
 #: text/chapter7.md:152
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "As an example, we can try lifting the address function over `Maybe`, directly using the `<$>` and `<*>` functions:\n"
-msgstr "例として、`<$>`と`<*>`をそのまま使うと、`Maybe`上に`address`関数を持ち上げることができます。\n"
+msgstr ""
+"例として、`<$>`と`<*>`をそのまま使うと、\n"
+"`Maybe`上に`address`関数を持ち上げることができます。\n"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:153
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> address <$> Just \"123 Fake St.\" <*> Just \"Faketown\" <*> Just \"CA\"\n"
 "Just ({ street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" })\n"
@@ -22930,20 +22950,17 @@ msgid ""
 "Nothing\n"
 msgstr ""
 "> address <$> Just \"123 Fake St.\" <*> Just \"Faketown\" <*> Just \"CA\"\n"
-"Just (Address { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" })\n"
+"Just ({ street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" })\n"
 "\n"
 "> address <$> Just \"123 Fake St.\" <*> Nothing <*> Just \"CA\"\n"
 "Nothing\n"
 
 #. type: Plain text
 #: text/chapter7.md:162
-#, fuzzy
 msgid ""
 "Try lifting some other functions of various numbers of arguments over "
 "`Maybe` in this way."
-msgstr ""
-"このように、引数が異なる他のいろいろな関数を`Maybe`上に持ち上げてみてくださ"
-"い。"
+msgstr "このように、引数が異なる他のいろいろな関数を`Maybe`上に持ち上げてみてください。"
 
 #. type: Plain text
 #: text/chapter7.md:164
@@ -22953,10 +22970,13 @@ msgid ""
 "using _applicative do notation_. Note `ado` is used instead of `do`, and "
 "`in` is used on the final line to denote the yielded value:"
 msgstr ""
+"この代わりにお馴染の**do記法**に似た見た目の**アプリカティブdo記法**が同じ目的で使えます。\n"
+"以下では`lift3`に**アプリカティブdo記法**を使っています。\n"
+"なお`ado`が`do`の代わりに使われており、生み出された値を示すために最後の行で`in`が使われています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:165
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "lift3 :: forall a b c d f\n"
 "       . Apply f\n"
@@ -22978,25 +22998,26 @@ msgstr ""
 "      -> f b\n"
 "      -> f c\n"
 "      -> f d\n"
-"lift3 f x y z = f <$> x <*> y <*> z \n"
+"lift3 f x y z = ado\n"
+"  a <- x\n"
+"  b <- y\n"
+"  c <- z\n"
+"  in f a b c\n"
 
 #. type: Title ##
 #: text/chapter7.md:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "The Applicative Type Class"
-msgstr "Applicative型クラス"
+msgstr "アプリカティブ型クラス"
 
 #. type: Plain text
 #: text/chapter7.md:183
-#, fuzzy
 msgid "There is a related type class called `Applicative`, defined as follows:"
-msgstr ""
-"これに関連する`Applicative`という型クラスが存在しており、次のように定義されて"
-"います。"
+msgstr "関連する`Applicative`という型クラスが存在しており、次のように定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:184
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class Apply f <= Applicative f where\n"
 "  pure :: forall a. a -> f a\n"
@@ -23006,24 +23027,23 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:190
-#, fuzzy
 msgid ""
 "`Applicative` is a subclass of `Apply` and defines the `pure` function. "
 "`pure` takes a value and returns a value whose type has been wrapped with "
 "the type constructor `f`."
 msgstr ""
-"`Applicative`は`Apply`の下位クラスであり、`pure`関数が定義されています。"
+"`Applicative`は`Apply`の下位クラスであり、\n"
+"`pure`関数が定義されています。\n"
 "`pure`は値を取り、その型の型構築子`f`で包まれた値を返します。"
 
 #. type: Plain text
 #: text/chapter7.md:192
-#, fuzzy
 msgid "Here is the `Applicative` instance for `Maybe`:"
 msgstr "`Maybe`についての`Applicative`インスタンスは次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:193
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance applicativeMaybe :: Applicative Maybe where\n"
 "  pure x = Just x\n"
@@ -23033,65 +23053,67 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:199
-#, fuzzy
 msgid ""
 "If we think of applicative functors as functors which allow lifting of "
 "functions, then `pure` can be thought of as lifting functions of zero "
 "arguments."
 msgstr ""
-"Applicative関手は関数を持ち上げることを可能にする関手だと考えるとすると、"
+"アプリカティブ関手は関数を持ち上げることを可能にする関手だと考えるとすると、\n"
 "`pure`は引数のない関数の持ち上げだというように考えることができます。"
 
 #. type: Title ##
 #: text/chapter7.md:200
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Intuition for Applicative"
-msgstr "Applicativeに対する直感的理解"
+msgstr "アプリカティブに対する直感的理解"
 
 #. type: Plain text
 #: text/chapter7.md:203
-#, fuzzy
 msgid ""
 "Functions in PureScript are pure and do not support side-effects. "
 "Applicative functors allow us to work in larger \"programming languages\" "
 "which support some sort of side-effect encoded by the functor `f`."
 msgstr ""
-"PureScriptの関数は純粋であり、副作用は持っていません。Applicative関手は、関手"
-"`f`によって表現されたある種の副作用を提供するような、より大きな「プログラミン"
-"グ言語」を扱えるようにします。"
+"PureScriptの関数は純粋であり、\n"
+"副作用は持っていません。\n"
+"Applicative関手は、\n"
+"関手`f`によって表現されたある種の副作用を提供するような、\n"
+"より大きな「プログラミング言語」を扱えるようにします。"
 
 #. type: Plain text
 #: text/chapter7.md:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "As an example, the functor `Maybe` represents the side effect of possibly-missing values. Some other examples include `Either err`, which represents the side effect of possible errors of type `err`, and the arrow functor `r ->` which represents the side-effect of reading from a global configuration. For now, we'll only consider the `Maybe` functor.\n"
-msgstr "たとえば、関手`Maybe`はオプショナルな値の副作用を表現しています。その他の例としては、型`err`のエラーの可能性の副作用を表す`Either err`や、大域的な構成を読み取る副作用を表すArrow関手(arrow functor)`r ->`があります。ここでは`Maybe`関手についてだけを考えることにします。\n"
+msgstr ""
+"たとえば、関手`Maybe`はオプショナルな値の副作用を表現しています。\n"
+"その他の例としては、\n"
+"型`err`のエラーの可能性の副作用を表す`Either err`や、\n"
+"大域的な構成を読み取る副作用を表すArrow関手 (arrow functor) `r ->`があります。\n"
+"ここでは`Maybe`関手についてだけを考えることにします。\n"
 
 #. type: Plain text
 #: text/chapter7.md:207
-#, fuzzy
 msgid ""
 "If the functor `f` represents this larger programming language with effects, "
 "then the `Apply` and `Applicative` instances allow us to lift values and "
 "function applications from our smaller programming language (PureScript) "
 "into the new language."
 msgstr ""
-"もし関手`f`が作用を持つより大きなプログラミング言語を表すとすると、`Apply`と"
-"`Applicative`インスタンスは小さなプログラミング言語(PureScript)から新しい大き"
-"な言語へと値や関数を持ち上げることを可能にします。"
+"もし関手`f`が作用を持つより大きなプログラミング言語を表すとすると、\n"
+"`Apply`と`Applicative`インスタンスは小さなプログラミング言語 (PureScript) から\n"
+"新しい大きな言語へと値や関数を持ち上げることを可能にします。"
 
 #. type: Plain text
 #: text/chapter7.md:209
-#, fuzzy
 msgid ""
 "`pure` lifts pure (side-effect free) values into the larger language, and "
 "for functions, we can use `map` and `apply` as described above."
 msgstr ""
-"`pure`は純粋な(副作用がない)値をより大きな言語へと持ち上げますし、関数につい"
-"ては上で述べたとおり`map`と`apply`を使うことができます。"
+"`pure`は純粋な（副作用がない）値をより大きな言語へと持ち上げますし、\n"
+"関数については上で述べたとおり`map`と`apply`を使うことができます。"
 
 #. type: Plain text
 #: text/chapter7.md:211
-#, fuzzy
 msgid ""
 "This raises a question: if we can use `Applicative` to embed PureScript "
 "functions and values into this new language, then how is the new language "
@@ -23100,55 +23122,48 @@ msgid ""
 "`x`, then that expression represents a term which only exists in the larger "
 "language."
 msgstr ""
-"ここで新たな疑問が生まれます。もしPureScriptの関数と値を新たな言語へ埋め込む"
-"のに`Applicative`が使えるなら、どうやって新たな言語は大きくなっているというの"
-"でしょうか。この答えは関手`f`に依存します。もしなんらかの`x`について`pure x`"
-"で表せないような型`f a`の式を見つけたなら、その式はそのより大きな言語だけに存"
-"在する項を表しているということです。"
+"ここで疑問が生まれます。\n"
+"もしPureScriptの関数と値を新たな言語へ埋め込むのに`Applicative`が使えるなら、\n"
+"どうやって新たな言語は大きくなっているというのでしょうか。\n"
+"この答えは関手`f`に依存します。\n"
+"もしなんらかの`x`について`pure x`で表せないような型`f a`の式を見つけたなら、\n"
+"その式はそのより大きな言語だけに存在する項を表しているということです。"
 
 #. type: Plain text
 #: text/chapter7.md:213
-#, fuzzy
 msgid ""
 "When `f` is `Maybe`, an example is the expression `Nothing`: we cannot write "
 "`Nothing` as `pure x` for any `x`. Therefore, we can think of PureScript as "
 "having been enlarged to include the new term `Nothing`, which represents a "
 "missing value."
 msgstr ""
-"`f`が`Maybe`のときの式`Nothing`がその例になっています。`Nothing`を何らかの`x`"
-"について`pure x`というように書くことはできません。したがって、PureScriptは省"
-"略可能な値を表す新しい項`Nothing`を含むように拡大されたと考えることができま"
-"す。"
+"`f`が`Maybe`のときは、式`Nothing`がその例になっています。\n"
+"どんな`x`があっても`Nothing`を`pure x`というように書くことはできません。\n"
+"したがって、PureScriptは値の欠落を表す新しい項`Nothing`を含むように拡大されたと考えることができます。"
 
 #. type: Title ##
 #: text/chapter7.md:214
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "More Effects"
-msgstr "その他の作用について"
+msgstr "もっと作用を"
 
 #. type: Plain text
 #: text/chapter7.md:217
-#, fuzzy
 msgid ""
 "Let's see some more examples of lifting functions over different "
 "`Applicative` functors."
-msgstr ""
-"それでは、他にも`Applicative`関手へと関数を持ち上げる例をいろいろ見ていきま"
-"しょう。"
+msgstr "様々な`Applicative`関手へと関数を持ち上げる例をもっと見ていきましょう。"
 
 #. type: Plain text
 #: text/chapter7.md:219
-#, fuzzy
 msgid ""
 "Here is a simple example function defined in PSCi, which joins three names "
 "to form a full name:"
-msgstr ""
-"次は、`PSCi`で定義された3つの名前を結合して完全な名前を作る簡単なコード例で"
-"す。"
+msgstr "以下は、PSCiで定義された3つの名前を結合して完全な名前を作る簡単な関数の例です。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:220
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "\n"
@@ -23158,13 +23173,14 @@ msgid ""
 "Freeman, Phillip A\n"
 msgstr ""
 "> import Prelude\n"
+"\n"
 "> fullName first middle last = last <> \", \" <> first <> \" \" <> middle\n"
+"\n"
 "> fullName \"Phillip\" \"A\" \"Freeman\"\n"
 "Freeman, Phillip A\n"
 
 #. type: Plain text
 #: text/chapter7.md:230
-#, fuzzy
 msgid ""
 "Now suppose that this function forms the implementation of a (very simple!) "
 "web service with the three arguments provided as query parameters. We want "
@@ -23173,15 +23189,16 @@ msgid ""
 "a parameter. We can lift `fullName` over `Maybe` to create an implementation "
 "of the web service which checks for missing parameters:"
 msgstr ""
-"この関数は、クエリパラメータとして与えられた3つの引数を持つ、(とても簡単な!)"
-"ウェブサービスの実装であるとしましょう。使用者が3つの引数すべてを与えたことを"
-"確かめたいので、引数が存在するかどうかを表す`Maybe`型をつかうことになるでしょ"
-"う。`fullName`を`Maybe`の上へ持ち上げると、省略された引数を確認するウェブサー"
-"ビスを実装することができます。"
+"この関数は、クエリパラメータとして与えられた3つの引数を持つ、\n"
+"（とても簡単な！）ウェブサービスの実装であるとしましょう。\n"
+"使用者が3つの引数すべてを与えたことを確かめたいので、\n"
+"引数が存在するかどうかを表す`Maybe`型を使うことになるでしょう。\n"
+"`fullName`を`Maybe`の上へ持ち上げると、\n"
+"省略された引数を確認するウェブサービスを実装することができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:231
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.Maybe\n"
 "\n"
@@ -23192,8 +23209,10 @@ msgid ""
 "Nothing\n"
 msgstr ""
 "> import Data.Maybe\n"
+"\n"
 "> fullName <$> Just \"Phillip\" <*> Just \"A\" <*> Just \"Freeman\"\n"
 "Just (\"Freeman, Phillip A\")\n"
+"\n"
 "> fullName <$> Just \"Phillip\" <*> Nothing <*> Just \"Freeman\"\n"
 "Nothing\n"
 
@@ -23201,11 +23220,11 @@ msgstr ""
 #: text/chapter7.md:242 text/chapter7.md:292 text/chapter7.md:444
 #: text/chapter7.md:479 text/chapter7.md:525 text/chapter7.md:557
 msgid "or with _applicative do_"
-msgstr ""
+msgstr "または**アプリカティブdo**で"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:243
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.Maybe\n"
 "\n"
@@ -23227,14 +23246,26 @@ msgid ""
 "Nothing\n"
 msgstr ""
 "> import Data.Maybe\n"
-"> fullName <$> Just \"Phillip\" <*> Just \"A\" <*> Just \"Freeman\"\n"
-"Just (\"Freeman, Phillip A\")\n"
-"> fullName <$> Just \"Phillip\" <*> Nothing <*> Just \"Freeman\"\n"
+"\n"
+"> :paste…\n"
+"… ado\n"
+"…   f <- Just \"Phillip\"\n"
+"…   m <- Just \"A\"\n"
+"…   l <- Just \"Freeman\"\n"
+"…   in fullName f m l\n"
+"… ^D\n"
+"(Just \"Freeman, Phillip A\")\n"
+"\n"
+"… ado\n"
+"…   f <- Just \"Phillip\"\n"
+"…   m <- Nothing\n"
+"…   l <- Just \"Freeman\"\n"
+"…   in fullName f m l\n"
+"… ^D\n"
 "Nothing\n"
 
 #. type: Plain text
 #: text/chapter7.md:265
-#, fuzzy
 msgid ""
 "Note that the lifted function returns `Nothing` if any of the arguments was "
 "`Nothing`."
@@ -23244,7 +23275,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:267
-#, fuzzy
 msgid ""
 "This is good, because now we can send an error response back from our web "
 "service if the parameters are invalid. However, it would be better if we "
@@ -23256,20 +23286,19 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:269
-#, fuzzy
 msgid ""
 "Instead of lifting over `Maybe`, we can lift over `Either String`, which "
 "allows us to return an error message. First, let's write an operator to "
 "convert optional inputs into computations which can signal an error using "
 "`Either String`:"
 msgstr ""
-"`Meybe`上へ持ち上げる代わりに`Either String`上へ持ち上げるようにすると、エ"
-"ラーメッセージを返すことができるようになります。まずは入力を`Either String`を"
-"使ってエラーを発信できる計算に変換する演算子を書きましょう。"
+"`Meybe`上へ持ち上げる代わりに`Either String`上へ持ち上げるようにすると、\n"
+"エラーメッセージを返すことができるようになります。\n"
+"まずは`Either String`を使ってオプショナルな入力をエラーを発信できる計算に変換する演算子を書きましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:270
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.Either\n"
 "> :paste\n"
@@ -23277,24 +23306,21 @@ msgid ""
 "… withError (Just a) _   = Right a\n"
 "… ^D\n"
 msgstr ""
+"> import Data.Either\n"
 "> :paste\n"
-"… withError Nothing err = Left err\n"
-"… withError (Just a) _  = Right a\n"
+"… withError Nothing  err = Left err\n"
+"… withError (Just a) _   = Right a\n"
 "… ^D\n"
 
 #. type: Plain text
 #: text/chapter7.md:279
-#, fuzzy
 msgid ""
 "_Note_: In the `Either err` applicative functor, the `Left` constructor "
 "indicates an error, and the `Right` constructor indicates success."
-msgstr ""
-"**注意**：`Either err`Applicative関手において、`Left`構築子は失敗を表してお"
-"り、`Right`構築子は成功を表しています。\n"
+msgstr "**注意**：`Either err`Applicative関手において、`Left`構築子は失敗を表しており、`Right`構築子は成功を表しています。"
 
 #. type: Plain text
 #: text/chapter7.md:281
-#, fuzzy
 msgid ""
 "Now we can lift over `Either String`, providing an appropriate error message "
 "for each parameter:"
@@ -23304,7 +23330,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:282
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :paste\n"
 "… fullNameEither first middle last =\n"
@@ -23319,13 +23345,10 @@ msgstr ""
 "…            <*> (middle `withError` \"Middle name was missing\")\n"
 "…            <*> (last   `withError` \"Last name was missing\")\n"
 "… ^D\n"
-"\n"
-"> :type fullNameEither\n"
-"Maybe String -> Maybe String -> Maybe String -> Either String String\n"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:293
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> :paste\n"
 "… fullNameEither first middle last = ado\n"
@@ -23339,10 +23362,11 @@ msgid ""
 "Maybe String -> Maybe String -> Maybe String -> Either String String\n"
 msgstr ""
 "> :paste\n"
-"… fullNameEither first middle last =\n"
-"…   fullName <$> (first  `withError` \"First name was missing\")\n"
-"…            <*> (middle `withError` \"Middle name was missing\")\n"
-"…            <*> (last   `withError` \"Last name was missing\")\n"
+"… fullNameEither first middle last = ado\n"
+"…  f <- first  `withError` \"First name was missing\"\n"
+"…  m <- middle `withError` \"Middle name was missing\"\n"
+"…  l <- last   `withError` \"Last name was missing\"\n"
+"…  in fullName f m l\n"
 "… ^D\n"
 "\n"
 "> :type fullNameEither\n"
@@ -23350,23 +23374,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:307
-#, fuzzy
 msgid ""
 "Now our function takes three optional arguments using `Maybe`, and returns "
 "either a `String` error message or a `String` result."
 msgstr ""
-"この関数は`Maybe`の3つの省略可能な引数を取り、`String`のエラーメッセージか"
-"`String`の結果のどちらかを返します。"
+"これでこの関数は`Maybe`の3つの省略可能な引数を取り、\n"
+"`String`のエラーメッセージか`String`の結果のどちらかを返します。"
 
 #. type: Plain text
 #: text/chapter7.md:309
-#, fuzzy
 msgid "We can try out the function with different inputs:"
 msgstr "いろいろな入力でこの関数を試してみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:310
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> fullNameEither (Just \"Phillip\") (Just \"A\") (Just \"Freeman\")\n"
 "(Right \"Freeman, Phillip A\")\n"
@@ -23388,7 +23410,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:322
-#, fuzzy
 msgid ""
 "In this case, we see the error message corresponding to the first missing "
 "field, or a successful result if every field was provided. However, if we "
@@ -23401,18 +23422,16 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:323
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> fullNameEither Nothing Nothing Nothing\n"
 "(Left \"First name was missing\")\n"
 msgstr ""
 "> fullNameEither Nothing Nothing Nothing\n"
-"\n"
 "(Left \"First name was missing\")\n"
 
 #. type: Plain text
 #: text/chapter7.md:329
-#, fuzzy
 msgid ""
 "This might be good enough, but if we want to see a list of _all_ missing "
 "fields in the error, then we need something more powerful than `Either "
@@ -23424,24 +23443,22 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter7.md:330
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Combining Effects"
 msgstr "作用の結合"
 
 #. type: Plain text
 #: text/chapter7.md:333
-#, fuzzy
 msgid ""
 "As an example of working with applicative functors abstractly, this section "
 "will show how to write a function which will generically combine side-"
 "effects encoded by an applicative functor `f`."
 msgstr ""
-"抽象的にApplicative関手を扱う例として、Applicative関手`f`によって表現された副"
-"作用を総称的に組み合わせる関数をどのように書くのかをこの節では示します。"
+"抽象的にApplicative関手を扱う例として、\n"
+"アプリカティブ関手`f`によって表現された副作用を総称的に組み合わせる関数をどのように書くのかをこの節では示します。"
 
 #. type: Plain text
 #: text/chapter7.md:335
-#, fuzzy
 msgid ""
 "What does this mean? Well, suppose we have a list of wrapped arguments of "
 "type `f a` for some `a`. That is, suppose we have a list of type `List (f "
@@ -23452,81 +23469,96 @@ msgid ""
 "to be able to turn something of type `List (f a)` into something of type `f "
 "(List a)` by \"combining\" the effects inside the original list."
 msgstr ""
-"これはどういう意味でしょうか？何らかの`a`について型`f a`の包まれた引数の配列"
-"があるとしましょう。型`List (f a)`の配列があるということです。直感的には、こ"
-"れは`f`によって追跡される副作用を持つ、返り値の型が`a`の計算の配列を表してい"
-"ます。これらの計算のすべてを順番に実行することができれば、`List a`型の結果の"
-"配列を得るでしょう。しかし、まだ`f`によって追跡される副作用が残ります。つま"
-"り、元の配列の中の作用を「結合する」ことにより、型`List (f a)`の何かを型"
-"`List a`の何かへと変換することができると考えられます。"
+"これはどういう意味でしょうか？\n"
+"何らかの`a`について型`f a`で包まれた引数のリストがあるとしましょう。\n"
+"それは型`List (f a)`のリストがあるということです。\n"
+"直感的には、これは`f`によって追跡される副作用を持つ、\n"
+"返り値の型が`a`の計算のリストを表しています。\n"
+"これらの計算のすべてを順番に実行することができれば、\n"
+"`List a`型の結果のリストを得るでしょう。\n"
+"しかし、まだ`f`によって追跡される副作用が残ります。\n"
+"つまり、元のリストの中の作用を「結合する」ことにより、\n"
+"型`List (f a)`の何かを型`f (List a)`の何かへと変換することができると考えられます。"
 
 #. type: Plain text
 #: text/chapter7.md:337
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "For any fixed list size `n`, there is a function of `n` arguments which builds a list of size `n` out of those arguments. For example, if `n` is `3`, the function is `\\x y z -> x : y : z : Nil`. This function has type `a -> a -> a -> List a`. We can use the `Applicative` instance for `List` to lift this function over `f`, to get a function of type `f a -> f a -> f a -> f (List a)`. But, since we can do this for any `n`, it makes sense that we should be able to perform the same lifting for any _list_ of arguments.\n"
-msgstr "任意の固定長配列の長さ`n`について、その引数を要素に持った長さ`n`の配列を構築するような`n`引数の関数が存在します。たとえば、もし`n`が`3`なら、関数は`\\x y z -> x : y : z : Nil`です。 この関数の型は`a -> a -> a -> List a`です。`Applicative`インスタンスを使うと、この関数を`f`の上へ持ち上げて関数型`f a -> f a -> f a -> f (List a)`を得ることができます。しかし、いかなる`n`についてもこれが可能なので、いかなる引数の**配列**についても同じように持ち上げられることが確かめられます。\n"
+msgstr ""
+"任意の固定長リストの長さ`n`について、\n"
+"その引数を要素に持った長さ`n`のリストを構築するような`n`引数の関数が存在します。\n"
+"たとえば、もし`n`が`3`なら、\n"
+"関数は`\\x y z -> x : y : z : Nil`です。\n"
+"この関数の型は`a -> a -> a -> List a`です。\n"
+"`Applicative`インスタンスを使うと、\n"
+"この関数を`f`の上へ持ち上げて関数型`f a -> f a -> f a -> f (List a)`を得ることができます。\n"
+"しかし、いかなる`n`についてもこれが可能なので、\n"
+"いかなる引数の**リスト**についても同じように持ち上げられることが確かめられます。\n"
 
 #. type: Plain text
 #: text/chapter7.md:339
-#, fuzzy
 msgid "That means that we should be able to write a function"
 msgstr "したがって、次のような関数を書くことができるはずです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:340 text/chapter7.md:602
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "combineList :: forall f a. Applicative f => List (f a) -> f (List a)\n"
 msgstr "combineList :: forall f a. Applicative f => List (f a) -> f (List a)\n"
 
 #. type: Plain text
 #: text/chapter7.md:345
-#, fuzzy
 msgid ""
 "This function will take a list of arguments, which possibly have side-"
 "effects, and return a single wrapped list, applying the side-effects of each."
 msgstr ""
-"この関数は副作用を持つかもしれない引数の配列をとり、それぞれの副作用を適用す"
-"ることで、`f`に包まれた単一の配列を返します。"
+"この関数は副作用を持つかもしれない引数のリストをとり、\n"
+"それぞれの副作用を適用することで、`f`に包まれた単一のリストを返します。"
 
 #. type: Plain text
 #: text/chapter7.md:347
-#, fuzzy
 msgid ""
 "To write this function, we'll consider the length of the list of arguments. "
 "If the list is empty, then we do not need to perform any effects, and we can "
 "use `pure` to simply return an empty list:"
 msgstr ""
-"この関数を書くためには、引数の配列の長さについて考えます。配列が空の場合はど"
-"んな作用も実行する必要はありませんから、`pure`を使用して単に空の配列を返すこ"
-"とができます。"
+"この関数を書くためには、\n"
+"引数のリストの長さについて考えます。\n"
+"リストが空の場合はどんな作用も実行する必要はありませんから、\n"
+"`pure`を使用して単に空のリストを返すことができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:348
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "combineList Nil = pure Nil\n"
 msgstr "combineList Nil = pure Nil\n"
 
 #. type: Plain text
 #: text/chapter7.md:353
-#, fuzzy
 msgid "In fact, this is the only thing we can do!"
-msgstr "実際のところ、これが可能な唯一の​​定義です！"
+msgstr "実際のところ、これが唯一できることです！"
 
 #. type: Plain text
 #: text/chapter7.md:355
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "If the list is non-empty, then we have a head element, which is a wrapped argument of type `f a`, and a tail of type `List (f a)`. We can recursively combine the effects in the tail, giving a result of type `f (List a)`. We can then use `<$>` and `<*>` to lift the `Cons` constructor over the head and new tail:\n"
-msgstr "入力の配列が空でないならば、型`f a`の先頭要素と、型`List (f a)`の配列の残りについて考えます。また、再帰的に配列の残りを結合すると、型`f (List a)`の結果を得ることができます。`<$>`と`<*>`を使うと、`cons`関数を先頭と配列の残りの上に持ち上げることができます。\n"
+msgstr ""
+"入力のリストが空でないならば、\n"
+"型`f a`の包まれた引数である先頭要素と、\n"
+"型`List (f a)`の尾鰭について考えます。\n"
+"また、再帰的にリストの残りを結合すると、\n"
+"型`f (List a)`の結果が得られます。\n"
+"それから`<$>`と`<*>`を使うと、\n"
+"`Cons`構築子を先頭と新しい尾鰭の上に持ち上げることができます。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:356
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "combineList (Cons x xs) = Cons <$> x <*> combineList xs\n"
 msgstr "combineList (Cons x xs) = Cons <$> x <*> combineList xs\n"
 
 #. type: Plain text
 #: text/chapter7.md:361
-#, fuzzy
 msgid ""
 "Again, this was the only sensible implementation, based on the types we were "
 "given."
@@ -23535,15 +23567,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:363
-#, fuzzy
 msgid ""
 "We can test this function in PSCi, using the `Maybe` type constructor as an "
 "example:"
-msgstr "`Maybe`型構築子を例にとって、`PSCi`でこの関数を試してみましょう。"
+msgstr "`Maybe`型構築子を例にとって、PSCiでこの関数を試してみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:364
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.List\n"
 "> import Data.Maybe\n"
@@ -23556,14 +23587,15 @@ msgid ""
 msgstr ""
 "> import Data.List\n"
 "> import Data.Maybe\n"
+"\n"
 "> combineList (fromFoldable [Just 1, Just 2, Just 3])\n"
 "(Just (Cons 1 (Cons 2 (Cons 3 Nil))))\n"
+"\n"
 "> combineList (fromFoldable [Just 1, Nothing, Just 2])\n"
 "Nothing\n"
 
 #. type: Plain text
 #: text/chapter7.md:376
-#, fuzzy
 msgid ""
 "When specialized to `Maybe`, our function returns a `Just` only if every "
 "list element was `Just`, otherwise it returns `Nothing`. This is consistent "
@@ -23571,27 +23603,28 @@ msgid ""
 "values - a list of computations which return optional results only has a "
 "result itself if every computation contained a result."
 msgstr ""
-"`Meybe`へ特殊化して考えると、配列のすべての要素が`Just`であるとき、そのときに"
-"限りこの関数は`Just`を返します。そうでなければ、`Nothing`を返します。オプショ"
-"ナルな結果を返す計算の配列は、そのすべての計算が結果を持っていたときに全体も"
-"結果を持っているという、オプショナルな値に対応したより大きな言語での振る舞い"
-"に対する直感的な理解とこれは一致しています。"
+"`Meybe`へ特殊化して考えると、\n"
+"リストのすべての要素が`Just`であるときに限りこの関数は`Just`を返しますし、\n"
+"そうでなければ`Nothing`を返します。\n"
+"これはオプショナルな値に対応するより大きな言語に取り組む上での直感と一貫したものです。\n"
+"オプショナルな結果を返す計算のリストは、\n"
+"全ての計算が結果を持っているならばそれ自身の結果のみを持つのです。"
 
 #. type: Plain text
 #: text/chapter7.md:378
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "But the `combineList` function works for any `Applicative`! We can use it to combine computations which possibly signal an error using `Either err`, or which read from a global configuration using `r ->`.\n"
-msgstr "しかも、`combineArray`関数はどんな`Applicative`に対しても機能します！`Either err`を使ってエラーを発信するかもしれなかったり、`r ->`を使って大域的な状態を読み取る計算を連鎖させるときにも`combineArray`関数を使うことができるのです。\n"
+msgstr ""
+"しかし`combineList`関数はどんな`Applicative`に対しても機能します！\n"
+"`Either err`を使ってエラーを発信するかもしれなかったり、\n"
+"`r ->`を使って大域的な状態を読み取る計算を連鎖させるときにも使えるのです。\n"
 
 #. type: Plain text
 #: text/chapter7.md:380
-#, fuzzy
 msgid ""
 "We will see the `combineList` function again later, when we consider "
 "`Traversable` functors."
-msgstr ""
-"`combineArray`関数については、後ほど`Traversable`関手について考えるときに再び"
-"扱います。"
+msgstr "`combineList`関数については、後ほど`Traversable`関手について考えるときに再会します。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:386
@@ -23601,6 +23634,10 @@ msgid ""
 "a value wrapped in `Maybe`. Name these functions `addMaybe`, `subMaybe`, "
 "`mulMaybe`, and `divMaybe`. _Hint_: Use `lift2`."
 msgstr ""
+"（やや難しい）数値演算子`+`、`-`、`*`、`/`のオプショナル引数\n"
+"（つまり`Maybe`に包まれた引数）を扱って`Maybe`に包まれた値を返す版を書いてください。\n"
+"これらの関数には`addMaybe`、`subMaybe`、mulMaybe`、`divMaybe`と名前を付けます。\n"
+"解決の糸口：`lift2`を使ってください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:386
@@ -23609,32 +23646,33 @@ msgid ""
 "`Maybe`). Name these new functions `addApply`, `subApply`, `mulApply`, and "
 "`divApply`."
 msgstr ""
+"（やや難しい）上の演習を（`Maybe`だけでなく）全ての`Apply`型で動くように拡張してください。\n"
+"これらの新しい関数には`addApply`、`subApply`、`mulApply`、`divApply`と名前を付けます。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:386
-#, fuzzy
 msgid ""
 "(Difficult) Write a function `combineMaybe` which has type `forall a f. "
 "Applicative f => Maybe (f a) -> f (Maybe a)`. This function takes an "
 "optional computation with side-effects, and returns a side-effecting "
 "computation which has an optional result."
 msgstr ""
-"(難しい) 型`combineMaybe : forall a f. (Applicative f) => Maybe (f a) -> f "
-"(Maybe a)`を持つ関数`combineMaybe`を書いてください。 この関数は副作用をもつオ"
-"プショナルな計算をとり、オプショナルな結果をもつ副作用のある計算を返します。"
+"(難しい) 型`combineMaybe : forall a f. (Applicative f) => Maybe (f a) -> f (Maybe a)`\n"
+"を持つ関数`combineMaybe`を書いてください。\n"
+"この関数は副作用をもつオプショナルな計算をとり、\n"
+"オプショナルな結果をもつ副作用のある計算を返します。"
 
 #. type: Plain text
 #: text/chapter7.md:390
-#, fuzzy
 msgid ""
 "The source code for this chapter defines several data types which might be "
 "used in an address book application. The details are omitted here, but the "
 "key functions which are exported by the `Data.AddressBook` module have the "
 "following types:"
 msgstr ""
-"この章のソースコードでは住所録アプリケーションで使われるいろいろなデータ型が"
-"定義されています。詳細はここでは割愛しますが、`Data.AddressBook`モジュールか"
-"らエクスポートされる重要な関数は次のような型を持っています。"
+"この章のソースコードでは住所録アプリケーションで使うことのできるいろいろなデータ型が定義されています。\n"
+"詳細はここでは割愛しますが、\n"
+"`Data.AddressBook`モジュールからエクスポートされる重要な関数は次のような型を持っています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:391
@@ -23646,10 +23684,14 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:person_anno}}\n"
 msgstr ""
+"{{#include ../exercises/chapter7/src/Data/AddressBook.purs:address_anno}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook.purs:phoneNumber_anno}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook.purs:person_anno}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:400
-#, fuzzy
 msgid "where `PhoneType` is defined as an algebraic data type:"
 msgstr "ここで、`PhoneType`は次のような代数的データ型として定義されています。"
 
@@ -23657,34 +23699,34 @@ msgstr "ここで、`PhoneType`は次のような代数的データ型として�
 #: text/chapter7.md:401
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:PhoneType}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:PhoneType}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:406
-#, fuzzy
 msgid ""
 "These functions can be used to construct a `Person` representing an address "
 "book entry. For example, the following value is defined in `Data."
 "AddressBook`:"
 msgstr ""
-"これらの関数は住所録の項目を表す`Person`を構築するのに使います。例えば、"
-"`Data.AddressBook`には次のような値が定義されています。"
+"これらの関数は住所録の項目を表す`Person`を構築するのに使えます。\n"
+"例えば、`Data.AddressBook`には次のような値が定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:407
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:examplePerson}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:examplePerson}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:412
-#, fuzzy
 msgid "Test this value in PSCi (this result has been formatted):"
-msgstr "`PSCi`でこれらの値使ってみましょう(結果は整形されています)。"
+msgstr ""
+"PSCiでこれらの値を試してみましょう。\n"
+"（結果は整形されています。）"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:413
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.AddressBook\n"
 "\n"
@@ -23707,38 +23749,36 @@ msgid ""
 "}\n"
 msgstr ""
 "> import Data.AddressBook\n"
+"\n"
 "> examplePerson\n"
-"Person\n"
-"  { firstName: \"John\",\n"
-"  , lastName: \"Smith\",\n"
-"  , address: Address\n"
+"{ firstName: \"John\"\n"
+", lastName: \"Smith\"\n"
+", homeAddress:\n"
 "    { street: \"123 Fake St.\"\n"
 "    , city: \"FakeTown\"\n"
 "    , state: \"CA\"\n"
-"    },\n"
-"  , phones: [ PhoneNumber\n"
-"              { type: HomePhone\n"
-"              , number: \"555-555-5555\"\n"
-"              }\n"
-"            , PhoneNumber\n"
-"              { type: CellPhone\n"
-"              , number: \"555-555-0000\"\n"
-"              }\n"
-"            ]\n"
-"  }\n"
+"    }\n"
+", phones:\n"
+"    [ { type: HomePhone\n"
+"      , number: \"555-555-5555\"\n"
+"      }\n"
+"    , { type: CellPhone\n"
+"      , number: \"555-555-0000\"\n"
+"      }\n"
+"    ]\n"
+"}\n"
 
 #. type: Plain text
 #: text/chapter7.md:436
-#, fuzzy
 msgid ""
 "We saw in a previous section how we could use the `Either String` functor to "
 "validate a data structure of type `Person`. For example, provided functions "
 "to validate the two names in the structure, we might validate the entire "
 "data structure as follows:"
 msgstr ""
-"前の章では型`Person`のデータ構造を検証するのに`Either String`関手をどのように"
-"使うかを見ました。例えば、データ構造の２つの名前を検証する関数が与えられたと"
-"き、データ構造全体を次のように検証することができます。"
+"前の章では型`Person`のデータ構造を検証するのに`Either String`関手をどのように使うかを見ました。\n"
+"例えば、データ構造の2つの名前を検証する関数が与えられたとき、\n"
+"データ構造全体を次のように検証することができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:437
@@ -23748,52 +23788,48 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePerson1}}\n"
 msgstr ""
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:nonEmpty1}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePerson1}}\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:445
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePerson1Ado}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePerson1Ado}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:450
-#, fuzzy
 msgid ""
 "In the first two lines, we use the `nonEmpty1` function to validate a non-"
 "empty string. `nonEmpty1` returns an error indicated with the `Left` "
 "constructor if its input is empty, otherwise it returns the value wrapped "
 "with the `Right` constructor."
 msgstr ""
-"最初の２行では`nonEmpty`関数を使って空文字列でないことを検証しています。もし"
-"入力が空なら`nonEMpty`はエラーを返し(`Left`構築子で示されています)、そうでな"
-"ければ`Right`構築子を使って空の値(`unit`)を正常に返します。２つの検証を実行"
-"し、右辺の検証の結果を返すことを示す連鎖演算子`*>`を使っています。ここで、入"
-"力を変更せずに返す検証器として右辺では単に`pure`を使っています。\n"
+"最初の2行では`nonEmpty`関数を使って空文字列でないことを検証しています。\n"
+"もし入力が空なら`nonEMpty`はエラーを返し（`Left`構築子で示されています）、\n"
+"そうでなければ`Right`構築子を使って値を包んで返します。"
 
 #. type: Plain text
 #: text/chapter7.md:452
-#, fuzzy
 msgid ""
 "The final lines do not perform any validation but simply provide the "
 "`address` and `phones` fields to the `person` function as the remaining "
 "arguments."
 msgstr ""
-"最後の２行では何の検証も実行せず、単に`address`フィールドと`phones`フィールド"
-"を残りの引数として`person`関数へと提供しています。"
+"最後の2行では何の検証も実行せず、\n"
+"単に`address`フィールドと`phones`フィールドを残りの引数として`person`関数へと提供しています。"
 
 #. type: Plain text
 #: text/chapter7.md:454
-#, fuzzy
 msgid ""
 "This function can be seen to work in PSCi, but has a limitation which we "
 "have seen before:"
-msgstr ""
-"この関数は`PSCi`でうまく動作するように見えますが、以前見たような制限がありま"
-"す。"
+msgstr "この関数はPSCiでうまく動作するように見えますが、以前見たような制限があります。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:455
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> validatePerson $ person \"\" \"\" (address \"\" \"\" \"\") []\n"
 "(Left \"Field cannot be empty\")\n"
@@ -23803,19 +23839,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:461
-#, fuzzy
 msgid ""
 "The `Either String` applicative functor only provides the first error "
 "encountered. Given the input here, we would prefer to see two errors - one "
 "for the missing first name, and a second for the missing last name."
 msgstr ""
-"`Either String`Applicative関手は遭遇した最初のエラーだけを返します。でもこの"
-"入力では、名前の不足と姓の不足という２つのエラーがわかるようにしたくなるで"
-"しょう。"
+"`Either String`アプリカティブ関手は遭遇した最初のエラーだけを返します。\n"
+"でもこの入力では、名前の不足と姓の不足という2つのエラーがわかるようにしたくなるでしょう。"
 
 #. type: Plain text
 #: text/chapter7.md:463
-#, fuzzy
 msgid ""
 "There is another applicative functor which is provided by the `validation` "
 "library. This functor is called `V`, and it provides the ability to return "
@@ -23823,25 +23856,24 @@ msgid ""
 "return an array of `String`s as errors, concatenating new errors onto the "
 "end of the array."
 msgstr ""
-"`purescript-validation`ライブラリは別のApplicative関手も提供されています。こ"
-"れは単に`V`と呼ばれていて、何らかの**半群**(Semigroup)でエラーを返す機能があ"
-"ります。たとえば、`V (Array String)`を使うと、新しいエラーを配列の最後に連結"
-"していき、`String`の配列をエラーとして返すことができます。"
+"`validation`ライブラリは別のアプリカティブ関手も提供されています。\n"
+"これは単に`V`と呼ばれていて、\n"
+"何らかの**半群** (Semigroup) でエラーを返す機能があります。\n"
+"たとえば、`V (Array String)`を使うと、新しいエラーを配列の最後に連結していき、\n"
+"`String`の配列をエラーとして返すことができます。"
 
 #. type: Plain text
 #: text/chapter7.md:465
-#, fuzzy
 msgid ""
 "The `Data.AddressBook.Validation` module uses the `V (Array String)` "
 "applicative functor to validate the data structures in the `Data."
 "AddressBook` module."
 msgstr ""
-"`Data.Validation`モジュールは`Data.AddressBook`モジュールのデータ構造を検証す"
-"るために`V (Array String)`Applicative関手を使っています。"
+"`Data.Validation`モジュールは`Data.AddressBook`モジュールの\n"
+"データ構造を検証するために`V (Array String)`アプリカティブ関手を使っています。"
 
 #. type: Plain text
 #: text/chapter7.md:467
-#, fuzzy
 msgid ""
 "Here is an example of a validator taken from the `Data.AddressBook."
 "Validation` module:"
@@ -23861,47 +23893,51 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validateAddress}}\n"
 msgstr ""
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:Errors}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:nonEmpty}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:lengthIs}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validateAddress}}\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:480
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validateAddressAdo}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validateAddressAdo}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:485
-#, fuzzy
 msgid ""
 "`validateAddress` validates an `Address` structure. It checks that the "
 "`street` and `city` fields are non-empty, and checks that the string in the "
 "`state` field has length 2."
 msgstr ""
-"`validateAddress`は`Address`を検証します。`street`と`city`が空でないかどう"
-"か、`state`の文字列の長さが2であるかどうかを検証します。"
+"`validateAddress`は`Address`の構造を検証します。\n"
+"`street`と`city`が空でないかどうか、`state`の文字列の長さが2であるかどうかを検証します。"
 
 #. type: Plain text
 #: text/chapter7.md:487
-#, fuzzy
 msgid ""
 "Notice how the `nonEmpty` and `lengthIs` validator functions both use the "
 "`invalid` function provided by the `Data.Validation` module to indicate an "
 "error. Since we are working in the `Array String` semigroup, `invalid` takes "
 "an array of strings as its argument."
 msgstr ""
-"`nonEmpty`と`lengthIs`の２つの検証関数はいずれも、`Data.Validation`モジュール"
-"で提供されている`invalid`関数をエラーを示すために使っていることに注目してくだ"
-"さい。`Array String`半群を扱っているので、`invalid`は引数として文字列の配列を"
-"取ります。"
+"`nonEmpty`と`lengthIs`の2つの検証関数はいずれも、\n"
+"`Data.Validation`モジュールで提供されている`invalid`関数を\n"
+"エラーを示すために使っていることに注目してください。\n"
+"`Array String`半群を扱っているので、`invalid`は引数として文字列の配列を取ります。"
 
 #. type: Plain text
 #: text/chapter7.md:489
-#, fuzzy
 msgid "We can try this function in PSCi:"
-msgstr "`PSCi`でこの関数を使ってみましょう。"
+msgstr "PSCiでこの関数を試しましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:490
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.AddressBook\n"
 "> import Data.AddressBook.Validation\n"
@@ -23921,32 +23957,30 @@ msgstr ""
 "> import Data.AddressBook.Validation\n"
 "\n"
 "> validateAddress $ address \"\" \"\" \"\"\n"
-"(Invalid [ \"Field 'Street' cannot be empty\"\n"
+"(invalid [ \"Field 'Street' cannot be empty\"\n"
 "         , \"Field 'City' cannot be empty\"\n"
 "         , \"Field 'State' must have length 2\"\n"
 "         ])\n"
 "\n"
 "> validateAddress $ address \"\" \"\" \"CA\"\n"
-"(Invalid [ \"Field 'Street' cannot be empty\"\n"
+"(invalid [ \"Field 'Street' cannot be empty\"\n"
 "         , \"Field 'City' cannot be empty\"\n"
 "         ])\n"
 
 #. type: Plain text
 #: text/chapter7.md:507
-#, fuzzy
 msgid "This time, we receive an array of all validation errors."
 msgstr ""
 "これで、すべての検証エラーの配列を受け取ることができるようになりました。"
 
 #. type: Title ##
 #: text/chapter7.md:508
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Regular Expression Validators"
 msgstr "正規表現検証器"
 
 #. type: Plain text
 #: text/chapter7.md:511
-#, fuzzy
 msgid ""
 "The `validatePhoneNumber` function uses a regular expression to validate the "
 "form of its argument. The key is a `matches` validation function, which uses "
@@ -23960,11 +23994,10 @@ msgstr ""
 #: text/chapter7.md:512
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:matches}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:matches}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:517
-#, fuzzy
 msgid ""
 "Again, notice how `pure` is used to indicate successful validation, and "
 "`invalid` is used to signal an array of errors."
@@ -23974,7 +24007,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:519
-#, fuzzy
 msgid ""
 "`validatePhoneNumber` is built from the `matches` function in the same way "
 "as before:"
@@ -23986,27 +24018,24 @@ msgstr ""
 #: text/chapter7.md:520
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePhoneNumber}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePhoneNumber}}\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:526
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePhoneNumberAdo}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePhoneNumberAdo}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:531
-#, fuzzy
 msgid ""
 "Again, try running this validator against some valid and invalid inputs in "
 "PSCi:"
-msgstr ""
-"また、`PSCi`でいろいろな有効な入力や無効な入力に対して、この検証器を実行して"
-"みてください。"
+msgstr "また、PSCiでいろいろな有効な入力や無効な入力に対して、この検証器を実行してみてください。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:532
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> validatePhoneNumber $ phoneNumber HomePhone \"555-555-5555\"\n"
 "pure ({ type: HomePhone, number: \"555-555-5555\" })\n"
@@ -24015,22 +24044,21 @@ msgid ""
 "invalid ([\"Field 'Number' did not match the required format\"])\n"
 msgstr ""
 "> validatePhoneNumber $ phoneNumber HomePhone \"555-555-5555\"\n"
-"Valid (PhoneNumber { type: HomePhone, number: \"555-555-5555\" })\n"
+"pure ({ type: HomePhone, number: \"555-555-5555\" })\n"
 "\n"
 "> validatePhoneNumber $ phoneNumber HomePhone \"555.555.5555\"\n"
-"Invalid ([\"Field 'Number' did not match the required format\"])\n"
+"invalid ([\"Field 'Number' did not match the required format\"])\n"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:545
-#, fuzzy
 msgid ""
 "(Easy) Write a regular expression `stateRegex :: Regex` to check that a "
 "string only contains two alphabetic characters. _Hint_: see the source code "
 "for `phoneNumberRegex`."
 msgstr ""
-"(簡単) 正規表現の検証器を使って、`Address`型の`state`フィールドが2文字のアル"
-"ファベットであることを確かめてください。**ヒント**：`phoneNumberRegex`のソー"
-"スコードを参照してみましょう。"
+"（簡単）正規表現`stateRegex :: Regex`を書いて\n"
+"文字列が2文字のアルファベットであることを確かめてください。\n"
+"**ヒント**：`phoneNumberRegex`のソースコードを参照してみましょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:545
@@ -24040,6 +24068,9 @@ msgid ""
 "regex expression, check out [RegExr](https://regexr.com) which has a great "
 "cheatsheet and interactive test environment."
 msgstr ""
+"（やや難しい）文字列全体が空白でないことを検査する正規表現`nonEmptyRegex :: Regex`を書いてください。\n"
+"**ヒント**：この正規表現を開発するのに手助けが必要なら、[RegExr](https://regexr.com)をご確認ください。\n"
+"素晴しい早見表と対話的なお試し環境があります。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:545
@@ -24050,23 +24081,27 @@ msgid ""
 "_Hint_: see the source for `validatePhoneNumber` for an example of how to "
 "use `matches`."
 msgstr ""
+"（やや難しい）`validateAddress`に似ていますが、\n"
+"上の`stateRegex`を使って`state`フィールドを検証し、\n"
+"`nonEmptyRegex`を使って`street`と`city`フィールドを検証する関数`validateAddressImproved`を書いてください。\n"
+"**ヒント**：`matches`の用例については`validatePhoneNumber`のソースを見てください。"
 
 #. type: Title ##
 #: text/chapter7.md:546
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Traversable Functors"
-msgstr "Traversable関手"
+msgstr "巡回可能関手"
 
 #. type: Plain text
 #: text/chapter7.md:549
-#, fuzzy
 msgid ""
 "The remaining validator is `validatePerson`, which combines the validators "
 "we have seen so far to validate an entire `Person` structure, including the "
 "following new `validatePhoneNumbers` function:"
 msgstr ""
-"残った検証器は、これまで見てきた検証器を組み合わせて`Person`全体を検証する"
-"`validatePerson`です。"
+"残った検証器は`validatePerson`です。\n"
+"これはこれまで見てきた検証器と以下の新しい`validatePhoneNumbers`関数を組み合わせて\n"
+"`Person`全体を検証するものです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:550
@@ -24076,26 +24111,25 @@ msgid ""
 "\n"
 "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePerson}}\n"
 msgstr ""
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePhoneNumbers}}\n"
+"\n"
+"{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePerson}}\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:558
 #, no-wrap
 msgid "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePersonAdo}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:validatePersonAdo}}\n"
 
 #. type: Plain text
 #: text/chapter7.md:563
-#, fuzzy
 msgid ""
 "`validatePhoneNumbers` uses a new function we haven't seen before - "
 "`traverse`."
-msgstr ""
-"これまでと同じような感じで、`validatePhoneNumber`は`matches`関数から構築され"
-"ています。"
+msgstr "`validatePhoneNumbers`はこれまでに見たことのない新しい関数、`traverse`を使います。"
 
 #. type: Plain text
 #: text/chapter7.md:565
-#, fuzzy
 msgid ""
 "`traverse` is defined in the `Data.Traversable` module, in the `Traversable` "
 "type class:"
@@ -24105,31 +24139,28 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:566
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class (Functor t, Foldable t) <= Traversable t where\n"
 "  traverse :: forall a b m. Applicative m => (a -> m b) -> t a -> m (t b)\n"
 "  sequence :: forall a m. Applicative m => t (m a) -> m (t a)\n"
 msgstr ""
 "class (Functor t, Foldable t) <= Traversable t where\n"
-"  traverse :: forall a b f. Applicative f => (a -> f b) -> t a -> f (t b)\n"
-"  sequence :: forall a f. Applicative f => t (f a) -> f (t a)\n"
+"  traverse :: forall a b m. Applicative m => (a -> m b) -> t a -> m (t b)\n"
+"  sequence :: forall a m. Applicative m => t (m a) -> m (t a)\n"
 
 #. type: Plain text
 #: text/chapter7.md:573
-#, fuzzy
 msgid ""
 "`Traversable` defines the class of _traversable functors_. The types of its "
 "functions might look a little intimidating, but `validatePerson` provides a "
 "good motivating example."
 msgstr ""
-"`Traversable`は**Traversable関手**の型クラスを定義します。これらの関数の型は"
-"少し難しそうに見えるかもしれませんが、`validatePerson`は良いきっかけとなる例"
-"です。"
+"`Traversable`は**巡回可能関手**の型クラスを定義します。\n"
+"これらの関数の型は少し難しそうに見えるかもしれませんが、`validatePerson`は良いきっかけとなる例です。"
 
 #. type: Plain text
 #: text/chapter7.md:575
-#, fuzzy
 msgid ""
 "Every traversable functor is both a `Functor` and `Foldable` (recall that a "
 "_foldable functor_ was a type constructor which supported a fold operation, "
@@ -24137,14 +24168,13 @@ msgid ""
 "provides the ability to combine a collection of side-effects which depend on "
 "its structure."
 msgstr ""
-"すべてのTraversable関手は`Functor`と`Foldable`のどちらでもあります"
-"(**Foldable 関手**は構造をひとつの値へとまとめる、畳み込み操作を提供する型構"
-"築子であったことを思い出してください)。それ加えて、`Traversable`関手はその構"
-"造に依存した副作用のあつまりを連結する機能を提供します。"
+"すべての巡回可能関手は`Functor`と`Foldable`のどちらでもあります。\n"
+"（**畳み込み可能関手**は構造をひとつの値へとまとめる、\n"
+"畳み込み操作を提供する型構築子であったことを思い出してください。）\n"
+"それに加えて、`Traversable`関手はその構造に依存した副作用の集まりを連結する機能を提供します。"
 
 #. type: Plain text
 #: text/chapter7.md:577
-#, fuzzy
 msgid ""
 "This may sound complicated, but let's simplify things by specializing to the "
 "case of arrays. The array type constructor is traversable, which means that "
@@ -24156,13 +24186,12 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:578
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "traverse :: forall a b m. Applicative m => (a -> m b) -> Array a -> m (Array b)\n"
-msgstr "traverse :: forall a b f. Applicative f => (a -> f b) -> Array a -> f (Array b)\n"
+msgstr "traverse :: forall a b m. Applicative m => (a -> m b) -> Array a -> m (Array b)\n"
 
 #. type: Plain text
 #: text/chapter7.md:583
-#, fuzzy
 msgid ""
 "Intuitively, given any applicative functor `m`, and a function which takes a "
 "value of type `a` and returns a value of type `b` (with side-effects tracked "
@@ -24170,29 +24199,29 @@ msgid ""
 "`Array a` to obtain a result of type `Array b` (with side-effects tracked by "
 "`m`)."
 msgstr ""
-"直感的には、Applicative関手`f`と、型`a`の値をとり型`b`の値を返す(`f`で追跡さ"
-"れる副作用を持つ)関数が与えられたとき、型`[a]`の配列の要素それぞれにこの関数"
-"を適用し、型`[b]`の(`f`で追跡される副作用を持つ)結果を得ることができます。"
+"直感的には、任意のアプリカティブ関手`m`と、\n"
+"型`a`の値を取って型`b`の値を返す（`f`で追跡される副作用を持つ）関数が与えられたとき、\n"
+"その関数を型`Array a`の配列のそれぞれの要素に適用し、\n"
+"型`Array b`の（`f`で追跡される副作用を持つ）結果を得ることができます。"
 
 #. type: Plain text
 #: text/chapter7.md:585
-#, fuzzy
 msgid ""
 "Still not clear? Let's specialize further to the case where `m` is the `V "
 "Errors` applicative functor above. Now, we have a function of type"
 msgstr ""
-"まだよくわからないでしょうか。それでは、更に`f`を`V Errors`Applicative関手に"
-"特殊化して考えてみましょう。`traversable`が次のような型の関数だとしましょう。"
+"まだよくわからないでしょうか。\n"
+"それでは、更に`f`を上記の`V Errors`アプリカティブ関手に特殊化して考えてみましょう。\n"
+"これで次の型を持つ関数が得られます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:586
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "traverse :: forall a b. (a -> V Errors b) -> Array a -> V Errors (Array b)\n"
 msgstr "traverse :: forall a b. (a -> V Errors b) -> Array a -> V Errors (Array b)\n"
 
 #. type: Plain text
 #: text/chapter7.md:591
-#, fuzzy
 msgid ""
 "This type signature says that if we have a validation function `m` for a "
 "type `a`, then `traverse m` is a validation function for arrays of type "
@@ -24201,15 +24230,15 @@ msgid ""
 "to `traverse` to create a validation function which validates each element "
 "successively."
 msgstr ""
-"この型シグネチャは、型`a`についての検証関数`f`があれば、`traverse f`は型"
-"`Array a`の配列についての検証関数であるということを言っています。これはまさに"
-"今必要になっている`Person`データ構造体の`phones`フィールドを検証する検証器そ"
-"のものです！それぞれの要素が成功するかどうかを検証する検証関数を作るために、"
+"この型シグネチャは、\n"
+"型`a`についての検証関数`m`があれば、\n"
+"`traverse m`は型`Array a`の配列についての検証関数であるということを言っています。\n"
+"これはまさに今必要になっている`Person`データ構造体の`phones`フィールドを検証する検証器そのものです！\n"
+"それぞれの要素が成功するかどうかを検証する検証関数を作るために、\n"
 "`validatePhoneNumber`を`traverse`へ渡しています。"
 
 #. type: Plain text
 #: text/chapter7.md:593
-#, fuzzy
 msgid ""
 "In general, `traverse` walks over the elements of a data structure, "
 "performing computations with side-effects and accumulating a result."
@@ -24219,7 +24248,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:595
-#, fuzzy
 msgid ""
 "The type signature for `Traversable`'s other function `sequence` might look "
 "more familiar:"
@@ -24229,26 +24257,23 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:596
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "sequence :: forall a m. Applicative m => t (m a) -> m (t a)\n"
-msgstr "sequence :: forall a f. (Applicative m) => t (f a) -> f (t a)\n"
+msgstr "sequence :: forall a m. Applicative m => t (m a) -> m (t a)\n"
 
 #. type: Plain text
 #: text/chapter7.md:601
-#, fuzzy
 msgid ""
 "In fact, the `combineList` function that we wrote earlier is just a special "
 "case of the `sequence` function from the `Traversable` type class. Setting "
 "`t` to be the type constructor `List`, we recover the type of the "
 "`combineList` function:"
 msgstr ""
-"実際、先ほど書いた`combineArray`関数は`Traversable`型の`sequence`関数が特殊化"
-"されたものに過ぎません。`t`を配列型構築子として、`combineArray`関数の型をもう"
-"一度考えてみましょう。"
+"実際、先ほど書いた`combineList`関数は`Traversable`型クラスの`sequence`関数の特別な場合に過ぎません。\n"
+"`t`を型構築子`List`だとすると、`combineList`関数の型が復元されます。"
 
 #. type: Plain text
 #: text/chapter7.md:607
-#, fuzzy
 msgid ""
 "Traversable functors capture the idea of traversing a data structure, "
 "collecting a set of effectful computations, and combining their effects. In "
@@ -24256,32 +24281,31 @@ msgid ""
 "`Traversable` - each can be implemented in terms of each other. This is left "
 "as an exercise for the interested reader."
 msgstr ""
-"`Traversable`関手は、作用のある計算の集合を集めてその作用を連鎖させるという、"
-"データ構造走査の考え方を把握できるようにするものです。実際、`sequence`と"
-"`traversable`は`Traversable`を定義するのにどちらも同じくらい重要です。これら"
-"はお互いが互いを利用して実装することができます。これについては興味ある読者へ"
-"の演習として残しておきます。"
+"巡回可能関手は、\n"
+"作用のある計算を連鎖させてその作用を結合するという、\n"
+"データ構造走査の考え方を把握できるようにするものです。\n"
+"実際、`sequence`と`traversable`は`Traversable`を定義する上でどちらも同じくらい重要です。\n"
+"これらはお互いが互いを利用して実装することができます。\n"
+"これについては興味ある読者への演習として残しておきます。"
 
 #. type: Plain text
 #: text/chapter7.md:609
-#, fuzzy
 msgid ""
 "The `Traversable` instance for lists given in the `Data.List` module is:"
-msgstr ""
-"配列の`Traversable`インスタンスは`Data.Traversable`モジュールで与えられていま"
-"す。`traverse`の定義は次のようになっています。"
+msgstr "`Data.List`で与えられているリストの`Traversable`インスタンスは次の通り。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:610
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance traversableList :: Traversable List where\n"
 "-- traverse :: forall a b m. Applicative m => (a -> m b) -> List a -> m (List b)\n"
 "traverse _ Nil         = pure Nil\n"
 "traverse f (Cons x xs) = Cons <$> f x <*> traverse f xs\n"
 msgstr ""
-"-- traverse :: forall a b f. Applicative f => (a -> f b) -> List a -> f (List b)\n"
-"traverse _ Nil = pure Nil\n"
+"instance traversableList :: Traversable List where\n"
+"-- traverse :: forall a b m. Applicative m => (a -> m b) -> List a -> m (List b)\n"
+"traverse _ Nil         = pure Nil\n"
 "traverse f (Cons x xs) = Cons <$> f x <*> traverse f xs\n"
 
 #. type: Plain text
@@ -24291,10 +24315,11 @@ msgid ""
 "read more about that change [here](https://github.com/purescript/purescript-"
 "lists/pull/87).)"
 msgstr ""
+"（実際の定義は後にスタック安全性を向上するための変更されました。\n"
+"その変更についてより詳しくは[こちら](https://github.com/purescript/purescript-lists/pull/87)で読むことができます。）"
 
 #. type: Plain text
 #: text/chapter7.md:620
-#, fuzzy
 msgid ""
 "In the case of an empty list, we can simply return an empty list using "
 "`pure`. If the list is non-empty, we can use the function `f` to create a "
@@ -24302,26 +24327,27 @@ msgid ""
 "recursively on the tail. Finally, we can lift the `Cons` constructor over "
 "the applicative functor `m` to combine the two results."
 msgstr ""
-"入力が空の配列のときには、単に`pure`を使って空の配列を返すことができます。配"
-"列が空でないときは、関数`f`を使うと先頭の要素から型`f b`の計算を作成すること"
-"ができます。また、配列の残りに対して`traverse`を再帰的に呼び出すことができま"
-"す。最後に、Applicative関手`f`までcons演算子`(:)`を持ち上げて、２つの結果を組"
-"み合わせます。"
+"入力が空のリストのときには、\n"
+"単に`pure`を使って空の配列を返すことができます。\n"
+"配列が空でないときは、\n"
+"関数`f`を使うと先頭の要素から型`f b`の計算を作成することができます。\n"
+"また、配列の残りに対して`traverse`を再帰的に呼び出すことができます。\n"
+"最後に、アプリカティブ関手`m`まで`Cons`構築子を持ち上げて、2つの結果を組み合わせます。"
 
 #. type: Plain text
 #: text/chapter7.md:622
-#, fuzzy
 msgid ""
 "But there are more examples of traversable functors than just arrays and "
 "lists. The `Maybe` type constructor we saw earlier also has an instance for "
 "`Traversable`. We can try it in PSCi:"
 msgstr ""
-"Traversable関手の例はただの配列以外にもあります。以前に見た`Maybe`型構築子も"
-"`Traversable`のインスタンスを持っています。`PSCi`で試してみましょう。"
+"巡回可能関手の例はただの配列やリスト以外にもあります。\n"
+"以前に見た`Maybe`型構築子も`Traversable`のインスタンスを持っています。\n"
+"PSCiで試してみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:623
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.Maybe\n"
 "> import Data.Traversable\n"
@@ -24338,19 +24364,19 @@ msgid ""
 msgstr ""
 "> import Data.Maybe\n"
 "> import Data.Traversable\n"
+"> import Data.AddressBook.Validation\n"
 "\n"
 "> traverse (nonEmpty \"Example\") Nothing\n"
-"(Valid Nothing)\n"
+"pure (Nothing)\n"
 "\n"
 "> traverse (nonEmpty \"Example\") (Just \"\")\n"
-"(Invalid [\"Field 'Example' cannot be empty\"])\n"
+"invalid ([\"Field 'Example' cannot be empty\"])\n"
 "\n"
 "> traverse (nonEmpty \"Example\") (Just \"Testing\")\n"
-"(Valid (Just unit))\n"
+"pure ((Just \"Testing\"))\n"
 
 #. type: Plain text
 #: text/chapter7.md:639
-#, fuzzy
 msgid ""
 "These examples show that traversing the `Nothing` value returns `Nothing` "
 "with no validation, and traversing `Just x` uses the validation function to "
@@ -24358,57 +24384,61 @@ msgid ""
 "and returns a validation function for `Maybe a`, i.e. a validation function "
 "for optional values of type `a`."
 msgstr ""
-"これらの例では、`Nothing`の値の走査は検証なしで`Nothing`の値を返し、`Just x`"
-"を走査すると`x`を検証するのにこの検証関数が使われるということを示しています。"
-"つまり、`traverse`は型`a`についての検証関数をとり、`Maybe a`についての検証関"
-"数を返すのです。"
+"これらの例では、\n"
+"`Nothing`の値の走査は検証なしで`Nothing`の値を返し、\n"
+"`Just x`を走査すると`x`を検証するのに検証関数が使われるということを示しています。\n"
+"要は、`traverse`は型`a`についての検証関数をとり、`Maybe a`についての検証関数、\n"
+"つまり型`a`のオプショナルな値についての検証関数を返すのです。"
 
 #. type: Plain text
 #: text/chapter7.md:641
-#, fuzzy
 msgid ""
 "Other traversable functors include `Array`, and `Tuple a` and `Either a` for "
 "any type `a`. Generally, most \"container\" data type constructors have "
 "`Traversable` instances. As an example, the exercises will include writing a "
 "`Traversable` instance for a type of binary trees."
 msgstr ""
-"他にも、何らかの型`a`についての`Tuple a`や`Either a`や、連結リストの型構築子"
-"`List`といったTraversable関手があります。一般的に、「コンテナ」のようなデータ"
-"の型構築子は大抵`Traversable`インスタンスを持っています。例として、演習では二"
-"分木の型の`Traversable`インスタンスを書くようになっています。"
+"他の巡回可能関手には`Array`、また任意の型`a`について`Tuple a`、`Either a`が含まれます。\n"
+"一般的に、「容器」のようなデータの型構築子は大抵`Traversable`インスタンスを持っています。\n"
+"例として、演習では二分木の型の`Traversable`インスタンスを書くようになっています。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:645
-#, fuzzy
 msgid ""
 "(Easy) Write `Eq` and `Show` instances for the following binary tree data "
 "structure:"
-msgstr ""
-"（やや難しい）次のデータ型の `Coarbitrary`インスタンスを書いてください。"
+msgstr "（簡単）`Eq`と`Show`インスタンスを以下の2分木データ構造に書いてください。"
 
 #. type: Plain text
 #: text/chapter7.md:649
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     ```haskell\n"
 "     data Tree a = Leaf | Branch (Tree a) a (Tree a)\n"
 "     ```\n"
 msgstr ""
-"    ```haskell\n"
-"    data Tree a = Leaf a | Branch (Tree a) (Tree a)\n"
-"    ```\n"
+"     ```haskell\n"
+"     data Tree a = Leaf | Branch (Tree a) a (Tree a)\n"
+"     ```\n"
 
 #. type: Plain text
 #: text/chapter7.md:651
 #, no-wrap
 msgid "     Recall from the previous chapter that you may either write these instances manually or let the compiler derive them for you.\n"
 msgstr ""
+"     これらのインスタンスを手作業で書くこともできますし、\n"
+"     コンパイラに導出してもらうこともできることを前の章から思い起こしてください。\n"
 
 #. type: Plain text
 #: text/chapter7.md:653
 #, no-wrap
 msgid "     There are many \"correct\" formatting options for `Show` output. The test for this exercise expects the following whitespace style. This happens to match the default formatting of generic show, so you only need to make note of this if you're planning on writing this instance manually.\n"
 msgstr ""
+"     `Show`の出力には多くの「正しい」書式の選択肢があります。\n"
+"     この演習のテストでは以下の空白スタイルを期待しています。\n"
+"     これはちょうど一般化されたshowの既定の書式と合致しているため、\n"
+"     このインスタンスを手作業で書くつもりであれば、\n"
+"     このことを念頭に置いておくだけでよいです。\n"
 
 #. type: Plain text
 #: text/chapter7.md:657
@@ -24418,6 +24448,9 @@ msgid ""
 "     (Branch (Branch Leaf 8 Leaf) 42 Leaf)\n"
 "     ```\n"
 msgstr ""
+"     ```\n"
+"     (Branch (Branch Leaf 8 Leaf) 42 Leaf)\n"
+"     ```\n"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:659
@@ -24426,6 +24459,9 @@ msgid ""
 "effects from left-to-right. _Hint_: There are some additional instance "
 "dependencies that need to be defined for `Traversable`."
 msgstr ""
+"（やや難しい）`Traversable`インスタンスを`Tree a`を書いてください。\n"
+"これは副作用を左から右に結合するものです。\n"
+"**ヒント**：`Traversable`に定義する必要のある追加のインスタンス依存関係がいくつかあります。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:661
@@ -24438,6 +24474,14 @@ msgid ""
 "need to call any of the the functions defined earlier. Applicative do "
 "notation (`ado`) is the easiest way to write this function."
 msgstr ""
+"（やや難しい）行き掛け順に木を巡回する関数\n"
+"`traversePreOrder :: forall a m b. Applicative m => (a -> m b) -> Tree a -> m (Tree b)`\n"
+"を書いてください。\n"
+"つまり作用の実行は根左右と行われ、\n"
+"以前の通り掛け順の巡回の演習でしたような左根右ではありません。\n"
+"**ヒント**：追加でインスタンスを定義する必要はありませんし、\n"
+"前に定義した関数は何も呼ぶ必要はありません。\n"
+"アプリカティブdo記法 (`ado`) はこの関数を書く最も簡単な方法です。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:663
@@ -24445,6 +24489,8 @@ msgid ""
 "(Medium) Write a function `traversePostOrder` that performs a post-order "
 "traversal of the tree where effects are executed left-right-root."
 msgstr ""
+"（やや難しい）作用が左右根と実行される木の帰り掛け順の巡回を行う関数\n"
+"`traversePostOrder`を書いてください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:665
@@ -24455,6 +24501,10 @@ msgid ""
 "this new `Person`. _Hint_: Use `traverse` to validate a field of type `Maybe "
 "a`."
 msgstr ""
+"（やや難しい）`homeAddress`フィールドがオプショナル（`Maybe`を使用）な\n"
+"新しい版の`Person`型をつくってください。\n"
+"それからこの新しい`Person`を検証する新しい版の`validatePerson`（`validatePersonOptionalAddress`と改名します）を書いてください。\n"
+"**ヒント**：`traverse`を使って型`Maybe a`のフィールドを検証してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:667
@@ -24462,26 +24512,26 @@ msgid ""
 "(Difficult) Write a function `sequenceUsingTraverse` which behaves like "
 "`sequence`, but is written in terms of `traverse`."
 msgstr ""
+"（難しい）`sequence`のように振る舞う関数`sequenceUsingTraverse`を書いてください。\n"
+"ただし`traverse`を使ってください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:669
-#, fuzzy
 msgid ""
 "(Difficult) Write a function `traverseUsingSequence` which behaves like "
 "`traverse`, but is written in terms of `sequence`."
 msgstr ""
-"(難しい)`traverse`を使って`sequence`を書いてみましょう。また、`sequence`を"
-"使って`traverse`を書けるでしょうか？"
+"（難しい）`traverse`のように振る舞う関数`traverseUsingSequence`を書いてください。\n"
+"ただし`sequence`を使ってください。"
 
 #. type: Title ##
 #: text/chapter7.md:670
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Applicative Functors for Parallelism"
-msgstr "Applicative関手による並列処理"
+msgstr "アプリカティブ関手による並列処理"
 
 #. type: Plain text
 #: text/chapter7.md:673
-#, fuzzy
 msgid ""
 "In the discussion above, I chose the word \"combine\" to describe how "
 "applicative functors \"combine side-effects\". However, in all the examples "
@@ -24490,55 +24540,59 @@ msgid ""
 "traversable functors provide a `sequence` function to combine effects in "
 "sequence based on a data structure."
 msgstr ""
-"これまでの議論では、Applicative関手がどのように「副作用を結合」させるかを説明"
-"するときに、「結合」(combine)という単語を選びました。しかしながら、これらのす"
-"べての例において、Applicative関手は作用を「連鎖」(sequence)させる、というよう"
-"に言っても同じく妥当です。`Traverse`関手はデータ構造に従って作用を順番に結合"
-"させる`sequence`関数を提供する、という直感的理解とこれは一致するでしょう。"
+"これまでの議論では、\n"
+"アプリカティブ関手がどのように「副作用を結合」させるかを説明するときに、\n"
+"「結合」(combine) という単語を選びました。\n"
+"しかしながら、これらのすべての例において、\n"
+"アプリカティブ関手は作用を「連鎖」(sequence) させる、\n"
+"というように言っても同じく妥当です。\n"
+"巡回可能関手がデータ構造に従って作用を順番に結合させる`sequence`関数を提供していることと、\n"
+"この直感的理解とは一致するでしょう。"
 
 #. type: Plain text
 #: text/chapter7.md:675
-#, fuzzy
 msgid ""
 "However, in general, applicative functors are more general than this. The "
 "applicative functor laws do not impose any ordering on the side-effects that "
 "their computations perform. In fact, it would be valid for an applicative "
 "functor to perform its side-effects in parallel."
 msgstr ""
-"しかし一般には、Applicative関手はこれよりももっと一般的です。Applicative関手"
-"の規則は、その計算を実行する副作用にどんな順序付けも強制しません。実際、並列"
-"に副作用を実行するためのApplicative関手というものは妥当になりえます。"
+"しかし一般には、\n"
+"アプリカティブ関手はこれよりももっと一般的です。\n"
+"アプリカティブ関手の規則は、\n"
+"その計算を実行する副作用にどんな順序付けも強制しません。\n"
+"実際、並列に副作用を実行するためのアプリカティブ関手というものは妥当になりえます。"
 
 #. type: Plain text
 #: text/chapter7.md:677
-#, fuzzy
 msgid ""
 "For example, the `V` validation functor returned an _array_ of errors, but "
 "it would work just as well if we picked the `Set` semigroup, in which case "
 "it would not matter what order we ran the various validators. We could even "
 "run them in parallel over the data structure!"
 msgstr ""
-"たとえば、`V`検証関手はエラーの**配列**を返しますが、その代わりに`Set`半群を"
-"選んだとしてもやはり正常に動き、このときどんな順序でそれぞれの検証器を実行し"
-"ても問題はありません。データ構造に対して並列にこれを実行することさえできるの"
-"です！"
+"たとえば、\n"
+"`V`検証関手はエラーの**配列**を返しますが、\n"
+"その代わりに`Set`半群を選んだとしてもやはり正常に動き、\n"
+"このときどんな順序でそれぞれの検証器を実行しても問題はありません。\n"
+"データ構造に対して並列にこれを実行することさえできるのです！"
 
 #. type: Plain text
 #: text/chapter7.md:679
-#, fuzzy
 msgid ""
 "As a second example, the `parallel` package provides a type class `Parallel` "
 "which supports _parallel computations_. `Parallel` provides a function "
 "`parallel` which uses some `Applicative` functor to compute the result of "
 "its input computation _in parallel_:"
 msgstr ""
-"別の例とし、`purescript-parallel`パッケージは、並列計算をサポートする"
-"`Parallel`型クラスを与えます。**非同期計算**を表現する型構築子`parallel`は、"
-"並列に結果を計算する`Applicative`インスタンスを持つことができます。"
+"別の例として、`parallel`パッケージは、\n"
+"**並列計算**をサポートする`Parallel`型クラスを与えます。\n"
+"`Parallel`は関数`parallel`を提供しており、\n"
+"何らかの`Applicative`関手を使って入力の計算を**並列に**計算することができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:680
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "f <$> parallel computation1\n"
 "  <*> parallel computation2\n"
@@ -24548,43 +24602,38 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:686
-#, fuzzy
 msgid ""
 "This computation would start computing values asynchronously using "
 "`computation1` and `computation2`. When both results have been computed, "
 "they would be combined into a single result using the function `f`."
 msgstr ""
-"この計算は、`computation1`と`computation2`を非同期に使って値を計算を始めるで"
-"しょう。そして両方の結果の計算が終わった時に、関数`f`を使ってひとつの結果へと"
-"結合するでしょう。"
+"この計算は`computation1`と`computation2`を非同期に使って値を計算を始めるでしょう。\n"
+"そして両方の結果の計算が終わった時に、関数`f`を使ってひとつの結果へと結合するでしょう。"
 
 #. type: Plain text
 #: text/chapter7.md:688
-#, fuzzy
 msgid ""
 "We will see this idea in more detail when we apply applicative functors to "
 "the problem of _callback hell_ later in the book."
 msgstr ""
-"この考え方の詳細は、本書の後半で**コールバック地獄**の問題に対してApplicative"
-"関手を応用するときに見ていきます。"
+"この考え方の詳細は、\n"
+"本書の後半で**コールバック地獄**の問題に対して\n"
+"アプリカティブ関手を応用するときに見ていきます。"
 
 #. type: Plain text
 #: text/chapter7.md:690
-#, fuzzy
 msgid ""
 "Applicative functors are a natural way to capture side-effects which can be "
 "combined in parallel."
-msgstr "Applicative関手は並列に結合されうる副作用を捕捉する自然な方法です。"
+msgstr "アプリカティブ関手は並列に結合されうる副作用を捕捉する自然な方法です。"
 
 #. type: Plain text
 #: text/chapter7.md:694
-#, fuzzy
 msgid "In this chapter, we covered a lot of new ideas:"
 msgstr "この章では新しい考え方をたくさん扱いました。"
 
 #. type: Plain text
 #: text/chapter7.md:698
-#, fuzzy
 msgid ""
 "- We introduced the concept of an _applicative functor_ which generalizes "
 "the idea of function application to type constructors which capture some "
@@ -24595,16 +24644,17 @@ msgid ""
 "type class, which encapsulates the idea of a _traversable functor_, or a "
 "container whose elements can be used to combine values with side-effects."
 msgstr ""
-"- 関数適用の概念を副作用の考え方を表現する型構築子へと一般化する、"
-"**Applicative関手**の概念を導入しました。 - データ構造の検証という課題に"
-"Applicative関手がどのような解決策を与えるか、単一のエラーの報告からデータ構造"
-"を横断するすべてのエラーの報告へ変換できるApplicative関手を見てきました。 - "
-"要素が副作用を持つ値の結合に使われることのできるコンテナである**Traversable関"
-"手**の考え方を表現する、`Traversable`型クラス導入しました。"
+"- 関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、\n"
+"  **アプリカティブ関手**の概念を導入しました。\n"
+"- データ構造の検証という課題にアプリカティブ関手がどのような解決策を与えるか、\n"
+"  どうすれば単一のエラーの報告から\n"
+"  データ構造を横断するすべてのエラーの報告へ変換できるのかを見てきました。\n"
+"- `Traversable`型クラスに出会いました。\n"
+"  **巡回可能関手**の考え方を内包するものであり、\n"
+"  要素が副作用を持つ値の結合に使うことができる容器でした。"
 
 #. type: Plain text
 #: text/chapter7.md:700
-#, fuzzy
 msgid ""
 "Applicative functors are an interesting abstraction which provide neat "
 "solutions to a number of problems. We will see them a few more times "
@@ -24614,20 +24664,21 @@ msgid ""
 "perform that validation. In general, we will see that applicative functors "
 "are a useful tool for the design of _domain specific languages_."
 msgstr ""
-"Applicative関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。本"
-"書を通じて何度も見ることになるでしょう。今回は、**どうやって**検証を行うかで"
-"はなく、**何を**検証器が検証すべきなのかを定義することを可能にする、宣言的な"
-"スタイルで書く手段をApplicative関手は提供しました。一般に、Applicative関手は"
-"**領域特化言語**の設計のための便利な道具になります。"
+"アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。\n"
+"本書を通じて何度も見ることになるでしょう。\n"
+"今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、\n"
+"これにより**どうやって**検証を行うかではなく、\n"
+"**何を**検証器が検証すべきなのかを定義することができました。\n"
+"一般に、アプリカティブ関手は**領域特化言語**を設計する上で便利な道具になります。"
 
 #. type: Plain text
 #: text/chapter7.md:701
-#, fuzzy
 msgid ""
 "In the next chapter, we will see a related idea, the class of _monads_, and "
 "extend our address book example to run in the browser!"
 msgstr ""
-"次の章では、これに関連する**モナド**という型クラスについて見ていきましょう。"
+"次の章では、これに関連する考え方である**モナド**クラスを見て、\n"
+"アドレス帳の例をブラウザで実行させられるように拡張しましょう！"
 
 #. type: Title ##
 #: text/chapter8.md:1 text/chapter8.md:393
