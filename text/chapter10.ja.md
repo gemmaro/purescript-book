@@ -568,7 +568,7 @@ is good practice in general: foreign functions should be kept as small as
 possible, and application logic moved into PureScript code wherever
 possible.
 
-## Exceptions
+## 例外
 
 Another option is to simply throw an exception in the case of an empty
 array. Strictly speaking, pure functions should not throw exceptions, but we

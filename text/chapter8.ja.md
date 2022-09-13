@@ -1,41 +1,37 @@
-# The Effect Monad
+# 作用モナド
 
 ## この章の目標
 
-In the last chapter, we introduced applicative functors, an abstraction
-which we used to deal with _side-effects_: optional values, error messages
-and validation. This chapter will introduce another abstraction for dealing
-with side-effects in a more expressive way: _monads_.
+前章では、オプショナルな型やエラーメッセージ、
+データの検証など、**副作用**を扱いを抽象化するアプリカティブ関手を導入しました。
+この章では、より表現力の高い方法で副作用を扱うための別の抽象化、**モナド**を導入します。
 
-The goal of this chapter is to explain why monads are a useful abstraction,
-and their connection with _do notation_.
+この章の目的は、なぜモナドが便利な抽象化なのかということと、
+**do記法**との関係を説明することです。
 
 ## プロジェクトの準備
 
-The project adds the following dependencies:
+このプロジェクトでは、以下の依存関係が追加されています。
 
-- `effect` - defines the `Effect` monad, the subject of the second half of
-the chapter. This dependency is often listed in every starter project (it's
-been a dependency of every chapter so far), so you'll rarely have to
-explicitly install it.  - `react-basic-hooks` - a web framework that we will
-use for our Address Book app.
+- `effect`: 章の後半の主題である`Effect`モナドを定義しています。
+  この依存関係はあらゆるプロジェクトの始めに掲げられることがよくあるので
+  （これまでの全ての章でも依存関係にありました）、
+  明示的にインストールしなければいけないことは稀です。
+- `react-basic-hooks`: アドレス帳アプリに使うWebフレームワークです。
 
-## Monads and Do Notation
+## モナドとdo記法
 
-Do notation was first introduced when we covered _array
-comprehensions_. Array comprehensions provide syntactic sugar for the
-`concatMap` function from the `Data.Array` module.
+do記法は**配列内包表記**を扱うときに最初に導入されました。配列内包表記は `Data.Array`モジュールの
+`concatMap`関数の構文糖として提供されています。
 
-Consider the following example. Suppose we throw two dice and want to count
-the number of ways in which we can score a total of `n`. We could do this
-using the following non-deterministic algorithm:
+次の例を考えてみましょう。２つのサイコロを振って出た目を数え、出た目の合計が
+`n`のときそれを得点とすることを考えます。次のような非決定的なアルゴリズムを使うとこれを実現することができます。
 
-- _Choose_ the value `x` of the first throw.  - _Choose_ the value `y` of
-the second throw.  - If the sum of `x` and `y` is `n` then return the pair
-`[x, y]`, else fail.
+- 最初の投擲で値 `x`を**選択**します。
+- 2回目の投擲で値 `y`を**選択**します。
+- もし `x`と `y`の和が `n`なら組 `[x, y]`を返し、そうでなければ失敗します。
 
-Array comprehensions allow us to write this non-deterministic algorithm in a
-natural way:
+配列内包表記を使うと、この非決定的アルゴリズムを自然に書くことができます。
 
 ```hs
 import Prelude
@@ -46,7 +42,7 @@ import Data.Array ((..))
 {{#include ../exercises/chapter8/test/Examples.purs:countThrows}}
 ```
 
-We can see that this function works in PSCi:
+PSCiでこの関数の動作を見てみましょう。
 
 ```text
 > import Test.Examples
@@ -58,35 +54,36 @@ We can see that this function works in PSCi:
 [[6,6]]
 ```
 
-In the last chapter, we formed an intuition for the `Maybe` applicative
-functor, embedding PureScript functions into a larger programming language
-supporting _optional values_. In the same way, we can form an intuition for
-the _array monad_, embedding PureScript functions into a larger programming
-language supporting _non-deterministic choice_.
+前の章では、**オプショナルな値**に対応したより大きなプログラミング言語へと
+PureScriptの関数を埋め込む、
+`Maybe` アプリカティブ関手についての直感的理解を養いました。
+同様に**配列モナド**についても、
+**非決定選択**に対応したより大きなプログラミング言語へ
+PureScriptの関数を埋め込む、というような直感的理解を得ることができます。
 
-In general, a _monad_ for some type constructor `m` provides a way to use do
-notation with values of type `m a`. Note that in the array comprehension
-above, every line contains a computation of type `Array a` for some type
-`a`. In general, every line of a do notation block will contain a
-computation of type `m a` for some type `a` and our monad `m`. The monad `m`
-must be the same on every line (i.e. we fix the side-effect), but the types
-`a` can differ (i.e. individual computations can have different result
-types).
+一般に、ある型構築子 `m`のモナドは、
+型 `m a`の値を持つdo記法を使う方法を提供します。
+上の配列内包表記では、
+すべての行に何らかの型 `a`についての型 `Array a`の計算が
+含まれていることに注目してください。
+一般に、do記法ブロックのすべての行は、
+何らかの型 `a`とモナド `m`について、型 `m a`の計算を含んでいます。
+モナド `m`はすべての行で同じでなければなりません
+（つまり、副作用の種類は固定されます）が、
+型 `a`は異なることもあります。
+（言い換えると、個々の計算は異なる型の結果を持つことができます。）
 
-Here is another example of do notation, this type applied to the type
-constructor `Maybe`. Suppose we have some type `XML` representing XML nodes,
-and a function
+型構築子 `Maybe`が適用された、do記法の別の例を見てみましょう。
+XMLノードを表す型 `XML`と次の関数があるとします。
 
 ```hs
 child :: XML -> String -> Maybe XML
 ```
 
-which looks for a child element of a node, and returns `Nothing` if no such
-element exists.
+この関数はノードの子の要素を探し、
+もしそのような要素が存在しなければ `Nothing`を返します。
 
-In this case, we can look for a deeply-nested element by using do
-notation. Suppose we wanted to read a user's city from a user profile which
-had been encoded as an XML document:
+この場合、do記法を使うと深い入れ子になった要素を検索することができます。XML文書として符号化された利用者情報から、利用者の住んでいる市町村を読み取りたいとします。
 
 ```hs
 userCity :: XML -> Maybe XML
@@ -97,20 +94,16 @@ userCity root = do
   pure city
 ```
 
-The `userCity` function looks for a child element `profile`, an element
-`address` inside the `profile` element, and finally an element `city` inside
-the `address` element. If any of these elements are missing, the return
-value will be `Nothing`. Otherwise, the return value is constructed using
-`Just` from the `city` node.
+`userCity`関数は子の要素である `profile`を探し、 `profile`要素の中にある `address`要素、最後に
+`address`要素から `city`要素を探します。これらの要素のいずれかが欠落している場合は、返り値は
+`Nothing`になります。そうでなければ、返り値は `city`ノードから `Just`を使って構築されています。
 
-Remember, the `pure` function in the last line is defined for every
-`Applicative` functor. Since `pure` is defined as `Just` for the `Maybe`
-applicative functor, it would be equally valid to change the last line to
-`Just city`.
+最後の行にある`pure`関数は、すべての`Applicative`関手について定義されているのでした。`Maybe`の`Applicative`関手の`pure`関数は`Just`として定義されており、最後の行を
+`Just city`へ変更しても同じように正しく動きます。
 
-## The Monad Type Class
+## モナド型クラス
 
-The `Monad` type class is defined as follows:
+`Monad`型クラスは次のように定義されています。
 
 ```hs
 class Apply m <= Bind m where
@@ -119,23 +112,22 @@ class Apply m <= Bind m where
 class (Applicative m, Bind m) <= Monad m
 ```
 
-The key function here is `bind`, defined in the `Bind` type class. Just like for the `<$>` and `<*>` operators in the `Functor` and `Apply` type classes, the Prelude defines an infix alias `>>=` for the `bind` function.
+ここで鍵となる関数は `Bind`型クラスで定義されている演算子 `bind`で、
+`Functor`及び `Apply`型クラスにある `<$>`や `<*>`などの演算子と同じ様に
+`Prelude`では `>>=`として `bind`の中置の別名が定義されています。
 
-The `Monad` type class extends `Bind` with the operations of the
-`Applicative` type class that we have already seen.
+`Monad`型クラスは、すでに見てきた `Applicative`型クラスの操作で `Bind`を拡張します。
 
-It will be useful to see some examples of the `Bind` type class. A sensible
-definition for `Bind` on arrays can be given as follows:
+`Bind`型クラスの例をいくつか見てみるのがわかりやすいでしょう。配列についての `Bind`の妥当な定義は次のようになります。
 
 ```hs
 instance bindArray :: Bind Array where
   bind xs f = concatMap f xs
 ```
 
-This explains the connection between array comprehensions and the
-`concatMap` function that has been alluded to before.
+これは以前にほのめかした配列内包表記と `concatMap`関数の関係を説明しています。
 
-Here is an implementation of `Bind` for the `Maybe` type constructor:
+`Maybe`型構築子についての `Bind`の実装は次のようになります。
 
 ```hs
 instance bindMaybe :: Bind Maybe where
@@ -143,36 +135,30 @@ instance bindMaybe :: Bind Maybe where
   bind (Just a) f = f a
 ```
 
-This definition confirms the intuition that missing values are propagated
-through a do notation block.
+この定義は欠落した値がdo記法ブロックを通じて伝播するという直感的理解を裏付けるものです。
 
-Let's see how the `Bind` type class is related to do notation. Consider a
-simple do notation block which starts by binding a value from the result of
-some computation:
+`Bind`型クラスとdo記法がどのように関係しているかを見て行きましょう。最初に何らかの計算結果からの値の束縛から始まる簡単なdo記法ブロックについて考えてみましょう。
 
 ```hs
 do value <- someComputation
    whatToDoNext
 ```
 
-Every time the PureScript compiler sees this pattern, it replaces the code
-with this:
+PureScriptコンパイラはこのようなパターンを見つけるたびにコードを次にように置き換えます。
 
 ```hs
 bind someComputation \value -> whatToDoNext
 ```
 
-or, written infix:
+あるいは中置で書くと以下です。
 
 ```hs
 someComputation >>= \value -> whatToDoNext
 ```
 
-The computation `whatToDoNext` is allowed to depend on `value`.
+この計算 `whatToDoNext`は `value`に依存することができます。
 
-If there are multiple binds involved, this rule is applied multiple times,
-starting from the top. For example, the `userCity` example that we saw
-earlier gets desugared as follows:
+複数の束縛が関係している場合、この規則は先頭のほうから複数回適用されます。例えば、先ほど見た `userCity`の例では次のように脱糖されます。
 
 ```hs
 userCity :: XML -> Maybe XML
@@ -183,21 +169,24 @@ userCity root =
         pure city
 ```
 
-It is worth noting that code expressed using do notation is often much clearer than the equivalent code using the `>>=` operator. However, writing binds explicitly using `>>=` can often lead to opportunities to write code in _point-free_ form - but the usual warnings about readability apply.
+do記法を使って表現されたコードは、
+`>>=`演算子を使って書かれた同じ意味のコードよりしばしば読みやすくなることも特筆すべき点です。
+一方で、明示的に `>>=`を使って束縛が書くと、
+よく**ポイントフリー**形式でコードが書けるようになります。
+ただし、読みやすさにはやはり注意がいります。
 
-## Monad Laws
+## モナド則
 
-The `Monad` type class comes equipped with three laws, called the _monad
-laws_. These tell us what we can expect from sensible implementations of the
-`Monad` type class.
+`Monad`型クラスは**モナド則** (monad laws) と呼ばれる3つの規則を持っています。
+これらは `Monad`型クラスの理にかなった実装から何を期待できるかを教えてくれます。
 
-It is simplest to explain these laws using do notation.
+do記法を使用してこれらの規則を説明していくのが最も簡単でしょう。
 
-### Identity Laws
+### 単位元律
 
-The _right-identity_ law is the simplest of the three laws. It tells us that
-we can eliminate a call to `pure` if it is the last expression in a do
-notation block:
+**右単位元則** (right-identity law) が3つの規則の中で最も簡単です。
+この規則はdo記法ブロックの最後の式であれば、
+`pure`の呼び出しを排除することができると言っています。
 
 ```hs
 do
@@ -205,10 +194,10 @@ do
   pure x
 ```
 
-The right-identity law says that this is equivalent to just `expr`.
+右単位元則は、この式は単なる `expr`と同じだと言っています。
 
-The _left-identity_ law states that we can eliminate a call to `pure` if it
-is the first expression in a do notation block:
+**左単位元則** (left-identity law) は、もしそれがdo記法ブロックの最初の式であれば、
+`pure`の呼び出しを除去することができると述べています。
 
 ```hs
 do
@@ -216,11 +205,11 @@ do
   next
 ```
 
-This code is equivalent to `next`, after the name `x` has been replaced with
-the expression `y`.
+このコードは、名前`x`を式`y`で置き換えた`next`と同じです。
 
-The last law is the _associativity law_. It tells us how to deal with nested
-do notation blocks. It states that the following piece of code:
+最後の規則は**結合則** (associativity law) です。
+これは入れ子になったdo記法ブロックをどう扱うのかについて教えてくれます。
+この規則が述べているのは以下のコード片のことです。
 
 ```hs
 c1 = do
@@ -230,7 +219,7 @@ c1 = do
   m3
 ```
 
-is equivalent to this code:
+上記のコード片は、次のコードと同じです。
 
 ```hs
 c2 = do
@@ -239,21 +228,17 @@ c2 = do
   m3
 ```
 
-Each of these computations involves three monadic expression `m1`, `m2` and
-`m3`. In each case, the result of `m1` is eventually bound to the name `x`,
-and the result of `m2` is bound to the name `y`.
+これら計算にはそれぞれ、3つのモナドの式 `m1`、 `m2`、 `m3`が含まれています。どちらの場合でも `m1`の結果は名前 `x`に束縛され、
+`m2`の結果は名前 `y`に束縛されます。
 
-In `c1`, the two expressions `m1` and `m2` are grouped into their own do
-notation block.
+`c1`では2つの式 `m1`と `m2`がそれぞれのdo記法ブロック内にグループ化されています。
 
-In `c2`, all three expressions `m1`, `m2` and `m3` appear in the same do
-notation block.
+`c2`では `m1`、 `m2`、 `m3`の3つすべての式が同じdo記法ブロックに現れています。
 
-The associativity law tells us that it is safe to simplify nested do
-notation blocks in this way.
+結合規則は入れ子になったdo記法ブロックをこのように単純化しても
+問題ないことを言っています。
 
-_Note_ that by the definition of how do notation gets desugared into calls
-to `bind`, both of `c1` and `c2` are also equivalent to this code:
+**注意**: do記法を`bind`の呼び出しへと脱糖する定義により、 `c1`と `c2`はいずれも次のコードと同じです。
 
 ```hs
 c3 = do
@@ -263,54 +248,47 @@ c3 = do
     m3
 ```
 
-## Folding With Monads
+## モナドで畳み込む
 
-As an example of working with monads abstractly, this section will present a
-function which works with any type constructor in the `Monad` type
-class. This should serve to solidify the intuition that monadic code
-corresponds to programming "in a larger language" with side-effects, and
-also illustrate the generality which programming with monads brings.
+抽象的にモナドを扱う例として、
+この節では `Monad`型クラスの何らかの型構築子に機能するある関数を示していきます。
+これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと対応しているという直感的理解を補強しますし、モナドによるプログラミングがもたらす一般性も示しています。
 
-The function we will write is called `foldM`. It generalizes the `foldl`
-function that we met earlier to a monadic context. Here is its type
-signature:
+これから `foldM`と呼ばれる関数を書いてみます。これは以前扱った
+`foldl`関数をモナドの文脈へと一般化します。型シグネチャは次のようになっています。
 
 ```hs
 foldM :: forall m a b. Monad m => (a -> b -> m a) -> a -> List b -> m a
 foldl :: forall   a b.            (a -> b ->   a) -> a -> List b ->   a
 ```
 
-Notice that this is the same as the type of `foldl`, except for the
-appearance of the monad `m`.
+モナド `m`が現れている点を除いて、 `foldl`の型と同じであることに注意しましょう。
 
-Intuitively, `foldM` performs a fold over a list in some context supporting
-some set of side-effects.
+直感的には、 `foldM`はさまざまな副作用の組み合わせに対応した文脈での配列の畳み込みを行うと捉えることができます。
 
-For example, if we picked `m` to be `Maybe`, then our fold would be allowed
-to fail by returning `Nothing` at any stage - every step returns an optional
-result, and the result of the fold is therefore also optional.
+例として `m`が `Maybe`であるとすると、この畳み込みはそれぞれの段階で
+`Nothing`を返すことで失敗することができます。それぞれの段階ではオプショナルな結果を返しますから、それゆえ畳み込みの結果もオプショナルになります。
 
-If we picked `m` to be the `Array` type constructor, then every step of the
-fold would be allowed to return zero or more results, and the fold would
-proceed to the next step independently for each result. At the end, the set
-of results would consist of all folds over all possible paths. This
-corresponds to a traversal of a graph!
+もし `m`として配列の型構築子
+`Array`を選ぶとすると、畳み込みのそれぞれの段階で複数の結果を返すことができ、畳み込みは結果それぞれに対して次の手順を継続します。最後に、結果の集まりは、可能な経路すべての畳み込みから構成されることになります。これはグラフの走査と対応しています！
 
-To write `foldM`, we can simply break the input list into cases.
+`foldM`を書くには、単に入力のリストについて場合分けをするだけです。
 
-If the list is empty, then to produce the result of type `a`, we only have
-one option: we have to return the second argument:
+リストが空なら、型 `a`の結果を生成するための選択肢はひとつしかありません。
+第2引数を返します。
 
 ```hs
 foldM _ a Nil = pure a
 ```
 
-Note that we have to use `pure` to lift `a` into the monad `m`.
+なお`a`をモナド `m`まで持ち上げるために `pure`を使わなくてはいけません。
 
-What if the list is non-empty? In that case, we have a value of type `a`, a value of type `b`, and a function of type `a -> b -> m a`. If we apply the function, we obtain a monadic result of type `m a`. We can bind the result of this computation with a backwards arrow `<-`.
+リストが空でない場合はどうでしょうか？
+その場合、型 `a`の値、型 `b`の値、型 `a -> b -> m a`の関数があります。
+もしこの関数を適用すると、型 `m a`のモナドの結果を手に入れることになります。
+この計算の結果を逆向きの矢印 `<-`で束縛することができます。
 
-It only remains to recurse on the tail of the list. The implementation is
-simple:
+あとはリストの残りに対して再帰するだけです。実装は簡単です。
 
 ```hs
 foldM f a (b : bs) = do
@@ -318,18 +296,17 @@ foldM f a (b : bs) = do
   foldM f a' bs
 ```
 
-Note that this implementation is almost identical to that of `foldl` on
-lists, with the exception of do notation.
+なお、do記法を除けば、この実装は配列に対する `foldl`の実装とほとんど同じです。
 
-We can define and test this function in PSCi. Here is an example - suppose
-we defined a "safe division" function on integers, which tested for division
-by zero and used the `Maybe` type constructor to indicate failure:
+PSCiでこれを定義し、試してみましょう。
+以下では例として、除算可能かどうかを調べて、失敗を示すために `Maybe`型構築子を使う、
+整数の「安全な除算」関数を定義するとしましょう。
 
 ```hs
 {{#include ../exercises/chapter8/test/Examples.purs:safeDivide}}
 ```
 
-Then we can use `foldM` to express iterated safe division:
+これで、 `foldM`で安全な除算の繰り返しを表現することができます。
 
 ```text
 > import Test.Examples
@@ -342,18 +319,18 @@ Then we can use `foldM` to express iterated safe division:
 Nothing
 ```
 
-The `foldM safeDivide` function returns `Nothing` if a division by zero was
-attempted at any point. Otherwise it returns the result of repeatedly
-dividing the accumulator, wrapped in the `Just` constructor.
+もしいずれかの時点で整数にならない除算が行われようとしたら、
+`foldM safeDivide`関数は `Nothing`を返します。
+そうでなければ、除算を繰り返した累積の結果を`Just`構築子に包んで返します。
 
-## Monads and Applicatives
+## モナドとアプリカティブ
 
-Every instance of the `Monad` type class is also an instance of the `Apply`
-type class, by virtue of the superclass relationship between the two
-classes.
+クラス間に上位クラス関係の効能があるため、
+`Monad`型クラスのすべてのインスタンスは `Apply`型クラスのインスタンスでもあります。
 
-However, there is also an implementation of the `Apply` type class which
-comes "for free" for any instance of `Monad`, given by the `ap` function:
+しかしながら、あらゆる`Monad`のインスタンスに
+「無料で」ついてくる`Apply`型クラスの実装もあります。
+これは`ap`関数により与えられます。
 
 ```hs
 ap :: forall m a b. Monad m => m (a -> b) -> m a -> m b
@@ -363,23 +340,24 @@ ap mf ma = do
   pure (f a)
 ```
 
-If `m` is a law-abiding member of the `Monad` type class, then there is a
-valid `Apply` instance for `m` given by `ap`.
+もし `m`が `Monad`型クラスに固執していれば、
+`ap`で与えられる`m`について妥当な `Apply`インスタンスが存在します。
 
-The interested reader can check that `ap` agrees with `apply` for the monads
-we have already encountered: `Array`, `Maybe` and `Either e`.
+興味のある読者は、これまで登場した `Array`、 `Maybe`、 `Either e`といったモナドについて、この `ap`が
+`apply`と一致することを確かめてみてください。
 
-If every monad is also an applicative functor, then we should be able to
-apply our intuition for applicative functors to every monad. In particular,
-we can reasonably expect a monad to correspond, in some sense, to
-programming "in a larger language" augmented with some set of additional
-side-effects. We should be able to lift functions of arbitrary arities,
-using `map` and `apply`, into this new language.
+もしすべてのモナドがアプリカティブ関手でもあるなら、
+アプリカティブ関手についての直感的理解を
+すべてのモナドについても適用することができるはずです。
+特に、モナドが更なる副作用の組み合わせで増強された「より大きな言語」での
+プログラミングといろいろな意味で一致することを予想するのはもっともです。
+`map`と `apply`を使って、
+引数が任意個の関数をこの新しい言語へと持ち上げることができるはずです。
 
-But monads allow us to do more than we could do with just applicative
-functors, and the key difference is highlighted by the syntax of do
-notation. Consider the `userCity` example again, in which we looked for a
-user's city in an XML document which encoded their user profile:
+しかし、モナドはアプリカティブ関手でできること以上を行うことができ、
+重要な違いはdo記法の構文で強調されています。
+利用者情報を符号化したXML文書から利用者の都市を検索する、
+`userCity`の例についてもう一度考えてみましょう。
 
 ```hs
 userCity :: XML -> Maybe XML
@@ -390,34 +368,32 @@ userCity root = do
   pure city
 ```
 
-Do notation allows the second computation to depend on the result `prof` of
-the first, and the third computation to depend on the result `addr` of the
-second, and so on. This dependence on previous values is not possible using
-only the interface of the `Applicative` type class.
+do記法では2番目の計算が最初の結果 `prof`に依存し、
+3番目の計算が2番目の計算の結果
+`addr`に依存するというようなことができます。
+`Applicative`型クラスのインターフェイスだけを使うのでは、
+このような以前の値への依存は不可能です。
 
-Try writing `userCity` using only `pure` and `apply`: you will see that it
-is impossible. Applicative functors only allow us to lift function arguments
-which are independent of each other, but monads allow us to write
-computations which involve more interesting data dependencies.
+`pure`と `apply`だけを使って `userCity`を書こうとしてみれば、
+これが不可能であることがわかるでしょう。
+アプリカティブ関手ができるのは関数の互いに独立した引数を持ち上げることだけですが、
+モナドはもっと興味深いデータ依存関係に関わる計算を書くことを可能にします。
 
-In the last chapter, we saw that the `Applicative` type class can be used to
-express parallelism. This was precisely because the function arguments being
-lifted were independent of one another. Since the `Monad` type class allows
-computations to depend on the results of previous computations, the same
-does not apply - a monad has to combine its side-effects in sequence.
+前の章では `Applicative`型クラスは並列処理を表現できることを見ました。
+持ち上げられた関数の引数は互いに独立していますから、
+これはまさにその通りです。
+`Monad`型クラスは計算が前の計算の結果に依存できるようにしますから、
+同じようにはなりません。
+モナドは副作用を順番に組み合わせなければいけません。
 
 ## 演習
 
- 1. (Easy) Write a function `third` which returns the third element of an
-    array with three or more elements. Your function should return an
-    appropriate `Maybe` type. _Hint:_ Look up the types of the `head` and
-    `tail` functions from the `Data.Array` module in the `arrays`
-    package. Use do notation with the `Maybe` monad to combine these
-    functions.
- 1. (Medium) Write a function `possibleSums` which uses `foldM` to determine
-    all possible totals that could be made using a set of coins. The coins
-    will be specified as an array which contains the value of each
-    coin. Your function should have the following result:
+ 1. （簡単）3つ以上の要素がある配列の3つ目の要素を返す関数`third`を書いてください。
+    関数は適切な`Maybe`型で返します。
+    **ヒント**：`arrays`パッケージの`Data.Array`モジュールから`head`と`tail`関数の型を見つけ出してください。
+    これらの関数を繋げるには`Maybe`モナドと共にdo記法を使ってください。
+ 1. （普通）一掴みの硬貨を使ってできる可能なすべての合計を決定する関数 `possibleSums`を、
+    `foldM`を使って書いてみましょう。入力の硬貨は、硬貨の価値の配列として与えられます。この関数は次のような結果にならなくてはいけません。
 
      ```text
      > possibleSums []
@@ -427,16 +403,24 @@ does not apply - a monad has to combine its side-effects in sequence.
      [0,1,2,3,10,11,12,13]
      ```
 
-     _Hint_: This function can be written as a one-liner using `foldM`. You might want to use the `nub` and `sort` functions to remove duplicates and sort the result respectively.
- 1. (Medium) Confirm that the `ap` function and the `apply` operator agree for the `Maybe` monad. _Note:_ There are no tests for this exercise.
- 1. (Medium) Verify that the monad laws hold for the `Monad` instance for the `Maybe` type, as defined in the `maybe` package. _Note:_ There are no tests for this exercise.
- 1. (Medium) Write a function `filterM` which generalizes the `filter` function on lists. Your function should have the following type signature:
+     **ヒント**：`foldM`を使うと1行でこの関数を書くことが可能です。
+     重複を取り除いたり、結果を並び替えたりするのに、
+     `nub`関数や `sort`関数を使いたくなるかもしれません。
+1. （普通）`Maybe`型構築子について、 `ap`関数と `apply`演算子が一致することを確認してください。
+   **補足**：この演習にはテストがありません。
+1. （普通）`maybe`パッケージで定義されている
+   `Maybe`型についての `Monad`インスタンスが、
+   モナド則を満たしていることを検証してください。
+   **補足**：この演習にはテストがありません。
+1. （普通）配列上の `filter`の関数を一般化した関数 `filterM`を書いてください。
+   この関数は次の型シグネチャを持ちます。
 
      ```hs
      filterM :: forall m a. Monad m => (a -> m Boolean) -> List a -> m (List a)
      ```
 
- 1. (Difficult) Every monad has a default `Functor` instance given by:
+ 1. （難しい） すべてのモナドには
+    次で与えられるような既定の `Functor`インスタンスがあります。
 
      ```hs
      map f a = do
@@ -444,157 +428,158 @@ does not apply - a monad has to combine its side-effects in sequence.
        pure (f x)
      ```
 
-     Use the monad laws to prove that for any monad, the following holds:
+     モナド則を使って、すべてのモナドが次を満たすことを証明してください。
 
      ```hs
      lift2 f (pure a) (pure b) = pure (f a b)
      ```
 
-     where the `Apply` instance uses the `ap` function defined above. Recall that `lift2` was defined as follows:
+     ここで、 `Applly`インスタンスは上で定義された `ap`関数を使用しています。
+     `lift2`が次のように定義されていたことを思い出してください。
 
      ```hs
      lift2 :: forall f a b c. Apply f => (a -> b -> c) -> f a -> f b -> f c
      lift2 f a b = f <$> a <*> b
      ```
 
-    _Note:_ There are no tests for this exercise.
+    **補足**：この演習にはテストがありません。
 
-## Native Effects
+## ネイティブな作用
 
-We will now look at one particular monad which is of central importance in
-PureScript - the `Effect` monad.
+ここではPureScriptの中核となる重要なモナド、 `Effect`モナドについて見ていきます。
 
-The `Effect` monad is defined in the `Effect` module. It is used to manage
-so-called _native_ side-effects. If you are familiar with Haskell, it is the
-equivalent of the `IO` monad.
+`Effect`モナドは `Effect`モジュールで定義されています。
+かつてはいわゆる**ネイティブ**副作用を管理していました。
+Haskellに馴染みがあれば、これは`IO`モナドと同等のものです。
 
-What are native side-effects? They are the side-effects which distinguish
-JavaScript expressions from idiomatic PureScript expressions, which
-typically are free from side-effects. Some examples of native effects are:
+ネイティブな副作用とは何でしょうか。
+この副作用はPureScript特有の式からJavaScriptの式を区別するものです。
+PureScriptの式は概して副作用とは無縁なのです。
+ネイティブな作用の例を以下に示します。
 
-- Console IO - Random number generation - Exceptions - Reading/writing
-mutable state
+- コンソール入出力
+- 乱数生成
+- 例外
+- 変更可能な状態の読み書き
 
-And in the browser:
+また、ブラウザでは次のようなものがあります。
 
-- DOM manipulation - XMLHttpRequest / AJAX calls - Interacting with a
-websocket - Writing/reading to/from local storage
+- DOM操作
+- XMLHttpRequest / AJAX呼び出し
+- WebSocketによる相互作用
+- Local Storageの読み書き
 
-We have already seen plenty of examples of "non-native" side-effects:
+すでに「ネイティブでない」副作用の例については数多く見てきています。
 
-- Optional values, as represented by the `Maybe` data type - Errors, as
-represented by the `Either` data type - Multi-functions, as represented by
-arrays or lists
+- `Maybe`データ型で表現される省略可能な値
+- `Either`データ型で表現されるエラー
+- 配列やリストで表現される多価関数
 
-Note that the distinction is subtle. It is true, for example, that an error
-message is a possible side-effect of a JavaScript expression, in the form of
-an exception. In that sense, exceptions do represent native side-effects,
-and it is possible to represent them using `Effect`. However, error messages
-implemented using `Either` are not a side-effect of the JavaScript runtime,
-and so it is not appropriate to implement error messages in that style using
-`Effect`. So it is not the effect itself which is native, but rather how it
-is implemented at runtime.
+これらの区別はわかりにくいので注意してください。エラーメッセージは例外の形でJavaScriptの式の副作用となることがあります。その意味では例外はネイティブな副作用を表していて、
+`Effect`を使用して表現することができます。しかし、
+`Either`を使用して実装されたエラーメッセージはJavaScriptランタイムの副作用ではなく、
+`Effect`を使うスタイルでエラーメッセージを実装するのは適切ではありません。そのため、ネイティブなのは作用自体というより、実行時にどのように実装されているかです。
 
-## Side-Effects and Purity
+## 副作用と純粋性
 
-In a pure language like PureScript, one question which presents itself is:
-without side-effects, how can one write useful real-world code?
+PureScriptのような言語が純粋であるとすると、疑問が浮かんできます。副作用がないなら、どうやって役に立つ実際のコードを書くことができるというのでしょうか。
 
-The answer is that PureScript does not aim to eliminate side-effects. It
-aims to represent side-effects in such a way that pure computations can be
-distinguished from computations with side-effects in the type system. In
-this sense, the language is still pure.
+その答えはPureScriptの目的は副作用を排除することではないということです。これは、純粋な計算と副作用のある計算とを型システムにおいて区別することができるような方法で、副作用を表現することを目的としているのです。この意味で、言語はあくまで純粋だということです。
 
-Values with side-effects have different types from pure values. As such, it
-is not possible to pass a side-effecting argument to a function, for
-example, and have side-effects performed unexpectedly.
+副作用のある値は、純粋な値とは異なる型を持っています。
+このように、例えば副作用のある引数を関数に渡すことはできず、
+予期せず副作用を持つようなことが起こらなくなります。
 
-The only way in which side-effects managed by the `Effect` monad will be
-presented is to run a computation of type `Effect a` from JavaScript.
+`Effect`モナドで管理された副作用を実行する唯一の方法は、
+型 `Effect a`の計算をJavaScriptから実行することです。
 
-The Spago build tool (and other tools) provide a shortcut, by generating
-additional JavaScript to invoke the `main` computation when the application
-starts. `main` is required to be a computation in the `Effect` monad.
+Spagoビルドツール（や他のツール）は早道を提供しており、
+アプリケーションの起動時に`main`計算を呼び出すための追加のJavaScriptコードを生成します。
+`main`は `Effect`モナドでの計算であることが要求されます。
 
-## The Effect Monad
+## 作用モナド
 
-The `Effect` monad provides a well-typed API for computations with
-side-effects, while at the same time generating efficient JavaScript.
+`Effect`は副作用のある計算を充分に型付けするAPIを提供すると同時に、
+効率的なJavaScriptを生成します。
 
-Let's take a closer look at the return type of the familiar `log`
-function. `Effect` indicates that this function produces a native effect,
-console IO in this case.  `Unit` indicates that no _meaningful_ data is
-returned. You can think of `Unit` as being analogous to the `void` keyword
-in other languages, such as C, Java, etc.
+馴染みのある`log`関数から返る型をもう少し見てみましょう。
+`Effect`はこの関数がネイティブな作用を生み出すことを示しており、
+この場合はコンソールIOです。
+`Unit`はいかなる*意味のある*データも返らないことを示しています。
+`Unit`はC、Javaなど他の言語での`void`キーワードと似たようなものとして考えられます。
 
 ```hs
 log :: String -> Effect Unit
 ```
 
-> _Aside:_ You may encounter IDE suggestions for the more general (and more elaborately typed) `log` function from `Effect.Class.Console`. This is interchangeable with the one from `Effect.Console` when dealing with the basic `Effect` monad. Reasons for the more general version will become clearer after reading about "Monad Transformers" in the "Monadic Adventures" chapter. For the curious (and impatient), this works because there's a `MonadEffect` instance for `Effect`.
+> 余談：より一般的な（そしてより込み入った型の）`Effect.Class.Console`の`log`関数をIDEから提案されるかもしれません。
+これは基本的な`Effect`モナドを扱う際は`Effect.Console`からの関数と交換可能です。
+より一般的なバージョンがあることの理由は「モナドな冒険」章の「モナド変換子」について読んだあとにより明らかになっていることでしょう。
+好奇心のある（そしてせっかちな）読者のために言うと、
+これは`Effect`に`MonadEffect`インスタンスがあるから機能するのです。
 
 > ```hs
 > log :: forall m. MonadEffect m => String -> m Unit
 > ```
 
-Now let's consider an `Effect` that returns meaningful data. The `random`
-function from `Effect.Random` produces a random `Number`.
+それでは意味のあるデータを返す`Effect`を考えましょう。
+`Effect.Random`の`random`関数はランダムな`Number`を生み出します。
 
 ```hs
 random :: Effect Number
 ```
 
-Here's a full example program (found in `test/Random.purs` of this chapter's
-exercises folder).
+以下は完全なプログラムの例です。
+（この章の演習フォルダの`test/Random.purs`にあります。）
 
 ```hs
 {{#include ../exercises/chapter8/test/Random.purs}}
 ```
 
-Because `Effect` is a monad, we use do notation to _unwrap_ the data it
-contains before passing this data on to the effectful `logShow` function. As
-a refresher, here's the equivalent code written using the `bind` operator:
+`Effect`はモナドなので、do記法を使って含まれるデータを開封し、
+それからこのデータを作用のある`logShow`関数に渡します。
+気分転換に、以下は`bind`演算子を使って書かれた同等なコードです。
 
 ```hs
 main :: Effect Unit
 main = random >>= logShow
 ```
 
-Try running this yourself with:
+これを手元で走らせてみてください。
 
 ```
 spago run --main Test.Random
 ```
 
-You should see a randomly chosen number between `0.0` and `1.0` printed to
-the console.
+コンソールに出力 `0.0`と `1.0`の間で無作為に選ばれた数が表示されるでしょう。
 
-> _Aside:_ `spago run` defaults to searching in the `Main` module for a `main` function. You may also specify an alternate module as an entry point with the `--main` flag, as is done in the above example. Just be sure that this alternate module also contains a `main` function.
+> 余談：`spago run`は既定で`Main`モジュールとその中の`main`関数を探索します。
+`--main`フラグで代替のモジュールを入口として指定することもでき、
+上の例ではそうしています。
+この代替のモジュールもまた`main`関数を含んでいることには注目してください。
 
-Note that it's also possible to generate "random" (technically pseudorandom)
-data without resorting to impure effectful code. We'll cover these
-techniques in the "Generative Testing" chapter.
+なお「ランダムな」（技術的には疑似ランダムな）データを不浄な作用付きのコードに訴えることなく生成することも可能です。
+この技法は「テストを生成する」章で押さえます。
 
-As mentioned previously, the `Effect` monad is of central importance to
-PureScript. The reason why it's central is because it is the conventional
-way to interoperate with PureScript's `Foreign Function Interface`, which
-provides the mechanism to execute a program and perform side effects. While
-it's desireable to avoid using the `Foreign Function Interface`, it's fairly
-critical to understand how it works and how to use it, so I recommend
-reading that chapter before doing any serious PureScript work. That said,
-the `Effect` monad is fairly simple. It has a few helper functions, but
-aside from that it doesn't do much except encapsulate side effects.
+以前言及したように`Effect`モナドはPureScriptで核心的な重要さがあります。
+なぜ核心かというと、それはPureScriptの`外部関数インターフェース`とやりとりする上での常套手段だからです。
+`外部関数インターフェース`はプログラムを実行したり副作用を発生させたりする仕組みを提供します。
+`外部関数インターフェース`を使うことは避けるのが望ましいのですが、
+どう動きどう使うのか理解することもまた極めて大事なことですので、
+実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。
+要は`Effect`モナドは結構単純なのです。
+いくつかのお助け関数がありますが、それを差し置いても副作用を内包すること以外には多くのことをしません。
 
-## Exceptions
+## 例外
 
-Let's examine a function from the `node-fs` package that involves two
-_native_ side effects: reading mutable state, and exceptions:
+2つの**ネイティブな**副作用が絡む`node-fs`パッケージの関数を調べましょう。
+ここでの副作用は可変状態の読み取りと例外です。
 
 ```hs
 readTextFile :: Encoding -> String -> Effect String
 ```
 
-If we attempt to read a file that does not exist:
+もし存在しないファイルを読むことを試みると……
 
 ```hs
 import Node.Encoding (Encoding(..))
@@ -606,7 +591,7 @@ main = do
   log lines
 ```
 
-We encounter the following exception:
+以下の例外に遭遇します。
 
 ```
     throw err;
@@ -619,8 +604,8 @@ Error: ENOENT: no such file or directory, open 'iDoNotExist.md'
   path: 'iDoNotExist.md'
 ```
 
-To manage this exception gracefully, we can wrap the potentially problematic
-code in `try` to handle either outcome:
+この例外をうまく管理するには、
+潜在的に問題があるコードを`try`に包めばいずれの出力も制御できます。
 
 ```hs
 main :: Effect Unit
@@ -631,16 +616,16 @@ main = do
     Left  error -> log $ "Couldn't open file. Error was: " <> message error
 ```
 
-`try` runs an `Effect` and returns eventual exceptions as a `Left` value. If
-the computation succeeds, the result gets wrapped in a `Right`:
+`try`は`Effect`を走らせて起こりうる例外を`Left`値として返します。
+もし計算が成功すれば結果は`Right`に包まれます。
 
 ```hs
 try :: forall a. Effect a -> Effect (Either Error a)
 ```
 
-We can also generate our own exceptions. Here is an alternative
-implementation of `Data.List.head` which throws an exception if the list is
-empty, rather than returning a `Maybe` value of `Nothing`.
+自前の例外を生成することもできます。
+以下は`Data.List.head`の代替実装で、
+`Maybe`の値の`Nothing`を返す代わりにリストが空のとき例外を投げます。
 
 ```hs
 exceptionHead :: List Int -> Effect Int
@@ -649,22 +634,20 @@ exceptionHead l = case l of
   Nil -> throwException $ error "empty list"
 ```
 
-Note that the `exceptionHead` function is a somewhat impractical example, as
-it is best to avoid generating exceptions in PureScript code and instead use
-non-native effects such as `Either` and `Maybe` to manage errors and missing
-values.
+ただし`exceptionHead`関数はどこかしら非実用的な例です。
+というのも、PureScriptのコードで例外を生成するのは避け、
+代わりに`Either`や`Maybe`のようなネイティブでない作用で
+エラーや欠けた値を使うのが一番だからです。
 
-## Mutable State
+## 可変状態
 
-There is another effect defined in the core libraries: the `ST` effect.
+中核ライブラリには `ST`作用というまた別の作用も定義されています。
 
-The `ST` effect is used to manipulate mutable state. As pure functional
-programmers, we know that shared mutable state can be problematic. However,
-the `ST` effect uses the type system to restrict sharing in such a way that
-only safe _local_ mutation is allowed.
+`ST`作用は変更可能な状態を操作するために使われます。純粋関数プログラミングを知っているなら、共有される変更可能な状態は問題を引き起こしやすいということも知っているでしょう。しかしながら、
+`ST`作用は型システムを使って安全で**局所的な**状態変化を可能にし、状態の共有を制限するのです。
 
-The `ST` effect is defined in the `Control.Monad.ST` module. To see how it
-works, we need to look at the types of its actions:
+`ST`作用は
+`Control.Monad.ST`モジュールで定義されています。これがどのように動作するかを確認するには、そのアクションの型を見る必要があります。
 
 ```hs
 new :: forall a r. a -> ST r (STRef r a)
@@ -676,19 +659,16 @@ write :: forall a r. a -> STRef r a -> ST r a
 modify :: forall r a. (a -> a) -> STRef r a -> ST r a
 ```
 
-`new` is used to create a new mutable reference cell of type `STRef r a`,
-which can be read using the `read` action, and modified using the `write`
-and `modify` actions. The type `a` is the type of the value stored in the
-cell, and the type `r` is used to indicate a _memory region_ (or _heap_) in
-the type system.
+`new`は型 `STRef r a`の変更可能な参照区画を新しく作るのに使われます。
+`STRef r a`は `read`アクションを使って状態を読み取ったり、
+`write`アクションや `modify`アクションで状態を変更するのに使われます。
+型 `a`は区画に格納された値の型で、
+型 `r`は型システムで**メモリ領域**（または**ヒープ**）を表しています。
 
-Here is an example. Suppose we want to simulate the movement of a particle
-falling under gravity by iterating a simple update function over a large
-number of small time steps.
+例を示します。小さな時間刻みで簡単な更新関数の実行を何度も繰り返すことによって、重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。
 
-We can do this by creating a mutable reference cell to hold the position and
-velocity of the particle, and then using a `for` loop to update the value
-stored in that cell:
+粒子の位置と速度を保持する変更可能な参照区画を作成し、
+区画に格納された値を更新するのにforループを使うことでこれを実現することができます。
 
 ```hs
 import Prelude
@@ -711,36 +691,35 @@ simulate x0 v0 time = do
   pure final.x
 ```
 
-At the end of the computation, we read the final value of the reference
-cell, and return the position of the particle.
+計算の最後では、参照区画の最終的な値を読み取り、粒子の位置を返しています。
 
-Note that even though this function uses mutable state, it is still a pure
-function, so long as the reference cell `ref` is not allowed to be used by
-other parts of the program. We will see that this is exactly what the `ST`
-effect disallows.
+この関数が変更可能な状態を使っていても、その参照区画
+`ref`がプログラムの他の部分で使われるのが許されない限り、これは純粋な関数のままであることに注意してください。
+`ST`作用が禁止するものが正確には何であるのかについては後ほど見ます。
 
-To run a computation with the `ST` effect, we have to use the `run`
-function:
+`ST`作用付きの計算を実行するには、 `run`関数を使用する必要があります。
 
 ```hs
 run :: forall a. (forall r. ST r a) -> a
 ```
 
-The thing to notice here is that the region type `r` is quantified _inside
-the parentheses_ on the left of the function arrow. That means that whatever
-action we pass to `run` has to work with _any region_ `r` whatsoever.
+ここで注目して欲しいのは、
+領域型 `r`が関数矢印の左辺にある**括弧の内側で**量化されているということです。
+`run`に渡したどんなアクションでも、
+**任意の領域**`r`がなんであれ動作するということを意味しています。
 
-However, once a reference cell has been created by `new`, its region type is
-already fixed, so it would be a type error to try to use the reference cell
-outside the code delimited by `run`.  This is what allows `run` to safely
-remove the `ST` effect, and turn `simulate` into a pure function!
+しかしながら、
+ひとたび参照区画が `new`によって作成されると、
+その領域の型はすでに固定されており、
+`run`によって限定されたコードの外側で参照領域を使おうとしても型エラーになるでしょう。
+`run`が安全に `ST`作用を除去でき、`simulate`を純粋関数にできるのはこれが理由なのです！
 
 ```hs
 simulate' :: Number -> Number -> Int -> Number
 simulate' x0 v0 time = run (simulate x0 v0 time)
 ```
 
-You can even try running this function in PSCi:
+PSCiでもこの関数を実行してみることができます。
 
 ```text
 > import Main
@@ -761,8 +740,7 @@ You can even try running this function in PSCi:
 21.54
 ```
 
-In fact, if we inline the definition of `simulate` at the call to `run`, as
-follows:
+実は、もし `simulate`の定義を `run`の呼び出しのところへ埋め込むとすると、次のようになります。
 
 ```hs
 simulate :: Number -> Number -> Int -> Number
@@ -781,9 +759,9 @@ simulate x0 v0 time =
     pure final.x
 ```
 
-then the compiler will notice that the reference cell is not allowed to
-escape its scope, and can safely turn `ref` into a `var`. Here is the
-generated JavaScript for `simulate` inlined with `run`:
+参照区画はそのスコープから逃れることができないことがコンパイラにわかりますし、
+安全に`ref`を`var`に変換することができます。
+`run`が埋め込まれた`simulate`に対して生成されたJavaScriptは次のようになります。
 
 ```javascript
 var simulate = function (x0) {
@@ -810,13 +788,11 @@ var simulate = function (x0) {
 };
 ```
 
-Note that this resulting JavaScript is not as optimal as it could be. See
-[this
-issue](https://github.com/purescript-contrib/purescript-book/issues/121) for
-more details. The above snippet should be updated once that issue is
-resolved.
+なおこの結果として得られたJavaScriptは最適化の余地があります。
+詳細は[この課題](https://github.com/purescript-contrib/purescript-book/issues/121)を参照してください。
+上記の抜粋はその課題が解決されたら更新されるでしょう。
 
-For comparison, this is the generated JavaScript of the non-inlined form:
+比較としてこちらが埋め込まれていない形式で生成されたJavaScriptです。
 
 ```js
 var simulate = function (x0) {
@@ -843,84 +819,91 @@ var simulate = function (x0) {
 };
 ```
 
-The `ST` effect is a good way to generate short JavaScript when working with
-locally-scoped mutable state, especially when used together with actions
-like `for`, `foreach`, and `while` which generate efficient loops.
+局所的な変更可能状態を扱うとき、
+特に作用が絡むループを生成する
+`for`、 `foreach`、 `while`のようなアクションを一緒に使うときには、
+`ST`作用は短いJavaScriptを生成する良い方法となります。
 
 ## 演習
 
-1. (Medium) Rewrite the `safeDivide` function as `exceptionDivide` and throw
-   an exception using `throwException` with the message `"div zero"` if the
-   denominator is zero.
-1. (Medium) Write a function `estimatePi :: Int -> Number` that uses `n`
-   terms of the [Gregory
-   Series](https://mathworld.wolfram.com/GregorySeries.html) to calculate an
-   approximation of `pi`. _Hints:_ You can pattern your answer like the
-   definition of `simulate` above. You might need to convert an `Int` into a
-   `Number` using `toNumber :: Int -> Number` from `Data.Int`.
-1. (Medium) Write a function `fibonacci :: Int -> Int` to compute the `n`th
-   Fibonacci number, using `ST` to track the values of the previous two
-   Fibonacci numbers. Using PSCi, compare the speed of your new `ST`-based
-   implementation against the recursive implementation (`fib`) from Chapter
-   4.
+1. （普通）`safeDivide`関数を書き直し、
+   もし分母がゼロなら`throwException`を使って文言`"div zero"`の例外を投げるようにしたものを
+   `exceptionDivide`としてください。
+1. （普通）関数`estimatePi :: Int -> Number`を書いてください。
+   この関数は`n`項[Gregory
+   Series](https://mathworld.wolfram.com/GregorySeries.html)を使って`pi`の近似を計算するものです。
+   **ヒント**：解答は上記の`simulate`の定義に倣うことができます。
+   また`Data.Int`の`toNumber :: Int -> Number`を使って、
+   `Int`を`Number`に変換する必要があるかもしれません。
+1. （普通）`n`番目のフィボナッチ数を計算する関数`fibonacci :: Int -> Int`を書いてください。
+   `ST`を使って前の2つのフィボナッチ数の値を追跡します。
+   新しい`ST`に基づく実装の速度を第4章の再帰実装に対して比較してください。
 
-## DOM Effects
+## DOM作用
 
-In the final sections of this chapter, we will apply what we have learned
-about effects in the `Effect` monad to the problem of working with the DOM.
+この章の最後の節では、
+`Effect`モナドでの作用についてこれまで学んだことを、
+実際のDOM操作の問題に応用します。
 
-There are a number of PureScript packages for working directly with the DOM,
-or with open-source DOM libraries. For example:
+DOMを直接扱ったり、
+オープンソースのDOMライブラリを扱ったりする
+PureScriptパッケージが沢山あります。
+例えば以下です。
 
-- [`web-dom`](https://github.com/purescript-web/purescript-web-dom) provides
-type definitions and low level interface implementations for the W3C DOM
-spec.  - [`web-html`](https://github.com/purescript-web/purescript-web-html)
-provides type definitions and low level interface implementations for the
-W3C HTML5 spec.  - [`jquery`](https://github.com/paf31/purescript-jquery) is
-a set of bindings to the [jQuery](http://jquery.org) library.
+- [`web-dom`](https://github.com/purescript-web/purescript-web-dom)は
+  W3CのDOM規格に向けた型定義と低水準インターフェース実装を提供します。
+- [`web-html`](https://github.com/purescript-web/purescript-web-html)は
+  W3CのHTML5規格に向けた型定義と低水準インターフェース実装を提供します。
+- [`jquery`](http://github.com/paf31/purescript-jquery)は
+  [jQuery](http://jquery.org)ライブラリのバインディングの集まりです。
 
-There are also PureScript libraries which build abstractions on top of these
-libraries, such as
+上記のライブラリを抽象化するPureScriptライブラリもあります。
+以下のようなものです。
 
-- [`thermite`](https://github.com/paf31/purescript-thermite), which builds
-on [`react`](https://github.com/purescript-contrib/purescript-react)  -
-[`react-basic-hooks`](https://github.com/megamaddu/purescript-react-basic-hooks),
-which builds on
-[`react-basic`](https://github.com/lumihq/purescript-react-basic)  -
-[`halogen`](https://github.com/purescript-halogen/purescript-halogen) which
-provides a type-safe set of abstractions on top of a custom virtual DOM
-library.
+<ul>
+<li><a
+href="http://github.com/paf31/purescript-thermite"><code>thermite</code></a>は
+<a
+href="https://github.com/purescript-contrib/purescript-react"<code>react</code></a>
+上で構築されるライブラリです。</li>
+<li><a
+href="https://github.com/megamaddu/purescript-react-basic-hooks"><code>react-basic-hooks</code></a>
+は<a
+href="https://github.com/lumihq/purescript-react-basic"><code>react-basic</code></a>
+上で構築されるライブラリです。</li>
+<li><a
+href="http://github.com/purescript-halogen/purescript-halogen"><code>halogen</code></a>は
+自前の仮想DOMライブラリを土台とした型安全な抽象化の集まりを提供します。</li>
+</ul>
 
-In this chapter, we will use the `react-basic-hooks` library to add a user
-interface to our address book application, but the interested reader is
-encouraged to explore alternative approaches.
+この章では `react-basic-hooks`ライブラリを使用し、
+住所簿アプリケーションにユーザーインターフェイスを追加しますが、
+興味のあるユーザは異なるアプローチで進めることをおすすめします。
 
-## An Address Book User Interface
+## 住所録のユーザーインタフェース
 
-Using the `react-basic-hooks` library, we will define our application as a
-React _component_. React components describe HTML elements in code as pure
-data structures, which are then efficiently rendered to the DOM. In
-addition, components can respond to events like button clicks. The
-`react-basic-hooks` library uses the `Effect` monad to describe how to
-handle these events.
+`react-basic-hooks`ライブラリを使い、
+アプリケーションをReact**コンポーネント**として定義していきます。
+ReactコンポーネントはHTML要素を純粋なデータ構造としてコードで記述します。
+このデータ構造はそれから効率的にDOMに描画されます。
+加えてコンポーネントはボタンクリックのようなイベントに応答することができます。
+`react-basic-hooks`ライブラリは`Effect`モナドを使ってこれらのイベントの制御方法を記述します。
 
-A full tutorial for the React library is well beyond the scope of this
-chapter, but the reader is encouraged to consult its documentation where
-needed. For our purposes, React will provide a practical example of the
-`Effect` monad.
+Reactライブラリの完全なチュートリアルはこの章の範囲をはるかに超えていますが、
+読者は必要に応じてマニュアルを参照することをお勧めします。
+目的に応じて、Reactは `Effect`モナドの実用的な例を提供してくれます。
 
-We are going to build a form which will allow a user to add a new entry into
-our address book. The form will contain text boxes for the various fields
-(first name, last name, city, state, etc.), and an area in which validation
-errors will be displayed. As the user types text into the text boxes, the
-validation errors will be updated.
+利用者が住所録に新しい項目を追加できるフォームを構築することにしましょう。
+フォームには、さまざまなフィールド（姓、名前、都市、州など）のテキストボックス、
+および検証エラーが表示される領域が含まれます。
+テキストボックスに利用者がテキストを入力すると、検証エラーが更新されます。
 
-To keep things simple, the form will have a fixed shape: the different phone
-number types (home, cell, work, other) will be expanded into separate text
-boxes.
+シンプルさを保つために、
+フォームは固定の形状とします。
+電話番号は種類（自宅、携帯電話、仕事、その他）ごとに
+別々のテキストボックスへ分けることにします。
 
-You can launch the web app from the `exercises/chapter8` directory with the
-following commands:
+`exercises/chapter8`ディレクトリから以下のコマンドでWebアプリを立ち上げることができます。
 
 ```
 $ npm install
@@ -928,50 +911,49 @@ $ npx spago build
 $ npx parcel src/index.html --open
 ```
 
-If development tools such as `spago` and `parcel` are installed globally,
-then the `npx` prefix may be omitted. You have likely already installed
-`spago` globally with `npm i -g spago`, and the same can be done for
-`parcel`.
+もし`spago`や`parcel`のような開発ツールが大域的にインストールされていれば、
+`npx`の前置は省けるでしょう。
+恐らく既に`spago`を`npm i -g spago`で大域的にインストールしていますし、
+`parcel`についても同じことができるでしょう。
 
-`parcel` should launch a browser window with our "Address Book" app. If you
-keep the `parcel` terminal open, and rebuild with `spago` in another
-terminal, the page should automatically refresh with your latest edits. You
-can also configure automatic rebuilds (and therefore automatic page refresh)
-on file-save if you're using an
-[editor](https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editors)
-that supports [`purs
-ide`](https://github.com/purescript/purescript/tree/master/psc-ide) or are
-running [`pscid`](https://github.com/kRITZCREEK/pscid).
+`parcel`は「アドレス帳」アプリのブラウザ窓を立ち上げます。
+`parcel`の端末を開いたままにし、他の端末で`spago`で再構築すると、
+最新の編集を含むページが自動的に再読み込みされるでしょう。
+また、[`purs
+ide`](https://github.com/purescript/purescript/tree/master/psc-ide)をサポートしていたり[`pscid`](https://github.com/kRITZCREEK/pscid)を走らせていたりする
+[エディタ](https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editors)を使っていれば、
+ファイルを保存したときに自動的にページが再構築される（そして自動的にページが再読み込みされる）ように設定できます。
 
-In this Address Book app, you should be able to enter some values into the
-form fields and see the validation errors printed onto the page.
+このアドレス帳アプリでフォームフィールドにいろいろな値を入力すると、
+ページ上に出力された検証エラーを見ることができるでしょう。
 
-Let's explore how it works.
+動く仕組みを散策しましょう。
 
-The `src/index.html` file is minimal:
+`src/index.html`ファイルは最小限です。
 
 ```html
 {{#include ../exercises/chapter8/src/index.html}}
 ```
 
-The `<script` line includes the JavaScript entry point, `index.js`, which contains this single line:
+`<script`の行はJavaScriptの入口を含んでおり、
+`index.js`にはこの1行が含まれています。
 
 ```js
 {{#include ../exercises/chapter8/src/index.js}}
 ```
 
-It calls our generated JavaScript equivalent of the `main` function of
-`module Main` (`src/main.purs`). Recall that `spago build` puts all
-generated JavaScript in the `output` directory.
+`module Main` (`src/main.purs`) の`main`関数と等価な、
+生成したJavaScriptを呼び出しています。
+`spago build`は生成された全てのJavaScriptを`output`ディレクトリに置くことを思い出してください。
 
-The `main` function uses the DOM and HTML APIs to render our address book
-component within the `container` element we defined in `index.html`:
+`main`関数はDOMとHTML APIを使い、
+`index.html`に定義した`container`要素の中にアドレス帳コンポーネントを描画します。
 
 ```hs
 {{#include ../exercises/chapter8/src/Main.purs:main}}
 ```
 
-Note that these three lines:
+これら3行に注目してください。
 
 ```hs
 w <- window
@@ -979,14 +961,14 @@ doc <- document w
 ctr <- getElementById "container" $ toNonElementParentNode doc
 ```
 
-Can be consolidated to:
+これは次のように統合できます。
 
 ```hs
 doc <- document =<< window
 ctr <- getElementById "container" $ toNonElementParentNode doc
 ```
 
-Or consolidated even further to:
+あるいはさらに統合することさえできます。
 
 ```hs
 ctr <- getElementById "container" <<< toNonElementParentNode =<< document =<< window
@@ -994,14 +976,13 @@ ctr <- getElementById "container" <<< toNonElementParentNode =<< document =<< wi
 ctr <- window >>= document >>= toNonElementParentNode >>> getElementById "container"
 ```
 
-It is a matter of personal preference whether the intermediate `w` and `doc`
-variables aid in readability.
+途中の`w`や`doc`変数が読みやすさの助けになるかは主観的な嗜好の問題です。
 
-Let's dig into our AddressBook `reactComponent`. We'll start with a
-simplified component, and then build up to the actual code in `Main.purs`.
+AddressBookの`reactComponent`を深堀りしましょう。
+単純化されたコンポーネントから始め、それから`Main.purs`で実際のコードに構築していきます。
 
-Take a look at this minimal component. Feel free to substitute the full
-component with this one to see it run:
+以下の最小限のコンポーネントをご覧ください。
+遠慮なく全体のコンポーネントをこれに置き換えて実行の様子を見てみましょう。
 
 ```hs
 mkAddressBookApp :: Effect (ReactComponent {})
@@ -1011,7 +992,7 @@ mkAddressBookApp =
     (\props -> pure $ D.text "Hi! I'm an address book")
 ```
 
-`reactComponent` has this intimidating signature:
+`reactComponent`にはこのような威圧的なシグネチャがあります。
 
 ```hs
 reactComponent ::
@@ -1024,25 +1005,24 @@ reactComponent ::
   Effect (ReactComponent { | props })
 ```
 
-The important points to note are the arguments after all the type class
-constraints. It takes a `String` (an arbitrary component name), a function
-that describes how to convert `props` into rendered `JSX`, and returns our
-`ReactComponent` wrapped in an `Effect`.
+重要な注意点は全ての型クラス制約の後の引数にあります。
+`String`（任意のコンポーネント名）、
+`props`を描画された`JSX`に変換する方法を記述する関数を取り、
+そして`Effect`に包まれた`ReactComponent`を返します。
 
-The props-to-JSX function is simply:
+propsからJSXへの関数は単にこうです。
 
 ```hs
 \props -> pure $ D.text "Hi! I'm an address book"
 ```
 
-`props` are ignored, `D.text` returns `JSX`, and `pure` lifts to rendered
-JSX. Now `component` has everything it needs to produce the
-`ReactComponent`.
+`props`は無視されており、`D.text`は`JSX`を返し、
+そして`pure`は描画されたJSXに持ち上げます。
+これで`component`には`ReactComponent`を生成するのに必要な全てがあります。
 
-Next we'll examine some of the additional complexities of the full Address
-Book component.
+次に完全なアドレス帳コンポーネントにある追加の複雑な事柄のいくつかを調べていきます。
 
-These are the first few lines of our full component:
+これらは完全なコンポーネントの最初の数行です。
 
 ```hs
 mkAddressBookApp :: Effect (ReactComponent {})
@@ -1051,28 +1031,27 @@ mkAddressBookApp = do
     Tuple person setPerson <- useState examplePerson
 ```
 
-We track `person` as a piece of state with the `useState` hook.
+`person`を`useState`フックの状態の一部として追跡します。
 
 ```hs
 Tuple person setPerson <- useState examplePerson
 ```
 
-Note that you are free to break-up component state into multiple pieces of
-state with multiple calls to `useState`. For example, we could rewrite this
-app to use a separate piece of state for each record field of `Person`, but
-that happens to result in a slightly less convenient architecture in this
-case.
+なお、複数回`useState`を呼び出すことで、
+コンポーネントの状態を複数の状態の部品に分解することは自由です。
+例えば`Person`のそれぞれのレコードフィールドについて分離した状態の部品を使って、
+このアプリを書き直すことができるでしょう。
+しかしこの場合にそれをすると僅かに利便性を損なうアーキテクチャになってしまいます。
 
-In other examples, you may encounter the `/\` infix operator for
-`Tuple`. This is equivalent to the above line:
+他の例では`Tuple`用の`/\`中置演算子に出喰わすかもしれません。
+これは上の行と等しいものです。
 
 ```hs
 firstName /\ setFirstName <- useState p.firstName
 ```
 
-`useState` takes a default initial value and returns the current value and a
-way to update the value. We can check the type of `useState` to gain more
-insight of the types `person` and `setPerson`:
+`useState`は既定の初期値を取り現在の値と値を更新する方法を取ります。
+`useState`の型を確認すれば型`person`と`setPerson`についてより深い洞察が得られます。
 
 ```hs
 useState ::
@@ -1081,54 +1060,53 @@ useState ::
   Hook (UseState state) (Tuple state ((state -> state) -> Effect Unit))
 ```
 
-We can strip the `Hook (UseState state)` wrapper off of the return value
-because `useState` is called within an `R.do` block. We'll elaborate on
-`R.do` later.
+結果の値の`Hook (UseState state)`ラッパーを取り去ることができますが、
+それは`useState`が`R.do`ブロックの中で呼ばれているからです。
+`R.do`は後で詳述します。
 
-So now we can observe the following signatures:
+さてこれで以下のシグネチャを観察できます。
 
 ```hs
 person :: state
 setPerson :: (state -> state) -> Effect Unit
 ```
 
-The specific type of `state` is determined by our initial default
-value. `Person` `Record` in this case because that is the type of
-`examplePerson`.
+`state`の限定された型は初期の既定値によって決定されます。
+これは`examplePerson`の型なのでこの場合は`Person` `Record`です。
 
-`person` is how we access the current state at each rerender.
+`person`はそれぞれの再描画の時点で現在の状態にアクセスする方法です。
 
-`setPerson` is how we update the state. We simply provide a function that
-describes how to transform the current state to the new state. The record
-update syntax is perfect for this when the type of `state` happens to be a
-`Record`, for example:
+`setPerson`は状態を更新する方法です。
+現在の状態を新しい状態に変形する方法を記述する関数を単に提供します。
+`state`の型が偶然`Record`のときは、レコード更新構文はこれにぴったりです。
+例えば以下。
 
 ```hs
 setPerson (\currentPerson -> currentPerson {firstName = "NewName"})
 
 ```
 
-or as shorthand:
+あるいは短かく以下です。
 
 ```hs
 setPerson _ {firstName = "NewName"}
 ```
 
-Non-`Record` states can also follow this update pattern. See [this
-guide](https://github.com/megamaddu/purescript-react-basic-hooks/pull/24#issuecomment-620300541)
-for more details on best practices.
+`Record`でない状態もまたこの更新パターンにしたがいます。
+ベストプラクティスについてのより詳しいことは[このガイド](https://github.com/megamaddu/purescript-react-basic-hooks/pull/24#issuecomment-620300541)を参照してください。
 
-Recall that `useState` is used within an `R.do` block. `R.do` is a special
-react hooks variant of `do`. The `R.` prefix "qualifies" this as coming from
-`React.Basic.Hooks`, and means we use their hooks-compatible version of
-`bind` in the `R.do` block. This is known as a "qualified do". It lets us
-ignore the `Hook (UseState state)` wrapping and bind the inner `Tuple` of
-values to variables.
+`useState`が`R.do`ブロックの中で使われていることを思い出しましょう。
+`R.do`は`do`の特別なreactフックの派生です。
+`R.`の前置はこれが`React.Basic.Hooks`から来たものとして「限定する」もので、
+`R.do`ブロックの中でフック互換版の`bind`を使うことを意味しています。
+これは「限定されたdo」として知られています。
+`Hook (UseState state)`のラッピングを無視し、
+内部の値の`Tuple`と変数に束縛してくれます。
 
-Another possible state management strategy is with `useReducer`, but that is
-outside the scope of this chapter.
+他の状態管理戦略として挙げられるのは`useReducer`ですが、
+それはこの章の範疇外です。
 
-Rendering `JSX` occurs here:
+以下では`JSX`の描画が行われています。
 
 ```hs
 pure
@@ -1161,83 +1139,79 @@ pure
       }
 ```
 
-Here we produce `JSX` which represents the intended state of the DOM. This
-JSX is typically created by applying functions corresponding to HTML tags
-(e.g. `div`, `form`, `h3`, `li`, `ul`, `label`, `input`) which create single
-HTML elements. These HTML elements are actually React components themselves,
-converted to JSX. There are usually three variants of each of these
-functions:
+ここでDOMの意図した状態を表現する`JSX`を生成しています。
+このJSXはHTMLタグ（例：`div`、`form`、`h3`、`li`、`ul`、`label`、`input`）に対応し単一のHTML要素を作る関数を適用することで作られるのが典型的です。
+これらのHTML要素は実はReactコンポーネント自体でJSXに変換されます。
+通常これらの関数にはそれぞれ3つの種類があります。
 
-* `div_`: Accepts an array of child elements. Uses default attributes.
-* `div`: Accepts a `Record` of attributes. An array of child elements may be
-  passed to the `children` field of this record.
-* `div'`: Same as `div`, but returns the `ReactComponent` before conversion
-  to `JSX`.
+* `div_`: 子要素の配列を受け付けます。
+  既定の属性を使います。
+* `div`: 属性の`Record`を受け付けます。
+  子要素の配列をこのレコードの`children`フィールドに渡すことができます。
+* `div'`: `div`と同じですが、`JSX`に変換する前に`ReactComponent`を返します。
 
-To display validation errors (if any) at the top of our form, we create a
-`renderValidationErrors` helper function that turns the `Errors` structure
-into an array of JSX. This array is prepended to the rest of our form.
+検証エラーをフォームの一番上に（もしあれば）表示するのに、
+`Errors`構造体をJSXの配列に変える`renderValidationErrors`お助け関数を作ります。
+この配列はフォームの残り部分の前に付けます。
 
 ```hs
 {{#include ../exercises/chapter8/src/Main.purs:renderValidationErrors}}
 ```
 
-Note that since we are simply manipulating regular data structures here, we
-can use functions like `map` to build up more interesting elements:
+なお、ここでは通常のデータ構造体を単純に操作しているので、
+`map`のような関数を使ってより興味深い要素を構築することができます。
 
 ```hs
 children: [ D.ul_ (map renderError xs)]
 ```
 
-We use the `className` property to define classes for CSS styling. We're
-using the [Bootstrap](https://getbootstrap.com/) `stylesheet` for this
-project, which is imported in `index.html`. For example, we want items in
-our form arranged as `row`s, and validation errors to be emphasized with
-`alert-danger` styling:
+`className`プロパティを使ってCSSスタイルのクラスを定義します。
+このプロジェクトでは[Bootstrap](https://getbootstrap.com/)の`stylesheet`を使っており、
+これは`index.html`でインポートされています。
+例えばフォーム中のアイテムは`row`として配置されてほしいですし、
+検証エラーは`alert-danger`の装飾で強調されていてほしいです。
 
 ```hs
 className: "alert alert-danger row"
 ```
 
-A second helper function is `formField`, which creates a text input for a
-single form field:
+2番目の補助関数は `formField`です。
+これは、単一フォームフィールドのテキスト入力を作ります。
 
 ```hs
 {{#include ../exercises/chapter8/src/Main.purs:formField}}
 ```
 
-Putting the `input` and display `text` in a `label` aids in accessibility
-for screen readers.
+`input`を置いて`label`の中に`text`を表示することは、
+スクリーンリーダーのアクセシビリティの助けになります。
 
-The `onChange` attribute allows us to describe how to respond to user
-input. We use the `handler` function, which has the following type:
+`onChange`属性があれば利用者の入力に応答する方法を記述することができます。
+`handler`関数を使いますが、これは以下の型を持ちます。
 
 ```hs
 handler :: forall a. EventFn SyntheticEvent a -> (a -> Effect Unit) -> EventHandler
 ```
 
-For the first argument to `handler` we use `targetValue`, which provides the
-value of the text within the HTML `input` element. It matches the signature
-expected by `handler` where the type variable `a` in this case is `Maybe
-String`:
+`handler`への最初の引数には`targetValue`を使いますが、
+これはHTMLの`input`要素中のテキストの値を提供します。
+この場合は型変数`a`が`Maybe String`で、
+`handler`が期待するシグネチャに合致しています。
 
 ```hs
 targetValue :: EventFn SyntheticEvent (Maybe String)
 ```
 
-In JavaScript, the `input` element's `onChange` event is actually
-accompanied by a `String` value, but since strings in JavaScript can be
-null, `Maybe` is used for safety.
+JavaScriptでは`input`要素の`onChange`イベントは実は`String`値と一緒になっているのですが、
+JavaScriptの文字列はnullになりえるので、安全のために`Maybe`が使われています。
 
-The second argument to `handler`, `(a -> Effect Unit)`, must therefore have this signature:
+`(a -> Effect Unit)`の`handler`への2つ目の引数は、したがってこのシグネチャを持ちます。
 
 ```hs
 Maybe String -> Effect Unit
 ```
 
-It is a function that describes how to convert this `Maybe String` value
-into our desired effect. We define a custom `handleValue` function for this
-purpose and pass it to `handler` as follows:
+この関数は`Maybe String`値を求める作用に変換する方法を記述します。
+この目的のために以下のように自前の`handleValue`関数を定義して`handler`を渡します。
 
 ```hs
 onChange:
@@ -1249,40 +1223,46 @@ onChange:
     handler targetValue handleValue
 ```
 
-`setValue` is the function we provided to each `formField` call that takes a
-string and makes the appropriate record-update call to the `setPerson` hook.
+`setValue`はそれぞれの`formField`の呼び出しに提供した関数で
+文字列を取り`setPerson`フックに適切なレコード更新呼び出しを実施します。
 
-Note that `handleValue` can be substituted as:
+なお`handleValue`は以下のようにも置き換えられます。
 
 ```hs
 onChange: handler targetValue $ traverse_ setValue
 ```
 
-Feel free to investigate the definition of `traverse_` to see how both forms
-are indeed equivalent.
+どうぞ`traverse_`の定義を調査して両方の形式が確かに等価であることをご確認ください。
 
-That covers the basics of our component implementation. However, you should
-read the source accompanying this chapter in order to get a full
-understanding of the way the component works.
+これは、コンポーネント実装の基本をカバーしています。
+しかし、コンポーネントの仕組みを完全に理解するためには、
+この章に付随する情報をお読みください。
 
-Obviously, this user interface can be improved in a number of ways. The
-exercises will explore some ways in which we can make the application more
-usable.
+明らかに、このユーザインタフェースには改善すべき点がたくさんあります。
+演習ではアプリケーションがより使いやすくなるような方法を追究していきます。
 
 ## 演習
 
-Modify `src/Main.purs` in the following exercises. There are no unit tests
-for these exercises.
+以下の演習では`src/Main.purs`を変更してください。
+これらの演習には単体試験はありません。
 
-1. (Easy) Modify the application to include a work phone number text box.
-1. (Medium) Right now the application shows validation errors collected in a
-   single "pink-alert" background.  Modify to give each validation error its
-   own pink-alert background by separating them with blank lines.
+1. （簡単）このアプリケーションを変更し、
+   職場の電話番号を入力できるテキストボックスを追加してください。
+1. （普通）現時点でアプリケーションは検証エラーを
+   単一の「pink-alert」背景に集めて表示させています。
+   空の線で分割することにより、
+   それぞれの検証エラーにpink-alert背景を持たせるように変更してください。
 
-    _Hint_: Instead of using a `ul` element to show the validation errors in a list, modify the code to create one `div` with the `alert` and `alert-danger` styles for each error.
-1. (Difficult, Extended) One problem with this user interface is that the validation errors are not displayed next to the form fields they originated from. Modify the code to fix this problem.
+    **ヒント**：リスト中の検証エラーを表示するのに`ul`要素を使う代わりに、
+    コードを変更し、
+    それぞれのエラーに`alert`と`alert-danger`装飾を持つ`div`を作ってください。
+1. （難しい、発展）このユーザーインターフェイスの問題のひとつは、
+   検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。
+   コードを変更してこの問題を解決してください。
 
-    _Hint_: the error type returned by the validator should be extended to indicate which field caused the error. You might want to use the following modified `Errors` type:
+    **ヒント**：検証器によって返されるエラーの型は、
+    エラーの原因となっているフィールドを示すために拡張する必要があります。
+    次のような変更されたエラー型を使用したくなるかもしれません。
 
     ```hs
     data Field = FirstNameField
@@ -1297,27 +1277,27 @@ for these exercises.
     type Errors = Array ValidationError
     ```
 
-    You will need to write a function which extracts the validation error for a particular `Field` from the `Errors` structure.
+   `Error`構造体から特定の`Field`のための検証エラーを取り出す関数を書く必要があるでしょう。
 
 ## まとめ
 
-This chapter has covered a lot of ideas about handling side-effects in
-PureScript:
+この章ではPureScriptでの副作用の扱いについての多くの考え方を導入しました。
 
-- We met the `Monad` type class, and its connection to do notation.  - We
-introduced the monad laws, and saw how they allow us to transform code
-written using do notation.  - We saw how monads can be used abstractly, to
-write code which works with different side-effects.  - We saw how monads are
-examples of applicative functors, how both allow us to compute with
-side-effects, and the differences between the two approaches.  - The concept
-of native effects was defined, and we met the `Effect` monad, which is used
-to handle native side-effects.  - We used the `Effect` monad to handle a
-variety of effects: random number generation, exceptions, console IO,
-mutable state, and DOM manipulation using React.
+- `Monad`型クラスと、do記法との関連に出会いました。
+- モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。
+- 異なる副作用で動作するコードを書くために、
+  モナドを抽象的に扱う方法を見ました。
+- モナドがアプリカティブ関手の一例であること、
+  両者がどのように副作用のある計算を可能にするのかということ、
+  そして2つの手法の違いを説明しました。
+- ネイティブな作用の概念を定義し、
+  ネイティブな副作用を処理するために使用する `Effect`モナドを導入しました。
+- 乱数生成、例外、コンソール入出力、変更可能な状態、
+  およびReactを使ったDOM操作といった、
+  さまざまな作用を扱うために `Effect`モナドを使いました。
 
-The `Effect` monad is a fundamental tool in real-world PureScript code. It
-will be used in the rest of the book to handle side-effects in a number of
-other use-cases.
+`Effect`モナドは現実のPureScriptコードにおける基本的なツールです。
+本書ではこのあとも、多くの場面で副作用を処理するために使っていきます。
 
 - - -
 

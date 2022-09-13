@@ -420,7 +420,7 @@ class Functor f where
 2. （簡単）`Eq`インスタンスを`Complex`に導出してください。
    **補足**：代わりにこのインスタンスを手作業で書いてもよいですが、しなくていいのになぜするのですか？
 
-3. （やや難しい）`Semiring`インタンスを`Complex`に定義してください。
+3. （普通）`Semiring`インタンスを`Complex`に定義してください。
    **補足**：[`Data.Newtype`](https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype)の`wrap`と`over2`を使ってより簡潔な解法をつくることができます。
    もしそうするのでしたら、`Data.Newtype`から`class Newtype`をインポートしたり、
    `Newtype`インスタンスを`Complex`に導出したりする必要も出てくるでしょう。
@@ -435,7 +435,7 @@ class Functor f where
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Shape}}
     ```
 
-5. （やや難しい）（`Generic`を介して）`Show`インスタンスを`Shape`に導出してください。
+5. （普通）（`Generic`を介して）`Show`インスタンスを`Shape`に導出してください。
    コードの量はどのくらいになりましたか？
    また、前の章の`showShape`と比較して`String`の出力はどうなりましたか？
    **ヒント**：[型クラス導出](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md)手引きの[`Generic`から導出する](https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md#deriving-from-generic)節を見てください。
@@ -534,14 +534,14 @@ instance showEither :: (Show a, Show b) => Show (Either a b) where
     ```
 
     `Eq a`と`Eq (Array a)`へのインスタンスを再利用し、型`NonEmpty`に`Eq`インスタンスを書いてください。
-    **補足**：`Eq`インスタンスを導出することもできます。
+    **補足**：代わりに`Eq`インスタンスは導出することもできます。
 
-1. （やや難しい）`Array`への`Semigroup`インスタンスを再利用して、
+1. （普通）`Array`への`Semigroup`インスタンスを再利用して、
    `NonEmpty`への`Semigroup`インスタンスを書いてください。
 
-1. （やや難しい）`NonEmpty`に`Functor`インスタンスを書いてください。
+1. （普通）`NonEmpty`に`Functor`インスタンスを書いてください。
 
-1. （やや難しい）`Ord`のインスタンス付きのあらゆる型`a`が与えられているとすると、
+1. （普通）`Ord`のインスタンス付きのあらゆる型`a`が与えられているとすると、
    新しくそれ以外のどんな値よりも大きい「無限の」値を付け加えられます。
 
     ```haskell
@@ -569,11 +569,11 @@ instance showEither :: (Show a, Show b) => Show (Either a b) where
       ...
     ```
 
-1. （やや難しい）`nubEq`関数を使い、
+1. （普通）`nubEq`関数を使い、
    配列から重複する`Shape`を削除する
    `dedupShapes :: Array Shape -> Array Shape`関数を書いてください。
 
-1. （やや難しい）`dedupShapesFast`関数を書いてください。
+1. （普通）`dedupShapesFast`関数を書いてください。
    `dedupShapes`とほぼ同じですが、より効率の良い`nub`関数を使います。
 
 ## 多変数型クラス
@@ -781,12 +781,12 @@ unsafePartial :: forall a. (Partial => a) -> a
 
 ## 演習
 
-1. （やや難しい）部分関数`unsafeMaximum :: Partial => Array Int -> Int`を定義してください。
+1. （普通）部分関数`unsafeMaximum :: Partial => Array Int -> Int`を定義してください。
    この関数は整数の空でない配列の最大値を求めます。
    `unsafePartial`を使ってPSCiで関数をテストしてください。
    **ヒント**：`Data.Foldable`の `maximum`関数を使います。
 
-1. （やや難しい）次の `Action`クラスは、ある型の別の型での動作 (action) を定義する、多変数型クラスです。
+1. （普通）次の `Action`クラスは、ある型の別の型での動作 (action) を定義する、多変数型クラスです。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Action}}
@@ -827,7 +827,7 @@ unsafePartial :: forall a. (Partial => a) -> a
    元の実装を置き換える必要があります。
    **補足**：テストでは4つの実装を押さえています。
 
-1. （やや難しい）入力の文字列を何回か繰り返す`Action`インスタンスを書いてください。
+1. （普通）入力の文字列を何回か繰り返す`Action`インスタンスを書いてください。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:actionMultiplyString}}
@@ -839,7 +839,7 @@ unsafePartial :: forall a. (Partial => a) -> a
 
     このインスタンスは上に挙げた法則を満たすでしょうか？
 
-1. （やや難しい）インスタンス `Action m a => Action m (Array a)`を書いてみましょう。
+1. （普通）インスタンス `Action m a => Action m (Array a)`を書いてみましょう。
    ここで、 配列上の動作はそれぞれの要素を独立に実行するものとして定義されます。
 
 1. （難しい）以下のnewtypeが与えらえているとき、
@@ -975,12 +975,12 @@ PureScriptの型システムによって確実に強制できるようなもの�
 
  1. （簡単）PSCiを使って、定義した各インスタンスのハッシュ関数をテストしてください。
     **補足**：この演習には単体試験がありません。
- 1. （やや難しい）ハッシュと値の同値性に基づいて
+ 1. （普通）ハッシュと値の同値性に基づいて
     配列が重複する要素を持っているかどうかを調べる関数`arrayHasDuplicates`を書いてください。
     まずハッシュ同値性を`hashEqual`関数で確認し、
     それからもし重複するハッシュの対が見付かったら`==`で値の同値性を確認してください。
     **ヒント**：`Data.Array`の `nubByEq`関数はこの問題をずっと簡単にしてくれるでしょう。
- 1. （やや難しい）型クラスの法則を満たす、次のnewtypeの `Hashable`インスタンスを書いてください。
+ 1. （普通）型クラスの法則を満たす、次のnewtypeの `Hashable`インスタンスを書いてください。
 
     ```haskell
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Hour}}

@@ -837,14 +837,14 @@ filter filterEntry >>> head
     たとえば、 `findEntry`の定義のなかにある `head`関数の型は `AddressBook -> Maybe
     Entry`と特殊化されています。
     **補足**：この問題にはテストがありません。
- 1. （やや難しい）関数`findEntryByStreet :: String -> AddressBook -> Maybe
+ 1. （普通）関数`findEntryByStreet :: String -> AddressBook -> Maybe
     Entry`を書いてください。
     この関数は与えられた通りの住所から`Entry`を見付け出します。
     **ヒント**：`findEntry`にある既存のコードを再利用してください。
     実装した関数をPSCiと`spago test`を走らせることでテストしてください。
- 1. （やや難しい）`filterEntry`を（`<<<`や`>>>`を使った）合成で置き換えて、`findEntryByStreet`を書き直してください。
+ 1. （普通）`filterEntry`を（`<<<`や`>>>`を使った）合成で置き換えて、`findEntryByStreet`を書き直してください。
     合成の対象は、プロパティ取得子（`_.`記法を使います）と、与えられた文字列引数が与えられた通りの住所に等しいかを判定する関数です。
- 1. （やや難しい） 指定された名前が `AddressBook`に存在するかどうかを調べて真偽値で返す関数`isInBook`を書いてみましょう。
+ 1. （普通） 指定された名前が `AddressBook`に存在するかどうかを調べて真偽値で返す関数`isInBook`を書いてみましょう。
     **ヒント**：リストが空かどうかを調べる `Data.List.null`関数の型をPSCiで調べてみてみましょう。
  1. （難しい） 「重複」している項目を住所録から削除する関数 `removeDuplicates`を書いてみましょう。
     項目が同じ姓名を共有していれば`address`フィールドに関係なく、項目が重複していると考えます。

@@ -26,3 +26,4 @@
 * [パターン照合](chapter5.ja.md)
 * [型クラス](chapter6.ja.md)
 * [アプリカティブによる検証](chapter7.ja.md)
+* [作用モナド](chapter8.ja.md)

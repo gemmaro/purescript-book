@@ -516,11 +516,11 @@ Nothing
 
 ## 演習
 
- 1. （やや難しい）数値演算子`+`、`-`、`*`、`/`のオプショナル引数
+ 1. （普通）数値演算子`+`、`-`、`*`、`/`のオプショナル引数
     （つまり`Maybe`に包まれた引数）を扱って`Maybe`に包まれた値を返す版を書いてください。
-    これらの関数には`addMaybe`、`subMaybe`、mulMaybe`、`divMaybe`と名前を付けます。
-    解決の糸口：`lift2`を使ってください。
- 1. （やや難しい）上の演習を（`Maybe`だけでなく）全ての`Apply`型で動くように拡張してください。
+    これらの関数には`addMaybe`、`subMaybe`、`mulMaybe`、`divMaybe`と名前を付けます。
+    **ヒント**：`lift2`を使ってください。
+ 1. （普通）上の演習を（`Maybe`だけでなく）全ての`Apply`型で動くように拡張してください。
     これらの新しい関数には`addApply`、`subApply`、`mulApply`、`divApply`と名前を付けます。
  1. (難しい) 型`combineMaybe : forall a f. (Applicative f) => Maybe (f a) -> f
     (Maybe a)`
@@ -705,10 +705,10 @@ invalid (["Field 'Number' did not match the required format"])
  1. （簡単）正規表現`stateRegex :: Regex`を書いて
     文字列が2文字のアルファベットであることを確かめてください。
     **ヒント**：`phoneNumberRegex`のソースコードを参照してみましょう。
- 1. （やや難しい）文字列全体が空白でないことを検査する正規表現`nonEmptyRegex :: Regex`を書いてください。
+ 1. （普通）文字列全体が空白でないことを検査する正規表現`nonEmptyRegex :: Regex`を書いてください。
     **ヒント**：この正規表現を開発するのに手助けが必要なら、[RegExr](https://regexr.com)をご確認ください。
     素晴しい早見表と対話的なお試し環境があります。
- 1. （やや難しい）`validateAddress`に似ていますが、
+ 1. （普通）`validateAddress`に似ていますが、
     上の`stateRegex`を使って`state`フィールドを検証し、
     `nonEmptyRegex`を使って`street`と`city`フィールドを検証する関数`validateAddressImproved`を書いてください。
     **ヒント**：`matches`の用例については`validatePhoneNumber`のソースを見てください。
@@ -866,11 +866,11 @@ pure ((Just "Testing"))
      (Branch (Branch Leaf 8 Leaf) 42 Leaf)
      ```
 
- 1. （やや難しい）`Traversable`インスタンスを`Tree a`を書いてください。
+ 1. （普通）`Traversable`インスタンスを`Tree a`を書いてください。
     これは副作用を左から右に結合するものです。
     **ヒント**：`Traversable`に定義する必要のある追加のインスタンス依存関係がいくつかあります。
 
- 1. （やや難しい）行き掛け順に木を巡回する関数
+ 1. （普通）行き掛け順に木を巡回する関数
     `traversePreOrder :: forall a m b. Applicative m => (a -> m b) -> Tree a
     -> m (Tree b)`
     を書いてください。
@@ -880,10 +880,10 @@ pure ((Just "Testing"))
     前に定義した関数は何も呼ぶ必要はありません。
     アプリカティブdo記法 (`ado`) はこの関数を書く最も簡単な方法です。
 
- 1. （やや難しい）作用が左右根と実行される木の帰り掛け順の巡回を行う関数
+ 1. （普通）作用が左右根と実行される木の帰り掛け順の巡回を行う関数
     `traversePostOrder`を書いてください。
 
- 1. （やや難しい）`homeAddress`フィールドがオプショナル（`Maybe`を使用）な
+ 1. （普通）`homeAddress`フィールドがオプショナル（`Maybe`を使用）な
     新しい版の`Person`型をつくってください。
     それからこの新しい`Person`を検証する新しい版の`validatePerson`（`validatePersonOptionalAddress`と改名します）を書いてください。
     **ヒント**：`traverse`を使って型`Maybe a`のフィールドを検証してください。
