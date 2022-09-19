@@ -1,0 +1,1263 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>作用モナド - PureScript by Example</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">15.</strong> はじめに</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">16.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">17.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">18.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">19.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">20.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">21.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html" class="active"><strong aria-hidden="true">22.</strong> 作用モナド</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PureScript by Example</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="作用モナド"><a class="header" href="#作用モナド">作用モナド</a></h1>
+<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
+<p>前章では、オプショナルな型やエラーメッセージ、
+データの検証など、<strong>副作用</strong>を扱いを抽象化するアプリカティブ関手を導入しました。
+この章では、より表現力の高い方法で副作用を扱うための別の抽象化、<strong>モナド</strong>を導入します。</p>
+<p>この章の目的は、なぜモナドが便利な抽象化なのかということと、
+<strong>do記法</strong>との関係を説明することです。</p>
+<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
+<p>このプロジェクトでは、以下の依存関係が追加されています。</p>
+<ul>
+<li><code>effect</code>: 章の後半の主題である<code>Effect</code>モナドを定義しています。
+この依存関係はあらゆるプロジェクトの始めに掲げられることがよくあるので
+（これまでの全ての章でも依存関係にありました）、
+明示的にインストールしなければいけないことは稀です。</li>
+<li><code>react-basic-hooks</code>: アドレス帳アプリに使うWebフレームワークです。</li>
+</ul>
+<h2 id="モナドとdo記法"><a class="header" href="#モナドとdo記法">モナドとdo記法</a></h2>
+<p>do記法は<strong>配列内包表記</strong>を扱うときに最初に導入されました。配列内包表記は <code>Data.Array</code>モジュールの
+<code>concatMap</code>関数の構文糖として提供されています。</p>
+<p>次の例を考えてみましょう。２つのサイコロを振って出た目を数え、出た目の合計が
+<code>n</code>のときそれを得点とすることを考えます。次のような非決定的なアルゴリズムを使うとこれを実現することができます。</p>
+<ul>
+<li>最初の投擲で値 <code>x</code>を<strong>選択</strong>します。</li>
+<li>2回目の投擲で値 <code>y</code>を<strong>選択</strong>します。</li>
+<li>もし <code>x</code>と <code>y</code>の和が <code>n</code>なら組 <code>[x, y]</code>を返し、そうでなければ失敗します。</li>
+</ul>
+<p>配列内包表記を使うと、この非決定的アルゴリズムを自然に書くことができます。</p>
+<pre><code class="language-hs">import Prelude
+
+import Control.Plus (empty)
+import Data.Array ((..))
+
+countThrows :: Int -&gt; Array (Array Int)
+countThrows n = do
+  x &lt;- 1 .. 6
+  y &lt;- 1 .. 6
+  if x + y == n
+    then pure [ x, y ]
+    else empty
+</code></pre>
+<p>PSCiでこの関数の動作を見てみましょう。</p>
+<pre><code class="language-text">&gt; import Test.Examples
+
+&gt; countThrows 10
+[[4,6],[5,5],[6,4]]
+
+&gt; countThrows 12
+[[6,6]]
+</code></pre>
+<p>前の章では、<strong>オプショナルな値</strong>に対応したより大きなプログラミング言語へと
+PureScriptの関数を埋め込む、
+<code>Maybe</code> アプリカティブ関手についての直感的理解を養いました。
+同様に<strong>配列モナド</strong>についても、
+<strong>非決定選択</strong>に対応したより大きなプログラミング言語へ
+PureScriptの関数を埋め込む、というような直感的理解を得ることができます。</p>
+<p>一般に、ある型構築子 <code>m</code>のモナドは、
+型 <code>m a</code>の値を持つdo記法を使う方法を提供します。
+上の配列内包表記では、
+すべての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が
+含まれていることに注目してください。
+一般に、do記法ブロックのすべての行は、
+何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
+モナド <code>m</code>はすべての行で同じでなければなりません
+（つまり、副作用の種類は固定されます）が、
+型 <code>a</code>は異なることもあります。
+（言い換えると、個々の計算は異なる型の結果を持つことができます。）</p>
+<p>型構築子 <code>Maybe</code>が適用された、do記法の別の例を見てみましょう。
+XMLノードを表す型 <code>XML</code>と次の関数があるとします。</p>
+<pre><code class="language-hs">child :: XML -&gt; String -&gt; Maybe XML
+</code></pre>
+<p>この関数はノードの子の要素を探し、
+もしそのような要素が存在しなければ <code>Nothing</code>を返します。</p>
+<p>この場合、do記法を使うと深い入れ子になった要素を検索することができます。XML文書として符号化された利用者情報から、利用者の住んでいる市町村を読み取りたいとします。</p>
+<pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
+userCity root = do
+  prof &lt;- child root &quot;profile&quot;
+  addr &lt;- child prof &quot;address&quot;
+  city &lt;- child addr &quot;city&quot;
+  pure city
+</code></pre>
+<p><code>userCity</code>関数は子の要素である <code>profile</code>を探し、 <code>profile</code>要素の中にある <code>address</code>要素、最後に
+<code>address</code>要素から <code>city</code>要素を探します。これらの要素のいずれかが欠落している場合は、返り値は
+<code>Nothing</code>になります。そうでなければ、返り値は <code>city</code>ノードから <code>Just</code>を使って構築されています。</p>
+<p>最後の行にある<code>pure</code>関数は、すべての<code>Applicative</code>関手について定義されているのでした。<code>Maybe</code>の<code>Applicative</code>関手の<code>pure</code>関数は<code>Just</code>として定義されており、最後の行を
+<code>Just city</code>へ変更しても同じように正しく動きます。</p>
+<h2 id="モナド型クラス"><a class="header" href="#モナド型クラス">モナド型クラス</a></h2>
+<p><code>Monad</code>型クラスは次のように定義されています。</p>
+<pre><code class="language-hs">class Apply m &lt;= Bind m where
+  bind :: forall a b. m a -&gt; (a -&gt; m b) -&gt; m b
+
+class (Applicative m, Bind m) &lt;= Monad m
+</code></pre>
+<p>ここで鍵となる関数は <code>Bind</code>型クラスで定義されている演算子 <code>bind</code>で、
+<code>Functor</code>及び <code>Apply</code>型クラスにある <code>&lt;$&gt;</code>や <code>&lt;*&gt;</code>などの演算子と同じ様に
+<code>Prelude</code>では <code>&gt;&gt;=</code>として <code>bind</code>の中置の別名が定義されています。</p>
+<p><code>Monad</code>型クラスは、すでに見てきた <code>Applicative</code>型クラスの操作で <code>Bind</code>を拡張します。</p>
+<p><code>Bind</code>型クラスの例をいくつか見てみるのがわかりやすいでしょう。配列についての <code>Bind</code>の妥当な定義は次のようになります。</p>
+<pre><code class="language-hs">instance bindArray :: Bind Array where
+  bind xs f = concatMap f xs
+</code></pre>
+<p>これは以前にほのめかした配列内包表記と <code>concatMap</code>関数の関係を説明しています。</p>
+<p><code>Maybe</code>型構築子についての <code>Bind</code>の実装は次のようになります。</p>
+<pre><code class="language-hs">instance bindMaybe :: Bind Maybe where
+  bind Nothing  _ = Nothing
+  bind (Just a) f = f a
+</code></pre>
+<p>この定義は欠落した値がdo記法ブロックを通じて伝播するという直感的理解を裏付けるものです。</p>
+<p><code>Bind</code>型クラスとdo記法がどのように関係しているかを見て行きましょう。最初に何らかの計算結果からの値の束縛から始まる簡単なdo記法ブロックについて考えてみましょう。</p>
+<pre><code class="language-hs">do value &lt;- someComputation
+   whatToDoNext
+</code></pre>
+<p>PureScriptコンパイラはこのようなパターンを見つけるたびにコードを次にように置き換えます。</p>
+<pre><code class="language-hs">bind someComputation \value -&gt; whatToDoNext
+</code></pre>
+<p>あるいは中置で書くと以下です。</p>
+<pre><code class="language-hs">someComputation &gt;&gt;= \value -&gt; whatToDoNext
+</code></pre>
+<p>この計算 <code>whatToDoNext</code>は <code>value</code>に依存することができます。</p>
+<p>複数の束縛が関係している場合、この規則は先頭のほうから複数回適用されます。例えば、先ほど見た <code>userCity</code>の例では次のように脱糖されます。</p>
+<pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
+userCity root =
+  child root &quot;profile&quot; &gt;&gt;= \prof -&gt;
+    child prof &quot;address&quot; &gt;&gt;= \addr -&gt;
+      child addr &quot;city&quot; &gt;&gt;= \city -&gt;
+        pure city
+</code></pre>
+<p>do記法を使って表現されたコードは、
+<code>&gt;&gt;=</code>演算子を使って書かれた同じ意味のコードよりしばしば読みやすくなることも特筆すべき点です。
+一方で、明示的に <code>&gt;&gt;=</code>を使って束縛が書くと、
+よく<strong>ポイントフリー</strong>形式でコードが書けるようになります。
+ただし、読みやすさにはやはり注意がいります。</p>
+<h2 id="モナド則"><a class="header" href="#モナド則">モナド則</a></h2>
+<p><code>Monad</code>型クラスは<strong>モナド則</strong> (monad laws) と呼ばれる3つの規則を持っています。
+これらは <code>Monad</code>型クラスの理にかなった実装から何を期待できるかを教えてくれます。</p>
+<p>do記法を使用してこれらの規則を説明していくのが最も簡単でしょう。</p>
+<h3 id="単位元律"><a class="header" href="#単位元律">単位元律</a></h3>
+<p><strong>右単位元則</strong> (right-identity law) が3つの規則の中で最も簡単です。
+この規則はdo記法ブロックの最後の式であれば、
+<code>pure</code>の呼び出しを排除することができると言っています。</p>
+<pre><code class="language-hs">do
+  x &lt;- expr
+  pure x
+</code></pre>
+<p>右単位元則は、この式は単なる <code>expr</code>と同じだと言っています。</p>
+<p><strong>左単位元則</strong> (left-identity law) は、もしそれがdo記法ブロックの最初の式であれば、
+<code>pure</code>の呼び出しを除去することができると述べています。</p>
+<pre><code class="language-hs">do
+  x &lt;- pure y
+  next
+</code></pre>
+<p>このコードは、名前<code>x</code>を式<code>y</code>で置き換えた<code>next</code>と同じです。</p>
+<p>最後の規則は<strong>結合則</strong> (associativity law) です。
+これは入れ子になったdo記法ブロックをどう扱うのかについて教えてくれます。
+この規則が述べているのは以下のコード片のことです。</p>
+<pre><code class="language-hs">c1 = do
+  y &lt;- do
+    x &lt;- m1
+    m2
+  m3
+</code></pre>
+<p>上記のコード片は、次のコードと同じです。</p>
+<pre><code class="language-hs">c2 = do
+  x &lt;- m1
+  y &lt;- m2
+  m3
+</code></pre>
+<p>これら計算にはそれぞれ、3つのモナドの式 <code>m1</code>、 <code>m2</code>、 <code>m3</code>が含まれています。どちらの場合でも <code>m1</code>の結果は名前 <code>x</code>に束縛され、
+<code>m2</code>の結果は名前 <code>y</code>に束縛されます。</p>
+<p><code>c1</code>では2つの式 <code>m1</code>と <code>m2</code>がそれぞれのdo記法ブロック内にグループ化されています。</p>
+<p><code>c2</code>では <code>m1</code>、 <code>m2</code>、 <code>m3</code>の3つすべての式が同じdo記法ブロックに現れています。</p>
+<p>結合規則は入れ子になったdo記法ブロックをこのように単純化しても
+問題ないことを言っています。</p>
+<p><strong>注意</strong>: do記法を<code>bind</code>の呼び出しへと脱糖する定義により、 <code>c1</code>と <code>c2</code>はいずれも次のコードと同じです。</p>
+<pre><code class="language-hs">c3 = do
+  x &lt;- m1
+  do
+    y &lt;- m2
+    m3
+</code></pre>
+<h2 id="モナドで畳み込む"><a class="header" href="#モナドで畳み込む">モナドで畳み込む</a></h2>
+<p>抽象的にモナドを扱う例として、
+この節では <code>Monad</code>型クラスの何らかの型構築子に機能するある関数を示していきます。
+これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと対応しているという直感的理解を補強しますし、モナドによるプログラミングがもたらす一般性も示しています。</p>
+<p>これから <code>foldM</code>と呼ばれる関数を書いてみます。これは以前扱った
+<code>foldl</code>関数をモナドの文脈へと一般化します。型シグネチャは次のようになっています。</p>
+<pre><code class="language-hs">foldM :: forall m a b. Monad m =&gt; (a -&gt; b -&gt; m a) -&gt; a -&gt; List b -&gt; m a
+foldl :: forall   a b.            (a -&gt; b -&gt;   a) -&gt; a -&gt; List b -&gt;   a
+</code></pre>
+<p>モナド <code>m</code>が現れている点を除いて、 <code>foldl</code>の型と同じであることに注意しましょう。</p>
+<p>直感的には、 <code>foldM</code>はさまざまな副作用の組み合わせに対応した文脈での配列の畳み込みを行うと捉えることができます。</p>
+<p>例として <code>m</code>が <code>Maybe</code>であるとすると、この畳み込みはそれぞれの段階で
+<code>Nothing</code>を返すことで失敗することができます。それぞれの段階ではオプショナルな結果を返しますから、それゆえ畳み込みの結果もオプショナルになります。</p>
+<p>もし <code>m</code>として配列の型構築子
+<code>Array</code>を選ぶとすると、畳み込みのそれぞれの段階で複数の結果を返すことができ、畳み込みは結果それぞれに対して次の手順を継続します。最後に、結果の集まりは、可能な経路すべての畳み込みから構成されることになります。これはグラフの走査と対応しています！</p>
+<p><code>foldM</code>を書くには、単に入力のリストについて場合分けをするだけです。</p>
+<p>リストが空なら、型 <code>a</code>の結果を生成するための選択肢はひとつしかありません。
+第2引数を返します。</p>
+<pre><code class="language-hs">foldM _ a Nil = pure a
+</code></pre>
+<p>なお<code>a</code>をモナド <code>m</code>まで持ち上げるために <code>pure</code>を使わなくてはいけません。</p>
+<p>リストが空でない場合はどうでしょうか？
+その場合、型 <code>a</code>の値、型 <code>b</code>の値、型 <code>a -&gt; b -&gt; m a</code>の関数があります。
+もしこの関数を適用すると、型 <code>m a</code>のモナドの結果を手に入れることになります。
+この計算の結果を逆向きの矢印 <code>&lt;-</code>で束縛することができます。</p>
+<p>あとはリストの残りに対して再帰するだけです。実装は簡単です。</p>
+<pre><code class="language-hs">foldM f a (b : bs) = do
+  a' &lt;- f a b
+  foldM f a' bs
+</code></pre>
+<p>なお、do記法を除けば、この実装は配列に対する <code>foldl</code>の実装とほとんど同じです。</p>
+<p>PSCiでこれを定義し、試してみましょう。
+以下では例として、除算可能かどうかを調べて、失敗を示すために <code>Maybe</code>型構築子を使う、
+整数の「安全な除算」関数を定義するとしましょう。</p>
+<pre><code class="language-hs">safeDivide :: Int -&gt; Int -&gt; Maybe Int
+safeDivide _ 0 = Nothing
+safeDivide a b = Just (a / b)
+</code></pre>
+<p>これで、 <code>foldM</code>で安全な除算の繰り返しを表現することができます。</p>
+<pre><code class="language-text">&gt; import Test.Examples
+&gt; import Data.List (fromFoldable)
+
+&gt; foldM safeDivide 100 (fromFoldable [5, 2, 2])
+(Just 5)
+
+&gt; foldM safeDivide 100 (fromFoldable [2, 0, 4])
+Nothing
+</code></pre>
+<p>もしいずれかの時点で整数にならない除算が行われようとしたら、
+<code>foldM safeDivide</code>関数は <code>Nothing</code>を返します。
+そうでなければ、除算を繰り返した累積の結果を<code>Just</code>構築子に包んで返します。</p>
+<h2 id="モナドとアプリカティブ"><a class="header" href="#モナドとアプリカティブ">モナドとアプリカティブ</a></h2>
+<p>クラス間に上位クラス関係の効能があるため、
+<code>Monad</code>型クラスのすべてのインスタンスは <code>Apply</code>型クラスのインスタンスでもあります。</p>
+<p>しかしながら、あらゆる<code>Monad</code>のインスタンスに
+「無料で」ついてくる<code>Apply</code>型クラスの実装もあります。
+これは<code>ap</code>関数により与えられます。</p>
+<pre><code class="language-hs">ap :: forall m a b. Monad m =&gt; m (a -&gt; b) -&gt; m a -&gt; m b
+ap mf ma = do
+  f &lt;- mf
+  a &lt;- ma
+  pure (f a)
+</code></pre>
+<p>もし <code>m</code>が <code>Monad</code>型クラスに固執していれば、
+<code>ap</code>で与えられる<code>m</code>について妥当な <code>Apply</code>インスタンスが存在します。</p>
+<p>興味のある読者は、これまで登場した <code>Array</code>、 <code>Maybe</code>、 <code>Either e</code>といったモナドについて、この <code>ap</code>が
+<code>apply</code>と一致することを確かめてみてください。</p>
+<p>もしすべてのモナドがアプリカティブ関手でもあるなら、
+アプリカティブ関手についての直感的理解を
+すべてのモナドについても適用することができるはずです。
+特に、モナドが更なる副作用の組み合わせで増強された「より大きな言語」での
+プログラミングといろいろな意味で一致することを予想するのはもっともです。
+<code>map</code>と <code>apply</code>を使って、
+引数が任意個の関数をこの新しい言語へと持ち上げることができるはずです。</p>
+<p>しかし、モナドはアプリカティブ関手でできること以上を行うことができ、
+重要な違いはdo記法の構文で強調されています。
+利用者情報を符号化したXML文書から利用者の都市を検索する、
+<code>userCity</code>の例についてもう一度考えてみましょう。</p>
+<pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
+userCity root = do
+  prof &lt;- child root &quot;profile&quot;
+  addr &lt;- child prof &quot;address&quot;
+  city &lt;- child addr &quot;city&quot;
+  pure city
+</code></pre>
+<p>do記法では2番目の計算が最初の結果 <code>prof</code>に依存し、
+3番目の計算が2番目の計算の結果
+<code>addr</code>に依存するというようなことができます。
+<code>Applicative</code>型クラスのインターフェイスだけを使うのでは、
+このような以前の値への依存は不可能です。</p>
+<p><code>pure</code>と <code>apply</code>だけを使って <code>userCity</code>を書こうとしてみれば、
+これが不可能であることがわかるでしょう。
+アプリカティブ関手ができるのは関数の互いに独立した引数を持ち上げることだけですが、
+モナドはもっと興味深いデータ依存関係に関わる計算を書くことを可能にします。</p>
+<p>前の章では <code>Applicative</code>型クラスは並列処理を表現できることを見ました。
+持ち上げられた関数の引数は互いに独立していますから、
+これはまさにその通りです。
+<code>Monad</code>型クラスは計算が前の計算の結果に依存できるようにしますから、
+同じようにはなりません。
+モナドは副作用を順番に組み合わせなければいけません。</p>
+<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<ol>
+<li>
+<p>（簡単）3つ以上の要素がある配列の3つ目の要素を返す関数<code>third</code>を書いてください。
+関数は適切な<code>Maybe</code>型で返します。
+<strong>ヒント</strong>：<code>arrays</code>パッケージの<code>Data.Array</code>モジュールから<code>head</code>と<code>tail</code>関数の型を見つけ出してください。
+これらの関数を繋げるには<code>Maybe</code>モナドと共にdo記法を使ってください。</p>
+</li>
+<li>
+<p>（普通）一掴みの硬貨を使ってできる可能なすべての合計を決定する関数 <code>possibleSums</code>を、
+<code>foldM</code>を使って書いてみましょう。入力の硬貨は、硬貨の価値の配列として与えられます。この関数は次のような結果にならなくてはいけません。</p>
+<pre><code class="language-text">&gt; possibleSums []
+[0]
+
+&gt; possibleSums [1, 2, 10]
+[0,1,2,3,10,11,12,13]
+</code></pre>
+<p><strong>ヒント</strong>：<code>foldM</code>を使うと1行でこの関数を書くことが可能です。
+重複を取り除いたり、結果を並び替えたりするのに、
+<code>nub</code>関数や <code>sort</code>関数を使いたくなるかもしれません。</p>
+</li>
+<li>
+<p>（普通）<code>Maybe</code>型構築子について、 <code>ap</code>関数と <code>apply</code>演算子が一致することを確認してください。
+<strong>補足</strong>：この演習にはテストがありません。</p>
+</li>
+<li>
+<p>（普通）<code>maybe</code>パッケージで定義されている
+<code>Maybe</code>型についての <code>Monad</code>インスタンスが、
+モナド則を満たしていることを検証してください。
+<strong>補足</strong>：この演習にはテストがありません。</p>
+</li>
+<li>
+<p>（普通）配列上の <code>filter</code>の関数を一般化した関数 <code>filterM</code>を書いてください。
+この関数は次の型シグネチャを持ちます。</p>
+<pre><code class="language-hs">filterM :: forall m a. Monad m =&gt; (a -&gt; m Boolean) -&gt; List a -&gt; m (List a)
+</code></pre>
+</li>
+<li>
+<p>（難しい） すべてのモナドには
+次で与えられるような既定の <code>Functor</code>インスタンスがあります。</p>
+<pre><code class="language-hs">map f a = do
+  x &lt;- a
+  pure (f x)
+</code></pre>
+<p>モナド則を使って、すべてのモナドが次を満たすことを証明してください。</p>
+<pre><code class="language-hs">lift2 f (pure a) (pure b) = pure (f a b)
+</code></pre>
+<p>ここで、 <code>Applly</code>インスタンスは上で定義された <code>ap</code>関数を使用しています。
+<code>lift2</code>が次のように定義されていたことを思い出してください。</p>
+<pre><code class="language-hs">lift2 :: forall f a b c. Apply f =&gt; (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c
+lift2 f a b = f &lt;$&gt; a &lt;*&gt; b
+</code></pre>
+<p><strong>補足</strong>：この演習にはテストがありません。</p>
+</li>
+</ol>
+<h2 id="ネイティブな作用"><a class="header" href="#ネイティブな作用">ネイティブな作用</a></h2>
+<p>ここではPureScriptの中核となる重要なモナド、 <code>Effect</code>モナドについて見ていきます。</p>
+<p><code>Effect</code>モナドは <code>Effect</code>モジュールで定義されています。
+かつてはいわゆる<strong>ネイティブ</strong>副作用を管理していました。
+Haskellに馴染みがあれば、これは<code>IO</code>モナドと同等のものです。</p>
+<p>ネイティブな副作用とは何でしょうか。
+この副作用はPureScript特有の式からJavaScriptの式を区別するものです。
+PureScriptの式は概して副作用とは無縁なのです。
+ネイティブな作用の例を以下に示します。</p>
+<ul>
+<li>コンソール入出力</li>
+<li>乱数生成</li>
+<li>例外</li>
+<li>変更可能な状態の読み書き</li>
+</ul>
+<p>また、ブラウザでは次のようなものがあります。</p>
+<ul>
+<li>DOM操作</li>
+<li>XMLHttpRequest / AJAX呼び出し</li>
+<li>WebSocketによる相互作用</li>
+<li>Local Storageの読み書き</li>
+</ul>
+<p>すでに「ネイティブでない」副作用の例については数多く見てきています。</p>
+<ul>
+<li><code>Maybe</code>データ型で表現される省略可能な値</li>
+<li><code>Either</code>データ型で表現されるエラー</li>
+<li>配列やリストで表現される多価関数</li>
+</ul>
+<p>これらの区別はわかりにくいので注意してください。エラーメッセージは例外の形でJavaScriptの式の副作用となることがあります。その意味では例外はネイティブな副作用を表していて、
+<code>Effect</code>を使用して表現することができます。しかし、
+<code>Either</code>を使用して実装されたエラーメッセージはJavaScriptランタイムの副作用ではなく、
+<code>Effect</code>を使うスタイルでエラーメッセージを実装するのは適切ではありません。そのため、ネイティブなのは作用自体というより、実行時にどのように実装されているかです。</p>
+<h2 id="副作用と純粋性"><a class="header" href="#副作用と純粋性">副作用と純粋性</a></h2>
+<p>PureScriptのような言語が純粋であるとすると、疑問が浮かんできます。副作用がないなら、どうやって役に立つ実際のコードを書くことができるというのでしょうか。</p>
+<p>その答えはPureScriptの目的は副作用を排除することではないということです。これは、純粋な計算と副作用のある計算とを型システムにおいて区別することができるような方法で、副作用を表現することを目的としているのです。この意味で、言語はあくまで純粋だということです。</p>
+<p>副作用のある値は、純粋な値とは異なる型を持っています。
+このように、例えば副作用のある引数を関数に渡すことはできず、
+予期せず副作用を持つようなことが起こらなくなります。</p>
+<p><code>Effect</code>モナドで管理された副作用を実行する唯一の方法は、
+型 <code>Effect a</code>の計算をJavaScriptから実行することです。</p>
+<p>Spagoビルドツール（や他のツール）は早道を提供しており、
+アプリケーションの起動時に<code>main</code>計算を呼び出すための追加のJavaScriptコードを生成します。
+<code>main</code>は <code>Effect</code>モナドでの計算であることが要求されます。</p>
+<h2 id="作用モナド-1"><a class="header" href="#作用モナド-1">作用モナド</a></h2>
+<p><code>Effect</code>は副作用のある計算を充分に型付けするAPIを提供すると同時に、
+効率的なJavaScriptを生成します。</p>
+<p>馴染みのある<code>log</code>関数から返る型をもう少し見てみましょう。
+<code>Effect</code>はこの関数がネイティブな作用を生み出すことを示しており、
+この場合はコンソールIOです。
+<code>Unit</code>はいかなる<em>意味のある</em>データも返らないことを示しています。
+<code>Unit</code>はC、Javaなど他の言語での<code>void</code>キーワードと似たようなものとして考えられます。</p>
+<pre><code class="language-hs">log :: String -&gt; Effect Unit
+</code></pre>
+<blockquote>
+<p>余談：より一般的な（そしてより込み入った型の）<code>Effect.Class.Console</code>の<code>log</code>関数をIDEから提案されるかもしれません。
+これは基本的な<code>Effect</code>モナドを扱う際は<code>Effect.Console</code>からの関数と交換可能です。
+より一般的なバージョンがあることの理由は「モナドな冒険」章の「モナド変換子」について読んだあとにより明らかになっていることでしょう。
+好奇心のある（そしてせっかちな）読者のために言うと、
+これは<code>Effect</code>に<code>MonadEffect</code>インスタンスがあるから機能するのです。</p>
+</blockquote>
+<blockquote>
+<pre><code class="language-hs">log :: forall m. MonadEffect m =&gt; String -&gt; m Unit
+</code></pre>
+</blockquote>
+<p>それでは意味のあるデータを返す<code>Effect</code>を考えましょう。
+<code>Effect.Random</code>の<code>random</code>関数はランダムな<code>Number</code>を生み出します。</p>
+<pre><code class="language-hs">random :: Effect Number
+</code></pre>
+<p>以下は完全なプログラムの例です。
+（この章の演習フォルダの<code>test/Random.purs</code>にあります。）</p>
+<pre><code class="language-hs">module Test.Random where
+
+import Prelude
+import Effect (Effect)
+import Effect.Random (random)
+import Effect.Console (logShow)
+
+main :: Effect Unit
+main = do
+  n &lt;- random
+  logShow n
+</code></pre>
+<p><code>Effect</code>はモナドなので、do記法を使って含まれるデータを開封し、
+それからこのデータを作用のある<code>logShow</code>関数に渡します。
+気分転換に、以下は<code>bind</code>演算子を使って書かれた同等なコードです。</p>
+<pre><code class="language-hs">main :: Effect Unit
+main = random &gt;&gt;= logShow
+</code></pre>
+<p>これを手元で走らせてみてください。</p>
+<pre><code>spago run --main Test.Random
+</code></pre>
+<p>コンソールに出力 <code>0.0</code>と <code>1.0</code>の間で無作為に選ばれた数が表示されるでしょう。</p>
+<blockquote>
+<p>余談：<code>spago run</code>は既定で<code>Main</code>モジュールとその中の<code>main</code>関数を探索します。
+<code>--main</code>フラグで代替のモジュールを入口として指定することもでき、
+上の例ではそうしています。
+この代替のモジュールもまた<code>main</code>関数を含んでいることには注目してください。</p>
+</blockquote>
+<p>なお「ランダムな」（技術的には疑似ランダムな）データを不浄な作用付きのコードに訴えることなく生成することも可能です。
+この技法は「テストを生成する」章で押さえます。</p>
+<p>以前言及したように<code>Effect</code>モナドはPureScriptで核心的な重要さがあります。
+なぜ核心かというと、それはPureScriptの<code>外部関数インターフェース</code>とやりとりする上での常套手段だからです。
+<code>外部関数インターフェース</code>はプログラムを実行したり副作用を発生させたりする仕組みを提供します。
+<code>外部関数インターフェース</code>を使うことは避けるのが望ましいのですが、
+どう動きどう使うのか理解することもまた極めて大事なことですので、
+実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。
+要は<code>Effect</code>モナドは結構単純なのです。
+いくつかのお助け関数がありますが、それを差し置いても副作用を内包すること以外には多くのことをしません。</p>
+<h2 id="例外"><a class="header" href="#例外">例外</a></h2>
+<p>2つの<strong>ネイティブな</strong>副作用が絡む<code>node-fs</code>パッケージの関数を調べましょう。
+ここでの副作用は可変状態の読み取りと例外です。</p>
+<pre><code class="language-hs">readTextFile :: Encoding -&gt; String -&gt; Effect String
+</code></pre>
+<p>もし存在しないファイルを読むことを試みると……</p>
+<pre><code class="language-hs">import Node.Encoding (Encoding(..))
+import Node.FS.Sync (readTextFile)
+
+main :: Effect Unit
+main = do
+  lines &lt;- readTextFile UTF8 &quot;iDoNotExist.md&quot;
+  log lines
+</code></pre>
+<p>以下の例外に遭遇します。</p>
+<pre><code>    throw err;
+    ^
+Error: ENOENT: no such file or directory, open 'iDoNotExist.md'
+...
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'iDoNotExist.md'
+</code></pre>
+<p>この例外をうまく管理するには、
+潜在的に問題があるコードを<code>try</code>に包めばいずれの出力も制御できます。</p>
+<pre><code class="language-hs">main :: Effect Unit
+main = do
+  result &lt;- try $ readTextFile UTF8 &quot;iDoNotExist.md&quot;
+  case result of
+    Right lines -&gt; log $ &quot;Contents: \n&quot; &lt;&gt; lines
+    Left  error -&gt; log $ &quot;Couldn't open file. Error was: &quot; &lt;&gt; message error
+</code></pre>
+<p><code>try</code>は<code>Effect</code>を走らせて起こりうる例外を<code>Left</code>値として返します。
+もし計算が成功すれば結果は<code>Right</code>に包まれます。</p>
+<pre><code class="language-hs">try :: forall a. Effect a -&gt; Effect (Either Error a)
+</code></pre>
+<p>自前の例外を生成することもできます。
+以下は<code>Data.List.head</code>の代替実装で、
+<code>Maybe</code>の値の<code>Nothing</code>を返す代わりにリストが空のとき例外を投げます。</p>
+<pre><code class="language-hs">exceptionHead :: List Int -&gt; Effect Int
+exceptionHead l = case l of
+  x : _ -&gt; pure x
+  Nil -&gt; throwException $ error &quot;empty list&quot;
+</code></pre>
+<p>ただし<code>exceptionHead</code>関数はどこかしら非実用的な例です。
+というのも、PureScriptのコードで例外を生成するのは避け、
+代わりに<code>Either</code>や<code>Maybe</code>のようなネイティブでない作用で
+エラーや欠けた値を使うのが一番だからです。</p>
+<h2 id="可変状態"><a class="header" href="#可変状態">可変状態</a></h2>
+<p>中核ライブラリには <code>ST</code>作用というまた別の作用も定義されています。</p>
+<p><code>ST</code>作用は変更可能な状態を操作するために使われます。純粋関数プログラミングを知っているなら、共有される変更可能な状態は問題を引き起こしやすいということも知っているでしょう。しかしながら、
+<code>ST</code>作用は型システムを使って安全で<strong>局所的な</strong>状態変化を可能にし、状態の共有を制限するのです。</p>
+<p><code>ST</code>作用は
+<code>Control.Monad.ST</code>モジュールで定義されています。これがどのように動作するかを確認するには、そのアクションの型を見る必要があります。</p>
+<pre><code class="language-hs">new :: forall a r. a -&gt; ST r (STRef r a)
+
+read :: forall a r. STRef r a -&gt; ST r a
+
+write :: forall a r. a -&gt; STRef r a -&gt; ST r a
+
+modify :: forall r a. (a -&gt; a) -&gt; STRef r a -&gt; ST r a
+</code></pre>
+<p><code>new</code>は型 <code>STRef r a</code>の変更可能な参照区画を新しく作るのに使われます。
+<code>STRef r a</code>は <code>read</code>アクションを使って状態を読み取ったり、
+<code>write</code>アクションや <code>modify</code>アクションで状態を変更するのに使われます。
+型 <code>a</code>は区画に格納された値の型で、
+型 <code>r</code>は型システムで<strong>メモリ領域</strong>（または<strong>ヒープ</strong>）を表しています。</p>
+<p>例を示します。小さな時間刻みで簡単な更新関数の実行を何度も繰り返すことによって、重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。</p>
+<p>粒子の位置と速度を保持する変更可能な参照区画を作成し、
+区画に格納された値を更新するのにforループを使うことでこれを実現することができます。</p>
+<pre><code class="language-hs">import Prelude
+
+import Control.Monad.ST.Ref (modify, new, read)
+import Control.Monad.ST (ST, for, run)
+
+simulate :: forall r. Number -&gt; Number -&gt; Int -&gt; ST r Number
+simulate x0 v0 time = do
+  ref &lt;- new { x: x0, v: v0 }
+  for 0 (time * 1000) \_ -&gt;
+    modify
+      ( \o -&gt;
+          { v: o.v - 9.81 * 0.001
+          , x: o.x + o.v * 0.001
+          }
+      )
+      ref
+  final &lt;- read ref
+  pure final.x
+</code></pre>
+<p>計算の最後では、参照区画の最終的な値を読み取り、粒子の位置を返しています。</p>
+<p>この関数が変更可能な状態を使っていても、その参照区画
+<code>ref</code>がプログラムの他の部分で使われるのが許されない限り、これは純粋な関数のままであることに注意してください。
+<code>ST</code>作用が禁止するものが正確には何であるのかについては後ほど見ます。</p>
+<p><code>ST</code>作用付きの計算を実行するには、 <code>run</code>関数を使用する必要があります。</p>
+<pre><code class="language-hs">run :: forall a. (forall r. ST r a) -&gt; a
+</code></pre>
+<p>ここで注目して欲しいのは、
+領域型 <code>r</code>が関数矢印の左辺にある<strong>括弧の内側で</strong>量化されているということです。
+<code>run</code>に渡したどんなアクションでも、
+<strong>任意の領域</strong><code>r</code>がなんであれ動作するということを意味しています。</p>
+<p>しかしながら、
+ひとたび参照区画が <code>new</code>によって作成されると、
+その領域の型はすでに固定されており、
+<code>run</code>によって限定されたコードの外側で参照領域を使おうとしても型エラーになるでしょう。
+<code>run</code>が安全に <code>ST</code>作用を除去でき、<code>simulate</code>を純粋関数にできるのはこれが理由なのです！</p>
+<pre><code class="language-hs">simulate' :: Number -&gt; Number -&gt; Int -&gt; Number
+simulate' x0 v0 time = run (simulate x0 v0 time)
+</code></pre>
+<p>PSCiでもこの関数を実行してみることができます。</p>
+<pre><code class="language-text">&gt; import Main
+
+&gt; simulate' 100.0 0.0 0
+100.00
+
+&gt; simulate' 100.0 0.0 1
+95.10
+
+&gt; simulate' 100.0 0.0 2
+80.39
+
+&gt; simulate' 100.0 0.0 3
+55.87
+
+&gt; simulate' 100.0 0.0 4
+21.54
+</code></pre>
+<p>実は、もし <code>simulate</code>の定義を <code>run</code>の呼び出しのところへ埋め込むとすると、次のようになります。</p>
+<pre><code class="language-hs">simulate :: Number -&gt; Number -&gt; Int -&gt; Number
+simulate x0 v0 time =
+  run do
+    ref &lt;- new { x: x0, v: v0 }
+    for 0 (time * 1000) \_ -&gt;
+      modify
+        ( \o -&gt;
+            { v: o.v - 9.81 * 0.001
+            , x: o.x + o.v * 0.001
+            }
+        )
+        ref
+    final &lt;- read ref
+    pure final.x
+</code></pre>
+<p>参照区画はそのスコープから逃れることができないことがコンパイラにわかりますし、
+安全に<code>ref</code>を<code>var</code>に変換することができます。
+<code>run</code>が埋め込まれた<code>simulate</code>に対して生成されたJavaScriptは次のようになります。</p>
+<pre><code class="language-javascript">var simulate = function (x0) {
+  return function (v0) {
+    return function (time) {
+      return (function __do() {
+
+        var ref = { value: { x: x0, v: v0 } };
+
+        Control_Monad_ST_Internal[&quot;for&quot;](0)(time * 1000 | 0)(function (v) {
+          return Control_Monad_ST_Internal.modify(function (o) {
+            return {
+              v: o.v - 9.81 * 1.0e-3,
+              x: o.x + o.v * 1.0e-3
+            };
+          })(ref);
+        })();
+
+        return ref.value.x;
+
+      })();
+    };
+  };
+};
+</code></pre>
+<p>なおこの結果として得られたJavaScriptは最適化の余地があります。
+詳細は<a href="https://github.com/purescript-contrib/purescript-book/issues/121">この課題</a>を参照してください。
+上記の抜粋はその課題が解決されたら更新されるでしょう。</p>
+<p>比較としてこちらが埋め込まれていない形式で生成されたJavaScriptです。</p>
+<pre><code class="language-js">var simulate = function (x0) {
+  return function (v0) {
+    return function (time) {
+      return function __do() {
+
+        var ref = Control_Monad_ST_Internal[&quot;new&quot;]({ x: x0, v: v0 })();
+
+        Control_Monad_ST_Internal[&quot;for&quot;](0)(time * 1000 | 0)(function (v) {
+          return Control_Monad_ST_Internal.modify(function (o) {
+            return {
+              v: o.v - 9.81 * 1.0e-3,
+              x: o.x + o.v * 1.0e-3
+            };
+          })(ref);
+        })();
+
+        var $$final = Control_Monad_ST_Internal.read(ref)();
+        return $$final.x;
+      };
+    };
+  };
+};
+</code></pre>
+<p>局所的な変更可能状態を扱うとき、
+特に作用が絡むループを生成する
+<code>for</code>、 <code>foreach</code>、 <code>while</code>のようなアクションを一緒に使うときには、
+<code>ST</code>作用は短いJavaScriptを生成する良い方法となります。</p>
+<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
+<ol>
+<li>（普通）<code>safeDivide</code>関数を書き直し、
+もし分母がゼロなら<code>throwException</code>を使って文言<code>&quot;div zero&quot;</code>の例外を投げるようにしたものを
+<code>exceptionDivide</code>としてください。</li>
+<li>（普通）関数<code>estimatePi :: Int -&gt; Number</code>を書いてください。
+この関数は<code>n</code>項<a href="https://mathworld.wolfram.com/GregorySeries.html">Gregory
+Series</a>を使って<code>pi</code>の近似を計算するものです。
+<strong>ヒント</strong>：解答は上記の<code>simulate</code>の定義に倣うことができます。
+また<code>Data.Int</code>の<code>toNumber :: Int -&gt; Number</code>を使って、
+<code>Int</code>を<code>Number</code>に変換する必要があるかもしれません。</li>
+<li>（普通）<code>n</code>番目のフィボナッチ数を計算する関数<code>fibonacci :: Int -&gt; Int</code>を書いてください。
+<code>ST</code>を使って前の2つのフィボナッチ数の値を追跡します。
+新しい<code>ST</code>に基づく実装の速度を第4章の再帰実装に対して比較してください。</li>
+</ol>
+<h2 id="dom作用"><a class="header" href="#dom作用">DOM作用</a></h2>
+<p>この章の最後の節では、
+<code>Effect</code>モナドでの作用についてこれまで学んだことを、
+実際のDOM操作の問題に応用します。</p>
+<p>DOMを直接扱ったり、
+オープンソースのDOMライブラリを扱ったりする
+PureScriptパッケージが沢山あります。
+例えば以下です。</p>
+<ul>
+<li><a href="https://github.com/purescript-web/purescript-web-dom"><code>web-dom</code></a>は
+W3CのDOM規格に向けた型定義と低水準インターフェース実装を提供します。</li>
+<li><a href="https://github.com/purescript-web/purescript-web-html"><code>web-html</code></a>は
+W3CのHTML5規格に向けた型定義と低水準インターフェース実装を提供します。</li>
+<li><a href="http://github.com/paf31/purescript-jquery"><code>jquery</code></a>は
+<a href="http://jquery.org">jQuery</a>ライブラリのバインディングの集まりです。</li>
+</ul>
+<p>上記のライブラリを抽象化するPureScriptライブラリもあります。
+以下のようなものです。</p>
+<ul>
+<li><a
+href="http://github.com/paf31/purescript-thermite"><code>thermite</code></a>は
+<a
+href="https://github.com/purescript-contrib/purescript-react"<code>react</code></a>
+上で構築されるライブラリです。</li>
+<li><a
+href="https://github.com/megamaddu/purescript-react-basic-hooks"><code>react-basic-hooks</code></a>
+は<a
+href="https://github.com/lumihq/purescript-react-basic"><code>react-basic</code></a>
+上で構築されるライブラリです。</li>
+<li><a
+href="http://github.com/purescript-halogen/purescript-halogen"><code>halogen</code></a>は
+自前の仮想DOMライブラリを土台とした型安全な抽象化の集まりを提供します。</li>
+</ul>
+<p>この章では <code>react-basic-hooks</code>ライブラリを使用し、
+住所簿アプリケーションにユーザーインターフェイスを追加しますが、
+興味のあるユーザは異なるアプローチで進めることをおすすめします。</p>
+<h2 id="住所録のユーザーインタフェース"><a class="header" href="#住所録のユーザーインタフェース">住所録のユーザーインタフェース</a></h2>
+<p><code>react-basic-hooks</code>ライブラリを使い、
+アプリケーションをReact<strong>コンポーネント</strong>として定義していきます。
+ReactコンポーネントはHTML要素を純粋なデータ構造としてコードで記述します。
+このデータ構造はそれから効率的にDOMに描画されます。
+加えてコンポーネントはボタンクリックのようなイベントに応答することができます。
+<code>react-basic-hooks</code>ライブラリは<code>Effect</code>モナドを使ってこれらのイベントの制御方法を記述します。</p>
+<p>Reactライブラリの完全なチュートリアルはこの章の範囲をはるかに超えていますが、
+読者は必要に応じてマニュアルを参照することをお勧めします。
+目的に応じて、Reactは <code>Effect</code>モナドの実用的な例を提供してくれます。</p>
+<p>利用者が住所録に新しい項目を追加できるフォームを構築することにしましょう。
+フォームには、さまざまなフィールド（姓、名前、都市、州など）のテキストボックス、
+および検証エラーが表示される領域が含まれます。
+テキストボックスに利用者がテキストを入力すると、検証エラーが更新されます。</p>
+<p>シンプルさを保つために、
+フォームは固定の形状とします。
+電話番号は種類（自宅、携帯電話、仕事、その他）ごとに
+別々のテキストボックスへ分けることにします。</p>
+<p><code>exercises/chapter8</code>ディレクトリから以下のコマンドでWebアプリを立ち上げることができます。</p>
+<pre><code>$ npm install
+$ npx spago build
+$ npx parcel src/index.html --open
+</code></pre>
+<p>もし<code>spago</code>や<code>parcel</code>のような開発ツールが大域的にインストールされていれば、
+<code>npx</code>の前置は省けるでしょう。
+恐らく既に<code>spago</code>を<code>npm i -g spago</code>で大域的にインストールしていますし、
+<code>parcel</code>についても同じことができるでしょう。</p>
+<p><code>parcel</code>は「アドレス帳」アプリのブラウザ窓を立ち上げます。
+<code>parcel</code>の端末を開いたままにし、他の端末で<code>spago</code>で再構築すると、
+最新の編集を含むページが自動的に再読み込みされるでしょう。
+また、<a href="https://github.com/purescript/purescript/tree/master/psc-ide"><code>purs ide</code></a>をサポートしていたり<a href="https://github.com/kRITZCREEK/pscid"><code>pscid</code></a>を走らせていたりする
+<a href="https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editors">エディタ</a>を使っていれば、
+ファイルを保存したときに自動的にページが再構築される（そして自動的にページが再読み込みされる）ように設定できます。</p>
+<p>このアドレス帳アプリでフォームフィールドにいろいろな値を入力すると、
+ページ上に出力された検証エラーを見ることができるでしょう。</p>
+<p>動く仕組みを散策しましょう。</p>
+<p><code>src/index.html</code>ファイルは最小限です。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Address Book&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;./index.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>&lt;script</code>の行はJavaScriptの入口を含んでおり、
+<code>index.js</code>にはこの1行が含まれています。</p>
+<pre><code class="language-js">import { main } from &quot;../output/Main/index.js&quot;;
+
+main();
+</code></pre>
+<p><code>module Main</code> (<code>src/main.purs</code>) の<code>main</code>関数と等価な、
+生成したJavaScriptを呼び出しています。
+<code>spago build</code>は生成された全てのJavaScriptを<code>output</code>ディレクトリに置くことを思い出してください。</p>
+<p><code>main</code>関数はDOMとHTML APIを使い、
+<code>index.html</code>に定義した<code>container</code>要素の中にアドレス帳コンポーネントを描画します。</p>
+<pre><code class="language-hs">main :: Effect Unit
+main = do
+  log &quot;Rendering address book component&quot;
+  -- Get window object
+  w &lt;- window
+  -- Get window's HTML document
+  doc &lt;- document w
+  -- Get &quot;container&quot; element in HTML
+  ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+  case ctr of
+    Nothing -&gt; throw &quot;Container element not found.&quot;
+    Just c -&gt; do
+      -- Create AddressBook react component
+      addressBookApp &lt;- mkAddressBookApp
+      let
+        -- Create JSX node from react component. Pass-in empty props
+        app = element addressBookApp {}
+      -- Render AddressBook JSX node in DOM &quot;container&quot; element
+      D.render app c
+</code></pre>
+<p>これら3行に注目してください。</p>
+<pre><code class="language-hs">w &lt;- window
+doc &lt;- document w
+ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+</code></pre>
+<p>これは次のように統合できます。</p>
+<pre><code class="language-hs">doc &lt;- document =&lt;&lt; window
+ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+</code></pre>
+<p>あるいはさらに統合することさえできます。</p>
+<pre><code class="language-hs">ctr &lt;- getElementById &quot;container&quot; &lt;&lt;&lt; toNonElementParentNode =&lt;&lt; document =&lt;&lt; window
+-- or, equivalently:
+ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt; getElementById &quot;container&quot;
+</code></pre>
+<p>途中の<code>w</code>や<code>doc</code>変数が読みやすさの助けになるかは主観的な嗜好の問題です。</p>
+<p>AddressBookの<code>reactComponent</code>を深堀りしましょう。
+単純化されたコンポーネントから始め、それから<code>Main.purs</code>で実際のコードに構築していきます。</p>
+<p>以下の最小限のコンポーネントをご覧ください。
+遠慮なく全体のコンポーネントをこれに置き換えて実行の様子を見てみましょう。</p>
+<pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
+mkAddressBookApp =
+  reactComponent
+    &quot;AddressBookApp&quot;
+    (\props -&gt; pure $ D.text &quot;Hi! I'm an address book&quot;)
+</code></pre>
+<p><code>reactComponent</code>にはこのような威圧的なシグネチャがあります。</p>
+<pre><code class="language-hs">reactComponent ::
+  forall hooks props.
+  Lacks &quot;children&quot; props =&gt;
+  Lacks &quot;key&quot; props =&gt;
+  Lacks &quot;ref&quot; props =&gt;
+  String -&gt;
+  ({ | props } -&gt; Render Unit hooks JSX) -&gt;
+  Effect (ReactComponent { | props })
+</code></pre>
+<p>重要な注意点は全ての型クラス制約の後の引数にあります。
+<code>String</code>（任意のコンポーネント名）、
+<code>props</code>を描画された<code>JSX</code>に変換する方法を記述する関数を取り、
+そして<code>Effect</code>に包まれた<code>ReactComponent</code>を返します。</p>
+<p>propsからJSXへの関数は単にこうです。</p>
+<pre><code class="language-hs">\props -&gt; pure $ D.text &quot;Hi! I'm an address book&quot;
+</code></pre>
+<p><code>props</code>は無視されており、<code>D.text</code>は<code>JSX</code>を返し、
+そして<code>pure</code>は描画されたJSXに持ち上げます。
+これで<code>component</code>には<code>ReactComponent</code>を生成するのに必要な全てがあります。</p>
+<p>次に完全なアドレス帳コンポーネントにある追加の複雑な事柄のいくつかを調べていきます。</p>
+<p>これらは完全なコンポーネントの最初の数行です。</p>
+<pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
+mkAddressBookApp = do
+  reactComponent &quot;AddressBookApp&quot; \props -&gt; R.do
+    Tuple person setPerson &lt;- useState examplePerson
+</code></pre>
+<p><code>person</code>を<code>useState</code>フックの状態の一部として追跡します。</p>
+<pre><code class="language-hs">Tuple person setPerson &lt;- useState examplePerson
+</code></pre>
+<p>なお、複数回<code>useState</code>を呼び出すことで、
+コンポーネントの状態を複数の状態の部品に分解することは自由です。
+例えば<code>Person</code>のそれぞれのレコードフィールドについて分離した状態の部品を使って、
+このアプリを書き直すことができるでしょう。
+しかしこの場合にそれをすると僅かに利便性を損なうアーキテクチャになってしまいます。</p>
+<p>他の例では<code>Tuple</code>用の<code>/\</code>中置演算子に出喰わすかもしれません。
+これは上の行と等しいものです。</p>
+<pre><code class="language-hs">firstName /\ setFirstName &lt;- useState p.firstName
+</code></pre>
+<p><code>useState</code>は既定の初期値を取り現在の値と値を更新する方法を取ります。
+<code>useState</code>の型を確認すれば型<code>person</code>と<code>setPerson</code>についてより深い洞察が得られます。</p>
+<pre><code class="language-hs">useState ::
+  forall state.
+  state -&gt;
+  Hook (UseState state) (Tuple state ((state -&gt; state) -&gt; Effect Unit))
+</code></pre>
+<p>結果の値の<code>Hook (UseState state)</code>ラッパーを取り去ることができますが、
+それは<code>useState</code>が<code>R.do</code>ブロックの中で呼ばれているからです。
+<code>R.do</code>は後で詳述します。</p>
+<p>さてこれで以下のシグネチャを観察できます。</p>
+<pre><code class="language-hs">person :: state
+setPerson :: (state -&gt; state) -&gt; Effect Unit
+</code></pre>
+<p><code>state</code>の限定された型は初期の既定値によって決定されます。
+これは<code>examplePerson</code>の型なのでこの場合は<code>Person</code> <code>Record</code>です。</p>
+<p><code>person</code>はそれぞれの再描画の時点で現在の状態にアクセスする方法です。</p>
+<p><code>setPerson</code>は状態を更新する方法です。
+現在の状態を新しい状態に変形する方法を記述する関数を単に提供します。
+<code>state</code>の型が偶然<code>Record</code>のときは、レコード更新構文はこれにぴったりです。
+例えば以下。</p>
+<pre><code class="language-hs">setPerson (\currentPerson -&gt; currentPerson {firstName = &quot;NewName&quot;})
+
+</code></pre>
+<p>あるいは短かく以下です。</p>
+<pre><code class="language-hs">setPerson _ {firstName = &quot;NewName&quot;}
+</code></pre>
+<p><code>Record</code>でない状態もまたこの更新パターンにしたがいます。
+ベストプラクティスについてのより詳しいことは<a href="https://github.com/megamaddu/purescript-react-basic-hooks/pull/24#issuecomment-620300541">このガイド</a>を参照してください。</p>
+<p><code>useState</code>が<code>R.do</code>ブロックの中で使われていることを思い出しましょう。
+<code>R.do</code>は<code>do</code>の特別なreactフックの派生です。
+<code>R.</code>の前置はこれが<code>React.Basic.Hooks</code>から来たものとして「限定する」もので、
+<code>R.do</code>ブロックの中でフック互換版の<code>bind</code>を使うことを意味しています。
+これは「限定されたdo」として知られています。
+<code>Hook (UseState state)</code>のラッピングを無視し、
+内部の値の<code>Tuple</code>と変数に束縛してくれます。</p>
+<p>他の状態管理戦略として挙げられるのは<code>useReducer</code>ですが、
+それはこの章の範疇外です。</p>
+<p>以下では<code>JSX</code>の描画が行われています。</p>
+<pre><code class="language-hs">pure
+  $ D.div
+      { className: &quot;container&quot;
+      , children:
+          renderValidationErrors errors
+            &lt;&gt; [ D.div
+                  { className: &quot;row&quot;
+                  , children:
+                      [ D.form_
+                          $ [ D.h3_ [ D.text &quot;Basic Information&quot; ]
+                            , formField &quot;First Name&quot; &quot;First Name&quot; person.firstName \s -&gt;
+                                setPerson _ { firstName = s }
+                            , formField &quot;Last Name&quot; &quot;Last Name&quot; person.lastName \s -&gt;
+                                setPerson _ { lastName = s }
+                            , D.h3_ [ D.text &quot;Address&quot; ]
+                            , formField &quot;Street&quot; &quot;Street&quot; person.homeAddress.street \s -&gt;
+                                setPerson _ { homeAddress { street = s } }
+                            , formField &quot;City&quot; &quot;City&quot; person.homeAddress.city \s -&gt;
+                                setPerson _ { homeAddress { city = s } }
+                            , formField &quot;State&quot; &quot;State&quot; person.homeAddress.state \s -&gt;
+                                setPerson _ { homeAddress { state = s } }
+                            , D.h3_ [ D.text &quot;Contact Information&quot; ]
+                            ]
+                          &lt;&gt; renderPhoneNumbers
+                      ]
+                  }
+              ]
+      }
+</code></pre>
+<p>ここでDOMの意図した状態を表現する<code>JSX</code>を生成しています。
+このJSXはHTMLタグ（例：<code>div</code>、<code>form</code>、<code>h3</code>、<code>li</code>、<code>ul</code>、<code>label</code>、<code>input</code>）に対応し単一のHTML要素を作る関数を適用することで作られるのが典型的です。
+これらのHTML要素は実はReactコンポーネント自体でJSXに変換されます。
+通常これらの関数にはそれぞれ3つの種類があります。</p>
+<ul>
+<li><code>div_</code>: 子要素の配列を受け付けます。
+既定の属性を使います。</li>
+<li><code>div</code>: 属性の<code>Record</code>を受け付けます。
+子要素の配列をこのレコードの<code>children</code>フィールドに渡すことができます。</li>
+<li><code>div'</code>: <code>div</code>と同じですが、<code>JSX</code>に変換する前に<code>ReactComponent</code>を返します。</li>
+</ul>
+<p>検証エラーをフォームの一番上に（もしあれば）表示するのに、
+<code>Errors</code>構造体をJSXの配列に変える<code>renderValidationErrors</code>お助け関数を作ります。
+この配列はフォームの残り部分の前に付けます。</p>
+<pre><code class="language-hs">renderValidationErrors :: Errors -&gt; Array R.JSX
+renderValidationErrors [] = []
+renderValidationErrors xs =
+  let
+    renderError :: String -&gt; R.JSX
+    renderError err = D.li_ [ D.text err ]
+  in
+    [ D.div
+        { className: &quot;alert alert-danger row&quot;
+        , children: [ D.ul_ (map renderError xs) ]
+        }
+    ]
+</code></pre>
+<p>なお、ここでは通常のデータ構造体を単純に操作しているので、
+<code>map</code>のような関数を使ってより興味深い要素を構築することができます。</p>
+<pre><code class="language-hs">children: [ D.ul_ (map renderError xs)]
+</code></pre>
+<p><code>className</code>プロパティを使ってCSSスタイルのクラスを定義します。
+このプロジェクトでは<a href="https://getbootstrap.com/">Bootstrap</a>の<code>stylesheet</code>を使っており、
+これは<code>index.html</code>でインポートされています。
+例えばフォーム中のアイテムは<code>row</code>として配置されてほしいですし、
+検証エラーは<code>alert-danger</code>の装飾で強調されていてほしいです。</p>
+<pre><code class="language-hs">className: &quot;alert alert-danger row&quot;
+</code></pre>
+<p>2番目の補助関数は <code>formField</code>です。
+これは、単一フォームフィールドのテキスト入力を作ります。</p>
+<pre><code class="language-hs">formField :: String -&gt; String -&gt; String -&gt; (String -&gt; Effect Unit) -&gt; R.JSX
+formField name placeholder value setValue =
+  D.label
+    { className: &quot;form-group row&quot;
+    , children:
+        [ D.div
+            { className: &quot;col-sm col-form-label&quot;
+            , children: [ D.text name ]
+            }
+        , D.div
+            { className: &quot;col-sm&quot;
+            , children:
+                [ D.input
+                    { className: &quot;form-control&quot;
+                    , placeholder
+                    , value
+                    , onChange:
+                        let
+                          handleValue :: Maybe String -&gt; Effect Unit
+                          handleValue (Just v) = setValue v
+                          handleValue Nothing  = pure unit
+                        in
+                          handler targetValue handleValue
+                    }
+                ]
+            }
+        ]
+    }
+</code></pre>
+<p><code>input</code>を置いて<code>label</code>の中に<code>text</code>を表示することは、
+スクリーンリーダーのアクセシビリティの助けになります。</p>
+<p><code>onChange</code>属性があれば利用者の入力に応答する方法を記述することができます。
+<code>handler</code>関数を使いますが、これは以下の型を持ちます。</p>
+<pre><code class="language-hs">handler :: forall a. EventFn SyntheticEvent a -&gt; (a -&gt; Effect Unit) -&gt; EventHandler
+</code></pre>
+<p><code>handler</code>への最初の引数には<code>targetValue</code>を使いますが、
+これはHTMLの<code>input</code>要素中のテキストの値を提供します。
+この場合は型変数<code>a</code>が<code>Maybe String</code>で、
+<code>handler</code>が期待するシグネチャに合致しています。</p>
+<pre><code class="language-hs">targetValue :: EventFn SyntheticEvent (Maybe String)
+</code></pre>
+<p>JavaScriptでは<code>input</code>要素の<code>onChange</code>イベントは実は<code>String</code>値と一緒になっているのですが、
+JavaScriptの文字列はnullになりえるので、安全のために<code>Maybe</code>が使われています。</p>
+<p><code>(a -&gt; Effect Unit)</code>の<code>handler</code>への2つ目の引数は、したがってこのシグネチャを持ちます。</p>
+<pre><code class="language-hs">Maybe String -&gt; Effect Unit
+</code></pre>
+<p>この関数は<code>Maybe String</code>値を求める作用に変換する方法を記述します。
+この目的のために以下のように自前の<code>handleValue</code>関数を定義して<code>handler</code>を渡します。</p>
+<pre><code class="language-hs">onChange:
+  let
+    handleValue :: Maybe String -&gt; Effect Unit
+    handleValue (Just v) = setValue v
+    handleValue Nothing  = pure unit
+  in
+    handler targetValue handleValue
+</code></pre>
+<p><code>setValue</code>はそれぞれの<code>formField</code>の呼び出しに提供した関数で
+文字列を取り<code>setPerson</code>フックに適切なレコード更新呼び出しを実施します。</p>
+<p>なお<code>handleValue</code>は以下のようにも置き換えられます。</p>
+<pre><code class="language-hs">onChange: handler targetValue $ traverse_ setValue
+</code></pre>
+<p>どうぞ<code>traverse_</code>の定義を調査して両方の形式が確かに等価であることをご確認ください。</p>
+<p>これは、コンポーネント実装の基本をカバーしています。
+しかし、コンポーネントの仕組みを完全に理解するためには、
+この章に付随する情報をお読みください。</p>
+<p>明らかに、このユーザインタフェースには改善すべき点がたくさんあります。
+演習ではアプリケーションがより使いやすくなるような方法を追究していきます。</p>
+<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
+<p>以下の演習では<code>src/Main.purs</code>を変更してください。
+これらの演習には単体試験はありません。</p>
+<ol>
+<li>
+<p>（簡単）このアプリケーションを変更し、
+職場の電話番号を入力できるテキストボックスを追加してください。</p>
+</li>
+<li>
+<p>（普通）現時点でアプリケーションは検証エラーを
+単一の「pink-alert」背景に集めて表示させています。
+空の線で分割することにより、
+それぞれの検証エラーにpink-alert背景を持たせるように変更してください。</p>
+<p><strong>ヒント</strong>：リスト中の検証エラーを表示するのに<code>ul</code>要素を使う代わりに、
+コードを変更し、
+それぞれのエラーに<code>alert</code>と<code>alert-danger</code>装飾を持つ<code>div</code>を作ってください。</p>
+</li>
+<li>
+<p>（難しい、発展）このユーザーインターフェイスの問題のひとつは、
+検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。
+コードを変更してこの問題を解決してください。</p>
+<p><strong>ヒント</strong>：検証器によって返されるエラーの型は、
+エラーの原因となっているフィールドを示すために拡張する必要があります。
+次のような変更されたエラー型を使用したくなるかもしれません。</p>
+<pre><code class="language-hs">data Field = FirstNameField
+           | LastNameField
+           | StreetField
+           | CityField
+           | StateField
+           | PhoneField PhoneType
+
+data ValidationError = ValidationError String Field
+
+type Errors = Array ValidationError
+</code></pre>
+<p><code>Error</code>構造体から特定の<code>Field</code>のための検証エラーを取り出す関数を書く必要があるでしょう。</p>
+</li>
+</ol>
+<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
+<p>この章ではPureScriptでの副作用の扱いについての多くの考え方を導入しました。</p>
+<ul>
+<li><code>Monad</code>型クラスと、do記法との関連に出会いました。</li>
+<li>モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。</li>
+<li>異なる副作用で動作するコードを書くために、
+モナドを抽象的に扱う方法を見ました。</li>
+<li>モナドがアプリカティブ関手の一例であること、
+両者がどのように副作用のある計算を可能にするのかということ、
+そして2つの手法の違いを説明しました。</li>
+<li>ネイティブな作用の概念を定義し、
+ネイティブな副作用を処理するために使用する <code>Effect</code>モナドを導入しました。</li>
+<li>乱数生成、例外、コンソール入出力、変更可能な状態、
+およびReactを使ったDOM操作といった、
+さまざまな作用を扱うために <code>Effect</code>モナドを使いました。</li>
+</ul>
+<p><code>Effect</code>モナドは現実のPureScriptコードにおける基本的なツールです。
+本書ではこのあとも、多くの場面で副作用を処理するために使っていきます。</p>
+<hr />
+<small>
+<p>この翻訳は<a href="https://github.com/aratama">aratama</a>氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは<a href="https://github.com/aratama/purescript-book-ja"><code>aratama/purescript-book-ja</code></a>に、Webサイトは<a href="http://aratama.github.io/purescript/">実例によるPureScript</a>にあります。</p>
+<p><a href="https://book.purescript.org/">原文の使用許諾</a>：</p>
+<blockquote>
+<p>Copyright (c) 2014-2017 Phil Freeman.</p>
+<p>The text of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License: <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US</a>.</p>
+<p>Some text is derived from the <a href="https://github.com/purescript/documentation">PureScript Documentation Repo</a>, which uses the same license, and is copyright <a href="https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md">various contributors</a>.</p>
+<p>The exercises are licensed under the MIT license.</p>
+</blockquote>
+<p><a href="http://aratama.github.io/purescript/">aratama氏訳の使用許諾</a>：</p>
+<blockquote>
+<p>This book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</p>
+<p>本書は<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja">クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス</a>でライセンスされています。</p>
+</blockquote>
+<p>本翻訳の使用許諾：</p>
+<p>本翻訳も原文と原翻訳にしたがい、
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>の下に提供されています。</p>
+</small>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter7.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter7.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
