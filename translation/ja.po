@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2022-08-13 14:34+0900\n"
-"PO-Revision-Date: 2022-09-16 08:44+0900\n"
+"PO-Revision-Date: 2022-09-23 14:16+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: Nothing\n"
 "Language: ja\n"
@@ -27776,7 +27776,7 @@ msgstr ""
 #: text/chapter9.md:1
 #, no-wrap
 msgid "Asynchronous Effects"
-msgstr ""
+msgstr "非同期作用"
 
 #. type: Plain text
 #: text/chapter9.md:6
@@ -27787,11 +27787,15 @@ msgid ""
 "requests. We'll also cover how to manage sequential and parallel execution "
 "of asynchronous effects."
 msgstr ""
+"この章では`Aff`モナドに集中します。\n"
+"これは`Effect`モナドに似たものですが、*非同期*な副作用を表現するものです。\n"
+"ファイルシステムとやりとりしてHTTPリクエストを作る、非同期な例を実演していきます。\n"
+"また非同期作用の直列ないし並列の実行の管理方法も押さえます。"
 
 #. type: Plain text
 #: text/chapter9.md:10
 msgid "New PureScript libraries introduced in this chapter are:"
-msgstr ""
+msgstr "この章で導入する新しいPureScriptライブラリは以下です。"
 
 #. type: Plain text
 #: text/chapter9.md:15
@@ -27800,6 +27804,10 @@ msgid ""
 "filesystem operations with `Aff`.  - `affjax` - HTTP requests with AJAX and "
 "`Aff`.  - `parallel` - parallel execution of `Aff`."
 msgstr ""
+"- `aff` - `Aff`モナドを定義します。\n"
+"- `node-fs-aff` - `Aff`を使った非同期のファイルシステム操作。\n"
+"- `affjax` - AJAXと`Aff`を使ったHTTPリクエスト。\n"
+"- `parallel` - `Aff`の並列実行。"
 
 #. type: Plain text
 #: text/chapter9.md:17
@@ -27807,18 +27815,21 @@ msgid ""
 "When running outside of the browser (such as in our Node.js environment), "
 "the `affjax` library requires the `xhr2` NPM module. Install that by running:"
 msgstr ""
+"（Node.js環境のような）ブラウザ外で実行する場合、\n"
+"`affjax`ライブラリは`xhr2`NPMモジュールが必要です。\n"
+"以下を走らせてインストールします。"
 
 #. type: Fenced code block (shell)
 #: text/chapter9.md:18
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "$ npm install\n"
-msgstr "npm install\n"
+msgstr "$ npm install\n"
 
 #. type: Title ##
 #: text/chapter9.md:22
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Asynchronous JavaScript"
-msgstr "関数型JavaScript"
+msgstr "非同期なJavaScript"
 
 #. type: Plain text
 #: text/chapter9.md:25
@@ -27829,13 +27840,15 @@ msgid ""
 "JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/"
 "Asynchronous/Introducing) for more background information."
 msgstr ""
+"JavaScriptで非同期なコードに取り組む上で便利な手段は[`async`と`await`](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)です。\n"
+"[非同期なJavaScriptに関するこの記事](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)を見るとより背景情報がわかります。"
 
 #. type: Plain text
 #: text/chapter9.md:27
 msgid ""
 "Here is an example of using this technique to copy the contents of one file "
 "to another file:"
-msgstr ""
+msgstr "以下はこの技法を使ってあるファイルの内容を別のファイルに複製する例です。"
 
 #. type: Fenced code block (js)
 #: text/chapter9.md:28
@@ -27853,6 +27866,17 @@ msgid ""
 "  console.log('There was a problem with copyFile: ' + e.message);\n"
 "});\n"
 msgstr ""
+"import { promises as fsPromises } from 'fs'\n"
+"\n"
+"async function copyFile(file1, file2) {\n"
+"  let data = await fsPromises.readFile(file1, { encoding: 'utf-8' });\n"
+"  fsPromises.writeFile(file2, data, { encoding: 'utf-8' });\n"
+"}\n"
+"\n"
+"copyFile('file1.txt', 'file2.txt')\n"
+".catch(e => {\n"
+"  console.log('There was a problem with copyFile: ' + e.message);\n"
+"});\n"
 
 #. type: Plain text
 #: text/chapter9.md:43
@@ -27860,6 +27884,8 @@ msgid ""
 "It is also possible to use callbacks or synchronous functions, but those are "
 "less desireable because:"
 msgstr ""
+"コールバックや同期関数を使うことも可能ですが、望ましくありません。\n"
+"なぜなら以下です。"
 
 #. type: Plain text
 #: text/chapter9.md:46
@@ -27868,12 +27894,15 @@ msgid ""
 "\"Pyramid of Doom\".  - Synchronous functions block execution of the other "
 "code in your app."
 msgstr ""
+"- コールバックは過剰な入れ子に繋がります。\n"
+"  これは「コールバック地獄」や「悪夢のピラミッド」として知られています。\n"
+"- 同期関数はアプリ中の他のコードの実行を堰き止めてしまいます。"
 
 #. type: Title ##
 #: text/chapter9.md:47
 #, no-wrap
 msgid "Asynchronous PureScript"
-msgstr ""
+msgstr "非同期なPureScript"
 
 #. type: Plain text
 #: text/chapter9.md:50
@@ -27882,12 +27911,14 @@ msgid ""
 "`async`/`await` syntax. Here is the same `copyFile` example from before, but "
 "rewritten in PureScript using `Aff`:"
 msgstr ""
+"PureScriptでに`Aff`モナドはJavaScriptの`async`/`await`構文に似た人間工学を供します。\n"
+"以下は前と同じ`copyFile`の例ですが、`Aff`を使ってPureScriptで書き換えられています。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:51
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/Copy.purs:copyFile}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter9/test/Copy.purs:copyFile}}\n"
 
 #. type: Plain text
 #: text/chapter9.md:56
@@ -27897,6 +27928,10 @@ msgid ""
 "respectively), but those share the same downsides as discussed earlier with "
 "JavaScript, and so that coding style is not recommended."
 msgstr ""
+"上のコード片をコールバックや同期関数を使って書き換えることも可能ですが\n"
+"（例えば`Node.FS.Async`や`Node.FS.Sync`をそれぞれ使います）、\n"
+"JavaScriptで前にお話ししたように同じ短所がここでも通用するため、\n"
+"それらのコーディング形式は推奨されません。"
 
 #. type: Plain text
 #: text/chapter9.md:58
@@ -27904,6 +27939,8 @@ msgid ""
 "The syntax for working with `Aff` is very similar to working with `Effect`. "
 "They are both monads, and can therefore be written with do notation."
 msgstr ""
+"`Aff`を扱う文法は`Effect`を扱うものと大変似ています。\n"
+"どちらもモナドですし、したがってdo記法で書くことができます。"
 
 #. type: Plain text
 #: text/chapter9.md:60
@@ -27911,35 +27948,37 @@ msgid ""
 "For example, if we look at the signature of `readTextFile`, we see that it "
 "returns the file contents as a `String` wrapped in `Aff`:"
 msgstr ""
+"例えば`readTextFile`のシグネチャを見れば、\n"
+"これがファイルの内容を`String`とし、`Aff`に包んで返していることがわかります。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:60
 #, no-wrap
 msgid "readTextFile :: Encoding -> FilePath -> Aff String\n"
-msgstr ""
+msgstr "readTextFile :: Encoding -> FilePath -> Aff String\n"
 
 #. type: Plain text
 #: text/chapter9.md:64
 #, no-wrap
 msgid "We can \"unwrap\" the returned string with a bind arrow (`<-`) in do notation:\n"
-msgstr ""
+msgstr "do記法中では束縛矢印 (`<-`) で返却された文字列を「開封」できます。\n"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:64
 #, no-wrap
 msgid "my_data <- readTextFile UTF8 file1\n"
-msgstr ""
+msgstr "my_data <- readTextFile UTF8 file1\n"
 
 #. type: Plain text
 #: text/chapter9.md:68
 msgid "Then pass it as the string argument to `writeTextFile`:"
-msgstr ""
+msgstr "それから`writeTextFile`に文字列引数として渡します。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:68
 #, no-wrap
 msgid "writeTextFile :: Encoding -> FilePath -> String -> Aff Unit\n"
-msgstr ""
+msgstr "writeTextFile :: Encoding -> FilePath -> String -> Aff Unit\n"
 
 #. type: Plain text
 #: text/chapter9.md:73
@@ -27948,12 +27987,14 @@ msgid ""
 "`attempt`, which captures errors or exceptions encountered while running "
 "`Aff` code and stores them in an `Either`:"
 msgstr ""
+"上の例で他に目を引く`Aff`固有の特徴は`attempt`のみです。\n"
+"これは`Aff`のコードの実行中に遭遇したエラーや例外を補足して`Either`内に保管するものです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:73
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "attempt :: forall a. Aff a -> Aff (Either Error a)\n"
-msgstr "liftF :: forall f a. (Functor f) => f a -> Free f a\n"
+msgstr "attempt :: forall a. Aff a -> Aff (Either Error a)\n"
 
 #. type: Plain text
 #: text/chapter9.md:78
@@ -27962,26 +28003,26 @@ msgid ""
 "previous chapters and combine this with the new `Aff` patterns learned in "
 "the above `copyFile` example to tackle the following exercises:"
 msgstr ""
+"読者ならきっと、前の章から概念の知識を引き出し、\n"
+"その知識と上の`copyFile`の例で学んだ新しい`Aff`パターンを結合することで、\n"
+"以下の演習に挑戦することができるでしょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter9.md:82
-#, fuzzy
 msgid ""
 "(Easy) Write a `concatenateFiles` function which concatenates two text files."
-msgstr ""
-"(簡単)`readFileCont`と `writeFileCont`を使って、2つのテキストフ​​ァイルを連結す"
-"る関数を書いてください。"
+msgstr "（簡単）2つのテキストフ​​ァイルを連結する関数`concatenateFiles`を書いてください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter9.md:84
-#, fuzzy
 msgid ""
 "(Medium) Write a function `concatenateMany` to concatenate multiple text "
 "files, given an array of input file names and an output file name. _Hint_: "
 "use `traverse`."
 msgstr ""
-"(普通) 入力ファイル名の配列を与えて複数のテキストファイルを連結する関"
-"数 `concatenateMany`を書く。 **ヒント**：`traverse`を使用します。"
+"（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、\n"
+"複数のテキストファイルを連結する関数 `concatenateMany`を書いてください。\n"
+"**ヒント**：`traverse`を使ってください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter9.md:86
@@ -27989,13 +28030,13 @@ msgid ""
 "(Medium) Write a function `countCharacters :: FilePath -> Aff (Either Error "
 "Int)` that returns the number of characters in a file, or an error if one is "
 "encountered."
-msgstr ""
+msgstr "（普通）ファイル中の文字数を返すかエラーがあればそれを返す関数`countCharacters :: FilePath -> Aff (Either Error Int)`を書いてください。"
 
 #. type: Title ##
 #: text/chapter9.md:87
 #, no-wrap
 msgid "Additional Aff Resources"
-msgstr ""
+msgstr "更なるAffの資料"
 
 #. type: Plain text
 #: text/chapter9.md:90
@@ -28006,6 +28047,9 @@ msgid ""
 "this chapter, but you may find it helpful to lookup some functions on "
 "Pursuit."
 msgstr ""
+"もしまだ[公式のAffガイド](https://pursuit.purescript.org/packages/purescript-aff/)を見ていなければ、今ざっと目を通してください。\n"
+"この章の残りの演習を完了するための事前要件ではありませんが、\n"
+"Pursuitで何らかの関数を見付けだす助けになるかもしれません。"
 
 #. type: Plain text
 #: text/chapter9.md:94
@@ -28017,10 +28061,17 @@ msgid ""
 "jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-"
 "Aff)"
 msgstr ""
+"以下の補助的な資料にあたることもご自由にどうぞ。\n"
+"でも繰り返しますがこの章の演習はこれらに依存していません。\n"
+"\n"
+"* [DrewによるAffの投稿](https://blog.drewolson.org/asynchronous-purescript)\n"
+"* [更なるAffの説明と例][1]\n"
+"\n"
+"[1]: https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff"
 
 #. type: Title ##
 #: text/chapter9.md:95
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "A HTTP Client"
 msgstr "HTTPクライアント"
 
@@ -28038,19 +28089,24 @@ msgid ""
 "HTTP GET requests at a provided URL and returns the response body or an "
 "error message:"
 msgstr ""
+"`affjax`ライブラリは`Aff`で非同期AJAX HTTP要求を作る便利な手段を提供します。\n"
+"対象としている環境が何であるかによって、[purescript-affjax-web](https://github.com/purescript-contrib/purescript-affjax-web)または[purescript-affjax-node](https://github.com/purescript-contrib/purescript-affjax-node)のどちらかのライブラリを使う必要があります。\n"
+"この章の以降ではNodeを対象としていくので、`purescript-affjax-node`を使います。\n"
+"より詳しい使用上の情報は[affjaxのドキュメント](https://pursuit.purescript.org/packages/purescript-affjax)にあたってください。\n"
+"以下は与えられたURLに向けたHTTPのGET要求をし、応答本文ないしエラー文言を返す例です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:101
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}\n"
 
 #. type: Plain text
 #: text/chapter9.md:106
 msgid ""
 "When calling this in the repl, `launchAff_` is required to convert the `Aff` "
 "to a repl-compatible `Effect`:"
-msgstr ""
+msgstr "これをREPLで呼び出す際は、`launchAff_`を`Aff`からREPLに互換性のある`Effect`へと変換する必要があります。"
 
 #. type: Fenced code block (shell)
 #: text/chapter9.md:107
@@ -28071,35 +28127,48 @@ msgid ""
 "unit\n"
 "{\"data\":{\"id\":1,\"email\":\"george.bluth@reqres.in\",\"first_name\":\"George\",\"last_name\":\"Bluth\", ...}}\n"
 msgstr ""
+"$ spago repl\n"
+"\n"
+"> :pa\n"
+"… import Prelude\n"
+"… import Effect.Aff (launchAff_)\n"
+"… import Effect.Class.Console (log)\n"
+"… import Test.HTTP (getUrl)\n"
+"…\n"
+"… launchAff_ do\n"
+"…   str <- getUrl \"https://reqres.in/api/users/1\"\n"
+"…   log str\n"
+"…\n"
+"unit\n"
+"{\"data\":{\"id\":1,\"email\":\"george.bluth@reqres.in\",\"first_name\":\"George\",\"last_name\":\"Bluth\", ...}}\n"
 
 #. type: Bullet: '1. '
 #: text/chapter9.md:127
 msgid ""
 "(Easy) Write a function `writeGet` which makes an HTTP `GET` request to a "
 "provided url, and writes the response body to a file."
-msgstr ""
+msgstr "（簡単）HTTPの`GET`要求を与えられたURLに行い、応答本文をファイルに書き込む関数`writeGet`を書いてください。"
 
 #. type: Title ##
 #: text/chapter9.md:128
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Parallel Computations"
 msgstr "並列計算"
 
 #. type: Plain text
 #: text/chapter9.md:131
-#, fuzzy
 msgid ""
 "We've seen how to use the `Aff` monad and do notation to compose "
 "asynchronous computations in sequence. It would also be useful to be able to "
 "compose asynchronous computations _in parallel_. With `Aff`, we can compute "
 "in parallel simply by initiating our two computations one after the other."
 msgstr ""
-"`ContT`モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法"
-"を見てきました。非同期計算を**並列に**合成することもできたら便利でしょう。"
+"`Aff`モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。\n"
+"非同期計算を**並列に**合成することもできたら便利でしょう。\n"
+"`Aff`があれば2つの計算を次々に開始するだけで並列に計算できます。"
 
 #. type: Plain text
 #: text/chapter9.md:133
-#, fuzzy
 msgid ""
 "The `parallel` package defines a type class `Parallel` for monads like `Aff` "
 "which support parallel execution. When we met applicative functors earlier "
@@ -28108,16 +28177,16 @@ msgid ""
 "a correspondence between a monad `m` (such as `Aff`) and an applicative "
 "functor `f` which can be used to combine computations in parallel:"
 msgstr ""
-"`purescript-parallel`パッケージは型クラス`Parallel`を定義します。この型クラス"
-"はモナドのために並列計算を提供する`Async`のようなものです。以前に本書で"
-"Applicative関手を導入したとき、並列計算を合成するときにApplicative関手がどの"
-"ように便利なのかを観察しました。実は`Parallel`のインスタンスは、(`Async`のよ"
-"うな)モナド`m`と、並列に計算を合成するために使われるApplicative関手`f`との対"
-"応関係を定義しているのです。"
+"`parallel`パッケージは`Aff`のようなモナドのための型クラス`Parallel`を定義しており、\n"
+"並列実行に対応しています。\n"
+"以前に本書でアプリカティブ関手に出会ったとき、\n"
+"並列計算を合成するときにアプリカティブ関手がどのように便利なのかを観察しました。\n"
+"実は`Parallel`のインスタンスは、（`Aff`のような）モナド`m`と、\n"
+"並列に計算を合成するために使われるアプリカティブ関手`f`との対応関係を定義しているのです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:134
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where\n"
 "  sequential :: forall a. f a -> m a\n"
@@ -28129,24 +28198,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter9.md:141
-#, fuzzy
 msgid "The class defines two functions:"
 msgstr "このクラスは2つの関数を定義しています。"
 
 #. type: Plain text
 #: text/chapter9.md:144
-#, fuzzy
 msgid ""
 "- `parallel`, which takes computations in the monad `m` and turns them into "
 "computations in the applicative functor `f`, and - `sequential`, which "
 "performs a conversion in the opposite direction."
 msgstr ""
-"- `parallel`：モナド `m`を計算し、それを応用ファンクタ `f`の計算に変換しま"
-"す。 - `sequential`：反対方向の変換を行います。"
+"- `parallel`：モナド `m`中の計算を取り、アプリカティブ関手`f`中の計算に変えます。\n"
+"- `sequential`：反対方向の変換を行います。"
 
 #. type: Plain text
 #: text/chapter9.md:146
-#, fuzzy
 msgid ""
 "The `aff` library provides a `Parallel` instance for the `Aff` monad. It "
 "uses mutable references to combine `Aff` actions in parallel, by keeping "
@@ -28154,38 +28220,36 @@ msgid ""
 "have been returned, we can compute the final result and pass it to the main "
 "continuation."
 msgstr ""
-"`purescript-parallel`ライブラリは `Async`モナドの `Parallel`インスタンスを提"
-"供します。 これは、2つの継続(continuation)のどちらが呼び出されたかを追跡する"
-"ことによって、変更可能な参照を使用して並列に `Async`アクションを組み合わせま"
-"す。 両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができま"
-"す。"
+"`aff`ライブラリは `Aff`モナドの `Parallel`インスタンスを提供します。\n"
+"これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによって、\n"
+"変更可能な参照を使用して並列に `Aff`アクションを組み合わせます。\n"
+"両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。"
 
 #. type: Plain text
 #: text/chapter9.md:148
-#, fuzzy
 msgid ""
 "Because applicative functors support lifting of functions of arbitrary "
 "arity, we can perform more computations in parallel by using the applicative "
 "combinators. We can also benefit from all of the standard library functions "
 "which work with applicative functors, such as `traverse` and `sequence`!"
 msgstr ""
-"Applicative関手では任意個引数の関数の持ち上げができるので、このApplicativeコ"
-"ンビネータを使ってより多くの計算を並列に実行することができます。 `traverse`"
-"と `sequence`のようなApplicative関手を扱うすべての標準ライブラリ関数から恩恵"
-"を受けることもできます。"
+"アプリカティブ関手では任意個引数の関数の持ち上げができるので、\n"
+"このアプリカティブコンビネータを使ってより多くの計算を並列に実行することができます。\n"
+"`traverse`や`sequence`といった、アプリカティブ関手を扱う\n"
+"すべての標準ライブラリ関数から恩恵を受けることもできます。"
 
 #. type: Plain text
 #: text/chapter9.md:150
-#, fuzzy
 msgid ""
 "We can also combine parallel computations with sequential portions of code, "
 "by using applicative combinators in a do notation block, or vice versa, "
 "using `parallel` and `sequential` to change type constructors where "
 "appropriate."
 msgstr ""
-"必要に応じて `Parralel`と `runParallel`を使って型構築子を変更することで、do記"
-"法ブロックのApplicativeコンビネータを使って、直列的なコードの一部で並列計算を"
-"結合したり、またはその逆を行ったりすることができます。"
+"必要に応じて `parralel`と`sequential`を使って型構築子を変更することで、\n"
+"do記法ブロック中でアプリカティブコンビネータを使い、\n"
+"直列的なコードの一部で並列計算を結合したり、\n"
+"またはその逆を行ったりすることができます。"
 
 #. type: Plain text
 #: text/chapter9.md:154
@@ -28196,12 +28260,17 @@ msgid ""
 "much slower than `parDelay`.  Note that parallel execution is enabled by "
 "simply replacing `sequence_` with `parSequence_`."
 msgstr ""
+"直列実行と並列実行の間の違いを実演するために、\n"
+"100個の10ミリ秒の遅延からなる配列をつくり、\n"
+"それからその遅延を両方の手法で実行します。\n"
+"REPLで試すと`seqDelay`が`parDelay`より遥かに遅いことに気付くでしょう。\n"
+"並列実行が`sequence_`を`parSequence_`で置き換えるだけで有効になることに注目です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:155
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/ParallelDelay.purs:delays}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter9/test/ParallelDelay.purs:delays}}\n"
 
 #. type: Fenced code block (shell)
 #: text/chapter9.md:159
@@ -28217,6 +28286,15 @@ msgid ""
 "> parDelay -- This is fast\n"
 "unit\n"
 msgstr ""
+"$ spago repl\n"
+"\n"
+"> import Test.ParallelDelay\n"
+"\n"
+"> seqDelay -- This is slow\n"
+"unit\n"
+"\n"
+"> parDelay -- This is fast\n"
+"unit\n"
 
 #. type: Plain text
 #: text/chapter9.md:172
@@ -28227,12 +28305,16 @@ msgid ""
 "`traverse`) is used in this case. This example would also work fine with "
 "`traverse` instead, but it will be slower."
 msgstr ""
+"以下は複数のHTTP要求を並列で行う、より現実味のある例です。\n"
+"`getUrl`関数を再利用して2人の利用者から並列で情報を取得します。\n"
+"この場合では`parTarverse`（`traverse`の並列版）が使われていますね。\n"
+"この例は代わりに`traverse`でも問題なく動きますがより遅くなるでしょう。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:173
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/ParallelFetch.purs:fetchPar}}\n"
-msgstr ""
+msgstr "{{#include ../exercises/chapter9/test/ParallelFetch.purs:fetchPar}}\n"
 
 #. type: Fenced code block (shell)
 #: text/chapter9.md:177
@@ -28248,6 +28330,15 @@ msgid ""
 ",\"{\\\"data\\\":{\\\"id\\\":2,\\\"email\\\":\\\"janet.weaver@reqres.in\\\", ... }\"\n"
 "]\n"
 msgstr ""
+"$ spago repl\n"
+"\n"
+"> import Test.ParallelFetch\n"
+"\n"
+"> fetchPar\n"
+"unit\n"
+"[\"{\\\"data\\\":{\\\"id\\\":1,\\\"email\\\":\\\"george.bluth@reqres.in\\\", ... }\"\n"
+",\"{\\\"data\\\":{\\\"id\\\":2,\\\"email\\\":\\\"janet.weaver@reqres.in\\\", ... }\"\n"
+"]\n"
 
 #. type: Plain text
 #: text/chapter9.md:190
@@ -28258,6 +28349,8 @@ msgid ""
 "parallel](https://github.com/purescript-contrib/purescript-aff#parallel-"
 "execution) also contains more examples."
 msgstr ""
+"利用できる並列関数の完全な一覧は[Pursuitの`parallel`のドキュメント](https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel)で見付かります。\n"
+"[parallelのaffのドキュメントの節](https://github.com/purescript-contrib/purescript-aff#parallel-execution)にもより多くの例が含まれています。"
 
 #. type: Bullet: '1. '
 #: text/chapter9.md:194
@@ -28266,6 +28359,8 @@ msgid ""
 "signature as the earlier `concatenateMany` function, but reads all input "
 "files in parallel."
 msgstr ""
+"（簡単）前の`concatenateMany`関数と同じシグネチャを持つ`concatenateManyParallel`関数を書いてください。\n"
+"ただし全ての入力ファイルを並列に読むようにしてください。"
 
 #. type: Bullet: '1. '
 #: text/chapter9.md:198
@@ -28273,20 +28368,20 @@ msgid ""
 "(Medium) Write a `getWithTimeout :: Number -> String -> Aff (Maybe String)` "
 "function which makes an HTTP `GET` request at the provided URL and returns "
 "either:"
-msgstr ""
+msgstr "（普通）与えられたURLへHTTP `GET`要求を行い以下のいずれかを返す`getWithTimeout :: Number -> String -> Aff (Maybe String)`関数を書いてください。"
 
 #. type: Bullet: '    - '
 #: text/chapter9.md:198
 msgid ""
 "`Nothing`: if the request takes longer than the provided timeout (in "
 "milliseconds)."
-msgstr ""
+msgstr "`Nothing`: 要求してから与えられた時間制限（ミリ秒単位）より長く掛かった場合。"
 
 #. type: Bullet: '    - '
 #: text/chapter9.md:198
 msgid ""
 "The string response: if the request succeeds before the timeout elapses."
-msgstr ""
+msgstr "文字列の応答：時間制限を越える前に要求が成功した場合。"
 
 #. type: Bullet: '1. '
 #: text/chapter9.md:200
@@ -28297,12 +28392,15 @@ msgid ""
 "directory of the file they appear in. _Hint:_ The `node-path` module has "
 "some helpful functions for negotiating directories."
 msgstr ""
+"（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す`recurseFiles`関数を書いてください。\n"
+"一覧になったファイルを並列に読んでください。\n"
+"パスはそのファイルが表れたディレクトリから相対的なものです。\n"
+"**ヒント**：`node_path`モジュールにはディレクトリとやりとりする上で便利な関数があります。"
 
 #. type: Plain text
 #: text/chapter9.md:202
-#, fuzzy
 msgid "For example, if starting from the following `root.txt` file:"
-msgstr "たとえば、次のような単純な代数的データ型を考えてみましょう。"
+msgstr "たとえば、次のような`root.txt`ファイルから始まるとします。"
 
 #. type: Fenced code block (shell)
 #: text/chapter9.md:202
@@ -28325,17 +28423,33 @@ msgid ""
 "\n"
 "$ cat c/a/a.txt\n"
 msgstr ""
+"$ cat root.txt\n"
+"a.txt\n"
+"b/a.txt\n"
+"c/a/a.txt\n"
+"\n"
+"$ cat a.txt\n"
+"b/b.txt\n"
+"\n"
+"$ cat b/b.txt\n"
+"c/a.txt\n"
+"\n"
+"$ cat b/c/a.txt\n"
+"\n"
+"$ cat b/a.txt\n"
+"\n"
+"$ cat c/a/a.txt\n"
 
 #. type: Plain text
 #: text/chapter9.md:221
 msgid "The expected output is:"
-msgstr ""
+msgstr "期待される出力は次の通り。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:221
 #, no-wrap
 msgid "[\"root.txt\",\"a.txt\",\"b/a.txt\",\"b/b.txt\",\"b/c/a.txt\",\"c/a/a.txt\"]\n"
-msgstr ""
+msgstr "[\"root.txt\",\"a.txt\",\"b/a.txt\",\"b/b.txt\",\"b/c/a.txt\",\"c/a/a.txt\"]\n"
 
 #. type: Plain text
 #: text/chapter9.md:230
@@ -28345,6 +28459,11 @@ msgid ""
 "requests asynchronously with the `affjax` library.  - Run asynchronous code "
 "in parallel with the `parallel` library."
 msgstr ""
+"この章では非同期作用を押さえ、以下の方法を学びました。\n"
+"\n"
+"- `aff`ライブラリを使って`Aff`モナド中で非同期コードを走らせる。\n"
+"- `affjax`ライブラリを使って非同期にHTTPリクエストを行う。\n"
+"- `parallel`ライブラリを使って並列に非同期コードを走らせる。"
 
 #, fuzzy
 #~ msgid ""

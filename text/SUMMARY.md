@@ -27,3 +27,4 @@
 * [型クラス](chapter6.ja.md)
 * [アプリカティブによる検証](chapter7.ja.md)
 * [作用モナド](chapter8.ja.md)
+* [非同期作用](chapter9.ja.md)

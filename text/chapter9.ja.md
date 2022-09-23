@@ -1,40 +1,35 @@
-# Asynchronous Effects
+# 非同期作用
 
 ## この章の目標
 
-This chapter focuses on the `Aff` monad, which is similar to the `Effect`
-monad, but represents _asynchronous_ side-effects. We'll demonstrate
-examples of asynchronously interacting with the filesystem and making HTTP
-requests. We'll also cover how to manage sequential and parallel execution
-of asynchronous effects.
+この章では`Aff`モナドに集中します。
+これは`Effect`モナドに似たものですが、*非同期*な副作用を表現するものです。
+ファイルシステムとやりとりしてHTTPリクエストを作る、非同期な例を実演していきます。
+また非同期作用の直列ないし並列の実行の管理方法も押さえます。
 
 ## プロジェクトの準備
 
-New PureScript libraries introduced in this chapter are:
+この章で導入する新しいPureScriptライブラリは以下です。
 
-- `aff` - defines the `Aff` monad.  - `node-fs-aff` - asynchronous
-filesystem operations with `Aff`.  - `affjax` - HTTP requests with AJAX and
-`Aff`.  - `parallel` - parallel execution of `Aff`.
+- `aff` - `Aff`モナドを定義します。
+- `node-fs-aff` - `Aff`を使った非同期のファイルシステム操作。
+- `affjax` - AJAXと`Aff`を使ったHTTPリクエスト。
+- `parallel` - `Aff`の並列実行。
 
-When running outside of the browser (such as in our Node.js environment),
-the `affjax` library requires the `xhr2` NPM module. Install that by
-running:
+（Node.js環境のような）ブラウザ外で実行する場合、
+`affjax`ライブラリは`xhr2`NPMモジュールが必要です。
+以下を走らせてインストールします。
 
 ```shell
 $ npm install
 ```
 
-## Asynchronous JavaScript
+## 非同期なJavaScript
 
-A convenient way to work with asynchronous code in JavaScript is with
-[`async` and
-`await`](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await).
-See [this article on asynchronous
-JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)
-for more background information.
+JavaScriptで非同期なコードに取り組む上で便利な手段は[`async`と`await`](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)です。
+[非同期なJavaScriptに関するこの記事](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)を見るとより背景情報がわかります。
 
-Here is an example of using this technique to copy the contents of one file
-to another file:
+以下はこの技法を使ってあるファイルの内容を別のファイルに複製する例です。
 
 ```js
 import { promises as fsPromises } from 'fs'
@@ -50,104 +45,93 @@ copyFile('file1.txt', 'file2.txt')
 });
 ```
 
-It is also possible to use callbacks or synchronous functions, but those are
-less desireable because:
+コールバックや同期関数を使うことも可能ですが、望ましくありません。
+なぜなら以下です。
 
-- Callbacks lead to excessive nesting, known as "Callback Hell" or the
-"Pyramid of Doom".  - Synchronous functions block execution of the other
-code in your app.
+- コールバックは過剰な入れ子に繋がります。
+  これは「コールバック地獄」や「悪夢のピラミッド」として知られています。
+- 同期関数はアプリ中の他のコードの実行を堰き止めてしまいます。
 
-## Asynchronous PureScript
+## 非同期なPureScript
 
-The `Aff` monad in PureScript offers similar ergonomics of JavaScript's
-`async`/`await` syntax. Here is the same `copyFile` example from before, but
-rewritten in PureScript using `Aff`:
+PureScriptでに`Aff`モナドはJavaScriptの`async`/`await`構文に似た人間工学を供します。
+以下は前と同じ`copyFile`の例ですが、`Aff`を使ってPureScriptで書き換えられています。
 
 ```hs
 {{#include ../exercises/chapter9/test/Copy.purs:copyFile}}
 ```
 
-It is also possible to re-write the above snippet using callbacks or
-synchronous functions (for example with `Node.FS.Async` and `Node.FS.Sync`
-respectively), but those share the same downsides as discussed earlier with
-JavaScript, and so that coding style is not recommended.
+上のコード片をコールバックや同期関数を使って書き換えることも可能ですが
+（例えば`Node.FS.Async`や`Node.FS.Sync`をそれぞれ使います）、
+JavaScriptで前にお話ししたように同じ短所がここでも通用するため、
+それらのコーディング形式は推奨されません。
 
-The syntax for working with `Aff` is very similar to working with
-`Effect`. They are both monads, and can therefore be written with do
-notation.
+`Aff`を扱う文法は`Effect`を扱うものと大変似ています。
+どちらもモナドですし、したがってdo記法で書くことができます。
 
-For example, if we look at the signature of `readTextFile`, we see that it
-returns the file contents as a `String` wrapped in `Aff`:
+例えば`readTextFile`のシグネチャを見れば、
+これがファイルの内容を`String`とし、`Aff`に包んで返していることがわかります。
 ```hs
 readTextFile :: Encoding -> FilePath -> Aff String
 ```
-We can "unwrap" the returned string with a bind arrow (`<-`) in do notation:
+do記法中では束縛矢印 (`<-`) で返却された文字列を「開封」できます。
 ```hs
 my_data <- readTextFile UTF8 file1
 ```
-Then pass it as the string argument to `writeTextFile`:
+それから`writeTextFile`に文字列引数として渡します。
 ```hs
 writeTextFile :: Encoding -> FilePath -> String -> Aff Unit
 ```
 
-The only other notable feature unique to `Aff` in the above example is
-`attempt`, which captures errors or exceptions encountered while running
-`Aff` code and stores them in an `Either`:
+上の例で他に目を引く`Aff`固有の特徴は`attempt`のみです。
+これは`Aff`のコードの実行中に遭遇したエラーや例外を補足して`Either`内に保管するものです。
 ```hs
 attempt :: forall a. Aff a -> Aff (Either Error a)
 ```
 
-You should hopefully be able to draw on your knowledge of concepts from
-previous chapters and combine this with the new `Aff` patterns learned in
-the above `copyFile` example to tackle the following exercises:
+読者ならきっと、前の章から概念の知識を引き出し、
+その知識と上の`copyFile`の例で学んだ新しい`Aff`パターンを結合することで、
+以下の演習に挑戦することができるでしょう。
 
 ## 演習
 
- 1. (Easy) Write a `concatenateFiles` function which concatenates two text
-    files.
+ 1. （簡単）2つのテキストフ​​ァイルを連結する関数`concatenateFiles`を書いてください。
 
- 1. (Medium) Write a function `concatenateMany` to concatenate multiple text
-    files, given an array of input file names and an output file
-    name. _Hint_: use `traverse`.
+ 1. （普通）入力ファイル名の配列と出力ファイル名が与えられたとき、
+    複数のテキストファイルを連結する関数 `concatenateMany`を書いてください。
+    **ヒント**：`traverse`を使ってください。
 
- 1. (Medium) Write a function `countCharacters :: FilePath -> Aff (Either
-    Error Int)` that returns the number of characters in a file, or an error
-    if one is encountered.
+ 1. （普通）ファイル中の文字数を返すかエラーがあればそれを返す関数`countCharacters :: FilePath -> Aff
+    (Either Error Int)`を書いてください。
 
-## Additional Aff Resources
+## 更なるAffの資料
 
-If you haven't already taken a look at the [official Aff
-guide](https://pursuit.purescript.org/packages/purescript-aff/), skim
-through that now. It's not a direct prerequisite for completing the
-remaining exercises in this chapter, but you may find it helpful to lookup
-some functions on Pursuit.
+もしまだ[公式のAffガイド](https://pursuit.purescript.org/packages/purescript-aff/)を見ていなければ、今ざっと目を通してください。
+この章の残りの演習を完了するための事前要件ではありませんが、
+Pursuitで何らかの関数を見付けだす助けになるかもしれません。
 
-You're also welcome to consult these supplemental resources too, but again,
-the exercises in this chapter don't depend on them: * [Drew's Aff
-Post](https://blog.drewolson.org/asynchronous-purescript)  * [Additional Aff
-Explanation and
-Examples](https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff)
+以下の補助的な資料にあたることもご自由にどうぞ。
+でも繰り返しますがこの章の演習はこれらに依存していません。
 
-## A HTTP Client
+* [DrewによるAffの投稿](https://blog.drewolson.org/asynchronous-purescript)
+* [更なるAffの説明と例][1]
 
-The `affjax` library offers a convenient way to make asynchronous AJAX HTTP
-requests with `Aff`. Depending on what environment you are targeting you
-need to use either the
-[purescript-affjax-web](https://github.com/purescript-contrib/purescript-affjax-web)
-or the
-[purescript-affjax-node](https://github.com/purescript-contrib/purescript-affjax-node)
-library.  In the rest of this chapter we will be targeting node and thus
-using `purescript-affjax-node`.  Consult the [Affjax
-docs](https://pursuit.purescript.org/packages/purescript-affjax) for more
-usage information. Here is an example that makes HTTP GET requests at a
-provided URL and returns the response body or an error message:
+[1]:
+https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff
+
+## HTTPクライアント
+
+`affjax`ライブラリは`Aff`で非同期AJAX HTTP要求を作る便利な手段を提供します。
+対象としている環境が何であるかによって、[purescript-affjax-web](https://github.com/purescript-contrib/purescript-affjax-web)または[purescript-affjax-node](https://github.com/purescript-contrib/purescript-affjax-node)のどちらかのライブラリを使う必要があります。
+この章の以降ではNodeを対象としていくので、`purescript-affjax-node`を使います。
+より詳しい使用上の情報は[affjaxのドキュメント](https://pursuit.purescript.org/packages/purescript-affjax)にあたってください。
+以下は与えられたURLに向けたHTTPのGET要求をし、応答本文ないしエラー文言を返す例です。
 
 ```hs
 {{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}
 ```
 
-When calling this in the repl, `launchAff_` is required to convert the `Aff`
-to a repl-compatible `Effect`:
+これをREPLで呼び出す際は、`launchAff_`を`Aff`からREPLに互換性のある`Effect`へと変換する必要があります。
 
 ```shell
 $ spago repl
@@ -168,22 +152,20 @@ unit
 
 ## 演習
 
-1. (Easy) Write a function `writeGet` which makes an HTTP `GET` request to a
-   provided url, and writes the response body to a file.
+1. （簡単）HTTPの`GET`要求を与えられたURLに行い、応答本文をファイルに書き込む関数`writeGet`を書いてください。
 
-## Parallel Computations
+## 並列計算
 
-We've seen how to use the `Aff` monad and do notation to compose
-asynchronous computations in sequence. It would also be useful to be able to
-compose asynchronous computations _in parallel_. With `Aff`, we can compute
-in parallel simply by initiating our two computations one after the other.
+`Aff`モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。
+非同期計算を**並列に**合成することもできたら便利でしょう。
+`Aff`があれば2つの計算を次々に開始するだけで並列に計算できます。
 
-The `parallel` package defines a type class `Parallel` for monads like `Aff`
-which support parallel execution. When we met applicative functors earlier
-in the book, we observed how applicative functors can be useful for
-combining parallel computations. In fact, an instance for `Parallel` defines
-a correspondence between a monad `m` (such as `Aff`) and an applicative
-functor `f` which can be used to combine computations in parallel:
+`parallel`パッケージは`Aff`のようなモナドのための型クラス`Parallel`を定義しており、
+並列実行に対応しています。
+以前に本書でアプリカティブ関手に出会ったとき、
+並列計算を合成するときにアプリカティブ関手がどのように便利なのかを観察しました。
+実は`Parallel`のインスタンスは、（`Aff`のような）モナド`m`と、
+並列に計算を合成するために使われるアプリカティブ関手`f`との対応関係を定義しているのです。
 
 ```hs
 class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where
@@ -191,33 +173,31 @@ class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where
   parallel :: forall a. m a -> f a
 ```
 
-The class defines two functions:
+このクラスは2つの関数を定義しています。
 
-- `parallel`, which takes computations in the monad `m` and turns them into
-computations in the applicative functor `f`, and - `sequential`, which
-performs a conversion in the opposite direction.
+- `parallel`：モナド `m`中の計算を取り、アプリカティブ関手`f`中の計算に変えます。
+- `sequential`：反対方向の変換を行います。
 
-The `aff` library provides a `Parallel` instance for the `Aff` monad. It
-uses mutable references to combine `Aff` actions in parallel, by keeping
-track of which of the two continuations has been called. When both results
-have been returned, we can compute the final result and pass it to the main
-continuation.
+`aff`ライブラリは `Aff`モナドの `Parallel`インスタンスを提供します。
+これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによって、
+変更可能な参照を使用して並列に `Aff`アクションを組み合わせます。
+両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。
 
-Because applicative functors support lifting of functions of arbitrary
-arity, we can perform more computations in parallel by using the applicative
-combinators. We can also benefit from all of the standard library functions
-which work with applicative functors, such as `traverse` and `sequence`!
+アプリカティブ関手では任意個引数の関数の持ち上げができるので、
+このアプリカティブコンビネータを使ってより多くの計算を並列に実行することができます。
+`traverse`や`sequence`といった、アプリカティブ関手を扱う
+すべての標準ライブラリ関数から恩恵を受けることもできます。
 
-We can also combine parallel computations with sequential portions of code,
-by using applicative combinators in a do notation block, or vice versa,
-using `parallel` and `sequential` to change type constructors where
-appropriate.
+必要に応じて `parralel`と`sequential`を使って型構築子を変更することで、
+do記法ブロック中でアプリカティブコンビネータを使い、
+直列的なコードの一部で並列計算を結合したり、
+またはその逆を行ったりすることができます。
 
-To demonstrate the difference between sequential and parallel execution,
-we'll create an array of 100 10-millisecond delays, then execute those
-delays with both techniques.  You'll notice in the repl that `seqDelay` is
-much slower than `parDelay`.  Note that parallel execution is enabled by
-simply replacing `sequence_` with `parSequence_`.
+直列実行と並列実行の間の違いを実演するために、
+100個の10ミリ秒の遅延からなる配列をつくり、
+それからその遅延を両方の手法で実行します。
+REPLで試すと`seqDelay`が`parDelay`より遥かに遅いことに気付くでしょう。
+並列実行が`sequence_`を`parSequence_`で置き換えるだけで有効になることに注目です。
 
 ```hs
 {{#include ../exercises/chapter9/test/ParallelDelay.purs:delays}}
@@ -235,11 +215,10 @@ unit
 unit
 ```
 
-Here's a more real-world example of making multiple HTTP requests in
-parallel. We're reusing our `getUrl` function to fetch information from two
-users in parallel. Note that `parTraverse` (the parallel version of
-`traverse`) is used in this case. This example would also work fine with
-`traverse` instead, but it will be slower.
+以下は複数のHTTP要求を並列で行う、より現実味のある例です。
+`getUrl`関数を再利用して2人の利用者から並列で情報を取得します。
+この場合では`parTarverse`（`traverse`の並列版）が使われていますね。
+この例は代わりに`traverse`でも問題なく動きますがより遅くなるでしょう。
 
 ```hs
 {{#include ../exercises/chapter9/test/ParallelFetch.purs:fetchPar}}
@@ -257,34 +236,25 @@ unit
 ]
 ```
 
-A full listing of available parallel functions can be found in the
-[`parallel` docs on
-Pursuit](https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel).
-The [aff docs section on
-parallel](https://github.com/purescript-contrib/purescript-aff#parallel-execution)
-also contains more examples.
+利用できる並列関数の完全な一覧は[Pursuitの`parallel`のドキュメント](https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel)で見付かります。
+[parallelのaffのドキュメントの節](https://github.com/purescript-contrib/purescript-aff#parallel-execution)にもより多くの例が含まれています。
 
 ## 演習
 
-1. (Easy) Write a `concatenateManyParallel` function which has the same
-   signature as the earlier `concatenateMany` function, but reads all input
-   files in parallel.
+1. （簡単）前の`concatenateMany`関数と同じシグネチャを持つ`concatenateManyParallel`関数を書いてください。
+   ただし全ての入力ファイルを並列に読むようにしてください。
 
-1. (Medium) Write a `getWithTimeout :: Number -> String -> Aff (Maybe
-   String)` function which makes an HTTP `GET` request at the provided URL
-   and returns either:
-    - `Nothing`: if the request takes longer than the provided timeout (in
-      milliseconds).
-    - The string response: if the request succeeds before the timeout
-      elapses.
+1. （普通）与えられたURLへHTTP `GET`要求を行い以下のいずれかを返す`getWithTimeout :: Number -> String
+   -> Aff (Maybe String)`関数を書いてください。
+    - `Nothing`: 要求してから与えられた時間制限（ミリ秒単位）より長く掛かった場合。
+    - 文字列の応答：時間制限を越える前に要求が成功した場合。
 
-1. (Difficult) Write a `recurseFiles` function which takes a "root" file and
-   returns an array of all paths listed in that file (and listed in the
-   listed files too). Read listed files in parallel. Paths are relative to
-   the directory of the file they appear in. _Hint:_ The `node-path` module
-   has some helpful functions for negotiating directories.
+1. （難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す`recurseFiles`関数を書いてください。
+   一覧になったファイルを並列に読んでください。
+   パスはそのファイルが表れたディレクトリから相対的なものです。
+   **ヒント**：`node_path`モジュールにはディレクトリとやりとりする上で便利な関数があります。
 
-For example, if starting from the following `root.txt` file:
+たとえば、次のような`root.txt`ファイルから始まるとします。
 ```shell
 $ cat root.txt
 a.txt
@@ -303,17 +273,18 @@ $ cat b/a.txt
 
 $ cat c/a/a.txt
 ```
-The expected output is:
+期待される出力は次の通り。
 ```hs
 ["root.txt","a.txt","b/a.txt","b/b.txt","b/c/a.txt","c/a/a.txt"]
 ```
 
 ## まとめ
 
-In this chapter we covered asynchronous effects and learned how to: - Run
-asynchronous code in the `Aff` monad with the `aff` library.  - Make HTTP
-requests asynchronously with the `affjax` library.  - Run asynchronous code
-in parallel with the `parallel` library.
+この章では非同期作用を押さえ、以下の方法を学びました。
+
+- `aff`ライブラリを使って`Aff`モナド中で非同期コードを走らせる。
+- `affjax`ライブラリを使って非同期にHTTPリクエストを行う。
+- `parallel`ライブラリを使って並列に非同期コードを走らせる。
 
 - - -
 
