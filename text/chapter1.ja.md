@@ -1,13 +1,12 @@
-# はじめに
+# 導入
 
 ## 関数型JavaScript
 
 関数型プログラミングの手法がJavaScriptに姿を現しはじめてからしばらく経ちます。
 
-- [UnderscoreJS](https://underscorejs.org)などのライブラリがあれば、
-  開発者は`map`や `filter`、
-  `reduce`といった実績のある関数を活用して、
-  小さいプログラムを組み合わせることで大きなプログラムを作ることができます。
+- [UnderscoreJS](https://underscorejs.org)などのライブラリがあれば、開発
+  者は`map`や `filter`、`reduce`といった実績のある関数を活用して、小さい
+  プログラムを組み合わせることで大きなプログラムを作ることができます。
 
     ```javascript
     var sumOfPrimes =
@@ -19,7 +18,8 @@
          .value();
     ```
 
-- NodeJSにおける非同期プログラミングでは、第一級の値としての関数をコールバックを定義するために多用しています。
+- NodeJSにおける非同期プログラミングでは、第一級の値としての関数をコール
+  バックを定義するために多用しています。
 
     ```javascript
     import { readFile, writeFile } from 'fs'
@@ -36,8 +36,9 @@
     ```
 
 - [React](https://reactjs.org)や
-  [virtual-dom](https://github.com/Matt-Esch/virtual-dom)などのライブラリは、
-  アプリケーションの状態についての純粋な関数としてその外観をモデル化しています。
+  [virtual-dom](https://github.com/Matt-Esch/virtual-dom)などのライブラ
+  リは、アプリケーションの状態についての純粋な関数としてその外観をモデル
+  化しています。
 
 関数は単純な抽象化を可能にし、優れた生産性をもたらしてくれます。
 しかし、JavaScriptでの関数型プログラミングには欠点があります。
@@ -123,11 +124,12 @@ PureScriptのような関数型言語は、
 
 いくつかの例を示します。
 
-- 中核となる処理はPureScriptで記述し、
-  ユーザーインターフェイスはJavaScriptで記述する
-- JavaScriptや、他のJavaScriptにコンパイルされる言語でアプリケーションを書き、
-  PureScriptでそのテストを書く
-- 既存のアプリケーションのユーザインタフェースのテストを自動化するためにPureScriptを使用する
+- 中核となる処理はPureScriptで記述し、ユーザーインターフェイスは
+  JavaScriptで記述する
+- JavaScriptや、他のJavaScriptにコンパイルする言語でアプリケーションを書
+  き、PureScriptでそのテストを書く
+- 既存のアプリケーションのユーザインタフェースのテストを自動化するために
+  PureScriptを使用する
 
 この本では小規模な課題をPureScriptで解決することに焦点を当てます。
 ここで学ぶ手法は大規模なアプリケーションに組み込むこともできますが、
@@ -209,34 +211,36 @@ PSCi対話式モードプロンプトに入力するコマンドは、行の先�
 もしどこかでつまずいたときには、PureScriptを学べるオンラインで利用可能な資料がたくさんあります。
 
 - [PureScriptのDiscordサーバ](https://discord.gg/vKn9up84bp)は抱えている
-  問題についてチャットするのに良い場所です。
-  サーバはPureScriptについてのチャット専用です。
+  問題についてチャットするのに良い場所です。サーバはPureScriptについての
+  チャット専用です。
 - [PurescriptのDiscourseフォーラム](https://discourse.purescript.org/)も
-  よくある問題への解決策を探すのに良い場所です。
-  メッセージ履歴が約2週間しか保たないSlackとは違い、
-  ここで質問した内容は将来の読者の助けとして使えるでしょう。
+  よくある問題への解決策を探すのに良い場所です。メッセージ履歴が約2週間
+  しか保たないSlackとは違い、ここで質問した内容は将来の読者の助けとして
+  使えるでしょう。
 - [PureScript: Jordan's
-Reference](https://github.com/jordanmartinez/purescript-jordans-reference)
-  は別のかなり深く踏み込んだ学習資料です。
-  この本の中のある概念が理解しにくかったら、
-  そちらの参考書の対応する節を読むとよいでしょう。
-- [Pursuit](https://pursuit.purescript.org)
-  はPureScriptの型と関数を検索できるデータベースです。
-  Pursuitのヘルプページを読むと
-  [どのような種類の検索ができるのかがわかります](https://pursuit.purescript.org/help/users)。
+  Reference](https://github.com/jordanmartinez/purescript-jordans-reference)
+  は別のかなり深く踏み込んだ学習資料です。この本の中のある概念が理解しに
+  くかったら、そちらの参考書の対応する節を読むとよいでしょう。
+- [Pursuit](https://pursuit.purescript.org)はPureScriptの型と関数を検索
+  できるデータベースです。Pursuitのヘルプページを読むと[どのような種類の
+  検索ができるのかがわかりま
+  す](https://pursuit.purescript.org/help/users)。
 - 非公式の[PureScript
-Cookbook](https://github.com/JordanMartinez/purescript-cookbook)は
-  「Xするにはどうするの？」といった類の質問にコードを混じえて答えを提供します。
-- [PureScriptドキュメントリポジトリ](https://github.com/purescript/documentation)には、
-  PureScriptの開発者や利用者が書いた幅広い話題の記事と例が集まっています。
-- [PureScriptのWebサイト](https://www.purescript.org)には、
-  コード例、映像、他の初心者向け資料を含むいくつかの学習資料へのリンクがあります。
-- [Try PureScript!](https://try.purescript.org)は
-  利用者がWebブラウザでPureScriptのコードをコンパイルすることができるWebサイトです。
-  いくつかの簡単なコードの例があります。
+  Cookbook](https://github.com/JordanMartinez/purescript-cookbook)は「X
+  するにはどうするの？」といった類の質問にコードを混じえて答えを提供しま
+  す。
+- [PureScriptドキュメントリポジト
+  リ](https://github.com/purescript/documentation)には、PureScriptの開発
+  者や利用者が書いた幅広い話題の記事と例が集まっています。
+- [PureScriptのWebサイト](https://www.purescript.org)には、コード例、映
+  像、他の初心者向け資料を含むいくつかの学習資料へのリンクがあります。
+- [Try PureScript!](https://try.purescript.org)は利用者がWebブラウザで
+  PureScriptのコードをコンパイルすることができるWebサイトです。いくつか
+  の簡単なコードの例があります。
 
-もしあなたが例を読んで学ぶことを好むなら、GitHubの `purescript`組織、 `purescript-node`組織および
-`purescript-contrib`組織にはPureScriptコードの例がたくさんあります。
+もし例を読んで学ぶ方が好きでしたら、GitHubの `purescript`組織、
+`purescript-node`組織および `purescript-contrib`組織にはPureScriptコー
+ドの例がたくさんあります。
 
 ## 著者について
 

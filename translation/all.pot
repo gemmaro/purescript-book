@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-13 14:34+0900\n"
+"POT-Creation-Date: 2022-10-22 20:12+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,11 @@ msgid ""
 "for some time now:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter1.md:8
 #, markdown-text
 msgid ""
-"- Libraries such as [UnderscoreJS](https://underscorejs.org) allow the "
+"Libraries such as [UnderscoreJS](https://underscorejs.org) allow the "
 "developer to leverage tried-and-trusted functions such as `map`, `filter` "
 "and `reduce` to create larger programs from smaller programs by composition:"
 msgstr ""
@@ -60,12 +60,12 @@ msgid ""
 "    ```\n"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter1.md:20
 #, markdown-text
 msgid ""
-"- Asynchronous programming in NodeJS leans heavily on functions as "
-"first-class values to define callbacks."
+"Asynchronous programming in NodeJS leans heavily on functions as first-class "
+"values to define callbacks."
 msgstr ""
 
 #. type: Plain text
@@ -92,11 +92,11 @@ msgid ""
 "    ```\n"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter1.md:36
 #, markdown-text
 msgid ""
-"- Libraries such as [React](https://reactjs.org) and "
+"Libraries such as [React](https://reactjs.org) and "
 "[virtual-dom](https://github.com/Matt-Esch/virtual-dom) model views as pure "
 "functions of application state."
 msgstr ""
@@ -262,14 +262,28 @@ msgstr ""
 msgid "Here are some examples:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter1.md:79
 #, markdown-text
 msgid ""
-"- Core logic written in PureScript, with the user interface written in "
-"JavaScript.  - Application written in JavaScript or another compile-to-JS "
-"language, with tests written in PureScript.  - PureScript used to automate "
-"user interface tests for an existing application."
+"Core logic written in PureScript, with the user interface written in "
+"JavaScript."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:79
+#, markdown-text
+msgid ""
+"Application written in JavaScript or another compile-to-JS language, with "
+"tests written in PureScript."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:79
+#, markdown-text
+msgid ""
+"PureScript used to automate user interface tests for an existing "
+"application."
 msgstr ""
 
 #. type: Plain text
@@ -479,35 +493,80 @@ msgid ""
 "online for learning PureScript:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter1.md:146
 #, markdown-text
 msgid ""
-"- The [PureScript Discord server](https://discord.gg/vKn9up84bp) is a great "
+"The [PureScript Discord server](https://discord.gg/vKn9up84bp) is a great "
 "place to chat about issues you may be having. The server is dedicated to "
-"chat about PureScript - The [Purescript Discourse "
-"Forum](https://discourse.purescript.org/) is another good place to search "
-"for solutions to common problems. Questions you ask here will be available "
-"to help future readers, whereas on Slack, message history is only kept for "
-"approximately 2 weeks.  - [PureScript: Jordan's "
+"chat about PureScript"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"The [Purescript Discourse Forum](https://discourse.purescript.org/) is "
+"another good place to search for solutions to common problems. Questions you "
+"ask here will be available to help future readers, whereas on Slack, message "
+"history is only kept for approximately 2 weeks."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"[PureScript: Jordan's "
 "Reference](https://github.com/jordanmartinez/purescript-jordans-reference)  "
 "is an alternative learning resource that goes into great depth. If a concept "
 "in this book is difficult to understand, consider reading the corresponding "
-"section in that reference.  - [Pursuit](https://pursuit.purescript.org) is a "
-"searchable database of PureScript types and functions. Read Pursuit's help "
-"page to [learn what kinds of searches you can "
-"do](https://pursuit.purescript.org/help/users).  - The unofficial "
-"[PureScript Cookbook](https://github.com/JordanMartinez/purescript-cookbook) "
-"provides answers via code to \"How do I do X?\"-type questions.  - The "
-"[PureScript documentation "
+"section in that reference."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"[Pursuit](https://pursuit.purescript.org) is a searchable database of "
+"PureScript types and functions. Read Pursuit's help page to [learn what "
+"kinds of searches you can do](https://pursuit.purescript.org/help/users)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"The unofficial [PureScript "
+"Cookbook](https://github.com/JordanMartinez/purescript-cookbook) provides "
+"answers via code to \"How do I do X?\"-type questions."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"The [PureScript documentation "
 "repository](https://github.com/purescript/documentation) collects articles "
 "and examples on a wide variety of topics, written by PureScript developers "
-"and users.  - The [PureScript website](https://www.purescript.org) contains "
-"links to several learning resources, including code samples, videos and "
-"other resources for beginners.  - [Try "
-"PureScript!](https://try.purescript.org) is a website which allows users to "
-"compile PureScript code in the web browser, and contains several simple "
-"examples of code."
+"and users."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"The [PureScript website](https://www.purescript.org) contains links to "
+"several learning resources, including code samples, videos and other "
+"resources for beginners."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter1.md:146
+#, markdown-text
+msgid ""
+"[Try PureScript!](https://try.purescript.org) is a website which allows "
+"users to compile PureScript code in the web browser, and contains several "
+"simple examples of code."
 msgstr ""
 
 #. type: Plain text
@@ -626,13 +685,22 @@ msgid ""
 "and vice versa. We will cover how to:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter10.md:10
 #, markdown-text
-msgid ""
-"- Call pure, effectful, and asynchronous JavaScript functions from "
-"PureScript.  - Work with untyped data.  - Encode and parse JSON using the "
-"`argonaut` package."
+msgid "Call pure, effectful, and asynchronous JavaScript functions from PureScript."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:10
+#, markdown-text
+msgid "Work with untyped data."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:10
+#, markdown-text
+msgid "Encode and parse JSON using the `argonaut` package."
 msgstr ""
 
 #. type: Plain text
@@ -644,13 +712,18 @@ msgid ""
 "functionality to our application using the FFI:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter10.md:15
+#, markdown-text
+msgid "Alert the user with a popup notification."
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter10.md:15
 #, markdown-text
 msgid ""
-"- Alert the user with a popup notification.  - Store the serialized form "
-"data in the browser's local storage, and reload it when the application "
-"restarts."
+"Store the serialized form data in the browser's local storage, and reload it "
+"when the application restarts."
 msgstr ""
 
 #. type: Plain text
@@ -663,12 +736,16 @@ msgid ""
 "they're less relevant to your learning objectives:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter10.md:20
 #, markdown-text
-msgid ""
-"- Understand the representation of PureScript values at runtime.  - Call "
-"PureScript functions from JavaScript."
+msgid "Understand the representation of PureScript values at runtime."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:20
+#, markdown-text
+msgid "Call PureScript functions from JavaScript."
 msgstr ""
 
 #. type: Title ##
@@ -1726,7 +1803,7 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter10.md:459 text/chapter8.md:443
+#: text/chapter10.md:459 text/chapter8.md:365 text/chapter8.md:443
 #, markdown-text, no-wrap
 msgid "Exceptions"
 msgstr ""
@@ -2707,15 +2784,26 @@ msgid ""
 "features:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter10.md:929
 #, markdown-text
 msgid ""
-"- A Save button at the bottom of the form that, when clicked, serializes the "
-"state of the form to JSON and saves it in local storage.  - Automatic "
-"retrieval of the JSON document from local storage upon page reload. The form "
-"fields are populated with the contents of this document.  - A pop-up alert "
-"if there is an issue saving or loading the form state."
+"A Save button at the bottom of the form that, when clicked, serializes the "
+"state of the form to JSON and saves it in local storage."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:929
+#, markdown-text
+msgid ""
+"Automatic retrieval of the JSON document from local storage upon page "
+"reload. The form fields are populated with the contents of this document."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:929
+#, markdown-text
+msgid "A pop-up alert if there is an issue saving or loading the form state."
 msgstr ""
 
 #. type: Plain text
@@ -2726,16 +2814,21 @@ msgid ""
 "our `Effect.Storage` module:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter10.md:934
 #, markdown-text
 msgid ""
-"- `setItem` takes a key and a value (both strings), and returns a "
-"computation which stores (or updates) the value in local storage at the "
-"specified key.  - `getItem` takes a key, and attempts to retrieve the "
-"associated value from local storage. However, since the `getItem` method on "
-"`window.localStorage` can return `null`, the return type is not `String`, "
-"but `Json`."
+"`setItem` takes a key and a value (both strings), and returns a computation "
+"which stores (or updates) the value in local storage at the specified key."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:934
+#, markdown-text
+msgid ""
+"`getItem` takes a key, and attempts to retrieve the associated value from "
+"local storage. However, since the `getItem` method on `window.localStorage` "
+"can return `null`, the return type is not `String`, but `Json`."
 msgstr ""
 
 #. type: Fenced code block (haskell)
@@ -3009,12 +3102,16 @@ msgstr ""
 msgid "We want this alert to appear when either:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter10.md:1067
 #, markdown-text
-msgid ""
-"- A user attempts to save a form with validation errors.  - The state cannot "
-"be retrieved from local storage."
+msgid "A user attempts to save a form with validation errors."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:1067
+#, markdown-text
+msgid "The state cannot be retrieved from local storage."
 msgstr ""
 
 #. type: Plain text
@@ -3100,15 +3197,26 @@ msgid ""
 "using the FFI:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter10.md:1090
 #, markdown-text
 msgid ""
-"- We've seen the importance of ensuring that foreign functions have correct "
-"representations.  - We learned how to deal with corner cases like null "
-"values and other types of JavaScript data, by using foreign types, or the "
-"`Json` data type.  - We saw how to safely serialize and deserialize JSON "
-"data."
+"We've seen the importance of ensuring that foreign functions have correct "
+"representations."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:1090
+#, markdown-text
+msgid ""
+"We learned how to deal with corner cases like null values and other types of "
+"JavaScript data, by using foreign types, or the `Json` data type."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter10.md:1090
+#, markdown-text
+msgid "We saw how to safely serialize and deserialize JSON data."
 msgstr ""
 
 #. type: Plain text
@@ -3945,16 +4053,35 @@ msgstr ""
 msgid "This module's project introduces the following new dependencies:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter11.md:15
+#, markdown-text
+msgid "`ordered-collections`, which provides data types for immutable maps and sets"
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter11.md:15
 #, markdown-text
 msgid ""
-"- `ordered-collections`, which provides data types for immutable maps and "
-"sets - `transformers`, which provides implementations of standard monad "
-"transformers - `node-readline`, which provides FFI bindings to the "
+"`transformers`, which provides implementations of standard monad "
+"transformers"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter11.md:15
+#, markdown-text
+msgid ""
+"`node-readline`, which provides FFI bindings to the "
 "[`readline`](https://nodejs.org/api/readline.html) interface provided by "
-"NodeJS - `optparse`, which provides applicative parsers for processing "
-"command line arguments"
+"NodeJS"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter11.md:15
+#, markdown-text
+msgid ""
+"`optparse`, which provides applicative parsers for processing command line "
+"arguments"
 msgstr ""
 
 #. type: Title ##
@@ -5076,15 +5203,21 @@ msgid ""
 "`Exception` effect. However, there are some important differences:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter11.md:469
 #, markdown-text
 msgid ""
-"- `Exception` uses actual JavaScript exceptions, whereas `ExceptT` models "
-"errors as a pure data structure.  - The `Exception` effect only supports "
-"exceptions of one type, namely JavaScript's `Error` type, whereas `ExceptT` "
-"supports errors of any type. In particular, we are free to define new error "
-"types."
+"`Exception` uses actual JavaScript exceptions, whereas `ExceptT` models "
+"errors as a pure data structure."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter11.md:469
+#, markdown-text
+msgid ""
+"The `Exception` effect only supports exceptions of one type, namely "
+"JavaScript's `Error` type, whereas `ExceptT` supports errors of any type. In "
+"particular, we are free to define new error types."
 msgstr ""
 
 #. type: Plain text
@@ -6539,12 +6672,16 @@ msgid ""
 "Canvas API."
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter12.md:13
 #, markdown-text
-msgid ""
-"- `canvas`, which gives types to methods from the HTML5 Canvas API - `refs`, "
-"which provides a side-effect for using _global mutable references_"
+msgid "`canvas`, which gives types to methods from the HTML5 Canvas API"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter12.md:13
+#, markdown-text
+msgid "`refs`, which provides a side-effect for using _global mutable references_"
 msgstr ""
 
 #. type: Plain text
@@ -6909,13 +7046,26 @@ msgstr ""
 msgid "There are three functions in use here:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter12.md:142
 #, markdown-text
 msgid ""
-"- `moveTo` moves the current location of the path to the specified "
-"coordinates, - `lineTo` renders a line segment between the current location "
-"and the specified coordinates, and updates the current location, - "
+"`moveTo` moves the current location of the path to the specified "
+"coordinates,"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter12.md:142
+#, markdown-text
+msgid ""
+"`lineTo` renders a line segment between the current location and the "
+"specified coordinates, and updates the current location,"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter12.md:142
+#, markdown-text
+msgid ""
 "`closePath` completes the path by rendering a line segment joining the "
 "current location to the start position."
 msgstr ""
@@ -7444,15 +7594,34 @@ msgid ""
 "transformations are applied bottom-to-top):"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter12.md:352
 #, markdown-text
 msgid ""
-"- The rectangle is translated through `(-100, -100)` so that its center lies "
-"at the origin.  - The rectangle is scaled around the origin.  - The "
-"rectangle is rotated through some multiple of `10` degrees around the "
-"origin.  - The rectangle is translated through `(300, 300)` so that it "
-"center lies at the center of the canvas."
+"The rectangle is translated through `(-100, -100)` so that its center lies "
+"at the origin."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter12.md:352
+#, markdown-text
+msgid "The rectangle is scaled around the origin."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter12.md:352
+#, markdown-text
+msgid ""
+"The rectangle is rotated through some multiple of `10` degrees around the "
+"origin."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter12.md:352
+#, markdown-text
+msgid ""
+"The rectangle is translated through `(300, 300)` so that it center lies at "
+"the center of the canvas."
 msgstr ""
 
 #. type: Plain text
@@ -8305,12 +8474,12 @@ msgid ""
 "`merge` function can be summarized by this property:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter13.md:35
 #, markdown-text
 msgid ""
-"- If `xs` and `ys` are sorted, then `merge xs ys` is the sorted result of "
-"both arrays appended together."
+"If `xs` and `ys` are sorted, then `merge xs ys` is the sorted result of both "
+"arrays appended together."
 msgstr ""
 
 #. type: Plain text
@@ -9288,15 +9457,22 @@ msgid ""
 "already seen a number of examples of domain-specific languages in this book:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter14.md:11
 #, markdown-text
 msgid ""
-"- The `Game` monad and its associated actions, developed in chapter 11, "
+"The `Game` monad and its associated actions, developed in chapter 11, "
 "constitute a domain-specific language for the domain of _text adventure game "
-"development_.  - The `quickcheck` package, covered in chapter 13, is a "
-"domain-specific language for the domain of _generative testing_. Its "
-"combinators enable a particularly expressive notation for test properties."
+"development_."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:11
+#, markdown-text
+msgid ""
+"The `quickcheck` package, covered in chapter 13, is a domain-specific "
+"language for the domain of _generative testing_. Its combinators enable a "
+"particularly expressive notation for test properties."
 msgstr ""
 
 #. type: Plain text
@@ -9569,14 +9745,25 @@ msgid ""
 "parentheses. Each module export can be one of three types:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter14.md:139
+#, markdown-text
+msgid "A value (or function), indicated by the name of the value,"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:139
+#, markdown-text
+msgid "A type class, indicated by the name of the class,"
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter14.md:139
 #, markdown-text
 msgid ""
-"- A value (or function), indicated by the name of the value, - A type class, "
-"indicated by the name of the class, - A type constructor and any associated "
-"data constructors, indicated by the name of the type followed by a "
-"parenthesized list of exported data constructors."
+"A type constructor and any associated data constructors, indicated by the "
+"name of the type followed by a parenthesized list of exported data "
+"constructors."
 msgstr ""
 
 #. type: Plain text
@@ -9603,13 +9790,18 @@ msgstr ""
 msgid "Notice that we have already made some big improvements to our library:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter14.md:148
 #, markdown-text
 msgid ""
-"- It is impossible to represent HTML elements with invalid names (of course, "
-"we are restricted to the set of element names provided by the library).  - "
-"Closed elements cannot contain content by construction."
+"It is impossible to represent HTML elements with invalid names (of course, "
+"we are restricted to the set of element names provided by the library)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:148
+#, markdown-text
+msgid "Closed elements cannot contain content by construction."
 msgstr ""
 
 #. type: Plain text
@@ -10529,12 +10721,16 @@ msgid ""
 "in each hyperlink. However, this approach has some basic issues:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter14.md:583
 #, markdown-text
-msgid ""
-"- The developer might fail to generate unique anchor names.  - The developer "
-"might mistype one or more instances of the anchor name."
+msgid "The developer might fail to generate unique anchor names."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:583
+#, markdown-text
+msgid "The developer might mistype one or more instances of the anchor name."
 msgstr ""
 
 #. type: Plain text
@@ -10881,20 +11077,39 @@ msgid ""
 "standard techniques:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter14.md:730
 #, markdown-text
 msgid ""
-"- We used _smart constructors_ to hide the details of our data "
-"representation, only permitting the user to create documents which were "
-"_correct-by-construction_.  - We used an _user-defined infix binary "
-"operator_ to improve the syntax of the language.  - We used _phantom types_ "
-"to encode additional information in the types of our data, preventing the "
-"user from providing attribute values of the wrong type.  - We used the _free "
-"monad_ to turn our array representation of a collection of content into a "
-"monadic representation supporting do notation. We then extended this "
-"representation to support a new monadic action, and interpreted the monadic "
-"computations using standard monad transformers."
+"We used _smart constructors_ to hide the details of our data representation, "
+"only permitting the user to create documents which were "
+"_correct-by-construction_."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:730
+#, markdown-text
+msgid ""
+"We used an _user-defined infix binary operator_ to improve the syntax of the "
+"language."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:730
+#, markdown-text
+msgid ""
+"We used _phantom types_ to encode additional information in the types of our "
+"data, preventing the user from providing attribute values of the wrong type."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter14.md:730
+#, markdown-text
+msgid ""
+"We used the _free monad_ to turn our array representation of a collection of "
+"content into a monadic representation supporting do notation. We then "
+"extended this representation to support a new monadic action, and "
+"interpreted the monadic computations using standard monad transformers."
 msgstr ""
 
 #. type: Plain text
@@ -11311,15 +11526,27 @@ msgstr ""
 msgid "Here, we import several modules:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter3.md:24
+#, markdown-text
+msgid "The `Control.Plus` module, which defines the `empty` value."
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter3.md:24
 #, markdown-text
 msgid ""
-"- The `Control.Plus` module, which defines the `empty` value.  - The "
-"`Data.List` module, which is provided by the `lists` package which can be "
-"installed using Spago. It contains a few functions which we will need for "
-"working with linked lists.  - The `Data.Maybe` module, which defines data "
-"types and functions for working with optional values."
+"The `Data.List` module, which is provided by the `lists` package which can "
+"be installed using Spago. It contains a few functions which we will need for "
+"working with linked lists."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:24
+#, markdown-text
+msgid ""
+"The `Data.Maybe` module, which defines data types and functions for working "
+"with optional values."
 msgstr ""
 
 #. type: Plain text
@@ -13157,18 +13384,50 @@ msgstr ""
 msgid "In this chapter, we covered several new functional programming concepts:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter3.md:730
 #, markdown-text
 msgid ""
-"- How to use the interactive mode PSCi to experiment with functions and test "
-"ideas.  - The role of types as both a correctness tool, and an "
-"implementation tool.  - The use of curried functions to represent functions "
-"of multiple arguments.  - Creating programs from smaller components by "
-"composition.  - Structuring code neatly using `where` expressions.  - How to "
-"avoid null values by using the `Maybe` type.  - Using techniques like eta "
-"conversion and function composition to refactor code into a clear "
-"specification."
+"How to use the interactive mode PSCi to experiment with functions and test "
+"ideas."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:730
+#, markdown-text
+msgid "The role of types as both a correctness tool, and an implementation tool."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:730
+#, markdown-text
+msgid "The use of curried functions to represent functions of multiple arguments."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:730
+#, markdown-text
+msgid "Creating programs from smaller components by composition."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:730
+#, markdown-text
+msgid "Structuring code neatly using `where` expressions."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:730
+#, markdown-text
+msgid "How to avoid null values by using the `Maybe` type."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:730
+#, markdown-text
+msgid ""
+"Using techniques like eta conversion and function composition to refactor "
+"code into a clear specification."
 msgstr ""
 
 #. type: Plain text
@@ -13229,15 +13488,36 @@ msgstr ""
 msgid "The project has the following dependencies:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter4.md:22
+#, markdown-text
+msgid "`maybe`, which defines the `Maybe` type constructor"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:22
+#, markdown-text
+msgid "`arrays`, which defines functions for working with arrays"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:22
+#, markdown-text
+msgid "`strings`, which defines functions for working with JavaScript strings"
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter4.md:22
 #, markdown-text
 msgid ""
-"- `maybe`, which defines the `Maybe` type constructor - `arrays`, which "
-"defines functions for working with arrays - `strings`, which defines "
-"functions for working with JavaScript strings - `foldable-traversable`, "
-"which defines functions for folding arrays and other data structures - "
-"`console`, which defines functions for printing to the console"
+"`foldable-traversable`, which defines functions for folding arrays and other "
+"data structures"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:22
+#, markdown-text
+msgid "`console`, which defines functions for printing to the console"
 msgstr ""
 
 #. type: Plain text
@@ -14653,16 +14933,42 @@ msgstr ""
 msgid "The `Data.Path` module defines an API for a virtual filesystem, as follows:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter4.md:540
+#, markdown-text
+msgid "There is a type `Path` which represents a path in the filesystem."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:540
+#, markdown-text
+msgid "There is a path `root` which represents the root directory."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:540
+#, markdown-text
+msgid "The `ls` function enumerates the files in a directory."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:540
+#, markdown-text
+msgid "The `filename` function returns the file name for a `Path`."
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter4.md:540
 #, markdown-text
 msgid ""
-"- There is a type `Path` which represents a path in the filesystem.  - There "
-"is a path `root` which represents the root directory.  - The `ls` function "
-"enumerates the files in a directory.  - The `filename` function returns the "
-"file name for a `Path`.  - The `size` function returns the file size for a "
-"`Path` which represents a file.  - The `isDirectory` function tests whether "
-"a `Path` is a file or a directory."
+"The `size` function returns the file size for a `Path` which represents a "
+"file."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter4.md:540
+#, markdown-text
+msgid "The `isDirectory` function tests whether a `Path` is a file or a directory."
 msgstr ""
 
 #. type: Plain text
@@ -15048,14 +15354,27 @@ msgstr ""
 msgid "For example, the `gcd` function is evaluated using the following steps:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter5.md:52
 #, markdown-text
 msgid ""
-"- The first case is tried: if the second argument is zero, the function "
-"returns `n` (the first argument).  - If not, the second case is tried: if "
-"the first argument is zero, the function returns `m` (the second argument).  "
-"- Otherwise, the function evaluates and returns the expression in the last "
+"The first case is tried: if the second argument is zero, the function "
+"returns `n` (the first argument)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter5.md:52
+#, markdown-text
+msgid ""
+"If not, the second case is tried: if the first argument is zero, the "
+"function returns `m` (the second argument)."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter5.md:52
+#, markdown-text
+msgid ""
+"Otherwise, the function evaluates and returns the expression in the last "
 "line."
 msgstr ""
 
@@ -15081,13 +15400,18 @@ msgstr ""
 msgid "The example code above demonstrates two types of patterns:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter5.md:61
 #, markdown-text
 msgid ""
-"- Integer literals patterns, which match something of type `Int`, only if "
-"the value matches exactly.  - Variable patterns, which bind their argument "
-"to a name"
+"Integer literals patterns, which match something of type `Int`, only if the "
+"value matches exactly."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter5.md:61
+#, markdown-text
+msgid "Variable patterns, which bind their argument to a name"
 msgstr ""
 
 #. type: Plain text
@@ -15096,13 +15420,18 @@ msgstr ""
 msgid "There are other types of simple patterns:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter5.md:66
+#, markdown-text
+msgid "`Number`, `String`, `Char` and `Boolean` literals"
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter5.md:66
 #, markdown-text
 msgid ""
-"- `Number`, `String`, `Char` and `Boolean` literals - Wildcard patterns, "
-"indicated with an underscore (`_`), which match any argument, and which do "
-"not bind any names."
+"Wildcard patterns, indicated with an underscore (`_`), which match any "
+"argument, and which do not bind any names."
 msgstr ""
 
 #. type: Plain text
@@ -16455,16 +16784,42 @@ msgid ""
 "`src/Data/Hashable.purs`."
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter6.md:24
 #, markdown-text
 msgid ""
-"- `maybe`, which defines the `Maybe` data type, which represents optional "
-"values.  - `tuples`, which defines the `Tuple` data type, which represents "
-"pairs of values.  - `either`, which defines the `Either` data type, which "
-"represents disjoint unions.  - `strings`, which defines functions which "
-"operate on strings.  - `functions`, which defines some helper functions for "
-"defining PureScript functions."
+"`maybe`, which defines the `Maybe` data type, which represents optional "
+"values."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:24
+#, markdown-text
+msgid ""
+"`tuples`, which defines the `Tuple` data type, which represents pairs of "
+"values."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:24
+#, markdown-text
+msgid ""
+"`either`, which defines the `Either` data type, which represents disjoint "
+"unions."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:24
+#, markdown-text
+msgid "`strings`, which defines functions which operate on strings."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:24
+#, markdown-text
+msgid ""
+"`functions`, which defines some helper functions for defining PureScript "
+"functions."
 msgstr ""
 
 #. type: Plain text
@@ -16824,13 +17179,22 @@ msgid ""
 "has three alternatives:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter6.md:179
 #, markdown-text
-msgid ""
-"- `LT` - if the first argument is less than the second.  - `EQ` - if the "
-"first argument is equal to the second.  - `GT` - if the first argument is "
-"greater than the second."
+msgid "`LT` - if the first argument is less than the second."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:179
+#, markdown-text
+msgid "`EQ` - if the first argument is equal to the second."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:179
+#, markdown-text
+msgid "`GT` - if the first argument is greater than the second."
 msgstr ""
 
 #. type: Plain text
@@ -18274,13 +18638,20 @@ msgstr ""
 msgid "What properties might we expect of a hash function?"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter6.md:679
 #, markdown-text
 msgid ""
-"- A hash function should be deterministic, and map equal values to equal "
-"hash codes.  - A hash function should distribute its results approximately "
-"uniformly over some set of hash codes."
+"A hash function should be deterministic, and map equal values to equal hash "
+"codes."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter6.md:679
+#, markdown-text
+msgid ""
+"A hash function should distribute its results approximately uniformly over "
+"some set of hash codes."
 msgstr ""
 
 #. type: Plain text
@@ -18598,13 +18969,20 @@ msgid ""
 "before. There are two new dependencies:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter7.md:19
 #, markdown-text
 msgid ""
-"- `control`, which defines functions for abstracting control flow using type "
-"classes like `Applicative`.  - `validation`, which defines a functor for "
-"_applicative validation_, the subject of this chapter."
+"`control`, which defines functions for abstracting control flow using type "
+"classes like `Applicative`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter7.md:19
+#, markdown-text
+msgid ""
+"`validation`, which defines a functor for _applicative validation_, the "
+"subject of this chapter."
 msgstr ""
 
 #. type: Plain text
@@ -20352,18 +20730,32 @@ msgstr ""
 msgid "In this chapter, we covered a lot of new ideas:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter7.md:698
 #, markdown-text
 msgid ""
-"- We introduced the concept of an _applicative functor_ which generalizes "
-"the idea of function application to type constructors which capture some "
-"notion of side-effect.  - We saw how applicative functors gave a solution to "
-"the problem of validating data structures, and how by switching the "
-"applicative functor we could change from reporting a single error to "
-"reporting all errors across a data structure.  - We met the `Traversable` "
-"type class, which encapsulates the idea of a _traversable functor_, or a "
-"container whose elements can be used to combine values with side-effects."
+"We introduced the concept of an _applicative functor_ which generalizes the "
+"idea of function application to type constructors which capture some notion "
+"of side-effect."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter7.md:698
+#, markdown-text
+msgid ""
+"We saw how applicative functors gave a solution to the problem of validating "
+"data structures, and how by switching the applicative functor we could "
+"change from reporting a single error to reporting all errors across a data "
+"structure."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter7.md:698
+#, markdown-text
+msgid ""
+"We met the `Traversable` type class, which encapsulates the idea of a "
+"_traversable functor_, or a container whose elements can be used to combine "
+"values with side-effects."
 msgstr ""
 
 #. type: Plain text
@@ -20417,15 +20809,22 @@ msgstr ""
 msgid "The project adds the following dependencies:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:15
 #, markdown-text
 msgid ""
-"- `effect` - defines the `Effect` monad, the subject of the second half of "
-"the chapter. This dependency is often listed in every starter project (it's "
-"been a dependency of every chapter so far), so you'll rarely have to "
-"explicitly install it.  - `react-basic-hooks` - a web framework that we will "
-"use for our Address Book app."
+"`effect` - defines the `Effect` monad, the subject of the second half of the "
+"chapter. This dependency is often listed in every starter project (it's been "
+"a dependency of every chapter so far), so you'll rarely have to explicitly "
+"install it."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:15
+#, markdown-text
+msgid ""
+"`react-basic-hooks` - a web framework that we will use for our Address Book "
+"app."
 msgstr ""
 
 #. type: Title ##
@@ -20452,13 +20851,22 @@ msgid ""
 "using the following non-deterministic algorithm:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:25
 #, markdown-text
-msgid ""
-"- _Choose_ the value `x` of the first throw.  - _Choose_ the value `y` of "
-"the second throw.  - If the sum of `x` and `y` is `n` then return the pair "
-"`[x, y]`, else fail."
+msgid "_Choose_ the value `x` of the first throw."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:25
+#, markdown-text
+msgid "_Choose_ the value `y` of the second throw."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:25
+#, markdown-text
+msgid "If the sum of `x` and `y` is `n` then return the pair `[x, y]`, else fail."
 msgstr ""
 
 #. type: Plain text
@@ -21351,12 +21759,22 @@ msgid ""
 "typically are free from side-effects. Some examples of native effects are:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:365
 #, markdown-text
-msgid ""
-"- Console IO - Random number generation - Exceptions - Reading/writing "
-"mutable state"
+msgid "Console IO"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:365
+#, markdown-text
+msgid "Random number generation"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:365
+#, markdown-text
+msgid "Reading/writing mutable state"
 msgstr ""
 
 #. type: Plain text
@@ -21365,12 +21783,28 @@ msgstr ""
 msgid "And in the browser:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:372
 #, markdown-text
-msgid ""
-"- DOM manipulation - XMLHttpRequest / AJAX calls - Interacting with a "
-"websocket - Writing/reading to/from local storage"
+msgid "DOM manipulation"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:372
+#, markdown-text
+msgid "XMLHttpRequest / AJAX calls"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:372
+#, markdown-text
+msgid "Interacting with a websocket"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:372
+#, markdown-text
+msgid "Writing/reading to/from local storage"
 msgstr ""
 
 #. type: Plain text
@@ -21379,13 +21813,22 @@ msgstr ""
 msgid "We have already seen plenty of examples of \"non-native\" side-effects:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:378
 #, markdown-text
-msgid ""
-"- Optional values, as represented by the `Maybe` data type - Errors, as "
-"represented by the `Either` data type - Multi-functions, as represented by "
-"arrays or lists"
+msgid "Optional values, as represented by the `Maybe` data type"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:378
+#, markdown-text
+msgid "Errors, as represented by the `Either` data type"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:378
+#, markdown-text
+msgid "Multi-functions, as represented by arrays or lists"
 msgstr ""
 
 #. type: Plain text
@@ -22071,16 +22514,30 @@ msgid ""
 "or with open-source DOM libraries. For example:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:681
 #, markdown-text
 msgid ""
-"- [`web-dom`](https://github.com/purescript-web/purescript-web-dom) provides "
+"[`web-dom`](https://github.com/purescript-web/purescript-web-dom) provides "
 "type definitions and low level interface implementations for the W3C DOM "
-"spec.  - [`web-html`](https://github.com/purescript-web/purescript-web-html) "
-"provides type definitions and low level interface implementations for the "
-"W3C HTML5 spec.  - [`jquery`](https://github.com/paf31/purescript-jquery) is "
-"a set of bindings to the [jQuery](http://jquery.org) library."
+"spec."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:681
+#, markdown-text
+msgid ""
+"[`web-html`](https://github.com/purescript-web/purescript-web-html) provides "
+"type definitions and low level interface implementations for the W3C HTML5 "
+"spec."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:681
+#, markdown-text
+msgid ""
+"[`jquery`](https://github.com/paf31/purescript-jquery) is a set of bindings "
+"to the [jQuery](http://jquery.org) library."
 msgstr ""
 
 #. type: Plain text
@@ -22091,15 +22548,27 @@ msgid ""
 "libraries, such as"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter8.md:687
 #, markdown-text
 msgid ""
-"- [`thermite`](https://github.com/paf31/purescript-thermite), which builds "
-"on [`react`](https://github.com/purescript-contrib/purescript-react)  - "
+"[`thermite`](https://github.com/paf31/purescript-thermite), which builds on "
+"[`react`](https://github.com/purescript-contrib/purescript-react)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:687
+#, markdown-text
+msgid ""
 "[`react-basic-hooks`](https://github.com/megamaddu/purescript-react-basic-hooks), "
 "which builds on "
-"[`react-basic`](https://github.com/lumihq/purescript-react-basic)  - "
+"[`react-basic`](https://github.com/lumihq/purescript-react-basic)"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:687
+#, markdown-text
+msgid ""
 "[`halogen`](https://github.com/purescript-halogen/purescript-halogen) which "
 "provides a type-safe set of abstractions on top of a custom virtual DOM "
 "library."
@@ -22933,20 +23402,51 @@ msgid ""
 "PureScript:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
+#: text/chapter8.md:1010
+#, markdown-text
+msgid "We met the `Monad` type class, and its connection to do notation."
+msgstr ""
+
+#. type: Bullet: '- '
 #: text/chapter8.md:1010
 #, markdown-text
 msgid ""
-"- We met the `Monad` type class, and its connection to do notation.  - We "
-"introduced the monad laws, and saw how they allow us to transform code "
-"written using do notation.  - We saw how monads can be used abstractly, to "
-"write code which works with different side-effects.  - We saw how monads are "
-"examples of applicative functors, how both allow us to compute with "
-"side-effects, and the differences between the two approaches.  - The concept "
-"of native effects was defined, and we met the `Effect` monad, which is used "
-"to handle native side-effects.  - We used the `Effect` monad to handle a "
-"variety of effects: random number generation, exceptions, console IO, "
-"mutable state, and DOM manipulation using React."
+"We introduced the monad laws, and saw how they allow us to transform code "
+"written using do notation."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:1010
+#, markdown-text
+msgid ""
+"We saw how monads can be used abstractly, to write code which works with "
+"different side-effects."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:1010
+#, markdown-text
+msgid ""
+"We saw how monads are examples of applicative functors, how both allow us to "
+"compute with side-effects, and the differences between the two approaches."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:1010
+#, markdown-text
+msgid ""
+"The concept of native effects was defined, and we met the `Effect` monad, "
+"which is used to handle native side-effects."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter8.md:1010
+#, markdown-text
+msgid ""
+"We used the `Effect` monad to handle a variety of effects: random number "
+"generation, exceptions, console IO, mutable state, and DOM manipulation "
+"using React."
 msgstr ""
 
 #. type: Plain text
@@ -22981,13 +23481,28 @@ msgstr ""
 msgid "New PureScript libraries introduced in this chapter are:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter9.md:15
 #, markdown-text
-msgid ""
-"- `aff` - defines the `Aff` monad.  - `node-fs-aff` - asynchronous "
-"filesystem operations with `Aff`.  - `affjax` - HTTP requests with AJAX and "
-"`Aff`.  - `parallel` - parallel execution of `Aff`."
+msgid "`aff` - defines the `Aff` monad."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter9.md:15
+#, markdown-text
+msgid "`node-fs-aff` - asynchronous filesystem operations with `Aff`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter9.md:15
+#, markdown-text
+msgid "`affjax` - HTTP requests with AJAX and `Aff`."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter9.md:15
+#, markdown-text
+msgid "`parallel` - parallel execution of `Aff`."
 msgstr ""
 
 #. type: Plain text
@@ -23056,13 +23571,18 @@ msgid ""
 "less desireable because:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter9.md:46
 #, markdown-text
 msgid ""
-"- Callbacks lead to excessive nesting, known as \"Callback Hell\" or the "
-"\"Pyramid of Doom\".  - Synchronous functions block execution of the other "
-"code in your app."
+"Callbacks lead to excessive nesting, known as \"Callback Hell\" or the "
+"\"Pyramid of Doom\"."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter9.md:46
+#, markdown-text
+msgid "Synchronous functions block execution of the other code in your app."
 msgstr ""
 
 #. type: Title ##
@@ -23332,13 +23852,18 @@ msgstr ""
 msgid "The class defines two functions:"
 msgstr ""
 
-#. type: Plain text
+#. type: Bullet: '- '
 #: text/chapter9.md:144
 #, markdown-text
 msgid ""
-"- `parallel`, which takes computations in the monad `m` and turns them into "
-"computations in the applicative functor `f`, and - `sequential`, which "
-"performs a conversion in the opposite direction."
+"`parallel`, which takes computations in the monad `m` and turns them into "
+"computations in the applicative functor `f`, and"
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter9.md:144
+#, markdown-text
+msgid "`sequential`, which performs a conversion in the opposite direction."
 msgstr ""
 
 #. type: Plain text

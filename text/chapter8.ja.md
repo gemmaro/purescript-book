@@ -13,10 +13,10 @@
 
 このプロジェクトでは、以下の依存関係が追加されています。
 
-- `effect`: 章の後半の主題である`Effect`モナドを定義しています。
-  この依存関係はあらゆるプロジェクトの始めに掲げられることがよくあるので
-  （これまでの全ての章でも依存関係にありました）、
-  明示的にインストールしなければいけないことは稀です。
+- `effect`: 章の後半の主題である`Effect`モナドを定義しています。この依存
+  関係はあらゆるプロジェクトの始めに掲げられることがよくあるので（これま
+  での全ての章でも依存関係にありました）、明示的にインストールしなければ
+  いけないことは稀です。
 - `react-basic-hooks`: アドレス帳アプリに使うWebフレームワークです。
 
 ## モナドとdo記法
@@ -29,7 +29,8 @@ do記法は**配列内包表記**を扱うときに最初に導入されまし�
 
 - 最初の投擲で値 `x`を**選択**します。
 - 2回目の投擲で値 `y`を**選択**します。
-- もし `x`と `y`の和が `n`なら組 `[x, y]`を返し、そうでなければ失敗します。
+- もし `x`と `y`の和が `n`なら組 `[x, y]`を返し、そうでなければ失敗しま
+  す。
 
 配列内包表記を使うと、この非決定的アルゴリズムを自然に書くことができます。
 
@@ -850,8 +851,8 @@ DOMを直接扱ったり、
 PureScriptパッケージが沢山あります。
 例えば以下です。
 
-- [`web-dom`](https://github.com/purescript-web/purescript-web-dom)は
-  W3CのDOM規格に向けた型定義と低水準インターフェース実装を提供します。
+- [`web-dom`](https://github.com/purescript-web/purescript-web-dom)はW3C
+  のDOM規格に向けた型定義と低水準インターフェース実装を提供します。
 - [`web-html`](https://github.com/purescript-web/purescript-web-html)は
   W3CのHTML5規格に向けた型定義と低水準インターフェース実装を提供します。
 - [`jquery`](http://github.com/paf31/purescript-jquery)は
@@ -860,21 +861,20 @@ PureScriptパッケージが沢山あります。
 上記のライブラリを抽象化するPureScriptライブラリもあります。
 以下のようなものです。
 
-<ul>
-<li><a
-href="http://github.com/paf31/purescript-thermite"><code>thermite</code></a>は
-<a
-href="https://github.com/purescript-contrib/purescript-react"<code>react</code></a>
-上で構築されるライブラリです。</li>
-<li><a
-href="https://github.com/megamaddu/purescript-react-basic-hooks"><code>react-basic-hooks</code></a>
-は<a
-href="https://github.com/lumihq/purescript-react-basic"><code>react-basic</code></a>
-上で構築されるライブラリです。</li>
-<li><a
-href="http://github.com/purescript-halogen/purescript-halogen"><code>halogen</code></a>は
-自前の仮想DOMライブラリを土台とした型安全な抽象化の集まりを提供します。</li>
-</ul>
+- <a
+  href="http://github.com/paf31/purescript-thermite"><code>thermite</code></a>
+  は<a
+  href="https://github.com/purescript-contrib/purescript-react"><code>react</code></a>
+  上で構築されるライブラリです。
+- <a
+  href="https://github.com/megamaddu/purescript-react-basic-hooks"><code>react-basic-hooks</code></a>
+  は<a
+  href="https://github.com/lumihq/purescript-react-basic"><code>react-basic</code></a>
+  上で構築されるライブラリです。
+- <a
+  href="http://github.com/purescript-halogen/purescript-halogen"><code>halogen</code></a>
+  は自前の仮想DOMライブラリを土台とした型安全な抽象化の集まりを提供しま
+  す。
 
 この章では `react-basic-hooks`ライブラリを使用し、
 住所簿アプリケーションにユーザーインターフェイスを追加しますが、
@@ -1285,16 +1285,14 @@ onChange: handler targetValue $ traverse_ setValue
 
 - `Monad`型クラスと、do記法との関連に出会いました。
 - モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。
-- 異なる副作用で動作するコードを書くために、
-  モナドを抽象的に扱う方法を見ました。
-- モナドがアプリカティブ関手の一例であること、
-  両者がどのように副作用のある計算を可能にするのかということ、
-  そして2つの手法の違いを説明しました。
-- ネイティブな作用の概念を定義し、
-  ネイティブな副作用を処理するために使用する `Effect`モナドを導入しました。
-- 乱数生成、例外、コンソール入出力、変更可能な状態、
-  およびReactを使ったDOM操作といった、
-  さまざまな作用を扱うために `Effect`モナドを使いました。
+- 異なる副作用で動作するコードを書くために、モナドを抽象的に扱う方法を見
+  ました。
+- モナドがアプリカティブ関手の一例であること、両者がどのように副作用のあ
+  る計算を可能にするのかということ、そして2つの手法の違いを説明しました。
+- ネイティブな作用の概念を定義し、ネイティブな副作用を処理するために使用
+  する `Effect`モナドを導入しました。
+- 乱数生成、例外、コンソール入出力、変更可能な状態、およびReactを使った
+  DOM操作といった、さまざまな作用を扱うために `Effect`モナドを使いました。
 
 `Effect`モナドは現実のPureScriptコードにおける基本的なツールです。
 本書ではこのあとも、多くの場面で副作用を処理するために使っていきます。

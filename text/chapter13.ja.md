@@ -51,7 +51,7 @@ the appropriate values. However, everything we need to know about the
 `merge` function can be summarized by this property:
 
 - If `xs` and `ys` are sorted, then `merge xs ys` is the sorted result of
-both arrays appended together.
+  both arrays appended together.
 
 `quickcheck` allows us to test this property directly, by generating random
 test cases. We simply state the properties that we want our code to have, as

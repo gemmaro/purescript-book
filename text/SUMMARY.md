@@ -19,7 +19,7 @@
 
 - - -
 
-* [はじめに](chapter1.ja.md)
+* [導入](chapter1.ja.md)
 * [はじめよう](chapter2.ja.md)
 * [関数とレコード](chapter3.ja.md)
 * [再帰、マップ、畳み込み](chapter4.ja.md)
@@ -29,3 +29,4 @@
 * [作用モナド](chapter8.ja.md)
 * [非同期作用](chapter9.ja.md)
 * [外部関数インターフェース](chapter10.ja.md)
+* [モナドな冒険](chapter11.ja.md)

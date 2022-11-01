@@ -11,10 +11,11 @@ maximize readability of code used to express ideas in that domain. We have
 already seen a number of examples of domain-specific languages in this book:
 
 - The `Game` monad and its associated actions, developed in chapter 11,
-constitute a domain-specific language for the domain of _text adventure game
-development_.  - The `quickcheck` package, covered in chapter 13, is a
-domain-specific language for the domain of _generative testing_. Its
-combinators enable a particularly expressive notation for test properties.
+  constitute a domain-specific language for the domain of _text adventure
+  game development_.
+- The `quickcheck` package, covered in chapter 13, is a domain-specific
+  language for the domain of _generative testing_. Its combinators enable a
+  particularly expressive notation for test properties.
 
 This chapter will take a more structured approach to some of standard
 techniques in the implementation of domain-specific languages. It is by no
@@ -167,10 +168,11 @@ module Data.DOM.Smart
 The module exports list is provided immediately after the module name inside
 parentheses. Each module export can be one of three types:
 
-- A value (or function), indicated by the name of the value, - A type class,
-indicated by the name of the class, - A type constructor and any associated
-data constructors, indicated by the name of the type followed by a
-parenthesized list of exported data constructors.
+- A value (or function), indicated by the name of the value,
+- A type class, indicated by the name of the class,
+- A type constructor and any associated data constructors, indicated by the
+  name of the type followed by a parenthesized list of exported data
+  constructors.
 
 Here, we export the `Element` _type_, but we do not export its data
 constructors. If we did, the user would be able to construct invalid HTML
@@ -183,8 +185,8 @@ will apply the technique of smart constructors to these types shortly.
 Notice that we have already made some big improvements to our library:
 
 - It is impossible to represent HTML elements with invalid names (of course,
-we are restricted to the set of element names provided by the library).  -
-Closed elements cannot contain content by construction.
+  we are restricted to the set of element names provided by the library).
+- Closed elements cannot contain content by construction.
 
 We can apply this technique to the `Content` type very easily. We simply
 remove the data constructors for the `Content` type from the exports list,
@@ -719,8 +721,8 @@ already, by generating anchor names by hand and including them at least
 twice in the document: once at the definition of the anchor itself, and once
 in each hyperlink. However, this approach has some basic issues:
 
-- The developer might fail to generate unique anchor names.  - The developer
-might mistype one or more instances of the anchor name.
+- The developer might fail to generate unique anchor names.
+- The developer might mistype one or more instances of the anchor name.
 
 In the interest of protecting the developer from their own mistakes, we can
 introduce a new type which represents anchor names, and provide a monadic
@@ -897,15 +899,17 @@ documents, by incrementally improving a naive implementation using some
 standard techniques:
 
 - We used _smart constructors_ to hide the details of our data
-representation, only permitting the user to create documents which were
-_correct-by-construction_.  - We used an _user-defined infix binary
-operator_ to improve the syntax of the language.  - We used _phantom types_
-to encode additional information in the types of our data, preventing the
-user from providing attribute values of the wrong type.  - We used the _free
-monad_ to turn our array representation of a collection of content into a
-monadic representation supporting do notation. We then extended this
-representation to support a new monadic action, and interpreted the monadic
-computations using standard monad transformers.
+  representation, only permitting the user to create documents which were
+  _correct-by-construction_.
+- We used an _user-defined infix binary operator_ to improve the syntax of
+  the language.
+- We used _phantom types_ to encode additional information in the types of
+  our data, preventing the user from providing attribute values of the wrong
+  type.
+- We used the _free monad_ to turn our array representation of a collection
+  of content into a monadic representation supporting do notation. We then
+  extended this representation to support a new monadic action, and
+  interpreted the monadic computations using standard monad transformers.
 
 These techniques all leverage PureScript's module and type systems, either
 to prevent the user from making mistakes or to improve the syntax of the

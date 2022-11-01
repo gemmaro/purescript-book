@@ -8,10 +8,10 @@ Canvas API.
 
 ## プロジェクトの準備
 
-This module's project introduces the following new dependencies:
+このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。
 
-- `canvas`, which gives types to methods from the HTML5 Canvas API - `refs`,
-which provides a side-effect for using _global mutable references_
+- `canvas`, which gives types to methods from the HTML5 Canvas API
+- `refs`, which provides a side-effect for using _global mutable references_
 
 The source code for the chapter is broken up into a set of modules, each of
 which defines a `main` method. Different sections of this chapter are
@@ -196,10 +196,11 @@ piecewise-linear path. Here is the corresponding code:
 There are three functions in use here:
 
 - `moveTo` moves the current location of the path to the specified
-coordinates, - `lineTo` renders a line segment between the current location
-and the specified coordinates, and updates the current location, -
-`closePath` completes the path by rendering a line segment joining the
-current location to the start position.
+  coordinates,
+- `lineTo` renders a line segment between the current location and the
+  specified coordinates, and updates the current location,
+- `closePath` completes the path by rendering a line segment joining the
+  current location to the start position.
 
 The result of this code snippet is to fill an isosceles triangle.
 
@@ -458,10 +459,12 @@ then applies the following sequence of transformations (remember that
 transformations are applied bottom-to-top):
 
 - The rectangle is translated through `(-100, -100)` so that its center lies
-at the origin.  - The rectangle is scaled around the origin.  - The
-rectangle is rotated through some multiple of `10` degrees around the
-origin.  - The rectangle is translated through `(300, 300)` so that it
-center lies at the center of the canvas.
+  at the origin.
+- The rectangle is scaled around the origin.
+- The rectangle is rotated through some multiple of `10` degrees around the
+  origin.
+- The rectangle is translated through `(300, 300)` so that it center lies at
+  the center of the canvas.
 
 Build the example:
 
