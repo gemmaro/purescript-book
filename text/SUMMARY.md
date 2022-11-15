@@ -30,3 +30,4 @@
 * [非同期作用](chapter9.ja.md)
 * [外部関数インターフェース](chapter10.ja.md)
 * [モナドな冒険](chapter11.ja.md)
+* [Canvasグラフィックス](chapter12.ja.md)

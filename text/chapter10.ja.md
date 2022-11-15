@@ -1351,9 +1351,12 @@ PureScriptの式は、実行時に特に単純な表現を持っているとい�
 `false`のどちらか一方の（JavaScriptの）値へと評価されます。特に`null`や `undefined`に評価される型
 `Boolean`のPureScriptの式はありません。
 
-`Int`や`Number`や`String`の型の式についても同様のことが成り立ちます。`Int`や`Number`型の式は
-`null`でないJavaScriptの数へと評価されますし、 `String`型の式は
-`null`でないJavaScriptの文字列へと評価されます。たとえ`typeof`を使うことによって型`Number`の値と見分けがつかなくなっても、型`Int`の式は実行時に整数に評価されます。
+A similar law holds for expressions of type `Int`, `Number`, and `String` -
+expressions of type `Int` or `Number` evaluate to non-null JavaScript
+numbers, and expressions of type `String` evaluate to non-null JavaScript
+strings. Expressions of type `Int` will evaluate to integers at runtime,
+even though they cannot be distinguished from values of type `Number` by
+using `typeof`.
 
 `Unit`についてはどうでしょうか？`Unit`には現住 (`unit`)
 が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。古いコードは`{}`を使って表現する傾向がありました。しかし比較的新しいコードでは`undefined`を使う傾向にあります。なので、`Unit`を表現するのに使うものは本当に何でも問題にならないのですが、`undefined`を使うことが推奨されます。（関数から何も返さないときも`undefined`を返します。）

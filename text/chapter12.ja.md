@@ -1,57 +1,55 @@
-# Canvas Graphics
+# Canvasグラフィックス
 
 ## この章の目標
 
-This chapter will be an extended example focussing on the `canvas` package,
-which provides a way to generate 2D graphics from PureScript using the HTML5
-Canvas API.
+この章は`canvas`パッケージに焦点を当てる発展的な例となります。このパッ
+ケージはPureScriptでHTML5のCanvas APIを使用して2Dグラフィックスを生成
+する手段を提供します。
 
 ## プロジェクトの準備
 
 このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。
 
-- `canvas`, which gives types to methods from the HTML5 Canvas API
-- `refs`, which provides a side-effect for using _global mutable references_
+- `canvas`はHTML5のCanvas APIのメソッドの型を与えます。
+- `refs`は**大域的な変更可能領域への参照**を使うための副作用を提供します。
 
-The source code for the chapter is broken up into a set of modules, each of
-which defines a `main` method. Different sections of this chapter are
-implemented in different files, and the `Main` module can be changed by
-modifying the Spago build command to run the appropriate file's `main`
-method at each point.
+この章のソースコードは、それぞれに `main`メソッドが定義されているモジュー
+ルの集合へと分割されています。この章のそれぞれの節の内容はそれぞれの異
+なるファイルで実装されており、それぞれの時点での適切なファイルの
+`main`メソッドを実行できるように、Spagoビルドコマンドを変更することで
+`Main`モジュールが変更できるようになっています。
 
-The HTML file `html/index.html` contains a single `canvas` element which
-will be used in each example, and a `script` element to load the compiled
-PureScript code. To test the code for each section, open the HTML file in
-your browser. Because most exercises target the browser, there are no unit
-tests for this chapter.
+HTMLファイル `html/index.html`には、各例で使用される単一の `canvas`要
+素、およびコンパイルされたPureScriptコードを読み込む `script`要素が含
+まれています。ほとんどの演習はブラウザを対象にしているので、この章には
+単体試験はありません。
 
-## Simple Shapes
+## 単純な図形
 
-The `Example/Rectangle.purs` file contains a simple introductory example,
-which draws a single blue rectangle at the center of the canvas. The module
-imports the `Effect` type from the `Effect` module, and also the
-`Graphics.Canvas` module, which contains actions in the `Effect` monad for
-working with the Canvas API.
+`Example/Rectangle.purs`ファイルには簡単な導入例が含まれています。この
+例ではcanvasの中心に青い四角形をひとつ描画します。このモジュールは、
+`Effect`モジュールからの`Effect`型と、Canvas APIを扱うための`Effect`モ
+ナドのアクションを含む`Graphics.Canvas`モジュールをインポートします。
 
-The `main` action starts, like in the other modules, by using the
-`getCanvasElementById` action to get a reference to the canvas object, and
-the `getContext2D` action to access the 2D rendering context for the canvas:
+他のモジュールでも同様ですが、 `main`アクションは最初に
+`getCanvasElementById`アクションを使ってcanvasオブジェクトへの参照を取
+得しています。また、 `getContext2D`アクションを使ってキャンバスの2D描
+画コンテキストを参照しています。
 
-The `void` function takes a functor and replaces its value with `Unit`. In
-the example it is used to make `main` conform with its signature.
+`void`関数は関手を取り値を`Unit`で置き換えます。例では`main`がシグネチャ
+に沿うようにするために使われています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Rectangle.purs:main}}
 ```
 
-_Note_: the call to `unsafePartial` here is necessary since the pattern
-match on the result of `getCanvasElementById` is partial, matching only the
-`Just` constructor. For our purposes, this is fine, but in production code,
-we would probably want to match the `Nothing` constructor and provide an
-appropriate error message.
+**注意**：この`unsafePartial`の呼び出しは必須です。これは
+`getCanvasElementById`の結果のパターン照合部分的で、`Just`値構築子だけ
+と照合するためです。ここではこれで問題ありませんが、実際の製品のコード
+ではおそらく`Nothing`値構築子と照合させ、適切なエラーメッセージを提供
+したほうがよいでしょう。
 
-The types of these actions can be found using PSCi or by looking at the
-documentation:
+これらのアクションの型は、PSCiを使うかドキュメントを見ると確認できます。
 
 ```haskell
 getCanvasElementById :: String -> Effect (Maybe CanvasElement)
@@ -59,62 +57,63 @@ getCanvasElementById :: String -> Effect (Maybe CanvasElement)
 getContext2D :: CanvasElement -> Effect Context2D
 ```
 
-`CanvasElement` and `Context2D` are types defined in the `Graphics.Canvas`
-module. The same module also defines the `Canvas` effect, which is used by
-all of the actions in the module.
+`CanvasElement`と `Context2D`は `Graphics.Canvas`モジュールで定義され
+ている型です。このモジュールでは`Canvas`作用も定義されており、モジュー
+ル内のすべてのアクションで使用されています。
 
-The graphics context `ctx` manages the state of the canvas, and provides
-methods to render primitive shapes, set styles and colors, and apply
-transformations.
+グラフィックスコンテキスト `ctx`は、canvasの状態を管理し、原始的な図形
+を描画したり、スタイルや色を設定したり、座標変換を適用するためのメソッ
+ドを提供しています。
 
-We continue by setting the fill style to solid blue using the `setFillStyle`
-action. The longer hex notation of `#0000FF` may also be used for blue, but
-shorthand notation is easier for simple colors:
+話を進めると、`setFillStyle`アクションを使うことで塗り潰しスタイルを濃
+い青に設定できます。より長い16進数記法の`#0000FF`も青には使えますが、
+略記法が単純な色についてはより簡単です。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Rectangle.purs:setFillStyle}}
 ```
 
-Note that the `setFillStyle` action takes the graphics context as an
-argument. This is a common pattern in the `Graphics.Canvas` module.
+`setFillStyle`アクションがグラフィックスコンテキストを引数として取って
+いることに注意してください。これは `Graphics.Canvas`ではよくあるパター
+ンです。
 
-Finally, we use the `fillPath` action to fill the rectangle. `fillPath` has
-the following type:
+最後に、 `fillPath`アクションを使用して矩形を塗りつぶしています。
+`fillPath`は次のような型を持っています。
 
 ```haskell
 fillPath :: forall a. Context2D -> Effect a -> Effect a
 ```
 
-`fillPath` takes a graphics context and another action which builds the path
-to render. To build a path, we can use the `rect` action. `rect` takes a
-graphics context, and a record which provides the position and size of the
-rectangle:
+`fillPath`はグラフィックスコンテキストと描画するパスを構築する別のアク
+ションを引数にとります。パスは `rect`アクションを使うと構築することが
+できます。 `rect`はグラフィックスコンテキストと矩形の位置及びサイズを
+格納するレコードを引数にとります。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Rectangle.purs:fillPath}}
 ```
 
-Build the rectangle example, providing `Example.Rectangle` as the name of
-the main module:
+mainモジュールの名前として`Example.Rectangle`を与えてこの長方形のコー
+ド例をビルドしましょう。
 
 ```text
 $ spago bundle-app --main Example.Rectangle --to dist/Main.js
 ```
 
-Now, open the `html/index.html` file and verify that this code renders a
-blue rectangle in the center of the canvas.
+それでは `html/index.html`ファイルを開き、このコードによってcanvasの中
+央に青い四角形が描画されていることを確認してみましょう。
 
-## Putting Row Polymorphism to Work
+## 行多相を利用する
 
-There are other ways to render paths. The `arc` function renders an arc
-segment, and the `moveTo`, `lineTo` and `closePath` functions can be used to
-render piecewise-linear paths.
+パスを描画する方法は他にもあります。 `arc`関数は円弧を描画します。
+`moveTo`関数、 `lineTo`関数、 `closePath`関数は断片的な線分のパスを描
+画するのに使えます。
 
-The `Shapes.purs` file renders three shapes: a rectangle, an arc segment and
-a triangle.
+`Shapes.purs`ファイルでは長方形と円弧と三角形の、3つの図形を描画してい
+ます。
 
-We have seen that the `rect` function takes a record as its argument. In
-fact, the properties of the rectangle are defined in a type synonym:
+`rect`関数は引数としてレコードをとることを見てきました。実際には、長方
+形のプロパティは型同義語で定義されています。
 
 ```haskell
 type Rectangle =
@@ -125,12 +124,11 @@ type Rectangle =
   }
 ```
 
-The `x` and `y` properties represent the location of the top-left corner,
-while the `w` and `h` properties represent the width and height
-respectively.
+`x`と `y`プロパティは左上隅の位置を表しており、 `w`と `h`のプロパティ
+はそれぞれ幅と高さを表しています。
 
-To render an arc segment, we can use the `arc` function, passing a record
-with the following type:
+`arc`関数に以下のような型を持つレコードを渡して呼び出すと、円弧を描画
+することができます。
 
 ```haskell
 type Arc =
@@ -142,13 +140,12 @@ type Arc =
   }
 ```
 
-Here, the `x` and `y` properties represent the center point, `r` is the
-radius, and `start` and `end` represent the endpoints of the arc in radians.
+ここで、 `x`と `y`プロパティは弧の中心、 `r`は半径、 `start`と `end`は
+弧の両端の角度を弧度法で表しています。
 
-For example, this code fills an arc segment centered at `(300, 300)` with
-radius `50`. The arc completes 2/3rds of a rotation. Note that the unit
-circle is flipped vertically, since the y-axis increases towards the bottom
-of the canvas:
+例えばこのコードは中心が`(300, 300)`に中心があり半径`50`の円弧を塗り潰
+します。弧は1回転のうち2/3 rds分あります。単位円が鉛直方向に反転するこ
+とに注意してください。これはy軸がcanvasの下向きに増加するためです。
 
 ```haskell
   fillPath ctx $ arc ctx
@@ -160,76 +157,72 @@ of the canvas:
     }
 ```
 
-Notice that both the `Rectangle` and `Arc` record types contain `x` and `y`
-properties of type `Number`. In both cases, this pair represents a
-point. This means that we can write row-polymorphic functions which can act
-on either type of record.
+`Number`型の `x`と `y`というプロパティが `Rectangle`レコード型と
+`Arc`レコード型の両方に含まれていることに注意してください。どちらの場
+合でもこの組は点を表しています。これは、いずれのレコード型にも適用でき
+る、行多相な関数を書くことができることを意味します。
 
-For example, the `Shapes` module defines a `translate` function which
-translates a shape by modifying its `x` and `y` properties:
+たとえば、 `Shapes`モジュールでは `x`と `y`のプロパティを変更し図形を
+並行移動する `translate`関数を定義されています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Shapes.purs:translate}}
 ```
 
-Notice the row-polymorphic type. It says that `translate` accepts any record
-with `x` and `y` properties _and any other properties_, and returns the same
-type of record. The `x` and `y` fields are updated, but the rest of the
-fields remain unchanged.
+この行多相型に注目してください。これは `triangle`が `x`と `y`というプ
+ロパティと、**それに加えて他の任意のプロパティ**を持ったどんなレコード
+でも受け入れ、同じ型のレコードを返すということを言っています。 `x`フィー
+ルドと `y`フィールドは更新されますが、残りのフィールドは変更されません。
 
-This is an example of _record update syntax_. The expression `shape { ... }`
-creates a new record based on the `shape` record, with the fields inside the
-braces updated to the specified values. Note that the expressions inside the
-braces are separated from their labels by equals symbols, not colons like in
-record literals.
+これは**レコード更新構文**の例です。 `shape { ... }`という式は、
+`shape`を元にして、括弧の中で指定された値で更新されたフィールドを持つ
+新たなレコードを作ります。波括弧の中の式はレコードリテラルのようなコロ
+ンではなく、等号でラベルと式を区切って書くことに注意してください。
 
-The `translate` function can be used with both the `Rectangle` and `Arc`
-records, as can be seen in the `Shapes` example.
+`Shapes`の例からわかるように、 `translate`関数は `Rectangle`レコードと
+`Arc`レコード双方に対して使うことができます。
 
-The third type of path rendered in the `Shapes` example is a
-piecewise-linear path. Here is the corresponding code:
+`Shape`の例で描画される3つめの型は区分からなる線分のパスです。対応する
+コードは次のようになります。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Shapes.purs:path}}
 ```
 
-There are three functions in use here:
+ここでは3つの関数が使われています。
 
-- `moveTo` moves the current location of the path to the specified
-  coordinates,
-- `lineTo` renders a line segment between the current location and the
-  specified coordinates, and updates the current location,
-- `closePath` completes the path by rendering a line segment joining the
-  current location to the start position.
+- `moveTo`はパスの現在地を指定された座標に移動します。
+- `lineTo`は現在地と指定された座標の間の線分を描画し、現在地を更新します。
+- `closePath`は現在地と開始地点とを結ぶ線分を描画してパスを完結します。
 
-The result of this code snippet is to fill an isosceles triangle.
+このコード片の結果は二等辺三角形の塗り潰しです。
 
-Build the example by specifying `Example.Shapes` as the main module:
+mainモジュールとして`Example.Shapes`を指定して、この例をビルドしましょう。
 
 ```text
 $ spago bundle-app --main Example.Shapes --to dist/Main.js
 ```
 
-and open `html/index.html` again to see the result. You should see the three
-different types of shapes rendered to the canvas.
+そしてもう一度 `html/index.html`を開き、結果を確認してください。canvas
+に3つの異なる図形が描画されるはずです。
 
 ## 演習
 
- 1. (Easy) Experiment with the `strokePath` and `setStrokeStyle` functions
-    in each of the examples so far.
- 1. (Easy) The `fillPath` and `strokePath` functions can be used to render
-    complex paths with a common style by using a do notation block inside
-    the function argument. Try changing the `Rectangle` example to render
-    two rectangles side-by-side using the same call to `fillPath`. Try
-    rendering a sector of a circle by using a combination of a
-    piecewise-linear path and an arc segment.
- 1. (Medium) Given the following record type:
+ 1. （簡単）これまでの例のそれぞれについて、 `strokePath`関数や
+    `setStrokeStyle`関数を使ってみましょう。
+ 1. （簡単）関数の引数の内部のdo記法ブロックにより、`fillPath`関数と
+    `strokePath`関数を使って共通のスタイルを持つ複雑なパスを描画することが
+    できます。同じ `fillPath`呼び出しで隣り合った2つの矩形を描画するように、
+    `Rectangle`のコード例を変更してみてください。線分と円弧を組み合わせて
+    を、円の扇形を描画してみてください。
+ 1. （普通）次のような2次元の点を表すレコードが与えられたとします。
 
      ```haskell
      type Point = { x :: Number, y :: Number }
      ```
 
-     which represents a 2D point, write a function `renderPath` which strokes a closed path constructed from a number of points:
+     これは2次元の点を表現しています。
+     多数の点からなる閉じたパスを線描きする関数 `renderPath`を書いてください。
 
      ```haskell
      renderPath
@@ -238,69 +231,71 @@ different types of shapes rendered to the canvas.
        -> Effect Unit
      ```
 
-     Given a function
+     次のような関数を考えます。
 
      ```haskell
      f :: Number -> Point
      ```
 
-     which takes a `Number` between `0` and `1` as its argument and returns a `Point`, write an action which plots `f` by using your `renderPath` function. Your action should approximate the path by sampling `f` at a finite set of points.
+    この関数は引数として `1`から `0`の間の `Number`をとり、 `Point`を
+    返します。 `renderPath`関数を利用して関数 `f`のグラフを描くアクショ
+    ンを書いてください。そのアクションは有限個の点を `f`からサンプリン
+    グすることによって近似しなければなりません。
 
-     Experiment by rendering different paths by varying the function `f`.
+     関数 `f`を変更し、様々なパスが描画されることを確かめてください。
 
-## Drawing Random Circles
+## 無作為に円を描く
 
-The `Example/Random.purs` file contains an example which uses the `Effect`
-monad to interleave two different types of side-effect: random number
-generation, and canvas manipulation. The example renders one hundred
-randomly generated circles onto the canvas.
+`Example/Random.purs`ファイルには2種類の異なる副作用が混在した
+`Effect`モナドを使う例が含まれています。1つは乱数生成で、もう1つは
+canvasの操作です。この例では無作為に生成された円をキャンバスに100個描
+画します。
 
-The `main` action obtains a reference to the graphics context as before, and
-then sets the stroke and fill styles:
+`main`アクションはこれまでのようにグラフィックスコンテキストへの参照を
+取得し、ストロークと塗りつぶしスタイルを設定します。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Random.purs:style}}
 ```
 
-Next, the code uses the `for_` function to loop over the integers between
-`0` and `100`:
+次のコードでは `for_`アクションを使って `0`から `100`までの整数につい
+て繰り返しをしています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Random.purs:for}}
 ```
 
-On each iteration, the do notation block starts by generating three random
-numbers distributed between `0` and `1`. These numbers represent the `x` and
-`y` coordinates, and the radius of a circle:
+それぞれの繰り返しではdo記法ブロックは`0`と`1`の間に分布する3つの乱数
+を生成することから始まります。これらの数は `0`から `1`の間に無作為に分
+布しており、それぞれ `x`座標、 `y`座標、半径 `r`を表しています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Random.purs:random}}
 ```
 
-Next, for each circle, the code creates an `Arc` based on these parameters
-and finally fills and strokes the arc with the current styles:
+次のコードではそれぞれの円について、これらの変数に基づいて `Arc`を作成
+し、最後に現在のスタイルに従って円弧の塗りつぶしと線描が行われます。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Random.purs:path}}
 ```
 
-Build this example by specifying the `Example.Random` module as the main
-module:
+mainモジュールとして`Example.Random`を指定して、この例をビルドしましょ
+う。
 
 ```text
 $ spago bundle-app --main Example.Random --to dist/Main.js
 ```
 
-and view the result by opening `html/index.html`.
+`html/index.html`を開いて、結果を確認してみましょう。
 
-## Transformations
+## 座標変換
 
-There is more to the canvas than just rendering simple shapes. Every canvas
-maintains a transformation which is used to transform shapes before
-rendering. Shapes can be translated, rotated, scaled, and skewed.
+キャンバスは簡単な図形を描画するだけのものではありません。キャンバスは
+変換行列を扱うことができ、図形は描画の前に形状を変形してから描画されま
+す。図形は平行移動、回転、拡大縮小、および斜めに変形することができます。
 
-The `canvas` library supports these transformations using the following
-functions:
+`canvas`ライブラリではこれらの変換を以下の関数で提供しています。
 
 ```haskell
 translate :: Context2D
@@ -320,26 +315,24 @@ transform :: Context2D
           -> Effect Context2D
 ```
 
-The `translate` action performs a translation whose components are specified
-by the properties of the `TranslateTransform` record.
+`translate`アクションは `TranslateTransform`レコードのプロパティで指定
+した大きさだけ平行移動を行います。
 
-The `rotate` action performs a rotation around the origin, through some
-number of radians specified by the first argument.
+`rotate`アクションは最初の引数で指定されたラジアンの値に応じて原点を中
+心とした回転を行います。
 
-The `scale` action performs a scaling, with the origin as the center. The
-`ScaleTransform` record specifies the scale factors along the `x` and `y`
-axes.
+`scale`アクションは原点を中心として拡大縮小します。 `ScaleTransform`レ
+コードは `X`軸と `y`軸に沿った拡大率を指定するのに使います。
 
-Finally, `transform` is the most general action of the four here. It
-performs an affine transformation specified by a matrix.
+最後の `transform`はこの４つのうちで最も一般的なアクションです。このア
+クションは行列に従ってアフィン変換を行います。
 
-Any shapes rendered after these actions have been invoked will automatically
-have the appropriate transformation applied.
+これらのアクションが呼び出された後に描画される図形は、自動的に適切な座
+標変換が適用されます。
 
-In fact, the effect of each of these functions is to _post-multiply_ the
-transformation with the context's current transformation. The result is that
-if multiple transformations applied after one another, then their effects
-are actually applied in reverse:
+実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列
+に対して変換行列を**右から乗算**していきます。つまり、もしある作用の変
+換をしていくと、その作用は実際には逆順に適用されていきます：
 
 ```haskell
 transformations ctx = do
@@ -350,17 +343,17 @@ transformations ctx = do
   renderScene
 ```
 
-The effect of this sequence of actions is that the scene is rotated, then
-scaled, and finally translated.
+この一連のアクションの作用では、まずシーンが回転され、それから拡大縮小
+され、最後に平行移動されます。
 
-## Preserving the Context
+## コンテキストの保存
 
-A common use case is to render some subset of the scene using a
-transformation, and then to reset the transformation afterwards.
+変換を適用してシーンの一部を描画し、それからその変換を元に戻す、という
+使い方はよくあります。
 
-The Canvas API provides the `save` and `restore` methods, which manipulate a
-_stack_ of states associated with the canvas. `canvas` wraps this
-functionality into the following functions:
+Canvas APIにはキャンバスの状態の**スタック**を操作する `save`と
+`restore`メソッドが備わっています。 `canvas`ではこの機能を次のような関
+数でラップしています。
 
 ```haskell
 save
@@ -372,15 +365,14 @@ restore
   -> Effect Context2D
 ```
 
-The `save` action pushes the current state of the context (including the
-current transformation and any styles) onto the stack, and the `restore`
-action pops the top state from the stack and restores it.
+`save`アクションは現在のコンテキストの状態（現在の変換行列や描画スタイ
+ル）をスタックにプッシュし、 `restore`アクションはスタックの一番上の状
+態をポップし、コンテキストの状態を復元します。
 
-This allows us to save the current state, apply some styles and
-transformations, render some primitives, and finally restore the original
-transformation and state. For example, the following function performs some
-canvas action, but applies a rotation before doing so, and restores the
-transformation afterwards:
+これらのアクションにより、現在の状態を保存し、いろいろなスタイルや変換
+を適用し、原始的な図形を描画し、最後に元の変換と状態を復元することが可
+能になります。例えば、次の関数はいくつかのキャンバスアクションを実行し
+ますが、その前に回転を適用し、そのあとに変換を復元します。
 
 ```haskell
 rotated ctx render = do
@@ -390,9 +382,9 @@ rotated ctx render = do
   restore ctx
 ```
 
-In the interest of abstracting over common use cases using higher-order
-functions, the `canvas` library provides the `withContext` function, which
-performs some canvas action while preserving the original context state:
+こういったよくある使いかたの高階関数を利用した抽象化として、
+`canvas`ライブラリでは元のコンテキスト状態を保存しつついくつかのキャン
+バスアクションを実行する `withContext`関数が提供されています。
 
 ```haskell
 withContext
@@ -401,8 +393,8 @@ withContext
   -> Effect a
 ```
 
-We could rewrite the `rotated` function above using `withContext` as
-follows:
+`withContext`を使うと、先ほどの `rotated`関数を次のように書き換えるこ
+とができます。
 
 ```haskell
 rotated ctx render =
@@ -411,13 +403,13 @@ rotated ctx render =
     render
 ```
 
-## Global Mutable State
+## 大域的な変更可能状態
 
-In this section, we'll use the `refs` package to demonstrate another effect
-in the `Effect` monad.
+この節では `refs`パッケージを使って `Effect`モナドの別の作用について実
+演してみます。
 
-The `Effect.Ref` module provides a type constructor for global mutable
-references, and an associated effect:
+`Effect.Ref`モジュールでは大域的に変更可能な参照のための型構築子、およ
+び関連する作用を提供します。
 
 ```text
 > import Effect.Ref
@@ -426,84 +418,77 @@ references, and an associated effect:
 Type -> Type
 ```
 
-A value of type `Ref a` is a mutable reference cell containing a value of
-type `a`, used to track global mutation. As such, it should be used
-sparingly.
+型`Ref a`の値は型`a`の値を含む可変参照セルであり、大域的な変更を追跡す
+るのに使われます。そういったわけでこれは少しだけ使う分に留めておくべき
+です。
 
-The `Example/Refs.purs` file contains an example which uses a `Ref` to track
-mouse clicks on the `canvas` element.
+`Example/Refs.purs`ファイルには `canvas`要素上のマウスクリックを追跡す
+るのに `Ref`作用を使用する例が含まれています。
 
-The code starts by creating a new reference containing the value `0`, by
-using the `new` action:
+このコー​​ドでは最初に `new`アクションを使って値 `0`を含む新しい参照を作
+成しています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Refs.purs:clickCount}}
 ```
 
-Inside the click event handler, the `modify` action is used to update the
-click count, and the updated value is returned.
+クリックイベントハンドラの内部では、 `modify`アクションを使用してクリッ
+ク数を更新し、更新された値が返されています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Refs.purs:count}}
 ```
 
-In the `render` function, the click count is used to determine the
-transformation applied to a rectangle:
+`render`関数では、クリック数に応じて変換を矩形に適用しています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Refs.purs:withContext}}
 ```
 
-This action uses `withContext` to preserve the original transformation, and
-then applies the following sequence of transformations (remember that
-transformations are applied bottom-to-top):
+このアクションでは元の変換を保存するために `withContext`を使用しており、
+それから一連の変換を適用しています（変換が下から上に適用されることを思
+い出してください）。
 
-- The rectangle is translated through `(-100, -100)` so that its center lies
-  at the origin.
-- The rectangle is scaled around the origin.
-- The rectangle is rotated through some multiple of `10` degrees around the
-  origin.
-- The rectangle is translated through `(300, 300)` so that it center lies at
-  the center of the canvas.
+- 矩形は`(-100, -100)`だけ平行移動し中心が原点に来ます。
+- 矩形が原点を中心に拡大されます。
+- 矩形が原点を中心に`10`の倍数分の角度で回転します。
+- 矩形が`(300, 300)`だけ平行移動し中心がcanvasの中心に来ます。
 
-Build the example:
+このコード例をビルドしてみましょう。
 
 ```text
 $ spago bundle-app --main Example.Refs --to dist/Main.js
 ```
 
-and open the `html/index.html` file. If you click the canvas repeatedly, you
-should see a green rectangle rotating around the center of the canvas.
+`html/index.html`ファイルを開いてみましょう。何度かキャンバスをクリッ
+クすると、キャンバスの中心の周りを回転する緑の四角形が表示されるはずで
+す。
 
 ## 演習
 
- 1. (Easy) Write a higher-order function which strokes and fills a path
-    simultaneously. Rewrite the `Random.purs` example using your function.
- 1. (Medium) Use `Random` and `Dom` to create an application which renders a
-    circle with random position, color and radius to the canvas when the
-    mouse is clicked.
- 1. (Medium) Write a function which transforms the scene by rotating it
-    around a point with specified coordinates. _Hint_: use a translation to
-    first translate the scene to the origin.
+ 1. （簡単）パスの線描と塗り潰しを同時に行う高階関数を書いてください。その
+    関数を使用して `Random.purs`例を書き直してください。
+ 1. （普通）`Random`作用と `Dom`作用を使用して、マウスがクリックされたとき
+    に、キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを
+    作成してください。
+ 1. （普通）シーンを指定された座標を中心に回転する関数を書いてください。
+    **ヒント**：最初にシーンを原点まで平行移動しましょう。
 
-## L-Systems
+## L-System
 
-In this final example, we will use the `canvas` package to write a function
-for rendering _L-systems_ (or _Lindenmayer systems_).
+この章の最後の例として、 `canvas`パッケージを使用して**L-system**
+(Lindenmayer system) を描画する関数を記述します。
 
-An L-system is defined by an _alphabet_, an initial sequence of letters from
-the alphabet, and a set of _production rules_. Each production rule takes a
-letter of the alphabet and returns a sequence of replacement letters. This
-process is iterated some number of times starting with the initial sequence
-of letters.
+L-Systemは**アルファベット**、つまり初期状態となるアルファベットの文
+字列と、**生成規則**の集合で定義されています。各生成規則は、アルファベッ
+トの文字をとり、それを置き換える文字の配列を返します。この処理は文字の
+初期配列から始まり、複数回繰り返されます。
 
-If each letter of the alphabet is associated with some instruction to
-perform on the canvas, the L-system can be rendered by following the
-instructions in order.
+もしアルファベットの各文字がcanvas上で実行される命令と対応付けられてい
+れば、その指示に順番に従うことでL-Systemを描画することができます。
 
-For example, suppose the alphabet consists of the letters `L` (turn left),
-`R` (turn right) and `F` (move forward). We might define the following
-production rules:
+たとえば、アルファベットが文字 `L`（左回転）、 `R`（右回転）、 `F`（前
+進）で構成されていたとします。また、次のような生成規則を定義します。
 
 ```text
 L -> L
@@ -511,8 +496,7 @@ R -> R
 F -> FLFRRFLF
 ```
 
-If we start with the initial sequence "FRRFRRFRR" and iterate, we obtain the
-following sequence:
+配列 "FRRFRRFRR" から始めて処理を繰り返すと、次のような経過を辿ります。
 
 ```text
 FRRFRRFRR
@@ -520,22 +504,22 @@ FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...
 ```
 
-and so on. Plotting a piecewise-linear path corresponding to this set of
-instruction approximates a curve called the _Koch curve_. Increasing the
-number of iterations increases the resolution of the curve.
+この命令群に対応する線分パスをプロットすると、**コッホ曲線**と呼ばれる
+曲線に近似します。反復回数を増やすと、曲線の解像度が増加していきます。
 
-Let's translate this into the language of types and functions.
+それでは型と関数の言語へとこれを翻訳してみましょう。
 
-We can represent our alphabet of letters with the following ADT:
+アルファベットの文字は以下のADTで表現できます。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:letter}}
 ```
 
-This data type defines one data constructor for each letter in our alphabet.
+このデータ型では、アルファベットの文字ごとに１つずつデータ構築子が定義
+されています。
 
-How can we represent the initial sequence of letters? Well, that's just an
-array of letters from our alphabet, which we will call a `Sentence`:
+文字の初期配列はどのように表したらいいでしょうか。単なるアルファベット
+の配列でいいでしょう。これを `Sentence`と呼ぶことにします。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:sentence}}
@@ -543,22 +527,21 @@ array of letters from our alphabet, which we will call a `Sentence`:
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:initial}}
 ```
 
-Our production rules can be represented as a function from `Letter` to
-`Sentence` as follows:
+生成規則は以下のように`Letter`から `Sentence`への関数として表すことができます。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:productions}}
 ```
 
-This is just copied straight from the specification above.
+これはまさに上記の仕様をそのまま書き写したものです。
 
-Now we can implement a function `lsystem` which will take a specification in
-this form, and render it to the canvas. What type should `lsystem` have?
-Well, it needs to take values like `initial` and `productions` as arguments,
-as well as a function which can render a letter of the alphabet to the
-canvas.
+これで、この形式の仕様を受け取りcanvasに描画する関数 `lsystem`を実装す
+ることができます。 `lsystem`はどのような型を持っているべきでしょうか。
+この関数は初期状態 `initial`と生成規則 `productions`のような値だけでな
+く、アルファベットの文字をcanvasに描画する関数を引数に取る必要があ
+ります。
 
-Here is a first approximation to the type of `lsystem`:
+`lsystem`の型の最初の大まかな設計は以下です。
 
 ```haskell
 Sentence
@@ -568,22 +551,18 @@ Sentence
 -> Effect Unit
 ```
 
-The first two argument types correspond to the values `initial` and
-`productions`.
+最初の2つの引数の型は、値 `initial`と `productions`に対応しています。
 
-The third argument represents a function which takes a letter of the
-alphabet and _interprets_ it by performing some actions on the canvas. In
-our example, this would mean turning left in the case of the letter `L`,
-turning right in the case of the letter `R`, and moving forward in the case
-of a letter `F`.
+3番目の引数は、アルファベットの文字を取り、canvas上のいくつかのアクショ
+ンを実行することによって**翻訳**する関数を表します。この例では、文字
+`L`は左回転、文字 `R`で右回転、文字 `F`は前進を意味します。
 
-The final argument is a number representing the number of iterations of the
-production rules we would like to perform.
+最後の引数は、実行したい生成規則の繰り返し回数を表す数です。
 
-The first observation is that the `lsystem` function should work for only
-one type of `Letter`, but for any type, so we should generalize our type
-accordingly. Let's replace `Letter` and `Sentence` with `a` and `Array a`
-for some quantified type variable `a`:
+最初に気付くことは、この`lsystem`関数は1つの型`Letter`に対してのみ動作
+するのですが、どんなアルファベットについても機能すべきですから、この型
+はもっと一般化されるべきです。それでは、量子化された型変数 `a`について、
+`Letter`と `Sentence`を `a`と `Array a`で置き換えましょう。
 
 ```haskell
 forall a. Array a
@@ -593,14 +572,14 @@ forall a. Array a
           -> Effect Unit
 ```
 
-The second observation is that, in order to implement instructions like
-"turn left" and "turn right", we will need to maintain some state, namely
-the direction in which the path is moving at any time. We need to modify our
-function to pass the state through the computation. Again, the `lsystem`
-function should work for any type of state, so we will represent it using
-the type variable `s`.
+次に気付くこととしては、「左回転」と「右回転」のような命令を実装するた
+めには、いくつかの状態を管理する必要があります。具体的に言えば、その時
+点でパスが向いている方向を状態として持たなければなりません。計算を通じ
+て状態を関数に渡すように変更する必要があります。ここでも `lsystem`関数
+は状態がどんな型でも動作したほうがよいので、型変数 `s`を使用してそれを
+表しています。
 
-We need to add the type `s` in three places:
+型 `s`を追加する必要があるのは3箇所で、次のようになります。
 
 ```haskell
 forall a s. Array a
@@ -611,39 +590,37 @@ forall a s. Array a
             -> Effect s
 ```
 
-Firstly, the type `s` was added as the type of an additional argument to
-`lsystem`. This argument will represent the initial state of the L-system.
+まず追加の引数の型として `lsystem`に型 `s`が追加されています。この引数
+はL-Systemの初期状態を表しています。
 
-The type `s` also appears as an argument to, and as the return type of the
-interpretation function (the third argument to `lsystem`). The
-interpretation function will now receive the current state of the L-system
-as an argument, and will return a new, updated state as its return value.
+型 `s`は引数にも現れますが、翻訳関数（`lsystem`の第3引数）の返り値の型と
+しても現れます。翻訳関数は今のところ、引数としてL-Systemの現在の状態を
+受け取り、返り値として更新された新しい状態を返します。
 
-In the case of our example, we can define use following type to represent
-the state:
+この例の場合では、次のような型を使って状態を表す型を定義することができ
+ます。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:state}}
 ```
 
-The properties `x` and `y` represent the current position of the path, and
-the `theta` property represents the current direction of the path, specified
-as the angle between the path direction and the horizontal axis, in radians.
+プロパティ `x`と `y`はパスの現在の位置を表しており、プロパティ
+`theta`はパスの現在の向きを表しています。これはラジアンで表された水平
+線に対するパスの角度として指定されています。
 
-The initial state of the system might be specified as follows:
+システムの初期状態としては次のように指定されます。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:initialState}}
 ```
 
-Now let's try to implement the `lsystem` function. We will find that its
-definition is remarkably simple.
+それでは、 `lsystem`関数を実装してみます。定義はとても単純であることが
+わかるでしょう。
 
-It seems reasonable that `lsystem` should recurse on its fourth argument (of
-type `Int`). On each step of the recursion, the current sentence will
-change, having been updated by using the production rules. With that in
-mind, let's begin by introducing names for the function arguments, and
-delegating to a helper function:
+`lsystem`は第４引数の値（型 `Int`）に応じて再帰するのが良さそうです。
+再帰の各ステップでは、生成規則に従って状態が更新され、現在の文が変化し
+ていきます。このことを念頭に置きつつ、まずは関数の引数の名前を導入して、
+補助関数に処理を移譲することから始めましょう。
 
 ```haskell
 lsystem :: forall a s
@@ -656,112 +633,119 @@ lsystem :: forall a s
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_impl}}
 ```
 
-The `go` function works by recursion on its second argument. There are two
-cases: when `n` is zero, and when `n` is non-zero.
+`go`関数は第2引数に応じて再帰することで動きます。場合分けは2つであり、
+`n`がゼロであるときと `n`がゼロでないときです。
 
-In the first case, the recursion is complete, and we simply need to interpret the current sentence according to the interpretation function. We have a sentence of type `Array a`, a state of type `s`, and a function of type `s -> a -> Effect s`. This sounds like a job for the `foldM` function which we defined earlier, and which is available from the `control` package:
+1つ目の場合は再帰は完了し、翻訳関数に応じて現在の文を翻訳します。型
+`Array a`の文、型 `s`の状態、型 `s -> a -> Effect s`の関数があります。
+以前定義した `foldM`でやったことのように聞こえます。この関数は
+`control`パッケージで手に入ります。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_go_s_0}}
 ```
 
-What about in the non-zero case? In that case, we can simply apply the
-production rules to each letter of the current sentence, concatenate the
-results, and repeat by calling `go` recursively:
+ゼロでない場合ではどうでしょうか。その場合は、単に生成規則を現在の文の
+それぞれの文字に適用して、その結果を連結し、そして再帰的に`go`を呼び出
+すことによって繰り返します。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_go_s_i}}
 ```
 
-That's it! Note how the use of higher order functions like `foldM` and
-`concatMap` allowed us to communicate our ideas concisely.
+これだけです！`foldM`や `concatMap`のような高階関数を使うと、このよう
+にアイデアを簡潔に表現することができるのです。
 
-However, we're not quite done. The type we have given is actually still too
-specific. Note that we don't use any canvas operations anywhere in our
-implementation. Nor do we make use of the structure of the `Effect` monad at
-all. In fact, our function works for _any_ monad `m`!
+しかし、話はこれで終わりではありません。ここで与えた型は、実際はまだ特
+殊化されすぎています。この定義ではcanvasの操作が実装のどこにも使われて
+いないことに注目してください。それに、まったく `Effecta`モナドの構造を
+利用していません。実際には、この関数は**どんな**モナド `m`についても動
+作するのです！
 
-Here is the more general type of `lsystem`, as specified in the accompanying
-source code for this chapter:
+この章に添付されたソースコードで指定されている、 `lsystem`のもっと一般
+的な型は次のようになっています。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_anno}}
 ```
 
-We can understand this type as saying that our interpretation function is
-free to have any side-effects at all, captured by the monad `m`. It might
-render to the canvas, or print information to the console, or support
-failure or multiple return values. The reader is encouraged to try writing
-L-systems which use these various types of side-effect.
+この型が言っているのは、この翻訳関数はモナド `m`が持つ任意の副作用をまっ
+たく自由に持つことができる、ということだと理解することができます。キャ
+ンバスに描画したり、またはコンソールに情報を出力するかもしれませんし、
+失敗や複数の戻り値に対応しているかもしれません。こういった様々な型の副
+作用を使ったL-Systemを記述してみることを読者にお勧めします。
 
-This function is a good example of the power of separating data from
-implementation. The advantage of this approach is that we gain the freedom
-to interpret our data in multiple different ways. We might even factor
-`lsystem` into two smaller functions: the first would build the sentence
-using repeated application of `concatMap`, and the second would interpret
-the sentence using `foldM`. This is also left as an exercise for the reader.
+この関数は実装からデータを分離することの威力を示す良い例となっています。
+この手法の利点は、複数の異なる方法でデータを解釈する自由が得られること
+です。 `lsystem`は2つの小さな関数へと分解することさえできるかもしれま
+せん。1つ目は `concatMap`の適用の繰り返しを使って文を構築するもので、2
+つ目は `foldM`を使って文を翻訳するものです。これは読者の演習として残し
+ておきます。
 
-Let's complete our example by implementing its interpretation function. The type of `lsystem` tells us that its type signature must be `s -> a -> m s` for some types `a` and `s` and a type constructor `m`. We know that we want `a` to be `Letter` and `s` to be `State`, and for the monad `m` we can choose `Effect`. This gives us the following type:
+それでは翻訳関数を実装して、この章の例を完成させましょう​​。 `lsystem`の
+型は型シグネチャが言っているのは、翻訳関数の型は、何らかの型 `a`と `s`、
+型構築子 `m`について、 `s -> a -> m s`でなければならないということです。
+`a`を `Letter`、 `s`を `State`、モナド `m`を `Effect`というように選び
+たいということがわかっています。これにより次のような型になります。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:interpret_anno}}
 ```
 
-To implement this function, we need to handle the three data constructors of
-the `Letter` type. To interpret the letters `L` (move left) and `R` (move
-right), we simply have to update the state to change the angle `theta`
-appropriately:
+この関数を実装するには、 `Letter`型の3つのデータ構築子それぞれについて
+処理する必要があります。文字 `L`（左回転）と `R`（右回転）の翻訳では、
+`theta`を適切な角度へ変更するように状態を更新するだけです。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:interpretLR}}
 ```
 
-To interpret the letter `F` (move forward), we can calculate the new
-position of the path, render a line segment, and update the state, as
-follows:
+文字 `F`（前進）を翻訳するには、パスの新しい位置を計算し、線分を描画し、
+状態を次のように更新します。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:interpretF}}
 ```
 
-Note that in the source code for this chapter, the `interpret` function is
-defined using a `let` binding inside the `main` function, so that the name
-`ctx` is in scope. It would also be possible to move the context into the
-`State` type, but this would be inappropriate because it is not a changing
-part of the state of the system.
+この章のソースコードでは、名前 `ctx`がスコープ内に来るように、
+`interpret`関数は `main`関数内で `let`束縛を使用して定義されていること
+に注意してください。 `State`型がコンテキストを持つように変更することは
+可能でしょうが、それはこのシステムの状態の変化部分ではないので不適切で
+しょう。
 
-To render this L-system, we can simply use the `strokePath` action:
+このL-Systemを描画するには、次のような `strokePath`アクションを使用するだけです。
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:strokePath}}
 ```
 
-Compile the L-system example using
+次のコマンドを使ってL-Systemをコンパイルします。
 
 ```text
 $ spago bundle-app --main Example.LSystem --to dist/Main.js
 ```
 
-and open `html/index.html`. You should see the Koch curve rendered to the
-canvas.
+`html/index.html`を開いてみましょう。キャンバスにコッホ曲線が描画され
+るのがわかると思います。
 
 ## 演習
 
- 1. (Easy) Modify the L-system example above to use `fillPath` instead of
-    `strokePath`. _Hint_: you will need to include a call to `closePath`,
-    and move the call to `moveTo` outside of the `interpret` function.
- 1. (Easy) Try changing the various numerical constants in the code, to
-    understand their effect on the rendered system.
- 1. (Medium) Break the `lsystem` function into two smaller functions. The
-    first should build the final sentence using repeated application of
-    `concatMap`, and the second should use `foldM` to interpret the result.
- 1. (Medium) Add a drop shadow to the filled shape, by using the
-    `setShadowOffsetX`, `setShadowOffsetY`, `setShadowBlur` and
-    `setShadowColor` actions. _Hint_: use PSCi to find the types of these
-    functions.
- 1. (Medium) The angle of the corners is currently a constant
-    (`tau/6`). Instead, it can be moved into the `Letter` data type, which
-    allows it to be changed by the production rules:
+ 1. （簡単）`strokePath`の代わりに `fillPath`を使用するように、上の
+    L-Systemの例を変更してください。**ヒント**：`closePath`の呼び出しを含
+    め、 `moveTo`の呼び出しを `interpret`関数の外側に移動する必要がありま
+    す。
+ 1. （簡単）描画システムへの影響を理解するために、コード中の様々な数値の定
+    数を変更してみてください。
+ 1. （普通）`lsystem`関数を2つの小さな関数に分割してください。1つ目は
+    `concatMap`の適用の繰り返しを使用して最終的な文を構築するもので、2つ目
+    は `foldM`を使用して結果を解釈するものでなくてはなりません。
+ 1. （普通）`setShadowOffsetX`アクション、 `setShadowOffsetY`アクション、
+    `setShadowBlur`アクション、 `setShadowColor`アクションを使い、塗りつぶ
+    された図形にドロップシャドウを追加してください。**ヒント**：PSCiを使っ
+    て、これらの関数の型を調べてみましょう。
+ 1. （普通）向きを変えるときの角度の大きさは今のところ一定 (`tau/6`) です。
+    その代わりに、`Letter`データ型の中に角度を移動させることで、生成規則に
+    よって変更するようにしてください。
 
      ```haskell
      type Angle = Number
@@ -769,12 +753,15 @@ canvas.
      data Letter = L Angle | R Angle | F
      ```
 
-     How can this new information be used in the production rules to create interesting shapes?
- 1. (Difficult) An L-system is given by an alphabet with four letters: `L` (turn left through 60 degrees), `R` (turn right through 60 degrees), `F` (move forward) and `M` (also move forward).
+     生成規則でこの新しい情報を使うと、どんな面白い図形を作ることがで
+きるでしょうか。
+1. （難しい）`L`（60度左回転）、 `R`（60度右回転）、
+   `F`（前進）、 `M`（これも前進）という4つの文字からなるアルファベット
+   でL-Systemが与えられたとします。
 
-     The initial sentence of the system is the single letter `M`.
+     このシステムの文の初期状態は、単一の文字 `M`です。
 
-     The production rules are specified as follows:
+     このシステムの生成規則は次のように指定されています。
 
      ```text
      L -> L
@@ -783,28 +770,35 @@ canvas.
      M -> MRFRMLFLMLFLMRFRM
      ```
 
-     Render this L-system. _Note_: you will need to decrease the number of iterations of the production rules, since the size of the final sentence grows exponentially with the number of iterations.
+     このL-Systemを描画してください。**注意**：最後の文のサイズは反復
+     回数に従って指数関数的に増大するので、生成規則の繰り返しの回数を
+     削減することが必要になります。
 
-     Now, notice the symmetry between `L` and `M` in the production rules. The two "move forward" instructions can be differentiated using a `Boolean` value using the following alphabet type:
+     ここで、生成規則における `L`と `M`の間の対称性に注目してください。
+     ふたつの「前進」命令は、次のようなアルファベット型を使用すると、
+     `Boolean`値を使って区別することができます。
 
      ```haskell
      data Letter = L | R | F Boolean
      ```
 
-     Implement this L-system again using this representation of the alphabet.
- 1. (Difficult) Use a different monad `m` in the interpretation function. You might try using `Effect.Console` to write the L-system onto the console, or using `Effect.Random` to apply random "mutations" to the state type.
+    このアルファベットの表現を使用して、もう一度このL-Systemを実装して
+    ください。
+1. （難しい）翻訳関数で別のモナド `m`を使ってみましょう。
+   `Effect.Console`作用を利用してコンソール上にL-Systemを出力したり、
+   `Random`作用を利用して状態の型に無作為の「突然変異」を適用したりしてみてください。
 
 ## まとめ
 
-In this chapter, we learned how to use the HTML5 Canvas API from PureScript
-by using the `canvas` library. We also saw a practical demonstration of many
-of the techniques we have learned already: maps and folds, records and row
-polymorphism, and the `Effect` monad for handling side-effects.
+この章では、 `canvas`ライブラリを使用することにより、PureScriptから
+HTML5 Canvas APIを使う方法について学びました。また、これまで学んできた
+手法の多くを利用した実用的な例について見ました。マップや畳み込み、レコー
+ドと行多相、副作用を扱うための `Effect`モナドなどです。
 
-The examples also demonstrated the power of higher-order functions and
-_separating data from implementation_. It would be possible to extend these
-ideas to completely separate the representation of a scene from its
-rendering function, using an algebraic data type, for example:
+この章の例では、高階関数の威力を示すとともに、**実装からのデータの分離**
+も実演してみせました。これは例えば、代数データ型を使用してこれらの概
+念を次のように拡張し、描画関数からシーンの表現を完全に分離できるように
+なります。
 
 ```haskell
 data Scene
@@ -816,13 +810,13 @@ data Scene
   | ...
 ```
 
-This approach is taken in the `drawing` package, and it brings the
-flexibility of being able to manipulate the scene as data in various ways
-before rendering.
+この手法は `drawing`パッケージでも採用されており、描画前にさまざまな方
+法でデータとしてシーンを操作することができるという柔軟性をもたらしてい
+ます。
 
-For examples of games rendered to the canvas, see the "Behavior" and
-"Signal" recipes in the
-[cookbook](https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes).
+canvasに描画されるゲームの例については
+[cookbook](https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes)
+の「Behavior」と「Signal」のレシピを見てください。
 
 - - -
 

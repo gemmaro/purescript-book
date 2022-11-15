@@ -16,9 +16,9 @@
 - `affjax` - AJAXと`Aff`を使ったHTTPリクエスト。
 - `parallel` - `Aff`の並列実行。
 
-（Node.js環境のような）ブラウザ外で実行する場合、
-`affjax`ライブラリは`xhr2`NPMモジュールが必要です。
-以下を走らせてインストールします。
+When running outside of the browser (such as in our Node.js environment),
+the `affjax` library requires the `xhr2` NPM module, which is listed as
+dependency in the `package.json` of this chapter. Install that by running:
 
 ```shell
 $ npm install
