@@ -1,42 +1,32 @@
-# Generative Testing
+# テストの自動生成
 
 ## この章の目標
 
-In this chapter, we will see a particularly elegant application of type
-classes to the problem of testing. Instead of testing our code by telling
-the compiler _how_ to test, we simply assert _what_ properties our code
-should have. Test cases can be generated randomly from this specification,
-using type classes to hide the boilerplate code of random data
-generation. This is called _generative testing_ (or _property-based
-testing_), a technique made popular by the
-[QuickCheck](https://wiki.haskell.org/Introduction_to_QuickCheck1) library
-in Haskell.
+この章では、テスティングの問題に対する、型クラスの特に洗練された応用について示します。**どのように**テストするのかをコンパイラに教えるのではなく、コードが**どのような**性質を持っているべきかを教えることでテストします。型クラスを使って無作為データ生成のための定型コードを隠し、テストケースを仕様から無作為に生成することができます。これは**生成的テスティング**（generative
+testing、または**property-based
+testing**）と呼ばれ、Haskellの[QuickCheck](http://wiki.haskell.org/Introduction_to_QuickCheck1)ライブラリによって普及した手法です。
 
-The `quickcheck` package is a port of Haskell's QuickCheck library to
-PureScript, and for the most part, it preserves the types and syntax of the
-original library. We will see how to use `quickcheck` to test a simple
-library, using Spago to integrate our test suite into our development
-process.
+`quickcheck`パッケージはHaskellのQuickCheckライブラリをPureScriptにポーティングしたもので、型や構文はもとのライブラリとほとんど同じようになっています。
+`quickcheck`を使って簡単なライブラリをテストし、Spagoでテストスイートを自動化されたビルドに統合する方法を見ていきます。
 
 ## プロジェクトの準備
 
-This chapter's project adds `quickcheck` as a dependency.
+この章のプロジェクトには依存関係として `quickcheck`が追加されます。
 
-In a Spago project, test sources should be placed in the `test` directory,
-and the main module for the test suite should be named `Test.Main`. The test
-suite can be run using the `spago test` command.
+Spagoプロジェクトでは、テストソースは `test`ディレクトリに置かれ、テストスイートのメインモジュールは
+`Test.Main`と名づけられます。 テストスイートは、 `spago test`コマンドを使用して実行できます。
 
-## Writing Properties
+## 性質を書く
 
-The `Merge` module implements a simple function `merge`, which we will use
-to demonstrate the features of the `quickcheck` library.
+`Merge`モジュールでは簡単な関数 `merge`が実装されています。
+これを`quickcheck`ライブラリの機能を実演するために使っていきます。
 
 ```haskell
 merge :: Array Int -> Array Int -> Array Int
 ```
 
-`merge` takes two sorted arrays of integers, and merges their elements so
-that the result is also sorted. For example:
+`merge`は2つの整列された整数の配列を取って、結果が整列されるように要素を統合します。
+例えば次のようになります。
 
 ```text
 > import Merge
@@ -45,17 +35,13 @@ that the result is also sorted. For example:
 [1, 2, 3, 4, 5, 5]
 ```
 
-In a typical test suite, we might test `merge` by generating a few small
-test cases like this by hand, and asserting that the results were equal to
-the appropriate values. However, everything we need to know about the
-`merge` function can be summarized by this property:
+典型的なテストスイートでは、手作業でこのような小さなテストケースをいくつも作成し、結果が正しい値と等しいことを確認することでテストを実施します。
+しかし、 `merge`関数について知る必要があるものはすべて、こちらの性質に要約することができます。
 
-- If `xs` and `ys` are sorted, then `merge xs ys` is the sorted result of
-  both arrays appended together.
+- `xs`と `ys`がソート済みなら、`merge xs ys`は両方の配列が一緒に結合され整列された結果になります。
 
-`quickcheck` allows us to test this property directly, by generating random
-test cases. We simply state the properties that we want our code to have, as
-functions. In this case, we have a single property:
+`quickcheck`では、無作為なテストケースを生成することで、直接この性質をテストすることができます。コードが持つべき性質を関数として述べるだけです。
+この場合は1つの性質があります。
 
 ```haskell
 main = do
@@ -63,12 +49,10 @@ main = do
     eq (merge (sort xs) (sort ys)) (sort $ xs <> ys)
 ```
 
-When we run this code, `quickcheck` will attempt to disprove the properties
-we claimed, by generating random inputs `xs` and `ys`, and passing them to
-our functions. If our function returns `false` for any inputs, the property
-will be incorrect, and the library will raise an error. Fortunately, the
-library is unable to disprove our properties after generating 100 random
-test cases:
+このコードを実行すると、 `quickcheck`は無作為な入力 `xs`と
+`ys`を生成してこの関数に渡すことで、主張しようとしている性質を反証しようとします。
+何らかの入力に対して関数が `false`を返した場合、性質は正しくないことが示され、ライブラリはエラーを発生させます。
+幸いなことに、次のように100個の無作為なテストケースを生成しても、ライブラリはこの性質を反証することができません。
 
 ```text
 $ spago test
@@ -80,21 +64,21 @@ Build succeeded.
 Tests succeeded.
 ```
 
-If we deliberately introduce a bug into the `merge` function (for example,
-by changing the less-than check for a greater-than check), then an exception
-is thrown at runtime after the first failed test case:
+もし
+`merge`関数に意図的にバグを混入した場合（例えば、大なりのチェックを小なりのチェックへと変更するなど）、最初に失敗したテストケースの後で例外が実行時に投げられます。
 
 ```text
 Error: Test 1 failed:
 Test returned false
 ```
 
-As we can see, this error message is not very helpful, but it can be
-improved with a little work.
+見ての通りこのエラーメッセージではあまり役に立ちませんが、少し工夫するだけで改良することができます。
 
-## Improving Error Messages
+## エラーメッセージの改善
 
-To provide error messages along with our failed test cases, `quickcheck` provides the `<?>` operator. Simply separate the property definition from the error message using `<?>`, as follows:
+テストケースが失敗した時に同時にエラーメッセージを提供する上で、
+`quickcheck`は`<?>`演算子を提供しています。
+次のように性質の定義とエラー文言を`<?>`で区切って書くだけです。
 
 ```haskell
 quickCheck \xs ys ->
@@ -105,8 +89,7 @@ quickCheck \xs ys ->
     eq result expected <?> "Result:\n" <> show result <> "\nnot equal to expected:\n" <> show expected
 ```
 
-This time, if we modify the code to introduce a bug, we see our improved
-error message after the first failed test case:
+このとき、もしバグを混入するようにコードを変更すると、最初のテストケースが失敗したときに改良されたエラーメッセージが表示されます。
 
 ```text
 Error: Test 1 (seed 534161891) failed:
@@ -116,31 +99,26 @@ not equal to expected:
 [-888285,-822215,-196136,-116841,618343,887447]
 ```
 
-Notice how the input `xs` and `ys` were generated as arrays of
-randomly-selected integers.
+入力 `xs`が無作為に選ばれた数の配列として生成されていることに注目してください。
 
 ## 演習
 
- 1. (Easy) Write a property which asserts that merging an array with the
-    empty array does not modify the original array. _Note_: This new
-    property is redundant, since this situation is already covered by our
-    existing property. We're just trying to give you readers a simple way to
-    practice using quickCheck.
- 1. (Easy) Add an appropriate error message to the remaining property for
-    `merge`.
+ 1. （簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を書いてください。
+    **補足**：この新しい性質は冗長です。
+    というのもこの状況は既に既存の性質で押さえられているからです。
+    読者がQuickCheckを使う練習をするための簡単な方法を与えようとしているだけです。
+ 1. （簡単） `merge`の残りの性質に対して、適切なエラーメッセージを追加してください。
 
-## Testing Polymorphic Code
+## 多相的なコードのテスト
 
-The `Merge` module defines a generalization of the `merge` function, called
-`mergePoly`, which works not only with arrays of numbers, but also arrays of
-any type belonging to the `Ord` type class:
+`Merge`モジュールでは、数の配列だけでなく、 `Ord`型クラスに属するどんな型の配列に対しても動作する、 `merge`関数を一般化した
+`mergePoly`という関数が定義されています。
 
 ```haskell
 mergePoly :: forall a. Ord a => Array a -> Array a -> Array a
 ```
 
-If we modify our original test to use `mergePoly` in place of `merge`, we
-see the following error message:
+`merge`の代わりに `mergePoly`を使うように元のテストを変更すると、次のようなエラーメッセージが表示されます。
 
 ```text
 No type class instance was found for
@@ -151,74 +129,62 @@ The instance head contains unknown type variables.
 Consider adding a type annotation.
 ```
 
-This error message indicates that the compiler could not generate random
-test cases, because it did not know what type of elements we wanted our
-arrays to have. In these sorts of cases, we can use type annotations to
-force the compiler to infer a particular type, such as `Array Int`:
+このエラーメッセージは、配列に持たせたい要素の型が何なのかわからないので、コンパイラが無作為なテストケースを生成できなかったということを示しています。
+このような場合、型註釈を使ってコンパイラが特定の型を推論するように強制できます。
+例えば`Array Int`などです。
 
 ```haskell
 quickCheck \xs ys ->
   eq (mergePoly (sort xs) (sort ys) :: Array Int) (sort $ xs <> ys)
 ```
 
-We can alternatively use a helper function to specify type, which may result
-in cleaner code. For example, if we define a function `ints` as a synonym
-for the identity function:
+代替案として型を指定する補助関数を使うこともできます。
+こうするとより見通しのよいコードになることがあります。
+例えば同値関数の同義な関数`ints`を定義したとしましょう。
 
 ```haskell
 ints :: Array Int -> Array Int
 ints = id
 ```
 
-then we can modify our test so that the compiler infers the type `Array Int`
-for our two array arguments:
+それから、コンパイラが引数の2つの配列の型 `Array Int`を推論するように、テストを変更します。
 
 ```haskell
 quickCheck \xs ys ->
   eq (ints $ mergePoly (sort xs) (sort ys)) (sort $ xs <> ys)
 ```
 
-Here, `xs` and `ys` both have type `Array Int`, since the `ints` function
-has been used to disambiguate the unknown type.
+ここで、 `ints`関数が不明な型を解消するために使われているため、 `xs`と `ys`はどちらも型 `Array Int`を持っています。
 
 ## 演習
 
- 1. (Easy) Write a function `bools` which forces the types of `xs` and `ys`
-    to be `Array Boolean`, and add additional properties which test
-    `mergePoly` at that type.
- 1. (Medium) Choose a pure function from the core libraries (for example,
-    from the `arrays` package), and write a QuickCheck property for it,
-    including an appropriate error message. Your property should use a
-    helper function to fix any polymorphic type arguments to either `Int` or
-    `Boolean`.
+ 1. （簡単）`xs`と `ys`の型を `Array Boolean`に強制する関数 `bools`を書き、
+    `mergePoly`をその型でテストする性質を追加してください。
+ 1. （普通）標準関数から（例えば
+    `arrays`パッケージから）ひとつ関数を選び、適切なエラーメッセージを含めてQuickCheckの性質を書いてください。その性質は、補助関数を使って多相型引数を
+    `Int`か `Boolean`のどちらかに固定しなければいけません。
 
-## Generating Arbitrary Data
+## 任意のデータの生成
 
-Now we will see how the `quickcheck` library is able to randomly generate
-test cases for our properties.
+`quickcheck`ライブラリを使って性質に対するテストケースを無作為に生成する方法について説明します。
 
-Those types whose values can be randomly generated are captured by the
-`Arbitrary` type class:
+無作為に値を生成することができるような型は、次のような型クラス `Arbitary`のインスタンスを持っています。
 
 ```haskell
 class Arbitrary t where
   arbitrary :: Gen t
 ```
 
-The `Gen` type constructor represents the side-effects of _deterministic
-random data generation_. It uses a pseudo-random number generator to
-generate deterministic random function arguments from a seed value. The
-`Test.QuickCheck.Gen` module defines several useful combinators for building
-generators.
+`Gen`型構築子は**決定的無作為データ生成**の副作用を表しています。
+決定的無作為データ生成は、擬似乱数生成器を使って、シード値から決定的無作為関数の引数を生成します。
+`Test.QuickCheck.Gen`モジュールは、ジェネレータを構築するためのいくつかの有用なコンビネータを定義しています。
 
-`Gen` is also a monad and an applicative functor, so we have the usual
-collection of combinators at our disposal for creating new instances of the
-`Arbitrary` type class.
+`Gen`はモナドでもアプリカティブ関手でもあるので、
+`Arbitary`型クラスの新しいインスタンスを作成するのに、いつも使っているようなコンビネータを自由に使うことができます。
 
-For example, we can use the `Arbitrary` instance for the `Int` type,
-provided in the `quickcheck` library, to create a distribution on the 256
-byte values, using the `Functor` instance for `Gen` to map a function from
-integers to bytes over arbitrary integer values:
+例えば、 `quickcheck`ライブラリで提供されている `Int`型用の
+`Arbitrary`インスタンスを使い、256個のバイト値上の分布を作ることができます。
+これには`Gen`用に`Functor`インスタンスを使って整数から任意の整数値のバイトまでマップします。
 
 ```haskell
 newtype Byte = Byte Int
@@ -230,22 +196,20 @@ instance arbitraryByte :: Arbitrary Byte where
                 | otherwise = intToByte (-n)
 ```
 
-Here, we define a type `Byte` of integral values between 0 and 255. The
-`Arbitrary` instance uses the `map` function to lift the `intToByte`
-function over the `arbitrary` action. The type of the inner `arbitrary`
-action is inferred as `Gen Int`.
+ここでは、0から255までの間の整数値であるような型 `Byte`を定義しています。
+`Arbitrary`インスタンスは `map`演算子を使って、 `intToByte`関数を `arbitrary`アクションまで持ち上げています。
+`arbitrary`アクション内部の型は `Gen Int`と推論されます。
 
-We can also use this idea to improve our test for `merge`:
+この考え方を `merge`用のテストに使うこともできます。
 
 ```haskell
 quickCheck \xs ys ->
   eq (numbers $ mergePoly (sort xs) (sort ys)) (sort $ xs <> ys)
 ```
 
-In this test, we generated arbitrary arrays `xs` and `ys`, but had to sort
-them, since `merge` expects sorted input. On the other hand, we could create
-a newtype representing sorted arrays, and write an `Arbitrary` instance
-which generates sorted data:
+このテストでは、任意の配列 `xs`と `ys`を生成しますが、 `merge`はソート済みの入力を期待しているので、 `xs`と
+`ys`をソートしておかなければなりません。一方で、ソートされた配列を表すnewtypeを作成し、ソートされたデータを生成する
+`Arbitrary`インスタンスを書くこともできます。
 
 ```haskell
 newtype Sorted a = Sorted (Array a)
@@ -257,21 +221,19 @@ instance arbSorted :: (Arbitrary a, Ord a) => Arbitrary (Sorted a) where
   arbitrary = map (Sorted <<< sort) arbitrary
 ```
 
-With this type constructor, we can modify our test as follows:
+この型構築子を使うと、テストを次のように変更することができます。
 
 ```haskell
 quickCheck \xs ys ->
   eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs <> sorted ys)
 ```
 
-This may look like a small change, but the types of `xs` and `ys` have
-changed to `Sorted Int`, instead of just `Array Int`. This communicates our
-_intent_ in a clearer way - the `mergePoly` function takes sorted
-input. Ideally, the type of the `mergePoly` function itself would be updated
-to use the `Sorted` type constructor.
+これは些細な変更に見えるかもしれませんが、 `xs`と `ys`の型はただの `Array Int`から `Sorted
+Int`へと変更されています。これにより、
+`mergePoly`関数はソート済みの入力を取る、という**意図**を、わかりやすく示すことができます。理想的には、
+`mergePoly`関数自体の型が `Sorted`型構築子を使うようにするといいでしょう。
 
-As a more interesting example, the `Tree` module defines a type of sorted
-binary trees with values at the branches:
+より興味深い例として、 `Tree`モジュールでは枝の値でソートされた二分木の型が定義されています。
 
 ```haskell
 data Tree a
@@ -279,7 +241,7 @@ data Tree a
   | Branch (Tree a) a (Tree a)
 ```
 
-The `Tree` module defines the following API:
+`Tree`モジュールでは次のAPIが定義されています。
 
 ```haskell
 insert    :: forall a. Ord a => a -> Tree a -> Tree a
@@ -288,9 +250,8 @@ fromArray :: forall a. Ord a => Array a -> Tree a
 toArray   :: forall a. Tree a -> Array a
 ```
 
-The `insert` function is used to insert a new element into a sorted tree,
-and the `member` function can be used to query a tree for a particular
-value. For example:
+`insert`関数は新しい要素をソート済みの二分木に挿入するのに使われ、
+`member`関数は特定の値の有無を木に問い合わせるのに使われます。例えば次のようになります。
 
 ```text
 > import Tree
@@ -302,48 +263,41 @@ true
 false
 ```
 
-The `toArray` and `fromArray` functions can be used to convert sorted trees
-to and from arrays. We can use `fromArray` to write an `Arbitrary` instance
-for trees:
+`toArray`関数と `fromArray`関数は、ソートされた木とソートされた配列を相互に変換するために使われます。
+`fromArray`を使うと、木についての `Arbitrary`インスタンスを書くことができます。
 
 ```haskell
 instance arbTree :: (Arbitrary a, Ord a) => Arbitrary (Tree a) where
   arbitrary = map fromArray arbitrary
 ```
 
-We can now use `Tree a` as the type of an argument to our test properties,
-whenever there is an `Arbitrary` instance available for the type `a`. For
-example, we can test that the `member` test always returns `true` after
-inserting a value:
+型 `a`についての`Arbitary`インスタンスが使えるなら、テストする性質の引数の型として `Tree a`を使うことができます。例えば、
+`member`テストは値を挿入した後は常に `true`を返すことをテストできます。
 
 ```haskell
 quickCheck \t a ->
   member a $ insert a $ treeOfInt t
 ```
 
-Here, the argument `t` is a randomly-generated tree of type `Tree Int`,
-where the type argument disambiguated by the identity function `treeOfInt`.
+ここでは、引数 `t`は `Tree Number`型の無作為に生成された木です。
+型引数は、同値関数 `treeOfInt`によって明確化されています。
 
 ## 演習
 
- 1. (Medium) Create a newtype for `String` with an associated `Arbitrary`
-    instance which generates collections of randomly-selected characters in
-    the range `a-z`. _Hint_: use the `elements` and `arrayOf` functions from
-    the `Test.QuickCheck.Gen` module.
- 1. (Difficult) Write a property which asserts that a value inserted into a
-    tree is still a member of that tree after arbitrarily many more
-    insertions.
+ 1. （普通） `a-z`の範囲から無作為に選ばれた文字の集まりを生成する `Arbitrary`インスタンスを持った、
+    `String`のnewtypeを作ってください。**ヒント**：`Test.QuickCheck.Gen`モジュールから
+    `elements`と `arrayOf`関数を使います。
+ 1. （難しい） 木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。
 
-## Testing Higher-Order Functions
+## 高階関数のテスト
 
-The `Merge` module defines another generalization of the `merge` function -
-the `mergeWith` function takes an additional function as an argument which
-is used to determine the order in which elements should be merged. That is,
-`mergeWith` is a higher-order function.
+`Merge`モジュールは `merge`関数の別の一般化も定義します。
+`mergeAith`関数は追加の関数を引数として取り、統合される要素の順序を決
+定するのに使われます。つまり `mergeWith`は高階関数です。
 
-For example, we can pass the `length` function as the first argument, to
-merge two arrays which are already in length-increasing order. The result
-should also be in length-increasing order:
+例えば`length`関数を最初の引数として渡し、既に長さの昇順になっている2
+つの配列を統合することができます。このとき、結果も長さの昇順になってい
+なければなりません。
 
 ```haskell
 > import Data.String
@@ -355,41 +309,39 @@ should also be in length-increasing order:
 ["","x","ab","xyz","abcd"]
 ```
 
-How might we test such a function? Ideally, we would like to generate values
-for all three arguments, including the first argument which is a function.
+このような関数をテストするにはどうしたらいいでしょうか。理想的には、関
+数である最初の引数を含めた、3つの引数すべてについて、値を生成したいと
+思うでしょう。
 
-There is a second type class which allows us to create randomly-generated
-functions. It is called `Coarbitrary`, and it is defined as follows:
+関数を無作為に生成できるようにする、もう1つの型クラスがあります。この
+型クラスは `Coarbitrary`と呼ばれており、次のように定義されています。
 
 ```haskell
 class Coarbitrary t where
   coarbitrary :: forall r. t -> Gen r -> Gen r
 ```
 
-The `coarbitrary` function takes a function argument of type `t`, and a
-random generator for a function result of type `r`, and uses the function
-argument to _perturb_ the random generator. That is, it uses the function
-argument to modify the random output of the random generator for the result.
+`coarbitrary`関数は、型 `t`と、関数の結果の型 `r`についての乱数生成器
+を関数の引数としてとり、乱数生成器を**かき乱す**のにこの引数を使います。
+つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。
 
-In addition, there is a type class instance which gives us `Arbitrary`
-functions if the function domain is `Coarbitrary` and the function codomain
-is `Arbitrary`:
+また、もし関数の定義域が `Coarbitrary`で、値域が `Arbitrary`なら、
+`Arbitrary`の関数を与える型クラスインスタンスが存在しています。
 
 ```haskell
 instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)
 ```
 
-In practice, this means that we can write properties which take functions as
-arguments. In the case of the `mergeWith` function, we can generate the
-first argument randomly, modifying our tests to take account of the new
-argument.
+実は、これが意味しているのは、引数として関数を取るような性質を記述でき
+るということです。 `mergeWith`関数の場合では、新しい引数を考慮するよう
+にテストを修正すると、最初の引数を無作為に生成することができます。
 
-We cannot guarantee that the result will be sorted - we do not even
-necessarily have an `Ord` instance - but we can expect that the result be
-sorted with respect to the function `f` that we pass in as an argument. In
-addition, we need the two input arrays to be sorted with respect to `f`, so
-we use the `sortBy` function to sort `xs` and `ys` based on comparison after
-the function `f` has been applied:
+結果が整列されているということを保証することができません。必ずしも
+`Ord`インスタンスを持っているとさえ限らないのです。しかし、引数として
+渡す関数 `f`にしたがって結果が整列されていることは期待されます。さらに、
+2つの入力配列が `f`に従って整列されている必要がありますので、
+`sortBy`関数を使って関数 `f`が適用されたあとの比較に基づいて `xs`と
+`ys`を整列します。
 
 ```haskell
 quickCheck \xs ys f ->
@@ -406,49 +358,47 @@ quickCheck \xs ys f ->
     eq result expected
 ```
 
-Here, we use a function `intToBool` to disambiguate the type of the function
-`f`:
+ここでは、関数 `f`の型を明確にするために、関数 `intToBool`を使用しています。
 
 ```haskell
 intToBool :: (Int -> Boolean) -> Int -> Boolean
 intToBool = id
 ```
 
-In addition to being `Arbitrary`, functions are also `Coarbitrary`:
+関数は `Arbitrary`であるだけでなく `Coarbitrary`でもあります。
 
 ```haskell
 instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)
 ```
 
-This means that we are not limited to just values and functions - we can
-also randomly generate _higher-order functions_, or functions whose
-arguments are higher-order functions, and so on.
+これは値の生成が単純な関数だけに限定されるものではないことを意味してい
+ます。つまり、**高階関数**や、引数が高階関数であるような関数もまた無作
+為に生成することができるのです。
 
-## Writing Coarbitrary Instances
+## Coarbitraryのインスタンスを書く
 
-Just as we can write `Arbitrary` instances for our data types by using the
-`Monad` and `Applicative` instances of `Gen`, we can write our own
-`Coarbitrary` instances as well. This allows us to use our own data types as
-the domain of randomly-generated functions.
+`Gen`の `Monad`や `Applicative`インスタンスを使って独自のデータ型に対
+して `Arbitrary`インスタンスを書くことができるのとちょうど同じように、
+独自の `Coarbitrary`インスタンスを書くこともできます。これにより、無作
+為に生成される関数の定義域として、独自のデータ型を使うことができるよう
+になります。
 
-Let's write a `Coarbitrary` instance for our `Tree` type. We will need a
-`Coarbitrary` instance for the type of the elements stored in the branches:
+`Tree`型の `Coarbitrary`インスタンスを書いてみましょう。枝に格納されて
+いる要素の型に `Coarbitrary`インスタンスが必要になります。
 
 ```haskell
 instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where
 ```
 
-We have to write a function which perturbs a random generator given a value
-of type `Tree a`. If the input value is a `Leaf`, then we will just return
-the generator unchanged:
+型 `Tree a`の値が与えられたときに、乱数発生器をかき乱す関数を記述する
+必要があります。入力値が `Leaf`であれば、そのままの生成器を返します。
 
 ```haskell
   coarbitrary Leaf = id
 ```
 
-If the tree is a `Branch`, then we will perturb the generator using the left
-subtree, the value, and the right subtree. We use function composition to
-create our perturbing function:
+もし木が `Branch`なら、左の部分木、値、右の部分木を使って生成器をかき乱します。
+関数合成を使って独自のかき乱し関数を作ります。
 
 ```haskell
   coarbitrary (Branch l a r) =
@@ -457,16 +407,18 @@ create our perturbing function:
     coarbitrary r
 ```
 
-Now we are free to write properties whose arguments include functions taking
-trees as arguments. For example, the `Tree` module defines a function
-`anywhere`, which tests if a predicate holds on any subtree of its argument:
+これで、木を引数にとるような関数を引数に含む性質を自由に書くことができ
+るようになりました。たとえば、 `Tree`モジュールでは`anywhere`が定義さ
+れており、これは述語が引数のどんな部分木についても成り立っているかを調
+べる関数です。
 
 ```haskell
 anywhere :: forall a. (Tree a -> Boolean) -> Tree a -> Boolean
 ```
 
-Now we are able to generate the predicate function randomly. For example, we
-expect the `anywhere` function to _respect disjunction_:
+これで、無作為にこの述語関数 `anywhere`を生成することができるようにな
+りました。例えば、 `anywhere`関数は**ある命題のもとで不変**であること
+が期待されます。
 
 ```haskell
 quickCheck \f g t ->
@@ -474,24 +426,24 @@ quickCheck \f g t ->
     anywhere f (treeOfInt t) || anywhere g t
 ```
 
-Here, the `treeOfInt` function is used to fix the type of values contained
-in the tree to the type `Int`:
+ここで、 `treeOfInt`関数は木に含まれる値の型を型 `Int`に固定するために
+使われています。
 
 ```haskell
 treeOfInt :: Tree Int -> Tree Int
 treeOfInt = id
 ```
 
-## Testing Without Side-Effects
+## 副作用のないテスト
 
-For the purposes of testing, we usually include calls to the `quickCheck`
-function in the `main` action of our test suite. However, there is a variant
-of the `quickCheck` function, called `quickCheckPure` which does not use
-side-effects. Instead, it is a pure function which takes a random seed as an
-input, and returns an array of test results.
+テストの目的では通常、テストスイートの `main`アクションには
+`quickCheck`関数の呼び出しが含まれています。しかし、副作用を使わない
+`quickCheckPure`と呼ばれる `quickCheck`関数の亜種もあります。
+`quickCheckPure`は、入力として乱数の種をとり、テスト結果の配列を返す純
+粋な関数です。
 
-We can test `quickCheckPure` using PSCi. Here, we test that the `merge`
-operation is associative:
+PSCiを使用して `quickCheckPure`を試せます。ここでは `merge`操作が結合
+法則を満たすことをテストします。
 
 ```text
 > import Prelude
@@ -508,73 +460,43 @@ operation is associative:
 Success : Success : ...
 ```
 
-`quickCheckPure` takes three arguments: the random seed, the number of test
-cases to generate, and the property to test. If all tests pass, you should
-see an array of `Success` data constructors printed to the console.
+`quickCheckPure`は乱数の種、生成するテストケースの数、テストする性質の
+3つの引数をとります。もしすべてのテストケースに成功したら、
+`Success`データ構築子の配列がコンソールに出力されます。
 
-`quickCheckPure` might be useful in other situations, such as generating
-random input data for performance benchmarks, or generating sample form data
-for web applications.
+`quickCheckPure`は、性能ベンチマークの入力データ生成や、ウェブアプリケー
+ションのフォームデータ例を無作為に生成するというような状況で便利かもし
+れません。
 
 ## 演習
 
- 1. (Easy) Write `Coarbitrary` instances for the `Byte` and `Sorted` type
-    constructors.
- 1. (Medium) Write a (higher-order) property which asserts associativity of
-    the `mergeWith f` function for any function `f`. Test your property in
-    PSCi using `quickCheckPure`.
- 1. (Medium) Write `Arbitrary` and `Coarbitrary` instances for the following
-    data type:
+ 1. （簡単） `Byte`と `Sorted`型構築子についての `Coarbitrary`インスタンスを書いてください。
+ 1. （普通）任意の関数 `f`について、 `mergeWith f`関数の結合性を主張する（高階）性質を書いてください。
+    `quickCheckPure`を使ってPSCiでその性質をテストしてください。
+ 1. （普通）次のデータ型の`Arbitrary`と`Coarbitrary`インスタンスを書いてください。
 
      ```haskell
      data OneTwoThree a = One a | Two a a | Three a a a
      ```
 
-     _Hint_: Use the `oneOf` function defined in `Test.QuickCheck.Gen` to define your `Arbitrary` instance.
- 1. (Medium) Use `all` to simplify the result of the `quickCheckPure` function - your new function should have type `List Result -> Boolean` and should return `true` if every test passes and `false` otherwise.
- 1. (Medium) As another approach to simplifying the result of `quickCheckPure`, try writing a function `squashResults :: List Result -> Result`. Consider using the `First` monoid from `Data.Maybe.First` with the `foldMap` function to preserve the first error in case of failure.
+     **ヒント**：`Test.QuickCheck.Gen`で定義された `oneOf`関数を使って `Arbitrary`インスタンスを定義してください。
+ 1. （普通）`all`を使って `quickCheckPure`関数の結果を単純化してください。
+    その新しい関数は型`List Result -> Boolean`を持ち、全てのテストがとおえば`true`を、そうでなければ`false`を返します。
+ 2. （普通）`quickCheckPure`の結果を単純にする別の手法として、
+    関数`squashResults :: List Result -> Result`を書いてみてください。
+    `Data.Maybe.First`の`First`モノイドと共に`foldMap`関数を使うことで
+    失敗した場合の最初のエラーを保存することを検討してください。
 
 ## まとめ
 
-In this chapter, we met the `quickcheck` package, which can be used to write
-tests in a declarative way using the paradigm of _generative testing_. In
-particular:
+この章では`quickcheck`パッケージに出会いました。これを使えば**生成的テ
+スティング**のパラダイムを使って宣言的な方法でテストを書くことができま
+した。具体的には以下です。
 
-- We saw how to automate QuickCheck tests using `spago test`.
-- We saw how to write properties as functions, and how to use the `<?>`
-  operator to improve error messages.
-- We saw how the `Arbitrary` and `Coarbitrary` type classes enable
-  generation of boilerplate testing code, and how they allow us to test
-  higher-order properties.
-- We saw how to implement custom `Arbitrary` and `Coarbitrary` instances for
-  our own data types.
-
-- - -
-
-<small>
-
-この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-
-[原文の使用許諾](https://book.purescript.org/)：
-
-> Copyright (c) 2014-2017 Phil Freeman.
->
-> The text of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>.
->
-> Some text is derived from the [PureScript Documentation Repo](https://github.com/purescript/documentation), which uses the same license, and is copyright [various contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md).
->
-> The exercises are licensed under the MIT license.
-
-[aratama氏訳の使用許諾](http://aratama.github.io/purescript/)：
-
-> This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
->
-> 本書は[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)でライセンスされています。
-
-本翻訳の使用許諾：
-
-本翻訳も原文と原翻訳にしたがい、
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)の下に提供されています。
-
-</small>
+- `spago test`を使ってQuickCheckのテストを自動化する方法を見ました。
+- 性質を関数として書く方法とエラーメッセージを改良する `<?>`演算子の使い方を説明しました。
+- `Arbitrary`と `Coarbitrary`型クラスによって、どのように定型的なテスト
+  コードの自動生成を可能にし、またどのように高階性質関数が可能になるかを
+  見てきました。
+- 独自のデータ型に対して `Arbitrary`と `Coarbitrary`インスタンスを実装す
+  る方法を見ました。

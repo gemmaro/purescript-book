@@ -1351,12 +1351,9 @@ PureScriptの式は、実行時に特に単純な表現を持っているとい�
 `false`のどちらか一方の（JavaScriptの）値へと評価されます。特に`null`や `undefined`に評価される型
 `Boolean`のPureScriptの式はありません。
 
-A similar law holds for expressions of type `Int`, `Number`, and `String` -
-expressions of type `Int` or `Number` evaluate to non-null JavaScript
-numbers, and expressions of type `String` evaluate to non-null JavaScript
-strings. Expressions of type `Int` will evaluate to integers at runtime,
-even though they cannot be distinguished from values of type `Number` by
-using `typeof`.
+`Int`や`Number`や`String`の型の式についても同様のことが成り立ちます。`Int`や`Number`型の式は
+`null`でないJavaScriptの数へと評価されますし、 `String`型の式は
+`null`でないJavaScriptの文字列へと評価されます。たとえ`typeof`を使うことによって型`Number`の値と見分けがつかなくなっても、型`Int`の式は実行時に整数に評価されます。
 
 `Unit`についてはどうでしょうか？`Unit`には現住 (`unit`)
 が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。古いコードは`{}`を使って表現する傾向がありました。しかし比較的新しいコードでは`undefined`を使う傾向にあります。なので、`Unit`を表現するのに使うものは本当に何でも問題にならないのですが、`undefined`を使うことが推奨されます。（関数から何も返さないときも`undefined`を返します。）
@@ -1586,33 +1583,3 @@ main();
 
 `spago bundle-app --to`または `spago run`を使用するときは、`Main`モジュールが定義されている場合は常に、この
 `main`の呼び出しを自動的に生成することができます。
-
-- - -
-
-<small>
-
-この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-
-[原文の使用許諾](https://book.purescript.org/)：
-
-> Copyright (c) 2014-2017 Phil Freeman.
->
-> The text of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>.
->
-> Some text is derived from the [PureScript Documentation Repo](https://github.com/purescript/documentation), which uses the same license, and is copyright [various contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md).
->
-> The exercises are licensed under the MIT license.
-
-[aratama氏訳の使用許諾](http://aratama.github.io/purescript/)：
-
-> This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
->
-> 本書は[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)でライセンスされています。
-
-本翻訳の使用許諾：
-
-本翻訳も原文と原翻訳にしたがい、
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)の下に提供されています。
-
-</small>

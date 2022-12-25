@@ -36,10 +36,12 @@ file 'po4a.cfg' => __FILE__ do |t|
        --localized-charset UTF-8 \\
        --addendum-charset UTF-8 \\
        --master-language en
+    [type:text] README.md $lang:text/index.$lang.md \\
+       add_$lang:translation/$lang.add opt:"--option markdown --keep 0"
   END_CFG
 
   Pathname.glob('text/chapter*.md').reject { _1.to_s.match?(/.ja.md\Z/) }.each do |doc|
-    adds = ['add_$lang:translation/$lang.add']
+    adds = []
     adds << 'add_$lang:translation/ja/chapter3-0.add' if doc.basename.to_s.match?(/chapter3.md/)
     content += <<~END_CFG
       [type:text] #{doc} $lang:#{doc.sub_ext('.$lang.md')} \\

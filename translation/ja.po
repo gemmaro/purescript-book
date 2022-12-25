@@ -5,14 +5,176 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2022-10-22 20:12+0900\n"
-"PO-Revision-Date: 2022-11-15 09:00+0900\n"
+"POT-Creation-Date: 2022-12-11 11:22+0900\n"
+"PO-Revision-Date: 2022-12-25 17:40+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: Nothing\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: README.md:1
+#, no-wrap
+msgid "PureScript by Example"
+msgstr ""
+
+#. type: Plain text
+#: README.md:4
+msgid ""
+"This repository contains a [community fork](https://github.com/purescript-"
+"contrib/purescript-book/) of _PureScript by Example_ by Phil Freeman, also "
+"known as \"the PureScript book\". This version differs from the original in "
+"that it has been updated so that the code and exercises work with up-to-date "
+"versions of the compiler, libraries, and tools. Some chapters have also been "
+"rewritten to showcase the latest features of the PureScript ecosystem."
+msgstr ""
+
+#. type: Plain text
+#: README.md:6
+msgid ""
+"If you enjoyed the book or found it useful, please consider buying a copy of "
+"[the original on Leanpub](https://leanpub.com/purescript)."
+msgstr ""
+
+#. type: Title ##
+#: README.md:7
+#, no-wrap
+msgid "Status"
+msgstr ""
+
+#. type: Plain text
+#: README.md:10
+msgid ""
+"This book is being continuously updated as the language evolves, so please "
+"report any [issues](https://github.com/purescript-contrib/purescript-book/"
+"issues) you discover with the material. We appreciate any feedback you have "
+"to share, even if it's as simple as pointing out a confusing section that we "
+"could make more beginner-friendly."
+msgstr ""
+
+#. type: Plain text
+#: README.md:12
+msgid ""
+"Unit tests are also being added to each chapter so you can check if your "
+"answers to the exercises are correct. See [#79](https://github.com/"
+"purescript-contrib/purescript-book/issues/79) for the latest status on tests."
+msgstr ""
+
+#. type: Title ##
+#: README.md:13
+#, no-wrap
+msgid "About the Book"
+msgstr "本書について"
+
+#. type: Plain text
+#: README.md:16
+msgid ""
+"PureScript is a small, strongly, statically typed programming language with "
+"expressive types, written in and inspired by Haskell, and compiling to "
+"Javascript."
+msgstr ""
+
+#. type: Plain text
+#: README.md:18
+msgid ""
+"Functional programming in JavaScript has seen quite a lot of popularity "
+"recently, but large-scale application development is hindered by the lack of "
+"a disciplined environment in which to write code. PureScript aims to solve "
+"that problem by bringing the power of strongly-typed functional programming "
+"to the world of JavaScript development."
+msgstr ""
+
+#. type: Plain text
+#: README.md:20
+msgid ""
+"This book will show you how to get started with the PureScript programming "
+"language, from the basics (setting up a development environment) to the "
+"advanced."
+msgstr ""
+
+#. type: Plain text
+#: README.md:22
+msgid ""
+"Each chapter will be motivated by a particular problem, and in the course of "
+"solving that problem, new functional programming tools and techniques will "
+"be introduced. Here are some examples of problems that will be solved in "
+"this book:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Transforming data structures with maps and folds"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Form field validation using applicative functors"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Testing code with QuickCheck"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Using the canvas"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Domain specific language implementation"
+msgstr "領域特化言語の実装"
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Working with the DOM"
+msgstr "DOMを扱う"
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "JavaScript interoperability"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+msgid "Parallel asynchronous execution"
+msgstr "平行非同期実行"
+
+#. type: Title ##
+#: README.md:32
+#, no-wrap
+msgid "License"
+msgstr ""
+
+#. type: Plain text
+#: README.md:35
+msgid "Copyright (c) 2014-2017 Phil Freeman."
+msgstr ""
+
+#. type: Plain text
+#: README.md:37
+msgid ""
+"The text of this book is licensed under the Creative Commons Attribution-"
+"NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
+"licenses/by-nc-sa/3.0/deed.en_US>."
+msgstr ""
+
+#. type: Plain text
+#: README.md:39
+msgid ""
+"Some text is derived from the [PureScript Documentation Repo](https://github."
+"com/purescript/documentation), which uses the same license, and is copyright "
+"[various contributors](https://github.com/purescript/documentation/blob/"
+"master/CONTRIBUTORS.md)."
+msgstr ""
+
+#. type: Plain text
+#: README.md:40
+msgid "The exercises are licensed under the MIT license."
+msgstr ""
 
 #. type: Title ##
 #: text/chapter1.md:1 text/chapter4.md:23
@@ -4259,11 +4421,11 @@ msgstr ""
 #. type: Plain text
 #: text/chapter10.md:1171
 msgid ""
-"A similar law holds for expressions of type `Int` `Number` and `String` - "
+"A similar law holds for expressions of type `Int`, `Number`, and `String` - "
 "expressions of type `Int` or `Number` evaluate to non-null JavaScript "
 "numbers, and expressions of type `String` evaluate to non-null JavaScript "
 "strings. Expressions of type `Int` will evaluate to integers at runtime, "
-"even though they cannot not be distinguished from values of type `Number` by "
+"even though they cannot be distinguished from values of type `Number` by "
 "using `typeof`."
 msgstr ""
 "`Int`や`Number`や`String`の型の式についても同様のことが成り立ちます。`Int`や"
@@ -5196,8 +5358,8 @@ msgstr ""
 #: text/chapter11.md:93
 msgid ""
 "The `State` type constructor takes two type parameters: the type `s` of the "
-"state, and the return type `a`. Even though we speak of the \"`State` "
-"monad\", the instance of the `Monad` type class is actually provided for the "
+"state, and the return type `a`. Even though we speak of the \"`State` monad"
+"\", the instance of the `Monad` type class is actually provided for the "
 "`State s` type constructor, for any type `s`."
 msgstr ""
 "`State`型構築子は、状態の型 `s`、および返り値の型 `a`という2種類の引数\n"
@@ -7126,7 +7288,8 @@ msgstr "> upperOrLower = some upper <|> some lower\n"
 #. type: Plain text
 #: text/chapter11.md:685
 msgid "This parser will match characters until the case changes:"
-msgstr "この構文解析器は、大文字と小文字が切り替わるまで、文字に適合し続けます。"
+msgstr ""
+"この構文解析器は、大文字と小文字が切り替わるまで、文字に適合し続けます。"
 
 #. type: Fenced code block (text)
 #: text/chapter11.md:686
@@ -7151,7 +7314,8 @@ msgstr ""
 msgid ""
 "We can even use `many` to fully split a string into its lower and upper case "
 "components:"
-msgstr "`many`を使うと、文字列を小文字と大文字の要素に完全に分割することもできます。"
+msgstr ""
+"`many`を使うと、文字列を小文字と大文字の要素に完全に分割することもできます。"
 
 #. type: Fenced code block (text)
 #: text/chapter11.md:697
@@ -7212,8 +7376,8 @@ msgstr ""
 msgid ""
 "(Medium) Use your `string` parser with the `some` combinator to write a "
 "parser `asFollowedByBs` which recognizes strings consisting of several "
-"copies of the string `\"a\"` followed by several copies of the string "
-"`\"b\"`."
+"copies of the string `\"a\"` followed by several copies of the string `\"b"
+"\"`."
 msgstr ""
 "（普通）`string`構文解析器と `many`コンビネータを使って、文字列\n"
 "`\"a\"`の連続と、それに続く文字列 `\"b\"`の連続からなる文字列を認識する構\n"
@@ -7286,7 +7450,8 @@ msgstr ""
 msgid ""
 "The `RWS` monad is defined in terms of three type parameters (in addition to "
 "its return type):"
-msgstr "`RWS`モナドは（戻り値の型に加えて）3つの型変数を使って定義されています。"
+msgstr ""
+"`RWS`モナドは（戻り値の型に加えて）3つの型変数を使って定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:736
@@ -8166,7 +8331,8 @@ msgstr "`canvas`はHTML5のCanvas APIのメソッドの型を与えます。"
 #: text/chapter12.md:13
 msgid ""
 "`refs`, which provides a side-effect for using _global mutable references_"
-msgstr "`refs`は**大域的な変更可能領域への参照**を使うための副作用を提供します。"
+msgstr ""
+"`refs`は**大域的な変更可能領域への参照**を使うための副作用を提供します。"
 
 #. type: Plain text
 #: text/chapter12.md:15
@@ -8264,7 +8430,8 @@ msgstr ""
 msgid ""
 "The types of these actions can be found using PSCi or by looking at the "
 "documentation:"
-msgstr "これらのアクションの型は、PSCiを使うかドキュメントを見ると確認できます。"
+msgstr ""
+"これらのアクションの型は、PSCiを使うかドキュメントを見ると確認できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:34
@@ -8612,7 +8779,8 @@ msgstr "`moveTo`はパスの現在地を指定された座標に移動します�
 msgid ""
 "`lineTo` renders a line segment between the current location and the "
 "specified coordinates, and updates the current location,"
-msgstr "`lineTo`は現在地と指定された座標の間の線分を描画し、現在地を更新します。"
+msgstr ""
+"`lineTo`は現在地と指定された座標の間の線分を描画し、現在地を更新します。"
 
 #. type: Bullet: '- '
 #: text/chapter12.md:142
@@ -8629,7 +8797,8 @@ msgstr "このコード片の結果は二等辺三角形の塗り潰しです。
 #. type: Plain text
 #: text/chapter12.md:146
 msgid "Build the example by specifying `Example.Shapes` as the main module:"
-msgstr "mainモジュールとして`Example.Shapes`を指定して、この例をビルドしましょう。"
+msgstr ""
+"mainモジュールとして`Example.Shapes`を指定して、この例をビルドしましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter12.md:147
@@ -9383,7 +9552,8 @@ msgstr ""
 msgid ""
 "If we start with the initial sequence \"FRRFRRFRR\" and iterate, we obtain "
 "the following sequence:"
-msgstr "配列 \"FRRFRRFRR\" から始めて処理を繰り返すと、次のような経過を辿ります。"
+msgstr ""
+"配列 \"FRRFRRFRR\" から始めて処理を繰り返すと、次のような経過を辿ります。"
 
 #. type: Fenced code block (text)
 #: text/chapter12.md:385
@@ -9457,7 +9627,9 @@ msgstr ""
 msgid ""
 "Our production rules can be represented as a function from `Letter` to "
 "`Sentence` as follows:"
-msgstr "生成規則は以下のように`Letter`から `Sentence`への関数として表すことができます。"
+msgstr ""
+"生成規則は以下のように`Letter`から `Sentence`への関数として表すことができま"
+"す。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:413
@@ -9886,7 +10058,9 @@ msgstr ""
 #. type: Plain text
 #: text/chapter12.md:542
 msgid "To render this L-system, we can simply use the `strokePath` action:"
-msgstr "このL-Systemを描画するには、次のような `strokePath`アクションを使用するだけです。"
+msgstr ""
+"このL-Systemを描画するには、次のような `strokePath`アクションを使用するだけで"
+"す。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:543
@@ -10140,18 +10314,18 @@ msgid ""
 "purescript-cookbook/blob/master/README.md#recipes)."
 msgstr ""
 "canvasに描画されるゲームの例については\n"
-"[cookbook](https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes)\n"
+"[cookbook](https://github.com/JordanMartinez/purescript-cookbook/blob/master/"
+"README.md#recipes)\n"
 "の「Behavior」と「Signal」のレシピを見てください。"
 
 #. type: Title #
 #: text/chapter13.md:1
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Generative Testing"
 msgstr "テストの自動生成"
 
 #. type: Plain text
 #: text/chapter13.md:6
-#, fuzzy
 msgid ""
 "In this chapter, we will see a particularly elegant application of type "
 "classes to the problem of testing. Instead of testing our code by telling "
@@ -10163,17 +10337,16 @@ msgid ""
 "Introduction_to_QuickCheck1) library in Haskell."
 msgstr ""
 "この章では、テスティングの問題に対する、型クラスの特に洗練された応用について"
-"示します。**どのようにテストするのかを**コンパイラに教えるのではなく、コード"
-"が**どのような性質を持っているべきか**を教えることでテストします。型クラスを"
+"示します。**どのように**テストするのかをコンパイラに教えるのではなく、コード"
+"が**どのような**性質を持っているべきかを教えることでテストします。型クラスを"
 "使って無作為データ生成のための定型コードを隠し、テストケースを仕様から無作為"
-"に生成することができます。これは**生成的テスティング**(generative testing、ま"
-"たはproperty-based testing）と呼ばれ、Haskellの[QuickCheck](http://www."
-"haskell.org/haskellwiki/Introduction_to_QuickCheck1)ライブラリによって知られ"
-"るようになった手法です。"
+"に生成することができます。これは**生成的テスティング**（generative testing、"
+"または**property-based testing**）と呼ばれ、Haskellの[QuickCheck](http://"
+"wiki.haskell.org/Introduction_to_QuickCheck1)ライブラリによって普及した手法で"
+"す。"
 
 #. type: Plain text
 #: text/chapter13.md:8
-#, fuzzy
 msgid ""
 "The `quickcheck` package is a port of Haskell's QuickCheck library to "
 "PureScript, and for the most part, it preserves the types and syntax of the "
@@ -10181,66 +10354,61 @@ msgid ""
 "library, using Spago to integrate our test suite into our development "
 "process."
 msgstr ""
-"`purescript-quickcheck`パッケージはHaskellのQuickCheckライブラリをPureScript"
-"にポーティングしたもので、型や構文はもとのライブラリとほとんど同じようになっ"
-"ています。 `purescript-quickcheck`を使って簡単なライブラリをテストし、Pulpで"
-"テストスイートを自動化されたビルドに統合する方法を見ていきます。"
+"`quickcheck`パッケージはHaskellのQuickCheckライブラリをPureScriptにポーティン"
+"グしたもので、型や構文はもとのライブラリとほとんど同じようになっています。 "
+"`quickcheck`を使って簡単なライブラリをテストし、Spagoでテストスイートを自動化"
+"されたビルドに統合する方法を見ていきます。"
 
 #. type: Plain text
 #: text/chapter13.md:12
-#, fuzzy
 msgid "This chapter's project adds `quickcheck` as a dependency."
-msgstr ""
-"この章のプロジェクトにはBower依存関係として `purescript-quickcheck`が追加され"
-"ます。"
+msgstr "この章のプロジェクトには依存関係として `quickcheck`が追加されます。"
 
 #. type: Plain text
 #: text/chapter13.md:14
-#, fuzzy
 msgid ""
 "In a Spago project, test sources should be placed in the `test` directory, "
 "and the main module for the test suite should be named `Test.Main`. The test "
 "suite can be run using the `spago test` command."
 msgstr ""
-"Pulpプロジェクトでは、テストソースは `test`ディレクトリに置かれ、テストスイー"
-"トのメインモジュールは `Test.Main`と名づけられます。 テストスイートは、 "
-"`pulp test`コマンドを使用して実行できます。"
+"Spagoプロジェクトでは、テストソースは `test`ディレクトリに置かれ、テストス"
+"イートのメインモジュールは `Test.Main`と名づけられます。 テストスイートは、 "
+"`spago test`コマンドを使用して実行できます。"
 
 #. type: Title ##
 #: text/chapter13.md:15
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Writing Properties"
-msgstr "プロパティの書き込み"
+msgstr "性質を書く"
 
 #. type: Plain text
 #: text/chapter13.md:18
-#, fuzzy
 msgid ""
 "The `Merge` module implements a simple function `merge`, which we will use "
 "to demonstrate the features of the `quickcheck` library."
 msgstr ""
-"`Merge`モジュールでは `purescript-quickcheck`ライブラリの機能を実演するために"
-"使う簡単な関数 `merge`が実装されています。"
+"`Merge`モジュールでは簡単な関数 `merge`が実装されています。\n"
+"これを`quickcheck`ライブラリの機能を実演するために使っていきます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:19
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "merge :: Array Int -> Array Int -> Array Int\n"
 msgstr "merge :: Array Int -> Array Int -> Array Int\n"
 
 #. type: Plain text
 #: text/chapter13.md:24
-#, fuzzy
 msgid ""
 "`merge` takes two sorted arrays of integers, and merges their elements so "
 "that the result is also sorted. For example:"
 msgstr ""
-"`merge`は2つのソートされた数の配列をとって、その要素を統合し、ソートされた結"
-"果を返します。例えば次のようになります。"
+"`merge`は2つの整列された整数の配列を取って、結果が整列されるように要素を統合"
+"します。\n"
+"例えば次のようになります。"
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:25
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Merge\n"
 "> merge [1, 3, 5] [2, 4, 5]\n"
@@ -10248,13 +10416,12 @@ msgid ""
 "[1, 2, 3, 4, 5, 5]\n"
 msgstr ""
 "> import Merge\n"
-"> merge [1, 3, 5] [2, 4, 6]\n"
+"> merge [1, 3, 5] [2, 4, 5]\n"
 "\n"
-"[1, 2, 3, 4, 5, 6]\n"
+"[1, 2, 3, 4, 5, 5]\n"
 
 #. type: Plain text
 #: text/chapter13.md:33
-#, fuzzy
 msgid ""
 "In a typical test suite, we might test `merge` by generating a few small "
 "test cases like this by hand, and asserting that the results were equal to "
@@ -10262,36 +10429,33 @@ msgid ""
 "`merge` function can be summarized by this property:"
 msgstr ""
 "典型的なテストスイートでは、手作業でこのような小さなテストケースをいくつも作"
-"成し、結果が正しい値と等しいことを確認することでテスト実施します。しかし、 "
-"`merge`関数について知る必要があるものはすべて、2つの性質に要約することができ"
-"ます。"
+"成し、結果が正しい値と等しいことを確認することでテストを実施します。\n"
+"しかし、 `merge`関数について知る必要があるものはすべて、こちらの性質に要約す"
+"ることができます。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:35
-#, fuzzy
 msgid ""
 "If `xs` and `ys` are sorted, then `merge xs ys` is the sorted result of both "
 "arrays appended together."
 msgstr ""
-"- (既ソート性)`xs`と `ys`がソート済みなら、 `merge xs ys`もソート済みになりま"
-"す。 - （部分配列） `xs`と `ys`ははどちらも `merge xs ys`の部分配列で、要素は"
-"元の配列と同じ順序で現れます。"
+"`xs`と `ys`がソート済みなら、`merge xs ys`は両方の配列が一緒に結合され整列さ"
+"れた結果になります。"
 
 #. type: Plain text
 #: text/chapter13.md:37
-#, fuzzy
 msgid ""
 "`quickcheck` allows us to test this property directly, by generating random "
 "test cases. We simply state the properties that we want our code to have, as "
 "functions. In this case, we have a single property:"
 msgstr ""
-"`purescript-quickcheck`では、無作為なテストケースを生成することで、直接これら"
-"の性質をテストすることができます。コードが持つべき性質を、次のような関数とし"
-"て述べるだけです。"
+"`quickcheck`では、無作為なテストケースを生成することで、直接この性質をテスト"
+"することができます。コードが持つべき性質を関数として述べるだけです。\n"
+"この場合は1つの性質があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:38
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "main = do\n"
 "  quickCheck \\xs ys ->\n"
@@ -10299,13 +10463,10 @@ msgid ""
 msgstr ""
 "main = do\n"
 "  quickCheck \\xs ys ->\n"
-"    isSorted $ merge (sort xs) (sort ys)\n"
-"  quickCheck \\xs ys ->\n"
-"    xs `isSubarrayOf` merge xs ys\n"
+"    eq (merge (sort xs) (sort ys)) (sort $ xs <> ys)\n"
 
 #. type: Plain text
 #: text/chapter13.md:45
-#, fuzzy
 msgid ""
 "When we run this code, `quickcheck` will attempt to disprove the properties "
 "we claimed, by generating random inputs `xs` and `ys`, and passing them to "
@@ -10314,11 +10475,12 @@ msgid ""
 "library is unable to disprove our properties after generating 100 random "
 "test cases:"
 msgstr ""
-"このコードを実行すると、 `purescript-quickcheck`は無作為な入力 `xs`と `ys`を"
-"生成してこの関数に渡すことで、主張しようとしている性質を反証しようとします。"
+"このコードを実行すると、 `quickcheck`は無作為な入力 `xs`と `ys`を生成してこの"
+"関数に渡すことで、主張しようとしている性質を反証しようとします。\n"
 "何らかの入力に対して関数が `false`を返した場合、性質は正しくないことが示さ"
-"れ、ライブラリはエラーを発生させます。幸いなことに、次のように100個の無作為な"
-"テストケースを生成しても、ライブラリはこの性質を反証することができません。"
+"れ、ライブラリはエラーを発生させます。\n"
+"幸いなことに、次のように100個の無作為なテストケースを生成しても、ライブラリは"
+"この性質を反証することができません。"
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:46
@@ -10332,10 +10494,16 @@ msgid ""
 "...\n"
 "Tests succeeded.\n"
 msgstr ""
+"$ spago test\n"
+"\n"
+"Installation complete.\n"
+"Build succeeded.\n"
+"100/100 test(s) passed.\n"
+"...\n"
+"Tests succeeded.\n"
 
 #. type: Plain text
 #: text/chapter13.md:57
-#, fuzzy
 msgid ""
 "If we deliberately introduce a bug into the `merge` function (for example, "
 "by changing the less-than check for a greater-than check), then an exception "
@@ -10347,7 +10515,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:58
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "Error: Test 1 failed:\n"
 "Test returned false\n"
@@ -10357,29 +10525,31 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:64
-#, fuzzy
 msgid ""
 "As we can see, this error message is not very helpful, but it can be "
 "improved with a little work."
 msgstr ""
-"このエラーメッセージではあまり役に立ちませんが、これから見ていくように、少し"
-"の作業で改良することができます。"
+"見ての通りこのエラーメッセージではあまり役に立ちませんが、少し工夫するだけで"
+"改良することができます。"
 
 #. type: Title ##
 #: text/chapter13.md:65
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Improving Error Messages"
 msgstr "エラーメッセージの改善"
 
 #. type: Plain text
 #: text/chapter13.md:68
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "To provide error messages along with our failed test cases, `quickcheck` provides the `<?>` operator. Simply separate the property definition from the error message using `<?>`, as follows:\n"
-msgstr "テストケースが失敗した時に同時にエラーメッセージを提供するには、 `purescript-quickcheck`の `<?>`演算子を使います。次のように性質の定義に続けて `<?>`で区切ってエラーメッセージを書くだけです。\n"
+msgstr ""
+"テストケースが失敗した時に同時にエラーメッセージを提供する上で、\n"
+"`quickcheck`は`<?>`演算子を提供しています。\n"
+"次のように性質の定義とエラー文言を`<?>`で区切って書くだけです。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\xs ys ->\n"
 "  let\n"
@@ -10391,12 +10561,12 @@ msgstr ""
 "quickCheck \\xs ys ->\n"
 "  let\n"
 "    result = merge (sort xs) (sort ys)\n"
+"    expected = sort $ xs <> ys\n"
 "  in\n"
-"    xs `isSubarrayOf` result <?> show xs <> \" not a subarray of \" <> show result\n"
+"    eq result expected <?> \"Result:\\n\" <> show result <> \"\\nnot equal to expected:\\n\" <> show expected\n"
 
 #. type: Plain text
 #: text/chapter13.md:79
-#, fuzzy
 msgid ""
 "This time, if we modify the code to introduce a bug, we see our improved "
 "error message after the first failed test case:"
@@ -10414,10 +10584,14 @@ msgid ""
 "not equal to expected:\n"
 "[-888285,-822215,-196136,-116841,618343,887447]\n"
 msgstr ""
+"Error: Test 1 (seed 534161891) failed:\n"
+"Result:\n"
+"[-822215,-196136,-116841,618343,887447,-888285]\n"
+"not equal to expected:\n"
+"[-888285,-822215,-196136,-116841,618343,887447]\n"
 
 #. type: Plain text
 #: text/chapter13.md:89
-#, fuzzy
 msgid ""
 "Notice how the input `xs` and `ys` were generated as arrays of randomly-"
 "selected integers."
@@ -10434,10 +10608,15 @@ msgid ""
 "We're just trying to give you readers a simple way to practice using "
 "quickCheck."
 msgstr ""
+"（簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を"
+"書いてください。\n"
+"**補足**：この新しい性質は冗長です。\n"
+"というのもこの状況は既に既存の性質で押さえられているからです。\n"
+"読者がQuickCheckを使う練習をするための簡単な方法を与えようとしているだけで"
+"す。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:94
-#, fuzzy
 msgid ""
 "(Easy) Add an appropriate error message to the remaining property for "
 "`merge`."
@@ -10447,13 +10626,12 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter13.md:95
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Testing Polymorphic Code"
 msgstr "多相的なコードのテスト"
 
 #. type: Plain text
 #: text/chapter13.md:98
-#, fuzzy
 msgid ""
 "The `Merge` module defines a generalization of the `merge` function, called "
 "`mergePoly`, which works not only with arrays of numbers, but also arrays of "
@@ -10465,13 +10643,12 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:99
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "mergePoly :: forall a. Ord a => Array a -> Array a -> Array a\n"
 msgstr "mergePoly :: forall a. Ord a => Array a -> Array a -> Array a\n"
 
 #. type: Plain text
 #: text/chapter13.md:104
-#, fuzzy
 msgid ""
 "If we modify our original test to use `mergePoly` in place of `merge`, we "
 "see the following error message:"
@@ -10481,7 +10658,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:105
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "No type class instance was found for\n"
 "\n"
@@ -10499,7 +10676,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:115
-#, fuzzy
 msgid ""
 "This error message indicates that the compiler could not generate random "
 "test cases, because it did not know what type of elements we wanted our "
@@ -10507,19 +10683,20 @@ msgid ""
 "force the compiler to infer a particular type, such as `Array Int`:"
 msgstr ""
 "このエラーメッセージは、配列に持たせたい要素の型が何なのかわからないので、コ"
-"ンパイラが無作為なテストケースを生成できなかったということを示しています。こ"
-"のような場合、補助関数を使と、コンパイラが特定の型を推論すること強制できま"
-"す。例えば、恒等関数の同義語として `ints`という関数を定義します。"
+"ンパイラが無作為なテストケースを生成できなかったということを示しています。\n"
+"このような場合、型註釈を使ってコンパイラが特定の型を推論するように強制できま"
+"す。\n"
+"例えば`Array Int`などです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:116
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\xs ys ->\n"
 "  eq (mergePoly (sort xs) (sort ys) :: Array Int) (sort $ xs <> ys)\n"
 msgstr ""
 "quickCheck \\xs ys ->\n"
-"  isSorted $ numbers $ mergePoly (sort xs) (sort ys)\n"
+"  eq (mergePoly (sort xs) (sort ys) :: Array Int) (sort $ xs <> ys)\n"
 
 #. type: Plain text
 #: text/chapter13.md:122
@@ -10528,10 +10705,13 @@ msgid ""
 "in cleaner code. For example, if we define a function `ints` as a synonym "
 "for the identity function:"
 msgstr ""
+"代替案として型を指定する補助関数を使うこともできます。\n"
+"こうするとより見通しのよいコードになることがあります。\n"
+"例えば同値関数の同義な関数`ints`を定義したとしましょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:123
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "ints :: Array Int -> Array Int\n"
 "ints = id\n"
@@ -10541,78 +10721,72 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:129
-#, fuzzy
 msgid ""
 "then we can modify our test so that the compiler infers the type `Array Int` "
 "for our two array arguments:"
 msgstr ""
-"それから、コンパイラが引数の２つの配列の型 `Array Int`を推論するように、テス"
-"トを変更します。"
+"それから、コンパイラが引数の2つの配列の型 `Array Int`を推論するように、テスト"
+"を変更します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:130
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\xs ys ->\n"
 "  eq (ints $ mergePoly (sort xs) (sort ys)) (sort $ xs <> ys)\n"
 msgstr ""
 "quickCheck \\xs ys ->\n"
-"  isSorted $ ints $ mergePoly (sorted xs) (sorted ys)\n"
+"  eq (ints $ mergePoly (sort xs) (sort ys)) (sort $ xs <> ys)\n"
 
 #. type: Plain text
 #: text/chapter13.md:136
-#, fuzzy
 msgid ""
 "Here, `xs` and `ys` both have type `Array Int`, since the `ints` function "
 "has been used to disambiguate the unknown type."
 msgstr ""
-"ここで、 `numbers`関数が不明な型を解消するために使われるので、 `xs`と `ys`は"
+"ここで、 `ints`関数が不明な型を解消するために使われているため、 `xs`と `ys`は"
 "どちらも型 `Array Int`を持っています。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:141
-#, fuzzy
 msgid ""
 "(Easy) Write a function `bools` which forces the types of `xs` and `ys` to "
 "be `Array Boolean`, and add additional properties which test `mergePoly` at "
 "that type."
 msgstr ""
-"(簡単)`xs`と `ys`の型を `Array Boolean`に強制する関数 `bools`を書き、 "
+"（簡単）`xs`と `ys`の型を `Array Boolean`に強制する関数 `bools`を書き、 "
 "`mergePoly`をその型でテストする性質を追加してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:141
-#, fuzzy
 msgid ""
 "(Medium) Choose a pure function from the core libraries (for example, from "
 "the `arrays` package), and write a QuickCheck property for it, including an "
 "appropriate error message. Your property should use a helper function to fix "
 "any polymorphic type arguments to either `Int` or `Boolean`."
 msgstr ""
-"(普通) 標準関数から(例えば `purescript-arrays`パッケージから)ひとつ関数を選"
-"び、適切なエラーメッセージを含めてQuickCheckの性質を書いてください。その性質"
-"は、補助関数を使って多相型引数を `Int`か `Boolean`のどちらかに固定しなければ"
-"いけません。"
+"（普通）標準関数から（例えば `arrays`パッケージから）ひとつ関数を選び、適切な"
+"エラーメッセージを含めてQuickCheckの性質を書いてください。その性質は、補助関"
+"数を使って多相型引数を `Int`か `Boolean`のどちらかに固定しなければいけませ"
+"ん。"
 
 #. type: Title ##
 #: text/chapter13.md:142
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Generating Arbitrary Data"
 msgstr "任意のデータの生成"
 
 #. type: Plain text
 #: text/chapter13.md:145
-#, fuzzy
 msgid ""
 "Now we will see how the `quickcheck` library is able to randomly generate "
 "test cases for our properties."
 msgstr ""
-"`purescript-quickcheck`ライブラリを使って性質についてのテストケースを無作為に"
-"生成する方法について説明します。"
+"`quickcheck`ライブラリを使って性質に対するテストケースを無作為に生成する方法"
+"について説明します。"
 
 #. type: Plain text
 #: text/chapter13.md:147
-#, fuzzy
 msgid ""
 "Those types whose values can be randomly generated are captured by the "
 "`Arbitrary` type class:"
@@ -10622,7 +10796,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:148
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class Arbitrary t where\n"
 "  arbitrary :: Gen t\n"
@@ -10632,7 +10806,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:154
-#, fuzzy
 msgid ""
 "The `Gen` type constructor represents the side-effects of _deterministic "
 "random data generation_. It uses a pseudo-random number generator to "
@@ -10643,37 +10816,35 @@ msgstr ""
 "`Gen`型構築子は**決定的無作為データ生成**の副作用を表しています。 決定的無作"
 "為データ生成は、擬似乱数生成器を使って、シード値から決定的無作為関数の引数を"
 "生成します。 `Test.QuickCheck.Gen`モジュールは、ジェネレータを構築するための"
-"いくつかの有用なコンビネータを定義します。"
+"いくつかの有用なコンビネータを定義しています。"
 
 #. type: Plain text
 #: text/chapter13.md:156
-#, fuzzy
 msgid ""
 "`Gen` is also a monad and an applicative functor, so we have the usual "
 "collection of combinators at our disposal for creating new instances of the "
 "`Arbitrary` type class."
 msgstr ""
-"`Gen`はモナドでもApplicative関手でもあるので、 `Arbitary`型クラスの新しいイン"
-"スタンスを作成するのに、いつも使っているようなコンビネータを自由に使うことが"
-"できます。"
+"`Gen`はモナドでもアプリカティブ関手でもあるので、 `Arbitary`型クラスの新しい"
+"インスタンスを作成するのに、いつも使っているようなコンビネータを自由に使うこ"
+"とができます。"
 
 #. type: Plain text
 #: text/chapter13.md:158
-#, fuzzy
 msgid ""
 "For example, we can use the `Arbitrary` instance for the `Int` type, "
 "provided in the `quickcheck` library, to create a distribution on the 256 "
 "byte values, using the `Functor` instance for `Gen` to map a function from "
 "integers to bytes over arbitrary integer values:"
 msgstr ""
-"例えば、 `purescript-quickcheck`ライブラリで提供されている `Int`型の "
-"`Arbitrary`インスタンスは、関数を整数から任意の整数値のバイトまでマップするた"
-"めの `Functor`インスタンスを `Gen`に使用することで、バイト値の分布した値を生"
-"成します。"
+"例えば、 `quickcheck`ライブラリで提供されている `Int`型用の `Arbitrary`インス"
+"タンスを使い、256個のバイト値上の分布を作ることができます。\n"
+"これには`Gen`用に`Functor`インスタンスを使って整数から任意の整数値のバイトま"
+"でマップします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:159
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "newtype Byte = Byte Int\n"
 "\n"
@@ -10693,40 +10864,34 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:170
-#, fuzzy
 msgid ""
 "Here, we define a type `Byte` of integral values between 0 and 255. The "
 "`Arbitrary` instance uses the `map` function to lift the `intToByte` "
 "function over the `arbitrary` action. The type of the inner `arbitrary` "
 "action is inferred as `Gen Int`."
 msgstr ""
-"ここでは、0から255までの間の整数値であるような型 `Byte`を定義しています。 "
-"`Arbitrary`インスタンスの `<$>`演算子を使って、 `uniformToByte`関数を "
-"`arbitrary`アクションまで持ち上げています。この型の `arbitrary`アクションの型"
-"は `Gen Number`だと推論されますが、これは0から1の間に均一に分布する数を生成す"
-"ることを意味しています。\n"
+"ここでは、0から255までの間の整数値であるような型 `Byte`を定義しています。\n"
+"`Arbitrary`インスタンスは `map`演算子を使って、 `intToByte`関数を `arbitrary`"
+"アクションまで持ち上げています。\n"
+"`arbitrary`アクション内部の型は `Gen Int`と推論されます。"
 
 #. type: Plain text
 #: text/chapter13.md:172
-#, fuzzy
 msgid "We can also use this idea to improve our test for `merge`:"
-msgstr ""
-"この考え方を `merge`に対しての既ソート性テストを改良するのに使うこともできま"
-"す。"
+msgstr "この考え方を `merge`用のテストに使うこともできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:173
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\xs ys ->\n"
 "  eq (numbers $ mergePoly (sort xs) (sort ys)) (sort $ xs <> ys)\n"
 msgstr ""
 "quickCheck \\xs ys ->\n"
-"  isSorted $ numbers $ mergePoly (sort xs) (sort ys)\n"
+"  eq (numbers $ mergePoly (sort xs) (sort ys)) (sort $ xs <> ys)\n"
 
 #. type: Plain text
 #: text/chapter13.md:179
-#, fuzzy
 msgid ""
 "In this test, we generated arbitrary arrays `xs` and `ys`, but had to sort "
 "them, since `merge` expects sorted input. On the other hand, we could create "
@@ -10740,7 +10905,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:180
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "newtype Sorted a = Sorted (Array a)\n"
 "\n"
@@ -10760,23 +10925,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:191
-#, fuzzy
 msgid "With this type constructor, we can modify our test as follows:"
 msgstr "この型構築子を使うと、テストを次のように変更することができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:192
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\xs ys ->\n"
 "  eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs <> sorted ys)\n"
 msgstr ""
 "quickCheck \\xs ys ->\n"
-"  isSorted $ ints $ mergePoly (sorted xs) (sorted ys)\n"
+"  eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs <> sorted ys)\n"
 
 #. type: Plain text
 #: text/chapter13.md:198
-#, fuzzy
 msgid ""
 "This may look like a small change, but the types of `xs` and `ys` have "
 "changed to `Sorted Int`, instead of just `Array Int`. This communicates our "
@@ -10792,7 +10955,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:200
-#, fuzzy
 msgid ""
 "As a more interesting example, the `Tree` module defines a type of sorted "
 "binary trees with values at the branches:"
@@ -10802,7 +10964,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:201
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "data Tree a\n"
 "  = Leaf\n"
@@ -10814,13 +10976,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:208
-#, fuzzy
 msgid "The `Tree` module defines the following API:"
 msgstr "`Tree`モジュールでは次のAPIが定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:209
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "insert    :: forall a. Ord a => a -> Tree a -> Tree a\n"
 "member    :: forall a. Ord a => a -> Tree a -> Boolean\n"
@@ -10834,7 +10995,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:217
-#, fuzzy
 msgid ""
 "The `insert` function is used to insert a new element into a sorted tree, "
 "and the `member` function can be used to query a tree for a particular "
@@ -10846,7 +11006,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:218
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Tree\n"
 "\n"
@@ -10866,7 +11026,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:229
-#, fuzzy
 msgid ""
 "The `toArray` and `fromArray` functions can be used to convert sorted trees "
 "to and from arrays. We can use `fromArray` to write an `Arbitrary` instance "
@@ -10878,7 +11037,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:230
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance arbTree :: (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
 "  arbitrary = map fromArray arbitrary\n"
@@ -10888,20 +11047,19 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:236
-#, fuzzy
 msgid ""
 "We can now use `Tree a` as the type of an argument to our test properties, "
 "whenever there is an `Arbitrary` instance available for the type `a`. For "
 "example, we can test that the `member` test always returns `true` after "
 "inserting a value:"
 msgstr ""
-"型 `a`についての有効な `Arbitary`インスタンスが存在していれば、テストする性質"
-"の引数の型として `Tree a`を使うことができます。例えば、 `member`テストは値を"
-"挿入した後は常に `true`を返すことをテストできます。"
+"型 `a`についての`Arbitary`インスタンスが使えるなら、テストする性質の引数の型"
+"として `Tree a`を使うことができます。例えば、 `member`テストは値を挿入した後"
+"は常に `true`を返すことをテストできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:237
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\t a ->\n"
 "  member a $ insert a $ treeOfInt t\n"
@@ -10911,17 +11069,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:243
-#, fuzzy
 msgid ""
 "Here, the argument `t` is a randomly-generated tree of type `Tree Int`, "
 "where the type argument disambiguated by the identity function `treeOfInt`."
 msgstr ""
-"ここでは、引数 `t`は `Tree Number`型の無作為に生成された木です。型引数は、識"
-"別関数 `treeOfInt`によって明確化されています。"
+"ここでは、引数 `t`は `Tree Number`型の無作為に生成された木です。\n"
+"型引数は、同値関数 `treeOfInt`によって明確化されています。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:248
-#, fuzzy
 msgid ""
 "(Medium) Create a newtype for `String` with an associated `Arbitrary` "
 "instance which generates collections of randomly-selected characters in the "
@@ -10934,48 +11090,45 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:248
-#, fuzzy
 msgid ""
 "(Difficult) Write a property which asserts that a value inserted into a tree "
 "is still a member of that tree after arbitrarily many more insertions."
 msgstr ""
-"（難しい） 木に挿入された値は、任意に多くの挿入があった後も、その木の構成要素"
-"であることを主張する性質を書いてください。"
+"（難しい） 木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素で"
+"あることを主張する性質を書いてください。"
 
 #. type: Title ##
 #: text/chapter13.md:249
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Testing Higher-Order Functions"
 msgstr "高階関数のテスト"
 
 #. type: Plain text
 #: text/chapter13.md:252
-#, fuzzy
 msgid ""
 "The `Merge` module defines another generalization of the `merge` function - "
 "the `mergeWith` function takes an additional function as an argument which "
 "is used to determine the order in which elements should be merged. That is, "
 "`mergeWith` is a higher-order function."
 msgstr ""
-"`Merge`モジュールは `merge`関数についての他の生成も定義します。 `mergeAith`関"
-"数は、統合される要素の順序を決定するのに使われる、追加の関数を引数としてとり"
-"ます。つまり `mergeWith`は高階関数です。"
+"`Merge`モジュールは `merge`関数の別の一般化も定義します。\n"
+"`mergeAith`関数は追加の関数を引数として取り、統合される要素の順序を決\n"
+"定するのに使われます。つまり `mergeWith`は高階関数です。"
 
 #. type: Plain text
 #: text/chapter13.md:254
-#, fuzzy
 msgid ""
 "For example, we can pass the `length` function as the first argument, to "
 "merge two arrays which are already in length-increasing order. The result "
 "should also be in length-increasing order:"
 msgstr ""
-"例えば、すでに長さの昇順になっている２つの配列を統合するのに、 `length`関数を"
-"最初の引数として渡します。このとき、結果も長さの昇順になっていなければなりま"
-"せん。"
+"例えば`length`関数を最初の引数として渡し、既に長さの昇順になっている2\n"
+"つの配列を統合することができます。このとき、結果も長さの昇順になってい\n"
+"なければなりません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:255
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Data.String\n"
 "\n"
@@ -10995,28 +11148,26 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:266
-#, fuzzy
 msgid ""
 "How might we test such a function? Ideally, we would like to generate values "
 "for all three arguments, including the first argument which is a function."
 msgstr ""
-"このような関数をテストするにはどうしたらいいでしょうか。理想的には、関数であ"
-"るような最初の引数を含めた、３つの引数すべてについて、値を生成したいと思うで"
-"しょう。"
+"このような関数をテストするにはどうしたらいいでしょうか。理想的には、関\n"
+"数である最初の引数を含めた、3つの引数すべてについて、値を生成したいと\n"
+"思うでしょう。"
 
 #. type: Plain text
 #: text/chapter13.md:268
-#, fuzzy
 msgid ""
 "There is a second type class which allows us to create randomly-generated "
 "functions. It is called `Coarbitrary`, and it is defined as follows:"
 msgstr ""
-"関数を無作為に生成せきるようにする、もうひとつの型クラスがあります。この型ク"
-"ラスは `Coarbitrary`と呼ばれており、次のように定義されています。"
+"関数を無作為に生成できるようにする、もう1つの型クラスがあります。この\n"
+"型クラスは `Coarbitrary`と呼ばれており、次のように定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:269
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class Coarbitrary t where\n"
 "  coarbitrary :: forall r. t -> Gen r -> Gen r\n"
@@ -11026,50 +11177,46 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:275
-#, fuzzy
 msgid ""
 "The `coarbitrary` function takes a function argument of type `t`, and a "
 "random generator for a function result of type `r`, and uses the function "
 "argument to _perturb_ the random generator. That is, it uses the function "
 "argument to modify the random output of the random generator for the result."
 msgstr ""
-"`coarbitrary`関数は、型 `t`と、関数の結果の型 `r`についての無作為な生成器を関"
-"数の引数としてとり、無作為な生成器を**かき乱す**のにこの引数を使います。つま"
-"り、この引数を使って、乱数生成器の無作為な出力を変更しているのです。"
+"`coarbitrary`関数は、型 `t`と、関数の結果の型 `r`についての乱数生成器\n"
+"を関数の引数としてとり、乱数生成器を**かき乱す**のにこの引数を使います。\n"
+"つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。"
 
 #. type: Plain text
 #: text/chapter13.md:277
-#, fuzzy
 msgid ""
 "In addition, there is a type class instance which gives us `Arbitrary` "
 "functions if the function domain is `Coarbitrary` and the function codomain "
 "is `Arbitrary`:"
 msgstr ""
-"また、もし関数の定義域が `Coarbitrary`で、値域が `Arbitrary`なら、 "
+"また、もし関数の定義域が `Coarbitrary`で、値域が `Arbitrary`なら、\n"
 "`Arbitrary`の関数を与える型クラスインスタンスが存在しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:278
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
 msgstr "instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
 
 #. type: Plain text
 #: text/chapter13.md:283
-#, fuzzy
 msgid ""
 "In practice, this means that we can write properties which take functions as "
 "arguments. In the case of the `mergeWith` function, we can generate the "
 "first argument randomly, modifying our tests to take account of the new "
 "argument."
 msgstr ""
-"実は、これが意味しているのは、引数として関数を取るような性質を記述できるとい"
-"うことです。 `mergeWith`関数の場合では、新しい引数を考慮するようにテストを修"
-"正すると、最初の引数を無作為に生成することができます。"
+"実は、これが意味しているのは、引数として関数を取るような性質を記述でき\n"
+"るということです。 `mergeWith`関数の場合では、新しい引数を考慮するよう\n"
+"にテストを修正すると、最初の引数を無作為に生成することができます。"
 
 #. type: Plain text
 #: text/chapter13.md:285
-#, fuzzy
 msgid ""
 "We cannot guarantee that the result will be sorted - we do not even "
 "necessarily have an `Ord` instance - but we can expect that the result be "
@@ -11078,16 +11225,16 @@ msgid ""
 "we use the `sortBy` function to sort `xs` and `ys` based on comparison after "
 "the function `f` has been applied:"
 msgstr ""
-"既ソート性の性質については、必ずしも `Ord`インスタンスを持っているとは限らな"
-"いので、結果がソートされているということを保証することができませんが、引数と"
-"して渡す関数 `f`にしたがって結果がソートされている期待することはできます。さ"
-"らに、２つの入力配列が `f`に従ってソートされている必要がありますので、 "
-"`sortBy`関数を使って関数 `f`が適用されたあとの比較に基づいて `xs`と `ys`を"
-"ソートします。"
+"結果が整列されているということを保証することができません。必ずしも\n"
+"`Ord`インスタンスを持っているとさえ限らないのです。しかし、引数として\n"
+"渡す関数 `f`にしたがって結果が整列されていることは期待されます。さらに、\n"
+"2つの入力配列が `f`に従って整列されている必要がありますので、\n"
+"`sortBy`関数を使って関数 `f`が適用されたあとの比較に基づいて `xs`と\n"
+"`ys`を整列します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:286
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\xs ys f ->\n"
 "  let\n"
@@ -11103,15 +11250,20 @@ msgid ""
 "    eq result expected\n"
 msgstr ""
 "quickCheck \\xs ys f ->\n"
-"  isSorted $\n"
-"    map f $\n"
-"      mergeWith (intToBool f)\n"
-"                (sortBy (compare `on` f) xs)\n"
-"                (sortBy (compare `on` f) ys)\n"
+"  let\n"
+"    result =\n"
+"      map f $\n"
+"        mergeWith (intToBool f)\n"
+"                  (sortBy (compare `on` f) xs)\n"
+"                  (sortBy (compare `on` f) ys)\n"
+"    expected =\n"
+"      map f $\n"
+"        sortBy (compare `on` f) $ xs <> ys\n"
+"  in\n"
+"    eq result expected\n"
 
 #. type: Plain text
 #: text/chapter13.md:302
-#, fuzzy
 msgid ""
 "Here, we use a function `intToBool` to disambiguate the type of the function "
 "`f`:"
@@ -11120,7 +11272,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:303
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "intToBool :: (Int -> Boolean) -> Int -> Boolean\n"
 "intToBool = id\n"
@@ -11130,138 +11282,133 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:309
-#, fuzzy
 msgid "In addition to being `Arbitrary`, functions are also `Coarbitrary`:"
 msgstr "関数は `Arbitrary`であるだけでなく `Coarbitrary`でもあります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:310
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
 msgstr "instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
 
 #. type: Plain text
 #: text/chapter13.md:315
-#, fuzzy
 msgid ""
 "This means that we are not limited to just values and functions - we can "
 "also randomly generate _higher-order functions_, or functions whose "
 "arguments are higher-order functions, and so on."
 msgstr ""
-"これは値の生成が単純な関数だけに限定されるものではないことを意味しています。"
-"つまり、**高階関数**や、引数が高階関数であるような関数すら無作為に生成するこ"
-"とができるのです。"
+"これは値の生成が単純な関数だけに限定されるものではないことを意味してい\n"
+"ます。つまり、**高階関数**や、引数が高階関数であるような関数もまた無作\n"
+"為に生成することができるのです。"
 
 #. type: Title ##
 #: text/chapter13.md:316
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Writing Coarbitrary Instances"
 msgstr "Coarbitraryのインスタンスを書く"
 
 #. type: Plain text
 #: text/chapter13.md:319
-#, fuzzy
 msgid ""
 "Just as we can write `Arbitrary` instances for our data types by using the "
 "`Monad` and `Applicative` instances of `Gen`, we can write our own "
 "`Coarbitrary` instances as well. This allows us to use our own data types as "
 "the domain of randomly-generated functions."
 msgstr ""
-"`Gen`の `Monad`や `Applicative`インスタンスを使って独自のデータ型に対して "
-"`Arbitrary`インスタンスを書くことができるのとちょうど同じように、独自の "
-"`Coarbitrary`インスタンスを書くこともできます。これにより、無作為に生成される"
-"関数の定義域として、独自のデータ型を使うことができるようになります。"
+"`Gen`の `Monad`や `Applicative`インスタンスを使って独自のデータ型に対\n"
+"して `Arbitrary`インスタンスを書くことができるのとちょうど同じように、\n"
+"独自の `Coarbitrary`インスタンスを書くこともできます。これにより、無作\n"
+"為に生成される関数の定義域として、独自のデータ型を使うことができるよう\n"
+"になります。"
 
 #. type: Plain text
 #: text/chapter13.md:321
-#, fuzzy
 msgid ""
 "Let's write a `Coarbitrary` instance for our `Tree` type. We will need a "
 "`Coarbitrary` instance for the type of the elements stored in the branches:"
 msgstr ""
-"`Tree`型の `Coarbitrary`インスタンスを書いてみましょう。枝に格納されている要"
-"素の型に `Coarbitrary`インスタンスが必要になります。"
+"`Tree`型の `Coarbitrary`インスタンスを書いてみましょう。枝に格納されて\n"
+"いる要素の型に `Coarbitrary`インスタンスが必要になります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:322
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where\n"
 msgstr "instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where\n"
 
 #. type: Plain text
 #: text/chapter13.md:327
-#, fuzzy
 msgid ""
 "We have to write a function which perturbs a random generator given a value "
 "of type `Tree a`. If the input value is a `Leaf`, then we will just return "
 "the generator unchanged:"
 msgstr ""
-"型 `Tree a`の値を与えられた乱数発生器をかき乱す関数を記述する必要があります。"
-"入力値が `Leaf`であれば、そのままの生成器を返します。"
+"型 `Tree a`の値が与えられたときに、乱数発生器をかき乱す関数を記述する\n"
+"必要があります。入力値が `Leaf`であれば、そのままの生成器を返します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:328
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "  coarbitrary Leaf = id\n"
-msgstr "coarbitrary Leaf = id\n"
+msgstr "  coarbitrary Leaf = id\n"
 
 #. type: Plain text
 #: text/chapter13.md:333
-#, fuzzy
 msgid ""
 "If the tree is a `Branch`, then we will perturb the generator using the left "
 "subtree, the value, and the right subtree. We use function composition to "
 "create our perturbing function:"
 msgstr ""
-"もし木が `Branch`なら、 関数合成で独自のかき乱し関数を作ることにより、 左の部"
-"分木、値、右の部分木を使って生成器をかき乱します。"
+"もし木が `Branch`なら、左の部分木、値、右の部分木を使って生成器をかき乱しま"
+"す。\n"
+"関数合成を使って独自のかき乱し関数を作ります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:334
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "  coarbitrary (Branch l a r) =\n"
 "    coarbitrary l <<<\n"
 "    coarbitrary a <<<\n"
 "    coarbitrary r\n"
 msgstr ""
-"coarbitrary (Branch l a r) =\n"
-"  coarbitrary l <<<\n"
-"  coarbitrary a <<<\n"
-"  coarbitrary r\n"
+"  coarbitrary (Branch l a r) =\n"
+"    coarbitrary l <<<\n"
+"    coarbitrary a <<<\n"
+"    coarbitrary r\n"
 
 #. type: Plain text
 #: text/chapter13.md:342
-#, fuzzy
 msgid ""
 "Now we are free to write properties whose arguments include functions taking "
 "trees as arguments. For example, the `Tree` module defines a function "
 "`anywhere`, which tests if a predicate holds on any subtree of its argument:"
 msgstr ""
-"これで、木を引数にとるような関数を含む性質を自由に書くことができるようになり"
-"ました。たとえば、 `Tree`モジュールでは述語が引数のどんな部分木についても成り"
-"立っているかを調べる関数 `anywhere`が定義されています。"
+"これで、木を引数にとるような関数を引数に含む性質を自由に書くことができ\n"
+"るようになりました。たとえば、 `Tree`モジュールでは`anywhere`が定義さ\n"
+"れており、これは述語が引数のどんな部分木についても成り立っているかを調\n"
+"べる関数です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:343
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "anywhere :: forall a. (Tree a -> Boolean) -> Tree a -> Boolean\n"
 msgstr "anywhere :: forall a. (Tree a -> Boolean) -> Tree a -> Boolean\n"
 
 #. type: Plain text
 #: text/chapter13.md:348
-#, fuzzy
 msgid ""
 "Now we are able to generate the predicate function randomly. For example, we "
 "expect the `anywhere` function to _respect disjunction_:"
 msgstr ""
-"これで、無作為にこの述語関数 `anywhere`を生成することができるようになりまし"
-"た。例えば、 `anywhere`関数が次のような**ある命題のもとで不変**であることを期"
-"待します。"
+"これで、無作為にこの述語関数 `anywhere`を生成することができるようにな\n"
+"りました。例えば、 `anywhere`関数は**ある命題のもとで不変**であること\n"
+"が期待されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:349
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "quickCheck \\f g t ->\n"
 "  anywhere (\\s -> f s || g s) t ==\n"
@@ -11273,17 +11420,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:356
-#, fuzzy
 msgid ""
 "Here, the `treeOfInt` function is used to fix the type of values contained "
 "in the tree to the type `Int`:"
 msgstr ""
-"ここで、 `treeOfInt`関数は木に含まれる値の型を型 `Int`に固定するために使われ"
-"ています。"
+"ここで、 `treeOfInt`関数は木に含まれる値の型を型 `Int`に固定するために\n"
+"使われています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:357
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "treeOfInt :: Tree Int -> Tree Int\n"
 "treeOfInt = id\n"
@@ -11293,13 +11439,12 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter13.md:362
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Testing Without Side-Effects"
 msgstr "副作用のないテスト"
 
 #. type: Plain text
 #: text/chapter13.md:365
-#, fuzzy
 msgid ""
 "For the purposes of testing, we usually include calls to the `quickCheck` "
 "function in the `main` action of our test suite. However, there is a variant "
@@ -11307,24 +11452,24 @@ msgid ""
 "side-effects. Instead, it is a pure function which takes a random seed as an "
 "input, and returns an array of test results."
 msgstr ""
-"テストの目的では通常、テストスイートの `main`アクションには `quickCheck`関数"
-"の呼び出しが含まれています。しかし、副作用を使わない `quickCheckPure`と呼ばれ"
-"る `quickCheck`関数の亜種もあります。 `quickCheckPure`は、入力として乱数の種"
-"をとり、テスト結果の配列を返す純粋な関数です。"
+"テストの目的では通常、テストスイートの `main`アクションには\n"
+"`quickCheck`関数の呼び出しが含まれています。しかし、副作用を使わない\n"
+"`quickCheckPure`と呼ばれる `quickCheck`関数の亜種もあります。\n"
+"`quickCheckPure`は、入力として乱数の種をとり、テスト結果の配列を返す純\n"
+"粋な関数です。"
 
 #. type: Plain text
 #: text/chapter13.md:367
-#, fuzzy
 msgid ""
 "We can test `quickCheckPure` using PSCi. Here, we test that the `merge` "
 "operation is associative:"
 msgstr ""
-"`PSCi`を使用して `quickCheckPure`を使ってみましょう。ここでは `merge`操作が結"
-"合法則を満たすことをテストしてみます。"
+"PSCiを使用して `quickCheckPure`を試せます。ここでは `merge`操作が結合\n"
+"法則を満たすことをテストします。"
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:368
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "> import Merge\n"
@@ -11354,30 +11499,28 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:384
-#, fuzzy
 msgid ""
 "`quickCheckPure` takes three arguments: the random seed, the number of test "
 "cases to generate, and the property to test. If all tests pass, you should "
 "see an array of `Success` data constructors printed to the console."
 msgstr ""
-"`quickCheckPure`は乱数の種、生成するテストケースの数、テストする性質の３つの"
-"引数をとります。もしすべてのテストケースに成功したら、 `Success`データ構築子"
-"の配列がコンソールに出力されます。"
+"`quickCheckPure`は乱数の種、生成するテストケースの数、テストする性質の\n"
+"3つの引数をとります。もしすべてのテストケースに成功したら、\n"
+"`Success`データ構築子の配列がコンソールに出力されます。"
 
 #. type: Plain text
 #: text/chapter13.md:386
-#, fuzzy
 msgid ""
 "`quickCheckPure` might be useful in other situations, such as generating "
 "random input data for performance benchmarks, or generating sample form data "
 "for web applications."
 msgstr ""
-"`quickCheckPure`は、性能ベンチマークの入力データ生成や、ウェブアプリケーショ"
-"ンのフォームデータ例を無作為に生成するというような状況で便利かもしれません。"
+"`quickCheckPure`は、性能ベンチマークの入力データ生成や、ウェブアプリケー\n"
+"ションのフォームデータ例を無作為に生成するというような状況で便利かもし\n"
+"れません。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:392
-#, fuzzy
 msgid ""
 "(Easy) Write `Coarbitrary` instances for the `Byte` and `Sorted` type "
 "constructors."
@@ -11387,212 +11530,196 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:392
-#, fuzzy
 msgid ""
 "(Medium) Write a (higher-order) property which asserts associativity of the "
 "`mergeWith f` function for any function `f`. Test your property in PSCi "
 "using `quickCheckPure`."
 msgstr ""
-"（普通）任意の関数 `f`について、 `mergeWith f`関数の結合性を主張する(高階)性"
-"質を書いてください。 `quickCheckPure`を使って `PSCi`でその性質をテストしてく"
-"ださい。"
+"（普通）任意の関数 `f`について、 `mergeWith f`関数の結合性を主張する（高階）"
+"性質を書いてください。 `quickCheckPure`を使ってPSCiでその性質をテストしてくだ"
+"さい。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:392
-#, fuzzy
 msgid ""
 "(Medium) Write `Arbitrary` and `Coarbitrary` instances for the following "
 "data type:"
-msgstr "（普通）次のデータ型の `Coarbitrary`インスタンスを書いてください。"
+msgstr ""
+"（普通）次のデータ型の`Arbitrary`と`Coarbitrary`インスタンスを書いてくださ"
+"い。"
 
 #. type: Plain text
 #: text/chapter13.md:396
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     ```haskell\n"
 "     data OneTwoThree a = One a | Two a a | Three a a a\n"
 "     ```\n"
 msgstr ""
-"    ```haskell\n"
-"    data OneTwoThree a = One a | Two a a | Three a a a\n"
-"    ```\n"
+"     ```haskell\n"
+"     data OneTwoThree a = One a | Two a a | Three a a a\n"
+"     ```\n"
 
 #. type: Plain text
 #: text/chapter13.md:400
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     _Hint_: Use the `oneOf` function defined in `Test.QuickCheck.Gen` to define your `Arbitrary` instance.\n"
 " 1. (Medium) Use `all` to simplify the result of the `quickCheckPure` function - your new function should have type `List Result -> Boolean` and should return `true` if every test passes and `false` otherwise.\n"
 " 1. (Medium) As another approach to simplifying the result of `quickCheckPure`, try writing a function `squashResults :: List Result -> Result`. Consider using the `First` monoid from `Data.Maybe.First` with the `foldMap` function to preserve the first error in case of failure.\n"
 msgstr ""
-"    **ヒント**：`Test.QuickCheck.Gen`で定義された `oneOf`関数を使って `Arbitrary`インスタンスを定義します。\n"
-"1. (普通)`all`関数を使って `quickCheckPure`関数の結果を単純化してください。その関数はもしどんなテストもパスするなら `true`を返し、そうでなければ `false`を返さなくてはいけません。 `purescript-monoids`で定義されている `First`モノイドを、失敗時の最初のエラーを保存するために `foldMap`関数と一緒に使ってみてください。\n"
+"     **ヒント**：`Test.QuickCheck.Gen`で定義された `oneOf`関数を使って `Arbitrary`インスタンスを定義してください。\n"
+" 1. （普通）`all`を使って `quickCheckPure`関数の結果を単純化してください。\n"
+"    その新しい関数は型`List Result -> Boolean`を持ち、全てのテストがとおえば`true`を、そうでなければ`false`を返します。\n"
+" 2. （普通）`quickCheckPure`の結果を単純にする別の手法として、\n"
+"    関数`squashResults :: List Result -> Result`を書いてみてください。\n"
+"    `Data.Maybe.First`の`First`モノイドと共に`foldMap`関数を使うことで\n"
+"    失敗した場合の最初のエラーを保存することを検討してください。\n"
 
 #. type: Plain text
 #: text/chapter13.md:404
-#, fuzzy
 msgid ""
 "In this chapter, we met the `quickcheck` package, which can be used to write "
 "tests in a declarative way using the paradigm of _generative testing_. In "
 "particular:"
 msgstr ""
-"この章では、生成的テスティングのパラダイムを使って宣言的な方法でテストを書く"
-"ための、 `purescript-quickcheck`パッケージを導入しました。"
+"この章では`quickcheck`パッケージに出会いました。これを使えば**生成的テ\n"
+"スティング**のパラダイムを使って宣言的な方法でテストを書くことができま\n"
+"した。具体的には以下です。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
-#, fuzzy
 msgid "We saw how to automate QuickCheck tests using `spago test`."
-msgstr "`pulp test`使ってQuickCheckをテストを自動化する方法を説明しました。"
+msgstr "`spago test`を使ってQuickCheckのテストを自動化する方法を見ました。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
-#, fuzzy
 msgid ""
 "We saw how to write properties as functions, and how to use the `<?>` "
 "operator to improve error messages."
 msgstr ""
-"エラーメッセージを改良する `<?>`演算子の使い方と、性質を関数として書く方法を"
-"説明しました。"
+"性質を関数として書く方法とエラーメッセージを改良する `<?>`演算子の使い方を説"
+"明しました。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
-#, fuzzy
 msgid ""
 "We saw how the `Arbitrary` and `Coarbitrary` type classes enable generation "
 "of boilerplate testing code, and how they allow us to test higher-order "
 "properties."
 msgstr ""
-"`Arbitrary`と `Coarbitrary`型クラスは、定型的なテストコードの自動生成を可能に"
-"し、高階性質関数を可能にすることも説明しました。"
+"`Arbitrary`と `Coarbitrary`型クラスによって、どのように定型的なテスト\n"
+"コードの自動生成を可能にし、またどのように高階性質関数が可能になるかを\n"
+"見てきました。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
-#, fuzzy
 msgid ""
 "We saw how to implement custom `Arbitrary` and `Coarbitrary` instances for "
 "our own data types."
 msgstr ""
-"独自のデータ型に対して `Arbitrary`と `Coarbitrary`インスタンスを実装する方法"
-"を説明しました。"
+"独自のデータ型に対して `Arbitrary`と `Coarbitrary`インスタンスを実装す\n"
+"る方法を見ました。"
 
 #. type: Title #
 #: text/chapter14.md:1
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Domain-Specific Languages"
 msgstr "領域特化言語"
 
 #. type: Plain text
 #: text/chapter14.md:6
-#, fuzzy
 msgid ""
 "In this chapter, we will explore the implementation of _domain-specific "
 "languages_ (or _DSLs_) in PureScript, using a number of standard techniques."
 msgstr ""
-"この章では、多数の標準的な手法を使ったPureScriptにおける**領域特化言語"
-"**(domain-specific language, DSL) の実装について探求していきます。"
+"この章では、多数の標準的な手法を使ったPureScriptにおける**領域特化言語**\n"
+"(domain-specific language, DSL) の実装について探求していきます。"
 
 #. type: Plain text
 #: text/chapter14.md:8
-#, fuzzy
 msgid ""
 "A domain-specific language is a language which is well-suited to development "
 "in a particular problem domain. Its syntax and functions are chosen to "
 "maximize readability of code used to express ideas in that domain. We have "
 "already seen a number of examples of domain-specific languages in this book:"
 msgstr ""
-"領域特化言語とは、特定の問題領域での開発に適した言語のことです。領域特化言語"
-"の構文および機能は、その領域内の考え方を表現するコードの読みやすさを最大限に"
-"発揮すべく選択されます。本書の中では、すでに領域特化言語の例を幾つか見てきて"
-"います。"
+"領域特化言語とは、特定の問題領域での開発に適した言語のことです。領域特\n"
+"化言語の構文および機能は、その領域内の考え方を表現するコードの読みやす\n"
+"さを最大限に発揮すべく選択されます。本書の中では、すでに領域特化言語の\n"
+"例を幾つか見てきています。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:11
-#, fuzzy
 msgid ""
 "The `Game` monad and its associated actions, developed in chapter 11, "
 "constitute a domain-specific language for the domain of _text adventure game "
 "development_."
 msgstr ""
-"- 第11章で開発された `Game`モナドと関連するアクションは、**テキストアドベン"
-"チャーゲーム開発**という領域に対しての領域特化言語を構成しています。 - 第12章"
-"で `ContT`と `Parallel`関手のために書いたコンビネータのライブラリは、**非同期"
-"プログラミング**の領域に対する領域特化言語の例と考えることができます。 - 第13"
-"章で扱った `purescript-quickcheck`パッケージは、**生成的テスティング**の領域"
-"の領域特化言語です。このコンビネータはテストの性質対して特に表現力の高い記法"
-"を可能にします。"
+"第11章で開発された `Game`モナドと関連するアクションは、\n"
+"**テキストアドベンチャーゲーム開発**という領域に対しての領域特化言語を構成し"
+"ています。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:11
-#, fuzzy
 msgid ""
 "The `quickcheck` package, covered in chapter 13, is a domain-specific "
 "language for the domain of _generative testing_. Its combinators enable a "
 "particularly expressive notation for test properties."
 msgstr ""
-"- 第11章で開発された `Game`モナドと関連するアクションは、**テキストアドベン"
-"チャーゲーム開発**という領域に対しての領域特化言語を構成しています。 - 第12章"
-"で `ContT`と `Parallel`関手のために書いたコンビネータのライブラリは、**非同期"
-"プログラミング**の領域に対する領域特化言語の例と考えることができます。 - 第13"
-"章で扱った `purescript-quickcheck`パッケージは、**生成的テスティング**の領域"
-"の領域特化言語です。このコンビネータはテストの性質対して特に表現力の高い記法"
-"を可能にします。"
+"第13章で扱った `quickcheck`パッケージは、**生成的テスティング**の領域\n"
+"の領域特化言語です。このコンビネータはテストの性質に対して特に表現力の\n"
+"高い記法を可能にします。"
 
 #. type: Plain text
 #: text/chapter14.md:13
-#, fuzzy
 msgid ""
 "This chapter will take a more structured approach to some of standard "
 "techniques in the implementation of domain-specific languages. It is by no "
 "means a complete exposition of the subject, but should provide you with "
 "enough knowledge to build some practical DSLs for your own tasks."
 msgstr ""
-"この章では、領域特化言語の実装において、いくつかの標準的な手法による構造的な"
-"アプローチを取ります。これがこの話題の完全な説明だということでは決してありま"
-"せんが、独自の目的に対する具体的なDSLを構築するには十分な知識を与えてくれるで"
-"しょう。"
+"この章では、領域特化言語の実装において、いくつかの標準的な手法による構\n"
+"造的な手法に迫ります。これがこの話題の完全な説明だということでは決して\n"
+"ありませんが、独自の目的に対する具体的なDSLを構築するのに十分な知識を\n"
+"与えてくれるでしょう。"
 
 #. type: Plain text
 #: text/chapter14.md:15
-#, fuzzy
 msgid ""
 "Our running example will be a domain-specific language for creating HTML "
 "documents. Our aim will be to develop a type-safe language for describing "
 "correct HTML documents, and we will work by improving a naive implementation "
 "in small steps."
 msgstr ""
-"この章で実行している例は、HTML文書を作成するための領域特化言語になります。正"
-"しいHTML文書を記述するための型安全な言語を開発することが目的で、少しづつ実装"
-"を改善することによって作業していきます。"
+"この章で実行している例は、HTML文書を作成するための領域特化言語になりま\n"
+"す。正しいHTML文書を記述するための型安全な言語を開発することが目的で、\n"
+"素朴な実装を徐々に改善しつつ進めていきます。"
 
 #. type: Plain text
 #: text/chapter14.md:19
-#, fuzzy
 msgid ""
 "The project accompanying this chapter adds one new dependency - the `free` "
 "library, which defines the _free monad_, one of the tools which we will be "
 "using."
 msgstr ""
-"この章で使うプロジェクトには新しいBower依存性が追加されます。これから使う道具"
-"のひとつである**Freeモナド**が定義されている `purescript-free`ライブラリで"
+"この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使\n"
+"う道具のひとつである**Freeモナド**が定義されている `free`ライブラリで\n"
 "す。"
 
 #. type: Plain text
 #: text/chapter14.md:21
-#, fuzzy
 msgid "We will test this chapter's project in PSCi."
-msgstr ""
-"このプロジェクトのソースコードは、PSCiを使ってビルドすることができます。"
+msgstr "このプロジェクトをPSCiを使って試していきます。"
 
 #. type: Title ##
 #: text/chapter14.md:22
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "A HTML Data Type"
 msgstr "HTMLデータ型"
 
 #. type: Plain text
 #: text/chapter14.md:25
-#, fuzzy
 msgid ""
 "The most basic version of our HTML library is defined in the `Data.DOM."
 "Simple` module. The module contains the following type definitions:"
@@ -11602,7 +11729,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:26
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "newtype Element = Element\n"
 "  { name         :: String\n"
@@ -11636,43 +11763,41 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:44
-#, fuzzy
 msgid ""
 "The `Element` type represents HTML elements. Each element consists of an "
 "element name, an array of attribute pairs and some content. The content "
 "property uses the `Maybe` type to indicate that an element might be open "
 "(containing other elements and text) or closed."
 msgstr ""
-"`Element`型はHTMLの要素を表しており、各要素は要素名、属性のペア​​の配列と、要素"
-"の内容でで構成されています。 `content`プロパティでは、 `Maybe`タイプを使って"
-"要素が開いている(他の要素やテキストを含む)か閉じているかを示しています。"
+"`Element`型はHTMLの要素を表しています。各要素は要素名、属性のペア​​の配\n"
+"列と、要素の内容でで構成されています。contentプロパティは、`Maybe`タイ\n"
+"プを適切に使って、要素が開いている（他の要素やテキストを含む）か閉じて\n"
+"いるかを示しています。"
 
 #. type: Plain text
 #: text/chapter14.md:46
-#, fuzzy
 msgid "The key function of our library is a function"
 msgstr "このライブラリの鍵となる機能は次の関数です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:47
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "render :: Element -> String\n"
 msgstr "render :: Element -> String\n"
 
 #. type: Plain text
 #: text/chapter14.md:52
-#, fuzzy
 msgid ""
 "which renders HTML elements as HTML strings. We can try out this version of "
 "the library by constructing values of the appropriate types explicitly in "
 "PSCi:"
 msgstr ""
-"この関数はHTML要素をHTML文字列として出力します。 `PSCi`で明示的に適当な型の値"
-"を構築し、ライブラリのこのバージョンを試してみましょう。"
+"この関数はHTML要素をHTML文字列として出力します。PSCiで明示的に適当な型\n"
+"の値を構築し、ライブラリのこのバージョンを試してみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:53
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -11699,12 +11824,12 @@ msgid ""
 "<p class=\"main\">Hello World!</p>\n"
 "unit\n"
 msgstr ""
-"$ pulp repl\n"
+"$ spago repl\n"
 "\n"
 "> import Prelude\n"
 "> import Data.DOM.Simple\n"
 "> import Data.Maybe\n"
-"> import Control.Monad.Eff.Console\n"
+"> import Effect.Console\n"
 "\n"
 "> :paste\n"
 "… log $ render $ Element\n"
@@ -11726,80 +11851,66 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:81
-#, fuzzy
 msgid "As it stands, there are several problems with this library:"
 msgstr "現状のライブラリにはいくつかの問題があります。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:87
-#, fuzzy
 msgid ""
 "Creating HTML documents is difficult - every new element requires at least "
 "one record and one data constructor."
 msgstr ""
-"HTML文書の作成に手がかかります。すべての新しい要素が少なくとも1つのレコードと"
-"1つのデータ構築子が必要です。"
+"HTML文書の作成に手がかかります。すべての新しい要素に少なくとも1つのレ\n"
+"コードと1つのデータ構築子が必要です。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:87
-#, fuzzy
 msgid "It is possible to represent invalid documents:"
 msgstr "無効な文書を表現できてしまいます。"
 
 #. type: Bullet: '    - '
 #: text/chapter14.md:87
-#, fuzzy
 msgid "The developer might mistype the element name"
-msgstr "要素名の入力を間違えるかもしれません"
+msgstr "開発者が要素名の入力を間違えるかもしれません"
 
 #. type: Bullet: '    - '
 #: text/chapter14.md:87
-#, fuzzy
 msgid "The developer can associate an attribute with the wrong type of element"
-msgstr "要素に間違った型の属性を関連付けることができてしまいます"
+msgstr "開発者が属性を間違った要素に関連付けることができてしまいます"
 
 #. type: Bullet: '    - '
 #: text/chapter14.md:87
-#, fuzzy
 msgid "The developer can use a closed element when an open element is correct"
-msgstr "開いた要素が正しい場合でも、閉じた要素を使用することができてしまいます"
+msgstr "開発者が開いた要素が正しい場合に閉じた要素を使用することができてしまいます"
 
 #. type: Plain text
 #: text/chapter14.md:89
-#, fuzzy
 msgid ""
 "In the remainder of the chapter, we will apply certain techniques to solve "
 "these problems and turn our library into a usable domain-specific language "
 "for creating HTML documents."
 msgstr ""
-"この章では、さまざまな手法を用いてこれらの問題を解決し、このライブラリーを"
+"残りの章ではとある手法を用いてこれらの問題を解決し、このライブラリーを\n"
 "HTML文書を作成するために使える領域特化言語にしていきます。"
 
 #. type: Title ##
 #: text/chapter14.md:90
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Smart Constructors"
 msgstr "スマート構築子"
 
 #. type: Plain text
 #: text/chapter14.md:93
-#, fuzzy
 msgid ""
 "The first technique we will apply is simple but can be very effective. "
 "Instead of exposing the representation of the data to the module's users, we "
 "can use the module exports list to hide the `Element`, `Content` and "
 "`Attribute` data constructors, and only export so-called _smart "
 "constructors_, which construct data which is known to be correct."
-msgstr ""
-"最初に導入する手法は方法は単純なものですが、とても効果的です。モジュールの使"
-"用者にデータの表現を露出する代わりに、モジュールエクスポートリスト(module "
-"exports list)を使ってデータ構築子 `Element`、 `Content`、 `Attribute`を隠蔽"
-"し、正しいことが明らかなデータだけ構築する、いわゆる**スマート構築子**(smart "
-"constructors)だけをエクスポートします。"
+msgstr "最初に導入する手法は方法は単純なものですが、とても効果的です。モジュールの使用者にデータの表現を露出する代わりに、モジュールエクスポートリストを使ってデータ構築子 `Element`、 `Content`、 `Attribute`を隠蔽し、正しいことが明らかなデータだけ構築する、いわゆる**スマート構築子** (smart constructors) だけをエクスポートします。"
 
 #. type: Plain text
 #: text/chapter14.md:95
-#, fuzzy
 msgid ""
 "Here is an example. First, we provide a convenience function for creating "
 "HTML elements:"
@@ -11808,7 +11919,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:96
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "element :: String -> Array Attribute -> Maybe (Array Content) -> Element\n"
 "element name attribs content = Element\n"
@@ -11826,17 +11937,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:106
-#, fuzzy
 msgid ""
 "Next, we create smart constructors for those HTML elements we want our users "
 "to be able to create, by applying the `element` function:"
 msgstr ""
-"次に、 `element`関数を適用することによってHTML要素を作成する、スマート構築子"
-"を作成します。"
+"次に、欲しいHTML要素を利用者が作れるように、スマート構築子を作成します。\n"
+"これには`element`関数を適用します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:107
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "a :: Array Attribute -> Array Content -> Element\n"
 "a attribs content = element \"a\" attribs (Just content)\n"
@@ -11858,7 +11968,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:119
-#, fuzzy
 msgid ""
 "Finally, we update the module exports list to only export those functions "
 "which are known to construct correct data structures:"
@@ -11868,7 +11977,7 @@ msgstr ""
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:120
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "module Data.DOM.Smart\n"
 "  ( Element\n"
@@ -11896,39 +12005,31 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:135
-#, fuzzy
 msgid ""
 "The module exports list is provided immediately after the module name inside "
 "parentheses. Each module export can be one of three types:"
-msgstr ""
-"モジュールエクスポートリストはモジュール名の直後の括弧内に書きます。各モ"
-"ジュールのエクスポートは次の3種類のいずれかです。"
+msgstr "モジュールエクスポートリストはモジュール名の直後の括弧内に書きます。各モジュールのエクスポートは次の3種類のいずれかになります。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:139
 msgid "A value (or function), indicated by the name of the value,"
-msgstr ""
+msgstr "値（ないし関数）。その値の名前により指定されます。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:139
 msgid "A type class, indicated by the name of the class,"
-msgstr ""
+msgstr "型クラス。クラス名により指定されます。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:139
-#, fuzzy
 msgid ""
 "A type constructor and any associated data constructors, indicated by the "
 "name of the type followed by a parenthesized list of exported data "
 "constructors."
-msgstr ""
-"- 値の名前で示された、値(または関数)  - クラスの名で示された、型クラス - 型の"
-"名前で示された型構築子、およびそれに続けて括弧で囲まれた関連するデータ構築子"
-"のリスト"
+msgstr "型構築子と関連するデータ構築子。型名とそれに続くエクスポートされるデータ構築子の括弧で囲まれたリストで指定されます。"
 
 #. type: Plain text
 #: text/chapter14.md:141
-#, fuzzy
 msgid ""
 "Here, we export the `Element` _type_, but we do not export its data "
 "constructors. If we did, the user would be able to construct invalid HTML "
@@ -11940,54 +12041,42 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:143
-#, fuzzy
 msgid ""
 "In the case of the `Attribute` and `Content` types, we still export all of "
 "the data constructors (indicated by the symbol `..` in the exports list). We "
 "will apply the technique of smart constructors to these types shortly."
 msgstr ""
-"`Attribute`と `Content`型についてはデータ構築子をすべてエクスポートしています"
-"(エクスポートリストの記号 `..`で示されています)。これから、これらの型にスマー"
-"ト構築子の手法を適用していきます。"
+"`Attribute`と `Content`型についてはデータ構築子をすべてエクスポートしています（エクスポートリストの記号 `..`で示されています）。\n"
+"すぐ後で、これらの型にスマート構築子の手法を適用していきます。"
 
 #. type: Plain text
 #: text/chapter14.md:145
-#, fuzzy
 msgid "Notice that we have already made some big improvements to our library:"
-msgstr ""
-"すでにライブラリにいくつかの大きな改良を加わっていることに注意してください。"
+msgstr "すでにライブラリにいくつかの大きな改良を加わっていることに注目です。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:148
-#, fuzzy
 msgid ""
 "It is impossible to represent HTML elements with invalid names (of course, "
 "we are restricted to the set of element names provided by the library)."
-msgstr ""
-"- 不正な名前を持つHTML要素を表現することは不可能です(もちろん、ライブラリが提"
-"供する要素名に制限されています)。 - 閉じた要素は、構築するときに内容を含める"
-"ことはできません。"
+msgstr "不正な名前を持つHTML要素を表現することは不可能です（もちろん、ライブラリが提供する要素名に制限されています）。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:148
 msgid "Closed elements cannot contain content by construction."
-msgstr ""
+msgstr "閉じた要素は構築するときに内容を含められません。"
 
 #. type: Plain text
 #: text/chapter14.md:150
-#, fuzzy
 msgid ""
 "We can apply this technique to the `Content` type very easily. We simply "
 "remove the data constructors for the `Content` type from the exports list, "
 "and provide the following smart constructors:"
-msgstr ""
-"`Content`型にもとても簡単にこの手法を適用することができます。単にエクスポート"
-"リストから `Content`型のデータ構築子を取り除き、次のスマート構築子を提供しま"
-"す。"
+msgstr "`Content`型にとても簡単にこの手法を適用することができます。単にエクスポートリストから `Content`型のデータ構築子を取り除き、次のスマート構築子を提供します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:151
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "text :: String -> Content\n"
 "text = TextContent\n"
@@ -12003,18 +12092,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:160
-#, fuzzy
 msgid ""
 "Let's apply the same technique to the `Attribute` type. First, we provide a "
 "general-purpose smart constructor for attributes. Here is a first attempt:"
 msgstr ""
-"`Attribute`型にも同じ手法を適用してみましょう。まず、属性のための汎用のスマー"
-"ト構築子を用意します。最初の試みとしては、次のようなものになるかもしれませ"
-"ん。"
+"`Attribute`型にも同じ手法を適用してみましょう。まず、属性のための汎用のスマート構築子を用意します。\n"
+"以下は最初の試みです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:161
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "attribute :: String -> String -> Attribute\n"
 "attribute key value = Attribute\n"
@@ -12034,32 +12121,29 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:172
-#, fuzzy
 msgid ""
 "This representation suffers from the same problem as the original `Element` "
 "type - it is possible to represent attributes which do not exist or whose "
 "names were entered incorrectly. To solve this problem, we can create a "
 "newtype which represents attribute names:"
 msgstr ""
-"この定義では元の `Element`型と同じ問題に悩まされています。存在しなかったり、"
-"名前が間違っているような属性を表現することが可能です。この問題を解決するため"
-"に、属性名を表すnewtypeを作成します。"
+"この定義では元の `Element`型と同じ問題に直面しています。\n"
+"存在しなかったり、名前が間違っているような属性を表現することが可能です。この問題を解決するために、属性名を表すnewtypeを作成します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:173
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "newtype AttributeKey = AttributeKey String\n"
 msgstr "newtype AttributeKey = AttributeKey String\n"
 
 #. type: Plain text
 #: text/chapter14.md:178
-#, fuzzy
 msgid "With that, we can modify our operator as follows:"
-msgstr "それから、この演算子を次のように変更します。"
+msgstr "これを使えば演算子を次のように変更できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:179
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "attribute :: AttributeKey -> String -> Attribute\n"
 "attribute (AttributeKey key) value = Attribute\n"
@@ -12075,19 +12159,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:188
-#, fuzzy
 msgid ""
 "If we do not export the `AttributeKey` data constructor, then the user has "
 "no way to construct values of type `AttributeKey` other than by using "
 "functions we explicitly export. Here are some examples:"
 msgstr ""
-"`AttributeKey`データ構築子をエクスポートしなければ、明示的にエクスポートされ"
-"た次のような関数を使う以外に、使用者が型 `AttributeKey`の値を構築する方法はあ"
-"りません。いくつかの例を示します。"
+"`AttributeKey`データ構築子をエクスポートしなければ、明示的にエクスポートされた次のような関数を使う以外に、使用者が型 `AttributeKey`の値を構築する方法はありません。\n"
+"以下にいくつかの例を示します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:189
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "href :: AttributeKey\n"
 "href = AttributeKey \"href\"\n"
@@ -12121,17 +12203,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:207
-#, fuzzy
 msgid ""
 "Here is the final exports list for our new module. Note that we no longer "
 "export any data constructors directly:"
 msgstr ""
-"新しいモジュールの最終的なエクスポートリストは次のようになります。もうどんな"
-"データ構築子も直接エクスポートしていないことに注意してください。"
+"新しいモジュールの最終的なエクスポートリストは次のようになります。\n"
+"最早どのデータ構築子も直接エクスポートしていない点に注目です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:208
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "module Data.DOM.Smart\n"
 "  ( Element\n"
@@ -12181,17 +12262,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:234
-#, fuzzy
 msgid ""
 "If we try this new module in PSCi, we can already see massive improvements "
 "in the conciseness of the user code:"
-msgstr ""
-"`PSCi`でこの新しいモジュールを試してみると、コードが大幅に簡潔になり、改良さ"
-"れていることがわかります。"
+msgstr "PSCiでこの新しいモジュールを試してみると、既にコードの簡潔さにおいて大幅な向上が見て取れます。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:235
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -12203,11 +12281,11 @@ msgid ""
 "<p class=\"main\">Hello World!</p>\n"
 "unit\n"
 msgstr ""
-"$ pulp repl\n"
+"$ spago repl\n"
 "\n"
 "> import Prelude\n"
 "> import Data.DOM.Smart\n"
-"> import Control.Monad.Eff.Console\n"
+"> import Effect.Console\n"
 "> log $ render $ p [ _class := \"main\" ] [ text \"Hello World!\" ]\n"
 "\n"
 "<p class=\"main\">Hello World!</p>\n"
@@ -12215,7 +12293,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:248
-#, fuzzy
 msgid ""
 "Note, however, that no changes had to be made to the `render` function, "
 "because the underlying data representation never changed. This is one of the "
@@ -12230,58 +12307,52 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:253
-#, fuzzy
 msgid ""
 "(Easy) Use the `Data.DOM.Smart` module to experiment by creating new HTML "
 "documents using `render`."
-msgstr ""
-"(簡単)`Data.DOM.Smart`モジュールで `render`を使った新しいHTML文書の作成を試し"
-"てみましょう。"
+msgstr "（簡単）`Data.DOM.Smart`モジュールで `render`を使った新しいHTML文書の作成を試してみましょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:253
-#, fuzzy
 msgid ""
 "(Medium) Some HTML attributes such as `checked` and `disabled` do not "
 "require values, and may be rendered as _empty attributes_:"
-msgstr ""
-"(普通)　`checked`と `disabled`など、値を要求しないHTML属性がありますが、これ"
-"らは次のような**空の属性**として表示されるかもしれません。"
+msgstr "（普通）`checked`と `disabled`など、値を要求しないHTML属性がありますが、これらは次のような**空の属性**として表示されるかもしれません。"
 
 #. type: Plain text
 #: text/chapter14.md:257
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     ```html\n"
 "     <input disabled>\n"
 "     ```\n"
 msgstr ""
-"    ```html\n"
-"    &lt;input disabled&gt;\n"
-"    ```\n"
+"     ```html\n"
+"     <input disabled>\n"
+"     ```\n"
 
 #. type: Plain text
 #: text/chapter14.md:259
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "     Modify the representation of an `Attribute` to take empty attributes into account. Write a function which can be used in place of `attribute` or `:=` to add an empty attribute to an element.\n"
-msgstr "    空の属性を扱えるように `Attribute`の表現を変更してください。要素に空の属性を追加するために、 `attribute`または `:=`の代わりに使える関数を記述してください。\n"
+msgstr ""
+"     空の属性を扱えるように `Attribute`の表現を変更してください。\n"
+"     要素に空の属性を追加するための`attribute`または`:=`の代わりに使える関数を記述してください。\n"
 
 #. type: Title ##
 #: text/chapter14.md:260
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Phantom Types"
 msgstr "幻影型"
 
 #. type: Plain text
 #: text/chapter14.md:263
-#, fuzzy
 msgid "To motivate the next technique, consider the following code:"
-msgstr ""
-"次に適用する手法についての動機を与えるために、次のコードを考えてみます。"
+msgstr "次の手法の動機付けとして、以下のコードを考えます。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:264
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> log $ render $ img\n"
 "    [ src    := \"cat.jpg\"\n"
@@ -12298,40 +12369,34 @@ msgstr ""
 "    , height := \"bar\"\n"
 "    ]\n"
 "\n"
-"&lt;img src=\"cat.jpg\" width=\"foo\" height=\"bar\" /&gt;\n"
+"<img src=\"cat.jpg\" width=\"foo\" height=\"bar\" />\n"
 "unit\n"
 
 #. type: Plain text
 #: text/chapter14.md:276
-#, fuzzy
 msgid ""
 "The problem here is that we have provided string values for the `width` and "
 "`height` attributes, where we should only be allowed to provide numeric "
 "values in units of pixels or percentage points."
 msgstr ""
-"ここでの問題は、 `width`と `height`についての文字列値を提供しているということ"
-"で、ここで与えることができるのはピクセルやパーセントの単位の数値だけであるべ"
-"きです。"
+"ここでの問題は、 `width`属性と`height`属性に文字列値を提供しているということです。\n"
+"ここで与えることができるのはピクセル単位ないしパーセントの数値だけであるべきです。"
 
 #. type: Plain text
 #: text/chapter14.md:278
-#, fuzzy
 msgid ""
 "To solve this problem, we can introduce a so-called _phantom type_ argument "
 "to our `AttributeKey` type:"
-msgstr ""
-"`AttributeKey`型にいわゆる**幻影型**(phantom type)引数を導入すると、この問題"
-"を解決できます。"
+msgstr "`AttributeKey`型にいわゆる**幻影型** (phantom type) 引数を導入すると、この問題を解決できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:279
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "newtype AttributeKey a = AttributeKey String\n"
 msgstr "newtype AttributeKey a = AttributeKey String\n"
 
 #. type: Plain text
 #: text/chapter14.md:284
-#, fuzzy
 msgid ""
 "The type variable `a` is called a _phantom type_ because there are no values "
 "of type `a` involved in the right-hand side of the definition. The type `a` "
@@ -12340,24 +12405,20 @@ msgid ""
 "type of the value tells us the desired type of the values associated with "
 "this key."
 msgstr ""
-"定義の右辺に対応する型 `a`の値が存在しないので、この型変数 `a`は**幻影型**と"
-"呼ばれています。この型 `a`はコンパイル時により多くの情報を提供するためだけに"
-"存在しています。任意の型 `AttributeKey a`の値は実行時には単なる文字列ですが、"
-"そのキーに関連付けられた値に期待されている型を教えてくれます。"
+"定義の右辺に対応する型 `a`の値が存在しないので、この型変数 `a`は**幻影型**と呼ばれています。\n"
+"この型 `a`はコンパイル時に追加の情報を提供するためだけに存在しています。\n"
+"型 `AttributeKey a`の任意の値は実行時には単なる文字列ですが、コンパイル時にその値の型によりこのキーに関連付けられた値で求めている型がわかります。"
 
 #. type: Plain text
 #: text/chapter14.md:286
-#, fuzzy
 msgid ""
 "We can modify the type of our `attribute` function to take the new form of "
 "`AttributeKey` into account:"
-msgstr ""
-"`AttributeKey`の新しい形式で受け取るように、 `attribute`関数の型を次のように"
-"変更します。"
+msgstr "`attribute`関数の型を次のように変更すれば、`AttributeKey`の新しい形式を考慮するようにできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:287
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "attribute :: forall a. IsValue a => AttributeKey a -> a -> Attribute\n"
 "attribute (AttributeKey key) value = Attribute\n"
@@ -12373,33 +12434,28 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:296
-#, fuzzy
 msgid ""
 "Here, the phantom type argument `a` is used to ensure that the attribute key "
 "and attribute value have compatible types. Since the user cannot create "
 "values of type `AttributeKey a` directly (only via the constants we provide "
 "in the library), every attribute will be correct by construction."
 msgstr ""
-"ここで、幻影型の引数 `a`は、属性キーと属性値が互換性のある型を持っていること"
-"を確認するために使われます。使用者は `AttributeKey a`を型の値を直接作成できな"
-"いので(ライブラリで提供されている定数を介してのみ得ることができます)、すべて"
-"の属性が正しくなります。"
+"ここで、幻影型の引数 `a`は、属性キーと属性値が照応する型を持っていることを確認するために使われます。\n"
+"使用者は `AttributeKey a`を型の値を直接作成できないので（ライブラリで提供されている定数を介してのみ得られます）、すべての属性が構築により正しくなります。"
 
 #. type: Plain text
 #: text/chapter14.md:298
-#, fuzzy
 msgid ""
 "Note that the `IsValue` constraint ensures that whatever value type we "
 "associate to a key, its values can be converted to strings and displayed in "
 "the generated HTML. The `IsValue` type class is defined as follows:"
 msgstr ""
-"`IsValue`制約は、キーに関連付けられた値がなんであれ、その値を文字列に変換し、"
-"生成したHTML内に出力できることを保証します。 `IsValue`型クラスは次のように定"
-"義されています。　　"
+"なお、`IsValue`制約は、キーに関連付けられた値の型がなんであれ、その値を文字列に変換し、生成したHTML内に出力できることを保証します。\n"
+"`IsValue`型クラスは次のように定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:299
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "class IsValue a where\n"
 "  toValue :: a -> String\n"
@@ -12409,13 +12465,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:305
-#, fuzzy
 msgid "We also provide type class instances for the `String` and `Int` types:"
 msgstr "`String`と `Int`型についての型クラスインスタンスも提供しておきます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:306
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance stringIsValue :: IsValue String where\n"
 "  toValue = id\n"
@@ -12431,17 +12486,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:315
-#, fuzzy
 msgid ""
 "We also have to update our `AttributeKey` constants so that their types "
 "reflect the new type parameter:"
-msgstr ""
-"また、これらの型が新しい型変数を反映するように、 `AttributeKey`定数を更新しな"
-"ければいけません。"
+msgstr "また、これらの型が新しい型変数を反映するように、 `AttributeKey`定数を更新しなければいけません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:316
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "href :: AttributeKey String\n"
 "href = AttributeKey \"href\"\n"
@@ -12475,18 +12527,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:334
-#, fuzzy
 msgid ""
 "Now we find it is impossible to represent these invalid HTML documents, and "
 "we are forced to use numbers to represent the `width` and `height` "
 "attributes instead:"
 msgstr ""
-"これで、不正なHTML文書を表現することが不可能で、 `width`と `height`属性を表現"
-"するのに数を使うことが強制されていることがわかります。"
+"これで、不正なHTML文書を表現することが不可能になっていることがわかります。\n"
+"また、`width`と `height`属性を表現するのに文字列ではなく数を使うことが強制されていることがわかります。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:335
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "> import Data.DOM.Phantom\n"
@@ -12505,7 +12556,7 @@ msgid ""
 msgstr ""
 "> import Prelude\n"
 "> import Data.DOM.Phantom\n"
-"> import Control.Monad.Eff.Console\n"
+"> import Effect.Console\n"
 "\n"
 "> :paste\n"
 "… log $ render $ img\n"
@@ -12515,77 +12566,70 @@ msgstr ""
 "…   ]\n"
 "… ^D\n"
 "\n"
-"&lt;img src=\"cat.jpg\" width=\"100\" height=\"200\" /&gt;\n"
+"<img src=\"cat.jpg\" width=\"100\" height=\"200\" />\n"
 "unit\n"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:356
-#, fuzzy
 msgid ""
 "(Easy) Create a data type which represents either pixel or percentage "
 "lengths. Write an instance of `IsValue` for your type. Modify the `width` "
 "and `height` attributes to use your new type."
 msgstr ""
-"(簡単) ピクセルまたはパーセントの長さのいずれかを表すデータ型を作成してくださ"
-"い。その型について `IsValue`のインスタンスを書いてください。この型を使うよう"
-"に `width`と `height`属性を変更してください。"
+"（簡単）ピクセルまたはパーセントの長さのいずれかを表すデータ型を作成してください。\n"
+"その型について `IsValue`のインスタンスを書いてください。\n"
+"この型を使うように `width`と `height`属性を変更してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:356
-#, fuzzy
 msgid ""
 "(Difficult) By defining type-level representatives for the Boolean values "
 "`true` and `false`, we can use a phantom type to encode whether an "
 "`AttributeKey` represents an _empty attribute_ such as `disabled` or "
 "`checked`."
-msgstr ""
-"(難しい) 幻影型を使って真偽値 `true`、 `false`についての表現を最上位で定義す"
-"ることで、 `AttributeKey`が `disabled`や `chacked`のような**空の属性**を表現"
-"しているかどうかを符号化することができます。"
+msgstr "（難しい）幻影型を使って真偽値 `true`、 `false`用の最上位の表現を定義することで、 `AttributeKey`が `disabled`や `checked`のような**空の属性**を表現しているかどうかを符号化することができます。"
 
 #. type: Plain text
 #: text/chapter14.md:361
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     ```haskell\n"
 "     data True\n"
 "     data False\n"
 "     ```\n"
 msgstr ""
-"    ```haskell\n"
-"    data True\n"
-"    data False\n"
-"    ```\n"
+"     ```haskell\n"
+"     data True\n"
+"     data False\n"
+"     ```\n"
 
 #. type: Plain text
 #: text/chapter14.md:363
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "     Modify your solution to the previous exercise to use a phantom type to prevent the user from using the `attribute` operator with an empty attribute.\n"
-msgstr "    幻影型を使って、使用者が `attribute`演算子を空の属性に対して使うことを防ぐように、前の演習の解答を変更してください。\n"
+msgstr "     幻影型を使って、使用者が `attribute`演算子を空の属性に対して使うことを防ぐように、前の演習の解答を変更してください。\n"
 
 #. type: Title ##
 #: text/chapter14.md:364
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "The Free Monad"
 msgstr "Freeモナド"
 
 #. type: Plain text
 #: text/chapter14.md:367
-#, fuzzy
 msgid ""
 "In our final set of modifications to our API, we will use a construction "
 "called the _free monad_ to turn our `Content` type into a monad, enabling do "
 "notation. This will allow us to structure our HTML documents in a form in "
 "which the nesting of elements becomes clearer - instead of this:"
 msgstr ""
-"APIに施す最後の変更は、 `Content`型をモナドにしてdo記法を使えるようにするため"
-"に、**Freeモナド**と呼ばれる構造を使うことです。Freeモナドは、入れ子になった"
-"要素をわかりやすくなるよう、HTML文書の構造化を可能にします。次のようなコード"
-"を考えます。"
+"APIに施す最後の変更は、 `Content`型をモナドにしてdo記法を使えるようにするために、**Freeモナド**と呼ばれる構造を使うことです。\n"
+"これによって入れ子になった要素がわかりやすくなるようにHTML文書を構造化できます。\n"
+"以下の代わりに……"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:368
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "p [ _class := \"main\" ]\n"
 "  [ elem $ img\n"
@@ -12607,13 +12651,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:380
-#, fuzzy
 msgid "we will be able to write this:"
-msgstr "これを次のように書くことができるようになります。"
+msgstr "このように書くことができるようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:381
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "p [ _class := \"main\" ] $ do\n"
 "  elem $ img\n"
@@ -12633,32 +12676,28 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:392
-#, fuzzy
 msgid ""
 "However, do notation is not the only benefit of a free monad. The free monad "
 "allows us to separate the _representation_ of our monadic actions from their "
 "_interpretation_, and even support _multiple interpretations_ of the same "
 "actions."
 msgstr ""
-"しかし、do記法だけがFreeモナドの恩恵だというわけではありません。モナドのアク"
-"ションの**表現**をその**解釈**から分離し、同じアクションに**複数の解釈**を持"
-"たせることをFreeモナドは可能にします。"
+"しかし、do記法だけがFreeモナドの恩恵だというわけではありません。\n"
+"Freeモナドがあれば、モナドのアクションの**表現**をその**解釈**から分離し、同じアクションに**複数の解釈**を持たせることさえできます。"
 
 #. type: Plain text
 #: text/chapter14.md:394
-#, fuzzy
 msgid ""
 "The `Free` monad is defined in the `free` library, in the `Control.Monad."
 "Free` module. We can find out some basic information about it using PSCi, as "
 "follows:"
 msgstr ""
-"`Free`モナドは `purescript-free`ライブラリの `Control.Monad.Free`モジュールで"
-"定義されています。 `PSCi`を使うと、次のようにFreeモナドについての基本的な情報"
-"を見ることができます。"
+"`Free`モナドは `free`ライブラリの `Control.Monad.Free`モジュールで定義されています。\n"
+"PSCiを使うと、次のようにFreeモナドについての基本的な情報を見ることができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:395
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Control.Monad.Free\n"
 "\n"
@@ -12672,19 +12711,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:403
-#, fuzzy
 msgid ""
 "The kind of `Free` indicates that it takes a type constructor as an "
 "argument, and returns another type constructor. In fact, the `Free` monad "
 "can be used to turn any `Functor` into a `Monad`!"
 msgstr ""
-"`Free`の種は、引数として型構築子を取り、別の型構築子を返すことを示していま"
-"す。実は、 `Free`モナドは任意の `Functor`を `Monad`にするために使うことができ"
-"ます！"
+"`Free`の種は、引数として型構築子を取り、別の型構築子を返すことを示しています。\n"
+"実は、 `Free`モナドを使えば任意の `Functor`を `Monad`にすることができます！"
 
 #. type: Plain text
 #: text/chapter14.md:405
-#, fuzzy
 msgid ""
 "We begin by defining the _representation_ of our monadic actions. To do "
 "this, we need to create a `Functor` with one data constructor for each "
@@ -12692,15 +12728,14 @@ msgid ""
 "be `elem` and `text`. In fact, we can simply modify our `Content` type as "
 "follows:"
 msgstr ""
-"モナドのアクションの**表現**を定義することから始めます。これを行うには、サ"
-"ポートする各モナドアクションそれぞれについて、ひとつのデータ構築子を持つ "
-"`Functor`を作成する必要があります。今回の場合、2つのモナドのアクションは "
-"`elem`と `text`になります。実際には、 `Content`型を次のように変更するだけで"
-"す。"
+"モナドのアクションの**表現**を定義することから始めます。\n"
+"これを行うには、サポートする各モナドアクションそれぞれについて、ひとつのデータ構築子を持つ `Functor`を作成する必要があります。\n"
+"今回の場合、2つのモナドのアクションは `elem`と `text`になります。\n"
+"実際には、 `Content`型を次のように変更するだけです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:406
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "data ContentF a\n"
 "  = TextContent String a\n"
@@ -12720,7 +12755,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:417
-#, fuzzy
 msgid ""
 "Here, the `ContentF` type constructor looks just like our old `Content` data "
 "type - however, it now takes a type argument `a`, and each data constructor "
@@ -12728,66 +12762,57 @@ msgid ""
 "`Functor` instance simply applies the function `f` to the value of type `a` "
 "in each data constructor."
 msgstr ""
-"ここで、この `ContentF`型構築子は以前の `Content`データ型とよく似ています。 "
-"`Functor`インスタンスでは、単に各データ構築子で型 `a`の構成要素に関数 `f`を適"
-"用します。"
+"ここで、この `ContentF`型構築子は以前の `Content`データ型とよく似ています。\n"
+"しかし、ここでは型引数`a`を取り、それぞれのデータ構築子は型`a`の値を追加の引数として取るように変更されています。\n"
+"`Functor`インスタンスでは、単に各データ構築子で型 `a`の構成要素に関数 `f`を適用します。"
 
 #. type: Plain text
 #: text/chapter14.md:419
-#, fuzzy
 msgid ""
 "With that, we can define our new `Content` monad as a type synonym for the "
 "`Free` monad, which we construct by using our `ContentF` type constructor as "
 "the first type argument:"
 msgstr ""
-"これにより、最初の型引数として `ContentF`型構築子を使うことで構築された、新し"
-"い `Content`型構築子を `Free`モナドを包むnewtypeとして定義することができま"
-"す。"
+"これにより、新しい`Content`モナドを`Free`モナド用の型シノニムとして定義することができます。\n"
+"これは最初の型引数として `ContentF`型構築子を使うことで構築されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:420
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "type Content = Free ContentF\n"
 msgstr "type Content = Free ContentF\n"
 
 #. type: Plain text
 #: text/chapter14.md:425
-#, fuzzy
 msgid ""
 "Instead of a type synonym, we might use a `newtype` to avoid exposing the "
 "internal representation of our library to our users - by hiding the "
 "`Content` data constructor, we restrict our users to only using the monadic "
 "actions we provide."
 msgstr ""
-"型のシノニムの代わりにnewtypeを使用して、使用者に対してライブラリの内部表現を"
-"露出することを避ける事ができます。 `Content`データ構築子を隠すことで、提供し"
-"ているモナドのアクションだけを使うことを仕様者に制限しています。"
+"型シノニムの代わりにnewtypeを使用して、使用者に対してライブラリの内部表現を露出することを避けられます。\n"
+"`Content`データ構築子を隠すことで、提供しているモナドのアクションだけを使うことを使用者に制限しています。"
 
 #. type: Plain text
 #: text/chapter14.md:427
-#, fuzzy
 msgid ""
 "Because `ContentF` is a `Functor`, we automatically get a `Monad` instance "
 "for `Free ContentF`."
-msgstr ""
-"`ContentF`は `Functor`なので、 `Free ContentF`に対する `Monad`インスタンスが"
-"自動的に手に入り、このインスタンスを `Content`上の `Monad`インスタンスへと持"
-"ち上げることができます。"
+msgstr "`ContentF`は `Functor`なので、 `Free ContentF`用の`Monad`インスタンスが自動的に手に入ります。"
 
 #. type: Plain text
 #: text/chapter14.md:429
-#, fuzzy
 msgid ""
 "We have to modify our `Element` data type slightly to take account of the "
 "new type argument on `Content`. We will simply require that the return type "
 "of our monadic computations be `Unit`:"
 msgstr ""
-"`Content`の新しい型引数を考慮するように、少し `Element`データ型を変更する必要"
-"があります。モナドの計算の戻り値の型が `Unit`であることだけが要求されます。"
+"`Content`の新しい型引数を考慮するように`Element`データ型を僅かに変更する必要があります。\n"
+"モナドの計算の戻り値の型が `Unit`であることだけが必要です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:430
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "newtype Element = Element\n"
 "  { name         :: String\n"
@@ -12803,39 +12828,35 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:439
-#, fuzzy
 msgid ""
 "In addition, we have to modify our `elem` and `text` functions, which become "
 "our new monadic actions for the `Content` monad. To do this, we can use the "
 "`liftF` function, provided by the `Control.Monad.Free` module. Here is its "
 "type:"
 msgstr ""
-"また、 `Content`モナドについての新しいモナドのアクションになる `elem`と "
-"`text`関数を変更する必要があります。これを行うには、 `Control.Monad.Free`モ"
-"ジュールで提供されている `liftF`関数を使います。この関数の(簡略化された)型は"
-"次のようになっています。"
+"また、 `Content`モナドについての新しいモナドのアクションになる `elem`と `text`関数を変更する必要があります。\n"
+"これには`Control.Monad.Free`モジュールで提供されている `liftF`関数が使えます。\n"
+"この関数の型は次のようになっています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:440
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "liftF :: forall f a. f a -> Free f a\n"
-msgstr "liftF :: forall f a. (Functor f) => f a -> Free f a\n"
+msgstr "liftF :: forall f a. f a -> Free f a\n"
 
 #. type: Plain text
 #: text/chapter14.md:445
-#, fuzzy
 msgid ""
 "`liftF` allows us to construct an action in our free monad from a value of "
 "type `f a` for some type `a`. In our case, we can simply use the data "
 "constructors of our `ContentF` type constructor directly:"
 msgstr ""
-"`liftF`は、何らかの型 `a`について、型 `f a`の値からFreeモナドのアクションを構"
-"築できるようにします。今回の場合、 `ContentF`型構築子のデータ構築子を次のよう"
-"にそのまま使うだけです。"
+"`liftF`により、何らかの型 `a`について、型 `f a`の値からFreeモナドのアクションを構築できるようになります。\n"
+"今回の場合、 `ContentF`型構築子のデータ構築子をそのまま使うだけです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:446
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "text :: String -> Content Unit\n"
 "text s = liftF $ TextContent s unit\n"
@@ -12851,34 +12872,30 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:455
-#, fuzzy
 msgid ""
 "Some other routine modifications have to be made, but the interesting "
 "changes are in the `render` function, where we have to _interpret_ our free "
 "monad."
 msgstr ""
-"他にもコードの変更はありますが、興味深い変更は `render`関数に対してのもので"
-"す。ここでは、このFreeモナドを**解釈**しなければいけません。"
+"他にも同じようなコードの変更はありますが、興味深い変更は `render`関数にあります。\n"
+"ここでは、このFreeモナドを**解釈**しなければいけません。"
 
 #. type: Title ##
 #: text/chapter14.md:456
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Interpreting the Monad"
 msgstr "モナドの解釈"
 
 #. type: Plain text
 #: text/chapter14.md:459
-#, fuzzy
 msgid ""
 "The `Control.Monad.Free` module provides a number of functions for "
 "interpreting a computation in a free monad:"
-msgstr ""
-"`Control.Monad.Free`モジュールでは、Freeモナドで計算を解釈するための多数の関"
-"数が提供されています。"
+msgstr "`Control.Monad.Free`モジュールでは、Freeモナドで計算を解釈するための多数の関数が提供されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:460
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "runFree\n"
 "  :: forall f a\n"
@@ -12910,52 +12927,43 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:477
-#, fuzzy
 msgid ""
 "The `runFree` function is used to compute a _pure_ result. The `runFreeM` "
 "function allows us to use a monad to interpret the actions of our free monad."
-msgstr ""
-"`runFree`関数は、**純粋な**結果を計算するために使用されます。 `runFreeM`関数"
-"は、フリーモナドの動作を解釈するためにモナドを使用することを可能にします"
+msgstr "`runFree`関数は、**純粋な**結果を計算するために使用されます。 `runFreeM`関数があればFreeモナドのアクションを解釈するためにモナドが使えます。"
 
 #. type: Plain text
 #: text/chapter14.md:479
-#, fuzzy
 msgid ""
 "_Note_: Technically, we are restricted to using monads `m` which satisfy the "
 "stronger `MonadRec` constraint. In practice, this means that we don't need "
 "to worry about stack overflow, since `m` supports safe _monadic tail "
 "recursion_."
 msgstr ""
-"厳密には、 `MonadRec`のより強い制約を満たすモナド `m`を使用する制限がされてい"
-"ます。これはスタックオーバーフローを心配する必要がないことを意味します。なぜ"
-"なら `m`は安全な**末尾再帰モナド**(monadic tail recursion)をサポートするから"
-"です。"
+"**補足**：厳密には、より強い`MonadRec`制約を満たすモナド `m`を使用するよう制限されています。\n"
+"実際には、これはスタックオーバーフローを心配する必要がないことを意味します。\n"
+"なぜなら `m`は安全な**末尾再帰モナド** (monadic tail recursion) をサポートするからです。"
 
 #. type: Plain text
 #: text/chapter14.md:481
-#, fuzzy
 msgid ""
 "First, we have to choose a monad in which we can interpret our actions. We "
 "will use the `Writer String` monad to accumulate a HTML string as our result."
 msgstr ""
-"まず、アクションを解釈することができるモナドを選ばなければなりません。 "
+"まず、アクションを解釈することができるモナドを選ばなければなりません。\n"
 "`Writer String`モナドを使って、結果のHTML文字列を累積することにします。"
 
 #. type: Plain text
 #: text/chapter14.md:483
-#, fuzzy
 msgid ""
 "Our new `render` method starts by delegating to a helper function, "
 "`renderElement`, and using `execWriter` to run our computation in the "
 "`Writer` monad:"
-msgstr ""
-"新しい `render`メソッドは補助関数 `renderElement`に移譲して開始し、 `Writer`"
-"モナドで計算を実行するため `execWriter`を使用します。"
+msgstr "新しい `render`メソッドは補助関数 `renderElement`に移譲して開始し、`execWriter`を使って`Writer`モナドで計算を走らせます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:484
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "render :: Element -> String\n"
 "render = execWriter <<< renderElement\n"
@@ -12965,13 +12973,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:490
-#, fuzzy
 msgid "`renderElement` is defined in a where block:"
 msgstr "`renderElement`はwhereブロックで定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:491
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "  where\n"
 "    renderElement :: Element -> Writer String Unit\n"
@@ -12983,17 +12990,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:498
-#, fuzzy
 msgid ""
 "The definition of `renderElement` is straightforward, using the `tell` "
 "action from the `Writer` monad to accumulate several small strings:"
-msgstr ""
-"`renderElement`の定義は簡単で、いくつかの小さな文字列を累積するために "
-"`Writer`モナドの `tell`アクションを使っています。"
+msgstr "`renderElement`の定義は直感的で、複数の小さな文字列を累積するために `Writer`モナドの `tell`アクションを使っています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:499
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "      tell \"<\"\n"
 "      tell e.name\n"
@@ -13011,14 +13015,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:509
-#, fuzzy
 msgid ""
 "Next, we define the `renderAttribute` function, which is equally simple:"
-msgstr "次に、同じように簡単な `renderAttribute`関数を定義します。"
+msgstr ""
+"次に、`renderAttribute`関数を定義します。\n"
+"こちらも同じくらい単純です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:510
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "    where\n"
 "      renderAttribute :: Attribute -> Writer String Unit\n"
@@ -13038,19 +13043,18 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:521
-#, fuzzy
 msgid ""
 "The `renderContent` function is more interesting. Here, we use the "
 "`runFreeM` function to interpret the computation inside the free monad, "
 "delegating to a helper function, `renderContentItem`:"
 msgstr ""
-"`renderContent`関数は、もっと興味深いものです。ここでは、 `runFreeM`関数を"
-"使って、Freeモナドの内部で補助関数 `renderContentItem`に移譲する計算を解釈し"
-"ています。"
+"`renderContent`関数は、もっと興味深いものです。\n"
+"ここでは`runFreeM`関数を使い、Freeモナドの内部で計算を解釈しています。\n"
+"計算は補助関数 `renderContentItem`に移譲しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:522
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "      renderContent :: Maybe (Content Unit) -> Writer String Unit\n"
 "      renderContent Nothing = tell \" />\"\n"
@@ -13072,7 +13076,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:534
-#, fuzzy
 msgid ""
 "The type of `renderContentItem` can be deduced from the type signature of "
 "`runFreeM`. The functor `f` is our type constructor `ContentF`, and the "
@@ -13080,30 +13083,26 @@ msgid ""
 "`Writer String`. This gives the following type signature for "
 "`renderContentItem`:"
 msgstr ""
-"`renderContentItem`の型は `runFreeM`の型シグネチャから推測することができま"
-"す。関手 `f`は型構築子 `ContentF`で、モナド `m`は解釈している計算のモナド、つ"
-"まり `Writer String`です。これにより `renderContentItem`について次の型シグネ"
-"チャがわかります。"
+"`renderContentItem`の型は `runFreeM`の型シグネチャから推測することができます。\n"
+"関手 `f`は型構築子 `ContentF`で、モナド `m`は解釈している計算のモナド、つまり `Writer String`です。\n"
+"これにより `renderContentItem`について次の型シグネチャがわかります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:535
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "      renderContentItem :: ContentF (Content Unit) -> Writer String (Content Unit)\n"
 msgstr "      renderContentItem :: ContentF (Content Unit) -> Writer String (Content Unit)\n"
 
 #. type: Plain text
 #: text/chapter14.md:540
-#, fuzzy
 msgid ""
 "We can implement this function by simply pattern matching on the two data "
 "constructors of `ContentF`:"
-msgstr ""
-"`ContentF`の二つのデータ構築子でパターン照合するだけで、この関数を実装するこ"
-"とができます。"
+msgstr "`ContentF`の2つのデータ構築子でパターン照合するだけで、この関数を実装することができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:541
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "      renderContentItem (TextContent s rest) = do\n"
 "        tell s\n"
@@ -13121,26 +13120,24 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:551
-#, fuzzy
 msgid ""
 "In each case, the expression `rest` has the type `Content Unit`, and "
 "represents the remainder of the interpreted computation. We can complete "
 "each case by returning the `rest` action."
 msgstr ""
-"それぞれの場合において、式 `rest`は型 `Writer String`を持っており、解釈計算の"
-"残りを表しています。 `rest`アクションを呼び出すことによって、それぞれの場合を"
-"完了することができます。"
+"それぞれの場合において、式 `rest`は型 `Content Unit`を持っており、解釈計算の残りを表しています。\n"
+"`rest`アクションを呼び出すことによって、それぞれの場合を完了することができます。"
 
 #. type: Plain text
 #: text/chapter14.md:553
-#, fuzzy
 msgid "That's it! We can test our new monadic API in PSCi, as follows:"
 msgstr ""
-"これで完了です！`PSCi`で、次のように新しいモナドのAPIを試してみましょう。"
+"これで完了です！\n"
+"PSCiで、次のようにすれば新しいモナドのAPIを試すことができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:554
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "> import Data.DOM.Free\n"
@@ -13157,7 +13154,7 @@ msgid ""
 msgstr ""
 "> import Prelude\n"
 "> import Data.DOM.Free\n"
-"> import Control.Monad.Eff.Console\n"
+"> import Effect.Console\n"
 "\n"
 "> :paste\n"
 "… log $ render $ p [] $ do\n"
@@ -13165,54 +13162,46 @@ msgstr ""
 "…   text \"A cat\"\n"
 "… ^D\n"
 "\n"
-"&lt;p&gt;&lt;img src=\"cat.jpg\" /&gt;A cat&lt;/p&gt;\n"
+"<p><img src=\"cat.jpg\" />A cat</p>\n"
 "unit\n"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:572
-#, fuzzy
 msgid ""
 "(Medium) Add a new data constructor to the `ContentF` type to support a new "
 "action `comment`, which renders a comment in the generated HTML. Implement "
 "the new action using `liftF`. Update the interpretation `renderContentItem` "
 "to interpret your new constructor appropriately."
 msgstr ""
-"(普通)`ContentF`型に新しいデータ構築子を追加して、生成されたHTMLにコメントを"
-"出力する新しいアクション `comment`に対応してください。 `liftF`を使ってこの新"
-"しいアクションを実装してください。新しい構築子を適切に解釈するように、解釈 "
-"`renderContentItem`を更新してください。"
+"（普通）`ContentF`型に新しいデータ構築子を追加して、生成されたHTMLにコメントを出力する新しいアクション `comment`に対応してください。\n"
+"`liftF`を使ってこの新しいアクションを実装してください。\n"
+"新しい構築子を適切に解釈するように、解釈 `renderContentItem`を更新してください。"
 
 #. type: Title ##
 #: text/chapter14.md:573
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Extending the Language"
 msgstr "言語の拡張"
 
 #. type: Plain text
 #: text/chapter14.md:576
-#, fuzzy
 msgid ""
 "A monad in which every action returns something of type `Unit` is not "
 "particularly interesting. In fact, aside from an arguably nicer syntax, our "
 "monad adds no extra functionality over a `Monoid`."
 msgstr ""
-"すべてのアクションが型 `Unit`の何かを返すようなモナドは、さほど興味深いもので"
-"はありません。実際のところ、概ね良くなったと思われる構文は別として、このモナ"
-"ドは `Monoid`以上の機能は何の追加していません。"
+"すべてのアクションが型 `Unit`の何かを返すようなモナドは、さほど興味深いものではありません。\n"
+"実際のところ、概ね良くなったと思われる構文は別として、このモナドは `Monoid`以上の機能を何ら追加していません。"
 
 #. type: Plain text
 #: text/chapter14.md:578
-#, fuzzy
 msgid ""
 "Let's illustrate the power of the free monad construction by extending our "
 "language with a new monadic action which returns a non-trivial result."
-msgstr ""
-"意味のある結果を返す新しいモナドアクションでこの言語を拡張することで、Freeモ"
-"ナド構造の威力を説明しましょう​​。"
+msgstr "非自明な結果を返す新しいモナドアクションでこの言語を拡張することで、Freeモナド構造の威力をお見せしましょう​​。"
 
 #. type: Plain text
 #: text/chapter14.md:580
-#, fuzzy
 msgid ""
 "Suppose we want to generate HTML documents which contain hyperlinks to "
 "different sections of the document using _anchors_. We can accomplish this "
@@ -13220,44 +13209,38 @@ msgid ""
 "twice in the document: once at the definition of the anchor itself, and once "
 "in each hyperlink. However, this approach has some basic issues:"
 msgstr ""
-"**アンカー**を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML"
-"文書を生成するとします。手作業でアンカーの名前を生成すればいいので、これは既"
-"に実現できています。文書中で少なくとも２回、ひとつはアンカーの定義自身に、も"
-"うひとつはハイパーリンクに、アンカーが含まれています。しかし、この方法には根"
-"本的な問題がいくつかあります。\n"
+"**アンカー**を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML文書を生成するとします。\n"
+"これは既に達成できています。\n"
+"手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。\n"
+"1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。\n"
+"しかし、この方法には根本的な問題がいくつかあります。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:583
-#, fuzzy
 msgid "The developer might fail to generate unique anchor names."
-msgstr "要素名の入力を間違えるかもしれません"
+msgstr "開発者が一意なアンカー名の生成をし損なうかもしれません。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:583
-#, fuzzy
 msgid "The developer might mistype one or more instances of the anchor name."
-msgstr "要素名の入力を間違えるかもしれません"
+msgstr "開発者がアンカー名を1つ以上の箇所で打ち間違うかもしれません。"
 
 #. type: Plain text
 #: text/chapter14.md:585
-#, fuzzy
 msgid ""
 "In the interest of protecting the developer from their own mistakes, we can "
 "introduce a new type which represents anchor names, and provide a monadic "
 "action for generating new unique names."
-msgstr ""
-"自分の間違いから開発者を保護するために、アンカー名を表す新しい型を導入し、新"
-"しい一意な名前を生成するためのモナドアクションを提供することができます。"
+msgstr "開発者が誤ちを犯すことを防ぐために、アンカー名を表す新しい型を導入し、新しい一意な名前を生成するためのモナドアクションを提供することができます。"
 
 #. type: Plain text
 #: text/chapter14.md:587
-#, fuzzy
 msgid "The first step is to add a new type for names:"
 msgstr "最初の手順は、名前の型を新しく追加することです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:588
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "newtype Name = Name String\n"
 "\n"
@@ -13271,28 +13254,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:596
-#, fuzzy
 msgid ""
 "Again, we define this as a newtype around `String`, but we must be careful "
 "not to export the data constructor in the module's export lists."
-msgstr ""
-"繰り返しになりますが、 `Name`は `String`のnewtypeとして定義しており、モジュー"
-"ルのエクスポートリスト内でデータ構築子をエクスポートしないように注意する必要"
-"があります。"
+msgstr "繰り返しになりますが、`Name`は `String`のnewtypeとして定義しているものの、モジュールのエクスポートリスト内でデータ構築子をエクスポートしないように注意する必要があります。"
 
 #. type: Plain text
 #: text/chapter14.md:598
-#, fuzzy
 msgid ""
 "Next, we define an instance for the `IsValue` type class for our new type, "
 "so that we are able to use names in attribute values:"
-msgstr ""
-"次に、属性値として `Name`を使うことができるように、新しい型 `IsValue`型クラス"
-"のインスタンスを定義します。"
+msgstr "次に、属性値として `Name`を使うことができるように、新しい型に`IsValue`型クラスのインスタンスを定義します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:599
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance nameIsValue :: IsValue Name where\n"
 "  toValue (Name n) = n\n"
@@ -13302,16 +13278,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:605
-#, fuzzy
 msgid ""
 "We also define a new data type for hyperlinks which can appear in `a` "
 "elements, as follows:"
-msgstr ""
-"また、次のように `a`要素に現れるハイパーリンクの新しいデータ型を定義します。"
+msgstr "また、次のように `a`要素に現れるハイパーリンク用の新しいデータ型を定義します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:606
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "data Href\n"
 "  = URLHref String\n"
@@ -13331,18 +13305,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:617
-#, fuzzy
 msgid ""
 "With this new type, we can modify the value type of the `href` attribute, "
 "forcing our users to use our new `Href` type. We can also create a new "
 "`name` attribute, which can be used to turn an element into an anchor:"
 msgstr ""
-"`href`属性の型の値を変更して、この新しい `Href`型の使用を強制します。また、要"
-"素をアンカーに変換するのに使う新しい `name`属性を作成します。"
+"この新しい型により、`href`属性の型の値を変更して、利用者にこの新しい `Href`型の使用を強制することができます。\n"
+"また、新しい `name`属性を作成することもでき、要素をアンカーに変換するのに使えます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:618
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "href :: AttributeKey Href\n"
 "href = AttributeKey \"href\"\n"
@@ -13358,19 +13331,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:627
-#, fuzzy
 msgid ""
 "The remaining problem is that our users currently have no way to generate "
 "new names. We can provide this functionality in our `Content` monad. First, "
 "we need to add a new data constructor to our `ContentF` type constructor:"
 msgstr ""
-"残りの問題は、現在モジュールの使用者が新しい名前を生成する方法がないというこ"
-"とです。 `Content`モナドでこの機能を提供することができます。まず、 `ContentF`"
-"型構築子に新しいデータ構築子を追加する必要があります。"
+"残っている問題は、現在モジュールの使用者が新しい名前を生成する方法がないということです。\n"
+"`Content`モナドでこの機能を提供することができます。まず、 `ContentF`型構築子に新しいデータ構築子を追加する必要があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:628
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "data ContentF a\n"
 "  = TextContent String a\n"
@@ -13384,23 +13355,23 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:636
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "The `NewName` data constructor corresponds to an action which returns a value of type `Name`. Notice that instead of requiring a `Name` as a data constructor argument, we require the user to provide a _function_ of type `Name -> a`. Remembering that the type `a` represents the _rest of the computation_, we can see that this function provides a way to continue computation after a value of type `Name` has been returned.\n"
-msgstr "`NewName`データ構築子は型 `Name`の値を返すアクションに対応しています。データ構築子の引数として `Name`を要求するのではなく、型 `Name -> a`の**関数**を提供するように使用者に要求していることに注意してください。型 `a`は**計算の残り**を表していることを思い出すと、この関数は、型 `Name`の値が返されたあとで、計算を継続する方法を提供するというように直感的に理解することができます。\n"
+msgstr ""
+"`NewName`データ構築子は型 `Name`の値を返すアクションに対応しています。\n"
+"データ構築子の引数として `Name`を要求するのではなく、型 `Name -> a`の**関数**を提供するように使用者に要求していることに注意してください。\n"
+"型 `a`は**計算の残り**を表していることを思い出すと、この関数は、型 `Name`の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。\n"
 
 #. type: Plain text
 #: text/chapter14.md:638
-#, fuzzy
 msgid ""
 "We also need to update the `Functor` instance for `ContentF`, taking into "
 "account the new data constructor, as follows:"
-msgstr ""
-"新しいデータ構築子を考慮するように、 `ContentF`についての `Functor`インスタン"
-"スを更新する必要があります。"
+msgstr "新しいデータ構築子を考慮するように、次のように`ContentF`用の`Functor`インスタンスを更新する必要もあります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:639
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "instance functorContentF :: Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
@@ -13414,16 +13385,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:647
-#, fuzzy
 msgid ""
 "Now we can build our new action by using the `liftF` function, as before:"
-msgstr ""
-"そして、先ほど述べたように、 `liftF`関数を使うと新しいアクションを構築するこ"
-"とができます。"
+msgstr "これで、以前と同じように`liftF`関数を使って新しいアクションを構築することができます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:648
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "newName :: Content Name\n"
 "newName = liftF $ NewName id\n"
@@ -13433,17 +13401,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:654
-#, fuzzy
 msgid ""
 "Notice that we provide the `id` function as our continuation, meaning that "
 "we return the result of type `Name` unchanged."
 msgstr ""
-"`id`関数を継続として提供していることに注意してください。型 `Name`の結果を変更"
-"せずに返すということを意味しています。"
+"`id`関数を継続として提供していることに注意してください。\n"
+"これは型 `Name`の結果を変更せずに返すということを意味しています。"
 
 #. type: Plain text
 #: text/chapter14.md:656
-#, fuzzy
 msgid ""
 "Finally, we need to update our interpretation function, to interpret the new "
 "action. We previously used the `Writer String` monad to interpret our "
@@ -13453,32 +13419,26 @@ msgid ""
 "define our interpretation monad as a type synonym to keep our type "
 "signatures short:"
 msgstr ""
-"最後に、新しいアクションを解釈するために、解釈関数を更新する必要があります。"
-"以前は計算を解釈するために `Writer String`モナドを使っていましたが、このモナ"
-"ドは新しい名前を生成する能力を持っていないので、何か他のものに切り替えなけれ"
-"ばなりません。`WriterT`モナド変換子を`State`モナドと一緒に使うと、必要な作用"
-"を組み合わせることができます。型注釈を短く保てるように、この解釈モナドを型同"
-"義語として定義しておきます。"
+"最後に、新しいアクションを解釈するために、解釈関数を更新する必要があります。\n"
+"以前は計算を解釈するために `Writer String`モナドを使っていましたが、このモナドは新しい名前を生成する能力を持っていないので、何か他のものに切り替えなければなりません。\n"
+"`WriterT`モナド変換子を`State`モナドと一緒に使うと、必要な作用を組み合わせることができます。\n"
+"型注釈を短く保てるように、この解釈モナドを型同義語として定義しておきます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:657
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "type Interp = WriterT String (State Int)\n"
 msgstr "type Interp = WriterT String (State Int)\n"
 
 #. type: Plain text
 #: text/chapter14.md:662
-#, fuzzy
 msgid ""
 "Here, the state of type `Int` will act as an incrementing counter, used to "
 "generate unique names."
-msgstr ""
-"Int型の引数は状態の型で、この場合は増加していくカウンタとして振る舞う数であ"
-"り、一意な名前を生成するのに使われます。"
+msgstr "ここで、`Int`型の状態は増加していくカウンタとして振る舞い、一意な名前を生成するのに使われます。"
 
 #. type: Plain text
 #: text/chapter14.md:664
-#, fuzzy
 msgid ""
 "Because the `Writer` and `WriterT` monads use the same type class members to "
 "abstract their actions, we do not need to change any actions - we only need "
@@ -13486,15 +13446,14 @@ msgid ""
 "need to modify the handler used to run our computation. Instead of just "
 "`execWriter`, we now need to use `evalState` as well:"
 msgstr ""
-"`Writer`と `WriterT`モナドはそれらのアクションを抽象化するのに同じ型クラスメ"
-"ンバを使うので、どのアクションも変更する必要がありません。必要なのは、 "
-"`Writer String`への参照すべてを `Interp`で置き換えることだけです。しかし、こ"
-"の計算を実行するために使われるハンドラを変更しなければいけません。 "
-"`execWriter`の代わりに、 `evalState`を使います。"
+"`Writer`と `WriterT`モナドはそれらのアクションを抽象化するのに同じ型クラスメンバを使うので、どのアクションも変更する必要がありません。\n"
+"必要なのは、 `Writer String`への参照すべてを `Interp`で置き換えることだけです。\n"
+"しかし、この計算を実行するために使われるハンドラを変更しなければいけません。\n"
+"単なる`execWriter`の代わりに、今やここでも`evalState`を使う必要があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:665
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "render :: Element -> String\n"
 "render e = evalState (execWriterT (renderElement e)) 0\n"
@@ -13504,17 +13463,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:671
-#, fuzzy
 msgid ""
 "We also need to add a new case to `renderContentItem`, to interpret the new "
 "`NewName` data constructor:"
-msgstr ""
-"新しい `NewName`データ構築子を解釈するために、 `renderContentItem`に新しい場"
-"合分けを追加しなければいけません。"
+msgstr "また、新しい `NewName`データ構築子を解釈するために、 `renderContentItem`に新しい場合を追加しなければいけません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:672
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "renderContentItem (NewName k) = do\n"
 "  n <- get\n"
@@ -13530,24 +13486,27 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:681
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "Here, we are given a continuation `k` of type `Name -> Content a`, and we need to construct an interpretation of type `Content a`. Our interpretation is simple: we use `get` to read the state, use that state to generate a unique name, then use `put` to increment the state. Finally, we pass our new name to the continuation to complete the computation.\n"
-msgstr "ここで、型 `Name -> Interp a`の継続 `k`が与えられているので、型 `Interp a`の解釈を構築しなければいけません。この解釈は単純です。 `get`を使って状態を読み、その状態を使って一意な名前を生成し、それから `put`で状態をインクリメントしています。最後に、継続にこの新しい名前を渡して、計算を完了します。\n"
+msgstr ""
+"ここで、型 `Name -> Content a`の継続 `k`が与えられているので、型 `Content a`の解釈を構築しなければいけません。\n"
+"この解釈は単純です。\n"
+"`get`を使って状態を読み、その状態を使って一意な名前を生成し、それから `put`で状態をインクリメントするのです。\n"
+"最後に、継続にこの新しい名前を渡して、計算を完了します。\n"
 
 #. type: Plain text
 #: text/chapter14.md:683
-#, fuzzy
 msgid ""
 "With that, we can try out our new functionality in PSCi, by generating a "
 "unique name inside the `Content` monad, and using it as both the name of an "
 "element and the target of a hyperlink:"
 msgstr ""
-"これにより、 `PSCi`で、 `Content`モナドの内部で一意な名前を生成し、要素の名前"
-"とハイパーリンクのリンク先の両方を使って、この新しい機能を試してみましょう。"
+"以上をもって、この新しい機能をPSCiで試すことができます。\n"
+"これには`Content`モナドの内部で一意な名前を生成し、要素の名前とハイパーリンクのリンク先の両方として使います。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:684
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "> import Data.DOM.Name\n"
@@ -13567,7 +13526,7 @@ msgid ""
 msgstr ""
 "> import Prelude\n"
 "> import Data.DOM.Name\n"
-"> import Control.Monad.Eff.Console\n"
+"> import Effect.Console\n"
 "\n"
 "> :paste\n"
 "… render $ p [ ] $ do\n"
@@ -13583,87 +13542,79 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:703
-#, fuzzy
 msgid ""
 "You can verify that multiple calls to `newName` do in fact result in unique "
 "names."
-msgstr ""
-"複数回の `newName`呼び出しの結果が、実際に一意な名前になっていることを確かめ"
-"てみてください。"
+msgstr "複数回の `newName`の呼び出しの結果が、実際に一意な名前になっていることを確かめられます。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:707
-#, fuzzy
 msgid ""
 "(Medium) We can simplify the API further by hiding the `Element` type from "
 "its users. Make these changes in the following steps:"
 msgstr ""
-"(普通) 使用者から `Element`型を隠蔽すると、さらにAPIを簡素化することができま"
-"す。次の手順に従って、これらの変更を行ってください。"
+"（普通）使用者から `Element`型を隠蔽すると、さらにAPIを簡素化することができます。\n"
+"次の手順に従って、この変更を加えてください。"
 
 #. type: Bullet: '     - '
 #: text/chapter14.md:713
-#, fuzzy
 msgid ""
 "Combine functions like `p` and `img` (with return type `Element`) with the "
 "`elem` action to create new actions with return type `Content Unit`."
-msgstr ""
-"`p`や `img`のような(返り値が `Element`の)関数を `elem`アクションと結合して、"
-"型 `Content Unit`を返す新しいアクションを作ってください。"
+msgstr "`p`や `img`のような（返る型が `Element`の）関数を `elem`アクションと結合して、型 `Content Unit`を返す新しいアクションを作ってください。"
 
 #. type: Bullet: '     - '
 #: text/chapter14.md:713
-#, fuzzy
 msgid ""
 "Change the `render` function to accept an argument of type `Content Unit` "
 "instead of `Element`."
-msgstr ""
-"型 `Content a`の引数を許容し、結果の型 `Tuple String`を返すように、 `render`"
-"関数を変更してください。"
+msgstr "`Element`の代わりに型`Content Unit`の引数を受け付けるように`render`関数を変更してください。"
 
 #. type: Plain text
 #: text/chapter14.md:713
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 " 1. (Medium) Hide the implementation of the `Content` monad by using a `newtype` instead of a type synonym. You should not export the data\n"
 "     constructor for your `newtype`.\n"
 " 1. (Difficult) Modify the `ContentF` type to support a new action\n"
-msgstr "(普通) 型同義語の代わりに `newtype`を使って `Content`モナドの実装を隠し、 `newtype`のためにデータ構築子をエクスポートしないでください。"
+msgstr ""
+" 1. （普通）型同義語の代わりに`newtype`を使うことによって`Content`モナドの実装を隠してください。\n"
+"    `newtype`用のデータ構築子はエクスポートすべきではありません。\n"
+" 1. （難しい）`ContentF`型を変更して以下の新しいアクションに対応してください。\n"
 
 #. type: Plain text
 #: text/chapter14.md:717
-#, fuzzy, no-wrap
+#, no-wrap
 msgid ""
 "     ```haskell\n"
 "     isMobile :: Content Boolean\n"
 "     ```\n"
 msgstr ""
-"    ```haskell\n"
-"    testParens :: String -> Boolean\n"
-"    ```\n"
+"     ```haskell\n"
+"     isMobile :: Content Boolean\n"
+"     ```\n"
 
 #. type: Plain text
 #: text/chapter14.md:719
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "     which returns a boolean value indicating whether or not the document is being rendered for display on a mobile device.\n"
-msgstr "　 このアクションは、この文書がモバイルデバイス上での表示のためにレンダリングされているかどうかを示す真偽値を返します。"
+msgstr "     このアクションは、この文書がモバイルデバイス上での表示のためにレンダリングされているかどうかを示す真偽値を返します。\n"
 
 #. type: Plain text
 #: text/chapter14.md:721
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "     _Hint_: use the `ask` action and the `ReaderT` monad transformer to interpret this action. Alternatively, you might prefer to use the `RWS` monad.\n"
-msgstr "   **ヒント**：`ask`アクションと`ReaderT`型変換子を使って、このアクションを解釈してみてください。あるいは、`RWS`モナドを使うほうが好みの人もいるかもしれません。\n"
+msgstr ""
+"     **ヒント**：`ask`アクションと`ReaderT`モナド変換子を使って、このアクションを解釈してください。\n"
+"     あるいは、`RWS`モナドを使うほうが好みの人もいるかもしれません。\n"
 
 #. type: Plain text
 #: text/chapter14.md:725
-#, fuzzy
 msgid ""
 "In this chapter, we developed a domain-specific language for creating HTML "
 "documents, by incrementally improving a naive implementation using some "
 "standard techniques:"
-msgstr ""
-"この章では、いくつかの標準的な技術を使って、単純な実装を段階的に改善すること"
-"により、HTML文書を作成するための領域特化言語を開発しました。"
+msgstr "この章では、いくつかの標準的な技術を使って、素朴な実装を段階的に改善することにより、HTML文書を作成するための領域特化言語を開発しました。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:730
@@ -13671,14 +13622,14 @@ msgid ""
 "We used _smart constructors_ to hide the details of our data representation, "
 "only permitting the user to create documents which were _correct-by-"
 "construction_."
-msgstr ""
+msgstr "**スマート構築子**を使ってデータ表現の詳細を隠し、利用者には**構築により正しい**文書だけを作ることを許しました。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:730
 msgid ""
 "We used an _user-defined infix binary operator_ to improve the syntax of the "
 "language."
-msgstr ""
+msgstr "**独自に定義された中置2引数演算子**を使い言語の構文を改善しました。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:730
@@ -13686,6 +13637,8 @@ msgid ""
 "We used _phantom types_ to encode additional information in the types of our "
 "data, preventing the user from providing attribute values of the wrong type."
 msgstr ""
+"**幻影型**を使ってデータの型の中に追加の情報を折り込みました。\n"
+"これにより利用者が誤った型の属性値を与えることを防いでいます。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:730
@@ -13695,30 +13648,25 @@ msgid ""
 "extended this representation to support a new monadic action, and "
 "interpreted the monadic computations using standard monad transformers."
 msgstr ""
+"**Freeモナド**を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。\n"
+"それからこの表現を新しいモナドアクションに対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。"
 
 #. type: Plain text
 #: text/chapter14.md:732
-#, fuzzy
 msgid ""
 "These techniques all leverage PureScript's module and type systems, either "
 "to prevent the user from making mistakes or to improve the syntax of the "
 "domain-specific language."
-msgstr ""
-"使用者が間違いを犯すのを防ぎ、領域特化言語の構文を改良するために、これらの手"
-"法はすべてPureScriptのモジュールと型システムを活用しています。"
+msgstr "これらの手法はすべて、使用者が間違いを犯すのを防いだり領域特化言語の構文を改良したりするために、PureScriptのモジュールと型システムを活用しています。"
 
 #. type: Plain text
 #: text/chapter14.md:733
-#, fuzzy
 msgid ""
 "The implementation of domain-specific languages in functional programming "
 "languages is an area of active research, but hopefully this provides a "
 "useful introduction some simple techniques, and illustrates the power of "
 "working in a language with expressive types."
-msgstr ""
-"関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野で"
-"すが、いくつかの簡単なテクニックに対して役に立つ導入を提供し、表現力豊かな型"
-"を持つ言語で作業すること威力を示すことができていれば幸いです。"
+msgstr "関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野ですが、いくつかの簡単な技法に対して役に立つ導入を提供し、表現力豊かな型を持つ言語で作業することの威力を示すことができていれば幸いです。"
 
 #. type: Title #
 #: text/chapter2.md:1
@@ -25310,8 +25258,9 @@ msgid ""
 msgstr ""
 "（普通）`homeAddress`フィールドがオプショナル（`Maybe`を使用）な\n"
 "新しい版の`Person`型をつくってください。\n"
-"それからこの新しい`Person`を検証する新しい版の`validatePerson`"
-"（`validatePersonOptionalAddress`と改名します）を書いてください。\n"
+"それからこの新しい`Person`を検証する新しい版の"
+"`validatePerson`（`validatePersonOptionalAddress`と改名します）を書いてくださ"
+"い。\n"
 "**ヒント**：`traverse`を使って型`Maybe a`のフィールドを検証してください。"
 
 #. type: Bullet: ' 1. '
@@ -27695,9 +27644,11 @@ msgid ""
 "[`react`](https://github.com/purescript-contrib/purescript-react)"
 msgstr ""
 "<a\n"
-"href=\"http://github.com/paf31/purescript-thermite\"><code>thermite</code></a>\n"
+"href=\"http://github.com/paf31/purescript-thermite\"><code>thermite</code></"
+"a>\n"
 "は<a\n"
-"href=\"https://github.com/purescript-contrib/purescript-react\"><code>react</code></a>\n"
+"href=\"https://github.com/purescript-contrib/purescript-react\"><code>react</"
+"code></a>\n"
 "上で構築されるライブラリです。"
 
 #. type: Bullet: '- '
@@ -27708,9 +27659,11 @@ msgid ""
 "react-basic)"
 msgstr ""
 "<a\n"
-"href=\"https://github.com/megamaddu/purescript-react-basic-hooks\"><code>react-basic-hooks</code></a>\n"
+"href=\"https://github.com/megamaddu/purescript-react-basic-hooks"
+"\"><code>react-basic-hooks</code></a>\n"
 "は<a\n"
-"href=\"https://github.com/lumihq/purescript-react-basic\"><code>react-basic</code></a>\n"
+"href=\"https://github.com/lumihq/purescript-react-basic\"><code>react-basic</"
+"code></a>\n"
 "上で構築されるライブラリです。"
 
 #. type: Bullet: '- '
@@ -27721,7 +27674,8 @@ msgid ""
 "library."
 msgstr ""
 "<a\n"
-"href=\"http://github.com/purescript-halogen/purescript-halogen\"><code>halogen</code></a>\n"
+"href=\"http://github.com/purescript-halogen/purescript-halogen"
+"\"><code>halogen</code></a>\n"
 "は自前の仮想DOMライブラリを土台とした型安全な抽象化の集まりを提供しま\n"
 "す。"
 
@@ -28722,7 +28676,8 @@ msgstr "`Monad`型クラスと、do記法との関連に出会いました。"
 msgid ""
 "We introduced the monad laws, and saw how they allow us to transform code "
 "written using do notation."
-msgstr "モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。"
+msgstr ""
+"モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:1010
@@ -28819,9 +28774,15 @@ msgstr "`parallel` - `Aff`の並列実行。"
 
 #. type: Plain text
 #: text/chapter9.md:17
+#, fuzzy
+#| msgid ""
+#| "When running outside of the browser (such as in our Node.js environment), "
+#| "the `affjax` library requires the `xhr2` NPM module. Install that by "
+#| "running:"
 msgid ""
 "When running outside of the browser (such as in our Node.js environment), "
-"the `affjax` library requires the `xhr2` NPM module. Install that by running:"
+"the `affjax` library requires the `xhr2` NPM module, which is listed as "
+"dependency in the `package.json` of this chapter. Install that by running:"
 msgstr ""
 "（Node.js環境のような）ブラウザ外で実行する場合、\n"
 "`affjax`ライブラリは`xhr2`NPMモジュールが必要です。\n"
@@ -29531,9 +29492,11 @@ msgstr ""
 #~ msgstr ""
 #~ "- 中核となる処理はPureScriptで記述し、\n"
 #~ "  ユーザーインターフェイスはJavaScriptで記述する\n"
-#~ "- JavaScriptや、他のJavaScriptにコンパイルする言語でアプリケーションを書き、\n"
+#~ "- JavaScriptや、他のJavaScriptにコンパイルする言語でアプリケーションを書"
+#~ "き、\n"
 #~ "  PureScriptでそのテストを書く\n"
-#~ "- 既存のアプリケーションのユーザインタフェースのテストを自動化するためにPureScriptを使用する"
+#~ "- 既存のアプリケーションのユーザインタフェースのテストを自動化するために"
+#~ "PureScriptを使用する"
 
 #~ msgid ""
 #~ "- The [PureScript Discord server](https://discord.gg/vKn9up84bp) is a "
@@ -29568,22 +29531,30 @@ msgstr ""
 #~ "  よくある問題への解決策を探すのに良い場所です。\n"
 #~ "  メッセージ履歴が約2週間しか保たないSlackとは違い、\n"
 #~ "  ここで質問した内容は将来の読者の助けとして使えるでしょう。\n"
-#~ "- [PureScript: Jordan's Reference](https://github.com/jordanmartinez/purescript-jordans-reference)\n"
+#~ "- [PureScript: Jordan's Reference](https://github.com/jordanmartinez/"
+#~ "purescript-jordans-reference)\n"
 #~ "  は別のかなり深く踏み込んだ学習資料です。\n"
 #~ "  この本の中のある概念が理解しにくかったら、\n"
 #~ "  そちらの参考書の対応する節を読むとよいでしょう。\n"
 #~ "- [Pursuit](https://pursuit.purescript.org)\n"
 #~ "  はPureScriptの型と関数を検索できるデータベースです。\n"
 #~ "  Pursuitのヘルプページを読むと\n"
-#~ "  [どのような種類の検索ができるのかがわかります](https://pursuit.purescript.org/help/users)。\n"
-#~ "- 非公式の[PureScript Cookbook](https://github.com/JordanMartinez/purescript-cookbook)は\n"
-#~ "  「Xするにはどうするの？」といった類の質問にコードを混じえて答えを提供します。\n"
-#~ "- [PureScriptドキュメントリポジトリ](https://github.com/purescript/documentation)には、\n"
-#~ "  PureScriptの開発者や利用者が書いた幅広い話題の記事と例が集まっています。\n"
+#~ "  [どのような種類の検索ができるのかがわかります](https://pursuit."
+#~ "purescript.org/help/users)。\n"
+#~ "- 非公式の[PureScript Cookbook](https://github.com/JordanMartinez/"
+#~ "purescript-cookbook)は\n"
+#~ "  「Xするにはどうするの？」といった類の質問にコードを混じえて答えを提供し"
+#~ "ます。\n"
+#~ "- [PureScriptドキュメントリポジトリ](https://github.com/purescript/"
+#~ "documentation)には、\n"
+#~ "  PureScriptの開発者や利用者が書いた幅広い話題の記事と例が集まっていま"
+#~ "す。\n"
 #~ "- [PureScriptのWebサイト](https://www.purescript.org)には、\n"
-#~ "  コード例、映像、他の初心者向け資料を含むいくつかの学習資料へのリンクがあります。\n"
+#~ "  コード例、映像、他の初心者向け資料を含むいくつかの学習資料へのリンクがあ"
+#~ "ります。\n"
 #~ "- [Try PureScript!](https://try.purescript.org)は\n"
-#~ "  利用者がWebブラウザでPureScriptのコードをコンパイルすることができるWebサイトです。\n"
+#~ "  利用者がWebブラウザでPureScriptのコードをコンパイルすることができるWebサ"
+#~ "イトです。\n"
 #~ "  いくつかの簡単なコードの例があります。"
 
 #~ msgid ""
@@ -29594,10 +29565,13 @@ msgstr ""
 #~ "alert if there is an issue saving or loading the form state."
 #~ msgstr ""
 #~ "- 保存ボタンをフォームの底に置き、\n"
-#~ "  クリックしたときにフォームの状態をJSONに直列化してローカルストレージに保存します。\n"
-#~ "- ページの再読み込み時にローカルストレージからJSON文書を自動的に取得します。\n"
+#~ "  クリックしたときにフォームの状態をJSONに直列化してローカルストレージに保"
+#~ "存します。\n"
+#~ "- ページの再読み込み時にローカルストレージからJSON文書を自動的に取得しま"
+#~ "す。\n"
 #~ "  フォームのフィールドにはこの文書の内容を入れます。\n"
-#~ "- フォームの状態を保存したり読み込んだりするのに問題があればポップアップの警告を出します。"
+#~ "- フォームの状態を保存したり読み込んだりするのに問題があればポップアップの"
+#~ "警告を出します。"
 
 #~ msgid ""
 #~ "- `ordered-collections`, which provides data types for immutable maps and "
@@ -29609,8 +29583,10 @@ msgstr ""
 #~ msgstr ""
 #~ "- `ordered-collections` は不変のマップと集合のためのデータ型を提供します\n"
 #~ "- `transformers` は標準のモナド変換子の実装を提供します\n"
-#~ "- `node-readline` - NodeJSが提供する[`readline`](http://nodejs.org/api/readline.html)インターフェイスへのFFIバインディングを提供します\n"
-#~ "- `optparse` はコマンドライン引数を処理するアプリカティブ構文解析器を提供します"
+#~ "- `node-readline` - NodeJSが提供する[`readline`](http://nodejs.org/api/"
+#~ "readline.html)インターフェイスへのFFIバインディングを提供します\n"
+#~ "- `optparse` はコマンドライン引数を処理するアプリカティブ構文解析器を提供"
+#~ "します"
 
 #, fuzzy
 #~ msgid ""
@@ -29684,7 +29660,8 @@ msgstr ""
 #~ "- 関数合成で小さな部品を組み合わせてのプログラムの構築\n"
 #~ "- `where`節を利用したコードの構造化\n"
 #~ "- `Maybe`型を使用してnull値を回避する方法\n"
-#~ "- イータ変換や関数合成のような手法を利用した、よりわかりやすいコードへの再構成"
+#~ "- イータ変換や関数合成のような手法を利用した、よりわかりやすいコードへの再"
+#~ "構成"
 
 #~ msgid ""
 #~ "- `maybe`, which defines the `Maybe` type constructor - `arrays`, which "
@@ -29696,7 +29673,8 @@ msgstr ""
 #~ "- `maybe`: `Maybe`型構築子が定義されています。\n"
 #~ "- `arrays`: 配列を扱うための関数が定義されています。\n"
 #~ "- `strings`: JavaScriptの文字列を扱うための関数が定義されています。\n"
-#~ "- `foldable-traversable`: 配列やその他のデータ構造を畳み込む関数が定義されています。\n"
+#~ "- `foldable-traversable`: 配列やその他のデータ構造を畳み込む関数が定義され"
+#~ "ています。\n"
 #~ "- `console`: コンソールへの出力を扱うための関数が定義されています。"
 
 #~ msgid ""
@@ -29721,7 +29699,8 @@ msgstr ""
 #~ "argument).  - Otherwise, the function evaluates and returns the "
 #~ "expression in the last line."
 #~ msgstr ""
-#~ "- まず最初の場合が試されます。第2引数がゼロの場合、関数は `n`（最初の引数）を返します。\n"
+#~ "- まず最初の場合が試されます。第2引数がゼロの場合、関数は `n`（最初の引"
+#~ "数）を返します。\n"
 #~ "- そうでなければ、2番目の場合が試されます。\n"
 #~ "  最初の引数がゼロの場合、関数は `m`（第2引数）を返します。\n"
 #~ "- それ以外の場合、関数は最後の行の式を評価して返します。"
@@ -29761,9 +29740,11 @@ msgstr ""
 #~ msgstr ""
 #~ "- 関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、\n"
 #~ "  **アプリカティブ関手**の概念を導入しました。\n"
-#~ "- データ構造の検証という課題にアプリカティブ関手がどのような解決策を与えるか、\n"
+#~ "- データ構造の検証という課題にアプリカティブ関手がどのような解決策を与える"
+#~ "か、\n"
 #~ "  どうすれば単一のエラーの報告から\n"
-#~ "  データ構造を横断するすべてのエラーの報告へ変換できるのかを見てきました。\n"
+#~ "  データ構造を横断するすべてのエラーの報告へ変換できるのかを見てきまし"
+#~ "た。\n"
 #~ "- `Traversable`型クラスに出会いました。\n"
 #~ "  **巡回可能関手**の考え方を内包するものであり、\n"
 #~ "  要素が副作用を持つ値の結合に使うことができる容器でした。"
@@ -29838,14 +29819,16 @@ msgstr ""
 #~ "exceptions, console IO, mutable state, and DOM manipulation using React."
 #~ msgstr ""
 #~ "- `Monad`型クラスと、do記法との関連に出会いました。\n"
-#~ "- モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。\n"
+#~ "- モナド則を導入し、do記法を使って書かれたコードを変換する方法を見まし"
+#~ "た。\n"
 #~ "- 異なる副作用で動作するコードを書くために、\n"
 #~ "  モナドを抽象的に扱う方法を見ました。\n"
 #~ "- モナドがアプリカティブ関手の一例であること、\n"
 #~ "  両者がどのように副作用のある計算を可能にするのかということ、\n"
 #~ "  そして2つの手法の違いを説明しました。\n"
 #~ "- ネイティブな作用の概念を定義し、\n"
-#~ "  ネイティブな副作用を処理するために使用する `Effect`モナドを導入しました。\n"
+#~ "  ネイティブな副作用を処理するために使用する `Effect`モナドを導入しまし"
+#~ "た。\n"
 #~ "- 乱数生成、例外、コンソール入出力、変更可能な状態、\n"
 #~ "  およびReactを使ったDOM操作といった、\n"
 #~ "  さまざまな作用を扱うために `Effect`モナドを使いました。"
@@ -31912,8 +31895,8 @@ msgstr ""
 #~ "(Easy) Use `lift2` to write lifted versions of the numeric operators `+`, "
 #~ "`-`, `*` and `/` which work with optional arguments."
 #~ msgstr ""
-#~ "(簡単)`lift2`を使って、オプショナルな引数に対して働く、数に対する演算子"
-#~ "`+`、`-`、`*`、`/`の持ち上げられたバージョンを書いてください。"
+#~ "(簡単)`lift2`を使って、オプショナルな引数に対して働く、数に対する演算子`"
+#~ "+`、`-`、`*`、`/`の持ち上げられたバージョンを書いてください。"
 
 #, fuzzy
 #~ msgid ""

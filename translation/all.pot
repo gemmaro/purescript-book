@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-10-22 20:12+0900\n"
+"POT-Creation-Date: 2022-12-11 11:22+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,191 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title #
+#: README.md:1
+#, markdown-text, no-wrap
+msgid "PureScript by Example"
+msgstr ""
+
+#. type: Plain text
+#: README.md:4
+#, markdown-text
+msgid ""
+"This repository contains a [community "
+"fork](https://github.com/purescript-contrib/purescript-book/) of _PureScript "
+"by Example_ by Phil Freeman, also known as \"the PureScript book\". This "
+"version differs from the original in that it has been updated so that the "
+"code and exercises work with up-to-date versions of the compiler, libraries, "
+"and tools. Some chapters have also been rewritten to showcase the latest "
+"features of the PureScript ecosystem."
+msgstr ""
+
+#. type: Plain text
+#: README.md:6
+#, markdown-text
+msgid ""
+"If you enjoyed the book or found it useful, please consider buying a copy of "
+"[the original on Leanpub](https://leanpub.com/purescript)."
+msgstr ""
+
+#. type: Title ##
+#: README.md:7
+#, markdown-text, no-wrap
+msgid "Status"
+msgstr ""
+
+#. type: Plain text
+#: README.md:10
+#, markdown-text
+msgid ""
+"This book is being continuously updated as the language evolves, so please "
+"report any "
+"[issues](https://github.com/purescript-contrib/purescript-book/issues) you "
+"discover with the material. We appreciate any feedback you have to share, "
+"even if it's as simple as pointing out a confusing section that we could "
+"make more beginner-friendly."
+msgstr ""
+
+#. type: Plain text
+#: README.md:12
+#, markdown-text
+msgid ""
+"Unit tests are also being added to each chapter so you can check if your "
+"answers to the exercises are correct. See "
+"[#79](https://github.com/purescript-contrib/purescript-book/issues/79) for "
+"the latest status on tests."
+msgstr ""
+
+#. type: Title ##
+#: README.md:13
+#, markdown-text, no-wrap
+msgid "About the Book"
+msgstr ""
+
+#. type: Plain text
+#: README.md:16
+#, markdown-text
+msgid ""
+"PureScript is a small, strongly, statically typed programming language with "
+"expressive types, written in and inspired by Haskell, and compiling to "
+"Javascript."
+msgstr ""
+
+#. type: Plain text
+#: README.md:18
+#, markdown-text
+msgid ""
+"Functional programming in JavaScript has seen quite a lot of popularity "
+"recently, but large-scale application development is hindered by the lack of "
+"a disciplined environment in which to write code. PureScript aims to solve "
+"that problem by bringing the power of strongly-typed functional programming "
+"to the world of JavaScript development."
+msgstr ""
+
+#. type: Plain text
+#: README.md:20
+#, markdown-text
+msgid ""
+"This book will show you how to get started with the PureScript programming "
+"language, from the basics (setting up a development environment) to the "
+"advanced."
+msgstr ""
+
+#. type: Plain text
+#: README.md:22
+#, markdown-text
+msgid ""
+"Each chapter will be motivated by a particular problem, and in the course of "
+"solving that problem, new functional programming tools and techniques will "
+"be introduced. Here are some examples of problems that will be solved in "
+"this book:"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Transforming data structures with maps and folds"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Form field validation using applicative functors"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Testing code with QuickCheck"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Using the canvas"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Domain specific language implementation"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Working with the DOM"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "JavaScript interoperability"
+msgstr ""
+
+#. type: Bullet: '- '
+#: README.md:31
+#, markdown-text
+msgid "Parallel asynchronous execution"
+msgstr ""
+
+#. type: Title ##
+#: README.md:32
+#, markdown-text, no-wrap
+msgid "License"
+msgstr ""
+
+#. type: Plain text
+#: README.md:35
+#, markdown-text
+msgid "Copyright (c) 2014-2017 Phil Freeman."
+msgstr ""
+
+#. type: Plain text
+#: README.md:37
+#, markdown-text
+msgid ""
+"The text of this book is licensed under the Creative Commons "
+"Attribution-NonCommercial-ShareAlike 3.0 Unported License: "
+"<https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>."
+msgstr ""
+
+#. type: Plain text
+#: README.md:39
+#, markdown-text
+msgid ""
+"Some text is derived from the [PureScript Documentation "
+"Repo](https://github.com/purescript/documentation), which uses the same "
+"license, and is copyright [various "
+"contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md)."
+msgstr ""
+
+#. type: Plain text
+#: README.md:40
+#, markdown-text
+msgid "The exercises are licensed under the MIT license."
+msgstr ""
 
 #. type: Title ##
 #: text/chapter1.md:1 text/chapter4.md:23
@@ -3451,11 +3636,11 @@ msgstr ""
 #: text/chapter10.md:1171
 #, markdown-text
 msgid ""
-"A similar law holds for expressions of type `Int` `Number` and `String` - "
+"A similar law holds for expressions of type `Int`, `Number`, and `String` - "
 "expressions of type `Int` or `Number` evaluate to non-null JavaScript "
 "numbers, and expressions of type `String` evaluate to non-null JavaScript "
 "strings. Expressions of type `Int` will evaluate to integers at runtime, "
-"even though they cannot not be distinguished from values of type `Number` by "
+"even though they cannot be distinguished from values of type `Number` by "
 "using `typeof`."
 msgstr ""
 
@@ -23510,8 +23695,8 @@ msgstr ""
 #, markdown-text
 msgid ""
 "When running outside of the browser (such as in our Node.js environment), "
-"the `affjax` library requires the `xhr2` NPM module. Install that by "
-"running:"
+"the `affjax` library requires the `xhr2` NPM module, which is listed as "
+"dependency in the `package.json` of this chapter. Install that by running:"
 msgstr ""
 
 #. type: Fenced code block (shell)

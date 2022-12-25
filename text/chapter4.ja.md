@@ -771,33 +771,3 @@ PSCiで新しいコードを試してみてください。
 およびこれらの概念を組み合わせた配列内包表記を導入しました。
 最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、
 累積器引数を使用して末尾再帰形に関数を変換する方法を示しました。
-
-- - -
-
-<small>
-
-この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
-同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。
-
-[原文の使用許諾](https://book.purescript.org/)：
-
-> Copyright (c) 2014-2017 Phil Freeman.
->
-> The text of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>.
->
-> Some text is derived from the [PureScript Documentation Repo](https://github.com/purescript/documentation), which uses the same license, and is copyright [various contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md).
->
-> The exercises are licensed under the MIT license.
-
-[aratama氏訳の使用許諾](http://aratama.github.io/purescript/)：
-
-> This book is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
->
-> 本書は[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)でライセンスされています。
-
-本翻訳の使用許諾：
-
-本翻訳も原文と原翻訳にしたがい、
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)の下に提供されています。
-
-</small>
