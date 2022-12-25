@@ -121,6 +121,7 @@ PSCiでこれらの関数を試してみてください。
 この場合、3行目ではガードを使用して、最初の引数が第2引数よりも厳密に大きいという条件を付け加えています。
 最後の行でのガードは式`otherwise`を使っており、キーワードのようにも見えますが、
 実際にはただの`Prelude`における通常の束縛なのです。
+
 ```text
 > :type otherwise
 Boolean
@@ -638,6 +639,7 @@ newtype CouldError err a = CouldError (Either err a)
 また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあることにも注意してください。
 ただこれは必須ではありません。
 例えば固有の名前であっても妥当です。
+
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:Coulomb}}
 ```
@@ -656,9 +658,11 @@ newtypeの別の応用は、実行時表現を変えることなく、既存の�
 
 1. （簡単）`Watt`を`Number`の`newtype`として定義してください。
    それからこの新しい`Watt`型と上の`Amp`と`Volt`の定義を使って`calculateWattage`関数を定義してください。
+
 ```haskell
 calculateWattage :: Amp -> Volt -> Watt
 ```
+
 `Watt`中のワット数は与えられた`Amp`中の電流と与えられた`Volt`の電圧の積で計算できます。
 
 ## ベクターグラフィックスライブラリ

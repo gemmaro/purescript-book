@@ -1,0 +1,10 @@
+{
+    "dev-dependencies": {
+        "textlint": "^13.2.0",
+        "textlint-rule-preset-jtf-style": "^2.3.13"
+    },
+    "scripts": {
+        "lint": "textlint text/chapter1.ja.md",
+        "translate": "po4a --version > .po4a-version && po4a po4a.cfg"
+    }
+}

@@ -1,61 +1,45 @@
-# PureScript by Example
+# 実例によるPureScript
 
-This repository contains a [community
-fork](https://github.com/purescript-contrib/purescript-book/) of _PureScript
-by Example_ by Phil Freeman, also known as "the PureScript book". This
-version differs from the original in that it has been updated so that the
-code and exercises work with up-to-date versions of the compiler, libraries,
-and tools. Some chapters have also been rewritten to showcase the latest
-features of the PureScript ecosystem.
+このリポジトリには、Phil Freemanによる**PureScript by
+Example**の[コミュニティフォーク](https://github.com/purescript-contrib/purescript-book/)が含まれます。
+同書は"the PureScript book" としても知られています。
+このバージョンはコードと演習が最近のバージョンのコンパイラ、ライブラリ、ツールで動くように更新されています。
+PureScriptのエコシステムの最新の機能を紹介すべく書き直された章もあります。
 
-If you enjoyed the book or found it useful, please consider buying a copy of
-[the original on Leanpub](https://leanpub.com/purescript).
+本書をお楽しみいただきお役立ちいただけましたら、[Leanpubの原書](https://leanpub.com/purescript)の購入をご検討ください。
 
-## Status
+## 現状
 
-This book is being continuously updated as the language evolves, so please
-report any
-[issues](https://github.com/purescript-contrib/purescript-book/issues) you
-discover with the material. We appreciate any feedback you have to share,
-even if it's as simple as pointing out a confusing section that we could
-make more beginner-friendly.
+この本は言語の進化に伴って継続的に更新されているため、内容に関して発見したどんな[問題](https://github.com/purescript-contrib/purescript-book/issues)でもご報告ください。
+より初心者にやさしくできそうな分かりづらい節を指摘するような単純なものであれ、共有いただいたどんなフィードバックにも感謝します。
 
-Unit tests are also being added to each chapter so you can check if your
-answers to the exercises are correct. See
-[#79](https://github.com/purescript-contrib/purescript-book/issues/79) for
-the latest status on tests.
+それぞれの章には単体テストも加えられているので、演習への自分の回答が正しいかどうか確かめることができます。
+テストの最新の状態については[#79](https://github.com/purescript-contrib/purescript-book/issues/79)を見てください。
 
 ## 本書について
 
-PureScript is a small, strongly, statically typed programming language with
-expressive types, written in and inspired by Haskell, and compiling to
-Javascript.
+PureScriptは、表現力のある型を持つ、小さく、強力で、静的に型付けされたプログラミング言語です。
+Haskellで書かれ、またこの言語から着想を得ています。
+そして、JavaScriptにコンパイルされます。
 
-Functional programming in JavaScript has seen quite a lot of popularity
-recently, but large-scale application development is hindered by the lack of
-a disciplined environment in which to write code. PureScript aims to solve
-that problem by bringing the power of strongly-typed functional programming
-to the world of JavaScript development.
+JavaScriptでの関数型プログラミングは最近かなりの人気を誇るようになりましたが、コードを書く上で統制された環境が欠けていることが大規模なアプリケーション開発の妨げとなっています。
+PureScriptは、強力に型付けされた関数型プログラミングの力をJavaScriptでの開発の世界に持ち込むことにより、この問題の解決を目指しています。
 
-This book will show you how to get started with the PureScript programming
-language, from the basics (setting up a development environment) to the
-advanced.
+この本は、基礎（開発環境の立ち上げ）から応用に至るまでの、PureScriptプログラミング言語の始め方を示します。
 
-Each chapter will be motivated by a particular problem, and in the course of
-solving that problem, new functional programming tools and techniques will
-be introduced. Here are some examples of problems that will be solved in
-this book:
+それぞれの章は特定の課題により動機付けられており、その問題を解いていく過程において、新しい関数型プログラミングの道具と技法が導入されていきます。
+以下はこの本で解いていく課題のいくつかの例です。
 
-- Transforming data structures with maps and folds
-- Form field validation using applicative functors
-- Testing code with QuickCheck
-- Using the canvas
+- マップと畳み込みを使ったデータ構造の変換
+- アプリカティブ関手を使ったフォームフィールドの検証
+- QuickCheckによるコードの検査
+- Canvasの使用
 - 領域特化言語の実装
-- DOMを扱う
-- JavaScript interoperability
-- 平行非同期実行
+- DOMの取り回し
+- JavaScriptの相互運用性
+- 並列非同期実行
 
-## License
+## 使用許諾
 
 Copyright (c) 2014-2017 Phil Freeman.
 
@@ -63,12 +47,22 @@ The text of this book is licensed under the Creative Commons
 Attribution-NonCommercial-ShareAlike 3.0 Unported License:
 <https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>.
 
+<small>※以降の原文の使用許諾に関する和訳は法的効力を持ちません。<br>
+本書のテキストは<a
+href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja">表示 - 非営利 -
+継承 3.0 非移植 (CC BY-NC-SA 3.0)</a>のもとに使用が許諾される。</small>
+
 Some text is derived from the [PureScript Documentation
 Repo](https://github.com/purescript/documentation), which uses the same
 license, and is copyright [various
 contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md).
 
+<small>いくつかのテキストは[PureScriptのドキュメントリポジトリ](https://github.com/purescript/documentation)から派生している。
+派生元も同じ使用許諾であり、[様々な形で貢献された方々](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md)の著作権が含まれる。</small>
+
 The exercises are licensed under the MIT license.
+
+<small>演習はMITライセンスの下に使用が許諾される。</small>
 
 - - -
 
@@ -86,6 +80,6 @@ Copyright (C) 2022 gemmaro.
 > 本書は[クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja)でライセンスされています。
 
 本翻訳も原文と原翻訳にしたがい、
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)の下に提供されています。
+[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)の下に使用が許諾されます。
 
 </small>

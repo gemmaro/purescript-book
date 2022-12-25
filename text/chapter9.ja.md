@@ -16,9 +16,10 @@
 - `affjax` - AJAXと`Aff`を使ったHTTPリクエスト。
 - `parallel` - `Aff`の並列実行。
 
-When running outside of the browser (such as in our Node.js environment),
-the `affjax` library requires the `xhr2` NPM module, which is listed as
-dependency in the `package.json` of this chapter. Install that by running:
+（Node.js環境のような）ブラウザ外で実行する場合、
+`affjax`ライブラリは`xhr2`NPMモジュールが必要です。
+このモジュールはこの章の`package.json`中の依存関係に挙げられています。
+以下を走らせてインストールします。
 
 ```shell
 $ npm install
@@ -71,20 +72,26 @@ JavaScriptで前にお話ししたように同じ短所がここでも通用す�
 
 例えば`readTextFile`のシグネチャを見れば、
 これがファイルの内容を`String`とし、`Aff`に包んで返していることがわかります。
+
 ```hs
 readTextFile :: Encoding -> FilePath -> Aff String
 ```
+
 do記法中では束縛矢印 (`<-`) で返却された文字列を「開封」できます。
+
 ```hs
 my_data <- readTextFile UTF8 file1
 ```
+
 それから`writeTextFile`に文字列引数として渡します。
+
 ```hs
 writeTextFile :: Encoding -> FilePath -> String -> Aff Unit
 ```
 
 上の例で他に目を引く`Aff`固有の特徴は`attempt`のみです。
 これは`Aff`のコードの実行中に遭遇したエラーや例外を補足して`Either`内に保管するものです。
+
 ```hs
 attempt :: forall a. Aff a -> Aff (Either Error a)
 ```
@@ -110,14 +117,11 @@ attempt :: forall a. Aff a -> Aff (Either Error a)
 この章の残りの演習を完了するための事前要件ではありませんが、
 Pursuitで何らかの関数を見付けだす助けになるかもしれません。
 
-以下の補助的な資料にあたることもご自由にどうぞ。
-でも繰り返しますがこの章の演習はこれらに依存していません。
+これらの補足資料についてもあたってみるとよいでしょう。
+しかし繰り返しになりますがこの章の演習はそれらの内容に依りません。
 
-* [DrewによるAffの投稿](https://blog.drewolson.org/asynchronous-purescript)
-* [更なるAffの説明と例][1]
-
-[1]:
-https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff
+- [DrewのAffに関する投稿](https://blog.drewolson.org/asynchronous-purescript)
+- [更なるAffの説明と例](https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff)
 
 ## HTTPクライアント
 
@@ -256,6 +260,7 @@ unit
    **ヒント**：`node_path`モジュールにはディレクトリとやりとりする上で便利な関数があります。
 
 たとえば、次のような`root.txt`ファイルから始まるとします。
+
 ```shell
 $ cat root.txt
 a.txt
@@ -274,14 +279,16 @@ $ cat b/a.txt
 
 $ cat c/a/a.txt
 ```
+
 期待される出力は次の通り。
+
 ```hs
 ["root.txt","a.txt","b/a.txt","b/b.txt","b/c/a.txt","c/a/a.txt"]
 ```
 
 ## まとめ
 
-この章では非同期作用を押さえ、以下の方法を学びました。
+この章では非同期エフェクトと以下の方法を押さえました。
 
 - `aff`ライブラリを使って`Aff`モナド中で非同期コードを走らせる。
 - `affjax`ライブラリを使って非同期にHTTPリクエストを行う。

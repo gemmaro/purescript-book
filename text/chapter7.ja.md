@@ -864,7 +864,7 @@ pure ((Just "Testing"))
      このインスタンスを手作業で書くつもりであれば、
      このことを念頭に置いておくだけでよいです。
 
-     ```
+     ```haskell
      (Branch (Branch Leaf 8 Leaf) 42 Leaf)
      ```
 

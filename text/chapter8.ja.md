@@ -74,7 +74,8 @@ PureScriptの関数を埋め込む、というような直感的理解を得る�
 型 `a`は異なることもあります。
 （言い換えると、個々の計算は異なる型の結果を持つことができます。）
 
-型構築子 `Maybe`が適用された、do記法の別の例を見てみましょう。
+以下はdo記法の別の例です。
+今回は型構築子 `Maybe`に適用されています。
 XMLノードを表す型 `XML`と次の関数があるとします。
 
 ```hs
@@ -513,12 +514,11 @@ Spagoビルドツール（や他のツール）は早道を提供しており、
 log :: String -> Effect Unit
 ```
 
-> 余談：より一般的な（そしてより込み入った型の）`Effect.Class.Console`の`log`関数をIDEから提案されるかもしれません。
-これは基本的な`Effect`モナドを扱う際は`Effect.Console`からの関数と交換可能です。
-より一般的なバージョンがあることの理由は「モナドな冒険」章の「モナド変換子」について読んだあとにより明らかになっていることでしょう。
-好奇心のある（そしてせっかちな）読者のために言うと、
-これは`Effect`に`MonadEffect`インスタンスがあるから機能するのです。
-
+> _余談_ ：より一般的な（そしてより込み入った型の）`Effect.Class.Console`の`log`関数をIDEから提案されるかもしれません。
+> これは基本的な`Effect`モナドを扱う際は`Effect.Console`からの関数と交換可能です。
+> より一般的なバージョンがあることの理由は「モナドな冒険」章の「モナド変換子」について読んだあとにより明らかになっていることでしょう。
+> 好奇心のある（そしてせっかちな）読者のために言うと、これは`Effect`に`MonadEffect`インスタンスがあるから機能するのです。
+>
 > ```hs
 > log :: forall m. MonadEffect m => String -> m Unit
 > ```
@@ -548,7 +548,7 @@ main = random >>= logShow
 
 これを手元で走らせてみてください。
 
-```
+```shell
 spago run --main Test.Random
 ```
 
@@ -594,7 +594,7 @@ main = do
 
 以下の例外に遭遇します。
 
-```
+```text
     throw err;
     ^
 Error: ENOENT: no such file or directory, open 'iDoNotExist.md'
@@ -905,7 +905,7 @@ Reactライブラリの完全なチュートリアルはこの章の範囲をは
 
 `exercises/chapter8`ディレクトリから以下のコマンドでWebアプリを立ち上げることができます。
 
-```
+```shell
 $ npm install
 $ npx spago build
 $ npx parcel src/index.html --open
@@ -1144,11 +1144,11 @@ pure
 これらのHTML要素は実はReactコンポーネント自体でJSXに変換されます。
 通常これらの関数にはそれぞれ3つの種類があります。
 
-* `div_`: 子要素の配列を受け付けます。
+- `div_`: 子要素の配列を受け付けます。
   既定の属性を使います。
-* `div`: 属性の`Record`を受け付けます。
+- `div`: 属性の`Record`を受け付けます。
   子要素の配列をこのレコードの`children`フィールドに渡すことができます。
-* `div'`: `div`と同じですが、`JSX`に変換する前に`ReactComponent`を返します。
+- `div'`: `div`と同じですが、`JSX`に変換する前に`ReactComponent`を返します。
 
 検証エラーをフォームの一番上に（もしあれば）表示するのに、
 `Errors`構造体をJSXの配列に変える`renderValidationErrors`お助け関数を作ります。

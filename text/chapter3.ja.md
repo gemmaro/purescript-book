@@ -734,6 +734,7 @@ book6 = john ++ peggy ++ ned ++ emptyBook
 括弧を消去する他のよくある技法は、いつもの前置関数と一緒に`apply`の中置演算子`$`を使うというものです。
 
 例えば前の`book3`の例は以下のように書き直せます。
+
 ```haskell
 book7 = insertEntry john $ insertEntry peggy $ insertEntry ned emptyBook
 ```
@@ -759,9 +760,11 @@ infixr 0 apply as $
 `$`は右結合 (`infixr`) で低い優先度 (`0`) の演算子ですが、これにより深い入れ子になった適用から括弧の束を削除できるのです。
 
 さらなる`$`演算子を使った括弧退治の機会は、以前の`findEntry`関数にあります。
+
 ```haskell
 findEntry firstName lastName book = head $ filter filterEntry book
 ```
+
 この行をより簡潔に書き換える方法を次節の「関数合成」で見ていきます。
 
 名前の短い中置演算子を前置関数として使いたければ括弧で囲むことができます。
@@ -810,7 +813,7 @@ PureScriptの関数合成演算子は `<<<`と `>>>`です。前者は「逆方�
 
 いずれかの演算子を使用して `findEntry`の右辺を書き換えることができます。逆順の合成を使用すると、右辺は次のようになります。
 
-```
+```haskell
 (head <<< filter filterEntry) book
 ```
 

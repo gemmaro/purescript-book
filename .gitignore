@@ -5,3 +5,4 @@ dist
 .cache
 /index.html
 /book
+/node_modules

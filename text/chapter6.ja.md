@@ -524,7 +524,6 @@ instance showEither :: (Show a, Show b) => Show (Either a b) where
 選択されたインスタンスが沢山のそうしたインスタンスの関係に依存しているかもしれませんが、
 このあたりの複雑さに開発者が関与することはありません。
 
-
 ## 演習
 
 1. （簡単）以下の宣言では型 `a`の要素の空でない配列の型を定義しています。
@@ -818,7 +817,7 @@ unsafePartial :: forall a. (Partial => a) -> a
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Multiply_Action}}
       ...
     ```
-    
+
     インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。
 
 1. （難しい）実は`Action Multiply Int`のインスタンスを実装するには複数の方法があります。
@@ -833,7 +832,7 @@ unsafePartial :: forall a. (Partial => a) -> a
     {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:actionMultiplyString}}
       ...
     ```
-    
+
     **ヒント**：Pursuitでシグネチャが[`String -> Int -> String`](https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String)のお助け関数を検索してください。
     なお`String`は（`Monoid`のような）より汎用的な型として現れます。
 

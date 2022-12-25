@@ -49,6 +49,7 @@ index.jsファイルが作られます。
 $ spago run -a "-p Phil"
 >
 ```
+
 ```text
 $ spago bundle-app 
 $ node index.js -p Phil
@@ -1277,7 +1278,8 @@ customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
 を提供しています。
 
 2つ目の引数は解析プログラムの完全な説明です。
-```haskell 
+
+```haskell
 {{#include ../exercises/chapter11/src/Main.purs:argParser}}
 
 {{#include ../exercises/chapter11/src/Main.purs:parserOptions}}
@@ -1342,4 +1344,3 @@ customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
 モナド変換子は、高階多相や多変数型クラスなどの高度な型システムの機能を
 利用することによって記述することができ、表現力の高いコードの優れた実演
 となっています。
-
