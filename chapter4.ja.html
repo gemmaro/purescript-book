@@ -1,0 +1,802 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>再帰、マップ、畳み込み - PureScript by Example</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="index.ja.html"><strong aria-hidden="true">15.</strong> 序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">16.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">17.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">18.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html" class="active"><strong aria-hidden="true">19.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">20.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">21.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">22.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">23.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html"><strong aria-hidden="true">24.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">25.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">26.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">27.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">28.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">29.</strong> 領域特化言語</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PureScript by Example</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="再帰マップ畳み込み"><a class="header" href="#再帰マップ畳み込み">再帰、マップ、畳み込み</a></h1>
+<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
+<p>この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて見ていきましょう。再帰は関数型プログラミングの基本的な手法であり、この本の全体に亙って使われます。</p>
+<p>また、PureScriptの標準ライブラリから標準的な関数をいくつか取り扱います。
+<code>map</code>や<code>fold</code>といった関数だけでなく、<code>filter</code>や<code>concatMap</code>といった特別な場合において便利なものについても見ていきます。</p>
+<p>この章では、仮想的なファイルシステムを操作する関数のライブラリを動機付けに用います。この章で学ぶ手法を応用して、擬似的なファイルシステムによって表されるファイルのプロパティを計算する関数を記述します。</p>
+<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
+<p>この章のソースコードは<code>src/Data/Path.purs</code>と<code>test/Examples.purs</code>に含まれています。
+<code>Data.Path</code>モジュールは仮想ファイルシステムのモデルを含みます。
+このモジュールの内容を変更する必要はありません。
+演習への解答は<code>Test.MySolutions</code>モジュールに実装してください。
+それぞれの演習を完了させつつ都度<code>Test.Main</code>モジュールにある対応するテストを有効にし、
+<code>spago test</code>を走らせることで解答を確認してください。</p>
+<p>このプロジェクトには以下の依存関係があります。</p>
+<ul>
+<li><code>maybe</code>: <code>Maybe</code>型構築子が定義されています。</li>
+<li><code>arrays</code>: 配列を扱うための関数が定義されています。</li>
+<li><code>strings</code>: JavaScriptの文字列を扱うための関数が定義されています。</li>
+<li><code>foldable-traversable</code>: 配列やその他のデータ構造を畳み込む関数が定義さ
+れています。</li>
+<li><code>console</code>: コンソールへの出力を扱うための関数が定義されています。</li>
+</ul>
+<h2 id="導入"><a class="header" href="#導入">導入</a></h2>
+<p>再帰は一般のプログラミングでも重要な手法ですが、特に純粋関数型プログラミングでは当たり前のように用いられます。この章で見ていくように、再帰はプログラムの変更可能な状態を減らすために役立つからです。</p>
+<p>再帰は<strong>分割統治</strong> (divide and conquer) 戦略と密接な関係があります。
+分割統治とはすなわち、何らかの入力としての問題を解くにあたり、入力を小さな部分に分割し、それぞれの部分について問題を解いて、部分ごとの答えから最終的な答えを組み立てるということです。</p>
+<p>それでは、PureScriptにおける再帰の簡単な例をいくつか見てみましょう。</p>
+<p>次は<strong>階乗関数</strong> (factorial function) のよくある例です。</p>
+<pre><code class="language-haskell">factorial :: Int -&gt; Int
+factorial n =
+  if n == 0 then
+    1
+  else
+    n * factorial (n - 1)
+</code></pre>
+<p>部分問題へ問題を分割することによって階乗関数がどのように計算されるかがわかります。より小さい数へと階乗を計算していくということです。ゼロに到達すると、答えは直ちに求まります。</p>
+<p>次は、<strong>フィボナッチ関数</strong> (Fibonacci function) を計算するという、これまたよくある例です。</p>
+<pre><code class="language-haskell">fib :: Int -&gt; Int
+fib n =
+  if n == 0 then
+    0
+  else if n == 1 then
+    1
+  else
+    fib (n - 1) + fib (n - 2)
+</code></pre>
+<p>やはり、部分問題の解決策を考えることで全体を解決していることがわかります。このとき、<code>fib (n - 1)</code>と<code>fib (n - 2)</code>という式に対応した、２つの部分問題があります。これらの２つの部分問題が解決されていれば、この部分的な答えを加算することで、全体の答えを組み立てることができます。</p>
+<p>なお上の<code>factorial</code>と<code>fib</code>の例は意図通りに動きますが、
+より慣習的な実装では<code>if</code>や<code>then</code>や<code>else</code>を使う代わりにパターン照合を使うものでしょう。
+パターン照合の技法は後の章でお話しします。</p>
+<h2 id="配列上での再帰"><a class="header" href="#配列上での再帰">配列上での再帰</a></h2>
+<p>再帰関数の定義は、<code>Int</code>型だけに限定されるものではありません！
+本書の後半で<strong>パターン照合</strong> (pattern matching)
+を扱うときに、いろいろなデータ型の上での再帰関数について見ていきますが、ここでは数と配列に限っておきます。</p>
+<p>入力がゼロでないかどうかについて分岐するのと同じように、配列の場合も、配列が空でないかどうかについて分岐していきます。再帰を使用して配列の長さを計算する次の関数を考えてみます。</p>
+<pre><code class="language-haskell">import Prelude
+
+import Data.Array (null, tail)
+import Data.Maybe (fromMaybe)
+
+length :: forall a. Array a -&gt; Int
+length arr =
+  if null arr then
+    0
+  else
+    1 + (length $ fromMaybe [] $ tail arr)
+</code></pre>
+<p>この関数では配列が空かどうかで分岐するために<code>if ... then ... else</code>式を使っています。
+この<code>null</code>関数は配列が空のときに<code>true</code>を返します。
+空の配列の長さはゼロであり、空でない配列の長さは配列の先頭を取り除いた残りの部分の長さより1大きいというわけです。</p>
+<p><code>tail</code>関数は与えられた配列から最初の要素を除いたものを<code>Maybe</code>に包んで返します。
+配列が空であれば（つまり尾鰭がありません）<code>Nothing</code>が返ります。
+<code>fromMaybe</code>関数は既定値と<code>Maybe</code>値を取ります。
+後者が<code>Nothing</code>であれば既定義を返し、そうでなければ<code>Just</code>に包まれた値を返します。</p>
+<p>JavaScriptで配列の長さを調べるのには、この例はどうみても実用的な方法とはいえませんが、次の演習を完了するための手がかりとしては充分でしょう。</p>
+<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<ol>
+<li>（簡単）入力が偶数であるとき、かつそのときに限り<code>true</code>に返すような再帰関数を書いてみましょう。</li>
+<li>（少し難しい）配列内の偶数の数を数える再帰関数<code>countEven</code>を書いてみましょう。
+<strong>ヒント</strong>：<code>Data.Array</code>モジュールの<code>head</code>関数を使うと、空でない配列の最初の要素を見つけることができます。</li>
+</ol>
+<h2 id="マップ"><a class="header" href="#マップ">マップ</a></h2>
+<p><code>map</code>関数は配列に対する再帰関数のひとつです。
+この関数を使うと、配列の各要素に順番に関数を適用することで、配列の要素を変換することができます。
+そのため、配列の<strong>内容</strong>は変更されますが、その<strong>形状</strong>（ここでは「長さ」）は保存されます。</p>
+<p>本書の後半で<strong>型クラス</strong> (type class) の内容を押さえるとき、
+<code>map</code>関数が形状保存関数のより一般的な様式の一例であることを見ていきます。
+これは<strong>関手</strong> (functor) と呼ばれる型構築子のクラスを変換するものです。</p>
+<p>それでは、PSCiで<code>map</code>関数を試してみましょう。</p>
+<pre><code class="language-text">$ spago repl
+
+&gt; import Prelude
+&gt; map (\n -&gt; n + 1) [1, 2, 3, 4, 5]
+[2, 3, 4, 5, 6]
+</code></pre>
+<p><code>map</code>がどのように使われているかに注目してください。
+最初の引数には配列上で「写す」関数、第2引数には配列そのものを渡します。</p>
+<h2 id="中置演算子"><a class="header" href="#中置演算子">中置演算子</a></h2>
+<p>バッククォートで関数名を囲むと、写す関数と配列の間に、<code>map</code>関数を書くことができます。</p>
+<pre><code class="language-text">&gt; (\n -&gt; n + 1) `map` [1, 2, 3, 4, 5]
+[2, 3, 4, 5, 6]
+</code></pre>
+<p>この構文は<strong>中置関数適用</strong>と呼ばれ、どんな関数でもこのように中置することができます。
+普通は2引数の関数に対して使うのが最適でしょう。</p>
+<p>配列を扱うときは、<code>map</code>関数と等価な<code>&lt;$&gt;</code>という演算子が存在します。この演算子は他の二項演算子と同じように中置で使用することができます。</p>
+<pre><code class="language-text">&gt; (\n -&gt; n + 1) &lt;$&gt; [1, 2, 3, 4, 5]
+[2, 3, 4, 5, 6]
+</code></pre>
+<p>それでは<code>map</code>の型を見てみましょう。</p>
+<pre><code class="language-text">&gt; :type map
+forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+</code></pre>
+<p>実は<code>map</code>の型は、この章で必要とされているものよりも一般的な型になっています。今回の目的では、<code>map</code>は次のようなもっと具体的な型であるかのように考えるとよいでしょう。</p>
+<pre><code class="language-text">forall a b. (a -&gt; b) -&gt; Array a -&gt; Array b
+</code></pre>
+<p>この型では、<code>map</code>関数に適用するときには<code>a</code>と<code>b</code>という２つの型を自由に選ぶことができる、ということも示されています。
+<code>a</code>は元の配列の要素の型で、<code>b</code>は目的の配列の要素の型です。
+もっと言えば、<code>map</code>が配列の要素の型を保存する必要があるわけではありません。
+たとえば、<code>map</code>を使用すると数値を文字列に変換することができます。</p>
+<pre><code class="language-text">&gt; show &lt;$&gt; [1, 2, 3, 4, 5]
+
+[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+</code></pre>
+<p>中置演算子<code>&lt;$&gt;</code>は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。
+中置構文を使用した単なる<strong>適用</strong>にすぎません。
+実際、括弧でその名前を囲むと、この関数を通常の関数のように使用することができます。
+これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前を使って配列に関数を適用できるということです。</p>
+<pre><code class="language-text">&gt; (&lt;$&gt;) show [1, 2, 3, 4, 5]
+[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+</code></pre>
+<p>中置関数は既存の関数名の別称として定義されます。
+たとえば、<code>Data.Array</code>モジュールでは次のように<code>range</code>関数の同義語として中置演算子<code>(..)</code>を定義しています。</p>
+<pre><code class="language-haskell">infix 8 range as ..
+</code></pre>
+<p>この演算子は次のように使うことができます。</p>
+<pre><code class="language-text">&gt; import Data.Array
+
+&gt; 1 .. 5
+[1, 2, 3, 4, 5]
+
+&gt; show &lt;$&gt; (1 .. 5)
+[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+</code></pre>
+<p><strong>注意</strong>： 独自の中置演算子は、自然な構文を持った領域特化言語を定義するのに優れた手段になりえます。
+ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。</p>
+<p>上記の例では、<code>1 .. 5</code>という式は括弧で囲まれていましたが、実際にはこれは必要ありません。
+なぜなら、<code>Data.Array</code>モジュールは、<code>&lt;$&gt;</code>に割り当てられた優先順位より高い優先順位を<code>..</code>演算子に割り当てているからです。
+上の例では、<code>..</code>の優先順位は、予約語<code>infix</code>のあとに書かれた数の<code>8</code> と定義されていました。
+ここでは<code>&lt;$&gt;</code>の優先順位よりも高い優先順位を<code>..</code>に割り当てており、このため括弧を付け加える必要がないということです。</p>
+<pre><code class="language-text">&gt; show &lt;$&gt; 1 .. 5
+[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+</code></pre>
+<p>中置演算子に（左または右の）<strong>結合性</strong>を与えたい場合は、代わりに予約語<code>infixl</code>と<code>infixr</code>を使います。
+<code>infix</code>を使うと何ら結合性は割り当てられず、
+同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
+<h2 id="配列のフィルタリング"><a class="header" href="#配列のフィルタリング">配列のフィルタリング</a></h2>
+<p><code>Data.Array</code>モジュールでは他にも、よく<code>map</code>と一緒に使われる関数<code>filter</code>も提供しています。
+この関数は、述語関数に適合する要素のみを残し、既存の配列から新しい配列を作成する機能を提供します。</p>
+<p>たとえば、1から10までの数で、偶数であるような数の配列を計算したいとします。これは次のように行うことができます。</p>
+<pre><code class="language-text">&gt; import Data.Array
+
+&gt; filter (\n -&gt; n `mod` 2 == 0) (1 .. 10)
+[2,4,6,8,10]
+</code></pre>
+<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
+<ol>
+<li>（簡単）<code>map</code>関数や<code>&lt;$&gt;</code>関数を使用して、 配列に格納された数のそれぞれの平方を計算する関数<code>squared</code>を書いてみましょう。
+<strong>ヒント</strong>：<code>map</code>や<code>&lt;$&gt;</code>といった関数を使ってください。</li>
+<li>（簡単）<code>filter</code>関数を使用して、数の配列から負の数を取り除く関数<code>keepNonNegative</code>を書いてみましょう。
+<strong>ヒント</strong>：<code>filter</code>関数を使ってください。</li>
+<li>（普通）
+<ul>
+<li><code>filter</code>の中置同義語<code>&lt;$?&gt;</code>を定義してください。
+<strong>補足</strong>：中置同義語はREPLでは定義できないかもしれませんが、ファイルでは定義することができます。</li>
+<li>関数<code>keepNonNegativeRewrite</code>を書いてください。
+この関数は<code>filter</code>を自前の粗しい中置演算子<code>&lt;$?&gt;</code>で置き換えたところ以外は<code>keepNonNegative</code>と同じです。</li>
+<li>PSCiで自前の演算子の優先度合いと結合性を試してください。
+<strong>補足</strong>：この問題のための単体試験はありません。</li>
+</ul>
+</li>
+</ol>
+<h2 id="配列の平坦化"><a class="header" href="#配列の平坦化">配列の平坦化</a></h2>
+<p>配列に関する標準的な関数として<code>Data.Array</code>で定義されているものには、<code>concat</code>関数もあります。<code>concat</code>は配列の配列をひとつの配列へと平坦化します。</p>
+<pre><code class="language-text">&gt; import Data.Array
+
+&gt; :type concat
+forall a. Array (Array a) -&gt; Array a
+
+&gt; concat [[1, 2, 3], [4, 5], [6]]
+[1, 2, 3, 4, 5, 6]
+</code></pre>
+<p>関連する関数として、<code>concat</code>と<code>map</code>を組み合わせたような<code>concatMap</code>と呼ばれる関数もあります。
+<code>map</code>は（相異なる型も可能な）値からの値への関数を引数に取りますが、それに対して<code>concatMap</code>は値から値の配列の関数を取ります。</p>
+<p>実際に動かして見てみましょう。</p>
+<pre><code class="language-text">&gt; import Data.Array
+
+&gt; :type concatMap
+forall a b. (a -&gt; Array b) -&gt; Array a -&gt; Array b
+
+&gt; concatMap (\n -&gt; [n, n * n]) (1 .. 5)
+[1,1,2,4,3,9,4,16,5,25]
+</code></pre>
+<p>ここでは、数をその数とその数の平方の2つの要素からなる配列に写す関数<code>\n -&gt; [n, n * n]</code>を引数に<code>concatMap</code>を呼び出しています。
+結果は10個の整数の配列です。
+配列は1から5の数とそのそれぞれの数の平方からなります。</p>
+<p><code>concatMap</code>がどのように結果を連結しているのかに注目してください。
+渡された関数を元の配列のそれぞれの要素について一度づつ呼び出し、その関数はそれぞれ配列を生成します。
+最後にそれらの配列を単一の配列に押し潰し、それが結果となります。</p>
+<p><code>map</code>と<code>filter</code>、<code>concatMap</code>は、「配列内包表記」(array comprehensions)
+と呼ばれる、配列に関するあらゆる関数の基盤を形成しています。</p>
+<h2 id="配列内包表記"><a class="header" href="#配列内包表記">配列内包表記</a></h2>
+<p>数<code>n</code>のふたつの因数を見つけたいとしましょう。これを行うための簡単​​な方法としては、総当りで調べる方法があります。つまり、<code>1</code>から<code>n</code>の数のすべての組み合わせを生成し、それを乗算してみるわけです。もしその積が<code>n</code>なら、<code>n</code>の因数の組み合わせを見つけたということになります。</p>
+<p>配列内包表記を使用すると、この計算を実行することができます。
+PSCiを対話式の開発環境として使用し、ひとつづつこの手順を進めていきましょう。</p>
+<p>最初の手順では<code>n</code>以下の数の組み合わせの配列を生成しますが、これには<code>concatMap</code>を使えばよいです。</p>
+<p><code>1 .. n</code>のそれぞれの数を配列<code>1 .. n</code>へとマッピングすることから始めましょう。</p>
+<pre><code class="language-text">&gt; pairs n = concatMap (\i -&gt; 1 .. n) (1 .. n)
+</code></pre>
+<p>この関数をテストしてみましょう。</p>
+<pre><code class="language-text">&gt; pairs 3
+[1,2,3,1,2,3,1,2,3]
+</code></pre>
+<p>これは求めているものとはぜんぜん違います。
+単にそれぞれの組み合わせの2つ目の要素を返すのではなく、ペア全体を保持することができるように、内側の<code>1 .. n</code>の複製について関数をマッピングする必要があります。</p>
+<pre><code class="language-text">&gt; :paste
+… pairs' n =
+…   concatMap (\i -&gt;
+…     map (\j -&gt; [i, j]) (1 .. n)
+…   ) (1 .. n)
+… ^D
+
+&gt; pairs' 3
+[[1,1],[1,2],[1,3],[2,1],[2,2],[2,3],[3,1],[3,2],[3,3]]
+</code></pre>
+<p>いい感じになってきました。しかし、<code>[1, 2]</code>と<code>[2, 1]</code>の両方があるように、重複した組み合わせが生成されています。<code>j</code>を<code>i</code>から<code>n</code>の範囲に限定することで、２つ目の場合を取り除くことができます。</p>
+<pre><code class="language-text">&gt; :paste
+… pairs'' n =
+…   concatMap (\i -&gt;
+…     map (\j -&gt; [i, j]) (i .. n)
+…   ) (1 .. n)
+… ^D
+&gt; pairs'' 3
+[[1,1],[1,2],[1,3],[2,2],[2,3],[3,3]]
+</code></pre>
+<p>すばらしいです！因数の候補のすべての組み合わせを手に入れたので、<code>filter</code>を使えば、その積が<code>n</code>であるような組み合わせを選び出すことができます。</p>
+<pre><code class="language-text">&gt; import Data.Foldable
+
+&gt; factors n = filter (\pair -&gt; product pair == n) (pairs'' n)
+
+&gt; factors 10
+[[1,10],[2,5]]
+</code></pre>
+<p>このコードでは、<code>foldable-traversable</code>ライブラリの<code>Data.Foldable</code>モジュールにある<code>product</code>関数を使っています。</p>
+<p>うまくいきました！因数の組み合わせの正しい集合を重複なく見つけることができました。</p>
+<h2 id="do記法"><a class="header" href="#do記法">do記法</a></h2>
+<p>しかし、このコードの可読性は大幅に向上することができます。
+<code>map</code>や<code>concatMap</code>は基本的な関数であり、<strong>do記法</strong> (do notation) と呼ばれる特別な構文の基礎になっています。
+（もっと厳密にいえば、それらの一般化である<code>map</code>と<code>bind</code>が基礎をなしています。）</p>
+<p><strong>注意</strong>：<code>map</code>と<code>concatMap</code>が<strong>配列内包表記</strong>を書けるようにしているように、もっと一般的な演算子である<code>map</code>と<code>bind</code>は<strong>モナド内包表記</strong>
+(monad comprehensions) と呼ばれているものを書けるようにします。
+本書の後半では<strong>モナド</strong> (monad) の例をたっぷり見ていくことになりますが、
+この章では配列のみを考えます。</p>
+<p>do記法を使うと、先ほどの<code>factors</code>関数を次のように書き直すことができます。</p>
+<pre><code class="language-haskell">factors :: Int -&gt; Array (Array Int)
+factors n = filter (\xs -&gt; product xs == n) do
+  i &lt;- 1 .. n
+  j &lt;- i .. n
+  pure [ i, j ]
+</code></pre>
+<p>キーワード<code>do</code>はdo記法を使うコードのブロックを導入します。このブロックは幾つかの種類の式で構成されています。</p>
+<ul>
+<li>配列の要素を名前に束縛する式。これは後ろ向きの矢印<code>&lt;-</code>で 示されていて、その左側は名前、右側は配列の型を持つ式です。</li>
+<li>名前に配列の要素を束縛しない式。
+最後の行の<code>pure [i, j]</code>が、この種類の式の一例です。</li>
+<li><code>let</code>キーワードを使用し、式に名前を与える式。</li>
+</ul>
+<p>この新しい記法を使うと、アルゴリズムの構造がわかりやすくなることがあります。
+心のなかで<code>&lt;-</code>を「選ぶ」という単語に置き換えるとすると、「1からnの間の要素<code>i</code>を選び、それからiからnの間の要素<code>j</code>を選び、<code>[i, j]</code>を返す」というように読むことができるでしょう。</p>
+<p>最後の行では、<code>pure</code>関数を使っています。
+この関数はPSCiで評価することができますが、型を明示する必要があります。</p>
+<pre><code class="language-text">&gt; pure [1, 2] :: Array (Array Int)
+[[1, 2]]
+</code></pre>
+<p>配列の場合、<code>pure</code>は単に1要素の配列を作成します。
+実際に、<code>factors</code>関数を変更して、<code>pure</code>の代わりにこの形式を使うようにすることもできます。</p>
+<pre><code class="language-haskell">factorsV2 :: Int -&gt; Array (Array Int)
+factorsV2 n = filter (\xs -&gt; product xs == n) do
+  i &lt;- 1 .. n
+  j &lt;- i .. n
+  [ [ i, j ] ]
+</code></pre>
+<p>そして、結果は同じになります。</p>
+<h2 id="ガード"><a class="header" href="#ガード">ガード</a></h2>
+<p><code>factors</code>関数を更に改良する方法としては、このフィルタを配列内包表記の内側に移動するというものがあります。
+これは<code>control</code>ライブラリにある<code>Control.Alternative</code>モジュールの<code>guard</code>関数を使用することで可能になります。</p>
+<pre><code class="language-haskell">import Control.Alternative (guard)
+
+factorsV3 :: Int -&gt; Array (Array Int)
+factorsV3 n = do
+  i &lt;- 1 .. n
+  j &lt;- i .. n
+  guard $ i * j == n
+  pure [ i, j ]
+</code></pre>
+<p><code>pure</code>と同じように、どのように動作するかを理解するために、PSCiで<code>guard</code>関数を適用して調べてみましょう。
+<code>guard</code>関数の型は、ここで必要とされるものよりもっと一般的な型になっています。</p>
+<pre><code class="language-text">&gt; import Control.Alternative
+
+&gt; :type guard
+forall m. Alternative m =&gt; Boolean -&gt; m Unit
+</code></pre>
+<p>今回の場合は、PSCiは次の型を報告するものと考えてください。</p>
+<pre><code class="language-haskell">Boolean -&gt; Array Unit
+</code></pre>
+<p>目的からすると、次の計算の結果から配列における<code>guard</code>関数について今知りたいことはすべてわかります。</p>
+<pre><code class="language-text">&gt; import Data.Array
+
+&gt; length $ guard true
+1
+
+&gt; length $ guard false
+0
+</code></pre>
+<p>つまり、<code>guard</code>が<code>true</code>に評価される式を渡された場合、単一の要素を持つ配列を返すのです。もし式が<code>false</code>と評価された場合は、その結果は空です。</p>
+<p>ガードが失敗した場合、配列内包表記の現在の分岐は、結果なしで早めに終了されることを意味します。
+これは、<code>guard</code>の呼び出しが、途中の配列に対して<code>filter</code>を使用するのと同じだということです。
+実践の場面にもよりますが、<code>filter</code>の代わりに<code>guard</code>を使いたいことは多いでしょう。
+これらが同じ結果になることを確認するために、<code>factors</code>の二つの定義を試してみてください。</p>
+<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
+<ol>
+<li>（簡単）整数の引数が素数であるかどうかを調べる関数<code>isPrime</code>を定義してみましょう。
+<strong>ヒント</strong>：<code>factors</code>関数を使ってください。</li>
+<li>（普通）do記法を使い、2つの配列の<strong>直積集合</strong>を見つけるための関数<code>cartesianProduct</code>を書いてみましょう。
+直積集合とは、要素<code>a</code>、<code>b</code>のすべての組み合わせの集合のことです。
+ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
+<li>（普通）数値<code>n</code>を取って構成要素（値<code>a</code>, <code>b</code>, <code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの三つ組
+(pythagorean triples) を返す関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
+<strong>ピタゴラスの三つ組</strong> は数値の配列<code>[a, b, c]</code>で <code>a² + b² = c²</code> です。
+<strong>ヒント</strong>：配列内包表記で<code>guard</code>関数を使ってください。</li>
+<li>（難しい）<code>factors</code>関数を使用して、数<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
+数<code>n</code>の素因数分解とは、素数の積が<code>n</code>であるような整数の配列のことです。
+<strong>ヒント</strong>：1より大きい整数について、問題を2つの部分問題に分解してください。
+最初の因数を探し、それから残りの因数を探すのです。</li>
+</ol>
+<h2 id="畳み込み"><a class="header" href="#畳み込み">畳み込み</a></h2>
+<p>配列における左右の畳み込みは、再帰を用いて実装される別の興味深い関数の集まりを提供します。</p>
+<p>PSCiを使って、<code>Data.Foldable</code>モジュールをインポートし、<code>foldl</code>と<code>foldr</code>関数の型を調べることから始めましょう。</p>
+<pre><code class="language-text">&gt; import Data.Foldable
+
+&gt; :type foldl
+forall a b f. Foldable f =&gt; (b -&gt; a -&gt; b) -&gt; b -&gt; f a -&gt; b
+
+&gt; :type foldr
+forall a b f. Foldable f =&gt; (a -&gt; b -&gt; b) -&gt; b -&gt; f a -&gt; b
+</code></pre>
+<p>これらの型は、現在興味があるものよりも一般的です。
+この章の目的では、PSCiは以下の（より具体的な）答えを与えていたと考えておきましょう。</p>
+<pre><code class="language-text">&gt; :type foldl
+forall a b. (b -&gt; a -&gt; b) -&gt; b -&gt; Array a -&gt; b
+
+&gt; :type foldr
+forall a b. (a -&gt; b -&gt; b) -&gt; b -&gt; Array a -&gt; b
+</code></pre>
+<p>どちらの型でも、<code>a</code>は配列の要素の型に対応しています。
+型<code>b</code>は、配列を走査 (traverse) したときの結果を累積する「累積器」(accumulator) の型だと考えることができます。</p>
+<p><code>foldl</code>関数と<code>foldr</code>関数の違いは走査の方向です。
+<code>foldr</code>が「右から」配列を畳み込むのに対して、<code>foldl</code>は「左から」配列を畳み込みます。</p>
+<p>実際にこれらの関数の動きを見てみましょう。
+<code>foldl</code>を使用して数の配列の和を求めてみます。
+型<code>a</code>は<code>Int</code>になり、結果の型<code>b</code>も<code>Int</code>として選択することができます。
+ここでは、次の要素を累積器に加算する<code>Int -&gt; Int -&gt; Int</code>という型の関数、<code>Int</code>型の累積器の初期値、
+和を求めたい<code>Int</code>の配列という、3つの引数を提供する必要があります。
+最初の引数としては、加算演算子を使用することができますし、累積器の初期値はゼロになります。</p>
+<pre><code class="language-text">&gt; foldl (+) 0 (1 .. 5)
+15
+</code></pre>
+<p>この場合では、引数が逆になっていても<code>(+)</code>関数は同じ結果を返すので、<code>foldl</code>と<code>foldr</code>のどちらでも問題ありません。</p>
+<pre><code class="language-text">&gt; foldr (+) 0 (1 .. 5)
+15
+</code></pre>
+<p><code>foldl</code>と<code>foldr</code>の違いを説明するために、畳み込み関数の選択が影響する例も書いてみましょう。
+加算関数の代わりに、文字列連結を使用して文字列を作ってみます。</p>
+<pre><code class="language-text">&gt; foldl (\acc n -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
+&quot;12345&quot;
+
+&gt; foldr (\n acc -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
+&quot;54321&quot;
+</code></pre>
+<p>これは、2つの関数の​​違いを示しています。左畳み込み式は、以下の関数適用と同等です。</p>
+<pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 1) &lt;&gt; show 2) &lt;&gt; show 3) &lt;&gt; show 4) &lt;&gt; show 5)
+</code></pre>
+<p>それに対し、右畳み込みは以下に相当します。</p>
+<pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 5) &lt;&gt; show 4) &lt;&gt; show 3) &lt;&gt; show 2) &lt;&gt; show 1)
+</code></pre>
+<h2 id="末尾再帰"><a class="header" href="#末尾再帰">末尾再帰</a></h2>
+<p>再帰はアルゴリズムを定義するための強力な手法ですが、問題も抱えています。
+JavaScriptで再帰関数を評価するとき、入力が大きすぎるとスタックオーバーフローでエラーを起こす可能性があるのです。</p>
+<p>PSCiで次のコードを入力すると、この問題を簡単に検証できます。</p>
+<pre><code class="language-text">&gt; :paste
+… f n =
+…   if n == 0
+…     then 0
+…     else 1 + f (n - 1)
+… ^D
+
+&gt; f 10
+10
+
+&gt; f 100000
+RangeError: Maximum call stack size exceeded
+</code></pre>
+<p>これは問題です。関数型プログラミングの基本的な手法として再帰を採用しようとするなら、無限かもしれない再帰でも扱える方法が必要です。</p>
+<p>PureScriptは<strong>末尾再帰最適化</strong> (tail recursion optimization)
+の形でこの問題に対する部分的な解決策を提供しています。</p>
+<p><strong>注意</strong>：この問題へのより完全な解決策としては、いわゆる<strong>トランポリン</strong> (trampolining)
+を使用したライブラリで実装する方法がありますが、それはこの章で扱う範囲を超えています。
+この内容に興味のある読者は
+<a href="https://pursuit.purescript.org/packages/purescript-free"><code>free</code></a>や
+<a href="https://pursuit.purescript.org/packages/purescript-tailrec"><code>tailrec</code></a>パッケージの
+ドキュメントを参照してみてください。</p>
+<p>末尾再帰最適化を可能にする上で鍵となる観点は以下となります。
+<strong>末尾位置</strong> (tail position)
+にある関数の再帰的な呼び出しは、スタックフレームが確保されない<strong>ジャンプ</strong>に置き換えることができます。
+関数が戻るより前の最後の呼び出しであるとき、呼び出しが<strong>末尾位置</strong>にあるといいます。
+なぜこの例でスタックオーバーフローを観察したのかはこれが理由です。
+この<code>f</code>の再帰呼び出しは、末尾位置<strong>ではない</strong>からです。</p>
+<p>実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を<strong>whileループ</strong>に置き換えます。</p>
+<p>以下はすべての再帰呼び出しが末尾位置にある再帰関数の例です。</p>
+<pre><code class="language-haskell">factorialTailRec :: Int -&gt; Int -&gt; Int
+factorialTailRec n acc =
+  if n == 0
+    then acc
+    else factorialTailRec (n - 1) (acc * n)
+</code></pre>
+<p><code>fact</code>への再帰呼び出しは、この関数の中で起こる最後のものである、つまり末尾位置にあることに注意してください。</p>
+<h2 id="累積器"><a class="header" href="#累積器">累積器</a></h2>
+<p>末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、<strong>累積器引数</strong> (accumulator parameter)
+を使用する方法があります。
+累積器引数は関数に追加される余剰の引数で返り値を<strong>累積</strong>するものです。
+これは結果を累積するために返り値を使うのとは対称的です。</p>
+<p>例えば章の初めに示した<code>length</code>関数を再考しましょう。</p>
+<pre><code class="language-haskell">length :: forall a. Array a -&gt; Int
+length arr =
+  if null arr
+    then 0
+    else 1 + (length $ fromMaybe [] $ tail arr)
+</code></pre>
+<p>この実装は末尾再帰ではないので、大きな入力配列に対して実行されると、
+生成されたJavaScriptはスタックオーバーフローを発生させるでしょう。
+しかし代わりに、結果を蓄積するための2つ目の引数を関数に導入することで、これを末尾再帰に変えることができます。</p>
+<pre><code class="language-haskell">lengthTailRec :: forall a. Array a -&gt; Int
+lengthTailRec arr = length' arr 0
+  where
+  length' :: Array a -&gt; Int -&gt; Int
+  length' arr' acc =
+    if null arr'
+      then acc
+      else length' (fromMaybe [] $ tail arr') (acc + 1)
+</code></pre>
+<p>ここでは、配列を逆転させる作業を補助関数<code>length'</code>に委譲しています。
+<code>length'</code>は末尾再帰です。
+その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。
+これは、生成されたコードが<strong>whileループ</strong>となり、大きな入力でもスタックが溢れないことを意味します。</p>
+<p><code>lengthTailRec</code>の実装を理解するために補助関数<code>length'</code>に着目しましょう。
+この関数は必然的に累積器引数を使って追加の状態……これは部分的な結果です……を維持しています。
+0から始まり、入力の配列中の全ての要素それぞれについて1ずつ足して成長していきます。</p>
+<p>累積器を「状態」と考えることもできますが、直接に変更がされているわけではないことにも注意してください。</p>
+<h2 id="明示的な再帰より畳み込みを選ぶ"><a class="header" href="#明示的な再帰より畳み込みを選ぶ">明示的な再帰より畳み込みを選ぶ</a></h2>
+<p>末尾再帰を使用して再帰関数を記述することができれば末尾再帰最適化の恩恵を受けることができるので、
+すべての関数をこの形で書こうとする誘惑にかられます。
+しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。
+<code>map</code>や<code>fold</code>のようなコンビネータを使って直接アルゴリズムを書くことには、コードの単純さという利点があります。
+これらのコンビネータはよく知られており、明示的な再帰よりもアルゴリズムの<strong>意図</strong>をよりはっきりとさせるのです。</p>
+<p>例えば<code>foldr</code>を使って配列を反転できます。</p>
+<pre><code class="language-text">&gt; import Data.Foldable
+
+&gt; :paste
+… reverse :: forall a. Array a -&gt; Array a
+… reverse = foldr (\x xs -&gt; xs &lt;&gt; [x]) []
+… ^D
+
+&gt; reverse [1, 2, 3]
+[3,2,1]
+</code></pre>
+<p><code>foldl</code>を使って<code>reverse</code>を書くことは、読者への課題として残しておきます。</p>
+<h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
+<ol>
+<li>（簡単）<code>foldl</code>を使って真偽値配列の値が全て真か検査する関数<code>allTrue</code>を書いてください。</li>
+<li>（普通。テストなし）関数<code>foldl (==) false xs</code>が真を返すような配列<code>xs</code>とはどのようなものか説明してください。
+言い換えると、次の文を完成させることになります。
+「関数は<code>xs</code>が……を含むときに<code>true</code>を返す。」</li>
+<li>（普通）末尾再帰の形式を取っていること以外は<code>fib</code>と同じような関数<code>fibTailRec</code>を書いてください。
+<strong>ヒント</strong>：累積器引数を使ってください。</li>
+<li>（普通）<code>foldl</code>を使って<code>reverse</code>を書いてみましょう。</li>
+</ol>
+<h2 id="仮想ファイルシステム"><a class="header" href="#仮想ファイルシステム">仮想ファイルシステム</a></h2>
+<p>この節では、これまで学んだことを応用して、模擬的なファイルシステムで動作する関数を書いていきます。
+事前に定義されたAPIで動作するように、マップ、畳み込み、およびフィルタを使用します。</p>
+<p><code>Data.Path</code>モジュールでは、次のように仮想ファイルシステムのAPIが定義されています。</p>
+<ul>
+<li>ファイルシステム内のパスを表す型<code>Path</code>があります。</li>
+<li>ルートディレクトリを表すパス<code>root</code>があります。</li>
+<li><code>ls</code>関数はディレクトリ内のファイルを列挙します。</li>
+<li><code>filename</code>関数は<code>Path</code>のファイル名を返します。</li>
+<li><code>size</code>関数は<code>Path</code>が示すファイルの大きさを返します。</li>
+<li><code>isDirectory</code>関数はファイルかディレクトリかを調べます。</li>
+</ul>
+<p>型については、型定義は次のようになっています。</p>
+<pre><code class="language-haskell">root :: Path
+
+ls :: Path -&gt; Array Path
+
+filename :: Path -&gt; String
+
+size :: Path -&gt; Maybe Int
+
+isDirectory :: Path -&gt; Boolean
+</code></pre>
+<p>PSCiでこのAPIを試してみましょう。</p>
+<pre><code class="language-text">$ spago repl
+
+&gt; import Data.Path
+
+&gt; root
+/
+
+&gt; isDirectory root
+true
+
+&gt; ls root
+[/bin/,/etc/,/home/]
+</code></pre>
+<p><code>Test.Examples</code>モジュールでは<code>Data.Path</code>APIを使用する関数を定義しています。
+<code>Data.Path</code>モジュールを変更したり定義を理解したりする必要はありません。
+全て<code>Test.Examples</code>モジュールだけで作業を行います。</p>
+<h2 id="すべてのファイルの一覧"><a class="header" href="#すべてのファイルの一覧">すべてのファイルの一覧</a></h2>
+<p>それでは、内側のディレクトリまで、すべてのファイルを列挙する関数を書いてみましょう。
+この関数は以下のような型を持つでしょう。</p>
+<pre><code class="language-haskell">allFiles :: Path -&gt; Array Path
+</code></pre>
+<p>再帰を使ってこの関数を定義することができます。
+まずは<code>ls</code>を使用してディレクトリの直接の子を列挙します。
+それぞれの子について再帰的に<code>allFiles</code>を適用すると、それぞれパスの配列が返ってくるでしょう。
+<code>concatMap</code>を適用すると、この結果を同時に平坦化することができます。</p>
+<p>最後に、cons演算子<code>:</code>を使って現在のファイルも含めます。</p>
+<pre><code class="language-haskell">allFiles file = file : concatMap allFiles (ls file)
+</code></pre>
+<p><strong>注意</strong>：cons演算子<code>:</code>は、実際には不変な配列に対してパフォーマンスが悪いので、一般的には推奨されません。
+リンクリストやシーケンスなどの他のデータ構造を使用すると、パフォーマンスを向上させることができます。</p>
+<p>それではPSCiでこの関数を試してみましょう。</p>
+<pre><code class="language-text">&gt; import Test.Examples
+&gt; import Data.Path
+
+&gt; allFiles root
+
+[/,/bin/,/bin/cp,/bin/ls,/bin/mv,/etc/,/etc/hosts, ...]
+</code></pre>
+<p>すばらしい！
+do記法で配列内包表記を使ってもこの関数を書くことができるので見ていきましょう。</p>
+<p>逆向きの矢印は配列から要素を選択するのに相当することを思い出してください。
+最初の手順は、引数の直接の子から要素を選択することです。
+それから、単にそのファイルに対してこの再帰関数を呼びします。
+do記法を使用しているので、再帰的な結果をすべて連結する<code>concatMap</code>が暗黙に呼び出されています。</p>
+<p>新しいバージョンは次のようになります。</p>
+<pre><code class="language-haskell">allFiles' :: Path -&gt; Array Path
+allFiles' file = file : do
+  child &lt;- ls file
+  allFiles' child
+</code></pre>
+<p>PSCiで新しいコードを試してみてください。
+同じ結果が返ってくるはずです。
+どちらのほうがわかりやすいかの選択はお任せします。</p>
+<h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
+<ol>
+<li>
+<p>（簡単）ディレクトリのすべてのサブディレクトリの中まで、
+（ディレクトリを除く）すべてのファイルを返すような関数<code>onlyFiles</code>を書いてみてください。</p>
+</li>
+<li>
+<p>（普通）ファイルを名前で検索する関数<code>whereIs</code>を書いてください。
+この関数は型<code>Maybe Path</code>の値を返すものとします。
+この値が存在するなら、そのファイルがそのディレクトリに含まれているということを表します。
+この関数は次のように振る舞う必要があります。</p>
+<pre><code class="language-text">&gt; whereIs root &quot;ls&quot;
+Just (/bin/)
+
+&gt; whereIs root &quot;cat&quot;
+Nothing
+</code></pre>
+<p><strong>ヒント</strong>：この関数をdo記法を使った配列内包表記で書いてみましょう。</p>
+</li>
+<li>
+<p>（難しい）<code>Path</code>を取って<code>Path</code>に最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。
+<strong>補足</strong>：空配列や1要素の配列を返すことで、
+<code>Path</code>にゼロか1個のファイルがある場合についても考慮してください。</p>
+</li>
+</ol>
+<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
+<p>この章では、アルゴリズムを簡潔に表現する手段として、PureScriptでの再帰の基本を説明しました。
+また、独自の中置演算子や、マップ、フィルタリングや畳み込みなどの配列に対する標準関数、
+およびこれらの概念を組み合わせた配列内包表記を導入しました。
+最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、
+累積器引数を使用して末尾再帰形に関数を変換する方法を示しました。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter3.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="chapter5.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter3.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="chapter5.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
