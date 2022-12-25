@@ -6898,7 +6898,7 @@ Copyright (C) 2022 gemmaro.</p>
 <p>本書は<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja">クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス</a>でライセンスされています。</p>
 </blockquote>
 <p>本翻訳も原文と原翻訳にしたがい、
-<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>の下に提供されています。</p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>の下に使用が許諾されます。</p>
 </small><div style="break-before: page; page-break-before: always;"></div><h1 id="導入"><a class="header" href="#導入">導入</a></h1>
 <h2 id="関数型javascript"><a class="header" href="#関数型javascript">関数型JavaScript</a></h2>
 <p>関数型プログラミングの手法がJavaScriptに姿を現しはじめてからしばらく経ちます。</p>
@@ -10752,7 +10752,8 @@ PureScriptの関数を埋め込む、というような直感的理解を得る�
 （つまり、副作用の種類は固定されます）が、
 型 <code>a</code>は異なることもあります。
 （言い換えると、個々の計算は異なる型の結果を持つことができます。）</p>
-<p>型構築子 <code>Maybe</code>が適用された、do記法の別の例を見てみましょう。
+<p>以下はdo記法の別の例です。
+今回は型構築子 <code>Maybe</code>に適用されています。
 XMLノードを表す型 <code>XML</code>と次の関数があるとします。</p>
 <pre><code class="language-hs">child :: XML -&gt; String -&gt; Maybe XML
 </code></pre>
@@ -11768,9 +11769,10 @@ DOM操作といった、さまざまな作用を扱うために <code>Effect</co
 <li><code>affjax</code> - AJAXと<code>Aff</code>を使ったHTTPリクエスト。</li>
 <li><code>parallel</code> - <code>Aff</code>の並列実行。</li>
 </ul>
-<p>When running outside of the browser (such as in our Node.js environment),
-the <code>affjax</code> library requires the <code>xhr2</code> NPM module, which is listed as
-dependency in the <code>package.json</code> of this chapter. Install that by running:</p>
+<p>（Node.js環境のような）ブラウザ外で実行する場合、
+<code>affjax</code>ライブラリは<code>xhr2</code>NPMモジュールが必要です。
+このモジュールはこの章の<code>package.json</code>中の依存関係に挙げられています。
+以下を走らせてインストールします。</p>
 <pre><code class="language-shell">$ npm install
 </code></pre>
 <h2 id="非同期なjavascript"><a class="header" href="#非同期なjavascript">非同期なJavaScript</a></h2>
@@ -12057,12 +12059,12 @@ $ cat c/a/a.txt
 <ul>
 <li>純粋で、作用のある、非同期なJavaScript関数をPureScriptから呼び出す。</li>
 <li>型付けされていないデータを扱う。</li>
-<li>Encode and parse JSON using the <code>argonaut</code> package.</li>
+<li><code>argonaut</code>パッケージを使ってJSONに符号化したりJSONを構文解析したりする。</li>
 </ul>
 <p>この章の終わりにかけて、住所録の例に立ち返ります。
 この章の目的は、FFIを使ってアプリケーションに次の新しい機能を追加することです。</p>
 <ul>
-<li>Alert the user with a popup notification.</li>
+<li>利用者にポップアップ通知で警告する。</li>
 <li>フォームのデータを直列化してブラウザのローカルストレージに保存し、アプ
 リケーションが再起動したときにそれを再読み込みする</li>
 </ul>
