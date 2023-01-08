@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>非同期作用 - PureScript by Example</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="index.ja.html"><strong aria-hidden="true">15.</strong> 序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">16.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">17.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">18.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">19.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">20.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">21.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">22.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">23.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html" class="active"><strong aria-hidden="true">24.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">25.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">26.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">27.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">28.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">29.</strong> 領域特化言語</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PureScript by Example</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="非同期作用"><a class="header" href="#非同期作用">非同期作用</a></h1>
+<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
+<p>この章では<code>Aff</code>モナドに集中します。
+これは<code>Effect</code>モナドに似たものですが、<em>非同期</em>な副作用を表現するものです。
+ファイルシステムとやりとりしてHTTPリクエストを作る、非同期な例を実演していきます。
+また非同期作用の直列ないし並列の実行の管理方法も押さえます。</p>
+<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
+<p>この章で導入する新しいPureScriptライブラリは以下です。</p>
+<ul>
+<li><code>aff</code> - <code>Aff</code>モナドを定義します。</li>
+<li><code>node-fs-aff</code> - <code>Aff</code>を使った非同期のファイルシステム操作。</li>
+<li><code>affjax</code> - AJAXと<code>Aff</code>を使ったHTTPリクエスト。</li>
+<li><code>parallel</code> - <code>Aff</code>の並列実行。</li>
+</ul>
+<p>（Node.js環境のような）ブラウザ外で実行する場合、
+<code>affjax</code>ライブラリは<code>xhr2</code>NPMモジュールが必要です。
+このモジュールはこの章の<code>package.json</code>中の依存関係に挙げられています。
+以下を走らせてインストールします。</p>
+<pre><code class="language-shell">$ npm install
+</code></pre>
+<h2 id="非同期なjavascript"><a class="header" href="#非同期なjavascript">非同期なJavaScript</a></h2>
+<p>JavaScriptで非同期なコードに取り組む上で便利な手段は<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"><code>async</code>と<code>await</code></a>です。
+<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing">非同期なJavaScriptに関するこの記事</a>を見るとより背景情報がわかります。</p>
+<p>以下はこの技法を使ってあるファイルの内容を別のファイルに複製する例です。</p>
+<pre><code class="language-js">import { promises as fsPromises } from 'fs'
+
+async function copyFile(file1, file2) {
+  let data = await fsPromises.readFile(file1, { encoding: 'utf-8' });
+  fsPromises.writeFile(file2, data, { encoding: 'utf-8' });
+}
+
+copyFile('file1.txt', 'file2.txt')
+.catch(e =&gt; {
+  console.log('There was a problem with copyFile: ' + e.message);
+});
+</code></pre>
+<p>コールバックや同期関数を使うことも可能ですが、以下の理由から望ましくあ
+りません。</p>
+<ul>
+<li>コールバックは過剰な入れ子に繋がります。これは「コールバック地獄」や
+「悪夢のピラミッド」として知られています。</li>
+<li>同期関数はアプリ中の他のコードの実行を堰き止めてしまいます。</li>
+</ul>
+<h2 id="非同期なpurescript"><a class="header" href="#非同期なpurescript">非同期なPureScript</a></h2>
+<p>PureScriptでに<code>Aff</code>モナドはJavaScriptの<code>async</code>/<code>await</code>構文に似た人間工学を供します。
+以下は前と同じ<code>copyFile</code>の例ですが、<code>Aff</code>を使ってPureScriptで書き換えられています。</p>
+<pre><code class="language-hs">import Prelude
+import Data.Either (Either(..))
+import Effect.Aff (Aff, attempt, message)
+import Effect.Class.Console (log)
+import Node.Encoding (Encoding(..))
+import Node.FS.Aff (readTextFile, writeTextFile)
+import Node.Path (FilePath)
+
+copyFile :: FilePath -&gt; FilePath -&gt; Aff Unit
+copyFile file1 file2 = do
+  my_data &lt;- readTextFile UTF8 file1
+  writeTextFile UTF8 file2 my_data
+
+main :: Aff Unit
+main = do
+  result &lt;- attempt $ copyFile &quot;file1.txt&quot; &quot;file2.txt&quot;
+  case result of
+    Left e -&gt; log $ &quot;There was a problem with copyFile: &quot; &lt;&gt; message e
+    _ -&gt; pure unit
+</code></pre>
+<p>上のコード片をコールバックや同期関数を使って書き換えることも可能ですが
+（例えば<code>Node.FS.Async</code>や<code>Node.FS.Sync</code>をそれぞれ使います）、
+JavaScriptで前にお話ししたように同じ短所がここでも通用するため、
+それらのコーディング形式は推奨されません。</p>
+<p><code>Aff</code>を扱う文法は<code>Effect</code>を扱うものと大変似ています。
+どちらもモナドですし、したがってdo記法で書くことができます。</p>
+<p>例えば<code>readTextFile</code>のシグネチャを見れば、
+これがファイルの内容を<code>String</code>とし、<code>Aff</code>に包んで返していることがわかります。</p>
+<pre><code class="language-hs">readTextFile :: Encoding -&gt; FilePath -&gt; Aff String
+</code></pre>
+<p>do記法中では束縛矢印 (<code>&lt;-</code>) で返却された文字列を「開封」できます。</p>
+<pre><code class="language-hs">my_data &lt;- readTextFile UTF8 file1
+</code></pre>
+<p>それから<code>writeTextFile</code>に文字列引数として渡します。</p>
+<pre><code class="language-hs">writeTextFile :: Encoding -&gt; FilePath -&gt; String -&gt; Aff Unit
+</code></pre>
+<p>上の例で他に目を引く<code>Aff</code>固有の特徴は<code>attempt</code>のみです。
+これは<code>Aff</code>のコードの実行中に遭遇したエラーや例外を補足して<code>Either</code>内に保管するものです。</p>
+<pre><code class="language-hs">attempt :: forall a. Aff a -&gt; Aff (Either Error a)
+</code></pre>
+<p>読者ならきっと、前の章から概念の知識を引き出し、
+その知識と上の<code>copyFile</code>の例で学んだ新しい<code>Aff</code>パターンを結合することで、
+以下の演習に挑戦することができるでしょう。</p>
+<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<ol>
+<li>
+<p>（簡単）2つのテキストフ​​ァイルを連結する関数<code>concatenateFiles</code>を書いてください。</p>
+</li>
+<li>
+<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、
+複数のテキストファイルを連結する関数 <code>concatenateMany</code>を書いてください。
+<strong>ヒント</strong>：<code>traverse</code>を使ってください。</p>
+</li>
+<li>
+<p>（普通）ファイル中の文字数を返すかエラーがあればそれを返す関数<code>countCharacters :: FilePath -&gt; Aff (Either Error Int)</code>を書いてください。</p>
+</li>
+</ol>
+<h2 id="更なるaffの資料"><a class="header" href="#更なるaffの資料">更なるAffの資料</a></h2>
+<p>もしまだ<a href="https://pursuit.purescript.org/packages/purescript-aff/">公式のAffガイド</a>を見ていなければ、今ざっと目を通してください。
+この章の残りの演習を完了するための事前要件ではありませんが、
+Pursuitで何らかの関数を見付けだす助けになるかもしれません。</p>
+<p>これらの補足資料についてもあたってみるとよいでしょう。
+しかし繰り返しになりますがこの章の演習はそれらの内容に依りません。</p>
+<ul>
+<li><a href="https://blog.drewolson.org/asynchronous-purescript">DrewのAffに関する投稿</a></li>
+<li><a href="https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff">更なるAffの説明と例</a></li>
+</ul>
+<h2 id="httpクライアント"><a class="header" href="#httpクライアント">HTTPクライアント</a></h2>
+<p><code>affjax</code>ライブラリは<code>Aff</code>で非同期AJAX HTTP要求を作る便利な手段を提供します。
+対象としている環境が何であるかによって、<a href="https://github.com/purescript-contrib/purescript-affjax-web">purescript-affjax-web</a>または<a href="https://github.com/purescript-contrib/purescript-affjax-node">purescript-affjax-node</a>のどちらかのライブラリを使う必要があります。
+この章の以降ではNodeを対象としていくので、<code>purescript-affjax-node</code>を使います。
+より詳しい使用上の情報は<a href="https://pursuit.purescript.org/packages/purescript-affjax">affjaxのドキュメント</a>にあたってください。
+以下は与えられたURLに向けたHTTPのGET要求をし、応答本文ないしエラー文言を返す例です。</p>
+<pre><code class="language-hs">import Prelude
+import Affjax.Node as AN
+import Affjax.ResponseFormat as ResponseFormat
+import Data.Either (Either(..))
+import Effect.Aff (Aff)
+
+getUrl :: String -&gt; Aff String
+getUrl url = do
+  result &lt;- AN.get ResponseFormat.string url
+  pure case result of
+    Left err -&gt; &quot;GET /api response failed to decode: &quot; &lt;&gt; AN.printError err
+    Right response -&gt; response.body
+</code></pre>
+<p>これをREPLで呼び出す際は、<code>launchAff_</code>を<code>Aff</code>からREPLに互換性のある<code>Effect</code>へと変換する必要があります。</p>
+<pre><code class="language-shell">$ spago repl
+
+&gt; :pa
+… import Prelude
+… import Effect.Aff (launchAff_)
+… import Effect.Class.Console (log)
+… import Test.HTTP (getUrl)
+…
+… launchAff_ do
+…   str &lt;- getUrl &quot;https://reqres.in/api/users/1&quot;
+…   log str
+…
+unit
+{&quot;data&quot;:{&quot;id&quot;:1,&quot;email&quot;:&quot;george.bluth@reqres.in&quot;,&quot;first_name&quot;:&quot;George&quot;,&quot;last_name&quot;:&quot;Bluth&quot;, ...}}
+</code></pre>
+<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
+<ol>
+<li>（簡単）HTTPの<code>GET</code>要求を与えられたURLに行い、応答本文をファイルに書き込む関数<code>writeGet</code>を書いてください。</li>
+</ol>
+<h2 id="並列計算"><a class="header" href="#並列計算">並列計算</a></h2>
+<p><code>Aff</code>モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。
+非同期計算を<strong>並列に</strong>合成することもできたら便利でしょう。
+<code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
+<p><code>parallel</code>パッケージは<code>Aff</code>のようなモナドのための型クラス<code>Parallel</code>を定義しており、
+並列実行に対応しています。
+以前に本書でアプリカティブ関手に出会ったとき、
+並列計算を合成するときにアプリカティブ関手がどのように便利なのかを観察しました。
+実は<code>Parallel</code>のインスタンスは、（<code>Aff</code>のような）モナド<code>m</code>と、
+並列に計算を合成するために使われるアプリカティブ関手<code>f</code>との対応関係を定義しているのです。</p>
+<pre><code class="language-hs">class (Monad m, Applicative f) &lt;= Parallel f m | m -&gt; f, f -&gt; m where
+  sequential :: forall a. f a -&gt; m a
+  parallel :: forall a. m a -&gt; f a
+</code></pre>
+<p>このクラスは2つの関数を定義しています。</p>
+<ul>
+<li><code>parallel</code>：モナド <code>m</code>中の計算を取り、アプリカティブ関手<code>f</code>中の計算に
+変えます。</li>
+<li><code>sequential</code>：反対方向の変換を行います。</li>
+</ul>
+<p><code>aff</code>ライブラリは <code>Aff</code>モナドの <code>Parallel</code>インスタンスを提供します。
+これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによって、
+変更可能な参照を使用して並列に <code>Aff</code>アクションを組み合わせます。
+両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。</p>
+<p>アプリカティブ関手では任意個引数の関数の持ち上げができるので、
+このアプリカティブコンビネータを使ってより多くの計算を並列に実行することができます。
+<code>traverse</code>や<code>sequence</code>といった、アプリカティブ関手を扱う
+すべての標準ライブラリ関数から恩恵を受けることもできます。</p>
+<p>必要に応じて <code>parralel</code>と<code>sequential</code>を使って型構築子を変更することで、
+do記法ブロック中でアプリカティブコンビネータを使い、
+直列的なコードの一部で並列計算を結合したり、
+またはその逆を行ったりすることができます。</p>
+<p>直列実行と並列実行の間の違いを実演するために、
+100個の10ミリ秒の遅延からなる配列をつくり、
+それからその遅延を両方の手法で実行します。
+REPLで試すと<code>seqDelay</code>が<code>parDelay</code>より遥かに遅いことに気付くでしょう。
+並列実行が<code>sequence_</code>を<code>parSequence_</code>で置き換えるだけで有効になることに注目です。</p>
+<pre><code class="language-hs">import Prelude
+
+import Control.Parallel (parSequence_)
+import Data.Array (replicate)
+import Data.Foldable (sequence_)
+import Effect (Effect)
+import Effect.Aff (Aff, Milliseconds(..), delay, launchAff_)
+
+delayArray :: Array (Aff Unit)
+delayArray = replicate 100 $ delay $ Milliseconds 10.0
+
+seqDelay :: Effect Unit
+seqDelay = launchAff_ $ sequence_ delayArray
+
+parDelay :: Effect Unit
+parDelay = launchAff_ $ parSequence_ delayArray
+</code></pre>
+<pre><code class="language-shell">$ spago repl
+
+&gt; import Test.ParallelDelay
+
+&gt; seqDelay -- This is slow
+unit
+
+&gt; parDelay -- This is fast
+unit
+</code></pre>
+<p>以下は複数のHTTP要求を並列で行う、より現実味のある例です。
+<code>getUrl</code>関数を再利用して2人の利用者から並列で情報を取得します。
+この場合では<code>parTarverse</code>（<code>traverse</code>の並列版）が使われていますね。
+この例は代わりに<code>traverse</code>でも問題なく動きますがより遅くなるでしょう。</p>
+<pre><code class="language-hs">import Prelude
+
+import Control.Parallel (parTraverse)
+import Effect (Effect)
+import Effect.Aff (launchAff_)
+import Effect.Class.Console (logShow)
+import Test.HTTP (getUrl)
+
+fetchPar :: Effect Unit
+fetchPar =
+  launchAff_ do
+    let
+      urls = map (\n -&gt; &quot;https://reqres.in/api/users/&quot; &lt;&gt; show n) [ 1, 2 ]
+    res &lt;- parTraverse getUrl urls
+    logShow res
+</code></pre>
+<pre><code class="language-shell">$ spago repl
+
+&gt; import Test.ParallelFetch
+
+&gt; fetchPar
+unit
+[&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:1,\&quot;email\&quot;:\&quot;george.bluth@reqres.in\&quot;, ... }&quot;
+,&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:2,\&quot;email\&quot;:\&quot;janet.weaver@reqres.in\&quot;, ... }&quot;
+]
+</code></pre>
+<p>利用できる並列関数の完全な一覧は<a href="https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel">Pursuitの<code>parallel</code>のドキュメント</a>で見付かります。
+<a href="https://github.com/purescript-contrib/purescript-aff#parallel-execution">parallelのaffのドキュメントの節</a>にもより多くの例が含まれています。</p>
+<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
+<ol>
+<li>
+<p>（簡単）前の<code>concatenateMany</code>関数と同じシグネチャを持つ<code>concatenateManyParallel</code>関数を書いてください。
+ただし全ての入力ファイルを並列に読むようにしてください。</p>
+</li>
+<li>
+<p>（普通）与えられたURLへHTTP <code>GET</code>要求を行い以下のいずれかを返す<code>getWithTimeout :: Number -&gt; String -&gt; Aff (Maybe String)</code>関数を書いてください。</p>
+<ul>
+<li><code>Nothing</code>: 要求してから与えられた時間制限（ミリ秒単位）より長く掛かった場合。</li>
+<li>文字列の応答：時間制限を越える前に要求が成功した場合。</li>
+</ul>
+</li>
+<li>
+<p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。
+一覧になったファイルを並列に読んでください。
+パスはそのファイルが表れたディレクトリから相対的なものです。
+<strong>ヒント</strong>：<code>node_path</code>モジュールにはディレクトリとやりとりする上で便利な関数があります。</p>
+</li>
+</ol>
+<p>たとえば、次のような<code>root.txt</code>ファイルから始まるとします。</p>
+<pre><code class="language-shell">$ cat root.txt
+a.txt
+b/a.txt
+c/a/a.txt
+
+$ cat a.txt
+b/b.txt
+
+$ cat b/b.txt
+c/a.txt
+
+$ cat b/c/a.txt
+
+$ cat b/a.txt
+
+$ cat c/a/a.txt
+</code></pre>
+<p>期待される出力は次の通り。</p>
+<pre><code class="language-hs">[&quot;root.txt&quot;,&quot;a.txt&quot;,&quot;b/a.txt&quot;,&quot;b/b.txt&quot;,&quot;b/c/a.txt&quot;,&quot;c/a/a.txt&quot;]
+</code></pre>
+<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
+<p>この章では非同期エフェクトと以下の方法を押さえました。</p>
+<ul>
+<li><code>aff</code>ライブラリを使って<code>Aff</code>モナド中で非同期コードを走らせる。</li>
+<li><code>affjax</code>ライブラリを使って非同期にHTTPリクエストを行う。</li>
+<li><code>parallel</code>ライブラリを使って並列に非同期コードを走らせる。</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter8.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="chapter10.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter8.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="chapter10.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

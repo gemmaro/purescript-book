@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>序文 (Foreword) - PureScript by Example</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="index.ja.html" class="active"><strong aria-hidden="true">15.</strong> 序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">16.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">17.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">18.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">19.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">20.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">21.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">22.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">23.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html"><strong aria-hidden="true">24.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">25.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">26.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">27.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">28.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">29.</strong> 領域特化言語</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">PureScript by Example</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="実例によるpurescript"><a class="header" href="#実例によるpurescript">実例によるPureScript</a></h1>
+<p>このリポジトリには、Phil Freemanによる<strong>PureScript by
+Example</strong>の<a href="https://github.com/purescript-contrib/purescript-book/">コミュニティフォーク</a>が含まれます。
+同書は&quot;the PureScript book&quot; としても知られています。
+このバージョンはコードと演習が最近のバージョンのコンパイラ、ライブラリ、ツールで動くように更新されています。
+PureScriptのエコシステムの最新の機能を紹介すべく書き直された章もあります。</p>
+<p>本書をお楽しみいただきお役立ちいただけましたら、<a href="https://leanpub.com/purescript">Leanpubの原書</a>の購入をご検討ください。</p>
+<h2 id="現状"><a class="header" href="#現状">現状</a></h2>
+<p>この本は言語の進化に伴って継続的に更新されているため、内容に関して発見したどんな<a href="https://github.com/purescript-contrib/purescript-book/issues">問題</a>でもご報告ください。
+より初心者にやさしくできそうな分かりづらい節を指摘するような単純なものであれ、共有いただいたどんなフィードバックにも感謝します。</p>
+<p>それぞれの章には単体テストも加えられているので、演習への自分の回答が正しいかどうか確かめることができます。
+テストの最新の状態については<a href="https://github.com/purescript-contrib/purescript-book/issues/79">#79</a>を見てください。</p>
+<h2 id="本書について"><a class="header" href="#本書について">本書について</a></h2>
+<p>PureScriptは、表現力のある型を持つ、小さく、強力で、静的に型付けされたプログラミング言語です。
+Haskellで書かれ、またこの言語から着想を得ています。
+そして、JavaScriptにコンパイルされます。</p>
+<p>JavaScriptでの関数型プログラミングは最近かなりの人気を誇るようになりましたが、コードを書く上で統制された環境が欠けていることが大規模なアプリケーション開発の妨げとなっています。
+PureScriptは、強力に型付けされた関数型プログラミングの力をJavaScriptでの開発の世界に持ち込むことにより、この問題の解決を目指しています。</p>
+<p>この本は、基礎（開発環境の立ち上げ）から応用に至るまでの、PureScriptプログラミング言語の始め方を示します。</p>
+<p>それぞれの章は特定の課題により動機付けられており、その問題を解いていく過程において、新しい関数型プログラミングの道具と技法が導入されていきます。
+以下はこの本で解いていく課題のいくつかの例です。</p>
+<ul>
+<li>マップと畳み込みを使ったデータ構造の変換</li>
+<li>アプリカティブ関手を使ったフォームフィールドの検証</li>
+<li>QuickCheckによるコードの検査</li>
+<li>Canvasの使用</li>
+<li>領域特化言語の実装</li>
+<li>DOMの取り回し</li>
+<li>JavaScriptの相互運用性</li>
+<li>並列非同期実行</li>
+</ul>
+<h2 id="使用許諾"><a class="header" href="#使用許諾">使用許諾</a></h2>
+<p>Copyright (c) 2014-2017 Phil Freeman.</p>
+<p>The text of this book is licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 3.0 Unported License:
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US</a>.</p>
+<p><small>※以降の原文の使用許諾に関する和訳は法的効力を持ちません。<br>
+本書のテキストは<a
+href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja">表示 - 非営利 -
+継承 3.0 非移植 (CC BY-NC-SA 3.0)</a>のもとに使用が許諾される。</small></p>
+<p>Some text is derived from the <a href="https://github.com/purescript/documentation">PureScript Documentation
+Repo</a>, which uses the same
+license, and is copyright <a href="https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md">various
+contributors</a>.</p>
+<p><small>いくつかのテキストは<a href="https://github.com/purescript/documentation">PureScriptのドキュメントリポジトリ</a>から派生している。
+派生元も同じ使用許諾であり、<a href="https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md">様々な形で貢献された方々</a>の著作権が含まれる。</small></p>
+<p>The exercises are licensed under the MIT license.</p>
+<p><small>演習はMITライセンスの下に使用が許諾される。</small></p>
+<hr />
+<small>
+<p>Copyright (C) 2015-2018 aratama.<br>
+Copyright (C) 2022 gemmaro.</p>
+<p>この翻訳は<a href="https://github.com/aratama">aratama</a>氏による翻訳を元に改変を加えています。
+同氏の翻訳リポジトリは<a href="https://github.com/aratama/purescript-book-ja"><code>aratama/purescript-book-ja</code></a>に、Webサイトは<a href="http://aratama.github.io/purescript/">実例によるPureScript</a>にあります。
+<a href="http://aratama.github.io/purescript/">aratama氏訳の使用許諾</a>は以下の通りです。</p>
+<blockquote>
+<p>This book is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</p>
+<p>本書は<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja">クリエイティブコモンズ 表示 - 非営利 - 継承 3.0 非移植ライセンス</a>でライセンスされています。</p>
+</blockquote>
+<p>本翻訳も原文と原翻訳にしたがい、
+<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>の下に使用が許諾されます。</p>
+</small>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="chapter1.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="chapter1.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
