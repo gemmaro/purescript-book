@@ -1,9 +1,10 @@
 [book]
 authors = ["Phil Freeman"]
-language = "en"
+language = "ja"
 multilingual = false
-src = "text"
-title = "PureScript by Example"
+src = "text-ja"
+title = "実例によるPureScript"
+
 [output.html]
-git-repository-url = "https://github.com/purescript-contrib/purescript-book"
+git-repository-url = "https://github.com/gemmaro/purescript-book"
 mathjax-support = true

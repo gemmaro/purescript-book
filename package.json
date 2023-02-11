@@ -1,10 +1,14 @@
 {
-    "dev-dependencies": {
+    "devDependencies": {
         "textlint": "^13.2.0",
+        "textlint-rule-preset-ja-technical-writing": "^7.0.0",
         "textlint-rule-preset-jtf-style": "^2.3.13"
     },
     "scripts": {
-        "lint": "textlint text/chapter1.ja.md",
+        "lint": "textlint text-ja/*",
+        "prelint": "npm run translate",
+        "fix": "textlint --fix text-ja/*",
+        "prefix": "npm run translate",
         "translate": "po4a --version > .po4a-version && po4a po4a.cfg"
     }
 }

@@ -5,7 +5,7 @@ PO4A-HEADER: mode=eof
 <small>
 
 Copyright (C) 2015-2018 aratama.<br>
-Copyright (C) 2022 gemmaro.
+Copyright (C) 2022, 2023 gemmaro.
 
 この翻訳は[aratama](https://github.com/aratama)氏による翻訳を元に改変を加えています。
 同氏の翻訳リポジトリは[`aratama/purescript-book-ja`](https://github.com/aratama/purescript-book-ja)に、Webサイトは[実例によるPureScript](http://aratama.github.io/purescript/)にあります。

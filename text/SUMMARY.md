@@ -16,21 +16,3 @@
 * [Canvas Graphics](chapter12.md)
 * [Generative Testing](chapter13.md)
 * [Domain-Specific Languages](chapter14.md)
-
-- - -
-
-* [序文 (Foreword)](index.ja.md)
-* [導入](chapter1.ja.md)
-* [はじめよう](chapter2.ja.md)
-* [関数とレコード](chapter3.ja.md)
-* [再帰、マップ、畳み込み](chapter4.ja.md)
-* [パターン照合](chapter5.ja.md)
-* [型クラス](chapter6.ja.md)
-* [アプリカティブによる検証](chapter7.ja.md)
-* [作用モナド](chapter8.ja.md)
-* [非同期作用](chapter9.ja.md)
-* [外部関数インターフェース](chapter10.ja.md)
-* [モナドな冒険](chapter11.ja.md)
-* [Canvasグラフィックス](chapter12.ja.md)
-* [テストの自動生成](chapter13.ja.md)
-* [領域特化言語](chapter14.ja.md)
