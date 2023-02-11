@@ -168,21 +168,19 @@ import Data.Maybe (Maybe)
 <p>ここでは、いくつかのモジュールをインポートします。</p>
 <ul>
 <li><code>Control.Plus</code>モジュールには<code>empty</code>値が定義されています。</li>
-<li><code>Data.List</code>モジュールは<code>lists</code>パッケージで提供されておりSpagoを使って
-インストールできます。連結リストを使うために必要ないくつかの関数が含ま
-れています。</li>
-<li><code>Data.Maybe</code>モジュールは、オプショナルな値を扱うためのデータ型と関数を</li>
+<li><code>Data.List</code>モジュールは<code>lists</code>パッケージで提供されておりSpagoを使ってインストールできます。
+連結リストを使うために必要ないくつかの関数が含まれています。</li>
+<li><code>Data.Maybe</code>モジュールは、オプショナルな値を扱うためのデータ型と関数を定義しています。</li>
 </ul>
 <p>訳者注：ダブルドット (<code>..</code>) を使用すると、
-指定された型コンストラクタのすべてのデータコンストラクタをインポートできます。
-定義しています。</p>
+指定された型コンストラクタのすべてのデータコンストラクタをインポートできます。</p>
 <p>このモジュールのインポート内容が括弧内で明示的に列挙されていることに注目してください。明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣です。</p>
 <p>ソースコードリポジトリを複製したと仮定すると、この章のプロジェクトは次のコマンドでSpagoを使用して構築できます。</p>
 <pre><code class="language-text">$ cd chapter3
 $ spago build
 </code></pre>
 <h2 id="単純な型"><a class="header" href="#単純な型">単純な型</a></h2>
-<p>JavaScriptのプリミティブ型に対応する組み込みデータ型として、PureScriptでは数値型と文字列型、真偽型の３つが定義されています。
+<p>JavaScriptのプリミティブ型に対応する組み込みデータ型として、PureScriptでは数値型と文字列型、真偽型の3つが定義されています。
 これらは<code>Prim</code>モジュールで定義されており、全てのモジュールに暗黙にインポートされます。
 これらはそれぞれ <code>Number</code>、 <code>String</code>、
 <code>Boolean</code>と呼ばれており、PSCiで<code>:type</code>コマンドを使うと簡単な値の型を表示させて確認できます。</p>
@@ -227,7 +225,7 @@ Could not match type Int with type Boolean.
 }
 </code></pre>
 <p>この型が示しているのは、指定されたオブジェクトは、 <code>String</code>型のフィールド <code>name</code> と <code>Array String</code>つまり
-<code>String</code>の配列の型のフィールド <code>interests</code> という２つの<strong>フィールド</strong> (field) を持っているということです。</p>
+<code>String</code>の配列の型のフィールド <code>interests</code> という2つの<strong>フィールド</strong> (field) を持っているということです。</p>
 <p>レコードのフィールドは、ドットに続けて参照したいフィールドのラベルを書くと参照することができます。</p>
 <pre><code class="language-text">&gt; author.name
 &quot;Phil&quot;
@@ -255,7 +253,7 @@ PSCiで複数行の宣言を入力するには、 <code>:paste</code>コマン�
 … add = \x y -&gt; x + y
 … ^D
 </code></pre>
-<p>PSCiでこの関数が定義されていると、次のように関数の隣に２つの引数を空白で区切って書くことで、関数をこれらの引数に<strong>適用</strong> (apply)
+<p>PSCiでこの関数が定義されていると、次のように関数の隣に2つの引数を空白で区切って書くことで、関数をこれらの引数に<strong>適用</strong> (apply)
 することができます。</p>
 <pre><code class="language-text">&gt; add 10 20
 30
@@ -279,8 +277,9 @@ forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 &quot;10Ten&quot;
 </code></pre>
 <p><code>a</code>、 <code>b</code>、 <code>c</code>の型はどんな型でも選ぶことができるといっても、型の不整合は生じないようにしなければなりません。
-<code>flip</code>に渡す関数の型は、他の引数の型と整合性がなくてはなりません。第２引数として文字列 <code>&quot;Ten&quot;</code>、第３引数として数
-<code>10</code>を渡したのはそれが理由です。もし引数が逆になっているとうまくいかないでしょう。</p>
+<code>flip</code>に渡す関数の型は、他の引数の型と整合性がなくてはなりません。
+第2引数として文字列 <code>&quot;Ten&quot;</code>、第3引数として数 <code>10</code>を渡したのはそれが理由です。
+もし引数が逆になっているとうまくいかないでしょう。</p>
 <pre><code class="language-text">&gt; flip (\n s -&gt; show n &lt;&gt; s) 10 &quot;Ten&quot;
 
 Could not match type Int with type String
@@ -330,10 +329,10 @@ y + z
   , address   :: Address
   }
 </code></pre>
-<p>これは <code>Entry</code>という<strong>型同義語</strong> (type synonym、型シノニム) を定義しています。
+<p>これは <code>Entry</code>という<strong>型同義語</strong>（type synonym、型シノニム）を定義しています。
 型 <code>Entry</code>は等号の右辺と同じ型ということです。
-レコードの型はいずれも文字列である <code>firstName</code>、 <code>lastName</code>、 <code>phone</code>という３つのフィールドからなります。
-前者の２つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型 <code>Address</code>を持っています。</p>
+レコードの型はいずれも文字列である <code>firstName</code>、 <code>lastName</code>、 <code>phone</code>という3つのフィールドからなります。
+前者の2つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型 <code>Address</code>を持っています。</p>
 <pre><code class="language-haskell">type Address =
   { street :: String
   , city   :: String
@@ -396,7 +395,7 @@ showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
                    addr.city &lt;&gt; &quot;, &quot; &lt;&gt;
                    addr.state
 </code></pre>
-<p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照することができます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（ <code>&lt;&gt;</code>）を使用します。</p>
+<p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照することができます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（<code>&lt;&gt;</code>）を使用します。</p>
 <h2 id="はやめにテストたびたびテスト"><a class="header" href="#はやめにテストたびたびテスト">はやめにテスト、たびたびテスト</a></h2>
 <p>PSCi対話式モードでは反応を即座に得られるので、素早い試作開発に向いています。
 それではこの最初の関数が正しく動作するかをPSCiを使用して確認してみましょう。</p>
@@ -461,10 +460,10 @@ forall a. a -&gt; List a -&gt; List a
 <p><code>insertEntry</code>の実装は次のようになります。</p>
 <pre><code class="language-haskell">insertEntry entry book = Cons entry book
 </code></pre>
-<p>等号の左側にある２つの引数 <code>entry</code>と <code>book</code>がスコープに導入されますから、これらに <code>Cons</code>関数を適用して結果の値を作成しています。</p>
+<p>等号の左側にある2つの引数 <code>entry</code>と <code>book</code>がスコープに導入されますから、これらに <code>Cons</code>関数を適用して結果の値を作成しています。</p>
 <h2 id="カリー化された関数"><a class="header" href="#カリー化された関数">カリー化された関数</a></h2>
 <p>PureScriptでは、関数は常にひとつの引数だけを取ります。
-<code>insertEntry</code>関数は２つの引数を取るように見えますが、これは実際には<strong>カリー化された関数</strong> (curried function)
+<code>insertEntry</code>関数は2つの引数を取るように見えますが、これは実際には<strong>カリー化された関数</strong> (curried function)
 の一例となっています。</p>
 <p><code>insertEntry</code>の型に含まれる <code>-&gt;</code>は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。</p>
 <pre><code class="language-haskell">Entry -&gt; (AddressBook -&gt; AddressBook)
@@ -658,8 +657,7 @@ infixr 0 apply as $
 </code></pre>
 <p><code>apply</code>関数は、他の関数（型は<code>(a -&gt; b)</code>）を最初の引数に、値（型は<code>a</code>）を2つ目の引数に取って、その値に対して関数を呼びます。
 この関数が何ら意味のあることをしていないようだと思ったら、まったくもって正しいです！
-この関数がなくてもプログラムは論理的に同一です。
-（<a href="https://en.wikipedia.org/wiki/Referential_transparency">参照透過性</a>も見てください。）
+この関数がなくてもプログラムは論理的に同一です（<a href="https://en.wikipedia.org/wiki/Referential_transparency">参照透過性</a>も見てください）。
 この関数の構文的な利便性はその中置演算子に割り当てられた特別な性質からきています。
 <code>$</code>は右結合 (<code>infixr</code>) で低い優先度 (<code>0</code>) の演算子ですが、これにより深い入れ子になった適用から括弧の束を削除できるのです。</p>
 <p>さらなる<code>$</code>演算子を使った括弧退治の機会は、以前の<code>findEntry</code>関数にあります。</p>
@@ -674,8 +672,7 @@ infixr 0 apply as $
 11
 </code></pre>
 <p>その代わりの手段として演算子は部分適用することができ、これには式を括弧で囲んで<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#operator-sections">演算子節</a>中の引数として<code>_</code>を使います。
-これは簡単な無名関数を作るより便利な方法として考えることができます。
-（以下の例ではそこから無名関数を名前に束縛しているので、もはや別に無名とも言えなくなっていますが。）</p>
+これは簡単な無名関数を作るより便利な方法として考えることができます（以下の例ではそこから無名関数を名前に束縛しているので、もはや別に無名とも言えなくなっていますが）。</p>
 <pre><code class="language-text">&gt; add3 = (3 + _)
 &gt; add3 2
 5
@@ -708,13 +705,13 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 <p>右辺を次のようにしても同じく妥当です。</p>
 <pre><code class="language-haskell">filter filterEntry &gt;&gt;&gt; head
 </code></pre>
-<p>どちらにしても、これは「 <code>findEntry</code>はフィルタリング関数と <code>head</code>関数の合成である」という
+<p>どちらにしても、これは「<code>findEntry</code>はフィルタリング関数と <code>head</code>関数の合成である」という
 <code>findEntry</code>関数のわかりやすい定義を与えます。</p>
 <p>どちらの定義のほうがわかりやすいかの判断はお任せしますが、このように関数を部品として捉えると有用なことがよくあります。
 関数はひとつの役目だけをこなし、機能を関数合成で組み立てるというように。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（簡単） <code>findEntry</code>関数の定義の主な部分式の型を書き下し、 <code>findEntry</code>関数についてよく理解しているか試してみましょう。
+<li>（簡単）<code>findEntry</code>関数の定義の主な部分式の型を書き下し、 <code>findEntry</code>関数についてよく理解しているか試してみましょう。
 たとえば、 <code>findEntry</code>の定義のなかにある <code>head</code>関数の型は <code>AddressBook -&gt; Maybe Entry</code>と特殊化されています。
 <strong>補足</strong>：この問題にはテストがありません。</li>
 <li>（普通）関数<code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code>を書いてください。
@@ -723,9 +720,9 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 実装した関数をPSCiと<code>spago test</code>を走らせることでテストしてください。</li>
 <li>（普通）<code>filterEntry</code>を（<code>&lt;&lt;&lt;</code>や<code>&gt;&gt;&gt;</code>を使った）合成で置き換えて、<code>findEntryByStreet</code>を書き直してください。
 合成の対象は、プロパティ取得子（<code>_.</code>記法を使います）と、与えられた文字列引数が与えられた通りの住所に等しいかを判定する関数です。</li>
-<li>（普通） 指定された名前が <code>AddressBook</code>に存在するかどうかを調べて真偽値で返す関数<code>isInBook</code>を書いてみましょう。
+<li>（普通）指定された名前が <code>AddressBook</code>に存在するかどうかを調べて真偽値で返す関数<code>isInBook</code>を書いてみましょう。
 <strong>ヒント</strong>：リストが空かどうかを調べる <code>Data.List.null</code>関数の型をPSCiで調べてみてみましょう。</li>
-<li>（難しい） 「重複」している項目を住所録から削除する関数 <code>removeDuplicates</code>を書いてみましょう。
+<li>（難しい）「重複」している項目を住所録から削除する関数 <code>removeDuplicates</code>を書いてみましょう。
 項目が同じ姓名を共有していれば<code>address</code>フィールドに関係なく、項目が重複していると考えます。
 <strong>ヒント</strong>：関数 <code>Data.List.nubBy</code>の型を、PSCiを使用して調べてみましょう。
 この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。
