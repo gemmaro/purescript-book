@@ -7883,7 +7883,9 @@ fib n =
   else
     fib (n - 1) + fib (n - 2)
 </code></pre>
-<p>やはり、部分問題の解決策を考えることで全体を解決していることがわかります。このとき、<code>fib (n - 1)</code>と<code>fib (n - 2)</code>という式に対応した、２つの部分問題があります。これらの２つの部分問題が解決されていれば、この部分的な答えを加算することで、全体の答えを組み立てることができます。</p>
+<p>やはり、部分問題の解決策を考えることで全体を解決していることがわかります。
+このとき、<code>fib (n - 1)</code>と<code>fib (n - 2)</code>という式に対応した、2つの部分問題があります。
+これらの2つの部分問題が解決されていれば、この部分的な答えを加算することで、全体の答えを組み立てることができます。</p>
 <p>なお上の<code>factorial</code>と<code>fib</code>の例は意図通りに動きますが、
 より慣習的な実装では<code>if</code>や<code>then</code>や<code>else</code>を使う代わりにパターン照合を使うものでしょう。
 パターン照合の技法は後の章でお話しします。</p>
@@ -7952,7 +7954,7 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 <p>実は<code>map</code>の型は、この章で必要とされているものよりも一般的な型になっています。今回の目的では、<code>map</code>は次のようなもっと具体的な型であるかのように考えるとよいでしょう。</p>
 <pre><code class="language-text">forall a b. (a -&gt; b) -&gt; Array a -&gt; Array b
 </code></pre>
-<p>この型では、<code>map</code>関数に適用するときには<code>a</code>と<code>b</code>という２つの型を自由に選ぶことができる、ということも示されています。
+<p>この型では、<code>map</code>関数に適用するときには<code>a</code>と<code>b</code>という2つの型を自由に選ぶことができる、ということも示されています。
 <code>a</code>は元の配列の要素の型で、<code>b</code>は目的の配列の要素の型です。
 もっと言えば、<code>map</code>が配列の要素の型を保存する必要があるわけではありません。
 たとえば、<code>map</code>を使用すると数値を文字列に変換することができます。</p>
@@ -8071,7 +8073,9 @@ PSCiを対話式の開発環境として使用し、ひとつづつこの手順�
 &gt; pairs' 3
 [[1,1],[1,2],[1,3],[2,1],[2,2],[2,3],[3,1],[3,2],[3,3]]
 </code></pre>
-<p>いい感じになってきました。しかし、<code>[1, 2]</code>と<code>[2, 1]</code>の両方があるように、重複した組み合わせが生成されています。<code>j</code>を<code>i</code>から<code>n</code>の範囲に限定することで、２つ目の場合を取り除くことができます。</p>
+<p>いい感じになってきました。
+しかし、<code>[1, 2]</code>と<code>[2, 1]</code>の両方があるように、重複した組み合わせが生成されています。
+<code>j</code>を<code>i</code>から<code>n</code>の範囲に限定することで、2つ目の場合を取り除くことができます。</p>
 <pre><code class="language-text">&gt; :paste
 … pairs'' n =
 …   concatMap (\i -&gt;
@@ -8093,8 +8097,8 @@ PSCiを対話式の開発環境として使用し、ひとつづつこの手順�
 <p>うまくいきました！因数の組み合わせの正しい集合を重複なく見つけることができました。</p>
 <h2 id="do記法"><a class="header" href="#do記法">do記法</a></h2>
 <p>しかし、このコードの可読性は大幅に向上することができます。
-<code>map</code>や<code>concatMap</code>は基本的な関数であり、<strong>do記法</strong> (do notation) と呼ばれる特別な構文の基礎になっています。
-（もっと厳密にいえば、それらの一般化である<code>map</code>と<code>bind</code>が基礎をなしています。）</p>
+<code>map</code>や<code>concatMap</code>は基本的な関数であり、<strong>do記法</strong> (do notation)
+と呼ばれる特別な構文の基礎になっています（もっと厳密にいえば、それらの一般化である<code>map</code>と<code>bind</code>が基礎をなしています）。</p>
 <p><strong>注意</strong>：<code>map</code>と<code>concatMap</code>が<strong>配列内包表記</strong>を書けるようにしているように、もっと一般的な演算子である<code>map</code>と<code>bind</code>は<strong>モナド内包表記</strong>
 (monad comprehensions) と呼ばれているものを書けるようにします。
 本書の後半では<strong>モナド</strong> (monad) の例をたっぷり見ていくことになりますが、
@@ -8108,7 +8112,8 @@ factors n = filter (\xs -&gt; product xs == n) do
 </code></pre>
 <p>キーワード<code>do</code>はdo記法を使うコードのブロックを導入します。このブロックは幾つかの種類の式で構成されています。</p>
 <ul>
-<li>配列の要素を名前に束縛する式。これは後ろ向きの矢印<code>&lt;-</code>で 示されていて、その左側は名前、右側は配列の型を持つ式です。</li>
+<li>配列の要素を名前に束縛する式。
+これは後ろ向きの矢印<code>&lt;-</code>で示されていて、その左側は名前、右側は配列の型を持つ式です。</li>
 <li>名前に配列の要素を束縛しない式。
 <code>do</code>の <em>結果</em> はこの種類の式の一例であり、最後の行の<code>pure [i, j]</code>に示されています。</li>
 <li><code>let</code>キーワードを使用し、式に名前を与える式。</li>
@@ -8164,7 +8169,7 @@ forall m. Alternative m =&gt; Boolean -&gt; m Unit
 <p>ガードが失敗した場合、配列内包表記の現在の分岐は、結果なしで早めに終了されることを意味します。
 これは、<code>guard</code>の呼び出しが、途中の配列に対して<code>filter</code>を使用するのと同じだということです。
 実践の場面にもよりますが、<code>filter</code>の代わりに<code>guard</code>を使いたいことは多いでしょう。
-これらが同じ結果になることを確認するために、<code>factors</code>の二つの定義を試してみてください。</p>
+これらが同じ結果になることを確認するために、<code>factors</code>の2つの定義を試してみてください。</p>
 <h2 id="演習-5"><a class="header" href="#演習-5">演習</a></h2>
 <ol>
 <li>（簡単）整数の引数が素数であるかどうかを調べる関数<code>isPrime</code>を定義してみましょう。
@@ -8172,9 +8177,9 @@ forall m. Alternative m =&gt; Boolean -&gt; m Unit
 <li>（普通）do記法を使い、2つの配列の<strong>直積集合</strong>を見つけるための関数<code>cartesianProduct</code>を書いてみましょう。
 直積集合とは、要素<code>a</code>、<code>b</code>のすべての組み合わせの集合のことです。
 ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
-<li>（普通）数値<code>n</code>を取って構成要素（値<code>a</code>, <code>b</code>, <code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの三つ組
+<li>（普通）数値<code>n</code>を取って構成要素（値<code>a</code>, <code>b</code>, <code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの3つ組
 (pythagorean triples) を返す関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
-<strong>ピタゴラスの三つ組</strong> は数値の配列<code>[a, b, c]</code>で <code>a² + b² = c²</code> です。
+<strong>ピタゴラスの3つ組</strong> は数値の配列<code>[a, b, c]</code>で <code>a² + b² = c²</code> です。
 <strong>ヒント</strong>：配列内包表記で<code>guard</code>関数を使ってください。</li>
 <li>（難しい）<code>factors</code>関数を使用して、数<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
 数<code>n</code>の素因数分解とは、素数の積が<code>n</code>であるような整数の配列のことです。
@@ -8326,8 +8331,7 @@ lengthTailRec arr = length' arr 0
 <ol>
 <li>（簡単）<code>foldl</code>を使って真偽値配列の値が全て真か検査する関数<code>allTrue</code>を書いてください。</li>
 <li>（普通。テストなし）関数<code>foldl (==) false xs</code>が真を返すような配列<code>xs</code>とはどのようなものか説明してください。
-言い換えると、次の文を完成させることになります。
-「関数は<code>xs</code>が……を含むときに<code>true</code>を返す。」</li>
+言い換えると、「関数は<code>xs</code>が……を含むときに<code>true</code>を返す」という文を完成させることになります。</li>
 <li>（普通）末尾再帰の形式を取っていること以外は<code>fib</code>と同じような関数<code>fibTailRec</code>を書いてください。
 <strong>ヒント</strong>：累積器引数を使ってください。</li>
 <li>（普通）<code>foldl</code>を使って<code>reverse</code>を書いてみましょう。</li>
@@ -8412,8 +8416,7 @@ allFiles' file = file : do
 <h2 id="演習-7"><a class="header" href="#演習-7">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）ディレクトリのすべてのサブディレクトリの中まで、
-（ディレクトリを除く）すべてのファイルを返すような関数<code>onlyFiles</code>を書いてみてください。</p>
+<p>（簡単）ディレクトリのすべてのサブディレクトリの中まで、（ディレクトリを除く）すべてのファイルを返すような関数<code>onlyFiles</code>を書いてみてください。</p>
 </li>
 <li>
 <p>（普通）ファイルを名前で検索する関数<code>whereIs</code>を書いてください。
