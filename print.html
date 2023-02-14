@@ -8535,8 +8535,7 @@ toString false = &quot;false&quot;
 </code></pre>
 <p>PSCiでこれらの関数を試してみてください。</p>
 <h2 id="ガード-1"><a class="header" href="#ガード-1">ガード</a></h2>
-<p>ユークリッドの互除法の例では、
-<code>m &gt; n</code>のときと <code>m &lt;= n</code>のときの２つに分岐するために <code>if .. then .. else</code>式を使っていました。
+<p>ユークリッドの互除法の例では、<code>m &gt; n</code>のときと <code>m &lt;= n</code>のときの2つに分岐するために <code>if .. then .. else</code>式を使っていました。
 こういうときには他に<strong>ガード</strong> (guard) を使うという選択肢もあります。</p>
 <p>ガードはパターンによる制約に加えて満たされなくてはいけない真偽値の式です。
 ガードを使用してユークリッドの互除法を書き直すと、次のようになります。</p>
@@ -8648,9 +8647,7 @@ PSCiで <code>showPerson</code>を使ってみると、面白いことがわか�
 
 Type of expression lacks required label &quot;last&quot;
 </code></pre>
-<p><code>showPerson</code>の新しい型シグネチャを読むとこうです。
-「<code>String</code>な<code>first</code>と<code>last</code>フィールド<strong>と他のフィールドを何でも</strong>持つあらゆるレコードを取り、
-<code>String</code>を返す。」
+<p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド<strong>と他のフィールドを何でも</strong>持つあらゆるレコードを取り、<code>String</code>を返す」となります。
 なお、この振舞いは元の<code>showPerson</code>のものとは異なります。
 行変数<code>r</code>がなければ<code>showPerson</code>は<strong>厳密に</strong><code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
 <p>次のように書くことができることにも注意してください。</p>
@@ -8759,7 +8756,7 @@ partialFunction :: Boolean -&gt; Boolean
 partialFunction = unsafePartial \true -&gt; true
 </code></pre>
 <p>この関数は単一の場合しか含んでおらず、その場合では単一の入力である<code>true</code>にのみ照合します。
-このファイルをコンパイルして PSCiでそれ以外の値を与えてテストすると、実行時エラーが発生します。</p>
+このファイルをコンパイルしてPSCiでそれ以外の値を与えてテストすると、実行時エラーが発生します。</p>
 <pre><code class="language-text">&gt; partialFunction false
 
 Failed pattern match
@@ -8792,8 +8789,7 @@ The following additional cases are required to cover all inputs:
 
 Partial =&gt; Boolean -&gt; Boolean
 </code></pre>
-<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります。
-（これらは<strong>型クラス</strong>に関連しています。）
+<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります（これらは<strong>型クラス</strong>に関連しています）。
 しかし、今のところは、PureScriptは型システムを使って部分関数を追跡していることと、
 安全な場合に型検証器に明示する必要があることを確認すれば十分です。</p>
 <p>コンパイラは、定義されたパターンが<strong>冗長</strong>であることを検出した場合
@@ -8856,9 +8852,8 @@ ADTの構築子が持つデータは原始型に限りません。
 <pre><code class="language-haskell">data Maybe a = Nothing | Just a
 </code></pre>
 <p>この例では型引数 <code>a</code>の使用方法を示しています。
-パイプ文字を「または」と読むことにすると、
-この定義は「 <code>Maybe a</code>型の値は、無い (<code>Nothing</code>) か、
-またはただの (<code>Just</code>) 型 <code>a</code>の値だ」とほぼ英語のように読むことができます。</p>
+パイプ文字を「または」と読むことにすると、この定義は「<code>Maybe a</code>型の値は、無い (<code>Nothing</code>) か、またはただの (<code>Just</code>) 型
+<code>a</code>の値だ」とほぼ英語のように読むことができます。</p>
 <p>なおデータ定義のどこにも構文<code>forall a</code>を使っていません。
 <code>forall</code>構文は関数には必須ですが、<code>data</code>によるADTや<code>type</code>での型別称を定義するときは使われません。</p>
 <p>データ構築子は再帰的なデータ構造を定義するために使用することもできます。
@@ -8921,9 +8916,8 @@ showPoint { x, y } =
 <li>（簡単）<code>Circle</code>（型は<code>Shape</code>）を構築する関数<code>circleAtOrigin</code>を書いてください。
 中心は原点にあり、半径は<code>10.0</code>です。</li>
 <li>（普通）<code>Shape</code>を、原点を中心として<code>2.0</code>倍に拡大する関数<code>doubleScaleAndCenter</code>を書いてみましょう。</li>
-<li>（普通） <code>Shape</code>からテキストを抽出する関数<code>shapeText</code>を書いてください。
-この関数は <code>Maybe String</code>を返しますが、
-もし入力が <code>Text</code>を使用して構築されたのでなければ、返り値には <code>Nothing</code>構築子を使ってください。</li>
+<li>（普通）<code>Shape</code>からテキストを抽出する関数<code>shapeText</code>を書いてください。
+この関数は<code>Maybe String</code>を返しますが、もし入力が<code>Text</code>を使用して構築されたのでなければ、返り値には<code>Nothing</code>構築子を使ってください。</li>
 </ol>
 <h2 id="newtype"><a class="header" href="#newtype">Newtype</a></h2>
 <p>代数的データ型の特別な場合として、<strong>newtype</strong>と呼ばれるものがあります。
@@ -8983,8 +8977,7 @@ current = calculateCurrent lightbulb lightbulb -- 補足されないミス
 </code></pre>
 <p>なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、
 newtypeは任意の数の型変数を取ることが<strong>できます</strong>。
-例えば以下のnewtypeは妥当な定義です。
-（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の<strong>単一</strong>の値を期待します。）</p>
+例えば以下のnewtypeは妥当な定義です（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の<strong>単一</strong>の値を期待します）。</p>
 <pre><code class="language-Haskell">newtype CouldError err a = CouldError (Either err a)
 </code></pre>
 <p>また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあることにも注意してください。
@@ -9056,13 +9049,11 @@ bounds = foldl combine emptyBounds
 <code>shapeBounds</code>関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。</p>
 <h2 id="演習-12"><a class="header" href="#演習-12">演習</a></h2>
 <ol>
-<li>（普通） ベクターグラフィックライブラリを拡張し、
-<code>Shape</code>の面積を計算する新しい操作 <code>area</code>を追加してください。
+<li>（普通）ベクターグラフィックライブラリを拡張し、<code>Shape</code>の面積を計算する新しい操作 <code>area</code>を追加してください。
 この演習では、テキストの面積は0であるものとしてください。</li>
-<li>（難しい） <code>Shape</code>を拡張し、新しいデータ構築子 <code>Clipped</code>を追加してください。
+<li>（難しい）<code>Shape</code>を拡張し、新しいデータ構築子 <code>Clipped</code>を追加してください。
 <code>Clipped</code>は他の <code>Picture</code>を矩形に切り抜きます。
-切り抜いてきた<code>Picture</code>の境界を計算できるよう、
-<code>shapeBounds</code>関数を拡張してください。
+切り抜いてきた<code>Picture</code>の境界を計算できるよう、<code>shapeBounds</code>関数を拡張してください。
 なお、これにより<code>Shape</code>は再帰的なデータ型になります。</li>
 </ol>
 <h2 id="まとめ-3"><a class="header" href="#まとめ-3">まとめ</a></h2>
