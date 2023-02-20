@@ -166,7 +166,7 @@
 <h2 id="モナドとdo記法"><a class="header" href="#モナドとdo記法">モナドとdo記法</a></h2>
 <p>do記法は<strong>配列内包表記</strong>を扱うときに最初に導入されました。配列内包表記は <code>Data.Array</code>モジュールの
 <code>concatMap</code>関数の構文糖として提供されています。</p>
-<p>次の例を考えてみましょう。２つのサイコロを振って出た目を数え、出た目の合計が
+<p>次の例を考えてみましょう。2つのサイコロを振って出た目を数え、出た目の合計が
 <code>n</code>のときそれを得点とすることを考えます。次のような非決定的なアルゴリズムを使うとこれを実現することができます。</p>
 <ul>
 <li>最初の投擲で値 <code>x</code>を<strong>選択</strong>します。</li>
@@ -203,17 +203,11 @@ PureScriptの関数を埋め込む、
 同様に<strong>配列モナド</strong>についても、
 <strong>非決定選択</strong>に対応したより大きなプログラミング言語へ
 PureScriptの関数を埋め込む、というような直感的理解を得ることができます。</p>
-<p>一般に、ある型構築子 <code>m</code>のモナドは、
-型 <code>m a</code>の値を持つdo記法を使う方法を提供します。
-上の配列内包表記では、
-すべての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が
-含まれていることに注目してください。
-一般に、do記法ブロックのすべての行は、
-何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
-モナド <code>m</code>はすべての行で同じでなければなりません
-（つまり、副作用の種類は固定されます）が、
-型 <code>a</code>は異なることもあります。
-（言い換えると、個々の計算は異なる型の結果を持つことができます。）</p>
+<p>一般に、ある型構築子 <code>m</code>のモナドは、型 <code>m a</code>の値を持つdo記法を使う方法を提供します。
+上の配列内包表記では、すべての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が含まれていることに注目してください。
+一般に、do記法ブロックのすべての行は、何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
+モナド <code>m</code>はすべての行で同じでなければなりません（つまり、副作用の種類は固定されます）が、型
+<code>a</code>は異なることもあります（言い換えると、個々の計算は異なる型の結果を持つことができます）。</p>
 <p>以下はdo記法の別の例です。
 今回は型構築子 <code>Maybe</code>に適用されています。
 XMLノードを表す型 <code>XML</code>と次の関数があるとします。</p>
@@ -466,8 +460,7 @@ userCity root = do
 </code></pre>
 </li>
 <li>
-<p>（難しい） すべてのモナドには
-次で与えられるような既定の <code>Functor</code>インスタンスがあります。</p>
+<p>（難しい）すべてのモナドには次で与えられるような既定の<code>Functor</code>インスタンスがあります。</p>
 <pre><code class="language-hs">map f a = do
   x &lt;- a
   pure (f x)
@@ -548,8 +541,7 @@ PureScriptの式は概して副作用とは無縁なのです。
 <code>Effect.Random</code>の<code>random</code>関数はランダムな<code>Number</code>を生み出します。</p>
 <pre><code class="language-hs">random :: Effect Number
 </code></pre>
-<p>以下は完全なプログラムの例です。
-（この章の演習フォルダの<code>test/Random.purs</code>にあります。）</p>
+<p>以下は完全なプログラムの例です（この章の演習フォルダの<code>test/Random.purs</code>にあります）。</p>
 <pre><code class="language-hs">module Test.Random where
 
 import Prelude

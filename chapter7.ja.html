@@ -186,7 +186,7 @@
 次のような型を持つ<code>address</code>関数が定義されています。</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
 </code></pre>
-<p>この関数は、通りの名前、市、州という３つの文字列から型<code>Address</code>の値を構築するために使います。</p>
+<p>この関数は、通りの名前、市、州という3つの文字列から型<code>Address</code>の値を構築するために使います。</p>
 <p>この関数は簡単に適用できますので、
 PSCiでどうなるか見てみましょう。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
@@ -194,8 +194,7 @@ PSCiでどうなるか見てみましょう。</p>
 &gt; address &quot;123 Fake St.&quot; &quot;Faketown&quot; &quot;CA&quot;
 { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 </code></pre>
-<p>しかし、通り、市、州の三つすべてが必ずしも入力されないものとすると、
-三つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
+<p>しかし、通り、市、州の3つ全てが必ずしも入力されないものとすると、3つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
 <p>考えられる場合としては、
 市が省略されている場合があるでしょう。
 もし<code>address</code>関数を直接適用しようとすると、
@@ -293,9 +292,7 @@ instance applyMaybe :: Apply Maybe where
 <code>f</code>に<code>Apply</code>インスタンスもあるならば、
 そこから、2番目の持ち上げられた（型<code>f b</code>の）引数へ<code>apply</code>を適用することができ、
 型<code>f c</code>の最終的な値を得ます。</p>
-<p>まとめると、<code>x :: f a</code>と<code>y :: f b</code>があるとき、
-式<code>(g &lt;$&gt; x) &lt;*&gt; y</code>の型は<code>f c</code>になります。
-（この式は<code>apply (map g x)  y</code>と同じ意味だということを思い出しましょう。）
+<p>まとめると、<code>x :: f a</code>と<code>y :: f b</code>があるとき、式<code>(g &lt;$&gt; x) &lt;*&gt; y</code>の型は<code>f c</code>になります（この式は<code>apply (map g x)  y</code>と同じ意味だということを思い出しましょう）。
 Preludeで定義された優先順位の規則に従うと、<code>g &lt;$&gt; x &lt;*&gt; y</code>というように括弧を外すことができます。</p>
 <p>一般的にいえば、最初の引数に<code>&lt;$&gt;</code>を使い、
 残りの引数に対しては<code>&lt;*&gt;</code>を使います。
@@ -534,16 +531,14 @@ Nothing
 <p><code>combineList</code>関数については、後ほど<code>Traversable</code>関手について考えるときに再会します。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数
-（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
+<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
 これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
 <strong>ヒント</strong>：<code>lift2</code>を使ってください。</li>
 <li>（普通）上の演習を（<code>Maybe</code>だけでなく）全ての<code>Apply</code>型で動くように拡張してください。
 これらの新しい関数には<code>addApply</code>、<code>subApply</code>、<code>mulApply</code>、<code>divApply</code>と名前を付けます。</li>
-<li>(難しい) 型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
+<li>（難しい）型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
 を持つ関数<code>combineMaybe</code>を書いてください。
-この関数は副作用をもつオプショナルな計算をとり、
-オプショナルな結果をもつ副作用のある計算を返します。</li>
+この関数は副作用をもつオプショナルな計算をとり、オプショナルな結果をもつ副作用のある計算を返します。</li>
 </ol>
 <h2 id="アプリカティブによる検証-1"><a class="header" href="#アプリカティブによる検証-1">アプリカティブによる検証</a></h2>
 <p>この章のソースコードでは住所録アプリケーションで使うことのできるいろいろなデータ型が定義されています。
@@ -572,8 +567,7 @@ examplePerson =
     , phoneNumber CellPhone &quot;555-555-0000&quot;
     ]
 </code></pre>
-<p>PSCiでこれらの値を試してみましょう。
-（結果は整形されています。）</p>
+<p>PSCiでこれらの値を試してみましょう（結果は整形されています）。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
 &gt; examplePerson
@@ -757,9 +751,7 @@ validatePersonAdo p = ado
 </code></pre>
 <p><code>Traversable</code>は<strong>巡回可能関手</strong>の型クラスを定義します。
 これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
-<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります。
-（<strong>畳み込み可能関手</strong>は構造をひとつの値へとまとめる、
-畳み込み操作を提供する型構築子であったことを思い出してください。）
+<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<strong>畳み込み可能関手</strong>は構造をひとつの値へとまとめる、畳み込み操作を提供する型構築子であったことを思い出してください）。
 それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
 <p>複雑そうに聞こえるかもしれませんが、配列の場合に特殊化して簡単に考えてみましょう。配列型構築子は<code>Traversable</code>である、つまり次のような関数が存在するということです。</p>
 <pre><code class="language-haskell">traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; Array a -&gt; m (Array b)
@@ -780,7 +772,7 @@ validatePersonAdo p = ado
 それぞれの要素が成功するかどうかを検証する検証関数を作るために、
 <code>validatePhoneNumber</code>を<code>traverse</code>へ渡しています。</p>
 <p>一般に、<code>traverse</code>はデータ構造の要素をひとつづつ辿っていき、副作用のある計算を実行して結果を累積します。</p>
-<p><code>Traversable</code>のもう一つの関数、<code>sequence</code>の型シグネチャには見覚えがあるかもしれません。</p>
+<p><code>Traversable</code>のもう1つの関数、<code>sequence</code>の型シグネチャには見覚えがあるかもしれません。</p>
 <pre><code class="language-haskell">sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
 <p>実際、先ほど書いた<code>combineList</code>関数は<code>Traversable</code>型クラスの<code>sequence</code>関数の特別な場合に過ぎません。
@@ -800,7 +792,7 @@ traverse _ Nil         = pure Nil
 traverse f (Cons x xs) = Cons &lt;$&gt; f x &lt;*&gt; traverse f xs
 </code></pre>
 <p>（実際の定義は後にスタック安全性を向上するための変更されました。
-その変更についてより詳しくは<a href="https://github.com/purescript/purescript-lists/pull/87">こちら</a>で読むことができます。）</p>
+その変更についてより詳しくは<a href="https://github.com/purescript/purescript-lists/pull/87">こちら</a>で読むことができます）</p>
 <p>入力が空のリストのときには、
 単に<code>pure</code>を使って空の配列を返すことができます。
 配列が空でないときは、

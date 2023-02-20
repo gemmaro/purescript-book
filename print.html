@@ -9204,7 +9204,7 @@ No type class instance was found for
 これらの関数の基本についてよく理解しておくことを強くお勧めします。</p>
 <h3 id="eq-1"><a class="header" href="#eq-1">Eq</a></h3>
 <p><code>Eq</code>型クラスは、2つの値が等しいかどうかを調べる<code>eq</code>関数を定義しています。
-等値演算子(<code>==</code>)は<code>eq</code>の別名にすぎません。</p>
+等値演算子 (<code>==</code>) は<code>eq</code>の別名にすぎません。</p>
 <pre><code class="language-haskell">class Eq a where
   eq :: a -&gt; a -&gt; Boolean
 </code></pre>
@@ -9386,8 +9386,7 @@ PSCiで試すと次のようになります。</p>
 <ol>
 <li>
 <p>（簡単）<code>Complex</code>に<code>Show</code>インスタンスを定義してください。
-出力の形式はテストで期待される形式と一致させてください。
-（例：<code>1.2+3.4i</code>、<code>5.6-7.7i</code>など）</p>
+出力の形式はテストで期待される形式と一致させてください（例：<code>1.2+3.4i</code>、<code>5.6-7.7i</code>など）。</p>
 </li>
 <li>
 <p>（簡単）<code>Eq</code>インスタンスを<code>Complex</code>に導出してください。
@@ -9443,8 +9442,8 @@ showCompare a1 a2 =
 複数の引数のカリー化された関数を定義するのと同様です。
 しかし、2つの記号を混同しないように注意してください。</p>
 <ul>
-<li><code>a -&gt; b</code>は<strong>型</strong><code>a</code>から<strong>型</strong><code>b</code>への関数の型を表します。一方で、</li>
-<li><code>a =&gt; b</code>は<strong>制約</strong><code>a</code>を型<code>b</code>に適用します。</li>
+<li><code>a -&gt; b</code>は<strong>型</strong><code>a</code>から<strong>型</strong><code>b</code>への関数の型を表します。</li>
+<li>一方で、<code>a =&gt; b</code>は<strong>制約</strong><code>a</code>を型<code>b</code>に適用します。</li>
 </ul>
 <p>PureScriptコンパイラは、型の注釈が提供されていない場合、制約付き型を推測しようとします。
 これは、関数に対して可能な最も一般的な型を使用したい場合に便利です。</p>
@@ -9484,19 +9483,16 @@ PSCiでは<code>Int</code>と <code>Number</code>の両方で関数を実行さ�
 <p>（簡単）以下の宣言では型 <code>a</code>の要素の空でない配列の型を定義しています。</p>
 <pre><code class="language-haskell">data NonEmpty a = NonEmpty a (Array a)
 </code></pre>
-<p><code>Eq a</code>と<code>Eq (Array a)</code>へのインスタンスを再利用し、型<code>NonEmpty</code>に<code>Eq</code>インスタンスを書いてください。
-<strong>補足</strong>：代わりに<code>Eq</code>インスタンスは導出することもできます。</p>
+<p><code>Eq a</code>と<code>Eq (Array a)</code>へのインスタンスを再利用し、型<code>NonEmpty</code>に<code>Eq</code>インスタンスを書いてください。<strong>補足</strong>：代わりに<code>Eq</code>インスタンスは導出することもできます。</p>
 </li>
 <li>
-<p>（普通）<code>Array</code>への<code>Semigroup</code>インスタンスを再利用して、
-<code>NonEmpty</code>への<code>Semigroup</code>インスタンスを書いてください。</p>
+<p>（普通）<code>Array</code>への<code>Semigroup</code>インスタンスを再利用して、<code>NonEmpty</code>への<code>Semigroup</code>インスタンスを書いてください。</p>
 </li>
 <li>
 <p>（普通）<code>NonEmpty</code>に<code>Functor</code>インスタンスを書いてください。</p>
 </li>
 <li>
-<p>（普通）<code>Ord</code>のインスタンス付きのあらゆる型<code>a</code>が与えられているとすると、
-新しくそれ以外のどんな値よりも大きい「無限の」値を付け加えられます。</p>
+<p>（普通）<code>Ord</code>のインスタンス付きのあらゆる型<code>a</code>が与えられているとすると、新しくそれ以外のどんな値よりも大きい「無限の」値を付け加えられます。</p>
 <pre><code class="language-haskell">data Extended a = Infinite | Finite a 
 </code></pre>
 <p><code>a</code>への<code>Ord</code>インスタンスを再利用して、<code>Extended a</code>に<code>Ord</code>インスタンスを書いてください。</p>
@@ -9506,8 +9502,8 @@ PSCiでは<code>Int</code>と <code>Number</code>の両方で関数を実行さ�
 <strong>ヒント</strong>：配列への<code>Foldable</code>インスタンスを再利用してください。</p>
 </li>
 <li>
-<p>（難しい）順序付きコンテナを定義する（そして <code>Foldable</code>のインスタンスを持っている）ような型構築子 <code>f</code>が与えられたとき、
-追加の要素を先頭に含めるような新たなコンテナ型を作ることができます。</p>
+<p>（難しい）順序付きコンテナを定義する（そして <code>Foldable</code>のインスタンスを持っている）ような型構築子
+<code>f</code>が与えられたとき、追加の要素を先頭に含めるような新たなコンテナ型を作ることができます。</p>
 <pre><code class="language-haskell">data OneMore f a = OneMore a (f a)
 </code></pre>
 <p>このコンテナ <code>OneMore f</code>もまた順序を持っています。
@@ -9726,7 +9722,7 @@ PureScriptは同じインスタンスの複数の実装を許さないため、
 </code></pre>
 <p><strong>ヒント</strong>：Pursuitでシグネチャが<a href="https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String"><code>String -&gt; Int -&gt; String</code></a>のお助け関数を検索してください。
 なお<code>String</code>は（<code>Monoid</code>のような）より汎用的な型として現れます。</p>
-<p>このインスタンスは上に挙げた法則を満たすでしょうか？</p>
+<p>このインスタンスは上に挙げた法則を満たすでしょうか。</p>
 </li>
 <li>
 <p>（普通）インスタンス <code>Action m a =&gt; Action m (Array a)</code>を書いてみましょう。
@@ -9831,18 +9827,11 @@ hashEqual = eq `on` hash
 <code>Eq</code>の意味では同じ値でも厳密には同じではない、
 というような型の値は存在しないので簡単です。</p>
 <p>もっと面白い型についてはどうでしょうか。
-この場合、配列の長さに関する帰納を使うと、
-型クラスの法則を証明することができます。
+この場合、配列の長さに関する帰納を使うと、型クラスの法則を証明することができます。
 長さゼロの唯一の配列は <code>[]</code>です。
-配列の <code>Eq</code>の定義により、任意の二つの空でない配列は、
-それらの先頭の要素が同じで配列の残りの部分が等しいとき、
-またその時に限り等しくなります。
-この帰納的な仮定により、
-配列の残りの部分は同じハッシュ値を持ちますし、
-もし <code>Hashable a</code>インスタンスがこの法則を満たすなら、
-先頭の要素も同じハッシュ値をもつことがわかります。
-したがって、2つの配列は同じハッシュ値を持ち、
-<code>Hashable (Array a)</code>も同様に型クラス法則を満たしています。</p>
+配列の <code>Eq</code>の定義により、任意の2つの空でない配列は、それらの先頭の要素が同じで配列の残りの部分が等しいとき、またその時に限り等しくなります。
+この帰納的な仮定により、配列の残りの部分は同じハッシュ値を持ちますし、もし <code>Hashable a</code>インスタンスがこの法則を満たすなら、先頭の要素も同じハッシュ値をもつことがわかります。
+したがって、2つの配列は同じハッシュ値を持ち、<code>Hashable (Array a)</code>も同様に型クラス法則を満たしています。</p>
 <p>この章のソースコードには、 <code>Maybe</code>と <code>Tuple</code>型のインスタンスなど、
 他にも <code>Hashable</code>インスタンスの例が含まれています。</p>
 <h2 id="演習-17"><a class="header" href="#演習-17">演習</a></h2>
@@ -9852,8 +9841,7 @@ hashEqual = eq `on` hash
 <strong>補足</strong>：この演習には単体試験がありません。</p>
 </li>
 <li>
-<p>（普通）ハッシュと値の同値性に基づいて
-配列が重複する要素を持っているかどうかを調べる関数<code>arrayHasDuplicates</code>を書いてください。
+<p>（普通）ハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうかを調べる関数<code>arrayHasDuplicates</code>を書いてください。
 まずハッシュ同値性を<code>hashEqual</code>関数で確認し、
 それからもし重複するハッシュの対が見付かったら<code>==</code>で値の同値性を確認してください。
 <strong>ヒント</strong>：<code>Data.Array</code>の <code>nubByEq</code>関数はこの問題をずっと簡単にしてくれるでしょう。</p>
@@ -9867,13 +9855,11 @@ instance eqHour :: Eq Hour where
 </code></pre>
 </li>
 </ol>
-<p>newtypeの <code>Hour</code>とその <code>Eq</code>インスタンスは、
-12を法とする整数の型を表します。
+<p>newtypeの <code>Hour</code>とその <code>Eq</code>インスタンスは、12を法とする整数の型を表します。
 したがって、例えば1と13は等しいと見なされます。
 そのインスタンスが型クラスの法則を満たしていることを証明してください。</p>
 <ol>
-<li>（難しい）<code>Maybe</code>、<code>Either</code>そして<code>Tuple</code>への<code>Hashable</code>インスタンスについて
-型クラスの法則を証明してください。
+<li>（難しい）<code>Maybe</code>、<code>Either</code>そして<code>Tuple</code>への<code>Hashable</code>インスタンスについて型クラスの法則を証明してください。
 <strong>補足</strong>：この演習にテストはありません。</li>
 </ol>
 <h2 id="まとめ-4"><a class="header" href="#まとめ-4">まとめ</a></h2>
@@ -9925,7 +9911,7 @@ PureScriptの標準ライブラリから標準の型クラスを幾つか見て�
 次のような型を持つ<code>address</code>関数が定義されています。</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
 </code></pre>
-<p>この関数は、通りの名前、市、州という３つの文字列から型<code>Address</code>の値を構築するために使います。</p>
+<p>この関数は、通りの名前、市、州という3つの文字列から型<code>Address</code>の値を構築するために使います。</p>
 <p>この関数は簡単に適用できますので、
 PSCiでどうなるか見てみましょう。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
@@ -9933,8 +9919,7 @@ PSCiでどうなるか見てみましょう。</p>
 &gt; address &quot;123 Fake St.&quot; &quot;Faketown&quot; &quot;CA&quot;
 { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 </code></pre>
-<p>しかし、通り、市、州の三つすべてが必ずしも入力されないものとすると、
-三つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
+<p>しかし、通り、市、州の3つ全てが必ずしも入力されないものとすると、3つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
 <p>考えられる場合としては、
 市が省略されている場合があるでしょう。
 もし<code>address</code>関数を直接適用しようとすると、
@@ -10032,9 +10017,7 @@ instance applyMaybe :: Apply Maybe where
 <code>f</code>に<code>Apply</code>インスタンスもあるならば、
 そこから、2番目の持ち上げられた（型<code>f b</code>の）引数へ<code>apply</code>を適用することができ、
 型<code>f c</code>の最終的な値を得ます。</p>
-<p>まとめると、<code>x :: f a</code>と<code>y :: f b</code>があるとき、
-式<code>(g &lt;$&gt; x) &lt;*&gt; y</code>の型は<code>f c</code>になります。
-（この式は<code>apply (map g x)  y</code>と同じ意味だということを思い出しましょう。）
+<p>まとめると、<code>x :: f a</code>と<code>y :: f b</code>があるとき、式<code>(g &lt;$&gt; x) &lt;*&gt; y</code>の型は<code>f c</code>になります（この式は<code>apply (map g x)  y</code>と同じ意味だということを思い出しましょう）。
 Preludeで定義された優先順位の規則に従うと、<code>g &lt;$&gt; x &lt;*&gt; y</code>というように括弧を外すことができます。</p>
 <p>一般的にいえば、最初の引数に<code>&lt;$&gt;</code>を使い、
 残りの引数に対しては<code>&lt;*&gt;</code>を使います。
@@ -10273,16 +10256,14 @@ Nothing
 <p><code>combineList</code>関数については、後ほど<code>Traversable</code>関手について考えるときに再会します。</p>
 <h2 id="演習-18"><a class="header" href="#演習-18">演習</a></h2>
 <ol>
-<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数
-（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
+<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
 これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
 <strong>ヒント</strong>：<code>lift2</code>を使ってください。</li>
 <li>（普通）上の演習を（<code>Maybe</code>だけでなく）全ての<code>Apply</code>型で動くように拡張してください。
 これらの新しい関数には<code>addApply</code>、<code>subApply</code>、<code>mulApply</code>、<code>divApply</code>と名前を付けます。</li>
-<li>(難しい) 型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
+<li>（難しい）型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
 を持つ関数<code>combineMaybe</code>を書いてください。
-この関数は副作用をもつオプショナルな計算をとり、
-オプショナルな結果をもつ副作用のある計算を返します。</li>
+この関数は副作用をもつオプショナルな計算をとり、オプショナルな結果をもつ副作用のある計算を返します。</li>
 </ol>
 <h2 id="アプリカティブによる検証-1"><a class="header" href="#アプリカティブによる検証-1">アプリカティブによる検証</a></h2>
 <p>この章のソースコードでは住所録アプリケーションで使うことのできるいろいろなデータ型が定義されています。
@@ -10311,8 +10292,7 @@ examplePerson =
     , phoneNumber CellPhone &quot;555-555-0000&quot;
     ]
 </code></pre>
-<p>PSCiでこれらの値を試してみましょう。
-（結果は整形されています。）</p>
+<p>PSCiでこれらの値を試してみましょう（結果は整形されています）。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
 &gt; examplePerson
@@ -10496,9 +10476,7 @@ validatePersonAdo p = ado
 </code></pre>
 <p><code>Traversable</code>は<strong>巡回可能関手</strong>の型クラスを定義します。
 これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
-<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります。
-（<strong>畳み込み可能関手</strong>は構造をひとつの値へとまとめる、
-畳み込み操作を提供する型構築子であったことを思い出してください。）
+<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<strong>畳み込み可能関手</strong>は構造をひとつの値へとまとめる、畳み込み操作を提供する型構築子であったことを思い出してください）。
 それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
 <p>複雑そうに聞こえるかもしれませんが、配列の場合に特殊化して簡単に考えてみましょう。配列型構築子は<code>Traversable</code>である、つまり次のような関数が存在するということです。</p>
 <pre><code class="language-haskell">traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; Array a -&gt; m (Array b)
@@ -10519,7 +10497,7 @@ validatePersonAdo p = ado
 それぞれの要素が成功するかどうかを検証する検証関数を作るために、
 <code>validatePhoneNumber</code>を<code>traverse</code>へ渡しています。</p>
 <p>一般に、<code>traverse</code>はデータ構造の要素をひとつづつ辿っていき、副作用のある計算を実行して結果を累積します。</p>
-<p><code>Traversable</code>のもう一つの関数、<code>sequence</code>の型シグネチャには見覚えがあるかもしれません。</p>
+<p><code>Traversable</code>のもう1つの関数、<code>sequence</code>の型シグネチャには見覚えがあるかもしれません。</p>
 <pre><code class="language-haskell">sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
 <p>実際、先ほど書いた<code>combineList</code>関数は<code>Traversable</code>型クラスの<code>sequence</code>関数の特別な場合に過ぎません。
@@ -10539,7 +10517,7 @@ traverse _ Nil         = pure Nil
 traverse f (Cons x xs) = Cons &lt;$&gt; f x &lt;*&gt; traverse f xs
 </code></pre>
 <p>（実際の定義は後にスタック安全性を向上するための変更されました。
-その変更についてより詳しくは<a href="https://github.com/purescript/purescript-lists/pull/87">こちら</a>で読むことができます。）</p>
+その変更についてより詳しくは<a href="https://github.com/purescript/purescript-lists/pull/87">こちら</a>で読むことができます）</p>
 <p>入力が空のリストのときには、
 単に<code>pure</code>を使って空の配列を返すことができます。
 配列が空でないときは、
@@ -10690,7 +10668,7 @@ pure ((Just &quot;Testing&quot;))
 <h2 id="モナドとdo記法"><a class="header" href="#モナドとdo記法">モナドとdo記法</a></h2>
 <p>do記法は<strong>配列内包表記</strong>を扱うときに最初に導入されました。配列内包表記は <code>Data.Array</code>モジュールの
 <code>concatMap</code>関数の構文糖として提供されています。</p>
-<p>次の例を考えてみましょう。２つのサイコロを振って出た目を数え、出た目の合計が
+<p>次の例を考えてみましょう。2つのサイコロを振って出た目を数え、出た目の合計が
 <code>n</code>のときそれを得点とすることを考えます。次のような非決定的なアルゴリズムを使うとこれを実現することができます。</p>
 <ul>
 <li>最初の投擲で値 <code>x</code>を<strong>選択</strong>します。</li>
@@ -10727,17 +10705,11 @@ PureScriptの関数を埋め込む、
 同様に<strong>配列モナド</strong>についても、
 <strong>非決定選択</strong>に対応したより大きなプログラミング言語へ
 PureScriptの関数を埋め込む、というような直感的理解を得ることができます。</p>
-<p>一般に、ある型構築子 <code>m</code>のモナドは、
-型 <code>m a</code>の値を持つdo記法を使う方法を提供します。
-上の配列内包表記では、
-すべての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が
-含まれていることに注目してください。
-一般に、do記法ブロックのすべての行は、
-何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
-モナド <code>m</code>はすべての行で同じでなければなりません
-（つまり、副作用の種類は固定されます）が、
-型 <code>a</code>は異なることもあります。
-（言い換えると、個々の計算は異なる型の結果を持つことができます。）</p>
+<p>一般に、ある型構築子 <code>m</code>のモナドは、型 <code>m a</code>の値を持つdo記法を使う方法を提供します。
+上の配列内包表記では、すべての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が含まれていることに注目してください。
+一般に、do記法ブロックのすべての行は、何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
+モナド <code>m</code>はすべての行で同じでなければなりません（つまり、副作用の種類は固定されます）が、型
+<code>a</code>は異なることもあります（言い換えると、個々の計算は異なる型の結果を持つことができます）。</p>
 <p>以下はdo記法の別の例です。
 今回は型構築子 <code>Maybe</code>に適用されています。
 XMLノードを表す型 <code>XML</code>と次の関数があるとします。</p>
@@ -10990,8 +10962,7 @@ userCity root = do
 </code></pre>
 </li>
 <li>
-<p>（難しい） すべてのモナドには
-次で与えられるような既定の <code>Functor</code>インスタンスがあります。</p>
+<p>（難しい）すべてのモナドには次で与えられるような既定の<code>Functor</code>インスタンスがあります。</p>
 <pre><code class="language-hs">map f a = do
   x &lt;- a
   pure (f x)
@@ -11072,8 +11043,7 @@ PureScriptの式は概して副作用とは無縁なのです。
 <code>Effect.Random</code>の<code>random</code>関数はランダムな<code>Number</code>を生み出します。</p>
 <pre><code class="language-hs">random :: Effect Number
 </code></pre>
-<p>以下は完全なプログラムの例です。
-（この章の演習フォルダの<code>test/Random.purs</code>にあります。）</p>
+<p>以下は完全なプログラムの例です（この章の演習フォルダの<code>test/Random.purs</code>にあります）。</p>
 <pre><code class="language-hs">module Test.Random where
 
 import Prelude
@@ -11777,8 +11747,7 @@ copyFile('file1.txt', 'file2.txt')
 <p>コールバックや同期関数を使うことも可能ですが、以下の理由から望ましくあ
 りません。</p>
 <ul>
-<li>コールバックは過剰な入れ子に繋がります。これは「コールバック地獄」や
-「悪夢のピラミッド」として知られています。</li>
+<li>コールバックは過剰な入れ子に繋がります。これは「コールバック地獄」や「悪夢のピラミッド」として知られています。</li>
 <li>同期関数はアプリ中の他のコードの実行を堰き止めてしまいます。</li>
 </ul>
 <h2 id="非同期なpurescript"><a class="header" href="#非同期なpurescript">非同期なPureScript</a></h2>
@@ -12160,7 +12129,7 @@ foreign import square :: Number -&gt; Number
 };
 </code></pre>
 <p>もしくはES6の矢印構文ではこうです。
-（後述するES6についての補足を査証してください。）</p>
+（後述するES6についての補足を査証してください）</p>
 <pre><code class="language-js">export const diagonalArrow = w =&gt; h =&gt;
   Math.sqrt(w * w + h * h);
 </code></pre>
@@ -13055,7 +13024,7 @@ Test.gcd(15)(20);
 <code>null</code>でないJavaScriptの数へと評価されますし、 <code>String</code>型の式は
 <code>null</code>でないJavaScriptの文字列へと評価されます。たとえ<code>typeof</code>を使うことによって型<code>Number</code>の値と見分けがつかなくなっても、型<code>Int</code>の式は実行時に整数に評価されます。</p>
 <p><code>Unit</code>についてはどうでしょうか？<code>Unit</code>には現住 (<code>unit</code>)
-が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。古いコードは<code>{}</code>を使って表現する傾向がありました。しかし比較的新しいコードでは<code>undefined</code>を使う傾向にあります。なので、<code>Unit</code>を表現するのに使うものは本当に何でも問題にならないのですが、<code>undefined</code>を使うことが推奨されます。（関数から何も返さないときも<code>undefined</code>を返します。）</p>
+が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。古いコードは<code>{}</code>を使って表現する傾向がありました。しかし比較的新しいコードでは<code>undefined</code>を使う傾向にあります。なので、<code>Unit</code>を表現するのに使うものは本当に何でも問題にならないのですが、<code>undefined</code>を使うことが推奨されます。（関数から何も返さないときも<code>undefined</code>を返します）</p>
 <p>もっと複雑な型についてはどうでしょうか？</p>
 <p>すでに見てきたように、PureScriptの関数は引数がひとつのJavaScriptの関数に対応しています。厳密に言えば、任意の型 <code>a</code>、 <code>b</code>について、式 <code>f</code>の型が <code>a -&gt; b</code>で、式 <code>x</code>が型 <code>a</code>についての適切な実行時表現の値へと評価されるなら、 <code>f</code>はJavaScriptの関数へと評価され、 <code>x</code>を評価した結果に <code>f</code>を適用すると、それは型 <code>b</code>の適切な実行時表現を持ちます。簡単な例としては、 <code>String -&gt; String</code>型の式は、 <code>null</code>でないJavaScript文字列から <code>null</code>でないJavaScript文字列への関数へと評価されます。</p>
 <p>ご想像のとおり、PureScriptの配列はJavaScriptの配列に対応しています。しかし、PureScriptの配列は均質であり、つまりすべての要素が同じ型を持っていることは覚えておいてください。具体的には、もしPureScriptの式

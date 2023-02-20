@@ -273,7 +273,7 @@ foreign import square :: Number -&gt; Number
 };
 </code></pre>
 <p>もしくはES6の矢印構文ではこうです。
-（後述するES6についての補足を査証してください。）</p>
+（後述するES6についての補足を査証してください）</p>
 <pre><code class="language-js">export const diagonalArrow = w =&gt; h =&gt;
   Math.sqrt(w * w + h * h);
 </code></pre>
@@ -1168,7 +1168,7 @@ Test.gcd(15)(20);
 <code>null</code>でないJavaScriptの数へと評価されますし、 <code>String</code>型の式は
 <code>null</code>でないJavaScriptの文字列へと評価されます。たとえ<code>typeof</code>を使うことによって型<code>Number</code>の値と見分けがつかなくなっても、型<code>Int</code>の式は実行時に整数に評価されます。</p>
 <p><code>Unit</code>についてはどうでしょうか？<code>Unit</code>には現住 (<code>unit</code>)
-が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。古いコードは<code>{}</code>を使って表現する傾向がありました。しかし比較的新しいコードでは<code>undefined</code>を使う傾向にあります。なので、<code>Unit</code>を表現するのに使うものは本当に何でも問題にならないのですが、<code>undefined</code>を使うことが推奨されます。（関数から何も返さないときも<code>undefined</code>を返します。）</p>
+が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。古いコードは<code>{}</code>を使って表現する傾向がありました。しかし比較的新しいコードでは<code>undefined</code>を使う傾向にあります。なので、<code>Unit</code>を表現するのに使うものは本当に何でも問題にならないのですが、<code>undefined</code>を使うことが推奨されます。（関数から何も返さないときも<code>undefined</code>を返します）</p>
 <p>もっと複雑な型についてはどうでしょうか？</p>
 <p>すでに見てきたように、PureScriptの関数は引数がひとつのJavaScriptの関数に対応しています。厳密に言えば、任意の型 <code>a</code>、 <code>b</code>について、式 <code>f</code>の型が <code>a -&gt; b</code>で、式 <code>x</code>が型 <code>a</code>についての適切な実行時表現の値へと評価されるなら、 <code>f</code>はJavaScriptの関数へと評価され、 <code>x</code>を評価した結果に <code>f</code>を適用すると、それは型 <code>b</code>の適切な実行時表現を持ちます。簡単な例としては、 <code>String -&gt; String</code>型の式は、 <code>null</code>でないJavaScript文字列から <code>null</code>でないJavaScript文字列への関数へと評価されます。</p>
 <p>ご想像のとおり、PureScriptの配列はJavaScriptの配列に対応しています。しかし、PureScriptの配列は均質であり、つまりすべての要素が同じ型を持っていることは覚えておいてください。具体的には、もしPureScriptの式
