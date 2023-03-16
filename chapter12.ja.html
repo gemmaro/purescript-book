@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -156,7 +158,7 @@
 <p>このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。</p>
 <ul>
 <li><code>canvas</code>はHTML5のCanvas APIのメソッドの型を与えます。</li>
-<li><code>refs</code>は<strong>大域的な変更可能領域への参照</strong>を使うための副作用を提供します。</li>
+<li><code>refs</code>は <em>大域的な変更可能領域への参照</em> を使うための副作用を提供します。</li>
 </ul>
 <p>この章のソースコードは、それぞれに <code>main</code>メソッドが定義されているモジュー
 ルの集合へと分割されています。この章のそれぞれの節の内容はそれぞれの異
@@ -183,11 +185,8 @@ main = void $ unsafePartial do
   Just canvas &lt;- getCanvasElementById &quot;canvas&quot;
   ctx &lt;- getContext2D canvas
 </code></pre>
-<p><strong>注意</strong>：この<code>unsafePartial</code>の呼び出しは必須です。これは
-<code>getCanvasElementById</code>の結果のパターン照合部分的で、<code>Just</code>値構築子だけ
-と照合するためです。ここではこれで問題ありませんが、実際の製品のコード
-ではおそらく<code>Nothing</code>値構築子と照合させ、適切なエラーメッセージを提供
-したほうがよいでしょう。</p>
+<p><em>注意</em>
+：この<code>unsafePartial</code>の呼び出しは必須です。これは<code>getCanvasElementById</code>の結果のパターン照合部分的で、<code>Just</code>値構築子だけと照合するためです。ここではこれで問題ありませんが、実際の製品のコードではおそらく<code>Nothing</code>値構築子と照合させ、適切なエラーメッセージを提供したほうがよいでしょう。</p>
 <p>これらのアクションの型は、PSCiを使うかドキュメントを見ると確認できます。</p>
 <pre><code class="language-haskell">getCanvasElementById :: String -&gt; Effect (Maybe CanvasElement)
 
@@ -285,14 +284,10 @@ translate dx dy shape = shape
   , y = shape.y + dy
   }
 </code></pre>
-<p>この行多相型に注目してください。これは <code>triangle</code>が <code>x</code>と <code>y</code>というプ
-ロパティと、<strong>それに加えて他の任意のプロパティ</strong>を持ったどんなレコード
-でも受け入れ、同じ型のレコードを返すということを言っています。 <code>x</code>フィー
-ルドと <code>y</code>フィールドは更新されますが、残りのフィールドは変更されません。</p>
-<p>これは<strong>レコード更新構文</strong>の例です。 <code>shape { ... }</code>という式は、
-<code>shape</code>を元にして、括弧の中で指定された値で更新されたフィールドを持つ
-新たなレコードを作ります。波括弧の中の式はレコードリテラルのようなコロ
-ンではなく、等号でラベルと式を区切って書くことに注意してください。</p>
+<p>この行多相型に注目してください。これは <code>triangle</code>が <code>x</code>と <code>y</code>というプロパティと、 <em>それに加えて他の任意のプロパティ</em>
+を持ったどんなレコードでも受け入れ、同じ型のレコードを返すということを言っています。 <code>x</code>フィールドと
+<code>y</code>フィールドは更新されますが、残りのフィールドは変更されません。</p>
+<p>これは <em>レコード更新構文</em> の例です。 <code>shape { ... }</code>という式は、<code>shape</code>を元にして、括弧の中で指定された値で更新されたフィールドを持つ新たなレコードを作ります。波括弧の中の式はレコードリテラルのようなコロンではなく、等号でラベルと式を区切って書くことに注意してください。</p>
 <p><code>Shapes</code>の例からわかるように、 <code>translate</code>関数は <code>Rectangle</code>レコードと
 <code>Arc</code>レコード双方に対して使うことができます。</p>
 <p><code>Shape</code>の例で描画される3つめの型は区分からなる線分のパスです。対応する
@@ -421,9 +416,8 @@ transform :: Context2D
 <p>最後の <code>transform</code>はこの4つのうちで最も一般的なアクションです。このアクションは行列に従ってアフィン変換を行います。</p>
 <p>これらのアクションが呼び出された後に描画される図形は、自動的に適切な座
 標変換が適用されます。</p>
-<p>実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列
-に対して変換行列を<strong>右から乗算</strong>していきます。つまり、もしある作用の変
-換をしていくと、その作用は実際には逆順に適用されていきます：</p>
+<p>実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列に対して変換行列を <em>右から乗算</em>
+していきます。つまり、もしある作用の変換をしていくと、その作用は実際には逆順に適用されていきます：</p>
 <pre><code class="language-haskell">transformations ctx = do
   translate ctx { translateX: 10.0, translateY: 10.0 }
   scale ctx { scaleX: 2.0, scaleY: 2.0 }
@@ -436,9 +430,8 @@ transform :: Context2D
 <h2 id="コンテキストの保存"><a class="header" href="#コンテキストの保存">コンテキストの保存</a></h2>
 <p>変換を適用してシーンの一部を描画し、それからその変換を元に戻す、という
 使い方はよくあります。</p>
-<p>Canvas APIにはキャンバスの状態の<strong>スタック</strong>を操作する <code>save</code>と
-<code>restore</code>メソッドが備わっています。 <code>canvas</code>ではこの機能を次のような関
-数でラップしています。</p>
+<p>Canvas APIにはキャンバスの状態の <em>スタック</em> を操作する <code>save</code>と<code>restore</code>メソッドが備わっています。
+<code>canvas</code>ではこの機能を次のような関数でラップしています。</p>
 <pre><code class="language-haskell">save
   :: Context2D
   -&gt; Effect Context2D
@@ -537,16 +530,13 @@ Type -&gt; Type
 <li>（普通）<code>Random</code>作用と <code>Dom</code>作用を使用して、マウスがクリックされたとき
 に、キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを
 作成してください。</li>
-<li>（普通）シーンを指定された座標を中心に回転する関数を書いてください。
-<strong>ヒント</strong>：最初にシーンを原点まで平行移動しましょう。</li>
+<li>（普通）シーンを指定された座標を中心に回転する関数を書いてください。 <em>ヒント</em> ：最初にシーンを原点まで平行移動しましょう。</li>
 </ol>
 <h2 id="l-system"><a class="header" href="#l-system">L-System</a></h2>
-<p>この章の最後の例として、 <code>canvas</code>パッケージを使用して<strong>L-system</strong>
-(Lindenmayer system) を描画する関数を記述します。</p>
-<p>L-Systemは<strong>アルファベット</strong>、つまり初期状態となるアルファベットの文
-字列と、<strong>生成規則</strong>の集合で定義されています。各生成規則は、アルファベッ
-トの文字をとり、それを置き換える文字の配列を返します。この処理は文字の
-初期配列から始まり、複数回繰り返されます。</p>
+<p>この章の最後の例として、 <code>canvas</code>パッケージを使用して<em>L-system</em>（またの名を<em>Lindenmayer
+system</em>）を描画する関数を記述します。</p>
+<p>L-Systemは<em>アルファベット</em>、つまり初期状態となるアルファベットの文字列と、 <em>生成規則</em>
+の集合で定義されています。各生成規則は、アルファベットの文字をとり、それを置き換える文字の配列を返します。この処理は文字の初期配列から始まり、複数回繰り返されます。</p>
 <p>もしアルファベットの各文字がcanvas上で実行される命令と対応付けられてい
 れば、その指示に順番に従うことでL-Systemを描画することができます。</p>
 <p>たとえば、アルファベットが文字 <code>L</code>（左回転）、 <code>R</code>（右回転）、 <code>F</code>（前
@@ -560,8 +550,7 @@ F -&gt; FLFRRFLF
 FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...
 </code></pre>
-<p>この命令群に対応する線分パスをプロットすると、<strong>コッホ曲線</strong>と呼ばれる
-曲線に近似します。反復回数を増やすと、曲線の解像度が増加していきます。</p>
+<p>この命令群に対応する線分パスをプロットすると、 <em>コッホ曲線</em> と呼ばれる曲線に近似します。反復回数を増やすと、曲線の解像度が増加していきます。</p>
 <p>それでは型と関数の言語へとこれを翻訳してみましょう。</p>
 <p>アルファベットの文字は以下のADTで表現できます。</p>
 <pre><code class="language-haskell">data Letter = L | R | F
@@ -594,9 +583,8 @@ productions F = [F, L, F, R, R, F, L, F]
 -&gt; Effect Unit
 </code></pre>
 <p>最初の2つの引数の型は、値 <code>initial</code>と <code>productions</code>に対応しています。</p>
-<p>3番目の引数は、アルファベットの文字を取り、canvas上のいくつかのアクショ
-ンを実行することによって<strong>翻訳</strong>する関数を表します。この例では、文字
-<code>L</code>は左回転、文字 <code>R</code>で右回転、文字 <code>F</code>は前進を意味します。</p>
+<p>3番目の引数は、アルファベットの文字を取り、canvas上のいくつかのアクションを実行することによって <em>解釈</em>
+する関数を表します。この例では、文字<code>L</code>は左回転、文字 <code>R</code>で右回転、文字 <code>F</code>は前進を意味します。</p>
 <p>最後の引数は、実行したい生成規則の繰り返し回数を表す数です。</p>
 <p>最初に気付くことは、この<code>lsystem</code>関数は1つの型<code>Letter</code>に対してのみ動作
 するのですが、どんなアルファベットについても機能すべきですから、この型
@@ -624,9 +612,8 @@ productions F = [F, L, F, R, R, F, L, F]
 </code></pre>
 <p>まず追加の引数の型として <code>lsystem</code>に型 <code>s</code>が追加されています。この引数
 はL-Systemの初期状態を表しています。</p>
-<p>型 <code>s</code>は引数にも現れますが、翻訳関数（<code>lsystem</code>の第3引数）の返り値の型と
-しても現れます。翻訳関数は今のところ、引数としてL-Systemの現在の状態を
-受け取り、返り値として更新された新しい状態を返します。</p>
+<p>型
+<code>s</code>は引数にも現れますが、解釈関数（<code>lsystem</code>の第3引数）の返り値の型としても現れます。解釈関数は今のところ、引数としてL-Systemの現在の状態を受け取り、返り値として更新された新しい状態を返します。</p>
 <p>この例の場合では、次のような型を使って状態を表す型を定義することができ
 ます。</p>
 <pre><code class="language-haskell">type State =
@@ -657,10 +644,7 @@ lsystem init prod interpret n state = go init n
 </code></pre>
 <p><code>go</code>関数は第2引数に応じて再帰することで動きます。場合分けは2つであり、
 <code>n</code>がゼロであるときと <code>n</code>がゼロでないときです。</p>
-<p>1つ目の場合は再帰は完了し、翻訳関数に応じて現在の文を翻訳します。型
-<code>Array a</code>の文、型 <code>s</code>の状態、型 <code>s -&gt; a -&gt; Effect s</code>の関数があります。
-以前定義した <code>foldM</code>でやったことのように聞こえます。この関数は
-<code>control</code>パッケージで手に入ります。</p>
+<p>1つ目の場合は再帰は完了し、解釈関数に応じて現在の文を解釈します。型<code>Array a</code>の文、型 <code>s</code>の状態、型 <code>s -&gt; a -&gt; Effect s</code>の関数があります。以前定義した <code>foldM</code>でやったことのように聞こえます。この関数は<code>control</code>パッケージで手に入ります。</p>
 <pre><code class="language-haskell">  go s 0 = foldM interpret state s
 </code></pre>
 <p>ゼロでない場合ではどうでしょうか。その場合は、単に生成規則を現在の文の
@@ -670,11 +654,8 @@ lsystem init prod interpret n state = go init n
 </code></pre>
 <p>これだけです！<code>foldM</code>や <code>concatMap</code>のような高階関数を使うと、このよう
 にアイデアを簡潔に表現することができるのです。</p>
-<p>しかし、話はこれで終わりではありません。ここで与えた型は、実際はまだ特
-殊化されすぎています。この定義ではcanvasの操作が実装のどこにも使われて
-いないことに注目してください。それに、まったく <code>Effecta</code>モナドの構造を
-利用していません。実際には、この関数は<strong>どんな</strong>モナド <code>m</code>についても動
-作するのです！</p>
+<p>しかし、話はこれで終わりではありません。ここで与えた型は、実際はまだ特殊化されすぎています。この定義ではcanvasの操作が実装のどこにも使われていないことに注目してください。それに、まったく
+<code>Effecta</code>モナドの構造を利用していません。実際には、この関数は <em>どんな</em> モナド <code>m</code>についても動作するのです！</p>
 <p>この章に添付されたソースコードで指定されている、 <code>lsystem</code>のもっと一般
 的な型は次のようになっています。</p>
 <pre><code class="language-haskell">lsystem :: forall a m s
@@ -686,32 +667,21 @@ lsystem init prod interpret n state = go init n
          -&gt; s
          -&gt; m s
 </code></pre>
-<p>この型が言っているのは、この翻訳関数はモナド <code>m</code>が持つ任意の副作用をまっ
-たく自由に持つことができる、ということだと理解することができます。キャ
-ンバスに描画したり、またはコンソールに情報を出力するかもしれませんし、
-失敗や複数の戻り値に対応しているかもしれません。こういった様々な型の副
-作用を使ったL-Systemを記述してみることを読者にお勧めします。</p>
-<p>この関数は実装からデータを分離することの威力を示す良い例となっています。
-この手法の利点は、複数の異なる方法でデータを解釈する自由が得られること
-です。 <code>lsystem</code>は2つの小さな関数へと分解することさえできるかもしれま
-せん。1つ目は <code>concatMap</code>の適用の繰り返しを使って文を構築するもので、2
-つ目は <code>foldM</code>を使って文を翻訳するものです。これは読者の演習として残し
-ておきます。</p>
-<p>それでは翻訳関数を実装して、この章の例を完成させましょう​​。 <code>lsystem</code>の
-型は型シグネチャが言っているのは、翻訳関数の型は、何らかの型 <code>a</code>と <code>s</code>、
-型構築子 <code>m</code>について、 <code>s -&gt; a -&gt; m s</code>でなければならないということです。
-<code>a</code>を <code>Letter</code>、 <code>s</code>を <code>State</code>、モナド <code>m</code>を <code>Effect</code>というように選び
-たいということがわかっています。これにより次のような型になります。</p>
+<p>この型が言っているのは、この解釈関数はモナド
+<code>m</code>が持つ任意の副作用をまったく自由に持つことができる、ということだと理解することができます。キャンバスに描画したり、またはコンソールに情報を出力するかもしれませんし、失敗や複数の戻り値に対応しているかもしれません。こういった様々な型の副作用を使ったL-Systemを記述してみることを読者にお勧めします。</p>
+<p>この関数は実装からデータを分離することの威力を示す良い例となっています。この手法の利点は、複数の異なる方法でデータを解釈する自由が得られることです。
+<code>lsystem</code>は2つの小さな関数へと分解することさえできるかもしれません。1つ目は
+<code>concatMap</code>の適用の繰り返しを使って文を構築するもので、2つ目は
+<code>foldM</code>を使って文を解釈するものです。これは読者の演習として残しておきます。</p>
+<p>それでは解釈関数を実装して、この章の例を完成させましょう​​。 <code>lsystem</code>の型は型シグネチャが言っているのは、解釈関数の型は、何らかの型 <code>a</code>と <code>s</code>、型構築子 <code>m</code>について、 <code>s -&gt; a -&gt; m s</code>でなければならないということです。<code>a</code>を <code>Letter</code>、 <code>s</code>を <code>State</code>、モナド <code>m</code>を <code>Effect</code>というように選びたいということがわかっています。これにより次のような型になります。</p>
 <pre><code class="language-haskell">    interpret :: State -&gt; Letter -&gt; Effect State
 </code></pre>
-<p>この関数を実装するには、 <code>Letter</code>型の3つのデータ構築子それぞれについて
-処理する必要があります。文字 <code>L</code>（左回転）と <code>R</code>（右回転）の翻訳では、
-<code>theta</code>を適切な角度へ変更するように状態を更新するだけです。</p>
+<p>この関数を実装するには、 <code>Letter</code>型の3つのデータ構築子それぞれについて処理する必要があります。文字 <code>L</code>（左回転）と
+<code>R</code>（右回転）の解釈では、<code>theta</code>を適切な角度へ変更するように状態を更新するだけです。</p>
 <pre><code class="language-haskell">    interpret state L = pure $ state { theta = state.theta - Number.tau / 6.0 }
     interpret state R = pure $ state { theta = state.theta + Number.tau / 6.0 }
 </code></pre>
-<p>文字 <code>F</code>（前進）を翻訳するには、パスの新しい位置を計算し、線分を描画し、
-状態を次のように更新します。</p>
+<p>文字 <code>F</code>（前進）を解釈するには、パスの新しい位置を計算し、線分を描画し、状態を次のように更新します。</p>
 <pre><code class="language-haskell">    interpret state F = do
       let x = state.x + Number.cos state.theta * 1.5
           y = state.y + Number.sin state.theta * 1.5
@@ -735,10 +705,8 @@ lsystem init prod interpret n state = go init n
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>strokePath</code>の代わりに <code>fillPath</code>を使用するように、上の
-L-Systemの例を変更してください。<strong>ヒント</strong>：<code>closePath</code>の呼び出しを含
-め、 <code>moveTo</code>の呼び出しを <code>interpret</code>関数の外側に移動する必要がありま
-す。</p>
+<p>（簡単）<code>strokePath</code>の代わりに <code>fillPath</code>を使用するように、上のL-Systemの例を変更してください。 <em>ヒント</em>
+：<code>closePath</code>の呼び出しを含め、 <code>moveTo</code>の呼び出しを <code>interpret</code>関数の外側に移動する必要があります。</p>
 </li>
 <li>
 <p>（簡単）描画システムへの影響を理解するために、コード中の様々な数値の定
@@ -750,10 +718,10 @@ L-Systemの例を変更してください。<strong>ヒント</strong>：<code>c
 は <code>foldM</code>を使用して結果を解釈するものでなくてはなりません。</p>
 </li>
 <li>
-<p>（普通）<code>setShadowOffsetX</code>アクション、 <code>setShadowOffsetY</code>アクション、
-<code>setShadowBlur</code>アクション、 <code>setShadowColor</code>アクションを使い、塗りつぶ
-された図形にドロップシャドウを追加してください。<strong>ヒント</strong>：PSCiを使っ
-て、これらの関数の型を調べてみましょう。</p>
+<p>（普通）<code>setShadowOffsetX</code>アクション、
+<code>setShadowOffsetY</code>アクション、<code>setShadowBlur</code>アクション、
+<code>setShadowColor</code>アクションを使い、塗りつぶされた図形にドロップシャドウを追加してください。 <em>ヒント</em>
+：PSCiを使って、これらの関数の型を調べてみましょう。</p>
 </li>
 <li>
 <p>（普通）向きを変えるときの角度の大きさは今のところ一定 (<code>tau/6</code>) です。
@@ -777,9 +745,7 @@ R -&gt; R
 F -&gt; FLMLFRMRFRMRFLMLF
 M -&gt; MRFRMLFLMLFLMRFRM
 </code></pre>
-<p>このL-Systemを描画してください。<strong>注意</strong>：最後の文のサイズは反復
-回数に従って指数関数的に増大するので、生成規則の繰り返しの回数を
-削減することが必要になります。</p>
+<p>このL-Systemを描画してください。 <em>注意</em> ：最後の文のサイズは反復回数に従って指数関数的に増大するので、生成規則の繰り返しの回数を削減することが必要になります。</p>
 <p>ここで、生成規則における <code>L</code>と <code>M</code>の間の対称性に注目してください。
 ふたつの「前進」命令は、次のようなアルファベット型を使用すると、
 <code>Boolean</code>値を使って区別することができます。</p>
@@ -789,9 +755,7 @@ M -&gt; MRFRMLFLMLFLMRFRM
 ください。</p>
 </li>
 <li>
-<p>（難しい）翻訳関数で別のモナド <code>m</code>を使ってみましょう。
-<code>Effect.Console</code>作用を利用してコンソール上にL-Systemを出力したり、
-<code>Random</code>作用を利用して状態の型に無作為の「突然変異」を適用したりしてみてください。</p>
+<p>（難しい）解釈関数で別のモナド <code>m</code>を使ってみましょう。<code>Effect.Console</code>作用を利用してコンソール上にL-Systemを出力したり、<code>Random</code>作用を利用して状態の型に無作為の「突然変異」を適用したりしてみてください。</p>
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
@@ -799,10 +763,8 @@ M -&gt; MRFRMLFLMLFLMRFRM
 HTML5 Canvas APIを使う方法について学びました。また、これまで学んできた
 手法の多くを利用した実用的な例について見ました。マップや畳み込み、レコー
 ドと行多相、副作用を扱うための <code>Effect</code>モナドなどです。</p>
-<p>この章の例では、高階関数の威力を示すとともに、<strong>実装からのデータの分離</strong>
-も実演してみせました。これは例えば、代数データ型を使用してこれらの概
-念を次のように拡張し、描画関数からシーンの表現を完全に分離できるように
-なります。</p>
+<p>この章の例では、高階関数の威力を示すとともに、 <em>実装からのデータの分離</em>
+も実演してみせました。これは例えば、代数データ型を使用してこれらの概念を次のように拡張し、描画関数からシーンの表現を完全に分離できるようになります。</p>
 <pre><code class="language-haskell">data Scene
   = Rect Rectangle
   | Arc Arc

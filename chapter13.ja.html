@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -149,9 +151,11 @@
                     <main>
                         <h1 id="テストの自動生成"><a class="header" href="#テストの自動生成">テストの自動生成</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、テスティングの問題に対する、型クラスの特に洗練された応用について示します。<strong>どのように</strong>テストするのかをコンパイラに教えるのではなく、コードが<strong>どのような</strong>性質を持っているべきかを教えることでテストします。型クラスを使って無作為データ生成のための定型コードを隠し、テストケースを仕様から無作為に生成することができます。これは<strong>生成的テスティング</strong>（generative
-testing、または<strong>property-based
-testing</strong>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introduction_to_QuickCheck1">QuickCheck</a>ライブラリによって普及した手法です。</p>
+<p>この章では、テスティングの問題に対する、型クラスの特に洗練された応用について示します。 <em>どのように</em>
+テストするのかをコンパイラに教えるのではなく、コードが <em>どのような</em>
+性質を持っているべきかを教えることでテストします。型クラスを使って無作為データ生成のための定型コードを隠し、テストケースを仕様から無作為に生成することができます。これは<em>生成的テスティング</em>（generative
+testing、または<em>property-based
+testing</em>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introduction_to_QuickCheck1">QuickCheck</a>ライブラリによって普及した手法です。</p>
 <p><code>quickcheck</code>パッケージはHaskellのQuickCheckライブラリをPureScriptにポーティングしたもので、型や構文はもとのライブラリとほとんど同じようになっています。
 <code>quickcheck</code>を使って簡単なライブラリをテストし、Spagoでテストスイートを自動化されたビルドに統合する方法を見ていきます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
@@ -220,10 +224,8 @@ not equal to expected:
 <p>入力 <code>xs</code>が無作為に選ばれた数の配列として生成されていることに注目してください。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を書いてください。
-<strong>補足</strong>：この新しい性質は冗長です。
-というのもこの状況は既に既存の性質で押さえられているからです。
-読者がQuickCheckを使う練習をするための簡単な方法を与えようとしているだけです。</li>
+<li>（簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を書いてください。 <em>補足</em>
+：この新しい性質は冗長です。というのもこの状況は既に既存の性質で押さえられているからです。読者がQuickCheckを使う練習をするための簡単な方法を与えようとしているだけです。</li>
 <li>（簡単）<code>merge</code>の残りの性質に対して、適切なエラーメッセージを追加してください。</li>
 </ol>
 <h2 id="多相的なコードのテスト"><a class="header" href="#多相的なコードのテスト">多相的なコードのテスト</a></h2>
@@ -270,7 +272,7 @@ ints = id
 <pre><code class="language-haskell">class Arbitrary t where
   arbitrary :: Gen t
 </code></pre>
-<p><code>Gen</code>型構築子は<strong>決定的無作為データ生成</strong>の副作用を表しています。
+<p><code>Gen</code>型構築子は <em>決定的無作為データ生成</em> の副作用を表しています。
 決定的無作為データ生成は、擬似乱数生成器を使って、シード値から決定的無作為関数の引数を生成します。
 <code>Test.QuickCheck.Gen</code>モジュールは、ジェネレータを構築するためのいくつかの有用なコンビネータを定義しています。</p>
 <p><code>Gen</code>はモナドでもアプリカティブ関手でもあるので、
@@ -308,9 +310,8 @@ instance arbSorted :: (Arbitrary a, Ord a) =&gt; Arbitrary (Sorted a) where
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs &lt;&gt; sorted ys)
 </code></pre>
-<p>これは些細な変更に見えるかもしれませんが、 <code>xs</code>と <code>ys</code>の型はただの <code>Array Int</code>から <code>Sorted Int</code>へと変更されています。これにより、
-<code>mergePoly</code>関数はソート済みの入力を取る、という<strong>意図</strong>を、わかりやすく示すことができます。理想的には、
-<code>mergePoly</code>関数自体の型が <code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
+<p>これは些細な変更に見えるかもしれませんが、 <code>xs</code>と <code>ys</code>の型はただの <code>Array Int</code>から <code>Sorted Int</code>へと変更されています。これにより、 <code>mergePoly</code>関数はソート済みの入力を取る、という <em>意図</em>
+を、わかりやすく示すことができます。理想的には、 <code>mergePoly</code>関数自体の型が <code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
 <p>より興味深い例として、 <code>Tree</code>モジュールでは枝の値でソートされた二分木の型が定義されています。</p>
 <pre><code class="language-haskell">data Tree a
   = Leaf
@@ -347,7 +348,7 @@ false
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
 <li>（普通）<code>a-z</code>の範囲から無作為に選ばれた文字の集まりを生成する <code>Arbitrary</code>インスタンスを持った、
-<code>String</code>のnewtypeを作ってください。<strong>ヒント</strong>：<code>Test.QuickCheck.Gen</code>モジュールから
+<code>String</code>のnewtypeを作ってください。 <em>ヒント</em> ：<code>Test.QuickCheck.Gen</code>モジュールから
 <code>elements</code>と <code>arrayOf</code>関数を使います。</li>
 <li>（難しい）木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。</li>
 </ol>
@@ -374,9 +375,8 @@ false
 <pre><code class="language-haskell">class Coarbitrary t where
   coarbitrary :: forall r. t -&gt; Gen r -&gt; Gen r
 </code></pre>
-<p><code>coarbitrary</code>関数は、型 <code>t</code>と、関数の結果の型 <code>r</code>についての乱数生成器
-を関数の引数としてとり、乱数生成器を<strong>かき乱す</strong>のにこの引数を使います。
-つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。</p>
+<p><code>coarbitrary</code>関数は、型 <code>t</code>と、関数の結果の型 <code>r</code>についての乱数生成器を関数の引数としてとり、乱数生成器を <em>かき乱す</em>
+のにこの引数を使います。つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。</p>
 <p>また、もし関数の定義域が <code>Coarbitrary</code>で、値域が <code>Arbitrary</code>なら、
 <code>Arbitrary</code>の関数を与える型クラスインスタンスが存在しています。</p>
 <pre><code class="language-haskell">instance arbFunction :: (Coarbitrary a, Arbitrary b) =&gt; Arbitrary (a -&gt; b)
@@ -410,9 +410,8 @@ intToBool = id
 <p>関数は <code>Arbitrary</code>であるだけでなく <code>Coarbitrary</code>でもあります。</p>
 <pre><code class="language-haskell">instance coarbFunction :: (Arbitrary a, Coarbitrary b) =&gt; Coarbitrary (a -&gt; b)
 </code></pre>
-<p>これは値の生成が単純な関数だけに限定されるものではないことを意味してい
-ます。つまり、<strong>高階関数</strong>や、引数が高階関数であるような関数もまた無作
-為に生成することができるのです。</p>
+<p>これは値の生成が単純な関数だけに限定されるものではないことを意味しています。つまり、 <em>高階関数</em>
+や、引数が高階関数であるような関数もまた無作為に生成することができるのです。</p>
 <h2 id="coarbitraryのインスタンスを書く"><a class="header" href="#coarbitraryのインスタンスを書く">Coarbitraryのインスタンスを書く</a></h2>
 <p><code>Gen</code>の <code>Monad</code>や <code>Applicative</code>インスタンスを使って独自のデータ型に対
 して <code>Arbitrary</code>インスタンスを書くことができるのとちょうど同じように、
@@ -440,9 +439,8 @@ intToBool = id
 べる関数です。</p>
 <pre><code class="language-haskell">anywhere :: forall a. (Tree a -&gt; Boolean) -&gt; Tree a -&gt; Boolean
 </code></pre>
-<p>これで、無作為にこの述語関数 <code>anywhere</code>を生成することができるようにな
-りました。例えば、 <code>anywhere</code>関数は<strong>ある命題のもとで不変</strong>であること
-が期待されます。</p>
+<p>これで、無作為にこの述語関数 <code>anywhere</code>を生成することができるようになりました。例えば、 <code>anywhere</code>関数は <em>ある命題のもとで不変</em>
+であることが期待されます。</p>
 <pre><code class="language-haskell">quickCheck \f g t -&gt;
   anywhere (\s -&gt; f s || g s) t ==
     anywhere f (treeOfInt t) || anywhere g t
@@ -492,23 +490,18 @@ Success : Success : ...
 <p>（普通）次のデータ型の<code>Arbitrary</code>と<code>Coarbitrary</code>インスタンスを書いてください。</p>
 <pre><code class="language-haskell">data OneTwoThree a = One a | Two a a | Three a a a
 </code></pre>
-<p><strong>ヒント</strong>：<code>Test.QuickCheck.Gen</code>で定義された <code>oneOf</code>関数を使って <code>Arbitrary</code>インスタンスを定義してください。</p>
+<p><em>ヒント</em> ：<code>Test.QuickCheck.Gen</code>で定義された <code>oneOf</code>関数を使って <code>Arbitrary</code>インスタンスを定義してください。</p>
 </li>
 <li>
-<p>（普通）<code>all</code>を使って <code>quickCheckPure</code>関数の結果を単純化してください。
-その新しい関数は型<code>List Result -&gt; Boolean</code>を持ち、全てのテストがとおえば<code>true</code>を、そうでなければ<code>false</code>を返します。</p>
+<p>（普通）<code>all</code>を使って <code>quickCheckPure</code>関数の結果を単純化してください。その新しい関数は型<code>List Result -&gt; Boolean</code>を持ち、全てのテストがとおえば<code>true</code>を、そうでなければ<code>false</code>を返します。</p>
 </li>
 <li>
-<p>（普通）<code>quickCheckPure</code>の結果を単純にする別の手法として、
-関数<code>squashResults :: List Result -&gt; Result</code>を書いてみてください。
-<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで
-失敗した場合の最初のエラーを保存することを検討してください。</p>
+<p>（普通）<code>quickCheckPure</code>の結果を単純にする別の手法として、関数<code>squashResults :: List Result -&gt; Result</code>を書いてみてください。<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで失敗した場合の最初のエラーを保存することを検討してください。</p>
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では<code>quickcheck</code>パッケージに出会いました。これを使えば<strong>生成的テ
-スティング</strong>のパラダイムを使って宣言的な方法でテストを書くことができま
-した。具体的には以下です。</p>
+<p>この章では<code>quickcheck</code>パッケージに出会いました。これを使えば <em>生成的テスティング</em>
+のパラダイムを使って宣言的な方法でテストを書くことができました。具体的には以下です。</p>
 <ul>
 <li><code>spago test</code>を使ってQuickCheckのテストを自動化する方法を見ました。</li>
 <li>性質を関数として書く方法とエラーメッセージを改良する <code>&lt;?&gt;</code>演算子の使い方を説明しました。</li>

@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -199,30 +201,21 @@ JavaScriptのお手軽で緩いプログラミングスタイルとの、
 とても現実的なバランスを狙った言語だということを理解して頂けたらと思います。</p>
 <h2 id="型と型推論"><a class="header" href="#型と型推論">型と型推論</a></h2>
 <p>動的型付けの言語と静的型付けの言語をめぐる議論についてはよく知られています。
-PureScriptは<strong>静的型付け</strong>の言語、
-つまり正しいプログラムはコンパイラによってその動作を示すような<strong>型</strong>を与えられる言語です。
-逆にいえば、型を​​与えることができないプログラムは<strong>誤ったプログラム</strong>であり、
-コンパイラによって拒否されます。
-動的型付けの言語とは異なり、
-PureScriptでは型は<strong>コンパイル時</strong>のみに存在し、
-実行時には型の表現はありません。</p>
-<p>PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、
-いろいろな意味で異なっていることにも注意することが大切です。
-おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、
-PureScriptの型はMLとHaskellのような言語に影響を受けています。
+PureScriptは <em>静的型付け</em> の言語、つまり正しいプログラムはコンパイラによってその動作を示すような <em>型</em> を与えられる言語です。
+逆にいえば、型を​​与えることができないプログラムは <em>誤ったプログラム</em> であり、コンパイラによって拒否されます。
+動的型付けの言語とは異なり、PureScriptでは型は <em>コンパイル時</em> のみに存在し、実行時には型の表現はありません。</p>
+<p>PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、いろいろな意味で異なっていることにも注意することが大切です。
+おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、PureScriptの型はMLとHaskellのような言語に影響を受けています。
 開発者がプログラムについての強い主張を表明できるので、PureScriptの型は表現力豊かなのです。
-最も重要なのは、PureScriptの型システムは<strong>型推論</strong>(type inference)をサポートしていることです。
-型推論があれば他の言語より遥かに少ない型注釈で住み、
-型システムを厄介者ではなく<strong>道具</strong>にしてくれます。
-簡単な例を示すと、次のコードは<strong>数</strong>を定義していますが、
-それが <code>Number</code>型だという注釈はコードのどこにもありません。</p>
+最も重要なのは、PureScriptの型システムは <em>型推論</em> (type inference) をサポートしていることです。
+型推論があれば他の言語より遥かに少ない型注釈で済み、型システムを厄介者ではなく <em>道具</em> にしてくれます。
+簡単な例を示すと、次のコードは <em>数</em> を定義していますが、それが <code>Number</code>型だという注釈はコードのどこにもありません。</p>
 <pre><code class="language-haskell">iAmANumber =
   let square x = x * x
   in square 42.0
 </code></pre>
-<p>次のもっと複雑な例では、
-<strong>コンパイラにとって未知</strong>の型が存在しているときでさえも、
-型注釈なしで型の正しさを確かめることができるということが示されています。</p>
+<p>次のもっと複雑な例では、 <em>コンパイラにとって未知</em>
+の型が存在しているときでさえも、型注釈なしで型の正しさを確かめることができるということが示されています。</p>
 <pre><code class="language-haskell">iterate f 0 x = x
 iterate f n x = iterate f (n - 1) (f x)
 </code></pre>

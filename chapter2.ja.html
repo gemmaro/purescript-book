@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -256,14 +258,11 @@ All 4 tests passed! 🎉
 これで次の演習を自力で解くための準備ができました。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（簡単）指定された半径の円の面積を計算する関数<code>circleArea</code>を書いてみましょう。
-<code>Numbers</code>モジュールで定義されている <code>pi</code>定数を使用してください。
-<strong>ヒント</strong>： <code>import Data.Number</code>文を修正して、 <code>pi</code>をインポートすることを忘れないようにしましょう。</li>
-<li>（普通）<code>Int</code>を取って<code>100</code>で割ったあとの余りを返す関数<code>leftoverCents</code>を書いてみましょう。
-<code>rem</code>関数を使ってください。
-<a href="https://pursuit.purescript.org/">Pursuit</a>でこの関数を検索して、
-使用法とどのモジュールからインポートしてくるか調べましょう。
-<strong>補足</strong>：自動補完の提案を受け付ければ、IDEでこの関数の自動的なインポートがサポートされているかもしれません。</li>
+<li>（簡単）指定された半径の円の面積を計算する関数<code>circleArea</code>を書いてみましょう。<code>Numbers</code>モジュールで定義されている
+<code>pi</code>定数を使用してください。 <em>ヒント</em> ： <code>import Data.Number</code>文を修正して、
+<code>pi</code>をインポートすることを忘れないようにしましょう。</li>
+<li>（普通）<code>Int</code>を取って<code>100</code>で割ったあとの余りを返す関数<code>leftoverCents</code>を書いてみましょう。<code>rem</code>関数を使ってください。<a href="https://pursuit.purescript.org/">Pursuit</a>でこの関数を検索して、使用法とどのモジュールからインポートしてくるか調べましょう。
+<em>補足</em> ：自動補完の提案を受け付ければ、IDEでこの関数の自動的なインポートがサポートされているかもしれません。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章ではPureScriptコンパイラとSpagoツールをインストールしました。

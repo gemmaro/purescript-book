@@ -73,10 +73,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -6838,8 +6840,8 @@ constructor for your <code>newtype</code>.</p>
 <p>These techniques all leverage PureScript's module and type systems, either to prevent the user from making mistakes or to improve the syntax of the domain-specific language.</p>
 <p>The implementation of domain-specific languages in functional programming languages is an area of active research, but hopefully this provides a useful introduction some simple techniques, and illustrates the power of working in a language with expressive types.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="実例によるpurescript"><a class="header" href="#実例によるpurescript">実例によるPureScript</a></h1>
-<p>このリポジトリには、Phil Freemanによる<strong>PureScript by
-Example</strong>の<a href="https://github.com/purescript-contrib/purescript-book/">コミュニティフォーク</a>が含まれます。
+<p>このリポジトリには、Phil Freemanによる <em>PureScript by Example</em>
+の<a href="https://github.com/purescript-contrib/purescript-book/">コミュニティフォーク</a>が含まれます。
 同書は&quot;the PureScript book&quot; としても知られています。
 このバージョンはコードと演習が最近のバージョンのコンパイラ、ライブラリ、ツールで動くように更新されています。
 PureScriptのエコシステムの最新の機能を紹介すべく書き直された章もあります。</p>
@@ -6950,30 +6952,21 @@ JavaScriptのお手軽で緩いプログラミングスタイルとの、
 とても現実的なバランスを狙った言語だということを理解して頂けたらと思います。</p>
 <h2 id="型と型推論"><a class="header" href="#型と型推論">型と型推論</a></h2>
 <p>動的型付けの言語と静的型付けの言語をめぐる議論についてはよく知られています。
-PureScriptは<strong>静的型付け</strong>の言語、
-つまり正しいプログラムはコンパイラによってその動作を示すような<strong>型</strong>を与えられる言語です。
-逆にいえば、型を​​与えることができないプログラムは<strong>誤ったプログラム</strong>であり、
-コンパイラによって拒否されます。
-動的型付けの言語とは異なり、
-PureScriptでは型は<strong>コンパイル時</strong>のみに存在し、
-実行時には型の表現はありません。</p>
-<p>PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、
-いろいろな意味で異なっていることにも注意することが大切です。
-おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、
-PureScriptの型はMLとHaskellのような言語に影響を受けています。
+PureScriptは <em>静的型付け</em> の言語、つまり正しいプログラムはコンパイラによってその動作を示すような <em>型</em> を与えられる言語です。
+逆にいえば、型を​​与えることができないプログラムは <em>誤ったプログラム</em> であり、コンパイラによって拒否されます。
+動的型付けの言語とは異なり、PureScriptでは型は <em>コンパイル時</em> のみに存在し、実行時には型の表現はありません。</p>
+<p>PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、いろいろな意味で異なっていることにも注意することが大切です。
+おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、PureScriptの型はMLとHaskellのような言語に影響を受けています。
 開発者がプログラムについての強い主張を表明できるので、PureScriptの型は表現力豊かなのです。
-最も重要なのは、PureScriptの型システムは<strong>型推論</strong>(type inference)をサポートしていることです。
-型推論があれば他の言語より遥かに少ない型注釈で住み、
-型システムを厄介者ではなく<strong>道具</strong>にしてくれます。
-簡単な例を示すと、次のコードは<strong>数</strong>を定義していますが、
-それが <code>Number</code>型だという注釈はコードのどこにもありません。</p>
+最も重要なのは、PureScriptの型システムは <em>型推論</em> (type inference) をサポートしていることです。
+型推論があれば他の言語より遥かに少ない型注釈で済み、型システムを厄介者ではなく <em>道具</em> にしてくれます。
+簡単な例を示すと、次のコードは <em>数</em> を定義していますが、それが <code>Number</code>型だという注釈はコードのどこにもありません。</p>
 <pre><code class="language-haskell">iAmANumber =
   let square x = x * x
   in square 42.0
 </code></pre>
-<p>次のもっと複雑な例では、
-<strong>コンパイラにとって未知</strong>の型が存在しているときでさえも、
-型注釈なしで型の正しさを確かめることができるということが示されています。</p>
+<p>次のもっと複雑な例では、 <em>コンパイラにとって未知</em>
+の型が存在しているときでさえも、型注釈なしで型の正しさを確かめることができるということが示されています。</p>
 <pre><code class="language-haskell">iterate f 0 x = x
 iterate f n x = iterate f (n - 1) (f x)
 </code></pre>
@@ -7219,14 +7212,11 @@ All 4 tests passed! 🎉
 これで次の演習を自力で解くための準備ができました。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（簡単）指定された半径の円の面積を計算する関数<code>circleArea</code>を書いてみましょう。
-<code>Numbers</code>モジュールで定義されている <code>pi</code>定数を使用してください。
-<strong>ヒント</strong>： <code>import Data.Number</code>文を修正して、 <code>pi</code>をインポートすることを忘れないようにしましょう。</li>
-<li>（普通）<code>Int</code>を取って<code>100</code>で割ったあとの余りを返す関数<code>leftoverCents</code>を書いてみましょう。
-<code>rem</code>関数を使ってください。
-<a href="https://pursuit.purescript.org/">Pursuit</a>でこの関数を検索して、
-使用法とどのモジュールからインポートしてくるか調べましょう。
-<strong>補足</strong>：自動補完の提案を受け付ければ、IDEでこの関数の自動的なインポートがサポートされているかもしれません。</li>
+<li>（簡単）指定された半径の円の面積を計算する関数<code>circleArea</code>を書いてみましょう。<code>Numbers</code>モジュールで定義されている
+<code>pi</code>定数を使用してください。 <em>ヒント</em> ： <code>import Data.Number</code>文を修正して、
+<code>pi</code>をインポートすることを忘れないようにしましょう。</li>
+<li>（普通）<code>Int</code>を取って<code>100</code>で割ったあとの余りを返す関数<code>leftoverCents</code>を書いてみましょう。<code>rem</code>関数を使ってください。<a href="https://pursuit.purescript.org/">Pursuit</a>でこの関数を検索して、使用法とどのモジュールからインポートしてくるか調べましょう。
+<em>補足</em> ：自動補完の提案を受け付ければ、IDEでこの関数の自動的なインポートがサポートされているかもしれません。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章ではPureScriptコンパイラとSpagoツールをインストールしました。
@@ -7310,8 +7300,7 @@ Array Boolean
 &gt; :type [1, false]
 Could not match type Int with type Boolean.
 </code></pre>
-<p>最後の例で起きているエラーは型検証器によって報告されたもので、
-配列の2つの要素の型を<strong>単一化</strong>（Unification、等価にするの意）しようとして失敗したことを示しています。</p>
+<p>最後の例で起きているエラーは型検証器によって報告されたもので、配列の2つの要素の型を<em>単一化</em>（Unification、等価にするの意）しようとして失敗したことを示しています。</p>
 <p>レコードはJavaScriptのオブジェクトに対応しており、レコードリテラルはJavaScriptのオブジェクトリテラルと同じ構文になっています。</p>
 <pre><code class="language-text">&gt; author = { name: &quot;Phil&quot;, interests: [&quot;Functional Programming&quot;, &quot;JavaScript&quot;] }
 
@@ -7321,7 +7310,7 @@ Could not match type Int with type Boolean.
 }
 </code></pre>
 <p>この型が示しているのは、指定されたオブジェクトは、 <code>String</code>型のフィールド <code>name</code> と <code>Array String</code>つまり
-<code>String</code>の配列の型のフィールド <code>interests</code> という2つの<strong>フィールド</strong> (field) を持っているということです。</p>
+<code>String</code>の配列の型のフィールド <code>interests</code> という2つの <em>フィールド</em> (field) を持っているということです。</p>
 <p>レコードのフィールドは、ドットに続けて参照したいフィールドのラベルを書くと参照することができます。</p>
 <pre><code class="language-text">&gt; author.name
 &quot;Phil&quot;
@@ -7341,15 +7330,14 @@ forall a b. a -&gt; b -&gt; a
 <pre><code class="language-haskell">add :: Int -&gt; Int -&gt; Int
 add x y = x + y
 </code></pre>
-<p>バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数をインラインで定義することもできます。
-PSCiで複数行の宣言を入力するには、 <code>:paste</code>コマンドを使用して「貼り付けモード」に入ります。
-このモードでは、<strong>Control-D</strong>キーシーケンスを使用して宣言を終了します。</p>
+<p>バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数をインラインで定義することもできます。PSCiで複数行の宣言を入力するには、
+<code>:paste</code>コマンドを使用して「貼り付けモード」に入ります。このモードでは、 <em>Control-D</em> キーシーケンスを使用して宣言を終了します。</p>
 <pre><code class="language-text">&gt; :paste
 … add :: Int -&gt; Int -&gt; Int
 … add = \x y -&gt; x + y
 … ^D
 </code></pre>
-<p>PSCiでこの関数が定義されていると、次のように関数の隣に2つの引数を空白で区切って書くことで、関数をこれらの引数に<strong>適用</strong> (apply)
+<p>PSCiでこの関数が定義されていると、次のように関数の隣に2つの引数を空白で区切って書くことで、関数をこれらの引数に <em>適用</em> (apply)
 することができます。</p>
 <pre><code class="language-text">&gt; add 10 20
 30
@@ -7359,11 +7347,10 @@ PSCiで複数行の宣言を入力するには、 <code>:paste</code>コマン�
 <pre><code class="language-text">&gt; :type flip
 forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 </code></pre>
-<p>この <code>forall</code>キーワードは、 <code>flip</code>が<strong>全称量化された型</strong> (universally quantified type)
-を持っていることを示しています。
-これは、 <code>a</code>や <code>b</code>、 <code>c</code>をどの型に置き換えても、 <code>flip</code>はその型でうまく動作するという意味です。</p>
-<p>例えば、 <code>a</code>を <code>Int</code>、 <code>b</code>を <code>String</code>、 <code>c</code>を <code>String</code>というように選んでみたとします。
-この場合、 <code>flip</code>の型を次のように<strong>特殊化</strong> (specialize) することができます。</p>
+<p>この <code>forall</code>キーワードは、 <code>flip</code>が <em>全称量化された型</em> (universally quantified type)
+を持っていることを示しています。これは、 <code>a</code>や <code>b</code>、 <code>c</code>をどの型に置き換えても、 <code>flip</code>はその型でうまく動作するという意味です。</p>
+<p>例えば、 <code>a</code>を <code>Int</code>、 <code>b</code>を <code>String</code>、 <code>c</code>を <code>String</code>というように選んでみたとします。この場合、
+<code>flip</code>の型を次のように <em>特殊化</em> (specialize) することができます。</p>
 <pre><code class="language-text">(Int -&gt; String -&gt; String) -&gt; String -&gt; Int -&gt; String
 </code></pre>
 <p>量化された型を特殊化したいということをコードで示す必要はありません。特殊化は自動的に行われます。たとえば、すでにその型の
@@ -7393,7 +7380,7 @@ Could not match type Int with type String
 <pre><code class="language-haskell">add x y z = x +
 y + z
 </code></pre>
-<p>後者では、PureScriptコンパイラはそれぞれの行ごとにひとつ、つまり<strong>2つ</strong>の宣言であると構文解析します。</p>
+<p>後者では、PureScriptコンパイラはそれぞれの行ごとにひとつ、つまり <em>2つ</em> の宣言であると構文解析します。</p>
 <p>一般に、同じブロック内で定義された宣言は同じ深さで字下げする必要があります。
 例えばPSCiでlet文の宣言は同じ深さで字下げしなければなりません。
 次は正しいコードです。</p>
@@ -7425,10 +7412,10 @@ y + z
   , address   :: Address
   }
 </code></pre>
-<p>これは <code>Entry</code>という<strong>型同義語</strong>（type synonym、型シノニム）を定義しています。
-型 <code>Entry</code>は等号の右辺と同じ型ということです。
-レコードの型はいずれも文字列である <code>firstName</code>、 <code>lastName</code>、 <code>phone</code>という3つのフィールドからなります。
-前者の2つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型 <code>Address</code>を持っています。</p>
+<p>これは <code>Entry</code>という<em>型同義語</em>（type synonym、型シノニム）を定義しています。型
+<code>Entry</code>は等号の右辺と同じ型ということです。レコードの型はいずれも文字列である <code>firstName</code>、 <code>lastName</code>、
+<code>phone</code>という3つのフィールドからなります。前者の2つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型
+<code>Address</code>を持っています。</p>
 <pre><code class="language-haskell">type Address =
   { street :: String
   , city   :: String
@@ -7439,21 +7426,21 @@ y + z
 <p>それでは、3つめの型同義語も定義してみましょう。住所録のデータ構造としては、単に項目の連結リストとして格納することにします。</p>
 <pre><code class="language-haskell">type AddressBook = List Entry
 </code></pre>
-<p><code>List Entry</code>は <code>Array Entry</code>とは同じではないということに注意してください。 <code>Array Entry</code>は住所録の項目の<strong>配列</strong>を意味しています。</p>
+<p><code>List Entry</code>は <code>Array Entry</code>とは同じではないということに注意してください。 <code>Array Entry</code>は住所録の項目の
+<em>配列</em> を意味しています。</p>
 <h2 id="型構築子と種"><a class="header" href="#型構築子と種">型構築子と種</a></h2>
-<p><code>List</code>は<strong>型構築子</strong>（type constructor、型コンストラクタ）の一例になっています。
-<code>List</code>そのものは型ではなく、何らかの型 <code>a</code>があるとき <code>List a</code>が型になっています。
-つまり、 <code>List</code>は<strong>型引数</strong> (type argument) <code>a</code>をとり、新たな型 <code>List a</code>を<strong>構築</strong>するのです。</p>
-<p>ちょうど関数適用と同じように、型構築子は他の型に並べることで適用されることに注意してください。型 <code>List　Entry</code>は実は型構築子
-<code>List</code>が型 <code>Entry</code>に<strong>適用</strong>されたものです。これは住所録項目のリストを表しています。</p>
+<p><code>List</code>は<em>型構築子</em>（type constructor、型コンストラクタ）の一例になっています。<code>List</code>そのものは型ではなく、何らかの型
+<code>a</code>があるとき <code>List a</code>が型になっています。つまり、 <code>List</code>は <em>型引数</em> (type argument) <code>a</code>をとり、新たな型
+<code>List a</code>を <em>構築</em> するのです。</p>
+<p>ちょうど関数適用と同じように、型構築子は他の型に並べることで適用されることに注意してください。型 <code>List Entry</code>は実は型構築子
+<code>List</code>が型 <code>Entry</code>に <em>適用</em> されたものです。これは住所録項目のリストを表しています。</p>
 <p>（型注釈演算子 <code>::</code>を使って）もし型 <code>List</code>の値を間違って定義しようとすると、今まで見たことのないような種類のエラーが表示されるでしょう。</p>
 <pre><code class="language-text">&gt; import Data.List
 &gt; Nil :: List
 In a type-annotated expression x :: t, the type t must have kind Type
 </code></pre>
-<p>これは<strong>種エラー</strong> (kind error) です。
-値がその<strong>型</strong>で区別されるのと同じように、型はその<strong>種</strong> (kind)
-によって区別され、間違った型の値が<strong>型エラー</strong>になるように、<strong>間違った種</strong>の型は<strong>種エラー</strong>を引き起こします。</p>
+<p>これは <em>種エラー</em> (kind error) です。値がその <em>型</em> で区別されるのと同じように、型はその <em>種</em> (kind)
+によって区別され、間違った型の値が <em>型エラー</em> になるように、 <em>間違った種</em> の型は <em>種エラー</em> を引き起こします。</p>
 <p><code>Number</code>や <code>String</code>のような、値を持つすべての型の種を表す <code>Type</code>と呼ばれる特別な種があります。</p>
 <p>型構築子にも種があります。
 たとえば、種 <code>Type -&gt; Type</code>はちょうど <code>List</code>のような型から型への関数を表しています。
@@ -7469,7 +7456,7 @@ Type -&gt; Type
 &gt; :kind List String
 Type
 </code></pre>
-<p>PureScriptの<strong>種システム</strong>は他にも面白い種に対応していますが、それらについては本書の他の部分で見ていくことになるでしょう。</p>
+<p>PureScriptの <em>種システム</em> は他にも面白い種に対応していますが、それらについては本書の他の部分で見ていくことになるでしょう。</p>
 <h2 id="住所録の項目の表示"><a class="header" href="#住所録の項目の表示">住所録の項目の表示</a></h2>
 <p>それでは最初に、文字列で住所録の項目を表現するような関数を書いてみましょう。
 まずは関数に型を与えることから始めます。
@@ -7528,12 +7515,10 @@ emptyBook = empty
 </code></pre>
 <p>この型シグネチャに書かれているのは、最初の引数として <code>Entry</code>、第二引数として <code>AddressBook</code>を取り、新しい
 <code>AddressBook</code>を返すということです。</p>
-<p>既存の <code>AddressBook</code>を直接変更することはしません。
-その代わりに、同じデータが含まれている新しい <code>AddressBook</code>を返すようにします。
-このように、 <code>AddressBook</code>は<strong>不変データ構造</strong> (immutable data structure) の一例となっています。
-これはPureScriptにおける重要な考え方です。
-変更はコードの副作用であり、効率の良いコードの振る舞いの判断を妨げます。
-そのため、我々は可能な限り純粋な関数や不変のデータを好むのです。</p>
+<p>既存の <code>AddressBook</code>を直接変更することはしません。その代わりに、同じデータが含まれている新しい
+<code>AddressBook</code>を返すようにします。このように、 <code>AddressBook</code>は <em>不変データ構造</em> (immutable data
+structure)
+の一例となっています。これはPureScriptにおける重要な考え方です。変更はコードの副作用であり、効率の良いコードの振る舞いの判断を妨げます。そのため、我々は可能な限り純粋な関数や不変のデータを好むのです。</p>
 <p><code>insertEntry</code>を実装するのに<code>Data.List</code>の<code>Cons</code>関数が使えます。
 この関数の型を見るには、PSCiを起動し <code>:type</code>コマンドを使います。</p>
 <pre><code class="language-text">$ spago repl
@@ -7558,17 +7543,15 @@ forall a. a -&gt; List a -&gt; List a
 </code></pre>
 <p>等号の左側にある2つの引数 <code>entry</code>と <code>book</code>がスコープに導入されますから、これらに <code>Cons</code>関数を適用して結果の値を作成しています。</p>
 <h2 id="カリー化された関数"><a class="header" href="#カリー化された関数">カリー化された関数</a></h2>
-<p>PureScriptでは、関数は常にひとつの引数だけを取ります。
-<code>insertEntry</code>関数は2つの引数を取るように見えますが、これは実際には<strong>カリー化された関数</strong> (curried function)
-の一例となっています。</p>
+<p>PureScriptでは、関数は常にひとつの引数だけを取ります。<code>insertEntry</code>関数は2つの引数を取るように見えますが、これは実際には
+<em>カリー化された関数</em> (curried function) の一例となっています。</p>
 <p><code>insertEntry</code>の型に含まれる <code>-&gt;</code>は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。</p>
 <pre><code class="language-haskell">Entry -&gt; (AddressBook -&gt; AddressBook)
 </code></pre>
 <p>すなわち、 <code>insertEntry</code>は関数を返す関数である、ということです！この関数は単一の引数 <code>Entry</code>を取り、それから単一の引数
 <code>AddressBook</code>を取り新しい <code>AddressBook</code>を返す新しい関数を返すのです。</p>
-<p>これは例えば、最初の引数だけを与えると <code>insertEntry</code>を<strong>部分適用</strong> (partial application)
-できることを意味します。
-PSCiでこの結果の型を見てみましょう。</p>
+<p>これは例えば、最初の引数だけを与えると <code>insertEntry</code>を <em>部分適用</em> (partial application)
+できることを意味します。PSCiでこの結果の型を見てみましょう。</p>
 <pre><code class="language-text">&gt; :type insertEntry entry
 
 AddressBook -&gt; AddressBook
@@ -7584,9 +7567,7 @@ AddressBook
 </code></pre>
 <p>これは関数適用が左結合であるためで、
 なぜ単に空白で区切るだけで関数に引数を与えることができるのかの説明にもなっています。</p>
-<p>関数の型の<code>-&gt;</code>演算子は関数の<strong>型構築子</strong>です。
-この演算子は2つの型引数を取ります。
-左右の被演算子はそれぞれ関数の引数の型と返値の型です。</p>
+<p>関数の型の<code>-&gt;</code>演算子は関数の <em>型構築子</em> です。この演算子は2つの型引数を取ります。左右の被演算子はそれぞれ関数の引数の型と返値の型です。</p>
 <p>本書では今後、「2引数の関数」というように表現することがあることに注意してください。
 しかしそれはカリー化された関数を意味していると考えるべきで、その関数は最初の引数を取り2つ目の引数を取る別の関数を返すのです。</p>
 <p>今度は <code>insertEntry</code>の定義について考えてみます。</p>
@@ -7604,9 +7585,8 @@ insertEntry entry = Cons entry
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 insertEntry = Cons
 </code></pre>
-<p>この処理は<strong>イータ変換</strong> (eta conversion)
-と呼ばれ、（その他の技法を併用して）引数を参照することなく関数を定義する<strong>ポイントフリー形式</strong> (point-free form)
-へと関数を書き換えるのに使うことができます。</p>
+<p>この処理は <em>イータ変換</em> (eta conversion) と呼ばれ、（その他の技法を併用して）引数を参照することなく関数を定義する
+<em>ポイントフリー形式</em> (point-free form) へと関数を書き換えるのに使うことができます。</p>
 <p><code>insertEntry</code>の場合には、イータ変換によって「<code>insertEntry</code>は単にリストに対するconsだ」となり、関数の定義はとても明確になりました。
 しかしながら、一般的にポイントフリー形式のほうがいいのかどうかには議論の余地があります。</p>
 <h2 id="プロパティ取得子"><a class="header" href="#プロパティ取得子">プロパティ取得子</a></h2>
@@ -7614,8 +7594,7 @@ insertEntry = Cons
 <code>Entry</code>から<code>Address</code>を取り出すインライン関数は次のように書けます。</p>
 <pre><code class="language-haskell">\entry -&gt; entry.address
 </code></pre>
-<p>PureScriptでは<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#property-accessors"><strong>プロパティ取得子</strong></a>という略記が使えます。
-この略記では下線文字は無名関数の引数として振舞うため、上記のインライン関数は次と等価です。</p>
+<p>PureScriptでは<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#property-accessors"><em>プロパティ取得子</em></a>という略記が使えます。この略記では下線文字は無名関数の引数として振舞うため、上記のインライン関数は次と等価です。</p>
 <pre><code class="language-haskell">_.address
 </code></pre>
 <p>これは何段階のプロパティでも動くため、<code>Entry</code>に関連付く街を取り出す関数は次のように書けます。</p>
@@ -7656,7 +7635,7 @@ forall a. List a -&gt; Maybe a
 <code>a</code>のオプショナルな値、つまり
 <code>a</code>の値を持つか持たないかのどちらかの値を示しており、JavaScriptのような言語で値がないことを示すために使われる
 <code>null</code>の型安全な代替手段を提供します。これについては後の章で詳しく扱います。</p>
-<p><code>filter</code>と <code>head</code>の全称量化された型は、PureScriptコンパイラによって次のように<strong>特殊化</strong> (specialized)
+<p><code>filter</code>と <code>head</code>の全称量化された型は、PureScriptコンパイラによって次のように <em>特殊化</em> (specialized)
 されます。</p>
 <pre><code class="language-haskell">filter :: (Entry -&gt; Boolean) -&gt; AddressBook -&gt; AddressBook
 
@@ -7691,16 +7670,15 @@ head :: AddressBook -&gt; Maybe Entry
 <p>最上位での宣言と同じように、必ずしも
 <code>filterEntry</code>の型シグネチャを指定しなくてもよいことに注意してください。ただし、ドキュメントとしても役に立つので型シグネチャを書くことは推奨されています。</p>
 <h2 id="中置の関数適用"><a class="header" href="#中置の関数適用">中置の関数適用</a></h2>
-<p>これまでお話しした関数のほとんどは<strong>前置</strong>関数適用でした。
-関数名が引数の<strong>前</strong>に置かれていたということです。
-例えば<code>insertEntry</code>関数を使って<code>Entry</code> (<code>john</code>) を空の<code>AddressBook</code>に追加する場合、以下のように書けます。</p>
+<p>これまでお話しした関数のほとんどは <em>前置</em> 関数適用でした。関数名が引数の <em>前</em>
+に置かれていたということです。例えば<code>insertEntry</code>関数を使って<code>Entry</code> (<code>john</code>)
+を空の<code>AddressBook</code>に追加する場合、以下のように書けます。</p>
 <pre><code class="language-haskell">&gt; book1 = insertEntry john emptyBook
 </code></pre>
-<p>しかしこの章には<strong>中置</strong><a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators">2引数演算子</a>の例も含まれています。
-例えば<code>filterEntry</code>の定義中の<code>==</code>演算子で、演算子が2つの引数の<strong>間</strong>に置かれています。
-実はこうした中置演算子はPureScriptのソースコードで、
-背後にある<strong>前置</strong>版の実装への中置別称として定義されています。
-例えば<code>==</code>は以下の行により前置の<code>eq</code>関数の中置別称として定義されています。</p>
+<p>しかしこの章には <em>中置</em>
+<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators">2引数演算子</a>の例も含まれています。例えば<code>filterEntry</code>の定義中の<code>==</code>演算子で、演算子が2つの引数の
+<em>間</em> に置かれています。実はこうした中置演算子はPureScriptのソースコードで、背後にある <em>前置</em>
+版の実装への中置別称として定義されています。例えば<code>==</code>は以下の行により前置の<code>eq</code>関数の中置別称として定義されています。</p>
 <pre><code class="language-haskell">infix 4 eq as ==
 </code></pre>
 <p>したがって<code>filterEntry</code>中の<code>entry.firstName == firstName</code>は<code>eq entry.firstName firstName</code>で置き換えられます。
@@ -7786,9 +7764,8 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 <h2 id="関数合成"><a class="header" href="#関数合成">関数合成</a></h2>
 <p>イータ変換を使うと <code>insertEntry</code>関数を簡略化できたのと同じように、引数をよく考察すると
 <code>findEntry</code>の定義を簡略化することができます。</p>
-<p>引数 <code>book</code>が関数 <code>filter filterEntry</code>に渡され、この適用の結果が
-<code>head</code>に渡されることに注目してください。これは言いかたを変えれば、 <code>filter filterEntry</code>と <code>head</code>の<strong>合成</strong>
-(composition) に <code>book</code>が渡されるということです。</p>
+<p>なお、引数 <code>book</code>は関数 <code>filter filterEntry</code>に渡され、この適用の結果が <code>head</code>に渡されます。これは言いかたを変えれば、
+<code>filter filterEntry</code>と <code>head</code>の <em>合成</em> (composition) に <code>book</code>が渡されるということです。</p>
 <p>PureScriptの関数合成演算子は <code>&lt;&lt;&lt;</code>と <code>&gt;&gt;&gt;</code>です。前者は「逆方向の合成」であり、後者は「順方向の合成」です。</p>
 <p>いずれかの演算子を使用して <code>findEntry</code>の右辺を書き換えることができます。逆順の合成を使用すると、右辺は次のようになります。</p>
 <pre><code class="language-haskell">(head &lt;&lt;&lt; filter filterEntry) book
@@ -7807,22 +7784,20 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 関数はひとつの役目だけをこなし、機能を関数合成で組み立てるというように。</p>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
-<li>（簡単）<code>findEntry</code>関数の定義の主な部分式の型を書き下し、 <code>findEntry</code>関数についてよく理解しているか試してみましょう。
-たとえば、 <code>findEntry</code>の定義のなかにある <code>head</code>関数の型は <code>AddressBook -&gt; Maybe Entry</code>と特殊化されています。
-<strong>補足</strong>：この問題にはテストがありません。</li>
-<li>（普通）関数<code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code>を書いてください。
-この関数は与えられた通りの住所から<code>Entry</code>を見付け出します。
-<strong>ヒント</strong>：<code>findEntry</code>にある既存のコードを再利用してください。
-実装した関数をPSCiと<code>spago test</code>を走らせることでテストしてください。</li>
+<li>（簡単）<code>findEntry</code>関数の定義の主な部分式の型を書き下し、
+<code>findEntry</code>関数についてよく理解しているか試してみましょう。たとえば、 <code>findEntry</code>の定義のなかにある
+<code>head</code>関数の型は <code>AddressBook -&gt; Maybe Entry</code>と特殊化されています。 <em>補足</em>
+：この問題にはテストがありません。</li>
+<li>（普通）関数<code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code>を書いてください。この関数は与えられた通りの住所から<code>Entry</code>を見付け出します。 <em>ヒント</em>
+：<code>findEntry</code>にある既存のコードを再利用してください。実装した関数をPSCiと<code>spago test</code>を走らせることでテストしてください。</li>
 <li>（普通）<code>filterEntry</code>を（<code>&lt;&lt;&lt;</code>や<code>&gt;&gt;&gt;</code>を使った）合成で置き換えて、<code>findEntryByStreet</code>を書き直してください。
 合成の対象は、プロパティ取得子（<code>_.</code>記法を使います）と、与えられた文字列引数が与えられた通りの住所に等しいかを判定する関数です。</li>
 <li>（普通）指定された名前が <code>AddressBook</code>に存在するかどうかを調べて真偽値で返す関数<code>isInBook</code>を書いてみましょう。
-<strong>ヒント</strong>：リストが空かどうかを調べる <code>Data.List.null</code>関数の型をPSCiで調べてみてみましょう。</li>
-<li>（難しい）「重複」している項目を住所録から削除する関数 <code>removeDuplicates</code>を書いてみましょう。
-項目が同じ姓名を共有していれば<code>address</code>フィールドに関係なく、項目が重複していると考えます。
-<strong>ヒント</strong>：関数 <code>Data.List.nubBy</code>の型を、PSCiを使用して調べてみましょう。
-この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。
-なお、それぞれの重複する項目の集合における最初の要素（リストの先頭に最も近い）が保持する項目です。</li>
+<em>ヒント</em> ：リストが空かどうかを調べる <code>Data.List.null</code>関数の型をPSCiで調べてみてみましょう。</li>
+<li>（難しい）「重複」している項目を住所録から削除する関数
+<code>removeDuplicates</code>を書いてみましょう。項目が同じ姓名を共有していれば<code>address</code>フィールドに関係なく、項目が重複していると考えます。
+<em>ヒント</em> ：関数
+<code>Data.List.nubBy</code>の型を、PSCiを使用して調べてみましょう。この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。なお、それぞれの重複する項目の集合における最初の要素（リストの先頭に最も近い）が保持する項目です。</li>
 </ol>
 <h2 id="まとめ-1"><a class="header" href="#まとめ-1">まとめ</a></h2>
 <p>この章では、関数型プログラミングの新しい概念をいくつか導入しました。</p>
@@ -7861,10 +7836,10 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 </ul>
 <h2 id="導入-1"><a class="header" href="#導入-1">導入</a></h2>
 <p>再帰は一般のプログラミングでも重要な手法ですが、特に純粋関数型プログラミングでは当たり前のように用いられます。この章で見ていくように、再帰はプログラムの変更可能な状態を減らすために役立つからです。</p>
-<p>再帰は<strong>分割統治</strong> (divide and conquer) 戦略と密接な関係があります。
-分割統治とはすなわち、何らかの入力としての問題を解くにあたり、入力を小さな部分に分割し、それぞれの部分について問題を解いて、部分ごとの答えから最終的な答えを組み立てるということです。</p>
+<p>再帰は <em>分割統治</em> (divide and conquer)
+戦略と密接な関係があります。分割統治とはすなわち、何らかの入力としての問題を解くにあたり、入力を小さな部分に分割し、それぞれの部分について問題を解いて、部分ごとの答えから最終的な答えを組み立てるということです。</p>
 <p>それでは、PureScriptにおける再帰の簡単な例をいくつか見てみましょう。</p>
-<p>次は<strong>階乗関数</strong> (factorial function) のよくある例です。</p>
+<p>次は <em>階乗関数</em> (factorial function) のありふれた例です。</p>
 <pre><code class="language-haskell">factorial :: Int -&gt; Int
 factorial n =
   if n == 0 then
@@ -7873,7 +7848,7 @@ factorial n =
     n * factorial (n - 1)
 </code></pre>
 <p>部分問題へ問題を分割することによって階乗関数がどのように計算されるかがわかります。より小さい数へと階乗を計算していくということです。ゼロに到達すると、答えは直ちに求まります。</p>
-<p>次は、<strong>フィボナッチ関数</strong> (Fibonacci function) を計算するという、これまたよくある例です。</p>
+<p>次は、 <em>フィボナッチ関数</em> (Fibonacci function) を計算するという、これまたよくある例です。</p>
 <pre><code class="language-haskell">fib :: Int -&gt; Int
 fib n =
   if n == 0 then
@@ -7890,8 +7865,7 @@ fib n =
 より慣習的な実装では<code>if</code>や<code>then</code>や<code>else</code>を使う代わりにパターン照合を使うものでしょう。
 パターン照合の技法は後の章でお話しします。</p>
 <h2 id="配列上での再帰"><a class="header" href="#配列上での再帰">配列上での再帰</a></h2>
-<p>再帰関数の定義は、<code>Int</code>型だけに限定されるものではありません！
-本書の後半で<strong>パターン照合</strong> (pattern matching)
+<p>再帰関数の定義は、<code>Int</code>型だけに限定されるものではありません！本書の後半で <em>パターン照合</em> (pattern matching)
 を扱うときに、いろいろなデータ型の上での再帰関数について見ていきますが、ここでは数と配列に限っておきます。</p>
 <p>入力がゼロでないかどうかについて分岐するのと同じように、配列の場合も、配列が空でないかどうかについて分岐していきます。再帰を使用して配列の長さを計算する次の関数を考えてみます。</p>
 <pre><code class="language-haskell">import Prelude
@@ -7917,16 +7891,15 @@ length arr =
 <h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
 <ol>
 <li>（簡単）入力が偶数であるとき、かつそのときに限り<code>true</code>に返すような再帰関数を書いてみましょう。</li>
-<li>（少し難しい）配列内の偶数の数を数える再帰関数<code>countEven</code>を書いてみましょう。
-<strong>ヒント</strong>：<code>Data.Array</code>モジュールの<code>head</code>関数を使うと、空でない配列の最初の要素を見つけることができます。</li>
+<li>（少し難しい）配列内の偶数の数を数える再帰関数<code>countEven</code>を書いてみましょう。 <em>ヒント</em>
+：<code>Data.Array</code>モジュールの<code>head</code>関数を使うと、空でない配列の最初の要素を見つけることができます。</li>
 </ol>
 <h2 id="マップ"><a class="header" href="#マップ">マップ</a></h2>
-<p><code>map</code>関数は配列に対する再帰関数のひとつです。
-この関数を使うと、配列の各要素に順番に関数を適用することで、配列の要素を変換することができます。
-そのため、配列の<strong>内容</strong>は変更されますが、その<strong>形状</strong>（ここでは「長さ」）は保存されます。</p>
-<p>本書の後半で<strong>型クラス</strong> (type class) の内容を押さえるとき、
-<code>map</code>関数が形状保存関数のより一般的な様式の一例であることを見ていきます。
-これは<strong>関手</strong> (functor) と呼ばれる型構築子のクラスを変換するものです。</p>
+<p><code>map</code>関数は配列に対する再帰関数のひとつです。この関数を使うと、配列の各要素に順番に関数を適用することで、配列の要素を変換することができます。そのため、配列の
+<em>内容</em> は変更されますが、その<em>形状</em>（ここでは「長さ」）は保存されます。</p>
+<p>本書の後半で <em>型クラス</em> (type class)
+の内容を押さえるとき、<code>map</code>関数が形状保存関数のより一般的な様式の一例であることを見ていきます。これは <em>関手</em> (functor)
+と呼ばれる型構築子のクラスを変換するものです。</p>
 <p>それでは、PSCiで<code>map</code>関数を試してみましょう。</p>
 <pre><code class="language-text">$ spago repl
 
@@ -7941,8 +7914,7 @@ length arr =
 <pre><code class="language-text">&gt; (\n -&gt; n + 1) `map` [1, 2, 3, 4, 5]
 [2, 3, 4, 5, 6]
 </code></pre>
-<p>この構文は<strong>中置関数適用</strong>と呼ばれ、どんな関数でもこのように中置することができます。
-普通は2引数の関数に対して使うのが最適でしょう。</p>
+<p>この構文は <em>中置関数適用</em> と呼ばれ、どんな関数でもこのように中置することができます。普通は2引数の関数に対して使うのが最適でしょう。</p>
 <p>配列を扱うときは、<code>map</code>関数と等価な<code>&lt;$&gt;</code>という演算子が存在します。この演算子は他の二項演算子と同じように中置で使用することができます。</p>
 <pre><code class="language-text">&gt; (\n -&gt; n + 1) &lt;$&gt; [1, 2, 3, 4, 5]
 [2, 3, 4, 5, 6]
@@ -7962,10 +7934,7 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 
 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
 </code></pre>
-<p>中置演算子<code>&lt;$&gt;</code>は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。
-中置構文を使用した単なる<strong>適用</strong>にすぎません。
-実際、括弧でその名前を囲むと、この関数を通常の関数のように使用することができます。
-これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前を使って配列に関数を適用できるということです。</p>
+<p>中置演算子<code>&lt;$&gt;</code>は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。中置構文を使用した単なる <em>適用</em> にすぎません。実際、括弧でその名前を囲むと、この関数を通常の関数のように使用することができます。これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前を使って配列に関数を適用できるということです。</p>
 <pre><code class="language-text">&gt; (&lt;$&gt;) show [1, 2, 3, 4, 5]
 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
 </code></pre>
@@ -7982,8 +7951,8 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 &gt; show &lt;$&gt; (1 .. 5)
 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
 </code></pre>
-<p><strong>注意</strong>： 独自の中置演算子は、自然な構文を持った領域特化言語を定義するのに優れた手段になりえます。
-ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。</p>
+<p><em>注意</em> ：
+独自の中置演算子は、自然な構文を持った領域特化言語を定義するのに優れた手段になりえます。ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。</p>
 <p>上記の例では、<code>1 .. 5</code>という式は括弧で囲まれていましたが、実際にはこれは必要ありません。
 なぜなら、<code>Data.Array</code>モジュールは、<code>&lt;$&gt;</code>に割り当てられた優先順位より高い優先順位を<code>..</code>演算子に割り当てているからです。
 上の例では、<code>..</code>の優先順位は、予約語<code>infix</code>のあとに書かれた数の<code>8</code> と定義されていました。
@@ -7991,9 +7960,7 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 <pre><code class="language-text">&gt; show &lt;$&gt; 1 .. 5
 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
 </code></pre>
-<p>中置演算子に（左または右の）<strong>結合性</strong>を与えたい場合は、代わりに予約語<code>infixl</code>と<code>infixr</code>を使います。
-<code>infix</code>を使うと何ら結合性は割り当てられず、
-同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
+<p>中置演算子に（左または右の）<em>結合性</em>を与えたい場合は、代わりに予約語<code>infixl</code>と<code>infixr</code>を使います。<code>infix</code>を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
 <h2 id="配列のフィルタリング"><a class="header" href="#配列のフィルタリング">配列のフィルタリング</a></h2>
 <p><code>Data.Array</code>モジュールでは他にも、よく<code>map</code>と一緒に使われる関数<code>filter</code>も提供しています。
 この関数は、述語関数に適合する要素のみを残し、既存の配列から新しい配列を作成する機能を提供します。</p>
@@ -8006,17 +7973,16 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 <h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
 <li>（簡単）<code>map</code>関数や<code>&lt;$&gt;</code>関数を使用して、 配列に格納された数のそれぞれの平方を計算する関数<code>squared</code>を書いてみましょう。
-<strong>ヒント</strong>：<code>map</code>や<code>&lt;$&gt;</code>といった関数を使ってください。</li>
-<li>（簡単）<code>filter</code>関数を使用して、数の配列から負の数を取り除く関数<code>keepNonNegative</code>を書いてみましょう。
-<strong>ヒント</strong>：<code>filter</code>関数を使ってください。</li>
+<em>ヒント</em> ：<code>map</code>や<code>&lt;$&gt;</code>といった関数を使ってください。</li>
+<li>（簡単）<code>filter</code>関数を使用して、数の配列から負の数を取り除く関数<code>keepNonNegative</code>を書いてみましょう。 <em>ヒント</em>
+：<code>filter</code>関数を使ってください。</li>
 <li>（普通）
 <ul>
-<li><code>filter</code>の中置同義語<code>&lt;$?&gt;</code>を定義してください。
-<strong>補足</strong>：中置同義語はREPLでは定義できないかもしれませんが、ファイルでは定義することができます。</li>
+<li><code>filter</code>の中置同義語<code>&lt;$?&gt;</code>を定義してください。 <em>補足</em>
+：中置同義語はREPLでは定義できないかもしれませんが、ファイルでは定義することができます。</li>
 <li>関数<code>keepNonNegativeRewrite</code>を書いてください。
 この関数は<code>filter</code>を自前の粗しい中置演算子<code>&lt;$?&gt;</code>で置き換えたところ以外は<code>keepNonNegative</code>と同じです。</li>
-<li>PSCiで自前の演算子の優先度合いと結合性を試してください。
-<strong>補足</strong>：この問題のための単体試験はありません。</li>
+<li>PSCiで自前の演算子の優先度合いと結合性を試してください。 <em>補足</em> ：この問題のための単体試験はありません。</li>
 </ul>
 </li>
 </ol>
@@ -8096,13 +8062,11 @@ PSCiを対話式の開発環境として使用し、ひとつづつこの手順�
 <p>このコードでは、<code>foldable-traversable</code>ライブラリの<code>Data.Foldable</code>モジュールにある<code>product</code>関数を使っています。</p>
 <p>うまくいきました！因数の組み合わせの正しい集合を重複なく見つけることができました。</p>
 <h2 id="do記法"><a class="header" href="#do記法">do記法</a></h2>
-<p>しかし、このコードの可読性は大幅に向上することができます。
-<code>map</code>や<code>concatMap</code>は基本的な関数であり、<strong>do記法</strong> (do notation)
-と呼ばれる特別な構文の基礎になっています（もっと厳密にいえば、それらの一般化である<code>map</code>と<code>bind</code>が基礎をなしています）。</p>
-<p><strong>注意</strong>：<code>map</code>と<code>concatMap</code>が<strong>配列内包表記</strong>を書けるようにしているように、もっと一般的な演算子である<code>map</code>と<code>bind</code>は<strong>モナド内包表記</strong>
-(monad comprehensions) と呼ばれているものを書けるようにします。
-本書の後半では<strong>モナド</strong> (monad) の例をたっぷり見ていくことになりますが、
-この章では配列のみを考えます。</p>
+<p>しかし、このコードの可読性は大幅に向上することができます。<code>map</code>や<code>concatMap</code>は基本的な関数であり、 <em>do記法</em> (do
+notation) と呼ばれる特別な構文の基礎になっています（もっと厳密にいえば、それらの一般化である<code>map</code>と<code>bind</code>が基礎をなしています）。</p>
+<p><em>注意</em> ：<code>map</code>と<code>concatMap</code>が <em>配列内包表記</em> を書けるようにしているように、もっと一般的な演算子である<code>map</code>と<code>bind</code>は
+<em>モナド内包表記</em> (monad comprehensions) と呼ばれているものを書けるようにします。本書の後半では <em>モナド</em> (monad)
+の例をたっぷり見ていくことになりますが、この章では配列のみを考えます。</p>
 <p>do記法を使うと、先ほどの<code>factors</code>関数を次のように書き直すことができます。</p>
 <pre><code class="language-haskell">factors :: Int -&gt; Array (Array Int)
 factors n = filter (\xs -&gt; product xs == n) do
@@ -8172,19 +8136,15 @@ forall m. Alternative m =&gt; Boolean -&gt; m Unit
 これらが同じ結果になることを確認するために、<code>factors</code>の2つの定義を試してみてください。</p>
 <h2 id="演習-5"><a class="header" href="#演習-5">演習</a></h2>
 <ol>
-<li>（簡単）整数の引数が素数であるかどうかを調べる関数<code>isPrime</code>を定義してみましょう。
-<strong>ヒント</strong>：<code>factors</code>関数を使ってください。</li>
-<li>（普通）do記法を使い、2つの配列の<strong>直積集合</strong>を見つけるための関数<code>cartesianProduct</code>を書いてみましょう。
-直積集合とは、要素<code>a</code>、<code>b</code>のすべての組み合わせの集合のことです。
-ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
+<li>（簡単）整数の引数が素数であるかどうかを調べる関数<code>isPrime</code>を定義してみましょう。 <em>ヒント</em>
+：<code>factors</code>関数を使ってください。</li>
+<li>（普通）do記法を使い、2つの配列の <em>直積集合</em>
+を見つけるための関数<code>cartesianProduct</code>を書いてみましょう。直積集合とは、要素<code>a</code>、<code>b</code>のすべての組み合わせの集合のことです。ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
 <li>（普通）数値<code>n</code>を取って構成要素（値<code>a</code>, <code>b</code>, <code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの3つ組
-(pythagorean triples) を返す関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
-<strong>ピタゴラスの3つ組</strong> は数値の配列<code>[a, b, c]</code>で <code>a² + b² = c²</code> です。
-<strong>ヒント</strong>：配列内包表記で<code>guard</code>関数を使ってください。</li>
-<li>（難しい）<code>factors</code>関数を使用して、数<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
-数<code>n</code>の素因数分解とは、素数の積が<code>n</code>であるような整数の配列のことです。
-<strong>ヒント</strong>：1より大きい整数について、問題を2つの部分問題に分解してください。
-最初の因数を探し、それから残りの因数を探すのです。</li>
+(pythagorean triples) を返す関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。 <em>ピタゴラスの3つ組</em> は数値の配列<code>[a, b, c]</code>で <code>a² + b² = c²</code> です。 <em>ヒント</em>
+：配列内包表記で<code>guard</code>関数を使ってください。</li>
+<li>（難しい）<code>factors</code>関数を使用して、数<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。数<code>n</code>の素因数分解とは、素数の積が<code>n</code>であるような整数の配列のことです。
+<em>ヒント</em> ：1より大きい整数について、問題を2つの部分問題に分解してください。最初の因数を探し、それから残りの因数を探すのです。</li>
 </ol>
 <h2 id="畳み込み"><a class="header" href="#畳み込み">畳み込み</a></h2>
 <p>配列における左右の畳み込みは、再帰を用いて実装される別の興味深い関数の集まりを提供します。</p>
@@ -8254,21 +8214,15 @@ JavaScriptで再帰関数を評価するとき、入力が大きすぎるとス�
 RangeError: Maximum call stack size exceeded
 </code></pre>
 <p>これは問題です。関数型プログラミングの基本的な手法として再帰を採用しようとするなら、無限かもしれない再帰でも扱える方法が必要です。</p>
-<p>PureScriptは<strong>末尾再帰最適化</strong> (tail recursion optimization)
+<p>PureScriptは <em>末尾再帰最適化</em> (tail recursion optimization)
 の形でこの問題に対する部分的な解決策を提供しています。</p>
-<p><strong>注意</strong>：この問題へのより完全な解決策としては、いわゆる<strong>トランポリン</strong> (trampolining)
-を使用したライブラリで実装する方法がありますが、それはこの章で扱う範囲を超えています。
-この内容に興味のある読者は
-<a href="https://pursuit.purescript.org/packages/purescript-free"><code>free</code></a>や
-<a href="https://pursuit.purescript.org/packages/purescript-tailrec"><code>tailrec</code></a>パッケージの
-ドキュメントを参照してみてください。</p>
-<p>末尾再帰最適化を可能にする上で鍵となる観点は以下となります。
-<strong>末尾位置</strong> (tail position)
-にある関数の再帰的な呼び出しは、スタックフレームが確保されない<strong>ジャンプ</strong>に置き換えることができます。
-関数が戻るより前の最後の呼び出しであるとき、呼び出しが<strong>末尾位置</strong>にあるといいます。
-なぜこの例でスタックオーバーフローを観察したのかはこれが理由です。
-この<code>f</code>の再帰呼び出しは、末尾位置<strong>ではない</strong>からです。</p>
-<p>実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を<strong>whileループ</strong>に置き換えます。</p>
+<p><em>補足</em> ：この問題へのより完全な解決策としては、いわゆる <em>トランポリン</em> (trampolining)
+を使用したライブラリで実装する方法がありますが、それはこの章で扱う範囲を超えています。この内容に興味のある読者は<a href="https://pursuit.purescript.org/packages/purescript-free"><code>free</code></a>や<a href="https://pursuit.purescript.org/packages/purescript-tailrec"><code>tailrec</code></a>パッケージのドキュメントを参照してみてください。</p>
+<p>末尾再帰最適化を可能にする上で鍵となる観点は以下となります。 <em>末尾位置</em> (tail position)
+にある関数の再帰的な呼び出しは、スタックフレームが確保されない <em>ジャンプ</em>
+に置き換えることができます。関数が戻るより前の最後の呼び出しであるとき、呼び出しが <em>末尾位置</em>
+にあるといいます。なぜこの例でスタックオーバーフローを観察したのかはこれが理由です。この<code>f</code>の再帰呼び出しは、末尾位置 <em>ではない</em> からです。</p>
+<p>実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を <em>whileループ</em> に置き換えます。</p>
 <p>以下はすべての再帰呼び出しが末尾位置にある再帰関数の例です。</p>
 <pre><code class="language-haskell">factorialTailRec :: Int -&gt; Int -&gt; Int
 factorialTailRec n acc =
@@ -8278,10 +8232,9 @@ factorialTailRec n acc =
 </code></pre>
 <p><code>fact</code>への再帰呼び出しは、この関数の中で起こる最後のものである、つまり末尾位置にあることに注意してください。</p>
 <h2 id="累積器"><a class="header" href="#累積器">累積器</a></h2>
-<p>末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、<strong>累積器引数</strong> (accumulator parameter)
-を使用する方法があります。
-累積器引数は関数に追加される余剰の引数で返り値を<strong>累積</strong>するものです。
-これは結果を累積するために返り値を使うのとは対称的です。</p>
+<p>末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、 <em>累積器引数</em> (accumulator parameter)
+を使用する方法があります。累積器引数は関数に追加される余剰の引数で返り値を <em>累積</em>
+するものです。これは結果を累積するために返り値を使うのとは対称的です。</p>
 <p>例えば章の初めに示した<code>length</code>関数を再考しましょう。</p>
 <pre><code class="language-haskell">length :: forall a. Array a -&gt; Int
 length arr =
@@ -8301,20 +8254,15 @@ lengthTailRec arr = length' arr 0
       then acc
       else length' (fromMaybe [] $ tail arr') (acc + 1)
 </code></pre>
-<p>ここでは、配列を逆転させる作業を補助関数<code>length'</code>に委譲しています。
-<code>length'</code>は末尾再帰です。
-その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。
-これは、生成されたコードが<strong>whileループ</strong>となり、大きな入力でもスタックが溢れないことを意味します。</p>
+<p>ここでは、配列を逆転させる作業を補助関数<code>length'</code>に委譲しています。<code>length'</code>は末尾再帰です。その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。これは、生成されたコードが
+<em>whileループ</em> となり、大きな入力でもスタックが溢れないことを意味します。</p>
 <p><code>lengthTailRec</code>の実装を理解するために補助関数<code>length'</code>に着目しましょう。
 この関数は必然的に累積器引数を使って追加の状態……これは部分的な結果です……を維持しています。
 0から始まり、入力の配列中の全ての要素それぞれについて1ずつ足して成長していきます。</p>
 <p>累積器を「状態」と考えることもできますが、直接に変更がされているわけではないことにも注意してください。</p>
 <h2 id="明示的な再帰より畳み込みを選ぶ"><a class="header" href="#明示的な再帰より畳み込みを選ぶ">明示的な再帰より畳み込みを選ぶ</a></h2>
-<p>末尾再帰を使用して再帰関数を記述することができれば末尾再帰最適化の恩恵を受けることができるので、
-すべての関数をこの形で書こうとする誘惑にかられます。
-しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。
-<code>map</code>や<code>fold</code>のようなコンビネータを使って直接アルゴリズムを書くことには、コードの単純さという利点があります。
-これらのコンビネータはよく知られており、明示的な再帰よりもアルゴリズムの<strong>意図</strong>をよりはっきりとさせるのです。</p>
+<p>末尾再帰を使用して再帰関数を記述することができれば末尾再帰最適化の恩恵を受けることができるので、すべての関数をこの形で書こうとする誘惑にかられます。しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。<code>map</code>や<code>fold</code>のようなコンビネータを使って直接アルゴリズムを書くことには、コードの単純さという利点があります。これらのコンビネータはよく知られており、明示的な再帰よりもアルゴリズムの
+<em>意図</em> をよりはっきりとさせるのです。</p>
 <p>例えば<code>foldr</code>を使って配列を反転できます。</p>
 <pre><code class="language-text">&gt; import Data.Foldable
 
@@ -8332,8 +8280,8 @@ lengthTailRec arr = length' arr 0
 <li>（簡単）<code>foldl</code>を使って真偽値配列の値が全て真か検査する関数<code>allTrue</code>を書いてください。</li>
 <li>（普通。テストなし）関数<code>foldl (==) false xs</code>が真を返すような配列<code>xs</code>とはどのようなものか説明してください。
 言い換えると、「関数は<code>xs</code>が……を含むときに<code>true</code>を返す」という文を完成させることになります。</li>
-<li>（普通）末尾再帰の形式を取っていること以外は<code>fib</code>と同じような関数<code>fibTailRec</code>を書いてください。
-<strong>ヒント</strong>：累積器引数を使ってください。</li>
+<li>（普通）末尾再帰の形式を取っていること以外は<code>fib</code>と同じような関数<code>fibTailRec</code>を書いてください。 <em>ヒント</em>
+：累積器引数を使ってください。</li>
 <li>（普通）<code>foldl</code>を使って<code>reverse</code>を書いてみましょう。</li>
 </ol>
 <h2 id="仮想ファイルシステム"><a class="header" href="#仮想ファイルシステム">仮想ファイルシステム</a></h2>
@@ -8388,8 +8336,8 @@ true
 <p>最後に、cons演算子<code>:</code>を使って現在のファイルも含めます。</p>
 <pre><code class="language-haskell">allFiles file = file : concatMap allFiles (ls file)
 </code></pre>
-<p><strong>注意</strong>：cons演算子<code>:</code>は、実際には不変な配列に対してパフォーマンスが悪いので、一般的には推奨されません。
-リンクリストやシーケンスなどの他のデータ構造を使用すると、パフォーマンスを向上させることができます。</p>
+<p><em>注意</em>
+：cons演算子<code>:</code>は、実際には不変な配列に対してパフォーマンスが悪いので、一般的には推奨されません。リンクリストやシーケンスなどの他のデータ構造を使用すると、パフォーマンスを向上させることができます。</p>
 <p>それではPSCiでこの関数を試してみましょう。</p>
 <pre><code class="language-text">&gt; import Test.Examples
 &gt; import Data.Path
@@ -8429,12 +8377,10 @@ Just (/bin/)
 &gt; whereIs root &quot;cat&quot;
 Nothing
 </code></pre>
-<p><strong>ヒント</strong>：この関数をdo記法を使った配列内包表記で書いてみましょう。</p>
+<p><em>ヒント</em> ：この関数をdo記法を使った配列内包表記で書いてみましょう。</p>
 </li>
 <li>
-<p>（難しい）<code>Path</code>を取って<code>Path</code>に最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。
-<strong>補足</strong>：空配列や1要素の配列を返すことで、
-<code>Path</code>にゼロか1個のファイルがある場合についても考慮してください。</p>
+<p>（難しい）<code>Path</code>を取って<code>Path</code>に最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。 <em>補足</em> ：空配列や1要素の配列を返すことで、<code>Path</code>にゼロか1個のファイルがある場合についても考慮してください。</p>
 </li>
 </ol>
 <h2 id="まとめ-2"><a class="header" href="#まとめ-2">まとめ</a></h2>
@@ -8447,8 +8393,7 @@ Nothing
 <h2 id="この章の目標-3"><a class="header" href="#この章の目標-3">この章の目標</a></h2>
 <p>この章では、代数的データ型とパターン照合という、ふたつの新しい概念を導入します。
 また、行多相というPureScriptの型システムの興味深い機能についても簡単に取り扱います。</p>
-<p><strong>パターン照合</strong> (pattern matching) は関数​​型プログラミングにおける一般的な手法で、
-複数の場合に実装を分解することにより、開発者は潜在的に複雑な動作の関数を簡潔に書くことができます。</p>
+<p>パターン照合は関数​​型プログラミングにおける一般的な手法で、複数の場合に実装を分解することにより、開発者は潜在的に複雑な動作の関数を簡潔に書くことができます。</p>
 <p>代数的データ型はPureScriptの型システムの機能であり、
 型のある言語において同様の水準の表現力を可能にしています。
 パターン照合とも密接に関連しています。</p>
@@ -8468,12 +8413,9 @@ import Data.Number (infinity)
 <p><code>Data.Picture</code>モジュールは<code>Number</code>モジュールもインポートしますが、こちらは<code>as</code>キーワードを使います。</p>
 <pre><code class="language-haskell">import Data.Number as Number
 </code></pre>
-<p>これは型や関数をモジュール内で使用できるようにしますが、
-それは<code>Number.max</code>のように<strong>修飾名</strong>を使ったときのみです。
-これは重複したインポートを避けたり、
-何らかのものがどのモジュールからインポートされたのかを明らかにするのに役立ちます。</p>
-<p><strong>注意</strong>：元のモジュールと同じモジュール名を修飾名に使用するのは不要です。
-<code>import Math as M</code>などのより短い名前にすることは可能ですし、かなりよくあります。</p>
+<p>これは型や関数をモジュール内で使用できるようにしますが、それは<code>Number.max</code>のように <em>修飾名</em>
+を使ったときのみです。これは重複したインポートを避けたり、何らかのものがどのモジュールからインポートされたのかを明らかにするのに役立ちます。</p>
+<p><em>注意</em> ：元のモジュールと同じモジュール名を修飾名に使用するのは不要です。<code>import Math as M</code>などのより短い名前にすることは可能ですし、かなりよくあります。</p>
 <h2 id="単純なパターン照合"><a class="header" href="#単純なパターン照合">単純なパターン照合</a></h2>
 <p>それではコード例を見ることから始めましょう。
 パターン照合を使用して2つの整数の最大公約数を計算する関数は、次のようになります。</p>
@@ -8490,15 +8432,9 @@ gcd n m = if n &gt; m
 パターン照合の利点のひとつは、
 上記のようにコードを場合分けして定義することができ、
 数学関数の定義と似たような簡潔で宣言型なコードを書くことができることです。</p>
-<p>パターン照合を使用して書かれた関数は、
-条件と結果の組み合わせによって動作します。
-この定義の各行は<strong>選択肢</strong> (alternative) や<strong>場合</strong> (case) と呼ばれています。
-等号の左辺の式は<strong>パターン</strong>と呼ばれており、
-それぞれの場合は空白で区切られた1つ以上のパターンで構成されています。
-場合の集まりは、等号の右側の式が評価され値が返される前に、
-引数が満たさなければならないどれかの条件を表現しています。
-それぞれの場合は上からこの順番に試されていき、
-最初に入力に適合した場合が返り値を決定します。</p>
+<p>パターン照合を使用して書かれた関数は、条件と結果の組み合わせによって動作します。この定義の各行は <em>選択肢</em> (alternative) や <em>場合</em>
+(case) と呼ばれています。等号の左辺の式は <em>パターン</em>
+と呼ばれており、それぞれの場合は空白で区切られた1つ以上のパターンで構成されています。場合の集まりは、等号の右側の式が評価され値が返される前に、引数が満たさなければならないどれかの条件を表現しています。それぞれの場合は上からこの順番に試されていき、最初に入力に適合した場合が返り値を決定します。</p>
 <p>たとえば、 <code>gcd</code>関数は次の手順で評価されます。</p>
 <ul>
 <li>まず最初の場合が試されます。第2引数がゼロの場合、関数は <code>n</code>（最初の引
@@ -8535,8 +8471,7 @@ toString false = &quot;false&quot;
 </code></pre>
 <p>PSCiでこれらの関数を試してみてください。</p>
 <h2 id="ガード-1"><a class="header" href="#ガード-1">ガード</a></h2>
-<p>ユークリッドの互除法の例では、<code>m &gt; n</code>のときと <code>m &lt;= n</code>のときの2つに分岐するために <code>if .. then .. else</code>式を使っていました。
-こういうときには他に<strong>ガード</strong> (guard) を使うという選択肢もあります。</p>
+<p>ユークリッドの互除法の例では、<code>m &gt; n</code>のときと <code>m &lt;= n</code>のときの2つに分岐するために <code>if .. then .. else</code>式を使っていました。こういうときには他に <em>ガード</em> (guard) を使うという選択肢もあります。</p>
 <p>ガードはパターンによる制約に加えて満たされなくてはいけない真偽値の式です。
 ガードを使用してユークリッドの互除法を書き直すと、次のようになります。</p>
 <pre><code class="language-haskell">gcdV2 :: Int -&gt; Int -&gt; Int
@@ -8557,24 +8492,19 @@ true
 <p>この例が示すように、ガードは等号の左側に現れ、パイプ文字 (<code>|</code>) でパターンのリストと区切られています。</p>
 <h2 id="演習-8"><a class="header" href="#演習-8">演習</a></h2>
 <ol>
-<li>（簡単）パターン照合を使用して、階乗関数<code>factorial</code>を書いてみましょう。
-<strong>ヒント</strong>:入力がゼロのときとゼロでないときの、ふたつのコーナーケースを考えてみてください。
-<strong>補足</strong>：これは前の章からの例の繰り返しですが、ここでは自力で書き直せるかやってみてください。</li>
-<li>（普通）\( (1 + x) ^ n \)を多項式展開した式にある
-\( x ^ k \)の項の係数を求める関数<code>binomial</code>を書いてください。
-これは<code>n</code>要素の集合から<code>k</code>要素の部分集合を選ぶ方法の数と同じです。
-数式\( n! / k! (n - k)! \)を使ってください。
-ここで \( ! \) は前に書いた階乗関数です。
-<strong>ヒント</strong>：パターン照合を使ってコーナーケースを制御してください。
-長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、
-もっとコーナーケースを追加してみてください。</li>
-<li>（普通）<a href="https://en.wikipedia.org/wiki/Pascal%27s_rule"><strong>パスカルの法則</strong></a>を使って
-前の演習の同じ2項係数を計算する関数<code>pascal</code>を書いてください。</li>
+<li>（簡単）パターン照合を使用して、階乗関数<code>factorial</code>を書いてみましょう。 <em>ヒント</em>
+：入力がゼロのときとゼロでないときの、ふたつのコーナーケースを考えてみてください。 <em>補足</em>
+：これは前の章からの例の繰り返しですが、ここでは自力で書き直せるかやってみてください。</li>
+<li>（普通）\( (1 + x) ^ n \)を多項式展開した式にある\( x ^ k
+\)の項の係数を求める関数<code>binomial</code>を書いてください。これは<code>n</code>要素の集合から<code>k</code>要素の部分集合を選ぶ方法の数と同じです。数式\(
+n! / k! (n - k)! \)を使ってください。ここで \( ! \) は前に書いた階乗関数です。 <em>ヒント</em>
+：パターン照合を使ってコーナーケースを制御してください。長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、もっとコーナーケースを追加してみてください。</li>
+<li>（普通）<a href="https://en.wikipedia.org/wiki/Pascal%27s_rule"><em>パスカルの法則</em></a>を使って前の演習の同じ2項係数を計算する関数<code>pascal</code>を書いてください。</li>
 </ol>
 <h2 id="配列パターン"><a class="header" href="#配列パターン">配列パターン</a></h2>
-<p><strong>配列リテラルパターン</strong> (array literal patterns) は、固定長の配列に対して照合を行う方法を提供します。
-たとえば、空の配列であることを特定する関数 <code>isEmpty</code>を書きたいとします。
-最初の選択肢に空の配列パターン (<code>[]</code>) を用いるとこれを実現できます。</p>
+<p><em>配列リテラルパターン</em> (array literal patterns)
+は、固定長の配列に対して照合を行う方法を提供します。たとえば、空の配列であることを特定する関数
+<code>isEmpty</code>を書きたいとします。最初の選択肢に空の配列パターン (<code>[]</code>) を用いるとこれを実現できます。</p>
 <pre><code class="language-haskell">isEmpty :: forall a. Array a -&gt; Boolean
 isEmpty [] = true
 isEmpty _ = false
@@ -8611,20 +8541,15 @@ PureScriptは不特定の長さの配列を照合させる手段を提供して�
 そのほかの操作について、
 より優れた漸近性能を提供するデータ構造も存在します。</p>
 <h2 id="レコードパターンと行多相"><a class="header" href="#レコードパターンと行多相">レコードパターンと行多相</a></h2>
-<p><strong>レコードパターン</strong> (Record patterns) は（ご想像のとおり）レコードに照合します。</p>
-<p>レコードパターンはレコードリテラルに見た目が似ていますが、
-レコードリテラルでラベルと式を<strong>コロン</strong>で区切るのとは異なり、
-レコードパターンではラベルとパターンを<strong>等号</strong>で区切ります。</p>
+<p><em>レコードパターン</em> (Record patterns) は（ご想像のとおり）レコードに照合します。</p>
+<p>レコードパターンはレコードリテラルにほぼ見た目が似ていますが、コロンの右に値を置くのではなく、それぞれのフィールドで束縛子を指定します。</p>
 <p>たとえば、次のパターンは <code>first</code>と <code>last</code>と呼ばれるフィールドが含まれた任意のレコードにマッチし、
 これらのフィールドの値はそれぞれ <code>x</code>と <code>y</code>という名前に束縛されます。</p>
 <pre><code class="language-haskell">showPerson :: { first :: String, last :: String } -&gt; String
 showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
 </code></pre>
-<p>レコードパターンはPureScriptの型システムの興味深い機能である
-<strong>行多相</strong> (row polymorphism) の良い例となっています。
-もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、
-この型はどのように推論されるのでしょうか？
-面白いことに、推論される型は上で与えた型とは同じではありません。</p>
+<p>レコードパターンはPureScriptの型システムの興味深い機能である <em>行多相</em> (row polymorphism)
+の良い例となっています。もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、この型はどのように推論されるのでしょうか？面白いことに、推論される型は上で与えた型とは同じではありません。</p>
 <pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
 
 &gt; :type showPerson
@@ -8638,18 +8563,16 @@ PSCiで <code>showPerson</code>を使ってみると、面白いことがわか�
 &gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot;, location: &quot;Los Angeles&quot; }
 &quot;Freeman, Phil&quot;
 </code></pre>
-<p>レコードにそれ以外のフィールドが追加されていても、
-<code>showPerson</code>関数はそのまま動作するのです。
-型が <code>String</code>であるようなフィールド <code>first</code>と <code>last</code>がレコードに少なくとも含まれていれば、
-関数適用は正しく型付けされます。
-しかし、フィールドが<strong>不足</strong>していると、 <code>showPerson</code>の呼び出しは<strong>不正</strong>となります。</p>
+<p>レコードにそれ以外のフィールドが追加されていても、<code>showPerson</code>関数はそのまま動作するのです。型が <code>String</code>であるようなフィールド
+<code>first</code>と <code>last</code>がレコードに少なくとも含まれていれば、関数適用は正しく型付けされます。しかし、フィールドが <em>不足</em> していると、
+<code>showPerson</code>の呼び出しは <em>不正</em> となります。</p>
 <pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot; }
 
 Type of expression lacks required label &quot;last&quot;
 </code></pre>
-<p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド<strong>と他のフィールドを何でも</strong>持つあらゆるレコードを取り、<code>String</code>を返す」となります。
-なお、この振舞いは元の<code>showPerson</code>のものとは異なります。
-行変数<code>r</code>がなければ<code>showPerson</code>は<strong>厳密に</strong><code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
+<p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド <em>と他のフィールドを何でも</em>
+持つあらゆるレコードを取り、<code>String</code>を返す」となります。なお、この振舞いは元の<code>showPerson</code>のものとは異なります。行変数<code>r</code>がなければ<code>showPerson</code>は
+<em>厳密に</em> <code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
 <p>次のように書くことができることにも注意してください。</p>
 <pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; &quot;, &quot; &lt;&gt; p.first
 </code></pre>
@@ -8661,11 +8584,9 @@ Type of expression lacks required label &quot;last&quot;
 <pre><code class="language-haskell">showPersonV2 :: { first :: String, last :: String } -&gt; String
 showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
 </code></pre>
-<p>ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。
-これは<strong>レコード同名利用</strong> (record pun) と呼ばれます。</p>
-<p>レコード同名利用をレコードの<strong>構築</strong>に使用することもできます。
-例えば、スコープ内に <code>first</code>と <code>last</code>という名前の値があれば、
-<code>{ first, last }</code>を使って人物レコードを作ることができます。</p>
+<p>ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。これは <em>レコード同名利用</em> (record pun)
+と呼ばれます。</p>
+<p>レコード同名利用をレコードの <em>構築</em> に使用することもできます。例えば、スコープ内に <code>first</code>と <code>last</code>という名前の値があれば、<code>{ first, last }</code>を使って人物レコードを作ることができます。</p>
 <pre><code class="language-haskell">unknownPerson :: { first :: String, last :: String }
 unknownPerson = { first, last }
   where
@@ -8674,11 +8595,9 @@ unknownPerson = { first, last }
 </code></pre>
 <p>これは、状況によってはコードの可読性を向上させるのに役立ちます。</p>
 <h2 id="入れ子になったパターン"><a class="header" href="#入れ子になったパターン">入れ子になったパターン</a></h2>
-<p>配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大きなパターンを構成しています。
-これまでの例ではほとんどの場合で配列パターンとレコードパターンの内部に単純なパターンを使用していましたが、
-パターンが自由に<strong>入れ子</strong>にすることができることも知っておくのが大切です。
-入れ子になったパターンを使うと、
-潜在的に複雑なデータ型に対しての条件分岐を用いて関数を定義できるようになります。</p>
+<p>配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大きなパターンを構成しています。これまでの例ではほとんどの場合で配列パターンとレコードパターンの内部に単純なパターンを使用していましたが、パターンが自由に
+<em>入れ子</em>
+にすることができることも知っておくのが大切です。入れ子になったパターンを使うと、潜在的に複雑なデータ型に対しての条件分岐を用いて関数を定義できるようになります。</p>
 <p>たとえば、このコードは2つのレコードパターンを結合します。</p>
 <pre><code class="language-haskell">type Address = { street :: String, city :: String }
 
@@ -8689,8 +8608,8 @@ livesInLA { address: { city: &quot;Los Angeles&quot; } } = true
 livesInLA _ = false
 </code></pre>
 <h2 id="名前付きパターン"><a class="header" href="#名前付きパターン">名前付きパターン</a></h2>
-<p>入れ子のパターンを使う場合、パターンには<strong>名前を付け</strong>て追加で名前をスコープに持ち込むことができます。
-任意のパターンに名前を付けるには、 <code>@</code>記号を使います。</p>
+<p>入れ子のパターンを使う場合、パターンには <em>名前を付け</em> て追加で名前をスコープに持ち込むことができます。任意のパターンに名前を付けるには、
+<code>@</code>記号を使います。</p>
 <p>たとえば、次の関数は2要素配列を整列するもので、2つの要素の名前を付けていますが、
 配列自身にも名前を付けています。</p>
 <pre><code class="language-haskell">sortPair :: Array Int -&gt; Array Int
@@ -8699,16 +8618,14 @@ sortPair arr@[x, y]
   | otherwise = [y, x]
 sortPair arr = arr
 </code></pre>
-<p>このようにすれば対が既に整列されているときに新しい配列を割り当てなくて済みます。
-なおもし入力の配列が<strong>厳密に</strong>2つの要素を含んでいなければ、
-たとえ整列されていなかったとしても、この関数は単に元のまま変えずに返しています。</p>
+<p>このようにすれば対が既に整列されているときに新しい配列を割り当てなくて済みます。なおもし入力の配列が <em>厳密に</em>
+2つの要素を含んでいなければ、たとえ整列されていなかったとしても、この関数は単に元のまま変えずに返しています。</p>
 <h2 id="演習-9"><a class="header" href="#演習-9">演習</a></h2>
 <ol>
 <li>（簡単）レコードパターンを使って、
 2つの <code>Person</code>レコードが同じ都市にいるか探す関数 <code>sameCity</code>を定義してみましょう。</li>
-<li>（普通）行多相を考慮すると、 <code>sameCity</code>関数の最も一般的な型は何でしょうか？
-先ほど定義した <code>livesInLA</code>関数についてはどうでしょうか？
-<strong>補足</strong>：この演習にテストはありません。</li>
+<li>（普通）行多相を考慮すると、 <code>sameCity</code>関数の最も一般的な型は何でしょうか？先ほど定義した
+<code>livesInLA</code>関数についてはどうでしょうか？ <em>補足</em> ：この演習にテストはありません。</li>
 <li>（普通）配列リテラルパターンを使って、
 1要素の配列の唯一のメンバーを抽出する関数<code>fromSingleton</code>を書いてみましょう。
 1要素だけを持つ配列でない場合、
@@ -8746,9 +8663,8 @@ lzs xs = case sum xs of
 配列の合計がゼロであれば、配列全体を返します。
 そうでなければ、配列の残りに対して再帰します。</p>
 <h2 id="パターン照合の失敗と部分関数"><a class="header" href="#パターン照合の失敗と部分関数">パターン照合の失敗と部分関数</a></h2>
-<p>case式のパターンを順番に照合していって、
-もし選択肢のいずれの場合も入力が適合しなかった時は何が起こるのでしょうか？
-この場合、<strong>パターン照合失敗</strong>によって、case式は実行時に失敗します。</p>
+<p>case式のパターンを順番に照合していって、もし選択肢のいずれの場合も入力が適合しなかった時は何が起こるのでしょうか？この場合、 <em>パターン照合失敗</em>
+によって、case式は実行時に失敗します。</p>
 <p>簡単な例でこの動作を見てみましょう。</p>
 <pre><code class="language-haskell">import Partial.Unsafe (unsafePartial)
 
@@ -8761,8 +8677,8 @@ partialFunction = unsafePartial \true -&gt; true
 
 Failed pattern match
 </code></pre>
-<p>どんな入力の組み合わせに対しても値を返すような関数は<strong>全関数</strong> (total function) と呼ばれ、
-そうでない関数は<strong>部分的</strong> (partial) であると呼ばれます。</p>
+<p>どんな入力の組み合わせに対しても値を返すような関数は <em>全関数</em> (total function) と呼ばれ、そうでない関数は <em>部分的</em>
+(partial) であると呼ばれます。</p>
 <p>一般的には、可能な限り全関数として定義したほうが良いと考えられています。
 もし関数が何らかの妥当な入力の集合について結果を返さないことがわかっているなら、
 大抵は失敗であることを示すことができる値を返すほうがよいでしょう。
@@ -8789,11 +8705,8 @@ The following additional cases are required to cover all inputs:
 
 Partial =&gt; Boolean -&gt; Boolean
 </code></pre>
-<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります（これらは<strong>型クラス</strong>に関連しています）。
-しかし、今のところは、PureScriptは型システムを使って部分関数を追跡していることと、
-安全な場合に型検証器に明示する必要があることを確認すれば十分です。</p>
-<p>コンパイラは、定義されたパターンが<strong>冗長</strong>であることを検出した場合
-（前の方に定義されたパターンに一致するケースのみ）でも警告を生成します。</p>
+<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります（これらは <em>型クラス</em> に関連しています）。しかし、今のところは、PureScriptは型システムを使って部分関数を追跡していることと、安全な場合に型検証器に明示する必要があることを確認すれば十分です。</p>
+<p>コンパイラは、定義されたパターンが <em>冗長</em> であることを検出した場合（前の方に定義されたパターンに一致するケースのみ）でも警告を生成します。</p>
 <pre><code class="language-haskell">redundantCase :: Boolean -&gt; Boolean
 redundantCase true = true
 redundantCase false = false
@@ -8804,12 +8717,10 @@ redundantCase false = false
 
   false
 </code></pre>
-<p><strong>注意</strong>：PSCiは警告を表示しないので、
-この例を再現するには、この関数をファイルとして保存し、 <code>pulp build</code>を使ってコンパイルします。</p>
+<p><em>注意</em> ：PSCiは警告を表示しないので、この例を再現するには、この関数をファイルとして保存し、 <code>pulp build</code>を使ってコンパイルします。</p>
 <h2 id="代数的データ型"><a class="header" href="#代数的データ型">代数的データ型</a></h2>
-<p>この節では<strong>代数的データ型</strong> (algebraic data type, ADT) と呼ばれる、
-PureScriptの型システムの機能を導入します。
-この機能はパターン照合と地続きの関係があります。</p>
+<p>この節では <em>代数的データ型</em> (algebraic data type, <em>ADT</em>)
+と呼ばれる、PureScriptの型システムの機能を導入します。この機能はパターン照合と地続きの関係があります。</p>
 <p>しかしまずは切り口となる例について考えていきます。
 この例では単純なベクターグラフィックスライブラリの実装というこの章の課題を解決する基礎を提供します。</p>
 <p>直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとします。
@@ -8840,12 +8751,9 @@ type Point =
 <code>Shape</code>は、中央 <code>Point</code>と半径（数値）を持つ <code>Circle</code>か、
 <code>Rectangle</code>、 <code>Line</code>、 <code>Text</code>のいずれかです。
 他には <code>Shape</code>型の値を構築する方法はありません。</p>
-<p>代数的データ型の定義はキーワード <code>data</code>から始まり、
-それに新しい型の名前と任意個の型引数が続きます。
-その型の構築子（あるいは<strong>データ構築子</strong> (data constructor)）は等号の後に定義され、
-パイプ文字 (<code>|</code>) で区切られます。
-ADTの構築子が持つデータは原始型に限りません。
-構築子にはレコード、配列、また他のADTさえも含むことができます。</p>
+<p>代数的データ型の定義はキーワード <code>data</code>から始まり、それに新しい型の名前と任意個の型引数が続きます。その型の構築子（あるいは <em>データ構築子</em>
+(data constructor)）は等号の後に定義され、パイプ文字 (<code>|</code>)
+で区切られます。ADTの構築子が持つデータは原始型に限りません。構築子にはレコード、配列、また他のADTさえも含むことができます。</p>
 <p>それではPureScriptの標準ライブラリから別の例を見てみましょう。
 オプショナルな値を定義するのに使われる <code>Maybe</code>型を本書の冒頭で扱いました。
 <code>maybe</code>パッケージでは <code>Maybe</code>を次のように定義しています。</p>
@@ -8920,14 +8828,10 @@ showPoint { x, y } =
 この関数は<code>Maybe String</code>を返しますが、もし入力が<code>Text</code>を使用して構築されたのでなければ、返り値には<code>Nothing</code>構築子を使ってください。</li>
 </ol>
 <h2 id="newtype"><a class="header" href="#newtype">Newtype</a></h2>
-<p>代数的データ型の特別な場合として、<strong>newtype</strong>と呼ばれるものがあります。
-newtypeはキーワード <code>data</code>の代わりにキーワード <code>newtype</code>を使用して導入します。</p>
-<p>newtype宣言では<strong>過不足なくひとつだけの</strong>構築子を定義しなければならず、
-その構築子は<strong>過不足なくひとつだけの</strong>引数を取る必要があります。
-つまり、newtype宣言は既存の型に新しい名前を与えるものなのです。
-実際、newtypeの値は、元の型と同じ実行時表現を持ってるので、実行時性能のオーバーヘッドがありません。
-しかし、これらは型システムの観点から区別されます。
-これは型安全性の追加の層を提供するのです。</p>
+<p>代数的データ型の特別な場合として、 <em>newtype</em> と呼ばれるものがあります。newtypeはキーワード <code>data</code>の代わりにキーワード
+<code>newtype</code>を使用して導入します。</p>
+<p>newtype宣言では <em>過不足なくひとつだけの</em> 構築子を定義しなければならず、その構築子は <em>過不足なくひとつだけの</em>
+引数を取る必要があります。つまり、newtype宣言は既存の型に新しい名前を与えるものなのです。実際、newtypeの値は、元の型と同じ実行時表現を持ってるので、実行時性能のオーバーヘッドがありません。しかし、これらは型システムの観点から区別されます。これは型安全性の追加の層を提供するのです。</p>
 <p>例として、ボルト、アンペア、オームのような単位を表現するために、
 <code>Number</code>の型レベルの別名を定義したくなる場合があるかもしれません。</p>
 <pre><code class="language-haskell">newtype Volt = Volt Number
@@ -8947,8 +8851,7 @@ lightbulb = Ohm 500.0
 current :: Amp
 current = calculateCurrent battery lightbulb
 </code></pre>
-<p>これによりつまらないミスを防ぐことができます。
-例えば電源<strong>なし</strong>に<strong>2つ</strong>の電球により生み出される電流を計算しようとするなどです。</p>
+<p>これによりつまらないミスを防ぐことができます。例えば電源 <em>なし</em> に <em>2つ</em> の電球により生み出される電流を計算しようとするなどです。</p>
 <pre><code class="language-haskell">current :: Amp
 current = calculateCurrent lightbulb lightbulb
 {-
@@ -8975,9 +8878,7 @@ lightbulb = 500.0
 current :: Number
 current = calculateCurrent lightbulb lightbulb -- 補足されないミス
 </code></pre>
-<p>なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、
-newtypeは任意の数の型変数を取ることが<strong>できます</strong>。
-例えば以下のnewtypeは妥当な定義です（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の<strong>単一</strong>の値を期待します）。</p>
+<p>なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、newtypeは任意の数の型変数を取ることが<em>できます</em>。例えば以下のnewtypeは妥当な定義です（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の <em>単一</em> の値を期待します）。</p>
 <pre><code class="language-Haskell">newtype CouldError err a = CouldError (Either err a)
 </code></pre>
 <p>また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあることにも注意してください。
@@ -8985,14 +8886,10 @@ newtypeは任意の数の型変数を取ることが<strong>できます</strong
 例えば固有の名前であっても妥当です。</p>
 <pre><code class="language-haskell">newtype Coulomb = MakeCoulomb Number
 </code></pre>
-<p>この場合<code>Coulomb</code>は<strong>型構築子</strong>（引数はゼロ）で<code>MakeCoulomb</code>は<strong>データ構築子</strong>です。
-これらの構築子は異なる名前空間に属しており、<code>Volt</code>の例でそうだったように、名前に一意性があります。
-これは全てのADTについて言えることです。
-なお、型構築子とデータ構築子は異なる名前を持つことができますが、
-実際には同じ名前を共有するのが普通です。
-上の<code>Amp</code>と<code>Volt</code>の場合がこれです。</p>
-<p>newtypeの別の応用は、実行時表現を変えることなく、既存の型に異なる<strong>振舞い</strong>を付加することです。
-その利用例については次章で<strong>型クラス</strong>をお話しするときに押さえます。</p>
+<p>この場合<code>Coulomb</code>は<em>型構築子</em>（引数はゼロ）で<code>MakeCoulomb</code>は <em>データ構築子</em>
+です。これらの構築子は異なる名前空間に属しており、<code>Volt</code>の例でそうだったように、名前に一意性があります。これは全てのADTについて言えることです。なお、型構築子とデータ構築子は異なる名前を持つことができますが、実際には同じ名前を共有するのが普通です。上の<code>Amp</code>と<code>Volt</code>の場合がこれです。</p>
+<p>newtypeの別の応用は、実行時表現を変えることなく、既存の型に異なる <em>振舞い</em> を付加することです。その利用例については次章で <em>型クラス</em>
+をお話しするときに押さえます。</p>
 <h2 id="演習-11"><a class="header" href="#演習-11">演習</a></h2>
 <ol>
 <li>（簡単）<code>Watt</code>を<code>Number</code>の<code>newtype</code>として定義してください。
@@ -9064,8 +8961,7 @@ bounds = foldl combine emptyBounds
 <p>またこの章では、パターン照合に密接に関連する代数的データ型を紹介しました。
 代数的データ型のおかげでデータ構造を簡潔に記述することができ、
 新たな操作でデータ型を拡張するためのモジュール性のある方法が提供されることを見てきました。</p>
-<p>最後に強力な抽象化である<strong>行多相</strong>を扱いました。
-これにより多くの既存のJavaScript関数に型を与えられます。</p>
+<p>最後に強力な抽象化である <em>行多相</em> を扱いました。これにより多くの既存のJavaScript関数に型を与えられます。</p>
 <p>本書では今後も代数的データ型とパターン照合をいろんなところで使用するので、
 今のうちにこれらに習熟しておくと後で実を結ぶことでしょう。
 これ以外にも独自の代数的データ型を作成し、
@@ -9075,9 +8971,8 @@ bounds = foldl combine emptyBounds
 <p>この章では、PureScriptの型システムによって可能になる強力な抽象化の手法である、型クラスを導入します。</p>
 <p>この章ではデータ構造をハッシュするためのライブラリを題材に説明していきます。データ自身の構造について直接考えることなく複雑な構造のデータのハッシュ値を求めるために、型クラスの仕組みがどのようにして働くのかを見ていきます。</p>
 <p>また、PureScriptのPreludeや標準ライブラリに含まれる、標準的な型クラスも見ていきます。PureScriptのコードは概念を簡潔に表現するために型クラスの強力さに大きく依存しているので、これらのクラスに慣れておくと役に立つでしょう。</p>
-<p>オブジェクト指向の方面から入って来た方は、
-「クラス」という単語がそれまで馴染みのあるものとこの文脈とでは
-<strong>かなり</strong>異なるものを意味していることに注意してください。</p>
+<p>オブジェクト指向の方面から入って来た方は、「クラス」という単語がそれまで馴染みのあるものとこの文脈とでは <em>かなり</em>
+異なるものを意味していることに注意してください。</p>
 <h2 id="プロジェクトの準備-3"><a class="header" href="#プロジェクトの準備-3">プロジェクトの準備</a></h2>
 <p>この章のソースコードは、ファイル <code>src/data/Hashable.purs</code>で定義されています。</p>
 <p>このプロジェクトには以下の依存関係があります。</p>
@@ -9096,17 +8991,16 @@ bounds = foldl combine emptyBounds
 <pre><code class="language-haskell">class Show a where
   show :: a -&gt; String
 </code></pre>
-<p>このコードでは、型変数 <code>a</code>でパラメータ化された、
-<code>Show</code>という新しい<strong>型クラス</strong> (type class) を宣言しています。</p>
-<p>型クラス<strong>インスタンス</strong>には、型クラスで定義された関数の、その型に特殊化された実装が含まれています。</p>
+<p>このコードでは、型変数 <code>a</code>でパラメータ化された、<code>Show</code>という新しい <em>型クラス</em> (type class) を宣言しています。</p>
+<p>型クラス <em>インスタンス</em> には、型クラスで定義された関数の、その型に特殊化された実装が含まれています。</p>
 <p>例えば、Preludeにある <code>Boolean</code>値に対する <code>Show</code>型クラスインスタンスの定義は次の通りです。</p>
 <pre><code class="language-haskell">instance showBoolean :: Show Boolean where
   show true = &quot;true&quot;
   show false = &quot;false&quot;
 </code></pre>
 <p>このコードは <code>showBool​​ean</code>という名前の型クラスのインスタンスを宣言します。
-PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前をつけます。このとき、<strong><code>Boolean</code>型は
-<code>Show</code>型クラスに属している</strong>といいます。</p>
+PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前をつけます。このとき、
+<em><code>Boolean</code>型は <code>Show</code>型クラスに属している</em> といいます。</p>
 <p>PSCiで、いろいろな型の値を<code>Show</code>型クラスを利用して表示してみましょう。</p>
 <pre><code class="language-text">&gt; import Prelude
 
@@ -9156,9 +9050,9 @@ The inferred type
 
 has type variables which are not mentioned in the body of the type. Consider adding a type annotation.
 </code></pre>
-<p>ここでの問題は <code>show</code>しようとしている型に対する <code>Show</code>インスタンスが存在しないということではなく、
-PSCiがこの型を推論できなかったということです。
-このエラーメッセージで<strong>未知の型</strong><code>a</code>と表示されているのがそれです。</p>
+<p>ここでの問題は <code>show</code>しようとしている型に対する
+<code>Show</code>インスタンスが存在しないということではなく、PSCiがこの型を推論できなかったということです。このエラーメッセージで <em>未知の型</em>
+<code>a</code>と表示されているのがそれです。</p>
 <p><code>::</code>演算子を使って式に対して型注釈を加えると、
 PSCiが正しい型クラスインスタンスを選ぶことができるようになります。</p>
 <pre><code class="language-text">&gt; show (Left 10 :: Either Int String)
@@ -9185,11 +9079,9 @@ No type class instance was found for
 <h2 id="演習-13"><a class="header" href="#演習-13">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>Show</code>インスタンスを<code>Point</code>に定義してください。
-前の章の<code>showPoint</code>関数と同じ出力に一致するようにしてください。
-<strong>補足</strong>：<code>Point</code>はここでは（<code>type</code>同義語ではなく）<code>newtype</code>です。
-そのため<code>show</code>の仕方を変えられます。
-こうでもしないとレコードへの既定の<code>Show</code>インスタンスから逃れられません。</p>
+<p>（簡単）<code>Show</code>インスタンスを<code>Point</code>に定義してください。前の章の<code>showPoint</code>関数と同じ出力に一致するようにしてください。
+<em>補足</em>
+：<code>Point</code>はここでは（<code>type</code>同義語ではなく）<code>newtype</code>です。そのため<code>show</code>の仕方を変えられます。こうでもしないとレコードへの既定の<code>Show</code>インスタンスから逃れられません。</p>
 <pre><code class="language-haskell">newtype Point
   = Point
   { x :: Number
@@ -9241,20 +9133,14 @@ LT
 <h3 id="field-1"><a class="header" href="#field-1">Field</a></h3>
 <p><code>Field</code>型クラスは加算、減算、乗算、除算などの数値演算子を使用可能な型を示します。
 必要に応じて再利用できるように、これらの演算子を抽象化するわけです。</p>
-<p><strong>注意</strong>：型クラス <code>Eq</code>や <code>Ord</code>のクラスとちょうど同じように、
-<code>Field</code>型のクラスはPureScriptコンパイラで特別に扱われ、
-<code>1 + 2 * 3</code>のような単純な式は単純なJavaScriptへと変換されます。
-型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。</p>
+<p><em>注意</em> ：型クラス <code>Eq</code>や <code>Ord</code>のクラスとちょうど同じように、<code>Field</code>型のクラスはPureScriptコンパイラで特別に扱われ、`1</p>
+<ul>
+<li>2 * 3`のような単純な式は単純なJavaScriptへと変換されます。型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。</li>
+</ul>
 <pre><code class="language-haskell">class EuclideanRing a &lt;= Field a
 </code></pre>
-<p><code>Field</code>型クラスは、いくつかのより抽象的な<strong>上位クラス</strong> (Super Class) が組み合わさってできています。
-これは、その型は<code>Field</code>型クラスの操作をすべてを提供しているわけではないが、
-その一部を提供する、というように抽象的に説明することができます。
-この型クラスは抽象的なすべてではないいくつかの数値演算子をサポートしています。
-例えば、自然数の型は加算および乗算については閉じていますが、
-減算については閉じていないため、
-この型は<code>Semiring</code>クラス（これは<code>Num</code>の上位クラスです）のインスタンスですが、
-<code>Ring</code>や<code>Field</code>のインスタンスではありません。</p>
+<p><code>Field</code>型クラスは、いくつかのより抽象的な <em>上位クラス</em> (Super Class)
+が組み合わさってできています。これは、その型は<code>Field</code>型クラスの操作をすべてを提供しているわけではないが、その一部を提供する、というように抽象的に説明することができます。この型クラスは抽象的なすべてではないいくつかの数値演算子をサポートしています。例えば、自然数の型は加算および乗算については閉じていますが、減算については閉じていないため、この型は<code>Semiring</code>クラス（これは<code>Num</code>の上位クラスです）のインスタンスですが、<code>Ring</code>や<code>Field</code>のインスタンスではありません。</p>
 <p>上位クラスについては、この章の後半で詳しく説明します。
 しかし、すべての<a href="https://a-guide-to-the-purescript-numeric-hierarchy.readthedocs.io/en/latest/introduction.html">数値型クラスの階層</a>（<a href="https://harry.garrood.me/numeric-hierarchy-overview/">チートシート</a>）について述べるのはこの章の目的から外れています。
 この内容に興味のある読者は<code>prelude</code>内の <code>Field</code>に関するドキュメントを参照してください。</p>
@@ -9272,11 +9158,8 @@ LT
   mempty :: m
 </code></pre>
 <p>ここでも文字列や配列はモノイドの簡単な例になっています。</p>
-<p><code>Monoid</code>型クラスインスタンスでは、
-「空」の値から始めて新たな値を合成していき、
-その型で<strong>累積</strong>した結果を返すにはどうするかを記述する型クラスです。
-例えば、畳み込みを使っていくつかのモノイドの値の配列を連結する関数を書くことができます。
-PSCiで試すと次のようになります。</p>
+<p><code>Monoid</code>型クラスインスタンスでは、「空」の値から始めて新たな値を合成していき、その型で <em>累積</em>
+した結果を返すにはどうするかを記述する型クラスです。例えば、畳み込みを使っていくつかのモノイドの値の配列を連結する関数を書くことができます。PSCiで試すと次のようになります。</p>
 <pre><code class="language-haskell">&gt; import Prelude
 &gt; import Data.Monoid
 &gt; import Data.Foldable
@@ -9319,11 +9202,10 @@ PSCiで試すと次のようになります。</p>
 <p>ここでは繋ぎ合わせるためのモノイドとして文字列を、
 そして<code>Int</code>を文字列として表示する <code>show</code>関数を選びました。
 それから、数の配列を渡すと、それぞれの数を <code>show</code>してひとつの文字列へと連結した結果が出力されました。</p>
-<p>しかし畳み込み可能な型は配列だけではありません。
-<code>foldable-traversable</code>では <code>Maybe</code>や <code>Tuple</code>のような型の <code>Foldable</code>インスタンスが定義されており、
-<code>lists</code>のような他のライブラリでは、
-そのライブラリのそれぞれのデータ型に対して <code>Foldable</code>インスタンスが定義されています。
-<code>Foldable</code>は<strong>順序付きコンテナ</strong> (ordered container) の概念を捉えたものなのです。</p>
+<p>しかし畳み込み可能な型は配列だけではありません。<code>foldable-traversable</code>では <code>Maybe</code>や <code>Tuple</code>のような型の
+<code>Foldable</code>インスタンスが定義されており、<code>lists</code>のような他のライブラリでは、そのライブラリのそれぞれのデータ型に対して
+<code>Foldable</code>インスタンスが定義されています。<code>Foldable</code>は <em>順序付きコンテナ</em> (ordered container)
+の概念を捉えたものなのです。</p>
 <h3 id="関手と型クラス則"><a class="header" href="#関手と型クラス則">関手と型クラス則</a></h3>
 <p>PureScriptで副作用を伴う関数型プログラミングのスタイルを可能にするための
 <code>Functor</code>と <code>Applicative</code>、 <code>Monad</code>といった型クラスがPreludeでは定義されています。
@@ -9350,19 +9232,15 @@ PSCiで試すと次のようになります。</p>
 <p>直感的には、 <code>map</code>演算子はコンテナのそれぞれの要素へ関数を適用し、
 その結果から元のデータと同じ形状を持った新しいコンテナを構築するものとできます。
 しかし、この着想を精密にするにはどうしたらいいでしょうか？</p>
-<p><code>Functor</code>の型クラスのインスタンスは、
-<strong>関手則</strong> (functor laws) と呼ばれる法則を順守するものと期待されています。</p>
+<p><code>Functor</code>の型クラスのインスタンスは、 <em>関手則</em> (functor laws) と呼ばれる法則を順守するものと期待されています。</p>
 <ul>
 <li><code>map identity xs = xs</code></li>
 <li><code>map g (map f xs) = map (g &lt;&lt;&lt; f) xs</code></li>
 </ul>
-<p>最初の法則は<strong>恒等射律</strong> (identity law) です。
-これは、恒等関数（引数を変えずに返す関数）をその構造まで持ち上げると、
-元の構造をそのまま返すという意味です。
-恒等関数は入力を変更しませんから、これは理にかなっています。</p>
-<p>第二の法則は<strong>合成律</strong> (composition law) です。
-構造をひとつの関数で写してから2つめの関数で写すのは、
-2つの関数の合成で構造を写すのと同じだ、と言っています。</p>
+<p>最初の法則は <em>恒等射律</em> (identity law)
+です。これは、恒等関数（引数を変えずに返す関数）をその構造まで持ち上げると、元の構造をそのまま返すという意味です。恒等関数は入力を変更しませんから、これは理にかなっています。</p>
+<p>第二の法則は <em>合成律</em> (composition law)
+です。構造をひとつの関数で写してから2つめの関数で写すのは、2つの関数の合成で構造を写すのと同じだ、と言っています。</p>
 <p>「持ち上げ」の一般的な意味が何であれ、
 データ構造に対する持ち上げ関数の正しい定義はこれらの法則に従っていなければなりません。</p>
 <p>標準の型クラスの多くには、
@@ -9389,19 +9267,16 @@ PSCiで試すと次のようになります。</p>
 出力の形式はテストで期待される形式と一致させてください（例：<code>1.2+3.4i</code>、<code>5.6-7.7i</code>など）。</p>
 </li>
 <li>
-<p>（簡単）<code>Eq</code>インスタンスを<code>Complex</code>に導出してください。
-<strong>補足</strong>：代わりにこのインスタンスを手作業で書いてもよいですが、しなくていいのになぜするのですか？</p>
+<p>（簡単）<code>Eq</code>インスタンスを<code>Complex</code>に導出してください。 <em>補足</em>
+：代わりにこのインスタンスを手作業で書いてもよいですが、しなくていいのになぜするのですか？</p>
 </li>
 <li>
-<p>（普通）<code>Semiring</code>インタンスを<code>Complex</code>に定義してください。
-<strong>補足</strong>：<a href="https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype"><code>Data.Newtype</code></a>の<code>wrap</code>と<code>over2</code>を使ってより簡潔な解法をつくることができます。
-もしそうするのでしたら、<code>Data.Newtype</code>から<code>class Newtype</code>をインポートしたり、
-<code>Newtype</code>インスタンスを<code>Complex</code>に導出したりする必要も出てくるでしょう。</p>
+<p>（普通）<code>Semiring</code>インタンスを<code>Complex</code>に定義してください。 <em>補足</em>
+：<a href="https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype"><code>Data.Newtype</code></a>の<code>wrap</code>と<code>over2</code>を使ってより簡潔な解法をつくることができます。もしそうするのでしたら、<code>Data.Newtype</code>から<code>class Newtype</code>をインポートしたり、<code>Newtype</code>インスタンスを<code>Complex</code>に導出したりする必要も出てくるでしょう。</p>
 </li>
 <li>
-<p>（簡単）（<code>newtype</code>を介して）<code>Ring</code>インスタンスを<code>Complex</code>に導出してください。
-<strong>補足</strong>：代わりにこのインスタンスを手作業で書くこともできますが、
-そう手軽にはできません。</p>
+<p>（簡単）（<code>newtype</code>を介して）<code>Ring</code>インスタンスを<code>Complex</code>に導出してください。 <em>補足</em>
+：代わりにこのインスタンスを手作業で書くこともできますが、そう手軽にはできません。</p>
 <p>以下は前章からの<code>Shape</code>のADTです。</p>
 <pre><code class="language-haskell">data Shape
   = Circle Point Number
@@ -9411,10 +9286,9 @@ PSCiで試すと次のようになります。</p>
 </code></pre>
 </li>
 <li>
-<p>（普通）（<code>Generic</code>を介して）<code>Show</code>インスタンスを<code>Shape</code>に導出してください。
-コードの量はどのくらいになりましたか？
-また、前の章の<code>showShape</code>と比較して<code>String</code>の出力はどうなりましたか？
-<strong>ヒント</strong>：<a href="https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md">型クラス導出</a>手引きの<a href="https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md#deriving-from-generic"><code>Generic</code>から導出する</a>節を見てください。</p>
+<p>（普通）（<code>Generic</code>を介して）<code>Show</code>インスタンスを<code>Shape</code>に導出してください。コードの量はどのくらいになりましたか？また、前の章の<code>showShape</code>と比較して<code>String</code>の出力はどうなりましたか？
+<em>ヒント</em>
+：<a href="https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md">型クラス導出</a>手引きの<a href="https://github.com/purescript/documentation/blob/master/guides/Type-Class-Deriving.md#deriving-from-generic"><code>Generic</code>から導出する</a>節を見てください。</p>
 </li>
 </ol>
 <h2 id="型クラス制約"><a class="header" href="#型クラス制約">型クラス制約</a></h2>
@@ -9442,8 +9316,8 @@ showCompare a1 a2 =
 複数の引数のカリー化された関数を定義するのと同様です。
 しかし、2つの記号を混同しないように注意してください。</p>
 <ul>
-<li><code>a -&gt; b</code>は<strong>型</strong><code>a</code>から<strong>型</strong><code>b</code>への関数の型を表します。</li>
-<li>一方で、<code>a =&gt; b</code>は<strong>制約</strong><code>a</code>を型<code>b</code>に適用します。</li>
+<li><code>a -&gt; b</code>は <em>型</em> <code>a</code>から <em>型</em> <code>b</code>への関数の型を表します。</li>
+<li>一方で、<code>a =&gt; b</code>は <em>制約</em> <code>a</code>を型<code>b</code>に適用します。</li>
 </ul>
 <p>PureScriptコンパイラは、型の注釈が提供されていない場合、制約付き型を推測しようとします。
 これは、関数に対して可能な最も一般的な型を使用したい場合に便利です。</p>
@@ -9483,7 +9357,7 @@ PSCiでは<code>Int</code>と <code>Number</code>の両方で関数を実行さ�
 <p>（簡単）以下の宣言では型 <code>a</code>の要素の空でない配列の型を定義しています。</p>
 <pre><code class="language-haskell">data NonEmpty a = NonEmpty a (Array a)
 </code></pre>
-<p><code>Eq a</code>と<code>Eq (Array a)</code>へのインスタンスを再利用し、型<code>NonEmpty</code>に<code>Eq</code>インスタンスを書いてください。<strong>補足</strong>：代わりに<code>Eq</code>インスタンスは導出することもできます。</p>
+<p><code>Eq a</code>と<code>Eq (Array a)</code>へのインスタンスを再利用し、型<code>NonEmpty</code>に<code>Eq</code>インスタンスを書いてください。 <em>補足</em> ：代わりに<code>Eq</code>インスタンスは導出することもできます。</p>
 </li>
 <li>
 <p>（普通）<code>Array</code>への<code>Semigroup</code>インスタンスを再利用して、<code>NonEmpty</code>への<code>Semigroup</code>インスタンスを書いてください。</p>
@@ -9498,8 +9372,8 @@ PSCiでは<code>Int</code>と <code>Number</code>の両方で関数を実行さ�
 <p><code>a</code>への<code>Ord</code>インスタンスを再利用して、<code>Extended a</code>に<code>Ord</code>インスタンスを書いてください。</p>
 </li>
 <li>
-<p>（難しい）<code>NonEmpty</code>に<code>Foldable</code>インスタンスを書いてください。
-<strong>ヒント</strong>：配列への<code>Foldable</code>インスタンスを再利用してください。</p>
+<p>（難しい）<code>NonEmpty</code>に<code>Foldable</code>インスタンスを書いてください。 <em>ヒント</em>
+：配列への<code>Foldable</code>インスタンスを再利用してください。</p>
 </li>
 <li>
 <p>（難しい）順序付きコンテナを定義する（そして <code>Foldable</code>のインスタンスを持っている）ような型構築子
@@ -9524,9 +9398,8 @@ PSCiでは<code>Int</code>と <code>Number</code>の両方で関数を実行さ�
 </li>
 </ol>
 <h2 id="多変数型クラス"><a class="header" href="#多変数型クラス">多変数型クラス</a></h2>
-<p>型クラスは必ずしもひとつの型だけを型変数としてとるわけではありません。
-型変数がひとつだけなのが最も一般的ですが、
-実際には型クラスは<strong>ゼロ個以上の</strong>型変数を持つことができます。</p>
+<p>型クラスは必ずしもひとつの型だけを型変数としてとるわけではありません。型変数がひとつだけなのが最も一般的ですが、実際には型クラスは <em>ゼロ個以上の</em>
+型変数を持つことができます。</p>
 <p>それでは2つの型引数を持つ型クラスの例を見てみましょう。</p>
 <pre><code class="language-haskell">module Stream where
 
@@ -9596,10 +9469,7 @@ has type variables which are not mentioned in the body of the type. Consider add
 <pre><code class="language-haskell">class Stream stream element | stream -&gt; element where
   uncons :: stream -&gt; Maybe { head :: element, tail :: stream }
 </code></pre>
-<p>ここで、 <code>stream -&gt; element</code>は<strong>関数従属性</strong> (functional dependency) と呼ばれます。
-関数従属性は、多変数型クラスの型引数間の関数関係を宣言します。
-この関数の依存関係は、ストリーム型から（一意の）要素型への関数があることをコンパイラに伝えるので、
-コンパイラがストリーム型を知っていれば要素の型を割り当てられます。</p>
+<p>ここで、 <code>stream -&gt; element</code>は <em>関数従属性</em> (functional dependency) と呼ばれます。関数従属性は、多変数型クラスの型引数間の関数関係を宣言します。この関数の依存関係は、ストリーム型から（一意の）要素型への関数があることをコンパイラに伝えるので、コンパイラがストリーム型を知っていれば要素の型を割り当てられます。</p>
 <p>このヒントは、コンパイラが上記の汎用的な尾鰭関数の正しい型を推論するのに十分です。</p>
 <pre><code class="language-text">&gt; :type genericTail
 forall stream element. Stream stream element =&gt; stream -&gt; Maybe stream
@@ -9648,8 +9518,8 @@ secondElement xs = head (tail xs)
 2
 </code></pre>
 <h2 id="上位クラス"><a class="header" href="#上位クラス">上位クラス</a></h2>
-<p>インスタンスを別のインスタンスに依存させることによって型クラスのインスタンス間の関係を表現することができるように、
-いわゆる<strong>上位クラス</strong> (superclass) を使って型クラス間の関係を表現することができます。</p>
+<p>インスタンスを別のインスタンスに依存させることによって型クラスのインスタンス間の関係を表現することができるように、いわゆる <em>上位クラス</em>
+(superclass) を使って型クラス間の関係を表現することができます。</p>
 <p>あるクラスのどんなインスタンスも、
 別のクラスのインスタンスである必要があるとき、
 後者の型クラスは前者の型クラスの上位クラスであるといい、
@@ -9674,18 +9544,15 @@ secondElement xs = head (tail xs)
 <h2 id="演習-16"><a class="header" href="#演習-16">演習</a></h2>
 <ol>
 <li>
-<p>（普通）部分関数<code>unsafeMaximum :: Partial =&gt; Array Int -&gt; Int</code>を定義してください。
-この関数は整数の空でない配列の最大値を求めます。
-<code>unsafePartial</code>を使ってPSCiで関数をテストしてください。
-<strong>ヒント</strong>：<code>Data.Foldable</code>の <code>maximum</code>関数を使います。</p>
+<p>（普通）部分関数<code>unsafeMaximum :: Partial =&gt; Array Int -&gt; Int</code>を定義してください。この関数は整数の空でない配列の最大値を求めます。<code>unsafePartial</code>を使ってPSCiで関数をテストしてください。
+<em>ヒント</em> ：<code>Data.Foldable</code>の <code>maximum</code>関数を使います。</p>
 </li>
 <li>
 <p>（普通）次の <code>Action</code>クラスは、ある型の別の型での動作 (action) を定義する、多変数型クラスです。</p>
 <pre><code class="language-haskell">class Monoid m &lt;= Action m a where
   act :: m -&gt; a -&gt; a
 </code></pre>
-<p><strong>動作</strong>はどのようにモノイドな値を使って他の型の値を変更する方法を決められるのかを記述する関数です。
-<code>Action</code>型クラスには2つの法則があります。</p>
+<p><em>動作</em> はどのようにモノイドな値を使って他の型の値を変更する方法を決められるのかを記述する関数です。<code>Action</code>型クラスには2つの法則があります。</p>
 <ul>
 <li><code>act mempty a = a</code></li>
 <li><code>act (m1 &lt;&gt; m2) a = act m1 (act m2 a)</code></li>
@@ -9709,19 +9576,15 @@ instance monoidMultiply :: Monoid Multiply where
 <p>インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。</p>
 </li>
 <li>
-<p>（難しい）実は<code>Action Multiply Int</code>のインスタンスを実装するには複数の方法があります。
-どれだけ思い付きますか？
-PureScriptは同じインスタンスの複数の実装を許さないため、
-元の実装を置き換える必要があります。
-<strong>補足</strong>：テストでは4つの実装を押さえています。</p>
+<p>（難しい）実は<code>Action Multiply Int</code>のインスタンスを実装するには複数の方法があります。どれだけ思い付きますか？PureScriptは同じインスタンスの複数の実装を許さないため、元の実装を置き換える必要があります。
+<em>補足</em> ：テストでは4つの実装を押さえています。</p>
 </li>
 <li>
 <p>（普通）入力の文字列を何回か繰り返す<code>Action</code>インスタンスを書いてください。</p>
 <pre><code class="language-haskell">instance actionMultiplyString :: Action Multiply String where
   ...
 </code></pre>
-<p><strong>ヒント</strong>：Pursuitでシグネチャが<a href="https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String"><code>String -&gt; Int -&gt; String</code></a>のお助け関数を検索してください。
-なお<code>String</code>は（<code>Monoid</code>のような）より汎用的な型として現れます。</p>
+<p><em>ヒント</em> ：Pursuitでシグネチャが<a href="https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String"><code>String -&gt; Int -&gt; String</code></a>の補助関数を検索してください。なお<code>String</code>は（<code>Monoid</code>のような）より汎用的な型として現れます。</p>
 <p>このインスタンスは上に挙げた法則を満たすでしょうか。</p>
 </li>
 <li>
@@ -9734,14 +9597,12 @@ PureScriptは同じインスタンスの複数の実装を許さないため、
 ここでモノイド<code>m</code>は<code>append</code>を用いて自力で動作します。</p>
 <pre><code class="language-haskell">newtype Self m = Self m
 </code></pre>
-<p><strong>補足</strong>：テストフレームワークでは<code>Self</code>と<code>Multiply</code>型に<code>Show</code>と<code>Eq</code>インスタンスが必要になります。
-手作業でこれらのインスタンスを書いてもよいですし、
-<a href="https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#derive-from-newtype"><code>derive newtype instance</code></a>と書くだけでコンパイラに取り仕切ってもらうこともできます。</p>
+<p><em>補足</em> ：テストフレームワークでは<code>Self</code>と<code>Multiply</code>型に<code>Show</code>と<code>Eq</code>インスタンスが必要になります。手作業でこれらのインスタンスを書いてもよいですし、<a href="https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#derive-from-newtype"><code>derive newtype instance</code></a>と書くだけでコンパイラに取り仕切ってもらうこともできます。</p>
 </li>
 <li>
-<p>（難しい）多変数型のクラス <code>Action</code>の引数は、何らかの関数従属性によって関連づけられるべきですか。
-なぜそうすべき、あるいはそうすべきでないでしょうか？
-<strong>補足</strong>：この演習にはテストがありません。</p>
+<p>（難しい）多変数型のクラス
+<code>Action</code>の引数は、何らかの関数従属性によって関連づけられるべきですか。なぜそうすべき、あるいはそうすべきでないでしょうか？ <em>補足</em>
+：この演習にはテストがありません。</p>
 </li>
 </ol>
 <h2 id="ハッシュの型クラス"><a class="header" href="#ハッシュの型クラス">ハッシュの型クラス</a></h2>
@@ -9837,14 +9698,11 @@ hashEqual = eq `on` hash
 <h2 id="演習-17"><a class="header" href="#演習-17">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）PSCiを使って、定義した各インスタンスのハッシュ関数をテストしてください。
-<strong>補足</strong>：この演習には単体試験がありません。</p>
+<p>（簡単）PSCiを使って、定義した各インスタンスのハッシュ関数をテストしてください。 <em>補足</em> ：この演習には単体試験がありません。</p>
 </li>
 <li>
-<p>（普通）ハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうかを調べる関数<code>arrayHasDuplicates</code>を書いてください。
-まずハッシュ同値性を<code>hashEqual</code>関数で確認し、
-それからもし重複するハッシュの対が見付かったら<code>==</code>で値の同値性を確認してください。
-<strong>ヒント</strong>：<code>Data.Array</code>の <code>nubByEq</code>関数はこの問題をずっと簡単にしてくれるでしょう。</p>
+<p>（普通）ハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうかを調べる関数<code>arrayHasDuplicates</code>を書いてください。まずハッシュ同値性を<code>hashEqual</code>関数で確認し、それからもし重複するハッシュの対が見付かったら<code>==</code>で値の同値性を確認してください。
+<em>ヒント</em> ：<code>Data.Array</code>の <code>nubByEq</code>関数はこの問題をずっと簡単にしてくれるでしょう。</p>
 </li>
 <li>
 <p>（普通）型クラスの法則を満たす、次のnewtypeの <code>Hashable</code>インスタンスを書いてください。</p>
@@ -9855,35 +9713,22 @@ instance eqHour :: Eq Hour where
 </code></pre>
 </li>
 </ol>
-<p>newtypeの <code>Hour</code>とその <code>Eq</code>インスタンスは、12を法とする整数の型を表します。
-したがって、例えば1と13は等しいと見なされます。
-そのインスタンスが型クラスの法則を満たしていることを証明してください。</p>
+<p>newtypeの <code>Hour</code>とその <code>Eq</code>インスタンスは、12を法とする整数の型を表します。したがって、例えば1と13は等しいと見なされます。そのインスタンスが型クラスの法則を満たしていることを証明してください。</p>
 <ol>
-<li>（難しい）<code>Maybe</code>、<code>Either</code>そして<code>Tuple</code>への<code>Hashable</code>インスタンスについて型クラスの法則を証明してください。
-<strong>補足</strong>：この演習にテストはありません。</li>
+<li>（難しい）<code>Maybe</code>、<code>Either</code>そして<code>Tuple</code>への<code>Hashable</code>インスタンスについて型クラスの法則を証明してください。 <em>補足</em> ：この演習にテストはありません。</li>
 </ol>
 <h2 id="まとめ-4"><a class="header" href="#まとめ-4">まとめ</a></h2>
-<p>この章では、型に基づく抽象化で、
-コードの再利用のための強力な形式化を可能にする<strong>型クラス</strong>を導入しました。
-PureScriptの標準ライブラリから標準の型クラスを幾つか見てきました。
-また、ハッシュ値を計算する型クラスに基づく独自のライブラリを定義しました。</p>
-<p>この章では型クラス法則の考え方も導入しましたが、
-これは抽象化に型クラスを使うコードについての性質を証明する手法でした。
-型クラス法則は<strong>等式推論</strong> (equational reasoning) と呼ばれる大きな分野の一部であり、
-プログラミング言語の性質と型システムはプログラムについて論理的な推論をできるようにするために使われています。
-これは重要な考え方で、本書では今後あらゆる箇所で立ち返る話題となるでしょう。</p>
+<p>この章では、型に基づく抽象化で、コードの再利用のための強力な形式化を可能にする <em>型クラス</em>
+を導入しました。PureScriptの標準ライブラリから標準の型クラスを幾つか見てきました。また、ハッシュ値を計算する型クラスに基づく独自のライブラリを定義しました。</p>
+<p>この章では型クラス法則の考え方も導入しましたが、これは抽象化に型クラスを使うコードについての性質を証明する手法でした。型クラス法則は <em>等式推論</em>
+(equational reasoning)
+と呼ばれる大きな分野の一部であり、プログラミング言語の性質と型システムはプログラムについて論理的な推論をできるようにするために使われています。これは重要な考え方で、本書では今後あらゆる箇所で立ち返る話題となるでしょう。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="アプリカティブによる検証"><a class="header" href="#アプリカティブによる検証">アプリカティブによる検証</a></h1>
 <h2 id="この章の目標-5"><a class="header" href="#この章の目標-5">この章の目標</a></h2>
-<p>この章では、
-<code>Applicative</code>型クラスによって表現される<strong>アプリカティブ関手</strong> (applicative functor)
-という重要な抽象化と新たに出会うことになります。
-名前が難しそうに思えても心配しないでください。
-フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。
-アプリカティブ関手を使うと、
-通常であれば大量の決まり文句を伴うようなコードを、
-簡潔で宣言的な記述へと変えることができるようになります。</p>
-<p>また、<strong>巡回可能関手</strong> (traversable functor) を表現する<code>Traversable</code>という別の型クラスにも出会います。
-現実の問題への解決策からこの概念が自然に生じるということがわかるでしょう。</p>
+<p>この章では、<code>Applicative</code>型クラスによって表現される <em>アプリカティブ関手</em> (applicative functor)
+という重要な抽象化と新たに出会うことになります。名前が難しそうに思えても心配しないでください。フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。アプリカティブ関手を使うと、通常であれば大量の決まり文句を伴うようなコードを、簡潔で宣言的な記述へと変えることができるようになります。</p>
+<p>また、 <em>巡回可能関手</em> (traversable functor)
+を表現する<code>Traversable</code>という別の型クラスにも出会います。現実の問題への解決策からこの概念が自然に生じるということがわかるでしょう。</p>
 <p>この章では第3章に引き続き住所録を例として扱います。
 今回は住所録のデータ型を拡張し、
 これらの型の値を検証する関数を書きます。
@@ -9898,15 +9743,13 @@ PureScriptの標準ライブラリから標準の型クラスを幾つか見て�
 <ul>
 <li><code>control</code> - <code>Applicative</code>のような、型クラスを使用して制御フローを抽象
 化する関数が定義されています。</li>
-<li><code>validation</code> - この章の主題である <strong>アプリカティブによる検証</strong> のため
-の関手が定義されています。</li>
+<li><code>validation</code> - この章の主題である <em>アプリカティブによる検証</em> のための関手が定義されています。</li>
 </ul>
 <p><code>Data.AddressBook</code>モジュールには、
 このプロジェクトのデータ型とそれらの型に対する<code>Show</code>インスタンスが定義されており、
 <code>Data.AddressBook.Validation</code>モジュールにはそれらの型の検証規則が含まれています。</p>
 <h2 id="関数適用の一般化"><a class="header" href="#関数適用の一般化">関数適用の一般化</a></h2>
-<p><strong>アプリカティブ関手</strong>の概念を理解するために、
-以前扱った型構築子<code>Maybe</code>について考えてみましょう。</p>
+<p><em>アプリカティブ関手</em> の概念を理解するために、以前扱った型構築子<code>Maybe</code>について考えてみましょう。</p>
 <p>このモジュールのソースコードでは、
 次のような型を持つ<code>address</code>関数が定義されています。</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
@@ -10042,9 +9885,9 @@ Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &qu
 Nothing
 </code></pre>
 <p>このように、引数が異なる他のいろいろな関数を<code>Maybe</code>上に持ち上げてみてください。</p>
-<p>この代わりにお馴染の<strong>do記法</strong>に似た見た目の<strong>アプリカティブdo記法</strong>が同じ目的で使えます。
-以下では<code>lift3</code>に<strong>アプリカティブdo記法</strong>を使っています。
-なお<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
+<p>この代わりにお馴染の <em>do記法</em> に似た見た目の <em>アプリカティブdo記法</em> が同じ目的で使えます。以下では<code>lift3</code>に
+<em>アプリカティブdo記法</em>
+を使っています。なお<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
 <pre><code class="language-haskell">lift3 :: forall a b c d f
        . Apply f
       =&gt; (a -&gt; b -&gt; c -&gt; d)
@@ -10121,7 +9964,7 @@ Just (&quot;Freeman, Phillip A&quot;)
 &gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;Freeman&quot;
 Nothing
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
 &gt; :paste…
@@ -10152,7 +9995,7 @@ Nothing
 … withError (Just a) _   = Right a
 … ^D
 </code></pre>
-<p><strong>注意</strong>：<code>Either err</code>Applicative関手において、<code>Left</code>構築子は失敗を表しており、<code>Right</code>構築子は成功を表しています。</p>
+<p><em>注意</em> ：<code>Either err</code>Applicative関手において、<code>Left</code>構築子は失敗を表しており、<code>Right</code>構築子は成功を表しています。</p>
 <p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラーメッセージを提供できるようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last =
@@ -10161,7 +10004,7 @@ Nothing
 …            &lt;*&gt; (last   `withError` &quot;Last name was missing&quot;)
 … ^D
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last = ado
 …  f &lt;- first  `withError` &quot;First name was missing&quot;
@@ -10189,7 +10032,7 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 <pre><code class="language-text">&gt; fullNameEither Nothing Nothing Nothing
 (Left &quot;First name was missing&quot;)
 </code></pre>
-<p>これでも十分なときもありますが、エラー時に<strong>すべての</strong>省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半でこの解決策を見ていきます。</p>
+<p>これでも十分なときもありますが、エラー時に <em>すべての</em> 省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半でこの解決策を見ていきます。</p>
 <h2 id="作用の結合"><a class="header" href="#作用の結合">作用の結合</a></h2>
 <p>抽象的にApplicative関手を扱う例として、
 アプリカティブ関手<code>f</code>によって表現された副作用を総称的に組み合わせる関数をどのように書くのかをこの節では示します。</p>
@@ -10203,15 +10046,7 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 しかし、まだ<code>f</code>によって追跡される副作用が残ります。
 つまり、元のリストの中の作用を「結合する」ことにより、
 型<code>List (f a)</code>の何かを型<code>f (List a)</code>の何かへと変換することができると考えられます。</p>
-<p>任意の固定長リストの長さ<code>n</code>について、
-その引数を要素に持った長さ<code>n</code>のリストを構築するような<code>n</code>引数の関数が存在します。
-たとえば、もし<code>n</code>が<code>3</code>なら、
-関数は<code>\x y z -&gt; x : y : z : Nil</code>です。
-この関数の型は<code>a -&gt; a -&gt; a -&gt; List a</code>です。
-<code>Applicative</code>インスタンスを使うと、
-この関数を<code>f</code>の上へ持ち上げて関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>を得ることができます。
-しかし、いかなる<code>n</code>についてもこれが可能なので、
-いかなる引数の<strong>リスト</strong>についても同じように持ち上げられることが確かめられます。</p>
+<p>任意の固定長リストの長さ<code>n</code>について、その引数を要素に持った長さ<code>n</code>のリストを構築するような<code>n</code>引数の関数が存在します。たとえば、もし<code>n</code>が<code>3</code>なら、関数は<code>\x y z -&gt; x : y : z : Nil</code>です。この関数の型は<code>a -&gt; a -&gt; a -&gt; List a</code>です。<code>Applicative</code>インスタンスを使うと、この関数を<code>f</code>の上へ持ち上げて関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>を得ることができます。しかし、いかなる<code>n</code>についてもこれが可能なので、いかなる引数の <em>リスト</em> についても同じように持ち上げられることが確かめられます。</p>
 <p>したがって、次のような関数を書くことができるはずです。</p>
 <pre><code class="language-haskell">combineList :: forall f a. Applicative f =&gt; List (f a) -&gt; f (List a)
 </code></pre>
@@ -10256,9 +10091,8 @@ Nothing
 <p><code>combineList</code>関数については、後ほど<code>Traversable</code>関手について考えるときに再会します。</p>
 <h2 id="演習-18"><a class="header" href="#演習-18">演習</a></h2>
 <ol>
-<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
-これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
-<strong>ヒント</strong>：<code>lift2</code>を使ってください。</li>
+<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
+<em>ヒント</em> ：<code>lift2</code>を使ってください。</li>
 <li>（普通）上の演習を（<code>Maybe</code>だけでなく）全ての<code>Apply</code>型で動くように拡張してください。
 これらの新しい関数には<code>addApply</code>、<code>subApply</code>、<code>mulApply</code>、<code>divApply</code>と名前を付けます。</li>
 <li>（難しい）型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
@@ -10327,7 +10161,7 @@ validatePerson1 p =
          &lt;*&gt; pure p.homeAddress
          &lt;*&gt; pure p.phones
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validatePerson1Ado :: Person -&gt; Either String Person
 validatePerson1Ado p = ado
   f &lt;- nonEmpty1 p.firstName
@@ -10345,11 +10179,8 @@ validatePerson1Ado p = ado
 </code></pre>
 <p><code>Either String</code>アプリカティブ関手は遭遇した最初のエラーだけを返します。
 でもこの入力では、名前の不足と姓の不足という2つのエラーがわかるようにしたくなるでしょう。</p>
-<p><code>validation</code>ライブラリは別のアプリカティブ関手も提供されています。
-これは単に<code>V</code>と呼ばれていて、
-何らかの<strong>半群</strong> (Semigroup) でエラーを返す機能があります。
-たとえば、<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、
-<code>String</code>の配列をエラーとして返すことができます。</p>
+<p><code>validation</code>ライブラリは別のアプリカティブ関手も提供されています。これは単に<code>V</code>と呼ばれていて、何らかの <em>半群</em> (Semigroup)
+でエラーを返す機能があります。たとえば、<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、<code>String</code>の配列をエラーとして返すことができます。</p>
 <p><code>Data.Validation</code>モジュールは<code>Data.AddressBook</code>モジュールの
 データ構造を検証するために<code>V (Array String)</code>アプリカティブ関手を使っています。</p>
 <p><code>Data.AddressBook.Validation</code>モジュールにある検証の例としては次のようになります。</p>
@@ -10371,7 +10202,7 @@ validateAddress a =
           &lt;*&gt; nonEmpty &quot;City&quot;    a.city
           &lt;*&gt; lengthIs &quot;State&quot; 2 a.state
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validateAddressAdo :: Address -&gt; V Errors Address
 validateAddressAdo a = ado
   street &lt;- nonEmpty &quot;Street&quot;  a.street
@@ -10415,7 +10246,7 @@ validatePhoneNumber pn =
   phoneNumber &lt;$&gt; pure pn.&quot;type&quot;
               &lt;*&gt; matches &quot;Number&quot; phoneNumberRegex pn.number
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validatePhoneNumberAdo :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumberAdo pn = ado
   tpe    &lt;- pure pn.&quot;type&quot;
@@ -10431,16 +10262,12 @@ invalid ([&quot;Field 'Number' did not match the required format&quot;])
 </code></pre>
 <h2 id="演習-19"><a class="header" href="#演習-19">演習</a></h2>
 <ol>
-<li>（簡単）正規表現<code>stateRegex :: Regex</code>を書いて
-文字列が2文字のアルファベットであることを確かめてください。
-<strong>ヒント</strong>：<code>phoneNumberRegex</code>のソースコードを参照してみましょう。</li>
-<li>（普通）文字列全体が空白でないことを検査する正規表現<code>nonEmptyRegex :: Regex</code>を書いてください。
-<strong>ヒント</strong>：この正規表現を開発するのに手助けが必要なら、<a href="https://regexr.com">RegExr</a>をご確認ください。
-素晴しい早見表と対話的なお試し環境があります。</li>
-<li>（普通）<code>validateAddress</code>に似ていますが、
-上の<code>stateRegex</code>を使って<code>state</code>フィールドを検証し、
-<code>nonEmptyRegex</code>を使って<code>street</code>と<code>city</code>フィールドを検証する関数<code>validateAddressImproved</code>を書いてください。
-<strong>ヒント</strong>：<code>matches</code>の用例については<code>validatePhoneNumber</code>のソースを見てください。</li>
+<li>（簡単）正規表現<code>stateRegex :: Regex</code>を書いて文字列が2文字のアルファベットであることを確かめてください。 <em>ヒント</em>
+：<code>phoneNumberRegex</code>のソースコードを参照してみましょう。</li>
+<li>（普通）文字列全体が空白でないことを検査する正規表現<code>nonEmptyRegex :: Regex</code>を書いてください。 <em>ヒント</em>
+：この正規表現を開発するのに手助けが必要なら、<a href="https://regexr.com">RegExr</a>をご確認ください。素晴しい早見表と対話的なお試し環境があります。</li>
+<li>（普通）<code>validateAddress</code>に似ていますが、上の<code>stateRegex</code>を使って<code>state</code>フィールドを検証し、<code>nonEmptyRegex</code>を使って<code>street</code>と<code>city</code>フィールドを検証する関数<code>validateAddressImproved</code>を書いてください。
+<em>ヒント</em> ：<code>matches</code>の用例については<code>validatePhoneNumber</code>のソースを見てください。</li>
 </ol>
 <h2 id="巡回可能関手"><a class="header" href="#巡回可能関手">巡回可能関手</a></h2>
 <p>残った検証器は<code>validatePerson</code>です。
@@ -10459,7 +10286,7 @@ validatePerson p =
          &lt;*&gt; validateAddress p.homeAddress
          &lt;*&gt; validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validatePersonAdo :: Person -&gt; V Errors Person
 validatePersonAdo p = ado
   firstName &lt;- nonEmpty &quot;First Name&quot; p.firstName
@@ -10474,10 +10301,9 @@ validatePersonAdo p = ado
   traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; t a -&gt; m (t b)
   sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
-<p><code>Traversable</code>は<strong>巡回可能関手</strong>の型クラスを定義します。
-これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
-<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<strong>畳み込み可能関手</strong>は構造をひとつの値へとまとめる、畳み込み操作を提供する型構築子であったことを思い出してください）。
-それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
+<p><code>Traversable</code>は <em>巡回可能関手</em>
+の型クラスを定義します。これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
+<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<em>畳み込み可能関手</em>は構造をひとつの値へとまとめる、畳み込み操作を提供する型構築子であったことを思い出してください）。それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
 <p>複雑そうに聞こえるかもしれませんが、配列の場合に特殊化して簡単に考えてみましょう。配列型構築子は<code>Traversable</code>である、つまり次のような関数が存在するということです。</p>
 <pre><code class="language-haskell">traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; Array a -&gt; m (Array b)
 </code></pre>
@@ -10565,29 +10391,21 @@ pure ((Just &quot;Testing&quot;))
 </code></pre>
 </li>
 <li>
-<p>（普通）<code>Traversable</code>インスタンスを<code>Tree a</code>を書いてください。
-これは副作用を左から右に結合するものです。
-<strong>ヒント</strong>：<code>Traversable</code>に定義する必要のある追加のインスタンス依存関係がいくつかあります。</p>
+<p>（普通）<code>Traversable</code>インスタンスを<code>Tree a</code>を書いてください。これは副作用を左から右に結合するものです。 <em>ヒント</em>
+：<code>Traversable</code>に定義する必要のある追加のインスタンス依存関係がいくつかあります。</p>
 </li>
 <li>
-<p>（普通）行き掛け順に木を巡回する関数
-<code>traversePreOrder :: forall a m b. Applicative m =&gt; (a -&gt; m b) -&gt; Tree a -&gt; m (Tree b)</code>
-を書いてください。
-つまり作用の実行は根左右と行われ、
-以前の通り掛け順の巡回の演習でしたような左根右ではありません。
-<strong>ヒント</strong>：追加でインスタンスを定義する必要はありませんし、
-前に定義した関数は何も呼ぶ必要はありません。
-アプリカティブdo記法 (<code>ado</code>) はこの関数を書く最も簡単な方法です。</p>
+<p>（普通）行き掛け順に木を巡回する関数<code>traversePreOrder :: forall a m b. Applicative m =&gt; (a -&gt; m b) -&gt; Tree a -&gt; m (Tree b)</code>を書いてください。つまり作用の実行は根左右と行われ、以前の通り掛け順の巡回の演習でしたような左根右ではありません。 <em>ヒント</em>
+：追加でインスタンスを定義する必要はありませんし、前に定義した関数は何も呼ぶ必要はありません。アプリカティブdo記法 (<code>ado</code>)
+はこの関数を書く最も簡単な方法です。</p>
 </li>
 <li>
 <p>（普通）作用が左右根と実行される木の帰り掛け順の巡回を行う関数
 <code>traversePostOrder</code>を書いてください。</p>
 </li>
 <li>
-<p>（普通）<code>homeAddress</code>フィールドがオプショナル（<code>Maybe</code>を使用）な
-新しい版の<code>Person</code>型をつくってください。
-それからこの新しい<code>Person</code>を検証する新しい版の<code>validatePerson</code>（<code>validatePersonOptionalAddress</code>と改名します）を書いてください。
-<strong>ヒント</strong>：<code>traverse</code>を使って型<code>Maybe a</code>のフィールドを検証してください。</p>
+<p>（普通）<code>homeAddress</code>フィールドがオプショナル（<code>Maybe</code>を使用）な新しい版の<code>Person</code>型をつくってください。それからこの新しい<code>Person</code>を検証する新しい版の<code>validatePerson</code>（<code>validatePersonOptionalAddress</code>と改名します）を書いてください。
+<em>ヒント</em> ：<code>traverse</code>を使って型<code>Maybe a</code>のフィールドを検証してください。</p>
 </li>
 <li>
 <p>（難しい）<code>sequence</code>のように振る舞う関数<code>sequenceUsingTraverse</code>を書いてください。
@@ -10612,50 +10430,37 @@ pure ((Just &quot;Testing&quot;))
 アプリカティブ関手の規則は、
 その計算を実行する副作用にどんな順序付けも強制しません。
 実際、並列に副作用を実行するためのアプリカティブ関手というものは妥当になりえます。</p>
-<p>たとえば、
-<code>V</code>検証関手はエラーの<strong>配列</strong>を返しますが、
-その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、
-このときどんな順序でそれぞれの検証器を実行しても問題はありません。
-データ構造に対して並列にこれを実行することさえできるのです！</p>
-<p>別の例として、<code>parallel</code>パッケージは、
-<strong>並列計算</strong>をサポートする<code>Parallel</code>型クラスを与えます。
-<code>Parallel</code>は関数<code>parallel</code>を提供しており、
-何らかの<code>Applicative</code>関手を使って入力の計算を<strong>並列に</strong>計算することができます。</p>
+<p>たとえば、<code>V</code>検証関手はエラーの <em>配列</em>
+を返しますが、その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、このときどんな順序でそれぞれの検証器を実行しても問題はありません。データ構造に対して並列にこれを実行することさえできるのです！</p>
+<p>別の例として、<code>parallel</code>パッケージは、 <em>並列計算</em>
+をサポートする<code>Parallel</code>型クラスを与えます。<code>Parallel</code>は関数<code>parallel</code>を提供しており、何らかの<code>Applicative</code>関手を使って入力の計算を
+<em>並列に</em> 計算することができます。</p>
 <pre><code class="language-haskell">f &lt;$&gt; parallel computation1
   &lt;*&gt; parallel computation2
 </code></pre>
 <p>この計算は<code>computation1</code>と<code>computation2</code>を非同期に使って値を計算を始めるでしょう。
 そして両方の結果の計算が終わった時に、関数<code>f</code>を使ってひとつの結果へと結合するでしょう。</p>
-<p>この考え方の詳細は、
-本書の後半で<strong>コールバック地獄</strong>の問題に対して
-アプリカティブ関手を応用するときに見ていきます。</p>
+<p>この考え方の詳細は、本書の後半で <em>コールバック地獄</em> の問題に対してアプリカティブ関手を応用するときに見ていきます。</p>
 <p>アプリカティブ関手は並列に結合されうる副作用を捕捉する自然な方法です。</p>
 <h2 id="まとめ-5"><a class="header" href="#まとめ-5">まとめ</a></h2>
 <p>この章では新しい考え方をたくさん扱いました。</p>
 <ul>
-<li>関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、<strong>アプリカ
-ティブ関手</strong>の概念を導入しました。</li>
+<li>関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、 <em>アプリカティブ関手</em> の概念を導入しました。</li>
 <li>データ構造の検証という課題にアプリカティブ関手がどのような解決策を与え
 るか、どうすれば単一のエラーの報告からデータ構造を横断するすべてのエラー
 の報告へ変換できるのかを見てきました。</li>
-<li><code>Traversable</code>型クラスに出会いました。<strong>巡回可能関手</strong>の考え方を内包す
-るものであり、要素が副作用を持つ値の結合に使うことができる容器でした。</li>
+<li><code>Traversable</code>型クラスに出会いました。 <em>巡回可能関手</em>
+の考え方を内包するものであり、要素が副作用を持つ値の結合に使うことができる容器でした。</li>
 </ul>
-<p>アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。
-本書を通じて何度も見ることになるでしょう。
-今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、
-これにより<strong>どうやって</strong>検証を行うかではなく、
-<strong>何を</strong>検証器が検証すべきなのかを定義することができました。
-一般に、アプリカティブ関手は<strong>領域特化言語</strong>を設計する上で便利な道具になります。</p>
-<p>次の章では、これに関連する考え方である<strong>モナド</strong>クラスを見て、
-アドレス帳の例をブラウザで実行させられるように拡張しましょう！</p>
+<p>アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。本書を通じて何度も見ることになるでしょう。今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、これにより
+<em>どうやって</em> 検証を行うかではなく、 <em>何を</em> 検証器が検証すべきなのかを定義することができました。一般に、アプリカティブ関手は <em>域特化言語</em>
+を設計する上で便利な道具になります。</p>
+<p>次の章では、これに関連する考え方である <em>モナド</em> クラスを見て、アドレス帳の例をブラウザで実行させられるように拡張しましょう！</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="作用モナド"><a class="header" href="#作用モナド">作用モナド</a></h1>
 <h2 id="この章の目標-6"><a class="header" href="#この章の目標-6">この章の目標</a></h2>
-<p>前章では、オプショナルな型やエラーメッセージ、
-データの検証など、<strong>副作用</strong>を扱いを抽象化するアプリカティブ関手を導入しました。
-この章では、より表現力の高い方法で副作用を扱うための別の抽象化、<strong>モナド</strong>を導入します。</p>
-<p>この章の目的は、なぜモナドが便利な抽象化なのかということと、
-<strong>do記法</strong>との関係を説明することです。</p>
+<p>前章では、オプショナルな型やエラーメッセージ、データの検証など、 <em>副作用</em>
+を扱いを抽象化するアプリカティブ関手を導入しました。この章では、より表現力の高い方法で副作用を扱うための別の抽象化、 <em>モナド</em> を導入します。</p>
+<p>この章の目的は、なぜモナドが便利な抽象化なのかということと、 <em>do記法</em> との関係を説明することです。</p>
 <h2 id="プロジェクトの準備-5"><a class="header" href="#プロジェクトの準備-5">プロジェクトの準備</a></h2>
 <p>このプロジェクトでは、以下の依存関係が追加されています。</p>
 <ul>
@@ -10666,13 +10471,13 @@ pure ((Just &quot;Testing&quot;))
 <li><code>react-basic-hooks</code>: アドレス帳アプリに使うWebフレームワークです。</li>
 </ul>
 <h2 id="モナドとdo記法"><a class="header" href="#モナドとdo記法">モナドとdo記法</a></h2>
-<p>do記法は<strong>配列内包表記</strong>を扱うときに最初に導入されました。配列内包表記は <code>Data.Array</code>モジュールの
+<p>do記法は <em>配列内包表記</em> を扱うときに最初に導入されました。配列内包表記は <code>Data.Array</code>モジュールの
 <code>concatMap</code>関数の構文糖として提供されています。</p>
 <p>次の例を考えてみましょう。2つのサイコロを振って出た目を数え、出た目の合計が
 <code>n</code>のときそれを得点とすることを考えます。次のような非決定的なアルゴリズムを使うとこれを実現することができます。</p>
 <ul>
-<li>最初の投擲で値 <code>x</code>を<strong>選択</strong>します。</li>
-<li>2回目の投擲で値 <code>y</code>を<strong>選択</strong>します。</li>
+<li>最初の投擲で値 <code>x</code>を <em>選択</em> します。</li>
+<li>2回目の投擲で値 <code>y</code>を <em>選択</em> します。</li>
 <li>もし <code>x</code>と <code>y</code>の和が <code>n</code>なら組 <code>[x, y]</code>を返し、そうでなければ失敗しま
 す。</li>
 </ul>
@@ -10699,12 +10504,9 @@ countThrows n = do
 &gt; countThrows 12
 [[6,6]]
 </code></pre>
-<p>前の章では、<strong>オプショナルな値</strong>に対応したより大きなプログラミング言語へと
-PureScriptの関数を埋め込む、
-<code>Maybe</code> アプリカティブ関手についての直感的理解を養いました。
-同様に<strong>配列モナド</strong>についても、
-<strong>非決定選択</strong>に対応したより大きなプログラミング言語へ
-PureScriptの関数を埋め込む、というような直感的理解を得ることができます。</p>
+<p>前の章では、 <em>オプショナルな値</em> に対応したより大きなプログラミング言語へとPureScriptの関数を埋め込む、<code>Maybe</code>
+アプリカティブ関手についての直感的理解を養いました。同様に <em>配列モナド</em> についても、 <em>非決定選択</em>
+に対応したより大きなプログラミング言語へPureScriptの関数を埋め込む、というような直感的理解を得ることができます。</p>
 <p>一般に、ある型構築子 <code>m</code>のモナドは、型 <code>m a</code>の値を持つdo記法を使う方法を提供します。
 上の配列内包表記では、すべての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が含まれていることに注目してください。
 一般に、do記法ブロックのすべての行は、何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
@@ -10771,34 +10573,28 @@ userCity root =
       child addr &quot;city&quot; &gt;&gt;= \city -&gt;
         pure city
 </code></pre>
-<p>do記法を使って表現されたコードは、
-<code>&gt;&gt;=</code>演算子を使って書かれた同じ意味のコードよりしばしば読みやすくなることも特筆すべき点です。
-一方で、明示的に <code>&gt;&gt;=</code>を使って束縛が書くと、
-よく<strong>ポイントフリー</strong>形式でコードが書けるようになります。
-ただし、読みやすさにはやはり注意がいります。</p>
+<p>do記法を使って表現されたコードは、<code>&gt;&gt;=</code>演算子を使って書かれた同じ意味のコードよりしばしば読みやすくなることも特筆すべき点です。一方で、明示的に <code>&gt;&gt;=</code>を使って束縛が書くと、よく <em>ポイントフリー</em> 形式でコードが書けるようになります。ただし、読みやすさにはやはり注意がいります。</p>
 <h2 id="モナド則"><a class="header" href="#モナド則">モナド則</a></h2>
-<p><code>Monad</code>型クラスは<strong>モナド則</strong> (monad laws) と呼ばれる3つの規則を持っています。
-これらは <code>Monad</code>型クラスの理にかなった実装から何を期待できるかを教えてくれます。</p>
+<p><code>Monad</code>型クラスは <em>モナド則</em> (monad laws) と呼ばれる3つの規則を持っています。これらは
+<code>Monad</code>型クラスの理にかなった実装から何を期待できるかを教えてくれます。</p>
 <p>do記法を使用してこれらの規則を説明していくのが最も簡単でしょう。</p>
 <h3 id="単位元律"><a class="header" href="#単位元律">単位元律</a></h3>
-<p><strong>右単位元則</strong> (right-identity law) が3つの規則の中で最も簡単です。
-この規則はdo記法ブロックの最後の式であれば、
-<code>pure</code>の呼び出しを排除することができると言っています。</p>
+<p><em>右単位元則</em> (right-identity law)
+が3つの規則の中で最も簡単です。この規則はdo記法ブロックの最後の式であれば、<code>pure</code>の呼び出しを排除することができると言っています。</p>
 <pre><code class="language-hs">do
   x &lt;- expr
   pure x
 </code></pre>
 <p>右単位元則は、この式は単なる <code>expr</code>と同じだと言っています。</p>
-<p><strong>左単位元則</strong> (left-identity law) は、もしそれがdo記法ブロックの最初の式であれば、
+<p><em>左単位元則</em> (left-identity law) は、もしそれがdo記法ブロックの最初の式であれば、
 <code>pure</code>の呼び出しを除去することができると述べています。</p>
 <pre><code class="language-hs">do
   x &lt;- pure y
   next
 </code></pre>
 <p>このコードは、名前<code>x</code>を式<code>y</code>で置き換えた<code>next</code>と同じです。</p>
-<p>最後の規則は<strong>結合則</strong> (associativity law) です。
-これは入れ子になったdo記法ブロックをどう扱うのかについて教えてくれます。
-この規則が述べているのは以下のコード片のことです。</p>
+<p>最後の規則は <em>結合則</em> (associativity law)
+です。これは入れ子になったdo記法ブロックをどう扱うのかについて教えてくれます。この規則が述べているのは以下のコード片のことです。</p>
 <pre><code class="language-hs">c1 = do
   y &lt;- do
     x &lt;- m1
@@ -10817,7 +10613,7 @@ userCity root =
 <p><code>c2</code>では <code>m1</code>、 <code>m2</code>、 <code>m3</code>の3つすべての式が同じdo記法ブロックに現れています。</p>
 <p>結合規則は入れ子になったdo記法ブロックをこのように単純化しても
 問題ないことを言っています。</p>
-<p><strong>注意</strong>: do記法を<code>bind</code>の呼び出しへと脱糖する定義により、 <code>c1</code>と <code>c2</code>はいずれも次のコードと同じです。</p>
+<p><em>注意</em> : do記法を<code>bind</code>の呼び出しへと脱糖する定義により、 <code>c1</code>と <code>c2</code>はいずれも次のコードと同じです。</p>
 <pre><code class="language-hs">c3 = do
   x &lt;- m1
   do
@@ -10927,10 +10723,8 @@ userCity root = do
 <h2 id="演習-21"><a class="header" href="#演習-21">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）3つ以上の要素がある配列の3つ目の要素を返す関数<code>third</code>を書いてください。
-関数は適切な<code>Maybe</code>型で返します。
-<strong>ヒント</strong>：<code>arrays</code>パッケージの<code>Data.Array</code>モジュールから<code>head</code>と<code>tail</code>関数の型を見つけ出してください。
-これらの関数を繋げるには<code>Maybe</code>モナドと共にdo記法を使ってください。</p>
+<p>（簡単）3つ以上の要素がある配列の3つ目の要素を返す関数<code>third</code>を書いてください。関数は適切な<code>Maybe</code>型で返します。 <em>ヒント</em>
+：<code>arrays</code>パッケージの<code>Data.Array</code>モジュールから<code>head</code>と<code>tail</code>関数の型を見つけ出してください。これらの関数を繋げるには<code>Maybe</code>モナドと共にdo記法を使ってください。</p>
 </li>
 <li>
 <p>（普通）一掴みの硬貨を使ってできる可能なすべての合計を決定する関数 <code>possibleSums</code>を、
@@ -10941,23 +10735,16 @@ userCity root = do
 &gt; possibleSums [1, 2, 10]
 [0,1,2,3,10,11,12,13]
 </code></pre>
-<p><strong>ヒント</strong>：<code>foldM</code>を使うと1行でこの関数を書くことが可能です。
-重複を取り除いたり、結果を並び替えたりするのに、
-<code>nub</code>関数や <code>sort</code>関数を使いたくなるかもしれません。</p>
+<p><em>ヒント</em> ：<code>foldM</code>を使うと1行でこの関数を書くことが可能です。重複を取り除いたり、結果を並び替えたりするのに、<code>nub</code>関数や <code>sort</code>関数を使いたくなるかもしれません。</p>
 </li>
 <li>
-<p>（普通）<code>Maybe</code>型構築子について、 <code>ap</code>関数と <code>apply</code>演算子が一致することを確認してください。
-<strong>補足</strong>：この演習にはテストがありません。</p>
+<p>（普通）<code>Maybe</code>型構築子について、 <code>ap</code>関数と <code>apply</code>演算子が一致することを確認してください。 <em>補足</em> ：この演習にはテストがありません。</p>
 </li>
 <li>
-<p>（普通）<code>maybe</code>パッケージで定義されている
-<code>Maybe</code>型についての <code>Monad</code>インスタンスが、
-モナド則を満たしていることを検証してください。
-<strong>補足</strong>：この演習にはテストがありません。</p>
+<p>（普通）<code>maybe</code>パッケージで定義されている<code>Maybe</code>型についての <code>Monad</code>インスタンスが、モナド則を満たしていることを検証してください。 <em>補足</em> ：この演習にはテストがありません。</p>
 </li>
 <li>
-<p>（普通）配列上の <code>filter</code>の関数を一般化した関数 <code>filterM</code>を書いてください。
-この関数は次の型シグネチャを持ちます。</p>
+<p>（普通）配列上の <code>filter</code>の関数を一般化した関数 <code>filterM</code>を書いてください。この関数は次の型シグネチャを持ちます。</p>
 <pre><code class="language-hs">filterM :: forall m a. Monad m =&gt; (a -&gt; m Boolean) -&gt; List a -&gt; m (List a)
 </code></pre>
 </li>
@@ -10975,14 +10762,13 @@ userCity root = do
 <pre><code class="language-hs">lift2 :: forall f a b c. Apply f =&gt; (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c
 lift2 f a b = f &lt;$&gt; a &lt;*&gt; b
 </code></pre>
-<p><strong>補足</strong>：この演習にはテストがありません。</p>
+<p><em>補足</em> ：この演習にはテストがありません。</p>
 </li>
 </ol>
 <h2 id="ネイティブな作用"><a class="header" href="#ネイティブな作用">ネイティブな作用</a></h2>
 <p>ここではPureScriptの中核となる重要なモナド、 <code>Effect</code>モナドについて見ていきます。</p>
-<p><code>Effect</code>モナドは <code>Effect</code>モジュールで定義されています。
-かつてはいわゆる<strong>ネイティブ</strong>副作用を管理していました。
-Haskellに馴染みがあれば、これは<code>IO</code>モナドと同等のものです。</p>
+<p><code>Effect</code>モナドは <code>Effect</code>モジュールで定義されています。かつてはいわゆる <em>ネイティブ</em>
+副作用を管理していました。Haskellに馴染みがあれば、これは<code>IO</code>モナドと同等のものです。</p>
 <p>ネイティブな副作用とは何でしょうか。
 この副作用はPureScript特有の式からJavaScriptの式を区別するものです。
 PureScriptの式は概して副作用とは無縁なのです。
@@ -11074,17 +10860,9 @@ main = random &gt;&gt;= logShow
 </blockquote>
 <p>なお「ランダムな」（技術的には疑似ランダムな）データを不浄な作用付きのコードに訴えることなく生成することも可能です。
 この技法は「テストを生成する」章で押さえます。</p>
-<p>以前言及したように<code>Effect</code>モナドはPureScriptで核心的な重要さがあります。
-なぜ核心かというと、それはPureScriptの<code>外部関数インターフェース</code>とやりとりする上での常套手段だからです。
-<code>外部関数インターフェース</code>はプログラムを実行したり副作用を発生させたりする仕組みを提供します。
-<code>外部関数インターフェース</code>を使うことは避けるのが望ましいのですが、
-どう動きどう使うのか理解することもまた極めて大事なことですので、
-実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。
-要は<code>Effect</code>モナドは結構単純なのです。
-いくつかのお助け関数がありますが、それを差し置いても副作用を内包すること以外には多くのことをしません。</p>
+<p>以前言及したように<code>Effect</code>モナドはPureScriptで核心的な重要さがあります。なぜ核心かというと、それはPureScriptの<code>外部関数インターフェース</code>とやりとりする上での常套手段だからです。<code>外部関数インターフェース</code>はプログラムを実行したり副作用を発生させたりする仕組みを提供します。<code>外部関数インターフェース</code>を使うことは避けるのが望ましいのですが、どう動きどう使うのか理解することもまた極めて大事なことですので、実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。要は<code>Effect</code>モナドは結構単純なのです。いくつかの補助関数がありますが、それを差し置いても副作用を内包すること以外には多くのことをしません。</p>
 <h2 id="例外"><a class="header" href="#例外">例外</a></h2>
-<p>2つの<strong>ネイティブな</strong>副作用が絡む<code>node-fs</code>パッケージの関数を調べましょう。
-ここでの副作用は可変状態の読み取りと例外です。</p>
+<p>2つの <em>ネイティブな</em> 副作用が絡む<code>node-fs</code>パッケージの関数を調べましょう。ここでの副作用は可変状態の読み取りと例外です。</p>
 <pre><code class="language-hs">readTextFile :: Encoding -&gt; String -&gt; Effect String
 </code></pre>
 <p>もし存在しないファイルを読むことを試みると……</p>
@@ -11134,7 +10912,7 @@ exceptionHead l = case l of
 <h2 id="可変状態"><a class="header" href="#可変状態">可変状態</a></h2>
 <p>中核ライブラリには <code>ST</code>作用というまた別の作用も定義されています。</p>
 <p><code>ST</code>作用は変更可能な状態を操作するために使われます。純粋関数プログラミングを知っているなら、共有される変更可能な状態は問題を引き起こしやすいということも知っているでしょう。しかしながら、
-<code>ST</code>作用は型システムを使って安全で<strong>局所的な</strong>状態変化を可能にし、状態の共有を制限するのです。</p>
+<code>ST</code>作用は型システムを使って安全で <em>局所的な</em> 状態変化を可能にし、状態の共有を制限するのです。</p>
 <p><code>ST</code>作用は
 <code>Control.Monad.ST</code>モジュールで定義されています。これがどのように動作するかを確認するには、そのアクションの型を見る必要があります。</p>
 <pre><code class="language-hs">new :: forall a r. a -&gt; ST r (STRef r a)
@@ -11145,11 +10923,9 @@ write :: forall a r. a -&gt; STRef r a -&gt; ST r a
 
 modify :: forall r a. (a -&gt; a) -&gt; STRef r a -&gt; ST r a
 </code></pre>
-<p><code>new</code>は型 <code>STRef r a</code>の変更可能な参照区画を新しく作るのに使われます。
-<code>STRef r a</code>は <code>read</code>アクションを使って状態を読み取ったり、
-<code>write</code>アクションや <code>modify</code>アクションで状態を変更するのに使われます。
-型 <code>a</code>は区画に格納された値の型で、
-型 <code>r</code>は型システムで<strong>メモリ領域</strong>（または<strong>ヒープ</strong>）を表しています。</p>
+<p><code>new</code>は型 <code>STRef r a</code>の変更可能な参照区画を新しく作るのに使われます。<code>STRef r a</code>は
+<code>read</code>アクションを使って状態を読み取ったり、<code>write</code>アクションや <code>modify</code>アクションで状態を変更するのに使われます。型
+<code>a</code>は区画に格納された値の型で、型 <code>r</code>は型システムで<em>メモリ領域</em>（または<em>ヒープ</em>）を表しています。</p>
 <p>例を示します。小さな時間刻みで簡単な更新関数の実行を何度も繰り返すことによって、重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。</p>
 <p>粒子の位置と速度を保持する変更可能な参照区画を作成し、
 区画に格納された値を更新するのにforループを使うことでこれを実現することができます。</p>
@@ -11179,10 +10955,8 @@ simulate x0 v0 time = do
 <p><code>ST</code>作用付きの計算を実行するには、 <code>run</code>関数を使用する必要があります。</p>
 <pre><code class="language-hs">run :: forall a. (forall r. ST r a) -&gt; a
 </code></pre>
-<p>ここで注目して欲しいのは、
-領域型 <code>r</code>が関数矢印の左辺にある<strong>括弧の内側で</strong>量化されているということです。
-<code>run</code>に渡したどんなアクションでも、
-<strong>任意の領域</strong><code>r</code>がなんであれ動作するということを意味しています。</p>
+<p>ここで注目して欲しいのは、領域型 <code>r</code>が関数矢印の左辺にある <em>括弧の内側で</em> 量化されているということです。<code>run</code>に渡したどんなアクションでも、
+<em>任意の領域</em> <code>r</code>がなんであれ動作するということを意味しています。</p>
 <p>しかしながら、
 ひとたび参照区画が <code>new</code>によって作成されると、
 その領域の型はすでに固定されており、
@@ -11287,12 +11061,9 @@ simulate x0 v0 time =
 <li>（普通）<code>safeDivide</code>関数を書き直し、
 もし分母がゼロなら<code>throwException</code>を使って文言<code>&quot;div zero&quot;</code>の例外を投げるようにしたものを
 <code>exceptionDivide</code>としてください。</li>
-<li>（普通）関数<code>estimatePi :: Int -&gt; Number</code>を書いてください。
-この関数は<code>n</code>項<a href="https://mathworld.wolfram.com/GregorySeries.html">Gregory
+<li>（普通）関数<code>estimatePi :: Int -&gt; Number</code>を書いてください。この関数は<code>n</code>項<a href="https://mathworld.wolfram.com/GregorySeries.html">Gregory
 Series</a>を使って<code>pi</code>の近似を計算するものです。
-<strong>ヒント</strong>：解答は上記の<code>simulate</code>の定義に倣うことができます。
-また<code>Data.Int</code>の<code>toNumber :: Int -&gt; Number</code>を使って、
-<code>Int</code>を<code>Number</code>に変換する必要があるかもしれません。</li>
+<em>ヒント</em> ：解答は上記の<code>simulate</code>の定義に倣うことができます。また<code>Data.Int</code>の<code>toNumber :: Int -&gt; Number</code>を使って、<code>Int</code>を<code>Number</code>に変換する必要があるかもしれません。</li>
 <li>（普通）<code>n</code>番目のフィボナッチ数を計算する関数<code>fibonacci :: Int -&gt; Int</code>を書いてください。
 <code>ST</code>を使って前の2つのフィボナッチ数の値を追跡します。
 新しい<code>ST</code>に基づく実装の速度を第4章の再帰実装に対して比較してください。</li>
@@ -11335,12 +11106,8 @@ href="http://github.com/purescript-halogen/purescript-halogen"><code>halogen</co
 住所簿アプリケーションにユーザーインターフェイスを追加しますが、
 興味のあるユーザは異なるアプローチで進めることをおすすめします。</p>
 <h2 id="住所録のユーザーインタフェース"><a class="header" href="#住所録のユーザーインタフェース">住所録のユーザーインタフェース</a></h2>
-<p><code>react-basic-hooks</code>ライブラリを使い、
-アプリケーションをReact<strong>コンポーネント</strong>として定義していきます。
-ReactコンポーネントはHTML要素を純粋なデータ構造としてコードで記述します。
-このデータ構造はそれから効率的にDOMに描画されます。
-加えてコンポーネントはボタンクリックのようなイベントに応答することができます。
-<code>react-basic-hooks</code>ライブラリは<code>Effect</code>モナドを使ってこれらのイベントの制御方法を記述します。</p>
+<p><code>react-basic-hooks</code>ライブラリを使い、アプリケーションをReact <em>コンポーネント</em>
+として定義していきます。ReactコンポーネントはHTML要素を純粋なデータ構造としてコードで記述します。このデータ構造はそれから効率的にDOMに描画されます。加えてコンポーネントはボタンクリックのようなイベントに応答することができます。<code>react-basic-hooks</code>ライブラリは<code>Effect</code>モナドを使ってこれらのイベントの制御方法を記述します。</p>
 <p>Reactライブラリの完全なチュートリアルはこの章の範囲をはるかに超えていますが、
 読者は必要に応じてマニュアルを参照することをお勧めします。
 目的に応じて、Reactは <code>Effect</code>モナドの実用的な例を提供してくれます。</p>
@@ -11558,9 +11325,7 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
 子要素の配列をこのレコードの<code>children</code>フィールドに渡すことができます。</li>
 <li><code>div'</code>: <code>div</code>と同じですが、<code>JSX</code>に変換する前に<code>ReactComponent</code>を返します。</li>
 </ul>
-<p>検証エラーをフォームの一番上に（もしあれば）表示するのに、
-<code>Errors</code>構造体をJSXの配列に変える<code>renderValidationErrors</code>お助け関数を作ります。
-この配列はフォームの残り部分の前に付けます。</p>
+<p>検証エラーをフォームの一番上に（もしあれば）表示するのに、<code>Errors</code>構造体をJSXの配列に変える<code>renderValidationErrors</code>補助関数を作ります。この配列はフォームの残り部分の前に付けます。</p>
 <pre><code class="language-hs">renderValidationErrors :: Errors -&gt; Array R.JSX
 renderValidationErrors [] = []
 renderValidationErrors xs =
@@ -11667,17 +11432,11 @@ JavaScriptの文字列はnullになりえるので、安全のために<code>May
 単一の「pink-alert」背景に集めて表示させています。
 空の線で分割することにより、
 それぞれの検証エラーにpink-alert背景を持たせるように変更してください。</p>
-<p><strong>ヒント</strong>：リスト中の検証エラーを表示するのに<code>ul</code>要素を使う代わりに、
-コードを変更し、
-それぞれのエラーに<code>alert</code>と<code>alert-danger</code>装飾を持つ<code>div</code>を作ってください。</p>
+<p><em>ヒント</em> ：リスト中の検証エラーを表示するのに<code>ul</code>要素を使う代わりに、コードを変更し、それぞれのエラーに<code>alert</code>と<code>alert-danger</code>装飾を持つ<code>div</code>を作ってください。</p>
 </li>
 <li>
-<p>（難しい、発展）このユーザーインターフェイスの問題のひとつは、
-検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。
-コードを変更してこの問題を解決してください。</p>
-<p><strong>ヒント</strong>：検証器によって返されるエラーの型は、
-エラーの原因となっているフィールドを示すために拡張する必要があります。
-次のような変更されたエラー型を使用したくなるかもしれません。</p>
+<p>（難しい、発展）このユーザーインターフェイスの問題のひとつは、検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。コードを変更してこの問題を解決してください。</p>
+<p><em>ヒント</em> ：検証器によって返されるエラーの型は、エラーの原因となっているフィールドを示すために拡張する必要があります。次のような変更されたエラー型を使用したくなるかもしれません。</p>
 <pre><code class="language-hs">data Field = FirstNameField
            | LastNameField
            | StreetField
@@ -11802,9 +11561,8 @@ JavaScriptで前にお話ししたように同じ短所がここでも通用す�
 <p>（簡単）2つのテキストフ​​ァイルを連結する関数<code>concatenateFiles</code>を書いてください。</p>
 </li>
 <li>
-<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、
-複数のテキストファイルを連結する関数 <code>concatenateMany</code>を書いてください。
-<strong>ヒント</strong>：<code>traverse</code>を使ってください。</p>
+<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、複数のテキストファイルを連結する関数
+<code>concatenateMany</code>を書いてください。 <em>ヒント</em> ：<code>traverse</code>を使ってください。</p>
 </li>
 <li>
 <p>（普通）ファイル中の文字数を返すかエラーがあればそれを返す関数<code>countCharacters :: FilePath -&gt; Aff (Either Error Int)</code>を書いてください。</p>
@@ -11860,9 +11618,8 @@ unit
 <li>（簡単）HTTPの<code>GET</code>要求を与えられたURLに行い、応答本文をファイルに書き込む関数<code>writeGet</code>を書いてください。</li>
 </ol>
 <h2 id="並列計算"><a class="header" href="#並列計算">並列計算</a></h2>
-<p><code>Aff</code>モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。
-非同期計算を<strong>並列に</strong>合成することもできたら便利でしょう。
-<code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
+<p><code>Aff</code>モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。非同期計算を <em>並列に</em>
+合成することもできたら便利でしょう。<code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
 <p><code>parallel</code>パッケージは<code>Aff</code>のようなモナドのための型クラス<code>Parallel</code>を定義しており、
 並列実行に対応しています。
 以前に本書でアプリカティブ関手に出会ったとき、
@@ -11969,10 +11726,8 @@ unit
 </ul>
 </li>
 <li>
-<p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。
-一覧になったファイルを並列に読んでください。
-パスはそのファイルが表れたディレクトリから相対的なものです。
-<strong>ヒント</strong>：<code>node_path</code>モジュールにはディレクトリとやりとりする上で便利な関数があります。</p>
+<p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。一覧になったファイルを並列に読んでください。パスはそのファイルが表れたディレクトリから相対的なものです。
+<em>ヒント</em> ：<code>node_path</code>モジュールにはディレクトリとやりとりする上で便利な関数があります。</p>
 </li>
 </ol>
 <p>たとえば、次のような<code>root.txt</code>ファイルから始まるとします。</p>
@@ -12005,7 +11760,7 @@ $ cat c/a/a.txt
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="外部関数インタフェース"><a class="header" href="#外部関数インタフェース">外部関数インタフェース</a></h1>
 <h2 id="この章の目標-8"><a class="header" href="#この章の目標-8">この章の目標</a></h2>
-<p>この章でPureScriptの<strong>外部関数インターフェース</strong> (foreign function interface; FFI) を紹介します。
+<p>この章でPureScriptの <em>外部関数インターフェース</em> (foreign function interface; <em>FFI</em>) を紹介します。
 これによりPureScriptコードからJavaScriptコードへの呼び出し、およびその逆が可能になります。
 これから扱うのは次のようなものです。</p>
 <ul>
@@ -12037,13 +11792,10 @@ $ cat c/a/a.txt
 <p>住所録アプリは<code>parcel src/index.html --open</code>で立ち上げることができます。
 8章と同じ作業の流れを使っているので、より詳しい説明についてはそちらの章を参照してください。</p>
 <h2 id="免責事項"><a class="header" href="#免責事項">免責事項</a></h2>
-<p>JavaScriptを扱う作業をできる限り簡単にするため、
-PureScriptは直感的な外部関数インタフェースを提供します。
-しかしながら、FFIはPureScriptの<strong>高度な</strong>機能であることには留意していただきたいと思います。
-FFIを安全かつ効率的に使用するには、
-扱うつもりであるデータの実行時の表現についてよく理解していなければなりません。
-この章では、PureScriptの標準ライブラリのコードに付いて回る
-そのような理解を与えることを目指しています。</p>
+<p>JavaScriptを扱う作業をできる限り簡単にするため、PureScriptは直感的な外部関数インタフェースを提供します。
+しかしながら、FFIはPureScriptの <em>応用的な</em> 機能であることには留意していただきたいと思います。
+FFIを安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現についてよく理解していなければなりません。
+この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝授することを目指します。</p>
 <p>PureScriptのFFIはとても柔軟に設計されています。
 実際には、外部関数に最低限の型だけを与えるか、
 それとも型システムを利用して外部のコードの誤った使い方を防ぐようにするか、
@@ -12056,11 +11808,10 @@ JavaScriptの関数で戻り値が <code>null</code>にならないことを保�
 そのため、FFIを使ってJavaScriptコードのインターフェイスを設計するときは、
 これらの特殊な場合を適切に処理するのは開発者の責任です。</p>
 <h2 id="purescriptからjavascriptを呼び出す"><a class="header" href="#purescriptからjavascriptを呼び出す">PureScriptからJavaScriptを呼び出す</a></h2>
-<p>PureScriptからJavaScriptコードを使用する最も簡単な方法は、
-<strong>外部インポート宣言</strong> (foreign import declaration) を使用し、
-既存のJavaScriptの値に型を与えることです。
-外部インポート宣言には<strong>外部JavaScriptモジュール</strong> (foreign JavaScript module) から
-<strong>エクスポート</strong>された対応するJavaScriptでの宣言がなくてはなりません。</p>
+<p>PureScriptからJavaScriptコードを使用する最も簡単な方法は、 <em>外部インポート宣言</em> (foreign import
+declaration) を使用し、既存のJavaScriptの値に型を与えることです。
+外部インポート宣言には <em>外部JavaScriptモジュール</em> (foreign JavaScript module) から <em>エクスポートされた</em>
+対応するJavaScriptでの宣言がなくてはなりません。</p>
 <p>たとえば、特殊文字をエスケープすることによりURIのコンポーネントを符号化するJavaScriptの
 <code>encodeURIComponent</code>関数について考えてみます。</p>
 <pre><code class="language-text">$ node
@@ -12119,8 +11870,8 @@ foreign import square :: Number -&gt; Number
 この関数は直角三角形の対角線を計算します。</p>
 <pre><code class="language-hs">foreign import diagonal :: Number -&gt; Number -&gt; Number
 </code></pre>
-<p>PureScriptの関数は<strong>カリー化</strong>されていることを思い出してください。
-<code>diagonal</code>は<code>Number</code>を取って<strong>関数</strong>を返す関数です。
+<p>PureScriptの関数は <em>カリー化</em> されていることを思い出してください。
+<code>diagonal</code>は<code>Number</code>を取って <em>関数</em> を返す関数です。
 そして返された関数は<code>Number</code>を取って<code>Number</code>を返します。</p>
 <pre><code class="language-js">export const diagonal = function (w) {
   return function (h) {
@@ -12143,15 +11894,13 @@ foreign import square :: Number -&gt; Number
 5.0
 </code></pre>
 <h2 id="カリー化されていない関数"><a class="header" href="#カリー化されていない関数">カリー化されていない関数</a></h2>
-<p>JavaScriptでカリー化された関数を書くことは、
-ただでさえJavaScriptらしいものではない上に、常に可能というわけでもありません。
-よくある多変数なJavaScriptの関数は<strong>カリー化されていない</strong>形式を取るでしょう。</p>
+<p>JavaScriptでカリー化された関数を書くことは、ただでさえJavaScriptらしいものではない上に、常に可能というわけでもありません。
+よくある多変数なJavaScriptの関数は <em>カリー化されていない</em> 形式を取るでしょう。</p>
 <pre><code class="language-js">export const diagonalUncurried = function (w, h) {
   return Math.sqrt(w * w + h * h);
 };
 </code></pre>
-<p>モジュール<code>Data.Function.Uncurried</code>は<strong>ラッパー</strong>型と
-カリー化されていない関数を取り扱う関数をエクスポートします。</p>
+<p>モジュール<code>Data.Function.Uncurried</code>は <em>ラッパー</em> 型とカリー化されていない関数を取り扱う関数をエクスポートします。</p>
 <pre><code class="language-hs">foreign import diagonalUncurried :: Fn2 Number Number Number
 </code></pre>
 <p>型構築子<code>Fn2</code>を調べると以下です。</p>
@@ -12188,8 +11937,8 @@ uncurriedAdd = mkFn2 \n m -&gt; m + n
 <pre><code class="language-haskell">uncurriedSum :: Int
 uncurriedSum = runFn2 uncurriedAdd 3 10
 </code></pre>
-<p>ここで重要なのは、引数がすべて適用されるなら、コンパイラは <code>mkFn2</code>関数や
-<code>runFn2</code>関数を<strong>インライン化</strong>するということです。そのため、生成されるコードはとてもコンパクトになります。</p>
+<p>ここで重要なのは、引数がすべて適用されるなら、コンパイラは <code>mkFn2</code>関数や <code>runFn2</code>関数を <em>インライン化</em>
+するということです。そのため、生成されるコードはとてもコンパクトになります。</p>
 <pre><code class="language-javascript">var uncurriedAdd = function (n, m) {
   return m + n | 0;
 };
@@ -12248,9 +11997,7 @@ lebab --replace output/ --transform arrow,arrow-return
 </div>
 <p><code>String</code>と<code>Number</code>という原始型の例は既に見てきました。
 ここから<code>Array</code>や<code>Record</code>（JavaScriptでは<code>Object</code>）といった構造的な型を眺めていきます。</p>
-<p><code>Array</code>の受け渡しを実演するために、
-以下に<code>Int</code>の<code>Array</code>を取って別の配列として累計の和を返すJavaScriptの関数の呼び出し方を示します。
-JavaScriptは<code>Int</code>のための分離した型を持たないため、PureScriptでの<code>Int</code>と<code>Number</code>はJavaScriptでの<code>Number</code>に翻訳される点を思い起こしてください。</p>
+<p><code>Array</code>の受け渡しを実演するために、以下に<code>Int</code>の<code>Array</code>を取って別の配列として累計の和を返すJavaScriptの関数の呼び出し方を示します。JavaScriptは<code>Int</code>のための分離した型を持たないため、PureScriptでの<code>Int</code>と<code>Number</code>はJavaScriptでの<code>Number</code>に翻訳される点を思い起こしてください。</p>
 <pre><code class="language-hs">foreign import cumulativeSums :: Array Int -&gt; Array Int
 </code></pre>
 <pre><code class="language-js">export const cumulativeSums = arr =&gt; {
@@ -12363,15 +12110,10 @@ maybeHead arr = maybeHeadImpl Just Nothing arr
 <p><code>Maybe a</code>を返す代わりに実は<code>arr[0]</code>を返したいのだとしましょう。
 型<code>a</code>ないし<code>undefined</code>値（ただ<code>null</code>ではありません）のいずれかの値を表現する型がほしいです。
 この型を<code>Undefined a</code>と呼びましょう。</p>
-<p><strong>外部インポート宣言</strong>を使うと、<strong>外部型</strong> (foreign type) を定義することができます。
-構文は外部関数を定義するのと似ています。</p>
+<p><em>外部インポート宣言</em> を使うと、 <em>外部型</em> (foreign type) を定義することができます。構文は外部関数を定義するのと似ています。</p>
 <pre><code class="language-haskell">foreign import data Undefined :: Type -&gt; Type
 </code></pre>
-<p>このキーワード<code>data</code>は型を定義していることを表しています。
-値ではありせん。
-型シグネチャの代わりに、新しい型の<strong>種</strong>を与えます。
-この場合は<code>Undefined</code>の種が <code>Type -&gt; Type</code>であると宣言しています。
-言い換えれば<code>Undefined</code>は型構築子です。</p>
+<p>このキーワード<code>data</code>は <em>型</em> を定義していることを表しています。値ではありせん。型シグネチャの代わりに、新しい型の <em>種</em> を与えます。この場合は<code>Undefined</code>の種が <code>Type -&gt; Type</code>であると宣言しています。言い換えれば<code>Undefined</code>は型構築子です。</p>
 <p>これで元の<code>head</code>の定義を単に再利用することができます。</p>
 <pre><code class="language-javascript">export const undefinedHead = arr =&gt;
   arr[0];
@@ -12438,8 +12180,7 @@ isEmpty = isUndefined &lt;&lt;&lt; undefinedHead
 <pre><code class="language-hs">maybeHead :: forall a. Array a -&gt; Maybe a
 maybeHead = toMaybe &lt;&lt;&lt; undefinedHead
 </code></pre>
-<p>これは前の実装よりも良い手法なのでしょうか。
-<strong>補足</strong>：この演習のための単体試験はありません。</p>
+<p>これは前の実装よりも良い手法なのでしょうか。 <em>補足</em> ：この演習のための単体試験はありません。</p>
 </li>
 </ol>
 <h2 id="型クラスメンバー関数を使う"><a class="header" href="#型クラスメンバー関数を使う">型クラスメンバー関数を使う</a></h2>
@@ -12777,7 +12518,7 @@ Map String Int
 この関数はJSONを使って<code>Complex</code>の根の<code>Pair</code>をFFI越しに渡します。
 JavaScriptでは<code>Pair</code>構築子を使わないでください。
 ただしその代わりに復号器に互換性のある形式で対を返すだけにしてください。
-<strong>ヒント</strong>：<code>DecodeJson</code>インタンスを<code>Pair</code>に書く必要があるでしょう。
+<em>ヒント</em> ：<code>DecodeJson</code>インタンスを<code>Pair</code>に書く必要があるでしょう。
 自前の復号インスタンスを書く上での説明については<a href="https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances">argonautのドキュメント</a>をあたってください。
 <a href="https://github.com/purescript-contrib/purescript-argonaut-codecs/blob/master/src/Data/Argonaut/Decode/Class.purs">decodeJsonTuple</a>インスタンスも参考になるかもしれません。
 「孤立インスタンス」を作ることを避けるために、<code>Pair</code>に<code>newtype</code>ラッパーが必要になる点に注意してください。</p>
@@ -12785,7 +12526,7 @@ JavaScriptでは<code>Pair</code>構築子を使わないでください。
 <li>
 <p>（普通）2次元配列を含むJSON文字列を構文解析して復号する<code>parseAndDecodeArray2D :: String -&gt; Either String (Array (Array Int))</code>関数を書いてください。
 例えば<code>&quot;[[1, 2, 3], [4, 5], [6]]&quot;</code>です。
-<strong>ヒント</strong>：復号の前に<code>jsonParser</code>を使って<code>String</code>を<code>Json</code>に変換する必要があるでしょう。</p>
+<em>ヒント</em> ：復号の前に<code>jsonParser</code>を使って<code>String</code>を<code>Json</code>に変換する必要があるでしょう。</p>
 </li>
 <li>
 <p>（普通）以下のデータ型は値が葉にある二分木を表現します。</p>
@@ -12804,8 +12545,7 @@ JavaScriptでは<code>Pair</code>構築子を使わないでください。
   = IntOrString_Int Int
   | IntOrString_String String
 </code></pre>
-<p>この振舞いを実装する<code>IntOrString</code>データ型に<code>EncodeJson</code>及び<code>DecodeJson</code>インスタンスを書いてください。
-<strong>ヒント</strong>：<code>Control.Alt</code>の<code>alt</code>演算子が役立つかもしれません。</p>
+<p>この振舞いを実装する<code>IntOrString</code>データ型に<code>EncodeJson</code>及び<code>DecodeJson</code>インスタンスを書いてください。 <em>ヒント</em> ：<code>Control.Alt</code>の<code>alt</code>演算子が役立つかもしれません。</p>
 </li>
 </ol>
 <h2 id="住所録"><a class="header" href="#住所録">住所録</a></h2>
@@ -12884,10 +12624,7 @@ instance decodeJsonPhoneType :: DecodeJson PhoneType where decodeJson = genericD
 <p>ローカルストレージから「person」文字列を取得することから始めましょう。</p>
 <pre><code class="language-hs">item &lt;- getItem &quot;person&quot;
 </code></pre>
-<p>それからローカルストレージから<code>Person</code>レコードへの文字列の変換を扱うお助け関数をつくります。
-なおこのストレージ中の文字列は<code>null</code>かもしれないので、うまく<code>String</code>として復号化されるまでは外部の<code>Json</code>として表現します。
-道中には他にも多くの変換工程があり、それぞれで<code>Either</code>の値を返します。
-そのためこれらを<code>do</code>ブロックの中にまとめるのは理に適っています。</p>
+<p>それからローカルストレージから<code>Person</code>レコードへの文字列の変換を扱う補助関数をつくります。なおこのストレージ中の文字列は<code>null</code>かもしれないので、うまく<code>String</code>として復号化されるまでは外部の<code>Json</code>として表現します。道中には他にも多くの変換工程があり、それぞれで<code>Either</code>の値を返します。そのためこれらを<code>do</code>ブロックの中にまとめるのは理に適っています。</p>
 <pre><code class="language-hs">processItem :: Json -&gt; Either String Person
 processItem item = do
   jsonString &lt;- decodeJson item
@@ -13087,10 +12824,11 @@ Two.create = function (value0) {
 <pre><code class="language-haskell">id :: forall a. a -&gt; a
 id a = a
 </code></pre>
-<p>実のところ、 <code>id</code>の関数はこの型の<strong>唯一の</strong>（全）関数です！これは確かに間違いなさそうに見えますが（この型を持った
+<p>実のところ、<code>id</code>の関数はこの型の <em>唯一の</em>&lt;!----&gt;（全）関数です！これは確かに間違いなさそうに見えますが（この型を持った
 <code>id</code>とは明らかに異なる式を書こうとしてみてください）、これを確かめるにはどうしたらいいでしょうか。これは型の実行時表現を考えることによって確認することができます。</p>
 <p>量化された型 <code>forall a. t</code>の実行時表現はどうなっているのでしょうか。さて、この型の実行時表現を持つ任意の式は、型 <code>a</code>をどのように選んでも型 <code>t</code>の適切な実行時表現を持っていなければなりません。上の例では、型 <code>forall a. a -&gt; a</code>の関数は、 <code>String -&gt; String</code>、 <code>Number -&gt; Number</code>、 <code>Array Boolean -&gt; Array Boolean</code>などといった型について、適切な実行時表現を持っていなければなりません。 これらは、文字列から文字列、数から数の関数でなくてはなりません。</p>
-<p>しかし、それだけでは十分ではありません。量化された型の実行時表現は、これよりも更に厳しくなります。任意の式が<strong>パラメトリック多相的</strong>でなければなりません。つまり、その実装において、引数の型についてのどんな情報も使うことができないのです。この追加の条件は、考えられる多相型のうち、以下のJavaScriptの関数のような問題のある実装を防止します。</p>
+<p>しかし、それだけでは十分ではありません。量化された型の実行時表現は、これよりも更に厳しくなります。任意の式が <em>パラメトリック多相的</em>
+でなければなりません。つまり、その実装において、引数の型についてのどんな情報も使うことができないのです。この追加の条件は、考えられる多相型のうち、以下のJavaScriptの関数のような問題のある実装を防止します。</p>
 <pre><code class="language-javascript">function invalid(a) {
     if (typeof a === 'string') {
         return &quot;Argument was a string.&quot;;
@@ -13101,11 +12839,13 @@ id a = a
 </code></pre>
 <p>確かにこの関数は文字列から文字列、数から数へというような関数ではありますが、追加の条件を満たしていません。引数の実行時の型を調べており、したがって、この関数は型 <code>forall a. a -&gt; a</code>の正しい実装だとはいえないのです。</p>
 <p>関数の引数の実行時の型を検査することができなければ、唯一の選択肢は引数をそのまま返すことだけであり、したがって <code>id</code>はたしかに <code>forall a. a -&gt; a</code>の唯一の実装なのです。</p>
-<p><strong>パラメトリック多相</strong> (parametric polymorphism) と<strong>パラメトリック性</strong> (parametricity)
-についての詳しい議論は本書の範囲を超えています。ただ注目していただきたいことは、PureScriptの型は、実行時に<strong>消去</strong>されているので、PureScriptの多相関数は（FFIを使わない限り）引数の実行時表現を検査することが<strong>できず</strong>、そのためこの多相的なデータの表現が適切になっているということなのです。</p>
+<p><em>パラメトリック多相</em> (parametric polymorphism) と <em>パラメトリック性</em> (parametricity)
+についての詳しい議論は本書の範囲を超えています。ただ注目していただきたいことは、PureScriptの型は、実行時に <em>消去</em>
+されているので、PureScriptの多相関数は（FFIを使わない限り）引数の実行時表現を検査することが <em>できず</em>
+、そのためこの多相的なデータの表現が適切になっているということなのです。</p>
 <h3 id="制約のある型の表現"><a class="header" href="#制約のある型の表現">制約のある型の表現</a></h3>
-<p>型クラス制約を持つ関数は、実行時に面白い表現を持っています。関数の振る舞いはコンパイラによって選ばれた型クラスのインスタンスに依存する可能性があるため、関数には<strong>型クラス辞書</strong>
-(type class dictionary)
+<p>型クラス制約を持つ関数は、実行時に面白い表現を持っています。関数の振る舞いはコンパイラによって選ばれた型クラスのインスタンスに依存する可能性があるため、関数には
+<em>型クラス辞書</em> (type class dictionary)
 と呼ばれる追加の引数が与えられます。この辞書には選ばれたインスタンスから提供される型クラスの関数の実装が含まれます。</p>
 <p>例えば、 <code>Show</code>型クラスを使った制約のある型を持つ、次のような単純なPureScript関数について考えます。</p>
 <pre><code class="language-haskell">shout :: forall a. Show a =&gt; a -&gt; String
@@ -13136,11 +12876,11 @@ forall a. Ord a =&gt; Array a -&gt; Boolean
 <p>これらの型を持つ式についてわかることはなんでしょうか。</p>
 </li>
 <li>
-<p>（普通）<code>spago build</code>を使ってコンパイルし、NodeJSの <code>import</code>機能を使ってモジュールをインポートすることで、JavaScriptから <code>arrays</code>ライブラリの関数を使ってみてください。<strong>ヒント</strong>：生成されたCommonJSモジュールがNodeJSモジュールのパスで使用できるように、出力パスを設定する必要があります。</p>
+<p>（普通）<code>spago build</code>を使ってコンパイルし、NodeJSの <code>import</code>機能を使ってモジュールをインポートすることで、JavaScriptから <code>arrays</code>ライブラリの関数を使ってみてください。 <em>ヒント</em> ：生成されたCommonJSモジュールがNodeJSモジュールのパスで使用できるように、出力パスを設定する必要があります。</p>
 </li>
 </ol>
 <h3 id="副作用の表現"><a class="header" href="#副作用の表現">副作用の表現</a></h3>
-<p><code>Effect</code>モナドも外部型として定義されています。その実行時表現はとても簡単です。型 <code>Effect a</code>の式は引数なしのJavaScript関数へと評価されます。この関数はあらゆる副作用を実行し型 <code>a</code>の適切な実行時表現で値を返します。</p>
+<p><code>Effect</code>モナドも外部型として定義されています。その実行時表現はとても簡単です。型 <code>Effect a</code>の式は<strong>引数なしの</strong>JavaScript関数へと評価されます。この関数はあらゆる副作用を実行し型 <code>a</code>の適切な実行時表現で値を返します。</p>
 <p><code>Effect</code>型構築子の定義は、 <code>Effect</code>モジュールで次のように与えられています。</p>
 <pre><code class="language-haskell">foreign import data Effect :: Type -&gt; Type
 </code></pre>
@@ -13175,11 +12915,8 @@ main();
 <code>main</code>の呼び出しを自動的に生成することができます。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="モナドな冒険"><a class="header" href="#モナドな冒険">モナドな冒険</a></h1>
 <h2 id="この章の目標-9"><a class="header" href="#この章の目標-9">この章の目標</a></h2>
-<p>この章の目標は<strong>モナド変換子</strong> (monad transformers) について学ぶことで
-す。モナド変換子は異なるモナドから提供された副作用を合成する方法を提供
-します。NodeJSのコンソール上で遊ぶことができる、テキストアドベンチャー
-ゲームを題材として扱います。ゲームの様々な副作用（ロギング、状態、およ
-び設定）がすべてモナド変換子スタックによって提供されます。</p>
+<p>この章の目標は <em>モナド変換子</em> (monad transformers)
+について学ぶことです。モナド変換子は異なるモナドから提供された副作用を合成する方法を提供します。NodeJSのコンソール上で遊ぶことができる、テキストアドベンチャーゲームを題材として扱います。ゲームの様々な副作用（ロギング、状態、および設定）がすべてモナド変換子スタックによって提供されます。</p>
 <h2 id="プロジェクトの準備-8"><a class="header" href="#プロジェクトの準備-8">プロジェクトの準備</a></h2>
 <p>このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。</p>
 <ul>
@@ -13261,9 +12998,8 @@ You win!
 <h2 id="stateモナド"><a class="header" href="#stateモナド">Stateモナド</a></h2>
 <p><code>transformers</code>パッケージで提供されているいくつかのモナドを見ることから
 始めましょう。</p>
-<p>最初の例は<code>State</code>モナドで、これは純粋なコードで<strong>変更可能状態</strong>をモデ
-ル化する手段を提供します。すでに <code>Effect</code>モナドによって提供される変更
-可能状態の手法について見てきました。<code>State</code>はその代替を提供します。</p>
+<p>最初の例は<code>State</code>モナドで、これは純粋なコードで <em>変更可能状態</em> をモデル化する手段を提供します。すでに
+<code>Effect</code>モナドによって提供される変更可能状態の手法について見てきました。<code>State</code>はその代替を提供します。</p>
 <p><code>State</code>型構築子は、状態の型 <code>s</code>、および返り値の型 <code>a</code>という2種類の引数
 を取ります。「<code>State</code>モナド」というように説明はしていますが、
 <code>Monad</code>型クラスのインスタンスは実際には任意の型 <code>s</code>についての <code>State s</code>型構築子に対して提供されています。</p>
@@ -13313,9 +13049,7 @@ runState  :: forall s a. State s a -&gt; s -&gt; Tuple a s
 <p>（簡単）上の例で、<code>execState</code>を<code>runState</code>や<code>evalState</code>で置き換えると結果はどうなるでしょうか。</p>
 </li>
 <li>
-<p>（普通）括弧からなる文字列について、次のいずれかであれば<strong>平衡して
-いる</strong>とします。1つは0個以上のより短い平衡した文字列を連結したもの
-で、もう1つはより短い平衡した文字列を一対の括弧で囲んだものです。</p>
+<p>（普通）括弧からなる文字列について、次のいずれかであれば <em>平衡している</em> とします。1つは0個以上のより短い平衡した文字列を連結したもので、もう1つはより短い平衡した文字列を一対の括弧で囲んだものです。</p>
 <p><code>State</code>モナドと <code>traverse_</code>関数を使用して、次のような関数を書いてください。</p>
 <pre><code class="language-haskell">testParens :: String -&gt; Boolean
 </code></pre>
@@ -13334,9 +13068,7 @@ false
 &gt; testParens &quot;(()()&quot;
 false
 </code></pre>
-<p><strong>ヒント</strong>：入力の文字列を文字の配列に変換するのに、
-<code>Data.String.CodeUnits</code>モジュールの <code>toCharArray</code>関数を使うと良い
-でしょう。</p>
+<p><em>ヒント</em> ：入力の文字列を文字の配列に変換するのに、<code>Data.String.CodeUnits</code>モジュールの <code>toCharArray</code>関数を使うと良いでしょう。</p>
 </li>
 </ol>
 <h2 id="readerモナド"><a class="header" href="#readerモナド">Readerモナド</a></h2>
@@ -13396,8 +13128,7 @@ type Doc = Reader Level String
 い。関数は以下の型を持っている必要があります。</p>
 <pre><code class="language-haskell">line :: String -&gt; Doc
 </code></pre>
-<p><strong>ヒント</strong>：現在の字下げの深さを読み取るためには <code>ask</code>関数を使用
-します。<code>Data.Monoid</code>の<code>power</code>関数も役に立つかもしれません。</p>
+<p><em>ヒント</em> ：現在の字下げの深さを読み取るためには <code>ask</code>関数を使用します。<code>Data.Monoid</code>の<code>power</code>関数も役に立つかもしれません。</p>
 </li>
 <li>
 <p>（普通）<code>local</code>関数を使用して次の関数を書いてください。</p>
@@ -13444,8 +13175,7 @@ type Doc = Reader Level String
 <pre><code class="language-haskell">tell :: forall w a. Monoid w =&gt; w -&gt; Writer w Unit
 </code></pre>
 <p><code>tell</code>アクションは、与えられた値を現在の累積結果に加算します。</p>
-<p>例として、 <code>Array String</code>モノイドを使用して、既存の関数にログ機能を追
-加してみましょう。<strong>最大公約数</strong>関数の以前の実装を考えてみます。</p>
+<p>例として、 <code>Array String</code>モノイドを使用して、既存の関数にログ機能を追加してみましょう。 <em>最大公約数</em> 関数の以前の実装を考えてみます。</p>
 <pre><code class="language-haskell">gcd :: Int -&gt; Int -&gt; Int
 gcd n 0 = n
 gcd 0 m = m
@@ -13488,9 +13218,7 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 使うように、上の <code>sumArray</code>関数を書き換えてください。</p>
 </li>
 <li>
-<p>（普通）<strong>コラッツ関数</strong>は、自然数 <code>n</code>が偶数なら <code>n / 2</code>、 <code>n</code>が奇数な
-ら <code>3 * n + 1</code>であると定義されています。たとえば、 <code>10</code>で始まるコラッ
-ツ数列は次のようになります。</p>
+<p>（普通）<em>コラッツ関数</em>は、自然数 <code>n</code>が偶数なら <code>n / 2</code>、 <code>n</code>が奇数なら <code>3 * n + 1</code>であると定義されています。たとえば、 <code>10</code>で始まるコラッツ数列は次のようになります。</p>
 <pre><code class="language-text">10, 5, 16, 8, 4, 2, 1, ...
 </code></pre>
 <p>コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的
@@ -13502,19 +13230,14 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 </li>
 </ol>
 <h2 id="モナド変換子"><a class="header" href="#モナド変換子">モナド変換子</a></h2>
-<p>上の3つのモナド、 <code>State</code>、 <code>Reader</code>、 <code>Writer</code>は、いずれもいわゆる
-<strong>モナド変換子</strong>（monad transformers）の例となっています。対応するモナド変
-換子はそれぞれ <code>StateT</code>、 <code>ReaderT</code>、 <code>WriterT</code>と呼ばれています。</p>
-<p>モナド変換子とは何でしょうか。さて、これまで見てきたように、モナドは
-PureScriptのコードを何らかの種類の副作用で拡張するものでした。このモナ
-ドはPureScriptで適切なハンドラ（<code>runState</code>、 <code>runReader</code>、
-<code>runWriter</code>など）を使って解釈することができます。使用する必要がある副
-作用が<strong>ひとつだけ</strong>なら、これで問題ありません。しかし、同時に複数の副
-作用を使用できると便利なことがよくあります。例えば、 <code>Maybe</code>と
-<code>Reader</code>を一緒に使用すると、ある大域的な設定の文脈で<strong>省略可能な結果</strong>
-を表現することができます。もしくは、 <code>Either</code>モナドの純粋なエラー追跡
-機能と、 <code>State</code>モナドが提供する変更可能な状態が同時に欲しくなるかもし
-れません。この問題を解決するのが<strong>モナド変換子</strong>です。</p>
+<p>上の3つのモナド、<code>State</code>、<code>Reader</code>、<code>Writer</code>は、いずれもいわゆる _モナド変換子 (monad transformer)
+の例となっています。対応するモナド変換子はそれぞれ <code>StateT</code>、 <code>ReaderT</code>、 <code>WriterT</code>と呼ばれています。</p>
+<p>モナド変換子とは何でしょうか。さて、これまで見てきたように、モナドはPureScriptのコードを何らかの種類の副作用で拡張するものでした。このモナドはPureScriptで適切なハンドラ（<code>runState</code>、
+<code>runReader</code>、<code>runWriter</code>など）を使って解釈することができます。使用する必要がある副作用が <em>ひとつだけ</em>
+なら、これで問題ありません。しかし、同時に複数の副作用を使用できると便利なことがよくあります。例えば、
+<code>Maybe</code>と<code>Reader</code>を一緒に使用すると、ある大域的な設定の文脈で <em>省略可能な結果</em> を表現することができます。もしくは、
+<code>Either</code>モナドの純粋なエラー追跡機能と、 <code>State</code>モナドが提供する変更可能な状態が同時に欲しくなるかもしれません。この問題を解決するのが
+<em>モナド変換子</em> です。</p>
 <p>ただし<code>Effect</code>モナドがこの問題に対する部分的な解決策を提供していたこと
 は既に見てきました。モナド変換子はまた異なった解決策を提供しますが、こ
 れらの手法にはそれぞれ利点と限界があります。</p>
@@ -13647,12 +13370,9 @@ Tuple (Left &quot;Error!&quot;) [&quot;Before the error&quot;]
 <p>実際に追加されるログは、エラーが投げられる前に書かれたログメッセージだ
 けであることにも注目してください。</p>
 <h2 id="モナド変換子スタック"><a class="header" href="#モナド変換子スタック">モナド変換子スタック</a></h2>
-<p>これまで見てきたように、モナド変換子を使うと既存のモナドの上に新しいモ
-ナドを構築することができます。任意のモナド変換子 <code>t1</code>と任意のモナド
-<code>m</code>について、その適用 <code>t1 m</code>もまたモナドになります。これは<strong>2つめの</strong>
-モナド変換子 <code>t2</code>を先ほどの結果 <code>t1 m</code>に適用すると、3つ目のモナド <code>t2 (t1 m)</code>を作れることを意味しています。このように、構成するモナドによっ
-て提供された副作用を組み合わせる、モナド変換子の<strong>スタック</strong>を構築する
-ことができます。</p>
+<p>これまで見てきたように、モナド変換子を使うと既存のモナドの上に新しいモナドを構築することができます。任意のモナド変換子
+<code>t1</code>と任意のモナド<code>m</code>について、その適用 <code>t1 m</code>もまたモナドになります。これは <em>2つめの</em> モナド変換子 <code>t2</code>を先ほどの結果 <code>t1 m</code>に適用すると、3つ目のモナド <code>t2 (t1 m)</code>を作れることを意味しています。このように、構成するモナドによって提供された副作用を組み合わせる、モナド変換子の <em>スタック</em>
+を構築することができます。</p>
 <p>実際には、基本となるモナド <code>m</code>は、ネイティブの副作用が必要なら
 <code>Effect</code>モナド、さもなくば <code>Data.Identity</code>モジュールで定義されている
 <code>Identity</code>モナドになります。 <code>Identity</code>モナドは何の新しい副作用も追加
@@ -13732,12 +13452,10 @@ split = do
 <pre><code class="language-text">&gt; runParser (string &quot;abc&quot;) &quot;abcdef&quot;
 (Right (Tuple (Tuple &quot;abc&quot; &quot;def&quot;) [&quot;The state is abcdef&quot;]))
 </code></pre>
-<p><strong>ヒント</strong>：出発点として <code>split</code>の実装を使うといいでしょう。
-<code>stripPrefix</code>関数も役に立ちます。</p>
+<p><em>ヒント</em> ：出発点として <code>split</code>の実装を使うといいでしょう。<code>stripPrefix</code>関数も役に立ちます。</p>
 </li>
 <li>
-<p>（難しい）以前 <code>Reader</code>モナドを使用して書いた文書表示ライブラリを、
-<code>ReaderT</code>と <code>WriterT</code>モナド変換子を使用して再実装してください。</p>
+<p>（難しい）以前 <code>Reader</code>モナドを使用して書いた文書表示ライブラリを、<code>ReaderT</code>と <code>WriterT</code>モナド変換子を使用して再実装してください。</p>
 <p>文字列を出力する <code>line</code>や文字列を連結する <code>cat</code>を使うのではなく、
 <code>WriteT</code>モナド変換子と一緒に <code>Array String</code>モノイドを使い、結果へ
 行を追加するのに <code>tell</code>を使ってください。アポストロフィ (<code>'</code>) で
@@ -13762,13 +13480,10 @@ modify :: forall m s. MonadState s m =&gt; (s -&gt; s) -&gt; m Unit
 ナド」への抽象化を可能にします。予想できると思いますが、 <code>State s</code>型構
 築子は <code>MonadState s</code>型クラスのインスタンスになっており、このクラスに
 は他にも興味深いインスタンスが数多くあります。</p>
-<p>特に、 <code>transformers</code>パッケージではモナド変換子 <code>WriterT</code>、 <code>ReaderT</code>、
-<code>ExceptT</code>についての <code>MonadState</code>のインスタンスが提供されています。通底
-する<code>Monad</code>が<code>MonadState</code>インスタンスを持っていれば常に、これらのモナ
-ド変換子にもインスタンスがあります。実践的には、 <code>StateT</code>がモナド変換
-子スタックの<strong>どこか</strong>に現れ、 <code>StateT</code>より上のすべてが <code>MonadState</code>の
-インスタンスであれば、 <code>get</code>、 <code>put</code>、 <code>modify</code>を直接自由に使用するこ
-とができます。</p>
+<p>特に、 <code>transformers</code>パッケージではモナド変換子 <code>WriterT</code>、 <code>ReaderT</code>、<code>ExceptT</code>についての
+<code>MonadState</code>のインスタンスが提供されています。通底する<code>Monad</code>が<code>MonadState</code>インスタンスを持っていれば常に、これらのモナド変換子にもインスタンスがあります。実践的には、
+<code>StateT</code>がモナド変換子スタックの <em>どこか</em> に現れ、 <code>StateT</code>より上のすべてが <code>MonadState</code>のインスタンスであれば、
+<code>get</code>、 <code>put</code>、 <code>modify</code>を直接自由に使用することができます。</p>
 <p>当然ですが、これまで扱ってきた <code>ReaderT</code>、 <code>WriterT</code>、 <code>ExceptT</code>変換子
 についても、同じことが成り立っています。<code>transformers</code>では主な変換子そ
 れぞれについての型クラスが定義されています。これによりそれらの操作に対
@@ -13800,19 +13515,15 @@ class Alt f &lt;= Plus f where
 
 class (Applicative f, Plus f) &lt;= Alternative f
 </code></pre>
-<p><code>Alternative</code>は2つの新しいコンビネータを提供しています。1つは失敗しう
-る計算のプロトタイプを提供する <code>empty</code>値で、もう1つはエラーが起きたと
-きに<strong>代替</strong> (Alternative) 計算へ戻ってやり直す機能を提供する<code>alt</code>関数
-（そしてその別名<code>&lt;|&gt;</code>）演算子です。</p>
+<p><code>Alternative</code>は2つの新しいコンビネータを提供しています。1つは失敗しうる計算のプロトタイプを提供する <code>empty</code>値で、もう1つはエラーが起きたときに <em>代替</em> (Alternative) 計算へ戻ってやり直す機能を提供する<code>alt</code>関数（そしてその別名<code>&lt;|&gt;</code>）演算子です。</p>
 <p><code>Data.Array</code>モジュールでは <code>Alternative</code>型クラスで型構築子を操作する2
 つの便利な関数を提供します。</p>
 <pre><code class="language-haskell">many :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Array a)
 some :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Array a)
 </code></pre>
 <p><code>Data.List</code>にも等価な<code>many</code>と<code>some</code>があります。</p>
-<p><code>many</code>コンビネータは計算を<strong>ゼロ回以上</strong>繰り返し実行するために
-<code>Alternative</code>型クラスを使用しています。 <code>some</code>コンビネータも似ています
-が、成功するために少なくとも1回の計算を必要とします。</p>
+<p><code>many</code>コンビネータは計算を <em>ゼロ回以上</em> 繰り返し実行するために<code>Alternative</code>型クラスを使用しています。
+<code>some</code>コンビネータも似ていますが、成功するために少なくとも1回の計算を必要とします。</p>
 <p><code>Parser</code>モナド変換子スタックの場合は、<code>ExceptT</code>コンポーネントによる
 <code>Alternative</code>のインスタンスがあります。このコンポーネントでは異なる分
 枝のエラーに<code>Monoid</code>インスタンスを使って組み合わせることによって対応し
@@ -13854,10 +13565,9 @@ upper = do
   guard $ toUpper s == s
   pure s
 </code></pre>
-<p>ここで、文字列が大文字でない場合に失敗するよう <code>guard</code>を使用しています。
-このコードは前に見た配列内包表記とよく似ていることに注目してください。
-このように<code>MonadPlus</code>を使うことは、<strong>モナド内包表記</strong> (monad
-comprehensions) の構築と呼ばれることがあります。</p>
+<p>ここで、文字列が大文字でない場合に失敗するよう
+<code>guard</code>を使用しています。このコードは前に見た配列内包表記とよく似ていることに注目してください。このように<code>MonadPlus</code>を使うことは、
+<em>モナド内包表記</em> (monad comprehensions) の構築と呼ばれることがあります。</p>
 <h2 id="バックトラッキング"><a class="header" href="#バックトラッキング">バックトラッキング</a></h2>
 <p><code>&lt;|&gt;</code>演算子を使うと、失敗したときに別の代替計算へとバックトラックすることができます。これを確かめるために、小文字に一致するもう1つの構文解析器を定義してみましょう。</p>
 <pre><code class="language-haskell">lower :: Parser String
@@ -13921,11 +13631,9 @@ lower = do
 </li>
 </ol>
 <h2 id="rwsモナド"><a class="header" href="#rwsモナド">RWSモナド</a></h2>
-<p>モナド変換子のある特定の組み合わせは頻出なので、<code>transformers</code>パッケー
-ジ内の単一のモナド変換子として提供されています。<code>Reader</code>、 <code>Writer</code>、
-<code>State</code>のモナドは、<strong>Reader-Writer-State</strong>モナドに組み合わさり、より単
-純に<code>RWS</code>モナドともされます。このモナドは <code>RWST</code>モナド変換子と呼ばれる、
-対応するモナド変換子を持っています。</p>
+<p>モナド変換子のある特定の組み合わせは頻出なので、<code>transformers</code>パッケージ内の単一のモナド変換子として提供されています。<code>Reader</code>、
+<code>Writer</code>、<code>State</code>のモナドは、 <em>Reader-Writer-State</em>
+モナドに組み合わさり、より単純に<code>RWS</code>モナドともされます。このモナドは <code>RWST</code>モナド変換子と呼ばれる、対応するモナド変換子を持っています。</p>
 <p>ここでは <code>RWS</code>モナドを使ってテキストアドベンチャーゲームの処理を設計し
 ていきます。</p>
 <p><code>RWS</code>モナドは（戻り値の型に加えて）3つの型変数を使って定義されています。</p>
@@ -14148,23 +13856,15 @@ runGame env = do
 情報メッセージの2つの種類のメッセージのために使われています。このため、
 コードのいくつかの箇所では、エラーの場合を扱うためにcase式を使用してい
 ます。</p>
-<p>エラーメッセージを扱うのに <code>ExceptT</code>モナド変換子を使うようにし、
-情報メッセージを扱うのに <code>RWS</code>を使うようにするよう、コードをリファ
-クタリングしてください。<strong>補足</strong>：この演習にはテストはありません。</p>
+<p>エラーメッセージを扱うのに <code>ExceptT</code>モナド変換子を使うようにし、情報メッセージを扱うのに <code>RWS</code>を使うようにするよう、コードをリファクタリングしてください。 <em>補足</em> ：この演習にはテストはありません。</p>
 </li>
 </ol>
 <h2 id="コマンドラインオプションの扱い"><a class="header" href="#コマンドラインオプションの扱い">コマンドラインオプションの扱い</a></h2>
 <p>このアプリケーションの最後の部品は、コマンドラインオプションの解析と
 <code>GameEnvironment</code>設定レコードを作成する役目にあります。このためには
 <code>optparse</code>パッケージを使用します。</p>
-<p><code>optparse</code>は<strong>アプリカティブなコマンドラインオプション構文解析器</strong>の一
-例です。アプリカティブ関手を使うと、いろいろな副作用の型を表す型構築子
-まで任意個数の引数の関数をを持ち上げられることを思い出してください。
-<code>optparse</code>パッケージの場合には、コマンドラインオプションからの読み取り
-の副作用を追加する<code>Parser</code>関手（optparseのモジュール
-<code>Options.Applicative</code>からインポートされたもの。<code>Split</code>モジュールで定義
-した<code>Parser</code>と混同しないように）が興味深い関手になっています。これは次
-のようなハンドラを提供しています。</p>
+<p><code>optparse</code>は <em>アプリカティブなコマンドラインオプション構文解析器</em>
+の一例です。アプリカティブ関手を使うと、いろいろな副作用の型を表す型構築子まで任意個数の引数の関数をを持ち上げられることを思い出してください。<code>optparse</code>パッケージの場合には、コマンドラインオプションからの読み取りの副作用を追加する<code>Parser</code>関手（optparseのモジュール<code>Options.Applicative</code>からインポートされたもの。<code>Split</code>モジュールで定義した<code>Parser</code>と混同しないように）が興味深い関手になっています。これは次のようなハンドラを提供しています。</p>
 <pre><code class="language-haskell">customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
 </code></pre>
 <p>実例を見るのが一番です。このアプリケーションの <code>main</code>関数は
@@ -14261,7 +13961,7 @@ runGame env = do
 <p>このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。</p>
 <ul>
 <li><code>canvas</code>はHTML5のCanvas APIのメソッドの型を与えます。</li>
-<li><code>refs</code>は<strong>大域的な変更可能領域への参照</strong>を使うための副作用を提供します。</li>
+<li><code>refs</code>は <em>大域的な変更可能領域への参照</em> を使うための副作用を提供します。</li>
 </ul>
 <p>この章のソースコードは、それぞれに <code>main</code>メソッドが定義されているモジュー
 ルの集合へと分割されています。この章のそれぞれの節の内容はそれぞれの異
@@ -14288,11 +13988,8 @@ main = void $ unsafePartial do
   Just canvas &lt;- getCanvasElementById &quot;canvas&quot;
   ctx &lt;- getContext2D canvas
 </code></pre>
-<p><strong>注意</strong>：この<code>unsafePartial</code>の呼び出しは必須です。これは
-<code>getCanvasElementById</code>の結果のパターン照合部分的で、<code>Just</code>値構築子だけ
-と照合するためです。ここではこれで問題ありませんが、実際の製品のコード
-ではおそらく<code>Nothing</code>値構築子と照合させ、適切なエラーメッセージを提供
-したほうがよいでしょう。</p>
+<p><em>注意</em>
+：この<code>unsafePartial</code>の呼び出しは必須です。これは<code>getCanvasElementById</code>の結果のパターン照合部分的で、<code>Just</code>値構築子だけと照合するためです。ここではこれで問題ありませんが、実際の製品のコードではおそらく<code>Nothing</code>値構築子と照合させ、適切なエラーメッセージを提供したほうがよいでしょう。</p>
 <p>これらのアクションの型は、PSCiを使うかドキュメントを見ると確認できます。</p>
 <pre><code class="language-haskell">getCanvasElementById :: String -&gt; Effect (Maybe CanvasElement)
 
@@ -14390,14 +14087,10 @@ translate dx dy shape = shape
   , y = shape.y + dy
   }
 </code></pre>
-<p>この行多相型に注目してください。これは <code>triangle</code>が <code>x</code>と <code>y</code>というプ
-ロパティと、<strong>それに加えて他の任意のプロパティ</strong>を持ったどんなレコード
-でも受け入れ、同じ型のレコードを返すということを言っています。 <code>x</code>フィー
-ルドと <code>y</code>フィールドは更新されますが、残りのフィールドは変更されません。</p>
-<p>これは<strong>レコード更新構文</strong>の例です。 <code>shape { ... }</code>という式は、
-<code>shape</code>を元にして、括弧の中で指定された値で更新されたフィールドを持つ
-新たなレコードを作ります。波括弧の中の式はレコードリテラルのようなコロ
-ンではなく、等号でラベルと式を区切って書くことに注意してください。</p>
+<p>この行多相型に注目してください。これは <code>triangle</code>が <code>x</code>と <code>y</code>というプロパティと、 <em>それに加えて他の任意のプロパティ</em>
+を持ったどんなレコードでも受け入れ、同じ型のレコードを返すということを言っています。 <code>x</code>フィールドと
+<code>y</code>フィールドは更新されますが、残りのフィールドは変更されません。</p>
+<p>これは <em>レコード更新構文</em> の例です。 <code>shape { ... }</code>という式は、<code>shape</code>を元にして、括弧の中で指定された値で更新されたフィールドを持つ新たなレコードを作ります。波括弧の中の式はレコードリテラルのようなコロンではなく、等号でラベルと式を区切って書くことに注意してください。</p>
 <p><code>Shapes</code>の例からわかるように、 <code>translate</code>関数は <code>Rectangle</code>レコードと
 <code>Arc</code>レコード双方に対して使うことができます。</p>
 <p><code>Shape</code>の例で描画される3つめの型は区分からなる線分のパスです。対応する
@@ -14526,9 +14219,8 @@ transform :: Context2D
 <p>最後の <code>transform</code>はこの4つのうちで最も一般的なアクションです。このアクションは行列に従ってアフィン変換を行います。</p>
 <p>これらのアクションが呼び出された後に描画される図形は、自動的に適切な座
 標変換が適用されます。</p>
-<p>実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列
-に対して変換行列を<strong>右から乗算</strong>していきます。つまり、もしある作用の変
-換をしていくと、その作用は実際には逆順に適用されていきます：</p>
+<p>実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列に対して変換行列を <em>右から乗算</em>
+していきます。つまり、もしある作用の変換をしていくと、その作用は実際には逆順に適用されていきます：</p>
 <pre><code class="language-haskell">transformations ctx = do
   translate ctx { translateX: 10.0, translateY: 10.0 }
   scale ctx { scaleX: 2.0, scaleY: 2.0 }
@@ -14541,9 +14233,8 @@ transform :: Context2D
 <h2 id="コンテキストの保存"><a class="header" href="#コンテキストの保存">コンテキストの保存</a></h2>
 <p>変換を適用してシーンの一部を描画し、それからその変換を元に戻す、という
 使い方はよくあります。</p>
-<p>Canvas APIにはキャンバスの状態の<strong>スタック</strong>を操作する <code>save</code>と
-<code>restore</code>メソッドが備わっています。 <code>canvas</code>ではこの機能を次のような関
-数でラップしています。</p>
+<p>Canvas APIにはキャンバスの状態の <em>スタック</em> を操作する <code>save</code>と<code>restore</code>メソッドが備わっています。
+<code>canvas</code>ではこの機能を次のような関数でラップしています。</p>
 <pre><code class="language-haskell">save
   :: Context2D
   -&gt; Effect Context2D
@@ -14642,16 +14333,13 @@ Type -&gt; Type
 <li>（普通）<code>Random</code>作用と <code>Dom</code>作用を使用して、マウスがクリックされたとき
 に、キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを
 作成してください。</li>
-<li>（普通）シーンを指定された座標を中心に回転する関数を書いてください。
-<strong>ヒント</strong>：最初にシーンを原点まで平行移動しましょう。</li>
+<li>（普通）シーンを指定された座標を中心に回転する関数を書いてください。 <em>ヒント</em> ：最初にシーンを原点まで平行移動しましょう。</li>
 </ol>
 <h2 id="l-system"><a class="header" href="#l-system">L-System</a></h2>
-<p>この章の最後の例として、 <code>canvas</code>パッケージを使用して<strong>L-system</strong>
-(Lindenmayer system) を描画する関数を記述します。</p>
-<p>L-Systemは<strong>アルファベット</strong>、つまり初期状態となるアルファベットの文
-字列と、<strong>生成規則</strong>の集合で定義されています。各生成規則は、アルファベッ
-トの文字をとり、それを置き換える文字の配列を返します。この処理は文字の
-初期配列から始まり、複数回繰り返されます。</p>
+<p>この章の最後の例として、 <code>canvas</code>パッケージを使用して<em>L-system</em>（またの名を<em>Lindenmayer
+system</em>）を描画する関数を記述します。</p>
+<p>L-Systemは<em>アルファベット</em>、つまり初期状態となるアルファベットの文字列と、 <em>生成規則</em>
+の集合で定義されています。各生成規則は、アルファベットの文字をとり、それを置き換える文字の配列を返します。この処理は文字の初期配列から始まり、複数回繰り返されます。</p>
 <p>もしアルファベットの各文字がcanvas上で実行される命令と対応付けられてい
 れば、その指示に順番に従うことでL-Systemを描画することができます。</p>
 <p>たとえば、アルファベットが文字 <code>L</code>（左回転）、 <code>R</code>（右回転）、 <code>F</code>（前
@@ -14665,8 +14353,7 @@ F -&gt; FLFRRFLF
 FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...
 </code></pre>
-<p>この命令群に対応する線分パスをプロットすると、<strong>コッホ曲線</strong>と呼ばれる
-曲線に近似します。反復回数を増やすと、曲線の解像度が増加していきます。</p>
+<p>この命令群に対応する線分パスをプロットすると、 <em>コッホ曲線</em> と呼ばれる曲線に近似します。反復回数を増やすと、曲線の解像度が増加していきます。</p>
 <p>それでは型と関数の言語へとこれを翻訳してみましょう。</p>
 <p>アルファベットの文字は以下のADTで表現できます。</p>
 <pre><code class="language-haskell">data Letter = L | R | F
@@ -14699,9 +14386,8 @@ productions F = [F, L, F, R, R, F, L, F]
 -&gt; Effect Unit
 </code></pre>
 <p>最初の2つの引数の型は、値 <code>initial</code>と <code>productions</code>に対応しています。</p>
-<p>3番目の引数は、アルファベットの文字を取り、canvas上のいくつかのアクショ
-ンを実行することによって<strong>翻訳</strong>する関数を表します。この例では、文字
-<code>L</code>は左回転、文字 <code>R</code>で右回転、文字 <code>F</code>は前進を意味します。</p>
+<p>3番目の引数は、アルファベットの文字を取り、canvas上のいくつかのアクションを実行することによって <em>解釈</em>
+する関数を表します。この例では、文字<code>L</code>は左回転、文字 <code>R</code>で右回転、文字 <code>F</code>は前進を意味します。</p>
 <p>最後の引数は、実行したい生成規則の繰り返し回数を表す数です。</p>
 <p>最初に気付くことは、この<code>lsystem</code>関数は1つの型<code>Letter</code>に対してのみ動作
 するのですが、どんなアルファベットについても機能すべきですから、この型
@@ -14729,9 +14415,8 @@ productions F = [F, L, F, R, R, F, L, F]
 </code></pre>
 <p>まず追加の引数の型として <code>lsystem</code>に型 <code>s</code>が追加されています。この引数
 はL-Systemの初期状態を表しています。</p>
-<p>型 <code>s</code>は引数にも現れますが、翻訳関数（<code>lsystem</code>の第3引数）の返り値の型と
-しても現れます。翻訳関数は今のところ、引数としてL-Systemの現在の状態を
-受け取り、返り値として更新された新しい状態を返します。</p>
+<p>型
+<code>s</code>は引数にも現れますが、解釈関数（<code>lsystem</code>の第3引数）の返り値の型としても現れます。解釈関数は今のところ、引数としてL-Systemの現在の状態を受け取り、返り値として更新された新しい状態を返します。</p>
 <p>この例の場合では、次のような型を使って状態を表す型を定義することができ
 ます。</p>
 <pre><code class="language-haskell">type State =
@@ -14762,10 +14447,7 @@ lsystem init prod interpret n state = go init n
 </code></pre>
 <p><code>go</code>関数は第2引数に応じて再帰することで動きます。場合分けは2つであり、
 <code>n</code>がゼロであるときと <code>n</code>がゼロでないときです。</p>
-<p>1つ目の場合は再帰は完了し、翻訳関数に応じて現在の文を翻訳します。型
-<code>Array a</code>の文、型 <code>s</code>の状態、型 <code>s -&gt; a -&gt; Effect s</code>の関数があります。
-以前定義した <code>foldM</code>でやったことのように聞こえます。この関数は
-<code>control</code>パッケージで手に入ります。</p>
+<p>1つ目の場合は再帰は完了し、解釈関数に応じて現在の文を解釈します。型<code>Array a</code>の文、型 <code>s</code>の状態、型 <code>s -&gt; a -&gt; Effect s</code>の関数があります。以前定義した <code>foldM</code>でやったことのように聞こえます。この関数は<code>control</code>パッケージで手に入ります。</p>
 <pre><code class="language-haskell">  go s 0 = foldM interpret state s
 </code></pre>
 <p>ゼロでない場合ではどうでしょうか。その場合は、単に生成規則を現在の文の
@@ -14775,11 +14457,8 @@ lsystem init prod interpret n state = go init n
 </code></pre>
 <p>これだけです！<code>foldM</code>や <code>concatMap</code>のような高階関数を使うと、このよう
 にアイデアを簡潔に表現することができるのです。</p>
-<p>しかし、話はこれで終わりではありません。ここで与えた型は、実際はまだ特
-殊化されすぎています。この定義ではcanvasの操作が実装のどこにも使われて
-いないことに注目してください。それに、まったく <code>Effecta</code>モナドの構造を
-利用していません。実際には、この関数は<strong>どんな</strong>モナド <code>m</code>についても動
-作するのです！</p>
+<p>しかし、話はこれで終わりではありません。ここで与えた型は、実際はまだ特殊化されすぎています。この定義ではcanvasの操作が実装のどこにも使われていないことに注目してください。それに、まったく
+<code>Effecta</code>モナドの構造を利用していません。実際には、この関数は <em>どんな</em> モナド <code>m</code>についても動作するのです！</p>
 <p>この章に添付されたソースコードで指定されている、 <code>lsystem</code>のもっと一般
 的な型は次のようになっています。</p>
 <pre><code class="language-haskell">lsystem :: forall a m s
@@ -14791,32 +14470,21 @@ lsystem init prod interpret n state = go init n
          -&gt; s
          -&gt; m s
 </code></pre>
-<p>この型が言っているのは、この翻訳関数はモナド <code>m</code>が持つ任意の副作用をまっ
-たく自由に持つことができる、ということだと理解することができます。キャ
-ンバスに描画したり、またはコンソールに情報を出力するかもしれませんし、
-失敗や複数の戻り値に対応しているかもしれません。こういった様々な型の副
-作用を使ったL-Systemを記述してみることを読者にお勧めします。</p>
-<p>この関数は実装からデータを分離することの威力を示す良い例となっています。
-この手法の利点は、複数の異なる方法でデータを解釈する自由が得られること
-です。 <code>lsystem</code>は2つの小さな関数へと分解することさえできるかもしれま
-せん。1つ目は <code>concatMap</code>の適用の繰り返しを使って文を構築するもので、2
-つ目は <code>foldM</code>を使って文を翻訳するものです。これは読者の演習として残し
-ておきます。</p>
-<p>それでは翻訳関数を実装して、この章の例を完成させましょう​​。 <code>lsystem</code>の
-型は型シグネチャが言っているのは、翻訳関数の型は、何らかの型 <code>a</code>と <code>s</code>、
-型構築子 <code>m</code>について、 <code>s -&gt; a -&gt; m s</code>でなければならないということです。
-<code>a</code>を <code>Letter</code>、 <code>s</code>を <code>State</code>、モナド <code>m</code>を <code>Effect</code>というように選び
-たいということがわかっています。これにより次のような型になります。</p>
+<p>この型が言っているのは、この解釈関数はモナド
+<code>m</code>が持つ任意の副作用をまったく自由に持つことができる、ということだと理解することができます。キャンバスに描画したり、またはコンソールに情報を出力するかもしれませんし、失敗や複数の戻り値に対応しているかもしれません。こういった様々な型の副作用を使ったL-Systemを記述してみることを読者にお勧めします。</p>
+<p>この関数は実装からデータを分離することの威力を示す良い例となっています。この手法の利点は、複数の異なる方法でデータを解釈する自由が得られることです。
+<code>lsystem</code>は2つの小さな関数へと分解することさえできるかもしれません。1つ目は
+<code>concatMap</code>の適用の繰り返しを使って文を構築するもので、2つ目は
+<code>foldM</code>を使って文を解釈するものです。これは読者の演習として残しておきます。</p>
+<p>それでは解釈関数を実装して、この章の例を完成させましょう​​。 <code>lsystem</code>の型は型シグネチャが言っているのは、解釈関数の型は、何らかの型 <code>a</code>と <code>s</code>、型構築子 <code>m</code>について、 <code>s -&gt; a -&gt; m s</code>でなければならないということです。<code>a</code>を <code>Letter</code>、 <code>s</code>を <code>State</code>、モナド <code>m</code>を <code>Effect</code>というように選びたいということがわかっています。これにより次のような型になります。</p>
 <pre><code class="language-haskell">    interpret :: State -&gt; Letter -&gt; Effect State
 </code></pre>
-<p>この関数を実装するには、 <code>Letter</code>型の3つのデータ構築子それぞれについて
-処理する必要があります。文字 <code>L</code>（左回転）と <code>R</code>（右回転）の翻訳では、
-<code>theta</code>を適切な角度へ変更するように状態を更新するだけです。</p>
+<p>この関数を実装するには、 <code>Letter</code>型の3つのデータ構築子それぞれについて処理する必要があります。文字 <code>L</code>（左回転）と
+<code>R</code>（右回転）の解釈では、<code>theta</code>を適切な角度へ変更するように状態を更新するだけです。</p>
 <pre><code class="language-haskell">    interpret state L = pure $ state { theta = state.theta - Number.tau / 6.0 }
     interpret state R = pure $ state { theta = state.theta + Number.tau / 6.0 }
 </code></pre>
-<p>文字 <code>F</code>（前進）を翻訳するには、パスの新しい位置を計算し、線分を描画し、
-状態を次のように更新します。</p>
+<p>文字 <code>F</code>（前進）を解釈するには、パスの新しい位置を計算し、線分を描画し、状態を次のように更新します。</p>
 <pre><code class="language-haskell">    interpret state F = do
       let x = state.x + Number.cos state.theta * 1.5
           y = state.y + Number.sin state.theta * 1.5
@@ -14840,10 +14508,8 @@ lsystem init prod interpret n state = go init n
 <h2 id="演習-43"><a class="header" href="#演習-43">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>strokePath</code>の代わりに <code>fillPath</code>を使用するように、上の
-L-Systemの例を変更してください。<strong>ヒント</strong>：<code>closePath</code>の呼び出しを含
-め、 <code>moveTo</code>の呼び出しを <code>interpret</code>関数の外側に移動する必要がありま
-す。</p>
+<p>（簡単）<code>strokePath</code>の代わりに <code>fillPath</code>を使用するように、上のL-Systemの例を変更してください。 <em>ヒント</em>
+：<code>closePath</code>の呼び出しを含め、 <code>moveTo</code>の呼び出しを <code>interpret</code>関数の外側に移動する必要があります。</p>
 </li>
 <li>
 <p>（簡単）描画システムへの影響を理解するために、コード中の様々な数値の定
@@ -14855,10 +14521,10 @@ L-Systemの例を変更してください。<strong>ヒント</strong>：<code>c
 は <code>foldM</code>を使用して結果を解釈するものでなくてはなりません。</p>
 </li>
 <li>
-<p>（普通）<code>setShadowOffsetX</code>アクション、 <code>setShadowOffsetY</code>アクション、
-<code>setShadowBlur</code>アクション、 <code>setShadowColor</code>アクションを使い、塗りつぶ
-された図形にドロップシャドウを追加してください。<strong>ヒント</strong>：PSCiを使っ
-て、これらの関数の型を調べてみましょう。</p>
+<p>（普通）<code>setShadowOffsetX</code>アクション、
+<code>setShadowOffsetY</code>アクション、<code>setShadowBlur</code>アクション、
+<code>setShadowColor</code>アクションを使い、塗りつぶされた図形にドロップシャドウを追加してください。 <em>ヒント</em>
+：PSCiを使って、これらの関数の型を調べてみましょう。</p>
 </li>
 <li>
 <p>（普通）向きを変えるときの角度の大きさは今のところ一定 (<code>tau/6</code>) です。
@@ -14882,9 +14548,7 @@ R -&gt; R
 F -&gt; FLMLFRMRFRMRFLMLF
 M -&gt; MRFRMLFLMLFLMRFRM
 </code></pre>
-<p>このL-Systemを描画してください。<strong>注意</strong>：最後の文のサイズは反復
-回数に従って指数関数的に増大するので、生成規則の繰り返しの回数を
-削減することが必要になります。</p>
+<p>このL-Systemを描画してください。 <em>注意</em> ：最後の文のサイズは反復回数に従って指数関数的に増大するので、生成規則の繰り返しの回数を削減することが必要になります。</p>
 <p>ここで、生成規則における <code>L</code>と <code>M</code>の間の対称性に注目してください。
 ふたつの「前進」命令は、次のようなアルファベット型を使用すると、
 <code>Boolean</code>値を使って区別することができます。</p>
@@ -14894,9 +14558,7 @@ M -&gt; MRFRMLFLMLFLMRFRM
 ください。</p>
 </li>
 <li>
-<p>（難しい）翻訳関数で別のモナド <code>m</code>を使ってみましょう。
-<code>Effect.Console</code>作用を利用してコンソール上にL-Systemを出力したり、
-<code>Random</code>作用を利用して状態の型に無作為の「突然変異」を適用したりしてみてください。</p>
+<p>（難しい）解釈関数で別のモナド <code>m</code>を使ってみましょう。<code>Effect.Console</code>作用を利用してコンソール上にL-Systemを出力したり、<code>Random</code>作用を利用して状態の型に無作為の「突然変異」を適用したりしてみてください。</p>
 </li>
 </ol>
 <h2 id="まとめ-10"><a class="header" href="#まとめ-10">まとめ</a></h2>
@@ -14904,10 +14566,8 @@ M -&gt; MRFRMLFLMLFLMRFRM
 HTML5 Canvas APIを使う方法について学びました。また、これまで学んできた
 手法の多くを利用した実用的な例について見ました。マップや畳み込み、レコー
 ドと行多相、副作用を扱うための <code>Effect</code>モナドなどです。</p>
-<p>この章の例では、高階関数の威力を示すとともに、<strong>実装からのデータの分離</strong>
-も実演してみせました。これは例えば、代数データ型を使用してこれらの概
-念を次のように拡張し、描画関数からシーンの表現を完全に分離できるように
-なります。</p>
+<p>この章の例では、高階関数の威力を示すとともに、 <em>実装からのデータの分離</em>
+も実演してみせました。これは例えば、代数データ型を使用してこれらの概念を次のように拡張し、描画関数からシーンの表現を完全に分離できるようになります。</p>
 <pre><code class="language-haskell">data Scene
   = Rect Rectangle
   | Arc Arc
@@ -14924,9 +14584,11 @@ HTML5 Canvas APIを使う方法について学びました。また、これま�
 の「Behavior」と「Signal」のレシピを見てください。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="テストの自動生成"><a class="header" href="#テストの自動生成">テストの自動生成</a></h1>
 <h2 id="この章の目標-11"><a class="header" href="#この章の目標-11">この章の目標</a></h2>
-<p>この章では、テスティングの問題に対する、型クラスの特に洗練された応用について示します。<strong>どのように</strong>テストするのかをコンパイラに教えるのではなく、コードが<strong>どのような</strong>性質を持っているべきかを教えることでテストします。型クラスを使って無作為データ生成のための定型コードを隠し、テストケースを仕様から無作為に生成することができます。これは<strong>生成的テスティング</strong>（generative
-testing、または<strong>property-based
-testing</strong>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introduction_to_QuickCheck1">QuickCheck</a>ライブラリによって普及した手法です。</p>
+<p>この章では、テスティングの問題に対する、型クラスの特に洗練された応用について示します。 <em>どのように</em>
+テストするのかをコンパイラに教えるのではなく、コードが <em>どのような</em>
+性質を持っているべきかを教えることでテストします。型クラスを使って無作為データ生成のための定型コードを隠し、テストケースを仕様から無作為に生成することができます。これは<em>生成的テスティング</em>（generative
+testing、または<em>property-based
+testing</em>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introduction_to_QuickCheck1">QuickCheck</a>ライブラリによって普及した手法です。</p>
 <p><code>quickcheck</code>パッケージはHaskellのQuickCheckライブラリをPureScriptにポーティングしたもので、型や構文はもとのライブラリとほとんど同じようになっています。
 <code>quickcheck</code>を使って簡単なライブラリをテストし、Spagoでテストスイートを自動化されたビルドに統合する方法を見ていきます。</p>
 <h2 id="プロジェクトの準備-10"><a class="header" href="#プロジェクトの準備-10">プロジェクトの準備</a></h2>
@@ -14995,10 +14657,8 @@ not equal to expected:
 <p>入力 <code>xs</code>が無作為に選ばれた数の配列として生成されていることに注目してください。</p>
 <h2 id="演習-44"><a class="header" href="#演習-44">演習</a></h2>
 <ol>
-<li>（簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を書いてください。
-<strong>補足</strong>：この新しい性質は冗長です。
-というのもこの状況は既に既存の性質で押さえられているからです。
-読者がQuickCheckを使う練習をするための簡単な方法を与えようとしているだけです。</li>
+<li>（簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を書いてください。 <em>補足</em>
+：この新しい性質は冗長です。というのもこの状況は既に既存の性質で押さえられているからです。読者がQuickCheckを使う練習をするための簡単な方法を与えようとしているだけです。</li>
 <li>（簡単）<code>merge</code>の残りの性質に対して、適切なエラーメッセージを追加してください。</li>
 </ol>
 <h2 id="多相的なコードのテスト"><a class="header" href="#多相的なコードのテスト">多相的なコードのテスト</a></h2>
@@ -15045,7 +14705,7 @@ ints = id
 <pre><code class="language-haskell">class Arbitrary t where
   arbitrary :: Gen t
 </code></pre>
-<p><code>Gen</code>型構築子は<strong>決定的無作為データ生成</strong>の副作用を表しています。
+<p><code>Gen</code>型構築子は <em>決定的無作為データ生成</em> の副作用を表しています。
 決定的無作為データ生成は、擬似乱数生成器を使って、シード値から決定的無作為関数の引数を生成します。
 <code>Test.QuickCheck.Gen</code>モジュールは、ジェネレータを構築するためのいくつかの有用なコンビネータを定義しています。</p>
 <p><code>Gen</code>はモナドでもアプリカティブ関手でもあるので、
@@ -15083,9 +14743,8 @@ instance arbSorted :: (Arbitrary a, Ord a) =&gt; Arbitrary (Sorted a) where
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs &lt;&gt; sorted ys)
 </code></pre>
-<p>これは些細な変更に見えるかもしれませんが、 <code>xs</code>と <code>ys</code>の型はただの <code>Array Int</code>から <code>Sorted Int</code>へと変更されています。これにより、
-<code>mergePoly</code>関数はソート済みの入力を取る、という<strong>意図</strong>を、わかりやすく示すことができます。理想的には、
-<code>mergePoly</code>関数自体の型が <code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
+<p>これは些細な変更に見えるかもしれませんが、 <code>xs</code>と <code>ys</code>の型はただの <code>Array Int</code>から <code>Sorted Int</code>へと変更されています。これにより、 <code>mergePoly</code>関数はソート済みの入力を取る、という <em>意図</em>
+を、わかりやすく示すことができます。理想的には、 <code>mergePoly</code>関数自体の型が <code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
 <p>より興味深い例として、 <code>Tree</code>モジュールでは枝の値でソートされた二分木の型が定義されています。</p>
 <pre><code class="language-haskell">data Tree a
   = Leaf
@@ -15122,7 +14781,7 @@ false
 <h2 id="演習-46"><a class="header" href="#演習-46">演習</a></h2>
 <ol>
 <li>（普通）<code>a-z</code>の範囲から無作為に選ばれた文字の集まりを生成する <code>Arbitrary</code>インスタンスを持った、
-<code>String</code>のnewtypeを作ってください。<strong>ヒント</strong>：<code>Test.QuickCheck.Gen</code>モジュールから
+<code>String</code>のnewtypeを作ってください。 <em>ヒント</em> ：<code>Test.QuickCheck.Gen</code>モジュールから
 <code>elements</code>と <code>arrayOf</code>関数を使います。</li>
 <li>（難しい）木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。</li>
 </ol>
@@ -15149,9 +14808,8 @@ false
 <pre><code class="language-haskell">class Coarbitrary t where
   coarbitrary :: forall r. t -&gt; Gen r -&gt; Gen r
 </code></pre>
-<p><code>coarbitrary</code>関数は、型 <code>t</code>と、関数の結果の型 <code>r</code>についての乱数生成器
-を関数の引数としてとり、乱数生成器を<strong>かき乱す</strong>のにこの引数を使います。
-つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。</p>
+<p><code>coarbitrary</code>関数は、型 <code>t</code>と、関数の結果の型 <code>r</code>についての乱数生成器を関数の引数としてとり、乱数生成器を <em>かき乱す</em>
+のにこの引数を使います。つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。</p>
 <p>また、もし関数の定義域が <code>Coarbitrary</code>で、値域が <code>Arbitrary</code>なら、
 <code>Arbitrary</code>の関数を与える型クラスインスタンスが存在しています。</p>
 <pre><code class="language-haskell">instance arbFunction :: (Coarbitrary a, Arbitrary b) =&gt; Arbitrary (a -&gt; b)
@@ -15185,9 +14843,8 @@ intToBool = id
 <p>関数は <code>Arbitrary</code>であるだけでなく <code>Coarbitrary</code>でもあります。</p>
 <pre><code class="language-haskell">instance coarbFunction :: (Arbitrary a, Coarbitrary b) =&gt; Coarbitrary (a -&gt; b)
 </code></pre>
-<p>これは値の生成が単純な関数だけに限定されるものではないことを意味してい
-ます。つまり、<strong>高階関数</strong>や、引数が高階関数であるような関数もまた無作
-為に生成することができるのです。</p>
+<p>これは値の生成が単純な関数だけに限定されるものではないことを意味しています。つまり、 <em>高階関数</em>
+や、引数が高階関数であるような関数もまた無作為に生成することができるのです。</p>
 <h2 id="coarbitraryのインスタンスを書く"><a class="header" href="#coarbitraryのインスタンスを書く">Coarbitraryのインスタンスを書く</a></h2>
 <p><code>Gen</code>の <code>Monad</code>や <code>Applicative</code>インスタンスを使って独自のデータ型に対
 して <code>Arbitrary</code>インスタンスを書くことができるのとちょうど同じように、
@@ -15215,9 +14872,8 @@ intToBool = id
 べる関数です。</p>
 <pre><code class="language-haskell">anywhere :: forall a. (Tree a -&gt; Boolean) -&gt; Tree a -&gt; Boolean
 </code></pre>
-<p>これで、無作為にこの述語関数 <code>anywhere</code>を生成することができるようにな
-りました。例えば、 <code>anywhere</code>関数は<strong>ある命題のもとで不変</strong>であること
-が期待されます。</p>
+<p>これで、無作為にこの述語関数 <code>anywhere</code>を生成することができるようになりました。例えば、 <code>anywhere</code>関数は <em>ある命題のもとで不変</em>
+であることが期待されます。</p>
 <pre><code class="language-haskell">quickCheck \f g t -&gt;
   anywhere (\s -&gt; f s || g s) t ==
     anywhere f (treeOfInt t) || anywhere g t
@@ -15267,23 +14923,18 @@ Success : Success : ...
 <p>（普通）次のデータ型の<code>Arbitrary</code>と<code>Coarbitrary</code>インスタンスを書いてください。</p>
 <pre><code class="language-haskell">data OneTwoThree a = One a | Two a a | Three a a a
 </code></pre>
-<p><strong>ヒント</strong>：<code>Test.QuickCheck.Gen</code>で定義された <code>oneOf</code>関数を使って <code>Arbitrary</code>インスタンスを定義してください。</p>
+<p><em>ヒント</em> ：<code>Test.QuickCheck.Gen</code>で定義された <code>oneOf</code>関数を使って <code>Arbitrary</code>インスタンスを定義してください。</p>
 </li>
 <li>
-<p>（普通）<code>all</code>を使って <code>quickCheckPure</code>関数の結果を単純化してください。
-その新しい関数は型<code>List Result -&gt; Boolean</code>を持ち、全てのテストがとおえば<code>true</code>を、そうでなければ<code>false</code>を返します。</p>
+<p>（普通）<code>all</code>を使って <code>quickCheckPure</code>関数の結果を単純化してください。その新しい関数は型<code>List Result -&gt; Boolean</code>を持ち、全てのテストがとおえば<code>true</code>を、そうでなければ<code>false</code>を返します。</p>
 </li>
 <li>
-<p>（普通）<code>quickCheckPure</code>の結果を単純にする別の手法として、
-関数<code>squashResults :: List Result -&gt; Result</code>を書いてみてください。
-<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで
-失敗した場合の最初のエラーを保存することを検討してください。</p>
+<p>（普通）<code>quickCheckPure</code>の結果を単純にする別の手法として、関数<code>squashResults :: List Result -&gt; Result</code>を書いてみてください。<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで失敗した場合の最初のエラーを保存することを検討してください。</p>
 </li>
 </ol>
 <h2 id="まとめ-11"><a class="header" href="#まとめ-11">まとめ</a></h2>
-<p>この章では<code>quickcheck</code>パッケージに出会いました。これを使えば<strong>生成的テ
-スティング</strong>のパラダイムを使って宣言的な方法でテストを書くことができま
-した。具体的には以下です。</p>
+<p>この章では<code>quickcheck</code>パッケージに出会いました。これを使えば <em>生成的テスティング</em>
+のパラダイムを使って宣言的な方法でテストを書くことができました。具体的には以下です。</p>
 <ul>
 <li><code>spago test</code>を使ってQuickCheckのテストを自動化する方法を見ました。</li>
 <li>性質を関数として書く方法とエラーメッセージを改良する <code>&lt;?&gt;</code>演算子の使い方を説明しました。</li>
@@ -15295,18 +14946,17 @@ Success : Success : ...
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="領域特化言語"><a class="header" href="#領域特化言語">領域特化言語</a></h1>
 <h2 id="この章の目標-12"><a class="header" href="#この章の目標-12">この章の目標</a></h2>
-<p>この章では、多数の標準的な手法を使ったPureScriptにおける<strong>領域特化言語</strong>
-(domain-specific language, DSL) の実装について探求していきます。</p>
+<p>この章では、多数の標準的な手法を使ったPureScriptにおける <em>領域特化言語</em> (domain-specific language, <em>DSL</em>)
+の実装について探求していきます。</p>
 <p>領域特化言語とは、特定の問題領域での開発に適した言語のことです。領域特
 化言語の構文および機能は、その領域内の考え方を表現するコードの読みやす
 さを最大限に発揮すべく選択されます。本書の中では、すでに領域特化言語の
 例を幾つか見てきています。</p>
 <ul>
-<li>第11章で開発された <code>Game</code>モナドと関連するアクションは、
-<strong>テキストアドベンチャーゲーム開発</strong>という領域に対しての領域特化言語を構成しています。</li>
-<li>第13章で扱った <code>quickcheck</code>パッケージは、<strong>生成的テスティング</strong>の領域
-の領域特化言語です。このコンビネータはテストの性質に対して特に表現力の
-高い記法を可能にします。</li>
+<li>第11章で開発された <code>Game</code>モナドと関連するアクションは、 <em>テキストアドベンチャーゲーム開発</em>
+という領域に対しての領域特化言語を構成しています。</li>
+<li>第13章で扱った <code>quickcheck</code>パッケージは、 <em>生成的テスティング</em>
+の領域の領域特化言語です。このコンビネータはテストの性質に対して特に表現力の高い記法を可能にします。</li>
 </ul>
 <p>この章では、領域特化言語の実装において、いくつかの標準的な手法による構
 造的な手法に迫ります。これがこの話題の完全な説明だということでは決して
@@ -15316,9 +14966,8 @@ Success : Success : ...
 す。正しいHTML文書を記述するための型安全な言語を開発することが目的で、
 素朴な実装を徐々に改善しつつ進めていきます。</p>
 <h2 id="プロジェクトの準備-11"><a class="header" href="#プロジェクトの準備-11">プロジェクトの準備</a></h2>
-<p>この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使
-う道具のひとつである<strong>Freeモナド</strong>が定義されている <code>free</code>ライブラリで
-す。</p>
+<p>この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使う道具のひとつである <em>Freeモナド</em> が定義されている
+<code>free</code>ライブラリです。</p>
 <p>このプロジェクトをPSCiを使って試していきます。</p>
 <h2 id="htmlデータ型"><a class="header" href="#htmlデータ型">HTMLデータ型</a></h2>
 <p>このHTMLライブラリの最も基本的なバージョンは
@@ -15388,7 +15037,7 @@ unit
 HTML文書を作成するために使える領域特化言語にしていきます。</p>
 <h2 id="スマート構築子"><a class="header" href="#スマート構築子">スマート構築子</a></h2>
 <p>最初に導入する手法は方法は単純なものですが、とても効果的です。モジュールの使用者にデータの表現を露出する代わりに、モジュールエクスポートリストを使ってデータ構築子
-<code>Element</code>、 <code>Content</code>、 <code>Attribute</code>を隠蔽し、正しいことが明らかなデータだけ構築する、いわゆる<strong>スマート構築子</strong>
+<code>Element</code>、 <code>Content</code>、 <code>Attribute</code>を隠蔽し、正しいことが明らかなデータだけ構築する、いわゆる <em>スマート構築子</em>
 (smart constructors) だけをエクスポートします。</p>
 <p>例を示しましょう。まず、HTML要素を作成するための便利な関数を提供します。</p>
 <pre><code class="language-haskell">element :: String -&gt; Array Attribute -&gt; Maybe (Array Content) -&gt; Element
@@ -15428,8 +15077,8 @@ img attribs = element &quot;img&quot; attribs Nothing
 <li>型クラス。クラス名により指定されます。</li>
 <li>型構築子と関連するデータ構築子。型名とそれに続くエクスポートされるデータ構築子の括弧で囲まれたリストで指定されます。</li>
 </ul>
-<p>ここでは、
-<code>Element</code>の<strong>型</strong>をエクスポートしていますが、データ構築子はエクスポートしていません。もしデータ構築子をエクスポートすると、モジュールの使用者が不正なHTML要素を構築できてしまいます。</p>
+<p>ここでは、 <code>Element</code>の <em>型</em>
+をエクスポートしていますが、データ構築子はエクスポートしていません。もしデータ構築子をエクスポートすると、モジュールの使用者が不正なHTML要素を構築できてしまいます。</p>
 <p><code>Attribute</code>と <code>Content</code>型についてはデータ構築子をすべてエクスポートしています（エクスポートリストの記号
 <code>..</code>で示されています）。
 すぐ後で、これらの型にスマート構築子の手法を適用していきます。</p>
@@ -15529,8 +15178,8 @@ unit
 <p>（簡単）<code>Data.DOM.Smart</code>モジュールで <code>render</code>を使った新しいHTML文書の作成を試してみましょう。</p>
 </li>
 <li>
-<p>（普通）<code>checked</code>と
-<code>disabled</code>など、値を要求しないHTML属性がありますが、これらは次のような<strong>空の属性</strong>として表示されるかもしれません。</p>
+<p>（普通）<code>checked</code>と <code>disabled</code>など、値を要求しないHTML属性がありますが、これらは次のような <em>空の属性</em>
+として表示されるかもしれません。</p>
 <pre><code class="language-html">&lt;input disabled&gt;
 </code></pre>
 <p>空の属性を扱えるように <code>Attribute</code>の表現を変更してください。
@@ -15550,12 +15199,11 @@ unit
 </code></pre>
 <p>ここでの問題は、 <code>width</code>属性と<code>height</code>属性に文字列値を提供しているということです。
 ここで与えることができるのはピクセル単位ないしパーセントの数値だけであるべきです。</p>
-<p><code>AttributeKey</code>型にいわゆる<strong>幻影型</strong> (phantom type) 引数を導入すると、この問題を解決できます。</p>
+<p><code>AttributeKey</code>型にいわゆる <em>幻影型</em> (phantom type) 引数を導入すると、この問題を解決できます。</p>
 <pre><code class="language-haskell">newtype AttributeKey a = AttributeKey String
 </code></pre>
-<p>定義の右辺に対応する型 <code>a</code>の値が存在しないので、この型変数 <code>a</code>は<strong>幻影型</strong>と呼ばれています。
-この型 <code>a</code>はコンパイル時に追加の情報を提供するためだけに存在しています。
-型 <code>AttributeKey a</code>の任意の値は実行時には単なる文字列ですが、コンパイル時にその値の型によりこのキーに関連付けられた値で求めている型がわかります。</p>
+<p>定義の右辺に対応する型 <code>a</code>の値が存在しないので、この型変数 <code>a</code>は <em>幻影型</em> と呼ばれています。この型
+<code>a</code>はコンパイル時に追加の情報を提供するためだけに存在しています。型 <code>AttributeKey a</code>の任意の値は実行時には単なる文字列ですが、コンパイル時にその値の型によりこのキーに関連付けられた値で求めている型がわかります。</p>
 <p><code>attribute</code>関数の型を次のように変更すれば、<code>AttributeKey</code>の新しい形式を考慮するようにできます。</p>
 <pre><code class="language-haskell">attribute :: forall a. IsValue a =&gt; AttributeKey a -&gt; a -&gt; Attribute
 attribute (AttributeKey key) value = Attribute
@@ -15619,7 +15267,7 @@ unit
 </li>
 <li>
 <p>（難しい）幻影型を使って真偽値 <code>true</code>、 <code>false</code>用の最上位の表現を定義することで、 <code>AttributeKey</code>が
-<code>disabled</code>や <code>checked</code>のような<strong>空の属性</strong>を表現しているかどうかを符号化することができます。</p>
+<code>disabled</code>や <code>checked</code>のような <em>空の属性</em> を表現しているかどうかを符号化することができます。</p>
 <pre><code class="language-haskell">data True
 data False
 </code></pre>
@@ -15627,9 +15275,8 @@ data False
 </li>
 </ol>
 <h2 id="freeモナド"><a class="header" href="#freeモナド">Freeモナド</a></h2>
-<p>APIに施す最後の変更は、 <code>Content</code>型をモナドにしてdo記法を使えるようにするために、<strong>Freeモナド</strong>と呼ばれる構造を使うことです。
-これによって入れ子になった要素がわかりやすくなるようにHTML文書を構造化できます。
-以下の代わりに……</p>
+<p>APIに施す最後の変更は、 <code>Content</code>型をモナドにしてdo記法を使えるようにするために、 <em>Freeモナド</em>
+と呼ばれる構造を使うことです。これによって入れ子になった要素がわかりやすくなるようにHTML文書を構造化できます。以下の代わりに……</p>
 <pre><code class="language-haskell">p [ _class := &quot;main&quot; ]
   [ elem $ img
       [ src    := &quot;cat.jpg&quot;
@@ -15648,8 +15295,8 @@ data False
     ]
   text &quot;A cat&quot;
 </code></pre>
-<p>しかし、do記法だけがFreeモナドの恩恵だというわけではありません。
-Freeモナドがあれば、モナドのアクションの<strong>表現</strong>をその<strong>解釈</strong>から分離し、同じアクションに<strong>複数の解釈</strong>を持たせることさえできます。</p>
+<p>しかし、do記法だけがFreeモナドの恩恵だというわけではありません。Freeモナドがあれば、モナドのアクションの <em>表現</em> をその <em>解釈</em>
+から分離し、同じアクションに <em>複数の解釈</em> を持たせることさえできます。</p>
 <p><code>Free</code>モナドは <code>free</code>ライブラリの <code>Control.Monad.Free</code>モジュールで定義されています。
 PSCiを使うと、次のようにFreeモナドについての基本的な情報を見ることができます。</p>
 <pre><code class="language-text">&gt; import Control.Monad.Free
@@ -15659,10 +15306,9 @@ PSCiを使うと、次のようにFreeモナドについての基本的な情報
 </code></pre>
 <p><code>Free</code>の種は、引数として型構築子を取り、別の型構築子を返すことを示しています。
 実は、 <code>Free</code>モナドを使えば任意の <code>Functor</code>を <code>Monad</code>にすることができます！</p>
-<p>モナドのアクションの<strong>表現</strong>を定義することから始めます。
-これを行うには、サポートする各モナドアクションそれぞれについて、ひとつのデータ構築子を持つ <code>Functor</code>を作成する必要があります。
-今回の場合、2つのモナドのアクションは <code>elem</code>と <code>text</code>になります。
-実際には、 <code>Content</code>型を次のように変更するだけです。</p>
+<p>モナドのアクションの <em>表現</em> を定義することから始めます。これを行うには、サポートする各モナドアクションそれぞれについて、ひとつのデータ構築子を持つ
+<code>Functor</code>を作成する必要があります。今回の場合、2つのモナドのアクションは <code>elem</code>と <code>text</code>になります。実際には、
+<code>Content</code>型を次のように変更するだけです。</p>
 <pre><code class="language-haskell">data ContentF a
   = TextContent String a
   | ElementContent Element a
@@ -15702,8 +15348,8 @@ text s = liftF $ TextContent s unit
 elem :: Element -&gt; Content Unit
 elem e = liftF $ ElementContent e unit
 </code></pre>
-<p>他にも同じようなコードの変更はありますが、興味深い変更は <code>render</code>関数にあります。
-ここでは、このFreeモナドを<strong>解釈</strong>しなければいけません。</p>
+<p>他にも同じようなコードの変更はありますが、興味深い変更は <code>render</code>関数にあります。ここでは、このFreeモナドを <em>解釈</em>
+しなければいけません。</p>
 <h2 id="モナドの解釈"><a class="header" href="#モナドの解釈">モナドの解釈</a></h2>
 <p><code>Control.Monad.Free</code>モジュールでは、Freeモナドで計算を解釈するための多数の関数が提供されています。</p>
 <pre><code class="language-haskell">runFree
@@ -15720,11 +15366,11 @@ runFreeM
   -&gt; Free f a
   -&gt; m a
 </code></pre>
-<p><code>runFree</code>関数は、<strong>純粋な</strong>結果を計算するために使用されます。
+<p><code>runFree</code>関数は、 <em>純粋な</em> 結果を計算するために使用されます。
 <code>runFreeM</code>関数があればFreeモナドのアクションを解釈するためにモナドが使えます。</p>
-<p><strong>補足</strong>：厳密には、より強い<code>MonadRec</code>制約を満たすモナド <code>m</code>を使用するよう制限されています。
-実際には、これはスタックオーバーフローを心配する必要がないことを意味します。
-なぜなら <code>m</code>は安全な<strong>末尾再帰モナド</strong> (monadic tail recursion) をサポートするからです。</p>
+<p><em>補足</em> ：厳密には、より強い<code>MonadRec</code>制約を満たすモナド
+<code>m</code>を使用するよう制限されています。実際には、これはスタックオーバーフローを心配する必要がないことを意味します。なぜなら <code>m</code>は安全な
+<em>末尾再帰モナド</em> (monadic tail recursion) をサポートするからです。</p>
 <p>まず、アクションを解釈することができるモナドを選ばなければなりません。
 <code>Writer String</code>モナドを使って、結果のHTML文字列を累積することにします。</p>
 <p>新しい <code>render</code>メソッドは補助関数
@@ -15808,11 +15454,8 @@ unit
 <p>すべてのアクションが型 <code>Unit</code>の何かを返すようなモナドは、さほど興味深いものではありません。
 実際のところ、概ね良くなったと思われる構文は別として、このモナドは <code>Monoid</code>以上の機能を何ら追加していません。</p>
 <p>非自明な結果を返す新しいモナドアクションでこの言語を拡張することで、Freeモナド構造の威力をお見せしましょう​​。</p>
-<p><strong>アンカー</strong>を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML文書を生成するとします。
-これは既に達成できています。
-手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。
-1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。
-しかし、この方法には根本的な問題がいくつかあります。</p>
+<p><em>アンカー</em>
+を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML文書を生成するとします。これは既に達成できています。手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。しかし、この方法には根本的な問題がいくつかあります。</p>
 <ul>
 <li>開発者が一意なアンカー名の生成をし損なうかもしれません。</li>
 <li>開発者がアンカー名を1つ以上の箇所で打ち間違うかもしれません。</li>
@@ -15854,9 +15497,7 @@ name = AttributeKey &quot;name&quot;
   | ElementContent Element a
   | NewName (Name -&gt; a)
 </code></pre>
-<p><code>NewName</code>データ構築子は型 <code>Name</code>の値を返すアクションに対応しています。
-データ構築子の引数として <code>Name</code>を要求するのではなく、型 <code>Name -&gt; a</code>の<strong>関数</strong>を提供するように使用者に要求していることに注意してください。
-型 <code>a</code>は<strong>計算の残り</strong>を表していることを思い出すと、この関数は、型 <code>Name</code>の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。</p>
+<p><code>NewName</code>データ構築子は型 <code>Name</code>の値を返すアクションに対応しています。データ構築子の引数として <code>Name</code>を要求するのではなく、型 <code>Name -&gt; a</code>の <em>関数</em> を提供するように使用者に要求していることに注意してください。型 <code>a</code>は <em>計算の残り</em> を表していることを思い出すと、この関数は、型 <code>Name</code>の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。</p>
 <p>新しいデータ構築子を考慮するように、次のように<code>ContentF</code>用の<code>Functor</code>インスタンスを更新する必要もあります。</p>
 <pre><code class="language-haskell">instance functorContentF :: Functor ContentF where
   map f (TextContent s x) = TextContent s (f x)
@@ -15932,19 +15573,17 @@ unit
 <pre><code class="language-haskell">isMobile :: Content Boolean
 </code></pre>
 <p>このアクションは、この文書がモバイルデバイス上での表示のためにレンダリングされているかどうかを示す真偽値を返します。</p>
-<p><strong>ヒント</strong>：<code>ask</code>アクションと<code>ReaderT</code>モナド変換子を使って、このアクションを解釈してください。
-あるいは、<code>RWS</code>モナドを使うほうが好みの人もいるかもしれません。</p>
+<p><em>ヒント</em> ：<code>ask</code>アクションと<code>ReaderT</code>モナド変換子を使って、このアクションを解釈してください。あるいは、<code>RWS</code>モナドを使うほうが好みの人もいるかもしれません。</p>
 </li>
 </ol>
 <h2 id="まとめ-12"><a class="header" href="#まとめ-12">まとめ</a></h2>
 <p>この章では、いくつかの標準的な技術を使って、素朴な実装を段階的に改善することにより、HTML文書を作成するための領域特化言語を開発しました。</p>
 <ul>
-<li><strong>スマート構築子</strong>を使ってデータ表現の詳細を隠し、利用者には<strong>構築により正しい</strong>文書だけを作ることを許しました。</li>
-<li><strong>独自に定義された中置2引数演算子</strong>を使い言語の構文を改善しました。</li>
-<li><strong>幻影型</strong>を使ってデータの型の中に追加の情報を折り込みました。
-これにより利用者が誤った型の属性値を与えることを防いでいます。</li>
-<li><strong>Freeモナド</strong>を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。
-それからこの表現を新しいモナドアクションに対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。</li>
+<li><em>スマート構築子</em> を使ってデータ表現の詳細を隠し、利用者には <em>構築により正しい</em> 文書だけを作ることを許しました。</li>
+<li><em>独自に定義された中置2引数演算子</em> を使い言語の構文を改善しました。</li>
+<li><em>幻影型</em> を使ってデータの型の中に追加の情報を折り込みました。これにより利用者が誤った型の属性値を与えることを防いでいます。</li>
+<li><em>Freeモナド</em>
+を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。それからこの表現を新しいモナドアクションに対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。</li>
 </ul>
 <p>これらの手法はすべて、使用者が間違いを犯すのを防いだり領域特化言語の構文を改良したりするために、PureScriptのモジュールと型システムを活用しています。</p>
 <p>関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野ですが、いくつかの簡単な技法に対して役に立つ導入を提供し、表現力豊かな型を持つ言語で作業することの威力を示すことができていれば幸いです。</p>

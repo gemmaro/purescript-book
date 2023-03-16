@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -241,9 +243,8 @@ JavaScriptで前にお話ししたように同じ短所がここでも通用す�
 <p>（簡単）2つのテキストフ​​ァイルを連結する関数<code>concatenateFiles</code>を書いてください。</p>
 </li>
 <li>
-<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、
-複数のテキストファイルを連結する関数 <code>concatenateMany</code>を書いてください。
-<strong>ヒント</strong>：<code>traverse</code>を使ってください。</p>
+<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、複数のテキストファイルを連結する関数
+<code>concatenateMany</code>を書いてください。 <em>ヒント</em> ：<code>traverse</code>を使ってください。</p>
 </li>
 <li>
 <p>（普通）ファイル中の文字数を返すかエラーがあればそれを返す関数<code>countCharacters :: FilePath -&gt; Aff (Either Error Int)</code>を書いてください。</p>
@@ -299,9 +300,8 @@ unit
 <li>（簡単）HTTPの<code>GET</code>要求を与えられたURLに行い、応答本文をファイルに書き込む関数<code>writeGet</code>を書いてください。</li>
 </ol>
 <h2 id="並列計算"><a class="header" href="#並列計算">並列計算</a></h2>
-<p><code>Aff</code>モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。
-非同期計算を<strong>並列に</strong>合成することもできたら便利でしょう。
-<code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
+<p><code>Aff</code>モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。非同期計算を <em>並列に</em>
+合成することもできたら便利でしょう。<code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
 <p><code>parallel</code>パッケージは<code>Aff</code>のようなモナドのための型クラス<code>Parallel</code>を定義しており、
 並列実行に対応しています。
 以前に本書でアプリカティブ関手に出会ったとき、
@@ -408,10 +408,8 @@ unit
 </ul>
 </li>
 <li>
-<p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。
-一覧になったファイルを並列に読んでください。
-パスはそのファイルが表れたディレクトリから相対的なものです。
-<strong>ヒント</strong>：<code>node_path</code>モジュールにはディレクトリとやりとりする上で便利な関数があります。</p>
+<p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。一覧になったファイルを並列に読んでください。パスはそのファイルが表れたディレクトリから相対的なものです。
+<em>ヒント</em> ：<code>node_path</code>モジュールにはディレクトリとやりとりする上で便利な関数があります。</p>
 </li>
 </ol>
 <p>たとえば、次のような<code>root.txt</code>ファイルから始まるとします。</p>

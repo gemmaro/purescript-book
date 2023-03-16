@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -149,11 +151,8 @@
                     <main>
                         <h1 id="モナドな冒険"><a class="header" href="#モナドな冒険">モナドな冒険</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章の目標は<strong>モナド変換子</strong> (monad transformers) について学ぶことで
-す。モナド変換子は異なるモナドから提供された副作用を合成する方法を提供
-します。NodeJSのコンソール上で遊ぶことができる、テキストアドベンチャー
-ゲームを題材として扱います。ゲームの様々な副作用（ロギング、状態、およ
-び設定）がすべてモナド変換子スタックによって提供されます。</p>
+<p>この章の目標は <em>モナド変換子</em> (monad transformers)
+について学ぶことです。モナド変換子は異なるモナドから提供された副作用を合成する方法を提供します。NodeJSのコンソール上で遊ぶことができる、テキストアドベンチャーゲームを題材として扱います。ゲームの様々な副作用（ロギング、状態、および設定）がすべてモナド変換子スタックによって提供されます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。</p>
 <ul>
@@ -235,9 +234,8 @@ You win!
 <h2 id="stateモナド"><a class="header" href="#stateモナド">Stateモナド</a></h2>
 <p><code>transformers</code>パッケージで提供されているいくつかのモナドを見ることから
 始めましょう。</p>
-<p>最初の例は<code>State</code>モナドで、これは純粋なコードで<strong>変更可能状態</strong>をモデ
-ル化する手段を提供します。すでに <code>Effect</code>モナドによって提供される変更
-可能状態の手法について見てきました。<code>State</code>はその代替を提供します。</p>
+<p>最初の例は<code>State</code>モナドで、これは純粋なコードで <em>変更可能状態</em> をモデル化する手段を提供します。すでに
+<code>Effect</code>モナドによって提供される変更可能状態の手法について見てきました。<code>State</code>はその代替を提供します。</p>
 <p><code>State</code>型構築子は、状態の型 <code>s</code>、および返り値の型 <code>a</code>という2種類の引数
 を取ります。「<code>State</code>モナド」というように説明はしていますが、
 <code>Monad</code>型クラスのインスタンスは実際には任意の型 <code>s</code>についての <code>State s</code>型構築子に対して提供されています。</p>
@@ -287,9 +285,7 @@ runState  :: forall s a. State s a -&gt; s -&gt; Tuple a s
 <p>（簡単）上の例で、<code>execState</code>を<code>runState</code>や<code>evalState</code>で置き換えると結果はどうなるでしょうか。</p>
 </li>
 <li>
-<p>（普通）括弧からなる文字列について、次のいずれかであれば<strong>平衡して
-いる</strong>とします。1つは0個以上のより短い平衡した文字列を連結したもの
-で、もう1つはより短い平衡した文字列を一対の括弧で囲んだものです。</p>
+<p>（普通）括弧からなる文字列について、次のいずれかであれば <em>平衡している</em> とします。1つは0個以上のより短い平衡した文字列を連結したもので、もう1つはより短い平衡した文字列を一対の括弧で囲んだものです。</p>
 <p><code>State</code>モナドと <code>traverse_</code>関数を使用して、次のような関数を書いてください。</p>
 <pre><code class="language-haskell">testParens :: String -&gt; Boolean
 </code></pre>
@@ -308,9 +304,7 @@ false
 &gt; testParens &quot;(()()&quot;
 false
 </code></pre>
-<p><strong>ヒント</strong>：入力の文字列を文字の配列に変換するのに、
-<code>Data.String.CodeUnits</code>モジュールの <code>toCharArray</code>関数を使うと良い
-でしょう。</p>
+<p><em>ヒント</em> ：入力の文字列を文字の配列に変換するのに、<code>Data.String.CodeUnits</code>モジュールの <code>toCharArray</code>関数を使うと良いでしょう。</p>
 </li>
 </ol>
 <h2 id="readerモナド"><a class="header" href="#readerモナド">Readerモナド</a></h2>
@@ -370,8 +364,7 @@ type Doc = Reader Level String
 い。関数は以下の型を持っている必要があります。</p>
 <pre><code class="language-haskell">line :: String -&gt; Doc
 </code></pre>
-<p><strong>ヒント</strong>：現在の字下げの深さを読み取るためには <code>ask</code>関数を使用
-します。<code>Data.Monoid</code>の<code>power</code>関数も役に立つかもしれません。</p>
+<p><em>ヒント</em> ：現在の字下げの深さを読み取るためには <code>ask</code>関数を使用します。<code>Data.Monoid</code>の<code>power</code>関数も役に立つかもしれません。</p>
 </li>
 <li>
 <p>（普通）<code>local</code>関数を使用して次の関数を書いてください。</p>
@@ -418,8 +411,7 @@ type Doc = Reader Level String
 <pre><code class="language-haskell">tell :: forall w a. Monoid w =&gt; w -&gt; Writer w Unit
 </code></pre>
 <p><code>tell</code>アクションは、与えられた値を現在の累積結果に加算します。</p>
-<p>例として、 <code>Array String</code>モノイドを使用して、既存の関数にログ機能を追
-加してみましょう。<strong>最大公約数</strong>関数の以前の実装を考えてみます。</p>
+<p>例として、 <code>Array String</code>モノイドを使用して、既存の関数にログ機能を追加してみましょう。 <em>最大公約数</em> 関数の以前の実装を考えてみます。</p>
 <pre><code class="language-haskell">gcd :: Int -&gt; Int -&gt; Int
 gcd n 0 = n
 gcd 0 m = m
@@ -462,9 +454,7 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 使うように、上の <code>sumArray</code>関数を書き換えてください。</p>
 </li>
 <li>
-<p>（普通）<strong>コラッツ関数</strong>は、自然数 <code>n</code>が偶数なら <code>n / 2</code>、 <code>n</code>が奇数な
-ら <code>3 * n + 1</code>であると定義されています。たとえば、 <code>10</code>で始まるコラッ
-ツ数列は次のようになります。</p>
+<p>（普通）<em>コラッツ関数</em>は、自然数 <code>n</code>が偶数なら <code>n / 2</code>、 <code>n</code>が奇数なら <code>3 * n + 1</code>であると定義されています。たとえば、 <code>10</code>で始まるコラッツ数列は次のようになります。</p>
 <pre><code class="language-text">10, 5, 16, 8, 4, 2, 1, ...
 </code></pre>
 <p>コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的
@@ -476,19 +466,14 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 </li>
 </ol>
 <h2 id="モナド変換子"><a class="header" href="#モナド変換子">モナド変換子</a></h2>
-<p>上の3つのモナド、 <code>State</code>、 <code>Reader</code>、 <code>Writer</code>は、いずれもいわゆる
-<strong>モナド変換子</strong>（monad transformers）の例となっています。対応するモナド変
-換子はそれぞれ <code>StateT</code>、 <code>ReaderT</code>、 <code>WriterT</code>と呼ばれています。</p>
-<p>モナド変換子とは何でしょうか。さて、これまで見てきたように、モナドは
-PureScriptのコードを何らかの種類の副作用で拡張するものでした。このモナ
-ドはPureScriptで適切なハンドラ（<code>runState</code>、 <code>runReader</code>、
-<code>runWriter</code>など）を使って解釈することができます。使用する必要がある副
-作用が<strong>ひとつだけ</strong>なら、これで問題ありません。しかし、同時に複数の副
-作用を使用できると便利なことがよくあります。例えば、 <code>Maybe</code>と
-<code>Reader</code>を一緒に使用すると、ある大域的な設定の文脈で<strong>省略可能な結果</strong>
-を表現することができます。もしくは、 <code>Either</code>モナドの純粋なエラー追跡
-機能と、 <code>State</code>モナドが提供する変更可能な状態が同時に欲しくなるかもし
-れません。この問題を解決するのが<strong>モナド変換子</strong>です。</p>
+<p>上の3つのモナド、<code>State</code>、<code>Reader</code>、<code>Writer</code>は、いずれもいわゆる _モナド変換子 (monad transformer)
+の例となっています。対応するモナド変換子はそれぞれ <code>StateT</code>、 <code>ReaderT</code>、 <code>WriterT</code>と呼ばれています。</p>
+<p>モナド変換子とは何でしょうか。さて、これまで見てきたように、モナドはPureScriptのコードを何らかの種類の副作用で拡張するものでした。このモナドはPureScriptで適切なハンドラ（<code>runState</code>、
+<code>runReader</code>、<code>runWriter</code>など）を使って解釈することができます。使用する必要がある副作用が <em>ひとつだけ</em>
+なら、これで問題ありません。しかし、同時に複数の副作用を使用できると便利なことがよくあります。例えば、
+<code>Maybe</code>と<code>Reader</code>を一緒に使用すると、ある大域的な設定の文脈で <em>省略可能な結果</em> を表現することができます。もしくは、
+<code>Either</code>モナドの純粋なエラー追跡機能と、 <code>State</code>モナドが提供する変更可能な状態が同時に欲しくなるかもしれません。この問題を解決するのが
+<em>モナド変換子</em> です。</p>
 <p>ただし<code>Effect</code>モナドがこの問題に対する部分的な解決策を提供していたこと
 は既に見てきました。モナド変換子はまた異なった解決策を提供しますが、こ
 れらの手法にはそれぞれ利点と限界があります。</p>
@@ -621,12 +606,9 @@ Tuple (Left &quot;Error!&quot;) [&quot;Before the error&quot;]
 <p>実際に追加されるログは、エラーが投げられる前に書かれたログメッセージだ
 けであることにも注目してください。</p>
 <h2 id="モナド変換子スタック"><a class="header" href="#モナド変換子スタック">モナド変換子スタック</a></h2>
-<p>これまで見てきたように、モナド変換子を使うと既存のモナドの上に新しいモ
-ナドを構築することができます。任意のモナド変換子 <code>t1</code>と任意のモナド
-<code>m</code>について、その適用 <code>t1 m</code>もまたモナドになります。これは<strong>2つめの</strong>
-モナド変換子 <code>t2</code>を先ほどの結果 <code>t1 m</code>に適用すると、3つ目のモナド <code>t2 (t1 m)</code>を作れることを意味しています。このように、構成するモナドによっ
-て提供された副作用を組み合わせる、モナド変換子の<strong>スタック</strong>を構築する
-ことができます。</p>
+<p>これまで見てきたように、モナド変換子を使うと既存のモナドの上に新しいモナドを構築することができます。任意のモナド変換子
+<code>t1</code>と任意のモナド<code>m</code>について、その適用 <code>t1 m</code>もまたモナドになります。これは <em>2つめの</em> モナド変換子 <code>t2</code>を先ほどの結果 <code>t1 m</code>に適用すると、3つ目のモナド <code>t2 (t1 m)</code>を作れることを意味しています。このように、構成するモナドによって提供された副作用を組み合わせる、モナド変換子の <em>スタック</em>
+を構築することができます。</p>
 <p>実際には、基本となるモナド <code>m</code>は、ネイティブの副作用が必要なら
 <code>Effect</code>モナド、さもなくば <code>Data.Identity</code>モジュールで定義されている
 <code>Identity</code>モナドになります。 <code>Identity</code>モナドは何の新しい副作用も追加
@@ -706,12 +688,10 @@ split = do
 <pre><code class="language-text">&gt; runParser (string &quot;abc&quot;) &quot;abcdef&quot;
 (Right (Tuple (Tuple &quot;abc&quot; &quot;def&quot;) [&quot;The state is abcdef&quot;]))
 </code></pre>
-<p><strong>ヒント</strong>：出発点として <code>split</code>の実装を使うといいでしょう。
-<code>stripPrefix</code>関数も役に立ちます。</p>
+<p><em>ヒント</em> ：出発点として <code>split</code>の実装を使うといいでしょう。<code>stripPrefix</code>関数も役に立ちます。</p>
 </li>
 <li>
-<p>（難しい）以前 <code>Reader</code>モナドを使用して書いた文書表示ライブラリを、
-<code>ReaderT</code>と <code>WriterT</code>モナド変換子を使用して再実装してください。</p>
+<p>（難しい）以前 <code>Reader</code>モナドを使用して書いた文書表示ライブラリを、<code>ReaderT</code>と <code>WriterT</code>モナド変換子を使用して再実装してください。</p>
 <p>文字列を出力する <code>line</code>や文字列を連結する <code>cat</code>を使うのではなく、
 <code>WriteT</code>モナド変換子と一緒に <code>Array String</code>モノイドを使い、結果へ
 行を追加するのに <code>tell</code>を使ってください。アポストロフィ (<code>'</code>) で
@@ -736,13 +716,10 @@ modify :: forall m s. MonadState s m =&gt; (s -&gt; s) -&gt; m Unit
 ナド」への抽象化を可能にします。予想できると思いますが、 <code>State s</code>型構
 築子は <code>MonadState s</code>型クラスのインスタンスになっており、このクラスに
 は他にも興味深いインスタンスが数多くあります。</p>
-<p>特に、 <code>transformers</code>パッケージではモナド変換子 <code>WriterT</code>、 <code>ReaderT</code>、
-<code>ExceptT</code>についての <code>MonadState</code>のインスタンスが提供されています。通底
-する<code>Monad</code>が<code>MonadState</code>インスタンスを持っていれば常に、これらのモナ
-ド変換子にもインスタンスがあります。実践的には、 <code>StateT</code>がモナド変換
-子スタックの<strong>どこか</strong>に現れ、 <code>StateT</code>より上のすべてが <code>MonadState</code>の
-インスタンスであれば、 <code>get</code>、 <code>put</code>、 <code>modify</code>を直接自由に使用するこ
-とができます。</p>
+<p>特に、 <code>transformers</code>パッケージではモナド変換子 <code>WriterT</code>、 <code>ReaderT</code>、<code>ExceptT</code>についての
+<code>MonadState</code>のインスタンスが提供されています。通底する<code>Monad</code>が<code>MonadState</code>インスタンスを持っていれば常に、これらのモナド変換子にもインスタンスがあります。実践的には、
+<code>StateT</code>がモナド変換子スタックの <em>どこか</em> に現れ、 <code>StateT</code>より上のすべてが <code>MonadState</code>のインスタンスであれば、
+<code>get</code>、 <code>put</code>、 <code>modify</code>を直接自由に使用することができます。</p>
 <p>当然ですが、これまで扱ってきた <code>ReaderT</code>、 <code>WriterT</code>、 <code>ExceptT</code>変換子
 についても、同じことが成り立っています。<code>transformers</code>では主な変換子そ
 れぞれについての型クラスが定義されています。これによりそれらの操作に対
@@ -774,19 +751,15 @@ class Alt f &lt;= Plus f where
 
 class (Applicative f, Plus f) &lt;= Alternative f
 </code></pre>
-<p><code>Alternative</code>は2つの新しいコンビネータを提供しています。1つは失敗しう
-る計算のプロトタイプを提供する <code>empty</code>値で、もう1つはエラーが起きたと
-きに<strong>代替</strong> (Alternative) 計算へ戻ってやり直す機能を提供する<code>alt</code>関数
-（そしてその別名<code>&lt;|&gt;</code>）演算子です。</p>
+<p><code>Alternative</code>は2つの新しいコンビネータを提供しています。1つは失敗しうる計算のプロトタイプを提供する <code>empty</code>値で、もう1つはエラーが起きたときに <em>代替</em> (Alternative) 計算へ戻ってやり直す機能を提供する<code>alt</code>関数（そしてその別名<code>&lt;|&gt;</code>）演算子です。</p>
 <p><code>Data.Array</code>モジュールでは <code>Alternative</code>型クラスで型構築子を操作する2
 つの便利な関数を提供します。</p>
 <pre><code class="language-haskell">many :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Array a)
 some :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Array a)
 </code></pre>
 <p><code>Data.List</code>にも等価な<code>many</code>と<code>some</code>があります。</p>
-<p><code>many</code>コンビネータは計算を<strong>ゼロ回以上</strong>繰り返し実行するために
-<code>Alternative</code>型クラスを使用しています。 <code>some</code>コンビネータも似ています
-が、成功するために少なくとも1回の計算を必要とします。</p>
+<p><code>many</code>コンビネータは計算を <em>ゼロ回以上</em> 繰り返し実行するために<code>Alternative</code>型クラスを使用しています。
+<code>some</code>コンビネータも似ていますが、成功するために少なくとも1回の計算を必要とします。</p>
 <p><code>Parser</code>モナド変換子スタックの場合は、<code>ExceptT</code>コンポーネントによる
 <code>Alternative</code>のインスタンスがあります。このコンポーネントでは異なる分
 枝のエラーに<code>Monoid</code>インスタンスを使って組み合わせることによって対応し
@@ -828,10 +801,9 @@ upper = do
   guard $ toUpper s == s
   pure s
 </code></pre>
-<p>ここで、文字列が大文字でない場合に失敗するよう <code>guard</code>を使用しています。
-このコードは前に見た配列内包表記とよく似ていることに注目してください。
-このように<code>MonadPlus</code>を使うことは、<strong>モナド内包表記</strong> (monad
-comprehensions) の構築と呼ばれることがあります。</p>
+<p>ここで、文字列が大文字でない場合に失敗するよう
+<code>guard</code>を使用しています。このコードは前に見た配列内包表記とよく似ていることに注目してください。このように<code>MonadPlus</code>を使うことは、
+<em>モナド内包表記</em> (monad comprehensions) の構築と呼ばれることがあります。</p>
 <h2 id="バックトラッキング"><a class="header" href="#バックトラッキング">バックトラッキング</a></h2>
 <p><code>&lt;|&gt;</code>演算子を使うと、失敗したときに別の代替計算へとバックトラックすることができます。これを確かめるために、小文字に一致するもう1つの構文解析器を定義してみましょう。</p>
 <pre><code class="language-haskell">lower :: Parser String
@@ -895,11 +867,9 @@ lower = do
 </li>
 </ol>
 <h2 id="rwsモナド"><a class="header" href="#rwsモナド">RWSモナド</a></h2>
-<p>モナド変換子のある特定の組み合わせは頻出なので、<code>transformers</code>パッケー
-ジ内の単一のモナド変換子として提供されています。<code>Reader</code>、 <code>Writer</code>、
-<code>State</code>のモナドは、<strong>Reader-Writer-State</strong>モナドに組み合わさり、より単
-純に<code>RWS</code>モナドともされます。このモナドは <code>RWST</code>モナド変換子と呼ばれる、
-対応するモナド変換子を持っています。</p>
+<p>モナド変換子のある特定の組み合わせは頻出なので、<code>transformers</code>パッケージ内の単一のモナド変換子として提供されています。<code>Reader</code>、
+<code>Writer</code>、<code>State</code>のモナドは、 <em>Reader-Writer-State</em>
+モナドに組み合わさり、より単純に<code>RWS</code>モナドともされます。このモナドは <code>RWST</code>モナド変換子と呼ばれる、対応するモナド変換子を持っています。</p>
 <p>ここでは <code>RWS</code>モナドを使ってテキストアドベンチャーゲームの処理を設計し
 ていきます。</p>
 <p><code>RWS</code>モナドは（戻り値の型に加えて）3つの型変数を使って定義されています。</p>
@@ -1122,23 +1092,15 @@ runGame env = do
 情報メッセージの2つの種類のメッセージのために使われています。このため、
 コードのいくつかの箇所では、エラーの場合を扱うためにcase式を使用してい
 ます。</p>
-<p>エラーメッセージを扱うのに <code>ExceptT</code>モナド変換子を使うようにし、
-情報メッセージを扱うのに <code>RWS</code>を使うようにするよう、コードをリファ
-クタリングしてください。<strong>補足</strong>：この演習にはテストはありません。</p>
+<p>エラーメッセージを扱うのに <code>ExceptT</code>モナド変換子を使うようにし、情報メッセージを扱うのに <code>RWS</code>を使うようにするよう、コードをリファクタリングしてください。 <em>補足</em> ：この演習にはテストはありません。</p>
 </li>
 </ol>
 <h2 id="コマンドラインオプションの扱い"><a class="header" href="#コマンドラインオプションの扱い">コマンドラインオプションの扱い</a></h2>
 <p>このアプリケーションの最後の部品は、コマンドラインオプションの解析と
 <code>GameEnvironment</code>設定レコードを作成する役目にあります。このためには
 <code>optparse</code>パッケージを使用します。</p>
-<p><code>optparse</code>は<strong>アプリカティブなコマンドラインオプション構文解析器</strong>の一
-例です。アプリカティブ関手を使うと、いろいろな副作用の型を表す型構築子
-まで任意個数の引数の関数をを持ち上げられることを思い出してください。
-<code>optparse</code>パッケージの場合には、コマンドラインオプションからの読み取り
-の副作用を追加する<code>Parser</code>関手（optparseのモジュール
-<code>Options.Applicative</code>からインポートされたもの。<code>Split</code>モジュールで定義
-した<code>Parser</code>と混同しないように）が興味深い関手になっています。これは次
-のようなハンドラを提供しています。</p>
+<p><code>optparse</code>は <em>アプリカティブなコマンドラインオプション構文解析器</em>
+の一例です。アプリカティブ関手を使うと、いろいろな副作用の型を表す型構築子まで任意個数の引数の関数をを持ち上げられることを思い出してください。<code>optparse</code>パッケージの場合には、コマンドラインオプションからの読み取りの副作用を追加する<code>Parser</code>関手（optparseのモジュール<code>Options.Applicative</code>からインポートされたもの。<code>Split</code>モジュールで定義した<code>Parser</code>と混同しないように）が興味深い関手になっています。これは次のようなハンドラを提供しています。</p>
 <pre><code class="language-haskell">customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
 </code></pre>
 <p>実例を見るのが一番です。このアプリケーションの <code>main</code>関数は

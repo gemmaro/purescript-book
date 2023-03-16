@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -148,8 +150,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="実例によるpurescript"><a class="header" href="#実例によるpurescript">実例によるPureScript</a></h1>
-<p>このリポジトリには、Phil Freemanによる<strong>PureScript by
-Example</strong>の<a href="https://github.com/purescript-contrib/purescript-book/">コミュニティフォーク</a>が含まれます。
+<p>このリポジトリには、Phil Freemanによる <em>PureScript by Example</em>
+の<a href="https://github.com/purescript-contrib/purescript-book/">コミュニティフォーク</a>が含まれます。
 同書は&quot;the PureScript book&quot; としても知られています。
 このバージョンはコードと演習が最近のバージョンのコンパイラ、ライブラリ、ツールで動くように更新されています。
 PureScriptのエコシステムの最新の機能を紹介すべく書き直された章もあります。</p>

@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -149,16 +151,10 @@
                     <main>
                         <h1 id="アプリカティブによる検証"><a class="header" href="#アプリカティブによる検証">アプリカティブによる検証</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、
-<code>Applicative</code>型クラスによって表現される<strong>アプリカティブ関手</strong> (applicative functor)
-という重要な抽象化と新たに出会うことになります。
-名前が難しそうに思えても心配しないでください。
-フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。
-アプリカティブ関手を使うと、
-通常であれば大量の決まり文句を伴うようなコードを、
-簡潔で宣言的な記述へと変えることができるようになります。</p>
-<p>また、<strong>巡回可能関手</strong> (traversable functor) を表現する<code>Traversable</code>という別の型クラスにも出会います。
-現実の問題への解決策からこの概念が自然に生じるということがわかるでしょう。</p>
+<p>この章では、<code>Applicative</code>型クラスによって表現される <em>アプリカティブ関手</em> (applicative functor)
+という重要な抽象化と新たに出会うことになります。名前が難しそうに思えても心配しないでください。フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。アプリカティブ関手を使うと、通常であれば大量の決まり文句を伴うようなコードを、簡潔で宣言的な記述へと変えることができるようになります。</p>
+<p>また、 <em>巡回可能関手</em> (traversable functor)
+を表現する<code>Traversable</code>という別の型クラスにも出会います。現実の問題への解決策からこの概念が自然に生じるということがわかるでしょう。</p>
 <p>この章では第3章に引き続き住所録を例として扱います。
 今回は住所録のデータ型を拡張し、
 これらの型の値を検証する関数を書きます。
@@ -173,15 +169,13 @@
 <ul>
 <li><code>control</code> - <code>Applicative</code>のような、型クラスを使用して制御フローを抽象
 化する関数が定義されています。</li>
-<li><code>validation</code> - この章の主題である <strong>アプリカティブによる検証</strong> のため
-の関手が定義されています。</li>
+<li><code>validation</code> - この章の主題である <em>アプリカティブによる検証</em> のための関手が定義されています。</li>
 </ul>
 <p><code>Data.AddressBook</code>モジュールには、
 このプロジェクトのデータ型とそれらの型に対する<code>Show</code>インスタンスが定義されており、
 <code>Data.AddressBook.Validation</code>モジュールにはそれらの型の検証規則が含まれています。</p>
 <h2 id="関数適用の一般化"><a class="header" href="#関数適用の一般化">関数適用の一般化</a></h2>
-<p><strong>アプリカティブ関手</strong>の概念を理解するために、
-以前扱った型構築子<code>Maybe</code>について考えてみましょう。</p>
+<p><em>アプリカティブ関手</em> の概念を理解するために、以前扱った型構築子<code>Maybe</code>について考えてみましょう。</p>
 <p>このモジュールのソースコードでは、
 次のような型を持つ<code>address</code>関数が定義されています。</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
@@ -317,9 +311,9 @@ Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &qu
 Nothing
 </code></pre>
 <p>このように、引数が異なる他のいろいろな関数を<code>Maybe</code>上に持ち上げてみてください。</p>
-<p>この代わりにお馴染の<strong>do記法</strong>に似た見た目の<strong>アプリカティブdo記法</strong>が同じ目的で使えます。
-以下では<code>lift3</code>に<strong>アプリカティブdo記法</strong>を使っています。
-なお<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
+<p>この代わりにお馴染の <em>do記法</em> に似た見た目の <em>アプリカティブdo記法</em> が同じ目的で使えます。以下では<code>lift3</code>に
+<em>アプリカティブdo記法</em>
+を使っています。なお<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
 <pre><code class="language-haskell">lift3 :: forall a b c d f
        . Apply f
       =&gt; (a -&gt; b -&gt; c -&gt; d)
@@ -396,7 +390,7 @@ Just (&quot;Freeman, Phillip A&quot;)
 &gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;Freeman&quot;
 Nothing
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
 &gt; :paste…
@@ -427,7 +421,7 @@ Nothing
 … withError (Just a) _   = Right a
 … ^D
 </code></pre>
-<p><strong>注意</strong>：<code>Either err</code>Applicative関手において、<code>Left</code>構築子は失敗を表しており、<code>Right</code>構築子は成功を表しています。</p>
+<p><em>注意</em> ：<code>Either err</code>Applicative関手において、<code>Left</code>構築子は失敗を表しており、<code>Right</code>構築子は成功を表しています。</p>
 <p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラーメッセージを提供できるようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last =
@@ -436,7 +430,7 @@ Nothing
 …            &lt;*&gt; (last   `withError` &quot;Last name was missing&quot;)
 … ^D
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last = ado
 …  f &lt;- first  `withError` &quot;First name was missing&quot;
@@ -464,7 +458,7 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 <pre><code class="language-text">&gt; fullNameEither Nothing Nothing Nothing
 (Left &quot;First name was missing&quot;)
 </code></pre>
-<p>これでも十分なときもありますが、エラー時に<strong>すべての</strong>省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半でこの解決策を見ていきます。</p>
+<p>これでも十分なときもありますが、エラー時に <em>すべての</em> 省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半でこの解決策を見ていきます。</p>
 <h2 id="作用の結合"><a class="header" href="#作用の結合">作用の結合</a></h2>
 <p>抽象的にApplicative関手を扱う例として、
 アプリカティブ関手<code>f</code>によって表現された副作用を総称的に組み合わせる関数をどのように書くのかをこの節では示します。</p>
@@ -478,15 +472,7 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 しかし、まだ<code>f</code>によって追跡される副作用が残ります。
 つまり、元のリストの中の作用を「結合する」ことにより、
 型<code>List (f a)</code>の何かを型<code>f (List a)</code>の何かへと変換することができると考えられます。</p>
-<p>任意の固定長リストの長さ<code>n</code>について、
-その引数を要素に持った長さ<code>n</code>のリストを構築するような<code>n</code>引数の関数が存在します。
-たとえば、もし<code>n</code>が<code>3</code>なら、
-関数は<code>\x y z -&gt; x : y : z : Nil</code>です。
-この関数の型は<code>a -&gt; a -&gt; a -&gt; List a</code>です。
-<code>Applicative</code>インスタンスを使うと、
-この関数を<code>f</code>の上へ持ち上げて関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>を得ることができます。
-しかし、いかなる<code>n</code>についてもこれが可能なので、
-いかなる引数の<strong>リスト</strong>についても同じように持ち上げられることが確かめられます。</p>
+<p>任意の固定長リストの長さ<code>n</code>について、その引数を要素に持った長さ<code>n</code>のリストを構築するような<code>n</code>引数の関数が存在します。たとえば、もし<code>n</code>が<code>3</code>なら、関数は<code>\x y z -&gt; x : y : z : Nil</code>です。この関数の型は<code>a -&gt; a -&gt; a -&gt; List a</code>です。<code>Applicative</code>インスタンスを使うと、この関数を<code>f</code>の上へ持ち上げて関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>を得ることができます。しかし、いかなる<code>n</code>についてもこれが可能なので、いかなる引数の <em>リスト</em> についても同じように持ち上げられることが確かめられます。</p>
 <p>したがって、次のような関数を書くことができるはずです。</p>
 <pre><code class="language-haskell">combineList :: forall f a. Applicative f =&gt; List (f a) -&gt; f (List a)
 </code></pre>
@@ -531,9 +517,8 @@ Nothing
 <p><code>combineList</code>関数については、後ほど<code>Traversable</code>関手について考えるときに再会します。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
-これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
-<strong>ヒント</strong>：<code>lift2</code>を使ってください。</li>
+<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
+<em>ヒント</em> ：<code>lift2</code>を使ってください。</li>
 <li>（普通）上の演習を（<code>Maybe</code>だけでなく）全ての<code>Apply</code>型で動くように拡張してください。
 これらの新しい関数には<code>addApply</code>、<code>subApply</code>、<code>mulApply</code>、<code>divApply</code>と名前を付けます。</li>
 <li>（難しい）型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
@@ -602,7 +587,7 @@ validatePerson1 p =
          &lt;*&gt; pure p.homeAddress
          &lt;*&gt; pure p.phones
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validatePerson1Ado :: Person -&gt; Either String Person
 validatePerson1Ado p = ado
   f &lt;- nonEmpty1 p.firstName
@@ -620,11 +605,8 @@ validatePerson1Ado p = ado
 </code></pre>
 <p><code>Either String</code>アプリカティブ関手は遭遇した最初のエラーだけを返します。
 でもこの入力では、名前の不足と姓の不足という2つのエラーがわかるようにしたくなるでしょう。</p>
-<p><code>validation</code>ライブラリは別のアプリカティブ関手も提供されています。
-これは単に<code>V</code>と呼ばれていて、
-何らかの<strong>半群</strong> (Semigroup) でエラーを返す機能があります。
-たとえば、<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、
-<code>String</code>の配列をエラーとして返すことができます。</p>
+<p><code>validation</code>ライブラリは別のアプリカティブ関手も提供されています。これは単に<code>V</code>と呼ばれていて、何らかの <em>半群</em> (Semigroup)
+でエラーを返す機能があります。たとえば、<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、<code>String</code>の配列をエラーとして返すことができます。</p>
 <p><code>Data.Validation</code>モジュールは<code>Data.AddressBook</code>モジュールの
 データ構造を検証するために<code>V (Array String)</code>アプリカティブ関手を使っています。</p>
 <p><code>Data.AddressBook.Validation</code>モジュールにある検証の例としては次のようになります。</p>
@@ -646,7 +628,7 @@ validateAddress a =
           &lt;*&gt; nonEmpty &quot;City&quot;    a.city
           &lt;*&gt; lengthIs &quot;State&quot; 2 a.state
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validateAddressAdo :: Address -&gt; V Errors Address
 validateAddressAdo a = ado
   street &lt;- nonEmpty &quot;Street&quot;  a.street
@@ -690,7 +672,7 @@ validatePhoneNumber pn =
   phoneNumber &lt;$&gt; pure pn.&quot;type&quot;
               &lt;*&gt; matches &quot;Number&quot; phoneNumberRegex pn.number
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validatePhoneNumberAdo :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumberAdo pn = ado
   tpe    &lt;- pure pn.&quot;type&quot;
@@ -706,16 +688,12 @@ invalid ([&quot;Field 'Number' did not match the required format&quot;])
 </code></pre>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（簡単）正規表現<code>stateRegex :: Regex</code>を書いて
-文字列が2文字のアルファベットであることを確かめてください。
-<strong>ヒント</strong>：<code>phoneNumberRegex</code>のソースコードを参照してみましょう。</li>
-<li>（普通）文字列全体が空白でないことを検査する正規表現<code>nonEmptyRegex :: Regex</code>を書いてください。
-<strong>ヒント</strong>：この正規表現を開発するのに手助けが必要なら、<a href="https://regexr.com">RegExr</a>をご確認ください。
-素晴しい早見表と対話的なお試し環境があります。</li>
-<li>（普通）<code>validateAddress</code>に似ていますが、
-上の<code>stateRegex</code>を使って<code>state</code>フィールドを検証し、
-<code>nonEmptyRegex</code>を使って<code>street</code>と<code>city</code>フィールドを検証する関数<code>validateAddressImproved</code>を書いてください。
-<strong>ヒント</strong>：<code>matches</code>の用例については<code>validatePhoneNumber</code>のソースを見てください。</li>
+<li>（簡単）正規表現<code>stateRegex :: Regex</code>を書いて文字列が2文字のアルファベットであることを確かめてください。 <em>ヒント</em>
+：<code>phoneNumberRegex</code>のソースコードを参照してみましょう。</li>
+<li>（普通）文字列全体が空白でないことを検査する正規表現<code>nonEmptyRegex :: Regex</code>を書いてください。 <em>ヒント</em>
+：この正規表現を開発するのに手助けが必要なら、<a href="https://regexr.com">RegExr</a>をご確認ください。素晴しい早見表と対話的なお試し環境があります。</li>
+<li>（普通）<code>validateAddress</code>に似ていますが、上の<code>stateRegex</code>を使って<code>state</code>フィールドを検証し、<code>nonEmptyRegex</code>を使って<code>street</code>と<code>city</code>フィールドを検証する関数<code>validateAddressImproved</code>を書いてください。
+<em>ヒント</em> ：<code>matches</code>の用例については<code>validatePhoneNumber</code>のソースを見てください。</li>
 </ol>
 <h2 id="巡回可能関手"><a class="header" href="#巡回可能関手">巡回可能関手</a></h2>
 <p>残った検証器は<code>validatePerson</code>です。
@@ -734,7 +712,7 @@ validatePerson p =
          &lt;*&gt; validateAddress p.homeAddress
          &lt;*&gt; validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
 </code></pre>
-<p>または<strong>アプリカティブdo</strong>で</p>
+<p>または <em>アプリカティブdo</em> で</p>
 <pre><code class="language-haskell">validatePersonAdo :: Person -&gt; V Errors Person
 validatePersonAdo p = ado
   firstName &lt;- nonEmpty &quot;First Name&quot; p.firstName
@@ -749,10 +727,9 @@ validatePersonAdo p = ado
   traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; t a -&gt; m (t b)
   sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
-<p><code>Traversable</code>は<strong>巡回可能関手</strong>の型クラスを定義します。
-これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
-<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<strong>畳み込み可能関手</strong>は構造をひとつの値へとまとめる、畳み込み操作を提供する型構築子であったことを思い出してください）。
-それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
+<p><code>Traversable</code>は <em>巡回可能関手</em>
+の型クラスを定義します。これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
+<p>すべての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<em>畳み込み可能関手</em>は構造をひとつの値へとまとめる、畳み込み操作を提供する型構築子であったことを思い出してください）。それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
 <p>複雑そうに聞こえるかもしれませんが、配列の場合に特殊化して簡単に考えてみましょう。配列型構築子は<code>Traversable</code>である、つまり次のような関数が存在するということです。</p>
 <pre><code class="language-haskell">traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; Array a -&gt; m (Array b)
 </code></pre>
@@ -840,29 +817,21 @@ pure ((Just &quot;Testing&quot;))
 </code></pre>
 </li>
 <li>
-<p>（普通）<code>Traversable</code>インスタンスを<code>Tree a</code>を書いてください。
-これは副作用を左から右に結合するものです。
-<strong>ヒント</strong>：<code>Traversable</code>に定義する必要のある追加のインスタンス依存関係がいくつかあります。</p>
+<p>（普通）<code>Traversable</code>インスタンスを<code>Tree a</code>を書いてください。これは副作用を左から右に結合するものです。 <em>ヒント</em>
+：<code>Traversable</code>に定義する必要のある追加のインスタンス依存関係がいくつかあります。</p>
 </li>
 <li>
-<p>（普通）行き掛け順に木を巡回する関数
-<code>traversePreOrder :: forall a m b. Applicative m =&gt; (a -&gt; m b) -&gt; Tree a -&gt; m (Tree b)</code>
-を書いてください。
-つまり作用の実行は根左右と行われ、
-以前の通り掛け順の巡回の演習でしたような左根右ではありません。
-<strong>ヒント</strong>：追加でインスタンスを定義する必要はありませんし、
-前に定義した関数は何も呼ぶ必要はありません。
-アプリカティブdo記法 (<code>ado</code>) はこの関数を書く最も簡単な方法です。</p>
+<p>（普通）行き掛け順に木を巡回する関数<code>traversePreOrder :: forall a m b. Applicative m =&gt; (a -&gt; m b) -&gt; Tree a -&gt; m (Tree b)</code>を書いてください。つまり作用の実行は根左右と行われ、以前の通り掛け順の巡回の演習でしたような左根右ではありません。 <em>ヒント</em>
+：追加でインスタンスを定義する必要はありませんし、前に定義した関数は何も呼ぶ必要はありません。アプリカティブdo記法 (<code>ado</code>)
+はこの関数を書く最も簡単な方法です。</p>
 </li>
 <li>
 <p>（普通）作用が左右根と実行される木の帰り掛け順の巡回を行う関数
 <code>traversePostOrder</code>を書いてください。</p>
 </li>
 <li>
-<p>（普通）<code>homeAddress</code>フィールドがオプショナル（<code>Maybe</code>を使用）な
-新しい版の<code>Person</code>型をつくってください。
-それからこの新しい<code>Person</code>を検証する新しい版の<code>validatePerson</code>（<code>validatePersonOptionalAddress</code>と改名します）を書いてください。
-<strong>ヒント</strong>：<code>traverse</code>を使って型<code>Maybe a</code>のフィールドを検証してください。</p>
+<p>（普通）<code>homeAddress</code>フィールドがオプショナル（<code>Maybe</code>を使用）な新しい版の<code>Person</code>型をつくってください。それからこの新しい<code>Person</code>を検証する新しい版の<code>validatePerson</code>（<code>validatePersonOptionalAddress</code>と改名します）を書いてください。
+<em>ヒント</em> ：<code>traverse</code>を使って型<code>Maybe a</code>のフィールドを検証してください。</p>
 </li>
 <li>
 <p>（難しい）<code>sequence</code>のように振る舞う関数<code>sequenceUsingTraverse</code>を書いてください。
@@ -887,43 +856,32 @@ pure ((Just &quot;Testing&quot;))
 アプリカティブ関手の規則は、
 その計算を実行する副作用にどんな順序付けも強制しません。
 実際、並列に副作用を実行するためのアプリカティブ関手というものは妥当になりえます。</p>
-<p>たとえば、
-<code>V</code>検証関手はエラーの<strong>配列</strong>を返しますが、
-その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、
-このときどんな順序でそれぞれの検証器を実行しても問題はありません。
-データ構造に対して並列にこれを実行することさえできるのです！</p>
-<p>別の例として、<code>parallel</code>パッケージは、
-<strong>並列計算</strong>をサポートする<code>Parallel</code>型クラスを与えます。
-<code>Parallel</code>は関数<code>parallel</code>を提供しており、
-何らかの<code>Applicative</code>関手を使って入力の計算を<strong>並列に</strong>計算することができます。</p>
+<p>たとえば、<code>V</code>検証関手はエラーの <em>配列</em>
+を返しますが、その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、このときどんな順序でそれぞれの検証器を実行しても問題はありません。データ構造に対して並列にこれを実行することさえできるのです！</p>
+<p>別の例として、<code>parallel</code>パッケージは、 <em>並列計算</em>
+をサポートする<code>Parallel</code>型クラスを与えます。<code>Parallel</code>は関数<code>parallel</code>を提供しており、何らかの<code>Applicative</code>関手を使って入力の計算を
+<em>並列に</em> 計算することができます。</p>
 <pre><code class="language-haskell">f &lt;$&gt; parallel computation1
   &lt;*&gt; parallel computation2
 </code></pre>
 <p>この計算は<code>computation1</code>と<code>computation2</code>を非同期に使って値を計算を始めるでしょう。
 そして両方の結果の計算が終わった時に、関数<code>f</code>を使ってひとつの結果へと結合するでしょう。</p>
-<p>この考え方の詳細は、
-本書の後半で<strong>コールバック地獄</strong>の問題に対して
-アプリカティブ関手を応用するときに見ていきます。</p>
+<p>この考え方の詳細は、本書の後半で <em>コールバック地獄</em> の問題に対してアプリカティブ関手を応用するときに見ていきます。</p>
 <p>アプリカティブ関手は並列に結合されうる副作用を捕捉する自然な方法です。</p>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章では新しい考え方をたくさん扱いました。</p>
 <ul>
-<li>関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、<strong>アプリカ
-ティブ関手</strong>の概念を導入しました。</li>
+<li>関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、 <em>アプリカティブ関手</em> の概念を導入しました。</li>
 <li>データ構造の検証という課題にアプリカティブ関手がどのような解決策を与え
 るか、どうすれば単一のエラーの報告からデータ構造を横断するすべてのエラー
 の報告へ変換できるのかを見てきました。</li>
-<li><code>Traversable</code>型クラスに出会いました。<strong>巡回可能関手</strong>の考え方を内包す
-るものであり、要素が副作用を持つ値の結合に使うことができる容器でした。</li>
+<li><code>Traversable</code>型クラスに出会いました。 <em>巡回可能関手</em>
+の考え方を内包するものであり、要素が副作用を持つ値の結合に使うことができる容器でした。</li>
 </ul>
-<p>アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。
-本書を通じて何度も見ることになるでしょう。
-今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、
-これにより<strong>どうやって</strong>検証を行うかではなく、
-<strong>何を</strong>検証器が検証すべきなのかを定義することができました。
-一般に、アプリカティブ関手は<strong>領域特化言語</strong>を設計する上で便利な道具になります。</p>
-<p>次の章では、これに関連する考え方である<strong>モナド</strong>クラスを見て、
-アドレス帳の例をブラウザで実行させられるように拡張しましょう！</p>
+<p>アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。本書を通じて何度も見ることになるでしょう。今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、これにより
+<em>どうやって</em> 検証を行うかではなく、 <em>何を</em> 検証器が検証すべきなのかを定義することができました。一般に、アプリカティブ関手は <em>域特化言語</em>
+を設計する上で便利な道具になります。</p>
+<p>次の章では、これに関連する考え方である <em>モナド</em> クラスを見て、アドレス帳の例をブラウザで実行させられるように拡張しましょう！</p>
 
                     </main>
 

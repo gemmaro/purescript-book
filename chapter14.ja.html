@@ -72,10 +72,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -149,18 +151,17 @@
                     <main>
                         <h1 id="領域特化言語"><a class="header" href="#領域特化言語">領域特化言語</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、多数の標準的な手法を使ったPureScriptにおける<strong>領域特化言語</strong>
-(domain-specific language, DSL) の実装について探求していきます。</p>
+<p>この章では、多数の標準的な手法を使ったPureScriptにおける <em>領域特化言語</em> (domain-specific language, <em>DSL</em>)
+の実装について探求していきます。</p>
 <p>領域特化言語とは、特定の問題領域での開発に適した言語のことです。領域特
 化言語の構文および機能は、その領域内の考え方を表現するコードの読みやす
 さを最大限に発揮すべく選択されます。本書の中では、すでに領域特化言語の
 例を幾つか見てきています。</p>
 <ul>
-<li>第11章で開発された <code>Game</code>モナドと関連するアクションは、
-<strong>テキストアドベンチャーゲーム開発</strong>という領域に対しての領域特化言語を構成しています。</li>
-<li>第13章で扱った <code>quickcheck</code>パッケージは、<strong>生成的テスティング</strong>の領域
-の領域特化言語です。このコンビネータはテストの性質に対して特に表現力の
-高い記法を可能にします。</li>
+<li>第11章で開発された <code>Game</code>モナドと関連するアクションは、 <em>テキストアドベンチャーゲーム開発</em>
+という領域に対しての領域特化言語を構成しています。</li>
+<li>第13章で扱った <code>quickcheck</code>パッケージは、 <em>生成的テスティング</em>
+の領域の領域特化言語です。このコンビネータはテストの性質に対して特に表現力の高い記法を可能にします。</li>
 </ul>
 <p>この章では、領域特化言語の実装において、いくつかの標準的な手法による構
 造的な手法に迫ります。これがこの話題の完全な説明だということでは決して
@@ -170,9 +171,8 @@
 す。正しいHTML文書を記述するための型安全な言語を開発することが目的で、
 素朴な実装を徐々に改善しつつ進めていきます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
-<p>この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使
-う道具のひとつである<strong>Freeモナド</strong>が定義されている <code>free</code>ライブラリで
-す。</p>
+<p>この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使う道具のひとつである <em>Freeモナド</em> が定義されている
+<code>free</code>ライブラリです。</p>
 <p>このプロジェクトをPSCiを使って試していきます。</p>
 <h2 id="htmlデータ型"><a class="header" href="#htmlデータ型">HTMLデータ型</a></h2>
 <p>このHTMLライブラリの最も基本的なバージョンは
@@ -242,7 +242,7 @@ unit
 HTML文書を作成するために使える領域特化言語にしていきます。</p>
 <h2 id="スマート構築子"><a class="header" href="#スマート構築子">スマート構築子</a></h2>
 <p>最初に導入する手法は方法は単純なものですが、とても効果的です。モジュールの使用者にデータの表現を露出する代わりに、モジュールエクスポートリストを使ってデータ構築子
-<code>Element</code>、 <code>Content</code>、 <code>Attribute</code>を隠蔽し、正しいことが明らかなデータだけ構築する、いわゆる<strong>スマート構築子</strong>
+<code>Element</code>、 <code>Content</code>、 <code>Attribute</code>を隠蔽し、正しいことが明らかなデータだけ構築する、いわゆる <em>スマート構築子</em>
 (smart constructors) だけをエクスポートします。</p>
 <p>例を示しましょう。まず、HTML要素を作成するための便利な関数を提供します。</p>
 <pre><code class="language-haskell">element :: String -&gt; Array Attribute -&gt; Maybe (Array Content) -&gt; Element
@@ -282,8 +282,8 @@ img attribs = element &quot;img&quot; attribs Nothing
 <li>型クラス。クラス名により指定されます。</li>
 <li>型構築子と関連するデータ構築子。型名とそれに続くエクスポートされるデータ構築子の括弧で囲まれたリストで指定されます。</li>
 </ul>
-<p>ここでは、
-<code>Element</code>の<strong>型</strong>をエクスポートしていますが、データ構築子はエクスポートしていません。もしデータ構築子をエクスポートすると、モジュールの使用者が不正なHTML要素を構築できてしまいます。</p>
+<p>ここでは、 <code>Element</code>の <em>型</em>
+をエクスポートしていますが、データ構築子はエクスポートしていません。もしデータ構築子をエクスポートすると、モジュールの使用者が不正なHTML要素を構築できてしまいます。</p>
 <p><code>Attribute</code>と <code>Content</code>型についてはデータ構築子をすべてエクスポートしています（エクスポートリストの記号
 <code>..</code>で示されています）。
 すぐ後で、これらの型にスマート構築子の手法を適用していきます。</p>
@@ -383,8 +383,8 @@ unit
 <p>（簡単）<code>Data.DOM.Smart</code>モジュールで <code>render</code>を使った新しいHTML文書の作成を試してみましょう。</p>
 </li>
 <li>
-<p>（普通）<code>checked</code>と
-<code>disabled</code>など、値を要求しないHTML属性がありますが、これらは次のような<strong>空の属性</strong>として表示されるかもしれません。</p>
+<p>（普通）<code>checked</code>と <code>disabled</code>など、値を要求しないHTML属性がありますが、これらは次のような <em>空の属性</em>
+として表示されるかもしれません。</p>
 <pre><code class="language-html">&lt;input disabled&gt;
 </code></pre>
 <p>空の属性を扱えるように <code>Attribute</code>の表現を変更してください。
@@ -404,12 +404,11 @@ unit
 </code></pre>
 <p>ここでの問題は、 <code>width</code>属性と<code>height</code>属性に文字列値を提供しているということです。
 ここで与えることができるのはピクセル単位ないしパーセントの数値だけであるべきです。</p>
-<p><code>AttributeKey</code>型にいわゆる<strong>幻影型</strong> (phantom type) 引数を導入すると、この問題を解決できます。</p>
+<p><code>AttributeKey</code>型にいわゆる <em>幻影型</em> (phantom type) 引数を導入すると、この問題を解決できます。</p>
 <pre><code class="language-haskell">newtype AttributeKey a = AttributeKey String
 </code></pre>
-<p>定義の右辺に対応する型 <code>a</code>の値が存在しないので、この型変数 <code>a</code>は<strong>幻影型</strong>と呼ばれています。
-この型 <code>a</code>はコンパイル時に追加の情報を提供するためだけに存在しています。
-型 <code>AttributeKey a</code>の任意の値は実行時には単なる文字列ですが、コンパイル時にその値の型によりこのキーに関連付けられた値で求めている型がわかります。</p>
+<p>定義の右辺に対応する型 <code>a</code>の値が存在しないので、この型変数 <code>a</code>は <em>幻影型</em> と呼ばれています。この型
+<code>a</code>はコンパイル時に追加の情報を提供するためだけに存在しています。型 <code>AttributeKey a</code>の任意の値は実行時には単なる文字列ですが、コンパイル時にその値の型によりこのキーに関連付けられた値で求めている型がわかります。</p>
 <p><code>attribute</code>関数の型を次のように変更すれば、<code>AttributeKey</code>の新しい形式を考慮するようにできます。</p>
 <pre><code class="language-haskell">attribute :: forall a. IsValue a =&gt; AttributeKey a -&gt; a -&gt; Attribute
 attribute (AttributeKey key) value = Attribute
@@ -473,7 +472,7 @@ unit
 </li>
 <li>
 <p>（難しい）幻影型を使って真偽値 <code>true</code>、 <code>false</code>用の最上位の表現を定義することで、 <code>AttributeKey</code>が
-<code>disabled</code>や <code>checked</code>のような<strong>空の属性</strong>を表現しているかどうかを符号化することができます。</p>
+<code>disabled</code>や <code>checked</code>のような <em>空の属性</em> を表現しているかどうかを符号化することができます。</p>
 <pre><code class="language-haskell">data True
 data False
 </code></pre>
@@ -481,9 +480,8 @@ data False
 </li>
 </ol>
 <h2 id="freeモナド"><a class="header" href="#freeモナド">Freeモナド</a></h2>
-<p>APIに施す最後の変更は、 <code>Content</code>型をモナドにしてdo記法を使えるようにするために、<strong>Freeモナド</strong>と呼ばれる構造を使うことです。
-これによって入れ子になった要素がわかりやすくなるようにHTML文書を構造化できます。
-以下の代わりに……</p>
+<p>APIに施す最後の変更は、 <code>Content</code>型をモナドにしてdo記法を使えるようにするために、 <em>Freeモナド</em>
+と呼ばれる構造を使うことです。これによって入れ子になった要素がわかりやすくなるようにHTML文書を構造化できます。以下の代わりに……</p>
 <pre><code class="language-haskell">p [ _class := &quot;main&quot; ]
   [ elem $ img
       [ src    := &quot;cat.jpg&quot;
@@ -502,8 +500,8 @@ data False
     ]
   text &quot;A cat&quot;
 </code></pre>
-<p>しかし、do記法だけがFreeモナドの恩恵だというわけではありません。
-Freeモナドがあれば、モナドのアクションの<strong>表現</strong>をその<strong>解釈</strong>から分離し、同じアクションに<strong>複数の解釈</strong>を持たせることさえできます。</p>
+<p>しかし、do記法だけがFreeモナドの恩恵だというわけではありません。Freeモナドがあれば、モナドのアクションの <em>表現</em> をその <em>解釈</em>
+から分離し、同じアクションに <em>複数の解釈</em> を持たせることさえできます。</p>
 <p><code>Free</code>モナドは <code>free</code>ライブラリの <code>Control.Monad.Free</code>モジュールで定義されています。
 PSCiを使うと、次のようにFreeモナドについての基本的な情報を見ることができます。</p>
 <pre><code class="language-text">&gt; import Control.Monad.Free
@@ -513,10 +511,9 @@ PSCiを使うと、次のようにFreeモナドについての基本的な情報
 </code></pre>
 <p><code>Free</code>の種は、引数として型構築子を取り、別の型構築子を返すことを示しています。
 実は、 <code>Free</code>モナドを使えば任意の <code>Functor</code>を <code>Monad</code>にすることができます！</p>
-<p>モナドのアクションの<strong>表現</strong>を定義することから始めます。
-これを行うには、サポートする各モナドアクションそれぞれについて、ひとつのデータ構築子を持つ <code>Functor</code>を作成する必要があります。
-今回の場合、2つのモナドのアクションは <code>elem</code>と <code>text</code>になります。
-実際には、 <code>Content</code>型を次のように変更するだけです。</p>
+<p>モナドのアクションの <em>表現</em> を定義することから始めます。これを行うには、サポートする各モナドアクションそれぞれについて、ひとつのデータ構築子を持つ
+<code>Functor</code>を作成する必要があります。今回の場合、2つのモナドのアクションは <code>elem</code>と <code>text</code>になります。実際には、
+<code>Content</code>型を次のように変更するだけです。</p>
 <pre><code class="language-haskell">data ContentF a
   = TextContent String a
   | ElementContent Element a
@@ -556,8 +553,8 @@ text s = liftF $ TextContent s unit
 elem :: Element -&gt; Content Unit
 elem e = liftF $ ElementContent e unit
 </code></pre>
-<p>他にも同じようなコードの変更はありますが、興味深い変更は <code>render</code>関数にあります。
-ここでは、このFreeモナドを<strong>解釈</strong>しなければいけません。</p>
+<p>他にも同じようなコードの変更はありますが、興味深い変更は <code>render</code>関数にあります。ここでは、このFreeモナドを <em>解釈</em>
+しなければいけません。</p>
 <h2 id="モナドの解釈"><a class="header" href="#モナドの解釈">モナドの解釈</a></h2>
 <p><code>Control.Monad.Free</code>モジュールでは、Freeモナドで計算を解釈するための多数の関数が提供されています。</p>
 <pre><code class="language-haskell">runFree
@@ -574,11 +571,11 @@ runFreeM
   -&gt; Free f a
   -&gt; m a
 </code></pre>
-<p><code>runFree</code>関数は、<strong>純粋な</strong>結果を計算するために使用されます。
+<p><code>runFree</code>関数は、 <em>純粋な</em> 結果を計算するために使用されます。
 <code>runFreeM</code>関数があればFreeモナドのアクションを解釈するためにモナドが使えます。</p>
-<p><strong>補足</strong>：厳密には、より強い<code>MonadRec</code>制約を満たすモナド <code>m</code>を使用するよう制限されています。
-実際には、これはスタックオーバーフローを心配する必要がないことを意味します。
-なぜなら <code>m</code>は安全な<strong>末尾再帰モナド</strong> (monadic tail recursion) をサポートするからです。</p>
+<p><em>補足</em> ：厳密には、より強い<code>MonadRec</code>制約を満たすモナド
+<code>m</code>を使用するよう制限されています。実際には、これはスタックオーバーフローを心配する必要がないことを意味します。なぜなら <code>m</code>は安全な
+<em>末尾再帰モナド</em> (monadic tail recursion) をサポートするからです。</p>
 <p>まず、アクションを解釈することができるモナドを選ばなければなりません。
 <code>Writer String</code>モナドを使って、結果のHTML文字列を累積することにします。</p>
 <p>新しい <code>render</code>メソッドは補助関数
@@ -662,11 +659,8 @@ unit
 <p>すべてのアクションが型 <code>Unit</code>の何かを返すようなモナドは、さほど興味深いものではありません。
 実際のところ、概ね良くなったと思われる構文は別として、このモナドは <code>Monoid</code>以上の機能を何ら追加していません。</p>
 <p>非自明な結果を返す新しいモナドアクションでこの言語を拡張することで、Freeモナド構造の威力をお見せしましょう​​。</p>
-<p><strong>アンカー</strong>を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML文書を生成するとします。
-これは既に達成できています。
-手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。
-1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。
-しかし、この方法には根本的な問題がいくつかあります。</p>
+<p><em>アンカー</em>
+を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML文書を生成するとします。これは既に達成できています。手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。しかし、この方法には根本的な問題がいくつかあります。</p>
 <ul>
 <li>開発者が一意なアンカー名の生成をし損なうかもしれません。</li>
 <li>開発者がアンカー名を1つ以上の箇所で打ち間違うかもしれません。</li>
@@ -708,9 +702,7 @@ name = AttributeKey &quot;name&quot;
   | ElementContent Element a
   | NewName (Name -&gt; a)
 </code></pre>
-<p><code>NewName</code>データ構築子は型 <code>Name</code>の値を返すアクションに対応しています。
-データ構築子の引数として <code>Name</code>を要求するのではなく、型 <code>Name -&gt; a</code>の<strong>関数</strong>を提供するように使用者に要求していることに注意してください。
-型 <code>a</code>は<strong>計算の残り</strong>を表していることを思い出すと、この関数は、型 <code>Name</code>の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。</p>
+<p><code>NewName</code>データ構築子は型 <code>Name</code>の値を返すアクションに対応しています。データ構築子の引数として <code>Name</code>を要求するのではなく、型 <code>Name -&gt; a</code>の <em>関数</em> を提供するように使用者に要求していることに注意してください。型 <code>a</code>は <em>計算の残り</em> を表していることを思い出すと、この関数は、型 <code>Name</code>の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。</p>
 <p>新しいデータ構築子を考慮するように、次のように<code>ContentF</code>用の<code>Functor</code>インスタンスを更新する必要もあります。</p>
 <pre><code class="language-haskell">instance functorContentF :: Functor ContentF where
   map f (TextContent s x) = TextContent s (f x)
@@ -786,19 +778,17 @@ unit
 <pre><code class="language-haskell">isMobile :: Content Boolean
 </code></pre>
 <p>このアクションは、この文書がモバイルデバイス上での表示のためにレンダリングされているかどうかを示す真偽値を返します。</p>
-<p><strong>ヒント</strong>：<code>ask</code>アクションと<code>ReaderT</code>モナド変換子を使って、このアクションを解釈してください。
-あるいは、<code>RWS</code>モナドを使うほうが好みの人もいるかもしれません。</p>
+<p><em>ヒント</em> ：<code>ask</code>アクションと<code>ReaderT</code>モナド変換子を使って、このアクションを解釈してください。あるいは、<code>RWS</code>モナドを使うほうが好みの人もいるかもしれません。</p>
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章では、いくつかの標準的な技術を使って、素朴な実装を段階的に改善することにより、HTML文書を作成するための領域特化言語を開発しました。</p>
 <ul>
-<li><strong>スマート構築子</strong>を使ってデータ表現の詳細を隠し、利用者には<strong>構築により正しい</strong>文書だけを作ることを許しました。</li>
-<li><strong>独自に定義された中置2引数演算子</strong>を使い言語の構文を改善しました。</li>
-<li><strong>幻影型</strong>を使ってデータの型の中に追加の情報を折り込みました。
-これにより利用者が誤った型の属性値を与えることを防いでいます。</li>
-<li><strong>Freeモナド</strong>を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。
-それからこの表現を新しいモナドアクションに対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。</li>
+<li><em>スマート構築子</em> を使ってデータ表現の詳細を隠し、利用者には <em>構築により正しい</em> 文書だけを作ることを許しました。</li>
+<li><em>独自に定義された中置2引数演算子</em> を使い言語の構文を改善しました。</li>
+<li><em>幻影型</em> を使ってデータの型の中に追加の情報を折り込みました。これにより利用者が誤った型の属性値を与えることを防いでいます。</li>
+<li><em>Freeモナド</em>
+を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。それからこの表現を新しいモナドアクションに対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。</li>
 </ul>
 <p>これらの手法はすべて、使用者が間違いを犯すのを防いだり領域特化言語の構文を改良したりするために、PureScriptのモジュールと型システムを活用しています。</p>
 <p>関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野ですが、いくつかの簡単な技法に対して役に立つ導入を提供し、表現力豊かな型を持つ言語で作業することの威力を示すことができていれば幸いです。</p>
