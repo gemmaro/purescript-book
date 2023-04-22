@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ja" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>パターン照合 - PureScript by Example</title>
+        <title>パターン照合 - 実例によるPureScript</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.ja.html">序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html" class="active"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html" class="active"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +114,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">PureScript by Example</h1>
+                    <h1 class="menu-title">実例によるPureScript</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -151,14 +151,10 @@
                     <main>
                         <h1 id="パターン照合"><a class="header" href="#パターン照合">パターン照合</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、代数的データ型とパターン照合という、ふたつの新しい概念を導入します。
-また、行多相というPureScriptの型システムの興味深い機能についても簡単に取り扱います。</p>
-<p>パターン照合は関数​​型プログラミングにおける一般的な手法で、複数の場合に実装を分解することにより、開発者は潜在的に複雑な動作の関数を簡潔に書くことができます。</p>
-<p>代数的データ型はPureScriptの型システムの機能であり、
-型のある言語において同様の水準の表現力を可能にしています。
-パターン照合とも密接に関連しています。</p>
-<p>この章の目的は、代数的データ型やパターン照合を使用して、
-単純なベクターグラフィックスを描画し操作するためのライブラリを書くことです。</p>
+<p>この章では、代数的データ型とパターン照合という、2つの新しい概念を導入します。また、行多相というPureScriptの型システムの興味深い機能についても簡単に取り扱います。</p>
+<p>パターン照合は関数型プログラミングにおける一般的な手法で、複数の場合に実装を分解することにより、開発者は水面下では複雑な動作をする関数を簡潔に書くことができます。</p>
+<p>代数的データ型はPureScriptの型システムの機能であり、型のある言語において同等の水準の表現力を可能にしています。パターン照合とも密接に関連しています。</p>
+<p>この章の目的は、代数的データ型やパターン照合を使用して、単純なベクターグラフィックスを描画し操作するためのライブラリを書くことです。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>この章のソースコードはファイル <code>src/Data/Picture.purs</code>で定義されています。</p>
 <p><code>Data.Picture</code>モジュールは、簡単な図形を表すデータ型 <code>Shape</code>や、図形の集合である型
@@ -173,9 +169,9 @@ import Data.Number (infinity)
 <p><code>Data.Picture</code>モジュールは<code>Number</code>モジュールもインポートしますが、こちらは<code>as</code>キーワードを使います。</p>
 <pre><code class="language-haskell">import Data.Number as Number
 </code></pre>
-<p>これは型や関数をモジュール内で使用できるようにしますが、それは<code>Number.max</code>のように <em>修飾名</em>
-を使ったときのみです。これは重複したインポートを避けたり、何らかのものがどのモジュールからインポートされたのかを明らかにするのに役立ちます。</p>
-<p><em>注意</em> ：元のモジュールと同じモジュール名を修飾名に使用するのは不要です。<code>import Math as M</code>などのより短い名前にすることは可能ですし、かなりよくあります。</p>
+<p>こうすると型や関数をモジュール内で使用できるようになりますが、<code>Number.max</code>のように<em>修飾名</em>を使ったときに限定されます。重複したインポートを避けたり、どのモジュールからインポートされたのかを明らかにするのに役立ちます。</p>
+<p><em>補足</em>：元のモジュールと同じモジュール名を修飾名に使用する必要はありません。
+<code>import Math as M</code>などのより短い名前にできますし、かなりよく見掛けます。</p>
 <h2 id="単純なパターン照合"><a class="header" href="#単純なパターン照合">単純なパターン照合</a></h2>
 <p>それではコード例を見ることから始めましょう。
 パターン照合を使用して2つの整数の最大公約数を計算する関数は、次のようになります。</p>
@@ -187,40 +183,36 @@ gcd n m = if n &gt; m
             else gcd n (m - n)
 </code></pre>
 <p>このアルゴリズムはユークリッドの互除法と呼ばれています。
-その定義をオンラインで検索すると、
-おそらく上記のコードによく似た数学の方程式が見つかるでしょう。
-パターン照合の利点のひとつは、
-上記のようにコードを場合分けして定義することができ、
-数学関数の定義と似たような簡潔で宣言型なコードを書くことができることです。</p>
-<p>パターン照合を使用して書かれた関数は、条件と結果の組み合わせによって動作します。この定義の各行は <em>選択肢</em> (alternative) や <em>場合</em>
-(case) と呼ばれています。等号の左辺の式は <em>パターン</em>
-と呼ばれており、それぞれの場合は空白で区切られた1つ以上のパターンで構成されています。場合の集まりは、等号の右側の式が評価され値が返される前に、引数が満たさなければならないどれかの条件を表現しています。それぞれの場合は上からこの順番に試されていき、最初に入力に適合した場合が返り値を決定します。</p>
-<p>たとえば、 <code>gcd</code>関数は次の手順で評価されます。</p>
+その定義をオンラインで検索すると、恐らく上記のコードによく似た数学の方程式が見つかるでしょう。
+パターン照合の利点の1つは、上記のようにコードを場合分けして定義でき、数学関数の定義と似たような簡潔で宣言型なコードを書くことができることです。</p>
+<p>パターン照合を使用して書かれた関数は、条件と結果の組み合わせによって動作します。
+この定義の各行は<em>選択肢</em>や<em>場合</em>と呼ばれています。
+等号の左辺の式は<em>パターン</em>と呼ばれており、それぞれの場合は空白で区切られた1つ以上のパターンで構成されています。
+場合の集まりは、等号の右側の式が評価され値が返される前に、引数が満たさなければならない条件を表現しています。
+それぞれの場合は上からこの順番に試されていき、最初に入力に適合した場合が返り値を決定します。</p>
+<p>例えば<code>gcd</code>関数は次の手順で評価されます。</p>
 <ul>
-<li>まず最初の場合が試されます。第2引数がゼロの場合、関数は <code>n</code>（最初の引
-数）を返します。</li>
-<li>そうでなければ、2番目の場合が試されます。最初の引数がゼロの場合、関数
-は <code>m</code>（第2引数）を返します。</li>
+<li>まず最初の場合が試されます。
+第2引数がゼロの場合、関数は <code>n</code>（最初の引数）を返します。</li>
+<li>そうでなければ、2番目の場合が試されます。
+最初の引数がゼロの場合、関数は <code>m</code>（第2引数）を返します。</li>
 <li>それ以外の場合、関数は最後の行の式を評価して返します。</li>
 </ul>
-<p>パターンは値を名前に束縛することができることに注意してください。
-この例の各行では <code>n</code>という名前と <code>m</code>という名前の両方、
-またはどちらか一方に、入力された値を束縛しています。
-これよりさまざまな種類のパターンについて学びますが、
-これらのパターンは入力の引数から名前を選ぶさまざまな方法に対応付けられることがわかるでしょう。</p>
+<p>なお、パターンでは値を名前に束縛できます。
+この例の各行では <code>n</code>や<code>m</code>という名前の何れかまたは両方に入力された値を束縛しています。
+さまざまな種類のパターンについて学んでいくうちに、それぞれの種類のパターンが入力の引数から名前を選ぶさまざまな方法に対応することがわかるでしょう。</p>
 <h2 id="単純なパターン"><a class="header" href="#単純なパターン">単純なパターン</a></h2>
 <p>上記のコード例では、2種類のパターンを示しました。</p>
 <ul>
-<li><code>Int</code>型の値が正確に一致する場合にのみ適合する、整数リテラルパターン</li>
+<li><code>Int</code>型の値が正確に一致する場合にのみ適合する、整数直値パターン</li>
 <li>引数を名前に束縛する、変数パターン</li>
 </ul>
 <p>単純なパターンには他にも種類があります。</p>
 <ul>
-<li><code>Number</code>、<code>String</code>、<code>Char</code>、そして<code>Boolean</code>といったリテラル</li>
-<li>どんな引数とも適合するが名前に束縛はしない、アンダースコア (<code>_</code>) で表
-されるワイルドカードパターン</li>
+<li><code>Number</code>、<code>String</code>、<code>Char</code>、そして<code>Boolean</code>といった直値</li>
+<li>どんな引数とも適合するが名前に束縛はしない、アンダースコア (<code>_</code>) で表されるワイルドカードパターン</li>
 </ul>
-<p>ここではこれらの単純なパターンを使用した、さらに2つの例を示します。</p>
+<p>ここではこれらの単純なパターンを使用して、もう2つ例を示します。</p>
 <pre><code class="language-haskell">fromString :: String -&gt; Boolean
 fromString &quot;true&quot; = true
 fromString _      = false
@@ -240,9 +232,7 @@ gcdV2 0 n = n
 gcdV2 n m | n &gt; m     = gcdV2 (n - m) m
           | otherwise = gcdV2 n (m - n)
 </code></pre>
-<p>この場合、3行目ではガードを使用して、最初の引数が第2引数よりも厳密に大きいという条件を付け加えています。
-最後の行でのガードは式<code>otherwise</code>を使っており、キーワードのようにも見えますが、
-実際にはただの<code>Prelude</code>における通常の束縛なのです。</p>
+<p>この場合、3行目ではガードを使用して、最初の引数が第2引数よりも厳密に大きいという条件を付け加えています。最後の行でのガードは式<code>otherwise</code>を使っており、キーワードのようにも見えますが、実際はただの<code>Prelude</code>にある通常の束縛です。</p>
 <pre><code class="language-text">&gt; :type otherwise
 Boolean
 
@@ -252,24 +242,27 @@ true
 <p>この例が示すように、ガードは等号の左側に現れ、パイプ文字 (<code>|</code>) でパターンのリストと区切られています。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（簡単）パターン照合を使用して、階乗関数<code>factorial</code>を書いてみましょう。 <em>ヒント</em>
-：入力がゼロのときとゼロでないときの、ふたつのコーナーケースを考えてみてください。 <em>補足</em>
-：これは前の章からの例の繰り返しですが、ここでは自力で書き直せるかやってみてください。</li>
+<li>（簡単）パターン照合を使用して、階乗関数<code>factorial</code>を書いてみましょう。
+<em>手掛かり</em>：入力がゼロのときとゼロでないときの、2つの特殊な場合を考えてみてください。
+<em>補足</em>：これは前の章の例の反復ですが、ここでは自力で書き直せるかやってみてください。</li>
 <li>（普通）\( (1 + x) ^ n \)を多項式展開した式にある\( x ^ k
-\)の項の係数を求める関数<code>binomial</code>を書いてください。これは<code>n</code>要素の集合から<code>k</code>要素の部分集合を選ぶ方法の数と同じです。数式\(
-n! / k! (n - k)! \)を使ってください。ここで \( ! \) は前に書いた階乗関数です。 <em>ヒント</em>
-：パターン照合を使ってコーナーケースを制御してください。長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、もっとコーナーケースを追加してみてください。</li>
-<li>（普通）<a href="https://en.wikipedia.org/wiki/Pascal%27s_rule"><em>パスカルの法則</em></a>を使って前の演習の同じ2項係数を計算する関数<code>pascal</code>を書いてください。</li>
+\)の項の係数を求める関数<code>binomial</code>を書いてください。
+これは<code>n</code>要素の集合から<code>k</code>要素の部分集合を選ぶ方法の数と同じです。
+数式\( n! / k! (n - k)! \)を使ってください。
+ここで \( ! \) は前に書いた階乗関数です。
+<em>手掛かり</em>：パターン照合を使って特殊な場合を取り扱ってください。
+長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、もっと使用例を追加してみてください。</li>
+<li>（普通）<a href="https://en.wikipedia.org/wiki/Pascal%27s_rule"><em>パスカルの法則</em></a>を使って前の演習と同じ2項係数を計算する関数<code>pascal</code>を書いてください。</li>
 </ol>
 <h2 id="配列パターン"><a class="header" href="#配列パターン">配列パターン</a></h2>
-<p><em>配列リテラルパターン</em> (array literal patterns)
-は、固定長の配列に対して照合を行う方法を提供します。たとえば、空の配列であることを特定する関数
-<code>isEmpty</code>を書きたいとします。最初の選択肢に空の配列パターン (<code>[]</code>) を用いるとこれを実現できます。</p>
+<p><em>配列直値パターン</em>は、固定長の配列に対して照合する方法を提供します。
+例えば空の配列であるか判定する関数<code>isEmpty</code>を書きたいとします。
+最初の選択肢に空の配列パターン (<code>[]</code>) を用いるとこれを実現できます。</p>
 <pre><code class="language-haskell">isEmpty :: forall a. Array a -&gt; Boolean
 isEmpty [] = true
 isEmpty _ = false
 </code></pre>
-<p>次の関数では、長さ5の配列と適合し、配列の5つの要素をそれぞれ異なった方法で束縛しています。</p>
+<p>次の関数では、長さ5の配列と適合し、配列の5つの要素をそれぞれ違った方法で束縛しています。</p>
 <pre><code class="language-haskell">takeFive :: Array Int -&gt; Int
 takeFive [0, 1, a, b, _] = a * b
 takeFive _ = 0
@@ -277,7 +270,7 @@ takeFive _ = 0
 <p>最初のパターンは、第1要素と第2要素がそれぞれ0と1であるような、5要素の配列にのみ適合します。
 その場合、関数は第3要素と第4要素の積を返します。
 それ以外の場合は、関数は0を返します。
-PSCiで試してみると、たとえば次のようになります。</p>
+例えばPSCiで試してみると次のようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … takeFive [0, 1, a, b, _] = a * b
 … takeFive _ = 0
@@ -292,73 +285,68 @@ PSCiで試してみると、たとえば次のようになります。</p>
 &gt; takeFive []
 0
 </code></pre>
-<p>配列のリテラルパターンでは、固定長の配列と一致させることはできますが、
-PureScriptは不特定の長さの配列を照合させる手段を提供していません。
-そのような方法で不変な配列を分解すると、
-実行速度が低下する可能性があるためです。
-この種の照合を行うことができるデータ構造が必要な場合は、
-<code>Data.List</code>を使うことをお勧めします。
-そのほかの操作について、
-より優れた漸近性能を提供するデータ構造も存在します。</p>
+<p>配列の直値パターンでは、固定長の配列と一致させることはできますが、PureScriptは不特定の長さの配列を照合させる手段を提供していません。
+そのような方法で不変な配列を分解すると、実行速度が低下する可能性があるためです。
+このように照合できるデータ構造が必要な場合は、<code>Data.List</code>を使うことをお勧めします。
+その他の操作について、より優れた漸近性能を提供するデータ構造も存在します。</p>
 <h2 id="レコードパターンと行多相"><a class="header" href="#レコードパターンと行多相">レコードパターンと行多相</a></h2>
-<p><em>レコードパターン</em> (Record patterns) は（ご想像のとおり）レコードに照合します。</p>
-<p>レコードパターンはレコードリテラルにほぼ見た目が似ていますが、コロンの右に値を置くのではなく、それぞれのフィールドで束縛子を指定します。</p>
-<p>たとえば、次のパターンは <code>first</code>と <code>last</code>と呼ばれるフィールドが含まれた任意のレコードにマッチし、
-これらのフィールドの値はそれぞれ <code>x</code>と <code>y</code>という名前に束縛されます。</p>
+<p><em>レコードパターン</em>は（ご想像の通り）レコードに照合します。</p>
+<p>レコードパターンはレコード直値にほぼ見た目が似ていますが、コロンの右に値を置くのではなく、それぞれのフィールドで束縛子を指定します。</p>
+<p>例えば次のパターンは<code>first</code>と<code>last</code>という名前のフィールドが含まれた任意のレコードに照合し、これらのフィールドの値はそれぞれ <code>x</code>と
+<code>y</code>という名前に束縛されます。</p>
 <pre><code class="language-haskell">showPerson :: { first :: String, last :: String } -&gt; String
 showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
 </code></pre>
-<p>レコードパターンはPureScriptの型システムの興味深い機能である <em>行多相</em> (row polymorphism)
-の良い例となっています。もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、この型はどのように推論されるのでしょうか？面白いことに、推論される型は上で与えた型とは同じではありません。</p>
+<p>レコードパターンはPureScriptの型システムの興味深い機能である<em>行多相</em>の良い例となっています。
+もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、この型はどのように推論されるのでしょうか。
+面白いことに、推論される型は上で与えた型とは同じではありません。</p>
 <pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
 
 &gt; :type showPerson
 forall r. { first :: String, last :: String | r } -&gt; String
 </code></pre>
-<p>この型変数 <code>r</code>とは何でしょうか？
-PSCiで <code>showPerson</code>を使ってみると、面白いことがわかります。</p>
+<p>この型変数 <code>r</code>は何でしょうか。
+PSCiで<code>showPerson</code>を使ってみると、面白いことがわかります。</p>
 <pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot; }
 &quot;Freeman, Phil&quot;
 
 &gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot;, location: &quot;Los Angeles&quot; }
 &quot;Freeman, Phil&quot;
 </code></pre>
-<p>レコードにそれ以外のフィールドが追加されていても、<code>showPerson</code>関数はそのまま動作するのです。型が <code>String</code>であるようなフィールド
-<code>first</code>と <code>last</code>がレコードに少なくとも含まれていれば、関数適用は正しく型付けされます。しかし、フィールドが <em>不足</em> していると、
+<p>レコードにそれ以外のフィールドが追加されていても、<code>showPerson</code>関数はそのまま動作するのです。レコードに少なくとも型が<code>String</code>であるようなフィールド
+<code>first</code>と <code>last</code>が含まれていれば、関数適用は正しく型付けされます。しかし、フィールドが <em>不足</em> していると、
 <code>showPerson</code>の呼び出しは <em>不正</em> となります。</p>
 <pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot; }
 
 Type of expression lacks required label &quot;last&quot;
 </code></pre>
 <p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド <em>と他のフィールドを何でも</em>
-持つあらゆるレコードを取り、<code>String</code>を返す」となります。なお、この振舞いは元の<code>showPerson</code>のものとは異なります。行変数<code>r</code>がなければ<code>showPerson</code>は
+持つあらゆるレコードを取り、<code>String</code>を返す」となります。なお、この挙動は元の<code>showPerson</code>のものとは異なります。行変数<code>r</code>がなければ<code>showPerson</code>は
 <em>厳密に</em> <code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
-<p>次のように書くことができることにも注意してください。</p>
+<p>なお、次のように書くこともできます。</p>
 <pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; &quot;, &quot; &lt;&gt; p.first
 </code></pre>
 <p>この場合も、 PSCiは先ほどと同じ型を推論するでしょう。</p>
 <h2 id="レコード同名利用"><a class="header" href="#レコード同名利用">レコード同名利用</a></h2>
-<p><code>showPerson</code>関数は引数内のレコードと一致し、
-<code>first</code>と<code>last</code>フィールドを<code>x</code>と <code>y</code>という名前の値に束縛していたのでした。
-別の方法として、フィールド名自体を再利用するだけで、このようなパターン一致を次のように単純化できます。</p>
+<p><code>showPerson</code>関数は引数内のレコードと照合し、<code>first</code>と<code>last</code>フィールドを<code>x</code>と
+<code>y</code>という名前の値に束縛していたのでした。別の方法として、フィールド名自体を再利用するだけで、このようなパターン照合を次のように単純化できます。</p>
 <pre><code class="language-haskell">showPersonV2 :: { first :: String, last :: String } -&gt; String
 showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
 </code></pre>
 <p>ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。これは <em>レコード同名利用</em> (record pun)
 と呼ばれます。</p>
-<p>レコード同名利用をレコードの <em>構築</em> に使用することもできます。例えば、スコープ内に <code>first</code>と <code>last</code>という名前の値があれば、<code>{ first, last }</code>を使って人物レコードを作ることができます。</p>
+<p>レコード同名利用はレコードの<em>構築</em>にも使用できます。
+例えば、スコープに <code>first</code>と <code>last</code>という名前の値があれば、<code>{ first, last }</code>を使って人物レコードを作ることができます。</p>
 <pre><code class="language-haskell">unknownPerson :: { first :: String, last :: String }
 unknownPerson = { first, last }
   where
     first = &quot;Jane&quot;
     last  = &quot;Doe&quot;
 </code></pre>
-<p>これは、状況によってはコードの可読性を向上させるのに役立ちます。</p>
+<p>こうすると、状況によってはコードの可読性向上に役立ちます。</p>
 <h2 id="入れ子になったパターン"><a class="header" href="#入れ子になったパターン">入れ子になったパターン</a></h2>
-<p>配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大きなパターンを構成しています。これまでの例ではほとんどの場合で配列パターンとレコードパターンの内部に単純なパターンを使用していましたが、パターンが自由に
-<em>入れ子</em>
-にすることができることも知っておくのが大切です。入れ子になったパターンを使うと、潜在的に複雑なデータ型に対しての条件分岐を用いて関数を定義できるようになります。</p>
-<p>たとえば、このコードは2つのレコードパターンを結合します。</p>
+<p>配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大きなパターンを構成しています。これまでの例ではほとんどの場合で配列パターンとレコードパターンの内部に単純なパターンを使用していましたが、パターンを自由に<em>入れ子</em>にできることも知っておくのが大切です。入れ子になったパターンを使うと、潜在的に複雑なデータ型に対して条件分岐を用いて関数を定義できるようになります。</p>
+<p>例えばこのコードは2つのレコードパターンを組み合わせています。</p>
 <pre><code class="language-haskell">type Address = { street :: String, city :: String }
 
 type Person = { name :: String, address :: Address }
@@ -368,10 +356,9 @@ livesInLA { address: { city: &quot;Los Angeles&quot; } } = true
 livesInLA _ = false
 </code></pre>
 <h2 id="名前付きパターン"><a class="header" href="#名前付きパターン">名前付きパターン</a></h2>
-<p>入れ子のパターンを使う場合、パターンには <em>名前を付け</em> て追加で名前をスコープに持ち込むことができます。任意のパターンに名前を付けるには、
-<code>@</code>記号を使います。</p>
-<p>たとえば、次の関数は2要素配列を整列するもので、2つの要素の名前を付けていますが、
-配列自身にも名前を付けています。</p>
+<p>入れ子のパターンを使う場合、パターンには<em>名前を付け</em>てスコープに名前を追加で持ち込むことができます。
+任意のパターンに名前を付けるには、 <code>@</code>記号を使います。</p>
+<p>例えば次の関数は2要素配列を整列するもので、2つの要素に名前を付けていますが、配列自身にも名前を付けています。</p>
 <pre><code class="language-haskell">sortPair :: Array Int -&gt; Array Int
 sortPair arr@[x, y]
   | x &lt;= y = arr
@@ -382,22 +369,15 @@ sortPair arr = arr
 2つの要素を含んでいなければ、たとえ整列されていなかったとしても、この関数は単に元のまま変えずに返しています。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（簡単）レコードパターンを使って、
-2つの <code>Person</code>レコードが同じ都市にいるか探す関数 <code>sameCity</code>を定義してみましょう。</li>
-<li>（普通）行多相を考慮すると、 <code>sameCity</code>関数の最も一般的な型は何でしょうか？先ほど定義した
-<code>livesInLA</code>関数についてはどうでしょうか？ <em>補足</em> ：この演習にテストはありません。</li>
-<li>（普通）配列リテラルパターンを使って、
-1要素の配列の唯一のメンバーを抽出する関数<code>fromSingleton</code>を書いてみましょう。
-1要素だけを持つ配列でない場合、
-関数は指定されたデフォルト値を返さなければなりません。
-この関数は <code>forall a. a -&gt; Array a -&gt; a</code>という型を持っていなければなりません。</li>
+<li>（簡単）レコードパターンを使って、2つの <code>Person</code>レコードが同じ都市にいるか調べる関数 <code>sameCity</code>を定義してみましょう。</li>
+<li>（普通）行多相を考慮すると、 <code>sameCity</code>関数の最も一般的な型は何でしょうか。
+先ほど定義した<code>livesInLA</code>関数についてはどうでしょうか。
+<em>補足</em>：この演習にテストはありません。</li>
+<li>（普通）配列直値パターンを使って、1要素の配列の唯一のメンバーを抽出する関数<code>fromSingleton</code>を書いてみましょう。1要素だけを持つ配列でない場合、関数は指定された既定値を返します。この関数は
+<code>forall a. a -&gt; Array a -&gt; a</code>という型を持っています。</li>
 </ol>
 <h2 id="case式"><a class="header" href="#case式">Case式</a></h2>
-<p>パターンは最上位にある関数宣言だけに現れるわけではありません。
-<code>case</code>式を使って計算の途中の値に対してパターン照合を使うことができます。
-case式には無名関数に似た種類の便利さがあります。
-関数に名前を与えることがいつも望ましいわけではないように、
-パターン照合を使いたいためだけに関数に名前をつけるようなことを避けられるようになります。</p>
+<p>パターンは最上位にある関数宣言だけに現れるわけではありません。<code>case</code>式を使って計算の途中の値に対してパターン照合を使うことができます。case式には無名関数に似たような便利さがあります。関数に名前を与えることがいつも望ましいわけではないように、パターン照合を使いたいためだけに関数に名前をつけるようなことを避けられるようになります。</p>
 <p>例を示しましょう。
 次の関数は、配列の「最長ゼロ末尾」（和がゼロであるような、最も長い配列の末尾）を計算します。</p>
 <pre><code class="language-haskell">import Data.Array (tail)
@@ -410,29 +390,25 @@ lzs xs = case sum xs of
            0 -&gt; xs
            _ -&gt; lzs (fromMaybe [] $ tail xs)
 </code></pre>
-<p>以下は例です。</p>
+<p>以下は一例です。</p>
 <pre><code class="language-text">&gt; lzs [1, 2, 3, 4]
 []
 
 &gt; lzs [1, -1, -2, 3]
 [-1, -2, 3]
 </code></pre>
-<p>この関数は場合ごとの分析によって動作します。
-もし配列が空なら、唯一の選択肢は空の配列を返すことです。
-配列が空でない場合は、さらに2つの場合に分けるためにまず <code>case</code>式を使用します。
-配列の合計がゼロであれば、配列全体を返します。
-そうでなければ、配列の残りに対して再帰します。</p>
+<p>この関数は場合ごとの分析によって動作します。もし配列が空なら、唯一の選択肢は空の配列を返すことです。配列が空でない場合は、更に2つの場合に分けるためにまず
+<code>case</code>式を使用します。配列の合計がゼロであれば、配列全体を返します。そうでなければ、配列の残りに対して再帰します。</p>
 <h2 id="パターン照合の失敗と部分関数"><a class="header" href="#パターン照合の失敗と部分関数">パターン照合の失敗と部分関数</a></h2>
-<p>case式のパターンを順番に照合していって、もし選択肢のいずれの場合も入力が適合しなかった時は何が起こるのでしょうか？この場合、 <em>パターン照合失敗</em>
-によって、case式は実行時に失敗します。</p>
+<p>case式のパターンを順番に照合していって、もし選択肢の何れの場合も入力が適合しなかった時は何が起こるのでしょうか。
+この場合、<em>パターン照合失敗</em>によって、case式は実行時に失敗します。</p>
 <p>簡単な例でこの動作を見てみましょう。</p>
 <pre><code class="language-haskell">import Partial.Unsafe (unsafePartial)
 
 partialFunction :: Boolean -&gt; Boolean
 partialFunction = unsafePartial \true -&gt; true
 </code></pre>
-<p>この関数は単一の場合しか含んでおらず、その場合では単一の入力である<code>true</code>にのみ照合します。
-このファイルをコンパイルしてPSCiでそれ以外の値を与えてテストすると、実行時エラーが発生します。</p>
+<p>この関数は単一の場合しか含んでおらず、単一の入力である<code>true</code>にのみ照合します。このファイルをコンパイルしてPSCiでそれ以外の値を与えてテストすると、実行時エラーが発生します。</p>
 <pre><code class="language-text">&gt; partialFunction false
 
 Failed pattern match
@@ -440,15 +416,11 @@ Failed pattern match
 <p>どんな入力の組み合わせに対しても値を返すような関数は <em>全関数</em> (total function) と呼ばれ、そうでない関数は <em>部分的</em>
 (partial) であると呼ばれます。</p>
 <p>一般的には、可能な限り全関数として定義したほうが良いと考えられています。
-もし関数が何らかの妥当な入力の集合について結果を返さないことがわかっているなら、
-大抵は失敗であることを示すことができる値を返すほうがよいでしょう。
+もし関数が何らかの妥当な入力の集合について結果を返さないことがわかっているなら、大抵は失敗であることを示すことができる値を返すほうがよいでしょう。
 例えば何らかの<code>a</code>についての型<code>Maybe a</code>で、妥当な結果を返せないときは<code>Nothing</code>を使います。
 この方法なら、型安全な方法で値の有無を示すことができます。</p>
-<p>PureScriptコンパイラは、
-パターンマッチが不完全で関数が全関数ではないことを検出するとエラーを生成します。
-部分関数が安全である場合、
-<code>unsafePartial</code>関数を使ってこれらのエラーを抑制することができます。
-（その部分関数が安全だと言い切れるなら！）
+<p>PureScriptコンパイラは、パターンマッチが不完全で関数が全関数ではないことを検出するとエラーを生成します。
+部分関数が安全である場合、<code>unsafePartial</code>関数を使ってこれらのエラーを抑制できます（その部分関数が安全だと言い切れるなら）。
 もし上記の <code>unsafePartial</code>関数の呼び出しを取り除くと、コンパイラは次のエラーを生成します。</p>
 <pre><code class="language-text">A case expression could not be determined to cover all inputs.
 The following additional cases are required to cover all inputs:
@@ -456,44 +428,40 @@ The following additional cases are required to cover all inputs:
   false
 </code></pre>
 <p>これは値<code>false</code>が、定義されたどのパターンとも一致しないことを示しています。
-一般的にこれらの警告には、複数の不一致のケースが含まれることがあります。</p>
+一般にこれらの警告には、複数の不一致な場合が含まれることがあります。</p>
 <p>上記の型シグネチャも省略した場合は、次のようになります。</p>
 <pre><code class="language-haskell">partialFunction true = true
 </code></pre>
-<p>このとき、PSCiは興味深い型を推論します｡</p>
+<p>このとき、PSCiは興味深い型を推論します。</p>
 <pre><code class="language-text">&gt; :type partialFunction
 
 Partial =&gt; Boolean -&gt; Boolean
 </code></pre>
-<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります（これらは <em>型クラス</em> に関連しています）。しかし、今のところは、PureScriptは型システムを使って部分関数を追跡していることと、安全な場合に型検証器に明示する必要があることを確認すれば十分です。</p>
-<p>コンパイラは、定義されたパターンが <em>冗長</em> であることを検出した場合（前の方に定義されたパターンに一致するケースのみ）でも警告を生成します。</p>
+<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります（これらは<em>型クラス</em>に関連しています）。しかし、今のところは、PureScriptは型システムを使って部分関数を把握していることと、安全な場合に型検証器に明示する必要があることを確認すれば充分です。</p>
+<p>コンパイラは、定義されたパターンが <em>冗長</em> であることを検出した場合（前の方に定義されたパターンのみに一致する場合）でも警告を生成します。</p>
 <pre><code class="language-haskell">redundantCase :: Boolean -&gt; Boolean
 redundantCase true = true
 redundantCase false = false
 redundantCase false = false
 </code></pre>
-<p>このとき、最後のケースは冗長であると正しく検出されます。</p>
+<p>このとき、最後の場合は冗長であると正しく検出されます。</p>
 <pre><code class="language-text">A case expression contains unreachable cases:
 
   false
 </code></pre>
-<p><em>注意</em> ：PSCiは警告を表示しないので、この例を再現するには、この関数をファイルとして保存し、 <code>pulp build</code>を使ってコンパイルします。</p>
+<p><em>補足</em>：PSCiは警告を表示しないので、この例を再現するには、この関数をファイルとして保存し、 <code>pulp build</code>を使ってコンパイルします。</p>
 <h2 id="代数的データ型"><a class="header" href="#代数的データ型">代数的データ型</a></h2>
 <p>この節では <em>代数的データ型</em> (algebraic data type, <em>ADT</em>)
 と呼ばれる、PureScriptの型システムの機能を導入します。この機能はパターン照合と地続きの関係があります。</p>
-<p>しかしまずは切り口となる例について考えていきます。
-この例では単純なベクターグラフィックスライブラリの実装というこの章の課題を解決する基礎を提供します。</p>
+<p>しかしまずは切り口となる例について考えていきます。この例では単純なベクターグラフィックスライブラリの実装というこの章の課題を解決する基礎を与えます。</p>
 <p>直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとします。
-オブジェクト指向言語では、おそらくインタフェースもしくは抽象クラス <code>Shape</code>を定義し、
-使いたいそれぞれの図形について具体的なサブクラスを定義するでしょう。</p>
-<p>しかしながら、この方針は大きな欠点をひとつ抱えています。
-<code>Shape</code>を抽象的に扱うためには、実行したいと思う可能性のあるすべての操作を事前に把握し、
-<code>Shape</code>インタフェースに定義する必要があるのです。
+オブジェクト指向言語では、恐らくインターフェースもしくは抽象クラス
+<code>Shape</code>を定義し、使いたいそれぞれの図形について具体的なサブクラスを定義するでしょう。</p>
+<p>しかし、この方針は大きな欠点を1つ抱えています。
+<code>Shape</code>を抽象的に扱うためには、実行したいと思う可能性のある全ての操作を事前に把握し、<code>Shape</code>インターフェースに定義する必要があるのです。
 このため、モジュール性を壊さずに新しい操作を追加することが難しくなります。</p>
-<p>もし図形の種類が事前にわかっているなら、
-代数的データ型はこうした問題を解決する型安全な方法を提供します。
-モジュール性のある方法で <code>Shape</code>に新たな操作を定義し、
-型安全性が維持できます。</p>
+<p>もし図形の種類が事前にわかっているなら、代数的データ型はこうした問題を解決する型安全な方法を提供します。モジュール性のある方法で
+<code>Shape</code>に新たな操作を定義し、型安全性を維持できます。</p>
 <p>代数的データ型としてどのように<code>Shape</code>が表現されるかを次に示します。</p>
 <pre><code class="language-haskell">data Shape
   = Circle Point Number
@@ -506,11 +474,9 @@ type Point =
   , y :: Number
   }
 </code></pre>
-<p>この宣言では<code>Shape</code>をそれぞれの構築子の和として定義しており、
-各構築子では含まれるデータを指定します。
-<code>Shape</code>は、中央 <code>Point</code>と半径（数値）を持つ <code>Circle</code>か、
-<code>Rectangle</code>、 <code>Line</code>、 <code>Text</code>のいずれかです。
-他には <code>Shape</code>型の値を構築する方法はありません。</p>
+<p>この宣言では<code>Shape</code>をそれぞれの構築子の直和として定義しており、各構築子では含まれるデータを指定します。
+<code>Shape</code>は、中央 <code>Point</code>と半径（数値）を持つ <code>Circle</code>か、<code>Rectangle</code>、 <code>Line</code>、 <code>Text</code>の何れかです。
+他に<code>Shape</code>型の値を構築する方法はありません。</p>
 <p>代数的データ型の定義はキーワード <code>data</code>から始まり、それに新しい型の名前と任意個の型引数が続きます。その型の構築子（あるいは <em>データ構築子</em>
 (data constructor)）は等号の後に定義され、パイプ文字 (<code>|</code>)
 で区切られます。ADTの構築子が持つデータは原始型に限りません。構築子にはレコード、配列、また他のADTさえも含むことができます。</p>
@@ -519,27 +485,22 @@ type Point =
 <code>maybe</code>パッケージでは <code>Maybe</code>を次のように定義しています。</p>
 <pre><code class="language-haskell">data Maybe a = Nothing | Just a
 </code></pre>
-<p>この例では型引数 <code>a</code>の使用方法を示しています。
-パイプ文字を「または」と読むことにすると、この定義は「<code>Maybe a</code>型の値は、無い (<code>Nothing</code>) か、またはただの (<code>Just</code>) 型
-<code>a</code>の値だ」とほぼ英語のように読むことができます。</p>
+<p>この例では型引数 <code>a</code>の使用方法を示しています。パイプ文字を「または」と読むことにすると、この定義は「<code>Maybe a</code>型の値は、無い
+(<code>Nothing</code>) か、ただの (<code>Just</code>) 型 <code>a</code>の値だ」とほぼ英語のように読むことができます。</p>
 <p>なおデータ定義のどこにも構文<code>forall a</code>を使っていません。
 <code>forall</code>構文は関数には必須ですが、<code>data</code>によるADTや<code>type</code>での型別称を定義するときは使われません。</p>
-<p>データ構築子は再帰的なデータ構造を定義するために使用することもできます。
-更に例を挙げると、要素が型 <code>a</code>の単方向連結リストのデータ型を定義はこのようになります。</p>
+<p>データ構築子は再帰的なデータ構造を定義するためにも使用できます。更に例を挙げると、要素が型
+<code>a</code>の単方向連結リストのデータ型の定義はこのようになります。</p>
 <pre><code class="language-haskell">data List a = Nil | Cons a (List a)
 </code></pre>
 <p>この例は <code>lists</code>パッケージから持ってきました。
-ここで <code>Nil</code>構築子は空のリストを表しており、
-<code>Cons</code>は先頭となる要素と尾鰭から空でないリストを作成するために使われます。
-<code>Cons</code>の2つ目のフィールドでデータ型 <code>List a</code>を使用しており、
-再帰的なデータ型になっていることに注目してください。</p>
+ここで <code>Nil</code>構築子は空のリストを表しており、<code>Cons</code>は先頭となる要素と尾鰭から空でないリストを作成するために使われます。
+<code>Cons</code>の2つ目のフィールドでデータ型 <code>List a</code>を使用しており、再帰的なデータ型になっていることに注目してください。</p>
 <h2 id="adtの使用"><a class="header" href="#adtの使用">ADTの使用</a></h2>
 <p>代数的データ型の構築子を使用して値を構築するのはとても簡単です。
-対応する構築子に含まれるデータに応じた引数を用意し、
-その構築子を単に関数のように適用するだけです。</p>
-<p>例えば、上で定義した <code>Line</code>構築子は2つの <code>Point</code>を必要としていますので、
-<code>Line</code>構築子を使って <code>Shape</code>を構築するには、
-型 <code>Point</code>のふたつの引数を与えなければなりません。</p>
+対応する構築子に含まれるデータに応じた引数を用意し、その構築子を単に関数のように適用するだけです。</p>
+<p>例えば、上で定義した <code>Line</code>構築子は2つの <code>Point</code>を必要としていますので、<code>Line</code>構築子を使って <code>Shape</code>を構築するには、型
+<code>Point</code>の2つの引数を与えなければなりません。</p>
 <pre><code class="language-haskell">exampleLine :: Shape
 exampleLine = Line p1 p2
   where
@@ -549,14 +510,12 @@ exampleLine = Line p1 p2
     p2 :: Point
     p2 = { x: 100.0, y: 50.0 }
 </code></pre>
-<p>さて、代数的データ型で値を構築することは簡単ですが、
-これをどうやって使ったらよいのでしょうか？
+<p>さて、代数的データ型で値を構築することは簡単ですが、これをどうやって使ったらよいのでしょうか。
 ここで代数的データ型とパターン照合との重要な接点が見えてきます。
 代数的データ型の値を消費する唯一の方法は構築子に照合するパターンを使うことです。</p>
 <p>例を見てみましょう。
 <code>Shape</code>を <code>String</code>に変換したいとします。
-<code>Shape</code>を構築するのにどの構築子が使用されたかを調べるには、
-パターン照合を使用しなければなりません。
+<code>Shape</code>を構築するのにどの構築子が使用されたかを調べるには、パターン照合を使用しなければなりません。
 これには次のようにします。</p>
 <pre><code class="language-haskell">showShape :: Shape -&gt; String
 showShape (Circle c r) =
@@ -572,28 +531,27 @@ showPoint :: Point -&gt; String
 showPoint { x, y } =
   &quot;(&quot; &lt;&gt; show x &lt;&gt; &quot;, &quot; &lt;&gt; show y &lt;&gt; &quot;)&quot;
 </code></pre>
-<p>各構築子はパターンとして使用することができ、
-構築子への引数はそのパターンで束縛することができます。
+<p>各構築子はパターンとして使用でき、構築子への引数はそのパターンで束縛できます。
 <code>showShape</code>の最初の場合を考えてみましょう。
-もし <code>Shape</code>が <code>Circle</code>構築子適合した場合、
-2つの変数パターン <code>c</code>と <code>r</code>を使って
-<code>Circle</code>の引数（中心と半径）がスコープに導入されます。
-その他の場合も同様です。</p>
+もし <code>Shape</code>が <code>Circle</code>構築子に適合した場合、2つの変数パターン <code>c</code>と
+<code>r</code>を使って<code>Circle</code>の引数（中心と半径）がスコープに導入されます。その他の場合も同様です。</p>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
 <li>（簡単）<code>Circle</code>（型は<code>Shape</code>）を構築する関数<code>circleAtOrigin</code>を書いてください。
 中心は原点にあり、半径は<code>10.0</code>です。</li>
-<li>（普通）<code>Shape</code>を、原点を中心として<code>2.0</code>倍に拡大する関数<code>doubleScaleAndCenter</code>を書いてみましょう。</li>
+<li>（普通）<code>Shape</code>を原点を中心として<code>2.0</code>倍に拡大する関数<code>doubleScaleAndCenter</code>を書いてみましょう。</li>
 <li>（普通）<code>Shape</code>からテキストを抽出する関数<code>shapeText</code>を書いてください。
 この関数は<code>Maybe String</code>を返しますが、もし入力が<code>Text</code>を使用して構築されたのでなければ、返り値には<code>Nothing</code>構築子を使ってください。</li>
 </ol>
 <h2 id="newtype"><a class="header" href="#newtype">Newtype</a></h2>
-<p>代数的データ型の特別な場合として、 <em>newtype</em> と呼ばれるものがあります。newtypeはキーワード <code>data</code>の代わりにキーワード
+<p>代数的データ型の特殊な場合として、 <em>newtype</em> と呼ばれるものがあります。newtypeはキーワード <code>data</code>の代わりにキーワード
 <code>newtype</code>を使用して導入します。</p>
-<p>newtype宣言では <em>過不足なくひとつだけの</em> 構築子を定義しなければならず、その構築子は <em>過不足なくひとつだけの</em>
-引数を取る必要があります。つまり、newtype宣言は既存の型に新しい名前を与えるものなのです。実際、newtypeの値は、元の型と同じ実行時表現を持ってるので、実行時性能のオーバーヘッドがありません。しかし、これらは型システムの観点から区別されます。これは型安全性の追加の層を提供するのです。</p>
-<p>例として、ボルト、アンペア、オームのような単位を表現するために、
-<code>Number</code>の型レベルの別名を定義したくなる場合があるかもしれません。</p>
+<p>newtype宣言では<em>過不足なく1つだけの</em>構築子を定義しなければならず、その構築子は<em>過不足なく1つだけの</em>引数を取る必要があります。
+つまり、newtype宣言は既存の型に新しい名前を与えるものなのです。
+実際、newtypeの値は、元の型と同じ実行時表現を持ってるので、実行時性能のオーバーヘッドがありません。
+しかし、これらは型システムの観点から区別されます。
+型安全性に追加の層を与えるのです。</p>
+<p>例として、ボルト、アンペア、オームのような単位を表現するために、<code>Number</code>の型レベルの別名を定義したくなる場合があるかもしれません。</p>
 <pre><code class="language-haskell">newtype Volt = Volt Number
 newtype Ohm = Ohm Number
 newtype Amp = Amp Number
@@ -624,7 +582,7 @@ TypesDoNotUnify:
     Volt
 -}
 </code></pre>
-<p>もし<code>newtype</code>なしに単に<code>Numebr</code>を使っていたら、コンパイラはこのミスを補足できません。</p>
+<p>もし<code>newtype</code>なしに単なる<code>Number</code>を使っていたら、コンパイラはこのミスを捕捉できません。</p>
 <pre><code class="language-haskell">-- これもコンパイルできますが、型安全ではありません。
 calculateCurrent :: Number -&gt; Number -&gt; Number
 calculateCurrent v r = v / r
@@ -636,24 +594,22 @@ lightbulb :: Number
 lightbulb = 500.0
 
 current :: Number
-current = calculateCurrent lightbulb lightbulb -- 補足されないミス
+current = calculateCurrent lightbulb lightbulb -- 捕捉されないミス
 </code></pre>
-<p>なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、newtypeは任意の数の型変数を取ることが<em>できます</em>。例えば以下のnewtypeは妥当な定義です（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の <em>単一</em> の値を期待します）。</p>
+<p>なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、newtypeは任意の数の型変数を取ることが<em>できます</em>。
+例えば以下のnewtypeは妥当な定義です（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の<em>単一</em>の値を期待します）。</p>
 <pre><code class="language-Haskell">newtype CouldError err a = CouldError (Either err a)
 </code></pre>
-<p>また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあることにも注意してください。
-ただこれは必須ではありません。
-例えば固有の名前であっても妥当です。</p>
+<p>また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあります。ただこれは必須ではありません。例えば別個の名前であっても妥当です。</p>
 <pre><code class="language-haskell">newtype Coulomb = MakeCoulomb Number
 </code></pre>
 <p>この場合<code>Coulomb</code>は<em>型構築子</em>（引数はゼロ）で<code>MakeCoulomb</code>は <em>データ構築子</em>
-です。これらの構築子は異なる名前空間に属しており、<code>Volt</code>の例でそうだったように、名前に一意性があります。これは全てのADTについて言えることです。なお、型構築子とデータ構築子は異なる名前を持つことができますが、実際には同じ名前を共有するのが普通です。上の<code>Amp</code>と<code>Volt</code>の場合がこれです。</p>
-<p>newtypeの別の応用は、実行時表現を変えることなく、既存の型に異なる <em>振舞い</em> を付加することです。その利用例については次章で <em>型クラス</em>
+です。これらの構築子は異なる名前空間に属しており、<code>Volt</code>の例でそうだったように、名前に一意性があります。これは全てのADTについて言えることです。なお、型構築子とデータ構築子は異なる名前を持つことができますが、実際には同じ名前を共有するのが普通です。前述の<code>Amp</code>と<code>Volt</code>の場合がこれです。</p>
+<p>newtypeの別の応用は、実行時表現を変えることなく、既存の型に異なる <em>挙動</em> を加えることです。その利用例については次章で <em>型クラス</em>
 をお話しするときに押さえます。</p>
 <h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
 <ol>
-<li>（簡単）<code>Watt</code>を<code>Number</code>の<code>newtype</code>として定義してください。
-それからこの新しい<code>Watt</code>型と上の<code>Amp</code>と<code>Volt</code>の定義を使って<code>calculateWattage</code>関数を定義してください。</li>
+<li>（簡単）<code>Watt</code>を<code>Number</code>の<code>newtype</code>として定義してください。それからこの新しい<code>Watt</code>型と前述の<code>Amp</code>と<code>Volt</code>の定義を使って<code>calculateWattage</code>関数を定義してください。</li>
 </ol>
 <pre><code class="language-haskell">calculateWattage :: Amp -&gt; Volt -&gt; Watt
 </code></pre>
@@ -663,8 +619,8 @@ current = calculateCurrent lightbulb lightbulb -- 補足されないミス
 <p>ただの <code>Shape</code>の配列であるような、 <code>Picture</code>という型同義語を定義しておきます。</p>
 <pre><code class="language-haskell">type Picture = Array Shape
 </code></pre>
-<p>デバッグしていると <code>Picture</code>を <code>String</code>として表示できるようにしたくなることもあるでしょう。
-これはパターン照合を使用して定義された <code>showPicture</code>関数で行うことができます。</p>
+<p>デバッグしていると <code>Picture</code>を <code>String</code>として表示できるようにしたくなることもあるでしょう。これはパターン照合を使用して定義された
+<code>showPicture</code>関数でできます。</p>
 <pre><code class="language-haskell">showPicture :: Picture -&gt; Array String
 showPicture = map showShape
 </code></pre>
@@ -689,53 +645,43 @@ $ spago repl
   , right  :: Number
   }
 </code></pre>
-<p><code>Picture</code>内の <code>Shape</code>の配列を走査し、最小の外接矩形を累積するため、
-<code>bounds</code>は <code>Data.Foldable</code>の <code>foldl</code>関数を使用しています。</p>
+<p><code>Picture</code>内の <code>Shape</code>の配列を走査し、最小の外接矩形を累積するため、<code>bounds</code>には <code>Data.Foldable</code>の
+<code>foldl</code>関数を使用しています。</p>
 <pre><code class="language-haskell">bounds :: Picture -&gt; Bounds
 bounds = foldl combine emptyBounds
   where
   combine :: Bounds -&gt; Shape -&gt; Bounds
   combine b shape = union (shapeBounds shape) b
 </code></pre>
-<p>基底の場合では、空の <code>Picture</code>の最小外接矩形を求める必要がありますが、
-<code>emptyBounds</code>で定義される空の外接矩形がその条件を満たしています。</p>
-<p>累積関数 <code>combine</code>は <code>where</code>ブロックで定義されています。
-<code>combine</code>は <code>foldl</code>の再帰呼び出しで計算された外接矩形と、
-配列内の次の <code>Shape</code>を引数にとり、
-ユーザ定義の演算子 <code>union</code>を使ってふたつの外接矩形の和を計算しています。
-<code>shapeBounds</code>関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。</p>
+<p>基底の場合では、空の
+<code>Picture</code>の最小外接矩形を求める必要がありますが、<code>emptyBounds</code>で定義される空の外接矩形がその条件を満たしています。</p>
+<p>累積関数 <code>combine</code>は <code>where</code>ブロックで定義されています。<code>combine</code>は
+<code>foldl</code>の再帰呼び出しで計算された外接矩形と、配列内の次の <code>Shape</code>を引数にとり、ユーザ定義の演算子
+<code>union</code>を使って2つの外接矩形の和を計算しています。<code>shapeBounds</code>関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。</p>
 <h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
-<li>（普通）ベクターグラフィックライブラリを拡張し、<code>Shape</code>の面積を計算する新しい操作 <code>area</code>を追加してください。
-この演習では、テキストの面積は0であるものとしてください。</li>
+<li>（普通）ベクターグラフィックライブラリを拡張し、<code>Shape</code>の面積を計算する新しい操作
+<code>area</code>を追加してください。この演習ではテキストの面積は0であるものとしてください。</li>
 <li>（難しい）<code>Shape</code>を拡張し、新しいデータ構築子 <code>Clipped</code>を追加してください。
 <code>Clipped</code>は他の <code>Picture</code>を矩形に切り抜きます。
 切り抜いてきた<code>Picture</code>の境界を計算できるよう、<code>shapeBounds</code>関数を拡張してください。
 なお、これにより<code>Shape</code>は再帰的なデータ型になります。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、関数型プログラミングから基本だが強力なテクニックであるパターン照合を扱いました。
-複雑なデータ構造の部分と照合するために、
-簡単なパターンの使い方だけではなく、
-配列パターンやレコードパターンを使った深いデータ構造の一部の照合方法を見てきました。</p>
-<p>またこの章では、パターン照合に密接に関連する代数的データ型を紹介しました。
-代数的データ型のおかげでデータ構造を簡潔に記述することができ、
-新たな操作でデータ型を拡張するためのモジュール性のある方法が提供されることを見てきました。</p>
+<p>この章では、関数型プログラミングから基本的ながら強力なテクニックであるパターン照合を扱いました。複雑なデータ構造の一部分と照合するために、簡単なパターンの使い方だけではなく、配列パターンやレコードパターンを使った深さのあるデータ構造の一部分との照合方法を見てきました。</p>
+<p>また、この章ではパターン照合に密接に関連する代数的データ型を紹介しました。代数的データ型のおかげでデータ構造を簡潔に記述でき、新たな操作でデータ型を拡張する上でモジュール性のある方法がもたらされることを見てきました。</p>
 <p>最後に強力な抽象化である <em>行多相</em> を扱いました。これにより多くの既存のJavaScript関数に型を与えられます。</p>
-<p>本書では今後も代数的データ型とパターン照合をいろんなところで使用するので、
-今のうちにこれらに習熟しておくと後で実を結ぶことでしょう。
-これ以外にも独自の代数的データ型を作成し、
-パターン照合を使用してそれらを使う関数を書くことを試してみてください。</p>
+<p>本書では今後も代数的データ型とパターン照合をいろんなところで使用するので、今のうちにこれらに習熟しておくと後で実を結ぶことでしょう。これ以外にも独自の代数的データ型を作成し、パターン照合を使用してそれらの型を使う関数を書いてみてください。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="chapter4.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="chapter4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="chapter6.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="chapter6.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -745,11 +691,11 @@ bounds = foldl combine emptyBounds
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="chapter4.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="chapter4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="chapter6.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="chapter6.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

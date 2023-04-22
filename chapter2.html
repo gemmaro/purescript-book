@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ja" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>はじめよう - PureScript by Example</title>
+        <title>はじめよう - 実例によるPureScript</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.ja.html">序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html" class="active"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html" class="active"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +114,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">PureScript by Example</h1>
+                    <h1 class="menu-title">実例によるPureScript</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -151,29 +151,16 @@
                     <main>
                         <h1 id="はじめよう"><a class="header" href="#はじめよう">はじめよう</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では実際のPureScriptの開発環境を立ち上げ、
-いくつかの演習を解き、
-この本で提供されているテストを使って答えを確認します。
-もし学習の仕方が合っていれば
-<a href="https://www.youtube.com/watch?v=GPjPwb6d-70">この章を通して進めるビデオ</a>
-が役に立つでしょう。</p>
+<p>この章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、この本で提供されているテストを使って答えを確認します。
+もし映像を見る学習の仕方が合っているようでしたら、<a href="https://www.youtube.com/watch?v=GPjPwb6d-70">この章を通しで進めるビデオ</a>が役に立つでしょう。</p>
 <h2 id="環境構築"><a class="header" href="#環境構築">環境構築</a></h2>
-<p>最初にドキュメンテーションリポジトリにあるこの
-<a href="https://github.com/purescript/documentation/blob/master/guides/Getting-Started.md">Getting Started
-Guide</a>
-を通しで進め、環境の構築と言語の基礎を学んでください。
-<a href="http://projecteuler.net/problem=1">Project Euler</a>
-への解答例にあるコードがわかりにくかったり見慣れない構文を含んでいたとしても心配要りません。
-来たる章でこの全ての内容をとても詳細に押さえていきます。</p>
+<p>最初にドキュメンテーションリポジトリにあるこの<a href="https://github.com/purescript/documentation/blob/master/guides/Getting-Started.md">はじめの手引き</a>を通しで進め、環境の構築と言語の基礎を学んでください。<a href="http://projecteuler.net/problem=1">Project
+Euler</a>の解答例にあるコードがわかりにくかったり見慣れない構文を含んでいたとしても心配要りません。来たる章でこの全ての内容をとても丁寧に押さえていきます。</p>
 <h2 id="演習を解く"><a class="header" href="#演習を解く">演習を解く</a></h2>
 <p>ここまでで必要な開発ツールをインストールできているので、この本のリポジトリをクローンしてください。</p>
 <pre><code class="language-sh">git clone https://github.com/purescript-contrib/purescript-book.git
 </code></pre>
-<p>本のリポジトリにはPureScriptのコード例とそれぞれの章に付属する演習のための単体テストが含まれます。
-演習の解法を白紙に戻すために必要な初期設定があり、こうすることで解く準備ができます。
-<code>resetSolutions.sh</code>スクリプトを使ってこの工程を簡単にできます。
-その間に<code>removeAnchors.sh</code>スクリプトで全てのアンカーコメントを取り除いておくのもよいでしょう（これらのアンカーはコードスニペットを本の変換後のMarkdownにコピーするために使われており、
-自分のローカルリポジトリではこのアンカーが散らかっていないほうがよいでしょう）。</p>
+<p>本のリポジトリにはPureScriptのコード例とそれぞれの章に付属する演習のための単体テストが含まれます。演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。この工程は<code>resetSolutions.sh</code>スクリプトを使えば簡単にできます。また<code>removeAnchors.sh</code>スクリプトで全てのアンカーコメントを取り除いておくのもよいでしょう（これらのアンカーはコードスニペットを本の変換後のMarkdownにコピーするために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうがよいでしょう）。</p>
 <pre><code class="language-sh">cd purescript-book
 ./scripts/resetSolutions.sh
 ./scripts/removeAnchors.sh
@@ -184,26 +171,23 @@ git commit --all --message &quot;Exercises ready to be solved&quot;
 <pre><code class="language-sh">cd exercises/chapter2
 spago test
 </code></pre>
-<p>以下の成功したテスト出力が出るでしょう。</p>
+<p>以下の成功した旨のテスト出力が出るでしょう。</p>
 <pre><code class="language-sh">→ Suite: Euler - Sum of Multiples
   ✓ Passed: below 10
   ✓ Passed: below 1000
 
 All 2 tests passed! 🎉
 </code></pre>
-<p>なお、<code>answer</code>節（<code>src/Euler.purs</code>にあります）は、
-あらゆる整数以下の3と5の倍数を見付けるように変更されています。
-この<code>answer</code>関数のためのテストスート（<code>test/Main.purs</code>にあります）は
-Getting Started Guideの冒頭にあるテストよりも網羅的です。
+<p>なお、<code>answer</code>関数（<code>src/Euler.purs</code>にあります）は、任意の整数以下の3と5の倍数を見付けるように変更されています。
+この<code>answer</code>関数のためのテストスート（<code>test/Main.purs</code>にあります）ははじめの手引きの冒頭にあるテストよりも網羅的です。
 はじめの章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。</p>
 <p>本の残りの部分には多くの演習が含まれます。
-<code>Test.MySolutions</code>モジュール (<code>test/MySolutions.purs</code>) に自分の解法を書けば、
-提供されているテストスートを使って確認できます。</p>
+<code>Test.MySolutions</code>モジュール (<code>test/MySolutions.purs</code>)
+に自分の解法を書けば、提供されているテストスートを使って確認できます。</p>
 <p>テスト駆動開発のスタイルでこの次の演習を一緒に進めてみましょう。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（普通）直角三角形の対角線（あるいは斜辺）の長さを
-他の2つの辺の長さを使って計算する<code>diagonal</code>関数を書いてください。</li>
+<li>（普通）直角三角形の対角線（あるいは斜辺）の長さを他の2つの辺の長さを使って計算する<code>diagonal</code>関数を書いてください。</li>
 </ol>
 <h2 id="解法"><a class="header" href="#解法">解法</a></h2>
 <p>この演習のテストを有効にするところから始めます。
@@ -226,8 +210,7 @@ at test/Main.purs:21:27 - 21:35 (line 21, column 27 - line 21, column 35)
 
   Unknown value diagonal
 </code></pre>
-<p>まずはこの関数が欠陥のあるバージョンであるときに何が起こるのか見てみましょう。
-以下のコードを<code>test/MySolutions.purs</code>に追加してください。</p>
+<p>まずは、この関数が欠陥のあるバージョンになっているときに何が起こるのか見てみましょう。以下のコードを<code>test/MySolutions.purs</code>に追加してください。</p>
 <pre><code class="language-hs">import Data.Number (sqrt)
 
 diagonal w h = sqrt (w * w + h)
@@ -240,7 +223,7 @@ diagonal w h = sqrt (w * w + h)
 2 tests failed:
 </code></pre>
 <p>あーあ、全然正しくありませんでした。
-ピタゴラスの定理を正しい適用することでこれを修正しましょう。
+ピタゴラスの定理を正しく適用して修正しましょう。
 関数を以下のように変えます。</p>
 <pre><code class="language-hs">diagonal w h = sqrt (w * w + h * h)
 </code></pre>
@@ -254,29 +237,25 @@ diagonal w h = sqrt (w * w + h)
 
 All 4 tests passed! 🎉
 </code></pre>
-<p>成功です！
+<p>成功です。
 これで次の演習を自力で解くための準備ができました。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（簡単）指定された半径の円の面積を計算する関数<code>circleArea</code>を書いてみましょう。<code>Numbers</code>モジュールで定義されている
-<code>pi</code>定数を使用してください。 <em>ヒント</em> ： <code>import Data.Number</code>文を修正して、
-<code>pi</code>をインポートすることを忘れないようにしましょう。</li>
-<li>（普通）<code>Int</code>を取って<code>100</code>で割ったあとの余りを返す関数<code>leftoverCents</code>を書いてみましょう。<code>rem</code>関数を使ってください。<a href="https://pursuit.purescript.org/">Pursuit</a>でこの関数を検索して、使用法とどのモジュールからインポートしてくるか調べましょう。
-<em>補足</em> ：自動補完の提案を受け付ければ、IDEでこの関数の自動的なインポートがサポートされているかもしれません。</li>
+<li>（簡単）指定された半径の円の面積を計算する関数<code>circleArea</code>を書いてみましょう。
+<code>Numbers</code>モジュールで定義されている <code>pi</code>定数を使用してください。
+<em>手掛かり</em>： <code>import Data.Number</code>文を修正して、 <code>pi</code>をインポートすることを忘れないようにしましょう。</li>
+<li>（普通）<code>Int</code>を取って<code>100</code>で割ったあとの余りを返す関数<code>leftoverCents</code>を書いてみましょう。<code>rem</code>関数を使ってください。<a href="https://pursuit.purescript.org/">Pursuit</a>でこの関数を検索して、使用法とどのモジュールからインポートしてくるか調べましょう。<em>補足</em>：自動補完の提案を有効にしていたら、IDE側でこの関数の自動的なインポートに対応しているかもしれません。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章ではPureScriptコンパイラとSpagoツールをインストールしました。
 演習の解答の書き方と正しさの確認方法も学びました。</p>
-<p>この先の章にはより多くの演習があり、それらに取り組むうちに学習の助けになっているでしょう。
-演習のどこかでお手あげになったら、
-この本の<a href="chapter1.ja.html#getting-help">困ったときは</a>の節に挙げられている
-コミュニティの資料のどれでも見てみるか、
-この<a href="https://github.com/purescript-contrib/purescript-book/issues">本のリポジトリ</a>にイシューを報告することさえできます。
+<p>この先の章にはもっと沢山の演習があり、それらに取り組むうちに学習の助けになっているでしょう。
+演習のどこかでお手上げになったら、この本の<a href="chapter1.ja.html#getting-help">困ったときは</a>の節に挙げられているコミュニティの資料のどれかを見てみたり、この<a href="https://github.com/purescript-contrib/purescript-book/issues">本のリポジトリ</a>にイシューを報告したりできます。
 こうした演習の敷居を下げることに繋がる読者のフィードバックが、本の向上の助けになっています。</p>
 <p>章の全ての演習を解いたら、<code>no-peeking/Solutions.purs</code>にあるものと解答とを比べられます。
 ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないことがないようにしてください。
 そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。
-演習のネタバレをするよりも、小さなヒントをあげたいからです。
+演習のネタバレをするよりも、小さな手掛かりをあげたいからです。
 もっとエレガントな解法（とはいえ本の内容で押さえられている知識のみを必要とするもの）を見つけたときはPRを送ってください。</p>
 <p>リポジトリは継続して改訂されているため、それぞれの新しい章を始める前に更新を確認するようにしてください。</p>
 
@@ -284,11 +263,11 @@ All 4 tests passed! 🎉
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="chapter1.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="chapter1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="chapter3.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="chapter3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -298,11 +277,11 @@ All 4 tests passed! 🎉
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="chapter1.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="chapter1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="chapter3.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="chapter3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

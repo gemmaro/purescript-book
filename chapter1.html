@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ja" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>導入 - PureScript by Example</title>
+        <title>導入 - 実例によるPureScript</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.ja.html">序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html" class="active"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html" class="active"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +114,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">PureScript by Example</h1>
+                    <h1 class="menu-title">実例によるPureScript</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -154,9 +154,8 @@
 <p>関数型プログラミングの手法がJavaScriptに姿を現しはじめてからしばらく経ちます。</p>
 <ul>
 <li>
-<p><a href="https://underscorejs.org">UnderscoreJS</a>などのライブラリがあれば、開発
-者は<code>map</code>や <code>filter</code>、<code>reduce</code>といった実績のある関数を活用して、小さい
-プログラムを組み合わせることで大きなプログラムを作ることができます。</p>
+<p><a href="https://underscorejs.org">UnderscoreJS</a>などのライブラリがあれば、開発者は<code>map</code>や
+<code>filter</code>、<code>reduce</code>といった実績のある関数を活用して、小さいプログラムを組み合わせることで大きなプログラムを作ることができます。</p>
 <pre><code class="language-javascript">var sumOfPrimes =
     _.chain(_.range(1000))
      .filter(isPrime)
@@ -167,8 +166,7 @@
 </code></pre>
 </li>
 <li>
-<p>NodeJSにおける非同期プログラミングでは、第一級の値としての関数をコール
-バックを定義するために多用しています。</p>
+<p>NodeJSにおける非同期プログラミングでは、第一級の値としての関数をコールバックを定義するために多用しています。</p>
 <pre><code class="language-javascript">import { readFile, writeFile } from 'fs'
 
 readFile(sourceFile, function (error, data) {
@@ -191,25 +189,20 @@ readFile(sourceFile, function (error, data) {
 JavaScriptは冗長で、型付けされず、強力な抽象化を欠いているのです。
 また、無秩序に書かれたJavaScriptコードでは、等式推論がとても困難です。</p>
 <p>PureScriptはこのような問題を解決すべく作られたプログラミング言語です。
-PureScriptは、とても表現力豊かでありながらわかりやすく読みやすいコードを書けるようにする、
-軽量な構文を備えています。
+PureScriptは、とても表現力豊かでありながらわかりやすく読みやすいコードを書けるようにする、軽量な構文を備えています。
 強力な抽象化を提供する豊かな型システムも採用しています。
-また、JavaScriptやJavaScriptへとコンパイルされる他の言語と相互運用するときに重要な、
-高速で理解しやすいコードを生成します。
-PureScriptをひとことで言えば、純粋関数型プログラミングの理論的な強力さと、
-JavaScriptのお手軽で緩いプログラミングスタイルとの、
-とても現実的なバランスを狙った言語だということを理解して頂けたらと思います。</p>
+また、JavaScriptやJavaScriptへとコンパイルされる他の言語と相互運用するときに重要な、高速で理解しやすいコードを生成します。
+PureScriptを一言で言えば、純粋関数型プログラミングの理論的な強力さと、JavaScriptのお手軽で緩いプログラミングスタイルとの、とても現実的なバランスを狙った言語だということを理解して頂けたらと思います。</p>
 <h2 id="型と型推論"><a class="header" href="#型と型推論">型と型推論</a></h2>
-<p>動的型付けの言語と静的型付けの言語をめぐる議論についてはよく知られています。
-PureScriptは <em>静的型付け</em> の言語、つまり正しいプログラムはコンパイラによってその動作を示すような <em>型</em> を与えられる言語です。
-逆にいえば、型を​​与えることができないプログラムは <em>誤ったプログラム</em> であり、コンパイラによって拒否されます。
-動的型付けの言語とは異なり、PureScriptでは型は <em>コンパイル時</em> のみに存在し、実行時には型の表現はありません。</p>
+<p>動的型付けの言語と静的型付けの言語をめぐる議論についてはよく知られています。PureScriptは<em>静的型付け</em>の言語、つまり正しいプログラムはコンパイラによってその動作を示すような<em>型</em>を与えられる言語です。逆にいえば、型を与えることができないプログラムは
+<em>誤ったプログラム</em>
+であり、コンパイラによって拒否されます。動的型付けの言語とは異なり、PureScriptでは型は<em>コンパイル時</em>のみに存在し、実行時には型の表現はありません。</p>
 <p>PureScriptの型は、これまでJavaやC#のような他の言語で見たような型とは、いろいろな意味で異なっていることにも注意することが大切です。
-おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、PureScriptの型はMLとHaskellのような言語に影響を受けています。
+おおまかに言えばPureScriptの型はJavaやC#と同じ目的を持っているものの、PureScriptの型はMLやHaskellのような言語に影響を受けています。
 開発者がプログラムについての強い主張を表明できるので、PureScriptの型は表現力豊かなのです。
-最も重要なのは、PureScriptの型システムは <em>型推論</em> (type inference) をサポートしていることです。
-型推論があれば他の言語より遥かに少ない型注釈で済み、型システムを厄介者ではなく <em>道具</em> にしてくれます。
-簡単な例を示すと、次のコードは <em>数</em> を定義していますが、それが <code>Number</code>型だという注釈はコードのどこにもありません。</p>
+最も重要なのは、PureScriptの型システムは<em>型推論</em>に対応していることです。
+型推論があれば他の言語より遥かに少ない型注釈で済み、型システムを厄介者ではなく<em>道具</em>にしてくれます。
+簡単な例を示すと、次のコードは<em>数</em>を定義していますが、それが <code>Number</code>型だという注釈はコードのどこにもありません。</p>
 <pre><code class="language-haskell">iAmANumber =
   let square x = x * x
   in square 42.0
@@ -219,71 +212,49 @@ PureScriptは <em>静的型付け</em> の言語、つまり正しいプログ�
 <pre><code class="language-haskell">iterate f 0 x = x
 iterate f n x = iterate f (n - 1) (f x)
 </code></pre>
-<p>ここで <code>x</code>の型は不明ですが、
-<code>x</code>がどんな型を持っているかにかかわらず、
-<code>iterate</code>が型システムの規則に従っていることをコンパイラは検証することができます。</p>
-<p>本書で納得していただきたい（または既にお持ちの信条に寄り添って改めて断言したい）ことは、
-静的型が単にプログラムの正しさに自信を持つためだけのものではなく、
-それ自身の正しさによって開発の手助けになるものでもあるということです。
-JavaScriptではごく単純な抽象化を施すのでも大規模なコードのリファクタリングをすることは難しいですが、
-型検証器のある表現力豊かな型システムは、
-リファクタリングさえ楽しく対話的な体験にしてくれます。</p>
-<p>加えて、型システムによって提供されるこのセーフティネットは、
-より高度な抽象化をも可能にします。
-実際に、関数型プログラミング言語Haskellによって知られるようになった、
-型駆動の強力な抽象化の形式である『型クラス』をPureScriptは備えています。</p>
+<p>ここで
+<code>x</code>の型は不明ですが、<code>x</code>がどんな型を持っているかにかかわらず、<code>iterate</code>が型システムの規則に従っていることをコンパイラは検証できます。</p>
+<p>本書で納得していただきたい（または既にお持ちの信条に寄り添って改めて断言したい）ことは、静的型が単にプログラムの正しさに自信を持つためだけのものではなく、それ自体の正しさによって開発の手助けになるものでもあるということです。JavaScriptではごく単純な抽象化を施すのでも大規模なコードのリファクタリングをすることは難しいですが、型検証器のある表現力豊かな型システムは、リファクタリングさえ楽しく対話的な体験にしてくれます。</p>
+<p>加えて、型システムによって提供されるこの安全網は、より高度な抽象化をも可能にします。
+実際に、関数型プログラミング言語Haskellによって知られるようになった、型駆動の強力な抽象化の形式である『型クラス』をPureScriptは備えています。</p>
 <h2 id="多言語webプログラミング"><a class="header" href="#多言語webプログラミング">多言語Webプログラミング</a></h2>
-<p>関数型プログラミングはすでに多くの成功を収めています。
-枚挙に暇がありませんが、特に成功している応用例をいくつか挙げると、
-データ解析、構文解析、コンパイラの実装、ジェネリックプログラミング、並列処理などがあります。</p>
-<p>PureScriptのような関数型言語は、
-アプリケーション開発の最初から最後までを​実施することが可能です。
-値や関数の型を提供することで既存のJavaScriptコードをインポートし、
-通常のPureScriptコードからこれらの関数を使用する機能をPureScriptは提供しています。
+<p>関数型プログラミングは既に多くの成功を収めています。
+枚挙に暇がありませんが、特に成功している応用例を幾つか挙げると、データ解析、構文解析、コンパイラの実装、ジェネリックプログラミング、並列処理などがあります。</p>
+<p>PureScriptのような関数型言語でアプリケーション開発の最初から最後までを実施できるでしょう。
+値や関数の型を提供することで既存のJavaScriptコードをインポートし、通常のPureScriptコードからこれらの関数を使用する機能をPureScriptは提供しています。
 この手法については本書の後半で見ていくことになります。</p>
-<p>しかしながら、PureScriptの強みのひとつは、JavaScriptを対象とする他​​の言語との相互運用性にあります。アプリケーションの開発の一部にだけPureScriptを使用し、JavaScriptの残りの部分を記述するのに他の言語を使用するという方法もあります。</p>
-<p>いくつかの例を示します。</p>
+<p>しかし、PureScriptの強みの1つは、JavaScriptを対象とする他の言語との相互運用性にあります。
+アプリケーションの開発の一部にだけPureScriptを使用し、JavaScriptの残りの部分を記述するのに他の言語を使用するという方法もあります。</p>
+<p>幾つかの例を示します。</p>
 <ul>
-<li>中核となる処理はPureScriptで記述し、ユーザーインターフェイスは
-JavaScriptで記述する</li>
-<li>JavaScriptや、他のJavaScriptにコンパイルする言語でアプリケーションを書
-き、PureScriptでそのテストを書く</li>
-<li>既存のアプリケーションのユーザインタフェースのテストを自動化するために
-PureScriptを使用する</li>
+<li>中核となる処理はPureScriptで記述し、ユーザーインターフェイスはJavaScriptで記述する</li>
+<li>JavaScriptや、他のJavaScriptにコンパイルする言語でアプリケーションを書き、PureScriptでそのテストを書く</li>
+<li>既存のアプリケーションのユーザインターフェースのテストを自動化するためにPureScriptを使用する</li>
 </ul>
 <p>この本では小規模な課題をPureScriptで解決することに焦点を当てます。
-ここで学ぶ手法は大規模なアプリケーションに組み込むこともできますが、
-これについてはJavaScriptからPureScriptコードを呼び出す方法、およびその逆についても見ていきます。</p>
+ここで学ぶ手法は大規模なアプリケーションに組み込むこともできますが、JavaScriptからPureScriptコードを呼び出す方法、及びその逆についても見ていきます。</p>
 <h2 id="ソフトウェア要件"><a class="header" href="#ソフトウェア要件">ソフトウェア要件</a></h2>
 <p>この本でのソフトウェア要件は最小限です。
 第1章では開発環境の構築を一から案内します。
 これから使用するツールは、ほとんどの現代のオペレーティングシステムの標準リポジトリで使用できるものです。</p>
-<p>PureScriptコンパイラ自体はバイナリ形式でダウンロードすることもできますし、
-最新のHaskellコンパイラが稼働しているシステム上でソースからビルドすることもできます。
+<p>PureScriptコンパイラ自体はバイナリ形式でもダウンロードできますし、最新のHaskellコンパイラが動くシステム上でソースからもビルドできます。
 次の章ではこの手順を説明していきます。</p>
 <p>本書のこのバージョンのコードは<code>0.15.*</code>バージョンのPureScriptコンパイラと互換性があります。</p>
 <h2 id="読者について"><a class="header" href="#読者について">読者について</a></h2>
-<p>読者はJavaScriptの基本をすでに理解しているものと仮定します。
-すでにNPMやBowerのようなJavaScriptのエコシステムでの経験があれば、
-自身の好みに応じて標準設定をカスタマイズしたい場合などに役に立ちます。
-ですが、そのような知識は必須ではありません。</p>
-<p>関数型プログラミングの予備知識は必要ありませんが、
-あっても害にはならないでしょう。
-新しい考えかたは実例とともに登場するので、
-これから使う関数型プログラミングからこうした概念に対する直感的な理解を得ることができるはずです。</p>
-<p>PureScriptはプログラミング言語Haskellに強く影響を受けているため、Haskellに通じている読者はこの本の中で提示された概念や構文の多くに見覚えがあるでしょう。しかしながら、読者はPureScriptとHaskellの間にはいくつか重要な違いがあることも理解しておかなければなりません。ここで紹介する概念の多くはHaskellでも同じように解釈できるとはいえ、どちらかの言語での考え方を他方の言語でそのまま応用しようとすることは、必ずしも適切ではありません。</p>
+<p>読者はJavaScriptの基本を既に理解しているものと仮定します。
+既にNPMやBowerのようなJavaScriptのエコシステムでの経験があれば、自身の好みに応じて標準設定をカスタマイズしたい場合などに役に立ちます。
+ですがそのような知識は必要ありません。</p>
+<p>関数型プログラミングの予備知識は必要ありませんが、あっても害にはならないでしょう。
+新しい考えかたは実例とともに登場するので、これから使う関数型プログラミングからこうした概念に対する直感的な理解を得ることができるはずです。</p>
+<p>PureScriptはプログラミング言語Haskellに強く影響を受けているため、Haskellに通じている読者はこの本の中で提示された概念や構文の多くに見覚えがあるでしょう。
+しかし、読者はPureScriptとHaskellの間には幾らか重要な違いがあることも理解しておかなければなりません。
+ここで紹介する概念の多くはHaskellでも同じように解釈できるとはいえ、どちらかの言語での考え方を他方の言語でそのまま応用しようとすることは、必ずしも適切ではありません。</p>
 <h2 id="本書の読み進めかた"><a class="header" href="#本書の読み進めかた">本書の読み進めかた</a></h2>
 <p>本書の各章は、概ね章ごとに完結しています。
-しかしながら、多少の関数型プログラミングの経験がある初心者でも、
-まずは各章を順番に進めていくことをおすすめします。
+しかし、多少の関数型プログラミングの経験がある初心者でも、まずは各章を順番に進めていくことをお勧めします。
 最初の数章では、本書の後半の内容を理解するために必要な基礎知識を養います。
-関数型プログラミングの考え方に十分通じた読者
-（特にMLやHaskellのよう強く型付けされた言語での経験を持つ読者）なら、
-本書の前半の章を読まなくても、後半の章のコードの大まかな理解を得ることがおそらく可能でしょう。</p>
-<p>各章ではそれぞれひとつの実用的な例に焦点をあて、新しい考え方を導入するための動機付けとして用います。
-各章のコードは本書の<a href="https://github.com/purescript-contrib/purescript-book">GitHubのリポジトリ</a>から入手できます。
-ソースコードから抜粋したコード片が掲載されている章もありますが、完全に理解するためには本書に掲載されたコードと平行してリポジトリのソースコードを読む必要があります。
-対話式環境PSCiで実行し理解を確かめられるように、長めの節には短いコード片が掲載されていることがあります。</p>
+関数型プログラミングの考え方に充分通じた読者（特にMLやHaskellのよう強く型付けされた言語での経験を持つ読者）なら、本書の前半の章を読まなくても、後半の章のコードの大まかな理解を得ることが恐らく可能でしょう。</p>
+<p>各章ではそれぞれ1つの実用的な例に焦点をあて、新しい考え方を導入するための動機付けとして用います。各章のコードは本書の<a href="https://github.com/purescript-contrib/purescript-book">GitHubのリポジトリ</a>から入手できます。ソースコードから抜粋したコード片が掲載されている章もありますが、完全に理解するためには本書に掲載されたコードと平行してリポジトリのソースコードを読む必要があります。対話式環境PSCiで実行し理解を確かめられるように、長めの節には短いコード片が掲載されていることがあります。</p>
 <p>コード例は次のように等幅フォントで示されています。</p>
 <pre><code class="language-haskell">module Example where
 
@@ -303,65 +274,52 @@ OSの利用者ならそのまま適用できますが、Windowsの利用者は�
 <p>各章には演習が付いており、それぞれ難易度も示されています。各章の内容を完全に理解するために、演習に取り組むことを強くお勧めします。</p>
 <p>この本は初心者にPureScriptへの導入を提供することを目的としており、問題についてのお決まりの解決策の一覧を提供するような種類の本ではありません。初心者にとってこの本を読むのは楽しい挑戦になるはずですし、本書の内容を読み演習に挑戦すればだいたいの利益を得られるでしょうが、なにより重要なのは、あなたが自分自身のコードを書いてみることです。</p>
 <h2 id="困ったときには"><a class="header" href="#困ったときには">困ったときには</a></h2>
-<p>もしどこかでつまずいたときには、PureScriptを学べるオンラインで利用可能な資料がたくさんあります。</p>
+<p>もしどこかでつまずいたときには、PureScriptを学べるオンラインで利用可能な資料が沢山あります。</p>
 <ul>
-<li><a href="https://discord.gg/vKn9up84bp">PureScriptのDiscordサーバ</a>は抱えている
-問題についてチャットするのに良い場所です。サーバはPureScriptについての
-チャット専用です。</li>
-<li><a href="https://discourse.purescript.org/">PurescriptのDiscourseフォーラム</a>も
-よくある問題への解決策を探すのに良い場所です。メッセージ履歴が約2週間
-しか保たないSlackとは違い、ここで質問した内容は将来の読者の助けとして
-使えるでしょう。</li>
+<li><a href="https://discord.gg/vKn9up84bp">PureScriptのDiscordサーバ</a>は抱えている問題についてチャットするのに良い場所です。
+サーバはPureScriptについてのチャット専用です。</li>
+<li><a href="https://discourse.purescript.org/">PurescriptのDiscourseフォーラム</a>もよくある問題への解決策を探すのに良い場所です。メッセージ履歴が約2週間しか保たないSlackとは違い、ここで質問した内容は将来の読者の助けとして使えるでしょう。</li>
 <li><a href="https://github.com/jordanmartinez/purescript-jordans-reference">PureScript: Jordan's
-Reference</a>
-は別のかなり深く踏み込んだ学習資料です。この本の中のある概念が理解しに
-くかったら、そちらの参考書の対応する節を読むとよいでしょう。</li>
-<li><a href="https://pursuit.purescript.org">Pursuit</a>はPureScriptの型と関数を検索
-できるデータベースです。Pursuitのヘルプページを読むと<a href="https://pursuit.purescript.org/help/users">どのような種類の
-検索ができるのかがわかりま
-す</a>。</li>
+Reference</a>は別のかなり深く踏み込んだ学習資料です。
+この本の中のある概念が理解しにくかったら、そちらの参考書の対応する節を読むとよいでしょう。</li>
+<li><a href="https://pursuit.purescript.org">Pursuit</a>はPureScriptの型と関数を検索できるデータベースです。
+Pursuitのヘルプページを読むと<a href="https://pursuit.purescript.org/help/users">どのような種類の検索ができるのかがわかります</a>。</li>
 <li>非公式の<a href="https://github.com/JordanMartinez/purescript-cookbook">PureScript
-Cookbook</a>は「X
-するにはどうするの？」といった類の質問にコードを混じえて答えを提供しま
-す。</li>
-<li><a href="https://github.com/purescript/documentation">PureScriptドキュメントリポジト
-リ</a>には、PureScriptの開発
-者や利用者が書いた幅広い話題の記事と例が集まっています。</li>
-<li><a href="https://www.purescript.org">PureScriptのWebサイト</a>には、コード例、映
-像、他の初心者向け資料を含むいくつかの学習資料へのリンクがあります。</li>
-<li><a href="https://try.purescript.org">Try PureScript!</a>は利用者がWebブラウザで
-PureScriptのコードをコンパイルすることができるWebサイトです。いくつか
-の簡単なコードの例があります。</li>
+Cookbook</a>は「Xするにはどうするの」といった類の質問にコードを混じえて答えを提供します。</li>
+<li><a href="https://github.com/purescript/documentation">PureScriptドキュメントリポジトリ</a>には、PureScriptの開発者や利用者が書いた幅広い話題の記事と例が集まっています。</li>
+<li><a href="https://www.purescript.org">PureScriptのWebサイト</a>には、コード例、映像、他の初心者向け資料を含む幾つかの学習資料へのリンクがあります。</li>
+<li><a href="https://try.purescript.org">Try
+PureScript!</a>は利用者がWebブラウザでPureScriptのコードをコンパイルできるWebサイトです。
+幾つかの簡単なコードの例があります。</li>
 </ul>
-<p>もし例を読んで学ぶ方が好きでしたら、GitHubの <code>purescript</code>組織、
-<code>purescript-node</code>組織および <code>purescript-contrib</code>組織にはPureScriptコー
-ドの例がたくさんあります。</p>
+<p>もし例を読んで学ぶ方が好きでしたら、GitHubの
+<code>purescript</code>組織、<code>purescript-node</code>組織及び<code>purescript-contrib</code>組織にはPureScriptコードの例が沢山あります。</p>
 <h2 id="著者について"><a class="header" href="#著者について">著者について</a></h2>
 <p>私はPureScriptコンパイラの最初の開発者です。私はカリフォルニア州ロサンゼルスを拠点にしており、8ビットパーソナルコンピュータ、Amstrad
 CPC上のBASICでまだ幼い時にプログラミングを始めました。
-それ以来、私はいくつものプログラミング言語（JavaやScala、C#、F#、Haskell、そしてPureScript）で業務に携わってきました。</p>
-<p>プロとしての経歴が始まって間もなく、私は関数型プログラミングと数学の関係を理解するようになり、
-そしてプログラミング言語Haskellを使って関数型の概念の学習を楽しみました。</p>
+それ以来、私は幾つものプログラミング言語（JavaやScala、C#、F#、Haskell、そしてPureScript）で業務に携わってきました。</p>
+<p>プロとしての経歴が始まって間もなく、私は関数型プログラミングと数学の関係を理解するようになり、そしてプログラミング言語Haskellを使って関数型の概念の学習を楽しみました。</p>
 <p>JavaScriptでの経験をもとに、私はPureScriptコンパイラの開発を始めることにしました。
-気が付くとHaskellのような言語から取り上げた関数型プログラミングの手法を使っていましたが、それを応用するためのもっと理にかなった環境を求めていました。
-そのとき検討した案のなかには、Haskellからその意味論を維持しながらJavaScriptへとコンパイルするいろいろな試み（Fay、Haste、GHCJS）もありましたが、私が興味を持っていたのは、この問題への別の切り口からのアプローチ、すなわちHaskellのような言語の構文と型システムを楽しみながらJavaScriptの意味論も維持するということが、どのようにすれば可能になるのかでした。</p>
+気が付くとHaskellのような言語から取り上げた関数型プログラミングの手法を使っていましたが、それを応用するためのもっと理に適った環境を求めていました。
+そのとき検討した案のなかには、Haskellからその意味論を維持しながらJavaScriptへとコンパイルするいろいろな試み（Fay、Haste、GHCJS）もありました。
+しかし私が興味を持っていたのはこの問題への別の切り口からのアプローチ、すなわちHaskellのような言語の構文と型システムを楽しみながらJavaScriptの意味論も維持するということが、どのようにすれば可能になるのかでした。</p>
 <p>私は<a href="http://blog.functorial.com">ブログ</a>を運営しており、<a href="http://twitter.com/paf31">Twitterで連絡をとる</a>こともできます。</p>
 <h2 id="謝辞"><a class="header" href="#謝辞">謝辞</a></h2>
 <p>現在の状態に到達するまでPureScriptを手伝ってくれた多くの協力者に感謝したいと思います。コンパイラやツール、ライブラリ、ドキュメント、テストでの組織的で弛まぬ努力がなかったら、プロジェクトは間違いなく失敗していたことでしょう。</p>
 <p>この本の表紙に表示されたPureScriptのロゴはGareth Hughesによって作成されたもので、<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
 Attribution 4.0
 license</a>の条件の下で再利用させて頂いています 。</p>
-<p>最後に、この本の内容に関する反応や訂正をくださったすべての方に、心より感謝したいと思います。</p>
+<p>最後に、この本の内容に関する反応や訂正をくださった全ての方に、心より感謝したいと思います。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="index.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="chapter2.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="chapter2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -371,11 +329,11 @@ license</a>の条件の下で再利用させて頂いています 。</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="index.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="chapter2.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="chapter2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

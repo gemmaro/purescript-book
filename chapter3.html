@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ja" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>関数とレコード - PureScript by Example</title>
+        <title>関数とレコード - 実例によるPureScript</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.ja.html">序文 (Foreword)</a></li><li class="chapter-item expanded "><a href="chapter1.ja.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.ja.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.ja.html" class="active"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.ja.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.ja.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.ja.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.ja.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.ja.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.ja.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.ja.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.ja.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.ja.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.ja.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.ja.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html" class="active"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +114,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">PureScript by Example</h1>
+                    <h1 class="menu-title">実例によるPureScript</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -151,11 +151,11 @@
                     <main>
                         <h1 id="関数とレコード"><a class="header" href="#関数とレコード">関数とレコード</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、関数およびレコードというPureScriptプログラムの2つの構成要素を導入します。
-さらに、どのようにPureScriptプログラムを構造化するのか、どのように型をプログラム開発に役立てるかを見ていきます。</p>
-<p>連絡先のリストを管理する簡単​​な住所録アプリケーションを作成していきます。このコード例により、PureScriptの構文からいくつかの新しい概念を導入します。</p>
+<p>この章では、関数及びレコードというPureScriptプログラムの2つの構成要素を導入します。更に、どのようにPureScriptプログラムを構造化するのか、どのように型をプログラム開発に役立てるかを見ていきます。</p>
+<p>連絡先のリストを管理する簡単な住所録アプリケーションを作成していきます。
+このコード例により、PureScriptの構文から幾つかの新しい概念を導入します。</p>
 <p>このアプリケーションのフロントエンドは対話式モードであるPSCiを使うようにしていますが、このコードを土台にJavaScriptでフロントエンドを書くこともできるでしょう。
-実際に後の章で、フォームの検証と保存および復元の機能を追加します。</p>
+実際に後の章で、フォームの検証と保存及び復元の機能を追加します。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>この章のソースコードは <code>src/Data/AddressBook.purs</code>というファイルに含まれています。
 このファイルは次のようなモジュール宣言とインポート一覧から始まります。</p>
@@ -167,17 +167,17 @@ import Control.Plus (empty)
 import Data.List (List(..), filter, head)
 import Data.Maybe (Maybe)
 </code></pre>
-<p>ここでは、いくつかのモジュールをインポートします。</p>
+<p>ここでは、幾つかのモジュールをインポートします。</p>
 <ul>
 <li><code>Control.Plus</code>モジュールには<code>empty</code>値が定義されています。</li>
 <li><code>Data.List</code>モジュールは<code>lists</code>パッケージで提供されておりSpagoを使ってインストールできます。
-連結リストを使うために必要ないくつかの関数が含まれています。</li>
+連結リストを使うために必要な幾つかの関数が含まれています。</li>
 <li><code>Data.Maybe</code>モジュールは、オプショナルな値を扱うためのデータ型と関数を定義しています。</li>
 </ul>
 <p>訳者注：ダブルドット (<code>..</code>) を使用すると、
 指定された型コンストラクタのすべてのデータコンストラクタをインポートできます。</p>
 <p>このモジュールのインポート内容が括弧内で明示的に列挙されていることに注目してください。明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣です。</p>
-<p>ソースコードリポジトリを複製したと仮定すると、この章のプロジェクトは次のコマンドでSpagoを使用して構築できます。</p>
+<p>ソースコードリポジトリをクローンしたと仮定すると、この章のプロジェクトは次のコマンドでSpagoを使用して構築できます。</p>
 <pre><code class="language-text">$ cd chapter3
 $ spago build
 </code></pre>
@@ -198,15 +198,15 @@ String
 Boolean
 </code></pre>
 <p>PureScriptには他にも、整数、文字、配列、レコード、関数といった組み込み型が定義されています。</p>
-<p>整数は、小数点以下を省くことによって、型 <code>Number</code>の浮動小数点数の値と区別されます。</p>
+<p>小数点以下を省くと整数になり、型 <code>Number</code>の浮動小数点数の値と区別されます。</p>
 <pre><code class="language-text">&gt; :type 1
 Int
 </code></pre>
-<p>二重引用符を使用する文字列リテラルとは異なり、文字リテラルは一重引用符で囲みます。</p>
+<p>二重引用符を使用する文字列直値とは異なり、文字直値は一重引用符で囲みます。</p>
 <pre><code class="language-text">&gt; :type 'a'
 Char
 </code></pre>
-<p>配列はJavaScriptの配列に対応していますが、JavaScriptの配列とは異なり、PureScriptの配列のすべての要素は同じ型を持つ必要があります。</p>
+<p>配列はJavaScriptの配列に対応していますが、JavaScriptの配列とは異なり、PureScriptの配列の全ての要素は同じ型を持つ必要があります。</p>
 <pre><code class="language-text">&gt; :type [1, 2, 3]
 Array Int
 
@@ -216,8 +216,8 @@ Array Boolean
 &gt; :type [1, false]
 Could not match type Int with type Boolean.
 </code></pre>
-<p>最後の例で起きているエラーは型検証器によって報告されたもので、配列の2つの要素の型を<em>単一化</em>（Unification、等価にするの意）しようとして失敗したことを示しています。</p>
-<p>レコードはJavaScriptのオブジェクトに対応しており、レコードリテラルはJavaScriptのオブジェクトリテラルと同じ構文になっています。</p>
+<p>最後の例で起きているエラーは型検証器によって報告されたもので、配列の2つの要素の型を<em>単一化</em>（Unification、等価にする意）しようとして失敗したことを示しています。</p>
+<p>レコードはJavaScriptのオブジェクトに対応しており、レコード直値はJavaScriptのオブジェクト直値と同じ構文になっています。</p>
 <pre><code class="language-text">&gt; author = { name: &quot;Phil&quot;, interests: [&quot;Functional Programming&quot;, &quot;JavaScript&quot;] }
 
 &gt; :type author
@@ -227,7 +227,7 @@ Could not match type Int with type Boolean.
 </code></pre>
 <p>この型が示しているのは、指定されたオブジェクトは、 <code>String</code>型のフィールド <code>name</code> と <code>Array String</code>つまり
 <code>String</code>の配列の型のフィールド <code>interests</code> という2つの <em>フィールド</em> (field) を持っているということです。</p>
-<p>レコードのフィールドは、ドットに続けて参照したいフィールドのラベルを書くと参照することができます。</p>
+<p>ドットに続けて参照したいフィールドのラベルを書くとレコードのフィールドを参照できます。</p>
 <pre><code class="language-text">&gt; author.name
 &quot;Phil&quot;
 
@@ -242,35 +242,38 @@ forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 &gt; :type const
 forall a b. a -&gt; b -&gt; a
 </code></pre>
-<p>ファイルのトップレベルでは、等号の直前に引数を指定することで関数を定義することができます。</p>
+<p>ファイルのトップレベルでは、等号の直前に引数を指定することで関数を定義できます。</p>
 <pre><code class="language-haskell">add :: Int -&gt; Int -&gt; Int
 add x y = x + y
 </code></pre>
-<p>バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数をインラインで定義することもできます。PSCiで複数行の宣言を入力するには、
-<code>:paste</code>コマンドを使用して「貼り付けモード」に入ります。このモードでは、 <em>Control-D</em> キーシーケンスを使用して宣言を終了します。</p>
+<p>バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数をインラインでも定義できます。
+PSCiで複数行の宣言を入力するには、 <code>:paste</code>コマンドを使用して「貼り付けモード」に入ります。
+このモードでは、<em>Control-D</em>キーシーケンスを使用して宣言を終了します。</p>
 <pre><code class="language-text">&gt; :paste
 … add :: Int -&gt; Int -&gt; Int
 … add = \x y -&gt; x + y
 … ^D
 </code></pre>
-<p>PSCiでこの関数が定義されていると、次のように関数の隣に2つの引数を空白で区切って書くことで、関数をこれらの引数に <em>適用</em> (apply)
-することができます。</p>
+<p>PSCiでこの関数が定義されていると、次のように関数の隣に2つの引数を空白で区切って書くことで、関数をこれらの引数に<em>適用</em> (apply) できます。</p>
 <pre><code class="language-text">&gt; add 10 20
 30
 </code></pre>
 <h2 id="量化された型"><a class="header" href="#量化された型">量化された型</a></h2>
-<p>前の節ではPreludeで定義された関数の型をいくつか見てきました。たとえば <code>flip</code>関数は次のような型を持っていました。</p>
+<p>前の節ではPreludeで定義された関数の型を幾つか見てきました。
+例えば<code>flip</code>関数は次のような型を持っていました。</p>
 <pre><code class="language-text">&gt; :type flip
 forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 </code></pre>
 <p>この <code>forall</code>キーワードは、 <code>flip</code>が <em>全称量化された型</em> (universally quantified type)
 を持っていることを示しています。これは、 <code>a</code>や <code>b</code>、 <code>c</code>をどの型に置き換えても、 <code>flip</code>はその型でうまく動作するという意味です。</p>
 <p>例えば、 <code>a</code>を <code>Int</code>、 <code>b</code>を <code>String</code>、 <code>c</code>を <code>String</code>というように選んでみたとします。この場合、
-<code>flip</code>の型を次のように <em>特殊化</em> (specialize) することができます。</p>
+<code>flip</code>の型を次のように<em>特殊化</em> (specialize) できます。</p>
 <pre><code class="language-text">(Int -&gt; String -&gt; String) -&gt; String -&gt; Int -&gt; String
 </code></pre>
-<p>量化された型を特殊化したいということをコードで示す必要はありません。特殊化は自動的に行われます。たとえば、すでにその型の
-<code>flip</code>を持っていたかのように、次のように単に <code>flip</code>を使用することができます。</p>
+<p>量化された型を特殊化したいということをコードで示す必要はありません。
+特殊化は自動的に行われます。
+例えば次のように単に<code>flip</code>を使用できます。
+あたかも既にその型の<code>flip</code>を持っていたかのようです。</p>
 <pre><code class="language-text">&gt; flip (\n s -&gt; show n &lt;&gt; s) &quot;Ten&quot; 10
 
 &quot;10Ten&quot;
@@ -284,10 +287,8 @@ forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 Could not match type Int with type String
 </code></pre>
 <h2 id="字下げについての注意"><a class="header" href="#字下げについての注意">字下げについての注意</a></h2>
-<p>JavaScriptとは異なり、PureScriptのコードは字下げの大きさに影響されます (indentation-sensitive)。
-これはHaskellと同じようになっています。
-コード内の空白の多寡は無意味ではなく、Cのような言語で中括弧によってコードのまとまりを示しているように、PureScriptでは空白がコードのまとまりを示すのに使われているということです。</p>
-<p>宣言が複数行にわたる場合は、最初の行以外は最初の行の字下げより深く字下げしなければなりません。</p>
+<p>PureScriptのコードは字下げの大きさに意味があります。ちょうどHaskellと同じで、JavaScriptとは異なります。コード内の空白の多寡は無意味ではなく、Cのような言語で中括弧によってコードのまとまりを示しているように、PureScriptでは空白がコードのまとまりを示すために使われているということです。</p>
+<p>宣言が複数行にわたる場合は、最初の行以外は最初の行の字下げより深くしなければなりません。</p>
 <p>したがって、次は正しいPureScriptコードです。</p>
 <pre><code class="language-haskell">add x y z = x +
   y + z
@@ -296,7 +297,7 @@ Could not match type Int with type String
 <pre><code class="language-haskell">add x y z = x +
 y + z
 </code></pre>
-<p>後者では、PureScriptコンパイラはそれぞれの行ごとにひとつ、つまり <em>2つ</em> の宣言であると構文解析します。</p>
+<p>後者では、PureScriptコンパイラはそれぞれの行ごとに1つ、つまり<em>2つ</em>の宣言であると構文解析します。</p>
 <p>一般に、同じブロック内で定義された宣言は同じ深さで字下げする必要があります。
 例えばPSCiでlet文の宣言は同じ深さで字下げしなければなりません。
 次は正しいコードです。</p>
@@ -311,7 +312,7 @@ y + z
 …  y = 2
 … ^D
 </code></pre>
-<p>PureScriptのいくつかの予約語（例えば <code>where</code>や <code>of</code>、
+<p>PureScriptの幾つかの予約語（例えば <code>where</code>や <code>of</code>、
 <code>let</code>）は新たなコードのまとまりを導入しますが、そのコードのまとまり内の宣言はそれより深く字下げされている必要があります。</p>
 <pre><code class="language-haskell">example x y z = foo + bar
   where
@@ -328,10 +329,10 @@ y + z
   , address   :: Address
   }
 </code></pre>
-<p>これは <code>Entry</code>という<em>型同義語</em>（type synonym、型シノニム）を定義しています。型
-<code>Entry</code>は等号の右辺と同じ型ということです。レコードの型はいずれも文字列である <code>firstName</code>、 <code>lastName</code>、
-<code>phone</code>という3つのフィールドからなります。前者の2つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型
-<code>Address</code>を持っています。</p>
+<p>これは <code>Entry</code>という<em>型同義語</em>（type synonym、型シノニム）を定義しています。
+型 <code>Entry</code>は等号の右辺と同じ型ということです。
+レコードの型は何れも文字列である <code>firstName</code>、 <code>lastName</code>、 <code>phone</code>という3つのフィールドからなります。
+前者の2つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型 <code>Address</code>を持っています。</p>
 <pre><code class="language-haskell">type Address =
   { street :: String
   , city   :: String
@@ -350,16 +351,15 @@ y + z
 <code>List a</code>を <em>構築</em> するのです。</p>
 <p>ちょうど関数適用と同じように、型構築子は他の型に並べることで適用されることに注意してください。型 <code>List Entry</code>は実は型構築子
 <code>List</code>が型 <code>Entry</code>に <em>適用</em> されたものです。これは住所録項目のリストを表しています。</p>
-<p>（型注釈演算子 <code>::</code>を使って）もし型 <code>List</code>の値を間違って定義しようとすると、今まで見たことのないような種類のエラーが表示されるでしょう。</p>
+<p>もし間違って（型注釈演算子 <code>::</code>を使って）型 <code>List</code>の値を定義しようとすると、今まで見たことのない種類のエラーが表示されるでしょう。</p>
 <pre><code class="language-text">&gt; import Data.List
 &gt; Nil :: List
 In a type-annotated expression x :: t, the type t must have kind Type
 </code></pre>
-<p>これは <em>種エラー</em> (kind error) です。値がその <em>型</em> で区別されるのと同じように、型はその <em>種</em> (kind)
-によって区別され、間違った型の値が <em>型エラー</em> になるように、 <em>間違った種</em> の型は <em>種エラー</em> を引き起こします。</p>
-<p><code>Number</code>や <code>String</code>のような、値を持つすべての型の種を表す <code>Type</code>と呼ばれる特別な種があります。</p>
+<p>これは<em>種エラー</em>です。値がその<em>型</em>で区別されるのと同じように、型はその<em>種</em>によって区別されます。間違った型の値が<em>型エラー</em>になるように、<em>間違った種</em>の型は<em>種エラー</em>を引き起こします。</p>
+<p><code>Number</code>や <code>String</code>のような、値を持つ全ての型の種を表す <code>Type</code>と呼ばれる特別な種があります。</p>
 <p>型構築子にも種があります。
-たとえば、種 <code>Type -&gt; Type</code>はちょうど <code>List</code>のような型から型への関数を表しています。
+例えば種 <code>Type -&gt; Type</code>はちょうど <code>List</code>のような型から型への関数を表しています。
 ここでエラーが発生したのは、値が種 <code>Type</code>であるような型を持つと期待されていたのに、 <code>List</code>は種 <code>Type -&gt; Type</code>を持っているためです。</p>
 <p>PSCiで型の種を調べるには、 <code>:kind</code>命令を使用します。例えば次のようになります。</p>
 <pre><code class="language-text">&gt; :kind Number
@@ -374,27 +374,28 @@ Type
 </code></pre>
 <p>PureScriptの <em>種システム</em> は他にも面白い種に対応していますが、それらについては本書の他の部分で見ていくことになるでしょう。</p>
 <h2 id="住所録の項目の表示"><a class="header" href="#住所録の項目の表示">住所録の項目の表示</a></h2>
-<p>それでは最初に、文字列で住所録の項目を表現するような関数を書いてみましょう。
+<p>それでは最初に、文字列で住所録の項目を表現する関数を書いてみましょう。
 まずは関数に型を与えることから始めます。
-型の定義は省略することも可能ですが、ドキュメントとしても役立つので型を書いておくようにすると良いでしょう。
+型の定義は省略できますが、ドキュメントとしても役立つので型を書いておくようにすると良いでしょう。
 実際、トップレベルの宣言に型註釈が含まれていないと、PureScriptコンパイラが警告を出します。
 型宣言は関数の名前とその型を <code>::</code>記号で区切るようにして書きます。</p>
 <pre><code class="language-haskell">showEntry :: Entry -&gt; String
 </code></pre>
-<p><code>showEntry</code>は引数として <code>Entry</code>を取り <code>string</code>を返す関数であるということを、この型シグネチャは言っています。
-<code>showEntry</code>のコードは次のとおりです。</p>
+<p><code>showEntry</code>は引数として <code>Entry</code>を取り <code>String</code>を返す関数であるということを、この型シグネチャは言っています。
+<code>showEntry</code>のコードは次の通りです。</p>
 <pre><code class="language-haskell">showEntry entry = entry.lastName &lt;&gt; &quot;, &quot; &lt;&gt;
                   entry.firstName &lt;&gt; &quot;: &quot; &lt;&gt;
                   showAddress entry.address
 </code></pre>
-<p>この関数は <code>Entry</code>レコードの3つのフィールドを連結し、単一の文字列にします。ここで使用される <code>showAddress</code>は
-<code>address</code>フィールドを連接し、単一の文字列にする関数です。 <code>showAddress</code>の定義は次のとおりです。</p>
+<p>この関数は<code>Entry</code>レコードの3つのフィールドを連結し、単一の文字列にします。
+ここで使用される<code>showAddress</code>関数は<code>address</code>フィールド中のレコードを文字列に変えます。
+<code>showAddress</code>の定義は次の通りです。</p>
 <pre><code class="language-haskell">showAddress :: Address -&gt; String
 showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
                    addr.city &lt;&gt; &quot;, &quot; &lt;&gt;
                    addr.state
 </code></pre>
-<p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照することができます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（<code>&lt;&gt;</code>）を使用します。</p>
+<p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照できます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（<code>&lt;&gt;</code>）を使用します。</p>
 <h2 id="はやめにテストたびたびテスト"><a class="header" href="#はやめにテストたびたびテスト">はやめにテスト、たびたびテスト</a></h2>
 <p>PSCi対話式モードでは反応を即座に得られるので、素早い試作開発に向いています。
 それではこの最初の関数が正しく動作するかをPSCiを使用して確認してみましょう。</p>
@@ -406,22 +407,22 @@ showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
 
 &gt; import Data.AddressBook
 </code></pre>
-<p>レコードリテラルを使うと、住所録の項目を作成することができます。レコードリテラルはJavaScriptの無名オブジェクトと同じような構文で名前に束縛します。</p>
+<p>レコード直値を使うと、住所録の項目を作成できます。レコード直値はJavaScriptの無名オブジェクトと同じような構文で名前に束縛します。</p>
 <pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 </code></pre>
-<p>​それでは、この例に関数を適用してみてください。</p>
+<p>それでは、この例に関数を適用してみてください。</p>
 <pre><code class="language-text">&gt; showAddress address
 
 &quot;123 Fake St., Faketown, CA&quot;
 </code></pre>
-<p><code>showEntry</code>も、住所を含む住所録項目の記録例を作って試しましょう。</p>
+<p><code>showEntry</code>も、住所の例を含む住所録項目レコードを作って試しましょう。</p>
 <pre><code class="language-text">&gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
 &gt; showEntry entry
 
 &quot;Smith, John: 123 Fake St., Faketown, CA&quot;
 </code></pre>
 <h2 id="住所録の作成"><a class="header" href="#住所録の作成">住所録の作成</a></h2>
-<p>今度は住所録の操作を支援する関数をいくつか書いてみましょう。
+<p>今度は住所録の操作を支援する関数を幾つか書いてみましょう。
 空の住所録を表す値が必要ですが、これには空のリストを使います。</p>
 <pre><code class="language-haskell">emptyBook :: AddressBook
 emptyBook = empty
@@ -431,10 +432,12 @@ emptyBook = empty
 </code></pre>
 <p>この型シグネチャに書かれているのは、最初の引数として <code>Entry</code>、第二引数として <code>AddressBook</code>を取り、新しい
 <code>AddressBook</code>を返すということです。</p>
-<p>既存の <code>AddressBook</code>を直接変更することはしません。その代わりに、同じデータが含まれている新しい
-<code>AddressBook</code>を返すようにします。このように、 <code>AddressBook</code>は <em>不変データ構造</em> (immutable data
-structure)
-の一例となっています。これはPureScriptにおける重要な考え方です。変更はコードの副作用であり、効率の良いコードの振る舞いの判断を妨げます。そのため、我々は可能な限り純粋な関数や不変のデータを好むのです。</p>
+<p>既存の <code>AddressBook</code>を直接変更することはしません。
+その代わりに、同じデータが含まれている新しい <code>AddressBook</code>を返すようにします。
+このように、 <code>AddressBook</code>は<em>不変データ構造</em>の一例となっています。
+これはPureScriptにおける重要な考え方です。
+変更はコードの副作用であり、効率の良いコードの挙動を考えるときの妨げになります。
+そのため、可能な限り純粋な関数や不変のデータにする方が好ましいのです。</p>
 <p><code>insertEntry</code>を実装するのに<code>Data.List</code>の<code>Cons</code>関数が使えます。
 この関数の型を見るには、PSCiを起動し <code>:type</code>コマンドを使います。</p>
 <pre><code class="language-text">$ spago repl
@@ -444,36 +447,36 @@ structure)
 
 forall a. a -&gt; List a -&gt; List a
 </code></pre>
-<p><code>Cons</code>は、なんらかの型 <code>a</code>の値と、型
-<code>a</code>を要素に持つリストを引数にとり、同じ型の要素を持つ新しいリストを返すということを、この型シグネチャは言っています。 <code>a</code>を
-<code>Entry</code>型として特殊化してみましょう。</p>
+<p>この型シグネチャで書かれているのは、<code>Cons</code>が何らかの型<code>a</code>の値と型<code>a</code>を要素に持つリストを引数に取り、同じ型の要素を持つ新しいリストを返すということです。
+<code>a</code>を<code>Entry</code>型として特殊化してみましょう。</p>
 <pre><code class="language-haskell">Entry -&gt; List Entry -&gt; List Entry
 </code></pre>
 <p>しかし、 <code>List Entry</code>はまさに <code>AddressBook</code>ですから、次と同じになります。</p>
 <pre><code class="language-haskell">Entry -&gt; AddressBook -&gt; AddressBook
 </code></pre>
-<p>今回の場合、すでに適切な入力があります。 <code>Entry</code>と <code>AddressBook</code>に <code>Cons</code>を適用すると、新しい
-<code>AddressBook</code>を得ることができます。これこそまさに私たちが求めていた関数です！</p>
+<p>今回の場合、既に適切な入力があります。
+<code>Entry</code>と <code>AddressBook</code>に <code>Cons</code>を適用すると、新しい <code>AddressBook</code>を得ることができます。
+これこそがまさに求めていた関数です。</p>
 <p><code>insertEntry</code>の実装は次のようになります。</p>
 <pre><code class="language-haskell">insertEntry entry book = Cons entry book
 </code></pre>
-<p>等号の左側にある2つの引数 <code>entry</code>と <code>book</code>がスコープに導入されますから、これらに <code>Cons</code>関数を適用して結果の値を作成しています。</p>
+<p>等号の左側にある2つの引数<code>entry</code>と<code>book</code>がスコープに導入されますから、これらに <code>Cons</code>関数を適用して結果の値を作成しています。</p>
 <h2 id="カリー化された関数"><a class="header" href="#カリー化された関数">カリー化された関数</a></h2>
-<p>PureScriptでは、関数は常にひとつの引数だけを取ります。<code>insertEntry</code>関数は2つの引数を取るように見えますが、これは実際には
-<em>カリー化された関数</em> (curried function) の一例となっています。</p>
+<p>PureScriptでは、関数は常に1つの引数だけを取ります。<code>insertEntry</code>関数は2つの引数を取るように見えますが、これは実際には<em>カリー化された関数</em>の一例となっています。</p>
 <p><code>insertEntry</code>の型に含まれる <code>-&gt;</code>は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。</p>
 <pre><code class="language-haskell">Entry -&gt; (AddressBook -&gt; AddressBook)
 </code></pre>
-<p>すなわち、 <code>insertEntry</code>は関数を返す関数である、ということです！この関数は単一の引数 <code>Entry</code>を取り、それから単一の引数
-<code>AddressBook</code>を取り新しい <code>AddressBook</code>を返す新しい関数を返すのです。</p>
+<p>すなわち、 <code>insertEntry</code>は関数を返す関数である、ということです。
+この関数は単一の引数 <code>Entry</code>を取り、それから単一の引数 <code>AddressBook</code>を取り新しい
+<code>AddressBook</code>を返す新しい関数を返すのです。</p>
 <p>これは例えば、最初の引数だけを与えると <code>insertEntry</code>を <em>部分適用</em> (partial application)
 できることを意味します。PSCiでこの結果の型を見てみましょう。</p>
 <pre><code class="language-text">&gt; :type insertEntry entry
 
 AddressBook -&gt; AddressBook
 </code></pre>
-<p>期待したとおり、戻り値の型は関数になっていました。
-この結果の関数に、2つ目の引数を適用することもできます。</p>
+<p>期待した通り、戻り値の型は関数になっていました。
+この結果の関数に2つ目の引数も適用できます。</p>
 <pre><code class="language-text">&gt; :type (insertEntry entry) emptyBook
 AddressBook
 </code></pre>
@@ -481,9 +484,10 @@ AddressBook
 <pre><code class="language-text">&gt; :type insertEntry entry emptyBook
 AddressBook
 </code></pre>
-<p>これは関数適用が左結合であるためで、
-なぜ単に空白で区切るだけで関数に引数を与えることができるのかの説明にもなっています。</p>
-<p>関数の型の<code>-&gt;</code>演算子は関数の <em>型構築子</em> です。この演算子は2つの型引数を取ります。左右の被演算子はそれぞれ関数の引数の型と返値の型です。</p>
+<p>これは関数適用が左結合であるためで、なぜ空白で区切った引数を関数に指定するだけでいいのかの説明にもなっています。</p>
+<p>関数の型の<code>-&gt;</code>演算子は関数の<em>型構築子</em>です。
+この演算子は2つの型引数を取ります。
+左右の被演算子はそれぞれ関数の引数の型と返り値の型です。</p>
 <p>本書では今後、「2引数の関数」というように表現することがあることに注意してください。
 しかしそれはカリー化された関数を意味していると考えるべきで、その関数は最初の引数を取り2つ目の引数を取る別の関数を返すのです。</p>
 <p>今度は <code>insertEntry</code>の定義について考えてみます。</p>
@@ -492,19 +496,18 @@ insertEntry entry book = Cons entry book
 </code></pre>
 <p>もし式の右辺に明示的に括弧をつけるなら、 <code>(Cons entry) book</code>となります。
 <code>insertEntry entry</code>はその引数が単に関数 <code>(Cons entry)</code>に渡されるような関数だということです。
-でもこの2つの関数はどんな入力についても同じ結果を返しますから、つまりこれらは同じ関数です！
+でもこの2つの関数はどんな入力についても同じ結果を返しますから、つまりこれらは同じ関数です。
 よって、両辺から引数 <code>book</code>を削除できます。</p>
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 insertEntry entry = Cons entry
 </code></pre>
-<p>しかし今や同様の議論により、両辺から <code>entry</code>も削除することができます。</p>
+<p>しかし今や同様の議論により、両辺から <code>entry</code>も削除できます。</p>
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 insertEntry = Cons
 </code></pre>
 <p>この処理は <em>イータ変換</em> (eta conversion) と呼ばれ、（その他の技法を併用して）引数を参照することなく関数を定義する
 <em>ポイントフリー形式</em> (point-free form) へと関数を書き換えるのに使うことができます。</p>
-<p><code>insertEntry</code>の場合には、イータ変換によって「<code>insertEntry</code>は単にリストに対するconsだ」となり、関数の定義はとても明確になりました。
-しかしながら、一般的にポイントフリー形式のほうがいいのかどうかには議論の余地があります。</p>
+<p><code>insertEntry</code>の場合には、イータ変換によって「<code>insertEntry</code>は単にリストに対するconsだ」となり、関数の定義はとても明確になりました。しかし、一般的にポイントフリー形式のほうがいいのかどうかには議論の余地があります。</p>
 <h2 id="プロパティ取得子"><a class="header" href="#プロパティ取得子">プロパティ取得子</a></h2>
 <p>よくあるパターンの1つとして、レコード中の個別のフィールド（または「プロパティ」）を取得することがあります。
 <code>Entry</code>から<code>Address</code>を取り出すインライン関数は次のように書けます。</p>
@@ -513,10 +516,10 @@ insertEntry = Cons
 <p>PureScriptでは<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#property-accessors"><em>プロパティ取得子</em></a>という略記が使えます。この略記では下線文字は無名関数の引数として振舞うため、上記のインライン関数は次と等価です。</p>
 <pre><code class="language-haskell">_.address
 </code></pre>
-<p>これは何段階のプロパティでも動くため、<code>Entry</code>に関連付く街を取り出す関数は次のように書けます。</p>
+<p>これは何段階のプロパティでも動くため、<code>Entry</code>に関連する街を取り出す関数は次のように書けます。</p>
 <pre><code class="language-haskell">_.address.city
 </code></pre>
-<p>以下は例です。</p>
+<p>以下は一例です。</p>
 <pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 &gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
 &gt; _.lastName entry
@@ -525,13 +528,12 @@ insertEntry = Cons
 &gt; _.address.city entry
 &quot;Faketown&quot;
 </code></pre>
-<h2 id="あなたの住所録は"><a class="header" href="#あなたの住所録は">あなたの住所録は？</a></h2>
+<h2 id="住所録に問い合わせる"><a class="header" href="#住所録に問い合わせる">住所録に問い合わせる</a></h2>
 <p>最小限の住所録アプリケーションの実装で必要になる最後の関数は、名前で人を検索し適切な
 <code>Entry</code>を返すものです。これは小さな関数を組み合わせることでプログラムを構築するという、関数型プログラミングで鍵となる考え方のよい応用例になるでしょう。</p>
-<p>まずは住所録をフィルタリングし、該当する姓名を持つ項目だけを保持するようにするのがいいでしょう。それから、結果のリストの先頭の (head)
+<p>まずは住所録を絞り込み、該当する姓名を持つ項目だけを保持するようにするのがいいでしょう。それから、結果のリストの先頭の (head)
 要素を返すだけです。</p>
-<p>この大まかな仕様に従って、この関数の型を計算することができます。
-まずPSCiを起動し、 <code>filter</code>関数と <code>head</code>関数の型を見てみましょう。</p>
+<p>この大まかな仕様に従って、この関数の型を計算できます。まずPSCiを起動し、 <code>filter</code>関数と <code>head</code>関数の型を見てみましょう。</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Data.List
@@ -547,10 +549,11 @@ forall a. List a -&gt; Maybe a
 <p><code>filter</code>はカリー化された2引数の関数です。
 最初の引数は、リストの要素を取り <code>Boolean</code>値を結果として返す関数です。
 第2引数は要素のリストで、返り値は別のリストです。</p>
-<p><code>head</code>は引数としてリストをとり、 <code>Maybe a</code>という今まで見たことがないような型を返します。 <code>Maybe a</code>は型
-<code>a</code>のオプショナルな値、つまり
+<p><code>head</code>は引数としてリストを取り、 <code>Maybe a</code>という今まで見たことがないような型を返します。
+<code>Maybe a</code>は型 <code>a</code>のオプショナルな値、つまり
 <code>a</code>の値を持つか持たないかのどちらかの値を示しており、JavaScriptのような言語で値がないことを示すために使われる
-<code>null</code>の型安全な代替手段を提供します。これについては後の章で詳しく扱います。</p>
+<code>null</code>の型安全な代替手段を提供します。
+これについては後の章で詳しく扱います。</p>
 <p><code>filter</code>と <code>head</code>の全称量化された型は、PureScriptコンパイラによって次のように <em>特殊化</em> (specialized)
 されます。</p>
 <pre><code class="language-haskell">filter :: (Entry -&gt; Boolean) -&gt; AddressBook -&gt; AddressBook
@@ -559,13 +562,11 @@ head :: AddressBook -&gt; Maybe Entry
 </code></pre>
 <p>検索する関数の引数として姓と名前を渡す必要があるのもわかっています。</p>
 <p><code>filter</code>に渡す関数も必要になることもわかります。この関数を <code>filterEntry</code>と呼ぶことにしましょう。 <code>filterEntry</code>は <code>Entry -&gt; Boolean</code>という型を持っています。 <code>filter filterEntry</code>という関数適用の式は、 <code>AddressBook -&gt; AddressBook</code>という型を持つでしょう。もしこの関数の結果を <code>head</code>関数に渡すと、型 <code>Maybe Entry</code>の結果を得ることになります。</p>
-<p>これまでのことをまとめると、関数の妥当な型シグネチャは次のようになります。
-<code>findEntry</code>と呼ぶことにしましょう。</p>
+<p>これまでのことを纏めると、関数の妥当な型シグネチャは次のようになります。<code>findEntry</code>と呼ぶことにしましょう。</p>
 <pre><code class="language-haskell">findEntry :: String -&gt; String -&gt; AddressBook -&gt; Maybe Entry
 </code></pre>
-<p><code>findEntry</code>は、姓と名前の2つの文字列、および <code>AddressBook</code>を引数にとり、
-<code>Entry</code>のオプション型の値を結果として返すということを、この型シグネチャは言っています。
-オプショナルな結果は、名前が住所録で発見された場合にのみ値を持ちます。</p>
+<p>この型シグネチャで書かれているのは、<code>findEntry</code>が姓と名前の2つの文字列及び<code>AddressBook</code>を引数に取り、<code>Entry</code>のオプション型の値を結果として返すということです。
+オプショナルな結果は名前が住所録で発見された場合にのみ値を持ちます。</p>
 <p>そして、 <code>findEntry</code>の定義は次のようになります。</p>
 <pre><code class="language-haskell">findEntry firstName lastName book = head (filter filterEntry book)
   where
@@ -573,15 +574,14 @@ head :: AddressBook -&gt; Maybe Entry
     filterEntry entry = entry.firstName == firstName &amp;&amp; entry.lastName == lastName
 </code></pre>
 <p>一歩ずつこのコードを調べてみましょう。</p>
-<p><code>findEntry</code>は、
-どちらも文字列型である <code>firstName</code>と <code>lastName</code>、
-<code>AddressBook</code>型の <code>book</code>という3つの名前をスコープに導入します。</p>
-<p>定義の右辺では <code>filter</code>関数と <code>head</code>関数が組み合わされています。まず項目のリストをフィルタリングし、その結果に
-<code>head</code>関数を適用しています。</p>
-<p>真偽型を返す関数 <code>filterEntry</code>は <code>where</code>節の内部で補助的な関数として定義されています。このため、
-<code>filterEntry</code>関数はこの定義の内部では使用できますが、外部では使用することができません。また、
-<code>filterEntry</code>はそれを包む関数の引数に依存することができ、 <code>filterEntry</code>は指定された
-<code>Entry</code>をフィルタリングするために引数 <code>firstName</code>と <code>lastName</code>を使用しているので、 <code>filterEntry</code>が
+<p><code>findEntry</code>は、どちらも文字列型である <code>firstName</code>と <code>lastName</code>、<code>AddressBook</code>型の
+<code>book</code>という3つの名前をスコープに導入します。</p>
+<p>定義の右辺では <code>filter</code>関数と <code>head</code>関数が組み合わされています。
+まず項目のリストを絞り込み、その結果に <code>head</code>関数を適用しています。</p>
+<p>真偽型を返す関数 <code>filterEntry</code>は <code>where</code>節の内部で補助的な関数として定義されています。
+このため、 <code>filterEntry</code>関数はこの定義の内部では使用できますが、外部では使用できません。
+また、<code>filterEntry</code>はそれを包む関数の引数に依存でき、 <code>filterEntry</code>は指定された <code>Entry</code>を絞り込むために引数
+<code>firstName</code>と <code>lastName</code>を使用しているので、 <code>filterEntry</code>が
 <code>findEntry</code>の内部にあることは必須になっています。</p>
 <p>最上位での宣言と同じように、必ずしも
 <code>filterEntry</code>の型シグネチャを指定しなくてもよいことに注意してください。ただし、ドキュメントとしても役に立つので型シグネチャを書くことは推奨されています。</p>
@@ -597,16 +597,14 @@ head :: AddressBook -&gt; Maybe Entry
 版の実装への中置別称として定義されています。例えば<code>==</code>は以下の行により前置の<code>eq</code>関数の中置別称として定義されています。</p>
 <pre><code class="language-haskell">infix 4 eq as ==
 </code></pre>
-<p>したがって<code>filterEntry</code>中の<code>entry.firstName == firstName</code>は<code>eq entry.firstName firstName</code>で置き換えられます。
-この節の後のほうで中置演算子を定義する例をもう少し押さえます。</p>
+<p>したがって<code>filterEntry</code>中の<code>entry.firstName == firstName</code>は<code>eq entry.firstName firstName</code>で置き換えられます。この節の後のほうで中置演算子を定義する例にもう少し触れます。</p>
 <p>前置関数を演算子としての中置の位置に置くとより読みやすいコードになる場面があります。
 その一例が<code>mod</code>関数です。</p>
 <pre><code class="language-text">&gt; mod 8 3
 2
 </code></pre>
 <p>上の用例は正しく動きますが、読みづらいです。
-より馴染みのある表現の仕方は「8 mod 3」ですが、
-バックスラッシュ (`) の中に前置関数を包めばこのように書けます。</p>
+より馴染みのある表現の仕方は「8 mod 3」ですが、バックスラッシュ (`) の中に前置関数を包めばこのように書けます。</p>
 <pre><code class="language-text">&gt; 8 `mod` 3
 2
 </code></pre>
@@ -620,10 +618,8 @@ book2 = john `insertEntry` emptyBook
 <pre><code class="language-haskell">book3 = insertEntry john (insertEntry peggy (insertEntry ned emptyBook))
 book4 = john `insertEntry` (peggy `insertEntry` (ned `insertEntry` emptyBook))
 </code></pre>
-<p><code>insertEntry</code>に中置演算子別称（または同義語）を定義することもできます。
-この演算子の名前に適当に<code>++</code>を選び、
-<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#precedence">優先度</a>を<code>5</code>にし、
-そして<code>infixr</code>を使って右<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#associativity">結合</a>とします。</p>
+<p><code>insertEntry</code>には中置演算子別称（または同義語）も定義できます。
+この演算子の名前に適当に<code>++</code>を選び、<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#precedence">優先度</a>を<code>5</code>にし、そして<code>infixr</code>を使って右<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#associativity">結合</a>とします。</p>
 <pre><code class="language-haskell">infixr 5 insertEntry as ++
 </code></pre>
 <p>この新しい演算子で上の<code>book4</code>の例を次のように書き直せます。</p>
@@ -646,11 +642,11 @@ apply f x = f x
 infixr 0 apply as $
 </code></pre>
 <p><code>apply</code>関数は、他の関数（型は<code>(a -&gt; b)</code>）を最初の引数に、値（型は<code>a</code>）を2つ目の引数に取って、その値に対して関数を呼びます。
-この関数が何ら意味のあることをしていないようだと思ったら、まったくもって正しいです！
+この関数が何ら意味のあることをしていないようだと思ったら、全くもって正しいです。
 この関数がなくてもプログラムは論理的に同一です（<a href="https://en.wikipedia.org/wiki/Referential_transparency">参照透過性</a>も見てください）。
 この関数の構文的な利便性はその中置演算子に割り当てられた特別な性質からきています。
 <code>$</code>は右結合 (<code>infixr</code>) で低い優先度 (<code>0</code>) の演算子ですが、これにより深い入れ子になった適用から括弧の束を削除できるのです。</p>
-<p>さらなる<code>$</code>演算子を使った括弧退治の機会は、以前の<code>findEntry</code>関数にあります。</p>
+<p>さらなる<code>$</code>演算子を使った括弧退治のチャンスは以前の<code>findEntry</code>関数にあります。</p>
 <pre><code class="language-haskell">findEntry firstName lastName book = head $ filter filterEntry book
 </code></pre>
 <p>この行をより簡潔に書き換える方法を次節の「関数合成」で見ていきます。</p>
@@ -661,13 +657,12 @@ infixr 0 apply as $
 &gt; (+) 8 3
 11
 </code></pre>
-<p>その代わりの手段として演算子は部分適用することができ、これには式を括弧で囲んで<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#operator-sections">演算子節</a>中の引数として<code>_</code>を使います。
-これは簡単な無名関数を作るより便利な方法として考えることができます（以下の例ではそこから無名関数を名前に束縛しているので、もはや別に無名とも言えなくなっていますが）。</p>
+<p>その代わりの手段として演算子は部分適用でき、これには式を括弧で囲んで<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#operator-sections">演算子節</a>中の引数として<code>_</code>を使います。これは簡単な無名関数を作るより便利な方法として考えることができます（以下の例ではそこから無名関数を名前に束縛しているので、もはや別に無名とも言えなくなっていますが）。</p>
 <pre><code class="language-text">&gt; add3 = (3 + _)
 &gt; add3 2
 5
 </code></pre>
-<p>まとめると、以下は引数に<code>5</code>を加える関数の等価な定義です。</p>
+<p>纏めると、以下は引数に<code>5</code>を加える関数の等価な定義です。</p>
 <pre><code class="language-haskell">add5 x = 5 + x
 add5 x = add 5 x
 add5 x = (+) 5 x
@@ -675,18 +670,18 @@ add5 x = 5 `add` x
 add5   = add 5
 add5   = \x -&gt; 5 + x
 add5   = (5 + _)
-add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、中置の中に中置を入れといたぜ！
+add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、中置の中に中置を入れといたぜ
 </code></pre>
 <h2 id="関数合成"><a class="header" href="#関数合成">関数合成</a></h2>
-<p>イータ変換を使うと <code>insertEntry</code>関数を簡略化できたのと同じように、引数をよく考察すると
-<code>findEntry</code>の定義を簡略化することができます。</p>
+<p>イータ変換を使うと <code>insertEntry</code>関数を簡略化できたのと同じように、引数をよく考察すると <code>findEntry</code>の定義を簡略化できます。</p>
 <p>なお、引数 <code>book</code>は関数 <code>filter filterEntry</code>に渡され、この適用の結果が <code>head</code>に渡されます。これは言いかたを変えれば、
 <code>filter filterEntry</code>と <code>head</code>の <em>合成</em> (composition) に <code>book</code>が渡されるということです。</p>
 <p>PureScriptの関数合成演算子は <code>&lt;&lt;&lt;</code>と <code>&gt;&gt;&gt;</code>です。前者は「逆方向の合成」であり、後者は「順方向の合成」です。</p>
-<p>いずれかの演算子を使用して <code>findEntry</code>の右辺を書き換えることができます。逆順の合成を使用すると、右辺は次のようになります。</p>
+<p>何れかの演算子を使用して <code>findEntry</code>の右辺を書き換えることができます。
+逆順の合成を使用すると、右辺は次のようになります。</p>
 <pre><code class="language-haskell">(head &lt;&lt;&lt; filter filterEntry) book
 </code></pre>
-<p>この形式なら最初の定義にイータ変換の技を適用することができ、 <code>findEntry</code>は最終的に次のような形式に到達します。</p>
+<p>この形式なら最初の定義にイータ変換の技を適用でき、 <code>findEntry</code>は最終的に次のような形式に到達します。</p>
 <pre><code class="language-haskell">findEntry firstName lastName = head &lt;&lt;&lt; filter filterEntry
   where
     ...
@@ -694,38 +689,38 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 <p>右辺を次のようにしても同じく妥当です。</p>
 <pre><code class="language-haskell">filter filterEntry &gt;&gt;&gt; head
 </code></pre>
-<p>どちらにしても、これは「<code>findEntry</code>はフィルタリング関数と <code>head</code>関数の合成である」という
+<p>どちらにしても、これは「<code>findEntry</code>は絞り込み関数と<code>head</code>関数の合成である」という
 <code>findEntry</code>関数のわかりやすい定義を与えます。</p>
-<p>どちらの定義のほうがわかりやすいかの判断はお任せしますが、このように関数を部品として捉えると有用なことがよくあります。
-関数はひとつの役目だけをこなし、機能を関数合成で組み立てるというように。</p>
+<p>どちらの定義のほうがわかりやすいかの判断はお任せしますが、このように関数を部品として捉えると有用なことがよくあります。関数は1つの役目だけをこなし、機能を関数合成で組み立てるというように。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（簡単）<code>findEntry</code>関数の定義の主な部分式の型を書き下し、
-<code>findEntry</code>関数についてよく理解しているか試してみましょう。たとえば、 <code>findEntry</code>の定義のなかにある
-<code>head</code>関数の型は <code>AddressBook -&gt; Maybe Entry</code>と特殊化されています。 <em>補足</em>
-：この問題にはテストがありません。</li>
-<li>（普通）関数<code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code>を書いてください。この関数は与えられた通りの住所から<code>Entry</code>を見付け出します。 <em>ヒント</em>
-：<code>findEntry</code>にある既存のコードを再利用してください。実装した関数をPSCiと<code>spago test</code>を走らせることでテストしてください。</li>
+<li>（簡単）<code>findEntry</code>関数の定義の主な部分式の型を書き下し、 <code>findEntry</code>関数についてよく理解しているか試してみましょう。
+例えば<code>findEntry</code>の定義の中にある <code>head</code>関数の型は <code>AddressBook -&gt; Maybe Entry</code>と特殊化されています。
+<em>補足</em>：この問題にはテストがありません。</li>
+<li>（普通）関数<code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code>を書いてください。
+この関数は与えられた通りの住所から<code>Entry</code>を見付け出します。
+<em>手掛かり</em>：<code>findEntry</code>にある既存のコードを再利用してください。
+実装した関数をPSCiと<code>spago test</code>を走らせてテストしてください。</li>
 <li>（普通）<code>filterEntry</code>を（<code>&lt;&lt;&lt;</code>や<code>&gt;&gt;&gt;</code>を使った）合成で置き換えて、<code>findEntryByStreet</code>を書き直してください。
 合成の対象は、プロパティ取得子（<code>_.</code>記法を使います）と、与えられた文字列引数が与えられた通りの住所に等しいかを判定する関数です。</li>
 <li>（普通）指定された名前が <code>AddressBook</code>に存在するかどうかを調べて真偽値で返す関数<code>isInBook</code>を書いてみましょう。
-<em>ヒント</em> ：リストが空かどうかを調べる <code>Data.List.null</code>関数の型をPSCiで調べてみてみましょう。</li>
-<li>（難しい）「重複」している項目を住所録から削除する関数
-<code>removeDuplicates</code>を書いてみましょう。項目が同じ姓名を共有していれば<code>address</code>フィールドに関係なく、項目が重複していると考えます。
-<em>ヒント</em> ：関数
-<code>Data.List.nubBy</code>の型を、PSCiを使用して調べてみましょう。この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。なお、それぞれの重複する項目の集合における最初の要素（リストの先頭に最も近い）が保持する項目です。</li>
+<em>手掛かり</em>：リストが空かどうかを調べる <code>Data.List.null</code>関数の型をPSCiで調べてみてみましょう。</li>
+<li>（難しい）「重複」している項目を住所録から削除する関数 <code>removeDuplicates</code>を書いてみましょう。
+項目が同じ姓名を共有していれば<code>address</code>フィールドに関係なく、項目が重複していると考えます。
+<em>手掛かり</em>：関数 <code>Data.List.nubBy</code>の型を、PSCiを使用して調べてみましょう。
+この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。
+なお、それぞれの重複する項目の集合における最初の要素（リストの先頭に最も近い）が保持する項目です。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、関数型プログラミングの新しい概念をいくつか導入しました。</p>
+<p>この章では、関数型プログラミングの新しい概念を幾つも導入しました。</p>
 <ul>
-<li>対話的モードPSCiを使用して関数を調べるなど思いついたことを試す方法</li>
+<li>対話的モードのPSCiを使用して、関数を調べるなどの思いついたことを試す方法</li>
 <li>検証や実装の道具としての型の役割</li>
 <li>多引数関数を表現する、カリー化された関数の使用</li>
 <li>関数合成で小さな部品を組み合わせてのプログラムの構築</li>
 <li><code>where</code>節を利用したコードの構造化</li>
 <li><code>Maybe</code>型を使用してnull値を回避する方法</li>
-<li>イータ変換や関数合成のような手法を利用した、よりわかりやすいコードへの
-再構成</li>
+<li>イータ変換や関数合成のような手法を利用した、よりわかりやすいコードへの再構成</li>
 </ul>
 <p>次の章からは、これらの考えかたに基づいて進めていきます。</p>
 
@@ -733,11 +728,11 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="chapter2.ja.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="chapter2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="chapter4.ja.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="chapter4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -747,11 +742,11 @@ add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="chapter2.ja.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="chapter2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="chapter4.ja.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="chapter4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
