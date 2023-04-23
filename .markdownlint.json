@@ -1,6 +1,13 @@
 {
+  "blanks-around-lists": false,
+  "commands-show-output": false,
+  "emphasis-style": false,
   "line-length": false,
+  "list-indent": false,
   "no-duplicate-heading": false,
+  "no-inline-html": false,
+  "no-space-in-code": false,
   "no-trailing-punctuation": false,
-  "commands-show-output": false
+  "ol-prefix": false,
+  "single-trailing-newline": false
 }

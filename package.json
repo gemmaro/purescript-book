@@ -1,14 +1,15 @@
 {
-    "devDependencies": {
-        "textlint": "^13.2.0",
-        "textlint-rule-preset-ja-technical-writing": "^7.0.0",
-        "textlint-rule-preset-jtf-style": "^2.3.13"
-    },
-    "scripts": {
-        "lint": "textlint text-ja/*",
-        "prelint": "npm run translate",
-        "fix": "textlint --fix text-ja/*",
-        "prefix": "npm run translate",
-        "translate": "po4a --version > .po4a-version && po4a po4a.cfg"
-    }
+  "devDependencies": {
+    "markdownlint-cli": "^0.33.0",
+    "textlint": "^13.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "textlint-rule-preset-jtf-style": "^2.3.13"
+  },
+  "scripts": {
+    "lint": "npm run lint:text && npm run lint:md",
+    "prelint": "npm run translate",
+    "lint:text": "textlint text-ja/*",
+    "lint:md": "markdownlint text-ja/*.md",
+    "translate": "po4a --version > .po4a-version && po4a po4a.cfg"
+  }
 }
