@@ -1,47 +1,48 @@
 {
-    "rules": {
-        "preset-jtf-style": {
-            "1.1.3.箇条書き": false
-        },
-        "preset-ja-technical-writing": {
-            "ja-no-mixed-period": {
-                "allowPeriodMarks": ["、", "…"]
-            },
-            "ja-no-successive-word": {
-                "allow": ["…"]
-            },
-            "ja-no-weak-phrase": false,
-            "max-kanji-continuous-len": {
-                "allow": [
-                    "並列非同期実行",
-                    "中置演算子別称",
-                    "二等辺三角形",
-                    "型注釈演算子",
-                    "変更可能状態",
-                    "巡回可能関手",
-                    "形状保存関数",
-                    "擬似乱数生成器",
-                    "最小外接矩形",
-                    "末尾再帰最適化",
-                    "末尾再帰関数",
-                    "構文解析関数",
-                    "正規表現検証器",
-                    "決定的無作為",
-                    "決定的無作為関数",
-                    "浮動小数点数",
-                    "状態管理戦略",
-                    "矢印関数構文",
-                    "配列内包表記",
-                    "配列型構築子",
-                    "関数合成演算子",
-                    "領域特化言語"
-                ]
-            },
-            "no-doubled-joshi": false,
-            "no-exclamation-question-mark": {
-                "allowHalfWidthExclamation": true
-            },
-            "sentence-length": false
-        }
+  "rules": {
+    "preset-jtf-style": {
+      "1.1.3.箇条書き": false
+    },
+    "preset-ja-technical-writing": {
+      "ja-no-mixed-period": {
+        "allowPeriodMarks": ["、", "…"]
+      },
+      "ja-no-successive-word": {
+        "allow": ["…"]
+      },
+      "ja-no-weak-phrase": false,
+      "max-kanji-continuous-len": {
+        "allow": [
+          "並列非同期実行",
+          "中置演算子別称",
+          "二等辺三角形",
+          "型注釈演算子",
+          "変更可能状態",
+          "巡回可能関手",
+          "形状保存関数",
+          "擬似乱数生成器",
+          "最小外接矩形",
+          "末尾再帰最適化",
+          "末尾再帰関数",
+          "構文解析関数",
+          "正規表現検証器",
+          "決定的無作為",
+          "決定的無作為関数",
+          "浮動小数点数",
+          "状態管理戦略",
+          "矢印関数構文",
+          "配列内包表記",
+          "配列型構築子",
+          "関数合成演算子",
+          "領域特化言語"
+        ]
+      },
+      "no-doubled-joshi": false,
+      "no-exclamation-question-mark": {
+        "allowHalfWidthExclamation": true,
+        "allowFullWidthExclamation": true
+      },
+      "sentence-length": false
     }
+  }
 }
