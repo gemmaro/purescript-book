@@ -190,7 +190,7 @@ class Arbitrary t where
 ```haskell
 newtype Byte = Byte Int
 
-instance arbitraryByte :: Arbitrary Byte where
+instance Arbitrary Byte where
   arbitrary = map intToByte arbitrary
     where
     intToByte n | n >= 0 = Byte (n `mod` 256)
@@ -218,7 +218,7 @@ newtype Sorted a = Sorted (Array a)
 sorted :: forall a. Sorted a -> Array a
 sorted (Sorted xs) = xs
 
-instance arbSorted :: (Arbitrary a, Ord a) => Arbitrary (Sorted a) where
+instance (Arbitrary a, Ord a) => Arbitrary (Sorted a) where
   arbitrary = map (Sorted <<< sort) arbitrary
 ```
 
@@ -267,7 +267,7 @@ false
 `fromArray`を使うと、木についての `Arbitrary`インスタンスを書くことができます。
 
 ```haskell
-instance arbTree :: (Arbitrary a, Ord a) => Arbitrary (Tree a) where
+instance (Arbitrary a, Ord a) => Arbitrary (Tree a) where
   arbitrary = map fromArray arbitrary
 ```
 
@@ -326,7 +326,7 @@ class Coarbitrary t where
 `Arbitrary`なら、`Arbitrary`の関数を与える型クラスインスタンスが存在します。
 
 ```haskell
-instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)
+instance (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)
 ```
 
 実は、これが意味しているのは、引数として関数を取るような性質を記述できるということです。
@@ -363,7 +363,7 @@ intToBool = id
 関数は `Arbitrary`であるだけでなく `Coarbitrary`でもあります。
 
 ```haskell
-instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)
+instance (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)
 ```
 
 これは値の生成が単純な関数だけに限定されるものではないことを意味しています。
@@ -379,7 +379,7 @@ instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)
 枝に格納されている要素の型に `Coarbitrary`インスタンスが必要になります。
 
 ```haskell
-instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where
+instance Coarbitrary a => Coarbitrary (Tree a) where
 ```
 
 型 `Tree a`の値が与えられたときに、乱数発生器をかき乱す関数を記述する必要があります。

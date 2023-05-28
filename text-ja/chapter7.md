@@ -125,11 +125,11 @@ class Functor f <= Apply f where
 これをどのように使うのかはこれからすぐに見ていきますが、その前にまず`Maybe`型について`Apply`型クラスをどう実装するのかを見ていきましょう。
 
 ```haskell
-instance functorMaybe :: Functor Maybe where
+instance Functor Maybe where
   map f (Just a) = Just (f a)
   map f Nothing  = Nothing
 
-instance applyMaybe :: Apply Maybe where
+instance Apply Maybe where
   apply (Just f) (Just x) = Just (f x)
   apply _        _        = Nothing
 ```
@@ -205,7 +205,7 @@ class Apply f <= Applicative f where
 `Maybe`についての`Applicative`インスタンスは次のようになります。
 
 ```haskell
-instance applicativeMaybe :: Applicative Maybe where
+instance Applicative Maybe where
   pure x = Just x
 ```
 
@@ -684,7 +684,7 @@ combineList :: forall f a. Applicative f => List (f a) -> f (List a)
 `Data.List`で与えられているリストの`Traversable`インスタンスは次の通り。
 
 ```haskell
-instance traversableList :: Traversable List where
+instance Traversable List where
 -- traverse :: forall a b m. Applicative m => (a -> m b) -> List a -> m (List b)
 traverse _ Nil         = pure Nil
 traverse f (Cons x xs) = Cons <$> f x <*> traverse f xs

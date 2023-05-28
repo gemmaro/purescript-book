@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-04-22 13:30+0900\n"
+"POT-Creation-Date: 2023-05-28 14:18+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1614,7 +1614,7 @@ msgstr ""
 #: text/chapter6.md:410 text/chapter6.md:607 text/chapter6.md:741
 #: text/chapter7.md:381 text/chapter7.md:540 text/chapter7.md:642
 #: text/chapter8.md:308 text/chapter8.md:666 text/chapter8.md:973
-#: text/chapter9.md:85 text/chapter9.md:131 text/chapter9.md:198
+#: text/chapter9.md:87 text/chapter9.md:133 text/chapter9.md:200
 #, markdown-text, no-wrap
 msgid "Exercises"
 msgstr ""
@@ -3459,7 +3459,7 @@ msgstr ""
 #: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:121
 #: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
 #: text/chapter6.md:756 text/chapter7.md:691 text/chapter8.md:1000
-#: text/chapter9.md:235
+#: text/chapter9.md:237
 #, markdown-text, no-wrap
 msgid "Conclusion"
 msgstr ""
@@ -5447,7 +5447,7 @@ msgid ""
 "  throwError :: forall a. e -> m a\n"
 "  catchError :: forall a. m a -> (e -> m a) -> m a\n"
 "\n"
-"instance monadErrorExceptT :: Monad m => MonadError e (ExceptT e m)\n"
+"instance Monad m => MonadError e (ExceptT e m)\n"
 "\n"
 "runExceptT :: forall e m a. ExceptT e m a -> m (Either e a)\n"
 msgstr ""
@@ -9085,7 +9085,7 @@ msgstr ""
 msgid ""
 "newtype Byte = Byte Int\n"
 "\n"
-"instance arbitraryByte :: Arbitrary Byte where\n"
+"instance Arbitrary Byte where\n"
 "  arbitrary = map intToByte arbitrary\n"
 "    where\n"
 "    intToByte n | n >= 0 = Byte (n `mod` 256)\n"
@@ -9135,7 +9135,7 @@ msgid ""
 "sorted :: forall a. Sorted a -> Array a\n"
 "sorted (Sorted xs) = xs\n"
 "\n"
-"instance arbSorted :: (Arbitrary a, Ord a) => Arbitrary (Sorted a) where\n"
+"instance (Arbitrary a, Ord a) => Arbitrary (Sorted a) where\n"
 "  arbitrary = map (Sorted <<< sort) arbitrary\n"
 msgstr ""
 
@@ -9233,7 +9233,7 @@ msgstr ""
 #: text/chapter13.md:230
 #, no-wrap
 msgid ""
-"instance arbTree :: (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
+"instance (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
 "  arbitrary = map fromArray arbitrary\n"
 msgstr ""
 
@@ -9365,7 +9365,7 @@ msgstr ""
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:278
 #, no-wrap
-msgid "instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
+msgid "instance (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
 msgstr ""
 
 #. type: Plain text
@@ -9433,9 +9433,7 @@ msgstr ""
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:310
 #, no-wrap
-msgid ""
-"instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> "
-"b)\n"
+msgid "instance (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
 msgstr ""
 
 #. type: Plain text
@@ -9474,7 +9472,7 @@ msgstr ""
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:322
 #, no-wrap
-msgid "instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where\n"
+msgid "instance Coarbitrary a => Coarbitrary (Tree a) where\n"
 msgstr ""
 
 #. type: Plain text
@@ -10404,10 +10402,10 @@ msgstr ""
 #: text/chapter14.md:306
 #, no-wrap
 msgid ""
-"instance stringIsValue :: IsValue String where\n"
+"instance IsValue String where\n"
 "  toValue = id\n"
 "\n"
-"instance intIsValue :: IsValue Int where\n"
+"instance IsValue Int where\n"
 "  toValue = show\n"
 msgstr ""
 
@@ -10612,7 +10610,7 @@ msgid ""
 "  = TextContent String a\n"
 "  | ElementContent Element a\n"
 "\n"
-"instance functorContentF :: Functor ContentF where\n"
+"instance Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
 "  map f (ElementContent e x) = ElementContent e (f x)\n"
 msgstr ""
@@ -11054,7 +11052,7 @@ msgstr ""
 #: text/chapter14.md:599
 #, no-wrap
 msgid ""
-"instance nameIsValue :: IsValue Name where\n"
+"instance IsValue Name where\n"
 "  toValue (Name n) = n\n"
 msgstr ""
 
@@ -11074,7 +11072,7 @@ msgid ""
 "  = URLHref String\n"
 "  | AnchorHref Name\n"
 "\n"
-"instance hrefIsValue :: IsValue Href where\n"
+"instance IsValue Href where\n"
 "  toValue (URLHref url) = url\n"
 "  toValue (AnchorHref (Name nm)) = \"#\" <> nm\n"
 msgstr ""
@@ -11142,7 +11140,7 @@ msgstr ""
 #: text/chapter14.md:639
 #, no-wrap
 msgid ""
-"instance functorContentF :: Functor ContentF where\n"
+"instance Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
 "  map f (ElementContent e x) = ElementContent e (f x)\n"
 "  map f (NewName k) = NewName (f <<< k)\n"
@@ -17165,7 +17163,7 @@ msgstr ""
 #: text/chapter6.md:44
 #, no-wrap
 msgid ""
-"instance showBoolean :: Show Boolean where\n"
+"instance Show Boolean where\n"
 "  show true = \"true\"\n"
 "  show false = \"false\"\n"
 msgstr ""
@@ -18115,7 +18113,7 @@ msgstr ""
 #: text/chapter6.md:393
 #, no-wrap
 msgid ""
-"instance showArray :: Show a => Show (Array a) where\n"
+"instance Show a => Show (Array a) where\n"
 "  ...\n"
 msgstr ""
 
@@ -18132,7 +18130,7 @@ msgstr ""
 #: text/chapter6.md:401
 #, no-wrap
 msgid ""
-"instance showEither :: (Show a, Show b) => Show (Either a b) where\n"
+"instance (Show a, Show b) => Show (Either a b) where\n"
 "  ...\n"
 msgstr ""
 
@@ -18316,10 +18314,10 @@ msgid ""
 "class Stream stream element where\n"
 "  uncons :: stream -> Maybe { head :: element, tail :: stream }\n"
 "\n"
-"instance streamArray :: Stream (Array a) a where\n"
+"instance Stream (Array a) a where\n"
 "  uncons = Array.uncons\n"
 "\n"
-"instance streamString :: Stream String Char where\n"
+"instance Stream String Char where\n"
 "  uncons = String.uncons\n"
 msgstr ""
 
@@ -19523,11 +19521,11 @@ msgstr ""
 #: text/chapter7.md:116
 #, no-wrap
 msgid ""
-"instance functorMaybe :: Functor Maybe where\n"
+"instance Functor Maybe where\n"
 "  map f (Just a) = Just (f a)\n"
 "  map f Nothing  = Nothing\n"
 "\n"
-"instance applyMaybe :: Apply Maybe where\n"
+"instance Apply Maybe where\n"
 "  apply (Just f) (Just x) = Just (f x)\n"
 "  apply _        _        = Nothing\n"
 msgstr ""
@@ -19703,7 +19701,7 @@ msgstr ""
 #: text/chapter7.md:193
 #, no-wrap
 msgid ""
-"instance applicativeMaybe :: Applicative Maybe where\n"
+"instance Applicative Maybe where\n"
 "  pure x = Just x\n"
 msgstr ""
 
@@ -20743,7 +20741,7 @@ msgstr ""
 #: text/chapter7.md:610
 #, no-wrap
 msgid ""
-"instance traversableList :: Traversable List where\n"
+"instance Traversable List where\n"
 "-- traverse :: forall a b m. Applicative m => (a -> m b) -> List a -> m "
 "(List b)\n"
 "traverse _ Nil         = pure Nil\n"
@@ -21325,7 +21323,7 @@ msgstr ""
 #: text/chapter8.md:93
 #, no-wrap
 msgid ""
-"instance bindArray :: Bind Array where\n"
+"instance Bind Array where\n"
 "  bind xs f = concatMap f xs\n"
 msgstr ""
 
@@ -21347,7 +21345,7 @@ msgstr ""
 #: text/chapter8.md:102
 #, no-wrap
 msgid ""
-"instance bindMaybe :: Bind Maybe where\n"
+"instance Bind Maybe where\n"
 "  bind Nothing  _ = Nothing\n"
 "  bind (Just a) f = f a\n"
 msgstr ""
@@ -23881,6 +23879,14 @@ msgstr ""
 #: text/chapter9.md:56
 #, markdown-text
 msgid ""
+"Note that we have to use `launchAff_` to convert the `Aff` to `Effect` "
+"because `main` must be `Effect Unit`."
+msgstr ""
+
+#. type: Plain text
+#: text/chapter9.md:58
+#, markdown-text
+msgid ""
 "It is also possible to re-write the above snippet using callbacks or "
 "synchronous functions (for example with `Node.FS.Async` and `Node.FS.Sync` "
 "respectively), but those share the same downsides as discussed earlier with "
@@ -23888,7 +23894,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:58
+#: text/chapter9.md:60
 #, markdown-text
 msgid ""
 "The syntax for working with `Aff` is very similar to working with "
@@ -23897,7 +23903,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:60
+#: text/chapter9.md:62
 #, markdown-text
 msgid ""
 "For example, if we look at the signature of `readTextFile`, we see that it "
@@ -23905,13 +23911,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:61
+#: text/chapter9.md:63
 #, no-wrap
 msgid "readTextFile :: Encoding -> FilePath -> Aff String\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:66
+#: text/chapter9.md:68
 #, markdown-text, no-wrap
 msgid ""
 "We can \"unwrap\" the returned string with a bind arrow (`<-`) in do "
@@ -23919,25 +23925,25 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:67
+#: text/chapter9.md:69
 #, no-wrap
 msgid "my_data <- readTextFile UTF8 file1\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:72
+#: text/chapter9.md:74
 #, markdown-text
 msgid "Then pass it as the string argument to `writeTextFile`:"
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:73
+#: text/chapter9.md:75
 #, no-wrap
 msgid "writeTextFile :: Encoding -> FilePath -> String -> Aff Unit\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:78
+#: text/chapter9.md:80
 #, markdown-text
 msgid ""
 "The only other notable feature unique to `Aff` in the above example is "
@@ -23946,13 +23952,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:79
+#: text/chapter9.md:81
 #, no-wrap
 msgid "attempt :: forall a. Aff a -> Aff (Either Error a)\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:84
+#: text/chapter9.md:86
 #, markdown-text
 msgid ""
 "You should hopefully be able to draw on your knowledge of concepts from "
@@ -23961,7 +23967,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter9.md:88
+#: text/chapter9.md:90
 #, markdown-text
 msgid ""
 "(Easy) Write a `concatenateFiles` function which concatenates two text "
@@ -23969,7 +23975,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter9.md:90
+#: text/chapter9.md:92
 #, markdown-text
 msgid ""
 "(Medium) Write a function `concatenateMany` to concatenate multiple text "
@@ -23978,7 +23984,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter9.md:92
+#: text/chapter9.md:94
 #, markdown-text
 msgid ""
 "(Medium) Write a function `countCharacters :: FilePath -> Aff (Either Error "
@@ -23987,13 +23993,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter9.md:93
+#: text/chapter9.md:95
 #, markdown-text, no-wrap
 msgid "Additional Aff Resources"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:96
+#: text/chapter9.md:98
 #, markdown-text
 msgid ""
 "If you haven't already taken a look at the [official Aff "
@@ -24004,7 +24010,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:98
+#: text/chapter9.md:100
 #, markdown-text
 msgid ""
 "You're also welcome to consult these supplemental resources too, but again, "
@@ -24012,13 +24018,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:101
+#: text/chapter9.md:103
 #, markdown-text
 msgid "[Drew's Aff Post](https://blog.drewolson.org/asynchronous-purescript)"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:101
+#: text/chapter9.md:103
 #, markdown-text
 msgid ""
 "[Additional Aff Explanation and "
@@ -24026,13 +24032,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter9.md:102
+#: text/chapter9.md:104
 #, markdown-text, no-wrap
 msgid "A HTTP Client"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:107
+#: text/chapter9.md:109
 #, markdown-text
 msgid ""
 "The `affjax` library offers a convenient way to make asynchronous AJAX HTTP "
@@ -24049,13 +24055,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:108
+#: text/chapter9.md:110
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:113
+#: text/chapter9.md:115
 #, markdown-text
 msgid ""
 "When calling this in the repl, `launchAff_` is required to convert the `Aff` "
@@ -24063,7 +24069,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:114
+#: text/chapter9.md:116
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -24084,7 +24090,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:134
+#: text/chapter9.md:136
 #, markdown-text
 msgid ""
 "(Easy) Write a function `writeGet` which makes an HTTP `GET` request to a "
@@ -24092,13 +24098,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter9.md:135
+#: text/chapter9.md:137
 #, markdown-text, no-wrap
 msgid "Parallel Computations"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:138
+#: text/chapter9.md:140
 #, markdown-text
 msgid ""
 "We've seen how to use the `Aff` monad and do notation to compose "
@@ -24108,7 +24114,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:140
+#: text/chapter9.md:142
 #, markdown-text
 msgid ""
 "The `parallel` package defines a type class `Parallel` for monads like `Aff` "
@@ -24120,7 +24126,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:141
+#: text/chapter9.md:143
 #, no-wrap
 msgid ""
 "class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where\n"
@@ -24129,13 +24135,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:148
+#: text/chapter9.md:150
 #, markdown-text
 msgid "The class defines two functions:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:151
+#: text/chapter9.md:153
 #, markdown-text
 msgid ""
 "`parallel`, which takes computations in the monad `m` and turns them into "
@@ -24143,13 +24149,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:151
+#: text/chapter9.md:153
 #, markdown-text
 msgid "`sequential`, which performs a conversion in the opposite direction."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:153
+#: text/chapter9.md:155
 #, markdown-text
 msgid ""
 "The `aff` library provides a `Parallel` instance for the `Aff` monad. It "
@@ -24160,7 +24166,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:155
+#: text/chapter9.md:157
 #, markdown-text
 msgid ""
 "Because applicative functors support lifting of functions of arbitrary "
@@ -24170,7 +24176,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:157
+#: text/chapter9.md:159
 #, markdown-text
 msgid ""
 "We can also combine parallel computations with sequential portions of code, "
@@ -24180,7 +24186,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:161
+#: text/chapter9.md:163
 #, markdown-text
 msgid ""
 "To demonstrate the difference between sequential and parallel execution, "
@@ -24191,13 +24197,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:162
+#: text/chapter9.md:164
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/ParallelDelay.purs:delays}}\n"
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:166
+#: text/chapter9.md:168
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -24212,7 +24218,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:179
+#: text/chapter9.md:181
 #, markdown-text
 msgid ""
 "Here's a more real-world example of making multiple HTTP requests in "
@@ -24223,13 +24229,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:180
+#: text/chapter9.md:182
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/ParallelFetch.purs:fetchPar}}\n"
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:184
+#: text/chapter9.md:186
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -24246,7 +24252,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:197
+#: text/chapter9.md:199
 #, markdown-text
 msgid ""
 "A full listing of available parallel functions can be found in the "
@@ -24258,7 +24264,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:201
+#: text/chapter9.md:203
 #, markdown-text
 msgid ""
 "(Easy) Write a `concatenateManyParallel` function which has the same "
@@ -24267,7 +24273,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:205
+#: text/chapter9.md:207
 #, markdown-text
 msgid ""
 "(Medium) Write a `getWithTimeout :: Number -> String -> Aff (Maybe String)` "
@@ -24276,7 +24282,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '    - '
-#: text/chapter9.md:205
+#: text/chapter9.md:207
 #, markdown-text
 msgid ""
 "`Nothing`: if the request takes longer than the provided timeout (in "
@@ -24284,13 +24290,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '    - '
-#: text/chapter9.md:205
+#: text/chapter9.md:207
 #, markdown-text
 msgid "The string response: if the request succeeds before the timeout elapses."
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:207
+#: text/chapter9.md:209
 #, markdown-text
 msgid ""
 "(Difficult) Write a `recurseFiles` function which takes a \"root\" file and "
@@ -24301,13 +24307,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:209
+#: text/chapter9.md:211
 #, markdown-text
 msgid "For example, if starting from the following `root.txt` file:"
 msgstr ""
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:210
+#: text/chapter9.md:212
 #, no-wrap
 msgid ""
 "$ cat root.txt\n"
@@ -24329,37 +24335,37 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:230
+#: text/chapter9.md:232
 #, markdown-text
 msgid "The expected output is:"
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:231
+#: text/chapter9.md:233
 #, no-wrap
 msgid "[\"root.txt\",\"a.txt\",\"b/a.txt\",\"b/b.txt\",\"b/c/a.txt\",\"c/a/a.txt\"]\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter9.md:238
+#: text/chapter9.md:240
 #, markdown-text
 msgid "In this chapter we covered asynchronous effects and learned how to:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:241
+#: text/chapter9.md:243
 #, markdown-text
 msgid "Run asynchronous code in the `Aff` monad with the `aff` library."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:241
+#: text/chapter9.md:243
 #, markdown-text
 msgid "Make HTTP requests asynchronously with the `affjax` library."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter9.md:241
+#: text/chapter9.md:243
 #, markdown-text
 msgid "Run asynchronous code in parallel with the `parallel` library."
 msgstr ""

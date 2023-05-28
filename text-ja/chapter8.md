@@ -109,7 +109,7 @@ class (Applicative m, Bind m) <= Monad m
 配列についての `Bind`の妥当な定義は次のようになります。
 
 ```hs
-instance bindArray :: Bind Array where
+instance Bind Array where
   bind xs f = concatMap f xs
 ```
 
@@ -118,7 +118,7 @@ instance bindArray :: Bind Array where
 `Maybe`型構築子についての `Bind`の実装は次のようになります。
 
 ```hs
-instance bindMaybe :: Bind Maybe where
+instance Bind Maybe where
   bind Nothing  _ = Nothing
   bind (Just a) f = f a
 ```

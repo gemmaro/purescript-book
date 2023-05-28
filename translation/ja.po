@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-04-22 13:30+0900\n"
-"PO-Revision-Date: 2023-05-03 11:52+0900\n"
+"POT-Creation-Date: 2023-05-28 14:18+0900\n"
+"PO-Revision-Date: 2023-05-28 14:22+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -668,7 +668,9 @@ msgstr ""
 #: text/chapter1.md:79
 msgid ""
 "PureScript used to automate user interface tests for an existing application."
-msgstr "既存のアプリケーションのユーザインターフェースのテストを自動化するためにPureScriptを使用する"
+msgstr ""
+"既存のアプリケーションのユーザインターフェースのテストを自動化するために"
+"PureScriptを使用する"
 
 #. type: Plain text
 #: text/chapter1.md:81
@@ -793,9 +795,12 @@ msgid ""
 "the book without reading the preceding chapters."
 msgstr ""
 "本書の各章は、概ね章ごとに完結しています。\n"
-"しかし、多少の関数型プログラミングの経験がある初心者でも、まずは各章を順番に進めていくことをお勧めします。\n"
+"しかし、多少の関数型プログラミングの経験がある初心者でも、まずは各章を順番に"
+"進めていくことをお勧めします。\n"
 "最初の数章では、本書の後半の内容を理解するために必要な基礎知識を養います。\n"
-"関数型プログラミングの考え方に充分通じた読者（特にMLやHaskellのような強く型付けされた言語での経験を持つ読者）なら、本書の前半の章を読まなくても、後半の章のコードの大まかな理解を得ることが恐らく可能でしょう。"
+"関数型プログラミングの考え方に充分通じた読者（特にMLやHaskellのような強く型付"
+"けされた言語での経験を持つ読者）なら、本書の前半の章を読まなくても、後半の章"
+"のコードの大まかな理解を得ることが恐らく可能でしょう。"
 
 #. type: Plain text
 #: text/chapter1.md:104
@@ -1283,10 +1288,14 @@ msgid ""
 "of the data you plan to work with. This chapter aims to impart such an "
 "understanding as pertains to code in PureScript's standard libraries."
 msgstr ""
-"JavaScriptを扱う作業をできる限り簡単にするため、PureScriptは直感的な外部関数インターフェースを提供しています。\n"
-"しかし、FFIはPureScriptの*応用的な*機能であることには留意していただきたいと思います。\n"
-"FFIを安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現についてよく理解していなければなりません。\n"
-"この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝授することを目指します。"
+"JavaScriptを扱う作業をできる限り簡単にするため、PureScriptは直感的な外部関数"
+"インターフェースを提供しています。\n"
+"しかし、FFIはPureScriptの*応用的な*機能であることには留意していただきたいと思"
+"います。\n"
+"FFIを安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現につい"
+"てよく理解していなければなりません。\n"
+"この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝"
+"授することを目指します。"
 
 #. type: Plain text
 #: text/chapter10.md:36
@@ -1913,7 +1922,7 @@ msgstr "本書の残りの例では入れ子の関数の代わりに矢印関数
 #: text/chapter6.md:410 text/chapter6.md:607 text/chapter6.md:741
 #: text/chapter7.md:381 text/chapter7.md:540 text/chapter7.md:642
 #: text/chapter8.md:308 text/chapter8.md:666 text/chapter8.md:973
-#: text/chapter9.md:85 text/chapter9.md:131 text/chapter9.md:198
+#: text/chapter9.md:87 text/chapter9.md:133 text/chapter9.md:200
 #, no-wrap
 msgid "Exercises"
 msgstr "演習"
@@ -4206,7 +4215,7 @@ msgstr ""
 #: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:121
 #: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
 #: text/chapter6.md:756 text/chapter7.md:691 text/chapter8.md:1000
-#: text/chapter9.md:235
+#: text/chapter9.md:237
 #, no-wrap
 msgid "Conclusion"
 msgstr "まとめ"
@@ -5477,8 +5486,8 @@ msgstr ""
 #: text/chapter11.md:94
 msgid ""
 "The `State` type constructor takes two type parameters: the type `s` of the "
-"state, and the return type `a`. Even though we speak of the \"`State` monad"
-"\", the instance of the `Monad` type class is actually provided for the "
+"state, and the return type `a`. Even though we speak of the \"`State` "
+"monad\", the instance of the `Monad` type class is actually provided for the "
 "`State s` type constructor, for any type `s`."
 msgstr ""
 "`State`型構築子は、状態の型 `s`、及び返り値の型 `a`という2種類の引数を取りま"
@@ -6603,7 +6612,7 @@ msgid ""
 "  throwError :: forall a. e -> m a\n"
 "  catchError :: forall a. m a -> (e -> m a) -> m a\n"
 "\n"
-"instance monadErrorExceptT :: Monad m => MonadError e (ExceptT e m)\n"
+"instance Monad m => MonadError e (ExceptT e m)\n"
 "\n"
 "runExceptT :: forall e m a. ExceptT e m a -> m (Either e a)\n"
 msgstr ""
@@ -6611,7 +6620,7 @@ msgstr ""
 "  throwError :: forall a. e -> m a\n"
 "  catchError :: forall a. m a -> (e -> m a) -> m a\n"
 "\n"
-"instance monadErrorExceptT :: Monad m => MonadError e (ExceptT e m)\n"
+"instance Monad m => MonadError e (ExceptT e m)\n"
 "\n"
 "runExceptT :: forall e m a. ExceptT e m a -> m (Either e a)\n"
 
@@ -7486,8 +7495,8 @@ msgstr ""
 msgid ""
 "(Medium) Use your `string` parser with the `some` combinator to write a "
 "parser `asFollowedByBs` which recognizes strings consisting of several "
-"copies of the string `\"a\"` followed by several copies of the string `\"b"
-"\"`."
+"copies of the string `\"a\"` followed by several copies of the string "
+"`\"b\"`."
 msgstr ""
 "（普通）`string`構文解析器と `many`コンビネータを使って、文字列`\"a\"`の連続"
 "と、それに続く文字列 `\"b\"`の連続からなる文字列を認識する構文解析器"
@@ -7964,7 +7973,9 @@ msgstr ""
 msgid ""
 "The interface to our game logic is provided by the function `game` in the "
 "`Game` module:"
-msgstr "このゲームロジックへのインターフェースは `Game`モジュール内の関数`game`によって提供されます。"
+msgstr ""
+"このゲームロジックへのインターフェースは `Game`モジュール内の関数`game`によっ"
+"て提供されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:847
@@ -8397,11 +8408,14 @@ msgid ""
 "`Alternative` and `MonadPlus` to build useful monads by combining standard "
 "monad transformers."
 msgstr ""
-"モナド変換子によって命令型のスタイルで安全なコードを書くことができることを見てきました。\n"
+"モナド変換子によって命令型のスタイルで安全なコードを書くことができることを見"
+"てきました。\n"
 "このスタイルでは型システムによって作用が追跡されています。\n"
-"また、型クラスはモナドが提供するアクションへと抽象化する強力な方法を提供します。\n"
+"また、型クラスはモナドが提供するアクションへと抽象化する強力な方法を提供しま"
+"す。\n"
 "このモナドのお陰でコードの再利用が可能になりました。\n"
-"標準的なモナド変換子を組み合わせることにより、`Alternative`や`MonadPlus`のような標準的な抽象化を使用して、役に立つモナドを構築できました。"
+"標準的なモナド変換子を組み合わせることにより、`Alternative`や`MonadPlus`のよ"
+"うな標準的な抽象化を使用して、役に立つモナドを構築できました。"
 
 #. type: Plain text
 #: text/chapter11.md:972
@@ -10963,7 +10977,7 @@ msgstr ""
 msgid ""
 "newtype Byte = Byte Int\n"
 "\n"
-"instance arbitraryByte :: Arbitrary Byte where\n"
+"instance Arbitrary Byte where\n"
 "  arbitrary = map intToByte arbitrary\n"
 "    where\n"
 "    intToByte n | n >= 0 = Byte (n `mod` 256)\n"
@@ -10971,7 +10985,7 @@ msgid ""
 msgstr ""
 "newtype Byte = Byte Int\n"
 "\n"
-"instance arbitraryByte :: Arbitrary Byte where\n"
+"instance Arbitrary Byte where\n"
 "  arbitrary = map intToByte arbitrary\n"
 "    where\n"
 "    intToByte n | n >= 0 = Byte (n `mod` 256)\n"
@@ -11027,7 +11041,7 @@ msgid ""
 "sorted :: forall a. Sorted a -> Array a\n"
 "sorted (Sorted xs) = xs\n"
 "\n"
-"instance arbSorted :: (Arbitrary a, Ord a) => Arbitrary (Sorted a) where\n"
+"instance (Arbitrary a, Ord a) => Arbitrary (Sorted a) where\n"
 "  arbitrary = map (Sorted <<< sort) arbitrary\n"
 msgstr ""
 "newtype Sorted a = Sorted (Array a)\n"
@@ -11035,7 +11049,7 @@ msgstr ""
 "sorted :: forall a. Sorted a -> Array a\n"
 "sorted (Sorted xs) = xs\n"
 "\n"
-"instance arbSorted :: (Arbitrary a, Ord a) => Arbitrary (Sorted a) where\n"
+"instance (Arbitrary a, Ord a) => Arbitrary (Sorted a) where\n"
 "  arbitrary = map (Sorted <<< sort) arbitrary\n"
 
 #. type: Plain text
@@ -11156,10 +11170,10 @@ msgstr ""
 #: text/chapter13.md:230
 #, no-wrap
 msgid ""
-"instance arbTree :: (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
+"instance (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
 "  arbitrary = map fromArray arbitrary\n"
 msgstr ""
-"instance arbTree :: (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
+"instance (Arbitrary a, Ord a) => Arbitrary (Tree a) where\n"
 "  arbitrary = map fromArray arbitrary\n"
 
 #. type: Plain text
@@ -11319,8 +11333,8 @@ msgstr ""
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:278
 #, no-wrap
-msgid "instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
-msgstr "instance arbFunction :: (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
+msgid "instance (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
+msgstr "instance (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
 
 #. type: Plain text
 #: text/chapter13.md:283
@@ -11407,8 +11421,8 @@ msgstr "関数は `Arbitrary`であるだけでなく `Coarbitrary`でもあり�
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:310
 #, no-wrap
-msgid "instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
-msgstr "instance coarbFunction :: (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
+msgid "instance (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
+msgstr "instance (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
 
 #. type: Plain text
 #: text/chapter13.md:315
@@ -11454,8 +11468,8 @@ msgstr ""
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:322
 #, no-wrap
-msgid "instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where\n"
-msgstr "instance coarbTree :: Coarbitrary a => Coarbitrary (Tree a) where\n"
+msgid "instance Coarbitrary a => Coarbitrary (Tree a) where\n"
+msgstr "instance Coarbitrary a => Coarbitrary (Tree a) where\n"
 
 #. type: Plain text
 #: text/chapter13.md:327
@@ -12628,16 +12642,16 @@ msgstr "`String`と `Int`型についての型クラスインスタンスも提�
 #: text/chapter14.md:306
 #, no-wrap
 msgid ""
-"instance stringIsValue :: IsValue String where\n"
+"instance IsValue String where\n"
 "  toValue = id\n"
 "\n"
-"instance intIsValue :: IsValue Int where\n"
+"instance IsValue Int where\n"
 "  toValue = show\n"
 msgstr ""
-"instance stringIsValue :: IsValue String where\n"
+"instance IsValue String where\n"
 "  toValue = id\n"
 "\n"
-"instance intIsValue :: IsValue Int where\n"
+"instance IsValue Int where\n"
 "  toValue = show\n"
 
 #. type: Plain text
@@ -12909,7 +12923,7 @@ msgid ""
 "  = TextContent String a\n"
 "  | ElementContent Element a\n"
 "\n"
-"instance functorContentF :: Functor ContentF where\n"
+"instance Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
 "  map f (ElementContent e x) = ElementContent e (f x)\n"
 msgstr ""
@@ -12917,7 +12931,7 @@ msgstr ""
 "  = TextContent String a\n"
 "  | ElementContent Element a\n"
 "\n"
-"instance functorContentF :: Functor ContentF where\n"
+"instance Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
 "  map f (ElementContent e x) = ElementContent e (f x)\n"
 
@@ -13477,10 +13491,10 @@ msgstr ""
 #: text/chapter14.md:599
 #, no-wrap
 msgid ""
-"instance nameIsValue :: IsValue Name where\n"
+"instance IsValue Name where\n"
 "  toValue (Name n) = n\n"
 msgstr ""
-"instance nameIsValue :: IsValue Name where\n"
+"instance IsValue Name where\n"
 "  toValue (Name n) = n\n"
 
 #. type: Plain text
@@ -13500,7 +13514,7 @@ msgid ""
 "  = URLHref String\n"
 "  | AnchorHref Name\n"
 "\n"
-"instance hrefIsValue :: IsValue Href where\n"
+"instance IsValue Href where\n"
 "  toValue (URLHref url) = url\n"
 "  toValue (AnchorHref (Name nm)) = \"#\" <> nm\n"
 msgstr ""
@@ -13508,7 +13522,7 @@ msgstr ""
 "  = URLHref String\n"
 "  | AnchorHref Name\n"
 "\n"
-"instance hrefIsValue :: IsValue Href where\n"
+"instance IsValue Href where\n"
 "  toValue (URLHref url) = url\n"
 "  toValue (AnchorHref (Name nm)) = \"#\" <> nm\n"
 
@@ -13584,12 +13598,12 @@ msgstr ""
 #: text/chapter14.md:639
 #, no-wrap
 msgid ""
-"instance functorContentF :: Functor ContentF where\n"
+"instance Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
 "  map f (ElementContent e x) = ElementContent e (f x)\n"
 "  map f (NewName k) = NewName (f <<< k)\n"
 msgstr ""
-"instance functorContentF :: Functor ContentF where\n"
+"instance Functor ContentF where\n"
 "  map f (TextContent s x) = TextContent s (f x)\n"
 "  map f (ElementContent e x) = ElementContent e (f x)\n"
 "  map f (NewName k) = NewName (f <<< k)\n"
@@ -19842,8 +19856,10 @@ msgid ""
 "probably define an interface or abstract class `Shape`, and one concrete "
 "subclass for each type of shape that we wanted to be able to work with."
 msgstr ""
-"直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとします。\n"
-"オブジェクト指向言語では、恐らくインターフェースもしくは抽象クラス `Shape`を定義し、使いたいそれぞれの図形について具体的なサブクラスを定義するでしょう。"
+"直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとしま"
+"す。\n"
+"オブジェクト指向言語では、恐らくインターフェースもしくは抽象クラス `Shape`を"
+"定義し、使いたいそれぞれの図形について具体的なサブクラスを定義するでしょう。"
 
 #. type: Plain text
 #: text/chapter5.md:337
@@ -19854,7 +19870,8 @@ msgid ""
 "difficult to add new operations without breaking modularity."
 msgstr ""
 "しかし、この方針は大きな欠点を1つ抱えています。\n"
-"`Shape`を抽象的に扱うためには、実行したいと思う可能性のある全ての操作を事前に把握し、`Shape`インターフェースに定義する必要があるのです。\n"
+"`Shape`を抽象的に扱うためには、実行したいと思う可能性のある全ての操作を事前に"
+"把握し、`Shape`インターフェースに定義する必要があるのです。\n"
 "このため、モジュール性を壊さずに新しい操作を追加することが難しくなります。"
 
 #. type: Plain text
@@ -20711,11 +20728,11 @@ msgstr ""
 #: text/chapter6.md:44
 #, no-wrap
 msgid ""
-"instance showBoolean :: Show Boolean where\n"
+"instance Show Boolean where\n"
 "  show true = \"true\"\n"
 "  show false = \"false\"\n"
 msgstr ""
-"instance showBoolean :: Show Boolean where\n"
+"instance Show Boolean where\n"
 "  show true = \"true\"\n"
 "  show false = \"false\"\n"
 
@@ -21864,10 +21881,10 @@ msgstr ""
 #: text/chapter6.md:393
 #, no-wrap
 msgid ""
-"instance showArray :: Show a => Show (Array a) where\n"
+"instance Show a => Show (Array a) where\n"
 "  ...\n"
 msgstr ""
-"instance showArray :: Show a => Show (Array a) where\n"
+"instance Show a => Show (Array a) where\n"
 "  ...\n"
 
 #. type: Plain text
@@ -21882,10 +21899,10 @@ msgstr "型クラスインスタンスが複数の他のインスタンスに依
 #: text/chapter6.md:401
 #, no-wrap
 msgid ""
-"instance showEither :: (Show a, Show b) => Show (Either a b) where\n"
+"instance (Show a, Show b) => Show (Either a b) where\n"
 "  ...\n"
 msgstr ""
-"instance showEither :: (Show a, Show b) => Show (Either a b) where\n"
+"instance (Show a, Show b) => Show (Either a b) where\n"
 "  ...\n"
 
 #. type: Plain text
@@ -22082,10 +22099,10 @@ msgid ""
 "class Stream stream element where\n"
 "  uncons :: stream -> Maybe { head :: element, tail :: stream }\n"
 "\n"
-"instance streamArray :: Stream (Array a) a where\n"
+"instance Stream (Array a) a where\n"
 "  uncons = Array.uncons\n"
 "\n"
-"instance streamString :: Stream String Char where\n"
+"instance Stream String Char where\n"
 "  uncons = String.uncons\n"
 msgstr ""
 "module Stream where\n"
@@ -22097,10 +22114,10 @@ msgstr ""
 "class Stream stream element where\n"
 "  uncons :: stream -> Maybe { head :: element, tail :: stream }\n"
 "\n"
-"instance streamArray :: Stream (Array a) a where\n"
+"instance Stream (Array a) a where\n"
 "  uncons = Array.uncons\n"
 "\n"
-"instance streamString :: Stream String Char where\n"
+"instance Stream String Char where\n"
 "  uncons = String.uncons\n"
 
 #. type: Plain text
@@ -23172,7 +23189,8 @@ msgid ""
 msgstr ""
 "この章では第3章に引き続き住所録を例として扱います。\n"
 "今回は住所録のデータ型を拡張し、これらの型の値を検証する関数を書きます。\n"
-"これらの関数は、例えばデータ入力フォームの一部で、使用者へエラーを表示するwebユーザインターフェースで使われると考えてください。"
+"これらの関数は、例えばデータ入力フォームの一部で、使用者へエラーを表示するweb"
+"ユーザインターフェースで使われると考えてください。"
 
 #. type: Plain text
 #: text/chapter7.md:14
@@ -23522,19 +23540,19 @@ msgstr ""
 #: text/chapter7.md:116
 #, no-wrap
 msgid ""
-"instance functorMaybe :: Functor Maybe where\n"
+"instance Functor Maybe where\n"
 "  map f (Just a) = Just (f a)\n"
 "  map f Nothing  = Nothing\n"
 "\n"
-"instance applyMaybe :: Apply Maybe where\n"
+"instance Apply Maybe where\n"
 "  apply (Just f) (Just x) = Just (f x)\n"
 "  apply _        _        = Nothing\n"
 msgstr ""
-"instance functorMaybe :: Functor Maybe where\n"
+"instance Functor Maybe where\n"
 "  map f (Just a) = Just (f a)\n"
 "  map f Nothing  = Nothing\n"
 "\n"
-"instance applyMaybe :: Apply Maybe where\n"
+"instance Apply Maybe where\n"
 "  apply (Just f) (Just x) = Just (f x)\n"
 "  apply _        _        = Nothing\n"
 
@@ -23727,10 +23745,10 @@ msgstr "`Maybe`についての`Applicative`インスタンスは次のように�
 #: text/chapter7.md:193
 #, no-wrap
 msgid ""
-"instance applicativeMaybe :: Applicative Maybe where\n"
+"instance Applicative Maybe where\n"
 "  pure x = Just x\n"
 msgstr ""
-"instance applicativeMaybe :: Applicative Maybe where\n"
+"instance Applicative Maybe where\n"
 "  pure x = Just x\n"
 
 #. type: Plain text
@@ -24991,12 +25009,12 @@ msgstr ""
 #: text/chapter7.md:610
 #, no-wrap
 msgid ""
-"instance traversableList :: Traversable List where\n"
+"instance Traversable List where\n"
 "-- traverse :: forall a b m. Applicative m => (a -> m b) -> List a -> m (List b)\n"
 "traverse _ Nil         = pure Nil\n"
 "traverse f (Cons x xs) = Cons <$> f x <*> traverse f xs\n"
 msgstr ""
-"instance traversableList :: Traversable List where\n"
+"instance Traversable List where\n"
 "-- traverse :: forall a b m. Applicative m => (a -> m b) -> List a -> m (List b)\n"
 "traverse _ Nil         = pure Nil\n"
 "traverse f (Cons x xs) = Cons <$> f x <*> traverse f xs\n"
@@ -25194,9 +25212,8 @@ msgid ""
 msgstr ""
 "（普通）`homeAddress`フィールドがオプショナル（`Maybe`を使用）な新しい版の"
 "`Person`型をつくってください。\n"
-"それからこの新しい`Person`を検証する新しい版の"
-"`validatePerson`（`validatePersonOptionalAddress`と改名します）を書いてくださ"
-"い。\n"
+"それからこの新しい`Person`を検証する新しい版の`validatePerson`"
+"（`validatePersonOptionalAddress`と改名します）を書いてください。\n"
 "*手掛かり*：`traverse`を使って型`Maybe a`のフィールドを検証してください。"
 
 #. type: Bullet: ' 1. '
@@ -25706,10 +25723,10 @@ msgstr ""
 #: text/chapter8.md:93
 #, no-wrap
 msgid ""
-"instance bindArray :: Bind Array where\n"
+"instance Bind Array where\n"
 "  bind xs f = concatMap f xs\n"
 msgstr ""
-"instance bindArray :: Bind Array where\n"
+"instance Bind Array where\n"
 "  bind xs f = concatMap f xs\n"
 
 #. type: Plain text
@@ -25730,11 +25747,11 @@ msgstr "`Maybe`型構築子についての `Bind`の実装は次のようにな�
 #: text/chapter8.md:102
 #, no-wrap
 msgid ""
-"instance bindMaybe :: Bind Maybe where\n"
+"instance Bind Maybe where\n"
 "  bind Nothing  _ = Nothing\n"
 "  bind (Just a) f = f a\n"
 msgstr ""
-"instance bindMaybe :: Bind Maybe where\n"
+"instance Bind Maybe where\n"
 "  bind Nothing  _ = Nothing\n"
 "  bind (Just a) f = f a\n"
 
@@ -28757,6 +28774,13 @@ msgstr "{{#include ../exercises/chapter9/test/Copy.purs:copyFile}}\n"
 #. type: Plain text
 #: text/chapter9.md:56
 msgid ""
+"Note that we have to use `launchAff_` to convert the `Aff` to `Effect` "
+"because `main` must be `Effect Unit`."
+msgstr "なお、`main`は`Effect Unit`でなければならないので、`launchAff_`を使って`Aff`から`Effect`へと変換せねばなりません。"
+
+#. type: Plain text
+#: text/chapter9.md:58
+msgid ""
 "It is also possible to re-write the above snippet using callbacks or "
 "synchronous functions (for example with `Node.FS.Async` and `Node.FS.Sync` "
 "respectively), but those share the same downsides as discussed earlier with "
@@ -28768,7 +28792,7 @@ msgstr ""
 "せん。"
 
 #. type: Plain text
-#: text/chapter9.md:58
+#: text/chapter9.md:60
 msgid ""
 "The syntax for working with `Aff` is very similar to working with `Effect`. "
 "They are both monads, and can therefore be written with do notation."
@@ -28777,7 +28801,7 @@ msgstr ""
 "どちらもモナドですし、したがってdo記法で書くことができます。"
 
 #. type: Plain text
-#: text/chapter9.md:60
+#: text/chapter9.md:62
 msgid ""
 "For example, if we look at the signature of `readTextFile`, we see that it "
 "returns the file contents as a `String` wrapped in `Aff`:"
@@ -28786,36 +28810,36 @@ msgstr ""
 "し、`Aff`に包んで返していることがわかります。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:61
+#: text/chapter9.md:63
 #, no-wrap
 msgid "readTextFile :: Encoding -> FilePath -> Aff String\n"
 msgstr "readTextFile :: Encoding -> FilePath -> Aff String\n"
 
 #. type: Plain text
-#: text/chapter9.md:66
+#: text/chapter9.md:68
 #, no-wrap
 msgid "We can \"unwrap\" the returned string with a bind arrow (`<-`) in do notation:\n"
 msgstr "do記法中では束縛矢印 (`<-`) で返却された文字列を「開封」できます。\n"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:67
+#: text/chapter9.md:69
 #, no-wrap
 msgid "my_data <- readTextFile UTF8 file1\n"
 msgstr "my_data <- readTextFile UTF8 file1\n"
 
 #. type: Plain text
-#: text/chapter9.md:72
+#: text/chapter9.md:74
 msgid "Then pass it as the string argument to `writeTextFile`:"
 msgstr "それから`writeTextFile`に文字列引数として渡します。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:73
+#: text/chapter9.md:75
 #, no-wrap
 msgid "writeTextFile :: Encoding -> FilePath -> String -> Aff Unit\n"
 msgstr "writeTextFile :: Encoding -> FilePath -> String -> Aff Unit\n"
 
 #. type: Plain text
-#: text/chapter9.md:78
+#: text/chapter9.md:80
 msgid ""
 "The only other notable feature unique to `Aff` in the above example is "
 "`attempt`, which captures errors or exceptions encountered while running "
@@ -28825,13 +28849,13 @@ msgstr ""
 "実行中に遭遇したエラーや例外を捕捉して`Either`内に保管するものです。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:79
+#: text/chapter9.md:81
 #, no-wrap
 msgid "attempt :: forall a. Aff a -> Aff (Either Error a)\n"
 msgstr "attempt :: forall a. Aff a -> Aff (Either Error a)\n"
 
 #. type: Plain text
-#: text/chapter9.md:84
+#: text/chapter9.md:86
 msgid ""
 "You should hopefully be able to draw on your knowledge of concepts from "
 "previous chapters and combine this with the new `Aff` patterns learned in "
@@ -28842,7 +28866,7 @@ msgstr ""
 "う。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter9.md:88
+#: text/chapter9.md:90
 msgid ""
 "(Easy) Write a `concatenateFiles` function which concatenates two text files."
 msgstr ""
@@ -28850,7 +28874,7 @@ msgstr ""
 "い。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter9.md:90
+#: text/chapter9.md:92
 msgid ""
 "(Medium) Write a function `concatenateMany` to concatenate multiple text "
 "files, given an array of input file names and an output file name. _Hint_: "
@@ -28861,7 +28885,7 @@ msgstr ""
 "*手掛かり*：`traverse`を使ってください。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter9.md:92
+#: text/chapter9.md:94
 msgid ""
 "(Medium) Write a function `countCharacters :: FilePath -> Aff (Either Error "
 "Int)` that returns the number of characters in a file, or an error if one is "
@@ -28871,13 +28895,13 @@ msgstr ""
 "`countCharacters :: FilePath -> Aff (Either Error Int)`を書いてください。"
 
 #. type: Title ##
-#: text/chapter9.md:93
+#: text/chapter9.md:95
 #, no-wrap
 msgid "Additional Aff Resources"
 msgstr "更なるAffの資料"
 
 #. type: Plain text
-#: text/chapter9.md:96
+#: text/chapter9.md:98
 msgid ""
 "If you haven't already taken a look at the [official Aff guide](https://"
 "pursuit.purescript.org/packages/purescript-aff/), skim through that now. "
@@ -28891,7 +28915,7 @@ msgstr ""
 "らかの関数を見付けだす助けになるかもしれません。"
 
 #. type: Plain text
-#: text/chapter9.md:98
+#: text/chapter9.md:100
 msgid ""
 "You're also welcome to consult these supplemental resources too, but again, "
 "the exercises in this chapter don't depend on them:"
@@ -28900,13 +28924,13 @@ msgstr ""
 "がこの章の演習はこれらの内容に依りません。"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:101
+#: text/chapter9.md:103
 msgid "[Drew's Aff Post](https://blog.drewolson.org/asynchronous-purescript)"
 msgstr ""
 "[DrewのAffに関する投稿](https://blog.drewolson.org/asynchronous-purescript)"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:101
+#: text/chapter9.md:103
 msgid ""
 "[Additional Aff Explanation and Examples](https://github.com/JordanMartinez/"
 "purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-"
@@ -28916,13 +28940,13 @@ msgstr ""
 "reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff)"
 
 #. type: Title ##
-#: text/chapter9.md:102
+#: text/chapter9.md:104
 #, no-wrap
 msgid "A HTTP Client"
 msgstr "HTTPクライアント"
 
 #. type: Plain text
-#: text/chapter9.md:107
+#: text/chapter9.md:109
 msgid ""
 "The `affjax` library offers a convenient way to make asynchronous AJAX HTTP "
 "requests with `Aff`. Depending on what environment you are targeting you "
@@ -28948,13 +28972,13 @@ msgstr ""
 "です。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:108
+#: text/chapter9.md:110
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}\n"
 msgstr "{{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}\n"
 
 #. type: Plain text
-#: text/chapter9.md:113
+#: text/chapter9.md:115
 msgid ""
 "When calling this in the repl, `launchAff_` is required to convert the `Aff` "
 "to a repl-compatible `Effect`:"
@@ -28963,7 +28987,7 @@ msgstr ""
 "と変換する必要があります。"
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:114
+#: text/chapter9.md:116
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -28997,7 +29021,7 @@ msgstr ""
 "{\"data\":{\"id\":1,\"email\":\"george.bluth@reqres.in\",\"first_name\":\"George\",\"last_name\":\"Bluth\", ...}}\n"
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:134
+#: text/chapter9.md:136
 msgid ""
 "(Easy) Write a function `writeGet` which makes an HTTP `GET` request to a "
 "provided url, and writes the response body to a file."
@@ -29006,13 +29030,13 @@ msgstr ""
 "`writeGet`を書いてください。"
 
 #. type: Title ##
-#: text/chapter9.md:135
+#: text/chapter9.md:137
 #, no-wrap
 msgid "Parallel Computations"
 msgstr "並列計算"
 
 #. type: Plain text
-#: text/chapter9.md:138
+#: text/chapter9.md:140
 msgid ""
 "We've seen how to use the `Aff` monad and do notation to compose "
 "asynchronous computations in sequence. It would also be useful to be able to "
@@ -29025,7 +29049,7 @@ msgstr ""
 "`Aff`があれば2つの計算を次々に開始するだけで並列に計算できます。"
 
 #. type: Plain text
-#: text/chapter9.md:140
+#: text/chapter9.md:142
 msgid ""
 "The `parallel` package defines a type class `Parallel` for monads like `Aff` "
 "which support parallel execution. When we met applicative functors earlier "
@@ -29042,7 +29066,7 @@ msgstr ""
 "成するために使われるアプリカティブ関手`f`との対応関係を定義しているのです。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:141
+#: text/chapter9.md:143
 #, no-wrap
 msgid ""
 "class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where\n"
@@ -29054,12 +29078,12 @@ msgstr ""
 "  parallel :: forall a. m a -> f a\n"
 
 #. type: Plain text
-#: text/chapter9.md:148
+#: text/chapter9.md:150
 msgid "The class defines two functions:"
 msgstr "このクラスは2つの関数を定義しています。"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:151
+#: text/chapter9.md:153
 msgid ""
 "`parallel`, which takes computations in the monad `m` and turns them into "
 "computations in the applicative functor `f`, and"
@@ -29068,12 +29092,12 @@ msgstr ""
 "す。"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:151
+#: text/chapter9.md:153
 msgid "`sequential`, which performs a conversion in the opposite direction."
 msgstr "`sequential`：反対方向に変換します。"
 
 #. type: Plain text
-#: text/chapter9.md:153
+#: text/chapter9.md:155
 msgid ""
 "The `aff` library provides a `Parallel` instance for the `Aff` monad. It "
 "uses mutable references to combine `Aff` actions in parallel, by keeping "
@@ -29087,7 +29111,7 @@ msgstr ""
 "両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。"
 
 #. type: Plain text
-#: text/chapter9.md:155
+#: text/chapter9.md:157
 msgid ""
 "Because applicative functors support lifting of functions of arbitrary "
 "arity, we can perform more computations in parallel by using the applicative "
@@ -29100,7 +29124,7 @@ msgstr ""
 "関数から恩恵を受けることもできます。"
 
 #. type: Plain text
-#: text/chapter9.md:157
+#: text/chapter9.md:159
 msgid ""
 "We can also combine parallel computations with sequential portions of code, "
 "by using applicative combinators in a do notation block, or vice versa, "
@@ -29112,7 +29136,7 @@ msgstr ""
 "を結合したり、またはその逆を行ったりできます。"
 
 #. type: Plain text
-#: text/chapter9.md:161
+#: text/chapter9.md:163
 msgid ""
 "To demonstrate the difference between sequential and parallel execution, "
 "we'll create an array of 100 10-millisecond delays, then execute those "
@@ -29126,13 +29150,13 @@ msgstr ""
 "`parSequence_`で置き換えるだけで有効になるところに注目です。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:162
+#: text/chapter9.md:164
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/ParallelDelay.purs:delays}}\n"
 msgstr "{{#include ../exercises/chapter9/test/ParallelDelay.purs:delays}}\n"
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:166
+#: text/chapter9.md:168
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -29156,7 +29180,7 @@ msgstr ""
 "unit\n"
 
 #. type: Plain text
-#: text/chapter9.md:179
+#: text/chapter9.md:181
 msgid ""
 "Here's a more real-world example of making multiple HTTP requests in "
 "parallel. We're reusing our `getUrl` function to fetch information from two "
@@ -29170,13 +29194,13 @@ msgstr ""
 "この例は代わりに`traverse`でも問題なく動きますがより遅くなるでしょう。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:180
+#: text/chapter9.md:182
 #, no-wrap
 msgid "{{#include ../exercises/chapter9/test/ParallelFetch.purs:fetchPar}}\n"
 msgstr "{{#include ../exercises/chapter9/test/ParallelFetch.purs:fetchPar}}\n"
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:184
+#: text/chapter9.md:186
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -29200,7 +29224,7 @@ msgstr ""
 "]\n"
 
 #. type: Plain text
-#: text/chapter9.md:197
+#: text/chapter9.md:199
 msgid ""
 "A full listing of available parallel functions can be found in the "
 "[`parallel` docs on Pursuit](https://pursuit.purescript.org/packages/"
@@ -29214,7 +29238,7 @@ msgstr ""
 "contrib/purescript-aff#parallel-execution)にもより多くの例が含まれています。"
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:201
+#: text/chapter9.md:203
 msgid ""
 "(Easy) Write a `concatenateManyParallel` function which has the same "
 "signature as the earlier `concatenateMany` function, but reads all input "
@@ -29225,7 +29249,7 @@ msgstr ""
 "ただし全ての入力ファイルを並列に読むようにしてください。"
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:205
+#: text/chapter9.md:207
 msgid ""
 "(Medium) Write a `getWithTimeout :: Number -> String -> Aff (Maybe String)` "
 "function which makes an HTTP `GET` request at the provided URL and returns "
@@ -29236,7 +29260,7 @@ msgstr ""
 "い。"
 
 #. type: Bullet: '    - '
-#: text/chapter9.md:205
+#: text/chapter9.md:207
 msgid ""
 "`Nothing`: if the request takes longer than the provided timeout (in "
 "milliseconds)."
@@ -29244,13 +29268,13 @@ msgstr ""
 "`Nothing`: 要求してから与えられた時間制限（ミリ秒単位）より長く掛かった場合。"
 
 #. type: Bullet: '    - '
-#: text/chapter9.md:205
+#: text/chapter9.md:207
 msgid ""
 "The string response: if the request succeeds before the timeout elapses."
 msgstr "文字列の応答：時間制限を越える前に要求が成功した場合。"
 
 #. type: Bullet: '1. '
-#: text/chapter9.md:207
+#: text/chapter9.md:209
 msgid ""
 "(Difficult) Write a `recurseFiles` function which takes a \"root\" file and "
 "returns an array of all paths listed in that file (and listed in the listed "
@@ -29267,12 +29291,12 @@ msgstr ""
 "す。"
 
 #. type: Plain text
-#: text/chapter9.md:209
+#: text/chapter9.md:211
 msgid "For example, if starting from the following `root.txt` file:"
 msgstr "例えば次のような`root.txt`ファイルから始まるとします。"
 
 #. type: Fenced code block (shell)
-#: text/chapter9.md:210
+#: text/chapter9.md:212
 #, no-wrap
 msgid ""
 "$ cat root.txt\n"
@@ -29310,32 +29334,32 @@ msgstr ""
 "$ cat c/a/a.txt\n"
 
 #. type: Plain text
-#: text/chapter9.md:230
+#: text/chapter9.md:232
 msgid "The expected output is:"
 msgstr "期待される出力は次の通り。"
 
 #. type: Fenced code block (hs)
-#: text/chapter9.md:231
+#: text/chapter9.md:233
 #, no-wrap
 msgid "[\"root.txt\",\"a.txt\",\"b/a.txt\",\"b/b.txt\",\"b/c/a.txt\",\"c/a/a.txt\"]\n"
 msgstr "[\"root.txt\",\"a.txt\",\"b/a.txt\",\"b/b.txt\",\"b/c/a.txt\",\"c/a/a.txt\"]\n"
 
 #. type: Plain text
-#: text/chapter9.md:238
+#: text/chapter9.md:240
 msgid "In this chapter we covered asynchronous effects and learned how to:"
 msgstr "この章では非同期エフェクトと以下の方法を押さえました。"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:241
+#: text/chapter9.md:243
 msgid "Run asynchronous code in the `Aff` monad with the `aff` library."
 msgstr "`aff`ライブラリを使って`Aff`モナド中で非同期コードを走らせる。"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:241
+#: text/chapter9.md:243
 msgid "Make HTTP requests asynchronously with the `affjax` library."
 msgstr "`affjax`ライブラリを使って非同期にHTTPリクエストを行う。"
 
 #. type: Bullet: '- '
-#: text/chapter9.md:241
+#: text/chapter9.md:243
 msgid "Run asynchronous code in parallel with the `parallel` library."
 msgstr "`parallel`ライブラリを使って並列に非同期コードを走らせる。"

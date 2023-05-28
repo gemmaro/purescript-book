@@ -340,10 +340,10 @@ class IsValue a where
 `String`と `Int`型についての型クラスインスタンスも提供しておきます。
 
 ```haskell
-instance stringIsValue :: IsValue String where
+instance IsValue String where
   toValue = id
 
-instance intIsValue :: IsValue Int where
+instance IsValue Int where
   toValue = show
 ```
 
@@ -455,7 +455,7 @@ data ContentF a
   = TextContent String a
   | ElementContent Element a
 
-instance functorContentF :: Functor ContentF where
+instance Functor ContentF where
   map f (TextContent s x) = TextContent s (f x)
   map f (ElementContent e x) = ElementContent e (f x)
 ```
@@ -674,7 +674,7 @@ runName (Name n) = n
 次に、属性値として `Name`を使うことができるように、新しい型に`IsValue`型クラスのインスタンスを定義します。
 
 ```haskell
-instance nameIsValue :: IsValue Name where
+instance IsValue Name where
   toValue (Name n) = n
 ```
 
@@ -685,7 +685,7 @@ data Href
   = URLHref String
   | AnchorHref Name
 
-instance hrefIsValue :: IsValue Href where
+instance IsValue Href where
   toValue (URLHref url) = url
   toValue (AnchorHref (Name nm)) = "#" <> nm
 ```
@@ -716,7 +716,7 @@ data ContentF a
 新しいデータ構築子を考慮するよう、次のように`ContentF`用の`Functor`インスタンスを更新する必要もあります。
 
 ```haskell
-instance functorContentF :: Functor ContentF where
+instance Functor ContentF where
   map f (TextContent s x) = TextContent s (f x)
   map f (ElementContent e x) = ElementContent e (f x)
   map f (NewName k) = NewName (f <<< k)

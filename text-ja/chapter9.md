@@ -55,6 +55,9 @@ PureScriptでの`Aff`モナドはJavaScriptの`async`/`await`構文に似た人�
 {{#include ../exercises/chapter9/test/Copy.purs:copyFile}}
 ```
 
+なお、`main`は`Effect
+Unit`でなければならないので、`launchAff_`を使って`Aff`から`Effect`へと変換せねばなりません。
+
 上のコード片をコールバックや同期関数を使って書き換えることも可能ですが（例えば`Node.FS.Async`や`Node.FS.Sync`をそれぞれ使います）、JavaScriptで前にお話ししたのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されません。
 
 `Aff`を扱う文法は`Effect`を扱うものと大変似ています。

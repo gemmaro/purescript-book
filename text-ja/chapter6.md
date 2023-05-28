@@ -44,7 +44,7 @@ class Show a where
 例えば、Preludeにある `Boolean`値に対する `Show`型クラスインスタンスの定義は次の通りです。
 
 ```haskell
-instance showBoolean :: Show Boolean where
+instance Show Boolean where
   show true = "true"
   show false = "false"
 ```
@@ -452,14 +452,14 @@ forall a. Semiring a => a -> a
 それぞれの要素を `show`する方法がある限り、その要素の配列を `show`する型クラスインスタンスを書くことができます。
 
 ```haskell
-instance showArray :: Show a => Show (Array a) where
+instance Show a => Show (Array a) where
   ...
 ```
 
 型クラスインスタンスが複数の他のインスタンスに依存する場合、括弧で囲んでそれらのインスタンスをコンマで区切り、それを`=>`シンボルの左側に置く必要があります。
 
 ```haskell
-instance showEither :: (Show a, Show b) => Show (Either a b) where
+instance (Show a, Show b) => Show (Either a b) where
   ...
 ```
 
@@ -532,10 +532,10 @@ import Data.String.CodeUnits as String
 class Stream stream element where
   uncons :: stream -> Maybe { head :: element, tail :: stream }
 
-instance streamArray :: Stream (Array a) a where
+instance Stream (Array a) a where
   uncons = Array.uncons
 
-instance streamString :: Stream String Char where
+instance Stream String Char where
   uncons = String.uncons
 ```
 
