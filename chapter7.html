@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>アプリカティブによる検証 - 実例によるPureScript</title>
+        <title>Applicative Validation - PureScript by Example</title>
 
 
         <!-- Custom HTML head -->
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -85,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html" class="active"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html" class="active"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +112,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">実例によるPureScript</h1>
+                    <h1 class="menu-title">PureScript by Example</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -149,38 +147,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="アプリカティブによる検証"><a class="header" href="#アプリカティブによる検証">アプリカティブによる検証</a></h1>
-<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、<code>Applicative</code>型クラスによって表現される <em>アプリカティブ関手</em> (applicative functor)
-という重要な抽象化と新たに出会うことになります。名前が難しそうに思えても心配しないでください。フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。アプリカティブ関手を使うと、通常であれば大量の決まり文句を伴うようなコードを、簡潔で宣言的な記述へと変えることができるようになります。</p>
-<p>また、<em>巡回可能関手</em>を表現する<code>Traversable</code>という別の型クラスにも出会います。現実の問題への解決策からこの概念が自然に生じることがわかるでしょう。</p>
-<p>この章では第3章に引き続き住所録を例として扱います。
-今回は住所録のデータ型を拡張し、これらの型の値を検証する関数を書きます。
-これらの関数は、例えばデータ入力フォームの一部で、使用者へエラーを表示するwebユーザインターフェースで使われると考えてください。</p>
-<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
-<p>この章のソースコードは、2つのファイル<code>src/Data/AddressBook.purs</code>、及び<code>src/Data/AddressBook/Validation.purs</code>で定義されています。</p>
-<p>このプロジェクトには多くの依存関係がありますが、その大半は既に見てきたものです。
-新しい依存関係は2つです。</p>
+                        <h1 id="applicative-validation"><a class="header" href="#applicative-validation">Applicative Validation</a></h1>
+<h2 id="chapter-goals"><a class="header" href="#chapter-goals">Chapter Goals</a></h2>
+<p>In this chapter, we will meet an important new abstraction - the <em>applicative functor</em>, described by the <code>Applicative</code> type class. Don't worry if the name sounds confusing - we will motivate the concept with a practical example - validating form data. This technique allows us to convert code which usually involves a lot of boilerplate checking into a simple, declarative description of our form.</p>
+<p>We will also meet another type class, <code>Traversable</code>, which describes <em>traversable functors</em>, and see how this concept also arises very naturally from solutions to real-world problems.</p>
+<p>The example code for this chapter will be a continuation of the address book example from chapter 3. This time, we will extend our address book data types, and write functions to validate values for those types. The understanding is that these functions could be used, for example in a web user interface, to display errors to the user as part of a data entry form.</p>
+<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
+<p>The source code for this chapter is defined in the files <code>src/Data/AddressBook.purs</code> and <code>src/Data/AddressBook/Validation.purs</code>.</p>
+<p>The project has a number of dependencies, many of which we have seen before. There are two new dependencies:</p>
 <ul>
-<li><code>control</code> - <code>Applicative</code>のような、型クラスを使用して制御フローを抽象化する関数が定義されています。</li>
-<li><code>validation</code> - この章の主題である <em>アプリカティブによる検証</em> のための関手が定義されています。</li>
+<li><code>control</code>, which defines functions for abstracting control flow using type classes like <code>Applicative</code>.</li>
+<li><code>validation</code>, which defines a functor for <em>applicative validation</em>, the subject of this chapter.</li>
 </ul>
-<p><code>Data.AddressBook</code>モジュールには、このプロジェクトのデータ型とそれらの型に対する<code>Show</code>インスタンスが定義されており、<code>Data.AddressBook.Validation</code>モジュールにはそれらの型の検証規則が含まれています。</p>
-<h2 id="関数適用の一般化"><a class="header" href="#関数適用の一般化">関数適用の一般化</a></h2>
-<p><em>アプリカティブ関手</em> の概念を理解するために、以前扱った型構築子<code>Maybe</code>について考えてみましょう。</p>
-<p>このモジュールのソースコードでは、次のような型を持つ<code>address</code>関数が定義されています。</p>
+<p>The <code>Data.AddressBook</code> module defines data types and <code>Show</code> instances for the types in our project, and the <code>Data.AddressBook.Validation</code> module contains validation rules for those types.</p>
+<h2 id="generalizing-function-application"><a class="header" href="#generalizing-function-application">Generalizing Function Application</a></h2>
+<p>To explain the concept of an <em>applicative functor</em>, let's consider the type constructor <code>Maybe</code> that we met earlier.</p>
+<p>The source code for this module defines a function <code>address</code> which has the following type:</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
 </code></pre>
-<p>この関数は、通りの名前、市、州という3つの文字列から型<code>Address</code>の値を構築するために使います。</p>
-<p>この関数は簡単に適用できますので、PSCiでどうなるか見てみましょう。</p>
+<p>This function is used to construct a value of type <code>Address</code> from three strings: a street name, a city, and a state.</p>
+<p>We can apply this function easily and see the result in PSCi:</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
 &gt; address &quot;123 Fake St.&quot; &quot;Faketown&quot; &quot;CA&quot;
 { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 </code></pre>
-<p>しかし、通り、市、州の3つ全てが必ずしも入力されないものとすると、3つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
-<p>考えられる場合としては、市が省略されている場合があるでしょう。
-もし<code>address</code>関数を直接適用しようとすると、型検証器からエラーが表示されます。</p>
+<p>However, suppose we did not necessarily have a street, city, or state, and wanted to use the <code>Maybe</code> type to indicate a missing value in each of the three cases.</p>
+<p>In one case, we might have a missing city. If we try to apply our function directly, we will receive an error from the type checker:</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 &gt; address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
 
@@ -192,59 +185,53 @@ with type
 
   String
 </code></pre>
-<p><code>address</code>は<code>Maybe String</code>型ではなく文字列型の引数を取るので、もちろんこれは期待通り型エラーになります。</p>
-<p>しかし、もし<code>address</code>関数を「持ち上げる」ことができれば、<code>Maybe</code>型で示される省略可能な値を扱うことができるはずだという予想は理に適っています。実際それは可能で、<code>Control.Apply</code>で提供されている関数<code>lift3</code>が、まさに求めているものです。</p>
+<p>Of course, this is an expected type error - <code>address</code> takes strings as arguments, not values of type <code>Maybe String</code>.</p>
+<p>However, it is reasonable to expect that we should be able to &quot;lift&quot; the <code>address</code> function to work with optional values described by the <code>Maybe</code> type. In fact, we can, and the <code>Control.Apply</code> provides the function <code>lift3</code> function which does exactly what we need:</p>
 <pre><code class="language-text">&gt; import Control.Apply
 &gt; lift3 address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
 
 Nothing
 </code></pre>
-<p>このとき、引数の1つ（市）が欠落していたので、結果は<code>Nothing</code>になります。
-もし3つの引数全てに<code>Just</code>構築子を使ったものが与えられたら、結果は値を含むことになります。</p>
+<p>In this case, the result is <code>Nothing</code>, because one of the arguments (the city) was missing. If we provide all three arguments using the <code>Just</code> constructor, then the result will contain a value as well:</p>
 <pre><code class="language-text">&gt; lift3 address (Just &quot;123 Fake St.&quot;) (Just &quot;Faketown&quot;) (Just &quot;CA&quot;)
 
 Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
 </code></pre>
-<p><code>lift3</code>という関数の名前は、3引数の関数を持ち上げるために使えることを示しています。関数を持ち上げる同様の関数で、引数の数が異なるものが<code>Control.Apply</code>で定義されています。</p>
-<h2 id="任意個の引数を持つ関数の持ち上げ"><a class="header" href="#任意個の引数を持つ関数の持ち上げ">任意個の引数を持つ関数の持ち上げ</a></h2>
-<p>これで、<code>lift2</code>や<code>lift3</code>のような関数を使えば、引数が2個や3個の関数を持ち上げることができるのはわかりました。
-でも、これを任意個の引数の関数へと一般化できるのでしょうか。</p>
-<p><code>lift3</code>の型を見てみるとわかりやすいでしょう。</p>
+<p>The name of the function <code>lift3</code> indicates that it can be used to lift functions of 3 arguments. There are similar functions defined in <code>Control.Apply</code> for functions of other numbers of arguments.</p>
+<h2 id="lifting-arbitrary-functions"><a class="header" href="#lifting-arbitrary-functions">Lifting Arbitrary Functions</a></h2>
+<p>So, we can lift functions with small numbers of arguments by using <code>lift2</code>, <code>lift3</code>, etc. But how can we generalize this to arbitrary functions?</p>
+<p>It is instructive to look at the type of <code>lift3</code>:</p>
 <pre><code class="language-text">&gt; :type lift3
 forall a b c d f. Apply f =&gt; (a -&gt; b -&gt; c -&gt; d) -&gt; f a -&gt; f b -&gt; f c -&gt; f d
 </code></pre>
-<p>上の<code>Maybe</code>の例では型構築子<code>f</code>は<code>Maybe</code>ですから、<code>lift3</code>は次のように特殊化されます。</p>
+<p>In the <code>Maybe</code> example above, the type constructor <code>f</code> is <code>Maybe</code>, so that <code>lift3</code> is specialized to the following type:</p>
 <pre><code class="language-haskell">forall a b c d. (a -&gt; b -&gt; c -&gt; d) -&gt; Maybe a -&gt; Maybe b -&gt; Maybe c -&gt; Maybe d
 </code></pre>
-<p>この型が言っているのは、3引数の任意の関数を取り、その関数を引数と返り値が<code>Maybe</code>で包まれた新しい関数へと持ち上げる、ということです。</p>
-<p>もちろんどんな型構築子<code>f</code>についても持ち上げができるわけではないのですが、それでは<code>Maybe</code>型を持ち上げができるようにしているものは何なのでしょうか。
-さて、先ほどの型の特殊化では、<code>f</code>に対する型クラス制約から<code>Apply</code>型クラスを取り除いていました。
-<code>Apply</code>はPreludeで次のように定義されています。</p>
+<p>This type says that we can take any function with three arguments, and lift it to give a new function whose argument and result types are wrapped with <code>Maybe</code>.</p>
+<p>Certainly, this is not possible for every type constructor <code>f</code>, so what is it about the <code>Maybe</code> type which allowed us to do this? Well, in specializing the type above, we removed a type class constraint on <code>f</code> from the <code>Apply</code> type class. <code>Apply</code> is defined in the Prelude as follows:</p>
 <pre><code class="language-haskell">class Functor f where
   map :: forall a b. (a -&gt; b) -&gt; f a -&gt; f b
 
 class Functor f &lt;= Apply f where
   apply :: forall a b. f (a -&gt; b) -&gt; f a -&gt; f b
 </code></pre>
-<p><code>Apply</code>型クラスは<code>Functor</code>の下位クラスであり、追加の関数<code>apply</code>を定義しています。<code>&lt;$&gt;</code>が<code>map</code>の別名として定義されているように、<code>Prelude</code>モジュールでは<code>&lt;*&gt;</code>を<code>apply</code>の別名として定義しています。これから見ていきますが、これら2つの演算子はよく一緒に使われます。</p>
-<p>なおこの<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Apply#v:apply"><code>apply</code></a>は<code>Data.Function</code>の<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply"><code>apply</code></a>（中置で<code>$</code>）とは異なります。幸いにも後者はほぼ常に中置記法として使われるので、名前の衝突については心配ご無用です。</p>
-<p><code>apply</code>の型は<code>map</code>の型と実によく似ています。
-<code>map</code>と<code>apply</code>の違いは、<code>map</code>がただの関数を引数に取るのに対し、<code>apply</code>の最初の引数は型構築子<code>f</code>で包まれているという点です。
-これをどのように使うのかはこれからすぐに見ていきますが、その前にまず<code>Maybe</code>型について<code>Apply</code>型クラスをどう実装するのかを見ていきましょう。</p>
-<pre><code class="language-haskell">instance functorMaybe :: Functor Maybe where
+<p>The <code>Apply</code> type class is a subclass of <code>Functor</code>, and defines an additional function <code>apply</code>. As <code>&lt;$&gt;</code> was defined as an alias for <code>map</code>, the <code>Prelude</code> module defines <code>&lt;*&gt;</code> as an alias for <code>apply</code>. As we'll see, these two operators are often used together.</p>
+<p>Note that this <a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Apply#v:apply"><code>apply</code></a> is different than the <a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply"><code>apply</code></a> from <code>Data.Function</code> (infixed as <code>$</code>). Luckily, infix notation is almost always used for the latter, so you don't need to worry about name collisions.</p>
+<p>The type of <code>apply</code> looks a lot like the type of <code>map</code>. The difference between <code>map</code> and <code>apply</code> is that <code>map</code> takes a function as an argument, whereas the first argument to <code>apply</code> is wrapped in the type constructor <code>f</code>. We'll see how this is used soon, but first, let's see how to implement the <code>Apply</code> type class for the <code>Maybe</code> type:</p>
+<pre><code class="language-haskell">instance Functor Maybe where
   map f (Just a) = Just (f a)
   map f Nothing  = Nothing
 
-instance applyMaybe :: Apply Maybe where
+instance Apply Maybe where
   apply (Just f) (Just x) = Just (f x)
   apply _        _        = Nothing
 </code></pre>
-<p>この型クラスのインスタンスで書かれているのは、任意のオプショナルな値にオプショナルな関数を適用でき、その両方が定義されている時に限り結果も定義される、ということです。</p>
-<p>それでは、<code>map</code>と<code>apply</code>を一緒に使い、引数が任意個の関数を持ち上げる方法を見ていきましょう。</p>
-<p>1引数の関数については、<code>map</code>をそのまま使うだけです。</p>
-<p>2引数関数については、型<code>a -&gt; b -&gt; c</code>のカリー化された関数<code>g</code>があるとします。これは型<code>a -&gt; (b -&gt; c)</code>と同じですから、<code>Functor</code>インスタンス付きのあらゆる型構築子<code>f</code>について、<code>map</code>を<code>f</code>に適用すると型<code>f a -&gt; f (b -&gt; c)</code>の新たな関数を得ることになります。持ち上げられた（型<code>f a</code>の）最初の引数にその関数を部分適用すると、型<code>f (b -&gt; c)</code>の新たな包まれた関数が得られます。<code>f</code>に<code>Apply</code>インスタンスもあるなら、そこから、2番目の持ち上げられた（型<code>f b</code>の）引数へ<code>apply</code>を適用でき、型<code>f c</code>の最終的な値を得ます。</p>
-<p>纏めると、<code>x :: f a</code>と<code>y :: f b</code>があるとき、式<code>(g &lt;$&gt; x) &lt;*&gt; y</code>の型は<code>f c</code>になります（この式は<code>apply (map g x)  y</code>と同じ意味だということを思い出しましょう）。Preludeで定義された優先順位の規則に従うと、<code>g &lt;$&gt; x &lt;*&gt; y</code>というように括弧を外すことができます。</p>
-<p>一般的には、最初の引数に<code>&lt;$&gt;</code>を使い、残りの引数に対しては<code>&lt;*&gt;</code>を使います。<code>lift3</code>で説明すると次のようになります。</p>
+<p>This type class instance says that we can apply an optional function to an optional value, and the result is defined only if both are defined.</p>
+<p>Now we'll see how <code>map</code> and <code>apply</code> can be used together to lift functions of arbitrary number of arguments.</p>
+<p>For functions of one argument, we can just use <code>map</code> directly.</p>
+<p>For functions of two arguments, we have a curried function <code>g</code> with type <code>a -&gt; b -&gt; c</code>, say. This is equivalent to the type <code>a -&gt; (b -&gt; c)</code>, so we can apply <code>map</code> to <code>g</code> to get a new function of type <code>f a -&gt; f (b -&gt; c)</code> for any type constructor <code>f</code> with a <code>Functor</code> instance. Partially applying this function to the first lifted argument (of type <code>f a</code>), we get a new wrapped function of type <code>f (b -&gt; c)</code>. If we also have an <code>Apply</code> instance for <code>f</code>, we can then use <code>apply</code> to apply the second lifted argument (of type <code>f b</code>) to get our final value of type <code>f c</code>.</p>
+<p>Putting this all together, we see that if we have values <code>x :: f a</code> and <code>y :: f b</code>, then the expression <code>(g &lt;$&gt; x) &lt;*&gt; y</code> has type <code>f c</code> (remember, this expression is equivalent to <code>apply (map g x) y</code>). The precedence rules defined in the Prelude allow us to remove the parentheses: <code>g &lt;$&gt; x &lt;*&gt; y</code>.</p>
+<p>In general, we can use <code>&lt;$&gt;</code> on the first argument, and <code>&lt;*&gt;</code> for the remaining arguments, as illustrated here for <code>lift3</code>:</p>
 <pre><code class="language-haskell">lift3 :: forall a b c d f
        . Apply f
       =&gt; (a -&gt; b -&gt; c -&gt; d)
@@ -254,18 +241,16 @@ instance applyMaybe :: Apply Maybe where
       -&gt; f d
 lift3 f x y z = f &lt;$&gt; x &lt;*&gt; y &lt;*&gt; z
 </code></pre>
-<p>この式の型がちゃんと整合しているかの確認は、読者への演習として残しておきます。</p>
-<p>例として、<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>をそのまま使うと、<code>Maybe</code>上に<code>address</code>関数を持ち上げることができます。</p>
+<p>It is left as an exercise for the reader to verify the types involved in this expression.</p>
+<p>As an example, we can try lifting the address function over <code>Maybe</code>, directly using the <code>&lt;$&gt;</code> and <code>&lt;*&gt;</code> functions:</p>
 <pre><code class="language-text">&gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Just &quot;Faketown&quot; &lt;*&gt; Just &quot;CA&quot;
 Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
 
 &gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;CA&quot;
 Nothing
 </code></pre>
-<p>同様にして、引数が異なる他のいろいろな関数を<code>Maybe</code>上に持ち上げてみてください。</p>
-<p>この代わりにお馴染の <em>do記法</em> に似た見た目の <em>アプリカティブdo記法</em> が同じ目的で使えます。以下では<code>lift3</code>に
-<em>アプリカティブdo記法</em>
-を使っています。なお、<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
+<p>Try lifting some other functions of various numbers of arguments over <code>Maybe</code> in this way.</p>
+<p>Alternatively <em>applicative do notation</em> can be used for the same purpose in a way that looks similar to the familiar <em>do notation</em>. Here is <code>lift3</code> using <em>applicative do notation</em>. Note <code>ado</code> is used instead of <code>do</code>, and <code>in</code> is used on the final line to denote the yielded value:</p>
 <pre><code class="language-haskell">lift3 :: forall a b c d f
        . Apply f
       =&gt; (a -&gt; b -&gt; c -&gt; d)
@@ -279,36 +264,27 @@ lift3 f x y z = ado
   c &lt;- z
   in f a b c
 </code></pre>
-<h2 id="アプリカティブ型クラス"><a class="header" href="#アプリカティブ型クラス">アプリカティブ型クラス</a></h2>
-<p>関連する<code>Applicative</code>という型クラスが存在しており、次のように定義されています。</p>
+<h2 id="the-applicative-type-class"><a class="header" href="#the-applicative-type-class">The Applicative Type Class</a></h2>
+<p>There is a related type class called <code>Applicative</code>, defined as follows:</p>
 <pre><code class="language-haskell">class Apply f &lt;= Applicative f where
   pure :: forall a. a -&gt; f a
 </code></pre>
-<p><code>Applicative</code>は<code>Apply</code>の下位クラスであり、<code>pure</code>関数が定義されています。
-<code>pure</code>は値を取り、その型の型構築子<code>f</code>で包まれた値を返します。</p>
-<p><code>Maybe</code>についての<code>Applicative</code>インスタンスは次のようになります。</p>
-<pre><code class="language-haskell">instance applicativeMaybe :: Applicative Maybe where
+<p><code>Applicative</code> is a subclass of <code>Apply</code> and defines the <code>pure</code> function. <code>pure</code> takes a value and returns a value whose type has been wrapped with the type constructor <code>f</code>.</p>
+<p>Here is the <code>Applicative</code> instance for <code>Maybe</code>:</p>
+<pre><code class="language-haskell">instance Applicative Maybe where
   pure x = Just x
 </code></pre>
-<p>アプリカティブ関手は関数を持ち上げることを可能にする関手だと考えるとすると、<code>pure</code>は引数のない関数の持ち上げだというように考えることができます。</p>
-<h2 id="アプリカティブに対する直感的理解"><a class="header" href="#アプリカティブに対する直感的理解">アプリカティブに対する直感的理解</a></h2>
-<p>PureScriptの関数は純粋であり、副作用は持っていません。Applicative関手は、関手<code>f</code>によって表現されるある種の副作用を提供するような、より大きな「プログラミング言語」を扱えるようにします。</p>
-<p>例えば関手<code>Maybe</code>はオプショナルな値の副作用を表現しています。
-その他の例としては、型<code>err</code>のエラーの可能性の副作用を表す<code>Either err</code>や、大域的な構成を読み取る副作用を表すArrow関手 (arrow functor) <code>r -&gt;</code>があります。
-ここでは<code>Maybe</code>関手についてのみ考えることにします。</p>
-<p>もし関手<code>f</code>が作用を持つ、より大きなプログラミング言語を表すとすると、<code>Apply</code>と<code>Applicative</code>インスタンスは小さなプログラミング言語
-(PureScript) から新しい大きな言語へと値や関数を持ち上げることを可能にします。</p>
-<p><code>pure</code>は純粋な（副作用がない）値をより大きな言語へと持ち上げますし、関数については上で述べた通り<code>map</code>と<code>apply</code>を使うことができます。</p>
-<p>ここで疑問が生まれます。
-もしPureScriptの関数と値を新たな言語へ埋め込むのに<code>Applicative</code>が使えるなら、どうやって新たな言語は大きくなっているというのでしょうか。
-この答えは関手<code>f</code>に依存します。
-もしなんらかの<code>x</code>について<code>pure x</code>で表せないような型<code>f a</code>の式を見つけたなら、その式はそのより大きな言語だけに存在する項を表しているということです。</p>
-<p><code>f</code>が<code>Maybe</code>のときは、式<code>Nothing</code>がその例になっています。
-どんな<code>x</code>があっても<code>Nothing</code>を<code>pure x</code>というように書くことはできません。
-したがって、PureScriptは値の欠落を表す新しい項<code>Nothing</code>を含むように拡大されたと考えることができます。</p>
-<h2 id="もっと作用を"><a class="header" href="#もっと作用を">もっと作用を</a></h2>
-<p>様々な<code>Applicative</code>関手へと関数を持ち上げる例をもっと見ていきましょう。</p>
-<p>以下は、PSCiで定義された3つの名前を結合して完全な名前を作る簡単な関数の例です。</p>
+<p>If we think of applicative functors as functors which allow lifting of functions, then <code>pure</code> can be thought of as lifting functions of zero arguments.</p>
+<h2 id="intuition-for-applicative"><a class="header" href="#intuition-for-applicative">Intuition for Applicative</a></h2>
+<p>Functions in PureScript are pure and do not support side-effects. Applicative functors allow us to work in larger &quot;programming languages&quot; which support some sort of side-effect encoded by the functor <code>f</code>.</p>
+<p>As an example, the functor <code>Maybe</code> represents the side effect of possibly-missing values. Some other examples include <code>Either err</code>, which represents the side effect of possible errors of type <code>err</code>, and the arrow functor <code>r -&gt;</code> which represents the side-effect of reading from a global configuration. For now, we'll only consider the <code>Maybe</code> functor.</p>
+<p>If the functor <code>f</code> represents this larger programming language with effects, then the <code>Apply</code> and <code>Applicative</code> instances allow us to lift values and function applications from our smaller programming language (PureScript) into the new language.</p>
+<p><code>pure</code> lifts pure (side-effect free) values into the larger language, and for functions, we can use <code>map</code> and <code>apply</code> as described above.</p>
+<p>This raises a question: if we can use <code>Applicative</code> to embed PureScript functions and values into this new language, then how is the new language any larger? The answer depends on the functor <code>f</code>. If we can find expressions of type <code>f a</code> which cannot be expressed as <code>pure x</code> for some <code>x</code>, then that expression represents a term which only exists in the larger language.</p>
+<p>When <code>f</code> is <code>Maybe</code>, an example is the expression <code>Nothing</code>: we cannot write <code>Nothing</code> as <code>pure x</code> for any <code>x</code>. Therefore, we can think of PureScript as having been enlarged to include the new term <code>Nothing</code>, which represents a missing value.</p>
+<h2 id="more-effects"><a class="header" href="#more-effects">More Effects</a></h2>
+<p>Let's see some more examples of lifting functions over different <code>Applicative</code> functors.</p>
+<p>Here is a simple example function defined in PSCi, which joins three names to form a full name:</p>
 <pre><code class="language-text">&gt; import Prelude
 
 &gt; fullName first middle last = last &lt;&gt; &quot;, &quot; &lt;&gt; first &lt;&gt; &quot; &quot; &lt;&gt; middle
@@ -316,9 +292,7 @@ lift3 f x y z = ado
 &gt; fullName &quot;Phillip&quot; &quot;A&quot; &quot;Freeman&quot;
 Freeman, Phillip A
 </code></pre>
-<p>この関数は、クエリパラメータとして与えられた3つの引数を持つ、（とっても簡単な）webサービスの実装であるとしましょう。
-使用者が3つの引数全てを与えたことを確かめたいので、引数が存在するかどうかを表す<code>Maybe</code>型を使うことになるでしょう。
-<code>fullName</code>を<code>Maybe</code>の上へ持ち上げると、省略された引数を確認するwebサービスを実装できます。</p>
+<p>Now suppose that this function forms the implementation of a (very simple!) web service with the three arguments provided as query parameters. We want to make sure that the user provided each of the three parameters, so we might use the <code>Maybe</code> type to indicate the presence or otherwise absence of a parameter. We can lift <code>fullName</code> over <code>Maybe</code> to create an implementation of the web service which checks for missing parameters:</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
 &gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Just &quot;A&quot; &lt;*&gt; Just &quot;Freeman&quot;
@@ -327,7 +301,7 @@ Just (&quot;Freeman, Phillip A&quot;)
 &gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;Freeman&quot;
 Nothing
 </code></pre>
-<p>または<em>アプリカティブdo</em>で次のようにします。</p>
+<p>or with <em>applicative do</em></p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
 &gt; :paste…
@@ -347,19 +321,17 @@ Nothing
 … ^D
 Nothing
 </code></pre>
-<p>この持ち上げた関数は、引数の何れかが<code>Nothing</code>なら<code>Nothing</code>を返すことに注意してください。</p>
-<p>これで、もし引数が不正ならWebサービスからエラー応答を送信できるので、なかなかいい感じです。
-しかし、どのフィールドが間違っていたのかを応答で示せると、もっと良くなるでしょう。</p>
-<p><code>Meybe</code>上へ持ち上げる代わりに<code>Either String</code>上へ持ち上げるようにすると、エラーメッセージを返すことができるようになります。
-まずは<code>Either String</code>を使ってオプショナルな入力をエラーを発信できる計算に変換する演算子を書きましょう。</p>
+<p>Note that the lifted function returns <code>Nothing</code> if any of the arguments was <code>Nothing</code>.</p>
+<p>This is good, because now we can send an error response back from our web service if the parameters are invalid. However, it would be better if we could indicate which field was incorrect in the response.</p>
+<p>Instead of lifting over <code>Maybe</code>, we can lift over <code>Either String</code>, which allows us to return an error message. First, let's write an operator to convert optional inputs into computations which can signal an error using <code>Either String</code>:</p>
 <pre><code class="language-text">&gt; import Data.Either
 &gt; :paste
 … withError Nothing  err = Left err
 … withError (Just a) _   = Right a
 … ^D
 </code></pre>
-<p><em>補足</em>：<code>Either err</code>アプリカティブ関手において、<code>Left</code>構築子は失敗を表しており、<code>Right</code>構築子は成功を表しています。</p>
-<p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラーメッセージを提供できるようになります。</p>
+<p><em>Note</em>: In the <code>Either err</code> applicative functor, the <code>Left</code> constructor indicates an error, and the <code>Right</code> constructor indicates success.</p>
+<p>Now we can lift over <code>Either String</code>, providing an appropriate error message for each parameter:</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last =
 …   fullName &lt;$&gt; (first  `withError` &quot;First name was missing&quot;)
@@ -367,7 +339,7 @@ Nothing
 …            &lt;*&gt; (last   `withError` &quot;Last name was missing&quot;)
 … ^D
 </code></pre>
-<p>または<em>アプリカティブdo</em>で次のようにします。</p>
+<p>or with <em>applicative do</em></p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last = ado
 …  f &lt;- first  `withError` &quot;First name was missing&quot;
@@ -379,8 +351,8 @@ Nothing
 &gt; :type fullNameEither
 Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 </code></pre>
-<p>これでこの関数は<code>Maybe</code>の3つの省略可能な引数を取り、<code>String</code>のエラーメッセージか<code>String</code>の結果のどちらかを返します。</p>
-<p>いろいろな入力でこの関数を試してみましょう。</p>
+<p>Now our function takes three optional arguments using <code>Maybe</code>, and returns either a <code>String</code> error message or a <code>String</code> result.</p>
+<p>We can try out the function with different inputs:</p>
 <pre><code class="language-text">&gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) (Just &quot;Freeman&quot;)
 (Right &quot;Freeman, Phillip A&quot;)
 
@@ -390,42 +362,28 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 &gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) Nothing
 (Left &quot;Last name was missing&quot;)
 </code></pre>
-<p>このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラーメッセージが表示されます。
-しかし、もし複数の入力が省略されているとき、最初のエラーしか見ることができません。</p>
+<p>In this case, we see the error message corresponding to the first missing field, or a successful result if every field was provided. However, if we are missing multiple inputs, we still only see the first error:</p>
 <pre><code class="language-text">&gt; fullNameEither Nothing Nothing Nothing
 (Left &quot;First name was missing&quot;)
 </code></pre>
-<p>これでも充分なときもありますが、エラー時に<em>全ての</em>省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半で解決策を見ていきます。</p>
-<h2 id="作用の結合"><a class="header" href="#作用の結合">作用の結合</a></h2>
-<p>抽象的にアプリカティブ関手を扱う例として、アプリカティブ関手<code>f</code>によって表現された副作用を一般的に組み合わせる関数を書く方法をこの節では示します。</p>
-<p>これはどういう意味でしょうか。
-何らかの<code>a</code>について型<code>f a</code>で包まれた引数のリストがあるとしましょう。
-それは型<code>List (f a)</code>のリストがあるということです。
-直感的には、これは<code>f</code>によって追跡される副作用を持つ、返り値の型が<code>a</code>の計算のリストを表しています。
-これらの計算の全てを順番に実行できれば、<code>List a</code>型の結果のリストを得るでしょう。
-しかし、まだ<code>f</code>によって追跡される副作用が残ります。
-つまり、元のリストの中の作用を「結合する」ことにより、型<code>List (f a)</code>の何かを型<code>f (List a)</code>の何かへと変換できると考えられます。</p>
-<p>任意の固定長リストの長さ<code>n</code>について、その引数を要素に持った長さ<code>n</code>のリストを構築するような<code>n</code>引数の関数が存在します。
-例えばもし<code>n</code>が<code>3</code>なら、関数は<code>\x y z -&gt; x : y : z : Nil</code>です。
-この関数の型は<code>a -&gt; a -&gt; a -&gt; List a</code>です。
-<code>Applicative</code>インスタンスを使うと、この関数を<code>f</code>の上へ持ち上げて関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>を得ることができます。
-しかし、いかなる<code>n</code>についてもこれが可能なので、いかなる引数の<em>リスト</em>についても同じように持ち上げられることが確かめられます。</p>
-<p>したがって、次のような関数を書くことができるはずです。</p>
+<p>This might be good enough, but if we want to see a list of <em>all</em> missing fields in the error, then we need something more powerful than <code>Either String</code>. We will see a solution later in this chapter.</p>
+<h2 id="combining-effects"><a class="header" href="#combining-effects">Combining Effects</a></h2>
+<p>As an example of working with applicative functors abstractly, this section will show how to write a function which will generically combine side-effects encoded by an applicative functor <code>f</code>.</p>
+<p>What does this mean? Well, suppose we have a list of wrapped arguments of type <code>f a</code> for some <code>a</code>. That is, suppose we have a list of type <code>List (f a)</code>. Intuitively, this represents a list of computations with side-effects tracked by <code>f</code>, each with return type <code>a</code>. If we could run all of these computations in order, we would obtain a list of results of type <code>List a</code>. However, we would still have side-effects tracked by <code>f</code>. That is, we expect to be able to turn something of type <code>List (f a)</code> into something of type <code>f (List a)</code> by &quot;combining&quot; the effects inside the original list.</p>
+<p>For any fixed list size <code>n</code>, there is a function of <code>n</code> arguments which builds a list of size <code>n</code> out of those arguments. For example, if <code>n</code> is <code>3</code>, the function is <code>\x y z -&gt; x : y : z : Nil</code>. This function has type <code>a -&gt; a -&gt; a -&gt; List a</code>. We can use the <code>Applicative</code> instance for <code>List</code> to lift this function over <code>f</code>, to get a function of type <code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>. But, since we can do this for any <code>n</code>, it makes sense that we should be able to perform the same lifting for any <em>list</em> of arguments.</p>
+<p>That means that we should be able to write a function</p>
 <pre><code class="language-haskell">combineList :: forall f a. Applicative f =&gt; List (f a) -&gt; f (List a)
 </code></pre>
-<p>この関数は副作用を持つかもしれない引数のリストを取り、それぞれの副作用を適用することで、<code>f</code>に包まれた単一のリストを返します。</p>
-<p>この関数を書くためには、引数のリストの長さについて考えます。
-リストが空の場合はどんな作用も実行する必要がありませんから、<code>pure</code>を使用して単に空のリストを返すことができます。</p>
+<p>This function will take a list of arguments, which possibly have side-effects, and return a single wrapped list, applying the side-effects of each.</p>
+<p>To write this function, we'll consider the length of the list of arguments. If the list is empty, then we do not need to perform any effects, and we can use <code>pure</code> to simply return an empty list:</p>
 <pre><code class="language-haskell">combineList Nil = pure Nil
 </code></pre>
-<p>実際のところこれがたった1つのできることです。</p>
-<p>入力のリストが空でないならば、型<code>f a</code>の包まれた引数である先頭要素と、型<code>List (f a)</code>の尾鰭について考えます。
-また、再帰的にリストの残りを結合すると、型<code>f (List a)</code>の結果が得られます。
-それから<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>を使うと、<code>Cons</code>構築子を先頭と新しい尾鰭の上に持ち上げることができます。</p>
+<p>In fact, this is the only thing we can do!</p>
+<p>If the list is non-empty, then we have a head element, which is a wrapped argument of type <code>f a</code>, and a tail of type <code>List (f a)</code>. We can recursively combine the effects in the tail, giving a result of type <code>f (List a)</code>. We can then use <code>&lt;$&gt;</code> and <code>&lt;*&gt;</code> to lift the <code>Cons</code> constructor over the head and new tail:</p>
 <pre><code class="language-haskell">combineList (Cons x xs) = Cons &lt;$&gt; x &lt;*&gt; combineList xs
 </code></pre>
-<p>繰り返しになりますが、これは与えられた型に基づいている唯一の妥当な実装です。</p>
-<p><code>Maybe</code>型構築子を例にとって、PSCiでこの関数を試してみましょう。</p>
+<p>Again, this was the only sensible implementation, based on the types we were given.</p>
+<p>We can test this function in PSCi, using the <code>Maybe</code> type constructor as an example:</p>
 <pre><code class="language-text">&gt; import Data.List
 &gt; import Data.Maybe
 
@@ -435,41 +393,31 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 &gt; combineList (fromFoldable [Just 1, Nothing, Just 2])
 Nothing
 </code></pre>
-<p><code>Meybe</code>へ特殊化して考えると、リストの全ての要素が<code>Just</code>であるときに限りこの関数は<code>Just</code>を返しますし、そうでなければ<code>Nothing</code>を返します。
-これはオプショナルな値に対応する、より大きな言語に取り組む上での直感から一貫しています。
-オプショナルな結果を返す計算のリストは、全ての計算が結果を持っているならばそれ自身の結果のみを持つのです。</p>
-<p>しかし、<code>combineList</code>関数はどんな<code>Applicative</code>に対しても機能します。
-<code>Either err</code>を使ってエラーを発信する可能性を持たせたり、<code>r -&gt;</code>を使って大域的な状態を読み取る計算を連鎖させるときにも使えるのです。</p>
-<p><code>combineList</code>関数については、後ほど<code>Traversable</code>関手について考えるときに再訪します。</p>
-<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<p>When specialized to <code>Maybe</code>, our function returns a <code>Just</code> only if every list element was <code>Just</code>, otherwise it returns <code>Nothing</code>. This is consistent with our intuition of working in a larger language supporting optional values - a list of computations which return optional results only has a result itself if every computation contained a result.</p>
+<p>But the <code>combineList</code> function works for any <code>Applicative</code>! We can use it to combine computations which possibly signal an error using <code>Either err</code>, or which read from a global configuration using <code>r -&gt;</code>.</p>
+<p>We will see the <code>combineList</code> function again later, when we consider <code>Traversable</code> functors.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ol>
-<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
-これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
-<em>手掛かり</em>：<code>lift2</code>を使ってください。</li>
-<li>（普通）上の演習を（<code>Maybe</code>だけでなく）全ての<code>Apply</code>型で動くように拡張してください。
-これらの新しい関数には<code>addApply</code>、<code>subApply</code>、<code>mulApply</code>、<code>divApply</code>と名前を付けます。</li>
-<li>（難しい）型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
-を持つ関数<code>combineMaybe</code>を書いてください。
-この関数は副作用をもつオプショナルな計算をとり、オプショナルな結果をもつ副作用のある計算を返します。</li>
+<li>(Medium) Write versions of the numeric operators <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code> which work with optional arguments (i.e. arguments wrapped in <code>Maybe</code>) and return a value wrapped in <code>Maybe</code>. Name these functions <code>addMaybe</code>, <code>subMaybe</code>, <code>mulMaybe</code>, and <code>divMaybe</code>. <em>Hint</em>: Use <code>lift2</code>.</li>
+<li>(Medium) Extend the above exercise to work with all <code>Apply</code> types (not just <code>Maybe</code>). Name these new functions <code>addApply</code>, <code>subApply</code>, <code>mulApply</code>, and <code>divApply</code>.</li>
+<li>(Difficult) Write a function <code>combineMaybe</code> which has type <code>forall a f. Applicative f =&gt; Maybe (f a) -&gt; f (Maybe a)</code>. This function takes an optional computation with side-effects, and returns a side-effecting computation which has an optional result.</li>
 </ol>
-<h2 id="アプリカティブによる検証-1"><a class="header" href="#アプリカティブによる検証-1">アプリカティブによる検証</a></h2>
-<p>この章のソースコードでは住所録アプリケーションで使うことのできるいろいろなデータ型が定義されています。
-詳細はここでは割愛しますが、<code>Data.AddressBook</code>モジュールからエクスポートされる重要な関数は次のような型を持っています。</p>
+<h2 id="applicative-validation-1"><a class="header" href="#applicative-validation-1">Applicative Validation</a></h2>
+<p>The source code for this chapter defines several data types which might be used in an address book application. The details are omitted here, but the key functions which are exported by the <code>Data.AddressBook</code> module have the following types:</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
 
 phoneNumber :: PhoneType -&gt; String -&gt; PhoneNumber
 
 person :: String -&gt; String -&gt; Address -&gt; Array PhoneNumber -&gt; Person
 </code></pre>
-<p>ここで、<code>PhoneType</code>は次のような代数的データ型として定義されています。</p>
+<p>where <code>PhoneType</code> is defined as an algebraic data type:</p>
 <pre><code class="language-haskell">data PhoneType
   = HomePhone
   | WorkPhone
   | CellPhone
   | OtherPhone
 </code></pre>
-<p>これらの関数は住所録の項目を表す<code>Person</code>を構築するのに使えます。
-例えば、<code>Data.AddressBook</code>には次のような値が定義されています。</p>
+<p>These functions can be used to construct a <code>Person</code> representing an address book entry. For example, the following value is defined in <code>Data.AddressBook</code>:</p>
 <pre><code class="language-haskell">examplePerson :: Person
 examplePerson =
   person &quot;John&quot; &quot;Smith&quot;
@@ -478,7 +426,7 @@ examplePerson =
     , phoneNumber CellPhone &quot;555-555-0000&quot;
     ]
 </code></pre>
-<p>PSCiでこれらの値を試してみましょう（結果は整形されています）。</p>
+<p>Test this value in PSCi (this result has been formatted):</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
 &gt; examplePerson
@@ -499,7 +447,7 @@ examplePerson =
     ]
 }
 </code></pre>
-<p>前の章では型<code>Person</code>のデータ構造を検証する上で<code>Either String</code>関手の使い方を見ました。例えば、データ構造の2つの名前を検証する関数が与えられたとき、データ構造全体を次のように検証できます。</p>
+<p>We saw in a previous section how we could use the <code>Either String</code> functor to validate a data structure of type <code>Person</code>. For example, provided functions to validate the two names in the structure, we might validate the entire data structure as follows:</p>
 <pre><code class="language-haskell">nonEmpty1 :: String -&gt; Either String String
 nonEmpty1 &quot;&quot;     = Left &quot;Field cannot be empty&quot;
 nonEmpty1 value  = Right value
@@ -511,27 +459,23 @@ validatePerson1 p =
          &lt;*&gt; pure p.homeAddress
          &lt;*&gt; pure p.phones
 </code></pre>
-<p>または<em>アプリカティブdo</em>で次のようにします。</p>
+<p>or with <em>applicative do</em></p>
 <pre><code class="language-haskell">validatePerson1Ado :: Person -&gt; Either String Person
 validatePerson1Ado p = ado
   f &lt;- nonEmpty1 p.firstName
   l &lt;- nonEmpty1 p.lastName
   in person f l p.homeAddress p.phones
 </code></pre>
-<p>最初の2行では<code>nonEmpty</code>関数を使って空文字列でないことを検証しています。
-もし入力が空なら<code>nonEMpty</code>はエラーを返し（<code>Left</code>構築子で示されています）、そうでなければ<code>Right</code>構築子を使って値を包んで返します。</p>
-<p>最後の2行では何の検証も実行せず、単に<code>address</code>フィールドと<code>phones</code>フィールドを残りの引数として<code>person</code>関数へと提供しています。</p>
-<p>この関数はPSCiでうまく動作するように見えますが、以前見たような制限があります。</p>
+<p>In the first two lines, we use the <code>nonEmpty1</code> function to validate a non-empty string. <code>nonEmpty1</code> returns an error indicated with the <code>Left</code> constructor if its input is empty, otherwise it returns the value wrapped with the <code>Right</code> constructor.</p>
+<p>The final lines do not perform any validation but simply provide the <code>address</code> and <code>phones</code> fields to the <code>person</code> function as the remaining arguments.</p>
+<p>This function can be seen to work in PSCi, but has a limitation which we have seen before:</p>
 <pre><code class="language-text">&gt; validatePerson $ person &quot;&quot; &quot;&quot; (address &quot;&quot; &quot;&quot; &quot;&quot;) []
 (Left &quot;Field cannot be empty&quot;)
 </code></pre>
-<p><code>Either String</code>アプリカティブ関手は遭遇した最初のエラーだけを返します。
-でもこの入力では、名前の不足と姓の不足という2つのエラーがわかるようにしたくなるでしょう。</p>
-<p><code>validation</code>ライブラリでは別のアプリカティブ関手も提供されています。
-これは単に<code>V</code>と呼ばれていて、何らかの<em>半群</em>でエラーを返す機能があります。
-例えば<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、<code>String</code>の配列をエラーとして返すことができます。</p>
-<p><code>Data.Validation</code>モジュールは<code>Data.AddressBook</code>モジュールのデータ構造を検証するために<code>V (Array String)</code>アプリカティブ関手を使っています。</p>
-<p><code>Data.AddressBook.Validation</code>モジュールから取材した検証器の例は次のようになります。</p>
+<p>The <code>Either String</code> applicative functor only provides the first error encountered. Given the input here, we would prefer to see two errors - one for the missing first name, and a second for the missing last name.</p>
+<p>There is another applicative functor which is provided by the <code>validation</code> library. This functor is called <code>V</code>, and it provides the ability to return errors in any <em>semigroup</em>. For example, we can use <code>V (Array String)</code> to return an array of <code>String</code>s as errors, concatenating new errors onto the end of the array.</p>
+<p>The <code>Data.AddressBook.Validation</code> module uses the <code>V (Array String)</code> applicative functor to validate the data structures in the <code>Data.AddressBook</code> module.</p>
+<p>Here is an example of a validator taken from the <code>Data.AddressBook.Validation</code> module:</p>
 <pre><code class="language-haskell">type Errors
   = Array String
 
@@ -550,7 +494,7 @@ validateAddress a =
           &lt;*&gt; nonEmpty &quot;City&quot;    a.city
           &lt;*&gt; lengthIs &quot;State&quot; 2 a.state
 </code></pre>
-<p>または<em>アプリカティブdo</em>で次のようにします。</p>
+<p>or with <em>applicative do</em></p>
 <pre><code class="language-haskell">validateAddressAdo :: Address -&gt; V Errors Address
 validateAddressAdo a = ado
   street &lt;- nonEmpty &quot;Street&quot;  a.street
@@ -558,11 +502,9 @@ validateAddressAdo a = ado
   state  &lt;- lengthIs &quot;State&quot; 2 a.state
   in address street city state
 </code></pre>
-<p><code>validateAddress</code>は<code>Address</code>の構造を検証します。
-<code>street</code>と<code>city</code>が空でないかどうか、<code>state</code>の文字列の長さが2であるかどうかを検証します。</p>
-<p><code>nonEmpty</code>と<code>lengthIs</code>の2つの検証関数が何れも、<code>Data.Validation</code>モジュールで提供されている<code>invalid</code>関数をエラーを示すために使っているところに注目してください。
-<code>Array String</code>半群を扱っているので、<code>invalid</code>は引数として文字列の配列を取ります。</p>
-<p>PSCiでこの関数を試しましょう。</p>
+<p><code>validateAddress</code> validates an <code>Address</code> structure. It checks that the <code>street</code> and <code>city</code> fields are non-empty, and checks that the string in the <code>state</code> field has length 2.</p>
+<p>Notice how the <code>nonEmpty</code> and <code>lengthIs</code> validator functions both use the <code>invalid</code> function provided by the <code>Data.Validation</code> module to indicate an error. Since we are working in the <code>Array String</code> semigroup, <code>invalid</code> takes an array of strings as its argument.</p>
+<p>We can try this function in PSCi:</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 &gt; import Data.AddressBook.Validation
 
@@ -577,48 +519,43 @@ validateAddressAdo a = ado
          , &quot;Field 'City' cannot be empty&quot;
          ])
 </code></pre>
-<p>これで、全ての検証エラーの配列を受け取ることができるようになりました。</p>
-<h2 id="正規表現検証器"><a class="header" href="#正規表現検証器">正規表現検証器</a></h2>
-<p><code>validatePhoneNumber</code>関数では引数の形式を検証するために正規表現を使っています。重要なのは<code>matches</code>検証関数で、この関数は<code>Data.String.Regex</code>モジュールで定義されている<code>Regex</code>を使って入力を検証しています。</p>
+<p>This time, we receive an array of all validation errors.</p>
+<h2 id="regular-expression-validators"><a class="header" href="#regular-expression-validators">Regular Expression Validators</a></h2>
+<p>The <code>validatePhoneNumber</code> function uses a regular expression to validate the form of its argument. The key is a <code>matches</code> validation function, which uses a <code>Regex</code> from the <code>Data.String.Regex</code> module to validate its input:</p>
 <pre><code class="language-haskell">matches :: String -&gt; Regex -&gt; String -&gt; V Errors String
 matches _     regex value | test regex value
                           = pure value
 matches field _     _     = invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' did not match the required format&quot; ]
 </code></pre>
-<p>繰り返しになりますが、<code>pure</code>は常に成功する検証を表しており、エラーの配列の伝達には<code>invalid</code>が使われています。</p>
-<p>これまでと同様に、<code>validatePhoneNumber</code>は<code>matches</code>関数から構築されています。</p>
+<p>Again, notice how <code>pure</code> is used to indicate successful validation, and <code>invalid</code> is used to signal an array of errors.</p>
+<p><code>validatePhoneNumber</code> is built from the <code>matches</code> function in the same way as before:</p>
 <pre><code class="language-haskell">validatePhoneNumber :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumber pn =
   phoneNumber &lt;$&gt; pure pn.&quot;type&quot;
               &lt;*&gt; matches &quot;Number&quot; phoneNumberRegex pn.number
 </code></pre>
-<p>または<em>アプリカティブdo</em>で次のようにします。</p>
+<p>or with <em>applicative do</em></p>
 <pre><code class="language-haskell">validatePhoneNumberAdo :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumberAdo pn = ado
   tpe    &lt;- pure pn.&quot;type&quot;
   number &lt;- matches &quot;Number&quot; phoneNumberRegex pn.number
   in phoneNumber tpe number
 </code></pre>
-<p>また、PSCiでいろいろな有効な入力や無効な入力に対して、この検証器を実行してみてください。</p>
+<p>Again, try running this validator against some valid and invalid inputs in PSCi:</p>
 <pre><code class="language-text">&gt; validatePhoneNumber $ phoneNumber HomePhone &quot;555-555-5555&quot;
 pure ({ type: HomePhone, number: &quot;555-555-5555&quot; })
 
 &gt; validatePhoneNumber $ phoneNumber HomePhone &quot;555.555.5555&quot;
 invalid ([&quot;Field 'Number' did not match the required format&quot;])
 </code></pre>
-<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
+<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
 <ol>
-<li>（簡単）正規表現<code>stateRegex :: Regex</code>を書いて文字列が2文字のアルファベットであることを確かめてください。
-<em>手掛かり</em>：<code>phoneNumberRegex</code>のソースコードを参照してみましょう。</li>
-<li>（普通）文字列全体が空白でないことを検査する正規表現<code>nonEmptyRegex :: Regex</code>を書いてください。
-<em>手掛かり</em>：この正規表現を開発するのに手助けが必要なら、<a href="https://regexr.com">RegExr</a>をご確認ください。
-素晴しい早見表と対話的なお試し環境があります。</li>
-<li>（普通）<code>validateAddress</code>に似ていますが、上の<code>stateRegex</code>を使って<code>state</code>フィールドを検証し、<code>nonEmptyRegex</code>を使って<code>street</code>と<code>city</code>フィールドを検証する関数<code>validateAddressImproved</code>を書いてください。
-<em>手掛かり</em>：<code>matches</code>の用例については<code>validatePhoneNumber</code>のソースを見てください。</li>
+<li>(Easy) Write a regular expression <code>stateRegex :: Regex</code> to check that a string only contains two alphabetic characters. <em>Hint</em>: see the source code for <code>phoneNumberRegex</code>.</li>
+<li>(Medium) Write a regular expression <code>nonEmptyRegex :: Regex</code> to check that a string is not entirely whitespace. <em>Hint</em>: If you need help developing this regex expression, check out <a href="https://regexr.com">RegExr</a> which has a great cheatsheet and interactive test environment.</li>
+<li>(Medium) Write a function <code>validateAddressImproved</code> that is similar to <code>validateAddress</code>, but uses the above <code>stateRegex</code> to validate the <code>state</code> field and <code>nonEmptyRegex</code> to validate the <code>street</code> and <code>city</code> fields. <em>Hint</em>: see the source for <code>validatePhoneNumber</code> for an example of how to use <code>matches</code>.</li>
 </ol>
-<h2 id="巡回可能関手"><a class="header" href="#巡回可能関手">巡回可能関手</a></h2>
-<p>残った検証器は<code>validatePerson</code>です。
-これはこれまで見てきた検証器と以下の新しい<code>validatePhoneNumbers</code>関数を組み合わせて<code>Person</code>全体を検証するものです。</p>
+<h2 id="traversable-functors"><a class="header" href="#traversable-functors">Traversable Functors</a></h2>
+<p>The remaining validator is <code>validatePerson</code>, which combines the validators we have seen so far to validate an entire <code>Person</code> structure, including the following new <code>validatePhoneNumbers</code> function:</p>
 <pre><code class="language-haskell">validatePhoneNumbers :: String -&gt; Array PhoneNumber -&gt; V Errors (Array PhoneNumber)
 validatePhoneNumbers field []      =
   invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' must contain at least one value&quot; ]
@@ -632,7 +569,7 @@ validatePerson p =
          &lt;*&gt; validateAddress p.homeAddress
          &lt;*&gt; validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
 </code></pre>
-<p>または<em>アプリカティブdo</em>で次のようにします。</p>
+<p>or with <em>applicative do</em></p>
 <pre><code class="language-haskell">validatePersonAdo :: Person -&gt; V Errors Person
 validatePersonAdo p = ado
   firstName &lt;- nonEmpty &quot;First Name&quot; p.firstName
@@ -641,48 +578,39 @@ validatePersonAdo p = ado
   numbers   &lt;- validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
   in person firstName lastName address numbers
 </code></pre>
-<p><code>validatePhoneNumbers</code>はこれまでに見たことのない新しい関数、<code>traverse</code>を使います。</p>
-<p><code>traverse</code>は<code>Data.Traversable</code>モジュールの<code>Traversable</code>型クラスで定義されています。</p>
+<p><code>validatePhoneNumbers</code> uses a new function we haven't seen before - <code>traverse</code>.</p>
+<p><code>traverse</code> is defined in the <code>Data.Traversable</code> module, in the <code>Traversable</code> type class:</p>
 <pre><code class="language-haskell">class (Functor t, Foldable t) &lt;= Traversable t where
   traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; t a -&gt; m (t b)
   sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
-<p><code>Traversable</code>は <em>巡回可能関手</em>
-の型クラスを定義します。これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
-<p>全ての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<em>畳み込み可能関手</em>は、構造を1つの値へと纏める畳み込み操作を提供する型構築子であったことを思い出してください）。
-それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
-<p>複雑そうに聞こえるかもしれませんが、配列の場合に特殊化して簡単にした上で考えてみましょう。配列型構築子は<code>Traversable</code>であり、つまりは次のような関数が存在するということです。</p>
+<p><code>Traversable</code> defines the class of <em>traversable functors</em>. The types of its functions might look a little intimidating, but <code>validatePerson</code> provides a good motivating example.</p>
+<p>Every traversable functor is both a <code>Functor</code> and <code>Foldable</code> (recall that a <em>foldable functor</em> was a type constructor which supported a fold operation, reducing a structure to a single value). In addition, a traversable functor provides the ability to combine a collection of side-effects which depend on its structure.</p>
+<p>This may sound complicated, but let's simplify things by specializing to the case of arrays. The array type constructor is traversable, which means that there is a function:</p>
 <pre><code class="language-haskell">traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; Array a -&gt; m (Array b)
 </code></pre>
-<p>直感的にはこうです。
-任意のアプリカティブ関手<code>m</code>と、型<code>a</code>の値を取って型<code>b</code>の値を返す（<code>f</code>で追跡される副作用を持つ）関数が与えられたとします。
-このとき、その関数を型<code>Array a</code>の配列のそれぞれの要素に適用して型<code>Array b</code>の（<code>f</code>で追跡される副作用を持つ）結果を得ることができます。</p>
-<p>まだよくわからないでしょうか。それでは更に、<code>f</code>を上記の<code>V Errors</code>アプリカティブ関手に特殊化して考えてみましょう。これで次の型を持つ関数が得られます。</p>
+<p>Intuitively, given any applicative functor <code>m</code>, and a function which takes a value of type <code>a</code> and returns a value of type <code>b</code> (with side-effects tracked by <code>m</code>), we can apply the function to each element of an array of type <code>Array a</code> to obtain a result of type <code>Array b</code> (with side-effects tracked by <code>m</code>).</p>
+<p>Still not clear? Let's specialize further to the case where <code>m</code> is the <code>V Errors</code> applicative functor above. Now, we have a function of type</p>
 <pre><code class="language-haskell">traverse :: forall a b. (a -&gt; V Errors b) -&gt; Array a -&gt; V Errors (Array b)
 </code></pre>
-<p>この型シグネチャは、型<code>a</code>についての検証関数<code>m</code>があれば、<code>traverse m</code>は型<code>Array a</code>の配列についての検証関数であるということを言っています。
-これはまさに、今必要になっている<code>Person</code>データ構造体の<code>phones</code>フィールドを検証する検証器そのものです。
-それぞれの要素が成功するかどうかを検証する検証関数を作るために、<code>validatePhoneNumber</code>を<code>traverse</code>へ渡しています。</p>
-<p>一般に、<code>traverse</code>はデータ構造の要素を1つずつ辿っていき、副作用を伴いつつ計算し、結果を累積します。</p>
-<p><code>Traversable</code>のもう1つの関数、<code>sequence</code>の型シグネチャには見覚えがあるかもしれません。</p>
+<p>This type signature says that if we have a validation function <code>m</code> for a type <code>a</code>, then <code>traverse m</code> is a validation function for arrays of type <code>Array a</code>. But that's exactly what we need to be able to validate the <code>phones</code> field of the <code>Person</code> data structure! We pass <code>validatePhoneNumber</code> to <code>traverse</code> to create a validation function which validates each element successively.</p>
+<p>In general, <code>traverse</code> walks over the elements of a data structure, performing computations with side-effects and accumulating a result.</p>
+<p>The type signature for <code>Traversable</code>'s other function <code>sequence</code> might look more familiar:</p>
 <pre><code class="language-haskell">sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
-<p>実際、先ほど書いた<code>combineList</code>関数は<code>Traversable</code>型クラスの<code>sequence</code>関数の特別な場合に過ぎません。
-<code>t</code>を型構築子<code>List</code>だとすると、<code>combineList</code>関数の型が復元されます。</p>
+<p>In fact, the <code>combineList</code> function that we wrote earlier is just a special case of the <code>sequence</code> function from the <code>Traversable</code> type class. Setting <code>t</code> to be the type constructor <code>List</code>, we recover the type of the <code>combineList</code> function:</p>
 <pre><code class="language-haskell">combineList :: forall f a. Applicative f =&gt; List (f a) -&gt; f (List a)
 </code></pre>
-<p>巡回可能関手は、作用のある計算を集めてその作用を結合するという、データ構造走査の考え方を見据えたものです。実際、<code>sequence</code>と<code>traversable</code>は<code>Traversable</code>を定義する上でどちらも同じくらい重要です。これらはお互いがお互いを利用して実装できます。これについては興味ある読者への演習として残しておきます。</p>
-<p><code>Data.List</code>で与えられているリストの<code>Traversable</code>インスタンスは次の通り。</p>
-<pre><code class="language-haskell">instance traversableList :: Traversable List where
+<p>Traversable functors capture the idea of traversing a data structure, collecting a set of effectful computations, and combining their effects. In fact, <code>sequence</code> and <code>traverse</code> are equally important to the definition of <code>Traversable</code> - each can be implemented in terms of each other. This is left as an exercise for the interested reader.</p>
+<p>The <code>Traversable</code> instance for lists given in the <code>Data.List</code> module is:</p>
+<pre><code class="language-haskell">instance Traversable List where
 -- traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; List a -&gt; m (List b)
 traverse _ Nil         = pure Nil
 traverse f (Cons x xs) = Cons &lt;$&gt; f x &lt;*&gt; traverse f xs
 </code></pre>
-<p>（実際の定義は後にスタック安全性を向上するために変更されました。その変更についてより詳しくは<a href="https://github.com/purescript/purescript-lists/pull/87">こちら</a>で読むことができます）</p>
-<p>入力が空のリストのときには、単に<code>pure</code>を使って空の配列を返すことができます。配列が空でないときは、関数<code>f</code>を使うと先頭の要素から型<code>f b</code>の計算を作成できます。また、配列の残りに対して<code>traverse</code>を再帰的に呼び出すことができます。最後に、アプリカティブ関手<code>m</code>まで<code>Cons</code>構築子を持ち上げて、2つの結果を組み合わせます。</p>
-<p>巡回可能関手の例はただの配列やリスト以外にもあります。
-以前に見た<code>Maybe</code>型構築子も<code>Traversable</code>のインスタンスを持っています。
-PSCiで試してみましょう。</p>
+<p>(The actual definition was later modified to improve stack safety. You can read more about that change <a href="https://github.com/purescript/purescript-lists/pull/87">here</a>.)</p>
+<p>In the case of an empty list, we can simply return an empty list using <code>pure</code>. If the list is non-empty, we can use the function <code>f</code> to create a computation of type <code>f b</code> from the head element. We can also call <code>traverse</code> recursively on the tail. Finally, we can lift the <code>Cons</code> constructor over the applicative functor <code>m</code> to combine the two results.</p>
+<p>But there are more examples of traversable functors than just arrays and lists. The <code>Maybe</code> type constructor we saw earlier also has an instance for <code>Traversable</code>. We can try it in PSCi:</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 &gt; import Data.Traversable
 &gt; import Data.AddressBook.Validation
@@ -696,79 +624,58 @@ invalid ([&quot;Field 'Example' cannot be empty&quot;])
 &gt; traverse (nonEmpty &quot;Example&quot;) (Just &quot;Testing&quot;)
 pure ((Just &quot;Testing&quot;))
 </code></pre>
-<p>これらの例では、<code>Nothing</code>の値の走査は検証なしで<code>Nothing</code>の値を返し、<code>Just x</code>を走査すると<code>x</code>を検証するのに検証関数が使われるということを示しています。
-要は、<code>traverse</code>は型<code>a</code>についての検証関数をとり、<code>Maybe a</code>についての検証関数、つまり型<code>a</code>のオプショナルな値についての検証関数を返すのです。</p>
-<p>他の巡回可能関手には<code>Array</code>、また任意の型<code>a</code>について<code>Tuple a</code>、<code>Either a</code>が含まれます。一般的に、「容器」のようなデータの型構築子は大抵<code>Traversable</code>インスタンスを持っています。例として、演習では二分木の型の<code>Traversable</code>インスタンスを書くことになります。</p>
-<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
+<p>These examples show that traversing the <code>Nothing</code> value returns <code>Nothing</code> with no validation, and traversing <code>Just x</code> uses the validation function to validate <code>x</code>. That is, <code>traverse</code> takes a validation function for type <code>a</code> and returns a validation function for <code>Maybe a</code>, i.e. a validation function for optional values of type <code>a</code>.</p>
+<p>Other traversable functors include <code>Array</code>, and <code>Tuple a</code> and <code>Either a</code> for any type <code>a</code>. Generally, most &quot;container&quot; data type constructors have <code>Traversable</code> instances. As an example, the exercises will include writing a <code>Traversable</code> instance for a type of binary trees.</p>
+<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>Eq</code>と<code>Show</code>インスタンスを以下の2分木データ構造に対して書いてください。</p>
+<p>(Easy) Write <code>Eq</code> and <code>Show</code> instances for the following binary tree data structure:</p>
 <pre><code class="language-haskell">data Tree a = Leaf | Branch (Tree a) a (Tree a)
 </code></pre>
-<p>これらのインスタンスを手作業で書くこともできますし、コンパイラに導出してもらうこともできることを前の章から思い起こしてください。</p>
-<p><code>Show</code>の出力には多くの「正しい」書式の選択肢があります。
-この演習のテストでは以下の空白スタイルを期待しています。
-これはたまたま一般化されたshowの既定の書式と合致しているため、このインスタンスを手作業で書くつもりのときだけ、このことを念頭に置いておいてください。</p>
+<p>Recall from the previous chapter that you may either write these instances manually or let the compiler derive them for you.</p>
+<p>There are many &quot;correct&quot; formatting options for <code>Show</code> output. The test for this exercise expects the following whitespace style. This happens to match the default formatting of generic show, so you only need to make note of this if you're planning on writing this instance manually.</p>
 <pre><code class="language-haskell">(Branch (Branch Leaf 8 Leaf) 42 Leaf)
 </code></pre>
 </li>
 <li>
-<p>（普通）<code>Traversable</code>インスタンスを<code>Tree a</code>に対して書いてください。
-これは副作用を左から右に結合するものです。
-<em>手掛かり</em>：<code>Traversable</code>に定義する必要のある追加のインスタンス依存関係が幾つかあります。</p>
+<p>(Medium) Write a <code>Traversable</code> instance for <code>Tree a</code>, which combines side-effects from left-to-right. <em>Hint</em>: There are some additional instance dependencies that need to be defined for <code>Traversable</code>.</p>
 </li>
 <li>
-<p>（普通）行き掛け順に木を巡回する関数<code>traversePreOrder :: forall a m b. Applicative m =&gt; (a -&gt; m b) -&gt; Tree a -&gt; m (Tree b)</code>を書いてください。
-つまり作用の実行は根左右と行われ、以前の通り掛け順の巡回の演習でしたような左根右ではありません。
-<em>手掛かり</em>：追加でインスタンスを定義する必要はありませんし、前に定義した関数は何も呼ぶ必要はありません。
-アプリカティブdo記法 (<code>ado</code>) はこの関数を書く最も簡単な方法です。</p>
+<p>(Medium) Write a function <code>traversePreOrder :: forall a m b. Applicative m =&gt; (a -&gt; m b) -&gt; Tree a -&gt; m (Tree b)</code> that performs a pre-order traversal of the tree. This means the order of effect execution is root-left-right, instead of left-root-right as was done for the previous in-order traverse exercise. <em>Hint</em>: No additional instances need to be defined, and you don't need to call any of the the functions defined earlier. Applicative do notation (<code>ado</code>) is the easiest way to write this function.</p>
 </li>
 <li>
-<p>（普通）木を帰り掛け順に巡回する関数<code>traversePostOrder</code>を書いてください。作用は左右根と実行されます。</p>
+<p>(Medium) Write a function <code>traversePostOrder</code> that performs a post-order traversal of the tree where effects are executed left-right-root.</p>
 </li>
 <li>
-<p>（普通）<code>homeAddress</code>フィールドがオプショナル（<code>Maybe</code>を使用）な新しい版の<code>Person</code>型をつくってください。
-それからこの新しい<code>Person</code>を検証する新しい版の<code>validatePerson</code>（<code>validatePersonOptionalAddress</code>と改名します）を書いてください。
-<em>手掛かり</em>：<code>traverse</code>を使って型<code>Maybe a</code>のフィールドを検証してください。</p>
+<p>(Medium) Create a new version of the <code>Person</code> type where the <code>homeAddress</code> field is optional (using <code>Maybe</code>). Then write a new version of <code>validatePerson</code> (renamed as <code>validatePersonOptionalAddress</code>) to validate this new <code>Person</code>. <em>Hint</em>: Use <code>traverse</code> to validate a field of type <code>Maybe a</code>.</p>
 </li>
 <li>
-<p>（難しい）<code>sequence</code>のように振る舞う関数<code>sequenceUsingTraverse</code>を書いてください。
-ただし<code>traverse</code>を使ってください。</p>
+<p>(Difficult) Write a function <code>sequenceUsingTraverse</code> which behaves like <code>sequence</code>, but is written in terms of <code>traverse</code>.</p>
 </li>
 <li>
-<p>（難しい）<code>traverse</code>のように振る舞う関数<code>traverseUsingSequence</code>を書いてください。
-ただし<code>sequence</code>を使ってください。</p>
+<p>(Difficult) Write a function <code>traverseUsingSequence</code> which behaves like <code>traverse</code>, but is written in terms of <code>sequence</code>.</p>
 </li>
 </ol>
-<h2 id="アプリカティブ関手による並列処理"><a class="header" href="#アプリカティブ関手による並列処理">アプリカティブ関手による並列処理</a></h2>
-<p>これまでの議論では、アプリカティブ関手がどのように「副作用を結合」させるかを説明するときに、「結合」(combine) という単語を選びました。
-しかし、これらの全ての例において、アプリカティブ関手は作用を「連鎖」(sequence) させる、というように言っても同じく妥当です。
-巡回可能関手がデータ構造に従って作用を順番に結合させる<code>sequence</code>関数を提供していることと、この直感的理解とは一致するでしょう。</p>
-<p>しかし一般には、アプリカティブ関手はこれよりももっと一般的です。
-アプリカティブ関手の規則は、その計算の副作用にどんな順序付けも強制しません。
-実際、並列に副作用を実行するためのアプリカティブ関手というものは妥当になりえます。</p>
-<p>例えば<code>V</code>検証関手はエラーの<em>配列</em>を返しますが、その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、このときどんな順序でそれぞれの検証器を実行しても問題はありません。
-データ構造に対して並列にこれの実行さえできるのです。</p>
-<p>別の例として、<code>parallel</code>パッケージは、<em>並列計算</em>に対応する<code>Parallel</code>型クラスを与えます。
-<code>Parallel</code>は関数<code>parallel</code>を提供しており、何らかの<code>Applicative</code>関手を使って入力の計算を<em>並列に</em>計算できます。</p>
+<h2 id="applicative-functors-for-parallelism"><a class="header" href="#applicative-functors-for-parallelism">Applicative Functors for Parallelism</a></h2>
+<p>In the discussion above, I chose the word &quot;combine&quot; to describe how applicative functors &quot;combine side-effects&quot;. However, in all the examples given, it would be equally valid to say that applicative functors allow us to &quot;sequence&quot; effects. This would be consistent with the intuition that traversable functors provide a <code>sequence</code> function to combine effects in sequence based on a data structure.</p>
+<p>However, in general, applicative functors are more general than this. The applicative functor laws do not impose any ordering on the side-effects that their computations perform. In fact, it would be valid for an applicative functor to perform its side-effects in parallel.</p>
+<p>For example, the <code>V</code> validation functor returned an <em>array</em> of errors, but it would work just as well if we picked the <code>Set</code> semigroup, in which case it would not matter what order we ran the various validators. We could even run them in parallel over the data structure!</p>
+<p>As a second example, the <code>parallel</code> package provides a type class <code>Parallel</code> which supports <em>parallel computations</em>. <code>Parallel</code> provides a function <code>parallel</code> which uses some <code>Applicative</code> functor to compute the result of its input computation <em>in parallel</em>:</p>
 <pre><code class="language-haskell">f &lt;$&gt; parallel computation1
   &lt;*&gt; parallel computation2
 </code></pre>
-<p>この計算は<code>computation1</code>と<code>computation2</code>を非同期に使って値の計算を始めるでしょう。そして両方の結果の計算が終わった時に、関数<code>f</code>を使って1つの結果へと結合するでしょう。</p>
-<p>この考え方の詳細は、本書の後半で <em>コールバック地獄</em> の問題に対してアプリカティブ関手を応用するときに見ていきます。</p>
-<p>アプリカティブ関手は並列に結合できる副作用を一纏めにする自然な方法です。</p>
-<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では新しい考え方を沢山扱いました。</p>
+<p>This computation would start computing values asynchronously using <code>computation1</code> and <code>computation2</code>. When both results have been computed, they would be combined into a single result using the function <code>f</code>.</p>
+<p>We will see this idea in more detail when we apply applicative functors to the problem of <em>callback hell</em> later in the book.</p>
+<p>Applicative functors are a natural way to capture side-effects which can be combined in parallel.</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>In this chapter, we covered a lot of new ideas:</p>
 <ul>
-<li>関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、 <em>アプリカティブ関手</em> の概念を導入しました。</li>
-<li>データ構造の検証という課題にアプリカティブ関手がどのような解決策を与えるか、どうすれば単一のエラーの報告からデータ構造を横断する全てのエラーの報告へ変換できるのかを見てきました。</li>
-<li><code>Traversable</code>型クラスに出会いました。<em>巡回可能関手</em>の考え方を内包するものであり、要素が副作用を持つ値の結合に使うことができる容れ物でした。</li>
+<li>We introduced the concept of an <em>applicative functor</em> which generalizes the idea of function application to type constructors which capture some notion of side-effect.</li>
+<li>We saw how applicative functors gave a solution to the problem of validating data structures, and how by switching the applicative functor we could change from reporting a single error to reporting all errors across a data structure.</li>
+<li>We met the <code>Traversable</code> type class, which encapsulates the idea of a <em>traversable functor</em>, or a container whose elements can be used to combine values with side-effects.</li>
 </ul>
-<p>アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。
-本書を通じて何度も見ることになるでしょう。
-今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、これにより検証器が<em>どうやって</em>検証するかではなく、<em>何を</em>検証すべきなのかを定義できました。
-一般に、アプリカティブ関手は<em>領域特化言語</em>を設計する上で便利な道具になります。</p>
-<p>次の章では、これに関連する考え方である<em>モナド</em>クラスを見て、アドレス帳の例をブラウザで実行させられるように拡張しましょう。</p>
+<p>Applicative functors are an interesting abstraction which provide neat solutions to a number of problems. We will see them a few more times throughout the book. In this case, the validation applicative functor provided a way to write validators in a declarative style, allowing us to define <em>what</em> our validators should validate and not <em>how</em> they should perform that validation. In general, we will see that applicative functors are a useful tool for the design of <em>domain specific languages</em>.</p>
+<p>In the next chapter, we will see a related idea, the class of <em>monads</em>, and extend our address book example to run in the browser!</p>
 
                     </main>
 
