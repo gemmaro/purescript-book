@@ -2,7 +2,8 @@ name: Build Book
 
 on:
   push:
-    branches: [master]
+    branches: [ja]
+    # branches: [master]
   pull_request:
 
 jobs:
@@ -20,8 +21,9 @@ jobs:
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/ja'
+        # if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book
-          cname: book.purescript.org
+          # cname: book.purescript.org
