@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ja" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Pattern Matching - PureScript by Example</title>
+        <title>パターン照合 - 実例によるPureScript</title>
 
 
         <!-- Custom HTML head -->
@@ -30,6 +30,8 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -83,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html" class="active"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html" class="active"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -112,13 +114,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">PureScript by Example</h1>
+                    <h1 class="menu-title">実例によるPureScript</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -147,29 +149,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h1>
-<h2 id="chapter-goals"><a class="header" href="#chapter-goals">Chapter Goals</a></h2>
-<p>This chapter will introduce two new concepts: algebraic data types, and pattern matching. We will also briefly cover an interesting feature of the PureScript type system: row polymorphism.</p>
-<p>Pattern matching is a common technique in functional programming and allows the developer to write compact functions which express potentially complex ideas, by breaking their implementation down into multiple cases.</p>
-<p>Algebraic data types are a feature of the PureScript type system which enable a similar level of expressiveness in the language of types - they are closely related to pattern matching.</p>
-<p>The goal of the chapter will be to write a library to describe and manipulate simple vector graphics using algebraic types and pattern matching.</p>
-<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
-<p>The source code for this chapter is defined in the file <code>src/Data/Picture.purs</code>.</p>
-<p>The <code>Data.Picture</code> module defines a data type <code>Shape</code> for simple shapes, and a type <code>Picture</code> for collections of shapes, along with functions for working with those types.</p>
-<p>The module imports the <code>Data.Foldable</code> module, which provides functions for folding data structures:</p>
+                        <h1 id="パターン照合"><a class="header" href="#パターン照合">パターン照合</a></h1>
+<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
+<p>この章では、代数的データ型とパターン照合という、2つの新しい概念を導入します。また、行多相というPureScriptの型システムの興味深い機能についても簡単に取り扱います。</p>
+<p>パターン照合は関数型プログラミングにおける一般的な手法で、複数の場合に実装を分解することにより、開発者は水面下では複雑な動作をする関数を簡潔に書くことができます。</p>
+<p>代数的データ型はPureScriptの型システムの機能であり、型のある言語において同等の水準の表現力を可能にしています。パターン照合とも密接に関連しています。</p>
+<p>この章の目的は、代数的データ型やパターン照合を使用して、単純なベクターグラフィックスを描画し操作するためのライブラリを書くことです。</p>
+<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
+<p>この章のソースコードはファイル <code>src/Data/Picture.purs</code>で定義されています。</p>
+<p><code>Data.Picture</code>モジュールは、簡単な図形を表すデータ型 <code>Shape</code>や、図形の集合である型
+<code>Picture</code>、及びこれらの型を扱うための関数を定義しています。</p>
+<p>このモジュールでは、データ構造の畳込みを行う関数を提供する <code>Data.Foldable</code>モジュールもインポートします。</p>
 <pre><code class="language-haskell">module Data.Picture where
 
 import Prelude
 import Data.Foldable (foldl)
 import Data.Number (infinity)
 </code></pre>
-<p>The <code>Data.Picture</code> module also imports the <code>Number</code> module, but this time using the <code>as</code> keyword:</p>
+<p><code>Data.Picture</code>モジュールは<code>Number</code>モジュールもインポートしますが、こちらは<code>as</code>キーワードを使います。</p>
 <pre><code class="language-haskell">import Data.Number as Number
 </code></pre>
-<p>This makes the types and functions in that module available for use, but only by using the <em>qualified name</em>, like <code>Number.max</code>. This can be useful to avoid overlapping imports, or just to make it clearer which modules certain things are imported from.</p>
-<p><em>Note</em>: it is not necessary to use the same module name as the original module for a qualified import. Shorter qualified names like <code>import Data.Number as N</code> are possible, and quite common.</p>
-<h2 id="simple-pattern-matching"><a class="header" href="#simple-pattern-matching">Simple Pattern Matching</a></h2>
-<p>Let's begin by looking at an example. Here is a function which computes the greatest common divisor of two integers using pattern matching:</p>
+<p>こうすると型や関数をモジュール内で使用できるようになりますが、<code>Number.max</code>のように<em>修飾名</em>を使ったときに限定されます。重複したインポートを避けたり、どのモジュールからインポートされたのかを明らかにするのに役立ちます。</p>
+<p><em>補足</em>：元のモジュールと同じモジュール名を修飾名に使用する必要はありません。
+<code>import Math as M</code>などのより短い名前にできますし、かなりよく見掛けます。</p>
+<h2 id="単純なパターン照合"><a class="header" href="#単純なパターン照合">単純なパターン照合</a></h2>
+<p>それではコード例を見ることから始めましょう。
+パターン照合を使用して2つの整数の最大公約数を計算する関数は、次のようになります。</p>
 <pre><code class="language-haskell">gcd :: Int -&gt; Int -&gt; Int
 gcd n 0 = n
 gcd 0 m = m
@@ -177,27 +182,37 @@ gcd n m = if n &gt; m
             then gcd (n - m) m
             else gcd n (m - n)
 </code></pre>
-<p>This algorithm is called the Euclidean Algorithm. If you search for its definition online, you will likely find a set of mathematical equations which look a lot like the code above. This is one benefit of pattern matching: it allows you to define code by cases, writing simple, declarative code which looks like a specification of a mathematical function.</p>
-<p>A function written using pattern matching works by pairing sets of conditions with their results. Each line is called an <em>alternative</em> or a <em>case</em>. The expressions on the left of the equals sign are called <em>patterns</em>, and each case consists of one or more patterns, separated by spaces. Cases describe which conditions the arguments must satisfy before the expression on the right of the equals sign should be evaluated and returned. Each case is tried in order, and the first case whose patterns match their inputs determines the return value.</p>
-<p>For example, the <code>gcd</code> function is evaluated using the following steps:</p>
+<p>このアルゴリズムはユークリッドの互除法と呼ばれています。
+その定義をオンラインで検索すると、恐らく上記のコードによく似た数学の方程式が見つかるでしょう。
+パターン照合の利点の1つは、上記のようにコードを場合分けして定義でき、数学関数の定義と似たような簡潔で宣言型なコードを書くことができることです。</p>
+<p>パターン照合を使用して書かれた関数は、条件と結果の組み合わせによって動作します。
+この定義の各行は<em>選択肢</em>や<em>場合</em>と呼ばれています。
+等号の左辺の式は<em>パターン</em>と呼ばれており、それぞれの場合は空白で区切られた1つ以上のパターンで構成されています。
+場合の集まりは、等号の右側の式が評価され値が返される前に、引数が満たさなければならない条件を表現しています。
+それぞれの場合は上からこの順番に試されていき、最初に入力に適合した場合が返り値を決定します。</p>
+<p>例えば<code>gcd</code>関数は次の手順で評価されます。</p>
 <ul>
-<li>The first case is tried: if the second argument is zero, the function returns <code>n</code> (the first argument).</li>
-<li>If not, the second case is tried: if the first argument is zero, the function returns <code>m</code> (the second argument).</li>
-<li>Otherwise, the function evaluates and returns the expression in the last line.</li>
+<li>まず最初の場合が試されます。
+第2引数がゼロの場合、関数は <code>n</code>（最初の引数）を返します。</li>
+<li>そうでなければ、2番目の場合が試されます。
+最初の引数がゼロの場合、関数は <code>m</code>（第2引数）を返します。</li>
+<li>それ以外の場合、関数は最後の行の式を評価して返します。</li>
 </ul>
-<p>Note that patterns can bind values to names - each line in the example binds one or both of the names <code>n</code> and <code>m</code> to the input values. As we learn about different kinds of patterns, we will see that different types of patterns correspond to different ways to choose names from the input arguments.</p>
-<h2 id="simple-patterns"><a class="header" href="#simple-patterns">Simple Patterns</a></h2>
-<p>The example code above demonstrates two types of patterns:</p>
+<p>なお、パターンでは値を名前に束縛できます。
+この例の各行では <code>n</code>や<code>m</code>という名前の何れかまたは両方に入力された値を束縛しています。
+さまざまな種類のパターンについて学んでいくうちに、それぞれの種類のパターンが入力の引数から名前を選ぶさまざまな方法に対応することがわかるでしょう。</p>
+<h2 id="単純なパターン"><a class="header" href="#単純なパターン">単純なパターン</a></h2>
+<p>上記のコード例では、2種類のパターンを示しました。</p>
 <ul>
-<li>Integer literals patterns, which match something of type <code>Int</code>, only if the value matches exactly.</li>
-<li>Variable patterns, which bind their argument to a name</li>
+<li><code>Int</code>型の値が正確に一致する場合にのみ適合する、整数直値パターン</li>
+<li>引数を名前に束縛する、変数パターン</li>
 </ul>
-<p>There are other types of simple patterns:</p>
+<p>単純なパターンには他にも種類があります。</p>
 <ul>
-<li><code>Number</code>, <code>String</code>, <code>Char</code> and <code>Boolean</code> literals</li>
-<li>Wildcard patterns, indicated with an underscore (<code>_</code>), which match any argument, and which do not bind any names.</li>
+<li><code>Number</code>、<code>String</code>、<code>Char</code>、そして<code>Boolean</code>といった直値</li>
+<li>どんな引数とも適合するが名前に束縛はしない、アンダースコア (<code>_</code>) で表されるワイルドカードパターン</li>
 </ul>
-<p>Here are two more examples which demonstrate using these simple patterns:</p>
+<p>ここではこれらの単純なパターンを使用して、もう2つ例を示します。</p>
 <pre><code class="language-haskell">fromString :: String -&gt; Boolean
 fromString &quot;true&quot; = true
 fromString _      = false
@@ -206,42 +221,56 @@ toString :: Boolean -&gt; String
 toString true  = &quot;true&quot;
 toString false = &quot;false&quot;
 </code></pre>
-<p>Try these functions in PSCi.</p>
-<h2 id="guards"><a class="header" href="#guards">Guards</a></h2>
-<p>In the Euclidean algorithm example, we used an <code>if .. then .. else</code> expression to switch between the two alternatives when <code>m &gt; n</code> and <code>m &lt;= n</code>. Another option in this case would be to use a <em>guard</em>.</p>
-<p>A guard is a boolean-valued expression which must be satisfied in addition to the constraints imposed by the patterns. Here is the Euclidean algorithm rewritten to use a guard:</p>
+<p>PSCiでこれらの関数を試してみてください。</p>
+<h2 id="ガード"><a class="header" href="#ガード">ガード</a></h2>
+<p>ユークリッドの互除法の例では、<code>m &gt; n</code>のときと <code>m &lt;= n</code>のときの2つに分岐するために <code>if .. then .. else</code>式を使っていました。こういうときには他に <em>ガード</em> (guard) を使うという選択肢もあります。</p>
+<p>ガードはパターンによる制約に加えて満たされなくてはいけない真偽値の式です。
+ガードを使用してユークリッドの互除法を書き直すと、次のようになります。</p>
 <pre><code class="language-haskell">gcdV2 :: Int -&gt; Int -&gt; Int
 gcdV2 n 0 = n
 gcdV2 0 n = n
 gcdV2 n m | n &gt; m     = gcdV2 (n - m) m
           | otherwise = gcdV2 n (m - n)
 </code></pre>
-<p>In this case, the third line uses a guard to impose the extra condition that the first argument is strictly larger than the second. The guard in the final line uses the expression <code>otherwise</code>, which might seem like a keyword, but is in fact just a regular binding in <code>Prelude</code>:</p>
+<p>この場合、3行目ではガードを使用して、最初の引数が第2引数よりも厳密に大きいという条件を付け加えています。最後の行でのガードは式<code>otherwise</code>を使っており、キーワードのようにも見えますが、実際はただの<code>Prelude</code>にある通常の束縛です。</p>
 <pre><code class="language-text">&gt; :type otherwise
 Boolean
 
 &gt; otherwise
 true
 </code></pre>
-<p>As this example demonstrates, guards appear on the left of the equals symbol, separated from the list of patterns by a pipe character (<code>|</code>).</p>
-<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<p>この例が示すように、ガードは等号の左側に現れ、パイプ文字 (<code>|</code>) でパターンのリストと区切られています。</p>
+<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>(Easy) Write the <code>factorial</code> function using pattern matching. <em>Hint</em>: Consider the two corner cases of zero and non-zero inputs. <em>Note</em>: This is a repeat of an example from the previous chapter, but see if you can rewrite it here on your own.</li>
-<li>(Medium) Write a function <code>binomial</code> which finds the coefficient of the x^<code>k</code>th term in the polynomial expansion of (1 + x)^<code>n</code>. This is the same as the number of ways to choose a subset of <code>k</code> elements from a set of <code>n</code> elements. Use the formula <code>n! / k! (n - k)!</code>, where <code>!</code> is the factorial function written earlier. <em>Hint</em>: Use pattern matching to handle corner cases. If it takes a long time to complete or crashes with an error about the call stack, try adding more corner cases.</li>
-<li>(Medium) Write a function <code>pascal</code> which uses <a href="https://en.wikipedia.org/wiki/Pascal%27s_rule"><em>Pascal`s Rule</em></a> for computing the same binomial coefficients as the previous exercise.</li>
+<li>（簡単）パターン照合を使用して、階乗関数<code>factorial</code>を書いてみましょう。
+<em>手掛かり</em>：入力がゼロのときとゼロでないときの、2つの特殊な場合を考えてみてください。
+<em>補足</em>：これは前の章の例の反復ですが、ここでは自力で書き直せるかやってみてください。</li>
+<li>（普通）\( (1 + x) ^ n \)を多項式展開した式にある\( x ^ k
+\)の項の係数を求める関数<code>binomial</code>を書いてください。
+これは<code>n</code>要素の集合から<code>k</code>要素の部分集合を選ぶ方法の数と同じです。
+数式\( n! / k! (n - k)! \)を使ってください。
+ここで \( ! \) は前に書いた階乗関数です。
+<em>手掛かり</em>：パターン照合を使って特殊な場合を取り扱ってください。
+長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、もっと使用例を追加してみてください。</li>
+<li>（普通）<a href="https://en.wikipedia.org/wiki/Pascal%27s_rule"><em>パスカルの法則</em></a>を使って前の演習と同じ2項係数を計算する関数<code>pascal</code>を書いてください。</li>
 </ol>
-<h2 id="array-patterns"><a class="header" href="#array-patterns">Array Patterns</a></h2>
-<p><em>Array literal patterns</em> provide a way to match arrays of a fixed length. For example, suppose we want to write a function <code>isEmpty</code> which identifies empty arrays. We could do this by using an empty array pattern (<code>[]</code>) in the first alternative:</p>
+<h2 id="配列パターン"><a class="header" href="#配列パターン">配列パターン</a></h2>
+<p><em>配列直値パターン</em>は、固定長の配列に対して照合する方法を提供します。
+例えば空の配列であるか判定する関数<code>isEmpty</code>を書きたいとします。
+最初の選択肢に空の配列パターン (<code>[]</code>) を用いるとこれを実現できます。</p>
 <pre><code class="language-haskell">isEmpty :: forall a. Array a -&gt; Boolean
 isEmpty [] = true
 isEmpty _ = false
 </code></pre>
-<p>Here is another function which matches arrays of length five, binding each of its five elements in a different way:</p>
+<p>次の関数では、長さ5の配列と適合し、配列の5つの要素をそれぞれ違った方法で束縛しています。</p>
 <pre><code class="language-haskell">takeFive :: Array Int -&gt; Int
 takeFive [0, 1, a, b, _] = a * b
 takeFive _ = 0
 </code></pre>
-<p>The first pattern only matches arrays with five elements, whose first and second elements are 0 and 1 respectively. In that case, the function returns the product of the third and fourth elements. In every other case, the function returns zero. For example, in PSCi:</p>
+<p>最初のパターンは、第1要素と第2要素がそれぞれ0と1であるような、5要素の配列にのみ適合します。
+その場合、関数は第3要素と第4要素の積を返します。
+それ以外の場合は、関数は0を返します。
+例えばPSCiで試してみると次のようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … takeFive [0, 1, a, b, _] = a * b
 … takeFive _ = 0
@@ -256,54 +285,68 @@ takeFive _ = 0
 &gt; takeFive []
 0
 </code></pre>
-<p>Array literal patterns allow us to match arrays of a fixed length, but PureScript does <em>not</em> provide any means of matching arrays of an unspecified length, since destructuring immutable arrays in these sorts of ways can lead to poor performance. If you need a data structure which supports this sort of matching, the recommended approach is to use <code>Data.List</code>. Other data structures exist which provide improved asymptotic performance for different operations.</p>
-<h2 id="record-patterns-and-row-polymorphism"><a class="header" href="#record-patterns-and-row-polymorphism">Record Patterns and Row Polymorphism</a></h2>
-<p><em>Record patterns</em> are used to match - you guessed it - records.</p>
-<p>Record patterns look just like record literals, but instead of values on the right of the colon, we specify a binder for each field.</p>
-<p>For example: this pattern matches any record which contains fields called <code>first</code> and <code>last</code>, and binds their values to the names <code>x</code> and <code>y</code> respectively:</p>
+<p>配列の直値パターンでは、固定長の配列と一致させることはできますが、PureScriptは不特定の長さの配列を照合させる手段を提供していません。
+そのような方法で不変な配列を分解すると、実行速度が低下する可能性があるためです。
+このように照合できるデータ構造が必要な場合は、<code>Data.List</code>を使うことをお勧めします。
+その他の操作について、より優れた漸近性能を提供するデータ構造も存在します。</p>
+<h2 id="レコードパターンと行多相"><a class="header" href="#レコードパターンと行多相">レコードパターンと行多相</a></h2>
+<p><em>レコードパターン</em>は（ご想像の通り）レコードに照合します。</p>
+<p>レコードパターンはレコード直値にほぼ見た目が似ていますが、コロンの右に値を置くのではなく、それぞれのフィールドで束縛子を指定します。</p>
+<p>例えば次のパターンは<code>first</code>と<code>last</code>という名前のフィールドが含まれた任意のレコードに照合し、これらのフィールドの値はそれぞれ <code>x</code>と
+<code>y</code>という名前に束縛されます。</p>
 <pre><code class="language-haskell">showPerson :: { first :: String, last :: String } -&gt; String
 showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
 </code></pre>
-<p>Record patterns provide a good example of an interesting feature of the PureScript type system: <em>row polymorphism</em>. Suppose we had defined <code>showPerson</code> without a type signature above. What would its inferred type have been? Interestingly, it is not the same as the type we gave:</p>
+<p>レコードパターンはPureScriptの型システムの興味深い機能である<em>行多相</em>の良い例となっています。
+もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、この型はどのように推論されるのでしょうか。
+面白いことに、推論される型は上で与えた型とは同じではありません。</p>
 <pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
 
 &gt; :type showPerson
 forall r. { first :: String, last :: String | r } -&gt; String
 </code></pre>
-<p>What is the type variable <code>r</code> here? Well, if we try <code>showPerson</code> in PSCi, we see something interesting:</p>
+<p>この型変数 <code>r</code>は何でしょうか。
+PSCiで<code>showPerson</code>を使ってみると、面白いことがわかります。</p>
 <pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot; }
 &quot;Freeman, Phil&quot;
 
 &gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot;, location: &quot;Los Angeles&quot; }
 &quot;Freeman, Phil&quot;
 </code></pre>
-<p>We are able to append additional fields to the record, and the <code>showPerson</code> function will still work. As long as the record contains the <code>first</code> and <code>last</code> fields of type <code>String</code>, the function application is well-typed. However, it is <em>not</em> valid to call <code>showPerson</code> with too <em>few</em> fields:</p>
+<p>レコードにそれ以外のフィールドが追加されていても、<code>showPerson</code>関数はそのまま動作するのです。レコードに少なくとも型が<code>String</code>であるようなフィールド
+<code>first</code>と <code>last</code>が含まれていれば、関数適用は正しく型付けされます。しかし、フィールドが <em>不足</em> していると、
+<code>showPerson</code>の呼び出しは <em>不正</em> となります。</p>
 <pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot; }
 
 Type of expression lacks required label &quot;last&quot;
 </code></pre>
-<p>We can read the new type signature of <code>showPerson</code> as &quot;takes any record with <code>first</code> and <code>last</code> fields which are <code>Strings</code> <em>and any other fields</em>, and returns a <code>String</code>&quot;. This function is polymorphic in the <em>row</em> <code>r</code> of record fields, hence the name <em>row polymorphism</em>.  Note that this behavior is different than that of the original <code>showPerson</code>. Without the row variable <code>r</code>, <code>showPerson</code> only accepts records with <em>exactly</em> a <code>first</code> and <code>last</code> field and no others.</p>
-<p>Note that we could have also written</p>
+<p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド <em>と他のフィールドを何でも</em>
+持つあらゆるレコードを取り、<code>String</code>を返す」となります。なお、この挙動は元の<code>showPerson</code>のものとは異なります。行変数<code>r</code>がなければ<code>showPerson</code>は
+<em>厳密に</em> <code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
+<p>なお、次のように書くこともできます。</p>
 <pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; &quot;, &quot; &lt;&gt; p.first
 </code></pre>
-<p>and PSCi would have inferred the same type.</p>
-<h2 id="record-puns"><a class="header" href="#record-puns">Record Puns</a></h2>
-<p>Recall that the <code>showPerson</code> function matches a record inside its argument, binding the <code>first</code> and <code>last</code> fields to values named <code>x</code> and <code>y</code>. We could alternatively just reuse the field names themselves, and simplify this sort of pattern match as follows:</p>
+<p>この場合も、 PSCiは先ほどと同じ型を推論するでしょう。</p>
+<h2 id="レコード同名利用"><a class="header" href="#レコード同名利用">レコード同名利用</a></h2>
+<p><code>showPerson</code>関数は引数内のレコードと照合し、<code>first</code>と<code>last</code>フィールドを<code>x</code>と
+<code>y</code>という名前の値に束縛していたのでした。別の方法として、フィールド名自体を再利用するだけで、このようなパターン照合を次のように単純化できます。</p>
 <pre><code class="language-haskell">showPersonV2 :: { first :: String, last :: String } -&gt; String
 showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
 </code></pre>
-<p>Here, we only specify the names of the fields, and we do not need to specify the names of the values we want to introduce. This is called a <em>record pun</em>.</p>
-<p>It is also possible to use record puns to <em>construct</em> records. For example, if we have values named <code>first</code> and <code>last</code> in scope, we can construct a person record using <code>{ first, last }</code>:</p>
+<p>ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。これは <em>レコード同名利用</em> (record pun)
+と呼ばれます。</p>
+<p>レコード同名利用はレコードの<em>構築</em>にも使用できます。
+例えば、スコープに <code>first</code>と <code>last</code>という名前の値があれば、<code>{ first, last }</code>を使って人物レコードを作ることができます。</p>
 <pre><code class="language-haskell">unknownPerson :: { first :: String, last :: String }
 unknownPerson = { first, last }
   where
     first = &quot;Jane&quot;
     last  = &quot;Doe&quot;
 </code></pre>
-<p>This may improve readability of code in some circumstances.</p>
-<h2 id="nested-patterns"><a class="header" href="#nested-patterns">Nested Patterns</a></h2>
-<p>Array patterns and record patterns both combine smaller patterns to build larger patterns. For the most part, the examples above have only used simple patterns inside array patterns and record patterns, but it is important to note that patterns can be arbitrarily <em>nested</em>, which allows functions to be defined using conditions on potentially complex data types.</p>
-<p>For example, this code combines two record patterns:</p>
+<p>こうすると、状況によってはコードの可読性向上に役立ちます。</p>
+<h2 id="入れ子になったパターン"><a class="header" href="#入れ子になったパターン">入れ子になったパターン</a></h2>
+<p>配列パターンとレコードパターンはどちらも小さなパターンを組み合わせることで大きなパターンを構成しています。これまでの例ではほとんどの場合で配列パターンとレコードパターンの内部に単純なパターンを使用していましたが、パターンを自由に<em>入れ子</em>にできることも知っておくのが大切です。入れ子になったパターンを使うと、潜在的に複雑なデータ型に対して条件分岐を用いて関数を定義できるようになります。</p>
+<p>例えばこのコードは2つのレコードパターンを組み合わせています。</p>
 <pre><code class="language-haskell">type Address = { street :: String, city :: String }
 
 type Person = { name :: String, address :: Address }
@@ -312,25 +355,31 @@ livesInLA :: Person -&gt; Boolean
 livesInLA { address: { city: &quot;Los Angeles&quot; } } = true
 livesInLA _ = false
 </code></pre>
-<h2 id="named-patterns"><a class="header" href="#named-patterns">Named Patterns</a></h2>
-<p>Patterns can be <em>named</em> to bring additional names into scope when using nested patterns. Any pattern can be named by using the <code>@</code> symbol.</p>
-<p>For example, this function sorts two-element arrays, naming the two elements, but also naming the array itself:</p>
+<h2 id="名前付きパターン"><a class="header" href="#名前付きパターン">名前付きパターン</a></h2>
+<p>入れ子のパターンを使う場合、パターンには<em>名前を付け</em>てスコープに名前を追加で持ち込むことができます。
+任意のパターンに名前を付けるには、 <code>@</code>記号を使います。</p>
+<p>例えば次の関数は2要素配列を整列するもので、2つの要素に名前を付けていますが、配列自身にも名前を付けています。</p>
 <pre><code class="language-haskell">sortPair :: Array Int -&gt; Array Int
 sortPair arr@[x, y]
   | x &lt;= y = arr
   | otherwise = [y, x]
 sortPair arr = arr
 </code></pre>
-<p>This way, we save ourselves from allocating a new array if the pair is already sorted. Note that if the input array does not contain <em>exactly</em> two elements, then this function simply returns it unchanged, even if it's unsorted.</p>
-<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
+<p>このようにすれば対が既に整列されているときに新しい配列を割り当てなくて済みます。なおもし入力の配列が <em>厳密に</em>
+2つの要素を含んでいなければ、たとえ整列されていなかったとしても、この関数は単に元のまま変えずに返しています。</p>
+<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>(Easy) Write a function <code>sameCity</code> which uses record patterns to test whether two <code>Person</code> records belong to the same city.</li>
-<li>(Medium) What is the most general type of the <code>sameCity</code> function, taking into account row polymorphism? What about the <code>livesInLA</code> function defined above? <em>Note</em>: There is no test for this exercise.</li>
-<li>(Medium) Write a function <code>fromSingleton</code> which uses an array literal pattern to extract the sole member of a singleton array. If the array is not a singleton, your function should return a provided default value. Your function should have type <code>forall a. a -&gt; Array a -&gt; a</code></li>
+<li>（簡単）レコードパターンを使って、2つの <code>Person</code>レコードが同じ都市にいるか調べる関数 <code>sameCity</code>を定義してみましょう。</li>
+<li>（普通）行多相を考慮すると、 <code>sameCity</code>関数の最も一般的な型は何でしょうか。
+先ほど定義した<code>livesInLA</code>関数についてはどうでしょうか。
+<em>補足</em>：この演習にテストはありません。</li>
+<li>（普通）配列直値パターンを使って、1要素の配列の唯一のメンバーを抽出する関数<code>fromSingleton</code>を書いてみましょう。1要素だけを持つ配列でない場合、関数は指定された既定値を返します。この関数は
+<code>forall a. a -&gt; Array a -&gt; a</code>という型を持っています。</li>
 </ol>
-<h2 id="case-expressions"><a class="header" href="#case-expressions">Case Expressions</a></h2>
-<p>Patterns do not only appear in top-level function declarations. It is possible to use patterns to match on an intermediate value in a computation, using a <code>case</code> expression. Case expressions provide a similar type of utility to anonymous functions: it is not always desirable to give a name to a function, and a <code>case</code> expression allows us to avoid naming a function just because we want to use a pattern.</p>
-<p>Here is an example. This function computes &quot;longest zero suffix&quot; of an array (the longest suffix which sums to zero):</p>
+<h2 id="case式"><a class="header" href="#case式">Case式</a></h2>
+<p>パターンは最上位にある関数宣言だけに現れるわけではありません。<code>case</code>式を使って計算の途中の値に対してパターン照合を使うことができます。case式には無名関数に似たような便利さがあります。関数に名前を与えることがいつも望ましいわけではないように、パターン照合を使いたいためだけに関数に名前をつけるようなことを避けられるようになります。</p>
+<p>例を示しましょう。
+次の関数は、配列の「最長ゼロ末尾」（和がゼロであるような、最も長い配列の末尾）を計算します。</p>
 <pre><code class="language-haskell">import Data.Array (tail)
 import Data.Foldable (sum)
 import Data.Maybe (fromMaybe)
@@ -341,64 +390,79 @@ lzs xs = case sum xs of
            0 -&gt; xs
            _ -&gt; lzs (fromMaybe [] $ tail xs)
 </code></pre>
-<p>For example:</p>
+<p>以下は一例です。</p>
 <pre><code class="language-text">&gt; lzs [1, 2, 3, 4]
 []
 
 &gt; lzs [1, -1, -2, 3]
 [-1, -2, 3]
 </code></pre>
-<p>This function works by case analysis. If the array is empty, our only option is to return an empty array. If the array is non-empty, we first use a <code>case</code> expression to split into two cases. If the sum of the array is zero, we return the whole array. If not, we recurse on the tail of the array.</p>
-<h2 id="pattern-match-failures-and-partial-functions"><a class="header" href="#pattern-match-failures-and-partial-functions">Pattern Match Failures and Partial Functions</a></h2>
-<p>If patterns in a case expression are tried in order, then what happens in the case when none of the patterns in a case alternatives match their inputs? In this case, the case expression will fail at runtime with a <em>pattern match failure</em>.</p>
-<p>We can see this behavior with a simple example:</p>
+<p>この関数は場合ごとの分析によって動作します。もし配列が空なら、唯一の選択肢は空の配列を返すことです。配列が空でない場合は、更に2つの場合に分けるためにまず
+<code>case</code>式を使用します。配列の合計がゼロであれば、配列全体を返します。そうでなければ、配列の残りに対して再帰します。</p>
+<h2 id="パターン照合の失敗と部分関数"><a class="header" href="#パターン照合の失敗と部分関数">パターン照合の失敗と部分関数</a></h2>
+<p>case式のパターンを順番に照合していって、もし選択肢の何れの場合も入力が適合しなかった時は何が起こるのでしょうか。
+この場合、<em>パターン照合失敗</em>によって、case式は実行時に失敗します。</p>
+<p>簡単な例でこの動作を見てみましょう。</p>
 <pre><code class="language-haskell">import Partial.Unsafe (unsafePartial)
 
 partialFunction :: Boolean -&gt; Boolean
 partialFunction = unsafePartial \true -&gt; true
 </code></pre>
-<p>This function contains only a single case, which only matches a single input, <code>true</code>. If we compile this file, and test in PSCi with any other argument, we will see an error at runtime:</p>
+<p>この関数は単一の場合しか含んでおらず、単一の入力である<code>true</code>にのみ照合します。このファイルをコンパイルしてPSCiでそれ以外の値を与えてテストすると、実行時エラーが発生します。</p>
 <pre><code class="language-text">&gt; partialFunction false
 
 Failed pattern match
 </code></pre>
-<p>Functions which return a value for any combination of inputs are called <em>total</em> functions, and functions which do not are called <em>partial</em>.</p>
-<p>It is generally considered better to define total functions where possible. If it is known that a function does not return a result for some valid set of inputs, it is usually better to return a value capable of indicating failure, such as type <code>Maybe a</code> for some <code>a</code>, using <code>Nothing</code> when it cannot return a valid result. This way, the presence or absence of a value can be indicated in a type-safe way.</p>
-<p>The PureScript compiler will generate an error if it can detect that your function is not total due to an incomplete pattern match. The <code>unsafePartial</code> function can be used to silence these errors (if you are sure that your partial function is safe!) If we removed the call to the <code>unsafePartial</code> function above, then the compiler would generate the following error:</p>
+<p>どんな入力の組み合わせに対しても値を返すような関数は <em>全関数</em> (total function) と呼ばれ、そうでない関数は <em>部分的</em>
+(partial) であると呼ばれます。</p>
+<p>一般的には、可能な限り全関数として定義したほうが良いと考えられています。
+もし関数が何らかの妥当な入力の集合について結果を返さないことがわかっているなら、大抵は失敗であることを示すことができる値を返すほうがよいでしょう。
+例えば何らかの<code>a</code>についての型<code>Maybe a</code>で、妥当な結果を返せないときは<code>Nothing</code>を使います。
+この方法なら、型安全な方法で値の有無を示すことができます。</p>
+<p>PureScriptコンパイラは、パターンマッチが不完全で関数が全関数ではないことを検出するとエラーを生成します。
+部分関数が安全である場合、<code>unsafePartial</code>関数を使ってこれらのエラーを抑制できます（その部分関数が安全だと言い切れるなら）。
+もし上記の <code>unsafePartial</code>関数の呼び出しを取り除くと、コンパイラは次のエラーを生成します。</p>
 <pre><code class="language-text">A case expression could not be determined to cover all inputs.
 The following additional cases are required to cover all inputs:
 
   false
 </code></pre>
-<p>This tells us that the value <code>false</code> is not matched by any pattern. In general, these warnings might include multiple unmatched cases.</p>
-<p>If we also omit the type signature above:</p>
+<p>これは値<code>false</code>が、定義されたどのパターンとも一致しないことを示しています。
+一般にこれらの警告には、複数の不一致な場合が含まれることがあります。</p>
+<p>上記の型シグネチャも省略した場合は、次のようになります。</p>
 <pre><code class="language-haskell">partialFunction true = true
 </code></pre>
-<p>then PSCi infers a curious type:</p>
+<p>このとき、PSCiは興味深い型を推論します。</p>
 <pre><code class="language-text">&gt; :type partialFunction
 
 Partial =&gt; Boolean -&gt; Boolean
 </code></pre>
-<p>We will see more types which involve the <code>=&gt;</code> symbol later on in the book (they are related to <em>type classes</em>), but for now, it suffices to observe that PureScript keeps track of partial functions using the type system, and that we must explicitly tell the type checker when they are safe.</p>
-<p>The compiler will also generate a warning in certain cases when it can detect that cases are <em>redundant</em> (that is, a case only matches values which would have been matched by a prior case):</p>
+<p>本書ではのちに<code>=&gt;</code>記号を含むいろいろな型を見ることになります（これらは<em>型クラス</em>に関連しています）。しかし、今のところは、PureScriptは型システムを使って部分関数を把握していることと、安全な場合に型検証器に明示する必要があることを確認すれば充分です。</p>
+<p>コンパイラは、定義されたパターンが <em>冗長</em> であることを検出した場合（前の方に定義されたパターンのみに一致する場合）でも警告を生成します。</p>
 <pre><code class="language-haskell">redundantCase :: Boolean -&gt; Boolean
 redundantCase true = true
 redundantCase false = false
 redundantCase false = false
 </code></pre>
-<p>In this case, the last case is correctly identified as redundant:</p>
+<p>このとき、最後の場合は冗長であると正しく検出されます。</p>
 <pre><code class="language-text">A case expression contains unreachable cases:
 
   false
 </code></pre>
-<p><em>Note</em>: PSCi does not show warnings, so to reproduce this example, you will need to save this function as a file and compile it using <code>spago build</code>.</p>
-<h2 id="algebraic-data-types"><a class="header" href="#algebraic-data-types">Algebraic Data Types</a></h2>
-<p>This section will introduce a feature of the PureScript type system called <em>Algebraic Data Types</em> (or <em>ADTs</em>), which are fundamentally related to pattern matching.</p>
-<p>However, we'll first consider a motivating example, which will provide the basis of a solution to this chapter's problem of implementing a simple vector graphics library.</p>
-<p>Suppose we wanted to define a type to represent some simple shapes: lines, rectangles, circles, text, etc. In an object oriented language, we would probably define an interface or abstract class <code>Shape</code>, and one concrete subclass for each type of shape that we wanted to be able to work with.</p>
-<p>However, this approach has one major drawback: to work with <code>Shape</code>s abstractly, it is necessary to identify all of the operations one might wish to perform, and to define them on the <code>Shape</code> interface. It becomes difficult to add new operations without breaking modularity.</p>
-<p>Algebraic data types provide a type-safe way to solve this sort of problem, if the set of shapes is known in advance. It is possible to define new operations on <code>Shape</code> in a modular way, and still maintain type-safety.</p>
-<p>Here is how <code>Shape</code> might be represented as an algebraic data type:</p>
+<p><em>補足</em>：PSCiは警告を表示しないので、この例を再現するには、この関数をファイルとして保存し、 <code>pulp build</code>を使ってコンパイルします。</p>
+<h2 id="代数的データ型"><a class="header" href="#代数的データ型">代数的データ型</a></h2>
+<p>この節では <em>代数的データ型</em> (algebraic data type, <em>ADT</em>)
+と呼ばれる、PureScriptの型システムの機能を導入します。この機能はパターン照合と地続きの関係があります。</p>
+<p>しかしまずは切り口となる例について考えていきます。この例では単純なベクターグラフィックスライブラリの実装というこの章の課題を解決する基礎を与えます。</p>
+<p>直線、矩形、円、テキストなどの単純な図形の種類を表現する型を定義したいとします。
+オブジェクト指向言語では、恐らくインターフェースもしくは抽象クラス
+<code>Shape</code>を定義し、使いたいそれぞれの図形について具体的なサブクラスを定義するでしょう。</p>
+<p>しかし、この方針は大きな欠点を1つ抱えています。
+<code>Shape</code>を抽象的に扱うためには、実行したいと思う可能性のある全ての操作を事前に把握し、<code>Shape</code>インターフェースに定義する必要があるのです。
+このため、モジュール性を壊さずに新しい操作を追加することが難しくなります。</p>
+<p>もし図形の種類が事前にわかっているなら、代数的データ型はこうした問題を解決する型安全な方法を提供します。モジュール性のある方法で
+<code>Shape</code>に新たな操作を定義し、型安全性を維持できます。</p>
+<p>代数的データ型としてどのように<code>Shape</code>が表現されるかを次に示します。</p>
 <pre><code class="language-haskell">data Shape
   = Circle Point Number
   | Rectangle Point Number Number
@@ -410,20 +474,33 @@ type Point =
   , y :: Number
   }
 </code></pre>
-<p>This declaration defines <code>Shape</code> as a sum of different constructors, and for each constructor identifies the data that is included. A <code>Shape</code> is either a <code>Circle</code> which contains a center <code>Point</code> and a radius (a number), or a <code>Rectangle</code>, or a <code>Line</code>, or <code>Text</code>. There are no other ways to construct a value of type <code>Shape</code>.</p>
-<p>An algebraic data type is introduced using the <code>data</code> keyword, followed by the name of the new type and any type arguments. The type's constructors (i.e. its <em>data constructors</em>) are defined after the equals symbol, and are separated by pipe characters (<code>|</code>). The data carried by an ADT's constructors doesn't have to be restricted to primitive types: constructors can include records, arrays, or even other ADTs.</p>
-<p>Let's see another example from PureScript's standard libraries. We saw the <code>Maybe</code> type, which is used to define optional values, earlier in the book. Here is its definition from the <code>maybe</code> package:</p>
+<p>この宣言では<code>Shape</code>をそれぞれの構築子の直和として定義しており、各構築子では含まれるデータを指定します。
+<code>Shape</code>は、中央 <code>Point</code>と半径（数値）を持つ <code>Circle</code>か、<code>Rectangle</code>、 <code>Line</code>、 <code>Text</code>の何れかです。
+他に<code>Shape</code>型の値を構築する方法はありません。</p>
+<p>代数的データ型の定義はキーワード <code>data</code>から始まり、それに新しい型の名前と任意個の型引数が続きます。その型の構築子（あるいは <em>データ構築子</em>
+(data constructor)）は等号の後に定義され、パイプ文字 (<code>|</code>)
+で区切られます。ADTの構築子が持つデータは原始型に限りません。構築子にはレコード、配列、また他のADTさえも含むことができます。</p>
+<p>それではPureScriptの標準ライブラリから別の例を見てみましょう。
+オプショナルな値を定義するのに使われる <code>Maybe</code>型を本書の冒頭で扱いました。
+<code>maybe</code>パッケージでは <code>Maybe</code>を次のように定義しています。</p>
 <pre><code class="language-haskell">data Maybe a = Nothing | Just a
 </code></pre>
-<p>This example demonstrates the use of a type parameter <code>a</code>. Reading the pipe character as the word &quot;or&quot;, its definition almost reads like English: &quot;a value of type <code>Maybe a</code> is either <code>Nothing</code>, or <code>Just</code> a value of type <code>a</code>&quot;.</p>
-<p>Note that we don't use the syntax <code>forall a.</code> anywhere in our data definition. <code>forall</code> syntax is necessary for functions, but is not used when defining ADTs with <code>data</code> or type aliases with <code>type</code>.</p>
-<p>Data constructors can also be used to define recursive data structures. Here is one more example, defining a data type of singly-linked lists of elements of type <code>a</code>:</p>
+<p>この例では型引数 <code>a</code>の使用方法を示しています。パイプ文字を「または」と読むことにすると、この定義は「<code>Maybe a</code>型の値は、無い
+(<code>Nothing</code>) か、ただの (<code>Just</code>) 型 <code>a</code>の値だ」とほぼ英語のように読むことができます。</p>
+<p>なおデータ定義のどこにも構文<code>forall a</code>を使っていません。
+<code>forall</code>構文は関数には必須ですが、<code>data</code>によるADTや<code>type</code>での型別称を定義するときは使われません。</p>
+<p>データ構築子は再帰的なデータ構造を定義するためにも使用できます。更に例を挙げると、要素が型
+<code>a</code>の単方向連結リストのデータ型の定義はこのようになります。</p>
 <pre><code class="language-haskell">data List a = Nil | Cons a (List a)
 </code></pre>
-<p>This example is taken from the <code>lists</code> package. Here, the <code>Nil</code> constructor represents an empty list, and <code>Cons</code> is used to create non-empty lists from a head element and a tail. Notice how the tail is defined using the data type <code>List a</code>, making this a recursive data type.</p>
-<h2 id="using-adts"><a class="header" href="#using-adts">Using ADTs</a></h2>
-<p>It is simple enough to use the constructors of an algebraic data type to construct a value: simply apply them like functions, providing arguments corresponding to the data included with the appropriate constructor.</p>
-<p>For example, the <code>Line</code> constructor defined above required two <code>Point</code>s, so to construct a <code>Shape</code> using the <code>Line</code> constructor, we have to provide two arguments of type <code>Point</code>:</p>
+<p>この例は <code>lists</code>パッケージから持ってきました。
+ここで <code>Nil</code>構築子は空のリストを表しており、<code>Cons</code>は先頭となる要素と尾鰭から空でないリストを作成するために使われます。
+<code>Cons</code>の2つ目のフィールドでデータ型 <code>List a</code>を使用しており、再帰的なデータ型になっていることに注目してください。</p>
+<h2 id="adtの使用"><a class="header" href="#adtの使用">ADTの使用</a></h2>
+<p>代数的データ型の構築子を使用して値を構築するのはとても簡単です。
+対応する構築子に含まれるデータに応じた引数を用意し、その構築子を単に関数のように適用するだけです。</p>
+<p>例えば、上で定義した <code>Line</code>構築子は2つの <code>Point</code>を必要としていますので、<code>Line</code>構築子を使って <code>Shape</code>を構築するには、型
+<code>Point</code>の2つの引数を与えなければなりません。</p>
 <pre><code class="language-haskell">exampleLine :: Shape
 exampleLine = Line p1 p2
   where
@@ -433,8 +510,13 @@ exampleLine = Line p1 p2
     p2 :: Point
     p2 = { x: 100.0, y: 50.0 }
 </code></pre>
-<p>So, constructing values of algebraic data types is simple, but how do we use them? This is where the important connection with pattern matching appears: the only way to consume a value of an algebraic data type is to use a pattern to match its constructor.</p>
-<p>Let's see an example. Suppose we want to convert a <code>Shape</code> into a <code>String</code>. We have to use pattern matching to discover which constructor was used to construct the <code>Shape</code>. We can do this as follows:</p>
+<p>さて、代数的データ型で値を構築することは簡単ですが、これをどうやって使ったらよいのでしょうか。
+ここで代数的データ型とパターン照合との重要な接点が見えてきます。
+代数的データ型の値を消費する唯一の方法は構築子に照合するパターンを使うことです。</p>
+<p>例を見てみましょう。
+<code>Shape</code>を <code>String</code>に変換したいとします。
+<code>Shape</code>を構築するのにどの構築子が使用されたかを調べるには、パターン照合を使用しなければなりません。
+これには次のようにします。</p>
 <pre><code class="language-haskell">showShape :: Shape -&gt; String
 showShape (Circle c r) =
   &quot;Circle [center: &quot; &lt;&gt; showPoint c &lt;&gt; &quot;, radius: &quot; &lt;&gt; show r &lt;&gt; &quot;]&quot;
@@ -449,22 +531,32 @@ showPoint :: Point -&gt; String
 showPoint { x, y } =
   &quot;(&quot; &lt;&gt; show x &lt;&gt; &quot;, &quot; &lt;&gt; show y &lt;&gt; &quot;)&quot;
 </code></pre>
-<p>Each constructor can be used as a pattern, and the arguments to the constructor can themselves be bound using patterns of their own. Consider the first case of <code>showShape</code>: if the <code>Shape</code> matches the <code>Circle</code> constructor, then we bring the arguments of <code>Circle</code> (center and radius) into scope using two variable patterns, <code>c</code> and <code>r</code>. The other cases are similar.</p>
-<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
+<p>各構築子はパターンとして使用でき、構築子への引数はそのパターンで束縛できます。
+<code>showShape</code>の最初の場合を考えてみましょう。
+もし <code>Shape</code>が <code>Circle</code>構築子に適合した場合、2つの変数パターン <code>c</code>と
+<code>r</code>を使って<code>Circle</code>の引数（中心と半径）がスコープに導入されます。その他の場合も同様です。</p>
+<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
-<li>(Easy) Write a function <code>circleAtOrigin</code> which constructs a <code>Circle</code> (of type <code>Shape</code>) centered at the origin with radius <code>10.0</code>.</li>
-<li>(Medium) Write a function <code>doubleScaleAndCenter</code> which scales the size of a <code>Shape</code> by a factor of <code>2.0</code> and centers it at the origin.</li>
-<li>(Medium) Write a function <code>shapeText</code> which extracts the text from a <code>Shape</code>. It should return <code>Maybe String</code>, and use the <code>Nothing</code> constructor if the input is not constructed using <code>Text</code>.</li>
+<li>（簡単）<code>Circle</code>（型は<code>Shape</code>）を構築する関数<code>circleAtOrigin</code>を書いてください。
+中心は原点にあり、半径は<code>10.0</code>です。</li>
+<li>（普通）<code>Shape</code>を原点を中心として<code>2.0</code>倍に拡大する関数<code>doubleScaleAndCenter</code>を書いてみましょう。</li>
+<li>（普通）<code>Shape</code>からテキストを抽出する関数<code>shapeText</code>を書いてください。
+この関数は<code>Maybe String</code>を返しますが、もし入力が<code>Text</code>を使用して構築されたのでなければ、返り値には<code>Nothing</code>構築子を使ってください。</li>
 </ol>
-<h2 id="newtypes"><a class="header" href="#newtypes">Newtypes</a></h2>
-<p>There is a special case of algebraic data types, called <em>newtypes</em>. Newtypes are introduced using the <code>newtype</code> keyword instead of the <code>data</code> keyword.</p>
-<p>Newtypes must define <em>exactly one</em> constructor, and that constructor must take <em>exactly one</em> argument. That is, a newtype gives a new name to an existing type. In fact, the values of a newtype have the same runtime representation as the underlying type, so there is no runtime performance overhead. They are, however, distinct from the point of view of the type system. This gives an extra layer of type safety.</p>
-<p>As an example, we might want to define newtypes as type-level aliases for <code>Number</code>, to ascribe units like volts, amps, and ohms:</p>
+<h2 id="newtype"><a class="header" href="#newtype">Newtype</a></h2>
+<p>代数的データ型の特殊な場合として、 <em>newtype</em> と呼ばれるものがあります。newtypeはキーワード <code>data</code>の代わりにキーワード
+<code>newtype</code>を使用して導入します。</p>
+<p>newtype宣言では<em>過不足なく1つだけの</em>構築子を定義しなければならず、その構築子は<em>過不足なく1つだけの</em>引数を取る必要があります。
+つまり、newtype宣言は既存の型に新しい名前を与えるものなのです。
+実際、newtypeの値は、元の型と同じ実行時表現を持ってるので、実行時性能のオーバーヘッドがありません。
+しかし、これらは型システムの観点から区別されます。
+型安全性に追加の層を与えるのです。</p>
+<p>例として、ボルト、アンペア、オームのような単位を表現するために、<code>Number</code>の型レベルの別名を定義したくなる場合があるかもしれません。</p>
 <pre><code class="language-haskell">newtype Volt = Volt Number
 newtype Ohm = Ohm Number
 newtype Amp = Amp Number
 </code></pre>
-<p>Then we define functions and values using these types:</p>
+<p>それからこれらの型を使う関数と値を定義します。</p>
 <pre><code class="language-haskell">calculateCurrent :: Volt -&gt; Ohm -&gt; Amp
 calculateCurrent (Volt v) (Ohm r) = Amp (v / r)
 
@@ -477,7 +569,7 @@ lightbulb = Ohm 500.0
 current :: Amp
 current = calculateCurrent battery lightbulb
 </code></pre>
-<p>This prevents us from making silly mistakes, such as attempting to calculate the current produced by <em>two</em> lightbulbs <em>without</em> a voltage source.</p>
+<p>これによりつまらないミスを防ぐことができます。例えば電源 <em>なし</em> に <em>2つ</em> の電球により生み出される電流を計算しようとするなどです。</p>
 <pre><code class="language-haskell">current :: Amp
 current = calculateCurrent lightbulb lightbulb
 {-
@@ -490,8 +582,8 @@ TypesDoNotUnify:
     Volt
 -}
 </code></pre>
-<p>If we instead just used <code>Number</code> without <code>newtype</code>, then the compiler can't help us catch this mistake:</p>
-<pre><code class="language-haskell">-- This also compiles, but is not as type safe.
+<p>もし<code>newtype</code>なしに単なる<code>Number</code>を使っていたら、コンパイラはこのミスを捕捉できません。</p>
+<pre><code class="language-haskell">-- これもコンパイルできますが、型安全ではありません。
 calculateCurrent :: Number -&gt; Number -&gt; Number
 calculateCurrent v r = v / r
 
@@ -502,33 +594,38 @@ lightbulb :: Number
 lightbulb = 500.0
 
 current :: Number
-current = calculateCurrent lightbulb lightbulb -- uncaught mistake
+current = calculateCurrent lightbulb lightbulb -- 捕捉されないミス
 </code></pre>
-<p>Note that while a newtype can only have a single constructor, and the constructor must be of a single value, a newtype <em>can</em> take any number of type variables. For example, the following newtype would be a valid definition (<code>err</code> and <code>a</code> are the type variables, and the <code>CouldError</code> constructor expects a <em>single</em> value of type <code>Either err a</code>):</p>
+<p>なお、newtypeは単一の構築子しかとれず、構築子は単一の値でなくてはなりませんが、newtypeは任意の数の型変数を取ることが<em>できます</em>。
+例えば以下のnewtypeは妥当な定義です（<code>err</code>と<code>a</code>は型変数で、<code>CouldError</code>構築子は型<code>Either err a</code>の<em>単一</em>の値を期待します）。</p>
 <pre><code class="language-Haskell">newtype CouldError err a = CouldError (Either err a)
 </code></pre>
-<p>Also note that the constructor of a newtype often has the same name as the newtype itself, but this is not a requirement. For example, unique names are also valid:</p>
+<p>また、newtypeの構築子はよくnewtype自身と同じ名前を持つことがあります。ただこれは必須ではありません。例えば別個の名前であっても妥当です。</p>
 <pre><code class="language-haskell">newtype Coulomb = MakeCoulomb Number
 </code></pre>
-<p>In this case, <code>Coulomb</code> is the <em>type constructor</em> (of zero arguments) and <code>MakeCoulomb</code> is the <em>data constructor</em>. These constructors live in different namespaces, even when the names are identical, such as with the <code>Volt</code> example. This is true for all ADTs. Note that although the type constructor and data constructor can have different names, in practice it is idiomatic for them to share the same name. This is the case with <code>Amp</code> and <code>Volt</code> types above.</p>
-<p>Another application of newtypes is to attach different <em>behavior</em> to an existing type without changing its representation at runtime. We cover that use case in the next chapter when we discuss <em>type classes</em>.</p>
-<h2 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h2>
+<p>この場合<code>Coulomb</code>は<em>型構築子</em>（引数はゼロ）で<code>MakeCoulomb</code>は <em>データ構築子</em>
+です。これらの構築子は異なる名前空間に属しており、<code>Volt</code>の例でそうだったように、名前に一意性があります。これは全てのADTについて言えることです。なお、型構築子とデータ構築子は異なる名前を持つことができますが、実際には同じ名前を共有するのが普通です。前述の<code>Amp</code>と<code>Volt</code>の場合がこれです。</p>
+<p>newtypeの別の応用は、実行時表現を変えることなく、既存の型に異なる <em>挙動</em> を加えることです。その利用例については次章で <em>型クラス</em>
+をお話しするときに押さえます。</p>
+<h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
 <ol>
-<li>(Easy) Define <code>Watt</code> as a <code>newtype</code> of <code>Number</code>. Then define a <code>calculateWattage</code> function using this new <code>Watt</code> type and the above definitions <code>Amp</code> and <code>Volt</code>:</li>
+<li>（簡単）<code>Watt</code>を<code>Number</code>の<code>newtype</code>として定義してください。それからこの新しい<code>Watt</code>型と前述の<code>Amp</code>と<code>Volt</code>の定義を使って<code>calculateWattage</code>関数を定義してください。</li>
 </ol>
 <pre><code class="language-haskell">calculateWattage :: Amp -&gt; Volt -&gt; Watt
 </code></pre>
-<p>A wattage in <code>Watt</code>s can be calculated as the product of a given current in <code>Amp</code>s and a given voltage in <code>Volt</code>s.</p>
-<h2 id="a-library-for-vector-graphics"><a class="header" href="#a-library-for-vector-graphics">A Library for Vector Graphics</a></h2>
-<p>Let's use the data types we have defined above to create a simple library for using vector graphics.</p>
-<p>Define a type synonym for a <code>Picture</code> - just an array of <code>Shape</code>s:</p>
+<p><code>Watt</code>中のワット数は与えられた<code>Amp</code>中の電流と与えられた<code>Volt</code>の電圧の積で計算できます。</p>
+<h2 id="ベクターグラフィックスライブラリ"><a class="header" href="#ベクターグラフィックスライブラリ">ベクターグラフィックスライブラリ</a></h2>
+<p>これまで定義してきたデータ型を使って、ベクターグラフィックスを扱う簡単なライブラリを作成していきましょう。</p>
+<p>ただの <code>Shape</code>の配列であるような、 <code>Picture</code>という型同義語を定義しておきます。</p>
 <pre><code class="language-haskell">type Picture = Array Shape
 </code></pre>
-<p>For debugging purposes, we'll want to be able to turn a <code>Picture</code> into something readable. The <code>showPicture</code> function lets us do that:</p>
+<p>デバッグしていると <code>Picture</code>を <code>String</code>として表示できるようにしたくなることもあるでしょう。これはパターン照合を使用して定義された
+<code>showPicture</code>関数でできます。</p>
 <pre><code class="language-haskell">showPicture :: Picture -&gt; Array String
 showPicture = map showShape
 </code></pre>
-<p>Let's try it out. Compile your module with <code>spago build</code> and open PSCi with <code>spago repl</code>:</p>
+<p>試してみましょう。
+モジュールを <code>spago build</code>でコンパイルし、 <code>spago repl</code>でPSCiを開きます。</p>
 <pre><code class="language-text">$ spago build
 $ spago repl
 
@@ -538,9 +635,9 @@ $ spago repl
 
 [&quot;Line [start: (0.0, 0.0), end: (1.0, 1.0)]&quot;]
 </code></pre>
-<h2 id="computing-bounding-rectangles"><a class="header" href="#computing-bounding-rectangles">Computing Bounding Rectangles</a></h2>
-<p>The example code for this module contains a function <code>bounds</code> which computes the smallest bounding rectangle for a <code>Picture</code>.</p>
-<p>The <code>Bounds</code> type defines a bounding rectangle.</p>
+<h2 id="外接矩形の算出"><a class="header" href="#外接矩形の算出">外接矩形の算出</a></h2>
+<p>このモジュールのコード例には、 <code>Picture</code>の最小外接矩形を計算する関数 <code>bounds</code>が含まれています。</p>
+<p><code>Bounds</code>型は外接矩形を定義します。</p>
 <pre><code class="language-haskell">type Bounds =
   { top    :: Number
   , left   :: Number
@@ -548,25 +645,33 @@ $ spago repl
   , right  :: Number
   }
 </code></pre>
-<p><code>bounds</code> uses the <code>foldl</code> function from <code>Data.Foldable</code> to traverse the array of <code>Shapes</code> in a <code>Picture</code>, and accumulate the smallest bounding rectangle:</p>
+<p><code>Picture</code>内の <code>Shape</code>の配列を走査し、最小の外接矩形を累積するため、<code>bounds</code>には <code>Data.Foldable</code>の
+<code>foldl</code>関数を使用しています。</p>
 <pre><code class="language-haskell">bounds :: Picture -&gt; Bounds
 bounds = foldl combine emptyBounds
   where
   combine :: Bounds -&gt; Shape -&gt; Bounds
   combine b shape = union (shapeBounds shape) b
 </code></pre>
-<p>In the base case, we need to find the smallest bounding rectangle of an empty <code>Picture</code>, and the empty bounding rectangle defined by <code>emptyBounds</code> suffices.</p>
-<p>The accumulating function <code>combine</code> is defined in a <code>where</code> block. <code>combine</code> takes a bounding rectangle computed from <code>foldl</code>'s recursive call, and the next <code>Shape</code> in the array, and uses the <code>union</code> function to compute the union of the two bounding rectangles. The <code>shapeBounds</code> function computes the bounds of a single shape using pattern matching.</p>
-<h2 id="exercises-4"><a class="header" href="#exercises-4">Exercises</a></h2>
+<p>基底の場合では、空の
+<code>Picture</code>の最小外接矩形を求める必要がありますが、<code>emptyBounds</code>で定義される空の外接矩形がその条件を満たしています。</p>
+<p>累積関数 <code>combine</code>は <code>where</code>ブロックで定義されています。<code>combine</code>は
+<code>foldl</code>の再帰呼び出しで計算された外接矩形と、配列内の次の <code>Shape</code>を引数にとり、ユーザ定義の演算子
+<code>union</code>を使って2つの外接矩形の和を計算しています。<code>shapeBounds</code>関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。</p>
+<h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
-<li>(Medium) Extend the vector graphics library with a new operation <code>area</code> which computes the area of a <code>Shape</code>. For the purpose of this exercise, the area of a line or a piece of text is assumed to be zero.</li>
-<li>(Difficult) Extend the <code>Shape</code> type with a new data constructor <code>Clipped</code>, which clips another <code>Picture</code> to a rectangle. Extend the <code>shapeBounds</code> function to compute the bounds of a clipped picture. Note that this makes <code>Shape</code> into a recursive data type.</li>
+<li>（普通）ベクターグラフィックライブラリを拡張し、<code>Shape</code>の面積を計算する新しい操作
+<code>area</code>を追加してください。この演習ではテキストの面積は0であるものとしてください。</li>
+<li>（難しい）<code>Shape</code>を拡張し、新しいデータ構築子 <code>Clipped</code>を追加してください。
+<code>Clipped</code>は他の <code>Picture</code>を矩形に切り抜きます。
+切り抜いてきた<code>Picture</code>の境界を計算できるよう、<code>shapeBounds</code>関数を拡張してください。
+なお、これにより<code>Shape</code>は再帰的なデータ型になります。</li>
 </ol>
-<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>In this chapter, we covered pattern matching, a basic but powerful technique from functional programming. We saw how to use simple patterns as well as array and record patterns to match parts of deep data structures.</p>
-<p>This chapter also introduced algebraic data types, which are closely related to pattern matching. We saw how algebraic data types allow concise descriptions of data structures, and provide a modular way to extend data types with new operations.</p>
-<p>Finally, we covered <em>row polymorphism</em>, a powerful type of abstraction which allows many idiomatic JavaScript functions to be given a type.</p>
-<p>In the rest of the book, we will use ADTs and pattern matching extensively, so it will pay dividends to become familiar with them now. Try creating your own algebraic data types and writing functions to consume them using pattern matching.</p>
+<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
+<p>この章では、関数型プログラミングから基本的ながら強力なテクニックであるパターン照合を扱いました。複雑なデータ構造の一部分と照合するために、簡単なパターンの使い方だけではなく、配列パターンやレコードパターンを使った深さのあるデータ構造の一部分との照合方法を見てきました。</p>
+<p>また、この章ではパターン照合に密接に関連する代数的データ型を紹介しました。代数的データ型のおかげでデータ構造を簡潔に記述でき、新たな操作でデータ型を拡張する上でモジュール性のある方法がもたらされることを見てきました。</p>
+<p>最後に強力な抽象化である <em>行多相</em> を扱いました。これにより多くの既存のJavaScript関数に型を与えられます。</p>
+<p>本書では今後も代数的データ型とパターン照合をいろんなところで使用するので、今のうちにこれらに習熟しておくと後で実を結ぶことでしょう。これ以外にも独自の代数的データ型を作成し、パターン照合を使用してそれらの型を使う関数を書いてみてください。</p>
 
                     </main>
 
