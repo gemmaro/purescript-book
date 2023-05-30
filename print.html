@@ -379,6 +379,14 @@ license</a>の条件の下で再利用させて頂いています 。</p>
 <h2 id="環境構築"><a class="header" href="#環境構築">環境構築</a></h2>
 <p>最初にドキュメンテーションリポジトリにあるこの<a href="https://github.com/purescript/documentation/blob/master/guides/Getting-Started.md">はじめの手引き</a>を通しで進め、環境の構築と言語の基礎を学んでください。<a href="http://projecteuler.net/problem=1">Project
 Euler</a>の解答例にあるコードがわかりにくかったり見慣れない構文を含んでいたとしても心配要りません。来たる章でこの全ての内容をとても丁寧に押さえていきます。</p>
+<h3 id="エディタの対応"><a class="header" href="#エディタの対応">エディタの対応</a></h3>
+<p>PureScriptを書く上で（例えば本書の演習を解くなど）お好みのエディタを使えます。
+<a href="https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editor-support">エディタの対応についてのドキュメント</a>を参照してください。</p>
+<blockquote>
+<p>なお、完全なIDEの対応をするために、開いたプロジェクトのルートに<code>spago.dhall</code>があることを期待するエディタもあります。
+例えば本章の演習に取り組む場合、<code>chapter2</code>ディレクトリを開くとよいでしょう。</p>
+<p>VS Codeを使っている場合、提供されているワークスペースを使って全ての章を同時に開くことができます。</p>
+</blockquote>
 <h2 id="演習を解く"><a class="header" href="#演習を解く">演習を解く</a></h2>
 <p>ここまでで必要な開発ツールをインストールできているので、この本のリポジトリをクローンしてください。</p>
 <pre><code class="language-sh">git clone https://github.com/purescript-contrib/purescript-book.git
@@ -5575,12 +5583,8 @@ Test.gcd(15)(20);
 </code></pre>
 <p>ここでは、コードがPureScriptモジュールをESモジュールにコンパイルする <code>spago build</code>でコンパイルされていると仮定しています。そのため、 <code>import</code>を使って <code>Test</code>モジュールをインポートした後、
 <code>Test</code>オブジェクトの <code>gcd</code>関数を参照できました。</p>
-<p><code>pulp build -O --to file.js</code>を使用して、ブラウザ用のJavaScriptコードもバンドルできます。
-その場合、大域的なPureScript名前空間から <code>Test</code>モジュールにアクセスします。
-既定では<code>PS</code>です。</p>
-<pre><code class="language-javascript">var Test = PS.Test;
-Test.gcd(15)(20);
-</code></pre>
+<p><code>spago bundle-app</code>や<code>spago bundle-module</code>コマンドを使って生成されたJavaScriptを単一のファイルにまとめることもできます。
+詳細な情報については<a href="https://github.com/purescript/spago#bundle-a-project-into-a-single-js-file">ドキュメント</a>をあたってください。</p>
 <h3 id="名前の生成を理解する"><a class="header" href="#名前の生成を理解する">名前の生成を理解する</a></h3>
 <p>PureScriptはコード生成時にできるだけ名前を保存することを目的としています。具体的には、少なくともトップレベルで宣言される名前については、PureScriptやJavaScriptのキーワードでなければほとんどの識別子が保存されます。</p>
 <p>識別子としてJavaScriptのキーワードを使う場合は、名前は2重のドル記号でエスケープされます。
@@ -5690,17 +5694,19 @@ newtypeは単一の引数を取る単一の構築子を持つよう制限され�
 newtypeは更なる型安全性のための層を提供しますが、実行時の関数呼び出しのオーバーヘッドがないので、ライブラリを設計するのに役に立ちます。</p>
 <h3 id="量化された型の表現"><a class="header" href="#量化された型の表現">量化された型の表現</a></h3>
 <p>量化された型（多相型）の式は、実行時は制限された表現になっています。
-つまり実際には、所与の量化された型を持つ式が比較的少ないということですが、とても効率的にそれらの式を調べることができるということでもあるのです。</p>
+実際、所与の量化された型を持つ式がより少なくなりますが、それによりかなり効率的に推論できるのです。</p>
 <p>例えば、次の多相型を考えてみます。</p>
 <pre><code class="language-haskell">forall a. a -&gt; a
 </code></pre>
 <p>この型を持っている関数にはどんなものがあるでしょうか。
-少なくとも1つはこの型を持つ関数が存在します。
-すなわち、 <code>Prelude</code>で定義されている恒等関数 <code>id</code>です。</p>
-<pre><code class="language-haskell">id :: forall a. a -&gt; a
-id a = a
+実は少なくとも1つ、この型を持つ関数が存在します。</p>
+<pre><code class="language-haskell">identity :: forall a. a -&gt; a
+identity a = a
 </code></pre>
-<p>実のところ、<code>id</code>関数はこの型の<em>唯一の</em>（全）関数です。
+<blockquote>
+<p>なお、<code>Prelude</code>に定義された実際の<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Category#v:identity"><code>identity</code></a>関数は僅かに違った型を持ちます。</p>
+</blockquote>
+<p>実のところ、<code>identity</code>関数はこの型の<em>唯一の</em>（全）関数です。
 これは確かに間違いなさそうに思えますが（この型を持った <code>id</code>とは明らかに異なる式を書こうとしてみてください）、確かめるにはどうしたらいいでしょうか。
 型の実行時表現を考えることによって確かめられます。</p>
 <p>量化された型 <code>forall a. t</code>の実行時表現はどうなっているのでしょうか。さて、この型の実行時表現を持つ任意の式は、型 <code>a</code>をどのように選んでも型 <code>t</code>の適切な実行時表現を持っていなければなりません。上の例では、型 <code>forall a. a -&gt; a</code>の関数は、 <code>String -&gt; String</code>、 <code>Number -&gt; Number</code>、 <code>Array Boolean -&gt; Array Boolean</code>などといった型について、適切な実行時表現を持っていなければなりません。 これらは、文字列から文字列、数から数の関数でなくてはなりません。</p>
