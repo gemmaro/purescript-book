@@ -1245,14 +1245,9 @@ Test.gcd(15)(20);
 build`でコンパイルされていると仮定しています。そのため、 `import`を使って `Test`モジュールをインポートした後、
 `Test`オブジェクトの `gcd`関数を参照できました。
 
-`pulp build -O --to file.js`を使用して、ブラウザ用のJavaScriptコードもバンドルできます。
-その場合、大域的なPureScript名前空間から `Test`モジュールにアクセスします。
-既定では`PS`です。
-
-```javascript
-var Test = PS.Test;
-Test.gcd(15)(20);
-```
+`spago bundle-app`や`spago
+bundle-module`コマンドを使って生成されたJavaScriptを単一のファイルにまとめることもできます。
+詳細な情報については[ドキュメント](https://github.com/purescript/spago#bundle-a-project-into-a-single-js-file)をあたってください。
 
 ### 名前の生成を理解する
 
@@ -1412,7 +1407,7 @@ newtypeは更なる型安全性のための層を提供しますが、実行時�
 ### 量化された型の表現
 
 量化された型（多相型）の式は、実行時は制限された表現になっています。
-つまり実際には、所与の量化された型を持つ式が比較的少ないということですが、とても効率的にそれらの式を調べることができるということでもあるのです。
+実際、所与の量化された型を持つ式がより少なくなりますが、それによりかなり効率的に推論できるのです。
 
 例えば、次の多相型を考えてみます。
 
@@ -1421,15 +1416,16 @@ forall a. a -> a
 ```
 
 この型を持っている関数にはどんなものがあるでしょうか。
-少なくとも1つはこの型を持つ関数が存在します。
-すなわち、 `Prelude`で定義されている恒等関数 `id`です。
+実は少なくとも1つ、この型を持つ関数が存在します。
 
 ```haskell
-id :: forall a. a -> a
-id a = a
+identity :: forall a. a -> a
+identity a = a
 ```
 
-実のところ、`id`関数はこの型の*唯一の*（全）関数です。
+> なお、`Prelude`に定義された実際の[`identity`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Category#v:identity)関数は僅かに違った型を持ちます。
+
+実のところ、`identity`関数はこの型の*唯一の*（全）関数です。
 これは確かに間違いなさそうに思えますが（この型を持った `id`とは明らかに異なる式を書こうとしてみてください）、確かめるにはどうしたらいいでしょうか。
 型の実行時表現を考えることによって確かめられます。
 

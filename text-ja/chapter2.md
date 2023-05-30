@@ -10,6 +10,16 @@
 最初にドキュメンテーションリポジトリにあるこの[はじめの手引き](https://github.com/purescript/documentation/blob/master/guides/Getting-Started.md)を通しで進め、環境の構築と言語の基礎を学んでください。[Project
 Euler](http://projecteuler.net/problem=1)の解答例にあるコードがわかりにくかったり見慣れない構文を含んでいたとしても心配要りません。来たる章でこの全ての内容をとても丁寧に押さえていきます。
 
+### エディタの対応
+
+PureScriptを書く上で（例えば本書の演習を解くなど）お好みのエディタを使えます。
+[エディタの対応についてのドキュメント](https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editor-support)を参照してください。
+
+> なお、完全なIDEの対応をするために、開いたプロジェクトのルートに`spago.dhall`があることを期待するエディタもあります。
+> 例えば本章の演習に取り組む場合、`chapter2`ディレクトリを開くとよいでしょう。
+>
+> VS Codeを使っている場合、提供されているワークスペースを使って全ての章を同時に開くことができます。
+
 ## 演習を解く
 
 ここまでで必要な開発ツールをインストールできているので、この本のリポジトリをクローンしてください。

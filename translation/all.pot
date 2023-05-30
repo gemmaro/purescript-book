@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-28 14:18+0900\n"
+"POT-Creation-Date: 2023-05-31 08:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1600,13 +1600,13 @@ msgstr ""
 #. type: Title ##
 #: text/chapter10.md:246 text/chapter10.md:321 text/chapter10.md:476
 #: text/chapter10.md:714 text/chapter10.md:891 text/chapter10.md:1074
-#: text/chapter10.md:1314 text/chapter11.md:140 text/chapter11.md:224
+#: text/chapter10.md:1311 text/chapter11.md:140 text/chapter11.md:224
 #: text/chapter11.md:343 text/chapter11.md:549 text/chapter11.md:716
 #: text/chapter11.md:915 text/chapter11.md:960 text/chapter12.md:153
 #: text/chapter12.md:361 text/chapter12.md:555 text/chapter13.md:90
 #: text/chapter13.md:137 text/chapter13.md:244 text/chapter13.md:387
 #: text/chapter14.md:249 text/chapter14.md:352 text/chapter14.md:569
-#: text/chapter14.md:704 text/chapter2.md:116 text/chapter3.md:714
+#: text/chapter14.md:704 text/chapter2.md:124 text/chapter3.md:714
 #: text/chapter4.md:70 text/chapter4.md:181 text/chapter4.md:363
 #: text/chapter4.md:521 text/chapter4.md:615 text/chapter5.md:99
 #: text/chapter5.md:228 text/chapter5.md:392 text/chapter5.md:465
@@ -3456,7 +3456,7 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter10.md:1081 text/chapter11.md:964 text/chapter12.md:594
-#: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:121
+#: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:129
 #: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
 #: text/chapter6.md:756 text/chapter7.md:691 text/chapter8.md:1000
 #: text/chapter9.md:237
@@ -3589,27 +3589,20 @@ msgstr ""
 #: text/chapter10.md:1122
 #, markdown-text
 msgid ""
-"You might also like to bundle JavaScript code for the browser, using `spago "
-"bundle-app --to file.js`. In that case, you would access the `Test` module "
-"from the global PureScript namespace, which defaults to `PS`:"
-msgstr ""
-
-#. type: Fenced code block (javascript)
-#: text/chapter10.md:1123
-#, no-wrap
-msgid ""
-"var Test = PS.Test;\n"
-"Test.gcd(15)(20);\n"
+"You can also use the `spago bundle-app` and `spago bundle-module` commands "
+"to bundle your generated JavaScript into a single file. Consult [the "
+"documentation](https://github.com/purescript/spago#bundle-a-project-into-a-single-js-file) "
+"for more information."
 msgstr ""
 
 #. type: Title ###
-#: text/chapter10.md:1128
+#: text/chapter10.md:1123
 #, markdown-text, no-wrap
 msgid "Understanding Name Generation"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1131
+#: text/chapter10.md:1126
 #, markdown-text
 msgid ""
 "PureScript aims to preserve names during code generation as much as "
@@ -3619,7 +3612,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1133
+#: text/chapter10.md:1128
 #, markdown-text
 msgid ""
 "If you decide to use a JavaScript keyword as an identifier, the name will be "
@@ -3627,25 +3620,25 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1134
+#: text/chapter10.md:1129
 #, no-wrap
 msgid "null = []\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1139 text/chapter10.md:1151
+#: text/chapter10.md:1134 text/chapter10.md:1146
 #, markdown-text
 msgid "generates the following JavaScript:"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1140
+#: text/chapter10.md:1135
 #, no-wrap
 msgid "var $$null = [];\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1145
+#: text/chapter10.md:1140
 #, markdown-text
 msgid ""
 "In addition, if you would like to use special characters in your identifier "
@@ -3653,19 +3646,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1146
+#: text/chapter10.md:1141
 #, no-wrap
 msgid "example' = 100\n"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1152
+#: text/chapter10.md:1147
 #, no-wrap
 msgid "var example$prime = 100;\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1157
+#: text/chapter10.md:1152
 #, markdown-text
 msgid ""
 "Where compiled PureScript code is intended to be called from JavaScript, it "
@@ -3676,13 +3669,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter10.md:1158
+#: text/chapter10.md:1153
 #, markdown-text, no-wrap
 msgid "Runtime Data Representation"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1161
+#: text/chapter10.md:1156
 #, markdown-text
 msgid ""
 "Types allow us to reason at compile-time that our programs are \"correct\" "
@@ -3692,7 +3685,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1163
+#: text/chapter10.md:1158
 #, markdown-text
 msgid ""
 "For that reason, it is important to understand the representation of data at "
@@ -3703,7 +3696,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1165
+#: text/chapter10.md:1160
 #, markdown-text
 msgid ""
 "The good news is that PureScript expressions have particularly simple "
@@ -3712,7 +3705,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1167
+#: text/chapter10.md:1162
 #, markdown-text
 msgid ""
 "For simple types, the correspondence is almost trivial. For example, if an "
@@ -3724,7 +3717,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1169
+#: text/chapter10.md:1164
 #, markdown-text
 msgid ""
 "A similar law holds for expressions of type `Int`, `Number`, and `String` - "
@@ -3736,7 +3729,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1171
+#: text/chapter10.md:1166
 #, markdown-text
 msgid ""
 "What about `Unit`? Well, since `Unit` has only one inhabitant (`unit`) and "
@@ -3749,13 +3742,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1173
+#: text/chapter10.md:1168
 #, markdown-text
 msgid "What about some more complex types?"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1175
+#: text/chapter10.md:1170
 #, markdown-text, no-wrap
 msgid ""
 "As we have already seen, PureScript functions correspond to JavaScript "
@@ -3770,7 +3763,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1177
+#: text/chapter10.md:1172
 #, markdown-text
 msgid ""
 "As you might expect, PureScript's arrays correspond to JavaScript "
@@ -3782,7 +3775,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1179
+#: text/chapter10.md:1174
 #, markdown-text
 msgid ""
 "We've already seen that PureScript's records evaluate to JavaScript "
@@ -3793,13 +3786,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter10.md:1180
+#: text/chapter10.md:1175
 #, markdown-text, no-wrap
 msgid "Representing ADTs"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1183
+#: text/chapter10.md:1178
 #, markdown-text
 msgid ""
 "For every constructor of an algebraic data type, the PureScript compiler "
@@ -3809,25 +3802,25 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1185
+#: text/chapter10.md:1180
 #, markdown-text
 msgid "For example, consider the following simple ADT:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1186
+#: text/chapter10.md:1181
 #, no-wrap
 msgid "data ZeroOrOne a = Zero | One a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1191
+#: text/chapter10.md:1186
 #, markdown-text
 msgid "The PureScript compiler generates the following code:"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1192
+#: text/chapter10.md:1187
 #, no-wrap
 msgid ""
 "function One(value0) {\n"
@@ -3845,7 +3838,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1208
+#: text/chapter10.md:1203
 #, markdown-text
 msgid ""
 "Here, we see two JavaScript object types: `Zero` and `One`. It is possible "
@@ -3855,7 +3848,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1210
+#: text/chapter10.md:1205
 #, markdown-text
 msgid ""
 "The PureScript compiler also generates helper functions. For constructors "
@@ -3867,7 +3860,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1212
+#: text/chapter10.md:1207
 #, markdown-text
 msgid ""
 "What about constructors with more than one argument? In that case, the "
@@ -3877,19 +3870,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1213
+#: text/chapter10.md:1208
 #, no-wrap
 msgid "data Two a b = Two a b\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1218
+#: text/chapter10.md:1213
 #, markdown-text
 msgid "generates this JavaScript code:"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1219
+#: text/chapter10.md:1214
 #, no-wrap
 msgid ""
 "function Two(value0, value1) {\n"
@@ -3905,7 +3898,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1233
+#: text/chapter10.md:1228
 #, markdown-text
 msgid ""
 "Here, values of the object type `Two` can be created using the `new` "
@@ -3913,7 +3906,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1235
+#: text/chapter10.md:1230
 #, markdown-text
 msgid ""
 "The case of newtypes is slightly different. Recall that a newtype is like an "
@@ -3923,19 +3916,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1237
+#: text/chapter10.md:1232
 #, markdown-text
 msgid "For example, this newtype representing telephone numbers:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1238
+#: text/chapter10.md:1233
 #, no-wrap
 msgid "newtype PhoneNumber = PhoneNumber String\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1243
+#: text/chapter10.md:1238
 #, markdown-text
 msgid ""
 "is actually represented as a JavaScript string at runtime. This is useful "
@@ -3944,62 +3937,71 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter10.md:1244
+#: text/chapter10.md:1239
 #, markdown-text, no-wrap
 msgid "Representing Quantified Types"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1247
+#: text/chapter10.md:1242
 #, markdown-text
 msgid ""
 "Expressions with quantified (polymorphic) types have restrictive "
-"representations at runtime. In practice, this means that there are "
-"relatively few expressions with a given quantified type, but that we can "
-"reason about them quite effectively."
+"representations at runtime. In practice, there are relatively few "
+"expressions with a given quantified type, but we can reason about them quite "
+"effectively."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1249
+#: text/chapter10.md:1244
 #, markdown-text
 msgid "Consider this polymorphic type, for example:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1250
+#: text/chapter10.md:1245
 #, no-wrap
 msgid "forall a. a -> a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1255
+#: text/chapter10.md:1250
 #, markdown-text
 msgid ""
 "What sort of functions have this type? Well, there is certainly one function "
-"with this type - namely, the `identity` function, defined in the `Prelude`:"
+"with this type:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1256
+#: text/chapter10.md:1251
 #, no-wrap
 msgid ""
-"id :: forall a. a -> a\n"
-"id a = a\n"
+"identity :: forall a. a -> a\n"
+"identity a = a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1262
+#: text/chapter10.md:1257
+#, markdown-text, no-wrap
+msgid ""
+"> Note that the actual "
+"[`identity`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Category#v:identity) "
+"function defined in `Prelude` has a slightly different type.\n"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter10.md:1259
 #, markdown-text
 msgid ""
 "In fact, the `identity` function is the _only_ (total) function with this "
 "type! This certainly seems to be the case (try writing an expression with "
-"this type which is not observably equivalent to `identity`), but how can we "
+"this type that is not observably equivalent to `identity`), but how can we "
 "be sure? We can be sure by considering the runtime representation of the "
 "type."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1264
+#: text/chapter10.md:1261
 #, markdown-text, no-wrap
 msgid ""
 "What is the runtime representation of a quantified type `forall a. t`? Well, "
@@ -4012,7 +4014,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1266
+#: text/chapter10.md:1263
 #, markdown-text
 msgid ""
 "But that is not enough - the runtime representation of a quantified type is "
@@ -4024,7 +4026,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1267
+#: text/chapter10.md:1264
 #, no-wrap
 msgid ""
 "function invalid(a) {\n"
@@ -4037,7 +4039,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1278
+#: text/chapter10.md:1275
 #, markdown-text, no-wrap
 msgid ""
 "Certainly, this function takes strings to strings, numbers to numbers, "
@@ -4047,7 +4049,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1280
+#: text/chapter10.md:1277
 #, markdown-text, no-wrap
 msgid ""
 "Without being able to inspect the runtime type of our function argument, our "
@@ -4056,7 +4058,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1282
+#: text/chapter10.md:1279
 #, markdown-text
 msgid ""
 "A full discussion of _parametric polymorphism_ and _parametricity_ is beyond "
@@ -4067,13 +4069,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter10.md:1283
+#: text/chapter10.md:1280
 #, markdown-text, no-wrap
 msgid "Representing Constrained Types"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1286
+#: text/chapter10.md:1283
 #, markdown-text
 msgid ""
 "Functions with a type class constraint have an interesting representation at "
@@ -4084,7 +4086,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1288
+#: text/chapter10.md:1285
 #, markdown-text
 msgid ""
 "For example, here is a simple PureScript function with a constrained type "
@@ -4092,7 +4094,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1289
+#: text/chapter10.md:1286
 #, no-wrap
 msgid ""
 "shout :: forall a. Show a => a -> String\n"
@@ -4100,13 +4102,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1295
+#: text/chapter10.md:1292
 #, markdown-text
 msgid "The generated JavaScript looks like this:"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1296
+#: text/chapter10.md:1293
 #, no-wrap
 msgid ""
 "var shout = function (dict) {\n"
@@ -4117,7 +4119,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1305
+#: text/chapter10.md:1302
 #, markdown-text
 msgid ""
 "Notice that `shout` is compiled to a (curried) function of two arguments, "
@@ -4127,7 +4129,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1307
+#: text/chapter10.md:1304
 #, markdown-text
 msgid ""
 "We can call this function from JavaScript by passing an explicit type class "
@@ -4135,7 +4137,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1308
+#: text/chapter10.md:1305
 #, no-wrap
 msgid ""
 "import { showNumber } from 'Data.Show'\n"
@@ -4144,13 +4146,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter10.md:1317
+#: text/chapter10.md:1314
 #, markdown-text
 msgid "(Easy) What are the runtime representations of these types?"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1323
+#: text/chapter10.md:1320
 #, markdown-text, no-wrap
 msgid ""
 "     ```haskell\n"
@@ -4161,7 +4163,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1326
+#: text/chapter10.md:1323
 #, markdown-text, no-wrap
 msgid ""
 "     What can you say about the expressions which have these types?\n"
@@ -4173,13 +4175,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter10.md:1327
+#: text/chapter10.md:1324
 #, markdown-text, no-wrap
 msgid "Representing Side Effects"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1330
+#: text/chapter10.md:1327
 #, markdown-text
 msgid ""
 "The `Effect` monad is also defined as a foreign type. Its runtime "
@@ -4190,7 +4192,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1332
+#: text/chapter10.md:1329
 #, markdown-text
 msgid ""
 "The definition of the `Effect` type constructor is given in the `Effect` "
@@ -4198,13 +4200,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1333
+#: text/chapter10.md:1330
 #, no-wrap
 msgid "foreign import data Effect :: Type -> Type\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1338
+#: text/chapter10.md:1335
 #, markdown-text
 msgid ""
 "As a simple example, consider the `random` function defined in the `random` "
@@ -4212,25 +4214,25 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1339
+#: text/chapter10.md:1336
 #, no-wrap
 msgid "foreign import random :: Effect Number\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1344
+#: text/chapter10.md:1341
 #, markdown-text
 msgid "The definition of the `random` function is given here:"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1345
+#: text/chapter10.md:1342
 #, no-wrap
 msgid "export const random = Math.random;\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1350
+#: text/chapter10.md:1347
 #, markdown-text
 msgid ""
 "Notice that the `random` function is represented at runtime as a function of "
@@ -4240,7 +4242,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1352
+#: text/chapter10.md:1349
 #, markdown-text
 msgid ""
 "As a slightly more interesting example, consider the `log` function defined "
@@ -4249,19 +4251,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1353
+#: text/chapter10.md:1350
 #, no-wrap
 msgid "foreign import log :: String -> Effect Unit\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1358
+#: text/chapter10.md:1355
 #, markdown-text
 msgid "And here is its definition:"
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1359
+#: text/chapter10.md:1356
 #, no-wrap
 msgid ""
 "export const log = function (s) {\n"
@@ -4272,7 +4274,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1368
+#: text/chapter10.md:1365
 #, markdown-text
 msgid ""
 "The representation of `log` at runtime is a JavaScript function of a single "
@@ -4281,7 +4283,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1370
+#: text/chapter10.md:1367
 #, markdown-text
 msgid ""
 "Expressions of type `Effect a` can be invoked from JavaScript like regular "
@@ -4290,7 +4292,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1371
+#: text/chapter10.md:1368
 #, no-wrap
 msgid ""
 "import { main } from 'Main'\n"
@@ -4299,7 +4301,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter10.md:1377
+#: text/chapter10.md:1374
 #, markdown-text
 msgid ""
 "When using `spago bundle-app --to` or `spago run`, this call to `main` is "
@@ -11441,14 +11443,41 @@ msgid ""
 "upcoming chapters."
 msgstr ""
 
-#. type: Title ##
+#. type: Title ###
 #: text/chapter2.md:11
+#, markdown-text, no-wrap
+msgid "Editor support"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter2.md:14
+#, markdown-text
+msgid ""
+"You can use your preferred editor to write PureScript (for example, to solve "
+"the book exercises). See [Editor Support "
+"Documentation](https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editor-support)."
+msgstr ""
+
+#. type: Plain text
+#: text/chapter2.md:18
+#, markdown-text, no-wrap
+msgid ""
+"> Note that some editors expect a `spago.dhall` file in the root of the "
+"opened project for full IDE support. For example, you should open the "
+"`chapter2` directory to work on the exercises in this chapter.\n"
+">\n"
+"> If you use VS Code, you can use the provided workspace to open all the "
+"chapters simultaneously.\n"
+msgstr ""
+
+#. type: Title ##
+#: text/chapter2.md:19
 #, markdown-text, no-wrap
 msgid "Solving Exercises"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:14
+#: text/chapter2.md:22
 #, markdown-text
 msgid ""
 "Now that you've installed the necessary development tools, clone this book's "
@@ -11456,13 +11485,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:15
+#: text/chapter2.md:23
 #, no-wrap
 msgid "git clone https://github.com/purescript-contrib/purescript-book.git\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:20
+#: text/chapter2.md:28
 #, markdown-text
 msgid ""
 "The book repo contains PureScript example code and unit tests for the "
@@ -11476,7 +11505,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:21
+#: text/chapter2.md:29
 #, no-wrap
 msgid ""
 "cd purescript-book\n"
@@ -11487,13 +11516,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:30
+#: text/chapter2.md:38
 #, markdown-text
 msgid "Now run the tests for this chapter:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:31
+#: text/chapter2.md:39
 #, no-wrap
 msgid ""
 "cd exercises/chapter2\n"
@@ -11501,13 +11530,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:37
+#: text/chapter2.md:45
 #, markdown-text
 msgid "You should see the following successful test output:"
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:38
+#: text/chapter2.md:46
 #, no-wrap
 msgid ""
 "→ Suite: Euler - Sum of Multiples\n"
@@ -11518,7 +11547,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:47
+#: text/chapter2.md:55
 #, markdown-text
 msgid ""
 "Note that the `answer` function (found in `src/Euler.purs`) has been "
@@ -11530,7 +11559,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:49
+#: text/chapter2.md:57
 #, markdown-text
 msgid ""
 "The remainder of the book contains lots of exercises. If you write your "
@@ -11539,7 +11568,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:51
+#: text/chapter2.md:59
 #, markdown-text
 msgid ""
 "Let's work through this next exercise together in test-driven-development "
@@ -11547,13 +11576,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter2.md:52
+#: text/chapter2.md:60
 #, markdown-text, no-wrap
 msgid "Exercise"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter2.md:55
+#: text/chapter2.md:63
 #, markdown-text
 msgid ""
 "(Medium) Write a `diagonal` function to compute the length of the diagonal "
@@ -11562,13 +11591,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter2.md:56
+#: text/chapter2.md:64
 #, markdown-text, no-wrap
 msgid "Solution"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:59
+#: text/chapter2.md:67
 #, markdown-text
 msgid ""
 "We'll start by enabling the tests for this exercise. Move the start of the "
@@ -11577,7 +11606,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:60
+#: text/chapter2.md:68
 #, no-wrap
 msgid ""
 "{{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}\n"
@@ -11585,7 +11614,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:66
+#: text/chapter2.md:74
 #, markdown-text
 msgid ""
 "If we attempt to run the test now, we'll encounter a compilation error "
@@ -11593,7 +11622,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:67
+#: text/chapter2.md:75
 #, no-wrap
 msgid ""
 "$ spago test\n"
@@ -11606,7 +11635,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:78
+#: text/chapter2.md:86
 #, markdown-text
 msgid ""
 "Let's first take a look at what happens with a faulty version of this "
@@ -11614,7 +11643,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:79
+#: text/chapter2.md:87
 #, no-wrap
 msgid ""
 "import Data.Number (sqrt)\n"
@@ -11623,13 +11652,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:86
+#: text/chapter2.md:94
 #, markdown-text
 msgid "And check our work by running `spago test`:"
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:87
+#: text/chapter2.md:95
 #, no-wrap
 msgid ""
 "→ Suite: diagonal\n"
@@ -11640,7 +11669,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:96
+#: text/chapter2.md:104
 #, markdown-text
 msgid ""
 "Uh-oh, that's not quite right. Let's fix this with the correct application "
@@ -11648,19 +11677,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:97
+#: text/chapter2.md:105
 #, no-wrap
 msgid "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:102
+#: text/chapter2.md:110
 #, markdown-text
 msgid "Trying `spago test` again now shows all tests are passing:"
 msgstr ""
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:103
+#: text/chapter2.md:111
 #, no-wrap
 msgid ""
 "→ Suite: Euler - Sum of Multiples\n"
@@ -11674,13 +11703,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:115
+#: text/chapter2.md:123
 #, markdown-text
 msgid "Success! Now you're ready to try these next exercises on your own."
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter2.md:120
+#: text/chapter2.md:128
 #, markdown-text
 msgid ""
 "(Easy) Write a function `circleArea` which computes the area of a circle "
@@ -11690,7 +11719,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter2.md:120
+#: text/chapter2.md:128
 #, markdown-text
 msgid ""
 "(Medium) Write a function `leftoverCents` which takes an `Int` and returns "
@@ -11702,7 +11731,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:124
+#: text/chapter2.md:132
 #, markdown-text
 msgid ""
 "In this chapter, we installed the PureScript compiler and the Spago tool. We "
@@ -11711,7 +11740,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:126
+#: text/chapter2.md:134
 #, markdown-text
 msgid ""
 "There will be many more exercises in the chapters ahead, and working through "
@@ -11725,7 +11754,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:128
+#: text/chapter2.md:136
 #, markdown-text
 msgid ""
 "Once you solve all the exercises in a chapter, you may compare your answers "
@@ -11738,7 +11767,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter2.md:129
+#: text/chapter2.md:137
 #, markdown-text
 msgid ""
 "The repo is continuously being revised, so be sure to check for updates "

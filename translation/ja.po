@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-05-28 14:18+0900\n"
-"PO-Revision-Date: 2023-05-28 14:22+0900\n"
+"POT-Creation-Date: 2023-05-31 08:33+0900\n"
+"PO-Revision-Date: 2023-05-31 08:45+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -1908,13 +1908,13 @@ msgstr "本書の残りの例では入れ子の関数の代わりに矢印関数
 #. type: Title ##
 #: text/chapter10.md:246 text/chapter10.md:321 text/chapter10.md:476
 #: text/chapter10.md:714 text/chapter10.md:891 text/chapter10.md:1074
-#: text/chapter10.md:1314 text/chapter11.md:140 text/chapter11.md:224
+#: text/chapter10.md:1311 text/chapter11.md:140 text/chapter11.md:224
 #: text/chapter11.md:343 text/chapter11.md:549 text/chapter11.md:716
 #: text/chapter11.md:915 text/chapter11.md:960 text/chapter12.md:153
 #: text/chapter12.md:361 text/chapter12.md:555 text/chapter13.md:90
 #: text/chapter13.md:137 text/chapter13.md:244 text/chapter13.md:387
 #: text/chapter14.md:249 text/chapter14.md:352 text/chapter14.md:569
-#: text/chapter14.md:704 text/chapter2.md:116 text/chapter3.md:714
+#: text/chapter14.md:704 text/chapter2.md:124 text/chapter3.md:714
 #: text/chapter4.md:70 text/chapter4.md:181 text/chapter4.md:363
 #: text/chapter4.md:521 text/chapter4.md:615 text/chapter5.md:99
 #: text/chapter5.md:228 text/chapter5.md:392 text/chapter5.md:465
@@ -4212,7 +4212,7 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter10.md:1081 text/chapter11.md:964 text/chapter12.md:594
-#: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:121
+#: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:129
 #: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
 #: text/chapter6.md:756 text/chapter7.md:691 text/chapter8.md:1000
 #: text/chapter9.md:237
@@ -4366,33 +4366,22 @@ msgstr ""
 #. type: Plain text
 #: text/chapter10.md:1122
 msgid ""
-"You might also like to bundle JavaScript code for the browser, using `spago "
-"bundle-app --to file.js`. In that case, you would access the `Test` module "
-"from the global PureScript namespace, which defaults to `PS`:"
+"You can also use the `spago bundle-app` and `spago bundle-module` commands "
+"to bundle your generated JavaScript into a single file. Consult [the "
+"documentation](https://github.com/purescript/spago#bundle-a-project-into-a-"
+"single-js-file) for more information."
 msgstr ""
-"`pulp build -O --to file.js`を使用して、ブラウザ用のJavaScriptコードもバンド"
-"ルできます。\n"
-"その場合、大域的なPureScript名前空間から `Test`モジュールにアクセスします。\n"
-"既定では`PS`です。"
-
-#. type: Fenced code block (javascript)
-#: text/chapter10.md:1123
-#, no-wrap
-msgid ""
-"var Test = PS.Test;\n"
-"Test.gcd(15)(20);\n"
-msgstr ""
-"var Test = PS.Test;\n"
-"Test.gcd(15)(20);\n"
+"`spago bundle-app`や`spago bundle-module`コマンドを使って生成されたJavaScriptを単一のファイルにまとめることもできます。\n"
+"詳細な情報については[ドキュメント](https://github.com/purescript/spago#bundle-a-project-into-a-single-js-file)をあたってください。"
 
 #. type: Title ###
-#: text/chapter10.md:1128
+#: text/chapter10.md:1123
 #, no-wrap
 msgid "Understanding Name Generation"
 msgstr "名前の生成を理解する"
 
 #. type: Plain text
-#: text/chapter10.md:1131
+#: text/chapter10.md:1126
 msgid ""
 "PureScript aims to preserve names during code generation as much as "
 "possible. In particular, most identifiers which are neither PureScript nor "
@@ -4404,7 +4393,7 @@ msgstr ""
 "JavaScriptのキーワードでなければほとんどの識別子が保存されます。"
 
 #. type: Plain text
-#: text/chapter10.md:1133
+#: text/chapter10.md:1128
 msgid ""
 "If you decide to use a JavaScript keyword as an identifier, the name will be "
 "escaped with a double dollar symbol. For example,"
@@ -4414,24 +4403,24 @@ msgstr ""
 "例えば次のPureScriptコードを考えてみます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1134
+#: text/chapter10.md:1129
 #, no-wrap
 msgid "null = []\n"
 msgstr "null = []\n"
 
 #. type: Plain text
-#: text/chapter10.md:1139 text/chapter10.md:1151
+#: text/chapter10.md:1134 text/chapter10.md:1146
 msgid "generates the following JavaScript:"
 msgstr "これは以下のJavaScriptを生成します。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1140
+#: text/chapter10.md:1135
 #, no-wrap
 msgid "var $$null = [];\n"
 msgstr "var $$null = [];\n"
 
 #. type: Plain text
-#: text/chapter10.md:1145
+#: text/chapter10.md:1140
 msgid ""
 "In addition, if you would like to use special characters in your identifier "
 "names, they will be escaped using a single dollar symbol. For example,"
@@ -4441,19 +4430,19 @@ msgstr ""
 "例えばこのPureScriptコードを考えます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1146
+#: text/chapter10.md:1141
 #, no-wrap
 msgid "example' = 100\n"
 msgstr "example' = 100\n"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1152
+#: text/chapter10.md:1147
 #, no-wrap
 msgid "var example$prime = 100;\n"
 msgstr "var example$prime = 100;\n"
 
 #. type: Plain text
-#: text/chapter10.md:1157
+#: text/chapter10.md:1152
 msgid ""
 "Where compiled PureScript code is intended to be called from JavaScript, it "
 "is recommended that identifiers only use alphanumeric characters, and avoid "
@@ -4469,13 +4458,13 @@ msgstr ""
 "します。"
 
 #. type: Title ###
-#: text/chapter10.md:1158
+#: text/chapter10.md:1153
 #, no-wrap
 msgid "Runtime Data Representation"
 msgstr "実行時のデータ表現"
 
 #. type: Plain text
-#: text/chapter10.md:1161
+#: text/chapter10.md:1156
 msgid ""
 "Types allow us to reason at compile-time that our programs are \"correct\" "
 "in some sense - that is, they will not break at runtime. But what does that "
@@ -4490,7 +4479,7 @@ msgstr ""
 "す。"
 
 #. type: Plain text
-#: text/chapter10.md:1163
+#: text/chapter10.md:1158
 msgid ""
 "For that reason, it is important to understand the representation of data at "
 "runtime to be able to use PureScript and JavaScript code together "
@@ -4504,7 +4493,7 @@ msgstr ""
 "うに評価されるかという挙動を理解できるべきだということです。"
 
 #. type: Plain text
-#: text/chapter10.md:1165
+#: text/chapter10.md:1160
 msgid ""
 "The good news is that PureScript expressions have particularly simple "
 "representations at runtime. It should always be possible to understand the "
@@ -4514,7 +4503,7 @@ msgstr ""
 "型を考慮すれば式の実行時のデータ表現を把握することが常に可能です。"
 
 #. type: Plain text
-#: text/chapter10.md:1167
+#: text/chapter10.md:1162
 msgid ""
 "For simple types, the correspondence is almost trivial. For example, if an "
 "expression has the type `Boolean`, then its value `v` at runtime should "
@@ -4531,7 +4520,7 @@ msgstr ""
 "特に`null`や `undefined`に評価される型`Boolean`なPureScriptの式はありません。"
 
 #. type: Plain text
-#: text/chapter10.md:1169
+#: text/chapter10.md:1164
 msgid ""
 "A similar law holds for expressions of type `Int`, `Number`, and `String` - "
 "expressions of type `Int` or `Number` evaluate to non-null JavaScript "
@@ -4547,7 +4536,7 @@ msgstr ""
 "は実行時に整数に評価されます。"
 
 #. type: Plain text
-#: text/chapter10.md:1171
+#: text/chapter10.md:1166
 msgid ""
 "What about `Unit`? Well, since `Unit` has only one inhabitant (`unit`) and "
 "its value is not observable, it doesn't actually matter what it's "
@@ -4567,12 +4556,12 @@ msgstr ""
 "返します）。"
 
 #. type: Plain text
-#: text/chapter10.md:1173
+#: text/chapter10.md:1168
 msgid "What about some more complex types?"
 msgstr "もっと複雑な型についてはどうでしょうか。"
 
 #. type: Plain text
-#: text/chapter10.md:1175
+#: text/chapter10.md:1170
 #, no-wrap
 msgid "As we have already seen, PureScript functions correspond to JavaScript functions of a single argument. More precisely, if an expression `f` has type `a -> b` for some types `a` and `b`, and an expression `x` evaluates to a value with the correct runtime representation for type `a`, then `f` evaluates to a JavaScript function, which when applied to the result of evaluating `x`, has the correct runtime representation for type `b`. As a simple example, an expression of type `String -> String` evaluates to a function which takes non-null JavaScript strings to non-null JavaScript strings.\n"
 msgstr ""
@@ -4583,7 +4572,7 @@ msgstr ""
 "簡単な例としては、 `String -> String`型の式は、 `null`でないJavaScript文字列から `null`でないJavaScript文字列への関数へと評価されます。\n"
 
 #. type: Plain text
-#: text/chapter10.md:1177
+#: text/chapter10.md:1172
 msgid ""
 "As you might expect, PureScript's arrays correspond to JavaScript arrays. "
 "But remember - PureScript arrays are homogeneous, so every element has the "
@@ -4599,7 +4588,7 @@ msgstr ""
 "JavaScript配列へと評価されます。"
 
 #. type: Plain text
-#: text/chapter10.md:1179
+#: text/chapter10.md:1174
 msgid ""
 "We've already seen that PureScript's records evaluate to JavaScript objects. "
 "Just as for functions and arrays, we can reason about the runtime "
@@ -4614,13 +4603,13 @@ msgstr ""
 "もちろん、レコードのそれぞれのフィールドは、同じ型である必要はありません。"
 
 #. type: Title ###
-#: text/chapter10.md:1180
+#: text/chapter10.md:1175
 #, no-wrap
 msgid "Representing ADTs"
 msgstr "ADTの表現"
 
 #. type: Plain text
-#: text/chapter10.md:1183
+#: text/chapter10.md:1178
 msgid ""
 "For every constructor of an algebraic data type, the PureScript compiler "
 "creates a new JavaScript object type by defining a function. Its "
@@ -4633,23 +4622,23 @@ msgstr ""
 "応しています。"
 
 #. type: Plain text
-#: text/chapter10.md:1185
+#: text/chapter10.md:1180
 msgid "For example, consider the following simple ADT:"
 msgstr "例えば次のような単純なADTを考えてみましょう。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1186
+#: text/chapter10.md:1181
 #, no-wrap
 msgid "data ZeroOrOne a = Zero | One a\n"
 msgstr "data ZeroOrOne a = Zero | One a\n"
 
 #. type: Plain text
-#: text/chapter10.md:1191
+#: text/chapter10.md:1186
 msgid "The PureScript compiler generates the following code:"
 msgstr "PureScriptコンパイラは、次のようなコードを生成します。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1192
+#: text/chapter10.md:1187
 #, no-wrap
 msgid ""
 "function One(value0) {\n"
@@ -4679,7 +4668,7 @@ msgstr ""
 "Zero.value = new Zero();\n"
 
 #. type: Plain text
-#: text/chapter10.md:1208
+#: text/chapter10.md:1203
 msgid ""
 "Here, we see two JavaScript object types: `Zero` and `One`. It is possible "
 "to create values of each type by using JavaScript's `new` keyword. For "
@@ -4692,7 +4681,7 @@ msgstr ""
 "フィールドに、対応するデータを格納します。"
 
 #. type: Plain text
-#: text/chapter10.md:1210
+#: text/chapter10.md:1205
 msgid ""
 "The PureScript compiler also generates helper functions. For constructors "
 "with no arguments, the compiler generates a `value` property, which can be "
@@ -4708,7 +4697,7 @@ msgstr ""
 "築子を適用する `create`関数を生成します。"
 
 #. type: Plain text
-#: text/chapter10.md:1212
+#: text/chapter10.md:1207
 msgid ""
 "What about constructors with more than one argument? In that case, the "
 "PureScript compiler also creates a new object type, and a helper function. "
@@ -4722,18 +4711,18 @@ msgstr ""
 "例えば次のような代数的データ型を考えます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1213
+#: text/chapter10.md:1208
 #, no-wrap
 msgid "data Two a b = Two a b\n"
 msgstr "data Two a b = Two a b\n"
 
 #. type: Plain text
-#: text/chapter10.md:1218
+#: text/chapter10.md:1213
 msgid "generates this JavaScript code:"
 msgstr "このコードからは、次のようなJavaScriptコードが生成されます。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1219
+#: text/chapter10.md:1214
 #, no-wrap
 msgid ""
 "function Two(value0, value1) {\n"
@@ -4759,7 +4748,7 @@ msgstr ""
 "};\n"
 
 #. type: Plain text
-#: text/chapter10.md:1233
+#: text/chapter10.md:1228
 msgid ""
 "Here, values of the object type `Two` can be created using the `new` "
 "keyword, or by using the `Two.create` function."
@@ -4768,7 +4757,7 @@ msgstr ""
 "用すると作成できます。"
 
 #. type: Plain text
-#: text/chapter10.md:1235
+#: text/chapter10.md:1230
 msgid ""
 "The case of newtypes is slightly different. Recall that a newtype is like an "
 "algebraic data type, restricted to having a single constructor taking a "
@@ -4781,18 +4770,18 @@ msgstr ""
 "この場合、実際のnewtypeの実行時表現は、その引数の型と同じになります。"
 
 #. type: Plain text
-#: text/chapter10.md:1237
+#: text/chapter10.md:1232
 msgid "For example, this newtype representing telephone numbers:"
 msgstr "例えば、電話番号を表す次のようなnewtypeを考えます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1238
+#: text/chapter10.md:1233
 #, no-wrap
 msgid "newtype PhoneNumber = PhoneNumber String\n"
 msgstr "newtype PhoneNumber = PhoneNumber String\n"
 
 #. type: Plain text
-#: text/chapter10.md:1243
+#: text/chapter10.md:1238
 msgid ""
 "is actually represented as a JavaScript string at runtime. This is useful "
 "for designing libraries, since newtypes provide an additional layer of type "
@@ -4803,76 +4792,79 @@ msgstr ""
 "バーヘッドがないので、ライブラリを設計するのに役に立ちます。"
 
 #. type: Title ###
-#: text/chapter10.md:1244
+#: text/chapter10.md:1239
 #, no-wrap
 msgid "Representing Quantified Types"
 msgstr "量化された型の表現"
 
 #. type: Plain text
-#: text/chapter10.md:1247
+#: text/chapter10.md:1242
 msgid ""
 "Expressions with quantified (polymorphic) types have restrictive "
-"representations at runtime. In practice, this means that there are "
-"relatively few expressions with a given quantified type, but that we can "
-"reason about them quite effectively."
+"representations at runtime. In practice, there are relatively few "
+"expressions with a given quantified type, but we can reason about them quite "
+"effectively."
 msgstr ""
 "量化された型（多相型）の式は、実行時は制限された表現になっています。\n"
-"つまり実際には、所与の量化された型を持つ式が比較的少ないということですが、と"
-"ても効率的にそれらの式を調べることができるということでもあるのです。"
+"実際、所与の量化された型を持つ式がより少なくなりますが、それによりかなり効率的に推論できるのです。"
 
 #. type: Plain text
-#: text/chapter10.md:1249
+#: text/chapter10.md:1244
 msgid "Consider this polymorphic type, for example:"
 msgstr "例えば、次の多相型を考えてみます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1250
+#: text/chapter10.md:1245
 #, no-wrap
 msgid "forall a. a -> a\n"
 msgstr "forall a. a -> a\n"
 
 #. type: Plain text
-#: text/chapter10.md:1255
+#: text/chapter10.md:1250
 msgid ""
 "What sort of functions have this type? Well, there is certainly one function "
-"with this type - namely, the `identity` function, defined in the `Prelude`:"
+"with this type:"
 msgstr ""
 "この型を持っている関数にはどんなものがあるでしょうか。\n"
-"少なくとも1つはこの型を持つ関数が存在します。\n"
-"すなわち、 `Prelude`で定義されている恒等関数 `id`です。"
+"実は少なくとも1つ、この型を持つ関数が存在します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1256
+#: text/chapter10.md:1251
 #, no-wrap
 msgid ""
-"id :: forall a. a -> a\n"
-"id a = a\n"
+"identity :: forall a. a -> a\n"
+"identity a = a\n"
 msgstr ""
-"id :: forall a. a -> a\n"
-"id a = a\n"
+"identity :: forall a. a -> a\n"
+"identity a = a\n"
 
 #. type: Plain text
-#: text/chapter10.md:1262
+#: text/chapter10.md:1257
+#, no-wrap
+msgid "> Note that the actual [`identity`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Category#v:identity) function defined in `Prelude` has a slightly different type.\n"
+msgstr "> なお、`Prelude`に定義された実際の[`identity`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Category#v:identity)関数は僅かに違った型を持ちます。\n"
+
+#. type: Plain text
+#: text/chapter10.md:1259
 msgid ""
 "In fact, the `identity` function is the _only_ (total) function with this "
 "type! This certainly seems to be the case (try writing an expression with "
-"this type which is not observably equivalent to `identity`), but how can we "
+"this type that is not observably equivalent to `identity`), but how can we "
 "be sure? We can be sure by considering the runtime representation of the "
 "type."
 msgstr ""
-"実のところ、`id`関数はこの型の*唯一の*（全）関数です。\n"
-"これは確かに間違いなさそうに思えますが（この型を持った `id`とは明らかに異なる"
-"式を書こうとしてみてください）、確かめるにはどうしたらいいでしょうか。\n"
+"実のところ、`identity`関数はこの型の*唯一の*（全）関数です。\n"
+"これは確かに間違いなさそうに思えますが（この型を持った `id`とは明らかに異なる式を書こうとしてみてください）、確かめるにはどうしたらいいでしょうか。\n"
 "型の実行時表現を考えることによって確かめられます。"
 
 #. type: Plain text
-#: text/chapter10.md:1264
+#: text/chapter10.md:1261
 #, no-wrap
 msgid "What is the runtime representation of a quantified type `forall a. t`? Well, any expression with the runtime representation for this type must have the correct runtime representation for the type `t` for any choice of type `a`. In our example above, a function of type `forall a. a -> a` must have the correct runtime representation for the types `String -> String`, `Number -> Number`, `Array Boolean -> Array Boolean`, and so on. It must take strings to strings, numbers to numbers, etc.\n"
 msgstr "量化された型 `forall a. t`の実行時表現はどうなっているのでしょうか。さて、この型の実行時表現を持つ任意の式は、型 `a`をどのように選んでも型 `t`の適切な実行時表現を持っていなければなりません。上の例では、型 `forall a. a -> a`の関数は、 `String -> String`、 `Number -> Number`、 `Array Boolean -> Array Boolean`などといった型について、適切な実行時表現を持っていなければなりません。 これらは、文字列から文字列、数から数の関数でなくてはなりません。\n"
 
 #. type: Plain text
-#: text/chapter10.md:1266
+#: text/chapter10.md:1263
 msgid ""
 "But that is not enough - the runtime representation of a quantified type is "
 "more strict than this. We require any expression to be _parametrically "
@@ -4890,7 +4882,7 @@ msgstr ""
 "のある実装を防止します。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1267
+#: text/chapter10.md:1264
 #, no-wrap
 msgid ""
 "function invalid(a) {\n"
@@ -4910,7 +4902,7 @@ msgstr ""
 "}\n"
 
 #. type: Plain text
-#: text/chapter10.md:1278
+#: text/chapter10.md:1275
 #, no-wrap
 msgid "Certainly, this function takes strings to strings, numbers to numbers, etc. but it does not meet the additional condition, since it inspects the (runtime) type of its argument, so this function would not be a valid inhabitant of the type `forall a. a -> a`.\n"
 msgstr ""
@@ -4918,13 +4910,13 @@ msgstr ""
 "引数の実行時の型を調べており、したがって、この関数は型 `forall a. a -> a`の正しい実装だとはいえないのです。\n"
 
 #. type: Plain text
-#: text/chapter10.md:1280
+#: text/chapter10.md:1277
 #, no-wrap
 msgid "Without being able to inspect the runtime type of our function argument, our only option is to return the argument unchanged, and so `identity` is indeed the only inhabitant of the type `forall a. a -> a`.\n"
 msgstr "関数の引数の実行時の型を検査できなければ、唯一の選択肢は引数をそのまま返すことだけであり、したがって `id`はたしかに `forall a. a -> a`の唯一の実装なのです。\n"
 
 #. type: Plain text
-#: text/chapter10.md:1282
+#: text/chapter10.md:1279
 msgid ""
 "A full discussion of _parametric polymorphism_ and _parametricity_ is beyond "
 "the scope of this book. Note however, that since PureScript's types are "
@@ -4939,13 +4931,13 @@ msgstr ""
 "が適切になっているという点にはご留意ください。"
 
 #. type: Title ###
-#: text/chapter10.md:1283
+#: text/chapter10.md:1280
 #, no-wrap
 msgid "Representing Constrained Types"
 msgstr "制約のある型の表現"
 
 #. type: Plain text
-#: text/chapter10.md:1286
+#: text/chapter10.md:1283
 msgid ""
 "Functions with a type class constraint have an interesting representation at "
 "runtime. Because the behavior of the function might depend on the type class "
@@ -4960,7 +4952,7 @@ msgstr ""
 "す。"
 
 #. type: Plain text
-#: text/chapter10.md:1288
+#: text/chapter10.md:1285
 msgid ""
 "For example, here is a simple PureScript function with a constrained type "
 "which uses the `Show` type class:"
@@ -4969,7 +4961,7 @@ msgstr ""
 "関数について考えます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1289
+#: text/chapter10.md:1286
 #, no-wrap
 msgid ""
 "shout :: forall a. Show a => a -> String\n"
@@ -4979,12 +4971,12 @@ msgstr ""
 "shout a = show a <> \"!!!\"\n"
 
 #. type: Plain text
-#: text/chapter10.md:1295
+#: text/chapter10.md:1292
 msgid "The generated JavaScript looks like this:"
 msgstr "生成されるJavaScriptは次のようになります。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1296
+#: text/chapter10.md:1293
 #, no-wrap
 msgid ""
 "var shout = function (dict) {\n"
@@ -5000,7 +4992,7 @@ msgstr ""
 "};\n"
 
 #. type: Plain text
-#: text/chapter10.md:1305
+#: text/chapter10.md:1302
 msgid ""
 "Notice that `shout` is compiled to a (curried) function of two arguments, "
 "not one. The first argument `dict` is the type class dictionary for the "
@@ -5012,7 +5004,7 @@ msgstr ""
 "`dict`には型 `a`の `show`関数の実装が含まれています。"
 
 #. type: Plain text
-#: text/chapter10.md:1307
+#: text/chapter10.md:1304
 msgid ""
 "We can call this function from JavaScript by passing an explicit type class "
 "dictionary from `Data.Show` as the first parameter:"
@@ -5021,7 +5013,7 @@ msgstr ""
 "関数を呼び出すことができます。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1308
+#: text/chapter10.md:1305
 #, no-wrap
 msgid ""
 "import { showNumber } from 'Data.Show'\n"
@@ -5033,12 +5025,12 @@ msgstr ""
 "shout(showNumber)(42);\n"
 
 #. type: Bullet: ' 1. '
-#: text/chapter10.md:1317
+#: text/chapter10.md:1314
 msgid "(Easy) What are the runtime representations of these types?"
 msgstr "（簡単）これらの型の実行時の表現は何でしょうか。"
 
 #. type: Plain text
-#: text/chapter10.md:1323
+#: text/chapter10.md:1320
 #, no-wrap
 msgid ""
 "     ```haskell\n"
@@ -5054,7 +5046,7 @@ msgstr ""
 "     ```\n"
 
 #. type: Plain text
-#: text/chapter10.md:1326
+#: text/chapter10.md:1323
 #, no-wrap
 msgid ""
 "     What can you say about the expressions which have these types?\n"
@@ -5065,13 +5057,13 @@ msgstr ""
 "   *手掛かり*：生成されたCommonJSモジュールがNodeJSモジュールのパスで使用できるように、出力パスを設定する必要があります。\n"
 
 #. type: Title ###
-#: text/chapter10.md:1327
+#: text/chapter10.md:1324
 #, no-wrap
 msgid "Representing Side Effects"
 msgstr "副作用の表現"
 
 #. type: Plain text
-#: text/chapter10.md:1330
+#: text/chapter10.md:1327
 msgid ""
 "The `Effect` monad is also defined as a foreign type. Its runtime "
 "representation is quite simple - an expression of type `Effect a` should "
@@ -5085,7 +5077,7 @@ msgstr ""
 "この関数はあらゆる副作用を実行し型 `a`の適切な実行時表現で値を返します。"
 
 #. type: Plain text
-#: text/chapter10.md:1332
+#: text/chapter10.md:1329
 msgid ""
 "The definition of the `Effect` type constructor is given in the `Effect` "
 "module as follows:"
@@ -5093,13 +5085,13 @@ msgstr ""
 "`Effect`型構築子の定義は、 `Effect`モジュールで次のように与えられています。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1333
+#: text/chapter10.md:1330
 #, no-wrap
 msgid "foreign import data Effect :: Type -> Type\n"
 msgstr "foreign import data Effect :: Type -> Type\n"
 
 #. type: Plain text
-#: text/chapter10.md:1338
+#: text/chapter10.md:1335
 msgid ""
 "As a simple example, consider the `random` function defined in the `random` "
 "package. Recall that its type was:"
@@ -5108,24 +5100,24 @@ msgstr ""
 "さい。その型は次のようなものでした。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1339
+#: text/chapter10.md:1336
 #, no-wrap
 msgid "foreign import random :: Effect Number\n"
 msgstr "foreign import random :: Effect Number\n"
 
 #. type: Plain text
-#: text/chapter10.md:1344
+#: text/chapter10.md:1341
 msgid "The definition of the `random` function is given here:"
 msgstr "`random`関数の定義は次のように与えられます。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1345
+#: text/chapter10.md:1342
 #, no-wrap
 msgid "export const random = Math.random;\n"
 msgstr "export const random = Math.random;\n"
 
 #. type: Plain text
-#: text/chapter10.md:1350
+#: text/chapter10.md:1347
 msgid ""
 "Notice that the `random` function is represented at runtime as a function of "
 "no arguments. It performs the side effect of generating a random number, and "
@@ -5139,7 +5131,7 @@ msgstr ""
 "`Number`型は`null`でないJavaScriptの数です。"
 
 #. type: Plain text
-#: text/chapter10.md:1352
+#: text/chapter10.md:1349
 msgid ""
 "As a slightly more interesting example, consider the `log` function defined "
 "by the `Effect.Console` module in the `console` package. The `log` function "
@@ -5149,18 +5141,18 @@ msgstr ""
 "定義された `log`関数を考えてみましょう。 `log`関数は次の型を持っています。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter10.md:1353
+#: text/chapter10.md:1350
 #, no-wrap
 msgid "foreign import log :: String -> Effect Unit\n"
 msgstr "foreign import log :: String -> Effect Unit\n"
 
 #. type: Plain text
-#: text/chapter10.md:1358
+#: text/chapter10.md:1355
 msgid "And here is its definition:"
 msgstr "この定義は次のようになっています。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1359
+#: text/chapter10.md:1356
 #, no-wrap
 msgid ""
 "export const log = function (s) {\n"
@@ -5176,7 +5168,7 @@ msgstr ""
 "};\n"
 
 #. type: Plain text
-#: text/chapter10.md:1368
+#: text/chapter10.md:1365
 msgid ""
 "The representation of `log` at runtime is a JavaScript function of a single "
 "argument, returning a function of no arguments. The inner function performs "
@@ -5186,7 +5178,7 @@ msgstr ""
 "す。内側の関数はコンソールにメッセージを書き込むという副作用を実行します。"
 
 #. type: Plain text
-#: text/chapter10.md:1370
+#: text/chapter10.md:1367
 msgid ""
 "Expressions of type `Effect a` can be invoked from JavaScript like regular "
 "JavaScript methods. For example, since the `main` function is required to "
@@ -5197,7 +5189,7 @@ msgstr ""
 "う型でなければならないので、次のように実行できます。"
 
 #. type: Fenced code block (javascript)
-#: text/chapter10.md:1371
+#: text/chapter10.md:1368
 #, no-wrap
 msgid ""
 "import { main } from 'Main'\n"
@@ -5209,7 +5201,7 @@ msgstr ""
 "main();\n"
 
 #. type: Plain text
-#: text/chapter10.md:1377
+#: text/chapter10.md:1374
 msgid ""
 "When using `spago bundle-app --to` or `spago run`, this call to `main` is "
 "generated automatically, whenever the `Main` module is defined."
@@ -13965,14 +13957,44 @@ msgstr ""
 "構文を含んでいたとしても心配要りません。来たる章でこの全ての内容をとても丁寧"
 "に押さえていきます。"
 
-#. type: Title ##
+#. type: Title ###
 #: text/chapter2.md:11
+#, no-wrap
+msgid "Editor support"
+msgstr "エディタの対応"
+
+#. type: Plain text
+#: text/chapter2.md:14
+msgid ""
+"You can use your preferred editor to write PureScript (for example, to solve "
+"the book exercises). See [Editor Support Documentation](https://github.com/"
+"purescript/documentation/blob/master/ecosystem/Editor-and-tool-support."
+"md#editor-support)."
+msgstr ""
+"PureScriptを書く上で（例えば本書の演習を解くなど）お好みのエディタを使えます。\n"
+"[エディタの対応についてのドキュメント](https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editor-support)を参照してください。"
+
+#. type: Plain text
+#: text/chapter2.md:18
+#, no-wrap
+msgid ""
+"> Note that some editors expect a `spago.dhall` file in the root of the opened project for full IDE support. For example, you should open the `chapter2` directory to work on the exercises in this chapter.\n"
+">\n"
+"> If you use VS Code, you can use the provided workspace to open all the chapters simultaneously.\n"
+msgstr ""
+"> なお、完全なIDEの対応をするために、開いたプロジェクトのルートに`spago.dhall`があることを期待するエディタもあります。\n"
+"> 例えば本章の演習に取り組む場合、`chapter2`ディレクトリを開くとよいでしょう。\n"
+">\n"
+"> VS Codeを使っている場合、提供されているワークスペースを使って全ての章を同時に開くことができます。\n"
+
+#. type: Title ##
+#: text/chapter2.md:19
 #, no-wrap
 msgid "Solving Exercises"
 msgstr "演習を解く"
 
 #. type: Plain text
-#: text/chapter2.md:14
+#: text/chapter2.md:22
 msgid ""
 "Now that you've installed the necessary development tools, clone this book's "
 "repo."
@@ -13981,13 +14003,13 @@ msgstr ""
 "クローンしてください。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:15
+#: text/chapter2.md:23
 #, no-wrap
 msgid "git clone https://github.com/purescript-contrib/purescript-book.git\n"
 msgstr "git clone https://github.com/purescript-contrib/purescript-book.git\n"
 
 #. type: Plain text
-#: text/chapter2.md:20
+#: text/chapter2.md:28
 msgid ""
 "The book repo contains PureScript example code and unit tests for the "
 "exercises that accompany each chapter. There's some initial setup required "
@@ -14007,7 +14029,7 @@ msgstr ""
 "このアンカーで散らかっていないほうがよいでしょう）。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:21
+#: text/chapter2.md:29
 #, no-wrap
 msgid ""
 "cd purescript-book\n"
@@ -14023,12 +14045,12 @@ msgstr ""
 "git commit --all --message \"Exercises ready to be solved\"\n"
 
 #. type: Plain text
-#: text/chapter2.md:30
+#: text/chapter2.md:38
 msgid "Now run the tests for this chapter:"
 msgstr "それではこの章のテストを走らせましょう。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:31
+#: text/chapter2.md:39
 #, no-wrap
 msgid ""
 "cd exercises/chapter2\n"
@@ -14038,12 +14060,12 @@ msgstr ""
 "spago test\n"
 
 #. type: Plain text
-#: text/chapter2.md:37
+#: text/chapter2.md:45
 msgid "You should see the following successful test output:"
 msgstr "以下の成功した旨のテスト出力が出るでしょう。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:38
+#: text/chapter2.md:46
 #, no-wrap
 msgid ""
 "→ Suite: Euler - Sum of Multiples\n"
@@ -14059,7 +14081,7 @@ msgstr ""
 "All 2 tests passed! 🎉\n"
 
 #. type: Plain text
-#: text/chapter2.md:47
+#: text/chapter2.md:55
 msgid ""
 "Note that the `answer` function (found in `src/Euler.purs`) has been "
 "modified to find the multiples of 3 and 5 below any integer. The test suite "
@@ -14076,7 +14098,7 @@ msgstr ""
 "詰めなくて大丈夫です。"
 
 #. type: Plain text
-#: text/chapter2.md:49
+#: text/chapter2.md:57
 msgid ""
 "The remainder of the book contains lots of exercises. If you write your "
 "solutions in the `Test.MySolutions` module (`test/MySolutions.purs`), you "
@@ -14087,20 +14109,20 @@ msgstr ""
 "提供されているテストスートを使って確認できます。"
 
 #. type: Plain text
-#: text/chapter2.md:51
+#: text/chapter2.md:59
 msgid ""
 "Let's work through this next exercise together in test-driven-development "
 "style."
 msgstr "テスト駆動開発のスタイルでこの次の演習を一緒に進めてみましょう。"
 
 #. type: Title ##
-#: text/chapter2.md:52
+#: text/chapter2.md:60
 #, no-wrap
 msgid "Exercise"
 msgstr "演習"
 
 #. type: Bullet: '1. '
-#: text/chapter2.md:55
+#: text/chapter2.md:63
 msgid ""
 "(Medium) Write a `diagonal` function to compute the length of the diagonal "
 "(or hypotenuse) of a right-angled triangle when given the lengths of the two "
@@ -14110,13 +14132,13 @@ msgstr ""
 "算する`diagonal`関数を書いてください。"
 
 #. type: Title ##
-#: text/chapter2.md:56
+#: text/chapter2.md:64
 #, no-wrap
 msgid "Solution"
 msgstr "解法"
 
 #. type: Plain text
-#: text/chapter2.md:59
+#: text/chapter2.md:67
 msgid ""
 "We'll start by enabling the tests for this exercise. Move the start of the "
 "block-comment down a few lines as shown below. Block comments start with `{-"
@@ -14127,7 +14149,7 @@ msgstr ""
 "ブロックコメントは`{-`から始まり`-}`で終わります。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:60
+#: text/chapter2.md:68
 #, no-wrap
 msgid ""
 "{{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}\n"
@@ -14137,7 +14159,7 @@ msgstr ""
 "    {-  Move this block comment starting point to enable more tests\n"
 
 #. type: Plain text
-#: text/chapter2.md:66
+#: text/chapter2.md:74
 msgid ""
 "If we attempt to run the test now, we'll encounter a compilation error "
 "because we have not yet implemented our `diagonal` function."
@@ -14146,7 +14168,7 @@ msgstr ""
 "なぜなら`diagonal`関数をまだ実装していないからです。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:67
+#: text/chapter2.md:75
 #, no-wrap
 msgid ""
 "$ spago test\n"
@@ -14166,7 +14188,7 @@ msgstr ""
 "  Unknown value diagonal\n"
 
 #. type: Plain text
-#: text/chapter2.md:78
+#: text/chapter2.md:86
 msgid ""
 "Let's first take a look at what happens with a faulty version of this "
 "function. Add the following code to `test/MySolutions.purs`:"
@@ -14175,7 +14197,7 @@ msgstr ""
 "ましょう。以下のコードを`test/MySolutions.purs`に追加してください。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:79
+#: text/chapter2.md:87
 #, no-wrap
 msgid ""
 "import Data.Number (sqrt)\n"
@@ -14187,12 +14209,12 @@ msgstr ""
 "diagonal w h = sqrt (w * w + h)\n"
 
 #. type: Plain text
-#: text/chapter2.md:86
+#: text/chapter2.md:94
 msgid "And check our work by running `spago test`:"
 msgstr "そして`spago test`を走らせて確認してください。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:87
+#: text/chapter2.md:95
 #, no-wrap
 msgid ""
 "→ Suite: diagonal\n"
@@ -14208,7 +14230,7 @@ msgstr ""
 "2 tests failed:\n"
 
 #. type: Plain text
-#: text/chapter2.md:96
+#: text/chapter2.md:104
 msgid ""
 "Uh-oh, that's not quite right. Let's fix this with the correct application "
 "of the Pythagorean formula by changing the function to:"
@@ -14218,18 +14240,18 @@ msgstr ""
 "関数を以下のように変えます。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:97
+#: text/chapter2.md:105
 #, no-wrap
 msgid "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
 msgstr "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
 
 #. type: Plain text
-#: text/chapter2.md:102
+#: text/chapter2.md:110
 msgid "Trying `spago test` again now shows all tests are passing:"
 msgstr "ここでもう一度`spago test`としてみると全てのテストが通っています。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:103
+#: text/chapter2.md:111
 #, no-wrap
 msgid ""
 "→ Suite: Euler - Sum of Multiples\n"
@@ -14251,14 +14273,14 @@ msgstr ""
 "All 4 tests passed! 🎉\n"
 
 #. type: Plain text
-#: text/chapter2.md:115
+#: text/chapter2.md:123
 msgid "Success! Now you're ready to try these next exercises on your own."
 msgstr ""
 "成功です。\n"
 "これで次の演習を自力で解くための準備ができました。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter2.md:120
+#: text/chapter2.md:128
 msgid ""
 "(Easy) Write a function `circleArea` which computes the area of a circle "
 "with a given radius. Use the `pi` constant, which is defined in the "
@@ -14272,7 +14294,7 @@ msgstr ""
 "れないようにしましょう。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter2.md:120
+#: text/chapter2.md:128
 msgid ""
 "(Medium) Write a function `leftoverCents` which takes an `Int` and returns "
 "what's leftover after dividing by `100`. Use the `rem` function. Search "
@@ -14287,7 +14309,7 @@ msgstr ""
 "インポートに対応しているかもしれません。"
 
 #. type: Plain text
-#: text/chapter2.md:124
+#: text/chapter2.md:132
 msgid ""
 "In this chapter, we installed the PureScript compiler and the Spago tool. We "
 "also learned how to write solutions to exercises and check these for "
@@ -14297,7 +14319,7 @@ msgstr ""
 "演習の解答の書き方と正しさの確認方法も学びました。"
 
 #. type: Plain text
-#: text/chapter2.md:126
+#: text/chapter2.md:134
 msgid ""
 "There will be many more exercises in the chapters ahead, and working through "
 "those really helps with learning the material. If you're stumped by any of "
@@ -14317,7 +14339,7 @@ msgstr ""
 "になっています。"
 
 #. type: Plain text
-#: text/chapter2.md:128
+#: text/chapter2.md:136
 msgid ""
 "Once you solve all the exercises in a chapter, you may compare your answers "
 "against those in the `no-peeking/Solutions.purs`. No peeking please without "
@@ -14338,7 +14360,7 @@ msgstr ""
 "るもの）を見つけたときはPRを送ってください。"
 
 #. type: Plain text
-#: text/chapter2.md:129
+#: text/chapter2.md:137
 msgid ""
 "The repo is continuously being revised, so be sure to check for updates "
 "before starting each new chapter."
@@ -28776,7 +28798,9 @@ msgstr "{{#include ../exercises/chapter9/test/Copy.purs:copyFile}}\n"
 msgid ""
 "Note that we have to use `launchAff_` to convert the `Aff` to `Effect` "
 "because `main` must be `Effect Unit`."
-msgstr "なお、`main`は`Effect Unit`でなければならないので、`launchAff_`を使って`Aff`から`Effect`へと変換せねばなりません。"
+msgstr ""
+"なお、`main`は`Effect Unit`でなければならないので、`launchAff_`を使って`Aff`"
+"から`Effect`へと変換せねばなりません。"
 
 #. type: Plain text
 #: text/chapter9.md:58
