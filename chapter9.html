@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ja" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Asynchronous Effects - PureScript by Example</title>
+        <title>非同期作用 - 実例によるPureScript</title>
 
 
         <!-- Custom HTML head -->
@@ -30,6 +30,8 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -83,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html" class="active"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html" class="active"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -112,13 +114,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">PureScript by Example</h1>
+                    <h1 class="menu-title">実例によるPureScript</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -147,23 +149,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="asynchronous-effects"><a class="header" href="#asynchronous-effects">Asynchronous Effects</a></h1>
-<h2 id="chapter-goals"><a class="header" href="#chapter-goals">Chapter Goals</a></h2>
-<p>This chapter focuses on the <code>Aff</code> monad, which is similar to the <code>Effect</code> monad, but represents <em>asynchronous</em> side-effects. We'll demonstrate examples of asynchronously interacting with the filesystem and making HTTP requests. We'll also cover how to manage sequential and parallel execution of asynchronous effects.</p>
-<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
-<p>New PureScript libraries introduced in this chapter are:</p>
+                        <h1 id="非同期作用"><a class="header" href="#非同期作用">非同期作用</a></h1>
+<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
+<p>この章では<code>Aff</code>モナドに集中します。これは<code>Effect</code>モナドに似ていますが、<em>非同期</em>な副作用を表現するものです。ファイルシステムとやりとりしてHTTPリクエストを作る、非同期な例を実演していきます。また非同期作用の直列ないし並列な実行の管理方法も押さえます。</p>
+<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
+<p>この章で導入する新しいPureScriptライブラリは以下です。</p>
 <ul>
-<li><code>aff</code> - defines the <code>Aff</code> monad.</li>
-<li><code>node-fs-aff</code> - asynchronous filesystem operations with <code>Aff</code>.</li>
-<li><code>affjax</code> - HTTP requests with AJAX and <code>Aff</code>.</li>
-<li><code>parallel</code> - parallel execution of <code>Aff</code>.</li>
+<li><code>aff</code> - <code>Aff</code>モナドを定義します。</li>
+<li><code>node-fs-aff</code> - <code>Aff</code>を使った非同期のファイルシステム操作。</li>
+<li><code>affjax</code> - AJAXと<code>Aff</code>を使ったHTTPリクエスト。</li>
+<li><code>parallel</code> - <code>Aff</code>の並列実行。</li>
 </ul>
-<p>When running outside of the browser (such as in our Node.js environment), the <code>affjax</code> library requires the <code>xhr2</code> NPM module, which is listed as dependency in the <code>package.json</code> of this chapter. Install that by running:</p>
+<p>（Node.js環境のような）ブラウザ外で実行する場合、<code>affjax</code>ライブラリは<code>xhr2</code>NPMモジュールが必要です。
+このモジュールはこの章の<code>package.json</code>中の依存関係に挙げられています。
+以下を走らせてインストールします。</p>
 <pre><code class="language-shell">$ npm install
 </code></pre>
-<h2 id="asynchronous-javascript"><a class="header" href="#asynchronous-javascript">Asynchronous JavaScript</a></h2>
-<p>A convenient way to work with asynchronous code in JavaScript is with <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"><code>async</code> and <code>await</code></a>. See <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing">this article on asynchronous JavaScript</a> for more background information.</p>
-<p>Here is an example of using this technique to copy the contents of one file to another file:</p>
+<h2 id="非同期なjavascript"><a class="header" href="#非同期なjavascript">非同期なJavaScript</a></h2>
+<p>JavaScriptで非同期なコードに取り組む上で便利な手段は<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await"><code>async</code>と<code>await</code></a>です。
+<a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing">非同期なJavaScriptに関するこの記事</a>を見るとより背景情報がわかります。</p>
+<p>以下は、この技法を使ってあるファイルの内容を別のファイルに複製する例です。</p>
 <pre><code class="language-js">import { promises as fsPromises } from 'fs'
 
 async function copyFile(file1, file2) {
@@ -176,13 +181,13 @@ copyFile('file1.txt', 'file2.txt')
   console.log('There was a problem with copyFile: ' + e.message);
 });
 </code></pre>
-<p>It is also possible to use callbacks or synchronous functions, but those are less desireable because:</p>
+<p>コールバックや同期関数を使うことも可能ですが、以下の理由から望ましくありません。</p>
 <ul>
-<li>Callbacks lead to excessive nesting, known as &quot;Callback Hell&quot; or the &quot;Pyramid of Doom&quot;.</li>
-<li>Synchronous functions block execution of the other code in your app.</li>
+<li>コールバックは過剰な入れ子に繋がります。これは「コールバック地獄」や「悪夢のピラミッド」として知られています。</li>
+<li>同期関数はアプリ中の他のコードの実行を堰き止めてしまいます。</li>
 </ul>
-<h2 id="asynchronous-purescript"><a class="header" href="#asynchronous-purescript">Asynchronous PureScript</a></h2>
-<p>The <code>Aff</code> monad in PureScript offers similar ergonomics of JavaScript's <code>async</code>/<code>await</code> syntax. Here is the same <code>copyFile</code> example from before, but rewritten in PureScript using <code>Aff</code>:</p>
+<h2 id="非同期なpurescript"><a class="header" href="#非同期なpurescript">非同期なPureScript</a></h2>
+<p>PureScriptでの<code>Aff</code>モナドはJavaScriptの<code>async</code>/<code>await</code>構文に似た人間工学を供します。以下は前と同じ<code>copyFile</code>の例ですが、<code>Aff</code>を使ってPureScriptで書き換えられています。</p>
 <pre><code class="language-hs">import Prelude
 import Data.Either (Either(..))
 import Effect.Aff (Aff, attempt, message, launchAff_)
@@ -207,45 +212,50 @@ copyFile file1 file2 = do
   my_data &lt;- readTextFile UTF8 file1
   writeTextFile UTF8 file2 my_data
 </code></pre>
-<p>Note that we have to use <code>launchAff_</code> to convert the <code>Aff</code> to <code>Effect</code> because <code>main</code> must be <code>Effect Unit</code>.</p>
-<p>It is also possible to re-write the above snippet using callbacks or synchronous functions (for example with <code>Node.FS.Async</code> and <code>Node.FS.Sync</code> respectively), but those share the same downsides as discussed earlier with JavaScript, and so that coding style is not recommended.</p>
-<p>The syntax for working with <code>Aff</code> is very similar to working with <code>Effect</code>. They are both monads, and can therefore be written with do notation.</p>
-<p>For example, if we look at the signature of <code>readTextFile</code>, we see that it returns the file contents as a <code>String</code> wrapped in <code>Aff</code>:</p>
+<p>なお、<code>main</code>は<code>Effect Unit</code>でなければならないので、<code>launchAff_</code>を使って<code>Aff</code>から<code>Effect</code>へと変換せねばなりません。</p>
+<p>上のコード片をコールバックや同期関数を使って書き換えることも可能ですが（例えば<code>Node.FS.Async</code>や<code>Node.FS.Sync</code>をそれぞれ使います）、JavaScriptで前にお話ししたのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されません。</p>
+<p><code>Aff</code>を扱う文法は<code>Effect</code>を扱うものと大変似ています。
+どちらもモナドですし、したがってdo記法で書くことができます。</p>
+<p>例えば<code>readTextFile</code>のシグネチャを見れば、これがファイルの内容を<code>String</code>とし、<code>Aff</code>に包んで返していることがわかります。</p>
 <pre><code class="language-hs">readTextFile :: Encoding -&gt; FilePath -&gt; Aff String
 </code></pre>
-<p>We can &quot;unwrap&quot; the returned string with a bind arrow (<code>&lt;-</code>) in do notation:</p>
+<p>do記法中では束縛矢印 (<code>&lt;-</code>) で返却された文字列を「開封」できます。</p>
 <pre><code class="language-hs">my_data &lt;- readTextFile UTF8 file1
 </code></pre>
-<p>Then pass it as the string argument to <code>writeTextFile</code>:</p>
+<p>それから<code>writeTextFile</code>に文字列引数として渡します。</p>
 <pre><code class="language-hs">writeTextFile :: Encoding -&gt; FilePath -&gt; String -&gt; Aff Unit
 </code></pre>
-<p>The only other notable feature unique to <code>Aff</code> in the above example is <code>attempt</code>, which captures errors or exceptions encountered while running <code>Aff</code> code and stores them in an <code>Either</code>:</p>
+<p>上の例で他に目を引く<code>Aff</code>固有の特徴は<code>attempt</code>のみです。これは<code>Aff</code>のコードの実行中に遭遇したエラーや例外を捕捉して<code>Either</code>内に保管するものです。</p>
 <pre><code class="language-hs">attempt :: forall a. Aff a -&gt; Aff (Either Error a)
 </code></pre>
-<p>You should hopefully be able to draw on your knowledge of concepts from previous chapters and combine this with the new <code>Aff</code> patterns learned in the above <code>copyFile</code> example to tackle the following exercises:</p>
-<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
+<p>読者ならきっと、前の章から概念の知識を引き出し、その知識と上の<code>copyFile</code>の例で学んだ新しい<code>Aff</code>パターンを組み合わせることで、以下の演習に挑戦できるでしょう。</p>
+<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
 <li>
-<p>(Easy) Write a <code>concatenateFiles</code> function which concatenates two text files.</p>
+<p>（簡単）2つのテキストファイルを連結する関数<code>concatenateFiles</code>を書いてください。</p>
 </li>
 <li>
-<p>(Medium) Write a function <code>concatenateMany</code> to concatenate multiple text files, given an array of input file names and an output file name. <em>Hint</em>: use <code>traverse</code>.</p>
+<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、複数のテキストファイルを連結する関数<code>concatenateMany</code>を書いてください。
+<em>手掛かり</em>：<code>traverse</code>を使ってください。</p>
 </li>
 <li>
-<p>(Medium) Write a function <code>countCharacters :: FilePath -&gt; Aff (Either Error Int)</code> that returns the number of characters in a file, or an error if one is encountered.</p>
+<p>（普通）ファイル中の文字数を返すか、エラーがあればそれを返す関数<code>countCharacters :: FilePath -&gt; Aff (Either Error Int)</code>を書いてください。</p>
 </li>
 </ol>
-<h2 id="additional-aff-resources"><a class="header" href="#additional-aff-resources">Additional Aff Resources</a></h2>
-<p>If you haven't already taken a look at the <a href="https://pursuit.purescript.org/packages/purescript-aff/">official Aff guide</a>, skim through that now. It's not a direct prerequisite for completing the remaining exercises in this chapter, but you may find it helpful to lookup some functions on Pursuit.</p>
-<p>You're also welcome to consult these supplemental resources too, but again, the exercises in this chapter don't depend on them:</p>
+<h2 id="更なるaffの資料"><a class="header" href="#更なるaffの資料">更なるAffの資料</a></h2>
+<p>もしまだ<a href="https://pursuit.purescript.org/packages/purescript-aff/">公式のAffの手引き</a>を見ていなければ、今ざっと目を通してください。
+この章の残りの演習を完了する上で事前に必要なことではありませんが、Pursuitで何らかの関数を見付けだす助けになるかもしれません。</p>
+<p>以下の補足資料についてもあたってみるとよいでしょう。しかし繰り返しになりますがこの章の演習はこれらの内容に依りません。</p>
 <ul>
-<li><a href="https://blog.drewolson.org/asynchronous-purescript">Drew's Aff Post</a></li>
-<li><a href="https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff">Additional Aff Explanation and Examples</a></li>
+<li><a href="https://blog.drewolson.org/asynchronous-purescript">DrewのAffに関する投稿</a></li>
+<li><a href="https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff">更なるAffの説明と例</a></li>
 </ul>
-<h2 id="a-http-client"><a class="header" href="#a-http-client">A HTTP Client</a></h2>
-<p>The <code>affjax</code> library offers a convenient way to make asynchronous AJAX HTTP requests with <code>Aff</code>. Depending on what environment you are targeting you need to use either the <a href="https://github.com/purescript-contrib/purescript-affjax-web">purescript-affjax-web</a> or the <a href="https://github.com/purescript-contrib/purescript-affjax-node">purescript-affjax-node</a> library.
-In the rest of this chapter we will be targeting node and thus using <code>purescript-affjax-node</code>.
-Consult the <a href="https://pursuit.purescript.org/packages/purescript-affjax">Affjax docs</a> for more usage information. Here is an example that makes HTTP GET requests at a provided URL and returns the response body or an error message:</p>
+<h2 id="httpクライアント"><a class="header" href="#httpクライアント">HTTPクライアント</a></h2>
+<p><code>affjax</code>ライブラリは<code>Aff</code>で非同期AJAX HTTP要求する便利な手段を提供します。
+対象としている環境が何であるかによって、<a href="https://github.com/purescript-contrib/purescript-affjax-web">purescript-affjax-web</a>または<a href="https://github.com/purescript-contrib/purescript-affjax-node">purescript-affjax-node</a>のどちらかのライブラリを使う必要があります。
+この章の以降ではNodeを対象としていくので、<code>purescript-affjax-node</code>を使います。
+より詳しい使用上の情報は<a href="https://pursuit.purescript.org/packages/purescript-affjax">affjaxのドキュメント</a>にあたってください。
+以下は与えられたURLに向けてHTTP GETを要求し、応答本文ないしエラー文言を返す例です。</p>
 <pre><code class="language-hs">import Prelude
 import Affjax.Node as AN
 import Affjax.ResponseFormat as ResponseFormat
@@ -259,7 +269,7 @@ getUrl url = do
     Left err -&gt; &quot;GET /api response failed to decode: &quot; &lt;&gt; AN.printError err
     Right response -&gt; response.body
 </code></pre>
-<p>When calling this in the repl, <code>launchAff_</code> is required to convert the <code>Aff</code> to a repl-compatible <code>Effect</code>:</p>
+<p>これをREPLで呼び出す際は、<code>launchAff_</code>で<code>Aff</code>からREPLに互換性のある<code>Effect</code>へと変換する必要があります。</p>
 <pre><code class="language-shell">$ spago repl
 
 &gt; :pa
@@ -275,28 +285,35 @@ getUrl url = do
 unit
 {&quot;data&quot;:{&quot;id&quot;:1,&quot;email&quot;:&quot;george.bluth@reqres.in&quot;,&quot;first_name&quot;:&quot;George&quot;,&quot;last_name&quot;:&quot;Bluth&quot;, ...}}
 </code></pre>
-<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
+<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>(Easy) Write a function <code>writeGet</code> which makes an HTTP <code>GET</code> request to a provided url, and writes the response body to a file.</li>
+<li>（簡単）与えられたURLにHTTPの<code>GET</code>を要求し、応答本文をファイルに書き込む関数<code>writeGet</code>を書いてください。</li>
 </ol>
-<h2 id="parallel-computations"><a class="header" href="#parallel-computations">Parallel Computations</a></h2>
-<p>We've seen how to use the <code>Aff</code> monad and do notation to compose asynchronous computations in sequence. It would also be useful to be able to compose asynchronous computations <em>in parallel</em>. With <code>Aff</code>, we can compute in parallel simply by initiating our two computations one after the other.</p>
-<p>The <code>parallel</code> package defines a type class <code>Parallel</code> for monads like <code>Aff</code> which support parallel execution. When we met applicative functors earlier in the book, we observed how applicative functors can be useful for combining parallel computations. In fact, an instance for <code>Parallel</code> defines a correspondence between a monad <code>m</code> (such as <code>Aff</code>) and an applicative functor <code>f</code> which can be used to combine computations in parallel:</p>
+<h2 id="並列計算"><a class="header" href="#並列計算">並列計算</a></h2>
+<p><code>Aff</code>モナドとdo記法を使って、非同期計算を順番に実行されるように合成する方法を見てきました。
+非同期計算を<em>並列にも</em>合成できたら便利でしょう。
+<code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
+<p><code>parallel</code>パッケージは<code>Aff</code>のようなモナドのための型クラス<code>Parallel</code>を定義しており、並列実行に対応しています。
+以前に本書でアプリカティブ関手に出会ったとき、並列計算を合成するときにアプリカティブ関手がどれほど便利なのかを見ました。
+実は<code>Parallel</code>のインスタンスは、（<code>Aff</code>のような）モナド<code>m</code>と、並列に計算を合成するために使われるアプリカティブ関手<code>f</code>との対応関係を定義しているのです。</p>
 <pre><code class="language-hs">class (Monad m, Applicative f) &lt;= Parallel f m | m -&gt; f, f -&gt; m where
   sequential :: forall a. f a -&gt; m a
   parallel :: forall a. m a -&gt; f a
 </code></pre>
-<p>The class defines two functions:</p>
+<p>このクラスは2つの関数を定義しています。</p>
 <ul>
-<li><code>parallel</code>, which takes computations in the monad <code>m</code> and turns them into computations in the applicative functor <code>f</code>, and</li>
-<li><code>sequential</code>, which performs a conversion in the opposite direction.</li>
+<li><code>parallel</code>：モナド<code>m</code>中の計算を取り、アプリカティブ関手<code>f</code>中の計算に変えます。</li>
+<li><code>sequential</code>：反対方向に変換します。</li>
 </ul>
-<p>The <code>aff</code> library provides a <code>Parallel</code> instance for the <code>Aff</code> monad. It uses mutable references to combine <code>Aff</code> actions in parallel, by keeping track of which of the two continuations has been called. When both results have been returned, we can compute the final result and pass it to the main continuation.</p>
-<p>Because applicative functors support lifting of functions of arbitrary arity, we can perform more computations in parallel by using the applicative combinators. We can also benefit from all of the standard library functions which work with applicative functors, such as <code>traverse</code> and <code>sequence</code>!</p>
-<p>We can also combine parallel computations with sequential portions of code, by using applicative combinators in a do notation block, or vice versa, using <code>parallel</code> and <code>sequential</code> to change type constructors where appropriate.</p>
-<p>To demonstrate the difference between sequential and parallel execution, we'll create an array of 100 10-millisecond delays, then execute those delays with both techniques.
-You'll notice in the repl that <code>seqDelay</code> is much slower than <code>parDelay</code>.
-Note that parallel execution is enabled by simply replacing <code>sequence_</code> with <code>parSequence_</code>.</p>
+<p><code>aff</code>ライブラリは <code>Aff</code>モナドの <code>Parallel</code>インスタンスを提供します。
+これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に
+<code>Aff</code>アクションを組み合わせます。
+両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。</p>
+<p>アプリカティブ関手では任意個の引数の関数の持ち上げができるので、このアプリカティブコンビネータを使ってより多くの計算を並列に実行できます。
+<code>traverse</code>や<code>sequence</code>といった、アプリカティブ関手を扱う全ての標準ライブラリ関数から恩恵を受けることもできます。</p>
+<p>必要に応じて
+<code>parralel</code>と<code>sequential</code>を使って型構築子を変更することで、do記法ブロック中でアプリカティブコンビネータを使い、直列的なコードの一部で並列計算を結合したり、またはその逆を行ったりできます。</p>
+<p>直列実行と並列実行の間の違いを実演するために、100個の10ミリ秒の遅延からなる配列をつくり、それからその遅延を両方の手法で実行します。REPLで試すと<code>seqDelay</code>が<code>parDelay</code>より遥かに遅いことに気付くでしょう。並列実行が<code>sequence_</code>を<code>parSequence_</code>で置き換えるだけで有効になるところに注目です。</p>
 <pre><code class="language-hs">import Prelude
 
 import Control.Parallel (parSequence_)
@@ -324,7 +341,10 @@ unit
 &gt; parDelay -- This is fast
 unit
 </code></pre>
-<p>Here's a more real-world example of making multiple HTTP requests in parallel. We're reusing our <code>getUrl</code> function to fetch information from two users in parallel. Note that <code>parTraverse</code> (the parallel version of <code>traverse</code>) is used in this case. This example would also work fine with <code>traverse</code> instead, but it will be slower.</p>
+<p>以下は並列で複数回HTTP要求する、より現実味のある例です。
+<code>getUrl</code>関数を再利用して2人の利用者から並列で情報を取得します。
+この場合では<code>parTarverse</code>（<code>traverse</code>の並列版）が使われていますね。
+この例は代わりに<code>traverse</code>でも問題なく動きますがより遅くなるでしょう。</p>
 <pre><code class="language-hs">import Prelude
 
 import Control.Parallel (parTraverse)
@@ -351,24 +371,28 @@ unit
 ,&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:2,\&quot;email\&quot;:\&quot;janet.weaver@reqres.in\&quot;, ... }&quot;
 ]
 </code></pre>
-<p>A full listing of available parallel functions can be found in the <a href="https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel"><code>parallel</code> docs on Pursuit</a>. The <a href="https://github.com/purescript-contrib/purescript-aff#parallel-execution">aff docs section on parallel</a> also contains more examples.</p>
-<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
+<p>利用できる並列関数の完全な一覧は<a href="https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel">Pursuitの<code>parallel</code>のドキュメント</a>にあります。<a href="https://github.com/purescript-contrib/purescript-aff#parallel-execution">parallelのaffのドキュメントの節</a>にもより多くの例が含まれています。</p>
+<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
 <li>
-<p>(Easy) Write a <code>concatenateManyParallel</code> function which has the same signature as the earlier <code>concatenateMany</code> function, but reads all input files in parallel.</p>
+<p>（簡単）前の<code>concatenateMany</code>関数と同じシグネチャを持つ<code>concatenateManyParallel</code>関数を書いてください。
+ただし全ての入力ファイルを並列に読むようにしてください。</p>
 </li>
 <li>
-<p>(Medium) Write a <code>getWithTimeout :: Number -&gt; String -&gt; Aff (Maybe String)</code> function which makes an HTTP <code>GET</code> request at the provided URL and returns either:</p>
+<p>（普通）与えられたURLへHTTP <code>GET</code>を要求して以下の何れかを返す<code>getWithTimeout :: Number -&gt; String -&gt; Aff (Maybe String)</code>関数を書いてください。</p>
 <ul>
-<li><code>Nothing</code>: if the request takes longer than the provided timeout (in milliseconds).</li>
-<li>The string response: if the request succeeds before the timeout elapses.</li>
+<li><code>Nothing</code>: 要求してから与えられた時間制限（ミリ秒単位）より長く掛かった場合。</li>
+<li>文字列の応答：時間制限を越える前に要求が成功した場合。</li>
 </ul>
 </li>
 <li>
-<p>(Difficult) Write a <code>recurseFiles</code> function which takes a &quot;root&quot; file and returns an array of all paths listed in that file (and listed in the listed files too). Read listed files in parallel. Paths are relative to the directory of the file they appear in. <em>Hint:</em> The <code>node-path</code> module has some helpful functions for negotiating directories.</p>
+<p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。
+一覧にあるファイルを並列に読んでください。
+パスはそのファイルが表れたディレクトリから相対的なものです。
+<em>手掛かり</em>：<code>node_path</code>モジュールにはディレクトリを扱う上で便利な関数があります。</p>
 </li>
 </ol>
-<p>For example, if starting from the following <code>root.txt</code> file:</p>
+<p>例えば次のような<code>root.txt</code>ファイルから始まるとします。</p>
 <pre><code class="language-shell">$ cat root.txt
 a.txt
 b/a.txt
@@ -386,15 +410,15 @@ $ cat b/a.txt
 
 $ cat c/a/a.txt
 </code></pre>
-<p>The expected output is:</p>
+<p>期待される出力は次の通り。</p>
 <pre><code class="language-hs">[&quot;root.txt&quot;,&quot;a.txt&quot;,&quot;b/a.txt&quot;,&quot;b/b.txt&quot;,&quot;b/c/a.txt&quot;,&quot;c/a/a.txt&quot;]
 </code></pre>
-<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>In this chapter we covered asynchronous effects and learned how to:</p>
+<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
+<p>この章では非同期エフェクトと以下の方法を押さえました。</p>
 <ul>
-<li>Run asynchronous code in the <code>Aff</code> monad with the <code>aff</code> library.</li>
-<li>Make HTTP requests asynchronously with the <code>affjax</code> library.</li>
-<li>Run asynchronous code in parallel with the <code>parallel</code> library.</li>
+<li><code>aff</code>ライブラリを使って<code>Aff</code>モナド中で非同期コードを走らせる。</li>
+<li><code>affjax</code>ライブラリを使って非同期にHTTPリクエストを行う。</li>
+<li><code>parallel</code>ライブラリを使って並列に非同期コードを走らせる。</li>
 </ul>
 
                     </main>
