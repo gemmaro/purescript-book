@@ -392,7 +392,7 @@ unit
     その型について `IsValue`のインスタンスを書いてください。
     この型を使うように `width`と `height`属性を変更してください。
  1. （難しい）幻影型を使って真偽値 `true`、 `false`用の最上位の表現を定義することで、 `AttributeKey`が
-    `disabled`や `checked`のような*空の属性*を表現しているかどうかを符号化できます。
+    `disabled`や `checked`のような*空の属性*を表現しているかどうかをエンコードできます。
 
      ```haskell
      data True

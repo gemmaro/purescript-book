@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-31 08:33+0900\n"
+"POT-Creation-Date: 2023-06-13 20:03+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2871,11 +2871,11 @@ msgstr ""
 #, markdown-text
 msgid ""
 "Using JSON is also the easiest way to pass other structural types, such as "
-"`Map` and `Set` through the FFI. Note that since JSON only consists of "
-"booleans, numbers, strings, arrays, and objects of other JSON values, we "
-"can't write a `Map` and `Set` directly in JSON. But we can represent these "
-"structures as arrays (assuming the keys and values can also be represented "
-"in JSON), and then decode them back to `Map` or `Set`."
+"`Map` and `Set`, through the FFI. Since JSON only consists of booleans, "
+"numbers, strings, arrays, and objects of other JSON values, we can't write a "
+"`Map` and `Set` directly in JSON. But we can represent these structures as "
+"arrays (assuming the keys and values can also be represented in JSON) and "
+"then decode them back to `Map` or `Set`."
 msgstr ""
 
 #. type: Plain text
@@ -2916,7 +2916,7 @@ msgstr ""
 #: text/chapter10.md:861
 #, markdown-text
 msgid ""
-"Here is the JavaScript implementation. Note the `Array.from` step which is "
+"Here is the JavaScript implementation. Note the `Array.from` step, which is "
 "necessary to convert the JavaScript `Map` into a JSON-friendly format before "
 "decoding converts it back to a PureScript `Map`."
 msgstr ""
@@ -16984,9 +16984,9 @@ msgstr ""
 #: text/chapter5.md:528
 #, markdown-text
 msgid ""
-"(Medium) Extend the vector graphics library with a new operation `area` "
-"which computes the area of a `Shape`. For the purpose of this exercise, the "
-"area of a line or a piece of text is assumed to be zero."
+"(Medium) Extend the vector graphics library with a new operation `area` that "
+"computes the area of a `Shape`. For the purpose of this exercise, the area "
+"of a line or a piece of text is assumed to be zero."
 msgstr ""
 
 #. type: Bullet: '1. '
@@ -16996,7 +16996,8 @@ msgid ""
 "(Difficult) Extend the `Shape` type with a new data constructor `Clipped`, "
 "which clips another `Picture` to a rectangle. Extend the `shapeBounds` "
 "function to compute the bounds of a clipped picture. Note that this makes "
-"`Shape` into a recursive data type."
+"`Shape` into a recursive data type. _Hint_: The compiler will walk you "
+"through extending other functions as required."
 msgstr ""
 
 #. type: Plain text

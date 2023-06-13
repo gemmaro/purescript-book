@@ -8,7 +8,7 @@
 
 - 純粋で、作用のある、非同期なJavaScript関数をPureScriptから呼び出す。
 - 型付けされていないデータを扱う。
-- `argonaut`パッケージを使ってJSONに符号化したりJSONを構文解析したりする。
+- `argonaut`パッケージを使ってJSONにエンコードしたりJSONを構文解析したりする。
 
 この章の終わりにかけて、住所録の例に立ち返ります。
 この章の目的は、FFIを使ってアプリケーションに次の新しい機能を追加することです。
@@ -27,7 +27,7 @@
 このモジュールのソースコードは、第3章、第7章及び第8章の続きになります。そうしたわけでソースツリーにはこれらの章からの適切なソースファイルが含まれています。
 
 この章は`argonaut`ライブラリを依存関係として導入しています。
-このライブラリはJSONに符号化したりJSONを復号化したりするために使います。
+このライブラリはJSONにエンコードしたりJSONをデコードしたりするために使います。
 
 この章の演習は`test/MySolutions.purs`に書き、`spago
 test`を走らせることによって`test/Main.purs`中の単体試験について確認できます。
@@ -58,7 +58,7 @@ declaration) を使用し、既存のJavaScriptの値に型を与えることで
 外部インポート宣言には _外部JavaScriptモジュール_ (foreign JavaScript module) から _エクスポートされた_
 対応するJavaScriptでの宣言がなくてはなりません。
 
-例えば特殊文字をエスケープすることによりURIのコンポーネントを符号化するJavaScriptの
+例えば特殊文字をエスケープすることによりURIのコンポーネントをエンコードするJavaScriptの
 `encodeURIComponent`関数について考えてみます。
 
 ```text
@@ -861,7 +861,7 @@ TypeError: Cannot read property 'toString' of undefined
 
 PureScriptのコードにバグ一匹通さないようにするため、JavaScriptのコードでJSONを使いましょう。
 
-`argonaut`ライブラリにはこのために必要なJSONの復号化と符号化の機能が備わっています。
+`argonaut`ライブラリにはこのために必要なJSONのデコードとエンコードの機能が備わっています。
 このライブラリには素晴らしい[ドキュメント](https://github.com/purescript-contrib/purescript-argonaut#documentation)があるので、本書では基本的な用法だけを押さえます。
 
 返る型を`Json`として定義するようにして、代わりとなる外部インポートをつくるとこうなります。
@@ -878,7 +878,7 @@ export const cumulativeSumsJson = cumulativeSumsBroken
 export const addComplexJson = addComplexBroken
 ```
 
-そして返された`Json`の値を復号化する梱包を書きます。
+そして返された`Json`の値をデコードする梱包を書きます。
 
 ```hs
 {{#include ../exercises/chapter10/test/Examples.purs:cumulativeSumsDecoded}}
@@ -886,7 +886,7 @@ export const addComplexJson = addComplexBroken
 {{#include ../exercises/chapter10/test/Examples.purs:addComplexDecoded}}
 ```
 
-そうすると返る型への復号が成功しなかったどんな値も`Left`の`String`なエラーとして表れます。
+そうすると返る型へのデコードが成功しなかったどんな値も`Left`の`String`なエラーとして表れます。
 
 ```text
 $ spago repl
@@ -921,11 +921,11 @@ $ spago repl
 (Right { imag: 6.0, real: 4.0 })
 ```
 
-JSONを使うことは、`Map`や`Set`のような他の構造的な型をFFI越しに渡す最も簡単な方法でもあります。
-ただしJSONは真偽値、数値、文字列、配列、そして他のJSONの値からなるオブジェクトのみから構成されるため、JSONでは直接`Map`や`Set`を書けません。
-しかしこれらの構造を配列としては表現でき（キーとバリューもまたJSONで表現されているとします）、それから`Map`や`Set`に復号し直すことができるのです。
+JSONを使うのは、`Map`や`Set`のようなその他の構造的な型をFFI越しに渡す、最も簡単な方法でもあります。
+JSONは真偽値、数値、文字列、配列、そして他のJSONの値からなるオブジェクトのみから構成されるため、JSONでは直接`Map`や`Set`を書けません。
+しかしこれらの構造を配列としては表現でき（キーとバリューもまたJSONで表現されているとします）、それから`Map`や`Set`に復元できるのです。
 
-以下は`String`のキーと`Int`のバリューからなる`Map`を変更する外部関数シグネチャと、それに伴うJSONの符号化と復号化を扱う梱包関数の例です。
+以下は`String`のキーと`Int`のバリューからなる`Map`を変更する外部関数シグネチャと、それに伴うJSONのエンコードとデコードを扱う梱包関数の例です。
 
 ```hs
 {{#include ../exercises/chapter10/test/Examples.purs:mapSetFooJson}}
@@ -943,7 +943,7 @@ mapSetFoo = encodeJson >>> mapSetFooJson >>> decodeJson
 ```
 
 以下はJavaScriptでの実装です。
-なお、`Array.from`の工程は、復号の前にJavaScriptの`Map`をJSONに親和性のある形式に変換し、PureScriptの`Map`に変換し直すために必須です。
+なお、`Array.from`の工程は、JavaScriptの`Map`をJSONに親和性のある形式に変換し、デコードでPureScriptの`Map`に変換し直すために必須です。
 
 ```js
 export const mapSetFooJson = j => {
@@ -988,14 +988,14 @@ Map String Int
 1. （難しい）少し前の`quadraticRoots`を書き換えて`quadraticRootsSafe`としてください。
    この関数はJSONを使って`Complex`の根の`Pair`をFFI越しに渡します。
    JavaScriptでは`Pair`構築子を使わないでください。
-   その代わり、復号器に互換性のある形式で対を返すだけにしてください。
+   その代わり、デコーダーに互換性のある形式で対を返すだけにしてください。
    *手掛かり*：`DecodeJson`インタンスを`Pair`用に書く必要があるでしょう。
-   独自の復号インスタンスを書く上での説明については[argonautのドキュメント](https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances)をあたってください。
+   独自のデコードインスタンスを書く上での説明については[argonautのドキュメント](https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances)をあたってください。
    [decodeJsonTuple](https://github.com/purescript-contrib/purescript-argonaut-codecs/blob/master/src/Data/Argonaut/Decode/Class.purs)インスタンスも参考になるかもしれません。
   「孤立インスタンス」を作ることを避けるために、`Pair`に`newtype`の梱包が必要になる点に注意してください。
-1. （普通）2次元配列を含むJSON文字列を構文解析して復号する`parseAndDecodeArray2D :: String -> Either String (Array (Array Int))`関数を書いてください。
+1. （普通）2次元配列を含むJSON文字列を構文解析してデコードする`parseAndDecodeArray2D :: String -> Either String (Array (Array Int))`関数を書いてください。
    例えば`"[[1, 2, 3], [4, 5], [6]]"`です。
-   *手掛かり*：復号の前に`jsonParser`を使って`String`を`Json`に変換する必要があるでしょう。
+   *手掛かり*：デコードの前に`jsonParser`を使って`String`を`Json`に変換する必要があるでしょう。
 1. （普通）以下のデータ型は値が葉にある二分木を表現します。
 
      ```haskell
@@ -1089,7 +1089,7 @@ validateAndSave = do
 ```
 
 これはなぜかというと`Person`レコード中の`PhoneType`が`EncodeJson`インスタンスを必要としているからです。
-単純に汎用符号化インスタンスと復号化インスタンスを導出すれば完了です。
+単純に汎用のエンコードインスタンスとデコードインスタンスを導出すれば完了です。
 この仕組みについて、より詳しくはargonautのドキュメントで見られます。
 
 ```hs
@@ -1108,7 +1108,10 @@ validateAndSave = do
 item <- getItem "person"
 ```
 
-そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助関数をつくります。なおこのストレージ中の文字列は`null`かもしれないので、うまく`String`として復号化されるまでは外部の`Json`として表現します。道中には他にも多くの変換工程があり、それぞれで`Either`の値を返します。そのためこれらを`do`ブロックの中に纏めるのは理に適っています。
+そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助関数をつくります。
+なおこのストレージ中の文字列は`null`かもしれないので、うまく`String`としてデコードされるまでは外部の`Json`として表現します。
+道中には他にも多くの変換工程があり、それぞれで`Either`の値を返します。
+そのためこれらを`do`ブロックの中に纏めるのは理に適っています。
 
 ```hs
 processItem :: Json -> Either String Person
