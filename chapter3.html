@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>関数とレコード - 実例によるPureScript</title>
+        <title>Functions and Records - PureScript by Example</title>
 
 
         <!-- Custom HTML head -->
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -85,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html" class="active"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html" class="active"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +112,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">実例によるPureScript</h1>
+                    <h1 class="menu-title">PureScript by Example</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -149,16 +147,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="関数とレコード"><a class="header" href="#関数とレコード">関数とレコード</a></h1>
-<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、関数及びレコードというPureScriptプログラムの2つの構成要素を導入します。更に、どのようにPureScriptプログラムを構造化するのか、どのように型をプログラム開発に役立てるかを見ていきます。</p>
-<p>連絡先のリストを管理する簡単な住所録アプリケーションを作成していきます。
-このコード例により、PureScriptの構文から幾つかの新しい概念を導入します。</p>
-<p>このアプリケーションのフロントエンドは対話式モードであるPSCiを使うようにしていますが、このコードを土台にJavaScriptでフロントエンドを書くこともできるでしょう。
-実際に後の章で、フォームの検証と保存及び復元の機能を追加します。</p>
-<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
-<p>この章のソースコードは <code>src/Data/AddressBook.purs</code>というファイルに含まれています。
-このファイルは次のようなモジュール宣言とインポート一覧から始まります。</p>
+                        <h1 id="functions-and-records"><a class="header" href="#functions-and-records">Functions and Records</a></h1>
+<h2 id="chapter-goals"><a class="header" href="#chapter-goals">Chapter Goals</a></h2>
+<p>This chapter will introduce two building blocks of PureScript programs: functions and records. In addition, we'll see how to structure PureScript programs, and how to use types as an aid to program development.</p>
+<p>We will build a simple address book application to manage a list of contacts. This code will introduce some new ideas from the syntax of PureScript.</p>
+<p>The front-end of our application will be the interactive mode PSCi, but it would be possible to build on this code to write a front-end in JavaScript. In fact, we will do exactly that in later chapters, adding form validation and save/restore functionality.</p>
+<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
+<p>The source code for this chapter is contained in the file <code>src/Data/AddressBook.purs</code>. This file starts with a module declaration and its import list:</p>
 <pre><code class="language-haskell">module Data.AddressBook where
 
 import Prelude
@@ -167,25 +162,19 @@ import Control.Plus (empty)
 import Data.List (List(..), filter, head)
 import Data.Maybe (Maybe)
 </code></pre>
-<p>ここでは、幾つかのモジュールをインポートします。</p>
+<p>Here, we import several modules:</p>
 <ul>
-<li><code>Control.Plus</code>モジュールには<code>empty</code>値が定義されています。</li>
-<li><code>Data.List</code>モジュールは<code>lists</code>パッケージで提供されておりSpagoを使ってインストールできます。
-連結リストを使うために必要な幾つかの関数が含まれています。</li>
-<li><code>Data.Maybe</code>モジュールは、オプショナルな値を扱うためのデータ型と関数を定義しています。</li>
+<li>The <code>Control.Plus</code> module, which defines the <code>empty</code> value.</li>
+<li>The <code>Data.List</code> module, which is provided by the <code>lists</code> package which can be installed using Spago. It contains a few functions which we will need for working with linked lists.</li>
+<li>The <code>Data.Maybe</code> module, which defines data types and functions for working with optional values.</li>
 </ul>
-<p>訳者注：ダブルドット (<code>..</code>) を使用すると、
-指定された型コンストラクタのすべてのデータコンストラクタをインポートできます。</p>
-<p>このモジュールのインポート内容が括弧内で明示的に列挙されていることに注目してください。明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣です。</p>
-<p>ソースコードリポジトリをクローンしたと仮定すると、この章のプロジェクトは次のコマンドでSpagoを使用して構築できます。</p>
+<p>Notice that the imports for these modules are listed explicitly in parentheses. This is generally a good practice, as it helps to avoid conflicting imports.</p>
+<p>Assuming you have cloned the book's source code repository, the project for this chapter can be built using Spago, with the following commands:</p>
 <pre><code class="language-text">$ cd chapter3
 $ spago build
 </code></pre>
-<h2 id="単純な型"><a class="header" href="#単純な型">単純な型</a></h2>
-<p>JavaScriptのプリミティブ型に対応する組み込みデータ型として、PureScriptでは数値型と文字列型、真偽型の3つが定義されています。
-これらは<code>Prim</code>モジュールで定義されており、全てのモジュールに暗黙にインポートされます。
-これらはそれぞれ <code>Number</code>、 <code>String</code>、
-<code>Boolean</code>と呼ばれており、PSCiで<code>:type</code>コマンドを使うと簡単な値の型を表示させて確認できます。</p>
+<h2 id="simple-types"><a class="header" href="#simple-types">Simple Types</a></h2>
+<p>PureScript defines three built-in types which correspond to JavaScript's primitive types: numbers, strings and booleans. These are defined in the <code>Prim</code> module, which is implicitly imported by every module. They are called <code>Number</code>, <code>String</code>, and <code>Boolean</code>, respectively, and you can see them in PSCi by using the <code>:type</code> command to print the types of some simple values:</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; :type 1.0
@@ -197,16 +186,16 @@ String
 &gt; :type true
 Boolean
 </code></pre>
-<p>PureScriptには他にも、整数、文字、配列、レコード、関数といった組み込み型が定義されています。</p>
-<p>小数点以下を省くと整数になり、型 <code>Number</code>の浮動小数点数の値と区別されます。</p>
+<p>PureScript defines some other built-in types: integers, characters, arrays, records, and functions.</p>
+<p>Integers are differentiated from floating point values of type <code>Number</code> by the lack of a decimal point:</p>
 <pre><code class="language-text">&gt; :type 1
 Int
 </code></pre>
-<p>二重引用符を使用する文字列直値とは異なり、文字直値は一重引用符で囲みます。</p>
+<p>Character literals are wrapped in single quotes, unlike string literals which use double quotes:</p>
 <pre><code class="language-text">&gt; :type 'a'
 Char
 </code></pre>
-<p>配列はJavaScriptの配列に対応していますが、JavaScriptの配列とは異なり、PureScriptの配列の全ての要素は同じ型を持つ必要があります。</p>
+<p>Arrays correspond to JavaScript arrays, but unlike in JavaScript, all elements of a PureScript array must have the same type:</p>
 <pre><code class="language-text">&gt; :type [1, 2, 3]
 Array Int
 
@@ -216,8 +205,8 @@ Array Boolean
 &gt; :type [1, false]
 Could not match type Int with type Boolean.
 </code></pre>
-<p>最後の例で起きているエラーは型検証器によって報告されたもので、配列の2つの要素の型を<em>単一化</em>（Unification、等価にする意）しようとして失敗したことを示しています。</p>
-<p>レコードはJavaScriptのオブジェクトに対応しており、レコード直値はJavaScriptのオブジェクト直値と同じ構文になっています。</p>
+<p>The error in the last example is an error from the type checker, which unsuccessfully attempted to <em>unify</em> (i.e. make equal) the types of the two elements.</p>
+<p>Records correspond to JavaScript's objects, and record literals have the same syntax as JavaScript's object literals:</p>
 <pre><code class="language-text">&gt; author = { name: &quot;Phil&quot;, interests: [&quot;Functional Programming&quot;, &quot;JavaScript&quot;] }
 
 &gt; :type author
@@ -225,16 +214,15 @@ Could not match type Int with type Boolean.
 , interests :: Array String
 }
 </code></pre>
-<p>この型が示しているのは、指定されたオブジェクトは、 <code>String</code>型のフィールド <code>name</code> と <code>Array String</code>つまり
-<code>String</code>の配列の型のフィールド <code>interests</code> という2つの <em>フィールド</em> (field) を持っているということです。</p>
-<p>ドットに続けて参照したいフィールドのラベルを書くとレコードのフィールドを参照できます。</p>
+<p>This type indicates that the specified object has two <em>fields</em>, a <code>name</code> field which has type <code>String</code>, and an <code>interests</code> field, which has type <code>Array String</code>, i.e. an array of <code>String</code>s.</p>
+<p>Fields of records can be accessed using a dot, followed by the label of the field to access:</p>
 <pre><code class="language-text">&gt; author.name
 &quot;Phil&quot;
 
 &gt; author.interests
 [&quot;Functional Programming&quot;,&quot;JavaScript&quot;]
 </code></pre>
-<p>PureScriptの関数はJavaScriptの関数に対応しています。PureScriptの標準ライブラリは多くの関数の例を提供しており、この章ではそれらをもう少し詳しく見ていきます。</p>
+<p>PureScript's functions correspond to JavaScript's functions. The PureScript standard libraries provide plenty of examples of functions, and we will see more in this chapter:</p>
 <pre><code class="language-text">&gt; import Prelude
 &gt; :type flip
 forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
@@ -242,126 +230,103 @@ forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 &gt; :type const
 forall a b. a -&gt; b -&gt; a
 </code></pre>
-<p>ファイルのトップレベルでは、等号の直前に引数を指定することで関数を定義できます。</p>
+<p>Functions can be defined at the top-level of a file by specifying arguments before the equals sign:</p>
 <pre><code class="language-haskell">add :: Int -&gt; Int -&gt; Int
 add x y = x + y
 </code></pre>
-<p>バックスラッシュに続けて空白文字で区切られた引数名のリストを書くことで、関数をインラインでも定義できます。
-PSCiで複数行の宣言を入力するには、 <code>:paste</code>コマンドを使用して「貼り付けモード」に入ります。
-このモードでは、<em>Control-D</em>キーシーケンスを使用して宣言を終了します。</p>
+<p>Alternatively, functions can be defined inline, by using a backslash character followed by a space-delimited list of argument names. To enter a multi-line declaration in PSCi, we can enter &quot;paste mode&quot; by using the <code>:paste</code> command. In this mode, declarations are terminated using the <em>Control-D</em> key sequence:</p>
 <pre><code class="language-text">&gt; :paste
 … add :: Int -&gt; Int -&gt; Int
 … add = \x y -&gt; x + y
 … ^D
 </code></pre>
-<p>PSCiでこの関数が定義されていると、次のように関数の隣に2つの引数を空白で区切って書くことで、関数をこれらの引数に<em>適用</em> (apply) できます。</p>
+<p>Having defined this function in PSCi, we can <em>apply</em> it to its arguments by separating the two arguments from the function name by whitespace:</p>
 <pre><code class="language-text">&gt; add 10 20
 30
 </code></pre>
-<h2 id="量化された型"><a class="header" href="#量化された型">量化された型</a></h2>
-<p>前の節ではPreludeで定義された関数の型を幾つか見てきました。
-例えば<code>flip</code>関数は次のような型を持っていました。</p>
+<h2 id="quantified-types"><a class="header" href="#quantified-types">Quantified Types</a></h2>
+<p>In the previous section, we saw the types of some functions defined in the Prelude. For example, the <code>flip</code> function had the following type:</p>
 <pre><code class="language-text">&gt; :type flip
 forall a b c. (a -&gt; b -&gt; c) -&gt; b -&gt; a -&gt; c
 </code></pre>
-<p>この <code>forall</code>キーワードは、 <code>flip</code>が <em>全称量化された型</em> (universally quantified type)
-を持っていることを示しています。これは、 <code>a</code>や <code>b</code>、 <code>c</code>をどの型に置き換えても、 <code>flip</code>はその型でうまく動作するという意味です。</p>
-<p>例えば、 <code>a</code>を <code>Int</code>、 <code>b</code>を <code>String</code>、 <code>c</code>を <code>String</code>というように選んでみたとします。この場合、
-<code>flip</code>の型を次のように<em>特殊化</em> (specialize) できます。</p>
+<p>The keyword <code>forall</code> here indicates that <code>flip</code> has a <em>universally quantified type</em>. It means that we can substitute any types for <code>a</code>, <code>b</code> and <code>c</code>, and <code>flip</code> will work with those types.</p>
+<p>For example, we might choose the type <code>a</code> to be <code>Int</code>, <code>b</code> to be <code>String</code> and <code>c</code> to be <code>String</code>. In that case we could <em>specialize</em> the type of <code>flip</code> to</p>
 <pre><code class="language-text">(Int -&gt; String -&gt; String) -&gt; String -&gt; Int -&gt; String
 </code></pre>
-<p>量化された型を特殊化したいということをコードで示す必要はありません。
-特殊化は自動的に行われます。
-例えば次のように単に<code>flip</code>を使用できます。
-あたかも既にその型の<code>flip</code>を持っていたかのようです。</p>
+<p>We don't have to indicate in code that we want to specialize a quantified type - it happens automatically. For example, we can just use <code>flip</code> as if it had this type already:</p>
 <pre><code class="language-text">&gt; flip (\n s -&gt; show n &lt;&gt; s) &quot;Ten&quot; 10
 
 &quot;10Ten&quot;
 </code></pre>
-<p><code>a</code>、 <code>b</code>、 <code>c</code>の型はどんな型でも選ぶことができるといっても、型の不整合は生じないようにしなければなりません。
-<code>flip</code>に渡す関数の型は、他の引数の型と整合性がなくてはなりません。
-第2引数として文字列 <code>&quot;Ten&quot;</code>、第3引数として数 <code>10</code>を渡したのはそれが理由です。
-もし引数が逆になっているとうまくいかないでしょう。</p>
+<p>While we can choose any types for <code>a</code>, <code>b</code> and <code>c</code>, we have to be consistent. The type of the function we passed to <code>flip</code> had to be consistent with the types of the other arguments. That is why we passed the string <code>&quot;Ten&quot;</code> as the second argument, and the number <code>10</code> as the third. It would not work if the arguments were reversed:</p>
 <pre><code class="language-text">&gt; flip (\n s -&gt; show n &lt;&gt; s) 10 &quot;Ten&quot;
 
 Could not match type Int with type String
 </code></pre>
-<h2 id="字下げについての注意"><a class="header" href="#字下げについての注意">字下げについての注意</a></h2>
-<p>PureScriptのコードは字下げの大きさに意味があります。ちょうどHaskellと同じで、JavaScriptとは異なります。コード内の空白の多寡は無意味ではなく、Cのような言語で中括弧によってコードのまとまりを示しているように、PureScriptでは空白がコードのまとまりを示すために使われているということです。</p>
-<p>宣言が複数行にわたる場合は、最初の行以外は最初の行の字下げより深くしなければなりません。</p>
-<p>したがって、次は正しいPureScriptコードです。</p>
+<h2 id="notes-on-indentation"><a class="header" href="#notes-on-indentation">Notes On Indentation</a></h2>
+<p>PureScript code is <em>indentation-sensitive</em>, just like Haskell, but unlike JavaScript. This means that the whitespace in your code is not meaningless, but rather is used to group regions of code, just like curly braces in C-like languages.</p>
+<p>If a declaration spans multiple lines, then any lines except the first must be indented past the indentation level of the first line.</p>
+<p>Therefore, the following is valid PureScript code:</p>
 <pre><code class="language-haskell">add x y z = x +
   y + z
 </code></pre>
-<p>しかし、次は正しいコードではありません。</p>
+<p>But this is not valid code:</p>
 <pre><code class="language-haskell">add x y z = x +
 y + z
 </code></pre>
-<p>後者では、PureScriptコンパイラはそれぞれの行ごとに1つ、つまり<em>2つ</em>の宣言であると構文解析します。</p>
-<p>一般に、同じブロック内で定義された宣言は同じ深さで字下げする必要があります。
-例えばPSCiでlet文の宣言は同じ深さで字下げしなければなりません。
-次は正しいコードです。</p>
+<p>In the second case, the PureScript compiler will try to parse <em>two</em> declarations, one for each line.</p>
+<p>Generally, any declarations defined in the same block should be indented at the same level. For example, in PSCi, declarations in a let statement must be indented equally. This is valid:</p>
 <pre><code class="language-text">&gt; :paste
 … x = 1
 … y = 2
 … ^D
 </code></pre>
-<p>しかし、これは正しくありません。</p>
+<p>but this is not:</p>
 <pre><code class="language-text">&gt; :paste
 … x = 1
 …  y = 2
 … ^D
 </code></pre>
-<p>PureScriptの幾つかの予約語（例えば <code>where</code>や <code>of</code>、
-<code>let</code>）は新たなコードのまとまりを導入しますが、そのコードのまとまり内の宣言はそれより深く字下げされている必要があります。</p>
+<p>Certain PureScript keywords (such as <code>where</code>, <code>of</code> and <code>let</code>) introduce a new block of code, in which declarations must be further-indented:</p>
 <pre><code class="language-haskell">example x y z = foo + bar
   where
     foo = x * y
     bar = y * z
 </code></pre>
-<p>ここで <code>foo</code>や <code>bar</code>の宣言は <code>example</code>の宣言より深く字下げされていることに注意してください。</p>
-<p>ただし、ソースファイルの先頭、最初の <code>module</code>宣言における予約語 <code>where</code>だけは、この規則の唯一の例外になっています。</p>
-<h2 id="独自の型の定義"><a class="header" href="#独自の型の定義">独自の型の定義</a></h2>
-<p>PureScriptで新たな問題に取り組むときは、まずはこれから扱おうとする値の型の定義を書くことから始めるのがよいでしょう。最初に、住所録に含まれるレコードの型を定義してみます。</p>
+<p>Note how the declarations for <code>foo</code> and <code>bar</code> are indented past the declaration of <code>example</code>.</p>
+<p>The only exception to this rule is the <code>where</code> keyword in the initial <code>module</code> declaration at the top of a source file.</p>
+<h2 id="defining-our-types"><a class="header" href="#defining-our-types">Defining Our Types</a></h2>
+<p>A good first step when tackling a new problem in PureScript is to write out type definitions for any values you will be working with. First, let's define a type for records in our address book:</p>
 <pre><code class="language-haskell">type Entry =
   { firstName :: String
   , lastName  :: String
   , address   :: Address
   }
 </code></pre>
-<p>これは <code>Entry</code>という<em>型同義語</em>（type synonym、型シノニム）を定義しています。
-型 <code>Entry</code>は等号の右辺と同じ型ということです。
-レコードの型は何れも文字列である <code>firstName</code>、 <code>lastName</code>、 <code>phone</code>という3つのフィールドからなります。
-前者の2つのフィールドは型 <code>String</code>を持ち、 <code>address</code>は以下のように定義された型 <code>Address</code>を持っています。</p>
+<p>This defines a <em>type synonym</em> called <code>Entry</code> - the type <code>Entry</code> is equivalent to the type on the right of the equals symbol: a record type with three fields - <code>firstName</code>, <code>lastName</code> and <code>address</code>. The two name fields will have type <code>String</code>, and the <code>address</code> field will have type <code>Address</code>, defined as follows:</p>
 <pre><code class="language-haskell">type Address =
   { street :: String
   , city   :: String
   , state  :: String
   }
 </code></pre>
-<p>なお、レコードには他のレコードを含めることができます。</p>
-<p>それでは、3つめの型同義語も定義してみましょう。住所録のデータ構造としては、単に項目の連結リストとして格納することにします。</p>
+<p>Note that records can contain other records.</p>
+<p>Now let's define a third type synonym, for our address book data structure, which will be represented simply as a linked list of entries:</p>
 <pre><code class="language-haskell">type AddressBook = List Entry
 </code></pre>
-<p><code>List Entry</code>は <code>Array Entry</code>とは同じではないということに注意してください。 <code>Array Entry</code>は住所録の項目の
-<em>配列</em> を意味しています。</p>
-<h2 id="型構築子と種"><a class="header" href="#型構築子と種">型構築子と種</a></h2>
-<p><code>List</code>は<em>型構築子</em>（type constructor、型コンストラクタ）の一例になっています。<code>List</code>そのものは型ではなく、何らかの型
-<code>a</code>があるとき <code>List a</code>が型になっています。つまり、 <code>List</code>は <em>型引数</em> (type argument) <code>a</code>をとり、新たな型
-<code>List a</code>を <em>構築</em> するのです。</p>
-<p>ちょうど関数適用と同じように、型構築子は他の型に並べることで適用されることに注意してください。型 <code>List Entry</code>は実は型構築子
-<code>List</code>が型 <code>Entry</code>に <em>適用</em> されたものです。これは住所録項目のリストを表しています。</p>
-<p>もし間違って（型注釈演算子 <code>::</code>を使って）型 <code>List</code>の値を定義しようとすると、今まで見たことのない種類のエラーが表示されるでしょう。</p>
+<p>Note that <code>List Entry</code> is not the same as <code>Array Entry</code>, which represents an <em>array</em> of entries.</p>
+<h2 id="type-constructors-and-kinds"><a class="header" href="#type-constructors-and-kinds">Type Constructors and Kinds</a></h2>
+<p><code>List</code> is an example of a <em>type constructor</em>. Values do not have the type <code>List</code> directly, but rather <code>List a</code> for some type <code>a</code>. That is, <code>List</code> takes a <em>type argument</em> <code>a</code> and <em>constructs</em> a new type <code>List a</code>.</p>
+<p>Note that just like function application, type constructors are applied to other types simply by juxtaposition: the type <code>List Entry</code> is in fact the type constructor <code>List</code> <em>applied</em> to the type <code>Entry</code> - it represents a list of entries.</p>
+<p>If we try to incorrectly define a value of type <code>List</code> (by using the type annotation operator <code>::</code>), we will see a new type of error:</p>
 <pre><code class="language-text">&gt; import Data.List
 &gt; Nil :: List
 In a type-annotated expression x :: t, the type t must have kind Type
 </code></pre>
-<p>これは<em>種エラー</em>です。値がその<em>型</em>で区別されるのと同じように、型はその<em>種</em>によって区別されます。間違った型の値が<em>型エラー</em>になるように、<em>間違った種</em>の型は<em>種エラー</em>を引き起こします。</p>
-<p><code>Number</code>や <code>String</code>のような、値を持つ全ての型の種を表す <code>Type</code>と呼ばれる特別な種があります。</p>
-<p>型構築子にも種があります。
-例えば種 <code>Type -&gt; Type</code>はちょうど <code>List</code>のような型から型への関数を表しています。
-ここでエラーが発生したのは、値が種 <code>Type</code>であるような型を持つと期待されていたのに、 <code>List</code>は種 <code>Type -&gt; Type</code>を持っているためです。</p>
-<p>PSCiで型の種を調べるには、 <code>:kind</code>命令を使用します。例えば次のようになります。</p>
+<p>This is a <em>kind error</em>. Just like values are distinguished by their <em>types</em>, types are distinguished by their <em>kinds</em>, and just like ill-typed values result in <em>type errors</em>, <em>ill-kinded</em> types result in <em>kind errors</em>.</p>
+<p>There is a special kind called <code>Type</code> which represents the kind of all types which have values, like <code>Number</code> and <code>String</code>.</p>
+<p>There are also kinds for type constructors. For example, the kind <code>Type -&gt; Type</code> represents a function from types to types, just like <code>List</code>. So the error here occurred because values are expected to have types with kind <code>Type</code>, but <code>List</code> has kind <code>Type -&gt; Type</code>.</p>
+<p>To find out the kind of a type, use the <code>:kind</code> command in PSCi. For example:</p>
 <pre><code class="language-text">&gt; :kind Number
 Type
 
@@ -372,74 +337,58 @@ Type -&gt; Type
 &gt; :kind List String
 Type
 </code></pre>
-<p>PureScriptの <em>種システム</em> は他にも面白い種に対応していますが、それらについては本書の他の部分で見ていくことになるでしょう。</p>
-<h2 id="住所録の項目の表示"><a class="header" href="#住所録の項目の表示">住所録の項目の表示</a></h2>
-<p>それでは最初に、文字列で住所録の項目を表現する関数を書いてみましょう。
-まずは関数に型を与えることから始めます。
-型の定義は省略できますが、ドキュメントとしても役立つので型を書いておくようにすると良いでしょう。
-実際、トップレベルの宣言に型註釈が含まれていないと、PureScriptコンパイラが警告を出します。
-型宣言は関数の名前とその型を <code>::</code>記号で区切るようにして書きます。</p>
+<p>PureScript's <em>kind system</em> supports other interesting kinds, which we will see later in the book.</p>
+<h2 id="displaying-address-book-entries"><a class="header" href="#displaying-address-book-entries">Displaying Address Book Entries</a></h2>
+<p>Let's write our first function, which will render an address book entry as a string. We start by giving the function a type. This is optional, but good practice, since it acts as a form of documentation. In fact, the PureScript compiler will give a warning if a top-level declaration does not contain a type annotation. A type declaration separates the name of a function from its type with the <code>::</code> symbol:</p>
 <pre><code class="language-haskell">showEntry :: Entry -&gt; String
 </code></pre>
-<p><code>showEntry</code>は引数として <code>Entry</code>を取り <code>String</code>を返す関数であるということを、この型シグネチャは言っています。
-<code>showEntry</code>のコードは次の通りです。</p>
+<p>This type signature says that <code>showEntry</code> is a function, which takes an <code>Entry</code> as an argument and returns a <code>String</code>. Here is the code for <code>showEntry</code>:</p>
 <pre><code class="language-haskell">showEntry entry = entry.lastName &lt;&gt; &quot;, &quot; &lt;&gt;
                   entry.firstName &lt;&gt; &quot;: &quot; &lt;&gt;
                   showAddress entry.address
 </code></pre>
-<p>この関数は<code>Entry</code>レコードの3つのフィールドを連結し、単一の文字列にします。
-ここで使用される<code>showAddress</code>関数は<code>address</code>フィールド中のレコードを文字列に変えます。
-<code>showAddress</code>の定義は次の通りです。</p>
+<p>This function concatenates the three fields of the <code>Entry</code> record into a single string, using the <code>showAddress</code> function to turn the record inside the <code>address</code> field into a <code>String</code>. <code>showAddress</code> is defined similarly:</p>
 <pre><code class="language-haskell">showAddress :: Address -&gt; String
 showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
                    addr.city &lt;&gt; &quot;, &quot; &lt;&gt;
                    addr.state
 </code></pre>
-<p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照できます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（<code>&lt;&gt;</code>）を使用します。</p>
-<h2 id="はやめにテストたびたびテスト"><a class="header" href="#はやめにテストたびたびテスト">はやめにテスト、たびたびテスト</a></h2>
-<p>PSCi対話式モードでは反応を即座に得られるので、素早い試作開発に向いています。
-それではこの最初の関数が正しく動作するかをPSCiを使用して確認してみましょう。</p>
-<p>まず、これまでに書いたコードをビルドします。</p>
+<p>A function definition begins with the name of the function, followed by a list of argument names. The result of the function is specified after the equals sign. Fields are accessed with a dot, followed by the field name. In PureScript, string concatenation uses the diamond operator (<code>&lt;&gt;</code>), instead of the plus operator like in JavaScript.</p>
+<h2 id="test-early-test-often"><a class="header" href="#test-early-test-often">Test Early, Test Often</a></h2>
+<p>The PSCi interactive mode allows for rapid prototyping with immediate feedback, so let's use it to verify that our first few functions behave as expected.</p>
+<p>First, build the code you've written:</p>
 <pre><code class="language-text">$ spago build
 </code></pre>
-<p>次に、PSCiを起動し、この新しいモジュールをインポートするために <code>import</code>命令を使います。</p>
+<p>Next, load PSCi, and use the <code>import</code> command to import your new module:</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Data.AddressBook
 </code></pre>
-<p>レコード直値を使うと、住所録の項目を作成できます。レコード直値はJavaScriptの無名オブジェクトと同じような構文で名前に束縛します。</p>
+<p>We can create an entry by using a record literal, which looks just like an anonymous object in JavaScript.</p>
 <pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 </code></pre>
-<p>それでは、この例に関数を適用してみてください。</p>
+<p>Now, try applying our function to the example:</p>
 <pre><code class="language-text">&gt; showAddress address
 
 &quot;123 Fake St., Faketown, CA&quot;
 </code></pre>
-<p><code>showEntry</code>も、住所の例を含む住所録項目レコードを作って試しましょう。</p>
+<p>Let's also test <code>showEntry</code> by creating an address book entry record containing our example address:</p>
 <pre><code class="language-text">&gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
 &gt; showEntry entry
 
 &quot;Smith, John: 123 Fake St., Faketown, CA&quot;
 </code></pre>
-<h2 id="住所録の作成"><a class="header" href="#住所録の作成">住所録の作成</a></h2>
-<p>今度は住所録の操作を支援する関数を幾つか書いてみましょう。
-空の住所録を表す値が必要ですが、これには空のリストを使います。</p>
+<h2 id="creating-address-books"><a class="header" href="#creating-address-books">Creating Address Books</a></h2>
+<p>Now let's write some utility functions for working with address books. We will need a value which represents an empty address book: an empty list.</p>
 <pre><code class="language-haskell">emptyBook :: AddressBook
 emptyBook = empty
 </code></pre>
-<p>既存の住所録に値を挿入する関数も必要でしょう。この関数を <code>insertEntry</code>と呼ぶことにします。関数の型を与えることから始めましょう。</p>
+<p>We will also need a function for inserting a value into an existing address book. We will call this function <code>insertEntry</code>. Start by giving its type:</p>
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 </code></pre>
-<p>この型シグネチャに書かれているのは、最初の引数として <code>Entry</code>、第二引数として <code>AddressBook</code>を取り、新しい
-<code>AddressBook</code>を返すということです。</p>
-<p>既存の <code>AddressBook</code>を直接変更することはしません。
-その代わりに、同じデータが含まれている新しい <code>AddressBook</code>を返すようにします。
-このように、 <code>AddressBook</code>は<em>不変データ構造</em>の一例となっています。
-これはPureScriptにおける重要な考え方です。
-変更はコードの副作用であり、効率の良いコードの挙動を考えるときの妨げになります。
-そのため、可能な限り純粋な関数や不変のデータにする方が好ましいのです。</p>
-<p><code>insertEntry</code>を実装するのに<code>Data.List</code>の<code>Cons</code>関数が使えます。
-この関数の型を見るには、PSCiを起動し <code>:type</code>コマンドを使います。</p>
+<p>This type signature says that <code>insertEntry</code> takes an <code>Entry</code> as its first argument, and an <code>AddressBook</code> as a second argument, and returns a new <code>AddressBook</code>.</p>
+<p>We don't modify the existing <code>AddressBook</code> directly. Instead, we return a new <code>AddressBook</code> which contains the same data. As such, <code>AddressBook</code> is an example of an <em>immutable data structure</em>. This is an important idea in PureScript - mutation is a side-effect of code, and inhibits our ability to reason effectively about its behavior, so we prefer pure functions and immutable data where possible.</p>
+<p>To implement <code>insertEntry</code>, we can use the <code>Cons</code> function from <code>Data.List</code>. To see its type, open PSCi and use the <code>:type</code> command:</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Data.List
@@ -447,79 +396,64 @@ emptyBook = empty
 
 forall a. a -&gt; List a -&gt; List a
 </code></pre>
-<p>この型シグネチャで書かれているのは、<code>Cons</code>が何らかの型<code>a</code>の値と型<code>a</code>を要素に持つリストを引数に取り、同じ型の要素を持つ新しいリストを返すということです。
-<code>a</code>を<code>Entry</code>型として特殊化してみましょう。</p>
+<p>This type signature says that <code>Cons</code> takes a value of some type <code>a</code>, and a list of elements of type <code>a</code>, and returns a new list with entries of the same type. Let's specialize this with <code>a</code> as our <code>Entry</code> type:</p>
 <pre><code class="language-haskell">Entry -&gt; List Entry -&gt; List Entry
 </code></pre>
-<p>しかし、 <code>List Entry</code>はまさに <code>AddressBook</code>ですから、次と同じになります。</p>
+<p>But <code>List Entry</code> is the same as <code>AddressBook</code>, so this is equivalent to</p>
 <pre><code class="language-haskell">Entry -&gt; AddressBook -&gt; AddressBook
 </code></pre>
-<p>今回の場合、既に適切な入力があります。
-<code>Entry</code>と <code>AddressBook</code>に <code>Cons</code>を適用すると、新しい <code>AddressBook</code>を得ることができます。
-これこそがまさに求めていた関数です。</p>
-<p><code>insertEntry</code>の実装は次のようになります。</p>
+<p>In our case, we already have the appropriate inputs: an <code>Entry</code>, and an <code>AddressBook</code>, so can apply <code>Cons</code> and get a new <code>AddressBook</code>, which is exactly what we wanted!</p>
+<p>Here is our implementation of <code>insertEntry</code>:</p>
 <pre><code class="language-haskell">insertEntry entry book = Cons entry book
 </code></pre>
-<p>等号の左側にある2つの引数<code>entry</code>と<code>book</code>がスコープに導入されますから、これらに <code>Cons</code>関数を適用して結果の値を作成しています。</p>
-<h2 id="カリー化された関数"><a class="header" href="#カリー化された関数">カリー化された関数</a></h2>
-<p>PureScriptでは、関数は常に1つの引数だけを取ります。<code>insertEntry</code>関数は2つの引数を取るように見えますが、これは実際には<em>カリー化された関数</em>の一例となっています。</p>
-<p><code>insertEntry</code>の型に含まれる <code>-&gt;</code>は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。</p>
+<p>This brings the two arguments <code>entry</code> and <code>book</code> into scope, on the left hand side of the equals symbol, and then applies the <code>Cons</code> function to create the result.</p>
+<h2 id="curried-functions"><a class="header" href="#curried-functions">Curried Functions</a></h2>
+<p>Functions in PureScript take exactly one argument. While it looks like the <code>insertEntry</code> function takes two arguments, it is in fact an example of a <em>curried function</em>.</p>
+<p>The <code>-&gt;</code> operator in the type of <code>insertEntry</code> associates to the right, which means that the compiler parses the type as</p>
 <pre><code class="language-haskell">Entry -&gt; (AddressBook -&gt; AddressBook)
 </code></pre>
-<p>すなわち、 <code>insertEntry</code>は関数を返す関数である、ということです。
-この関数は単一の引数 <code>Entry</code>を取り、それから単一の引数 <code>AddressBook</code>を取り新しい
-<code>AddressBook</code>を返す新しい関数を返すのです。</p>
-<p>これは例えば、最初の引数だけを与えると <code>insertEntry</code>を <em>部分適用</em> (partial application)
-できることを意味します。PSCiでこの結果の型を見てみましょう。</p>
+<p>That is, <code>insertEntry</code> is a function which returns a function! It takes a single argument, an <code>Entry</code>, and returns a new function, which in turn takes a single <code>AddressBook</code> argument and returns a new <code>AddressBook</code>.</p>
+<p>This means that we can <em>partially apply</em> <code>insertEntry</code> by specifying only its first argument, for example. In PSCi, we can see the result type:</p>
 <pre><code class="language-text">&gt; :type insertEntry entry
 
 AddressBook -&gt; AddressBook
 </code></pre>
-<p>期待した通り、戻り値の型は関数になっていました。
-この結果の関数に2つ目の引数も適用できます。</p>
+<p>As expected, the return type was a function. We can apply the resulting function to a second argument:</p>
 <pre><code class="language-text">&gt; :type (insertEntry entry) emptyBook
 AddressBook
 </code></pre>
-<p>ここで括弧は不要であることにも注意してください。次の式は同等です。</p>
+<p>Note though that the parentheses here are unnecessary - the following is equivalent:</p>
 <pre><code class="language-text">&gt; :type insertEntry entry emptyBook
 AddressBook
 </code></pre>
-<p>これは関数適用が左結合であるためで、なぜ空白で区切った引数を関数に指定するだけでいいのかの説明にもなっています。</p>
-<p>関数の型の<code>-&gt;</code>演算子は関数の<em>型構築子</em>です。
-この演算子は2つの型引数を取ります。
-左右の被演算子はそれぞれ関数の引数の型と返り値の型です。</p>
-<p>本書では今後、「2引数の関数」というように表現することがあることに注意してください。
-しかしそれはカリー化された関数を意味していると考えるべきで、その関数は最初の引数を取り2つ目の引数を取る別の関数を返すのです。</p>
-<p>今度は <code>insertEntry</code>の定義について考えてみます。</p>
+<p>This is because function application associates to the left, and this explains why we can just specify function arguments one after the other, separated by whitespace.</p>
+<p>The <code>-&gt;</code> operator in function types is a <em>type constructor</em> for functions. It takes two type arguments, the function's argument type and the return type. The left and right operands respectively.</p>
+<p>Note that in the rest of the book, I will talk about things like &quot;functions of two arguments&quot;. However, it is to be understood that this means a curried function, taking a first argument and returning a function that takes the second.</p>
+<p>Now consider the definition of <code>insertEntry</code>:</p>
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 insertEntry entry book = Cons entry book
 </code></pre>
-<p>もし式の右辺に明示的に括弧をつけるなら、 <code>(Cons entry) book</code>となります。
-<code>insertEntry entry</code>はその引数が単に関数 <code>(Cons entry)</code>に渡されるような関数だということです。
-でもこの2つの関数はどんな入力についても同じ結果を返しますから、つまりこれらは同じ関数です。
-よって、両辺から引数 <code>book</code>を削除できます。</p>
+<p>If we explicitly parenthesize the right-hand side, we get <code>(Cons entry) book</code>. That is, <code>insertEntry entry</code> is a function whose argument is just passed along to the <code>(Cons entry)</code> function. But if two functions have the same result for every input, then they are the same function! So we can remove the argument <code>book</code> from both sides:</p>
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 insertEntry entry = Cons entry
 </code></pre>
-<p>しかし今や同様の議論により、両辺から <code>entry</code>も削除できます。</p>
+<p>But now, by the same argument, we can remove <code>entry</code> from both sides:</p>
 <pre><code class="language-haskell">insertEntry :: Entry -&gt; AddressBook -&gt; AddressBook
 insertEntry = Cons
 </code></pre>
-<p>この処理は <em>イータ変換</em> (eta conversion) と呼ばれ、（その他の技法を併用して）引数を参照することなく関数を定義する
-<em>ポイントフリー形式</em> (point-free form) へと関数を書き換えるのに使うことができます。</p>
-<p><code>insertEntry</code>の場合には、イータ変換によって「<code>insertEntry</code>は単にリストに対するconsだ」となり、関数の定義はとても明確になりました。しかし、一般的にポイントフリー形式のほうがいいのかどうかには議論の余地があります。</p>
-<h2 id="プロパティ取得子"><a class="header" href="#プロパティ取得子">プロパティ取得子</a></h2>
-<p>よくあるパターンの1つとして、レコード中の個別のフィールド（または「プロパティ」）を取得することがあります。
-<code>Entry</code>から<code>Address</code>を取り出すインライン関数は次のように書けます。</p>
+<p>This process is called <em>eta conversion</em>, and can be used (along with some other techniques) to rewrite functions in <em>point-free form</em>, which means functions defined without reference to their arguments.</p>
+<p>In the case of <code>insertEntry</code>, <em>eta conversion</em> has resulted in a very clear definition of our function - &quot;<code>insertEntry</code> is just cons on lists&quot;. However, it is arguable whether point-free form is better in general.</p>
+<h2 id="property-accessors"><a class="header" href="#property-accessors">Property Accessors</a></h2>
+<p>One common pattern is to use a function to access individual fields (or &quot;properties&quot;) of a record. An inline function to extract an <code>Address</code> from an <code>Entry</code> could be written as:</p>
 <pre><code class="language-haskell">\entry -&gt; entry.address
 </code></pre>
-<p>PureScriptでは<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#property-accessors"><em>プロパティ取得子</em></a>という略記が使えます。この略記では下線文字は無名関数の引数として振舞うため、上記のインライン関数は次と等価です。</p>
+<p>PureScript also allows <a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#property-accessors"><em>property accessor</em></a> shorthand, where an underscore acts as the anonymous function argument, so the inline function above is equivalent to:</p>
 <pre><code class="language-haskell">_.address
 </code></pre>
-<p>これは何段階のプロパティでも動くため、<code>Entry</code>に関連する街を取り出す関数は次のように書けます。</p>
+<p>This works with any number of levels or properties, so a function to extract the city associated with an <code>Entry</code> could be written as:</p>
 <pre><code class="language-haskell">_.address.city
 </code></pre>
-<p>以下は一例です。</p>
+<p>For example:</p>
 <pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
 &gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
 &gt; _.lastName entry
@@ -528,12 +462,10 @@ insertEntry = Cons
 &gt; _.address.city entry
 &quot;Faketown&quot;
 </code></pre>
-<h2 id="住所録に問い合わせる"><a class="header" href="#住所録に問い合わせる">住所録に問い合わせる</a></h2>
-<p>最小限の住所録アプリケーションの実装で必要になる最後の関数は、名前で人を検索し適切な
-<code>Entry</code>を返すものです。これは小さな関数を組み合わせることでプログラムを構築するという、関数型プログラミングで鍵となる考え方のよい応用例になるでしょう。</p>
-<p>まずは住所録を絞り込み、該当する姓名を持つ項目だけを保持するようにするのがいいでしょう。それから、結果のリストの先頭の (head)
-要素を返すだけです。</p>
-<p>この大まかな仕様に従って、この関数の型を計算できます。まずPSCiを起動し、 <code>filter</code>関数と <code>head</code>関数の型を見てみましょう。</p>
+<h2 id="querying-the-address-book"><a class="header" href="#querying-the-address-book">Querying the Address Book</a></h2>
+<p>The last function we need to implement for our minimal address book application will look up a person by name and return the correct <code>Entry</code>. This will be a nice application of building programs by composing small functions - a key idea from functional programming.</p>
+<p>We can first filter the address book, keeping only those entries with the correct first and last names. Then we can simply return the head (i.e. first) element of the resulting list.</p>
+<p>With this high-level specification of our approach, we can calculate the type of our function. First open PSCi, and find the types of the <code>filter</code> and <code>head</code> functions:</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Data.List
@@ -545,124 +477,93 @@ forall a. (a -&gt; Boolean) -&gt; List a -&gt; List a
 
 forall a. List a -&gt; Maybe a
 </code></pre>
-<p>型の意味を理解するために、これらの2つの型の一部を取り出してみましょう。</p>
-<p><code>filter</code>はカリー化された2引数の関数です。
-最初の引数は、リストの要素を取り <code>Boolean</code>値を結果として返す関数です。
-第2引数は要素のリストで、返り値は別のリストです。</p>
-<p><code>head</code>は引数としてリストを取り、 <code>Maybe a</code>という今まで見たことがないような型を返します。
-<code>Maybe a</code>は型 <code>a</code>のオプショナルな値、つまり
-<code>a</code>の値を持つか持たないかのどちらかの値を示しており、JavaScriptのような言語で値がないことを示すために使われる
-<code>null</code>の型安全な代替手段を提供します。
-これについては後の章で詳しく扱います。</p>
-<p><code>filter</code>と <code>head</code>の全称量化された型は、PureScriptコンパイラによって次のように <em>特殊化</em> (specialized)
-されます。</p>
+<p>Let's pick apart these two types to understand their meaning.</p>
+<p><code>filter</code> is a curried function of two arguments. Its first argument is a function, which takes an element of the list and returns a <code>Boolean</code> value as a result. Its second argument is a list of elements, and the return value is another list.</p>
+<p><code>head</code> takes a list as its argument, and returns a type we haven't seen before: <code>Maybe a</code>. <code>Maybe a</code> represents an optional value of type <code>a</code>, and provides a type-safe alternative to using <code>null</code> to indicate a missing value in languages like JavaScript. We will see it again in more detail in later chapters.</p>
+<p>The universally quantified types of <code>filter</code> and <code>head</code> can be <em>specialized</em> by the PureScript compiler, to the following types:</p>
 <pre><code class="language-haskell">filter :: (Entry -&gt; Boolean) -&gt; AddressBook -&gt; AddressBook
 
 head :: AddressBook -&gt; Maybe Entry
 </code></pre>
-<p>検索する関数の引数として姓と名前を渡す必要があるのもわかっています。</p>
-<p><code>filter</code>に渡す関数も必要になることもわかります。この関数を <code>filterEntry</code>と呼ぶことにしましょう。 <code>filterEntry</code>は <code>Entry -&gt; Boolean</code>という型を持っています。 <code>filter filterEntry</code>という関数適用の式は、 <code>AddressBook -&gt; AddressBook</code>という型を持つでしょう。もしこの関数の結果を <code>head</code>関数に渡すと、型 <code>Maybe Entry</code>の結果を得ることになります。</p>
-<p>これまでのことを纏めると、関数の妥当な型シグネチャは次のようになります。<code>findEntry</code>と呼ぶことにしましょう。</p>
+<p>We know that we will need to pass the first and last names that we want to search for, as arguments to our function.</p>
+<p>We also know that we will need a function to pass to <code>filter</code>. Let's call this function <code>filterEntry</code>. <code>filterEntry</code> will have type <code>Entry -&gt; Boolean</code>. The application <code>filter filterEntry</code> will then have type <code>AddressBook -&gt; AddressBook</code>. If we pass the result of this function to the <code>head</code> function, we get our result of type <code>Maybe Entry</code>.</p>
+<p>Putting these facts together, a reasonable type signature for our function, which we will call <code>findEntry</code>, is:</p>
 <pre><code class="language-haskell">findEntry :: String -&gt; String -&gt; AddressBook -&gt; Maybe Entry
 </code></pre>
-<p>この型シグネチャで書かれているのは、<code>findEntry</code>が姓と名前の2つの文字列及び<code>AddressBook</code>を引数に取り、<code>Entry</code>のオプション型の値を結果として返すということです。
-オプショナルな結果は名前が住所録で発見された場合にのみ値を持ちます。</p>
-<p>そして、 <code>findEntry</code>の定義は次のようになります。</p>
+<p>This type signature says that <code>findEntry</code> takes two strings, the first and last names, and a <code>AddressBook</code>, and returns an optional <code>Entry</code>. The optional result will contain a value only if the name is found in the address book.</p>
+<p>And here is the definition of <code>findEntry</code>:</p>
 <pre><code class="language-haskell">findEntry firstName lastName book = head (filter filterEntry book)
   where
     filterEntry :: Entry -&gt; Boolean
     filterEntry entry = entry.firstName == firstName &amp;&amp; entry.lastName == lastName
 </code></pre>
-<p>一歩ずつこのコードを調べてみましょう。</p>
-<p><code>findEntry</code>は、どちらも文字列型である <code>firstName</code>と <code>lastName</code>、<code>AddressBook</code>型の
-<code>book</code>という3つの名前をスコープに導入します。</p>
-<p>定義の右辺では <code>filter</code>関数と <code>head</code>関数が組み合わされています。
-まず項目のリストを絞り込み、その結果に <code>head</code>関数を適用しています。</p>
-<p>真偽型を返す関数 <code>filterEntry</code>は <code>where</code>節の内部で補助的な関数として定義されています。
-このため、 <code>filterEntry</code>関数はこの定義の内部では使用できますが、外部では使用できません。
-また、<code>filterEntry</code>はそれを包む関数の引数に依存でき、 <code>filterEntry</code>は指定された <code>Entry</code>を絞り込むために引数
-<code>firstName</code>と <code>lastName</code>を使用しているので、 <code>filterEntry</code>が
-<code>findEntry</code>の内部にあることは必須になっています。</p>
-<p>最上位での宣言と同じように、必ずしも
-<code>filterEntry</code>の型シグネチャを指定しなくてもよいことに注意してください。ただし、ドキュメントとしても役に立つので型シグネチャを書くことは推奨されています。</p>
-<h2 id="中置の関数適用"><a class="header" href="#中置の関数適用">中置の関数適用</a></h2>
-<p>これまでお話しした関数のほとんどは <em>前置</em> 関数適用でした。関数名が引数の <em>前</em>
-に置かれていたということです。例えば<code>insertEntry</code>関数を使って<code>Entry</code> (<code>john</code>)
-を空の<code>AddressBook</code>に追加する場合、以下のように書けます。</p>
+<p>Let's go over this code step by step.</p>
+<p><code>findEntry</code> brings three names into scope: <code>firstName</code> and <code>lastName</code>, both representing strings, and <code>book</code>, an <code>AddressBook</code>.</p>
+<p>The right hand side of the definition combines the <code>filter</code> and <code>head</code> functions: first, the list of entries is filtered, and the <code>head</code> function is applied to the result.</p>
+<p>The predicate function <code>filterEntry</code> is defined as an auxiliary declaration inside a <code>where</code> clause. This way, the <code>filterEntry</code> function is available inside the definition of our function, but not outside it. Also, it can depend on the arguments to the enclosing function, which is essential here because <code>filterEntry</code> uses the <code>firstName</code> and <code>lastName</code> arguments to filter the specified <code>Entry</code>.</p>
+<p>Note that, just like for top-level declarations, it was not necessary to specify a type signature for <code>filterEntry</code>. However, doing so is recommended as a form of documentation.</p>
+<h2 id="infix-function-application"><a class="header" href="#infix-function-application">Infix Function Application</a></h2>
+<p>Most of the functions discussed so far used <em>prefix</em> function application, where the function name was put <em>before</em> the arguments. For example, when using the <code>insertEntry</code> function to add an <code>Entry</code> (<code>john</code>) to an empty <code>AddressBook</code>, we might write:</p>
 <pre><code class="language-haskell">&gt; book1 = insertEntry john emptyBook
 </code></pre>
-<p>しかしこの章には <em>中置</em>
-<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators">2引数演算子</a>の例も含まれています。例えば<code>filterEntry</code>の定義中の<code>==</code>演算子で、演算子が2つの引数の
-<em>間</em> に置かれています。実はこうした中置演算子はPureScriptのソースコードで、背後にある <em>前置</em>
-版の実装への中置別称として定義されています。例えば<code>==</code>は以下の行により前置の<code>eq</code>関数の中置別称として定義されています。</p>
+<p>However, this chapter has also included examples of <em>infix</em> <a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators">binary operators</a>, such as  the <code>==</code> operator in the definition of <code>filterEntry</code>, where the operator is put <em>between</em> the two arguments. These infix operators are actually defined in the PureScript source as infix aliases for their underlying <em>prefix</em> implementations. For example, <code>==</code> is defined as an infix alias for the prefix <code>eq</code> function with the line:</p>
 <pre><code class="language-haskell">infix 4 eq as ==
 </code></pre>
-<p>したがって<code>filterEntry</code>中の<code>entry.firstName == firstName</code>は<code>eq entry.firstName firstName</code>で置き換えられます。この節の後のほうで中置演算子を定義する例にもう少し触れます。</p>
-<p>前置関数を演算子としての中置の位置に置くとより読みやすいコードになる場面があります。
-その一例が<code>mod</code>関数です。</p>
+<p>and therefore <code>entry.firstName == firstName</code> in <code>filterEntry</code> could be replaced with the <code>eq entry.firstName firstName</code>. We'll cover a few more examples of defining infix operators later in this section.</p>
+<p>There are situations where putting a prefix function in an infix position as an operator leads to more readable code. One example is the <code>mod</code> function:</p>
 <pre><code class="language-text">&gt; mod 8 3
 2
 </code></pre>
-<p>上の用例は正しく動きますが、読みづらいです。
-より馴染みのある表現の仕方は「8 mod 3」ですが、バックスラッシュ (`) の中に前置関数を包めばこのように書けます。</p>
+<p>The above usage works fine, but is awkward to read. A more familiar phrasing is &quot;eight mod three&quot;, which you can achieve by wrapping a prefix function in backticks (`):</p>
 <pre><code class="language-text">&gt; 8 `mod` 3
 2
 </code></pre>
-<p>同様に、<code>insertEntry</code>をバックスラッシュで包むと中置演算子に変わります。
-例えば以下の<code>book1</code>と<code>book2</code>は等価です。</p>
+<p>In the same way, wrapping <code>insertEntry</code> in backticks turns it into an infix operator, such that <code>book1</code> and <code>book2</code> below are equivalent:</p>
 <pre><code class="language-haskell">book1 = insertEntry john emptyBook
 book2 = john `insertEntry` emptyBook
 </code></pre>
-<p>複数回<code>insertEntry</code>を適用することで複数の項目がある<code>AddressBook</code>を作ることができますが、以下のように前置関数
-(<code>book3</code>) として適用するか中置演算子 (<code>book4</code>) として適用するかの2択があります。</p>
+<p>We can make an <code>AddressBook</code> with multiple entries by using multiple applications of <code>insertEntry</code> as a prefix function (<code>book3</code>) or as an infix operator (<code>book4</code>) as shown below:</p>
 <pre><code class="language-haskell">book3 = insertEntry john (insertEntry peggy (insertEntry ned emptyBook))
 book4 = john `insertEntry` (peggy `insertEntry` (ned `insertEntry` emptyBook))
 </code></pre>
-<p><code>insertEntry</code>には中置演算子別称（または同義語）も定義できます。
-この演算子の名前に適当に<code>++</code>を選び、<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#precedence">優先度</a>を<code>5</code>にし、そして<code>infixr</code>を使って右<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#associativity">結合</a>とします。</p>
+<p>We can also define an infix operator alias (or synonym) for <code>insertEntry.</code> We'll arbitrarily choose <code>++</code> for this operator, give it a <a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#precedence">precedence</a> of <code>5</code>, and make it right <a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#associativity">associative</a> using <code>infixr</code>:</p>
 <pre><code class="language-haskell">infixr 5 insertEntry as ++
 </code></pre>
-<p>この新しい演算子で上の<code>book4</code>の例を次のように書き直せます。</p>
+<p>This new operator lets us rewrite the above <code>book4</code> example as:</p>
 <pre><code class="language-haskell">book5 = john ++ (peggy ++ (ned ++ emptyBook))
 </code></pre>
-<p>そして新しい<code>++</code>演算子が右結合なので意味を変えずに括弧を除去できます。</p>
+<p>and the right associativity of our new <code>++</code> operator lets us get rid of the parentheses without changing the meaning:</p>
 <pre><code class="language-haskell">book6 = john ++ peggy ++ ned ++ emptyBook
 </code></pre>
-<p>括弧を消去する他のよくある技法は、いつもの前置関数と一緒に<code>apply</code>の中置演算子<code>$</code>を使うというものです。</p>
-<p>例えば前の<code>book3</code>の例は以下のように書き直せます。</p>
+<p>Another common technique for eliminating parens is to use <code>apply</code>'s infix operator <code>$</code>, along with your standard prefix functions.</p>
+<p>For example, the earlier <code>book3</code> example could be rewritten as:</p>
 <pre><code class="language-haskell">book7 = insertEntry john $ insertEntry peggy $ insertEntry ned emptyBook
 </code></pre>
-<p>括弧を<code>$</code>で置き換えるのは大抵入力しやすくなりますし（議論の余地がありますが）読みやすくなります。
-この記号の意味を覚えるための記憶術として、ドル記号を2つの括弧に打ち消し線が引かれたものと見ることで、これで括弧が不必要になったのだと推測できるという方法があります。</p>
-<p>なお、<code>($)</code>は言語にハードコードされた特別な構文ではありません。
-単に<code>apply</code>という名前の通常の関数のための中置演算子であって、<code>Data.Function</code>で以下のように定義されています。</p>
+<p>Substituting <code>$</code> for parens is usually easier to type and (arguably) easier to read. A mnemonic to remember the meaning of this symbol is to think of the dollar sign as being drawn from two parens that are also being crossed-out, suggesting the parens are now unnecessary.</p>
+<p>Note that <code>$</code> isn't special syntax that's hardcoded into the language. It's simply the infix operator for a regular function called <code>apply</code>, which is defined in <code>Data.Function</code> as follows:</p>
 <pre><code class="language-haskell">apply :: forall a b. (a -&gt; b) -&gt; a -&gt; b
 apply f x = f x
 
 infixr 0 apply as $
 </code></pre>
-<p><code>apply</code>関数は、他の関数（型は<code>(a -&gt; b)</code>）を最初の引数に、値（型は<code>a</code>）を2つ目の引数に取って、その値に対して関数を呼びます。
-この関数が何ら意味のあることをしていないようだと思ったら、全くもって正しいです。
-この関数がなくてもプログラムは論理的に同一です（<a href="https://en.wikipedia.org/wiki/Referential_transparency">参照透過性</a>も見てください）。
-この関数の構文的な利便性はその中置演算子に割り当てられた特別な性質からきています。
-<code>$</code>は右結合 (<code>infixr</code>) で低い優先度 (<code>0</code>) の演算子ですが、これにより深い入れ子になった適用から括弧の束を削除できるのです。</p>
-<p>さらなる<code>$</code>演算子を使った括弧退治のチャンスは以前の<code>findEntry</code>関数にあります。</p>
+<p>The <code>apply</code> function takes another function (of type <code>(a -&gt; b)</code>) as its first argument and a value (of type <code>a</code>) as its second argument, then calls that function with that value. If it seems like this function doesn't contribute anything meaningful, you are absolutely correct! Your program is logically identical without it (see <a href="https://en.wikipedia.org/wiki/Referential_transparency">referential transparency</a>). The syntactic utility of this function comes from the special properties assigned to its infix operator. <code>$</code> is a right-associative (<code>infixr</code>), low precedence (<code>0</code>) operator, which lets us remove sets of parentheses for deeply-nested applications.</p>
+<p>Another parens-busting opportunity for the <code>$</code> operator is in our earlier <code>findEntry</code> function:</p>
 <pre><code class="language-haskell">findEntry firstName lastName book = head $ filter filterEntry book
 </code></pre>
-<p>この行をより簡潔に書き換える方法を次節の「関数合成」で見ていきます。</p>
-<p>名前の短い中置演算子を前置関数として使いたければ括弧で囲むことができます。</p>
+<p>We'll see an even more elegant way to rewrite this line with &quot;function composition&quot; in the next section.</p>
+<p>If you'd like to use a concise infix operator alias as a prefix function, you can surround it in parentheses:</p>
 <pre><code class="language-text">&gt; 8 + 3
 11
 
 &gt; (+) 8 3
 11
 </code></pre>
-<p>その代わりの手段として演算子は部分適用でき、これには式を括弧で囲んで<a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#operator-sections">演算子節</a>中の引数として<code>_</code>を使います。これは簡単な無名関数を作るより便利な方法として考えることができます（以下の例ではそこから無名関数を名前に束縛しているので、もはや別に無名とも言えなくなっていますが）。</p>
+<p>Alternatively, operators can be partially applied by surrounding the expression with parentheses and using <code>_</code> as an operand in an <a href="https://github.com/purescript/documentation/blob/master/language/Syntax.md#operator-sections">operator section</a>. You can think of this as a more convenient way to create simple anonymous functions (although in the below example, we're then binding that anonymous function to a name, so it's not so anonymous anymore):</p>
 <pre><code class="language-text">&gt; add3 = (3 + _)
 &gt; add3 2
 5
 </code></pre>
-<p>纏めると、以下は引数に<code>5</code>を加える関数の等価な定義です。</p>
+<p>To summarize, the following are equivalent definitions of a function that adds <code>5</code> to its argument:</p>
 <pre><code class="language-haskell">add5 x = 5 + x
 add5 x = add 5 x
 add5 x = (+) 5 x
@@ -670,59 +571,45 @@ add5 x = 5 `add` x
 add5   = add 5
 add5   = \x -&gt; 5 + x
 add5   = (5 + _)
-add5 x = 5 `(+)` x  -- よおポチ、中置に目がないっていうから、中置の中に中置を入れといたぜ
+add5 x = 5 `(+)` x  -- Yo Dawg, I herd you like infix, so we put infix in your infix!
 </code></pre>
-<h2 id="関数合成"><a class="header" href="#関数合成">関数合成</a></h2>
-<p>イータ変換を使うと <code>insertEntry</code>関数を簡略化できたのと同じように、引数をよく考察すると <code>findEntry</code>の定義を簡略化できます。</p>
-<p>なお、引数 <code>book</code>は関数 <code>filter filterEntry</code>に渡され、この適用の結果が <code>head</code>に渡されます。これは言いかたを変えれば、
-<code>filter filterEntry</code>と <code>head</code>の <em>合成</em> (composition) に <code>book</code>が渡されるということです。</p>
-<p>PureScriptの関数合成演算子は <code>&lt;&lt;&lt;</code>と <code>&gt;&gt;&gt;</code>です。前者は「逆方向の合成」であり、後者は「順方向の合成」です。</p>
-<p>何れかの演算子を使用して <code>findEntry</code>の右辺を書き換えることができます。
-逆順の合成を使用すると、右辺は次のようになります。</p>
+<h2 id="function-composition"><a class="header" href="#function-composition">Function Composition</a></h2>
+<p>Just like we were able to simplify the <code>insertEntry</code> function by using eta conversion, we can simplify the definition of <code>findEntry</code> by reasoning about its arguments.</p>
+<p>Note that the <code>book</code> argument is passed to the <code>filter filterEntry</code> function, and the result of this application is passed to <code>head</code>. In other words, <code>book</code> is passed to the <em>composition</em> of the functions <code>filter filterEntry</code> and <code>head</code>.</p>
+<p>In PureScript, the function composition operators are <code>&lt;&lt;&lt;</code> and <code>&gt;&gt;&gt;</code>. The first is &quot;backwards composition&quot;, and the second is &quot;forwards composition&quot;.</p>
+<p>We can rewrite the right-hand side of <code>findEntry</code> using either operator. Using backwards-composition, the right-hand side would be</p>
 <pre><code class="language-haskell">(head &lt;&lt;&lt; filter filterEntry) book
 </code></pre>
-<p>この形式なら最初の定義にイータ変換の技を適用でき、 <code>findEntry</code>は最終的に次のような形式に到達します。</p>
+<p>In this form, we can apply the eta conversion trick from earlier, to arrive at the final form of <code>findEntry</code>:</p>
 <pre><code class="language-haskell">findEntry firstName lastName = head &lt;&lt;&lt; filter filterEntry
   where
     ...
 </code></pre>
-<p>右辺を次のようにしても同じく妥当です。</p>
+<p>An equally valid right-hand side would be:</p>
 <pre><code class="language-haskell">filter filterEntry &gt;&gt;&gt; head
 </code></pre>
-<p>どちらにしても、これは「<code>findEntry</code>は絞り込み関数と<code>head</code>関数の合成である」という
-<code>findEntry</code>関数のわかりやすい定義を与えます。</p>
-<p>どちらの定義のほうがわかりやすいかの判断はお任せしますが、このように関数を部品として捉えると有用なことがよくあります。関数は1つの役目だけをこなし、機能を関数合成で組み立てるというように。</p>
-<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<p>Either way, this gives a clear definition of the <code>findEntry</code> function: &quot;<code>findEntry</code> is the composition of a filtering function and the <code>head</code> function&quot;.</p>
+<p>I will let you make your own decision which definition is easier to understand, but it is often useful to think of functions as building blocks in this way - each function executing a single task, and solutions assembled using function composition.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ol>
-<li>（簡単）<code>findEntry</code>関数の定義の主な部分式の型を書き下し、 <code>findEntry</code>関数についてよく理解しているか試してみましょう。
-例えば<code>findEntry</code>の定義の中にある <code>head</code>関数の型は <code>AddressBook -&gt; Maybe Entry</code>と特殊化されています。
-<em>補足</em>：この問題にはテストがありません。</li>
-<li>（普通）関数<code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code>を書いてください。
-この関数は与えられた通りの住所から<code>Entry</code>を見付け出します。
-<em>手掛かり</em>：<code>findEntry</code>にある既存のコードを再利用してください。
-実装した関数をPSCiと<code>spago test</code>を走らせてテストしてください。</li>
-<li>（普通）<code>filterEntry</code>を（<code>&lt;&lt;&lt;</code>や<code>&gt;&gt;&gt;</code>を使った）合成で置き換えて、<code>findEntryByStreet</code>を書き直してください。
-合成の対象は、プロパティ取得子（<code>_.</code>記法を使います）と、与えられた文字列引数が与えられた通りの住所に等しいかを判定する関数です。</li>
-<li>（普通）指定された名前が <code>AddressBook</code>に存在するかどうかを調べて真偽値で返す関数<code>isInBook</code>を書いてみましょう。
-<em>手掛かり</em>：リストが空かどうかを調べる <code>Data.List.null</code>関数の型をPSCiで調べてみてみましょう。</li>
-<li>（難しい）「重複」している項目を住所録から削除する関数 <code>removeDuplicates</code>を書いてみましょう。
-項目が同じ姓名を共有していれば<code>address</code>フィールドに関係なく、項目が重複していると考えます。
-<em>手掛かり</em>：関数 <code>Data.List.nubBy</code>の型を、PSCiを使用して調べてみましょう。
-この関数は値同士の等価性を定義する述語関数に基づいてリストから重複要素を削除します。
-なお、それぞれの重複する項目の集合における最初の要素（リストの先頭に最も近い）が保持する項目です。</li>
+<li>(Easy) Test your understanding of the <code>findEntry</code> function by writing down the types of each of its major subexpressions. For example, the type of the <code>head</code> function as used is specialized to <code>AddressBook -&gt; Maybe Entry</code>. <em>Note</em>: There is no test for this exercise.</li>
+<li>(Medium) Write a function <code>findEntryByStreet :: String -&gt; AddressBook -&gt; Maybe Entry</code> which looks up an <code>Entry</code> given a street address. <em>Hint</em> reusing the existing code in <code>findEntry</code>. Test your function in PSCi and by running <code>spago test</code>.</li>
+<li>(Medium) Rewrite <code>findEntryByStreet</code> to replace <code>filterEntry</code> with the composition (using <code>&lt;&lt;&lt;</code> or <code>&gt;&gt;&gt;</code>) of: a property accessor (using the <code>_.</code> notation); and a function that tests whether its given string argument is equal to the given street address.</li>
+<li>(Medium) Write a function <code>isInBook</code> which tests whether a name appears in a <code>AddressBook</code>, returning a Boolean value. <em>Hint</em>: Use PSCi to find the type of the <code>Data.List.null</code> function, which tests whether a list is empty or not.</li>
+<li>(Difficult) Write a function <code>removeDuplicates</code> which removes &quot;duplicate&quot; address book entries. We'll consider entries duplicated if they share the same first and last names, while ignoring <code>address</code> fields. <em>Hint</em>: Use PSCi to find the type of the <code>Data.List.nubByEq</code> function, which removes duplicate elements from a list based on an equality predicate. Note that the first element in each set of duplicates (closest to list head) is the one that is kept.</li>
 </ol>
-<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、関数型プログラミングの新しい概念を幾つも導入しました。</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>In this chapter, we covered several new functional programming concepts:</p>
 <ul>
-<li>対話的モードのPSCiを使用して、関数を調べるなどの思いついたことを試す方法</li>
-<li>検証や実装の道具としての型の役割</li>
-<li>多引数関数を表現する、カリー化された関数の使用</li>
-<li>関数合成で小さな部品を組み合わせてのプログラムの構築</li>
-<li><code>where</code>節を利用したコードの構造化</li>
-<li><code>Maybe</code>型を使用してnull値を回避する方法</li>
-<li>イータ変換や関数合成のような手法を利用した、よりわかりやすいコードへの再構成</li>
+<li>How to use the interactive mode PSCi to experiment with functions and test ideas.</li>
+<li>The role of types as both a correctness tool, and an implementation tool.</li>
+<li>The use of curried functions to represent functions of multiple arguments.</li>
+<li>Creating programs from smaller components by composition.</li>
+<li>Structuring code neatly using <code>where</code> expressions.</li>
+<li>How to avoid null values by using the <code>Maybe</code> type.</li>
+<li>Using techniques like eta conversion and function composition to refactor code into a clear specification.</li>
 </ul>
-<p>次の章からは、これらの考えかたに基づいて進めていきます。</p>
+<p>In the following chapters, we'll build on these ideas.</p>
 
                     </main>
 

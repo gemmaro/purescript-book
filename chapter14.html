@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>領域特化言語 - 実例によるPureScript</title>
+        <title>Domain-Specific Languages - PureScript by Example</title>
 
 
         <!-- Custom HTML head -->
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -85,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html" class="active"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html" class="active"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +112,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">実例によるPureScript</h1>
+                    <h1 class="menu-title">PureScript by Example</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -149,28 +147,21 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="領域特化言語"><a class="header" href="#領域特化言語">領域特化言語</a></h1>
-<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では多数の標準的な手法を使い、PureScriptにおける<em>領域特化言語</em>（または<em>DSL</em>）の実装について探求していきます。</p>
-<p>領域特化言語とは、特定の問題領域での開発に適した言語のことです。
-領域特化言語の構文及び機能は、その領域内の考え方を表現するコードの読みやすさを最大限に発揮すべく選択されます。
-本書の中では、既に領域特化言語の例を幾つか見てきています。</p>
+                        <h1 id="domain-specific-languages"><a class="header" href="#domain-specific-languages">Domain-Specific Languages</a></h1>
+<h2 id="chapter-goals"><a class="header" href="#chapter-goals">Chapter Goals</a></h2>
+<p>In this chapter, we will explore the implementation of <em>domain-specific languages</em> (or <em>DSLs</em>) in PureScript, using a number of standard techniques.</p>
+<p>A domain-specific language is a language which is well-suited to development in a particular problem domain. Its syntax and functions are chosen to maximize readability of code used to express ideas in that domain. We have already seen a number of examples of domain-specific languages in this book:</p>
 <ul>
-<li>第11章で開発された <code>Game</code>モナドと関連するアクションは、 <em>テキストアドベンチャーゲーム開発</em>
-という領域に対しての領域特化言語を構成しています。</li>
-<li>第13章で扱った <code>quickcheck</code>パッケージは、 <em>生成的テスティング</em>
-の領域の領域特化言語です。このコンビネータはテストの性質に対して特に表現力の高い記法を可能にします。</li>
+<li>The <code>Game</code> monad and its associated actions, developed in chapter 11, constitute a domain-specific language for the domain of <em>text adventure game development</em>.</li>
+<li>The <code>quickcheck</code> package, covered in chapter 13, is a domain-specific language for the domain of <em>generative testing</em>. Its combinators enable a particularly expressive notation for test properties.</li>
 </ul>
-<p>この章では、領域特化言語の実装において、幾つかの標準的な技法による構造的な手法に迫ります。
-これがこの話題の完全な説明だということでは決してありませんが、自分の目的に合う具体的なDSLを構築するのには充分な知識をもたらすことでしょう。</p>
-<p>この章で実行している例は、HTML文書を作成するための領域特化言語です。
-正しいHTML文書を記述するための型安全な言語を開発することが目的で、素朴な実装を徐々に改善しつつ進めていきます。</p>
-<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
-<p>この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使う道具の1つである<em>Freeモナド</em>が定義されている <code>free</code>ライブラリです。</p>
-<p>このプロジェクトをPSCiを使って試していきます。</p>
-<h2 id="htmlデータ型"><a class="header" href="#htmlデータ型">HTMLデータ型</a></h2>
-<p>このHTMLライブラリの最も基本的なバージョンは
-<code>Data.DOM.Simple</code>モジュールで定義されています。このモジュールには次の型定義が含まれています。</p>
+<p>This chapter will take a more structured approach to some of standard techniques in the implementation of domain-specific languages. It is by no means a complete exposition of the subject, but should provide you with enough knowledge to build some practical DSLs for your own tasks.</p>
+<p>Our running example will be a domain-specific language for creating HTML documents. Our aim will be to develop a type-safe language for describing correct HTML documents, and we will work by improving a naive implementation in small steps.</p>
+<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
+<p>The project accompanying this chapter adds one new dependency - the <code>free</code> library, which defines the <em>free monad</em>, one of the tools which we will be using.</p>
+<p>We will test this chapter's project in PSCi.</p>
+<h2 id="a-html-data-type"><a class="header" href="#a-html-data-type">A HTML Data Type</a></h2>
+<p>The most basic version of our HTML library is defined in the <code>Data.DOM.Simple</code> module. The module contains the following type definitions:</p>
 <pre><code class="language-haskell">newtype Element = Element
   { name         :: String
   , attribs      :: Array Attribute
@@ -186,14 +177,11 @@ newtype Attribute = Attribute
   , value        :: String
   }
 </code></pre>
-<p><code>Element</code>型はHTMLの要素を表しています。
-各要素は要素名、属性の対の配列と、要素の内容で構成されています。
-contentプロパティは、<code>Maybe</code>タイプを適切に使って、要素が開いている（他の要素やテキストを含む）か閉じているかを示しています。</p>
-<p>このライブラリの鍵となる機能は次の関数です。</p>
+<p>The <code>Element</code> type represents HTML elements. Each element consists of an element name, an array of attribute pairs and some content. The content property uses the <code>Maybe</code> type to indicate that an element might be open (containing other elements and text) or closed.</p>
+<p>The key function of our library is a function</p>
 <pre><code class="language-haskell">render :: Element -&gt; String
 </code></pre>
-<p>この関数はHTML要素をHTML文字列として出力します。
-PSCiで明示的に適当な型の値を構築し、ライブラリのこのバージョンを試してみましょう。</p>
+<p>which renders HTML elements as HTML strings. We can try out this version of the library by constructing values of the appropriate types explicitly in PSCi:</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Prelude
@@ -219,24 +207,21 @@ PSCiで明示的に適当な型の値を構築し、ライブラリのこのバ�
 &lt;p class=&quot;main&quot;&gt;Hello World!&lt;/p&gt;
 unit
 </code></pre>
-<p>現状のライブラリには幾つもの問題があります。</p>
+<p>As it stands, there are several problems with this library:</p>
 <ul>
-<li>HTML文書の作成に手がかかります。
-全ての新しい要素に少なくとも1つのレコードと1つのデータ構築子が必要です。</li>
-<li>無効な文書を表現できてしまいます。
+<li>Creating HTML documents is difficult - every new element requires at least one record and one data constructor.</li>
+<li>It is possible to represent invalid documents:
 <ul>
-<li>開発者が要素名の入力を間違えるかもしれません</li>
-<li>開発者が属性を間違った要素に関連付けることができてしまいます</li>
-<li>開いた要素が正しい場合に開発者が閉じた要素を使えてしまいます</li>
+<li>The developer might mistype the element name</li>
+<li>The developer can associate an attribute with the wrong type of element</li>
+<li>The developer can use a closed element when an open element is correct</li>
 </ul>
 </li>
 </ul>
-<p>残りの章ではとある手法を用いてこれらの問題を解決し、このライブラリーをHTML文書を作成するために使える領域特化言語にしていきます。</p>
-<h2 id="スマート構築子"><a class="header" href="#スマート構築子">スマート構築子</a></h2>
-<p>最初に導入する手法は方法こそ単純なものですが、とても効果的です。
-モジュールの使用者にデータの表現を露出する代わりに、モジュールエクスポートリストを使ってデータ構築子 <code>Element</code>、 <code>Content</code>、
-<code>Attribute</code>を隠蔽し、正しいことが明らかなデータだけ構築する、いわゆる<em>スマート構築子</em>だけをエクスポートします。</p>
-<p>例を示しましょう。まず、HTML要素を作成するための便利な関数を提供します。</p>
+<p>In the remainder of the chapter, we will apply certain techniques to solve these problems and turn our library into a usable domain-specific language for creating HTML documents.</p>
+<h2 id="smart-constructors"><a class="header" href="#smart-constructors">Smart Constructors</a></h2>
+<p>The first technique we will apply is simple but can be very effective. Instead of exposing the representation of the data to the module's users, we can use the module exports list to hide the <code>Element</code>, <code>Content</code> and <code>Attribute</code> data constructors, and only export so-called <em>smart constructors</em>, which construct data which is known to be correct.</p>
+<p>Here is an example. First, we provide a convenience function for creating HTML elements:</p>
 <pre><code class="language-haskell">element :: String -&gt; Array Attribute -&gt; Maybe (Array Content) -&gt; Element
 element name attribs content = Element
   { name:      name
@@ -244,8 +229,7 @@ element name attribs content = Element
   , content:   content
   }
 </code></pre>
-<p>次に、欲しいHTML要素を利用者が作れるように、スマート構築子を作成します。
-これには<code>element</code>関数を適用します。</p>
+<p>Next, we create smart constructors for those HTML elements we want our users to be able to create, by applying the <code>element</code> function:</p>
 <pre><code class="language-haskell">a :: Array Attribute -&gt; Array Content -&gt; Element
 a attribs content = element &quot;a&quot; attribs (Just content)
 
@@ -255,7 +239,7 @@ p attribs content = element &quot;p&quot; attribs (Just content)
 img :: Array Attribute -&gt; Element
 img attribs = element &quot;img&quot; attribs Nothing
 </code></pre>
-<p>最後に、正しいデータ構造だけが構築されることがわかっているこれらの関数をエクスポートするように、モジュールエクスポートリストを更新します。</p>
+<p>Finally, we update the module exports list to only export those functions which are known to construct correct data structures:</p>
 <pre><code class="language-haskell">module Data.DOM.Smart
   ( Element
   , Attribute(..)
@@ -268,33 +252,27 @@ img attribs = element &quot;img&quot; attribs Nothing
   , render
   ) where
 </code></pre>
-<p>モジュールエクスポートリストはモジュール名の直後の括弧内に書きます。
-各モジュールのエクスポートは次の3種類の何れかになります。</p>
+<p>The module exports list is provided immediately after the module name inside parentheses. Each module export can be one of three types:</p>
 <ul>
-<li>値（ないし関数）。その値の名前により指定されます。</li>
-<li>型クラス。クラス名により指定されます。</li>
-<li>型構築子と関連するデータ構築子。型名とそれに続くエクスポートされるデータ構築子の括弧で囲まれたリストで指定されます。</li>
+<li>A value (or function), indicated by the name of the value,</li>
+<li>A type class, indicated by the name of the class,</li>
+<li>A type constructor and any associated data constructors, indicated by the name of the type followed by a parenthesized list of exported data constructors.</li>
 </ul>
-<p>ここでは、 <code>Element</code>の<em>型</em>をエクスポートしていますが、データ構築子はエクスポートしていません。
-もしデータ構築子をエクスポートすると、モジュールの使用者が不正なHTML要素を構築できてしまいます。</p>
-<p><code>Attribute</code>と <code>Content</code>型についてはデータ構築子を全てエクスポートしています（エクスポートリストの記号 <code>..</code>で示されています）。
-すぐ後で、これらの型にもスマート構築子の手法を適用していきます。</p>
-<p>既にライブラリに幾つもの大きな改良が加わっていることに注目です。</p>
+<p>Here, we export the <code>Element</code> <em>type</em>, but we do not export its data constructors. If we did, the user would be able to construct invalid HTML elements.</p>
+<p>In the case of the <code>Attribute</code> and <code>Content</code> types, we still export all of the data constructors (indicated by the symbol <code>..</code> in the exports list). We will apply the technique of smart constructors to these types shortly.</p>
+<p>Notice that we have already made some big improvements to our library:</p>
 <ul>
-<li>不正な名前を持つHTML要素は表現できません（もちろん、ライブラリが提供する要素名に制限されています）。</li>
-<li>閉じた要素は構築するときに内容を含められません。</li>
+<li>It is impossible to represent HTML elements with invalid names (of course, we are restricted to the set of element names provided by the library).</li>
+<li>Closed elements cannot contain content by construction.</li>
 </ul>
-<p><code>Content</code>型にとても簡単にこの手法を適用できます。
-単にエクスポートリストから <code>Content</code>型のデータ構築子を取り除き、次のスマート構築子を提供します。</p>
+<p>We can apply this technique to the <code>Content</code> type very easily. We simply remove the data constructors for the <code>Content</code> type from the exports list, and provide the following smart constructors:</p>
 <pre><code class="language-haskell">text :: String -&gt; Content
 text = TextContent
 
 elem :: Element -&gt; Content
 elem = ElementContent
 </code></pre>
-<p><code>Attribute</code>型にも同じ手法を適用してみましょう。
-まず、属性のための汎用のスマート構築子を用意します。
-以下は最初の試行です。</p>
+<p>Let's apply the same technique to the <code>Attribute</code> type. First, we provide a general-purpose smart constructor for attributes. Here is a first attempt:</p>
 <pre><code class="language-haskell">attribute :: String -&gt; String -&gt; Attribute
 attribute key value = Attribute
   { key: key
@@ -303,21 +281,17 @@ attribute key value = Attribute
 
 infix 4 attribute as :=
 </code></pre>
-<p>この定義では元の <code>Element</code>型と同じ問題に直面しています。
-存在しなかったり、名前が間違っているような属性を表現できます。
-この問題を解決するために、属性名を表すnewtypeを作成します。</p>
+<p>This representation suffers from the same problem as the original <code>Element</code> type - it is possible to represent attributes which do not exist or whose names were entered incorrectly. To solve this problem, we can create a newtype which represents attribute names:</p>
 <pre><code class="language-haskell">newtype AttributeKey = AttributeKey String
 </code></pre>
-<p>これを使えば演算子を次のように変更できます。</p>
+<p>With that, we can modify our operator as follows:</p>
 <pre><code class="language-haskell">attribute :: AttributeKey -&gt; String -&gt; Attribute
 attribute (AttributeKey key) value = Attribute
   { key: key
   , value: value
   }
 </code></pre>
-<p><code>AttributeKey</code>データ構築子をエクスポートしなければ、明示的にエクスポートされた次のような関数を使う以外に、使用者が型
-<code>AttributeKey</code>の値を構築する方法はありません。
-以下に幾つかの例を示します。</p>
+<p>If we do not export the <code>AttributeKey</code> data constructor, then the user has no way to construct values of type <code>AttributeKey</code> other than by using functions we explicitly export. Here are some examples:</p>
 <pre><code class="language-haskell">href :: AttributeKey
 href = AttributeKey &quot;href&quot;
 
@@ -333,8 +307,7 @@ width = AttributeKey &quot;width&quot;
 height :: AttributeKey
 height = AttributeKey &quot;height&quot;
 </code></pre>
-<p>新しいモジュールの最終的なエクスポートリストは次のようになります。
-最早どのデータ構築子も直接エクスポートしていない点に注目です。</p>
+<p>Here is the final exports list for our new module. Note that we no longer export any data constructors directly:</p>
 <pre><code class="language-haskell">module Data.DOM.Smart
   ( Element
   , Attribute
@@ -358,7 +331,7 @@ height = AttributeKey &quot;height&quot;
   , render
   ) where
 </code></pre>
-<p>PSCiでこの新しいモジュールを試してみると、既にコードの簡潔さにおいて大幅な向上が見て取れます。</p>
+<p>If we try this new module in PSCi, we can already see massive improvements in the conciseness of the user code:</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Prelude
@@ -369,25 +342,21 @@ height = AttributeKey &quot;height&quot;
 &lt;p class=&quot;main&quot;&gt;Hello World!&lt;/p&gt;
 unit
 </code></pre>
-<p>しかし、基盤をなすデータ表現は変更されなかったので、 <code>render</code>関数を変更する必要はなかったことにも注目してください。
-これはスマート構築子による手法の利点のひとつです。
-外部APIの使用者によって認識される表現からモジュールの内部データ表現を分離できるのです。</p>
-<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<p>Note, however, that no changes had to be made to the <code>render</code> function, because the underlying data representation never changed. This is one of the benefits of the smart constructors approach - it allows us to separate the internal data representation for a module from the representation which is perceived by users of its external API.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>Data.DOM.Smart</code>モジュールで <code>render</code>を使った新しいHTML文書の作成を試してみましょう。</p>
+<p>(Easy) Use the <code>Data.DOM.Smart</code> module to experiment by creating new HTML documents using <code>render</code>.</p>
 </li>
 <li>
-<p>（普通）<code>checked</code>と <code>disabled</code>など、値を要求しないHTML属性がありますが、これらは次のような <em>空の属性</em>
-として表示されるかもしれません。</p>
+<p>(Medium) Some HTML attributes such as <code>checked</code> and <code>disabled</code> do not require values, and may be rendered as <em>empty attributes</em>:</p>
 <pre><code class="language-html">&lt;input disabled&gt;
 </code></pre>
-<p>空の属性を扱えるように <code>Attribute</code>の表現を変更してください。
-要素に空の属性を追加するための<code>attribute</code>または<code>:=</code>の代わりに使える関数を記述してください。</p>
+<p>Modify the representation of an <code>Attribute</code> to take empty attributes into account. Write a function which can be used in place of <code>attribute</code> or <code>:=</code> to add an empty attribute to an element.</p>
 </li>
 </ol>
-<h2 id="幻影型"><a class="header" href="#幻影型">幻影型</a></h2>
-<p>次の手法の動機付けとして、以下のコードを考えます。</p>
+<h2 id="phantom-types"><a class="header" href="#phantom-types">Phantom Types</a></h2>
+<p>To motivate the next technique, consider the following code:</p>
 <pre><code class="language-text">&gt; log $ render $ img
     [ src    := &quot;cat.jpg&quot;
     , width  := &quot;foo&quot;
@@ -397,36 +366,31 @@ unit
 &lt;img src=&quot;cat.jpg&quot; width=&quot;foo&quot; height=&quot;bar&quot; /&gt;
 unit
 </code></pre>
-<p>ここでの問題は、 <code>width</code>属性と<code>height</code>属性に文字列値を提供しているということです。
-ここで与えることができるのはピクセル単位ないしパーセントの数値だけであるべきです。</p>
-<p><code>AttributeKey</code>型にいわゆる <em>幻影型</em> (phantom type) 引数を導入すると、この問題を解決できます。</p>
+<p>The problem here is that we have provided string values for the <code>width</code> and <code>height</code> attributes, where we should only be allowed to provide numeric values in units of pixels or percentage points.</p>
+<p>To solve this problem, we can introduce a so-called <em>phantom type</em> argument to our <code>AttributeKey</code> type:</p>
 <pre><code class="language-haskell">newtype AttributeKey a = AttributeKey String
 </code></pre>
-<p>定義の右辺に対応する型 <code>a</code>の値が存在しないので、この型変数 <code>a</code>は<em>幻影型</em>と呼ばれています。
-この型 <code>a</code>はコンパイル時に追加の情報を提供するためだけに存在しています。
-型<code>AttributeKey a</code>の任意の値は実行時には単なる文字列ですが、コンパイル時はその値の型により、このキーに関連する値で求められる型がわかります。</p>
-<p><code>attribute</code>関数の型を次のように変更すれば、<code>AttributeKey</code>の新しい形式を考慮するようにできます。</p>
+<p>The type variable <code>a</code> is called a <em>phantom type</em> because there are no values of type <code>a</code> involved in the right-hand side of the definition. The type <code>a</code> only exists to provide more information at compile-time. Any value of type <code>AttributeKey a</code> is simply a string at runtime, but at compile-time, the type of the value tells us the desired type of the values associated with this key.</p>
+<p>We can modify the type of our <code>attribute</code> function to take the new form of <code>AttributeKey</code> into account:</p>
 <pre><code class="language-haskell">attribute :: forall a. IsValue a =&gt; AttributeKey a -&gt; a -&gt; Attribute
 attribute (AttributeKey key) value = Attribute
   { key: key
   , value: toValue value
   }
 </code></pre>
-<p>ここで、幻影型の引数 <code>a</code>は、属性キーと属性値が照応する型を持っていることを確認するために使われます。
-使用者は <code>AttributeKey a</code>の型の値を直接作成できないので（ライブラリで提供されている定数を介してのみ得られます）、全ての属性が構築により正しくなります。</p>
-<p>なお、<code>IsValue</code>制約はキーに関連付けられた値の型が何であれその値を文字列に変換し、生成したHTML内に出力できることを保証します。
-<code>IsValue</code>型クラスは次のように定義されています。</p>
+<p>Here, the phantom type argument <code>a</code> is used to ensure that the attribute key and attribute value have compatible types. Since the user cannot create values of type <code>AttributeKey a</code> directly (only via the constants we provide in the library), every attribute will be correct by construction.</p>
+<p>Note that the <code>IsValue</code> constraint ensures that whatever value type we associate to a key, its values can be converted to strings and displayed in the generated HTML. The <code>IsValue</code> type class is defined as follows:</p>
 <pre><code class="language-haskell">class IsValue a where
   toValue :: a -&gt; String
 </code></pre>
-<p><code>String</code>と <code>Int</code>型についての型クラスインスタンスも提供しておきます。</p>
+<p>We also provide type class instances for the <code>String</code> and <code>Int</code> types:</p>
 <pre><code class="language-haskell">instance IsValue String where
   toValue = id
 
 instance IsValue Int where
   toValue = show
 </code></pre>
-<p>また、これらの型が新しい型変数を反映するように、 <code>AttributeKey</code>定数を更新しなければいけません。</p>
+<p>We also have to update our <code>AttributeKey</code> constants so that their types reflect the new type parameter:</p>
 <pre><code class="language-haskell">href :: AttributeKey String
 href = AttributeKey &quot;href&quot;
 
@@ -442,8 +406,7 @@ width = AttributeKey &quot;width&quot;
 height :: AttributeKey Int
 height = AttributeKey &quot;height&quot;
 </code></pre>
-<p>これで、不正なHTML文書を表現することが不可能になっていることがわかります。
-また、<code>width</code>と <code>height</code>属性を表現するのに文字列ではなく数を使うことが強制されていることがわかります。</p>
+<p>Now we find it is impossible to represent these invalid HTML documents, and we are forced to use numbers to represent the <code>width</code> and <code>height</code> attributes instead:</p>
 <pre><code class="language-text">&gt; import Prelude
 &gt; import Data.DOM.Phantom
 &gt; import Effect.Console
@@ -459,25 +422,21 @@ height = AttributeKey &quot;height&quot;
 &lt;img src=&quot;cat.jpg&quot; width=&quot;100&quot; height=&quot;200&quot; /&gt;
 unit
 </code></pre>
-<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
+<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
 <ol>
 <li>
-<p>（簡単）ピクセルまたはパーセントの長さの何れかを表すデータ型を作成してください。
-その型について <code>IsValue</code>のインスタンスを書いてください。
-この型を使うように <code>width</code>と <code>height</code>属性を変更してください。</p>
+<p>(Easy) Create a data type which represents either pixel or percentage lengths. Write an instance of <code>IsValue</code> for your type. Modify the <code>width</code> and <code>height</code> attributes to use your new type.</p>
 </li>
 <li>
-<p>（難しい）幻影型を使って真偽値 <code>true</code>、 <code>false</code>用の最上位の表現を定義することで、 <code>AttributeKey</code>が
-<code>disabled</code>や <code>checked</code>のような<em>空の属性</em>を表現しているかどうかを符号化できます。</p>
+<p>(Difficult) By defining type-level representatives for the Boolean values <code>true</code> and <code>false</code>, we can use a phantom type to encode whether an <code>AttributeKey</code> represents an <em>empty attribute</em> such as <code>disabled</code> or <code>checked</code>.</p>
 <pre><code class="language-haskell">data True
 data False
 </code></pre>
-<p>幻影型を使って、使用者が <code>attribute</code>演算子を空の属性に対して使うことを防ぐように、前の演習の解答を変更してください。</p>
+<p>Modify your solution to the previous exercise to use a phantom type to prevent the user from using the <code>attribute</code> operator with an empty attribute.</p>
 </li>
 </ol>
-<h2 id="freeモナド"><a class="header" href="#freeモナド">Freeモナド</a></h2>
-<p>APIに施す最後の変更は、 <code>Content</code>型をモナドにしてdo記法を使えるようにするために、 <em>Freeモナド</em>
-と呼ばれる構造を使うことです。これによって入れ子になった要素がわかりやすくなるようにHTML文書を構造化できます。以下の代わりに……</p>
+<h2 id="the-free-monad"><a class="header" href="#the-free-monad">The Free Monad</a></h2>
+<p>In our final set of modifications to our API, we will use a construction called the <em>free monad</em> to turn our <code>Content</code> type into a monad, enabling do notation. This will allow us to structure our HTML documents in a form in which the nesting of elements becomes clearer - instead of this:</p>
 <pre><code class="language-haskell">p [ _class := &quot;main&quot; ]
   [ elem $ img
       [ src    := &quot;cat.jpg&quot;
@@ -487,7 +446,7 @@ data False
   , text &quot;A cat&quot;
   ]
 </code></pre>
-<p>このように書くことができるようになります。</p>
+<p>we will be able to write this:</p>
 <pre><code class="language-haskell">p [ _class := &quot;main&quot; ] $ do
   elem $ img
     [ src    := &quot;cat.jpg&quot;
@@ -496,21 +455,15 @@ data False
     ]
   text &quot;A cat&quot;
 </code></pre>
-<p>しかし、do記法だけがFreeモナドの恩恵だというわけではありません。Freeモナドがあれば、モナドのアクションの <em>表現</em> をその <em>解釈</em>
-から分離し、同じアクションに <em>複数の解釈</em> を持たせることさえできます。</p>
-<p><code>Free</code>モナドは <code>free</code>ライブラリの <code>Control.Monad.Free</code>モジュールで定義されています。
-PSCiを使うと、次のようにFreeモナドについての基本的な情報を見ることができます。</p>
+<p>However, do notation is not the only benefit of a free monad. The free monad allows us to separate the <em>representation</em> of our monadic actions from their <em>interpretation</em>, and even support <em>multiple interpretations</em> of the same actions.</p>
+<p>The <code>Free</code> monad is defined in the <code>free</code> library, in the <code>Control.Monad.Free</code> module. We can find out some basic information about it using PSCi, as follows:</p>
 <pre><code class="language-text">&gt; import Control.Monad.Free
 
 &gt; :kind Free
 (Type -&gt; Type) -&gt; Type -&gt; Type
 </code></pre>
-<p><code>Free</code>の種は、引数として型構築子を取り、別の型構築子を返すことを示しています。
-実は、<code>Free</code>モナドを使えば任意の<code>Functor</code>を<code>Monad</code>にできます。</p>
-<p>モナドのアクションの<em>表現</em>の定義から始めます。
-こうするには、対応する各モナドアクションそれぞれについて、1つのデータ構築子を持つ <code>Functor</code>を作成する必要があります。
-今回の場合、2つのモナドのアクションは <code>elem</code>と <code>text</code>になります。
-実際には、 <code>Content</code>型を次のように変更するだけです。</p>
+<p>The kind of <code>Free</code> indicates that it takes a type constructor as an argument, and returns another type constructor. In fact, the <code>Free</code> monad can be used to turn any <code>Functor</code> into a <code>Monad</code>!</p>
+<p>We begin by defining the <em>representation</em> of our monadic actions. To do this, we need to create a <code>Functor</code> with one data constructor for each monadic action we wish to support. In our case, our two monadic actions will be <code>elem</code> and <code>text</code>. In fact, we can simply modify our <code>Content</code> type as follows:</p>
 <pre><code class="language-haskell">data ContentF a
   = TextContent String a
   | ElementContent Element a
@@ -519,41 +472,32 @@ instance Functor ContentF where
   map f (TextContent s x) = TextContent s (f x)
   map f (ElementContent e x) = ElementContent e (f x)
 </code></pre>
-<p>ここで、この <code>ContentF</code>型構築子は以前の <code>Content</code>データ型とよく似ています。
-しかし、ここでは型引数<code>a</code>を取り、それぞれのデータ構築子は型<code>a</code>の値を追加の引数として取るように変更されています。
-<code>Functor</code>インスタンスでは、単に各データ構築子で型 <code>a</code>の構成要素に関数 <code>f</code>を適用します。</p>
-<p>これにより、新しい<code>Content</code>モナドを<code>Free</code>モナド用の型シノニムとして定義できます。
-これは最初の型引数として <code>ContentF</code>型構築子を使うことで構築されます。</p>
+<p>Here, the <code>ContentF</code> type constructor looks just like our old <code>Content</code> data type - however, it now takes a type argument <code>a</code>, and each data constructor has been modified to take a value of type <code>a</code> as an additional argument. The <code>Functor</code> instance simply applies the function <code>f</code> to the value of type <code>a</code> in each data constructor.</p>
+<p>With that, we can define our new <code>Content</code> monad as a type synonym for the <code>Free</code> monad, which we construct by using our <code>ContentF</code> type constructor as the first type argument:</p>
 <pre><code class="language-haskell">type Content = Free ContentF
 </code></pre>
-<p>型シノニムの代わりにnewtypeを使用して、使用者に対してライブラリの内部表現を露出することを避けられます。
-<code>Content</code>データ構築子を隠すことで、提供しているモナドのアクションだけを使うことを使用者に制限しています。</p>
-<p><code>ContentF</code>は <code>Functor</code>なので、 <code>Free ContentF</code>用の<code>Monad</code>インスタンスが自動的に手に入ります。</p>
-<p><code>Content</code>の新しい型引数を考慮するように<code>Element</code>データ型を僅かに変更する必要があります。
-モナドの計算の戻り値の型が <code>Unit</code>であることだけが必要です。</p>
+<p>Instead of a type synonym, we might use a <code>newtype</code> to avoid exposing the internal representation of our library to our users - by hiding the <code>Content</code> data constructor, we restrict our users to only using the monadic actions we provide.</p>
+<p>Because <code>ContentF</code> is a <code>Functor</code>, we automatically get a <code>Monad</code> instance for <code>Free ContentF</code>.</p>
+<p>We have to modify our <code>Element</code> data type slightly to take account of the new type argument on <code>Content</code>. We will simply require that the return type of our monadic computations be <code>Unit</code>:</p>
 <pre><code class="language-haskell">newtype Element = Element
   { name         :: String
   , attribs      :: Array Attribute
   , content      :: Maybe (Content Unit)
   }
 </code></pre>
-<p>また、 <code>Content</code>モナドについての新しいモナドのアクションになる <code>elem</code>と <code>text</code>関数を変更する必要があります。
-これには<code>Control.Monad.Free</code>モジュールで提供されている <code>liftF</code>関数が使えます。
-この関数の型は次のようになっています。</p>
+<p>In addition, we have to modify our <code>elem</code> and <code>text</code> functions, which become our new monadic actions for the <code>Content</code> monad. To do this, we can use the <code>liftF</code> function, provided by the <code>Control.Monad.Free</code> module. Here is its type:</p>
 <pre><code class="language-haskell">liftF :: forall f a. f a -&gt; Free f a
 </code></pre>
-<p><code>liftF</code>により、何らかの型 <code>a</code>について、型 <code>f a</code>の値からFreeモナドのアクションを構築できるようになります。
-今回の場合、 <code>ContentF</code>型構築子のデータ構築子をそのまま使うだけです。</p>
+<p><code>liftF</code> allows us to construct an action in our free monad from a value of type <code>f a</code> for some type <code>a</code>. In our case, we can simply use the data constructors of our <code>ContentF</code> type constructor directly:</p>
 <pre><code class="language-haskell">text :: String -&gt; Content Unit
 text s = liftF $ TextContent s unit
 
 elem :: Element -&gt; Content Unit
 elem e = liftF $ ElementContent e unit
 </code></pre>
-<p>他にも同じようなコードの変更はありますが、興味深い変更は <code>render</code>関数にあります。ここでは、このFreeモナドを <em>解釈</em>
-しなければいけません。</p>
-<h2 id="モナドの解釈"><a class="header" href="#モナドの解釈">モナドの解釈</a></h2>
-<p><code>Control.Monad.Free</code>モジュールでは、Freeモナドで計算を解釈するための多数の関数が提供されています。</p>
+<p>Some other routine modifications have to be made, but the interesting changes are in the <code>render</code> function, where we have to <em>interpret</em> our free monad.</p>
+<h2 id="interpreting-the-monad"><a class="header" href="#interpreting-the-monad">Interpreting the Monad</a></h2>
+<p>The <code>Control.Monad.Free</code> module provides a number of functions for interpreting a computation in a free monad:</p>
 <pre><code class="language-haskell">runFree
   :: forall f a
    . Functor f
@@ -568,24 +512,19 @@ runFreeM
   -&gt; Free f a
   -&gt; m a
 </code></pre>
-<p><code>runFree</code>関数は、 <em>純粋な</em> 結果を計算するために使用されます。
-<code>runFreeM</code>関数があればFreeモナドのアクションを解釈するためにモナドが使えます。</p>
-<p><em>補足</em>：厳密には、より強い<code>MonadRec</code>制約を満たすモナド <code>m</code>を使用するよう制限されています。
-実際には、これはスタックオーバーフローを心配する必要がないことを意味します。
-なぜなら <code>m</code>は安全な<em>末尾再帰モナド</em>に対応しているからです。</p>
-<p>まず、アクションを解釈できるモナドを選ばなければなりません。
-<code>Writer String</code>モナドを使って、結果のHTML文字列を累積することにします。</p>
-<p>新しい<code>render</code>メソッドが開始すると、補助関数
-<code>renderElement</code>に移譲し、<code>execWriter</code>を使って<code>Writer</code>モナドで計算を走らせます。</p>
+<p>The <code>runFree</code> function is used to compute a <em>pure</em> result. The <code>runFreeM</code> function allows us to use a monad to interpret the actions of our free monad.</p>
+<p><em>Note</em>: Technically, we are restricted to using monads <code>m</code> which satisfy the stronger <code>MonadRec</code> constraint. In practice, this means that we don't need to worry about stack overflow, since <code>m</code> supports safe <em>monadic tail recursion</em>.</p>
+<p>First, we have to choose a monad in which we can interpret our actions. We will use the <code>Writer String</code> monad to accumulate a HTML string as our result.</p>
+<p>Our new <code>render</code> method starts by delegating to a helper function, <code>renderElement</code>, and using <code>execWriter</code> to run our computation in the <code>Writer</code> monad:</p>
 <pre><code class="language-haskell">render :: Element -&gt; String
 render = execWriter &lt;&lt;&lt; renderElement
 </code></pre>
-<p><code>renderElement</code>はwhereブロックで定義されます。</p>
+<p><code>renderElement</code> is defined in a where block:</p>
 <pre><code class="language-haskell">  where
     renderElement :: Element -&gt; Writer String Unit
     renderElement (Element e) = do
 </code></pre>
-<p><code>renderElement</code>の定義は直感的で、複数の小さな文字列を累積するために <code>Writer</code>モナドの <code>tell</code>アクションを使っています。</p>
+<p>The definition of <code>renderElement</code> is straightforward, using the <code>tell</code> action from the <code>Writer</code> monad to accumulate several small strings:</p>
 <pre><code class="language-haskell">      tell &quot;&lt;&quot;
       tell e.name
       for_ e.attribs $ \x -&gt; do
@@ -593,8 +532,7 @@ render = execWriter &lt;&lt;&lt; renderElement
         renderAttribute x
       renderContent e.content
 </code></pre>
-<p>次に、<code>renderAttribute</code>関数を定義します。
-こちらも同じくらい単純です。</p>
+<p>Next, we define the <code>renderAttribute</code> function, which is equally simple:</p>
 <pre><code class="language-haskell">    where
       renderAttribute :: Attribute -&gt; Writer String Unit
       renderAttribute (Attribute x) = do
@@ -603,9 +541,7 @@ render = execWriter &lt;&lt;&lt; renderElement
         tell x.value
         tell &quot;\&quot;&quot;
 </code></pre>
-<p><code>renderContent</code>関数は、もっと興味深いものです。
-ここでは<code>runFreeM</code>関数を使い、Freeモナドの内部で計算を解釈しています。
-計算は補助関数 <code>renderContentItem</code>に移譲しています。</p>
+<p>The <code>renderContent</code> function is more interesting. Here, we use the <code>runFreeM</code> function to interpret the computation inside the free monad, delegating to a helper function, <code>renderContentItem</code>:</p>
 <pre><code class="language-haskell">      renderContent :: Maybe (Content Unit) -&gt; Writer String Unit
       renderContent Nothing = tell &quot; /&gt;&quot;
       renderContent (Just content) = do
@@ -615,12 +551,10 @@ render = execWriter &lt;&lt;&lt; renderElement
         tell e.name
         tell &quot;&gt;&quot;
 </code></pre>
-<p><code>renderContentItem</code>の型は <code>runFreeM</code>の型シグネチャから推測できます。
-関手 <code>f</code>は型構築子 <code>ContentF</code>で、モナド <code>m</code>は解釈している計算のモナド、つまり <code>Writer String</code>です。
-これにより <code>renderContentItem</code>は次の型シグネチャだとわかります。</p>
+<p>The type of <code>renderContentItem</code> can be deduced from the type signature of <code>runFreeM</code>. The functor <code>f</code> is our type constructor <code>ContentF</code>, and the monad <code>m</code> is the monad in which we are interpreting the computation, namely <code>Writer String</code>. This gives the following type signature for <code>renderContentItem</code>:</p>
 <pre><code class="language-haskell">      renderContentItem :: ContentF (Content Unit) -&gt; Writer String (Content Unit)
 </code></pre>
-<p><code>ContentF</code>の2つのデータ構築子でパターン照合するだけでこの関数を実装できます。</p>
+<p>We can implement this function by simply pattern matching on the two data constructors of <code>ContentF</code>:</p>
 <pre><code class="language-haskell">      renderContentItem (TextContent s rest) = do
         tell s
         pure rest
@@ -628,10 +562,8 @@ render = execWriter &lt;&lt;&lt; renderElement
         renderElement e
         pure rest
 </code></pre>
-<p>それぞれの場合において、式 <code>rest</code>は型 <code>Content Unit</code>を持っており、解釈計算の残りを表しています。
-<code>rest</code>アクションを呼び出すことによってそれぞれの場合を完了できます。</p>
-<p>できました。
-PSCiで、次のようにすれば新しいモナドのAPIを試すことができます。</p>
+<p>In each case, the expression <code>rest</code> has the type <code>Content Unit</code>, and represents the remainder of the interpreted computation. We can complete each case by returning the <code>rest</code> action.</p>
+<p>That's it! We can test our new monadic API in PSCi, as follows:</p>
 <pre><code class="language-text">&gt; import Prelude
 &gt; import Data.DOM.Free
 &gt; import Effect.Console
@@ -645,40 +577,31 @@ PSCiで、次のようにすれば新しいモナドのAPIを試すことがで�
 &lt;p&gt;&lt;img src=&quot;cat.jpg&quot; /&gt;A cat&lt;/p&gt;
 unit
 </code></pre>
-<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
+<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
 <ol>
-<li>（普通）<code>ContentF</code>型に新しいデータ構築子を追加して、生成されたHTMLにコメントを出力する新しいアクション
-<code>comment</code>に対応してください。
-<code>liftF</code>を使ってこの新しいアクションを実装してください。
-新しい構築子を適切に解釈するように、解釈 <code>renderContentItem</code>を更新してください。</li>
+<li>(Medium) Add a new data constructor to the <code>ContentF</code> type to support a new action <code>comment</code>, which renders a comment in the generated HTML. Implement the new action using <code>liftF</code>. Update the interpretation <code>renderContentItem</code> to interpret your new constructor appropriately.</li>
 </ol>
-<h2 id="言語の拡張"><a class="header" href="#言語の拡張">言語の拡張</a></h2>
-<p>全てのアクションが型 <code>Unit</code>の何かを返すようなモナドは、さほど興味深いものではありません。
-実際のところ、概ね良くなったと思われる構文は別として、このモナドは <code>Monoid</code>以上の機能を何ら追加していません。</p>
-<p>非自明な結果を返す新しいモナドアクションでこの言語を拡張することで、Freeモナド構造の威力をお見せしましょう。</p>
-<p><em>アンカー</em>を使用して文書のさまざまな節へのハイパーリンクが含まれているHTML文書を生成するとします。
-これは既に達成できています。
-手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。
-1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。
-しかし、この方法には根本的な問題が幾つかあります。</p>
+<h2 id="extending-the-language"><a class="header" href="#extending-the-language">Extending the Language</a></h2>
+<p>A monad in which every action returns something of type <code>Unit</code> is not particularly interesting. In fact, aside from an arguably nicer syntax, our monad adds no extra functionality over a <code>Monoid</code>.</p>
+<p>Let's illustrate the power of the free monad construction by extending our language with a new monadic action which returns a non-trivial result.</p>
+<p>Suppose we want to generate HTML documents which contain hyperlinks to different sections of the document using <em>anchors</em>. We can accomplish this already, by generating anchor names by hand and including them at least twice in the document: once at the definition of the anchor itself, and once in each hyperlink. However, this approach has some basic issues:</p>
 <ul>
-<li>開発者が一意なアンカー名の生成をし損なうかもしれません。</li>
-<li>開発者がアンカー名を1つ以上の箇所で打ち間違うかもしれません。</li>
+<li>The developer might fail to generate unique anchor names.</li>
+<li>The developer might mistype one or more instances of the anchor name.</li>
 </ul>
-<p>開発者が誤ちを犯すことを防ぐために、アンカー名を表す新しい型を導入し、新しい一意な名前を生成するためのモナドアクションを提供できます。</p>
-<p>最初の工程は名前の型を新しく追加することです。</p>
+<p>In the interest of protecting the developer from their own mistakes, we can introduce a new type which represents anchor names, and provide a monadic action for generating new unique names.</p>
+<p>The first step is to add a new type for names:</p>
 <pre><code class="language-haskell">newtype Name = Name String
 
 runName :: Name -&gt; String
 runName (Name n) = n
 </code></pre>
-<p>繰り返しになりますが、<code>Name</code>は
-<code>String</code>のnewtypeとして定義しているものの、モジュールのエクスポートリスト内でデータ構築子をエクスポートしないように注意する必要があります。</p>
-<p>次に、属性値として <code>Name</code>を使うことができるように、新しい型に<code>IsValue</code>型クラスのインスタンスを定義します。</p>
+<p>Again, we define this as a newtype around <code>String</code>, but we must be careful not to export the data constructor in the module's export lists.</p>
+<p>Next, we define an instance for the <code>IsValue</code> type class for our new type, so that we are able to use names in attribute values:</p>
 <pre><code class="language-haskell">instance IsValue Name where
   toValue (Name n) = n
 </code></pre>
-<p>また、次のように <code>a</code>要素に現れるハイパーリンク用の新しいデータ型を定義します。</p>
+<p>We also define a new data type for hyperlinks which can appear in <code>a</code> elements, as follows:</p>
 <pre><code class="language-haskell">data Href
   = URLHref String
   | AnchorHref Name
@@ -687,61 +610,48 @@ instance IsValue Href where
   toValue (URLHref url) = url
   toValue (AnchorHref (Name nm)) = &quot;#&quot; &lt;&gt; nm
 </code></pre>
-<p>この新しい型により、<code>href</code>属性の型の値を変更して、利用者にこの新しい <code>Href</code>型の使用を強制できます。
-また、新しい<code>name</code>属性も作成でき、要素をアンカーに変換するのに使えます。</p>
+<p>With this new type, we can modify the value type of the <code>href</code> attribute, forcing our users to use our new <code>Href</code> type. We can also create a new <code>name</code> attribute, which can be used to turn an element into an anchor:</p>
 <pre><code class="language-haskell">href :: AttributeKey Href
 href = AttributeKey &quot;href&quot;
 
 name :: AttributeKey Name
 name = AttributeKey &quot;name&quot;
 </code></pre>
-<p>残っている問題は、現在モジュールの使用者が新しい名前を生成する方法がないということです。
-<code>Content</code>モナドでこの機能を提供できます。まず、 <code>ContentF</code>型構築子に新しいデータ構築子を追加する必要があります。</p>
+<p>The remaining problem is that our users currently have no way to generate new names. We can provide this functionality in our <code>Content</code> monad. First, we need to add a new data constructor to our <code>ContentF</code> type constructor:</p>
 <pre><code class="language-haskell">data ContentF a
   = TextContent String a
   | ElementContent Element a
   | NewName (Name -&gt; a)
 </code></pre>
-<p><code>NewName</code>データ構築子は型 <code>Name</code>の値を返すアクションに対応しています。データ構築子の引数として <code>Name</code>を要求するのではなく、型 <code>Name -&gt; a</code>の <em>関数</em> を提供するように使用者に要求していることに注意してください。型 <code>a</code>は <em>計算の残り</em> を表していることを思い出すと、この関数は、型 <code>Name</code>の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。</p>
-<p>新しいデータ構築子を考慮するよう、次のように<code>ContentF</code>用の<code>Functor</code>インスタンスを更新する必要もあります。</p>
+<p>The <code>NewName</code> data constructor corresponds to an action which returns a value of type <code>Name</code>. Notice that instead of requiring a <code>Name</code> as a data constructor argument, we require the user to provide a <em>function</em> of type <code>Name -&gt; a</code>. Remembering that the type <code>a</code> represents the <em>rest of the computation</em>, we can see that this function provides a way to continue computation after a value of type <code>Name</code> has been returned.</p>
+<p>We also need to update the <code>Functor</code> instance for <code>ContentF</code>, taking into account the new data constructor, as follows:</p>
 <pre><code class="language-haskell">instance Functor ContentF where
   map f (TextContent s x) = TextContent s (f x)
   map f (ElementContent e x) = ElementContent e (f x)
   map f (NewName k) = NewName (f &lt;&lt;&lt; k)
 </code></pre>
-<p>これで、以前と同じように<code>liftF</code>関数を使って新しいアクションを構築できます。</p>
+<p>Now we can build our new action by using the <code>liftF</code> function, as before:</p>
 <pre><code class="language-haskell">newName :: Content Name
 newName = liftF $ NewName id
 </code></pre>
-<p><code>id</code>関数を継続として提供していることに注意してください。
-これは型 <code>Name</code>の結果を変更せずに返すということを意味しています。</p>
-<p>最後に、新しいアクションを解釈するために解釈関数を更新する必要があります。
-以前は計算を解釈するために <code>Writer String</code>モナドを使っていましたが、このモナドは新しい名前を生成する能力を持っていないので、何か他のものに切り替えなければなりません。
-<code>WriterT</code>モナド変換子を<code>State</code>モナドと一緒に使うと、必要な作用を組み合わせることができます。
-型注釈を短く保てるように、この解釈モナドを型同義語として定義しておきます。</p>
+<p>Notice that we provide the <code>id</code> function as our continuation, meaning that we return the result of type <code>Name</code> unchanged.</p>
+<p>Finally, we need to update our interpretation function, to interpret the new action. We previously used the <code>Writer String</code> monad to interpret our computations, but that monad does not have the ability to generate new names, so we must switch to something else. The <code>WriterT</code> monad transformer can be used with the <code>State</code> monad to combine the effects we need. We can define our interpretation monad as a type synonym to keep our type signatures short:</p>
 <pre><code class="language-haskell">type Interp = WriterT String (State Int)
 </code></pre>
-<p>ここで、<code>Int</code>型の状態は増加していくカウンタとして振舞い、一意な名前を生成するのに使われます。</p>
-<p><code>Writer</code>と <code>WriterT</code>モナドはそれらのアクションを抽象化するのに同じ型クラスメンバを使うので、どのアクションも変更する必要がありません。
-必要なのは、 <code>Writer String</code>への参照全てを <code>Interp</code>で置き換えることだけです。
-しかし、これを計算するために使われる制御子を変更しなければいけません。
-こうなると単なる<code>execWriter</code>の代わりに、ここでも<code>evalState</code>を使う必要があります。</p>
+<p>Here, the state of type <code>Int</code> will act as an incrementing counter, used to generate unique names.</p>
+<p>Because the <code>Writer</code> and <code>WriterT</code> monads use the same type class members to abstract their actions, we do not need to change any actions - we only need to replace every reference to <code>Writer String</code> with <code>Interp</code>. We do, however, need to modify the handler used to run our computation. Instead of just <code>execWriter</code>, we now need to use <code>evalState</code> as well:</p>
 <pre><code class="language-haskell">render :: Element -&gt; String
 render e = evalState (execWriterT (renderElement e)) 0
 </code></pre>
-<p>また、新しい <code>NewName</code>データ構築子を解釈するために、 <code>renderContentItem</code>に新しい場合を追加しなければいけません。</p>
+<p>We also need to add a new case to <code>renderContentItem</code>, to interpret the new <code>NewName</code> data constructor:</p>
 <pre><code class="language-haskell">renderContentItem (NewName k) = do
   n &lt;- get
   let fresh = Name $ &quot;name&quot; &lt;&gt; show n
   put $ n + 1
   pure (k fresh)
 </code></pre>
-<p>ここで、型 <code>Name -&gt; Content a</code>の継続 <code>k</code>が与えられているので、型 <code>Content a</code>の解釈を構築しなければいけません。
-この解釈は単純です。
-<code>get</code>を使って状態を読み、その状態を使って一意な名前を生成し、それから <code>put</code>で状態に1だけ足すのです。
-最後に、継続にこの新しい名前を渡して、計算を完了します。</p>
-<p>以上をもって、この新しい機能をPSCiで試すことができます。
-これには<code>Content</code>モナドの内部で一意な名前を生成し、要素の名前とハイパーリンクのリンク先の両方として使います。</p>
+<p>Here, we are given a continuation <code>k</code> of type <code>Name -&gt; Content a</code>, and we need to construct an interpretation of type <code>Content a</code>. Our interpretation is simple: we use <code>get</code> to read the state, use that state to generate a unique name, then use <code>put</code> to increment the state. Finally, we pass our new name to the continuation to complete the computation.</p>
+<p>With that, we can try out our new functionality in PSCi, by generating a unique name inside the <code>Content</code> monad, and using it as both the name of an element and the target of a hyperlink:</p>
 <pre><code class="language-text">&gt; import Prelude
 &gt; import Data.DOM.Name
 &gt; import Effect.Console
@@ -758,41 +668,38 @@ render e = evalState (execWriterT (renderElement e)) 0
 &lt;p&gt;&lt;a name=&quot;name0&quot;&gt;Top&lt;/a&gt;&lt;a href=&quot;#name0&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 unit
 </code></pre>
-<p>複数回の <code>newName</code>の呼び出しの結果が、実際に一意な名前になっていることも確かめられます。</p>
-<h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
+<p>You can verify that multiple calls to <code>newName</code> do in fact result in unique names.</p>
+<h2 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h2>
 <ol>
 <li>
-<p>（普通）使用者から <code>Element</code>型を隠蔽すると、更にAPIを簡素にできます。
-次の手順に従って、これらの変更を加えてください。</p>
+<p>(Medium) We can simplify the API further by hiding the <code>Element</code> type from its users. Make these changes in the following steps:</p>
 <ul>
-<li><code>p</code>や <code>img</code>のような（返る型が <code>Element</code>の）関数を <code>elem</code>アクションと結合して、型 <code>Content Unit</code>を返す新しいアクションを作ってください。</li>
-<li><code>Element</code>の代わりに型<code>Content Unit</code>の引数を受け付けるように<code>render</code>関数を変更してください。</li>
+<li>Combine functions like <code>p</code> and <code>img</code> (with return type <code>Element</code>) with the <code>elem</code> action to create new actions with return type <code>Content Unit</code>.</li>
+<li>Change the <code>render</code> function to accept an argument of type <code>Content Unit</code> instead of <code>Element</code>.</li>
 </ul>
 </li>
 <li>
-<p>（普通）型同義語の代わりに<code>newtype</code>を使うことによって<code>Content</code>モナドの実装を隠してください。
-<code>newtype</code>用のデータ構築子はエクスポートすべきではありません。</p>
+<p>(Medium) Hide the implementation of the <code>Content</code> monad by using a <code>newtype</code> instead of a type synonym. You should not export the data
+constructor for your <code>newtype</code>.</p>
 </li>
 <li>
-<p>（難しい）<code>ContentF</code>型を変更して以下の新しいアクションに対応してください。</p>
+<p>(Difficult) Modify the <code>ContentF</code> type to support a new action</p>
 <pre><code class="language-haskell">isMobile :: Content Boolean
 </code></pre>
-<p>このアクションは、この文書がモバイルデバイス上での表示のためにレンダリングされているかどうかを示す真偽値を返します。</p>
-<p><em>手掛かり</em>：<code>ask</code>アクションと<code>ReaderT</code>モナド変換子を使って、このアクションを解釈してください。
-あるいは、<code>RWS</code>モナドを使うほうが好みの人もいるかもしれません。</p>
+<p>which returns a boolean value indicating whether or not the document is being rendered for display on a mobile device.</p>
+<p><em>Hint</em>: use the <code>ask</code> action and the <code>ReaderT</code> monad transformer to interpret this action. Alternatively, you might prefer to use the <code>RWS</code> monad.</p>
 </li>
 </ol>
-<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、幾つかの標準的な技術を使って、素朴な実装を段階的に改善することにより、HTML文書を作成するための領域特化言語を開発しました。</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>In this chapter, we developed a domain-specific language for creating HTML documents, by incrementally improving a naive implementation using some standard techniques:</p>
 <ul>
-<li><em>スマート構築子</em> を使ってデータ表現の詳細を隠し、利用者には <em>構築により正しい</em> 文書だけを作ることを許しました。</li>
-<li><em>独自に定義された中置2引数演算子</em>を使い、言語の構文を改善しました。</li>
-<li><em>幻影型</em> を使ってデータの型の中に追加の情報を折り込みました。これにより利用者が誤った型の属性値を与えることを防いでいます。</li>
-<li><em>Freeモナド</em>
-を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。それからこの表現を新しいモナドアクションに対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。</li>
+<li>We used <em>smart constructors</em> to hide the details of our data representation, only permitting the user to create documents which were <em>correct-by-construction</em>.</li>
+<li>We used an <em>user-defined infix binary operator</em> to improve the syntax of the language.</li>
+<li>We used <em>phantom types</em> to encode additional information in the types of our data, preventing the user from providing attribute values of the wrong type.</li>
+<li>We used the <em>free monad</em> to turn our array representation of a collection of content into a monadic representation supporting do notation. We then extended this representation to support a new monadic action, and interpreted the monadic computations using standard monad transformers.</li>
 </ul>
-<p>これらの手法は全て、使用者が間違いを犯すのを防いだり領域特化言語の構文を改良したりするために、PureScriptのモジュールと型システムを活用しています。</p>
-<p>関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野ですが、幾つかの簡単な技法に対して役に立つ導入を提供し、表現力豊かな型を持つ言語で作業することの威力を示すことができていれば幸いです。</p>
+<p>These techniques all leverage PureScript's module and type systems, either to prevent the user from making mistakes or to improve the syntax of the domain-specific language.</p>
+<p>The implementation of domain-specific languages in functional programming languages is an area of active research, but hopefully this provides a useful introduction some simple techniques, and illustrates the power of working in a language with expressive types.</p>
 
                     </main>
 

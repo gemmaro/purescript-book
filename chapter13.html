@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="ja" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>テストの自動生成 - 実例によるPureScript</title>
+        <title>Generative Testing - PureScript by Example</title>
 
 
         <!-- Custom HTML head -->
@@ -30,8 +30,6 @@
 
         <!-- Custom theme stylesheets -->
 
-        <!-- MathJax -->
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -85,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html" class="active"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Foreword</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> Getting Started</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> Functions and Records</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> Recursion, Maps And Folds</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> Pattern Matching</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> Type Classes</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> Applicative Validation</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> The Effect Monad</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> Asynchronous Effects</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> The Foreign Function Interface</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> Monadic Adventures</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvas Graphics</a></li><li class="chapter-item expanded "><a href="chapter13.html" class="active"><strong aria-hidden="true">13.</strong> Generative Testing</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> Domain-Specific Languages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -114,13 +112,13 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">実例によるPureScript</h1>
+                    <h1 class="menu-title">PureScript by Example</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/gemmaro/purescript-book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/purescript-contrib/purescript-book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -149,47 +147,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="テストの自動生成"><a class="header" href="#テストの自動生成">テストの自動生成</a></h1>
-<h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、テスティングの問題に対する、型クラスの特に洗練された応用について示します。
-<em>どのように</em>テストするのかをコンパイラに教えるのではなく、コードが<em>どのような</em>性質を持っているべきかを教えることでテストします。
-型クラスを使って無作為データ生成のための紋切り型なコードを書かずして、テスト項目を仕様から無作為に生成できます。
-これは<em>生成的テスティング</em>（generative testing、または<em>property-based
-testing</em>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introduction_to_QuickCheck1">QuickCheck</a>ライブラリによって普及した手法です。</p>
-<p><code>quickcheck</code>パッケージはHaskellのQuickCheckライブラリをPureScriptにポーティングしたもので、型や構文はもとのライブラリとほとんど同じようになっています。
-<code>quickcheck</code>を使って簡単なライブラリをテストし、Spagoでテストスイートを自動化されたビルドに統合する方法を見ていきます。</p>
-<h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
-<p>この章のプロジェクトには依存関係として <code>quickcheck</code>が追加されます。</p>
-<p>Spagoプロジェクトでは、テストソースは <code>test</code>ディレクトリに置かれ、テストスイートのメインモジュールは
-<code>Test.Main</code>と名づけられます。 テストスイートは、 <code>spago test</code>コマンドを使用して実行できます。</p>
-<h2 id="性質を書く"><a class="header" href="#性質を書く">性質を書く</a></h2>
-<p><code>Merge</code>モジュールでは簡単な関数 <code>merge</code>が実装されています。
-これを<code>quickcheck</code>ライブラリの機能を実演するために使っていきます。</p>
+                        <h1 id="generative-testing"><a class="header" href="#generative-testing">Generative Testing</a></h1>
+<h2 id="chapter-goals"><a class="header" href="#chapter-goals">Chapter Goals</a></h2>
+<p>In this chapter, we will see a particularly elegant application of type classes to the problem of testing. Instead of testing our code by telling the compiler <em>how</em> to test, we simply assert <em>what</em> properties our code should have. Test cases can be generated randomly from this specification, using type classes to hide the boilerplate code of random data generation. This is called <em>generative testing</em> (or <em>property-based testing</em>), a technique made popular by the <a href="https://wiki.haskell.org/Introduction_to_QuickCheck1">QuickCheck</a> library in Haskell.</p>
+<p>The <code>quickcheck</code> package is a port of Haskell's QuickCheck library to PureScript, and for the most part, it preserves the types and syntax of the original library. We will see how to use <code>quickcheck</code> to test a simple library, using Spago to integrate our test suite into our development process.</p>
+<h2 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h2>
+<p>This chapter's project adds <code>quickcheck</code> as a dependency.</p>
+<p>In a Spago project, test sources should be placed in the <code>test</code> directory, and the main module for the test suite should be named <code>Test.Main</code>. The test suite can be run using the <code>spago test</code> command.</p>
+<h2 id="writing-properties"><a class="header" href="#writing-properties">Writing Properties</a></h2>
+<p>The <code>Merge</code> module implements a simple function <code>merge</code>, which we will use to demonstrate the features of the <code>quickcheck</code> library.</p>
 <pre><code class="language-haskell">merge :: Array Int -&gt; Array Int -&gt; Array Int
 </code></pre>
-<p><code>merge</code>は2つの整列された整数の配列を取って、結果が整列されるように要素を統合します。
-例えば次のようになります。</p>
+<p><code>merge</code> takes two sorted arrays of integers, and merges their elements so that the result is also sorted. For example:</p>
 <pre><code class="language-text">&gt; import Merge
 &gt; merge [1, 3, 5] [2, 4, 5]
 
 [1, 2, 3, 4, 5, 5]
 </code></pre>
-<p>典型的なテストスイートでは、手作業でこのような小さなテスト項目を幾つも作成し、結果が正しい値と等しいことを確認することでテストを実施します。
-しかし、 <code>merge</code>関数について知る必要があるものは全て、この性質に要約できます。</p>
+<p>In a typical test suite, we might test <code>merge</code> by generating a few small test cases like this by hand, and asserting that the results were equal to the appropriate values. However, everything we need to know about the <code>merge</code> function can be summarized by this property:</p>
 <ul>
-<li><code>xs</code>と<code>ys</code>が整列済みなら、<code>merge xs ys</code>は両方の配列が一緒に結合されて整列された結果になります。</li>
+<li>If <code>xs</code> and <code>ys</code> are sorted, then <code>merge xs ys</code> is the sorted result of both arrays appended together.</li>
 </ul>
-<p><code>quickcheck</code>では、無作為なテスト項目を生成することで、直接この性質をテストできます。
-コードが持つべき性質を関数として述べるだけです。
-この場合は1つの性質があります。</p>
+<p><code>quickcheck</code> allows us to test this property directly, by generating random test cases. We simply state the properties that we want our code to have, as functions. In this case, we have a single property:</p>
 <pre><code class="language-haskell">main = do
   quickCheck \xs ys -&gt;
     eq (merge (sort xs) (sort ys)) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>このコードを実行すると、 <code>quickcheck</code>は無作為な入力 <code>xs</code>と
-<code>ys</code>を生成してこの関数に渡すことで、主張しようとしている性質を反証しようとします。
-何らかの入力に対して関数が <code>false</code>を返した場合、性質は正しくないことが示され、ライブラリはエラーを発生させます。
-幸いなことに、次のように100個の無作為なテスト項目を生成しても、ライブラリはこの性質を反証できません。</p>
+<p>When we run this code, <code>quickcheck</code> will attempt to disprove the properties we claimed, by generating random inputs <code>xs</code> and <code>ys</code>, and passing them to our functions. If our function returns <code>false</code> for any inputs, the property will be incorrect, and the library will raise an error. Fortunately, the library is unable to disprove our properties after generating 100 random test cases:</p>
 <pre><code class="language-text">$ spago test
 
 Installation complete.
@@ -198,15 +182,13 @@ Build succeeded.
 ...
 Tests succeeded.
 </code></pre>
-<p>もし
-<code>merge</code>関数に意図的にバグを混入した場合（例えば、大なりのチェックを小なりのチェックへと変更するなど）、最初に失敗したテスト項目の後で例外が実行時に投げられます。</p>
+<p>If we deliberately introduce a bug into the <code>merge</code> function (for example, by changing the less-than check for a greater-than check), then an exception is thrown at runtime after the first failed test case:</p>
 <pre><code class="language-text">Error: Test 1 failed:
 Test returned false
 </code></pre>
-<p>見ての通りこのエラーメッセージではあまり役に立ちませんが、少し工夫するだけで改良できます。</p>
-<h2 id="エラーメッセージの改善"><a class="header" href="#エラーメッセージの改善">エラーメッセージの改善</a></h2>
-<p>テスト項目が失敗した時に同時にエラーメッセージを提供する上で、<code>quickcheck</code>は<code>&lt;?&gt;</code>演算子を提供しています。
-次のように性質の定義とエラー文言を<code>&lt;?&gt;</code>で区切って書くだけです。</p>
+<p>As we can see, this error message is not very helpful, but it can be improved with a little work.</p>
+<h2 id="improving-error-messages"><a class="header" href="#improving-error-messages">Improving Error Messages</a></h2>
+<p>To provide error messages along with our failed test cases, <code>quickcheck</code> provides the <code>&lt;?&gt;</code> operator. Simply separate the property definition from the error message using <code>&lt;?&gt;</code>, as follows:</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   let
     result = merge (sort xs) (sort ys)
@@ -214,28 +196,24 @@ Test returned false
   in
     eq result expected &lt;?&gt; &quot;Result:\n&quot; &lt;&gt; show result &lt;&gt; &quot;\nnot equal to expected:\n&quot; &lt;&gt; show expected
 </code></pre>
-<p>このとき、もしバグを混入するようにコードを変更すると、最初のテスト項目が失敗したときに改良されたエラーメッセージが表示されます。</p>
+<p>This time, if we modify the code to introduce a bug, we see our improved error message after the first failed test case:</p>
 <pre><code class="language-text">Error: Test 1 (seed 534161891) failed:
 Result:
 [-822215,-196136,-116841,618343,887447,-888285]
 not equal to expected:
 [-888285,-822215,-196136,-116841,618343,887447]
 </code></pre>
-<p>入力 <code>xs</code>が無作為に選ばれた数の配列として生成されていることに注目してください。</p>
-<h2 id="演習"><a class="header" href="#演習">演習</a></h2>
+<p>Notice how the input <code>xs</code> and <code>ys</code> were generated as arrays of randomly-selected integers.</p>
+<h2 id="exercises"><a class="header" href="#exercises">Exercises</a></h2>
 <ol>
-<li>（簡単）配列に空の配列を統合しても元の配列は変更されないことを確かめる性質を書いてください。
-<em>補足</em>：この新しい性質は冗長です。
-というのもこの状況は既に既存の性質で押さえられているからです。
-ここでは読者がQuickCheckを使う練習のための簡単なやり方を示そうとしているだけです。</li>
-<li>（簡単）<code>merge</code>の残りの性質に対して、適切なエラーメッセージを追加してください。</li>
+<li>(Easy) Write a property which asserts that merging an array with the empty array does not modify the original array. <em>Note</em>: This new property is redundant, since this situation is already covered by our existing property. We're just trying to give you readers a simple way to practice using quickCheck.</li>
+<li>(Easy) Add an appropriate error message to the remaining property for <code>merge</code>.</li>
 </ol>
-<h2 id="多相的なコードのテスト"><a class="header" href="#多相的なコードのテスト">多相的なコードのテスト</a></h2>
-<p><code>Merge</code>モジュールでは、数の配列だけでなく、 <code>Ord</code>型クラスに属するどんな型の配列に対しても動作する、 <code>merge</code>関数を一般化した
-<code>mergePoly</code>という関数が定義されています。</p>
+<h2 id="testing-polymorphic-code"><a class="header" href="#testing-polymorphic-code">Testing Polymorphic Code</a></h2>
+<p>The <code>Merge</code> module defines a generalization of the <code>merge</code> function, called <code>mergePoly</code>, which works not only with arrays of numbers, but also arrays of any type belonging to the <code>Ord</code> type class:</p>
 <pre><code class="language-haskell">mergePoly :: forall a. Ord a =&gt; Array a -&gt; Array a -&gt; Array a
 </code></pre>
-<p><code>merge</code>の代わりに <code>mergePoly</code>を使うように元のテストを変更すると、次のようなエラーメッセージが表示されます。</p>
+<p>If we modify our original test to use <code>mergePoly</code> in place of <code>merge</code>, we see the following error message:</p>
 <pre><code class="language-text">No type class instance was found for
 
   Test.QuickCheck.Arbitrary.Arbitrary t0
@@ -243,44 +221,33 @@ not equal to expected:
 The instance head contains unknown type variables.
 Consider adding a type annotation.
 </code></pre>
-<p>このエラーメッセージは、配列に持たせたい要素の型が何なのかわからないので、コンパイラが無作為なテスト項目を生成できなかったということを示しています。
-このような場合、型註釈を使ってコンパイラが特定の型を推論するように強制できます。
-例えば<code>Array Int</code>などです。</p>
+<p>This error message indicates that the compiler could not generate random test cases, because it did not know what type of elements we wanted our arrays to have. In these sorts of cases, we can use type annotations to force the compiler to infer a particular type, such as <code>Array Int</code>:</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (mergePoly (sort xs) (sort ys) :: Array Int) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>代替案として型を指定する補助関数を使うこともできます。
-こうするとより見通しのよいコードになることがあります。
-例えば同値関数の同義な関数<code>ints</code>を定義したとしましょう。</p>
+<p>We can alternatively use a helper function to specify type, which may result in cleaner code. For example, if we define a function <code>ints</code> as a synonym for the identity function:</p>
 <pre><code class="language-haskell">ints :: Array Int -&gt; Array Int
 ints = id
 </code></pre>
-<p>それから、コンパイラが引数の2つの配列の型 <code>Array Int</code>を推論するように、テストを変更します。</p>
+<p>then we can modify our test so that the compiler infers the type <code>Array Int</code> for our two array arguments:</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (ints $ mergePoly (sort xs) (sort ys)) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>ここで、 <code>ints</code>関数が不明な型を解消するために使われているため、 <code>xs</code>と <code>ys</code>はどちらも型 <code>Array Int</code>を持っています。</p>
-<h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
+<p>Here, <code>xs</code> and <code>ys</code> both have type <code>Array Int</code>, since the <code>ints</code> function has been used to disambiguate the unknown type.</p>
+<h2 id="exercises-1"><a class="header" href="#exercises-1">Exercises</a></h2>
 <ol>
-<li>（簡単）<code>xs</code>と <code>ys</code>の型を <code>Array Boolean</code>に強制する関数 <code>bools</code>を書き、
-<code>mergePoly</code>をその型でテストする性質を追加してください。</li>
-<li>（普通）標準関数から（例えば<code>arrays</code>パッケージから）1つ関数を選び、適切なエラーメッセージを含めてQuickCheckの性質を書いてください。
-その性質は、補助関数を使って多相型引数を <code>Int</code>か <code>Boolean</code>のどちらかに固定しなければいけません。</li>
+<li>(Easy) Write a function <code>bools</code> which forces the types of <code>xs</code> and <code>ys</code> to be <code>Array Boolean</code>, and add additional properties which test <code>mergePoly</code> at that type.</li>
+<li>(Medium) Choose a pure function from the core libraries (for example, from the <code>arrays</code> package), and write a QuickCheck property for it, including an appropriate error message. Your property should use a helper function to fix any polymorphic type arguments to either <code>Int</code> or <code>Boolean</code>.</li>
 </ol>
-<h2 id="任意のデータの生成"><a class="header" href="#任意のデータの生成">任意のデータの生成</a></h2>
-<p><code>quickcheck</code>ライブラリを使って性質に対するテスト項目を無作為に生成する方法について説明します。</p>
-<p>無作為に値を生成できるような型は、次のような型クラス <code>Arbitary</code>のインスタンスを持っています。</p>
+<h2 id="generating-arbitrary-data"><a class="header" href="#generating-arbitrary-data">Generating Arbitrary Data</a></h2>
+<p>Now we will see how the <code>quickcheck</code> library is able to randomly generate test cases for our properties.</p>
+<p>Those types whose values can be randomly generated are captured by the <code>Arbitrary</code> type class:</p>
 <pre><code class="language-haskell">class Arbitrary t where
   arbitrary :: Gen t
 </code></pre>
-<p><code>Gen</code>型構築子は<em>決定的無作為データ生成</em>の副作用を表しています。
-決定的無作為データ生成は、擬似乱数生成器を使って、シード値から決定的無作為関数の引数を生成します。
-<code>Test.QuickCheck.Gen</code>モジュールは、生成器を構築するための幾つかの有用なコンビネータを定義しています。</p>
-<p><code>Gen</code>はモナドでもアプリカティブ関手でもあるので、
-<code>Arbitary</code>型クラスの新しいインスタンスを作成するのに、いつも使っているようなコンビネータを自由に使うことができます。</p>
-<p>例えば、 <code>quickcheck</code>ライブラリで提供されている <code>Int</code>型用の
-<code>Arbitrary</code>インスタンスを使い、256個のバイト値上の分布を作ることができます。
-これには<code>Gen</code>用に<code>Functor</code>インスタンスを使って整数から任意の整数値のバイトまでマップします。</p>
+<p>The <code>Gen</code> type constructor represents the side-effects of <em>deterministic random data generation</em>. It uses a pseudo-random number generator to generate deterministic random function arguments from a seed value. The <code>Test.QuickCheck.Gen</code> module defines several useful combinators for building generators.</p>
+<p><code>Gen</code> is also a monad and an applicative functor, so we have the usual collection of combinators at our disposal for creating new instances of the <code>Arbitrary</code> type class.</p>
+<p>For example, we can use the <code>Arbitrary</code> instance for the <code>Int</code> type, provided in the <code>quickcheck</code> library, to create a distribution on the 256 byte values, using the <code>Functor</code> instance for <code>Gen</code> to map a function from integers to bytes over arbitrary integer values:</p>
 <pre><code class="language-haskell">newtype Byte = Byte Int
 
 instance Arbitrary Byte where
@@ -289,16 +256,12 @@ instance Arbitrary Byte where
     intToByte n | n &gt;= 0 = Byte (n `mod` 256)
                 | otherwise = intToByte (-n)
 </code></pre>
-<p>ここでは、0から255までの間の整数値であるような型 <code>Byte</code>を定義しています。
-<code>Arbitrary</code>インスタンスは <code>map</code>演算子を使って、 <code>intToByte</code>関数を <code>arbitrary</code>アクションまで持ち上げています。
-<code>arbitrary</code>アクション内部の型は <code>Gen Int</code>と推論されます。</p>
-<p>この考え方を <code>merge</code>用のテストに使うこともできます。</p>
+<p>Here, we define a type <code>Byte</code> of integral values between 0 and 255. The <code>Arbitrary</code> instance uses the <code>map</code> function to lift the <code>intToByte</code> function over the <code>arbitrary</code> action. The type of the inner <code>arbitrary</code> action is inferred as <code>Gen Int</code>.</p>
+<p>We can also use this idea to improve our test for <code>merge</code>:</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (numbers $ mergePoly (sort xs) (sort ys)) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>このテストでは、任意の配列 <code>xs</code>と <code>ys</code>を生成しますが、 <code>merge</code>は整列済みの入力を期待しているので、 <code>xs</code>と
-<code>ys</code>を整列しておかなければなりません。
-一方で、整列された配列を表すnewtypeを作成し、整列されたデータを生成する <code>Arbitrary</code>インスタンスを書くこともできます。</p>
+<p>In this test, we generated arbitrary arrays <code>xs</code> and <code>ys</code>, but had to sort them, since <code>merge</code> expects sorted input. On the other hand, we could create a newtype representing sorted arrays, and write an <code>Arbitrary</code> instance which generates sorted data:</p>
 <pre><code class="language-haskell">newtype Sorted a = Sorted (Array a)
 
 sorted :: forall a. Sorted a -&gt; Array a
@@ -307,26 +270,23 @@ sorted (Sorted xs) = xs
 instance (Arbitrary a, Ord a) =&gt; Arbitrary (Sorted a) where
   arbitrary = map (Sorted &lt;&lt;&lt; sort) arbitrary
 </code></pre>
-<p>この型構築子を使うと、テストを次のように変更できます。</p>
+<p>With this type constructor, we can modify our test as follows:</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs &lt;&gt; sorted ys)
 </code></pre>
-<p>これは些細な変更に見えるかもしれませんが、 <code>xs</code>と <code>ys</code>の型はただの <code>Array Int</code>から <code>Sorted Int</code>へと変更されています。
-これにより、 <code>mergePoly</code>関数は整列済みの入力を取る、という<em>意図</em>を、わかりやすく示すことができます。
-理想的には、 <code>mergePoly</code>関数自体の型が <code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
-<p>より興味深い例として、 <code>Tree</code>モジュールでは枝の値で整列された二分木の型が定義されています。</p>
+<p>This may look like a small change, but the types of <code>xs</code> and <code>ys</code> have changed to <code>Sorted Int</code>, instead of just <code>Array Int</code>. This communicates our <em>intent</em> in a clearer way - the <code>mergePoly</code> function takes sorted input. Ideally, the type of the <code>mergePoly</code> function itself would be updated to use the <code>Sorted</code> type constructor.</p>
+<p>As a more interesting example, the <code>Tree</code> module defines a type of sorted binary trees with values at the branches:</p>
 <pre><code class="language-haskell">data Tree a
   = Leaf
   | Branch (Tree a) a (Tree a)
 </code></pre>
-<p><code>Tree</code>モジュールでは次のAPIが定義されています。</p>
+<p>The <code>Tree</code> module defines the following API:</p>
 <pre><code class="language-haskell">insert    :: forall a. Ord a =&gt; a -&gt; Tree a -&gt; Tree a
 member    :: forall a. Ord a =&gt; a -&gt; Tree a -&gt; Boolean
 fromArray :: forall a. Ord a =&gt; Array a -&gt; Tree a
 toArray   :: forall a. Tree a -&gt; Array a
 </code></pre>
-<p><code>insert</code>関数は新しい要素を整列済みの二分木に挿入するのに使われ、 <code>member</code>関数は特定の値の有無を木に問い合わせるのに使われます。
-例えば次のようになります。</p>
+<p>The <code>insert</code> function is used to insert a new element into a sorted tree, and the <code>member</code> function can be used to query a tree for a particular value. For example:</p>
 <pre><code class="language-text">&gt; import Tree
 
 &gt; member 2 $ insert 1 $ insert 2 Leaf
@@ -335,31 +295,23 @@ true
 &gt; member 1 Leaf
 false
 </code></pre>
-<p><code>toArray</code>関数と <code>fromArray</code>関数は、整列された木と整列された配列を相互に変換するために使われます。
-<code>fromArray</code>を使うと、木についての <code>Arbitrary</code>インスタンスを書くことができます。</p>
+<p>The <code>toArray</code> and <code>fromArray</code> functions can be used to convert sorted trees to and from arrays. We can use <code>fromArray</code> to write an <code>Arbitrary</code> instance for trees:</p>
 <pre><code class="language-haskell">instance (Arbitrary a, Ord a) =&gt; Arbitrary (Tree a) where
   arbitrary = map fromArray arbitrary
 </code></pre>
-<p>型 <code>a</code>についての<code>Arbitary</code>インスタンスが使えるなら、テストする性質の引数の型として <code>Tree a</code>を使うことができます。例えば、
-<code>member</code>テストは値を挿入した後は常に <code>true</code>を返すことをテストできます。</p>
+<p>We can now use <code>Tree a</code> as the type of an argument to our test properties, whenever there is an <code>Arbitrary</code> instance available for the type <code>a</code>. For example, we can test that the <code>member</code> test always returns <code>true</code> after inserting a value:</p>
 <pre><code class="language-haskell">quickCheck \t a -&gt;
   member a $ insert a $ treeOfInt t
 </code></pre>
-<p>ここでは、引数 <code>t</code>は <code>Tree Number</code>型の無作為に生成された木です。
-型引数は、同値関数 <code>treeOfInt</code>によって明確にされています。</p>
-<h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
+<p>Here, the argument <code>t</code> is a randomly-generated tree of type <code>Tree Int</code>, where the type argument disambiguated by the identity function <code>treeOfInt</code>.</p>
+<h2 id="exercises-2"><a class="header" href="#exercises-2">Exercises</a></h2>
 <ol>
-<li>（普通）<code>a-z</code>の範囲から無作為に選ばれた文字の集まりを生成する
-<code>Arbitrary</code>インスタンスを持つ、<code>String</code>のnewtypeを作ってください。
-<em>手掛かり</em>：<code>Test.QuickCheck.Gen</code>モジュールから <code>elements</code>と <code>arrayOf</code>関数を使います。</li>
-<li>（難しい）木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。</li>
+<li>(Medium) Create a newtype for <code>String</code> with an associated <code>Arbitrary</code> instance which generates collections of randomly-selected characters in the range <code>a-z</code>. <em>Hint</em>: use the <code>elements</code> and <code>arrayOf</code> functions from the <code>Test.QuickCheck.Gen</code> module.</li>
+<li>(Difficult) Write a property which asserts that a value inserted into a tree is still a member of that tree after arbitrarily many more insertions.</li>
 </ol>
-<h2 id="高階関数のテスト"><a class="header" href="#高階関数のテスト">高階関数のテスト</a></h2>
-<p><code>Merge</code>モジュールは <code>merge</code>関数の別の一般化も定義しています。
-<code>mergeWith</code>関数は追加の関数を引数として取り、統合される要素の順序を決定するのに使われます。
-つまり <code>mergeWith</code>は高階関数です。</p>
-<p>例えば<code>length</code>関数を最初の引数として渡し、既に長さの昇順になっている2つの配列を統合できます。
-このとき、結果も長さの昇順になっていなければなりません。</p>
+<h2 id="testing-higher-order-functions"><a class="header" href="#testing-higher-order-functions">Testing Higher-Order Functions</a></h2>
+<p>The <code>Merge</code> module defines another generalization of the <code>merge</code> function - the <code>mergeWith</code> function takes an additional function as an argument which is used to determine the order in which elements should be merged. That is, <code>mergeWith</code> is a higher-order function.</p>
+<p>For example, we can pass the <code>length</code> function as the first argument, to merge two arrays which are already in length-increasing order. The result should also be in length-increasing order:</p>
 <pre><code class="language-haskell">&gt; import Data.String
 
 &gt; mergeWith length
@@ -368,26 +320,17 @@ false
 
 [&quot;&quot;,&quot;x&quot;,&quot;ab&quot;,&quot;xyz&quot;,&quot;abcd&quot;]
 </code></pre>
-<p>このような関数をテストするにはどうしたらいいでしょうか。
-理想的には、関数である最初の引数を含めた、3つの引数全てについて、値を生成したいと思うでしょう。</p>
-<p>関数を無作為に生成できるようにする、もう1つの型クラスがあります。
-この型クラスは <code>Coarbitrary</code>と呼ばれており、次のように定義されています。</p>
+<p>How might we test such a function? Ideally, we would like to generate values for all three arguments, including the first argument which is a function.</p>
+<p>There is a second type class which allows us to create randomly-generated functions. It is called <code>Coarbitrary</code>, and it is defined as follows:</p>
 <pre><code class="language-haskell">class Coarbitrary t where
   coarbitrary :: forall r. t -&gt; Gen r -&gt; Gen r
 </code></pre>
-<p><code>coarbitrary</code>関数は、型 <code>t</code>と、関数の結果の型 <code>r</code>についての乱数生成器を関数の引数としてとり、乱数生成器を <em>かき乱す</em>
-のにこの引数を使います。つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。</p>
-<p>また、もし関数の定義域が <code>Coarbitrary</code>で、値域が
-<code>Arbitrary</code>なら、<code>Arbitrary</code>の関数を与える型クラスインスタンスが存在します。</p>
+<p>The <code>coarbitrary</code> function takes a function argument of type <code>t</code>, and a random generator for a function result of type <code>r</code>, and uses the function argument to <em>perturb</em> the random generator. That is, it uses the function argument to modify the random output of the random generator for the result.</p>
+<p>In addition, there is a type class instance which gives us <code>Arbitrary</code> functions if the function domain is <code>Coarbitrary</code> and the function codomain is <code>Arbitrary</code>:</p>
 <pre><code class="language-haskell">instance (Coarbitrary a, Arbitrary b) =&gt; Arbitrary (a -&gt; b)
 </code></pre>
-<p>実は、これが意味しているのは、引数として関数を取るような性質を記述できるということです。
-<code>mergeWith</code>関数の場合では、新しい引数を考慮するようにテストを修正すると、最初の引数を無作為に生成できます。</p>
-<p>結果が整列されていることは保証できません。
-必ずしも<code>Ord</code>インスタンスを持っているとさえ限らないのです。
-しかし、引数として渡す関数 <code>f</code>に従って結果が整列されていることは期待されます。
-更に、2つの入力配列が <code>f</code>に従って整列されている必要がありますので、<code>sortBy</code>関数を使って関数 <code>f</code>が適用されたあとの比較に基づいて
-<code>xs</code>と<code>ys</code>を整列します。</p>
+<p>In practice, this means that we can write properties which take functions as arguments. In the case of the <code>mergeWith</code> function, we can generate the first argument randomly, modifying our tests to take account of the new argument.</p>
+<p>We cannot guarantee that the result will be sorted - we do not even necessarily have an <code>Ord</code> instance - but we can expect that the result be sorted with respect to the function <code>f</code> that we pass in as an argument. In addition, we need the two input arrays to be sorted with respect to <code>f</code>, so we use the <code>sortBy</code> function to sort <code>xs</code> and <code>ys</code> based on comparison after the function <code>f</code> has been applied:</p>
 <pre><code class="language-haskell">quickCheck \xs ys f -&gt;
   let
     result =
@@ -401,54 +344,43 @@ false
   in
     eq result expected
 </code></pre>
-<p>ここでは、関数 <code>f</code>の型を明確にするために、関数 <code>intToBool</code>を使用しています。</p>
+<p>Here, we use a function <code>intToBool</code> to disambiguate the type of the function <code>f</code>:</p>
 <pre><code class="language-haskell">intToBool :: (Int -&gt; Boolean) -&gt; Int -&gt; Boolean
 intToBool = id
 </code></pre>
-<p>関数は <code>Arbitrary</code>であるだけでなく <code>Coarbitrary</code>でもあります。</p>
+<p>In addition to being <code>Arbitrary</code>, functions are also <code>Coarbitrary</code>:</p>
 <pre><code class="language-haskell">instance (Arbitrary a, Coarbitrary b) =&gt; Coarbitrary (a -&gt; b)
 </code></pre>
-<p>これは値の生成が単純な関数だけに限定されるものではないことを意味しています。
-つまり<em>高階関数</em>や、引数が高階関数であるような関数もまた、無作為に生成できるのです。</p>
-<h2 id="coarbitraryのインスタンスを書く"><a class="header" href="#coarbitraryのインスタンスを書く">Coarbitraryのインスタンスを書く</a></h2>
-<p><code>Gen</code>の <code>Monad</code>や <code>Applicative</code>インスタンスを使って独自のデータ型に対して
-<code>Arbitrary</code>インスタンスを書くことができるのとちょうど同じように、独自の <code>Coarbitrary</code>インスタンスを書くこともできます。
-これにより、無作為に生成される関数の定義域として、独自のデータ型を使うことができるようになります。</p>
-<p><code>Tree</code>型の <code>Coarbitrary</code>インスタンスを書いてみましょう。
-枝に格納されている要素の型に <code>Coarbitrary</code>インスタンスが必要になります。</p>
+<p>This means that we are not limited to just values and functions - we can also randomly generate <em>higher-order functions</em>, or functions whose arguments are higher-order functions, and so on.</p>
+<h2 id="writing-coarbitrary-instances"><a class="header" href="#writing-coarbitrary-instances">Writing Coarbitrary Instances</a></h2>
+<p>Just as we can write <code>Arbitrary</code> instances for our data types by using the <code>Monad</code> and <code>Applicative</code> instances of <code>Gen</code>, we can write our own <code>Coarbitrary</code> instances as well. This allows us to use our own data types as the domain of randomly-generated functions.</p>
+<p>Let's write a <code>Coarbitrary</code> instance for our <code>Tree</code> type. We will need a <code>Coarbitrary</code> instance for the type of the elements stored in the branches:</p>
 <pre><code class="language-haskell">instance Coarbitrary a =&gt; Coarbitrary (Tree a) where
 </code></pre>
-<p>型 <code>Tree a</code>の値が与えられたときに、乱数発生器をかき乱す関数を記述する必要があります。
-入力値が <code>Leaf</code>であれば、そのままにしておく生成器を返します。</p>
+<p>We have to write a function which perturbs a random generator given a value of type <code>Tree a</code>. If the input value is a <code>Leaf</code>, then we will just return the generator unchanged:</p>
 <pre><code class="language-haskell">  coarbitrary Leaf = id
 </code></pre>
-<p>もし木が <code>Branch</code>なら、左の部分木、値、右の部分木を使って生成器をかき乱します。
-関数合成を使って独自のかき乱し関数を作ります。</p>
+<p>If the tree is a <code>Branch</code>, then we will perturb the generator using the left subtree, the value, and the right subtree. We use function composition to create our perturbing function:</p>
 <pre><code class="language-haskell">  coarbitrary (Branch l a r) =
     coarbitrary l &lt;&lt;&lt;
     coarbitrary a &lt;&lt;&lt;
     coarbitrary r
 </code></pre>
-<p>これで、木を引数にとるような関数を引数に含む性質を自由に書くことができるようになりました。
-例えば<code>Tree</code>モジュールでは<code>anywhere</code>が定義されており、これは述語が引数のどんな部分木についても成り立っているかを調べる関数です。</p>
+<p>Now we are free to write properties whose arguments include functions taking trees as arguments. For example, the <code>Tree</code> module defines a function <code>anywhere</code>, which tests if a predicate holds on any subtree of its argument:</p>
 <pre><code class="language-haskell">anywhere :: forall a. (Tree a -&gt; Boolean) -&gt; Tree a -&gt; Boolean
 </code></pre>
-<p>これで、この述語関数<code>anywhere</code>を無作為に生成できるようになりました。
-例えば、 <code>anywhere</code>関数は<em>ある命題のもとで不変</em>であることが期待されます。</p>
+<p>Now we are able to generate the predicate function randomly. For example, we expect the <code>anywhere</code> function to <em>respect disjunction</em>:</p>
 <pre><code class="language-haskell">quickCheck \f g t -&gt;
   anywhere (\s -&gt; f s || g s) t ==
     anywhere f (treeOfInt t) || anywhere g t
 </code></pre>
-<p>ここで、 <code>treeOfInt</code>関数は木に含まれる値の型を型 <code>Int</code>に固定するために使われています。</p>
+<p>Here, the <code>treeOfInt</code> function is used to fix the type of values contained in the tree to the type <code>Int</code>:</p>
 <pre><code class="language-haskell">treeOfInt :: Tree Int -&gt; Tree Int
 treeOfInt = id
 </code></pre>
-<h2 id="副作用のないテスト"><a class="header" href="#副作用のないテスト">副作用のないテスト</a></h2>
-<p>通常、テストの目的ではテストスイートの <code>main</code>アクションに<code>quickCheck</code>関数の呼び出しが含まれています。
-しかし、副作用を使わない<code>quickCheckPure</code>と呼ばれる <code>quickCheck</code>関数の亜種もあります。
-<code>quickCheckPure</code>は、入力として乱数の種をとり、テスト結果の配列を返す純粋な関数です。</p>
-<p>PSCiを使用して <code>quickCheckPure</code>を試せます。
-ここでは <code>merge</code>操作が結合法則を満たすことをテストします。</p>
+<h2 id="testing-without-side-effects"><a class="header" href="#testing-without-side-effects">Testing Without Side-Effects</a></h2>
+<p>For the purposes of testing, we usually include calls to the <code>quickCheck</code> function in the <code>main</code> action of our test suite. However, there is a variant of the <code>quickCheck</code> function, called <code>quickCheckPure</code> which does not use side-effects. Instead, it is a pure function which takes a random seed as an input, and returns an array of test results.</p>
+<p>We can test <code>quickCheckPure</code> using PSCi. Here, we test that the <code>merge</code> operation is associative:</p>
 <pre><code class="language-text">&gt; import Prelude
 &gt; import Merge
 &gt; import Test.QuickCheck
@@ -462,42 +394,36 @@ treeOfInt = id
 
 Success : Success : ...
 </code></pre>
-<p><code>quickCheckPure</code>は乱数の種、生成するテスト項目数、テストする性質の3つの引数をとります。
-もし全てのテスト項目が成功したら、<code>Success</code>データ構築子の配列がコンソールに出力されます。</p>
-<p><code>quickCheckPure</code>は、性能ベンチマークの入力データ生成や、webアプリケーションのフォームデータ例を無作為に生成するというような状況で便利かもしれません。</p>
-<h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
+<p><code>quickCheckPure</code> takes three arguments: the random seed, the number of test cases to generate, and the property to test. If all tests pass, you should see an array of <code>Success</code> data constructors printed to the console.</p>
+<p><code>quickCheckPure</code> might be useful in other situations, such as generating random input data for performance benchmarks, or generating sample form data for web applications.</p>
+<h2 id="exercises-3"><a class="header" href="#exercises-3">Exercises</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>Byte</code>と <code>Sorted</code>型構築子についての <code>Coarbitrary</code>インスタンスを書いてください。</p>
+<p>(Easy) Write <code>Coarbitrary</code> instances for the <code>Byte</code> and <code>Sorted</code> type constructors.</p>
 </li>
 <li>
-<p>（普通）任意の関数 <code>f</code>について、 <code>mergeWith f</code>関数の結合性を主張する（高階）性質を書いてください。
-<code>quickCheckPure</code>を使ってPSCiでその性質をテストしてください。</p>
+<p>(Medium) Write a (higher-order) property which asserts associativity of the <code>mergeWith f</code> function for any function <code>f</code>. Test your property in PSCi using <code>quickCheckPure</code>.</p>
 </li>
 <li>
-<p>（普通）次のデータ型の<code>Arbitrary</code>と<code>Coarbitrary</code>インスタンスを書いてください。</p>
+<p>(Medium) Write <code>Arbitrary</code> and <code>Coarbitrary</code> instances for the following data type:</p>
 <pre><code class="language-haskell">data OneTwoThree a = One a | Two a a | Three a a a
 </code></pre>
-<p><em>手掛かり</em>：<code>Test.QuickCheck.Gen</code>で定義された <code>oneOf</code>関数を使って <code>Arbitrary</code>インスタンスを定義してください。</p>
+<p><em>Hint</em>: Use the <code>oneOf</code> function defined in <code>Test.QuickCheck.Gen</code> to define your <code>Arbitrary</code> instance.</p>
 </li>
 <li>
-<p>（普通）<code>all</code>を使って <code>quickCheckPure</code>関数の結果を単純化してください。
-この新しい関数は型<code>List Result -&gt; Boolean</code>を持ち、全てのテストが通れば<code>true</code>を、そうでなければ<code>false</code>を返します。</p>
+<p>(Medium) Use <code>all</code> to simplify the result of the <code>quickCheckPure</code> function - your new function should have type <code>List Result -&gt; Boolean</code> and should return <code>true</code> if every test passes and <code>false</code> otherwise.</p>
 </li>
 <li>
-<p>（普通）<code>quickCheckPure</code>の結果を単純にする別の手法として、関数<code>squashResults :: List Result -&gt; Result</code>を書いてみてください。
-<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで、失敗した場合の最初のエラーを保存することを検討してください。</p>
+<p>(Medium) As another approach to simplifying the result of <code>quickCheckPure</code>, try writing a function <code>squashResults :: List Result -&gt; Result</code>. Consider using the <code>First</code> monoid from <code>Data.Maybe.First</code> with the <code>foldMap</code> function to preserve the first error in case of failure.</p>
 </li>
 </ol>
-<h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では<code>quickcheck</code>パッケージに出会いました。
-これを使うと<em>生成的テスティング</em>のパラダイムを使って、宣言的な方法でテストを書くことができました。具体的には以下です。</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>In this chapter, we met the <code>quickcheck</code> package, which can be used to write tests in a declarative way using the paradigm of <em>generative testing</em>. In particular:</p>
 <ul>
-<li><code>spago test</code>を使ってQuickCheckのテストを自動化する方法を見ました。</li>
-<li>性質を関数として書く方法とエラーメッセージを改良する <code>&lt;?&gt;</code>演算子の使い方を説明しました。</li>
-<li><code>Arbitrary</code>と
-<code>Coarbitrary</code>型クラスによって、如何にして定型的なテストコードの自動生成を可能にし、またどうすれば高階な性質関数が可能になるかを見てきました。</li>
-<li>独自のデータ型に対して <code>Arbitrary</code>と <code>Coarbitrary</code>インスタンスを実装する方法を見ました。</li>
+<li>We saw how to automate QuickCheck tests using <code>spago test</code>.</li>
+<li>We saw how to write properties as functions, and how to use the <code>&lt;?&gt;</code> operator to improve error messages.</li>
+<li>We saw how the <code>Arbitrary</code> and <code>Coarbitrary</code> type classes enable generation of boilerplate testing code, and how they allow us to test higher-order properties.</li>
+<li>We saw how to implement custom <code>Arbitrary</code> and <code>Coarbitrary</code> instances for our own data types.</li>
 </ul>
 
                     </main>
