@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-06-13 20:03+0900\n"
+"POT-Creation-Date: 2023-06-22 08:06+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1610,8 +1610,8 @@ msgstr ""
 #: text/chapter4.md:70 text/chapter4.md:181 text/chapter4.md:363
 #: text/chapter4.md:521 text/chapter4.md:615 text/chapter5.md:99
 #: text/chapter5.md:228 text/chapter5.md:392 text/chapter5.md:465
-#: text/chapter5.md:524 text/chapter6.md:130 text/chapter6.md:319
-#: text/chapter6.md:410 text/chapter6.md:607 text/chapter6.md:741
+#: text/chapter5.md:524 text/chapter6.md:130 text/chapter6.md:321
+#: text/chapter6.md:412 text/chapter6.md:609 text/chapter6.md:743
 #: text/chapter7.md:381 text/chapter7.md:540 text/chapter7.md:642
 #: text/chapter8.md:308 text/chapter8.md:666 text/chapter8.md:973
 #: text/chapter9.md:87 text/chapter9.md:133 text/chapter9.md:200
@@ -3458,7 +3458,7 @@ msgstr ""
 #: text/chapter10.md:1081 text/chapter11.md:964 text/chapter12.md:594
 #: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:129
 #: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
-#: text/chapter6.md:756 text/chapter7.md:691 text/chapter8.md:1000
+#: text/chapter6.md:758 text/chapter7.md:691 text/chapter8.md:1000
 #: text/chapter9.md:237
 #, markdown-text, no-wrap
 msgid "Conclusion"
@@ -17465,8 +17465,18 @@ msgid ""
 "can be defined in terms of `compare`.\n"
 msgstr ""
 
+#. type: Plain text
+#: text/chapter6.md:168
+#, markdown-text, no-wrap
+msgid ""
+"_Note_: In the example below, the class signature contains `<=`. This usage "
+"of `<=` in this context indicates that Eq is a subclass of Ord and is not "
+"intended to represent the use of `<=` as a comparison operator. See the "
+"section [Superclasses](#superclasses) below.\n"
+msgstr ""
+
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:167
+#: text/chapter6.md:169
 #, no-wrap
 msgid ""
 "data Ordering = LT | EQ | GT\n"
@@ -17476,7 +17486,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:175
+#: text/chapter6.md:177
 #, markdown-text
 msgid ""
 "The `compare` function compares two values, and returns an `Ordering`, which "
@@ -17484,31 +17494,31 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:179
+#: text/chapter6.md:181
 #, markdown-text
 msgid "`LT` - if the first argument is less than the second."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:179
+#: text/chapter6.md:181
 #, markdown-text
 msgid "`EQ` - if the first argument is equal to the second."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:179
+#: text/chapter6.md:181
 #, markdown-text
 msgid "`GT` - if the first argument is greater than the second."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:181
+#: text/chapter6.md:183
 #, markdown-text
 msgid "Again, we can try out the `compare` function in PSCi:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:182
+#: text/chapter6.md:184
 #, no-wrap
 msgid ""
 "> compare 1 2\n"
@@ -17519,13 +17529,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter6.md:190
+#: text/chapter6.md:192
 #, markdown-text, no-wrap
 msgid "Field"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:193
+#: text/chapter6.md:195
 #, markdown-text
 msgid ""
 "The `Field` type class identifies those types which support numeric "
@@ -17535,7 +17545,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:195
+#: text/chapter6.md:197
 #, markdown-text
 msgid ""
 "_Note_: Just like the `Eq` and `Ord` type classes, the `Field` type class "
@@ -17545,13 +17555,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:196
+#: text/chapter6.md:198
 #, no-wrap
 msgid "class EuclideanRing a <= Field a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:201
+#: text/chapter6.md:203
 #, markdown-text
 msgid ""
 "The `Field` type class is composed from several more general "
@@ -17564,7 +17574,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:203
+#: text/chapter6.md:205
 #, markdown-text
 msgid ""
 "Superclasses will be explained later in this chapter, but the full [numeric "
@@ -17576,13 +17586,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter6.md:204
+#: text/chapter6.md:206
 #, markdown-text, no-wrap
 msgid "Semigroups and Monoids"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:207
+#: text/chapter6.md:209
 #, markdown-text
 msgid ""
 "The `Semigroup` type class identifies those types which support an `append` "
@@ -17590,7 +17600,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:208
+#: text/chapter6.md:210
 #, no-wrap
 msgid ""
 "class Semigroup a where\n"
@@ -17598,7 +17608,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:214
+#: text/chapter6.md:216
 #, markdown-text
 msgid ""
 "Strings form a semigroup under regular string concatenation, and so do "
@@ -17607,7 +17617,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:216
+#: text/chapter6.md:218
 #, markdown-text, no-wrap
 msgid ""
 "The `<>` concatenation operator, which we have already seen, is provided as "
@@ -17615,7 +17625,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:218
+#: text/chapter6.md:220
 #, markdown-text
 msgid ""
 "The `Monoid` type class (provided by the `prelude` package) extends the "
@@ -17623,7 +17633,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:219
+#: text/chapter6.md:221
 #, no-wrap
 msgid ""
 "class Semigroup m <= Monoid m where\n"
@@ -17631,13 +17641,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:225
+#: text/chapter6.md:227
 #, markdown-text
 msgid "Again, strings and arrays are simple examples of monoids."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:227
+#: text/chapter6.md:229
 #, markdown-text
 msgid ""
 "A `Monoid` type class instance for a type describes how to _accumulate_ a "
@@ -17647,7 +17657,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:228
+#: text/chapter6.md:230
 #, no-wrap
 msgid ""
 "> import Prelude\n"
@@ -17662,7 +17672,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:241
+#: text/chapter6.md:243
 #, markdown-text
 msgid ""
 "The `prelude` package provides many examples of monoids and semigroups, "
@@ -17670,13 +17680,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter6.md:242
+#: text/chapter6.md:244
 #, markdown-text, no-wrap
 msgid "Foldable"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:245
+#: text/chapter6.md:247
 #, markdown-text
 msgid ""
 "If the `Monoid` type class identifies those types which act as the result of "
@@ -17685,7 +17695,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:247
+#: text/chapter6.md:249
 #, markdown-text
 msgid ""
 "The `Foldable` type class is provided in the `foldable-traversable` package, "
@@ -17694,7 +17704,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:249
+#: text/chapter6.md:251
 #, markdown-text
 msgid ""
 "The type signatures for the functions belonging to the `Foldable` class are "
@@ -17702,7 +17712,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:250
+#: text/chapter6.md:252
 #, no-wrap
 msgid ""
 "class Foldable f where\n"
@@ -17712,7 +17722,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:258
+#: text/chapter6.md:260
 #, markdown-text
 msgid ""
 "It is instructive to specialize to the case where `f` is the array type "
@@ -17722,7 +17732,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:260
+#: text/chapter6.md:262
 #, markdown-text, no-wrap
 msgid ""
 "What about `foldMap`? Well, that becomes `forall a m. Monoid m => (a -> m) "
@@ -17734,13 +17744,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:262
+#: text/chapter6.md:264
 #, markdown-text
 msgid "Let's try out `foldMap` in PSCi:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:263
+#: text/chapter6.md:265
 #, no-wrap
 msgid ""
 "> import Data.Foldable\n"
@@ -17750,7 +17760,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:271
+#: text/chapter6.md:273
 #, markdown-text
 msgid ""
 "Here, we choose the monoid for strings, which concatenates strings together, "
@@ -17760,7 +17770,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:273
+#: text/chapter6.md:275
 #, markdown-text
 msgid ""
 "But arrays are not the only types which are foldable. `foldable-traversable` "
@@ -17770,13 +17780,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter6.md:274
+#: text/chapter6.md:276
 #, markdown-text, no-wrap
 msgid "Functor, and Type Class Laws"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:277
+#: text/chapter6.md:279
 #, markdown-text
 msgid ""
 "The Prelude also defines a collection of type classes which enable a "
@@ -17787,7 +17797,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:278
+#: text/chapter6.md:280
 #, no-wrap
 msgid ""
 "class Functor f where\n"
@@ -17795,7 +17805,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:284
+#: text/chapter6.md:286
 #, markdown-text, no-wrap
 msgid ""
 "The `map` function (and its alias `<$>`) allows a function to be \"lifted\" "
@@ -17805,7 +17815,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:285
+#: text/chapter6.md:287
 #, no-wrap
 msgid ""
 "> import Prelude\n"
@@ -17821,7 +17831,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:299
+#: text/chapter6.md:301
 #, markdown-text
 msgid ""
 "How can we understand the meaning of the `map` function, when it acts on "
@@ -17829,7 +17839,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:301
+#: text/chapter6.md:303
 #, markdown-text
 msgid ""
 "Well, we can build an intuition that the `map` function applies the function "
@@ -17839,7 +17849,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:303
+#: text/chapter6.md:305
 #, markdown-text
 msgid ""
 "Type class instances for `Functor` are expected to adhere to a set of "
@@ -17847,19 +17857,19 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:306
+#: text/chapter6.md:308
 #, markdown-text
 msgid "`map identity xs = xs`"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:306
+#: text/chapter6.md:308
 #, markdown-text
 msgid "`map g (map f xs) = map (g <<< f) xs`"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:308
+#: text/chapter6.md:310
 #, markdown-text
 msgid ""
 "The first law is the _identity law_. It states that lifting the identity "
@@ -17869,7 +17879,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:310
+#: text/chapter6.md:312
 #, markdown-text
 msgid ""
 "The second law is the _composition law_. It states that mapping one function "
@@ -17878,7 +17888,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:312
+#: text/chapter6.md:314
 #, markdown-text
 msgid ""
 "Whatever \"lifting\" means in the general sense, it should be true that any "
@@ -17887,7 +17897,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:314
+#: text/chapter6.md:316
 #, markdown-text
 msgid ""
 "Many standard type classes come with their own set of similar laws. The laws "
@@ -17898,13 +17908,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: text/chapter6.md:315
+#: text/chapter6.md:317
 #, markdown-text, no-wrap
 msgid "Deriving Instances"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:318
+#: text/chapter6.md:320
 #, markdown-text
 msgid ""
 "Rather than writing instances manually, you can let the compiler do most of "
@@ -17914,19 +17924,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:322
+#: text/chapter6.md:324
 #, markdown-text
 msgid "The following newtype represents a complex number:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:323
+#: text/chapter6.md:325
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Complex}}\n"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:328
+#: text/chapter6.md:330
 #, markdown-text
 msgid ""
 "(Easy) Define a `Show` instance for `Complex`. Match the output format "
@@ -17934,7 +17944,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '2. '
-#: text/chapter6.md:330
+#: text/chapter6.md:332
 #, markdown-text
 msgid ""
 "(Easy) Derive an `Eq` instance for `Complex`. _Note_: You may instead write "
@@ -17942,7 +17952,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '3. '
-#: text/chapter6.md:332
+#: text/chapter6.md:334
 #, markdown-text
 msgid ""
 "(Medium) Define a `Semiring` instance for `Complex`. _Note_: You can use "
@@ -17954,7 +17964,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '4. '
-#: text/chapter6.md:334
+#: text/chapter6.md:336
 #, markdown-text
 msgid ""
 "(Easy) Derive (via `newtype`) a `Ring` instance for `Complex`. _Note_: You "
@@ -17962,13 +17972,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:336
+#: text/chapter6.md:338
 #, markdown-text, no-wrap
 msgid "    Here's the `Shape` ADT from the previous chapter:\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:340
+#: text/chapter6.md:342
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -17978,7 +17988,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '5. '
-#: text/chapter6.md:342
+#: text/chapter6.md:344
 #, markdown-text
 msgid ""
 "(Medium) Derive (via `Generic`) a `Show` instance for `Shape`. How does the "
@@ -17991,13 +18001,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:343
+#: text/chapter6.md:345
 #, markdown-text, no-wrap
 msgid "Type Class Constraints"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:346
+#: text/chapter6.md:348
 #, markdown-text
 msgid ""
 "Types of functions can be constrained by using type classes. Here is an "
@@ -18006,7 +18016,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:347
+#: text/chapter6.md:349
 #, no-wrap
 msgid ""
 "threeAreEqual :: forall a. Eq a => a -> a -> a -> Boolean\n"
@@ -18014,7 +18024,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:353
+#: text/chapter6.md:355
 #, markdown-text, no-wrap
 msgid ""
 "The type declaration looks like an ordinary polymorphic type defined using "
@@ -18023,7 +18033,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:355
+#: text/chapter6.md:357
 #, markdown-text
 msgid ""
 "This type says that we can call `threeAreEqual` with any choice of type `a`, "
@@ -18032,7 +18042,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:357
+#: text/chapter6.md:359
 #, markdown-text
 msgid ""
 "Constrained types can contain several type class instances, and the types of "
@@ -18041,7 +18051,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:358
+#: text/chapter6.md:360
 #, no-wrap
 msgid ""
 "showCompare :: forall a. Ord a => Show a => a -> a -> String\n"
@@ -18054,7 +18064,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:370
+#: text/chapter6.md:372
 #, markdown-text, no-wrap
 msgid ""
 "Note that multiple constraints can be specified by using the `=>` symbol "
@@ -18063,7 +18073,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:373
+#: text/chapter6.md:375
 #, markdown-text
 msgid ""
 "`a -> b` denotes the type of functions from _type_ `a` to _type_ `b`, "
@@ -18071,13 +18081,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:373
+#: text/chapter6.md:375
 #, markdown-text
 msgid "`a => b` applies the _constraint_ `a` to the type `b`."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:375
+#: text/chapter6.md:377
 #, markdown-text
 msgid ""
 "The PureScript compiler will try to infer constrained types when a type "
@@ -18086,7 +18096,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:377
+#: text/chapter6.md:379
 #, markdown-text
 msgid ""
 "To see this, try using one of the standard type classes like `Semiring` in "
@@ -18094,7 +18104,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:378
+#: text/chapter6.md:380
 #, no-wrap
 msgid ""
 "> import Prelude\n"
@@ -18104,7 +18114,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:386
+#: text/chapter6.md:388
 #, markdown-text, no-wrap
 msgid ""
 "Here, we might have annotated this function as `Int -> Int`, or `Number -> "
@@ -18114,13 +18124,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:387
+#: text/chapter6.md:389
 #, markdown-text, no-wrap
 msgid "Instance Dependencies"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:390
+#: text/chapter6.md:392
 #, markdown-text
 msgid ""
 "Just as the implementation of functions can depend on type class instances "
@@ -18131,7 +18141,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:392
+#: text/chapter6.md:394
 #, markdown-text
 msgid ""
 "For example, consider the `Show` type class. We can write a type class "
@@ -18140,7 +18150,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:393
+#: text/chapter6.md:395
 #, no-wrap
 msgid ""
 "instance Show a => Show (Array a) where\n"
@@ -18148,7 +18158,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:400
+#: text/chapter6.md:402
 #, markdown-text, no-wrap
 msgid ""
 "If a type class instance depends on multiple other instances, those "
@@ -18157,7 +18167,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:401
+#: text/chapter6.md:403
 #, no-wrap
 msgid ""
 "instance (Show a, Show b) => Show (Either a b) where\n"
@@ -18165,13 +18175,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:407
+#: text/chapter6.md:409
 #, markdown-text
 msgid "These two type class instances are provided in the `prelude` library."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:409
+#: text/chapter6.md:411
 #, markdown-text
 msgid ""
 "When the program is compiled, the correct type class instance for `Show` is "
@@ -18181,7 +18191,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:413
+#: text/chapter6.md:415
 #, markdown-text
 msgid ""
 "(Easy) The following declaration defines a type of non-empty arrays of "
@@ -18189,7 +18199,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:417
+#: text/chapter6.md:419
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18199,7 +18209,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:419
+#: text/chapter6.md:421
 #, markdown-text, no-wrap
 msgid ""
 "    Write an `Eq` instance for the type `NonEmpty a` which reuses the "
@@ -18208,7 +18218,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:421
+#: text/chapter6.md:423
 #, markdown-text
 msgid ""
 "(Medium) Write a `Semigroup` instance for `NonEmpty a` by reusing the "
@@ -18216,13 +18226,13 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:423
+#: text/chapter6.md:425
 #, markdown-text
 msgid "(Medium) Write a `Functor` instance for `NonEmpty`."
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:425
+#: text/chapter6.md:427
 #, markdown-text
 msgid ""
 "(Medium) Given any type `a` with an instance of `Ord`, we can add a new "
@@ -18230,7 +18240,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:429
+#: text/chapter6.md:431
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18240,7 +18250,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:431
+#: text/chapter6.md:433
 #, markdown-text, no-wrap
 msgid ""
 "    Write an `Ord` instance for `Extended a` which reuses the `Ord` instance "
@@ -18248,7 +18258,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:433
+#: text/chapter6.md:435
 #, markdown-text
 msgid ""
 "(Difficult) Write a `Foldable` instance for `NonEmpty`. _Hint_: reuse the "
@@ -18256,7 +18266,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:435
+#: text/chapter6.md:437
 #, markdown-text
 msgid ""
 "(Difficult) Given a type constructor `f` which defines an ordered container "
@@ -18265,7 +18275,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:439
+#: text/chapter6.md:441
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18275,7 +18285,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:441
+#: text/chapter6.md:443
 #, markdown-text, no-wrap
 msgid ""
 "    The container `OneMore f` also has an ordering, where the new element "
@@ -18284,7 +18294,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:446
+#: text/chapter6.md:448
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18295,7 +18305,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:448
+#: text/chapter6.md:450
 #, markdown-text
 msgid ""
 "(Medium) Write a `dedupShapes :: Array Shape -> Array Shape` function which "
@@ -18303,7 +18313,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:450
+#: text/chapter6.md:452
 #, markdown-text
 msgid ""
 "(Medium) Write a `dedupShapesFast` function which is the same as "
@@ -18311,13 +18321,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:451
+#: text/chapter6.md:453
 #, markdown-text, no-wrap
 msgid "Multi Parameter Type Classes"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:454
+#: text/chapter6.md:456
 #, markdown-text
 msgid ""
 "It's not the case that a type class can only take a single type as an "
@@ -18326,13 +18336,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:456
+#: text/chapter6.md:458
 #, markdown-text
 msgid "Let's see an example of a type class with two type arguments."
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:457
+#: text/chapter6.md:459
 #, no-wrap
 msgid ""
 "module Stream where\n"
@@ -18352,7 +18362,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:475
+#: text/chapter6.md:477
 #, markdown-text
 msgid ""
 "The `Stream` module defines a class `Stream` which identifies types which "
@@ -18361,7 +18371,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:477
+#: text/chapter6.md:479
 #, markdown-text
 msgid ""
 "Note that the `Stream` type class is parameterized not only by the type of "
@@ -18370,7 +18380,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:479
+#: text/chapter6.md:481
 #, markdown-text
 msgid ""
 "The module defines two type class instances: an instance for arrays, where "
@@ -18379,7 +18389,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:481
+#: text/chapter6.md:483
 #, markdown-text
 msgid ""
 "We can write functions which work over arbitrary streams. For example, here "
@@ -18388,7 +18398,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:482
+#: text/chapter6.md:484
 #, no-wrap
 msgid ""
 "import Prelude\n"
@@ -18402,7 +18412,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:494
+#: text/chapter6.md:496
 #, markdown-text
 msgid ""
 "Try using `foldStream` in PSCi for different types of `Stream` and different "
@@ -18410,13 +18420,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:495
+#: text/chapter6.md:497
 #, markdown-text, no-wrap
 msgid "Functional Dependencies"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:498
+#: text/chapter6.md:500
 #, markdown-text
 msgid ""
 "Multi-parameter type classes can be very useful, but can easily lead to "
@@ -18426,19 +18436,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:499
+#: text/chapter6.md:501
 #, no-wrap
 msgid "genericTail xs = map _.tail (uncons xs)\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:504
+#: text/chapter6.md:506
 #, markdown-text
 msgid "This gives a somewhat confusing error message:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:505
+#: text/chapter6.md:507
 #, no-wrap
 msgid ""
 "The inferred type\n"
@@ -18450,7 +18460,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:514
+#: text/chapter6.md:516
 #, markdown-text
 msgid ""
 "The problem is that the `genericTail` function does not use the `element` "
@@ -18459,7 +18469,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:516
+#: text/chapter6.md:518
 #, markdown-text
 msgid ""
 "Worse still, we cannot even use `genericTail` by applying it to a specific "
@@ -18467,7 +18477,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:517
+#: text/chapter6.md:519
 #, no-wrap
 msgid ""
 "> map _.tail (uncons \"testing\")\n"
@@ -18481,7 +18491,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:528
+#: text/chapter6.md:530
 #, markdown-text
 msgid ""
 "Here, we might expect the compiler to choose the `streamString` "
@@ -18490,7 +18500,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:530
+#: text/chapter6.md:532
 #, markdown-text
 msgid ""
 "The compiler is unable to make that deduction automatically, and cannot "
@@ -18499,7 +18509,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:531
+#: text/chapter6.md:533
 #, no-wrap
 msgid ""
 "class Stream stream element | stream -> element where\n"
@@ -18507,7 +18517,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:537
+#: text/chapter6.md:539
 #, markdown-text, no-wrap
 msgid ""
 "Here, `stream -> element` is called a _functional dependency_. A functional "
@@ -18519,7 +18529,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:539
+#: text/chapter6.md:541
 #, markdown-text
 msgid ""
 "This hint is enough for the compiler to infer the correct type for our "
@@ -18527,7 +18537,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:540
+#: text/chapter6.md:542
 #, no-wrap
 msgid ""
 "> :type genericTail\n"
@@ -18538,7 +18548,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:549
+#: text/chapter6.md:551
 #, markdown-text
 msgid ""
 "Functional dependencies can be quite useful when using multi-parameter type "
@@ -18546,13 +18556,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:550
+#: text/chapter6.md:552
 #, markdown-text, no-wrap
 msgid "Nullary Type Classes"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:553
+#: text/chapter6.md:555
 #, markdown-text
 msgid ""
 "We can even define type classes with zero type arguments! These correspond "
@@ -18561,7 +18571,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:555
+#: text/chapter6.md:557
 #, markdown-text
 msgid ""
 "An important example is the `Partial` class which we saw earlier when "
@@ -18572,7 +18582,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:556
+#: text/chapter6.md:558
 #, no-wrap
 msgid ""
 "head :: forall a. Partial => Array a -> a\n"
@@ -18581,7 +18591,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:563
+#: text/chapter6.md:565
 #, markdown-text
 msgid ""
 "Note that there is no instance defined for the `Partial` type class! Doing "
@@ -18590,7 +18600,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:564
+#: text/chapter6.md:566
 #, no-wrap
 msgid ""
 "> head [1, 2, 3]\n"
@@ -18601,7 +18611,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:573
+#: text/chapter6.md:575
 #, markdown-text
 msgid ""
 "Instead, we can republish the `Partial` constraint for any functions making "
@@ -18609,7 +18619,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:574
+#: text/chapter6.md:576
 #, no-wrap
 msgid ""
 "secondElement :: forall a. Partial => Array a -> a\n"
@@ -18617,7 +18627,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:580
+#: text/chapter6.md:582
 #, markdown-text
 msgid ""
 "We've already seen the `unsafePartial` function, which allows us to treat a "
@@ -18626,13 +18636,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:581
+#: text/chapter6.md:583
 #, no-wrap
 msgid "unsafePartial :: forall a. (Partial => a) -> a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:586
+#: text/chapter6.md:588
 #, markdown-text
 msgid ""
 "Note that the `Partial` constraint appears _inside the parentheses_ on the "
@@ -18641,7 +18651,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:587
+#: text/chapter6.md:589
 #, no-wrap
 msgid ""
 "> unsafePartial head [1, 2, 3]\n"
@@ -18652,13 +18662,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:595
+#: text/chapter6.md:597
 #, markdown-text, no-wrap
 msgid "Superclasses"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:598
+#: text/chapter6.md:600
 #, markdown-text
 msgid ""
 "Just as we can express relationships between type class instances by making "
@@ -18667,21 +18677,21 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:600
-#, markdown-text
+#: text/chapter6.md:602
+#, markdown-text, no-wrap
 msgid ""
 "We say that one type class is a superclass of another if every instance of "
 "the second class is required to be an instance of the first, and we indicate "
 "a superclass relationship in the class definition by using a backwards "
-"facing double arrow."
+"facing double arrow ( `<=` ).\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:602
+#: text/chapter6.md:604
 #, markdown-text
 msgid ""
-"We've already seen some examples of superclass relationships: the `Eq` class "
-"is a superclass of `Ord`, and the `Semigroup` class is a superclass of "
+"We've [already seen an example of superclass relationships](#ord): the `Eq` "
+"class is a superclass of `Ord`, and the `Semigroup` class is a superclass of "
 "`Monoid`. For every type class instance of the `Ord` class, there must be a "
 "corresponding `Eq` instance for the same type. This makes sense, since in "
 "many cases, when the `compare` function reports that two values are "
@@ -18690,7 +18700,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:604
+#: text/chapter6.md:606
 #, markdown-text
 msgid ""
 "In general, it makes sense to define a superclass relationship when the laws "
@@ -18703,7 +18713,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:606
+#: text/chapter6.md:608
 #, markdown-text
 msgid ""
 "Another reason to define a superclass relationship is in the case where "
@@ -18712,7 +18722,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:610
+#: text/chapter6.md:612
 #, markdown-text
 msgid ""
 "(Medium) Define a partial function `unsafeMaximum :: Partial => Array Int -> "
@@ -18722,7 +18732,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:612
+#: text/chapter6.md:614
 #, markdown-text
 msgid ""
 "(Medium) The `Action` class is a multi-parameter type class which defines an "
@@ -18730,7 +18740,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:616
+#: text/chapter6.md:618
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18740,7 +18750,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:618
+#: text/chapter6.md:620
 #, markdown-text, no-wrap
 msgid ""
 "    An _action_ is a function which describes how monoidal values are used "
@@ -18749,19 +18759,19 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '    - '
-#: text/chapter6.md:621
+#: text/chapter6.md:623
 #, markdown-text
 msgid "`act mempty a = a`"
 msgstr ""
 
 #. type: Bullet: '    - '
-#: text/chapter6.md:621
+#: text/chapter6.md:623
 #, markdown-text
 msgid "`act (m1 <> m2) a = act m1 (act m2 a)`"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:623
+#: text/chapter6.md:625
 #, markdown-text, no-wrap
 msgid ""
 "    Applying an empty action is a no-op. And applying two actions in "
@@ -18770,13 +18780,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:625
+#: text/chapter6.md:627
 #, markdown-text, no-wrap
 msgid "    For example, the natural numbers form a monoid under multiplication:\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:628
+#: text/chapter6.md:630
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18785,7 +18795,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:630
+#: text/chapter6.md:632
 #, markdown-text, no-wrap
 msgid ""
 "    {{#include "
@@ -18793,7 +18803,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:633
+#: text/chapter6.md:635
 #, markdown-text, no-wrap
 msgid ""
 "    {{#include "
@@ -18802,13 +18812,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:635
+#: text/chapter6.md:637
 #, markdown-text, no-wrap
 msgid "    Write an instance which implements this action:\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:640
+#: text/chapter6.md:642
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18819,13 +18829,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:642
+#: text/chapter6.md:644
 #, markdown-text, no-wrap
 msgid "    Remember, your instance must satisfy the laws listed above.\n"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:644
+#: text/chapter6.md:646
 #, markdown-text
 msgid ""
 "(Difficult) There are actually multiple ways to implement an instance of "
@@ -18835,7 +18845,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:646
+#: text/chapter6.md:648
 #, markdown-text
 msgid ""
 "(Medium) Write an `Action` instance which repeats an input string some "
@@ -18843,7 +18853,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:651
+#: text/chapter6.md:653
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18854,7 +18864,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:653
+#: text/chapter6.md:655
 #, markdown-text, no-wrap
 msgid ""
 "    _Hint_: Search Pursuit for a helper-function with the signature [`String "
@@ -18864,13 +18874,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:655
+#: text/chapter6.md:657
 #, markdown-text, no-wrap
 msgid "    Does this instance satisfy the laws listed above?\n"
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:657
+#: text/chapter6.md:659
 #, markdown-text
 msgid ""
 "(Medium) Write an instance `Action m a => Action m (Array a)`, where the "
@@ -18878,7 +18888,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:659
+#: text/chapter6.md:661
 #, markdown-text
 msgid ""
 "(Difficult) Given the following newtype, write an instance for `Action m "
@@ -18886,7 +18896,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:663
+#: text/chapter6.md:665
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -18895,7 +18905,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:665
+#: text/chapter6.md:667
 #, markdown-text, no-wrap
 msgid ""
 "    _Note_: The testing framework requires `Show` and `Eq` instances for the "
@@ -18906,7 +18916,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:667
+#: text/chapter6.md:669
 #, markdown-text
 msgid ""
 "(Difficult) Should the arguments of the multi-parameter type class `Action` "
@@ -18915,13 +18925,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter6.md:668
+#: text/chapter6.md:670
 #, markdown-text, no-wrap
 msgid "A Type Class for Hashes"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:671
+#: text/chapter6.md:673
 #, markdown-text
 msgid ""
 "In the last section of this chapter, we will use the lessons from the rest "
@@ -18929,7 +18939,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:673
+#: text/chapter6.md:675
 #, markdown-text
 msgid ""
 "Note that this library is for demonstration purposes only, and is not "
@@ -18937,13 +18947,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:675
+#: text/chapter6.md:677
 #, markdown-text
 msgid "What properties might we expect of a hash function?"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:678
+#: text/chapter6.md:680
 #, markdown-text
 msgid ""
 "A hash function should be deterministic, and map equal values to equal hash "
@@ -18951,7 +18961,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter6.md:678
+#: text/chapter6.md:680
 #, markdown-text
 msgid ""
 "A hash function should distribute its results approximately uniformly over "
@@ -18959,7 +18969,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:680
+#: text/chapter6.md:682
 #, markdown-text
 msgid ""
 "The first property looks a lot like a law for a type class, whereas the "
@@ -18969,19 +18979,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:681
+#: text/chapter6.md:683
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:Hashable}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:686
+#: text/chapter6.md:688
 #, markdown-text
 msgid "with the associated law that `a == b` implies `hash a == hash b`."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:688
+#: text/chapter6.md:690
 #, markdown-text
 msgid ""
 "We'll spend the rest of this section building a library of instances and "
@@ -18989,19 +18999,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:690
+#: text/chapter6.md:692
 #, markdown-text
 msgid "We will need a way to combine hash codes in a deterministic way:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:691
+#: text/chapter6.md:693
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:combineHashes}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:696
+#: text/chapter6.md:698
 #, markdown-text
 msgid ""
 "The `combineHashes` function will mix two hash codes and redistribute the "
@@ -19009,7 +19019,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:698
+#: text/chapter6.md:700
 #, markdown-text
 msgid ""
 "Let's write a function which uses the `Hashable` constraint to restrict the "
@@ -19019,13 +19029,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:699
+#: text/chapter6.md:701
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashEqual}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:704
+#: text/chapter6.md:706
 #, markdown-text
 msgid ""
 "This function uses the `on` function from `Data.Function` to define "
@@ -19035,7 +19045,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:706
+#: text/chapter6.md:708
 #, markdown-text
 msgid ""
 "Let's write some `Hashable` instances for some primitive types. Let's start "
@@ -19044,13 +19054,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:707
+#: text/chapter6.md:709
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashInt}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:712
+#: text/chapter6.md:714
 #, markdown-text
 msgid ""
 "We can also define a simple instance for `Boolean` values using pattern "
@@ -19058,13 +19068,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:713
+#: text/chapter6.md:715
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashBoolean}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:718
+#: text/chapter6.md:720
 #, markdown-text
 msgid ""
 "With an instance for hashing integers, we can create an instance for hashing "
@@ -19072,13 +19082,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:719
+#: text/chapter6.md:721
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashChar}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:724
+#: text/chapter6.md:726
 #, markdown-text
 msgid ""
 "To define an instance for arrays, we can `map` the `hash` function over the "
@@ -19088,13 +19098,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:725
+#: text/chapter6.md:727
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashArray}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:730
+#: text/chapter6.md:732
 #, markdown-text
 msgid ""
 "Notice how we build up instances using the simpler instances we have already "
@@ -19103,13 +19113,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:731
+#: text/chapter6.md:733
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashString}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:736
+#: text/chapter6.md:738
 #, markdown-text
 msgid ""
 "How can we prove that these `Hashable` instances satisfy the type class law "
@@ -19120,7 +19130,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:738
+#: text/chapter6.md:740
 #, markdown-text
 msgid ""
 "What about some more interesting types? To prove the type class law for the "
@@ -19134,7 +19144,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:740
+#: text/chapter6.md:742
 #, markdown-text
 msgid ""
 "The source code for this chapter includes several other examples of "
@@ -19142,7 +19152,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter6.md:746
+#: text/chapter6.md:748
 #, markdown-text
 msgid ""
 "(Easy) Use PSCi to test the hash functions for each of the defined "
@@ -19150,7 +19160,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter6.md:746
+#: text/chapter6.md:748
 #, markdown-text
 msgid ""
 "(Medium) Write a function `arrayHasDuplicates` which tests if an array has "
@@ -19161,7 +19171,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter6.md:746
+#: text/chapter6.md:748
 #, markdown-text
 msgid ""
 "(Medium) Write a `Hashable` instance for the following newtype which "
@@ -19169,7 +19179,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:749
+#: text/chapter6.md:751
 #, markdown-text, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -19177,7 +19187,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:752
+#: text/chapter6.md:754
 #, markdown-text, no-wrap
 msgid ""
 "    {{#include "
@@ -19186,7 +19196,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:755
+#: text/chapter6.md:757
 #, markdown-text, no-wrap
 msgid ""
 "    The newtype `Hour` and its `Eq` instance represent the type of integers "
@@ -19197,7 +19207,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:759
+#: text/chapter6.md:761
 #, markdown-text
 msgid ""
 "In this chapter, we've been introduced to _type classes_, a type-oriented "
@@ -19207,7 +19217,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter6.md:760
+#: text/chapter6.md:762
 #, markdown-text
 msgid ""
 "This chapter also gave an introduction to the notion of type class laws, a "

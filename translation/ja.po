@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-06-13 20:03+0900\n"
-"PO-Revision-Date: 2023-06-13 20:19+0900\n"
+"POT-Creation-Date: 2023-06-22 08:06+0900\n"
+"PO-Revision-Date: 2023-06-22 08:18+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -1172,7 +1172,8 @@ msgstr "型付けされていないデータを扱う。"
 #. type: Bullet: '- '
 #: text/chapter10.md:10
 msgid "Encode and parse JSON using the `argonaut` package."
-msgstr "`argonaut`パッケージを使ってJSONにエンコードしたりJSONを構文解析したりする。"
+msgstr ""
+"`argonaut`パッケージを使ってJSONにエンコードしたりJSONを構文解析したりする。"
 
 #. type: Plain text
 #: text/chapter10.md:12
@@ -1248,7 +1249,8 @@ msgid ""
 "is used for encoding and decoding JSON."
 msgstr ""
 "この章は`argonaut`ライブラリを依存関係として導入しています。\n"
-"このライブラリはJSONにエンコードしたりJSONをデコードしたりするために使います。"
+"このライブラリはJSONにエンコードしたりJSONをデコードしたりするために使いま"
+"す。"
 
 #. type: Plain text
 #: text/chapter10.md:28
@@ -1354,7 +1356,9 @@ msgstr ""
 msgid ""
 "For example, consider the `encodeURIComponent` function, which can be used "
 "in JavaScript to encode a component of a URI by escaping special characters:"
-msgstr "例えば特殊文字をエスケープすることによりURIのコンポーネントをエンコードするJavaScriptの `encodeURIComponent`関数について考えてみます。"
+msgstr ""
+"例えば特殊文字をエスケープすることによりURIのコンポーネントをエンコードする"
+"JavaScriptの `encodeURIComponent`関数について考えてみます。"
 
 #. type: Fenced code block (text)
 #: text/chapter10.md:45
@@ -1915,8 +1919,8 @@ msgstr "本書の残りの例では入れ子の関数の代わりに矢印関数
 #: text/chapter4.md:70 text/chapter4.md:181 text/chapter4.md:363
 #: text/chapter4.md:521 text/chapter4.md:615 text/chapter5.md:99
 #: text/chapter5.md:228 text/chapter5.md:392 text/chapter5.md:465
-#: text/chapter5.md:524 text/chapter6.md:130 text/chapter6.md:319
-#: text/chapter6.md:410 text/chapter6.md:607 text/chapter6.md:741
+#: text/chapter5.md:524 text/chapter6.md:130 text/chapter6.md:321
+#: text/chapter6.md:412 text/chapter6.md:609 text/chapter6.md:743
 #: text/chapter7.md:381 text/chapter7.md:540 text/chapter7.md:642
 #: text/chapter8.md:308 text/chapter8.md:666 text/chapter8.md:973
 #: text/chapter9.md:87 text/chapter9.md:133 text/chapter9.md:200
@@ -3343,8 +3347,11 @@ msgid ""
 "purescript-contrib/purescript-argonaut#documentation), so we will only cover "
 "basic usage in this book."
 msgstr ""
-"`argonaut`ライブラリにはこのために必要なJSONのデコードとエンコードの機能が備わっています。\n"
-"このライブラリには素晴らしい[ドキュメント](https://github.com/purescript-contrib/purescript-argonaut#documentation)があるので、本書では基本的な用法だけを押さえます。"
+"`argonaut`ライブラリにはこのために必要なJSONのデコードとエンコードの機能が備"
+"わっています。\n"
+"このライブラリには素晴らしい[ドキュメント](https://github.com/purescript-"
+"contrib/purescript-argonaut#documentation)があるので、本書では基本的な用法だ"
+"けを押さえます。"
 
 #. type: Plain text
 #: text/chapter10.md:786
@@ -3402,7 +3409,9 @@ msgstr ""
 msgid ""
 "Then any values that can't be successfully decoded to our return type appear "
 "as a `Left` error `String`:"
-msgstr "そうすると返る型へのデコードが成功しなかったどんな値も`Left`の`String`なエラーとして表れます。"
+msgstr ""
+"そうすると返る型へのデコードが成功しなかったどんな値も`Left`の`String`なエ"
+"ラーとして表れます。"
 
 #. type: Fenced code block (text)
 #: text/chapter10.md:809
@@ -3486,9 +3495,12 @@ msgid ""
 "arrays (assuming the keys and values can also be represented in JSON) and "
 "then decode them back to `Map` or `Set`."
 msgstr ""
-"JSONを使うのは、`Map`や`Set`のようなその他の構造的な型をFFI越しに渡す、最も簡単な方法でもあります。\n"
-"JSONは真偽値、数値、文字列、配列、そして他のJSONの値からなるオブジェクトのみから構成されるため、JSONでは直接`Map`や`Set`を書けません。\n"
-"しかしこれらの構造を配列としては表現でき（キーとバリューもまたJSONで表現されているとします）、それから`Map`や`Set`に復元できるのです。"
+"JSONを使うのは、`Map`や`Set`のようなその他の構造的な型をFFI越しに渡す、最も簡"
+"単な方法でもあります。\n"
+"JSONは真偽値、数値、文字列、配列、そして他のJSONの値からなるオブジェクトのみ"
+"から構成されるため、JSONでは直接`Map`や`Set`を書けません。\n"
+"しかしこれらの構造を配列としては表現でき（キーとバリューもまたJSONで表現され"
+"ているとします）、それから`Map`や`Set`に復元できるのです。"
 
 #. type: Plain text
 #: text/chapter10.md:845
@@ -3496,7 +3508,9 @@ msgid ""
 "Here's an example of a foreign function signature that modifies a `Map` of "
 "`String` keys and `Int` values, along with the wrapper function that handles "
 "JSON encoding and decoding."
-msgstr "以下は`String`のキーと`Int`のバリューからなる`Map`を変更する外部関数シグネチャと、それに伴うJSONのエンコードとデコードを扱う梱包関数の例です。"
+msgstr ""
+"以下は`String`のキーと`Int`のバリューからなる`Map`を変更する外部関数シグネ"
+"チャと、それに伴うJSONのエンコードとデコードを扱う梱包関数の例です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:846
@@ -3537,7 +3551,8 @@ msgid ""
 "decoding converts it back to a PureScript `Map`."
 msgstr ""
 "以下はJavaScriptでの実装です。\n"
-"なお、`Array.from`の工程は、JavaScriptの`Map`をJSONに親和性のある形式に変換し、デコードでPureScriptの`Map`に変換し直すために必須です。"
+"なお、`Array.from`の工程は、JavaScriptの`Map`をJSONに親和性のある形式に変換"
+"し、デコードでPureScriptの`Map`に変換し直すために必須です。"
 
 #. type: Fenced code block (js)
 #: text/chapter10.md:862
@@ -3915,8 +3930,10 @@ msgid ""
 "too while we're at it. More information how this works is available in the "
 "argonaut docs:"
 msgstr ""
-"これはなぜかというと`Person`レコード中の`PhoneType`が`EncodeJson`インスタンスを必要としているからです。\n"
-"単純に汎用のエンコードインスタンスとデコードインスタンスを導出すれば完了です。\n"
+"これはなぜかというと`Person`レコード中の`PhoneType`が`EncodeJson`インスタンス"
+"を必要としているからです。\n"
+"単純に汎用のエンコードインスタンスとデコードインスタンスを導出すれば完了で"
+"す。\n"
 "この仕組みについて、より詳しくはargonautのドキュメントで見られます。"
 
 #. type: Fenced code block (hs)
@@ -3962,8 +3979,10 @@ msgid ""
 "the way - each of which return an `Either` value, so it makes sense to "
 "organize these together in a `do` block."
 msgstr ""
-"そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助関数をつくります。\n"
-"なおこのストレージ中の文字列は`null`かもしれないので、うまく`String`としてデコードされるまでは外部の`Json`として表現します。\n"
+"そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助"
+"関数をつくります。\n"
+"なおこのストレージ中の文字列は`null`かもしれないので、うまく`String`としてデ"
+"コードされるまでは外部の`Json`として表現します。\n"
 "道中には他にも多くの変換工程があり、それぞれで`Either`の値を返します。\n"
 "そのためこれらを`do`ブロックの中に纏めるのは理に適っています。"
 
@@ -4198,7 +4217,7 @@ msgstr ""
 #: text/chapter10.md:1081 text/chapter11.md:964 text/chapter12.md:594
 #: text/chapter13.md:401 text/chapter14.md:721 text/chapter2.md:129
 #: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
-#: text/chapter6.md:756 text/chapter7.md:691 text/chapter8.md:1000
+#: text/chapter6.md:758 text/chapter7.md:691 text/chapter8.md:1000
 #: text/chapter9.md:237
 #, no-wrap
 msgid "Conclusion"
@@ -12741,7 +12760,10 @@ msgid ""
 "`true` and `false`, we can use a phantom type to encode whether an "
 "`AttributeKey` represents an _empty attribute_ such as `disabled` or "
 "`checked`."
-msgstr "（難しい）幻影型を使って真偽値 `true`、 `false`用の最上位の表現を定義することで、 `AttributeKey`が `disabled`や `checked`のような*空の属性*を表現しているかどうかをエンコードできます。"
+msgstr ""
+"（難しい）幻影型を使って真偽値 `true`、 `false`用の最上位の表現を定義すること"
+"で、 `AttributeKey`が `disabled`や `checked`のような*空の属性*を表現している"
+"かどうかをエンコードできます。"
 
 #. type: Plain text
 #: text/chapter14.md:361
@@ -20506,7 +20528,8 @@ msgid ""
 "computes the area of a `Shape`. For the purpose of this exercise, the area "
 "of a line or a piece of text is assumed to be zero."
 msgstr ""
-"（普通）ベクターグラフィックライブラリを拡張し、`Shape`の面積を計算する新しい操作 `area`を追加してください。\n"
+"（普通）ベクターグラフィックライブラリを拡張し、`Shape`の面積を計算する新しい"
+"操作 `area`を追加してください。\n"
 "この演習の目的上は、線分やテキストの面積は0であるものとしてください。"
 
 #. type: Bullet: '1. '
@@ -20520,9 +20543,11 @@ msgid ""
 msgstr ""
 "（難しい）`Shape`型を新しいデータ構築子 `Clipped`で拡張してください。\n"
 "`Clipped`は他の `Picture`を矩形に切り抜きます。\n"
-"切り抜かれた図形の境界を計算できるよう、`shapeBounds`関数を拡張してください。\n"
+"切り抜かれた図形の境界を計算できるよう、`shapeBounds`関数を拡張してくださ"
+"い。\n"
 "なお、これにより`Shape`は再帰的なデータ型になります。\n"
-"*手掛かり* ：コンパイラは必要に応じて他の関数を拡張するのに付き添ってくれるでしょう。"
+"*手掛かり* ：コンパイラは必要に応じて他の関数を拡張するのに付き添ってくれるで"
+"しょう。"
 
 #. type: Plain text
 #: text/chapter5.md:532
@@ -21087,8 +21112,17 @@ msgstr "Ord"
 msgid "The `Ord` type class defines the `compare` function, which can be used to compare two values, for types which support ordering. The comparison operators `<` and `>` along with their non-strict companions `<=` and `>=`, can be defined in terms of `compare`.\n"
 msgstr "`Ord`型クラスは順序付け可能な型に対して2つの値を比較する `compare`関数を定義します。比較演算子 `<`、 `>`と、その仲間の厳密な大小比較ではない`<=`、 `>=`も、`compare`を使って定義されます。\n"
 
+#. type: Plain text
+#: text/chapter6.md:168
+#, no-wrap
+msgid "_Note_: In the example below, the class signature contains `<=`. This usage of `<=` in this context indicates that Eq is a subclass of Ord and is not intended to represent the use of `<=` as a comparison operator. See the section [Superclasses](#superclasses) below.\n"
+msgstr ""
+"*補足*：以下の例ではクラスシグネチャに`<=`が含まれています。\n"
+"この文脈での`<=`の使われ方はEqがOrdの上位クラスであり、比較演算子としての`<=`の用途を表す意図はありません。\n"
+"後述の[上位クラス](#上位クラス)の節を参照してください。\n"
+
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:167
+#: text/chapter6.md:169
 #, no-wrap
 msgid ""
 "data Ordering = LT | EQ | GT\n"
@@ -21102,7 +21136,7 @@ msgstr ""
 "  compare :: a -> a -> Ordering\n"
 
 #. type: Plain text
-#: text/chapter6.md:175
+#: text/chapter6.md:177
 msgid ""
 "The `compare` function compares two values, and returns an `Ordering`, which "
 "has three alternatives:"
@@ -21110,27 +21144,27 @@ msgstr ""
 "`compare`関数は2つの値を比較して `Ordering`の3つの値のうち何れかを返します。"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:179
+#: text/chapter6.md:181
 msgid "`LT` - if the first argument is less than the second."
 msgstr "`LT`- 最初の引数が2番目の値より小さいとき"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:179
+#: text/chapter6.md:181
 msgid "`EQ` - if the first argument is equal to the second."
 msgstr "`EQ`- 最初の引数が2番目の値と等しい（または比較できない）とき"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:179
+#: text/chapter6.md:181
 msgid "`GT` - if the first argument is greater than the second."
 msgstr "`GT`- 最初の引数が2番目の値より大きいとき"
 
 #. type: Plain text
-#: text/chapter6.md:181
+#: text/chapter6.md:183
 msgid "Again, we can try out the `compare` function in PSCi:"
 msgstr "ここでも`compare`関数についてPSCiで試してみましょう。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:182
+#: text/chapter6.md:184
 #, no-wrap
 msgid ""
 "> compare 1 2\n"
@@ -21146,13 +21180,13 @@ msgstr ""
 "LT\n"
 
 #. type: Title ###
-#: text/chapter6.md:190
+#: text/chapter6.md:192
 #, no-wrap
 msgid "Field"
 msgstr "Field"
 
 #. type: Plain text
-#: text/chapter6.md:193
+#: text/chapter6.md:195
 msgid ""
 "The `Field` type class identifies those types which support numeric "
 "operators such as addition, subtraction, multiplication and division. It is "
@@ -21163,7 +21197,7 @@ msgstr ""
 "必要に応じて再利用できるように、これらの演算子を抽象化するわけです。"
 
 #. type: Plain text
-#: text/chapter6.md:195
+#: text/chapter6.md:197
 msgid ""
 "_Note_: Just like the `Eq` and `Ord` type classes, the `Field` type class "
 "has special support in the PureScript compiler, so that simple expressions "
@@ -21176,13 +21210,13 @@ msgstr ""
 "型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:196
+#: text/chapter6.md:198
 #, no-wrap
 msgid "class EuclideanRing a <= Field a\n"
 msgstr "class EuclideanRing a <= Field a\n"
 
 #. type: Plain text
-#: text/chapter6.md:201
+#: text/chapter6.md:203
 msgid ""
 "The `Field` type class is composed from several more general _superclasses_. "
 "This allows us to talk abstractly about types which support some but not all "
@@ -21201,7 +21235,7 @@ msgstr ""
 "スですが、`Ring`や`Field`のインスタンスではありません。"
 
 #. type: Plain text
-#: text/chapter6.md:203
+#: text/chapter6.md:205
 msgid ""
 "Superclasses will be explained later in this chapter, but the full [numeric "
 "type class hierarchy](https://a-guide-to-the-purescript-numeric-hierarchy."
@@ -21219,13 +21253,13 @@ msgstr ""
 "ください。"
 
 #. type: Title ###
-#: text/chapter6.md:204
+#: text/chapter6.md:206
 #, no-wrap
 msgid "Semigroups and Monoids"
 msgstr "半群とモノイド"
 
 #. type: Plain text
-#: text/chapter6.md:207
+#: text/chapter6.md:209
 msgid ""
 "The `Semigroup` type class identifies those types which support an `append` "
 "operation to combine two values:"
@@ -21234,7 +21268,7 @@ msgstr ""
 "示します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:208
+#: text/chapter6.md:210
 #, no-wrap
 msgid ""
 "class Semigroup a where\n"
@@ -21244,7 +21278,7 @@ msgstr ""
 "  append :: a -> a -> a\n"
 
 #. type: Plain text
-#: text/chapter6.md:214
+#: text/chapter6.md:216
 msgid ""
 "Strings form a semigroup under regular string concatenation, and so do "
 "arrays. Several other standard instances are provided by the `prelude` "
@@ -21254,13 +21288,13 @@ msgstr ""
 "他の標準的なインスタンスの幾つかは、 `prelude`パッケージで提供されています。"
 
 #. type: Plain text
-#: text/chapter6.md:216
+#: text/chapter6.md:218
 #, no-wrap
 msgid "The `<>` concatenation operator, which we have already seen, is provided as an alias for `append`.\n"
 msgstr "以前に見た `<>`連結演算子は、 `append`の別名として提供されています。\n"
 
 #. type: Plain text
-#: text/chapter6.md:218
+#: text/chapter6.md:220
 msgid ""
 "The `Monoid` type class (provided by the `prelude` package) extends the "
 "`Semigroup` type class with the concept of an empty value, called `mempty`:"
@@ -21269,7 +21303,7 @@ msgstr ""
 "の空の値の概念があり、`Semigroup`型クラスを拡張します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:219
+#: text/chapter6.md:221
 #, no-wrap
 msgid ""
 "class Semigroup m <= Monoid m where\n"
@@ -21279,12 +21313,12 @@ msgstr ""
 "  mempty :: m\n"
 
 #. type: Plain text
-#: text/chapter6.md:225
+#: text/chapter6.md:227
 msgid "Again, strings and arrays are simple examples of monoids."
 msgstr "ここでも文字列や配列はモノイドの簡単な例になっています。"
 
 #. type: Plain text
-#: text/chapter6.md:227
+#: text/chapter6.md:229
 msgid ""
 "A `Monoid` type class instance for a type describes how to _accumulate_ a "
 "result with that type, by starting with an \"empty\" value, and combining "
@@ -21298,7 +21332,7 @@ msgstr ""
 "PSCiで試すと次のようになります。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:228
+#: text/chapter6.md:230
 #, no-wrap
 msgid ""
 "> import Prelude\n"
@@ -21322,7 +21356,7 @@ msgstr ""
 "[1,2,3,4,5,6]\n"
 
 #. type: Plain text
-#: text/chapter6.md:241
+#: text/chapter6.md:243
 msgid ""
 "The `prelude` package provides many examples of monoids and semigroups, "
 "which we will use in the rest of the book."
@@ -21331,13 +21365,13 @@ msgstr ""
 "本書で扱っていきます。"
 
 #. type: Title ###
-#: text/chapter6.md:242
+#: text/chapter6.md:244
 #, no-wrap
 msgid "Foldable"
 msgstr "Foldable"
 
 #. type: Plain text
-#: text/chapter6.md:245
+#: text/chapter6.md:247
 msgid ""
 "If the `Monoid` type class identifies those types which act as the result of "
 "a fold, then the `Foldable` type class identifies those type constructors "
@@ -21347,7 +21381,7 @@ msgstr ""
 "は畳み込みの元のデータとして使えるような型構築子を示しています。"
 
 #. type: Plain text
-#: text/chapter6.md:247
+#: text/chapter6.md:249
 msgid ""
 "The `Foldable` type class is provided in the `foldable-traversable` package, "
 "which also contains instances for some standard containers such as arrays "
@@ -21357,7 +21391,7 @@ msgstr ""
 "スタンスを含む`foldable-traversable`パッケージで提供されています。"
 
 #. type: Plain text
-#: text/chapter6.md:249
+#: text/chapter6.md:251
 msgid ""
 "The type signatures for the functions belonging to the `Foldable` class are "
 "a little more complicated than the ones we've seen so far:"
@@ -21366,7 +21400,7 @@ msgstr ""
 "複雑です。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:250
+#: text/chapter6.md:252
 #, no-wrap
 msgid ""
 "class Foldable f where\n"
@@ -21380,7 +21414,7 @@ msgstr ""
 "  foldMap :: forall a m. Monoid m => (a -> m) -> f a -> m\n"
 
 #. type: Plain text
-#: text/chapter6.md:258
+#: text/chapter6.md:260
 msgid ""
 "It is instructive to specialize to the case where `f` is the array type "
 "constructor. In this case, we can replace `f a` with `Array a` for any a, "
@@ -21394,7 +21428,7 @@ msgstr ""
 "す。"
 
 #. type: Plain text
-#: text/chapter6.md:260
+#: text/chapter6.md:262
 #, no-wrap
 msgid "What about `foldMap`? Well, that becomes `forall a m. Monoid m => (a -> m) -> Array a -> m`. This type signature says that we can choose any type `m` for our result type, as long as that type is an instance of the `Monoid` type class. If we can provide a function which turns our array elements into values in that monoid, then we can accumulate over our array using the structure of the monoid, and return a single value.\n"
 msgstr ""
@@ -21404,12 +21438,12 @@ msgstr ""
 "配列の要素をそのモノイドの値へと変換する関数を与えれば、そのモノイドの構造を利用して配列を畳み込み、1つの値にして返すことができます。\n"
 
 #. type: Plain text
-#: text/chapter6.md:262
+#: text/chapter6.md:264
 msgid "Let's try out `foldMap` in PSCi:"
 msgstr "それではPSCiで `foldMap`を試してみましょう。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:263
+#: text/chapter6.md:265
 #, no-wrap
 msgid ""
 "> import Data.Foldable\n"
@@ -21423,7 +21457,7 @@ msgstr ""
 "\"12345\"\n"
 
 #. type: Plain text
-#: text/chapter6.md:271
+#: text/chapter6.md:273
 msgid ""
 "Here, we choose the monoid for strings, which concatenates strings together, "
 "and the `show` function which renders an `Int` as a `String`. Then, passing "
@@ -21435,7 +21469,7 @@ msgstr ""
 "`show`して1つの文字列へと連結した結果が出力されました。"
 
 #. type: Plain text
-#: text/chapter6.md:273
+#: text/chapter6.md:275
 msgid ""
 "But arrays are not the only types which are foldable. `foldable-traversable` "
 "also defines `Foldable` instances for types like `Maybe` and `Tuple`, and "
@@ -21449,13 +21483,13 @@ msgstr ""
 "(ordered container) の概念を見据えたものなのです。"
 
 #. type: Title ###
-#: text/chapter6.md:274
+#: text/chapter6.md:276
 #, no-wrap
 msgid "Functor, and Type Class Laws"
 msgstr "関手と型クラス則"
 
 #. type: Plain text
-#: text/chapter6.md:277
+#: text/chapter6.md:279
 msgid ""
 "The Prelude also defines a collection of type classes which enable a "
 "functional style of programming with side-effects in PureScript: `Functor`, "
@@ -21469,7 +21503,7 @@ msgstr ""
 "に見てきた`Functor`型クラスの定義を見てみましょう。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:278
+#: text/chapter6.md:280
 #, no-wrap
 msgid ""
 "class Functor f where\n"
@@ -21479,7 +21513,7 @@ msgstr ""
 "  map :: forall a b. (a -> b) -> f a -> f b\n"
 
 #. type: Plain text
-#: text/chapter6.md:284
+#: text/chapter6.md:286
 #, no-wrap
 msgid "The `map` function (and its alias `<$>`) allows a function to be \"lifted\" over a data structure. The precise definition of the word \"lifted\" here depends on the data structure in question, but we have already seen its behavior for some simple types:\n"
 msgstr ""
@@ -21487,7 +21521,7 @@ msgstr ""
 "ここで「持ち上げ」という言葉の具体的な定義は問題のデータ構造に依りますが、既に幾つかの単純な型についてその動作を見てきました。\n"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:285
+#: text/chapter6.md:287
 #, no-wrap
 msgid ""
 "> import Prelude\n"
@@ -21513,7 +21547,7 @@ msgstr ""
 "(Just 7)\n"
 
 #. type: Plain text
-#: text/chapter6.md:299
+#: text/chapter6.md:301
 msgid ""
 "How can we understand the meaning of the `map` function, when it acts on "
 "many different structures, each in a different way?"
@@ -21522,7 +21556,7 @@ msgstr ""
 "はどのように理解すればいいのでしょうか。"
 
 #. type: Plain text
-#: text/chapter6.md:301
+#: text/chapter6.md:303
 msgid ""
 "Well, we can build an intuition that the `map` function applies the function "
 "it is given to each element of a container, and builds a new container from "
@@ -21534,7 +21568,7 @@ msgstr ""
 "しかし、この着想を精密にするにはどうしたらいいでしょうか。"
 
 #. type: Plain text
-#: text/chapter6.md:303
+#: text/chapter6.md:305
 msgid ""
 "Type class instances for `Functor` are expected to adhere to a set of "
 "_laws_, called the _functor laws_:"
@@ -21543,17 +21577,17 @@ msgstr ""
 "待されています。"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:306
+#: text/chapter6.md:308
 msgid "`map identity xs = xs`"
 msgstr "`map identity xs = xs`"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:306
+#: text/chapter6.md:308
 msgid "`map g (map f xs) = map (g <<< f) xs`"
 msgstr "`map g (map f xs) = map (g <<< f) xs`"
 
 #. type: Plain text
-#: text/chapter6.md:308
+#: text/chapter6.md:310
 msgid ""
 "The first law is the _identity law_. It states that lifting the identity "
 "function (the function which returns its argument unchanged) over a "
@@ -21565,7 +21599,7 @@ msgstr ""
 "恒等関数は入力を変更しませんから、これは理にかなっています。"
 
 #. type: Plain text
-#: text/chapter6.md:310
+#: text/chapter6.md:312
 msgid ""
 "The second law is the _composition law_. It states that mapping one function "
 "over a structure, and then mapping a second, is the same thing as mapping "
@@ -21575,7 +21609,7 @@ msgstr ""
 "めの関数で写すのは、2つの関数の合成で構造を写すのと同じだ、と言っています。"
 
 #. type: Plain text
-#: text/chapter6.md:312
+#: text/chapter6.md:314
 msgid ""
 "Whatever \"lifting\" means in the general sense, it should be true that any "
 "reasonable definition of lifting a function over a data structure should "
@@ -21585,7 +21619,7 @@ msgstr ""
 "定義はこれらの法則に従っていなければなりません。"
 
 #. type: Plain text
-#: text/chapter6.md:314
+#: text/chapter6.md:316
 msgid ""
 "Many standard type classes come with their own set of similar laws. The laws "
 "given to a type class give structure to the functions of that type class and "
@@ -21600,13 +21634,13 @@ msgstr ""
 "よいでしょう。"
 
 #. type: Title ###
-#: text/chapter6.md:315
+#: text/chapter6.md:317
 #, no-wrap
 msgid "Deriving Instances"
 msgstr "インスタンスの導出"
 
 #. type: Plain text
-#: text/chapter6.md:318
+#: text/chapter6.md:320
 msgid ""
 "Rather than writing instances manually, you can let the compiler do most of "
 "the work for you. Take a look at this [Type Class Deriving guide](https://"
@@ -21620,18 +21654,18 @@ msgstr ""
 "そちらの情報が以下の演習を解く手助けになることでしょう。"
 
 #. type: Plain text
-#: text/chapter6.md:322
+#: text/chapter6.md:324
 msgid "The following newtype represents a complex number:"
 msgstr "（簡単）次のnewtypeは複素数を表します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:323
+#: text/chapter6.md:325
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Complex}}\n"
 msgstr "{{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Complex}}\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:328
+#: text/chapter6.md:330
 msgid ""
 "(Easy) Define a `Show` instance for `Complex`. Match the output format "
 "expected by the tests (e.g. `1.2+3.4i`, `5.6-7.8i`, etc.)."
@@ -21641,7 +21675,7 @@ msgstr ""
 "`5.6-7.7i`など）。"
 
 #. type: Bullet: '2. '
-#: text/chapter6.md:330
+#: text/chapter6.md:332
 msgid ""
 "(Easy) Derive an `Eq` instance for `Complex`. _Note_: You may instead write "
 "this instance manually, but why do more work if you don't have to?"
@@ -21651,7 +21685,7 @@ msgstr ""
 "になぜすることがありましょう。"
 
 #. type: Bullet: '3. '
-#: text/chapter6.md:332
+#: text/chapter6.md:334
 msgid ""
 "(Medium) Define a `Semiring` instance for `Complex`. _Note_: You can use "
 "`wrap` and `over2` from [`Data.Newtype`](https://pursuit.purescript.org/"
@@ -21666,7 +21700,7 @@ msgstr ""
 "`Newtype`インスタンスを`Complex`に導出したりする必要も出てくるでしょう。"
 
 #. type: Bullet: '4. '
-#: text/chapter6.md:334
+#: text/chapter6.md:336
 msgid ""
 "(Easy) Derive (via `newtype`) a `Ring` instance for `Complex`. _Note_: You "
 "may instead write this instance manually, but that's not as convenient."
@@ -21677,13 +21711,13 @@ msgstr ""
 "できません。"
 
 #. type: Plain text
-#: text/chapter6.md:336
+#: text/chapter6.md:338
 #, no-wrap
 msgid "    Here's the `Shape` ADT from the previous chapter:\n"
 msgstr "    以下は前章からの`Shape`のADTです。\n"
 
 #. type: Plain text
-#: text/chapter6.md:340
+#: text/chapter6.md:342
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -21695,7 +21729,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Bullet: '5. '
-#: text/chapter6.md:342
+#: text/chapter6.md:344
 msgid ""
 "(Medium) Derive (via `Generic`) a `Show` instance for `Shape`. How does the "
 "amount of code written and `String` output compare to `showShape` from the "
@@ -21715,13 +21749,13 @@ msgstr ""
 "md#deriving-from-generic)節を見てください。"
 
 #. type: Title ##
-#: text/chapter6.md:343
+#: text/chapter6.md:345
 #, no-wrap
 msgid "Type Class Constraints"
 msgstr "型クラス制約"
 
 #. type: Plain text
-#: text/chapter6.md:346
+#: text/chapter6.md:348
 msgid ""
 "Types of functions can be constrained by using type classes. Here is an "
 "example: suppose we want to write a function which tests if three values are "
@@ -21733,7 +21767,7 @@ msgstr ""
 "を調べる関数を書きたいとします。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:347
+#: text/chapter6.md:349
 #, no-wrap
 msgid ""
 "threeAreEqual :: forall a. Eq a => a -> a -> a -> Boolean\n"
@@ -21743,7 +21777,7 @@ msgstr ""
 "threeAreEqual a1 a2 a3 = a1 == a2 && a2 == a3\n"
 
 #. type: Plain text
-#: text/chapter6.md:353
+#: text/chapter6.md:355
 #, no-wrap
 msgid "The type declaration looks like an ordinary polymorphic type defined using `forall`. However, there is a type class constraint `Eq a`, separated from the rest of the type by a double arrow `=>`.\n"
 msgstr ""
@@ -21751,7 +21785,7 @@ msgstr ""
 "しかし、二重線矢印 `=>`で型の残りの部分から区切られた、型クラス制約 (type class constraint) `Eq a`があります。\n"
 
 #. type: Plain text
-#: text/chapter6.md:355
+#: text/chapter6.md:357
 msgid ""
 "This type says that we can call `threeAreEqual` with any choice of type `a`, "
 "as long as there is an `Eq` instance available for `a` in one of the "
@@ -21762,7 +21796,7 @@ msgstr ""
 "言っています。"
 
 #. type: Plain text
-#: text/chapter6.md:357
+#: text/chapter6.md:359
 msgid ""
 "Constrained types can contain several type class instances, and the types of "
 "the instances are not restricted to simple type variables. Here is another "
@@ -21773,7 +21807,7 @@ msgstr ""
 "2つの値を比較する例を次に示します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:358
+#: text/chapter6.md:360
 #, no-wrap
 msgid ""
 "showCompare :: forall a. Ord a => Show a => a -> a -> String\n"
@@ -21793,7 +21827,7 @@ msgstr ""
 "  show a1 <> \" is equal to \" <> show a2\n"
 
 #. type: Plain text
-#: text/chapter6.md:370
+#: text/chapter6.md:372
 #, no-wrap
 msgid ""
 "Note that multiple constraints can be specified by using the `=>` symbol multiple times, just like we specify curried functions\n"
@@ -21805,19 +21839,19 @@ msgstr ""
 
 # whereasは次の項目に移します
 #. type: Bullet: '- '
-#: text/chapter6.md:373
+#: text/chapter6.md:375
 msgid ""
 "`a -> b` denotes the type of functions from _type_ `a` to _type_ `b`, whereas"
 msgstr "`a -> b`は _型_ `a`から _型_ `b`への関数の型を表します。"
 
 # 「一方で」は前の項目から来ています
 #. type: Bullet: '- '
-#: text/chapter6.md:373
+#: text/chapter6.md:375
 msgid "`a => b` applies the _constraint_ `a` to the type `b`."
 msgstr "一方で、`a => b`は _制約_ `a`を型`b`に適用します。"
 
 #. type: Plain text
-#: text/chapter6.md:375
+#: text/chapter6.md:377
 msgid ""
 "The PureScript compiler will try to infer constrained types when a type "
 "annotation is not provided. This can be useful if we want to use the most "
@@ -21828,7 +21862,7 @@ msgstr ""
 "便利です。"
 
 #. type: Plain text
-#: text/chapter6.md:377
+#: text/chapter6.md:379
 msgid ""
 "To see this, try using one of the standard type classes like `Semiring` in "
 "PSCi:"
@@ -21837,7 +21871,7 @@ msgstr ""
 "しょう。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:378
+#: text/chapter6.md:380
 #, no-wrap
 msgid ""
 "> import Prelude\n"
@@ -21851,19 +21885,19 @@ msgstr ""
 "forall a. Semiring a => a -> a\n"
 
 #. type: Plain text
-#: text/chapter6.md:386
+#: text/chapter6.md:388
 #, no-wrap
 msgid "Here, we might have annotated this function as `Int -> Int`, or `Number -> Number`, but PSCi shows us that the most general type works for any `Semiring`, allowing us to use our function with both `Int`s and `Number`s.\n"
 msgstr "ここで、この関数には`Int -> Int`または`Number -> Number`と注釈を付けることが考えられますが、最も一般的な型が`Semiring`で動作するため、PSCiでは`Int`と `Number`の両方で関数を実行させることができます。\n"
 
 #. type: Title ##
-#: text/chapter6.md:387
+#: text/chapter6.md:389
 #, no-wrap
 msgid "Instance Dependencies"
 msgstr "インスタンスの依存関係"
 
 #. type: Plain text
-#: text/chapter6.md:390
+#: text/chapter6.md:392
 msgid ""
 "Just as the implementation of functions can depend on type class instances "
 "using constrained types, so can the implementation of type class instances "
@@ -21877,7 +21911,7 @@ msgstr ""
 "します。"
 
 #. type: Plain text
-#: text/chapter6.md:392
+#: text/chapter6.md:394
 msgid ""
 "For example, consider the `Show` type class. We can write a type class "
 "instance to `show` arrays of elements, as long as we have a way to `show` "
@@ -21888,7 +21922,7 @@ msgstr ""
 "スインスタンスを書くことができます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:393
+#: text/chapter6.md:395
 #, no-wrap
 msgid ""
 "instance Show a => Show (Array a) where\n"
@@ -21898,7 +21932,7 @@ msgstr ""
 "  ...\n"
 
 #. type: Plain text
-#: text/chapter6.md:400
+#: text/chapter6.md:402
 #, no-wrap
 msgid ""
 "If a type class instance depends on multiple other instances, those instances should be grouped in parentheses and separated by\n"
@@ -21906,7 +21940,7 @@ msgid ""
 msgstr "型クラスインスタンスが複数の他のインスタンスに依存する場合、括弧で囲んでそれらのインスタンスをコンマで区切り、それを`=>`シンボルの左側に置く必要があります。\n"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:401
+#: text/chapter6.md:403
 #, no-wrap
 msgid ""
 "instance (Show a, Show b) => Show (Either a b) where\n"
@@ -21916,12 +21950,12 @@ msgstr ""
 "  ...\n"
 
 #. type: Plain text
-#: text/chapter6.md:407
+#: text/chapter6.md:409
 msgid "These two type class instances are provided in the `prelude` library."
 msgstr "これらの2つの型クラスインスタンスは `prelude`ライブラリにあります。"
 
 #. type: Plain text
-#: text/chapter6.md:409
+#: text/chapter6.md:411
 msgid ""
 "When the program is compiled, the correct type class instance for `Show` is "
 "chosen based on the inferred type of the argument to `show`. The selected "
@@ -21934,14 +21968,14 @@ msgstr ""
 "れませんが、このあたりの複雑さに開発者が関与することはありません。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:413
+#: text/chapter6.md:415
 msgid ""
 "(Easy) The following declaration defines a type of non-empty arrays of "
 "elements of type `a`:"
 msgstr "（簡単）以下の宣言では型 `a`の要素の空でない配列の型を定義しています。"
 
 #. type: Plain text
-#: text/chapter6.md:417
+#: text/chapter6.md:419
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -21953,7 +21987,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:419
+#: text/chapter6.md:421
 #, no-wrap
 msgid "    Write an `Eq` instance for the type `NonEmpty a` which reuses the instances for `Eq a` and `Eq (Array a)`. _Note:_ you may instead derive the `Eq` instance.\n"
 msgstr ""
@@ -21961,7 +21995,7 @@ msgstr ""
 "    *補足*：代わりに`Eq`インスタンスも導出できます。\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:421
+#: text/chapter6.md:423
 msgid ""
 "(Medium) Write a `Semigroup` instance for `NonEmpty a` by reusing the "
 "`Semigroup` instance for `Array`."
@@ -21970,12 +22004,12 @@ msgstr ""
 "`Semigroup`インスタンスを書いてください。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:423
+#: text/chapter6.md:425
 msgid "(Medium) Write a `Functor` instance for `NonEmpty`."
 msgstr "（普通）`NonEmpty`に`Functor`インスタンスを書いてください。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:425
+#: text/chapter6.md:427
 msgid ""
 "(Medium) Given any type `a` with an instance of `Ord`, we can add a new "
 "\"infinite\" value which is greater than any other value:"
@@ -21984,7 +22018,7 @@ msgstr ""
 "それ以外のどんな値よりも大きい「無限の」値を付け加えられます。"
 
 #. type: Plain text
-#: text/chapter6.md:429
+#: text/chapter6.md:431
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -21996,13 +22030,13 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:431
+#: text/chapter6.md:433
 #, no-wrap
 msgid "    Write an `Ord` instance for `Extended a` which reuses the `Ord` instance for `a`.\n"
 msgstr "    `a`への`Ord`インスタンスを再利用して、`Extended a`に`Ord`インスタンスを書いてください。\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:433
+#: text/chapter6.md:435
 msgid ""
 "(Difficult) Write a `Foldable` instance for `NonEmpty`. _Hint_: reuse the "
 "`Foldable` instance for arrays."
@@ -22011,7 +22045,7 @@ msgstr ""
 "*手掛かり*：配列への`Foldable`インスタンスを再利用してください。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:435
+#: text/chapter6.md:437
 msgid ""
 "(Difficult) Given a type constructor `f` which defines an ordered container "
 "(and so has a `Foldable` instance), we can create a new container type which "
@@ -22022,7 +22056,7 @@ msgstr ""
 "なコンテナ型を作ることができます。"
 
 #. type: Plain text
-#: text/chapter6.md:439
+#: text/chapter6.md:441
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22034,7 +22068,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:441
+#: text/chapter6.md:443
 #, no-wrap
 msgid "    The container `OneMore f` also has an ordering, where the new element comes before any element of `f`. Write a `Foldable` instance for `OneMore f`:\n"
 msgstr ""
@@ -22043,7 +22077,7 @@ msgstr ""
 "   この `OneMore f`の `Foldable`インスタンスを書いてみましょう。\n"
 
 #. type: Plain text
-#: text/chapter6.md:446
+#: text/chapter6.md:448
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22057,7 +22091,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:448
+#: text/chapter6.md:450
 msgid ""
 "(Medium) Write a `dedupShapes :: Array Shape -> Array Shape` function which "
 "removes duplicate `Shape`s from an array using the `nubEq` function."
@@ -22066,7 +22100,7 @@ msgstr ""
 "Array Shape -> Array Shape`関数を書いてください。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:450
+#: text/chapter6.md:452
 msgid ""
 "(Medium) Write a `dedupShapesFast` function which is the same as "
 "`dedupShapes`, but uses the more efficient `nub` function."
@@ -22075,13 +22109,13 @@ msgstr ""
 "`dedupShapes`とほぼ同じですが、より効率の良い`nub`関数を使います。"
 
 #. type: Title ##
-#: text/chapter6.md:451
+#: text/chapter6.md:453
 #, no-wrap
 msgid "Multi Parameter Type Classes"
 msgstr "多変数型クラス"
 
 #. type: Plain text
-#: text/chapter6.md:454
+#: text/chapter6.md:456
 msgid ""
 "It's not the case that a type class can only take a single type as an "
 "argument. This is the most common case, but in fact, a type class can be "
@@ -22092,12 +22126,12 @@ msgstr ""
 "とができます。"
 
 #. type: Plain text
-#: text/chapter6.md:456
+#: text/chapter6.md:458
 msgid "Let's see an example of a type class with two type arguments."
 msgstr "それでは2つの型引数を持つ型クラスの例を見てみましょう。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:457
+#: text/chapter6.md:459
 #, no-wrap
 msgid ""
 "module Stream where\n"
@@ -22131,7 +22165,7 @@ msgstr ""
 "  uncons = String.uncons\n"
 
 #. type: Plain text
-#: text/chapter6.md:475
+#: text/chapter6.md:477
 msgid ""
 "The `Stream` module defines a class `Stream` which identifies types which "
 "look like streams of elements, where elements can be pulled from the front "
@@ -22142,7 +22176,7 @@ msgstr ""
 "`uncons`関数を使ってストリームの先頭から要素を取り出すことができます。"
 
 #. type: Plain text
-#: text/chapter6.md:477
+#: text/chapter6.md:479
 msgid ""
 "Note that the `Stream` type class is parameterized not only by the type of "
 "the stream itself, but also by its elements. This allows us to define type "
@@ -22153,7 +22187,7 @@ msgstr ""
 "の型について異なる型クラスインスタンスを定義できます。"
 
 #. type: Plain text
-#: text/chapter6.md:479
+#: text/chapter6.md:481
 msgid ""
 "The module defines two type class instances: an instance for arrays, where "
 "`uncons` removes the head element of the array using pattern matching, and "
@@ -22164,7 +22198,7 @@ msgstr ""
 "と、文字列から最初の文字を取り除くような文字列のインスタンスです。"
 
 #. type: Plain text
-#: text/chapter6.md:481
+#: text/chapter6.md:483
 msgid ""
 "We can write functions which work over arbitrary streams. For example, here "
 "is a function which accumulates a result in some `Monoid` based on the "
@@ -22174,7 +22208,7 @@ msgstr ""
 "づいて `Monoid`に結果を累積する関数は次のようになります。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:482
+#: text/chapter6.md:484
 #, no-wrap
 msgid ""
 "import Prelude\n"
@@ -22196,7 +22230,7 @@ msgstr ""
 "    Just cons -> f cons.head <> foldStream f cons.tail\n"
 
 #. type: Plain text
-#: text/chapter6.md:494
+#: text/chapter6.md:496
 msgid ""
 "Try using `foldStream` in PSCi for different types of `Stream` and different "
 "types of `Monoid`."
@@ -22205,13 +22239,13 @@ msgstr ""
 "呼び出してみましょう。"
 
 #. type: Title ##
-#: text/chapter6.md:495
+#: text/chapter6.md:497
 #, no-wrap
 msgid "Functional Dependencies"
 msgstr "関数従属性"
 
 #. type: Plain text
-#: text/chapter6.md:498
+#: text/chapter6.md:500
 msgid ""
 "Multi-parameter type classes can be very useful, but can easily lead to "
 "confusing types and even issues with type inference. As a simple example, "
@@ -22224,18 +22258,18 @@ msgstr ""
 "書くことを考えてみましょう。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:499
+#: text/chapter6.md:501
 #, no-wrap
 msgid "genericTail xs = map _.tail (uncons xs)\n"
 msgstr "genericTail xs = map _.tail (uncons xs)\n"
 
 #. type: Plain text
-#: text/chapter6.md:504
+#: text/chapter6.md:506
 msgid "This gives a somewhat confusing error message:"
 msgstr "これはやや複雑なエラーメッセージを出力します。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:505
+#: text/chapter6.md:507
 #, no-wrap
 msgid ""
 "The inferred type\n"
@@ -22251,7 +22285,7 @@ msgstr ""
 "has type variables which are not mentioned in the body of the type. Consider adding a type annotation.\n"
 
 #. type: Plain text
-#: text/chapter6.md:514
+#: text/chapter6.md:516
 msgid ""
 "The problem is that the `genericTail` function does not use the `element` "
 "type mentioned in the definition of the `Stream` type class, so that type is "
@@ -22261,7 +22295,7 @@ msgstr ""
 "を使用しないので、その型は未解決のままであることを指しています。"
 
 #. type: Plain text
-#: text/chapter6.md:516
+#: text/chapter6.md:518
 msgid ""
 "Worse still, we cannot even use `genericTail` by applying it to a specific "
 "type of stream:"
@@ -22269,7 +22303,7 @@ msgstr ""
 "更に残念なことに、特定の型のストリームに`genericTail`を適用できません。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:517
+#: text/chapter6.md:519
 #, no-wrap
 msgid ""
 "> map _.tail (uncons \"testing\")\n"
@@ -22289,7 +22323,7 @@ msgstr ""
 "has type variables which are not mentioned in the body of the type. Consider adding a type annotation.\n"
 
 #. type: Plain text
-#: text/chapter6.md:528
+#: text/chapter6.md:530
 msgid ""
 "Here, we might expect the compiler to choose the `streamString` instance. "
 "After all, a `String` is a stream of `Char`s, and cannot be a stream of any "
@@ -22301,7 +22335,7 @@ msgstr ""
 "てはなりません。"
 
 #. type: Plain text
-#: text/chapter6.md:530
+#: text/chapter6.md:532
 msgid ""
 "The compiler is unable to make that deduction automatically, and cannot "
 "commit to the `streamString` instance. However, we can help the compiler by "
@@ -22313,7 +22347,7 @@ msgstr ""
 "す。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:531
+#: text/chapter6.md:533
 #, no-wrap
 msgid ""
 "class Stream stream element | stream -> element where\n"
@@ -22323,13 +22357,13 @@ msgstr ""
 "  uncons :: stream -> Maybe { head :: element, tail :: stream }\n"
 
 #. type: Plain text
-#: text/chapter6.md:537
+#: text/chapter6.md:539
 #, no-wrap
 msgid "Here, `stream -> element` is called a _functional dependency_. A functional dependency asserts a functional relationship between the type arguments of a multi-parameter type class. This functional dependency tells the compiler that there is a function from stream types to (unique) element types, so if the compiler knows the stream type, then it can commit to the element type.\n"
 msgstr "ここで、 `stream -> element`は _関数従属性_ (functional dependency) と呼ばれます。関数従属性は、多変数型クラスの型引数間の関数関係を宣言します。この関数の依存関係は、ストリーム型から（一意の）要素型への関数があることをコンパイラに伝えるので、コンパイラがストリーム型を知っていれば要素の型を割り当てられます。\n"
 
 #. type: Plain text
-#: text/chapter6.md:539
+#: text/chapter6.md:541
 msgid ""
 "This hint is enough for the compiler to infer the correct type for our "
 "generic tail function above:"
@@ -22338,7 +22372,7 @@ msgstr ""
 "のに充分です。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:540
+#: text/chapter6.md:542
 #, no-wrap
 msgid ""
 "> :type genericTail\n"
@@ -22354,7 +22388,7 @@ msgstr ""
 "(Just \"esting\")\n"
 
 #. type: Plain text
-#: text/chapter6.md:549
+#: text/chapter6.md:551
 msgid ""
 "Functional dependencies can be quite useful when using multi-parameter type "
 "classes to design certain APIs."
@@ -22363,13 +22397,13 @@ msgstr ""
 "す。"
 
 #. type: Title ##
-#: text/chapter6.md:550
+#: text/chapter6.md:552
 #, no-wrap
 msgid "Nullary Type Classes"
 msgstr "型変数のない型クラス"
 
 #. type: Plain text
-#: text/chapter6.md:553
+#: text/chapter6.md:555
 msgid ""
 "We can even define type classes with zero type arguments! These correspond "
 "to compile-time assertions about our functions, allowing us to track global "
@@ -22380,7 +22414,7 @@ msgstr ""
 "コードの大域的な性質を把握できます。"
 
 #. type: Plain text
-#: text/chapter6.md:555
+#: text/chapter6.md:557
 msgid ""
 "An important example is the `Partial` class which we saw earlier when "
 "discussing partial functions. Take for example the functions `head` and "
@@ -22394,7 +22428,7 @@ msgstr ""
 "が空のときに失敗する可能性があります。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:556
+#: text/chapter6.md:558
 #, no-wrap
 msgid ""
 "head :: forall a. Partial => Array a -> a\n"
@@ -22406,7 +22440,7 @@ msgstr ""
 "tail :: forall a. Partial => Array a -> Array a\n"
 
 #. type: Plain text
-#: text/chapter6.md:563
+#: text/chapter6.md:565
 msgid ""
 "Note that there is no instance defined for the `Partial` type class! Doing "
 "so would defeat its purpose: attempting to use the `head` function directly "
@@ -22418,7 +22452,7 @@ msgstr ""
 "このままの定義では `head`関数を使用しようとすると型エラーになるのです。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:564
+#: text/chapter6.md:566
 #, no-wrap
 msgid ""
 "> head [1, 2, 3]\n"
@@ -22434,7 +22468,7 @@ msgstr ""
 "  Prim.Partial\n"
 
 #. type: Plain text
-#: text/chapter6.md:573
+#: text/chapter6.md:575
 msgid ""
 "Instead, we can republish the `Partial` constraint for any functions making "
 "use of partial functions:"
@@ -22443,7 +22477,7 @@ msgstr ""
 "す。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:574
+#: text/chapter6.md:576
 #, no-wrap
 msgid ""
 "secondElement :: forall a. Partial => Array a -> a\n"
@@ -22453,7 +22487,7 @@ msgstr ""
 "secondElement xs = head (tail xs)\n"
 
 #. type: Plain text
-#: text/chapter6.md:580
+#: text/chapter6.md:582
 msgid ""
 "We've already seen the `unsafePartial` function, which allows us to treat a "
 "partial function as a regular function (unsafely). This function is defined "
@@ -22463,13 +22497,13 @@ msgstr ""
 "扱うことができます。この関数は `Partial.Unsafe`モジュールで定義されています。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:581
+#: text/chapter6.md:583
 #, no-wrap
 msgid "unsafePartial :: forall a. (Partial => a) -> a\n"
 msgstr "unsafePartial :: forall a. (Partial => a) -> a\n"
 
 #. type: Plain text
-#: text/chapter6.md:586
+#: text/chapter6.md:588
 msgid ""
 "Note that the `Partial` constraint appears _inside the parentheses_ on the "
 "left of the function arrow, but not in the outer `forall`. That is, "
@@ -22480,7 +22514,7 @@ msgstr ""
 "つまり、 `unsafePartial`は部分的な値から通常の値への関数です。"
 
 #. type: Fenced code block (text)
-#: text/chapter6.md:587
+#: text/chapter6.md:589
 #, no-wrap
 msgid ""
 "> unsafePartial head [1, 2, 3]\n"
@@ -22496,13 +22530,13 @@ msgstr ""
 "2\n"
 
 #. type: Title ##
-#: text/chapter6.md:595
+#: text/chapter6.md:597
 #, no-wrap
 msgid "Superclasses"
 msgstr "上位クラス"
 
 #. type: Plain text
-#: text/chapter6.md:598
+#: text/chapter6.md:600
 msgid ""
 "Just as we can express relationships between type class instances by making "
 "an instance dependent on another instance, we can express relationships "
@@ -22513,39 +22547,32 @@ msgstr ""
 "現できます。"
 
 #. type: Plain text
-#: text/chapter6.md:600
-msgid ""
-"We say that one type class is a superclass of another if every instance of "
-"the second class is required to be an instance of the first, and we indicate "
-"a superclass relationship in the class definition by using a backwards "
-"facing double arrow."
+#: text/chapter6.md:602
+#, no-wrap
+msgid "We say that one type class is a superclass of another if every instance of the second class is required to be an instance of the first, and we indicate a superclass relationship in the class definition by using a backwards facing double arrow ( `<=` ).\n"
 msgstr ""
-"あるクラスのどんなインスタンスも、別のクラスのインスタンスである必要があると"
-"き、後者の型クラスは前者の型クラスの上位クラスであるといい、クラス定義で逆向"
-"きの太い矢印を使って上位クラス関係を示します。"
+"あるクラスのどんなインスタンスも、別のクラスのインスタンスである必要があるとき、後者の型クラスは前者の型クラスの上位クラスであるといいます。\n"
+"そしてクラス定義で逆向きの太い矢印 (`<=`) を使って上位クラス関係を示します。\n"
 
 #. type: Plain text
-#: text/chapter6.md:602
+#: text/chapter6.md:604
 msgid ""
-"We've already seen some examples of superclass relationships: the `Eq` class "
-"is a superclass of `Ord`, and the `Semigroup` class is a superclass of "
+"We've [already seen an example of superclass relationships](#ord): the `Eq` "
+"class is a superclass of `Ord`, and the `Semigroup` class is a superclass of "
 "`Monoid`. For every type class instance of the `Ord` class, there must be a "
 "corresponding `Eq` instance for the same type. This makes sense, since in "
 "many cases, when the `compare` function reports that two values are "
 "incomparable, we often want to use the `Eq` class to determine if they are "
 "in fact equal."
 msgstr ""
-"既に上位クラスの関係の例を目にしました。\n"
-"`Eq`クラスは `Ord`の上位クラスですし、`Semigroup`クラスは`Monoid`の上位クラス"
-"です。\n"
-"`Ord`クラスの全ての型クラスインスタンスについて、その同じ型に対応する `Eq`イ"
-"ンスタンスが存在しなければなりません。\n"
-"`compare`関数が2つの値の大小を付けられないと報告した時は、それらが実は同値で"
-"あるかどうかを決定するために `Eq`クラスを使いたくなることが多いでしょうから、"
-"これは理にかなっています。"
+"[既に上位クラスの関係の例を目にしました](#ord)。\n"
+"`Eq`クラスは `Ord`の上位クラスですし、`Semigroup`クラスは`Monoid`の上位クラスです。\n"
+"`Ord`クラスの全ての型クラスインスタンスについて、その同じ型に対応する `Eq`インスタンスが存在しなければなりません。\n"
+"これは理に適っています。\n"
+"`compare`関数が2つの値の大小を付けられないと報告した時は、それらが実は同値であるかどうかを判定するために `Eq`クラスを使いたいことが多いでしょうから。"
 
 #. type: Plain text
-#: text/chapter6.md:604
+#: text/chapter6.md:606
 msgid ""
 "In general, it makes sense to define a superclass relationship when the laws "
 "for the subclass mention the members of the superclass. For example, it is "
@@ -22565,7 +22592,7 @@ msgstr ""
 "法則のレベルでのこの関係は`Eq`と`Ord`の間の上位クラス関係の正当性を示します。"
 
 #. type: Plain text
-#: text/chapter6.md:606
+#: text/chapter6.md:608
 msgid ""
 "Another reason to define a superclass relationship is in the case where "
 "there is a clear \"is-a\" relationship between the two classes. That is, "
@@ -22576,7 +22603,7 @@ msgstr ""
 "下位クラスの全てのメンバは、上位クラスのメンバでもあるということです。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:610
+#: text/chapter6.md:612
 msgid ""
 "(Medium) Define a partial function `unsafeMaximum :: Partial => Array Int -> "
 "Int` which finds the maximum of a non-empty array of integers. Test out your "
@@ -22589,7 +22616,7 @@ msgstr ""
 "使います。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:612
+#: text/chapter6.md:614
 msgid ""
 "(Medium) The `Action` class is a multi-parameter type class which defines an "
 "action of one type on another:"
@@ -22598,7 +22625,7 @@ msgstr ""
 "変数型クラスです。"
 
 #. type: Plain text
-#: text/chapter6.md:616
+#: text/chapter6.md:618
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22610,23 +22637,23 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:618
+#: text/chapter6.md:620
 #, no-wrap
 msgid "    An _action_ is a function which describes how monoidal values are used to determine how to modify a value of another type. There are two laws for the `Action` type class:\n"
 msgstr "   *動作*はモノイドな値を使って他の型の値を変更する方法を決めるやり方を記述する関数です。`Action`型クラスには2つの法則があります。\n"
 
 #. type: Bullet: '    - '
-#: text/chapter6.md:621
+#: text/chapter6.md:623
 msgid "`act mempty a = a`"
 msgstr "`act mempty a = a`"
 
 #. type: Bullet: '    - '
-#: text/chapter6.md:621
+#: text/chapter6.md:623
 msgid "`act (m1 <> m2) a = act m1 (act m2 a)`"
 msgstr "`act (m1 <> m2) a = act m1 (act m2 a)`"
 
 #. type: Plain text
-#: text/chapter6.md:623
+#: text/chapter6.md:625
 #, no-wrap
 msgid "    Applying an empty action is a no-op. And applying two actions in sequence is the same as applying the actions combined. That is, actions respect the operations defined by the `Monoid` class.\n"
 msgstr ""
@@ -22635,13 +22662,13 @@ msgstr ""
 "    つまり、動作は`Monoid`クラスで定義される操作に倣っています。\n"
 
 #. type: Plain text
-#: text/chapter6.md:625
+#: text/chapter6.md:627
 #, no-wrap
 msgid "    For example, the natural numbers form a monoid under multiplication:\n"
 msgstr "   例えば自然数は乗算のもとでモノイドを形成します。\n"
 
 #. type: Plain text
-#: text/chapter6.md:628
+#: text/chapter6.md:630
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22651,13 +22678,13 @@ msgstr ""
 "    {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Multiply}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:630
+#: text/chapter6.md:632
 #, no-wrap
 msgid "    {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:semigroupMultiply}}\n"
 msgstr "    {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:semigroupMultiply}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:633
+#: text/chapter6.md:635
 #, no-wrap
 msgid ""
 "    {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:monoidMultiply}}\n"
@@ -22667,13 +22694,13 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:635
+#: text/chapter6.md:637
 #, no-wrap
 msgid "    Write an instance which implements this action:\n"
 msgstr "    この動作を実装するインスタンスを書いてください。\n"
 
 #. type: Plain text
-#: text/chapter6.md:640
+#: text/chapter6.md:642
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22687,13 +22714,13 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:642
+#: text/chapter6.md:644
 #, no-wrap
 msgid "    Remember, your instance must satisfy the laws listed above.\n"
 msgstr "    インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:644
+#: text/chapter6.md:646
 msgid ""
 "(Difficult) There are actually multiple ways to implement an instance of "
 "`Action Multiply Int`. How many can you think of? Purescript does not allow "
@@ -22708,7 +22735,7 @@ msgstr ""
 "*補足*：テストでは4つの実装を押さえています。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:646
+#: text/chapter6.md:648
 msgid ""
 "(Medium) Write an `Action` instance which repeats an input string some "
 "number of times:"
@@ -22716,7 +22743,7 @@ msgstr ""
 "（普通）入力の文字列を何回か繰り返す`Action`インスタンスを書いてください。"
 
 #. type: Plain text
-#: text/chapter6.md:651
+#: text/chapter6.md:653
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22730,7 +22757,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:653
+#: text/chapter6.md:655
 #, no-wrap
 msgid "    _Hint_: Search Pursuit for a helper-function with the signature [`String -> Int -> String`](https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String). Note that `String` might appear as a more generic type (such as `Monoid`).\n"
 msgstr ""
@@ -22738,13 +22765,13 @@ msgstr ""
 "    なお`String`は（`Monoid`のような）より汎用的な型として現れます。\n"
 
 #. type: Plain text
-#: text/chapter6.md:655
+#: text/chapter6.md:657
 #, no-wrap
 msgid "    Does this instance satisfy the laws listed above?\n"
 msgstr "    このインスタンスは上に挙げた法則を満たすでしょうか。\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:657
+#: text/chapter6.md:659
 msgid ""
 "(Medium) Write an instance `Action m a => Action m (Array a)`, where the "
 "action on arrays is defined by acting on each array element independently."
@@ -22753,7 +22780,7 @@ msgstr ""
 "ここで、 配列上の動作はそれぞれの要素を独立に実行するものとして定義されます。"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:659
+#: text/chapter6.md:661
 msgid ""
 "(Difficult) Given the following newtype, write an instance for `Action m "
 "(Self m)`, where the monoid `m` acts on itself using `append`:"
@@ -22763,7 +22790,7 @@ msgstr ""
 "ここでモノイド`m`はそれ自体が持つ`append`を用いて動作します。"
 
 #. type: Plain text
-#: text/chapter6.md:663
+#: text/chapter6.md:665
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -22775,7 +22802,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:665
+#: text/chapter6.md:667
 #, no-wrap
 msgid "    _Note_: The testing framework requires `Show` and `Eq` instances for the `Self` and `Multiply` types. You may either write these instances manually, or let the compiler handle this for you with [`derive newtype instance`](https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#derive-from-newtype) shorthand.\n"
 msgstr ""
@@ -22783,7 +22810,7 @@ msgstr ""
 "    手作業でこれらのインスタンスを書いてもよいですし、[`derive newtype instance`](https://github.com/purescript/documentation/blob/master/language/Type-Classes.md#derive-from-newtype)と書くだけでコンパイラに取り仕切ってもらうこともできます。\n"
 
 #. type: Bullet: '1. '
-#: text/chapter6.md:667
+#: text/chapter6.md:669
 msgid ""
 "(Difficult) Should the arguments of the multi-parameter type class `Action` "
 "be related by some functional dependency? Why or why not? _Note_: There is "
@@ -22795,13 +22822,13 @@ msgstr ""
 "*補足*：この演習にはテストがありません。"
 
 #. type: Title ##
-#: text/chapter6.md:668
+#: text/chapter6.md:670
 #, no-wrap
 msgid "A Type Class for Hashes"
 msgstr "ハッシュの型クラス"
 
 #. type: Plain text
-#: text/chapter6.md:671
+#: text/chapter6.md:673
 msgid ""
 "In the last section of this chapter, we will use the lessons from the rest "
 "of the chapter to create a library for hashing data structures."
@@ -22810,7 +22837,7 @@ msgstr ""
 "ます。"
 
 #. type: Plain text
-#: text/chapter6.md:673
+#: text/chapter6.md:675
 msgid ""
 "Note that this library is for demonstration purposes only, and is not "
 "intended to provide a robust hashing mechanism."
@@ -22819,12 +22846,12 @@ msgstr ""
 "供は目的としていません。"
 
 #. type: Plain text
-#: text/chapter6.md:675
+#: text/chapter6.md:677
 msgid "What properties might we expect of a hash function?"
 msgstr "ハッシュ関数に期待される性質とはどのようなものでしょうか。"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:678
+#: text/chapter6.md:680
 msgid ""
 "A hash function should be deterministic, and map equal values to equal hash "
 "codes."
@@ -22833,7 +22860,7 @@ msgstr ""
 "つまり、同じ値には同じハッシュ値を対応させなければなりません。"
 
 #. type: Bullet: '- '
-#: text/chapter6.md:678
+#: text/chapter6.md:680
 msgid ""
 "A hash function should distribute its results approximately uniformly over "
 "some set of hash codes."
@@ -22842,7 +22869,7 @@ msgstr ""
 "ん。"
 
 #. type: Plain text
-#: text/chapter6.md:680
+#: text/chapter6.md:682
 msgid ""
 "The first property looks a lot like a law for a type class, whereas the "
 "second property is more along the lines of an informal contract, and "
@@ -22855,20 +22882,20 @@ msgstr ""
 "しかし、これは型クラスについて次のような直感的理解を与えるはずです。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:681
+#: text/chapter6.md:683
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:Hashable}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:Hashable}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:686
+#: text/chapter6.md:688
 msgid "with the associated law that `a == b` implies `hash a == hash b`."
 msgstr ""
 "これに、 `a == b`ならば `hash a == hash b`を示唆するという関係性の法則が付随"
 "しています。"
 
 #. type: Plain text
-#: text/chapter6.md:688
+#: text/chapter6.md:690
 msgid ""
 "We'll spend the rest of this section building a library of instances and "
 "functions associated with the `Hashable` type class."
@@ -22877,18 +22904,18 @@ msgstr ""
 "ンスと関数のライブラリを構築していきます。"
 
 #. type: Plain text
-#: text/chapter6.md:690
+#: text/chapter6.md:692
 msgid "We will need a way to combine hash codes in a deterministic way:"
 msgstr "決定的な方法でハッシュ値を結合する方法が必要になります。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:691
+#: text/chapter6.md:693
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:combineHashes}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:combineHashes}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:696
+#: text/chapter6.md:698
 msgid ""
 "The `combineHashes` function will mix two hash codes and redistribute the "
 "result over the interval 0-65535."
@@ -22896,7 +22923,7 @@ msgstr ""
 "`combineHashes`関数は2つのハッシュ値を混ぜて結果を0-65535の間に分布します。"
 
 #. type: Plain text
-#: text/chapter6.md:698
+#: text/chapter6.md:700
 msgid ""
 "Let's write a function which uses the `Hashable` constraint to restrict the "
 "types of its inputs. One common task which requires a hashing function is to "
@@ -22909,13 +22936,13 @@ msgstr ""
 "`hashEqual`関係はそのような機能を提供します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:699
+#: text/chapter6.md:701
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashEqual}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashEqual}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:704
+#: text/chapter6.md:706
 msgid ""
 "This function uses the `on` function from `Data.Function` to define hash-"
 "equality in terms of equality of hash codes, and should read like a "
@@ -22929,7 +22956,7 @@ msgstr ""
 "の値は「ハッシュ同値」です。"
 
 #. type: Plain text
-#: text/chapter6.md:706
+#: text/chapter6.md:708
 msgid ""
 "Let's write some `Hashable` instances for some primitive types. Let's start "
 "with an instance for integers. Since a `HashCode` is really just a wrapped "
@@ -22941,26 +22968,26 @@ msgstr ""
 "`hashCode`補助関数を使うことができます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:707
+#: text/chapter6.md:709
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashInt}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashInt}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:712
+#: text/chapter6.md:714
 msgid ""
 "We can also define a simple instance for `Boolean` values using pattern "
 "matching:"
 msgstr "パターン照合を使うと、`Boolean`値の単純なインスタンスも定義できます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:713
+#: text/chapter6.md:715
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashBoolean}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashBoolean}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:718
+#: text/chapter6.md:720
 msgid ""
 "With an instance for hashing integers, we can create an instance for hashing "
 "`Char`s by using the `toCharCode` function from `Data.Char`:"
@@ -22969,13 +22996,13 @@ msgstr ""
 "シュ化するインスタンスを作成できます。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:719
+#: text/chapter6.md:721
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashChar}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashChar}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:724
+#: text/chapter6.md:726
 msgid ""
 "To define an instance for arrays, we can `map` the `hash` function over the "
 "elements of the array (if the element type is also an instance of "
@@ -22987,13 +23014,13 @@ msgstr ""
 "で、配列のインスタンスを定義します。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:725
+#: text/chapter6.md:727
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashArray}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashArray}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:730
+#: text/chapter6.md:732
 msgid ""
 "Notice how we build up instances using the simpler instances we have already "
 "written. Let's use our new `Array` instance to define an instance for "
@@ -23005,13 +23032,13 @@ msgstr ""
 "のインスタンスを定義しましょう。"
 
 #. type: Fenced code block (haskell)
-#: text/chapter6.md:731
+#: text/chapter6.md:733
 #, no-wrap
 msgid "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashString}}\n"
 msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashString}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:736
+#: text/chapter6.md:738
 msgid ""
 "How can we prove that these `Hashable` instances satisfy the type class law "
 "that we stated above? We need to make sure that equal values have equal hash "
@@ -23026,7 +23053,7 @@ msgstr ""
 "は同じではない、というような型の値は存在しないので簡単です。"
 
 #. type: Plain text
-#: text/chapter6.md:738
+#: text/chapter6.md:740
 msgid ""
 "What about some more interesting types? To prove the type class law for the "
 "`Array` instance, we can use induction on the length of the array. The only "
@@ -23049,7 +23076,7 @@ msgstr ""
 "ラス法則を満たしています。"
 
 #. type: Plain text
-#: text/chapter6.md:740
+#: text/chapter6.md:742
 msgid ""
 "The source code for this chapter includes several other examples of "
 "`Hashable` instances, such as instances for the `Maybe` and `Tuple` type."
@@ -23058,7 +23085,7 @@ msgstr ""
 "`Hashable`インスタンスの例が含まれています。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter6.md:746
+#: text/chapter6.md:748
 msgid ""
 "(Easy) Use PSCi to test the hash functions for each of the defined "
 "instances. _Note_: There is no provided unit test for this exercise."
@@ -23068,7 +23095,7 @@ msgstr ""
 "*補足*：この演習には単体試験がありません。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter6.md:746
+#: text/chapter6.md:748
 msgid ""
 "(Medium) Write a function `arrayHasDuplicates` which tests if an array has "
 "any duplicate elements based on both hash and value equality. First check "
@@ -23084,7 +23111,7 @@ msgstr ""
 "しょう。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter6.md:746
+#: text/chapter6.md:748
 msgid ""
 "(Medium) Write a `Hashable` instance for the following newtype which "
 "satisfies the type class law:"
@@ -23093,7 +23120,7 @@ msgstr ""
 "ください。"
 
 #. type: Plain text
-#: text/chapter6.md:749
+#: text/chapter6.md:751
 #, no-wrap
 msgid ""
 "    ```haskell\n"
@@ -23103,7 +23130,7 @@ msgstr ""
 "    {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:Hour}}\n"
 
 #. type: Plain text
-#: text/chapter6.md:752
+#: text/chapter6.md:754
 #, no-wrap
 msgid ""
 "    {{#include ../exercises/chapter6/test/no-peeking/Solutions.purs:eqHour}}\n"
@@ -23113,7 +23140,7 @@ msgstr ""
 "    ```\n"
 
 #. type: Plain text
-#: text/chapter6.md:755
+#: text/chapter6.md:757
 #, no-wrap
 msgid ""
 "    The newtype `Hour` and its `Eq` instance represent the type of integers modulo 12, so that 1 and 13 are identified as equal, for example. Prove that the type class law holds for your instance.\n"
@@ -23126,7 +23153,7 @@ msgstr ""
 "    *補足*：この演習にテストはありません。\n"
 
 #. type: Plain text
-#: text/chapter6.md:759
+#: text/chapter6.md:761
 msgid ""
 "In this chapter, we've been introduced to _type classes_, a type-oriented "
 "form of abstraction which enables powerful forms of code reuse. We've seen a "
@@ -23139,7 +23166,7 @@ msgstr ""
 "リを定義しました。"
 
 #. type: Plain text
-#: text/chapter6.md:760
+#: text/chapter6.md:762
 msgid ""
 "This chapter also gave an introduction to the notion of type class laws, a "
 "technique for proving properties about code which uses type classes for "
@@ -25632,7 +25659,8 @@ msgid ""
 "encoded as an XML document:"
 msgstr ""
 "この場合、do記法を使うと深い入れ子になった要素を検索できます。\n"
-"XML文書としてエンコードされた利用者情報から、利用者の住んでいる市町村を読み取りたいとします。"
+"XML文書としてエンコードされた利用者情報から、利用者の住んでいる市町村を読み取"
+"りたいとします。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:63 text/chapter8.md:293
@@ -26337,8 +26365,10 @@ msgid ""
 "notation. Consider the `userCity` example again, in which we looked for a "
 "user's city in an XML document which encoded their user profile:"
 msgstr ""
-"しかし、モナドはアプリカティブ関手でできること以上を行うことができ、重要な違いはdo記法の構文で強調されています。\n"
-"利用者情報をエンコードしたXML文書から利用者の都市を検索する、`userCity`の例についてもう一度考えてみましょう。"
+"しかし、モナドはアプリカティブ関手でできること以上を行うことができ、重要な違"
+"いはdo記法の構文で強調されています。\n"
+"利用者情報をエンコードしたXML文書から利用者の都市を検索する、`userCity`の例に"
+"ついてもう一度考えてみましょう。"
 
 #. type: Plain text
 #: text/chapter8.md:303
