@@ -2287,6 +2287,9 @@ true
 </code></pre>
 <h3 id="ord"><a class="header" href="#ord">Ord</a></h3>
 <p><code>Ord</code>型クラスは順序付け可能な型に対して2つの値を比較する <code>compare</code>関数を定義します。比較演算子 <code>&lt;</code>、 <code>&gt;</code>と、その仲間の厳密な大小比較ではない<code>&lt;=</code>、 <code>&gt;=</code>も、<code>compare</code>を使って定義されます。</p>
+<p><em>補足</em>：以下の例ではクラスシグネチャに<code>&lt;=</code>が含まれています。
+この文脈での<code>&lt;=</code>の使われ方はEqがOrdの上位クラスであり、比較演算子としての<code>&lt;=</code>の用途を表す意図はありません。
+後述の<a href="chapter6.html#%E4%B8%8A%E4%BD%8D%E3%82%AF%E3%83%A9%E3%82%B9">上位クラス</a>の節を参照してください。</p>
 <pre><code class="language-haskell">data Ordering = LT | EQ | GT
 
 class Eq a &lt;= Ord a where
@@ -2654,12 +2657,14 @@ secondElement xs = head (tail xs)
 </code></pre>
 <h2 id="上位クラス"><a class="header" href="#上位クラス">上位クラス</a></h2>
 <p>インスタンスを別のインスタンスに依存させることによって型クラスのインスタンス間の関係を表現できるように、いわゆる<em>上位クラス</em>を使って型クラス間の関係を表現できます。</p>
-<p>あるクラスのどんなインスタンスも、別のクラスのインスタンスである必要があるとき、後者の型クラスは前者の型クラスの上位クラスであるといい、クラス定義で逆向きの太い矢印を使って上位クラス関係を示します。</p>
-<p>既に上位クラスの関係の例を目にしました。
+<p>あるクラスのどんなインスタンスも、別のクラスのインスタンスである必要があるとき、後者の型クラスは前者の型クラスの上位クラスであるといいます。
+そしてクラス定義で逆向きの太い矢印 (<code>&lt;=</code>) を使って上位クラス関係を示します。</p>
+<p><a href="chapter6.html#ord">既に上位クラスの関係の例を目にしました</a>。
 <code>Eq</code>クラスは <code>Ord</code>の上位クラスですし、<code>Semigroup</code>クラスは<code>Monoid</code>の上位クラスです。
 <code>Ord</code>クラスの全ての型クラスインスタンスについて、その同じ型に対応する <code>Eq</code>インスタンスが存在しなければなりません。
-<code>compare</code>関数が2つの値の大小を付けられないと報告した時は、それらが実は同値であるかどうかを決定するために
-<code>Eq</code>クラスを使いたくなることが多いでしょうから、これは理にかなっています。</p>
+これは理に適っています。
+<code>compare</code>関数が2つの値の大小を付けられないと報告した時は、それらが実は同値であるかどうかを判定するために
+<code>Eq</code>クラスを使いたいことが多いでしょうから。</p>
 <p>一般に、下位クラスの法則が上位クラスのメンバに言及しているとき、上位クラス関係を定義するのは筋が通っています。
 例えば、任意の<code>Ord</code>と<code>Eq</code>のインスタンスの対について、もし2つの値が<code>Eq</code>インスタンスの下で同値であるなら、<code>compare</code>関数は
 <code>EQ</code>を返すはずだと見做すのは理に適っています。
