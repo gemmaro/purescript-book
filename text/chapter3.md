@@ -19,7 +19,7 @@ The source code for this chapter is contained in the file `src/Data/AddressBook.
 Here, we import several modules:
 
 - The `Control.Plus` module, which defines the `empty` value.
-- The `Data.List` module, which is provided by the `lists` package which can be installed using Spago. It contains a few functions which we will need for working with linked lists.
+- The `Data.List` module, provided by the `lists` package, which can be installed using Spago. It contains a few functions that we will need for working with linked lists.
 - The `Data.Maybe` module, which defines data types and functions for working with optional values.
 
 Notice that the imports for these modules are listed explicitly in parentheses. This is generally a good practice, as it helps to avoid conflicting imports.
@@ -33,7 +33,7 @@ $ spago build
 
 ## Simple Types
 
-PureScript defines three built-in types which correspond to JavaScript's primitive types: numbers, strings and booleans. These are defined in the `Prim` module, which is implicitly imported by every module. They are called `Number`, `String`, and `Boolean`, respectively, and you can see them in PSCi by using the `:type` command to print the types of some simple values:
+PureScript defines three built-in types corresponding to JavaScript's primitive types: numbers, strings, and booleans. These are defined in the `Prim` module, which is implicitly imported by every module. They are called `Number`, `String`, and `Boolean`, respectively, and you can see them in PSCi by using the `:type` command to print the types of some simple values:
 
 ```text
 $ spago repl
@@ -48,7 +48,7 @@ String
 Boolean
 ```
 
-PureScript defines some other built-in types: integers, characters, arrays, records, and functions.
+PureScript defines other built-in types: integers, characters, arrays, records, and functions.
 
 Integers are differentiated from floating point values of type `Number` by the lack of a decimal point:
 
@@ -77,7 +77,7 @@ Array Boolean
 Could not match type Int with type Boolean.
 ```
 
-The error in the last example is an error from the type checker, which unsuccessfully attempted to _unify_ (i.e. make equal) the types of the two elements.
+The last example shows an error from the type checker, which failed to _unify_ (i.e., make equal) the types of the two elements.
 
 Records correspond to JavaScript's objects, and record literals have the same syntax as JavaScript's object literals:
 
@@ -90,7 +90,7 @@ Records correspond to JavaScript's objects, and record literals have the same sy
 }
 ```
 
-This type indicates that the specified object has two _fields_, a `name` field which has type `String`, and an `interests` field, which has type `Array String`, i.e. an array of `String`s.
+This type indicates that the specified object has two _fields_: a `name` field with the type `String` and an `interests` field with the type `Array String`, i.e., an array of `String`s.
 
 Fields of records can be accessed using a dot, followed by the label of the field to access:
 
@@ -120,7 +120,7 @@ add :: Int -> Int -> Int
 add x y = x + y
 ```
 
-Alternatively, functions can be defined inline, by using a backslash character followed by a space-delimited list of argument names. To enter a multi-line declaration in PSCi, we can enter "paste mode" by using the `:paste` command. In this mode, declarations are terminated using the _Control-D_ key sequence:
+Alternatively, functions can be defined inline using a backslash character followed by a space-delimited list of argument names. To enter a multi-line declaration in PSCi, we can enter "paste mode" using the `:paste` command. In this mode, declarations are terminated using the _Control-D_ key sequence:
 
 ```text
 > :paste
@@ -145,15 +145,15 @@ In the previous section, we saw the types of some functions defined in the Prelu
 forall a b c. (a -> b -> c) -> b -> a -> c
 ```
 
-The keyword `forall` here indicates that `flip` has a _universally quantified type_. It means that we can substitute any types for `a`, `b` and `c`, and `flip` will work with those types.
+The keyword `forall` here indicates that `flip` has a _universally quantified type_. It means we can substitute any types for `a`, `b`, and `c`, and `flip` will work with those types.
 
-For example, we might choose the type `a` to be `Int`, `b` to be `String` and `c` to be `String`. In that case we could _specialize_ the type of `flip` to
+For example, we might choose the type `a` to be `Int`, `b` to be `String`, and `c` to be `String`. In that case, we could _specialize_ the type of `flip` to
 
 ```text
 (Int -> String -> String) -> String -> Int -> String
 ```
 
-We don't have to indicate in code that we want to specialize a quantified type - it happens automatically. For example, we can just use `flip` as if it had this type already:
+We don't have to indicate in code that we want to specialize a quantified type – it happens automatically. For example, we can use `flip` as if it had this type already:
 
 ```text
 > flip (\n s -> show n <> s) "Ten" 10
@@ -161,7 +161,7 @@ We don't have to indicate in code that we want to specialize a quantified type -
 "10Ten"
 ```
 
-While we can choose any types for `a`, `b` and `c`, we have to be consistent. The type of the function we passed to `flip` had to be consistent with the types of the other arguments. That is why we passed the string `"Ten"` as the second argument, and the number `10` as the third. It would not work if the arguments were reversed:
+While we can choose any types for `a`, `b`, and `c`, we have to be consistent. The type of function passed to `flip` had to be consistent with the types of the other arguments. That is why we passed the string `"Ten"` as the second argument and the number `10` as the third. It would not work if the arguments were reversed:
 
 ```text
 > flip (\n s -> show n <> s) 10 "Ten"
@@ -175,14 +175,14 @@ PureScript code is _indentation-sensitive_, just like Haskell, but unlike JavaSc
 
 If a declaration spans multiple lines, then any lines except the first must be indented past the indentation level of the first line.
 
-Therefore, the following is valid PureScript code:
+Therefore, the following is a valid PureScript code:
 
 ```haskell
 add x y z = x +
   y + z
 ```
 
-But this is not valid code:
+But this is not a valid code:
 
 ```haskell
 add x y z = x +
@@ -200,7 +200,7 @@ Generally, any declarations defined in the same block should be indented at the 
 … ^D
 ```
 
-but this is not:
+But this is not:
 
 ```text
 > :paste
@@ -230,7 +230,7 @@ A good first step when tackling a new problem in PureScript is to write out type
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:Entry}}
 ```
 
-This defines a _type synonym_ called `Entry` - the type `Entry` is equivalent to the type on the right of the equals symbol: a record type with three fields - `firstName`, `lastName` and `address`. The two name fields will have type `String`, and the `address` field will have type `Address`, defined as follows:
+This defines a _type synonym_ called `Entry` – the type `Entry` is equivalent to the type on the right of the equals symbol: a record type with three fields – `firstName`, `lastName`, and `address`. The two name fields will have the type `String`, and the `address` field will have the type `Address`, defined as follows:
 
 ```haskell
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:Address}}
@@ -238,19 +238,19 @@ This defines a _type synonym_ called `Entry` - the type `Entry` is equivalent to
 
 Note that records can contain other records.
 
-Now let's define a third type synonym, for our address book data structure, which will be represented simply as a linked list of entries:
+Now let's define a third type synonym for our address book data structure, which will be represented simply as a linked list of entries:
 
 ```haskell
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:AddressBook}}
 ```
 
-Note that `List Entry` is not the same as `Array Entry`, which represents an _array_ of entries.
+Note that `List Entry` differs from `Array Entry`, which represents an _array_ of entries.
 
 ## Type Constructors and Kinds
 
 `List` is an example of a _type constructor_. Values do not have the type `List` directly, but rather `List a` for some type `a`. That is, `List` takes a _type argument_ `a` and _constructs_ a new type `List a`.
 
-Note that just like function application, type constructors are applied to other types simply by juxtaposition: the type `List Entry` is in fact the type constructor `List` _applied_ to the type `Entry` - it represents a list of entries.
+Note that just like function application, type constructors are applied to other types simply by juxtaposition: the type `List Entry` is, in fact, the type constructor `List` _applied_ to the type `Entry` – it represents a list of entries.
 
 If we try to incorrectly define a value of type `List` (by using the type annotation operator `::`), we will see a new type of error:
 
@@ -290,7 +290,7 @@ Let's write our first function, which will render an address book entry as a str
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:showEntry_signature}}
 ```
 
-This type signature says that `showEntry` is a function, which takes an `Entry` as an argument and returns a `String`. Here is the code for `showEntry`:
+This type signature says that `showEntry` is a function that takes an `Entry` as an argument and returns a `String`. Here is the code for `showEntry`:
 
 ```haskell
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:showEntry_implementation}}
@@ -347,7 +347,7 @@ Let's also test `showEntry` by creating an address book entry record containing 
 
 ## Creating Address Books
 
-Now let's write some utility functions for working with address books. We will need a value which represents an empty address book: an empty list.
+Now let's write some utility functions for working with address books. We will need a value representing an empty address book: an empty list.
 
 ```haskell
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:emptyBook}}
@@ -359,9 +359,9 @@ We will also need a function for inserting a value into an existing address book
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry_signature}}
 ```
 
-This type signature says that `insertEntry` takes an `Entry` as its first argument, and an `AddressBook` as a second argument, and returns a new `AddressBook`.
+This type signature says that `insertEntry` takes an `Entry` as its first argument, an `AddressBook` as a second argument, and returns a new `AddressBook`.
 
-We don't modify the existing `AddressBook` directly. Instead, we return a new `AddressBook` which contains the same data. As such, `AddressBook` is an example of an _immutable data structure_. This is an important idea in PureScript - mutation is a side-effect of code, and inhibits our ability to reason effectively about its behavior, so we prefer pure functions and immutable data where possible.
+We don't modify the existing `AddressBook` directly. Instead, we return a new `AddressBook`, which contains the same data. As such, `AddressBook` is an example of an _immutable data structure_. This is an important idea in PureScript – mutation is a side-effect of code and inhibits our ability to reason effectively about its behavior, so we prefer pure functions and immutable data where possible.
 
 To implement `insertEntry`, we can use the `Cons` function from `Data.List`. To see its type, open PSCi and use the `:type` command:
 
@@ -374,7 +374,7 @@ $ spago repl
 forall a. a -> List a -> List a
 ```
 
-This type signature says that `Cons` takes a value of some type `a`, and a list of elements of type `a`, and returns a new list with entries of the same type. Let's specialize this with `a` as our `Entry` type:
+This type signature says that `Cons` takes a value of some type `a`, takes a list of elements of type `a`, and returns a new list with entries of the same type. Let's specialize this with `a` as our `Entry` type:
 
 ```haskell
 Entry -> List Entry -> List Entry
@@ -394,11 +394,11 @@ Here is our implementation of `insertEntry`:
 insertEntry entry book = Cons entry book
 ```
 
-This brings the two arguments `entry` and `book` into scope, on the left hand side of the equals symbol, and then applies the `Cons` function to create the result.
+This brings the two arguments `entry` and `book` into scope – on the left-hand side of the equals symbol – and then applies the `Cons` function to create the result.
 
 ## Curried Functions
 
-Functions in PureScript take exactly one argument. While it looks like the `insertEntry` function takes two arguments, it is in fact an example of a _curried function_.
+Functions in PureScript take exactly one argument. While it looks like the `insertEntry` function takes two arguments, it is an example of a _curried function_.
 
 The `->` operator in the type of `insertEntry` associates to the right, which means that the compiler parses the type as
 
@@ -406,9 +406,9 @@ The `->` operator in the type of `insertEntry` associates to the right, which me
 Entry -> (AddressBook -> AddressBook)
 ```
 
-That is, `insertEntry` is a function which returns a function! It takes a single argument, an `Entry`, and returns a new function, which in turn takes a single `AddressBook` argument and returns a new `AddressBook`.
+That is, `insertEntry` is a function that returns a function! It takes a single argument, an `Entry`, and returns a new function, which in turn takes a single `AddressBook` argument and returns a new `AddressBook`.
 
-This means that we can _partially apply_ `insertEntry` by specifying only its first argument, for example. In PSCi, we can see the result type:
+This means we can _partially apply_ `insertEntry` by specifying only its first argument, for example. In PSCi, we can see the result type:
 
 ```text
 > :type insertEntry entry
@@ -423,16 +423,16 @@ As expected, the return type was a function. We can apply the resulting function
 AddressBook
 ```
 
-Note though that the parentheses here are unnecessary - the following is equivalent:
+Note though, that the parentheses here are unnecessary – the following is equivalent:
 
 ```text
 > :type insertEntry entry emptyBook
 AddressBook
 ```
 
-This is because function application associates to the left, and this explains why we can just specify function arguments one after the other, separated by whitespace.
+This is because function application associates to the left, which explains why we can specify function arguments one after the other, separated by whitespace.
 
-The `->` operator in function types is a _type constructor_ for functions. It takes two type arguments, the function's argument type and the return type. The left and right operands respectively.
+The `->` operator in function types is a _type constructor_ for functions. It takes two type arguments: the function's argument type and the return type – the left and right operands, respectively.
 
 Note that in the rest of the book, I will talk about things like "functions of two arguments". However, it is to be understood that this means a curried function, taking a first argument and returning a function that takes the second.
 
@@ -443,7 +443,7 @@ insertEntry :: Entry -> AddressBook -> AddressBook
 insertEntry entry book = Cons entry book
 ```
 
-If we explicitly parenthesize the right-hand side, we get `(Cons entry) book`. That is, `insertEntry entry` is a function whose argument is just passed along to the `(Cons entry)` function. But if two functions have the same result for every input, then they are the same function! So we can remove the argument `book` from both sides:
+If we explicitly parenthesize the right-hand side, we get `(Cons entry) book`. That is, `insertEntry entry` is a function whose argument is just passed along to the `(Cons entry)` function. But if two functions have the same result for every input, then they are the same! So we can remove the argument `book` from both sides:
 
 ```haskell
 insertEntry :: Entry -> AddressBook -> AddressBook
@@ -456,9 +456,9 @@ But now, by the same argument, we can remove `entry` from both sides:
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry}}
 ```
 
-This process is called _eta conversion_, and can be used (along with some other techniques) to rewrite functions in _point-free form_, which means functions defined without reference to their arguments.
+This process, called _eta conversion_, can be used (along with other techniques) to rewrite functions in _point-free form_, which means functions defined without reference to their arguments.
 
-In the case of `insertEntry`, _eta conversion_ has resulted in a very clear definition of our function - "`insertEntry` is just cons on lists". However, it is arguable whether point-free form is better in general.
+In the case of `insertEntry`, _eta conversion_ has resulted in a very clear definition of our function – "`insertEntry` is just cons on lists". However, it is arguable whether the point-free form is better in general.
 
 ## Property Accessors
 
@@ -494,11 +494,11 @@ For example:
 
 ## Querying the Address Book
 
-The last function we need to implement for our minimal address book application will look up a person by name and return the correct `Entry`. This will be a nice application of building programs by composing small functions - a key idea from functional programming.
+The last function we need to implement for our minimal address book application will look up a person by name and return the correct `Entry`. This will be a nice application of building programs by composing small functions – a key idea from functional programming.
 
-We can first filter the address book, keeping only those entries with the correct first and last names. Then we can simply return the head (i.e. first) element of the resulting list.
+We can filter the address book, keeping only those entries with the correct first and last names. Then we can return the head (i.e., first) element of the resulting list.
 
-With this high-level specification of our approach, we can calculate the type of our function. First open PSCi, and find the types of the `filter` and `head` functions:
+With this high-level specification of our approach, we can calculate the type of our function. First, open PSCi, and find the types of the `filter` and `head` functions:
 
 ```text
 $ spago repl
@@ -515,9 +515,9 @@ forall a. List a -> Maybe a
 
 Let's pick apart these two types to understand their meaning.
 
-`filter` is a curried function of two arguments. Its first argument is a function, which takes an element of the list and returns a `Boolean` value as a result. Its second argument is a list of elements, and the return value is another list.
+`filter` is a curried function of two arguments. Its first argument is a function, which takes an element of the list and returns a `Boolean` value. Its second argument is a list of elements, and the return value is another list.
 
-`head` takes a list as its argument, and returns a type we haven't seen before: `Maybe a`. `Maybe a` represents an optional value of type `a`, and provides a type-safe alternative to using `null` to indicate a missing value in languages like JavaScript. We will see it again in more detail in later chapters.
+`head` takes a list as its argument and returns a type we haven't seen before: `Maybe a`. `Maybe a` represents an optional value of type `a`, and provides a type-safe alternative to using `null` to indicate a missing value in languages like JavaScript. We will see it again in more detail in later chapters.
 
 The universally quantified types of `filter` and `head` can be _specialized_ by the PureScript compiler, to the following types:
 
@@ -527,7 +527,7 @@ filter :: (Entry -> Boolean) -> AddressBook -> AddressBook
 head :: AddressBook -> Maybe Entry
 ```
 
-We know that we will need to pass the first and last names that we want to search for, as arguments to our function.
+We know that we will need to pass the first and last names that we want to search for as arguments to our function.
 
 We also know that we will need a function to pass to `filter`. Let's call this function `filterEntry`. `filterEntry` will have type `Entry -> Boolean`. The application `filter filterEntry` will then have type `AddressBook -> AddressBook`. If we pass the result of this function to the `head` function, we get our result of type `Maybe Entry`.
 
@@ -537,7 +537,7 @@ Putting these facts together, a reasonable type signature for our function, whic
 {{#include ../exercises/chapter3/src/Data/AddressBook.purs:findEntry_signature}}
 ```
 
-This type signature says that `findEntry` takes two strings, the first and last names, and a `AddressBook`, and returns an optional `Entry`. The optional result will contain a value only if the name is found in the address book.
+This type signature says that `findEntry` takes two strings: the first and last names, takes an `AddressBook`, and returns an optional `Entry`. The optional result will contain a value only if the name is found in the address book.
 
 And here is the definition of `findEntry`:
 
@@ -552,36 +552,36 @@ Let's go over this code step by step.
 
 `findEntry` brings three names into scope: `firstName` and `lastName`, both representing strings, and `book`, an `AddressBook`.
 
-The right hand side of the definition combines the `filter` and `head` functions: first, the list of entries is filtered, and the `head` function is applied to the result.
+The right-hand side of the definition combines the `filter` and `head` functions: first, the list of entries is filtered, and the `head` function is applied to the result.
 
 The predicate function `filterEntry` is defined as an auxiliary declaration inside a `where` clause. This way, the `filterEntry` function is available inside the definition of our function, but not outside it. Also, it can depend on the arguments to the enclosing function, which is essential here because `filterEntry` uses the `firstName` and `lastName` arguments to filter the specified `Entry`.
 
-Note that, just like for top-level declarations, it was not necessary to specify a type signature for `filterEntry`. However, doing so is recommended as a form of documentation.
+Note that, just like for top-level declarations, it was unnecessary to specify a type signature for `filterEntry`. However, doing so is recommended as a form of documentation.
 
 ## Infix Function Application
 
-Most of the functions discussed so far used _prefix_ function application, where the function name was put _before_ the arguments. For example, when using the `insertEntry` function to add an `Entry` (`john`) to an empty `AddressBook`, we might write:
+Most functions discussed so far used _prefix_ function application, where the function name was put _before_ the arguments. For example, when using the `insertEntry` function to add an `Entry` (`john`) to an empty `AddressBook`, we might write:
 
 ```haskell
 > book1 = insertEntry john emptyBook
 ```
 
-However, this chapter has also included examples of _infix_ [binary operators](https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators), such as  the `==` operator in the definition of `filterEntry`, where the operator is put _between_ the two arguments. These infix operators are actually defined in the PureScript source as infix aliases for their underlying _prefix_ implementations. For example, `==` is defined as an infix alias for the prefix `eq` function with the line:
+However, this chapter has also included examples of _infix_ [binary operators](https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators), such as the `==` operator in the definition of `filterEntry`, where the operator is put _between_ the two arguments. These infix operators are defined in the PureScript source as infix aliases for their underlying _prefix_ implementations. For example, `==` is defined as an infix alias for the prefix `eq` function with the line:
 
 ```haskell
 infix 4 eq as ==
 ```
 
-and therefore `entry.firstName == firstName` in `filterEntry` could be replaced with the `eq entry.firstName firstName`. We'll cover a few more examples of defining infix operators later in this section.
+Therefore `entry.firstName == firstName` in `filterEntry` could be replaced with the `eq entry.firstName firstName`. We'll cover a few more examples of defining infix operators later in this section.
 
-There are situations where putting a prefix function in an infix position as an operator leads to more readable code. One example is the `mod` function:
+In some situations, putting a prefix function in an infix position as an operator leads to more readable code. One example is the `mod` function:
 
 ```text
 > mod 8 3
 2
 ```
 
-The above usage works fine, but is awkward to read. A more familiar phrasing is "eight mod three", which you can achieve by wrapping a prefix function in backticks (\`):
+The above usage works fine but is awkward to read. A more familiar phrasing is "eight mod three", which you can achieve by wrapping a prefix function in backticks (\`):
 
 ```text
 > 8 `mod` 3
@@ -614,7 +614,7 @@ This new operator lets us rewrite the above `book4` example as:
 book5 = john ++ (peggy ++ (ned ++ emptyBook))
 ```
 
-and the right associativity of our new `++` operator lets us get rid of the parentheses without changing the meaning:
+The right associativity of our new `++` operator lets us get rid of the parentheses without changing the meaning:
 
 ```haskell
 book6 = john ++ peggy ++ ned ++ emptyBook
@@ -630,7 +630,7 @@ book7 = insertEntry john $ insertEntry peggy $ insertEntry ned emptyBook
 
 Substituting `$` for parens is usually easier to type and (arguably) easier to read. A mnemonic to remember the meaning of this symbol is to think of the dollar sign as being drawn from two parens that are also being crossed-out, suggesting the parens are now unnecessary.
 
-Note that `$` isn't special syntax that's hardcoded into the language. It's simply the infix operator for a regular function called `apply`, which is defined in `Data.Function` as follows:
+Note that `$` isn't a special syntax hardcoded into the language. It's simply the infix operator for a regular function called `apply`, which is defined in `Data.Function` as follows:
 
 ```haskell
 apply :: forall a b. (a -> b) -> a -> b
@@ -709,26 +709,26 @@ filter filterEntry >>> head
 
 Either way, this gives a clear definition of the `findEntry` function: "`findEntry` is the composition of a filtering function and the `head` function".
 
-I will let you make your own decision which definition is easier to understand, but it is often useful to think of functions as building blocks in this way - each function executing a single task, and solutions assembled using function composition.
+I will let you decide which definition is easier to understand, but it is often useful to think of functions as building blocks in this way: each function executes a single task, and solutions are assembled using function composition.
 
 ## Exercises
 
  1. (Easy) Test your understanding of the `findEntry` function by writing down the types of each of its major subexpressions. For example, the type of the `head` function as used is specialized to `AddressBook -> Maybe Entry`. _Note_: There is no test for this exercise.
  1. (Medium) Write a function `findEntryByStreet :: String -> AddressBook -> Maybe Entry` which looks up an `Entry` given a street address. _Hint_ reusing the existing code in `findEntry`. Test your function in PSCi and by running `spago test`.
  1. (Medium) Rewrite `findEntryByStreet` to replace `filterEntry` with the composition (using `<<<` or `>>>`) of: a property accessor (using the `_.` notation); and a function that tests whether its given string argument is equal to the given street address.
- 1. (Medium) Write a function `isInBook` which tests whether a name appears in a `AddressBook`, returning a Boolean value. _Hint_: Use PSCi to find the type of the `Data.List.null` function, which tests whether a list is empty or not.
- 1. (Difficult) Write a function `removeDuplicates` which removes "duplicate" address book entries. We'll consider entries duplicated if they share the same first and last names, while ignoring `address` fields. _Hint_: Use PSCi to find the type of the `Data.List.nubByEq` function, which removes duplicate elements from a list based on an equality predicate. Note that the first element in each set of duplicates (closest to list head) is the one that is kept.
+ 1. (Medium) Write a function `isInBook` that tests whether a name appears in a `AddressBook`, returning a Boolean value. _Hint_: Use PSCi to find the type of the `Data.List.null` function, which tests whether a list is empty or not.
+ 1. (Difficult) Write a function `removeDuplicates` which removes "duplicate" address book entries. We'll consider entries duplicated if they share the same first and last names, while ignoring `address` fields. _Hint_: Use PSCi to find the type of the `Data.List.nubByEq` function, which removes duplicate elements from a list based on an equality predicate. Note that the first element in each set of duplicates (closest to the list head) is the one that is kept.
 
 ## Conclusion
 
-In this chapter, we covered several new functional programming concepts:
+In this chapter, we covered several new functional programming concepts and learned how to:
 
-- How to use the interactive mode PSCi to experiment with functions and test ideas.
-- The role of types as both a correctness tool, and an implementation tool.
-- The use of curried functions to represent functions of multiple arguments.
-- Creating programs from smaller components by composition.
-- Structuring code neatly using `where` expressions.
-- How to avoid null values by using the `Maybe` type.
-- Using techniques like eta conversion and function composition to refactor code into a clear specification.
+- Use the interactive mode PSCi to experiment with functions and test ideas.
+- Use types as both a correctness tool and an implementation tool.
+- Use curried functions to represent functions of multiple arguments.
+- Create programs from smaller components by composition.
+- Structure code neatly using `where` expressions.
+- Avoid null values by using the `Maybe` type.
+- Use techniques like eta conversion and function composition to refactor code into a clear specification.
 
 In the following chapters, we'll build on these ideas.

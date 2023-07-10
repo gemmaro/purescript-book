@@ -2,19 +2,19 @@
 
 ## Chapter Goals
 
-This chapter will introduce two new concepts: algebraic data types, and pattern matching. We will also briefly cover an interesting feature of the PureScript type system: row polymorphism.
+This chapter will introduce two new concepts: algebraic data types and pattern matching. We will also briefly cover an interesting feature of the PureScript type system: row polymorphism.
 
-Pattern matching is a common technique in functional programming and allows the developer to write compact functions which express potentially complex ideas, by breaking their implementation down into multiple cases.
+Pattern matching is a common technique in functional programming and allows the developer to write compact functions, which express potentially complex ideas by breaking their implementation down into multiple cases.
 
-Algebraic data types are a feature of the PureScript type system which enable a similar level of expressiveness in the language of types - they are closely related to pattern matching.
+Algebraic data types are a feature of the PureScript type system, which enables a similar level of expressiveness in the language of types – they are closely related to pattern matching.
 
-The goal of the chapter will be to write a library to describe and manipulate simple vector graphics using algebraic types and pattern matching.
+The chapter's goal will be to write a library to describe and manipulate simple vector graphics using algebraic types and pattern matching.
 
 ## Project Setup
 
 The source code for this chapter is defined in the file `src/Data/Picture.purs`.
 
-The `Data.Picture` module defines a data type `Shape` for simple shapes, and a type `Picture` for collections of shapes, along with functions for working with those types.
+The `Data.Picture` module defines a data type `Shape` for simple shapes and a type `Picture` for collections of shapes, along with functions for working with those types.
 
 The module imports the `Data.Foldable` module, which provides functions for folding data structures:
 
@@ -28,21 +28,21 @@ The `Data.Picture` module also imports the `Number` module, but this time using 
 {{#include ../exercises/chapter5/src/Data/Picture.purs:picture_import_as}}
 ```
 
-This makes the types and functions in that module available for use, but only by using the _qualified name_, like `Number.max`. This can be useful to avoid overlapping imports, or just to make it clearer which modules certain things are imported from.
+This makes the types and functions in that module available for use, but only by using the _qualified name_, like `Number.max`. This can be useful to avoid overlapping imports or clarify which modules certain things are imported from.
 
-_Note_: it is not necessary to use the same module name as the original module for a qualified import. Shorter qualified names like `import Data.Number as N` are possible, and quite common.
+> _Note_: Using the same module name as the original module for a qualified import is unnecessary  – shorter qualified names like `import Data.Number as N` are possible and quite common.
 
 ## Simple Pattern Matching
 
-Let's begin by looking at an example. Here is a function which computes the greatest common divisor of two integers using pattern matching:
+Let's begin by looking at an example. Here is a function that computes the greatest common divisor of two integers using pattern matching:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:gcd}}
 ```
 
-This algorithm is called the Euclidean Algorithm. If you search for its definition online, you will likely find a set of mathematical equations which look a lot like the code above. This is one benefit of pattern matching: it allows you to define code by cases, writing simple, declarative code which looks like a specification of a mathematical function.
+This algorithm is called the Euclidean Algorithm. If you search for its definition online, you will likely find a set of mathematical equations that look like the code above. One benefit of pattern matching is that it allows you to define code by cases, writing simple, declarative code that looks like a mathematical function specification.
 
-A function written using pattern matching works by pairing sets of conditions with their results. Each line is called an _alternative_ or a _case_. The expressions on the left of the equals sign are called _patterns_, and each case consists of one or more patterns, separated by spaces. Cases describe which conditions the arguments must satisfy before the expression on the right of the equals sign should be evaluated and returned. Each case is tried in order, and the first case whose patterns match their inputs determines the return value.
+A function written using pattern matching works by pairing sets of conditions with their results. Each line is called an _alternative_ or a _case_. The expressions on the left of the equals sign are called _patterns_, and each case consists of one or more patterns separated by spaces. Cases describe which conditions the arguments must satisfy before the expression on the right of the equals sign should be evaluated and returned. Each case is tried in order, and the first case whose patterns match their inputs determines the return value.
 
 For example, the `gcd` function is evaluated using the following steps:
 
@@ -50,7 +50,7 @@ For example, the `gcd` function is evaluated using the following steps:
 - If not, the second case is tried: if the first argument is zero, the function returns `m` (the second argument).
 - Otherwise, the function evaluates and returns the expression in the last line.
 
-Note that patterns can bind values to names - each line in the example binds one or both of the names `n` and `m` to the input values. As we learn about different kinds of patterns, we will see that different types of patterns correspond to different ways to choose names from the input arguments.
+Note that patterns can bind values to names – each line in the example binds one or both of the names `n` and `m` to the input values. As we learn about different patterns, we will see that different patterns correspond to different ways to choose names from the input arguments.
 
 ## Simple Patterns
 
@@ -61,10 +61,10 @@ The example code above demonstrates two types of patterns:
 
 There are other types of simple patterns:
 
-- `Number`, `String`, `Char` and `Boolean` literals
-- Wildcard patterns, indicated with an underscore (`_`), which match any argument, and which do not bind any names.
+- `Number`, `String`, `Char`, and `Boolean` literals
+- Wildcard patterns, indicated with an underscore (`_`), match any argument and do not bind any names.
 
-Here are two more examples which demonstrate using these simple patterns:
+Here are two more examples that demonstrate using these simple patterns:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:fromString}}
@@ -76,15 +76,15 @@ Try these functions in PSCi.
 
 ## Guards
 
-In the Euclidean algorithm example, we used an `if .. then .. else` expression to switch between the two alternatives when `m > n` and `m <= n`. Another option in this case would be to use a _guard_.
+In the Euclidean algorithm example, we used an `if .. then .. else` expression to switch between the two alternatives when `m > n` and `m <= n`. Another option, in this case, would be to use a _guard_.
 
-A guard is a boolean-valued expression which must be satisfied in addition to the constraints imposed by the patterns. Here is the Euclidean algorithm rewritten to use a guard:
+A guard is a boolean-valued expression that must be satisfied in addition to the constraints imposed by the patterns. Here is the Euclidean algorithm rewritten to use a guard:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:gcdV2}}
 ```
 
-In this case, the third line uses a guard to impose the extra condition that the first argument is strictly larger than the second. The guard in the final line uses the expression `otherwise`, which might seem like a keyword, but is in fact just a regular binding in `Prelude`:
+In this case, the third line uses a guard to impose the extra condition that the first argument is strictly larger than the second. The guard in the final line uses the expression `otherwise`, which might seem like a keyword but is, in fact, just a regular binding in `Prelude`:
 
 ```text
 > :type otherwise
@@ -94,7 +94,7 @@ Boolean
 true
 ```
 
-As this example demonstrates, guards appear on the left of the equals symbol, separated from the list of patterns by a pipe character (`|`).
+This example demonstrates that guards appear on the left of the equals symbol, separated from the list of patterns by a pipe character (`|`).
 
 ## Exercises
 
@@ -110,13 +110,13 @@ _Array literal patterns_ provide a way to match arrays of a fixed length. For ex
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:isEmpty}}
 ```
 
-Here is another function which matches arrays of length five, binding each of its five elements in a different way:
+Here is another function that matches arrays of length five, binding each of its five elements differently:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:takeFive}}
 ```
 
-The first pattern only matches arrays with five elements, whose first and second elements are 0 and 1 respectively. In that case, the function returns the product of the third and fourth elements. In every other case, the function returns zero. For example, in PSCi:
+The first pattern only matches arrays with five elements, whose first and second elements are 0 and 1, respectively. In that case, the function returns the product of the third and fourth elements. In every other case, the function returns zero. For example, in PSCi:
 
 ```text
 > :paste
@@ -134,15 +134,15 @@ The first pattern only matches arrays with five elements, whose first and second
 0
 ```
 
-Array literal patterns allow us to match arrays of a fixed length, but PureScript does _not_ provide any means of matching arrays of an unspecified length, since destructuring immutable arrays in these sorts of ways can lead to poor performance. If you need a data structure which supports this sort of matching, the recommended approach is to use `Data.List`. Other data structures exist which provide improved asymptotic performance for different operations.
+Array literal patterns allow us to match arrays of a fixed length. Still, PureScript does _not_ provide any means of matching arrays of an unspecified length since destructuring immutable arrays in these sorts of ways can lead to poor performance. If you need a data structure that supports this sort of matching, the recommended approach is to use `Data.List`. Other data structures exist which provide improved asymptotic performance for different operations.
 
 ## Record Patterns and Row Polymorphism
 
-_Record patterns_ are used to match - you guessed it - records.
+_Record patterns_ are used to match – you guessed it – records.
 
 Record patterns look just like record literals, but instead of values on the right of the colon, we specify a binder for each field.
 
-For example: this pattern matches any record which contains fields called `first` and `last`, and binds their values to the names `x` and `y` respectively:
+For example, this pattern matches any record which contains fields called `first` and `last`, and binds their values to the names `x` and `y`, respectively:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:showPerson}}
@@ -167,7 +167,7 @@ What is the type variable `r` here? Well, if we try `showPerson` in PSCi, we see
 "Freeman, Phil"
 ```
 
-We are able to append additional fields to the record, and the `showPerson` function will still work. As long as the record contains the `first` and `last` fields of type `String`, the function application is well-typed. However, it is _not_ valid to call `showPerson` with too _few_ fields:
+We can append additional fields to the record, and the `showPerson` function will still work. As long as the record contains the `first` and `last` fields of type `String`, the function application is well-typed. However, it is _not_ valid to call `showPerson` with too _few_ fields:
 
 ```text
 > showPerson { first: "Phil" }
@@ -183,11 +183,11 @@ Note that we could have also written
 > showPerson p = p.last <> ", " <> p.first
 ```
 
-and PSCi would have inferred the same type.
+And PSCi would have inferred the same type.
 
 ## Record Puns
 
-Recall that the `showPerson` function matches a record inside its argument, binding the `first` and `last` fields to values named `x` and `y`. We could alternatively just reuse the field names themselves, and simplify this sort of pattern match as follows:
+Recall that the `showPerson` function matches a record inside its argument, binding the `first` and `last` fields to values named `x` and `y`. We could alternatively reuse the field names themselves and simplify this sort of pattern match as follows:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:showPersonV2}}
@@ -201,11 +201,11 @@ It is also possible to use record puns to _construct_ records. For example, if w
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:unknownPerson}}
 ```
 
-This may improve readability of code in some circumstances.
+This may improve the readability of code in some circumstances.
 
 ## Nested Patterns
 
-Array patterns and record patterns both combine smaller patterns to build larger patterns. For the most part, the examples above have only used simple patterns inside array patterns and record patterns, but it is important to note that patterns can be arbitrarily _nested_, which allows functions to be defined using conditions on potentially complex data types.
+Array patterns and record patterns both combine smaller patterns to build larger patterns. For the most part, the examples above have only used simple patterns inside array patterns and record patterns. Still, it is important to note that patterns can be arbitrarily _nested_, which allows functions to be defined using conditions on potentially complex data types.
 
 For example, this code combines two record patterns:
 
@@ -223,19 +223,19 @@ For example, this function sorts two-element arrays, naming the two elements, bu
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:sortPair}}
 ```
 
-This way, we save ourselves from allocating a new array if the pair is already sorted. Note that if the input array does not contain _exactly_ two elements, then this function simply returns it unchanged, even if it's unsorted.
+This way, we save ourselves from allocating a new array if the pair is already sorted. Note that if the input array does not contain _exactly_ two elements, then this function returns it unchanged, even if it's unsorted.
 
 ## Exercises
 
 1. (Easy) Write a function `sameCity` which uses record patterns to test whether two `Person` records belong to the same city.
-1. (Medium) What is the most general type of the `sameCity` function, taking into account row polymorphism? What about the `livesInLA` function defined above? _Note_: There is no test for this exercise.
-1. (Medium) Write a function `fromSingleton` which uses an array literal pattern to extract the sole member of a singleton array. If the array is not a singleton, your function should return a provided default value. Your function should have type `forall a. a -> Array a -> a`
+1. (Medium) What is the most general type of the `sameCity` function, considering row polymorphism? What about the `livesInLA` function defined above? _Note_: There is no test for this exercise.
+1. (Medium) Write a function `fromSingleton` that uses an array literal pattern to extract the sole member of a singleton array. If the array is not a singleton, your function should return a provided default value. Your function should have type `forall a. a -> Array a -> a`
 
 ## Case Expressions
 
-Patterns do not only appear in top-level function declarations. It is possible to use patterns to match on an intermediate value in a computation, using a `case` expression. Case expressions provide a similar type of utility to anonymous functions: it is not always desirable to give a name to a function, and a `case` expression allows us to avoid naming a function just because we want to use a pattern.
+Patterns do not only appear in top-level function declarations. It is possible to use patterns to match on an intermediate value in a computation using a `case` expression. Case expressions provide a similar type of utility to anonymous functions: it is not always desirable to give a name to a function, and a `case` expression allows us to avoid naming a function just because we want to use a pattern.
 
-Here is an example. This function computes "longest zero suffix" of an array (the longest suffix which sums to zero):
+Here is an example. This function computes the "longest zero suffix" of an array (the longest suffix which sums to zero):
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:lzsImport}}
@@ -253,11 +253,11 @@ For example:
 [-1, -2, 3]
 ```
 
-This function works by case analysis. If the array is empty, our only option is to return an empty array. If the array is non-empty, we first use a `case` expression to split into two cases. If the sum of the array is zero, we return the whole array. If not, we recurse on the tail of the array.
+This function works by case analysis. If the array is empty, our only option is to return an empty array. If the array is non-empty, we first use a `case` expression to split it into two cases. If the sum of the array is zero, we return the whole array. If not, we recurse on the tail of the array.
 
 ## Pattern Match Failures and Partial Functions
 
-If patterns in a case expression are tried in order, then what happens in the case when none of the patterns in a case alternatives match their inputs? In this case, the case expression will fail at runtime with a _pattern match failure_.
+If patterns in a case expression are tried in order, what happens when none of the patterns in a case alternatives match their inputs? In this case, the case expression will fail at runtime with a _pattern match failure_.
 
 We can see this behavior with a simple example:
 
@@ -267,7 +267,7 @@ We can see this behavior with a simple example:
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:partialFunction}}
 ```
 
-This function contains only a single case, which only matches a single input, `true`. If we compile this file, and test in PSCi with any other argument, we will see an error at runtime:
+This function contains only a single case, which only matches a single input, `true`. If we compile this file and test in PSCi with any other argument, we will see an error at runtime:
 
 ```text
 > partialFunction false
@@ -275,11 +275,11 @@ This function contains only a single case, which only matches a single input, `t
 Failed pattern match
 ```
 
-Functions which return a value for any combination of inputs are called _total_ functions, and functions which do not are called _partial_.
+Functions that return a value for any combination of inputs are called _total_ functions, and functions that do not are called _partial_.
 
 It is generally considered better to define total functions where possible. If it is known that a function does not return a result for some valid set of inputs, it is usually better to return a value capable of indicating failure, such as type `Maybe a` for some `a`, using `Nothing` when it cannot return a valid result. This way, the presence or absence of a value can be indicated in a type-safe way.
 
-The PureScript compiler will generate an error if it can detect that your function is not total due to an incomplete pattern match. The `unsafePartial` function can be used to silence these errors (if you are sure that your partial function is safe!) If we removed the call to the `unsafePartial` function above, then the compiler would generate the following error:
+The PureScript compiler will generate an error if it can detect that your function is not total due to an incomplete pattern match. The `unsafePartial` function can be used to silence these errors (if you are sure your partial function is safe!) If we removed the call to the `unsafePartial` function above, then the compiler would generate the following error:
 
 ```text
 A case expression could not be determined to cover all inputs.
@@ -304,9 +304,9 @@ then PSCi infers a curious type:
 Partial => Boolean -> Boolean
 ```
 
-We will see more types which involve the `=>` symbol later on in the book (they are related to _type classes_), but for now, it suffices to observe that PureScript keeps track of partial functions using the type system, and that we must explicitly tell the type checker when they are safe.
+We will see more types that involve the `=>` symbol later on in the book (they are related to _type classes_), but for now, it suffices to observe that PureScript keeps track of partial functions using the type system and that we must explicitly tell the type checker when they are safe.
 
-The compiler will also generate a warning in certain cases when it can detect that cases are _redundant_ (that is, a case only matches values which would have been matched by a prior case):
+The compiler will also generate a warning in certain cases when it can detect that cases are _redundant_ (that is, a case only matches values which a prior case would have matched):
 
 ```haskell
 redundantCase :: Boolean -> Boolean
@@ -323,7 +323,7 @@ A case expression contains unreachable cases:
   false
 ```
 
-_Note_: PSCi does not show warnings, so to reproduce this example, you will need to save this function as a file and compile it using `spago build`.
+> _Note_: PSCi does not show warnings, so to reproduce this example, you will need to save this function as a file and compile it using `spago build`.
 
 ## Algebraic Data Types
 
@@ -333,9 +333,9 @@ However, we'll first consider a motivating example, which will provide the basis
 
 Suppose we wanted to define a type to represent some simple shapes: lines, rectangles, circles, text, etc. In an object oriented language, we would probably define an interface or abstract class `Shape`, and one concrete subclass for each type of shape that we wanted to be able to work with.
 
-However, this approach has one major drawback: to work with `Shape`s abstractly, it is necessary to identify all of the operations one might wish to perform, and to define them on the `Shape` interface. It becomes difficult to add new operations without breaking modularity.
+However, this approach has one major drawback: to work with `Shape`s abstractly, it is necessary to identify all of the operations one might wish to perform and to define them on the `Shape` interface. It becomes difficult to add new operations without breaking modularity.
 
-Algebraic data types provide a type-safe way to solve this sort of problem, if the set of shapes is known in advance. It is possible to define new operations on `Shape` in a modular way, and still maintain type-safety.
+Algebraic data types provide a type-safe way to solve this problem if the set of shapes is known in advance. It is possible to define new operations on `Shape` in a modular way and still maintain type-safety.
 
 Here is how `Shape` might be represented as an algebraic data type:
 
@@ -345,9 +345,9 @@ Here is how `Shape` might be represented as an algebraic data type:
 {{#include ../exercises/chapter5/src/Data/Picture.purs:Point}}
 ```
 
-This declaration defines `Shape` as a sum of different constructors, and for each constructor identifies the data that is included. A `Shape` is either a `Circle` which contains a center `Point` and a radius (a number), or a `Rectangle`, or a `Line`, or `Text`. There are no other ways to construct a value of type `Shape`.
+This declaration defines `Shape` as a sum of different constructors, and for each constructor identifies the included data. A `Shape` is either a `Circle` that contains a center `Point` and a radius (a number), or a `Rectangle`, or a `Line`, or `Text`. There are no other ways to construct a value of type `Shape`.
 
-An algebraic data type is introduced using the `data` keyword, followed by the name of the new type and any type arguments. The type's constructors (i.e. its _data constructors_) are defined after the equals symbol, and are separated by pipe characters (`|`). The data carried by an ADT's constructors doesn't have to be restricted to primitive types: constructors can include records, arrays, or even other ADTs.
+An algebraic data type is introduced using the `data` keyword, followed by the name of the new type and any type arguments. The type's constructors (i.e., its _data constructors_) are defined after the equals symbol and separated by pipe characters (`|`). The data carried by an ADT's constructors doesn't have to be restricted to primitive types: constructors can include records, arrays, or even other ADTs.
 
 Let's see another example from PureScript's standard libraries. We saw the `Maybe` type, which is used to define optional values, earlier in the book. Here is its definition from the `maybe` package:
 
@@ -357,7 +357,7 @@ data Maybe a = Nothing | Just a
 
 This example demonstrates the use of a type parameter `a`. Reading the pipe character as the word "or", its definition almost reads like English: "a value of type `Maybe a` is either `Nothing`, or `Just` a value of type `a`".
 
-Note that we don't use the syntax `forall a.` anywhere in our data definition. `forall` syntax is necessary for functions, but is not used when defining ADTs with `data` or type aliases with `type`.
+Note that we don't use the syntax `forall a.` anywhere in our data definition. `forall` syntax is necessary for functions but is not used when defining ADTs with `data` or type aliases with `type`.
 
 Data constructors can also be used to define recursive data structures. Here is one more example, defining a data type of singly-linked lists of elements of type `a`:
 
@@ -391,8 +391,8 @@ Each constructor can be used as a pattern, and the arguments to the constructor 
 
 ## Exercises
 
-1. (Easy) Write a function `circleAtOrigin` which constructs a `Circle` (of type `Shape`) centered at the origin with radius `10.0`.
-1. (Medium) Write a function `doubleScaleAndCenter` which scales the size of a `Shape` by a factor of `2.0` and centers it at the origin.
+1. (Easy) Write a function `circleAtOrigin` which constructs a `Circle` (of type `Shape`) centered at the origin with a radius `10.0`.
+1. (Medium) Write a function `doubleScaleAndCenter`  that scales the size of a `Shape` by a factor of `2.0` and centers it at the origin.
 1. (Medium) Write a function `shapeText` which extracts the text from a `Shape`. It should return `Maybe String`, and use the `Nothing` constructor if the input is not constructed using `Text`.
 
 ## Newtypes
@@ -452,13 +452,13 @@ Note that while a newtype can only have a single constructor, and the constructo
 newtype CouldError err a = CouldError (Either err a)
 ```
 
-Also note that the constructor of a newtype often has the same name as the newtype itself, but this is not a requirement. For example, unique names are also valid:
+Also, note that the constructor of a newtype often has the same name as the newtype itself, but this is not a requirement. For example, unique names are also valid:
 
 ```haskell
 {{#include ../exercises/chapter5/src/ChapterExamples.purs:Coulomb}}
 ```
 
-In this case, `Coulomb` is the _type constructor_ (of zero arguments) and `MakeCoulomb` is the _data constructor_. These constructors live in different namespaces, even when the names are identical, such as with the `Volt` example. This is true for all ADTs. Note that although the type constructor and data constructor can have different names, in practice it is idiomatic for them to share the same name. This is the case with `Amp` and `Volt` types above.
+In this case, `Coulomb` is the _type constructor_ (of zero arguments), and `MakeCoulomb` is the _data constructor_. These constructors live in different namespaces, even when the names are identical, such as with the `Volt` example. This is true for all ADTs. Note that although the type constructor and data constructor can have different names, in practice, it is idiomatic for them to share the same name. This is the case with `Amp` and `Volt` types above.
 
 Another application of newtypes is to attach different _behavior_ to an existing type without changing its representation at runtime. We cover that use case in the next chapter when we discuss _type classes_.
 
@@ -476,7 +476,7 @@ A wattage in `Watt`s can be calculated as the product of a given current in `Amp
 
 Let's use the data types we have defined above to create a simple library for using vector graphics.
 
-Define a type synonym for a `Picture` - just an array of `Shape`s:
+Define a type synonym for a `Picture` – just an array of `Shape`s:
 
 ```haskell
 {{#include ../exercises/chapter5/src/Data/Picture.purs:Picture}}
@@ -530,8 +530,8 @@ The accumulating function `combine` is defined in a `where` block. `combine` tak
 
 In this chapter, we covered pattern matching, a basic but powerful technique from functional programming. We saw how to use simple patterns as well as array and record patterns to match parts of deep data structures.
 
-This chapter also introduced algebraic data types, which are closely related to pattern matching. We saw how algebraic data types allow concise descriptions of data structures, and provide a modular way to extend data types with new operations.
+This chapter also introduced algebraic data types, which are closely related to pattern matching. We saw how algebraic data types allow concise descriptions of data structures and provide a modular way to extend data types with new operations.
 
-Finally, we covered _row polymorphism_, a powerful type of abstraction which allows many idiomatic JavaScript functions to be given a type.
+Finally, we covered _row polymorphism_, a powerful type of abstraction that allows many idiomatic JavaScript functions to be given a type.
 
 In the rest of the book, we will use ADTs and pattern matching extensively, so it will pay dividends to become familiar with them now. Try creating your own algebraic data types and writing functions to consume them using pattern matching.

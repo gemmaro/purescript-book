@@ -1,12 +1,12 @@
-# Recursion, Maps And Folds
+# Recursion, Maps, And Folds
 
 ## Chapter Goals
 
 In this chapter, we will look at how recursive functions can be used to structure algorithms. Recursion is a basic technique used in functional programming, which we will use throughout this book.
 
-We will also cover some standard functions from PureScript's standard libraries. We will see the `map` and `fold` functions, as well as some useful special cases, like `filter` and `concatMap`.
+We will also cover some standard functions from PureScript's standard libraries. We will `map`, `fold`, and some useful special cases, like `filter` and `concatMap`.
 
-The motivating example for this chapter is a library of functions for working with a virtual filesystem. We will apply the techniques learned in this chapter to write functions which compute properties of the files represented by a model of a filesystem.
+The motivating example for this chapter is a library of functions for working with a virtual filesystem. We will apply the techniques learned in this chapter to write functions that compute properties of the files represented by a model of a filesystem.
 
 ## Project Setup
 
@@ -34,9 +34,9 @@ Here is the usual _factorial function_ example:
 {{#include ../exercises/chapter4/test/Examples.purs:factorial}}
 ```
 
-Here, we can see how the factorial function is computed by reducing the problem to a subproblem - that of computing the factorial of a smaller integer. When we reach zero, the answer is immediate.
+Here, we can see how the factorial function is computed by reducing the problem to a subproblem – computing the factorial of a smaller integer. When we reach zero, the answer is immediate.
 
-Here is another common example, which computes the _Fibonacci function_:
+Here is another common example that computes the _Fibonacci function_:
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:fib}}
@@ -44,7 +44,7 @@ Here is another common example, which computes the _Fibonacci function_:
 
 Again, this problem is solved by considering the solutions to subproblems. In this case, there are two subproblems, corresponding to the expressions `fib (n - 1)` and `fib (n - 2)`. When these two subproblems are solved, we assemble the result by adding the partial results.
 
-Note that, while the above examples of `factorial` and `fib` work as intended, a more idiomatic implementation would use pattern matching instead of `if`/`then`/`else`. Pattern matching techniques are discussed in a later chapter.
+> Note that, while the above examples of `factorial` and `fib` work as intended, a more idiomatic implementation would use pattern matching instead of `if`/`then`/`else`. Pattern-matching techniques are discussed in a later chapter.
 
 ## Recursion on Arrays
 
@@ -61,22 +61,22 @@ import Data.Maybe (fromMaybe)
 {{#include ../exercises/chapter4/test/Examples.purs:length}}
 ```
 
-In this function, we use an `if .. then .. else` expression to branch based on the emptiness of the array. The `null` function returns `true` on an empty array. Empty arrays have length zero, and a non-empty array has a length that is one more than the length of its tail.
+In this function, we use an `if .. then .. else` expression to branch based on the emptiness of the array. The `null` function returns `true` on an empty array. Empty arrays have a length of zero, and a non-empty array has a length that is one more than the length of its tail.
 
-The `tail` function returns a `Maybe` wrapping the given array without its first element. If the array is empty (i.e. it doesn't have a tail) `Nothing` is returned. The `fromMaybe` function takes a default value and a `Maybe` value. If the latter is `Nothing` it returns the default, in the other case it returns the value wrapped by `Just`.
+The `tail` function returns a `Maybe` wrapping the given array without its first element. If the array is empty (i.e., it doesn't have a tail), `Nothing` is returned. The `fromMaybe` function takes a default value and a `Maybe` value. If the latter is `Nothing` it returns the default; in the other case, it returns the value wrapped by `Just`.
 
-This example is obviously a very impractical way to find the length of an array in JavaScript, but should provide enough help to allow you to complete the following exercises:
+This example is a very impractical way to find the length of an array in JavaScript, but it should provide enough help to allow you to complete the following exercises:
 
 ## Exercises
 
- 1. (Easy) Write a recursive function `isEven` which returns `true` if and only if its input is an even integer.
- 2. (Medium) Write a recursive function `countEven` which counts the number of even integers in an array. _Hint_: the function `head` (also available in `Data.Array`) can be used to find the first element in a non-empty array.
+ 1. (Easy) Write a recursive function `isEven` that returns `true` if and only if its input is an even integer.
+ 2. (Medium) Write a recursive function `countEven` that counts the number of even integers in an array. _Hint_: the function `head` (also available in `Data.Array`) can be used to find the first element in a non-empty array.
 
 ## Maps
 
-The `map` function is an example of a recursive function on arrays. It is used to transform the elements of an array by applying a function to each element in turn. Therefore, it changes the _contents_ of the array, but preserves its _shape_ (i.e. its length).
+The `map` function is an example of a recursive function on arrays. It is used to transform the elements of an array by applying a function to each element in turn. Therefore, it changes the _contents_ of the array but preserves its _shape_ (i.e., its length).
 
-When we cover _type classes_ later in the book we will see that the `map` function is an example of a more general pattern of shape-preserving functions which transform a class of type constructors called _functors_.
+When we cover _type classes_ later in the book, we will see that the `map` function is an example of a more general pattern of shape-preserving functions which transform a class of type constructors called _functors_.
 
 Let's try out the `map` function in PSCi:
 
@@ -88,7 +88,7 @@ $ spago repl
 [2, 3, 4, 5, 6]
 ```
 
-Notice how `map` is used - we provide a function which should be "mapped over" the array in the first argument, and the array itself in its second.
+Notice how `map` is used – we provide a function that should be "mapped over" the array in the first argument, and the array itself in its second.
 
 ## Infix Operators
 
@@ -101,7 +101,7 @@ The `map` function can also be written between the mapping function and the arra
 
 This syntax is called _infix function application_, and any function can be made infix in this way. It is usually most appropriate for functions with two arguments.
 
-There is an operator which is equivalent to the `map` function when used with arrays, called `<$>`. This operator can be used infix like any other binary operator:
+There is an operator which is equivalent to the `map` function when used with arrays, called `<$>`.
 
 ```text
 > (\n -> n + 1) <$> [1, 2, 3, 4, 5]
@@ -129,7 +129,7 @@ This type says that we can choose any two types, `a` and `b`, with which to appl
 ["1","2","3","4","5"]
 ```
 
-Even though the infix operator `<$>` looks like special syntax, it is in fact just an alias for a regular PureScript function. The function is simply _applied_ using infix syntax. In fact, the function can be used like a regular function by enclosing its name in parentheses. This means that we can used the parenthesized name `(<$>)` in place of `map` on arrays:
+Even though the infix operator `<$>` looks like special syntax, it is in fact just an alias for a regular PureScript function. The function is simply _applied_ using infix syntax. In fact, the function can be used like a regular function by enclosing its name in parentheses. This means that we can use the parenthesized name `(<$>)` in place of `map` on arrays:
 
 ```text
 > (<$>) show [1, 2, 3, 4, 5]
@@ -201,7 +201,7 @@ forall a. Array (Array a) -> Array a
 [1, 2, 3, 4, 5, 6]
 ```
 
-There is a related function called `concatMap` which is like a combination of the `concat` and `map` functions. Where `map` takes a function from values to values (possibly of a different type), `concatMap` takes a function from values to arrays of values.
+There is a related function called `concatMap` which is a combination of the `concat` and `map` functions. Where `map` takes a function from values to values (possibly of a different type), `concatMap` takes a function from values to arrays of values.
 
 Let's see it in action:
 
@@ -225,7 +225,7 @@ Note how `concatMap` concatenates its results. It calls the provided function on
 
 Suppose we wanted to find the factors of a number `n`. One simple way to do this would be by brute force: we could generate all pairs of numbers between 1 and `n`, and try multiplying them together. If the product was `n`, we would have found a pair of factors of `n`.
 
-We can perform this computation using an array comprehension. We will do so in steps, using PSCi as our interactive development environment.
+We can perform this computation using array comprehension. We will do so in steps, using PSCi as our interactive development environment.
 
 The first step is to generate an array of pairs of numbers below `n`, which we can do using `concatMap`.
 
@@ -288,7 +288,7 @@ Excellent! We've managed to find the correct set of factor pairs without duplica
 
 However, we can improve the readability of our code considerably. `map` and `concatMap` are so fundamental, that they (or rather, their generalizations `map` and `bind`) form the basis of a special syntax called _do notation_.
 
-_Note_: Just like `map` and `concatMap` allowed us to write _array comprehensions_, the more general operators `map` and `bind` allow us to write so-called _monad comprehensions_. We'll see plenty more examples of _monads_ later in the book, but in this chapter, we will only consider arrays.
+> _Note_: Just like `map` and `concatMap` allowed us to write _array comprehensions_, the more general operators `map` and `bind` allow us to write so-called _monad comprehensions_. We'll see plenty more examples of _monads_ later in the book, but in this chapter, we will only consider arrays.
 
 We can rewrite our `factors` function using do notation as follows:
 
@@ -296,11 +296,11 @@ We can rewrite our `factors` function using do notation as follows:
 {{#include ../exercises/chapter4/test/Examples.purs:factors}}
 ```
 
-The keyword `do` introduces a block of code which uses do notation. The block consists of expressions of a few types:
+The keyword `do` introduces a block of code that uses do notation. The block consists of expressions of a few types:
 
-- Expressions which bind elements of an array to a name. These are indicated with the backwards-facing arrow `<-`, with a name on the left, and an expression on the right whose type is an array.
-- Expressions which do not bind elements of the array to names. The `do` _result_ is an example of this kind of expression and is illustrated in the last line, `pure [i, j]`.
-- Expressions which give names to expressions, using the `let` keyword.
+- Expressions that bind elements of an array to a name. These are indicated with the backwards-facing arrow `<-`, with a name on the left, and an expression on the right whose type is an array.
+- Expressions that do not bind elements of the array to names. The `do` _result_ is an example of this kind of expression and is illustrated in the last line, `pure [i, j]`.
+- Expressions that give names to expressions, using the `let` keyword.
 
 This new notation hopefully makes the structure of the algorithm clearer. If you mentally replace the arrow `<-` with the word "choose", you might read it as follows: "choose an element `i` between 1 and n, then choose an element `j` between `i` and `n`, and return `[i, j]`".
 
@@ -311,7 +311,7 @@ In the last line, we use the `pure` function. This function can be evaluated in 
 [[1, 2]]
 ```
 
-In the case of arrays, `pure` simply constructs a singleton array. In fact, we could modify our `factors` function to use this form, instead of using `pure`:
+In the case of arrays, `pure` simply constructs a singleton array. We can modify our `factors` function to use this form, instead of using `pure`:
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:factorsV2}}
@@ -356,22 +356,22 @@ For our purposes, the following calculations tell us everything we need to know 
 0
 ```
 
-That is, if `guard` is passed an expression which evaluates to `true`, then it returns an array with a single element. If the expression evaluates to `false`, then its result is empty.
+If we pass an expression to `guard` that evaluates to `true`, then it returns an array with a single element. If the expression evaluates to `false`, then its result is empty.
 
 This means that if the guard fails, then the current branch of the array comprehension will terminate early with no results. This means that a call to `guard` is equivalent to using `filter` on the intermediate array. Depending on the application, you might prefer to use `guard` instead of a `filter`. Try the two definitions of `factors` to verify that they give the same results.
 
 ## Exercises
 
- 1. (Easy) Write a function `isPrime` which tests if its integer argument is prime or not. _Hint_: Use the `factors` function.
- 1. (Medium) Write a function `cartesianProduct` which uses do notation to find the _cartesian product_ of two arrays, i.e. the set of all pairs of elements `a`, `b`, where `a` is an element of the first array, and `b` is an element of the second.
- 1. (Medium) Write a function `triples :: Int -> Array (Array Int)` which takes a number `n` and returns all Pythagorean triples whose components (the `a`, `b` and `c` values) are each less than or equal to `n`. A _Pythagorean triple_ is an array of numbers `[a, b, c]` such that `a² + b² = c²`. _Hint_: Use the `guard` function in an array comprehension.
- 1. (Difficult) Write a function `primeFactors` which produces the [prime factorization](https://www.mathsisfun.com/prime-factorization.html) of `n`, i.e. the array of prime integers whose product is `n`. _Hint_: for an integer greater than 1, break the problem down into two subproblems: finding the first factor, and finding the remaining factors.
+ 1. (Easy) Write a function `isPrime`, which tests whether its integer argument is prime. _Hint_: Use the `factors` function.
+ 1. (Medium) Write a function `cartesianProduct` which uses do notation to find the _cartesian product_ of two arrays, i.e., the set of all pairs of elements `a`, `b`, where `a` is an element of the first array, and `b` is an element of the second.
+ 1. (Medium) Write a function `triples :: Int -> Array (Array Int)`, which takes a number `n` and returns all Pythagorean triples whose components (the `a`, `b`, and `c` values) are each less than or equal to `n`. A _Pythagorean triple_ is an array of numbers `[a, b, c]` such that `a² + b² = c²`. _Hint_: Use the `guard` function in an array comprehension.
+ 1. (Difficult) Write a function `primeFactors` which produces the [prime factorization](https://www.mathsisfun.com/prime-factorization.html) of `n`, i.e., the array of prime integers whose product is `n`. _Hint_: for an integer greater than 1, break the problem into two subproblems: finding the first factor and the remaining factors.
 
 ## Folds
 
-Left and right folds over arrays provide another class of interesting functions which can be implemented using recursion.
+Left and right folds over arrays provide another class of interesting functions that can be implemented using recursion.
 
-Start by importing the `Data.Foldable` module, and inspecting the types of the `foldl` and `foldr` functions using PSCi:
+Start by importing the `Data.Foldable` module and inspecting the types of the `foldl` and `foldr` functions using PSCi:
 
 ```text
 > import Data.Foldable
@@ -383,7 +383,7 @@ forall a b f. Foldable f => (b -> a -> b) -> b -> f a -> b
 forall a b f. Foldable f => (a -> b -> b) -> b -> f a -> b
 ```
 
-These types are actually more general than we are interested in right now. For the purposes of this chapter, we can assume that PSCi had given the following (more specific) answer:
+These types are more general than we are interested in right now. For this chapter, we can assume that PSCi has given the following (more specific) answer:
 
 ```text
 > :type foldl
@@ -393,11 +393,11 @@ forall a b. (b -> a -> b) -> b -> Array a -> b
 forall a b. (a -> b -> b) -> b -> Array a -> b
 ```
 
-In both of these cases, the type `a` corresponds to the type of elements of our array. The type `b` can be thought of as the type of an "accumulator", which will accumulate a result as we traverse the array.
+In both cases, the type `a` corresponds to the type of elements of our array. The type `b` can be thought of as the type of an "accumulator", which will accumulate a result as we traverse the array.
 
 The difference between the `foldl` and `foldr` functions is the direction of the traversal. `foldl` folds the array "from the left", whereas `foldr` folds the array "from the right".
 
-Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can just use the addition operator, and the initial value of the accumulator will be zero:
+Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can use the addition operator, and the initial value of the accumulator will be zero:
 
 ```text
 > foldl (+) 0 (1 .. 5)
@@ -411,7 +411,7 @@ In this case, it didn't matter whether we used `foldl` or `foldr`, because the r
 15
 ```
 
-Let's write an example where the choice of folding function does matter, in order to illustrate the difference. Instead of the addition function, let's use string concatenation to build a string:
+Let's write an example where the choice of folding function matters to illustrate the difference. Instead of the addition function, let's use string concatenation to build a string:
 
 ```text
 > foldl (\acc n -> acc <> show n) "" [1,2,3,4,5]
@@ -427,7 +427,7 @@ This illustrates the difference between the two functions. The left fold express
 ((((("" <> show 1) <> show 2) <> show 3) <> show 4) <> show 5)
 ```
 
-whereas the right fold is equivalent to this:
+Whereas the right fold is equivalent to this:
 
 ```text
 ((((("" <> show 5) <> show 4) <> show 3) <> show 2) <> show 1)
@@ -435,9 +435,9 @@ whereas the right fold is equivalent to this:
 
 ## Tail Recursion
 
-Recursion is a powerful technique for specifying algorithms, but comes with a problem: evaluating recursive functions in JavaScript can lead to stack overflow errors if our inputs are too large.
+Recursion is a powerful technique for specifying algorithms but comes with a problem: evaluating recursive functions in JavaScript can lead to stack overflow errors if our inputs are too large.
 
-It is easy to verify this problem, with the following code in PSCi:
+It is easy to verify this problem with the following code in PSCi:
 
 ```text
 > :paste
@@ -454,13 +454,13 @@ It is easy to verify this problem, with the following code in PSCi:
 RangeError: Maximum call stack size exceeded
 ```
 
-This is a problem. If we are going to adopt recursion as a standard technique from functional programming, then we need a way to deal with possibly unbounded recursion.
+This is a problem. If we adopt recursion as a standard technique from functional programming, we need a way to deal with possibly unbounded recursion.
 
-PureScript provides a partial solution to this problem in the form of _tail recursion optimization_.
+PureScript provides a partial solution to this problem through _tail recursion optimization_.
 
-_Note_: more complete solutions to the problem can be implemented in libraries using so-called _trampolining_, but that is beyond the scope of this chapter. The interested reader can consult the documentation for the [`free`](https://pursuit.purescript.org/packages/purescript-free) and [`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec) packages.
+> _Note_: more complete solutions to the problem can be implemented in libraries using so-called _trampolining_, but that is beyond the scope of this chapter. The interested reader can consult the documentation for the [`free`](https://pursuit.purescript.org/packages/purescript-free) and [`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec) packages.
 
-The key observation which enables tail recursion optimization is the following: a recursive call in _tail position_ to a function can be replaced with a _jump_, which does not allocate a stack frame. A call is in _tail position_ when it is the last call made before a function returns. This is the reason why we observed a stack overflow in the example - the recursive call to `f` was _not_ in tail position.
+The key observation that enables tail recursion optimization: a recursive call in _tail position_ to a function can be replaced with a _jump_, which does not allocate a stack frame. A call is in _tail position_ when it is the last call made before a function returns. This is why we observed a stack overflow in the example – the recursive call to `f` was _not_ in tail position.
 
 In practice, the PureScript compiler does not replace the recursive call with a jump, but rather replaces the entire recursive function with a _while loop_.
 
@@ -470,13 +470,13 @@ Here is an example of a recursive function with all recursive calls in tail posi
 {{#include ../exercises/chapter4/test/Examples.purs:factorialTailRec}}
 ```
 
-Notice that the recursive call to `factorialTailRec` is the last thing that happens in this function - it is in tail position.
+Notice that the recursive call to `factorialTailRec` is the last thing in this function – it is in tail position.
 
 ## Accumulators
 
-One common way to turn a function which is not tail recursive into a tail recursive function is to use an _accumulator parameter_. An accumulator parameter is an additional parameter which is added to a function which _accumulates_ a return value, as opposed to using the return value to accumulate the result.
+One common way to turn a not tail recursive function into a tail recursive is to use an _accumulator parameter_. An accumulator parameter is an additional parameter added to a function that _accumulates_ a return value, as opposed to using the return value to accumulate the result.
 
-For example, consider again the `length` function presented in the beginning of the chapter:
+For example, consider again the `length` function presented at the beginning of the chapter:
 
 ```haskell
 length :: forall a. Array a -> Int
@@ -492,15 +492,15 @@ This implementation is not tail recursive, so the generated JavaScript will caus
 {{#include ../exercises/chapter4/test/Examples.purs:lengthTailRec}}
 ```
 
-In this case, we delegate to the helper function `length'`, which is tail recursive - its only recursive call is in the last case, and is in tail position. This means that the generated code will be a _while loop_, and will not blow the stack for large inputs.
+In this case, we delegate to the helper function `length'`, which is tail recursive – its only recursive call is in the last case, in tail position. This means that the generated code will be a _while loop_ and not blow the stack for large inputs.
 
-To understand the implementation of `lengthTailRec`, note that the helper function `length'` essentially uses the accumulator parameter to maintain an additional piece of state - the partial result. It starts out at 0, and grows by adding 1 for every element in the input array.
+To understand the implementation of `lengthTailRec`, note that the helper function `length'` essentially uses the accumulator parameter to maintain an additional piece of state – the partial result. It starts at 0 and grows by adding 1 for every element in the input array.
 
-Note also that while we might think of the accumulator as "state", there is no direct mutation going on.
+Note also that while we might think of the accumulator as a "state", there is no direct mutation.
 
 ## Prefer Folds to Explicit Recursion
 
-If we can write our recursive functions using tail recursion, then we can benefit from tail recursion optimization, so it becomes tempting to try to write all of our functions in this form. However, it is often easy to forget that many functions can be written directly as a fold over an array or similar data structure. Writing algorithms directly in terms of combinators such as `map` and `fold` has the added advantage of code simplicity - these combinators are well-understood, and as such, communicate the _intent_ of the algorithm much better than explicit recursion.
+If we can write our recursive functions using tail recursion, we can benefit from tail recursion optimization, so it becomes tempting to try to write all of our functions in this form. However, it is often easy to forget that many functions can be written directly as a fold over an array or similar data structure. Writing algorithms directly in terms of combinators such as `map` and `fold` has the added advantage of code simplicity – these combinators are well-understood, and as such, communicate the _intent_ of the algorithm much better than explicit recursion.
 
 For example, we can reverse an array using `foldr`:
 
@@ -527,15 +527,15 @@ Writing `reverse` in terms of `foldl` will be left as an exercise for the reader
 
 ## A Virtual Filesystem
 
-In this section, we're going to apply what we've learned, writing functions which will work with a model of a filesystem. We will use maps, folds and filters to work with a predefined API.
+In this section, we'll apply what we've learned, writing functions that will work with a model of a filesystem. We will use maps, folds, and filters to work with a predefined API.
 
-The `Data.Path` module defines an API for a virtual filesystem, as follows:
+The `Data.Path` module defines an API for a virtual filesystem as follows:
 
 - There is a type `Path` which represents a path in the filesystem.
 - There is a path `root` which represents the root directory.
 - The `ls` function enumerates the files in a directory.
 - The `filename` function returns the file name for a `Path`.
-- The `size` function returns the file size for a `Path` which represents a file.
+- The `size` function returns the file size for a `Path` representing a file.
 - The `isDirectory` function tests whether a `Path` is a file or a directory.
 
 In terms of types, we have the following type definitions:
@@ -569,17 +569,17 @@ true
 [/bin/,/etc/,/home/]
 ```
 
-The `Test.Examples` module defines functions which use the `Data.Path` API. You do not need to modify the `Data.Path` module, or understand its implementation. We will work entirely in the `Test.Examples` module.
+The `Test.Examples` module defines functions that use the `Data.Path` API. You do not need to modify the `Data.Path` module, or understand its implementation. We will work entirely in the `Test.Examples` module.
 
 ## Listing All Files
 
-Let's write a function which performs a deep enumeration of all files inside a directory. This function will have the following type:
+Let's write a function that performs a deep enumeration of all files inside a directory. This function will have the following type:
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_signature}}
 ```
 
-We can define this function by recursion. First, we can use `ls` to enumerate the immediate children of the directory. For each child, we can recursively apply `allFiles`, which will return an array of paths. `concatMap` will allow us to apply `allFiles` and flatten the results at the same time.
+We can define this function by recursion. First, we can use `ls` to enumerate the immediate children of the directory. For each child, we can recursively apply `allFiles`, which will return an array of paths. `concatMap` will allow us to apply `allFiles` and flatten the results simultaneously.
 
 Finally, we use the cons operator `:` to include the current file:
 
@@ -587,7 +587,7 @@ Finally, we use the cons operator `:` to include the current file:
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_implementation}}
 ```
 
-_Note_: the cons operator `:` actually has poor performance on immutable arrays, so it is not recommended in general. Performance can be improved by using other data structures, such as linked lists and sequences.
+> _Note_: the cons operator `:` has poor performance on immutable arrays, so it is not generally recommended. Performance can be improved by using other data structures, such as linked lists and sequences.
 
 Let's try this function in PSCi:
 
@@ -602,7 +602,7 @@ Let's try this function in PSCi:
 
 Great! Now let's see if we can write this function using an array comprehension using do notation.
 
-Recall that a backwards arrow corresponds to choosing an element from an array. The first step is to choose an element from the immediate children of the argument. Then we simply call the function recursively for that file. Since we are using do notation, there is an implicit call to `concatMap` which concatenates all of the recursive results.
+Recall that a backwards arrow corresponds to choosing an element from an array. The first step is to choose an element from the immediate children of the argument. Then we call the function recursively for that file. Since we use do notation, there is an implicit call to `concatMap`, which concatenates all of the recursive results.
 
 Here is the new version:
 
@@ -610,7 +610,7 @@ Here is the new version:
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_2}}
 ```
 
-Try out the new version in PSCi - you should get the same result. I'll let you decide which version you find clearer.
+Try out the new version in PSCi – you should get the same result. I'll let you decide which version you find clearer.
 
 ## Exercises
 
@@ -626,8 +626,8 @@ Try out the new version in PSCi - you should get the same result. I'll let you d
      ```
 
      _Hint_: Try to write this function as an array comprehension using do notation.
- 3. (Difficult) Write a function `largestSmallest` which takes a `Path` and returns an array containing the single largest and single smallest files in the `Path`. _Note_: consider the cases where there are zero or one files in the `Path` by returning an empty array or a one-element array respectively.
+ 3. (Difficult) Write a function `largestSmallest` which takes a `Path` and returns an array containing the single largest and single smallest files in the `Path`. _Note_: consider the cases where there are zero or one files in the `Path` by returning an empty or one-element array, respectively.
 
 ## Conclusion
 
-In this chapter, we covered the basics of recursion in PureScript, as a means of expressing algorithms concisely. We also introduced user-defined infix operators, standard functions on arrays such as maps, filters and folds, and array comprehensions which combine these ideas. Finally, we showed the importance of using tail recursion in order to avoid stack overflow errors, and how to use accumulator parameters to convert functions to tail recursive form.
+In this chapter, we covered the basics of recursion in PureScript to express algorithms concisely. We also introduced user-defined infix operators, standard functions on arrays such as maps, filters, and folds, and array comprehensions that combine these ideas. Finally, we showed the importance of using tail recursion to avoid stack overflow errors and how to use accumulator parameters to convert functions to tail recursive form.

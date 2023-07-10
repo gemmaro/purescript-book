@@ -13,15 +13,15 @@ This module's project introduces the following new dependencies:
 
 The source code for the chapter is broken up into a set of modules, each of which defines a `main` method. Different sections of this chapter are implemented in different files, and the `Main` module can be changed by modifying the Spago build command to run the appropriate file's `main` method at each point.
 
-The HTML file `html/index.html` contains a single `canvas` element which will be used in each example, and a `script` element to load the compiled PureScript code. To test the code for each section, open the HTML file in your browser. Because most exercises target the browser, there are no unit tests for this chapter.
+The HTML file `html/index.html` contains a single `canvas` element which will be used in each example, and a `script` element to load the compiled PureScript code. To test the code for each section, open the HTML file in your browser. Because most exercises target the browser, this chapter has no unit tests.
 
 ## Simple Shapes
 
 The `Example/Rectangle.purs` file contains a simple introductory example, which draws a single blue rectangle at the center of the canvas. The module imports the `Effect` type from the `Effect` module, and also the `Graphics.Canvas` module, which contains actions in the `Effect` monad for working with the Canvas API.
 
-The `main` action starts, like in the other modules, by using the `getCanvasElementById` action to get a reference to the canvas object, and the `getContext2D` action to access the 2D rendering context for the canvas:
+The `main` action starts, like in the other modules, by using the `getCanvasElementById` action to get a reference to the canvas object and the `getContext2D` action to access the 2D rendering context for the canvas:
 
-The `void` function takes a functor and replaces its value with `Unit`. In the example it is used to make `main` conform with its signature.
+The `void` function takes a functor and replaces its value with `Unit`. In the example, it is used to make `main` conform with its signature.
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Rectangle.purs:main}}
@@ -39,7 +39,7 @@ getContext2D :: CanvasElement -> Effect Context2D
 
 `CanvasElement` and `Context2D` are types defined in the `Graphics.Canvas` module. The same module also defines the `Canvas` effect, which is used by all of the actions in the module.
 
-The graphics context `ctx` manages the state of the canvas, and provides methods to render primitive shapes, set styles and colors, and apply transformations.
+The graphics context `ctx` manages the state of the canvas and provides methods to render primitive shapes, set styles and colors, and apply transformations.
 
 We continue by setting the fill style to solid blue using the `setFillStyle` action. The longer hex notation of `#0000FF` may also be used for blue, but shorthand notation is easier for simple colors:
 
@@ -55,7 +55,7 @@ Finally, we use the `fillPath` action to fill the rectangle. `fillPath` has the 
 fillPath :: forall a. Context2D -> Effect a -> Effect a
 ```
 
-`fillPath` takes a graphics context and another action which builds the path to render. To build a path, we can use the `rect` action. `rect` takes a graphics context, and a record which provides the position and size of the rectangle:
+`fillPath` takes a graphics context and another action that builds the path to render. To build a path, we can use the `rect` action. `rect` takes a graphics context and a record that provides the position and size of the rectangle:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Rectangle.purs:fillPath}}
@@ -71,9 +71,9 @@ Now, open the `html/index.html` file and verify that this code renders a blue re
 
 ## Putting Row Polymorphism to Work
 
-There are other ways to render paths. The `arc` function renders an arc segment, and the `moveTo`, `lineTo` and `closePath` functions can be used to render piecewise-linear paths.
+There are other ways to render paths. The `arc` function renders an arc segment, and the `moveTo`, `lineTo`, and `closePath` functions can render piecewise-linear paths.
 
-The `Shapes.purs` file renders three shapes: a rectangle, an arc segment and a triangle.
+The `Shapes.purs` file renders three shapes: a rectangle, an arc segment, and a triangle.
 
 We have seen that the `rect` function takes a record as its argument. In fact, the properties of the rectangle are defined in a type synonym:
 
@@ -86,7 +86,7 @@ type Rectangle =
   }
 ```
 
-The `x` and `y` properties represent the location of the top-left corner, while the `w` and `h` properties represent the width and height respectively.
+The `x` and `y` properties represent the location of the top-left corner, while the `w` and `h` properties represent the width and height, respectively.
 
 To render an arc segment, we can use the `arc` function, passing a record with the following type:
 
@@ -100,9 +100,9 @@ type Arc =
   }
 ```
 
-Here, the `x` and `y` properties represent the center point, `r` is the radius, and `start` and `end` represent the endpoints of the arc in radians.
+Here, the `x` and `y` properties represent the center point, `r` is the radius, `start` and `end` represent the endpoints of the arc in radians.
 
-For example, this code fills an arc segment centered at `(300, 300)` with radius `50`. The arc completes 2/3rds of a rotation. Note that the unit circle is flipped vertically, since the y-axis increases towards the bottom of the canvas:
+For example, this code fills an arc segment centered at `(300, 300)` with radius `50`. The arc completes 2/3rds of a rotation. Note that the unit circle is flipped vertically since the y-axis increases towards the bottom of the canvas:
 
 ```haskell
   fillPath ctx $ arc ctx
@@ -114,9 +114,9 @@ For example, this code fills an arc segment centered at `(300, 300)` with radius
     }
 ```
 
-Notice that both the `Rectangle` and `Arc` record types contain `x` and `y` properties of type `Number`. In both cases, this pair represents a point. This means that we can write row-polymorphic functions which can act on either type of record.
+Notice that both the `Rectangle` and `Arc` record types contain `x` and `y` properties of type `Number`. In both cases, this pair represents a point. This means we can write row-polymorphic functions acting on either type of record.
 
-For example, the `Shapes` module defines a `translate` function which translates a shape by modifying its `x` and `y` properties:
+For example, the `Shapes` module defines a `translate` function that translates a shape by modifying its `x` and `y` properties:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Shapes.purs:translate}}
@@ -126,7 +126,7 @@ Notice the row-polymorphic type. It says that `translate` accepts any record wit
 
 This is an example of _record update syntax_. The expression `shape { ... }` creates a new record based on the `shape` record, with the fields inside the braces updated to the specified values. Note that the expressions inside the braces are separated from their labels by equals symbols, not colons like in record literals.
 
-The `translate` function can be used with both the `Rectangle` and `Arc` records, as can be seen in the `Shapes` example.
+The `translate` function can be used with both the `Rectangle` and `Arc` records, as seen in the `Shapes` example.
 
 The third type of path rendered in the `Shapes` example is a piecewise-linear path. Here is the corresponding code:
 
@@ -152,8 +152,8 @@ and open `html/index.html` again to see the result. You should see the three dif
 
 ## Exercises
 
- 1. (Easy) Experiment with the `strokePath` and `setStrokeStyle` functions in each of the examples so far.
- 1. (Easy) The `fillPath` and `strokePath` functions can be used to render complex paths with a common style by using a do notation block inside the function argument. Try changing the `Rectangle` example to render two rectangles side-by-side using the same call to `fillPath`. Try rendering a sector of a circle by using a combination of a piecewise-linear path and an arc segment.
+ 1. (Easy) Experiment with the `strokePath` and `setStrokeStyle` functions in each example so far.
+ 1. (Easy) The `fillPath` and `strokePath` functions can render complex paths with a common style using a do notation block inside the function argument. Try changing the `Rectangle` example to render two rectangles side-by-side using the same call to `fillPath`. Try rendering a sector of a circle by using a combination of a piecewise-linear path and an arc segment.
  1. (Medium) Given the following record type:
 
      ```haskell
@@ -175,15 +175,15 @@ and open `html/index.html` again to see the result. You should see the three dif
      f :: Number -> Point
      ```
 
-     which takes a `Number` between `0` and `1` as its argument and returns a `Point`, write an action which plots `f` by using your `renderPath` function. Your action should approximate the path by sampling `f` at a finite set of points.
+     which takes a `Number` between `0` and `1` as its argument and returns a `Point`, write an action that plots `f` by using your `renderPath` function. Your action should approximate the path by sampling `f` at a finite set of points.
 
      Experiment by rendering different paths by varying the function `f`.
 
 ## Drawing Random Circles
 
-The `Example/Random.purs` file contains an example which uses the `Effect` monad to interleave two different types of side-effect: random number generation, and canvas manipulation. The example renders one hundred randomly generated circles onto the canvas.
+The `Example/Random.purs` file contains an example that uses the `Effect` monad to interleave two types of side-effect: random number generation and canvas manipulation. The example renders one hundred randomly generated circles onto the canvas.
 
-The `main` action obtains a reference to the graphics context as before, and then sets the stroke and fill styles:
+The `main` action obtains a reference to the graphics context as before and then sets the stroke and fill styles:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Random.purs:style}}
@@ -195,7 +195,7 @@ Next, the code uses the `for_` function to loop over the integers between `0` an
 {{#include ../exercises/chapter12/src/Example/Random.purs:for}}
 ```
 
-On each iteration, the do notation block starts by generating three random numbers distributed between `0` and `1`. These numbers represent the `x` and `y` coordinates, and the radius of a circle:
+On each iteration, the do notation block starts by generating three random numbers distributed between `0` and `1`. These numbers represent the `x` and `y` coordinates and the radius of a circle:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Random.purs:random}}
@@ -217,7 +217,7 @@ and view the result by opening `html/index.html`.
 
 ## Transformations
 
-There is more to the canvas than just rendering simple shapes. Every canvas maintains a transformation which is used to transform shapes before rendering. Shapes can be translated, rotated, scaled, and skewed.
+There is more to the canvas than just rendering simple shapes. Every canvas maintains a transformation that is used to transform shapes before rendering. Shapes can be translated, rotated, scaled, and skewed.
 
 The `canvas` library supports these transformations using the following functions:
 
@@ -241,7 +241,7 @@ transform :: Context2D
 
 The `translate` action performs a translation whose components are specified by the properties of the `TranslateTransform` record.
 
-The `rotate` action performs a rotation around the origin, through some number of radians specified by the first argument.
+The `rotate` action rotates around the origin through some number of radians specified by the first argument.
 
 The `scale` action performs a scaling, with the origin as the center. The `ScaleTransform` record specifies the scale factors along the `x` and `y` axes.
 
@@ -264,7 +264,7 @@ The effect of this sequence of actions is that the scene is rotated, then scaled
 
 ## Preserving the Context
 
-A common use case is to render some subset of the scene using a transformation, and then to reset the transformation afterwards.
+A common use case is to render some subset of the scene using a transformation and then reset the transformation.
 
 The Canvas API provides the `save` and `restore` methods, which manipulate a _stack_ of states associated with the canvas. `canvas` wraps this functionality into the following functions:
 
@@ -280,7 +280,7 @@ restore
 
 The `save` action pushes the current state of the context (including the current transformation and any styles) onto the stack, and the `restore` action pops the top state from the stack and restores it.
 
-This allows us to save the current state, apply some styles and transformations, render some primitives, and finally restore the original transformation and state. For example, the following function performs some canvas action, but applies a rotation before doing so, and restores the transformation afterwards:
+This allows us to save the current state, apply some styles and transformations, render some primitives, and finally restore the original transformation and state. For example, the following function performs some canvas action but applies a rotation before doing so and restores the transformation afterwards:
 
 ```haskell
 rotated ctx render = do
@@ -312,7 +312,7 @@ rotated ctx render =
 
 In this section, we'll use the `refs` package to demonstrate another effect in the `Effect` monad.
 
-The `Effect.Ref` module provides a type constructor for global mutable references, and an associated effect:
+The `Effect.Ref` module provides a type constructor for global mutable references and an associated effect:
 
 ```text
 > import Effect.Ref
@@ -323,9 +323,9 @@ Type -> Type
 
 A value of type `Ref a` is a mutable reference cell containing a value of type `a`, used to track global mutation. As such, it should be used sparingly.
 
-The `Example/Refs.purs` file contains an example which uses a `Ref` to track mouse clicks on the `canvas` element.
+The `Example/Refs.purs` file contains an example that uses a `Ref` to track mouse clicks on the `canvas` element.
 
-The code starts by creating a new reference containing the value `0`, by using the `new` action:
+The code starts by creating a new reference containing the value `0` by using the `new` action:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/Refs.purs:clickCount}}
@@ -343,12 +343,12 @@ In the `render` function, the click count is used to determine the transformatio
 {{#include ../exercises/chapter12/src/Example/Refs.purs:withContext}}
 ```
 
-This action uses `withContext` to preserve the original transformation, and then applies the following sequence of transformations (remember that transformations are applied bottom-to-top):
+This action uses `withContext` to preserve the original transformation and then applies the following sequence of transformations (remember that transformations are applied bottom-to-top):
 
-- The rectangle is translated through `(-100, -100)` so that its center lies at the origin.
+- The rectangle is translated through `(-100, -100)`, so its center lies at the origin.
 - The rectangle is scaled around the origin.
 - The rectangle is rotated through some multiple of `10` degrees around the origin.
-- The rectangle is translated through `(300, 300)` so that it center lies at the center of the canvas.
+- The rectangle is translated through `(300, 300)`, so its center lies at the center of the canvas.
 
 Build the example:
 
@@ -360,19 +360,19 @@ and open the `html/index.html` file. If you click the canvas repeatedly, you sho
 
 ## Exercises
 
- 1. (Easy) Write a higher-order function which strokes and fills a path simultaneously. Rewrite the `Random.purs` example using your function.
- 1. (Medium) Use `Random` and `Dom` to create an application which renders a circle with random position, color and radius to the canvas when the mouse is clicked.
- 1. (Medium) Write a function which transforms the scene by rotating it around a point with specified coordinates. _Hint_: use a translation to first translate the scene to the origin.
+ 1. (Easy) Write a higher-order function that simultaneously strokes and fills a path. Rewrite the `Random.purs` example using your function.
+ 1. (Medium) Use `Random` and `Dom` to create an application that renders a circle with random position, color, and radius to the canvas when the mouse is clicked.
+ 1. (Medium) Write a function that transforms the scene by rotating it around a point with specified coordinates. _Hint_: use a translation to first translate the scene to the origin.
 
 ## L-Systems
 
 In this final example, we will use the `canvas` package to write a function for rendering _L-systems_ (or _Lindenmayer systems_).
 
-An L-system is defined by an _alphabet_, an initial sequence of letters from the alphabet, and a set of _production rules_. Each production rule takes a letter of the alphabet and returns a sequence of replacement letters. This process is iterated some number of times starting with the initial sequence of letters.
+An L-system is defined by an _alphabet_, an initial sequence of letters from the alphabet, and a set of _production rules_. Each production rule takes a letter of the alphabet and returns a sequence of replacement letters. This process is iterated some number of times, starting with the initial sequence of letters.
 
 If each letter of the alphabet is associated with some instruction to perform on the canvas, the L-system can be rendered by following the instructions in order.
 
-For example, suppose the alphabet consists of the letters `L` (turn left), `R` (turn right) and `F` (move forward). We might define the following production rules:
+For example, suppose the alphabet consists of the letters `L` (turn left), `R` (turn right), and `F` (move forward). We might define the following production rules:
 
 ```text
 L -> L
@@ -388,7 +388,7 @@ FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...
 ```
 
-and so on. Plotting a piecewise-linear path corresponding to this set of instruction approximates a curve called the _Koch curve_. Increasing the number of iterations increases the resolution of the curve.
+and so on. Plotting a piecewise-linear path corresponding to this set of instructions approximates the _Koch curve_. Increasing the number of iterations increases the resolution of the curve.
 
 Let's translate this into the language of types and functions.
 
@@ -416,7 +416,7 @@ Our production rules can be represented as a function from `Letter` to `Sentence
 
 This is just copied straight from the specification above.
 
-Now we can implement a function `lsystem` which will take a specification in this form, and render it to the canvas. What type should `lsystem` have? Well, it needs to take values like `initial` and `productions` as arguments, as well as a function which can render a letter of the alphabet to the canvas.
+Now we can implement a function `lsystem` that will take a specification in this form and render it to the canvas. What type should `lsystem` have? Well, it needs to take values like `initial` and `productions` as arguments, as well as a function that can render a letter of the alphabet to the canvas.
 
 Here is a first approximation to the type of `lsystem`:
 
@@ -430,7 +430,7 @@ Sentence
 
 The first two argument types correspond to the values `initial` and `productions`.
 
-The third argument represents a function which takes a letter of the alphabet and _interprets_ it by performing some actions on the canvas. In our example, this would mean turning left in the case of the letter `L`, turning right in the case of the letter `R`, and moving forward in the case of a letter `F`.
+The third argument represents a function that takes a letter of the alphabet and _interprets_ it by performing some actions on the canvas. In our example, this would mean turning left in the case of the letter `L`, turning right in the case of the letter `R`, and moving forward in the case of a letter `F`.
 
 The final argument is a number representing the number of iterations of the production rules we would like to perform.
 
@@ -444,7 +444,7 @@ forall a. Array a
           -> Effect Unit
 ```
 
-The second observation is that, in order to implement instructions like "turn left" and "turn right", we will need to maintain some state, namely the direction in which the path is moving at any time. We need to modify our function to pass the state through the computation. Again, the `lsystem` function should work for any type of state, so we will represent it using the type variable `s`.
+The second observation is that, to implement instructions like "turn left" and "turn right", we will need to maintain some state, namely the direction in which the path is moving at any time. We need to modify our function to pass the state through the computation. Again, the `lsystem` function should work for any type of state, so we will represent it using the type variable `s`.
 
 We need to add the type `s` in three places:
 
@@ -490,9 +490,9 @@ lsystem :: forall a s
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_impl}}
 ```
 
-The `go` function works by recursion on its second argument. There are two cases: when `n` is zero, and when `n` is non-zero.
+The `go` function works by recursion on its second argument. There are two cases: when `n` is zero and `n` is non-zero.
 
-In the first case, the recursion is complete, and we simply need to interpret the current sentence according to the interpretation function. We have a sentence of type `Array a`, a state of type `s`, and a function of type `s -> a -> Effect s`. This sounds like a job for the `foldM` function which we defined earlier, and which is available from the `control` package:
+In the first case, the recursion is complete, and we need to interpret the current sentence according to the interpretation function. We have a sentence of type `Array a`, a state of type `s`, and a function of type `s -> a -> Effect s`. This sounds like a job for the `foldM` function which we defined earlier, and which is available from the `control` package:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_go_s_0}}
@@ -504,7 +504,7 @@ What about in the non-zero case? In that case, we can simply apply the productio
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_go_s_i}}
 ```
 
-That's it! Note how the use of higher order functions like `foldM` and `concatMap` allowed us to communicate our ideas concisely.
+That's it! Note how using higher-order functions like `foldM` and `concatMap` allowed us to communicate our ideas concisely.
 
 However, we're not quite done. The type we have given is actually still too specific. Note that we don't use any canvas operations anywhere in our implementation. Nor do we make use of the structure of the `Effect` monad at all. In fact, our function works for _any_ monad `m`!
 
@@ -514,9 +514,9 @@ Here is the more general type of `lsystem`, as specified in the accompanying sou
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_anno}}
 ```
 
-We can understand this type as saying that our interpretation function is free to have any side-effects at all, captured by the monad `m`. It might render to the canvas, or print information to the console, or support failure or multiple return values. The reader is encouraged to try writing L-systems which use these various types of side-effect.
+We can understand this type as saying that our interpretation function is free to have any side-effects at all, captured by the monad `m`. It might render to the canvas, print information to the console, or support failure or multiple return values. The reader is encouraged to try writing L-systems that use these various types of side-effect.
 
-This function is a good example of the power of separating data from implementation. The advantage of this approach is that we gain the freedom to interpret our data in multiple different ways. We might even factor `lsystem` into two smaller functions: the first would build the sentence using repeated application of `concatMap`, and the second would interpret the sentence using `foldM`. This is also left as an exercise for the reader.
+This function is a good example of the power of separating data from implementation. The advantage of this approach is that we can interpret our data in multiple ways. We might even factor `lsystem` into two smaller functions: the first would build the sentence using repeated application of `concatMap`, and the second would interpret the sentence using `foldM`. This is also left as an exercise for the reader.
 
 Let's complete our example by implementing its interpretation function. The type of `lsystem` tells us that its type signature must be `s -> a -> m s` for some types `a` and `s` and a type constructor `m`. We know that we want `a` to be `Letter` and `s` to be `State`, and for the monad `m` we can choose `Effect`. This gives us the following type:
 
@@ -530,7 +530,7 @@ To implement this function, we need to handle the three data constructors of the
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:interpretLR}}
 ```
 
-To interpret the letter `F` (move forward), we can calculate the new position of the path, render a line segment, and update the state, as follows:
+To interpret the letter `F` (move forward), we can calculate the new position of the path, render a line segment, and update the state as follows:
 
 ```haskell
 {{#include ../exercises/chapter12/src/Example/LSystem.purs:interpretF}}
@@ -555,9 +555,9 @@ and open `html/index.html`. You should see the Koch curve rendered to the canvas
 ## Exercises
 
  1. (Easy) Modify the L-system example above to use `fillPath` instead of `strokePath`. _Hint_: you will need to include a call to `closePath`, and move the call to `moveTo` outside of the `interpret` function.
- 1. (Easy) Try changing the various numerical constants in the code, to understand their effect on the rendered system.
+ 1. (Easy) Try changing the various numerical constants in the code to understand their effect on the rendered system.
  1. (Medium) Break the `lsystem` function into two smaller functions. The first should build the final sentence using repeated application of `concatMap`, and the second should use `foldM` to interpret the result.
- 1. (Medium) Add a drop shadow to the filled shape, by using the `setShadowOffsetX`, `setShadowOffsetY`, `setShadowBlur` and `setShadowColor` actions. _Hint_: use PSCi to find the types of these functions.
+ 1. (Medium) Add a drop shadow to the filled shape using the `setShadowOffsetX`, `setShadowOffsetY`, `setShadowBlur`, and `setShadowColor` actions. _Hint_: use PSCi to find the types of these functions.
  1. (Medium) The angle of the corners is currently a constant (`tau/6`). Instead, it can be moved into the `Letter` data type, which allows it to be changed by the production rules:
 
      ```haskell
@@ -567,7 +567,7 @@ and open `html/index.html`. You should see the Koch curve rendered to the canvas
      ```
 
      How can this new information be used in the production rules to create interesting shapes?
- 1. (Difficult) An L-system is given by an alphabet with four letters: `L` (turn left through 60 degrees), `R` (turn right through 60 degrees), `F` (move forward) and `M` (also move forward).
+ 1. (Difficult) An L-system is given by an alphabet with four letters: `L` (turn left through 60 degrees), `R` (turn right through 60 degrees), `F` (move forward), and `M` (also move forward).
 
      The initial sentence of the system is the single letter `M`.
 
@@ -580,7 +580,7 @@ and open `html/index.html`. You should see the Koch curve rendered to the canvas
      M -> MRFRMLFLMLFLMRFRM
      ```
 
-     Render this L-system. _Note_: you will need to decrease the number of iterations of the production rules, since the size of the final sentence grows exponentially with the number of iterations.
+     Render this L-system. _Note_: you will need to decrease the number of iterations of the production rules since the size of the final sentence grows exponentially with the number of iterations.
 
      Now, notice the symmetry between `L` and `M` in the production rules. The two "move forward" instructions can be differentiated using a `Boolean` value using the following alphabet type:
 
@@ -593,7 +593,7 @@ and open `html/index.html`. You should see the Koch curve rendered to the canvas
 
 ## Conclusion
 
-In this chapter, we learned how to use the HTML5 Canvas API from PureScript by using the `canvas` library. We also saw a practical demonstration of many of the techniques we have learned already: maps and folds, records and row polymorphism, and the `Effect` monad for handling side-effects.
+In this chapter, we learned how to use the HTML5 Canvas API from PureScript by using the `canvas` library. We also saw a practical demonstration of many techniques we have learned already: maps and folds, records and row polymorphism, and the `Effect` monad for handling side-effects.
 
 The examples also demonstrated the power of higher-order functions and _separating data from implementation_. It would be possible to extend these ideas to completely separate the representation of a scene from its rendering function, using an algebraic data type, for example:
 
@@ -607,6 +607,6 @@ data Scene
   | ...
 ```
 
-This approach is taken in the `drawing` package, and it brings the flexibility of being able to manipulate the scene as data in various ways before rendering.
+This approach is taken in the `drawing` package, and it brings the flexibility of manipulating the scene as data in various ways before rendering.
 
 For examples of games rendered to the canvas, see the "Behavior" and "Signal" recipes in the [cookbook](https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes).

@@ -24,7 +24,7 @@ Now that you've installed the necessary development tools, clone this book's rep
 git clone https://github.com/purescript-contrib/purescript-book.git
 ```
 
-The book repo contains PureScript example code and unit tests for the exercises that accompany each chapter. There's some initial setup required to reset the exercise solutions so they are ready to be solved by you. Use the `resetSolutions.sh` script to simplify this process. While you're at it, you should also strip out all the anchor comments with the `removeAnchors.sh` script (these anchors are used for copying code snippets into the book's rendered markdown, and you probably don't need this clutter in your local repo):
+The book repo contains PureScript example code and unit tests for the exercises that accompany each chapter. There's some initial setup required to reset the exercise solutions so they are ready to be solved by you. Use the `resetSolutions.sh` script to simplify this process. While at it, you should also strip out all the anchor comments with the `removeAnchors.sh` script (these anchors are used for copying code snippets into the book's rendered markdown, and you probably don't need this clutter in your local repo):
 
 ```sh
 cd purescript-book
@@ -51,11 +51,11 @@ You should see the following successful test output:
 All 2 tests passed! 🎉
 ```
 
-Note that the `answer` function (found in `src/Euler.purs`) has been modified to find the multiples of 3 and 5 below any integer. The test suite (found in `test/Main.purs`) for this `answer` function is more comprehensive than the test in the earlier getting-started guide. Don't worry about understanding how this test framework code works while reading these early chapters.
+Note that the `answer` function (found in `src/Euler.purs`) has been modified to find the multiples of 3 and 5 below any integer. The test suite (located in `test/Main.purs`) for this `answer` function is more comprehensive than the test in the earlier getting-started guide. Don't worry about understanding how this test framework code works while reading these early chapters.
 
 The remainder of the book contains lots of exercises. If you write your solutions in the `Test.MySolutions` module (`test/MySolutions.purs`), you can check your work against the provided test suite.
 
-Let's work through this next exercise together in test-driven-development style.
+Let's work through this next exercise together in a test-driven-development style.
 
 ## Exercise
 
@@ -63,7 +63,7 @@ Let's work through this next exercise together in test-driven-development style.
 
 ## Solution
 
-We'll start by enabling the tests for this exercise. Move the start of the block-comment down a few lines as shown below. Block comments start with `{-` and end with `-}`:
+We'll start by enabling the tests for this exercise. Move the start of the block-comment down a few lines, as shown below. Block comments start with `{-` and end with `-}`:
 
 ```hs
 {{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}
@@ -82,7 +82,7 @@ at test/Main.purs:21:27 - 21:35 (line 21, column 27 - line 21, column 35)
   Unknown value diagonal
 ```
 
-Let's first take a look at what happens with a faulty version of this function. Add the following code to `test/MySolutions.purs`:
+Let's first look at what happens with a faulty version of this function. Add the following code to `test/MySolutions.purs`:
 
 ```hs
 import Data.Number (sqrt)
@@ -130,8 +130,8 @@ Success! Now you're ready to try these next exercises on your own.
 
 In this chapter, we installed the PureScript compiler and the Spago tool. We also learned how to write solutions to exercises and check these for correctness.
 
-There will be many more exercises in the chapters ahead, and working through those really helps with learning the material. If you're stumped by any of the exercises, please reach out to any of the community resources listed in the [Getting Help](https://book.purescript.org/chapter1.html#getting-help) section of this book, or even file an issue in this [book's repo](https://github.com/purescript-contrib/purescript-book/issues). This reader feedback on which exercises could be made more approachable helps us improve the book.
+There will be many more exercises in the chapters ahead, and working through those helps with learning the material. If any of the exercises stumps you, please reach out to any of the community resources listed in the [Getting Help](https://book.purescript.org/chapter1.html#getting-help) section of this book, or even file an issue in this [book's repo](https://github.com/purescript-contrib/purescript-book/issues). This reader feedback on which exercises could be made more approachable helps us improve the book.
 
-Once you solve all the exercises in a chapter, you may compare your answers against those in the `no-peeking/Solutions.purs`. No peeking please without putting in an honest effort to solve these yourself though. And even if you are stuck, try asking a community member for help first, as we would prefer to give you a small hint rather than spoil the exercise. If you found a more elegant solution (that still only requires knowledge of covered content), please send us a PR.
+Once you solve all the exercises in a chapter, you may compare your answers against those in the `no-peeking/Solutions.purs`. No peeking, please, without putting in an honest effort to solve these yourself. And even if you are stuck, try asking a community member for help first, as we would prefer to give you a small hint rather than spoil the exercise. If you found a more elegant solution (that only requires knowledge of the covered content), please send us a PR.
 
 The repo is continuously being revised, so be sure to check for updates before starting each new chapter.
