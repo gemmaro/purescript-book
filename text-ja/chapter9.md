@@ -2,7 +2,11 @@
 
 ## この章の目標
 
-この章では`Aff`モナドに集中します。これは`Effect`モナドに似ていますが、*非同期*な副作用を表現するものです。ファイルシステムとやりとりしてHTTPリクエストを作る、非同期な例を実演していきます。また非同期作用の直列ないし並列な実行の管理方法も押さえます。
+This chapter focuses on the `Aff` monad, which is similar to the `Effect`
+monad, but represents _asynchronous_ side-effects. We'll demonstrate
+examples of asynchronously interacting with the filesystem and making HTTP
+requests. We'll also cover managing sequential and parallel execution of
+asynchronous effects.
 
 ## プロジェクトの準備
 
@@ -13,9 +17,9 @@
 - `affjax` - AJAXと`Aff`を使ったHTTPリクエスト。
 - `parallel` - `Aff`の並列実行。
 
-（Node.js環境のような）ブラウザ外で実行する場合、`affjax`ライブラリは`xhr2`NPMモジュールが必要です。
-このモジュールはこの章の`package.json`中の依存関係に挙げられています。
-以下を走らせてインストールします。
+When running outside of the browser (such as in our Node.js environment),
+the `affjax` library requires the `xhr2` NPM module, which is listed as a
+dependency in the `package.json` of this chapter. Install that by running:
 
 ```shell
 $ npm install
@@ -42,7 +46,8 @@ copyFile('file1.txt', 'file2.txt')
 });
 ```
 
-コールバックや同期関数を使うことも可能ですが、以下の理由から望ましくありません。
+It is also possible to use callbacks or synchronous functions, but those are
+less desirable because:
 
 - コールバックは過剰な入れ子に繋がります。これは「コールバック地獄」や「悪夢のピラミッド」として知られています。
 - 同期関数はアプリ中の他のコードの実行を堰き止めてしまいます。
@@ -58,10 +63,14 @@ PureScriptでの`Aff`モナドはJavaScriptの`async`/`await`構文に似た人�
 なお、`main`は`Effect
 Unit`でなければならないので、`launchAff_`を使って`Aff`から`Effect`へと変換せねばなりません。
 
-上のコード片をコールバックや同期関数を使って書き換えることも可能ですが（例えば`Node.FS.Async`や`Node.FS.Sync`をそれぞれ使います）、JavaScriptで前にお話ししたのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されません。
+It is also possible to re-write the above snippet using callbacks or
+synchronous functions (for example, with `Node.FS.Async` and `Node.FS.Sync`,
+respectively), but those share the same downsides as discussed earlier with
+JavaScript, so that coding style is not recommended.
 
-`Aff`を扱う文法は`Effect`を扱うものと大変似ています。
-どちらもモナドですし、したがってdo記法で書くことができます。
+The syntax for working with `Aff` is very similar to working with
+`Effect`. They are both monads and can therefore be written with do
+notation.
 
 例えば`readTextFile`のシグネチャを見れば、これがファイルの内容を`String`とし、`Aff`に包んで返していることがわかります。
 
@@ -91,18 +100,23 @@ attempt :: forall a. Aff a -> Aff (Either Error a)
 
 ## 演習
 
- 1. （簡単）2つのテキストファイルを連結する関数`concatenateFiles`を書いてください。
+ 1. (Easy) Write a `concatenateFiles` function that concatenates two text
+    files.
 
- 1. （普通）入力ファイル名の配列と出力ファイル名が与えられたとき、複数のテキストファイルを連結する関数`concatenateMany`を書いてください。
-    *手掛かり*：`traverse`を使ってください。
+ 1. (Medium) Write a function `concatenateMany` to concatenate multiple text
+    files, given an array of input and output file names. _Hint_: use
+    `traverse`.
 
  1. （普通）ファイル中の文字数を返すか、エラーがあればそれを返す関数`countCharacters :: FilePath -> Aff
     (Either Error Int)`を書いてください。
 
 ## 更なるAffの資料
 
-もしまだ[公式のAffの手引き](https://pursuit.purescript.org/packages/purescript-aff/)を見ていなければ、今ざっと目を通してください。
-この章の残りの演習を完了する上で事前に必要なことではありませんが、Pursuitで何らかの関数を見付けだす助けになるかもしれません。
+If you haven't already looked at the [official Aff
+guide](https://pursuit.purescript.org/packages/purescript-aff/), skim
+through that now. It's not a direct prerequisite for completing the
+remaining exercises in this chapter, but you may find it helpful to lookup
+some functions on Pursuit.
 
 以下の補足資料についてもあたってみるとよいでしょう。しかし繰り返しになりますがこの章の演習はこれらの内容に依りません。
 
@@ -111,11 +125,19 @@ attempt :: forall a. Aff a -> Aff (Either Error a)
 
 ## HTTPクライアント
 
-`affjax`ライブラリは`Aff`で非同期AJAX HTTP要求する便利な手段を提供します。
-対象としている環境が何であるかによって、[purescript-affjax-web](https://github.com/purescript-contrib/purescript-affjax-web)または[purescript-affjax-node](https://github.com/purescript-contrib/purescript-affjax-node)のどちらかのライブラリを使う必要があります。
-この章の以降ではNodeを対象としていくので、`purescript-affjax-node`を使います。
-より詳しい使用上の情報は[affjaxのドキュメント](https://pursuit.purescript.org/packages/purescript-affjax)にあたってください。
-以下は与えられたURLに向けてHTTP GETを要求し、応答本文ないしエラー文言を返す例です。
+The `affjax` library offers a convenient way to make asynchronous AJAX HTTP
+requests with `Aff`. Depending on what environment you are targeting, you
+need to use either the
+[purescript-affjax-web](https://github.com/purescript-contrib/purescript-affjax-web)
+or the
+[purescript-affjax-node](https://github.com/purescript-contrib/purescript-affjax-node)
+library.
+
+In the rest of this chapter, we will be targeting node and thus using
+`purescript-affjax-node`.  Consult the [Affjax
+docs](https://pursuit.purescript.org/packages/purescript-affjax) for more
+usage information. Here is an example that makes HTTP GET requests at a
+provided URL and returns the response body or an error message:
 
 ```hs
 {{#include ../exercises/chapter9/test/HTTP.purs:getUrl}}
@@ -150,9 +172,12 @@ unit
 非同期計算を*並列にも*合成できたら便利でしょう。
 `Aff`があれば2つの計算を次々に開始するだけで並列に計算できます。
 
-`parallel`パッケージは`Aff`のようなモナドのための型クラス`Parallel`を定義しており、並列実行に対応しています。
-以前に本書でアプリカティブ関手に出会ったとき、並列計算を合成するときにアプリカティブ関手がどれほど便利なのかを見ました。
-実は`Parallel`のインスタンスは、（`Aff`のような）モナド`m`と、並列に計算を合成するために使われるアプリカティブ関手`f`との対応関係を定義しているのです。
+The `parallel` package defines a type class `Parallel` for monads like
+`Aff`, which support parallel execution. When we met applicative functors
+earlier in the book, we observed how applicative functors can be useful for
+combining parallel computations. In fact, an instance for `Parallel` defines
+a correspondence between a monad `m` (such as `Aff`) and an applicative
+functor `f` that can be used to combine computations in parallel:
 
 ```hs
 class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where
@@ -165,16 +190,19 @@ class (Monad m, Applicative f) <= Parallel f m | m -> f, f -> m where
 - `parallel`：モナド`m`中の計算を取り、アプリカティブ関手`f`中の計算に変えます。
 - `sequential`：反対方向に変換します。
 
-`aff`ライブラリは `Aff`モナドの `Parallel`インスタンスを提供します。
-これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に
-`Aff`アクションを組み合わせます。
-両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。
+The `aff` library provides a `Parallel` instance for the `Aff` monad. It
+uses mutable references to combine `Aff` actions in parallel by keeping
+track of which of the two continuations has been called. When both results
+have been returned, we can compute the final result and pass it to the main
+continuation.
 
 アプリカティブ関手では任意個の引数の関数の持ち上げができるので、このアプリカティブコンビネータを使ってより多くの計算を並列に実行できます。
 `traverse`や`sequence`といった、アプリカティブ関手を扱う全ての標準ライブラリ関数から恩恵を受けることもできます。
 
-必要に応じて
-`parralel`と`sequential`を使って型構築子を変更することで、do記法ブロック中でアプリカティブコンビネータを使い、直列的なコードの一部で並列計算を結合したり、またはその逆を行ったりできます。
+We can also combine parallel computations with sequential portions of code
+by using applicative combinators in a do notation block, or vice versa,
+using `parallel` and `sequential` to change type constructors where
+appropriate.
 
 直列実行と並列実行の間の違いを実演するために、100個の10ミリ秒の遅延からなる配列をつくり、それからその遅延を両方の手法で実行します。REPLで試すと`seqDelay`が`parDelay`より遥かに遅いことに気付くでしょう。並列実行が`sequence_`を`parSequence_`で置き換えるだけで有効になるところに注目です。
 
@@ -219,18 +247,20 @@ unit
 
 ## 演習
 
-1. （簡単）前の`concatenateMany`関数と同じシグネチャを持つ`concatenateManyParallel`関数を書いてください。
-   ただし全ての入力ファイルを並列に読むようにしてください。
+1. (Easy) Write a `concatenateManyParallel` function with the same signature
+   as the earlier `concatenateMany` function but reads all input files in
+   parallel.
 
 1. （普通）与えられたURLへHTTP `GET`を要求して以下の何れかを返す`getWithTimeout :: Number -> String
    -> Aff (Maybe String)`関数を書いてください。
     - `Nothing`: 要求してから与えられた時間制限（ミリ秒単位）より長く掛かった場合。
     - 文字列の応答：時間制限を越える前に要求が成功した場合。
 
-1. （難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す`recurseFiles`関数を書いてください。
-   一覧にあるファイルを並列に読んでください。
-   パスはそのファイルが表れたディレクトリから相対的なものです。
-   *手掛かり*：`node_path`モジュールにはディレクトリを扱う上で便利な関数があります。
+1. (Difficult) Write a `recurseFiles` function that takes a "root" file and
+   returns an array of all paths listed in that file (and listed in the
+   listed files too). Read listed files in parallel. Paths are relative to
+   the directory of the file they appear in. _Hint:_ The `node-path` module
+   has some helpful functions for negotiating directories.
 
 例えば次のような`root.txt`ファイルから始まるとします。
 
@@ -261,7 +291,7 @@ $ cat c/a/a.txt
 
 ## まとめ
 
-この章では非同期エフェクトと以下の方法を押さえました。
+In this chapter, we covered asynchronous effects and learned how to:
 
 - `aff`ライブラリを使って`Aff`モナド中で非同期コードを走らせる。
 - `affjax`ライブラリを使って非同期にHTTPリクエストを行う。

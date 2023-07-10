@@ -28,7 +28,14 @@ PureScriptを書く上で（例えば本書の演習を解くなど）お好み�
 git clone https://github.com/purescript-contrib/purescript-book.git
 ```
 
-本のリポジトリにはPureScriptのコード例とそれぞれの章に付属する演習のための単体テストが含まれます。演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。この工程は`resetSolutions.sh`スクリプトを使えば簡単にできます。また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくのもよいでしょう（これらのアンカーはコードスニペットを本の変換後のMarkdownにコピーするために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうがよいでしょう）。
+The book repo contains PureScript example code and unit tests for the
+exercises that accompany each chapter. There's some initial setup required
+to reset the exercise solutions so they are ready to be solved by you. Use
+the `resetSolutions.sh` script to simplify this process. While at it, you
+should also strip out all the anchor comments with the `removeAnchors.sh`
+script (these anchors are used for copying code snippets into the book's
+rendered markdown, and you probably don't need this clutter in your local
+repo):
 
 ```sh
 cd purescript-book
@@ -55,15 +62,19 @@ spago test
 All 2 tests passed! 🎉
 ```
 
-なお、`answer`関数（`src/Euler.purs`にあります）は、任意の整数以下の3と5の倍数を見付けるように変更されています。
-この`answer`関数のためのテストスート（`test/Main.purs`にあります）ははじめの手引きの冒頭にあるテストよりも網羅的です。
-はじめの章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。
+Note that the `answer` function (found in `src/Euler.purs`) has been
+modified to find the multiples of 3 and 5 below any integer. The test suite
+(located in `test/Main.purs`) for this `answer` function is more
+comprehensive than the test in the earlier getting-started guide. Don't
+worry about understanding how this test framework code works while reading
+these early chapters.
 
 本の残りの部分には多くの演習が含まれます。
 `Test.MySolutions`モジュール (`test/MySolutions.purs`)
 に自分の解法を書けば、提供されているテストスートを使って確認できます。
 
-テスト駆動開発のスタイルでこの次の演習を一緒に進めてみましょう。
+Let's work through this next exercise together in a test-driven-development
+style.
 
 ## 演習
 
@@ -71,9 +82,9 @@ All 2 tests passed! 🎉
 
 ## 解法
 
-この演習のテストを有効にするところから始めます。
-以下に示すようにブロックコメントの開始を数行下に下げてください。
-ブロックコメントは`{-`から始まり`-}`で終わります。
+We'll start by enabling the tests for this exercise. Move the start of the
+block-comment down a few lines, as shown below. Block comments start with
+`{-` and end with `-}`:
 
 ```hs
 {{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}
@@ -93,7 +104,8 @@ at test/Main.purs:21:27 - 21:35 (line 21, column 27 - line 21, column 35)
   Unknown value diagonal
 ```
 
-まずは、この関数が欠陥のあるバージョンになっているときに何が起こるのか見てみましょう。以下のコードを`test/MySolutions.purs`に追加してください。
+Let's first look at what happens with a faulty version of this function. Add
+the following code to `test/MySolutions.purs`:
 
 ```hs
 import Data.Number (sqrt)
@@ -147,14 +159,21 @@ All 4 tests passed! 🎉
 この章ではPureScriptコンパイラとSpagoツールをインストールしました。
 演習の解答の書き方と正しさの確認方法も学びました。
 
-この先の章にはもっと沢山の演習があり、それらに取り組むうちに学習の助けになっているでしょう。
-演習のどこかでお手上げになったら、この本の[困ったときは](chapter1.ja.md#getting-help)の節に挙げられているコミュニティの資料のどれかを見てみたり、この[本のリポジトリ](https://github.com/purescript-contrib/purescript-book/issues)にイシューを報告したりできます。
-こうした演習の敷居を下げることに繋がる読者のフィードバックが、本の向上の助けになっています。
+There will be many more exercises in the chapters ahead, and working through
+those helps with learning the material. If any of the exercises stumps you,
+please reach out to any of the community resources listed in the [Getting
+Help](https://book.purescript.org/chapter1.html#getting-help) section of
+this book, or even file an issue in this [book's
+repo](https://github.com/purescript-contrib/purescript-book/issues). This
+reader feedback on which exercises could be made more approachable helps us
+improve the book.
 
-章の全ての演習を解いたら、`no-peeking/Solutions.purs`にあるものと解答とを比べられます。
-ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないことがないようにしてください。
-そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。
-演習のネタバレをするよりも、小さな手掛かりをあげたいからです。
-もっとエレガントな解法（とはいえ本の内容で押さえられている知識のみを必要とするもの）を見つけたときはPRを送ってください。
+Once you solve all the exercises in a chapter, you may compare your answers
+against those in the `no-peeking/Solutions.purs`. No peeking, please,
+without putting in an honest effort to solve these yourself. And even if you
+are stuck, try asking a community member for help first, as we would prefer
+to give you a small hint rather than spoil the exercise. If you found a more
+elegant solution (that only requires knowledge of the covered content),
+please send us a PR.
 
 リポジトリは継続して改訂されているため、それぞれの新しい章を始める前に更新を確認するようにしてください。
