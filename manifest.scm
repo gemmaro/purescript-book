@@ -1,5 +1,4 @@
 (use-modules (gnu packages node)
-             (gnu packages gettext)
-             (gemmaro packages mdbook))
+             (gnu packages gettext))
 
-(packages->manifest (list node-lts po4a mdbook))
+(packages->manifest (list node-lts po4a))

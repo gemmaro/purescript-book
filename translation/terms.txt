@@ -1,0 +1,20 @@
+JavaScript runtime: 実行器
+accumulator: 累算器。一般には「累積」とされることもあるようです。
+canvas: 固有名詞、HTML 5で導入された機能としてのCanvasは英単語として、一般名詞としては「キャンバス」と片仮名にします。
+context: 文脈。一般には単に「コンテキスト」とされるようです。
+corner case: 特殊な場合
+hash code: ハッシュコード。「ハッシュ値」とされていました。
+inhabitant: 現住
+optional: 省略可能な
+pair: 組
+pattern match: パターン照合
+primitive type: 原始型
+run the computation: 計算する。計算を走らせる、が直訳ですが単純にします。
+synonym: 同義語。
+top level: 最上位
+type synonym: 型同義語
+configure: 構成。設定はsettingで一応区別したいです。
+handle: 制御対象
+help message: ヘルプ文言。「使用方法の文言」と噛み砕くのもありそうですが、ややまどろっこしい感じがします。
+open import: 一括インポート
+keyword: キーワード。予約語はまた意味が違ってくるようです。
