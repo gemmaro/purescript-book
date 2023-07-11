@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-07-11 19:41+0900\n"
+"PO-Revision-Date: 2023-07-11 20:15+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -154,11 +154,8 @@ msgid ""
 "to share, even if it's as simple as pointing out a confusing section that we "
 "could make more beginner-friendly."
 msgstr ""
-"この本は言語の進化に伴って継続的に更新されているため、内容に関して発見したど"
-"んな[問題](https://github.com/purescript-contrib/purescript-book/issues)でも"
-"ご報告ください。\n"
-"より初心者にやさしくできそうな分かりづらい節を指摘するような単純なものであ"
-"れ、共有いただいたどんなフィードバックにも感謝します。"
+"本書は言語の進化に伴って継続的に更新されているため、内容に関して発見したどんな[問題](https://github.com/purescript-contrib/purescript-book/issues)でもご報告ください。\n"
+"より初心者にやさしくできそうな分かりづらい節を指摘するような単純なものであれ、共有いただいたどんなフィードバックにも感謝します。"
 
 #. type: Plain text
 #: README.md:12
@@ -211,9 +208,7 @@ msgid ""
 "This book will show you how to get started with the PureScript programming "
 "language, from the basics (setting up a development environment) to the "
 "advanced."
-msgstr ""
-"この本は、基礎（開発環境の立ち上げ）から応用に至るまでの、PureScriptプログラ"
-"ミング言語の始め方を示します。"
+msgstr "本書は、基礎（開発環境の立ち上げ）から応用に至るまでの、PureScriptプログラミング言語の始め方を示します。"
 
 #. type: Plain text
 #: README.md:22
@@ -223,9 +218,8 @@ msgid ""
 "be introduced. Here are some examples of problems that will be solved in "
 "this book:"
 msgstr ""
-"それぞれの章は特定の課題により動機付けられており、その問題を解いていく過程に"
-"おいて、新しい関数型プログラミングの道具と技法が導入されていきます。\n"
-"以下はこの本で解いていく課題の幾つかの例です。"
+"それぞれの章は特定の課題により動機付けられており、その問題を解いていく過程において、新しい関数型プログラミングの道具と技法が導入されていきます。\n"
+"以下は本書で解いていく課題の幾つかの例です。"
 
 #. type: Bullet: '- '
 #: README.md:31
@@ -663,10 +657,8 @@ msgid ""
 "solutions could be integrated into a larger application, but we will also "
 "look at how to call PureScript code from JavaScript, and vice versa."
 msgstr ""
-"この本では小規模な課題をPureScriptで解決することに焦点を当てます。\n"
-"ここで学ぶ手法は大規模なアプリケーションに組み込むこともできますが、"
-"JavaScriptからPureScriptコードを呼び出す方法、及びその逆についても見ていきま"
-"す。"
+"本書では小規模な課題をPureScriptで解決することに焦点を当てます。\n"
+"ここで学ぶ手法は大規模なアプリケーションに組み込むこともできますが、JavaScriptからPureScriptコードを呼び出す方法、及びその逆についても見ていきます。"
 
 #. type: Title ##
 #: text/chapter1.md:82
@@ -682,10 +674,9 @@ msgid ""
 "tools we will use are available in the standard repositories of most modern "
 "operating systems."
 msgstr ""
-"この本でのソフトウェア要件は最小限です。\n"
+"本書のソフトウェア要件は最小限です。\n"
 "第1章では開発環境の構築を一から案内します。\n"
-"これから使用するツールは、ほとんどの現代のオペレーティングシステムの標準リポ"
-"ジトリで使用できるものです。"
+"これから使用するツールは、ほとんどの現代のオペレーティングシステムの標準リポジトリで使用できるものです。"
 
 #. type: Plain text
 #: text/chapter1.md:87
@@ -875,9 +866,9 @@ msgid ""
 "and you will get the most benefit if you read the material, attempt the "
 "exercises, and, most importantly of all, try to write some code of your own."
 msgstr ""
-"この本は初心者にPureScriptへの導入を提供することを目的としており、課題に対するお決まりの解決策の一覧を提供するような類の本ではありません。\n"
-"初心者にとって、本書は楽しい挑戦になるはずです。\n"
-"本書の内容を読み、演習に挑戦すれば得るものがあることでしょう。\n"
+"本書は初心者にPureScriptへの導入を提供することを目的としており、課題に対するお決まりの解決策の一覧を提供するような類の本ではありません。\n"
+"初心者にとっては楽しい挑戦になるはずです。\n"
+"内容を読んで演習に挑戦すれば得るものがあることでしょう。\n"
 "そして何よりも大切なのは、自分自身でコードを書いてみることです。"
 
 #. type: Title ##
@@ -920,10 +911,8 @@ msgid ""
 "into great depth. If a concept in this book is difficult to understand, "
 "consider reading the corresponding section in that reference."
 msgstr ""
-"[PureScript: Jordan's Reference](https://github.com/jordanmartinez/"
-"purescript-jordans-reference)は別のかなり深く踏み込んだ学習資料です。\n"
-"この本の中のある概念が理解しにくかったら、そちらの参考書の対応する節を読むと"
-"よいでしょう。"
+"[PureScript: Jordan's Reference](https://github.com/jordanmartinez/purescript-jordans-reference)は別のかなり深く踏み込んだ学習資料です。\n"
+"本書中の概念で理解しにくいものがあったら、そちらの参考書の対応する節を読むとよいでしょう。"
 
 #. type: Bullet: '- '
 #: text/chapter1.md:146
@@ -1069,16 +1058,14 @@ msgid ""
 "Gareth Hughes and is gratefully reused here under the terms of the [Creative "
 "Commons Attribution 4.0 license](https://creativecommons.org/licenses/"
 "by/4.0/)."
-msgstr "この本の表紙に示されたPureScriptのロゴはGareth Hughesによって作成されたもので、[Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/)の条件の下で再利用させて頂いています 。"
+msgstr "本書の表紙に示されたPureScriptのロゴはGareth Hughesによって作成されたもので、[Creative Commons Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/)の条件の下で再利用させて頂いています 。"
 
 #. type: Plain text
 #: text/chapter1.md:165
 msgid ""
 "Finally, I would like to thank everyone who has given me feedback and "
 "corrections on the contents of this book."
-msgstr ""
-"最後に、この本の内容に関する反応や訂正をくださった全ての方に、心より感謝した"
-"いと思います。"
+msgstr "最後に、本書の内容に関する反応や訂正をくださった全ての方に、心より感謝したいと思います。"
 
 #. type: Title #
 #: text/chapter10.md:1
@@ -1158,11 +1145,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter10.md:17
 #, fuzzy
-#| msgid ""
-#| "There is also an addendum which covers some additional topics which are "
-#| "not as commonly sought-after. Feel free to read these sections, but don't "
-#| "let them stand in the way of progressing through the remainder of the "
-#| "book if they're less relevant to your learning objectives:"
 msgid ""
 "There is also an addendum covering some additional topics that are not as "
 "commonly sought-after. Feel free to read these sections, but don't let them "
@@ -1170,8 +1152,7 @@ msgid ""
 "less relevant to your learning objectives:"
 msgstr ""
 "さらに一般にはそこまで重用されない幾つかの話題を押さえた補遺もあります。\n"
-"ご自由にこれらの節を読んで構いませんが、学習目標にあまり関係しなければ、本の"
-"残りを読み進める妨げにならないようにしてください。"
+"ご自由にこれらの節を読んで構いませんが、学習目標にあまり関係しなければ、本書の残りを読み進める妨げにならないようにしてください。"
 
 #. type: Bullet: '- '
 #: text/chapter10.md:20
@@ -15399,10 +15380,8 @@ msgid ""
 "youtube.com/watch?v=GPjPwb6d-70) helpful if that better suits your learning "
 "style."
 msgstr ""
-"この章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、この本で"
-"提供されているテストを使って答えを確認します。\n"
-"もし映像を見る学習の仕方が合っているようでしたら、[この章を通しで進めるビデ"
-"オ](https://www.youtube.com/watch?v=GPjPwb6d-70)が役に立つでしょう。"
+"本章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、本書で提供されているテストを使って答えを確認します。\n"
+"もし映像を見る学習の仕方が合っているようでしたら、[本章を通しで進めるビデオ](https://www.youtube.com/watch?v=GPjPwb6d-70)が役に立つでしょう。"
 
 #. type: Title ##
 #: text/chapter2.md:7
@@ -15472,9 +15451,7 @@ msgstr "演習を解く"
 msgid ""
 "Now that you've installed the necessary development tools, clone this book's "
 "repo."
-msgstr ""
-"ここまでで必要な開発ツールをインストールできているので、この本のリポジトリを"
-"クローンしてください。"
+msgstr "ここまでで必要な開発ツールをインストールできているので、本書のリポジトリをクローンしてください。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:23
@@ -15484,16 +15461,6 @@ msgstr "git clone https://github.com/purescript-contrib/purescript-book.git\n"
 
 #. type: Plain text
 #: text/chapter2.md:28
-#, fuzzy
-#| msgid ""
-#| "The book repo contains PureScript example code and unit tests for the "
-#| "exercises that accompany each chapter. There's some initial setup "
-#| "required to reset the exercise solutions so they are ready to be solved "
-#| "by you. Use the `resetSolutions.sh` script to simplify this process. "
-#| "While you're at it, you should also strip out all the anchor comments "
-#| "with the `removeAnchors.sh` script (these anchors are used for copying "
-#| "code snippets into the book's rendered markdown, and you probably don't "
-#| "need this clutter in your local repo):"
 msgid ""
 "The book repo contains PureScript example code and unit tests for the "
 "exercises that accompany each chapter. There's some initial setup required "
@@ -15504,13 +15471,10 @@ msgid ""
 "rendered markdown, and you probably don't need this clutter in your local "
 "repo):"
 msgstr ""
-"本のリポジトリにはPureScriptのコード例とそれぞれの章に付属する演習のための単"
-"体テストが含まれます。演習の解法を白紙に戻すために必要な初期設定があり、この"
-"設定をすることで解く準備ができます。この工程は`resetSolutions.sh`スクリプトを"
-"使えば簡単にできます。また`removeAnchors.sh`スクリプトで全てのアンカーコメン"
-"トを取り除いておくのもよいでしょう（これらのアンカーはコードスニペットを本の"
-"変換後のMarkdownにコピーするために使われており、自分のローカルリポジトリでは"
-"このアンカーで散らかっていないほうがよいでしょう）。"
+"本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テストが含まれます。\n"
+"演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。\n"
+"この工程は`resetSolutions.sh`スクリプトを使えば簡単にできます。\n"
+"また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくと良いでしょう（これらのアンカーはコード片を本書のMarkdownから書き出した媒体に複製するために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうが良いでしょう）。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:29
@@ -15596,9 +15560,8 @@ msgid ""
 "solutions in the `Test.MySolutions` module (`test/MySolutions.purs`), you "
 "can check your work against the provided test suite."
 msgstr ""
-"本の残りの部分には多くの演習が含まれます。\n"
-"`Test.MySolutions`モジュール (`test/MySolutions.purs`) に自分の解法を書けば、"
-"提供されているテストスートを使って確認できます。"
+"本書の残りの部分には多くの演習が含まれます。\n"
+"`Test.MySolutions`モジュール (`test/MySolutions.purs`) に自分の解法を書けば、提供されているテストスートを使って確認できます。"
 
 #. type: Plain text
 #: text/chapter2.md:59
@@ -15826,15 +15789,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter2.md:134
 #, fuzzy
-#| msgid ""
-#| "There will be many more exercises in the chapters ahead, and working "
-#| "through those really helps with learning the material. If you're stumped "
-#| "by any of the exercises, please reach out to any of the community "
-#| "resources listed in the [Getting Help](https://book.purescript.org/"
-#| "chapter1.html#getting-help) section of this book, or even file an issue "
-#| "in this [book's repo](https://github.com/purescript-contrib/purescript-"
-#| "book/issues). This reader feedback on which exercises could be made more "
-#| "approachable helps us improve the book."
 msgid ""
 "There will be many more exercises in the chapters ahead, and working through "
 "those helps with learning the material. If any of the exercises stumps you, "
@@ -15844,26 +15798,13 @@ msgid ""
 "purescript-contrib/purescript-book/issues). This reader feedback on which "
 "exercises could be made more approachable helps us improve the book."
 msgstr ""
-"この先の章にはもっと沢山の演習があり、それらに取り組むうちに学習の助けになっ"
-"ているでしょう。\n"
-"演習のどこかでお手上げになったら、この本の[困ったときは](chapter1.ja."
-"md#getting-help)の節に挙げられているコミュニティの資料のどれかを見てみたり、"
-"この[本のリポジトリ](https://github.com/purescript-contrib/purescript-book/"
-"issues)にイシューを報告したりできます。\n"
-"こうした演習の敷居を下げることに繋がる読者のフィードバックが、本の向上の助け"
-"になっています。"
+"この先の章にはもっと沢山の演習があり、それらに取り組むうちに学習の助けになっているでしょう。\n"
+"演習のどこかでお手上げになったら、本書の[困ったときは](chapter1.ja.md#getting-help)の節に挙げられているコミュニティの資料のどれかを見てみたり、[本書のリポジトリ](https://github.com/purescript-contrib/purescript-book/issues)にイシューを報告したりできます。\n"
+"こうした演習の敷居を下げることに繋がる読者のフィードバックが、本書の向上の助けになっています。"
 
 #. type: Plain text
 #: text/chapter2.md:136
 #, fuzzy
-#| msgid ""
-#| "Once you solve all the exercises in a chapter, you may compare your "
-#| "answers against those in the `no-peeking/Solutions.purs`. No peeking "
-#| "please without putting in an honest effort to solve these yourself "
-#| "though. And even if you are stuck, try asking a community member for help "
-#| "first, as we would prefer to give you a small hint rather than spoil the "
-#| "exercise. If you found a more elegant solution (that still only requires "
-#| "knowledge of covered content), please send us a PR."
 msgid ""
 "Once you solve all the exercises in a chapter, you may compare your answers "
 "against those in the `no-peeking/Solutions.purs`. No peeking, please, "
@@ -15873,15 +15814,11 @@ msgid ""
 "elegant solution (that only requires knowledge of the covered content), "
 "please send us a PR."
 msgstr ""
-"章の全ての演習を解いたら、`no-peeking/Solutions.purs`にあるものと解答とを比べ"
-"られます。\n"
-"ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないこ"
-"とがないようにしてください。\n"
-"そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるよう"
-"にしてください。\n"
+"章の全ての演習を解いたら、`no-peeking/Solutions.purs`にあるものと解答とを比べられます。\n"
+"ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないことがないようにしてください。\n"
+"そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。\n"
 "演習のネタバレをするよりも、小さな手掛かりをあげたいからです。\n"
-"もっとエレガントな解法（とはいえ本の内容で押さえられている知識のみを必要とす"
-"るもの）を見つけたときはPRを送ってください。"
+"もっとエレガントな解法（とはいえ本書の内容で押さえられている知識のみを必要とするもの）を見つけたときはPRを送ってください。"
 
 #. type: Plain text
 #: text/chapter2.md:137
@@ -18485,9 +18422,8 @@ msgid ""
 "structure algorithms. Recursion is a basic technique used in functional "
 "programming, which we will use throughout this book."
 msgstr ""
-"この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて"
-"見ていきましょう。再帰は関数型プログラミングの基本的な手法であり、この本の全"
-"体に亙って使われます。"
+"この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて見ていきましょう。\n"
+"再帰は関数型プログラミングの基本的な手法であり、本書全体に<ruby>亙<rp>（</rp><rt>わた</rt><rp>）</rp></ruby>って使われます。"
 
 #. type: Plain text
 #: text/chapter4.md:8
