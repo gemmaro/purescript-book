@@ -2,8 +2,8 @@
 
 ## この章の目標
 
-この章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、この本で提供されているテストを使って答えを確認します。
-もし映像を見る学習の仕方が合っているようでしたら、[この章を通しで進めるビデオ](https://www.youtube.com/watch?v=GPjPwb6d-70)が役に立つでしょう。
+本章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、本書で提供されているテストを使って答えを確認します。
+もし映像を見る学習の仕方が合っているようでしたら、[本章を通しで進めるビデオ](https://www.youtube.com/watch?v=GPjPwb6d-70)が役に立つでしょう。
 
 ## 環境構築
 
@@ -22,20 +22,16 @@ PureScriptを書く上で（例えば本書の演習を解くなど）お好み�
 
 ## 演習を解く
 
-ここまでで必要な開発ツールをインストールできているので、この本のリポジトリをクローンしてください。
+ここまでで必要な開発ツールをインストールできているので、本書のリポジトリをクローンしてください。
 
 ```sh
 git clone https://github.com/purescript-contrib/purescript-book.git
 ```
 
-The book repo contains PureScript example code and unit tests for the
-exercises that accompany each chapter. There's some initial setup required
-to reset the exercise solutions so they are ready to be solved by you. Use
-the `resetSolutions.sh` script to simplify this process. While at it, you
-should also strip out all the anchor comments with the `removeAnchors.sh`
-script (these anchors are used for copying code snippets into the book's
-rendered markdown, and you probably don't need this clutter in your local
-repo):
+本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テストが含まれます。
+演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。
+この工程は`resetSolutions.sh`スクリプトを使えば簡単にできます。
+また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくと良いでしょう（これらのアンカーはコード片を本書のMarkdownから書き出した媒体に複製するために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうが良いでしょう）。
 
 ```sh
 cd purescript-book
@@ -62,19 +58,15 @@ spago test
 All 2 tests passed! 🎉
 ```
 
-Note that the `answer` function (found in `src/Euler.purs`) has been
-modified to find the multiples of 3 and 5 below any integer. The test suite
-(located in `test/Main.purs`) for this `answer` function is more
-comprehensive than the test in the earlier getting-started guide. Don't
-worry about understanding how this test framework code works while reading
-these early chapters.
+なお、（`src/Euler.purs`にある）`answer`関数は任意の整数以下の3と5の倍数を見付けるように変更されています。
+（`test/Main.purs`にある）この`answer`関数のためのテストスートははじめの手引きの冒頭にあるテストよりも網羅的です。
+前の方の章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。
 
-本の残りの部分には多くの演習が含まれます。
+本書の残りの部分には多くの演習が含まれます。
 `Test.MySolutions`モジュール (`test/MySolutions.purs`)
 に自分の解法を書けば、提供されているテストスートを使って確認できます。
 
-Let's work through this next exercise together in a test-driven-development
-style.
+テスト駆動開発でこの次の演習を一緒に進めてみましょう。
 
 ## 演習
 
@@ -82,9 +74,9 @@ style.
 
 ## 解法
 
-We'll start by enabling the tests for this exercise. Move the start of the
-block-comment down a few lines, as shown below. Block comments start with
-`{-` and end with `-}`:
+この演習のテストを有効にするところから始めます。
+以下に示すようにブロックコメントの開始を数行下に下げてください。
+ブロックコメントは`{-`から始まり`-}`で終わります。
 
 ```hs
 {{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}
@@ -104,8 +96,8 @@ at test/Main.purs:21:27 - 21:35 (line 21, column 27 - line 21, column 35)
   Unknown value diagonal
 ```
 
-Let's first look at what happens with a faulty version of this function. Add
-the following code to `test/MySolutions.purs`:
+まずはこの関数に欠陥があるときに何が起こるのか見てみましょう。
+以下のコードを`test/MySolutions.purs`に追加してください。
 
 ```hs
 import Data.Number (sqrt)
@@ -159,21 +151,14 @@ All 4 tests passed! 🎉
 この章ではPureScriptコンパイラとSpagoツールをインストールしました。
 演習の解答の書き方と正しさの確認方法も学びました。
 
-There will be many more exercises in the chapters ahead, and working through
-those helps with learning the material. If any of the exercises stumps you,
-please reach out to any of the community resources listed in the [Getting
-Help](https://book.purescript.org/chapter1.html#getting-help) section of
-this book, or even file an issue in this [book's
-repo](https://github.com/purescript-contrib/purescript-book/issues). This
-reader feedback on which exercises could be made more approachable helps us
-improve the book.
+この先の章にはもっと沢山の演習があり、それらに取り組むうちに内容を学ぶ助けになっているでしょう。
+演習のどこかでお手上げになったら、本書の[困ったときは](chapter1.ja.md#getting-help)の節に挙げられているコミュニティの資料のどれかに手を伸ばしたり、[本書のリポジトリ](https://github.com/purescript-contrib/purescript-book/issues)でイシューを報告したりできます。
+こうした演習の敷居を下げることに繋がる読者のフィードバックのお陰で本書が改善されています。
 
-Once you solve all the exercises in a chapter, you may compare your answers
-against those in the `no-peeking/Solutions.purs`. No peeking, please,
-without putting in an honest effort to solve these yourself. And even if you
-are stuck, try asking a community member for help first, as we would prefer
-to give you a small hint rather than spoil the exercise. If you found a more
-elegant solution (that only requires knowledge of the covered content),
-please send us a PR.
+章の全ての演習を解いたら、`no-peeking/Solutions.purs`にあるものと解答とを比べられます。
+カンニングはせず、演習を誠実に自力で解く労力を割いてください。
+そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。
+ネタバレをするよりも小さな手掛かりをあげたいからです。
+もっとエレガントな解法（とはいえ本書で押さえられている知識のみで済むもの）を見つけたときはPRを送ってください。
 
 リポジトリは継続して改訂されているため、それぞれの新しい章を始める前に更新を確認するようにしてください。

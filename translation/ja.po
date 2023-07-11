@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-07-11 20:15+0900\n"
+"PO-Revision-Date: 2023-07-12 08:37+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -15530,14 +15530,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter2.md:55
-#, fuzzy
-#| msgid ""
-#| "Note that the `answer` function (found in `src/Euler.purs`) has been "
-#| "modified to find the multiples of 3 and 5 below any integer. The test "
-#| "suite (found in `test/Main.purs`) for this `answer` function is more "
-#| "comprehensive than the test in the earlier getting-started guide. Don't "
-#| "worry about understanding how this test framework code works while "
-#| "reading these early chapters."
 msgid ""
 "Note that the `answer` function (found in `src/Euler.purs`) has been "
 "modified to find the multiples of 3 and 5 below any integer. The test suite "
@@ -15546,12 +15538,9 @@ msgid ""
 "worry about understanding how this test framework code works while reading "
 "these early chapters."
 msgstr ""
-"なお、`answer`関数（`src/Euler.purs`にあります）は、任意の整数以下の3と5の倍"
-"数を見付けるように変更されています。\n"
-"この`answer`関数のためのテストスート（`test/Main.purs`にあります）ははじめの"
-"手引きの冒頭にあるテストよりも網羅的です。\n"
-"はじめの章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い"
-"詰めなくて大丈夫です。"
+"なお、（`src/Euler.purs`にある）`answer`関数は任意の整数以下の3と5の倍数を見付けるように変更されています。\n"
+"（`test/Main.purs`にある）この`answer`関数のためのテストスートははじめの手引きの冒頭にあるテストよりも網羅的です。\n"
+"前の方の章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。"
 
 #. type: Plain text
 #: text/chapter2.md:57
@@ -15565,14 +15554,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter2.md:59
-#, fuzzy
-#| msgid ""
-#| "Let's work through this next exercise together in test-driven-development "
-#| "style."
 msgid ""
 "Let's work through this next exercise together in a test-driven-development "
 "style."
-msgstr "テスト駆動開発のスタイルでこの次の演習を一緒に進めてみましょう。"
+msgstr "テスト駆動開発でこの次の演習を一緒に進めてみましょう。"
 
 #. type: Title ##
 #: text/chapter2.md:60
@@ -15598,11 +15583,6 @@ msgstr "解法"
 
 #. type: Plain text
 #: text/chapter2.md:67
-#, fuzzy
-#| msgid ""
-#| "We'll start by enabling the tests for this exercise. Move the start of "
-#| "the block-comment down a few lines as shown below. Block comments start "
-#| "with `{-` and end with `-}`:"
 msgid ""
 "We'll start by enabling the tests for this exercise. Move the start of the "
 "block-comment down a few lines, as shown below. Block comments start with `{-"
@@ -15653,16 +15633,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter2.md:86
-#, fuzzy
-#| msgid ""
-#| "Let's first take a look at what happens with a faulty version of this "
-#| "function. Add the following code to `test/MySolutions.purs`:"
 msgid ""
 "Let's first look at what happens with a faulty version of this function. Add "
 "the following code to `test/MySolutions.purs`:"
 msgstr ""
-"まずは、この関数が欠陥のあるバージョンになっているときに何が起こるのか見てみ"
-"ましょう。以下のコードを`test/MySolutions.purs`に追加してください。"
+"まずはこの関数に欠陥があるときに何が起こるのか見てみましょう。\n"
+"以下のコードを`test/MySolutions.purs`に追加してください。"
 
 #. type: Fenced code block (hs)
 #: text/chapter2.md:87
@@ -15788,7 +15764,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter2.md:134
-#, fuzzy
 msgid ""
 "There will be many more exercises in the chapters ahead, and working through "
 "those helps with learning the material. If any of the exercises stumps you, "
@@ -15798,13 +15773,12 @@ msgid ""
 "purescript-contrib/purescript-book/issues). This reader feedback on which "
 "exercises could be made more approachable helps us improve the book."
 msgstr ""
-"この先の章にはもっと沢山の演習があり、それらに取り組むうちに学習の助けになっているでしょう。\n"
-"演習のどこかでお手上げになったら、本書の[困ったときは](chapter1.ja.md#getting-help)の節に挙げられているコミュニティの資料のどれかを見てみたり、[本書のリポジトリ](https://github.com/purescript-contrib/purescript-book/issues)にイシューを報告したりできます。\n"
-"こうした演習の敷居を下げることに繋がる読者のフィードバックが、本書の向上の助けになっています。"
+"この先の章にはもっと沢山の演習があり、それらに取り組むうちに内容を学ぶ助けになっているでしょう。\n"
+"演習のどこかでお手上げになったら、本書の[困ったときは](chapter1.ja.md#getting-help)の節に挙げられているコミュニティの資料のどれかに手を伸ばしたり、[本書のリポジトリ](https://github.com/purescript-contrib/purescript-book/issues)でイシューを報告したりできます。\n"
+"こうした演習の敷居を下げることに繋がる読者のフィードバックのお陰で本書が改善されています。"
 
 #. type: Plain text
 #: text/chapter2.md:136
-#, fuzzy
 msgid ""
 "Once you solve all the exercises in a chapter, you may compare your answers "
 "against those in the `no-peeking/Solutions.purs`. No peeking, please, "
@@ -15815,10 +15789,10 @@ msgid ""
 "please send us a PR."
 msgstr ""
 "章の全ての演習を解いたら、`no-peeking/Solutions.purs`にあるものと解答とを比べられます。\n"
-"ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないことがないようにしてください。\n"
+"カンニングはせず、演習を誠実に自力で解く労力を割いてください。\n"
 "そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。\n"
-"演習のネタバレをするよりも、小さな手掛かりをあげたいからです。\n"
-"もっとエレガントな解法（とはいえ本書の内容で押さえられている知識のみを必要とするもの）を見つけたときはPRを送ってください。"
+"ネタバレをするよりも小さな手掛かりをあげたいからです。\n"
+"もっとエレガントな解法（とはいえ本書で押さえられている知識のみで済むもの）を見つけたときはPRを送ってください。"
 
 #. type: Plain text
 #: text/chapter2.md:137
