@@ -1,1 +1,3 @@
 primitive type: 原始型
+type synonym: 型同義語
+optional: 省略可能な
