@@ -1024,7 +1024,7 @@ Map String Int
 1. （簡単）より広い種類のマップに関して動作するよう、前のJavaScriptの関数の新しい梱包を書いてください。
    シグネチャは`valuesOfMapGeneric :: forall k v. Map k v -> Either
    JsonDecodeError (Set v)`です。
-   なお`k`と`v`に幾つかの型クラス制約を加える必要があるでしょう。
+   なお、`k`と`v`に幾つかの型クラス制約を加える必要があるでしょう。
    コンパイラが導いてくれます。
 1. (Medium) Rewrite the earlier `quadraticRoots` function as
    `quadraticRootsSet` that returns the `Complex` roots as a `Set` via JSON
@@ -1118,7 +1118,7 @@ validateAndSave = do
       log "Saved"
 ```
 
-なおこの段階でコンパイルしようとすると以下のエラーに遭遇します。
+なお、この段階でコンパイルしようとすると以下のエラーに遭遇します。
 
 ```text
   No type class instance was found for

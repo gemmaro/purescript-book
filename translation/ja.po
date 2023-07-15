@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-07-16 08:51+0900\n"
+"PO-Revision-Date: 2023-07-16 08:57+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -3746,11 +3746,9 @@ msgid ""
 "you'll need to add some type class constraints for `k` and `v`. The compiler "
 "will guide you."
 msgstr ""
-"（簡単）より広い種類のマップに関して動作するよう、前のJavaScriptの関数の新し"
-"い梱包を書いてください。\n"
-"シグネチャは`valuesOfMapGeneric :: forall k v. Map k v -> Either "
-"JsonDecodeError (Set v)`です。\n"
-"なお`k`と`v`に幾つかの型クラス制約を加える必要があるでしょう。\n"
+"（簡単）より広い種類のマップに関して動作するよう、前のJavaScriptの関数の新しい梱包を書いてください。\n"
+"シグネチャは`valuesOfMapGeneric :: forall k v. Map k v -> Either JsonDecodeError (Set v)`です。\n"
+"なお、`k`と`v`に幾つかの型クラス制約を加える必要があるでしょう。\n"
 "コンパイラが導いてくれます。"
 
 #. type: Bullet: '1. '
@@ -4037,7 +4035,7 @@ msgstr ""
 msgid ""
 "Note that if we attempt to compile at this stage, we'll encounter the "
 "following error:"
-msgstr "なおこの段階でコンパイルしようとすると以下のエラーに遭遇します。"
+msgstr "なお、この段階でコンパイルしようとすると以下のエラーに遭遇します。"
 
 #. type: Fenced code block (text)
 #: text/chapter10.md:983
@@ -4105,13 +4103,6 @@ msgstr "item <- getItem \"person\"\n"
 #. type: Plain text
 #: text/chapter10.md:1005
 #, fuzzy
-#| msgid ""
-#| "Then we'll create a helper function to handle converting the string from "
-#| "local storage to our `Person` record. Note that this string in storage "
-#| "may be `null`, so we represent it as a foreign `Json` until it is "
-#| "successfully decoded as a `String`. There are a number of other "
-#| "conversion steps along the way - each of which return an `Either` value, "
-#| "so it makes sense to organize these together in a `do` block."
 msgid ""
 "Then we'll create a helper function to convert the string from local storage "
 "to our `Person` record. Note that this string in storage may be `null`, so "
@@ -4120,10 +4111,8 @@ msgid ""
 "of which returns an `Either` value, so it makes sense to organize these "
 "together in a `do` block."
 msgstr ""
-"そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助"
-"関数をつくります。\n"
-"なおこのストレージ中の文字列は`null`かもしれないので、うまく`String`としてデ"
-"コードされるまでは外部の`Json`として表現します。\n"
+"そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助関数をつくります。\n"
+"なお、このストレージ中の文字列は`null`かもしれないので、うまく`String`としてデコードされるまでは外部の`Json`として表現します。\n"
 "道中には他にも多くの変換工程があり、それぞれで`Either`の値を返します。\n"
 "そのためこれらを`do`ブロックの中に纏めるのは理に適っています。"
 
@@ -5894,12 +5883,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:107
 #, fuzzy
-#| msgid ""
-#| "Note that these API signatures are presented in a simplified form using "
-#| "the `State` type constructor for now. The actual API involves "
-#| "`MonadState` which we'll cover in the later \"Type Classes\" section of "
-#| "this chapter, so don't worry if you see different signatures in your IDE "
-#| "tooltips or on Pursuit."
 msgid ""
 "Note that these API signatures are presented in a simplified form using the "
 "`State` type constructor for now. The actual API involves `MonadState`, "
@@ -5907,12 +5890,9 @@ msgid ""
 "don't worry if you see different signatures in your IDE tooltips or on "
 "Pursuit."
 msgstr ""
-"なおここではこれらのAPIシグネチャは`State`型構築子を使った、単純化された形式"
-"で表されています。\n"
-"実際のAPIは本章の後にある「型クラス」節で押さえる`MonadState`が関わってきま"
-"す。\n"
-"ですからIDEのツールチップやPursuitで違うシグネチャを見たとしても心配しないで"
-"ください。"
+"なお、ここではこれらのAPIシグネチャは`State`型構築子を使った、単純化された形式で表されています。\n"
+"実際のAPIは本章の後にある「型クラス」節で押さえる`MonadState`が関わってきます。\n"
+"ですからIDEのツールチップやPursuitで違うシグネチャを見たとしても心配しないでください。"
 
 #. type: Plain text
 #: text/chapter11.md:109
@@ -11166,10 +11146,8 @@ msgid ""
 "`State` type, but this would be inappropriate because it is not a changing "
 "part of the state of the system."
 msgstr ""
-"なおこの章のソースコードでは、名前 `ctx`がスコープに入るように、`interpret`関"
-"数は `main`関数内で `let`束縛を使用して定義されています。\n"
-"`State`型がコンテキストを持つように変更できるでしょうが、それはこのシステムの"
-"状態の変化する部分ではないので不適切でしょう。"
+"なお、この章のソースコードでは、名前 `ctx`がスコープに入るように、`interpret`関数は `main`関数内で `let`束縛を使用して定義されています。\n"
+"`State`型がコンテキストを持つように変更できるでしょうが、それはこのシステムの状態の変化する部分ではないので不適切でしょう。"
 
 #. type: Plain text
 #: text/chapter12.md:542
@@ -18172,7 +18150,7 @@ msgstr ""
 #, no-wrap
 msgid "> Note that, while the above examples of `factorial` and `fib` work as intended, a more idiomatic implementation would use pattern matching instead of `if`/`then`/`else`. Pattern-matching techniques are discussed in a later chapter.\n"
 msgstr ""
-"> なお上の`factorial`と`fib`の例は意図通りに動きますが、よりPureScriptらしい実装では`if`や`then`や`else`を使う代わりにパターン照合を使うものでしょう。\n"
+"> なお、上の`factorial`と`fib`の例は意図通りに動きますが、よりPureScriptらしい実装では`if`や`then`や`else`を使う代わりにパターン照合を使うものでしょう。\n"
 "> パターン照合の技法は後の章でお話しします。\n"
 
 #. type: Title ##
@@ -21037,19 +21015,13 @@ msgstr "{{#include ../exercises/chapter5/src/ChapterExamples.purs:sortPair}}\n"
 #. type: Plain text
 #: text/chapter5.md:227
 #, fuzzy
-#| msgid ""
-#| "This way, we save ourselves from allocating a new array if the pair is "
-#| "already sorted. Note that if the input array does not contain _exactly_ "
-#| "two elements, then this function simply returns it unchanged, even if "
-#| "it's unsorted."
 msgid ""
 "This way, we save ourselves from allocating a new array if the pair is "
 "already sorted. Note that if the input array does not contain _exactly_ two "
 "elements, then this function returns it unchanged, even if it's unsorted."
 msgstr ""
-"このようにすれば対が既に整列されているときに新しい配列を割り当てなくて済みま"
-"す。なおもし入力の配列が _厳密に_ 2つの要素を含んでいなければ、たとえ整列され"
-"ていなかったとしても、この関数は単に元のまま変えずに返しています。"
+"このようにすれば対が既に整列されているときに新しい配列を割り当てなくて済みます。\n"
+"なお、もし入力の配列が*厳密に*2つの要素を含んでいなければ、たとえ整列されていなかったとしても、この関数は単に元のまま変えずに返しています。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:233
@@ -21591,18 +21563,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter5.md:361
 #, fuzzy
-#| msgid ""
-#| "Note that we don't use the syntax `forall a.` anywhere in our data "
-#| "definition. `forall` syntax is necessary for functions, but is not used "
-#| "when defining ADTs with `data` or type aliases with `type`."
 msgid ""
 "Note that we don't use the syntax `forall a.` anywhere in our data "
 "definition. `forall` syntax is necessary for functions but is not used when "
 "defining ADTs with `data` or type aliases with `type`."
 msgstr ""
-"なおデータ定義のどこにも構文`forall a`を使っていません。\n"
-"`forall`構文は関数には必須ですが、`data`によるADTや`type`での型別称を定義する"
-"ときは使われません。"
+"なお、データ定義のどこにも構文`forall a`を使っていません。\n"
+"`forall`構文は関数には必須ですが、`data`によるADTや`type`での型別称を定義するときは使われません。"
 
 #. type: Plain text
 #: text/chapter5.md:363
@@ -24591,7 +24558,7 @@ msgstr ""
 msgid "    _Hint_: Search Pursuit for a helper-function with the signature [`String -> Int -> String`](https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String). Note that `String` might appear as a more generic type (such as `Monoid`).\n"
 msgstr ""
 "    *手掛かり*：Pursuitでシグネチャが[`String -> Int -> String`](https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String)の補助関数を検索してください。\n"
-"    なお`String`は（`Monoid`のような）より汎用的な型として現れます。\n"
+"    なお、`String`は（`Monoid`のような）より汎用的な型として現れます。\n"
 
 #. type: Plain text
 #: text/chapter6.md:656
@@ -25482,11 +25449,8 @@ msgid ""
 "almost always used for the latter, so you don't need to worry about name "
 "collisions."
 msgstr ""
-"なおこの[`apply`](https://pursuit.purescript.org/packages/purescript-prelude/"
-"docs/Control.Apply#v:apply)は`Data.Function`の[`apply`](https://pursuit."
-"purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply)（中置"
-"で`$`）とは異なります。幸いにも後者はほぼ常に中置記法として使われるので、名前"
-"の衝突については心配ご無用です。"
+"なお、この[`apply`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Apply#v:apply)は`Data.Function`の[`apply`](https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply)（中置で`$`）とは異なります。\n"
+"幸いにも後者はほぼ常に中置記法として使われるので、名前の衝突については心配ご無用です。"
 
 #. type: Plain text
 #: text/chapter7.md:115
@@ -28372,8 +28336,7 @@ msgstr "foldM _ a Nil = pure a\n"
 #. type: Plain text
 #: text/chapter8.md:237
 msgid "Note that we have to use `pure` to lift `a` into the monad `m`."
-msgstr ""
-"なお`a`をモナド `m`まで持ち上げるために `pure`を使わなくてはいけません。"
+msgstr "なお、`a`をモナド `m`まで持ち上げるために `pure`を使わなくてはいけません。"
 
 #. type: Plain text
 #: text/chapter8.md:239
@@ -29758,10 +29721,9 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:637
 #, fuzzy, no-wrap
-#| msgid "Note that this resulting JavaScript is not as optimal as it could be. See [this issue](https://github.com/purescript-contrib/purescript-book/issues/121) for more details. The above snippet should be updated once that issue is resolved."
 msgid "> Note that this resulting JavaScript is not as optimal as it could be. See [this issue](https://github.com/purescript-contrib/purescript-book/issues/121) for more details. The above snippet should be updated once that issue is resolved.\n"
 msgstr ""
-"なおこの結果として得られたJavaScriptは最適化の余地があります。\n"
+"なお、この結果として得られたJavaScriptは最適化の余地があります。\n"
 "詳細は[この課題](https://github.com/purescript-contrib/purescript-book/issues/121)を参照してください。\n"
 "上記の抜粋はその課題が解決されたら更新されるでしょう。"
 
@@ -30887,7 +30849,7 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:963
 msgid "Note that `handleValue` can be substituted as:"
-msgstr "なお`handleValue`は以下のようにも置き換えられます。"
+msgstr "なお、`handleValue`は以下のようにも置き換えられます。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:964
