@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-07-14 21:38+0900\n"
+"PO-Revision-Date: 2023-07-16 08:51+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -6440,26 +6440,14 @@ msgstr "Writerモナド"
 #. type: Plain text
 #: text/chapter11.md:278
 #, fuzzy
-#| msgid ""
-#| "The `Writer` monad provides the ability to accumulate a secondary value "
-#| "in addition to the return value of a computation."
 msgid ""
 "The `Writer` monad allows accumulating a secondary value in addition to the "
 "return value of a computation."
-msgstr ""
-"`Writer`モナドは、計算の返り値に加えて、もう1つの値を累積していく機能を提供し"
-"ます。"
+msgstr "`Writer`モナドは、計算の返り値に加えて、もう1つの値を累算していく機能を提供します。"
 
 #. type: Plain text
 #: text/chapter11.md:280
 #, fuzzy
-#| msgid ""
-#| "A common use case is to accumulate a log of type `String` or `Array "
-#| "String`, but the `Writer` monad is more general than this. It can "
-#| "actually be used to accumulate a value in any monoid, so it might be used "
-#| "to keep track of an integer total using the `Additive Int` monoid, or to "
-#| "track whether any of several intermediate `Boolean` values were true, "
-#| "using the `Disj Boolean` monoid."
 msgid ""
 "A common use case is to accumulate a log of type `String` or `Array String`, "
 "but the `Writer` monad is more general than this. It can accumulate a value "
@@ -6467,12 +6455,8 @@ msgid ""
 "the `Additive Int` monoid or to track whether any of several intermediate "
 "`Boolean` values were true using the `Disj Boolean` monoid."
 msgstr ""
-"よくある使い方としては型 `String`もしくは `Array String`でログを累積していく"
-"というものなどがありますが、 `Writer`モナドはこれよりもっと一般的なもので"
-"す。\n"
-"累積するのに任意のモノイドの値を使うことができ、`Additive Int`モノイドを使っ"
-"て、合計を追跡し続けるのに使ったり、 `Disj Boolean`モノイドを使って途中の "
-"`Boolean`値の何れかが真であるかどうかを追跡するのに使うことができます。"
+"よくある使い方としては型 `String`もしくは `Array String`でログを累算していくというものなどがありますが、 `Writer`モナドはこれよりもっと一般的なものです。\n"
+"累算するのに任意のモノイドの値を使うことができ、`Additive Int`モノイドを使って、合計を追跡し続けるのに使ったり、 `Disj Boolean`モノイドを使って途中の `Boolean`値の何れかが真であるかどうかを追跡するのに使うことができます。"
 
 #. type: Plain text
 #: text/chapter11.md:282
@@ -6503,7 +6487,7 @@ msgstr "tell :: forall w a. Monoid w => w -> Writer w Unit\n"
 msgid ""
 "The `tell` action appends the provided value to the current accumulated "
 "result."
-msgstr "`tell`アクションは、与えられた値を現在の累積結果に付け加えます。"
+msgstr "`tell`アクションは、与えられた値を現在の累算結果に付け加えます。"
 
 #. type: Plain text
 #: text/chapter11.md:292
@@ -6613,9 +6597,7 @@ msgstr ""
 msgid ""
 "Just like in the case of the `State` monad, `execWriter` only returns the "
 "accumulated log, whereas `runWriter` returns both the log and the result."
-msgstr ""
-"ちょうど `State`モナドの場合と同じように、 `execWriter`が累積されたログだけを"
-"返すのに対して、 `runWriter`は累積されたログと結果の両方を返します。"
+msgstr "ちょうど `State`モナドの場合と同じように、 `execWriter`が累算されたログだけを返すのに対して、 `runWriter`は累算されたログと結果の両方を返します。"
 
 #. type: Plain text
 #: text/chapter11.md:333
@@ -13212,14 +13194,11 @@ msgstr "現状のライブラリには幾つもの問題があります。"
 #. type: Bullet: '- '
 #: text/chapter14.md:87
 #, fuzzy
-#| msgid ""
-#| "Creating HTML documents is difficult - every new element requires at "
-#| "least one record and one data constructor."
 msgid ""
 "Creating HTML documents is difficult – every new element requires at least "
 "one record and one data constructor."
 msgstr ""
-"HTML文書の作成に手がかかります。\n"
+"HTML文書の作成に手が掛かります。\n"
 "全ての新しい要素に少なくとも1つのレコードと1つのデータ構築子が必要です。"
 
 #. type: Bullet: '- '
@@ -14483,17 +14462,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:481
 #, fuzzy
-#| msgid ""
-#| "First, we have to choose a monad in which we can interpret our actions. "
-#| "We will use the `Writer String` monad to accumulate a HTML string as our "
-#| "result."
 msgid ""
 "First, we have to choose a monad in which we can interpret our actions. We "
 "will use the `Writer String` monad to accumulate an HTML string as our "
 "result."
 msgstr ""
 "まず、アクションを解釈できるモナドを選ばなければなりません。\n"
-"`Writer String`モナドを使って、結果のHTML文字列を累積することにします。"
+"`Writer String`モナドを使って、結果のHTML文字列を累算することにします。"
 
 #. type: Plain text
 #: text/chapter14.md:483
@@ -14537,9 +14512,7 @@ msgstr ""
 msgid ""
 "The definition of `renderElement` is straightforward, using the `tell` "
 "action from the `Writer` monad to accumulate several small strings:"
-msgstr ""
-"`renderElement`の定義は直感的で、複数の小さな文字列を累積するために `Writer`"
-"モナドの `tell`アクションを使っています。"
+msgstr "`renderElement`の定義は直感的で、複数の小さな文字列を累算するために `Writer`モナドの `tell`アクションを使っています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:499
@@ -18030,8 +18003,7 @@ msgstr "次の章からは、これらの考えかたに基づいて進めてい
 
 #. type: Title #
 #: text/chapter4.md:1
-#, fuzzy, no-wrap
-#| msgid "Recursion, Maps And Folds"
+#, no-wrap
 msgid "Recursion, Maps, And Folds"
 msgstr "再帰、マップ、畳み込み"
 
@@ -18047,11 +18019,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:8
-#, fuzzy
-#| msgid ""
-#| "We will also cover some standard functions from PureScript's standard "
-#| "libraries. We will see the `map` and `fold` functions, as well as some "
-#| "useful special cases, like `filter` and `concatMap`."
 msgid ""
 "We will also cover some standard functions from PureScript's standard "
 "libraries. We will `map`, `fold`, and some useful special cases, like "
@@ -18063,21 +18030,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:10
-#, fuzzy
-#| msgid ""
-#| "The motivating example for this chapter is a library of functions for "
-#| "working with a virtual filesystem. We will apply the techniques learned "
-#| "in this chapter to write functions which compute properties of the files "
-#| "represented by a model of a filesystem."
 msgid ""
 "The motivating example for this chapter is a library of functions for "
 "working with a virtual filesystem. We will apply the techniques learned in "
 "this chapter to write functions that compute properties of the files "
 "represented by a model of a filesystem."
 msgstr ""
-"この章では、仮想的なファイルシステムを操作する関数のライブラリを動機付けに用"
-"います。この章で学ぶ手法を応用して、擬似的なファイルシステムによって表される"
-"ファイルのプロパティを計算する関数を記述します。"
+"この章では、仮想的なファイルシステムを操作する関数のライブラリを動機付けに用います。\n"
+"この章で学ぶ技術を応用し、ファイルシステムのモデルにより表現されるファイルのプロパティを計算する関数を書きます。"
 
 #. type: Plain text
 #: text/chapter4.md:14
@@ -18173,29 +18133,19 @@ msgstr "{{#include ../exercises/chapter4/test/Examples.purs:factorial}}\n"
 
 #. type: Plain text
 #: text/chapter4.md:38
-#, fuzzy
-#| msgid ""
-#| "Here, we can see how the factorial function is computed by reducing the "
-#| "problem to a subproblem - that of computing the factorial of a smaller "
-#| "integer. When we reach zero, the answer is immediate."
 msgid ""
 "Here, we can see how the factorial function is computed by reducing the "
 "problem to a subproblem – computing the factorial of a smaller integer. When "
 "we reach zero, the answer is immediate."
 msgstr ""
-"部分問題へ問題を分割することによって階乗関数がどのように計算されるかがわかり"
-"ます。より小さい数へと階乗を計算していくということです。ゼロに到達すると、答"
-"えは直ちに求まります。"
+"このように、問題を部分問題へ分割することによって階乗関数の計算方法が見てとれます。\n"
+"より小さい数の階乗を計算していくということです。\n"
+"ゼロに到達すると、答えは直ちに求まります。"
 
 #. type: Plain text
 #: text/chapter4.md:40
-#, fuzzy
-#| msgid ""
-#| "Here is another common example, which computes the _Fibonacci function_:"
 msgid "Here is another common example that computes the _Fibonacci function_:"
-msgstr ""
-"次は、 _フィボナッチ関数_ (Fibonacci function) を計算するという、これまたよく"
-"ある例です。"
+msgstr "次は、*フィボナッチ関数*を計算するという、これまたよくある例です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter4.md:41
@@ -18219,10 +18169,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:48
-#, fuzzy, no-wrap
-#| msgid "Note that, while the above examples of `factorial` and `fib` work as intended, a more idiomatic implementation would use pattern matching instead of `if`/`then`/`else`. Pattern matching techniques are discussed in a later chapter."
+#, no-wrap
 msgid "> Note that, while the above examples of `factorial` and `fib` work as intended, a more idiomatic implementation would use pattern matching instead of `if`/`then`/`else`. Pattern-matching techniques are discussed in a later chapter.\n"
-msgstr "なお上の`factorial`と`fib`の例は意図通りに動きますが、よりPureScriptらしい実装では`if`や`then`や`else`を使う代わりにパターン照合を使うものでしょう。パターン照合の技法は後の章でお話しします。"
+msgstr ""
+"> なお上の`factorial`と`fib`の例は意図通りに動きますが、よりPureScriptらしい実装では`if`や`then`や`else`を使う代わりにパターン照合を使うものでしょう。\n"
+"> パターン照合の技法は後の章でお話しします。\n"
 
 #. type: Title ##
 #: text/chapter4.md:49
@@ -18273,33 +18224,18 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:65
-#, fuzzy
-#| msgid ""
-#| "In this function, we use an `if .. then .. else` expression to branch "
-#| "based on the emptiness of the array. The `null` function returns `true` "
-#| "on an empty array. Empty arrays have length zero, and a non-empty array "
-#| "has a length that is one more than the length of its tail."
 msgid ""
 "In this function, we use an `if .. then .. else` expression to branch based "
 "on the emptiness of the array. The `null` function returns `true` on an "
 "empty array. Empty arrays have a length of zero, and a non-empty array has a "
 "length that is one more than the length of its tail."
 msgstr ""
-"この関数では配列が空かどうかで分岐するために`if ... then ... else`式を使って"
-"います。\n"
-"この`null`関数は配列が空のときに`true`を返します。\n"
-"空の配列の長さはゼロであり、空でない配列の長さは配列の先頭を取り除いた残りの"
-"部分の長さより1大きいというわけです。"
+"この関数では配列が空かどうかで分岐するために`if ... then ... else`式を使っています。\n"
+"この`null`関数は空の配列で`true`を返します。\n"
+"空の配列の長さはゼロであり、空でない配列の長さは尾鰭の長さより1大きいというわけです。"
 
 #. type: Plain text
 #: text/chapter4.md:67
-#, fuzzy
-#| msgid ""
-#| "The `tail` function returns a `Maybe` wrapping the given array without "
-#| "its first element. If the array is empty (i.e. it doesn't have a tail) "
-#| "`Nothing` is returned. The `fromMaybe` function takes a default value and "
-#| "a `Maybe` value. If the latter is `Nothing` it returns the default, in "
-#| "the other case it returns the value wrapped by `Just`."
 msgid ""
 "The `tail` function returns a `Maybe` wrapping the given array without its "
 "first element. If the array is empty (i.e., it doesn't have a tail), "
@@ -18307,56 +18243,35 @@ msgid ""
 "`Maybe` value. If the latter is `Nothing` it returns the default; in the "
 "other case, it returns the value wrapped by `Just`."
 msgstr ""
-"`tail`関数は与えられた配列から最初の要素を除いたものを`Maybe`に包んで返しま"
-"す。配列が空であれば（つまり尾鰭がなければ）`Nothing`が返ります。`fromMaybe`"
-"関数は既定値と`Maybe`値を取ります。後者が`Nothing`であれば既定値を返し、そう"
-"でなければ`Just`に包まれた値を返します。"
+"`tail`関数は与えられた配列から最初の要素を除いたものを`Maybe`に包んで返します。\n"
+"配列が空であれば（つまり尾鰭がなければ）`Nothing`が返ります。\n"
+"`fromMaybe`関数は既定値と`Maybe`値を取ります。\n"
+"後者が`Nothing`であれば既定値を返し、そうでなければ`Just`に包まれた値を返します。"
 
 #. type: Plain text
 #: text/chapter4.md:69
-#, fuzzy
-#| msgid ""
-#| "This example is obviously a very impractical way to find the length of an "
-#| "array in JavaScript, but should provide enough help to allow you to "
-#| "complete the following exercises:"
 msgid ""
 "This example is a very impractical way to find the length of an array in "
 "JavaScript, but it should provide enough help to allow you to complete the "
 "following exercises:"
-msgstr ""
-"JavaScriptで配列の長さを調べるのには、この例はどう見ても実用的な方法とはいえ"
-"ませんが、次の演習を完遂するための手がかりとしては充分でしょう。"
+msgstr "JavaScriptで配列の長さを調べるのには、この例はどう見ても実用的な方法とはいえませんが、次の演習を完遂するための手掛かりとしては充分でしょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:74
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a recursive function `isEven` which returns `true` if and "
-#| "only if its input is an even integer."
 msgid ""
 "(Easy) Write a recursive function `isEven` that returns `true` if and only "
 "if its input is an even integer."
-msgstr ""
-"（簡単）入力が偶数であるとき、かつそのときに限り`true`に返すような再帰関数を"
-"書いてみましょう。"
+msgstr "（簡単）入力が偶数であるとき、かつそのときに限り`true`に返す再帰関数`isEven`を書いてみましょう。"
 
 #. type: Bullet: ' 2. '
 #: text/chapter4.md:74
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a recursive function `countEven` which counts the number "
-#| "of even integers in an array. _Hint_: the function `head` (also available "
-#| "in `Data.Array`) can be used to find the first element in a non-empty "
-#| "array."
 msgid ""
 "(Medium) Write a recursive function `countEven` that counts the number of "
 "even integers in an array. _Hint_: the function `head` (also available in "
 "`Data.Array`) can be used to find the first element in a non-empty array."
 msgstr ""
-"（少し難しい）配列内の偶数の数を数える再帰関数`countEven`を書いてみましょ"
-"う。\n"
-"*手掛かり*：`Data.Array`モジュールの`head`関数を使うと、空でない配列の最初の"
-"要素を見つけることができます。"
+"（普通）配列内の偶数の整数を数える再帰関数`countEven`を書いてみましょう。\n"
+"*手掛かり*：`head`関数（これも`Data.Array`モジュールから手に入ります）を使うと、空でない配列の最初の要素を見つけられます。"
 
 #. type: Title ##
 #: text/chapter4.md:75
@@ -18366,37 +18281,25 @@ msgstr "マップ"
 
 #. type: Plain text
 #: text/chapter4.md:78
-#, fuzzy
-#| msgid ""
-#| "The `map` function is an example of a recursive function on arrays. It is "
-#| "used to transform the elements of an array by applying a function to each "
-#| "element in turn. Therefore, it changes the _contents_ of the array, but "
-#| "preserves its _shape_ (i.e. its length)."
 msgid ""
 "The `map` function is an example of a recursive function on arrays. It is "
 "used to transform the elements of an array by applying a function to each "
 "element in turn. Therefore, it changes the _contents_ of the array but "
 "preserves its _shape_ (i.e., its length)."
 msgstr ""
-"`map`関数は配列に対する再帰関数の1つです。この関数を使うと、配列の各要素に順"
-"番に関数を適用することで、配列の要素を変換できます。そのため、配列の*内容*は"
-"変更されますが、その*形状*（ここでは「長さ」）は保存されます。"
+"`map`関数は配列に対する再帰関数の一例です。\n"
+"配列の各要素に順番に関数を適用し、配列の要素を変換するのに使われます。\n"
+"そのため、配列の*内容*は変更されますが、その*形状*（ここでは「長さ」）は保存されます。"
 
 #. type: Plain text
 #: text/chapter4.md:80
-#, fuzzy
-#| msgid ""
-#| "When we cover _type classes_ later in the book we will see that the `map` "
-#| "function is an example of a more general pattern of shape-preserving "
-#| "functions which transform a class of type constructors called _functors_."
 msgid ""
 "When we cover _type classes_ later in the book, we will see that the `map` "
 "function is an example of a more general pattern of shape-preserving "
 "functions which transform a class of type constructors called _functors_."
 msgstr ""
-"本書の後半で _型クラス_ (type class) の内容を押さえるとき、`map`関数が形状保"
-"存関数のより一般的な様式の一例であることを見ていきます。これは _関手_ "
-"(functor) と呼ばれる型構築子のクラスを変換するものです。"
+"本書の後半で*型クラス*の内容を押さえるとき、`map`関数が形状を保存する関数のより一般的な様式の一例であることを見ていきます。\n"
+"この関数は*関手*と呼ばれる型構築子のクラスを変換するものです。"
 
 #. type: Plain text
 #: text/chapter4.md:82
@@ -18421,11 +18324,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:92
-#, fuzzy
-#| msgid ""
-#| "Notice how `map` is used - we provide a function which should be \"mapped "
-#| "over\" the array in the first argument, and the array itself in its "
-#| "second."
 msgid ""
 "Notice how `map` is used – we provide a function that should be \"mapped "
 "over\" the array in the first argument, and the array itself in its second."
@@ -18470,10 +18368,9 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:105
-#, fuzzy, no-wrap
-#| msgid "There is an operator which is equivalent to the `map` function when used with arrays, called `<$>`. This operator can be used infix like any other binary operator:\n"
+#, no-wrap
 msgid "There is an operator which is equivalent to the `map` function when used with arrays, called `<$>`.\n"
-msgstr "配列を扱うときは、`map`関数と等価な`<$>`という演算子が存在します。この演算子は他の二項演算子と同じように中置で使用できます。\n"
+msgstr "配列を扱う際は`map`関数と等価な`<$>`という演算子が存在します。\n"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:106
@@ -18541,14 +18438,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:133
-#, fuzzy, no-wrap
-#| msgid "Even though the infix operator `<$>` looks like special syntax, it is in fact just an alias for a regular PureScript function. The function is simply _applied_ using infix syntax. In fact, the function can be used like a regular function by enclosing its name in parentheses. This means that we can used the parenthesized name `(<$>)` in place of `map` on arrays:\n"
+#, no-wrap
 msgid "Even though the infix operator `<$>` looks like special syntax, it is in fact just an alias for a regular PureScript function. The function is simply _applied_ using infix syntax. In fact, the function can be used like a regular function by enclosing its name in parentheses. This means that we can use the parenthesized name `(<$>)` in place of `map` on arrays:\n"
 msgstr ""
 "中置演算子`<$>`は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。\n"
 "中置構文を使用した単なる*適用*にすぎません。\n"
 "実際、括弧でその名前を囲むと、この関数を通常の関数のように使用できます。\n"
-"これは、`map`代わりに、括弧で囲まれた`(<$>)`という名前を使って配列に関数を適用できるということです。\n"
+"これは、`map`代わりに、括弧で囲まれた`(<$>)`という名前が使えるということです。\n"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:134
@@ -18780,21 +18676,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:205
-#, fuzzy
-#| msgid ""
-#| "There is a related function called `concatMap` which is like a "
-#| "combination of the `concat` and `map` functions. Where `map` takes a "
-#| "function from values to values (possibly of a different type), "
-#| "`concatMap` takes a function from values to arrays of values."
 msgid ""
 "There is a related function called `concatMap` which is a combination of the "
 "`concat` and `map` functions. Where `map` takes a function from values to "
 "values (possibly of a different type), `concatMap` takes a function from "
 "values to arrays of values."
 msgstr ""
-"関連する関数として、`concat`と`map`を組み合わせたような`concatMap`と呼ばれる"
-"関数もあります。`map`は（相異なる型の可能性がある）値からの値への関数を引数に"
-"取りますが、それに対して`concatMap`は値から値の配列への関数を取ります。"
+"関連する関数として、`concat`と`map`を組み合わせた`concatMap`と呼ばれる関数もあります。\n"
+"`map`は（相異なる型の可能性がある）値からの値への関数を引数に取りますが、それに対して`concatMap`は値から値の配列への関数を取ります。"
 
 #. type: Plain text
 #: text/chapter4.md:207
@@ -18873,10 +18762,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:229
-#, fuzzy
-#| msgid ""
-#| "We can perform this computation using an array comprehension. We will do "
-#| "so in steps, using PSCi as our interactive development environment."
 msgid ""
 "We can perform this computation using array comprehension. We will do so in "
 "steps, using PSCi as our interactive development environment."
@@ -19055,10 +18940,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:292
-#, fuzzy, no-wrap
-#| msgid "_Note_: Just like `map` and `concatMap` allowed us to write _array comprehensions_, the more general operators `map` and `bind` allow us to write so-called _monad comprehensions_. We'll see plenty more examples of _monads_ later in the book, but in this chapter, we will only consider arrays."
+#, no-wrap
 msgid "> _Note_: Just like `map` and `concatMap` allowed us to write _array comprehensions_, the more general operators `map` and `bind` allow us to write so-called _monad comprehensions_. We'll see plenty more examples of _monads_ later in the book, but in this chapter, we will only consider arrays.\n"
-msgstr "*補足*：`map`と`concatMap`が _配列内包表記_ を書けるようにしているように、もっと一般的な演算子である`map`と`bind`は _モナド内包表記_ (monad comprehensions) と呼ばれているものを書けるようにします。本書の後半では _モナド_ (monad) の例をたっぷり見ていくことになりますが、この章では配列のみを考えます。"
+msgstr ""
+"> *補足*：`map`と`concatMap`があることで*配列内包表記*を書けるように、もっと一般的な演算子である`map`と`bind`があることで*モナド内包表記*と呼ばれているものが書けます。\n"
+"> 本書の後半では*モナド*の例をたっぷり見ていくことになりますが、この章では配列のみを考えます。\n"
 
 #. type: Plain text
 #: text/chapter4.md:294
@@ -19074,54 +18960,35 @@ msgstr "{{#include ../exercises/chapter4/test/Examples.purs:factors}}\n"
 
 #. type: Plain text
 #: text/chapter4.md:300
-#, fuzzy
-#| msgid ""
-#| "The keyword `do` introduces a block of code which uses do notation. The "
-#| "block consists of expressions of a few types:"
 msgid ""
 "The keyword `do` introduces a block of code that uses do notation. The block "
 "consists of expressions of a few types:"
 msgstr ""
-"キーワード`do`はdo記法を使うコードのブロックを導入します。このブロックは幾つ"
-"かの種類の式で構成されています。"
+"キーワード`do`はdo記法を使うコードのブロックを導入します。\n"
+"このブロックは幾つかの種類の式で構成されています。"
 
 #. type: Bullet: '- '
 #: text/chapter4.md:304
-#, fuzzy
-#| msgid ""
-#| "Expressions which bind elements of an array to a name. These are "
-#| "indicated with the backwards-facing arrow `<-`, with a name on the left, "
-#| "and an expression on the right whose type is an array."
 msgid ""
 "Expressions that bind elements of an array to a name. These are indicated "
 "with the backwards-facing arrow `<-`, with a name on the left, and an "
 "expression on the right whose type is an array."
 msgstr ""
 "配列の要素を名前に束縛する式。\n"
-"これは後ろ向きの矢印`<-`で示されていて、その左側は名前、右側は配列の型を持つ"
-"式です。"
+"これは後ろ向きの矢印`<-`で示されており、左側には名前が、右側には配列の型を持つ式があります。"
 
 #. type: Bullet: '- '
 #: text/chapter4.md:304
-#, fuzzy
-#| msgid ""
-#| "Expressions which do not bind elements of the array to names. The `do` "
-#| "_result_ is an example of this kind of expression and is illustrated in "
-#| "the last line, `pure [i, j]`."
 msgid ""
 "Expressions that do not bind elements of the array to names. The `do` "
 "_result_ is an example of this kind of expression and is illustrated in the "
 "last line, `pure [i, j]`."
 msgstr ""
 "名前に配列の要素を束縛しない式。\n"
-"`do`の _結果_ はこの種類の式の一例であり、最後の行の`pure [i, j]`に示されてい"
-"ます。"
+"`do`の*結果*はこの種類の式の一例であり、最後の行の`pure [i, j]`に示されています。"
 
 #. type: Bullet: '- '
 #: text/chapter4.md:304
-#, fuzzy
-#| msgid ""
-#| "Expressions which give names to expressions, using the `let` keyword."
 msgid "Expressions that give names to expressions, using the `let` keyword."
 msgstr "`let`キーワードを使用し、式に名前を与える式。"
 
@@ -19154,17 +19021,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:315
-#, fuzzy
-#| msgid ""
-#| "In the case of arrays, `pure` simply constructs a singleton array. In "
-#| "fact, we could modify our `factors` function to use this form, instead of "
-#| "using `pure`:"
 msgid ""
 "In the case of arrays, `pure` simply constructs a singleton array. We can "
 "modify our `factors` function to use this form, instead of using `pure`:"
 msgstr ""
 "配列の場合、`pure`は単に1要素の配列を作成します。\n"
-"実際、`factors`関数を変更して、`pure`の代わりにこの形式も使うようにできます。"
+"`factors`関数を変更して、`pure`の代わりにこの形式も使うようにできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter4.md:316
@@ -19274,18 +19136,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:360
-#, fuzzy
-#| msgid ""
-#| "That is, if `guard` is passed an expression which evaluates to `true`, "
-#| "then it returns an array with a single element. If the expression "
-#| "evaluates to `false`, then its result is empty."
 msgid ""
 "If we pass an expression to `guard` that evaluates to `true`, then it "
 "returns an array with a single element. If the expression evaluates to "
 "`false`, then its result is empty."
 msgstr ""
-"つまり、`guard`が`true`に評価される式を渡された場合、単一の要素を持つ配列を返"
-"すのです。もし式が`false`と評価された場合は、その結果は空です。"
+"つまり、`guard`が`true`に評価される式を渡された場合、単一の要素を持つ配列を返すのです。\n"
+"もし式が`false`と評価された場合は、その結果は空です。"
 
 #. type: Plain text
 #: text/chapter4.md:362
@@ -19308,26 +19165,16 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:369
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a function `isPrime` which tests if its integer argument is "
-#| "prime or not. _Hint_: Use the `factors` function."
 msgid ""
 "(Easy) Write a function `isPrime`, which tests whether its integer argument "
 "is prime. _Hint_: Use the `factors` function."
 msgstr ""
-"（簡単）整数の引数が素数であるかどうかを調べる関数`isPrime`を定義してみましょ"
-"う。\n"
+"（簡単）関数`isPrime`を書いてください。\n"
+"この関数は整数の引数が素数であるかを調べます。\n"
 "*手掛かり*：`factors`関数を使ってください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:369
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a function `cartesianProduct` which uses do notation to "
-#| "find the _cartesian product_ of two arrays, i.e. the set of all pairs of "
-#| "elements `a`, `b`, where `a` is an element of the first array, and `b` is "
-#| "an element of the second."
 msgid ""
 "(Medium) Write a function `cartesianProduct` which uses do notation to find "
 "the _cartesian product_ of two arrays, i.e., the set of all pairs of "
@@ -19341,13 +19188,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:369
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a function `triples :: Int -> Array (Array Int)` which "
-#| "takes a number `n` and returns all Pythagorean triples whose components "
-#| "(the `a`, `b` and `c` values) are each less than or equal to `n`. A "
-#| "_Pythagorean triple_ is an array of numbers `[a, b, c]` such that `a² + "
-#| "b² = c²`. _Hint_: Use the `guard` function in an array comprehension."
 msgid ""
 "(Medium) Write a function `triples :: Int -> Array (Array Int)`, which takes "
 "a number `n` and returns all Pythagorean triples whose components (the `a`, "
@@ -19355,21 +19195,13 @@ msgid ""
 "triple_ is an array of numbers `[a, b, c]` such that `a² + b² = c²`. _Hint_: "
 "Use the `guard` function in an array comprehension."
 msgstr ""
-"（普通）数値`n`を取って構成要素（値`a`, `b`, `c`）がそれぞれ`n`以下であるよう"
-"な全てのピタゴラスの3つ組 (pythagorean triples) を返す関数`triples :: Int -> "
-"Array (Array Int)`を書いてください。\n"
-"*ピタゴラスの3つ組*は数値の配列`[a, b, c]`で `a² + b² = c²` です。\n"
+"（普通）関数`triples :: Int -> Array (Array Int)`を書いてください。\n"
+"この関数は数値`n`を取り、構成要素（値`a`、`b`、`c`）がそれぞれ`n`以下であるような全てのピタゴラスの3つ組 (pythagorean triples) を返します。\n"
+"*ピタゴラスの3つ組*は`a² + b² = c²`であるような数値の配列`[a, b, c]`です。\n"
 "*手掛かり*：配列内包表記で`guard`関数を使ってください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:369
-#, fuzzy
-#| msgid ""
-#| "(Difficult) Write a function `primeFactors` which produces the [prime "
-#| "factorization](https://www.mathsisfun.com/prime-factorization.html) of "
-#| "`n`, i.e. the array of prime integers whose product is `n`. _Hint_: for "
-#| "an integer greater than 1, break the problem down into two subproblems: "
-#| "finding the first factor, and finding the remaining factors."
 msgid ""
 "(Difficult) Write a function `primeFactors` which produces the [prime "
 "factorization](https://www.mathsisfun.com/prime-factorization.html) of `n`, "
@@ -19377,12 +19209,9 @@ msgid ""
 "integer greater than 1, break the problem into two subproblems: finding the "
 "first factor and the remaining factors."
 msgstr ""
-"（難しい）`factors`関数を使用して、数`n`の[素因数分解](https://www."
-"mathsisfun.com/prime-factorization.html)を求める関数`primeFactors`を定義して"
-"みましょう。\n"
-"数`n`の素因数分解とは、素数の積が`n`であるような整数の配列のことです。\n"
-"*手掛かり*：1より大きい整数について、問題を2つの部分問題に分解してくださ"
-"い。\n"
+"（難しい）`factors`関数を使用して、`n`の[素因数分解](https://www.mathsisfun.com/prime-factorization.html)を求める関数`primeFactors`を定義してみましょう。\n"
+"`n`の素因数分解とは、積が`n`であるような素数の配列のことです。\n"
+"*手掛かり*：1より大きい整数について、問題を2つの部分問題に分解してください。\n"
 "最初の因数を探し、それから残りの因数を探すのです。"
 
 #. type: Title ##
@@ -19393,23 +19222,13 @@ msgstr "畳み込み"
 
 #. type: Plain text
 #: text/chapter4.md:373
-#, fuzzy
-#| msgid ""
-#| "Left and right folds over arrays provide another class of interesting "
-#| "functions which can be implemented using recursion."
 msgid ""
 "Left and right folds over arrays provide another class of interesting "
 "functions that can be implemented using recursion."
-msgstr ""
-"配列における左右の畳み込みは、再帰を用いて実装される別の興味深い一揃いの関数"
-"を提供します。"
+msgstr "配列における左右の畳み込みは、再帰を用いて実装できる別の興味深い一揃いの関数を提供します。"
 
 #. type: Plain text
 #: text/chapter4.md:375
-#, fuzzy
-#| msgid ""
-#| "Start by importing the `Data.Foldable` module, and inspecting the types "
-#| "of the `foldl` and `foldr` functions using PSCi:"
 msgid ""
 "Start by importing the `Data.Foldable` module and inspecting the types of "
 "the `foldl` and `foldr` functions using PSCi:"
@@ -19439,19 +19258,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter4.md:387
-#, fuzzy
-#| msgid ""
-#| "These types are actually more general than we are interested in right "
-#| "now. For the purposes of this chapter, we can assume that PSCi had given "
-#| "the following (more specific) answer:"
 msgid ""
 "These types are more general than we are interested in right now. For this "
 "chapter, we can assume that PSCi has given the following (more specific) "
 "answer:"
 msgstr ""
 "これらの型は、現在興味があるものよりも一般化されています。\n"
-"この章の目的に対して、PSCiは以下の（より具体的な）答えをくれていると考えてお"
-"きましょう。"
+"この章では、PSCiは以下の（より具体的な）答えをくれていると考えておきましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:388
@@ -19472,18 +19285,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter4.md:397
 #, fuzzy
-#| msgid ""
-#| "In both of these cases, the type `a` corresponds to the type of elements "
-#| "of our array. The type `b` can be thought of as the type of an "
-#| "\"accumulator\", which will accumulate a result as we traverse the array."
 msgid ""
 "In both cases, the type `a` corresponds to the type of elements of our "
 "array. The type `b` can be thought of as the type of an \"accumulator\", "
 "which will accumulate a result as we traverse the array."
 msgstr ""
-"どちらの型でも、`a`は配列の要素の型に対応しています。\n"
-"型`b`は、配列を走査 (traverse) したときの結果を累積する「累積器」"
-"(accumulator) の型だと考えることができます。"
+"どちらの場合でも、`a`は配列の要素の型に対応しています。\n"
+"型`b`は「累算器」の型として考えることができます。\n"
+"累算器とは配列を走査しつつ結果を累算するものです。"
 
 #. type: Plain text
 #: text/chapter4.md:399
@@ -19499,9 +19308,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter4.md:401
 #, fuzzy, no-wrap
-#| msgid "Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can just use the addition operator, and the initial value of the accumulator will be zero:\n"
 msgid "Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can use the addition operator, and the initial value of the accumulator will be zero:\n"
-msgstr "実際にこれらの関数の動きを見てみましょう。`foldl`を使用して数の配列の和を求めてみます。型`a`は`Int`になり、結果の型`b`も`Int`として選択できます。ここでは、次の要素を累積器に加算する`Int -> Int -> Int`という型の関数、`Int`型の累積器の初期値、和を求めたい`Int`の配列という、3つの引数を提供する必要があります。最初の引数としては、加算演算子を使用できますし、累積器の初期値はゼロになります。\n"
+msgstr ""
+"実際にこれらの関数の動きを見てみましょう。\n"
+"`foldl`を使用して数の配列の和を求めてみます。\n"
+"型`a`は`Int`になり、結果の型`b`も`Int`として選択できます。\n"
+"ここでは、次の要素を累算器に加算する`Int -> Int -> Int`という型の関数、`Int`型の累算器の初期値、和を求めたい`Int`の配列という、3つの引数を提供する必要があります。\n"
+"最初の引数としては、加算演算子を使用できますし、累算器の初期値はゼロになります。\n"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:402
@@ -19753,27 +19566,20 @@ msgstr ""
 #: text/chapter4.md:475
 #, no-wrap
 msgid "Accumulators"
-msgstr "累積器"
+msgstr "累算器"
 
 #. type: Plain text
 #: text/chapter4.md:478
 #, fuzzy
-#| msgid ""
-#| "One common way to turn a function which is not tail recursive into a tail "
-#| "recursive function is to use an _accumulator parameter_. An accumulator "
-#| "parameter is an additional parameter which is added to a function which "
-#| "_accumulates_ a return value, as opposed to using the return value to "
-#| "accumulate the result."
 msgid ""
 "One common way to turn a not tail recursive function into a tail recursive "
 "is to use an _accumulator parameter_. An accumulator parameter is an "
 "additional parameter added to a function that _accumulates_ a return value, "
 "as opposed to using the return value to accumulate the result."
 msgstr ""
-"末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、 _累積器引数"
-"_ (accumulator parameter) を使用する方法があります。累積器引数は関数に追加さ"
-"れる余剰の引数で返り値を _累積_ するものです。これは結果を累積するために返り"
-"値を使うのとは対称的です。"
+"末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、*累算器引数*を使用する方法があります。\n"
+"累算器引数は関数に追加される余剰の引数で返り値を*累算*するものです。\n"
+"これは結果を累算するために返り値を使うのとは対称的です。"
 
 #. type: Plain text
 #: text/chapter4.md:480
@@ -19843,34 +19649,23 @@ msgstr ""
 #. type: Plain text
 #: text/chapter4.md:498
 #, fuzzy
-#| msgid ""
-#| "To understand the implementation of `lengthTailRec`, note that the helper "
-#| "function `length'` essentially uses the accumulator parameter to maintain "
-#| "an additional piece of state - the partial result. It starts out at 0, "
-#| "and grows by adding 1 for every element in the input array."
 msgid ""
 "To understand the implementation of `lengthTailRec`, note that the helper "
 "function `length'` essentially uses the accumulator parameter to maintain an "
 "additional piece of state – the partial result. It starts at 0 and grows by "
 "adding 1 for every element in the input array."
 msgstr ""
-"`lengthTailRec`の実装を理解するために補助関数`length'`に着目しましょう。この"
-"関数は必然的に累積器引数を使って追加の状態……これは部分的な結果です……を保持し"
-"ています。0から始まり、入力の配列中の全ての要素それぞれについて1ずつ足されて"
-"大きくなっていきます。"
+"`lengthTailRec`の実装を理解するために補助関数`length'`に着目しましょう。\n"
+"この関数は必然的に累算器引数を使って、部分的な結果である追加の状態を保持しています。\n"
+"0から始まり、入力の配列中の全ての要素それぞれについて1ずつ足されて大きくなっていきます。"
 
 #. type: Plain text
 #: text/chapter4.md:500
 #, fuzzy
-#| msgid ""
-#| "Note also that while we might think of the accumulator as \"state\", "
-#| "there is no direct mutation going on."
 msgid ""
 "Note also that while we might think of the accumulator as a \"state\", there "
 "is no direct mutation."
-msgstr ""
-"累積器を「状態」と考えることもできますが、直接には変更されているわけではない"
-"ことにも注意してください。"
+msgstr "累算器を「状態」と考えることもできますが、直接には変更されているわけではないことにも注意してください。"
 
 #. type: Title ##
 #: text/chapter4.md:501
@@ -19974,9 +19769,8 @@ msgid ""
 "(Medium) Write a function `fibTailRec` which is the same as `fib` but in "
 "tail recursive form. _Hint_: Use an accumulator parameter."
 msgstr ""
-"（普通）末尾再帰の形式を取っていること以外は`fib`と同じような関数`fibTailRec`"
-"を書いてください。\n"
-"*手掛かり*：累積器引数を使ってください。"
+"（普通）末尾再帰の形式を取っていること以外は`fib`と同じような関数`fibTailRec`を書いてください。\n"
+"*手掛かり*：累算器引数を使ってください。"
 
 #. type: Bullet: ' 4. '
 #: text/chapter4.md:527
@@ -20342,14 +20136,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter4.md:633
 #, fuzzy
-#| msgid ""
-#| "In this chapter, we covered the basics of recursion in PureScript, as a "
-#| "means of expressing algorithms concisely. We also introduced user-defined "
-#| "infix operators, standard functions on arrays such as maps, filters and "
-#| "folds, and array comprehensions which combine these ideas. Finally, we "
-#| "showed the importance of using tail recursion in order to avoid stack "
-#| "overflow errors, and how to use accumulator parameters to convert "
-#| "functions to tail recursive form."
 msgid ""
 "In this chapter, we covered the basics of recursion in PureScript to express "
 "algorithms concisely. We also introduced user-defined infix operators, "
@@ -20358,12 +20144,9 @@ msgid ""
 "of using tail recursion to avoid stack overflow errors and how to use "
 "accumulator parameters to convert functions to tail recursive form."
 msgstr ""
-"この章では、アルゴリズムを簡潔に表現する手段として、PureScriptでの再帰の基本"
-"を説明しました。\n"
-"また、独自の中置演算子や、マップ、絞り込みや畳み込みなどの配列に対する標準関"
-"数、及びこれらの概念を組み合わせた配列内包表記を導入しました。\n"
-"最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの"
-"重要性、累積器引数を使用して末尾再帰形に関数を変換する方法を示しました。"
+"この章では、アルゴリズムを簡潔に表現する手段として、PureScriptでの再帰の基本を説明しました。\n"
+"また、独自の中置演算子や、マップ、絞り込みや畳み込みなどの配列に対する標準関数、及びこれらの概念を組み合わせた配列内包表記を導入しました。\n"
+"最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、累算器引数を使用して末尾再帰形に関数を変換する方法を示しました。"
 
 #. type: Title #
 #: text/chapter5.md:1
@@ -22328,9 +22111,7 @@ msgid ""
 "`bounds` uses the `foldl` function from `Data.Foldable` to traverse the "
 "array of `Shapes` in a `Picture`, and accumulate the smallest bounding "
 "rectangle:"
-msgstr ""
-"`Picture`内の `Shape`の配列を走査し、最小の外接矩形を累積するため、`bounds`に"
-"は `Data.Foldable`の `foldl`関数を使用しています。"
+msgstr "`Picture`内の `Shape`の配列を走査し、最小の外接矩形を累算するため、`bounds`には `Data.Foldable`の `foldl`関数を使用しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:516
@@ -22357,10 +22138,9 @@ msgid ""
 "union of the two bounding rectangles. The `shapeBounds` function computes "
 "the bounds of a single shape using pattern matching."
 msgstr ""
-"累積関数 `combine`は `where`ブロックで定義されています。`combine`は `foldl`の"
-"再帰呼び出しで計算された外接矩形と、配列内の次の `Shape`を引数にとり、ユーザ"
-"定義の演算子 `union`を使って2つの外接矩形の和を計算しています。`shapeBounds`"
-"関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。"
+"累算関数`combine`は`where`ブロックで定義されています。\n"
+"`combine`は`foldl`の再帰呼び出しで計算された外接矩形と、配列内の次の `Shape`を引数にとり、ユーザ定義の演算子`union`を使って2つの外接矩形の和を計算しています。\n"
+"`shapeBounds`関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:528
@@ -23231,21 +23011,14 @@ msgstr "ここでも文字列や配列はモノイドの簡単な例になって
 #. type: Plain text
 #: text/chapter6.md:229
 #, fuzzy
-#| msgid ""
-#| "A `Monoid` type class instance for a type describes how to _accumulate_ a "
-#| "result with that type, by starting with an \"empty\" value, and combining "
-#| "new results. For example, we can write a function which concatenates an "
-#| "array of values in some monoid by using a fold. In PSCi:"
 msgid ""
 "A `Monoid` type class instance for a type describes how to _accumulate_ a "
 "result with that type by starting with an \"empty\" value and combining new "
 "results. For example, we can write a function that concatenates an array of "
 "values in some monoid using a fold. In PSCi:"
 msgstr ""
-"`Monoid`型クラスインスタンスでは、「空」の値から始めて新たな値を合成してい"
-"き、その型で*累積*した結果を返すにはどうするかを記述する型クラスです。\n"
-"例えば、畳み込みを使って幾つかのモノイドの値の配列を連結する関数を書くことが"
-"できます。\n"
+"`Monoid`型クラスインスタンスでは、「空」の値から始めて新たな値を合成していき、その型で*累算*した結果を返すにはどうするかを記述する型クラスです。\n"
+"例えば、畳み込みを使って幾つかのモノイドの値の配列を連結する関数を書くことができます。\n"
 "PSCiで試すと次のようになります。"
 
 #. type: Fenced code block (haskell)
@@ -24178,17 +23951,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter6.md:482
 #, fuzzy
-#| msgid ""
-#| "We can write functions which work over arbitrary streams. For example, "
-#| "here is a function which accumulates a result in some `Monoid` based on "
-#| "the elements of a stream:"
 msgid ""
 "We can write functions that work over arbitrary streams. For example, here "
 "is a function that accumulates a result in some `Monoid` based on the "
 "elements of a stream:"
 msgstr ""
-"任意のストリーム上で動作する関数を記述できます。例えば、ストリームの要素に基"
-"づいて `Monoid`に結果を累積する関数は次のようになります。"
+"任意のストリーム上で動作する関数を記述できます。\n"
+"例えば、ストリームの要素に基づいて `Monoid`に結果を累算する関数は次のようになります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:483
@@ -27264,9 +27033,7 @@ msgstr ""
 msgid ""
 "In general, `traverse` walks over the elements of a data structure, "
 "performing computations with side-effects and accumulating a result."
-msgstr ""
-"一般に、`traverse`はデータ構造の要素を1つずつ辿っていき、副作用を伴いつつ計算"
-"し、結果を累積します。"
+msgstr "一般に、`traverse`はデータ構造の要素を1つずつ辿っていき、副作用を伴いつつ計算し、結果を累算します。"
 
 #. type: Plain text
 #: text/chapter7.md:595
@@ -28703,18 +28470,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:270
 #, fuzzy
-#| msgid ""
-#| "The `foldM safeDivide` function returns `Nothing` if a division by zero "
-#| "was attempted at any point. Otherwise it returns the result of repeatedly "
-#| "dividing the accumulator, wrapped in the `Just` constructor."
 msgid ""
 "The `foldM safeDivide` function returns `Nothing` if a division by zero was "
 "attempted at any point. Otherwise, it returns the result of repeatedly "
 "dividing the accumulator, wrapped in the `Just` constructor."
 msgstr ""
-"もし何れかの時点で整数にならない除算が行われようとしたら、`foldM safeDivide`"
-"関数は `Nothing`を返します。\n"
-"そうでなければ、除算を繰り返した累積の結果を`Just`構築子に包んで返します。"
+"もし何れかの時点で整数にならない除算が行われようとしたら、`foldM safeDivide`関数は `Nothing`を返します。\n"
+"そうでなければ、除算を繰り返した累算の結果を`Just`構築子に包んで返します。"
 
 #. type: Title ##
 #: text/chapter8.md:271
