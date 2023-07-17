@@ -472,14 +472,21 @@ forall a b. (b -> a -> b) -> b -> Array a -> b
 forall a b. (a -> b -> b) -> b -> Array a -> b
 ```
 
-In both cases, the type `a` corresponds to the type of elements of our
-array. The type `b` can be thought of as the type of an "accumulator", which
-will accumulate a result as we traverse the array.
+どちらの場合でも、型`a`は配列の要素の型に対応しています。
+型`b`は「累算器」の型として考えることができます。
+累算器とは配列を走査しつつ結果を累算するものです。
 
 `foldl`関数と`foldr`関数の違いは走査の方向です。
 `foldr`が「右から」配列を畳み込むのに対して、`foldl`は「左から」配列を畳み込みます。
 
-Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can use the addition operator, and the initial value of the accumulator will be zero:
+実際にこれらの関数の動きを見てみましょう。
+`foldl`を使用して数の配列の和を求めてみます。
+型`a`は`Int`になり、結果の型`b`も`Int`として選択できます。
+ここでは3つの引数を与える必要があります。
+1つ目は次の要素を累算器に加算する`Int -> Int -> Int`という型の関数です。
+2つ目は累算器の`Int`型の初期値です。
+3つ目は和を求めたい`Int`の配列です。
+最初の引数としては、加算演算子を使用できますし、累算器の初期値はゼロになります。
 
 ```text
 > foldl (+) 0 (1 .. 5)
@@ -493,9 +500,8 @@ Let's see these functions in action. Let's use `foldl` to sum an array of intege
 15
 ```
 
-Let's write an example where the choice of folding function matters to
-illustrate the difference. Instead of the addition function, let's use
-string concatenation to build a string:
+違いを説明するために、畳み込み関数の選択が大事になってくる例も書きましょう。
+加算関数の代わりに、文字列連結を使用して文字列を構築しましょう。
 
 ```text
 > foldl (\acc n -> acc <> show n) "" [1,2,3,4,5]
@@ -511,7 +517,7 @@ string concatenation to build a string:
 ((((("" <> show 1) <> show 2) <> show 3) <> show 4) <> show 5)
 ```
 
-Whereas the right fold is equivalent to this:
+それに対し、右畳み込みは以下と等価です。
 
 ```text
 ((((("" <> show 5) <> show 4) <> show 3) <> show 2) <> show 1)
@@ -519,11 +525,10 @@ Whereas the right fold is equivalent to this:
 
 ## 末尾再帰
 
-Recursion is a powerful technique for specifying algorithms but comes with a
-problem: evaluating recursive functions in JavaScript can lead to stack
-overflow errors if our inputs are too large.
+再帰はアルゴリズムを指定する強力な手法ですが、問題も抱えています。
+JavaScriptで再帰関数を評価するとき、入力が大き過ぎるとスタックオーバーフローでエラーを起こす可能性があるのです。
 
-It is easy to verify this problem with the following code in PSCi:
+PSCiで次のコードを入力すると、この問題を簡単に検証できます。
 
 ```text
 > :paste
@@ -540,21 +545,20 @@ It is easy to verify this problem with the following code in PSCi:
 RangeError: Maximum call stack size exceeded
 ```
 
-This is a problem. If we adopt recursion as a standard technique from
-functional programming, we need a way to deal with possibly unbounded
-recursion.
+これは問題です。
+関数型プログラミングの標準的な手法として再帰を採用しようとするなら、境界がない再帰がありうるときでも扱える方法が必要です。
 
-PureScript provides a partial solution to this problem through _tail
-recursion optimization_.
+PureScriptは*末尾再帰最適化*の形でこの問題に対する部分的な解決策を提供しています。
 
-> _Note_: more complete solutions to the problem can be implemented in libraries using so-called _trampolining_, but that is beyond the scope of this chapter. The interested reader can consult the documentation for the [`free`](https://pursuit.purescript.org/packages/purescript-free) and [`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec) packages.
+> *補足*：この問題へのより完全な解決策としては、いわゆる*トランポリン*を使用するライブラリで実装できますが、それはこの章で扱う範囲を超えています。
+> 興味のある読者は[`free`](https://pursuit.purescript.org/packages/purescript-free)や[`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec)パッケージのドキュメントをあたると良いでしょう。
 
-The key observation that enables tail recursion optimization: a recursive
-call in _tail position_ to a function can be replaced with a _jump_, which
-does not allocate a stack frame. A call is in _tail position_ when it is the
-last call made before a function returns. This is why we observed a stack
-overflow in the example – the recursive call to `f` was _not_ in tail
-position.
+末尾再帰最適化を可能にする上で鍵となる観点は以下となります。
+*末尾位置*にある関数の再帰的な呼び出しは*ジャンプ*に置き換えられます。
+このジャンプではスタックフレームが確保されません。
+関数が戻るより前の最後の呼び出しであるとき、呼び出しが*末尾位置*にあるといいます。
+なぜ先の例でスタックオーバーフローが見られたのかはこれが理由です。
+`f`の再帰呼び出しが末尾位置*でなかったからです。
 
 実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を _whileループ_ に置き換えます。
 
@@ -564,18 +568,16 @@ position.
 {{#include ../exercises/chapter4/test/Examples.purs:factorialTailRec}}
 ```
 
-Notice that the recursive call to `factorialTailRec` is the last thing in
-this function – it is in tail position.
+`factorialTailRec`への再帰呼び出しがこの関数の最後にある点に注目してください。
+つまり末尾位置にあるのです。
 
 ## 累算器
 
-One common way to turn a not tail recursive function into a tail recursive
-is to use an _accumulator parameter_. An accumulator parameter is an
-additional parameter added to a function that _accumulates_ a return value,
-as opposed to using the return value to accumulate the result.
+末尾再帰ではない関数を末尾再帰関数に変える一般的な方法は、*累算器引数*を使用することです。
+累算器引数は関数に追加される余剰の引数で、返り値を*累算*するものです。
+これは結果を累算するために返り値を使うのとは対照的です。
 
-For example, consider again the `length` function presented at the beginning
-of the chapter:
+例えば章の初めに示した`length`関数を再考しましょう。
 
 ```haskell
 length :: forall a. Array a -> Int
@@ -592,29 +594,23 @@ length arr =
 {{#include ../exercises/chapter4/test/Examples.purs:lengthTailRec}}
 ```
 
-In this case, we delegate to the helper function `length'`, which is tail
-recursive – its only recursive call is in the last case, in tail
-position. This means that the generated code will be a _while loop_ and not
-blow the stack for large inputs.
+ここでは補助関数`length'`に委譲しています。
+この関数は末尾再帰です。
+その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。
+つまり、生成されるコードは*whileループ*となり、大きな入力でもスタックが溢れません。
 
-To understand the implementation of `lengthTailRec`, note that the helper
-function `length'` essentially uses the accumulator parameter to maintain an
-additional piece of state – the partial result. It starts at 0 and grows by
-adding 1 for every element in the input array.
+`lengthTailRec`の実装を理解する上では、補助関数`length'`が基本的に累算器引数を使って追加の状態を保持していることに注目してください。
+追加の状態とは、部分的な結果です。
+0から始まり、入力の配列中の全ての各要素について1ずつ足されて大きくなっていきます。
 
-Note also that while we might think of the accumulator as a "state", there
-is no direct mutation.
+なお、累算器を「状態」と考えることもできますが、直接には変更されていません。
 
 ## 明示的な再帰より畳み込みを選ぼう
 
-If we can write our recursive functions using tail recursion, we can benefit
-from tail recursion optimization, so it becomes tempting to try to write all
-of our functions in this form. However, it is often easy to forget that many
-functions can be written directly as a fold over an array or similar data
-structure. Writing algorithms directly in terms of combinators such as `map`
-and `fold` has the added advantage of code simplicity – these combinators
-are well-understood, and as such, communicate the _intent_ of the algorithm
-much better than explicit recursion.
+末尾再帰を使用して再帰関数を記述できれば末尾再帰最適化の恩恵を受けられるので、全ての関数をこの形で書こうとする誘惑にかられます。
+しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。
+`map`や`fold`のような組み合わせの部品を使って直接アルゴリズムを書くことには、コードの単純さという利点があります。
+これらの部品はよく知られており、だからこそ明示的な再帰よりもアルゴリズムの*意図*がより良く伝わるのです。
 
 例えば`foldr`を使って配列を反転できます。
 
@@ -643,18 +639,16 @@ much better than explicit recursion.
 
 ## 仮想ファイルシステム
 
-In this section, we'll apply what we've learned, writing functions that will
-work with a model of a filesystem. We will use maps, folds, and filters to
-work with a predefined API.
+この節ではこれまで学んだことを応用してファイルシステムのモデルを扱う関数を書きます。
+事前に定義されたAPIを扱う上でマップ、畳み込み、及びフィルタを使用します。
 
-The `Data.Path` module defines an API for a virtual filesystem as follows:
+`Data.Path`モジュールでは、次のように仮想ファイルシステムのAPIが定義されています。
 
 - ファイルシステム内のパスを表す型`Path`があります。
 - ルートディレクトリを表すパス`root`があります。
 - `ls`関数はディレクトリ内のファイルを列挙します。
 - `filename`関数は`Path`のファイル名を返します。
-- The `size` function returns the file size for a `Path` representing a
-  file.
+- `size`関数はファイルを表す`Path`のファイルの大きさを返します。
 - `isDirectory`関数はファイルかディレクトリかを調べます。
 
 型について言うと、次のような型定義があります。
@@ -688,24 +682,23 @@ true
 [/bin/,/etc/,/home/]
 ```
 
-The `Test.Examples` module defines functions that use the `Data.Path`
-API. You do not need to modify the `Data.Path` module, or understand its
-implementation. We will work entirely in the `Test.Examples` module.
+`Test.Examples`モジュールでは`Data.Path` APIを使用する関数を定義しています。
+`Data.Path`モジュールを変更したり定義を理解したりする必要はありません。
+全て`Test.Examples`モジュールだけで作業します。
 
 ## 全てのファイルの一覧
 
-Let's write a function that performs a deep enumeration of all files inside
-a directory. This function will have the following type:
+それでは、ディレクトリの中身を含めた全てのファイルを深く列挙する関数を書いてみましょう。
+この関数は以下のような型を持つでしょう。
 
 ```haskell
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_signature}}
 ```
 
-We can define this function by recursion. First, we can use `ls` to
-enumerate the immediate children of the directory. For each child, we can
-recursively apply `allFiles`, which will return an array of
-paths. `concatMap` will allow us to apply `allFiles` and flatten the results
-simultaneously.
+再帰を使ってこの関数を定義できます。
+`ls`を使うとディレクトリ直下の子が列挙されます。
+それぞれの子について再帰的に`allFiles`を適用すると、それぞれパスの配列が返ります。
+`concatMap`を使うと、`allFiles`を適用して平坦化するまでを一度にできます。
 
 最後に、cons演算子`:`を使って現在のファイルも含めます。
 
@@ -713,7 +706,8 @@ simultaneously.
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_implementation}}
 ```
 
-> _Note_: the cons operator `:` has poor performance on immutable arrays, so it is not generally recommended. Performance can be improved by using other data structures, such as linked lists and sequences.
+> *補足*：実はcons演算子`:`は、不変な配列に対して効率性が悪いので、一般的には推奨されません。
+> 連結リストやシーケンスなどの他のデータ構造を使用すると、効率性を向上させられます。
 
 それではPSCiでこの関数を試してみましょう。
 
@@ -729,11 +723,11 @@ simultaneously.
 すばらしいです。
 do記法で配列内包表記を使ってもこの関数を書くことができるので見ていきましょう。
 
-Recall that a backwards arrow corresponds to choosing an element from an
-array. The first step is to choose an element from the immediate children of
-the argument. Then we call the function recursively for that file. Since we
-use do notation, there is an implicit call to `concatMap`, which
-concatenates all of the recursive results.
+逆向きの矢印は配列から要素を選択するのに相当することを思い出してください。
+最初の工程は引数の直接の子から要素を選択することです。
+それからそのファイルに対して再帰関数を呼び出します。
+do記法を使用しているので`concatMap`が暗黙に呼び出されています。
+この関数は再帰的な結果を全て連結します。
 
 新しいバージョンは次のようになります。
 
@@ -741,8 +735,9 @@ concatenates all of the recursive results.
 {{#include ../exercises/chapter4/test/Examples.purs:allFiles_2}}
 ```
 
-Try out the new version in PSCi – you should get the same result. I'll let
-you decide which version you find clearer.
+PSCiで新しいコードを試してみてください。
+同じ結果が返ってくるはずです。
+どちらのほうがわかりやすいかの選定はお任せします。
 
 ## 演習
 
@@ -760,14 +755,12 @@ you decide which version you find clearer.
      Nothing
      ```
 
-     _Hint_: Try to write this function as an array comprehension using do notation.
- 3. (Difficult) Write a function `largestSmallest` which takes a `Path` and returns an array containing the single largest and single smallest files in the `Path`. _Note_: consider the cases where there are zero or one files in the `Path` by returning an empty or one-element array, respectively.
+     *手掛かり*：この関数をdo記法を使った配列内包表記で書いてみましょう。
+ 3. （難しい）`Path`中の最大のファイルと最小のファイルを1つずつ含む配列を返す関数`largestSmallest`を書いてください。
+    *補足*：空配列や1要素の配列を返すことで、`Path`にそれぞれゼロか1個のファイルがある場合についても考慮してください。
 
 ## まとめ
 
-In this chapter, we covered the basics of recursion in PureScript to express
-algorithms concisely. We also introduced user-defined infix operators,
-standard functions on arrays such as maps, filters, and folds, and array
-comprehensions that combine these ideas. Finally, we showed the importance
-of using tail recursion to avoid stack overflow errors and how to use
-accumulator parameters to convert functions to tail recursive form.
+この章ではアルゴリズムを簡潔に表現するためにPureScriptでの再帰の基本を押さえました。
+また、独自の中置演算子や、マップ、絞り込みや畳み込みなどの配列に対する標準関数、及びこれらの概念を組み合わせた配列内包表記を導入しました。
+最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、累算器引数を使用して末尾再帰形に関数を変換する方法を示しました。
