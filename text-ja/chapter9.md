@@ -294,5 +294,5 @@ $ cat c/a/a.txt
 In this chapter, we covered asynchronous effects and learned how to:
 
 - `aff`ライブラリを使って`Aff`モナド中で非同期コードを走らせる。
-- `affjax`ライブラリを使って非同期にHTTPリクエストを行う。
+- `affjax`ライブラリを使って非同期にHTTPリクエストする。
 - `parallel`ライブラリを使って並列に非同期コードを走らせる。

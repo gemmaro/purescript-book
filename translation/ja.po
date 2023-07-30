@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-07-30 13:22+0900\n"
+"PO-Revision-Date: 2023-08-04 12:11+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -1641,8 +1641,7 @@ msgid ""
 "module."
 msgstr ""
 "`Fn2`は3つの型引数を取ります。\n"
-"`Fn2 a b c`は、型 `a`と `b`の2つの引数、返り値の型 `c`をもつカリー化されてい"
-"ない関数の型を表現しています。\n"
+"`Fn2 a b c`は、型`a`と`b`の2つの引数、返り値の型`c`を持つカリー化されていない関数の型を表現しています。\n"
 "これを使って外部モジュールから`diagonalUncurried`をインポートしました。"
 
 #. type: Plain text
@@ -20009,9 +20008,7 @@ msgstr ""
 msgid ""
 "The module imports the `Data.Foldable` module, which provides functions for "
 "folding data structures:"
-msgstr ""
-"このモジュールでは、データ構造の畳込みを行う関数を提供する `Data.Foldable`モ"
-"ジュールもインポートします。"
+msgstr "このモジュールでは、データ構造を畳込む関数を提供する`Data.Foldable`モジュールもインポートします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:21
@@ -20245,7 +20242,7 @@ msgid ""
 msgstr ""
 "この場合、3行目ではガードを使用して、最初の引数が第2引数よりも厳密に大きいという条件を課しています。\n"
 "最後の行でのガードは式`otherwise`を使っています。\n"
-"これはキーワードのようにも見えますが、実際はただの`Prelude`にある通常の束縛です。"
+"これはキーワードのようにも見えますが、実際はただの`Prelude`にある普通の束縛です。"
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:89
@@ -20297,14 +20294,12 @@ msgid ""
 "cases. If it takes a long time to complete or crashes with an error about "
 "the call stack, try adding more corner cases."
 msgstr ""
-"（普通）\\\\( (1 + x) ^ n \\\\)を多項式展開した式にある\\\\( x ^ k \\\\)の項"
-"の係数を求める関数`binomial`を書いてください。\n"
+"（普通）\\\\( (1 + x) ^ n \\\\)を多項式展開した式にある\\\\( x ^ k \\\\)の項の係数を求める関数`binomial`を書いてください。\n"
 "これは`n`要素の集合から`k`要素の部分集合を選ぶ方法の数と同じです。\n"
 "数式\\\\( n! / k! (n - k)! \\\\)を使ってください。\n"
 "ここで \\\\( ! \\\\) は前に書いた階乗関数です。\n"
 "*手掛かり*：パターン照合を使って特殊な場合を取り扱ってください。\n"
-"長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、もっと使"
-"用例を追加してみてください。"
+"長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、コーナーケースを更に追加してみてください。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:104
@@ -20721,7 +20716,7 @@ msgstr ""
 #: text/chapter5.md:234
 #, no-wrap
 msgid "Case Expressions"
-msgstr "Case式"
+msgstr "case式"
 
 #. type: Plain text
 #: text/chapter5.md:237
@@ -21730,34 +21725,23 @@ msgstr "型クラス"
 
 #. type: Plain text
 #: text/chapter6.md:6
-#, fuzzy
-#| msgid ""
-#| "This chapter will introduce a powerful form of abstraction which is "
-#| "enabled by PureScript's type system - type classes."
 msgid ""
 "This chapter will introduce a powerful form of abstraction enabled by "
 "PureScript's type system – type classes."
 msgstr ""
-"この章では、PureScriptの型システムによって可能になる強力な抽象化の手法であ"
-"る、型クラスを導入します。"
+"この章では、PureScriptの型システムにより可能になっている強力な抽象化の形式を導入します。\n"
+"そう、型クラスです。"
 
 #. type: Plain text
 #: text/chapter6.md:8
-#, fuzzy
-#| msgid ""
-#| "This motivating example for this chapter will be a library for hashing "
-#| "data structures. We will see how the machinery of type classes allow us "
-#| "to hash complex data structures without having to think directly about "
-#| "the structure of the data itself."
 msgid ""
 "This motivating example for this chapter will be a library for hashing data "
 "structures. We will see how the machinery of type classes allows us to hash "
 "complex data structures without having to think directly about the structure "
 "of the data itself."
 msgstr ""
-"この章ではデータ構造をハッシュ化するためのライブラリを題材に説明していきま"
-"す。データ自身の構造について直接考えることなく複雑な構造のデータのハッシュ値"
-"を求める上で、型クラスの仕組みがどのようにして働くのかを見ていきます。"
+"データ構造をハッシュ化するためのライブラリを本章の動機付けの例とします。\n"
+"データ自体の構造について直接考えることなく複雑な構造のデータのハッシュ値を求める上で、型クラスの仕組みがどのように働くかを見ていきます。"
 
 #. type: Plain text
 #: text/chapter6.md:10
@@ -21813,8 +21797,6 @@ msgstr "`either`: 非交和を表す `Either`データ型が定義されてい�
 
 #. type: Bullet: '- '
 #: text/chapter6.md:24
-#, fuzzy
-#| msgid "`strings`, which defines functions which operate on strings."
 msgid "`strings`, which defines functions that operate on strings."
 msgstr "`strings`: 文字列を操作する関数が定義されています。"
 
@@ -21912,22 +21894,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:51
-#, fuzzy
-#| msgid ""
-#| "This code declares a type class instance called `showBoolean` - in "
-#| "PureScript, type class instances can be named to aid the readability of "
-#| "the generated JavaScript. We say that the `Boolean` type _belongs to the "
-#| "`Show` type class_."
 msgid ""
 "This code declares a type class instance called `showBoolean` – in "
 "PureScript, type class instances can be named to aid the readability of the "
 "generated JavaScript. We say that the `Boolean` type _belongs to the `Show` "
 "type class_."
 msgstr ""
-"このコードは `showBool​​ean`という名前の型クラスのインスタンスを宣言します。 "
-"PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインス"
-"タンスに名前をつけます。このとき、 _`Boolean`型は `Show`型クラスに属している"
-"_ といいます。"
+"このコードは `showBool​​ean`という名前の型クラスのインスタンスを宣言します。\n"
+"PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前を付けられます。\n"
+"このとき、`Boolean`型は*`Show`型クラスに属している*といいます。"
 
 #. type: Plain text
 #: text/chapter6.md:53
@@ -21995,13 +21970,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:82
-#, fuzzy
-#| msgid ""
-#| "The output of `show` should be a string that you can paste back into the "
-#| "repl (or `.purs` file) to recreate the item being shown. Here we'll use "
-#| "`logShow`, which just calls `show` then `log`, to render the string "
-#| "without quotes. Ignore the `unit` print - that will covered in Chapter 8 "
-#| "when we examine `Effect`s, like `log`."
 msgid ""
 "The output of `show` should be a string that you can paste back into the "
 "repl (or `.purs` file) to recreate the item being shown. Here we'll use "
@@ -22009,11 +21977,10 @@ msgid ""
 "without quotes. Ignore the `unit` print – that will be covered in Chapter 8 "
 "when we examine `Effect`s, like `log`."
 msgstr ""
-"`show`の出力は、REPLに（あるいは`.purs`ファイルに）もう一度貼り付ければ、表示"
-"されたものを再作成できるような文字列であるべきです。以下では`logShow`を使って"
-"いますが、これは単に`show`と`log`を順に呼び出して、引用符なしに文字列を表示す"
-"るものです。`unit`の表示は無視してください。第8章で`Effect`を調べるときに押さ"
-"えます。`Effect`を持つものには`log`などがあります。"
+"`show`の出力は、REPLに（あるいは`.purs`ファイルに）貼り戻せば、表示されたものを再作成できるような文字列であるべきです。\n"
+"以下では`logShow`を使っていますが、これは単に`show`と`log`を順に呼び出すものであり、引用符なしに文字列が表示されます。\n"
+"`unit`の表示は無視してください。\n"
+"第8章で`log`のような`Effect`を調べるときに押さえます。"
 
 #. type: Fenced code block (text)
 #: text/chapter6.md:83
@@ -22070,27 +22037,20 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:109
-#, fuzzy
 msgid ""
 "The problem here is not that there is no `Show` instance for the type we "
 "intended to `show`, but rather that PSCi could not infer the type. This is "
 "indicated by the _unknown type_ `a` in the inferred type."
 msgstr ""
 "ここでの問題は `show`しようとしている型に対する `Show`インスタンスが存在しないということではなく、PSCiがこの型を推論できなかったということです。\n"
-"このエラー文言で*未知の型*`a`と表示されているのがそれです。"
+"これは推論された型で*未知の型*`a`とされていることが示しています。"
 
 #. type: Plain text
 #: text/chapter6.md:111
-#, fuzzy
-#| msgid ""
-#| "We can annotate the expression with a type, using the `::` operator, so "
-#| "that PSCi can choose the correct type class instance:"
 msgid ""
 "We can annotate the expression with a type using the `::` operator, so that "
 "PSCi can choose the correct type class instance:"
-msgstr ""
-"`::`演算子を使って式に対して型注釈を加えると、PSCiが正しい型クラスインスタン"
-"スを選ぶことができるようになります。"
+msgstr "`::`演算子を使って式に註釈を付け、、PSCiが正しい型クラスインスタンスを選べるようにできます。"
 
 #. type: Fenced code block (text)
 #: text/chapter6.md:112
@@ -22205,16 +22165,13 @@ msgstr "Eq"
 
 #. type: Plain text
 #: text/chapter6.md:145
-#, fuzzy
-#| msgid ""
-#| "The `Eq` type class defines the `eq` function, which tests two values for "
-#| "equality. The `==` operator is actually just an alias for `eq`."
 msgid ""
 "The `Eq` type class defines the `eq` function, which tests two values for "
 "equality. The `==` operator is actually an alias for `eq`."
 msgstr ""
-"`Eq`型クラスは、2つの値が等しいかどうかを調べる`eq`関数を定義しています。\n"
-"等値演算子 (`==`) は`eq`の別名にすぎません。"
+"`Eq`型クラスは`eq`関数を定義しています。\n"
+"この関数は2つの値について等値性を調べます。\n"
+"実は`==`演算子は`eq`の別名です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:146
@@ -22228,16 +22185,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:152
-#, fuzzy
-#| msgid ""
-#| "Note that in either case, the two arguments must have the same type: it "
-#| "does not make sense to compare two values of different types for equality."
 msgid ""
 "In either case, the two arguments must have the same type: it does not make "
 "sense to compare two values of different types for equality."
 msgstr ""
-"なお、異なる型の2つの値を比較しても意味がありませんから、等しいにせよ等しくな"
-"いにせよ2つの引数は同じ型を持つ必要があります。"
+"何れにせよ、2つの引数は同じ型を持つ必要があります。\n"
+"異なる型の2つの値を等値性に関して比較しても意味がありません。"
 
 #. type: Plain text
 #: text/chapter6.md:154
@@ -22268,10 +22221,12 @@ msgstr "Ord"
 
 #. type: Plain text
 #: text/chapter6.md:166
-#, fuzzy, no-wrap
-#| msgid "The `Ord` type class defines the `compare` function, which can be used to compare two values, for types which support ordering. The comparison operators `<` and `>` along with their non-strict companions `<=` and `>=`, can be defined in terms of `compare`.\n"
+#, no-wrap
 msgid "The `Ord` type class defines the `compare` function, which can be used to compare two values, for types that support ordering. The comparison operators `<` and `>` along with their non-strict companions `<=` and `>=`, can be defined in terms of `compare`.\n"
-msgstr "`Ord`型クラスは順序付け可能な型に対して2つの値を比較する `compare`関数を定義します。比較演算子 `<`、 `>`と、その仲間の厳密な大小比較ではない`<=`、 `>=`も、`compare`を使って定義されます。\n"
+msgstr ""
+"`Ord`型クラスは`compare`関数を定義します。\n"
+"この関数は2つの値を比較するのに使えるもので、その値の型は順序付けに対応したものです。\n"
+"比較演算子`<`、`>`と厳密な大小比較ではない`<=`、`>=`は`compare`を用いて定義されます。\n"
 
 #. type: Plain text
 #: text/chapter6.md:168
@@ -22298,36 +22253,27 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:177
-#, fuzzy
-#| msgid ""
-#| "The `compare` function compares two values, and returns an `Ordering`, "
-#| "which has three alternatives:"
 msgid ""
 "The `compare` function compares two values and returns an `Ordering`, which "
 "has three alternatives:"
 msgstr ""
-"`compare`関数は2つの値を比較して `Ordering`の3つの値のうち何れかを返します。"
+"`compare`関数は2つの値を比較して`Ordering`を返します。\n"
+"これには3つ選択肢があります。"
 
 #. type: Bullet: '- '
 #: text/chapter6.md:181
-#, fuzzy
-#| msgid "`LT` - if the first argument is less than the second."
 msgid "`LT` – if the first argument is less than the second."
-msgstr "`LT`- 最初の引数が2番目の値より小さいとき"
+msgstr "`LT`- 最初の引数が2番目の値より小さいとき。"
 
 #. type: Bullet: '- '
 #: text/chapter6.md:181
-#, fuzzy
-#| msgid "`EQ` - if the first argument is equal to the second."
 msgid "`EQ` – if the first argument is equal to the second."
-msgstr "`EQ`- 最初の引数が2番目の値と等しい（または比較できない）とき"
+msgstr "`EQ`- 最初の引数が2番目の値と等しいとき。"
 
 #. type: Bullet: '- '
 #: text/chapter6.md:181
-#, fuzzy
-#| msgid "`GT` - if the first argument is greater than the second."
 msgid "`GT` – if the first argument is greater than the second."
-msgstr "`GT`- 最初の引数が2番目の値より大きいとき"
+msgstr "`GT`- 最初の引数が2番目の値より大きいとき。"
 
 #. type: Plain text
 #: text/chapter6.md:183
@@ -22358,29 +22304,22 @@ msgstr "Field"
 
 #. type: Plain text
 #: text/chapter6.md:195
-#, fuzzy
-#| msgid ""
-#| "The `Field` type class identifies those types which support numeric "
-#| "operators such as addition, subtraction, multiplication and division. It "
-#| "is provided to abstract over those operators, so that they can be reused "
-#| "where appropriate."
 msgid ""
 "The `Field` type class identifies those types which support numeric "
 "operators such as addition, subtraction, multiplication, and division. It is "
 "provided to abstract over those operators, so that they can be reused where "
 "appropriate."
 msgstr ""
-"`Field`型クラスは加算、減算、乗算、除算などの数値演算子が使える型を示します。"
-"必要に応じて再利用できるように、これらの演算子を抽象化するわけです。"
+"`Field`型クラスは加算、減算、乗算、除算などの数値演算子に対応した型を示します。\n"
+"これらの演算子を抽象化して提供されているので、適切な場合に再利用できるのです。"
 
 #. type: Plain text
 #: text/chapter6.md:197
-#, fuzzy, no-wrap
-#| msgid "_Note_: Just like the `Eq` and `Ord` type classes, the `Field` type class has special support in the PureScript compiler, so that simple expressions such as `1 + 2 * 3` get translated into simple JavaScript, as opposed to function calls which dispatch based on a type class implementation."
+#, no-wrap
 msgid "> _Note_: Just like the `Eq` and `Ord` type classes, the `Field` type class has special support in the PureScript compiler, so that simple expressions such as `1 + 2 * 3` get translated into simple JavaScript, as opposed to function calls which dispatch based on a type class implementation.\n"
 msgstr ""
-"*補足*：型クラス `Eq`や `Ord`のクラスとちょうど同じように、`Field`型のクラスはPureScriptコンパイラで特別に扱われ、`1 + 2 * 3`のような単純な式は単純なJavaScriptへと変換されます。\n"
-"型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。"
+"> *補足*：型クラス`Eq`ないし`Ord`とちょうど同じように、`Field`型クラスはPureScriptコンパイラで特別に扱われ、`1 + 2 * 3`のような単純な式は単純なJavaScriptへと変換されます。\n"
+"> 型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:198
@@ -22390,15 +22329,6 @@ msgstr "class EuclideanRing a <= Field a\n"
 
 #. type: Plain text
 #: text/chapter6.md:203
-#, fuzzy
-#| msgid ""
-#| "The `Field` type class is composed from several more general "
-#| "_superclasses_. This allows us to talk abstractly about types which "
-#| "support some but not all of the `Field` operations. For example, a type "
-#| "of natural numbers would be closed under addition and multiplication, but "
-#| "not necessarily under subtraction, so that type might have an instance of "
-#| "the `Semiring` class (which is a superclass of `Num`), but not an "
-#| "instance of `Ring` or `Field`."
 msgid ""
 "The `Field` type class is composed from several more general _superclasses_. "
 "This allows us to talk abstractly about types that support some but not all "
@@ -22407,14 +22337,10 @@ msgid ""
 "subtraction, so that type might have an instance of the `Semiring` class "
 "(which is a superclass of `Num`), but not an instance of `Ring` or `Field`."
 msgstr ""
-"`Field`型クラスは、幾つかのより抽象的な*上位クラス* (Super Class) が組み合わ"
-"さってできています。\n"
-"これは、その型は`Field`型クラスの操作の全てを提供しているわけではないが、その"
-"一部を提供する、というように抽象的に説明できます。\n"
-"例えば、自然数の型は加算及び乗算については閉じていますが、減算については閉じ"
-"ていません。\n"
-"そのため、この型は`Semiring`クラス（これは`Num`の上位クラスです）のインスタン"
-"スですが、`Ring`や`Field`のインスタンスではありません。"
+"`Field`型クラスは、幾つかのより抽象的な*上位クラス*が組み合わさってできています。\n"
+"このため、`Field`の操作の全てを提供しているわけではないが、その一部を提供する型について抽象的に説明できます。\n"
+"例えば、自然数の型は加算及び乗算については閉じていますが、減算については必ずしも閉じていません。\n"
+"そのため、この型は`Semiring`クラス（これは`Num`の上位クラスです）のインスタンスですが、`Ring`や`Field`のインスタンスではありません。"
 
 #. type: Plain text
 #: text/chapter6.md:205
@@ -22461,17 +22387,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:216
-#, fuzzy
-#| msgid ""
-#| "Strings form a semigroup under regular string concatenation, and so do "
-#| "arrays. Several other standard instances are provided by the `prelude` "
-#| "package."
 msgid ""
 "Strings form a semigroup under regular string concatenation, and so do "
 "arrays. The `prelude` package provides several other standard instances."
 msgstr ""
-"文字列は普通の文字列連結について半群をなし、同様に配列も半群をなします。その"
-"他の標準的なインスタンスの幾つかは、 `prelude`パッケージで提供されています。"
+"文字列は普通の文字列連結について半群をなし、配列も同様です。\n"
+"その他の標準的なインスタンスは`prelude`パッケージで提供されています。"
 
 #. type: Plain text
 #: text/chapter6.md:218
@@ -22505,16 +22426,15 @@ msgstr "ここでも文字列や配列はモノイドの簡単な例になって
 
 #. type: Plain text
 #: text/chapter6.md:229
-#, fuzzy
 msgid ""
 "A `Monoid` type class instance for a type describes how to _accumulate_ a "
 "result with that type by starting with an \"empty\" value and combining new "
 "results. For example, we can write a function that concatenates an array of "
 "values in some monoid using a fold. In PSCi:"
 msgstr ""
-"`Monoid`型クラスインスタンスでは、「空」の値から始めて新たな値を合成していき、その型で*累算*した結果を返すにはどうするかを記述する型クラスです。\n"
-"例えば、畳み込みを使って幾つかのモノイドの値の配列を連結する関数を書くことができます。\n"
-"PSCiで試すと次のようになります。"
+"ある型にとっての`Monoid`型クラスインスタンスとは、「空」の値から始めて新たな結果に組み合わせ、その型を持つ結果を*累算*する方法を記述するものです。\n"
+"例えば、畳み込みを使って何らかのモノイドの値の配列を連結する関数を書けます。\n"
+"PSCiで以下の通りです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:230
@@ -22600,34 +22520,24 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:260
-#, fuzzy
-#| msgid ""
-#| "It is instructive to specialize to the case where `f` is the array type "
-#| "constructor. In this case, we can replace `f a` with `Array a` for any a, "
-#| "and we notice that the types of `foldl` and `foldr` become the types that "
-#| "we saw when we first encountered folds over arrays."
 msgid ""
 "It is instructive to specialize to the case where `f` is the array type "
 "constructor. In this case, we can replace `f a` with `Array a` for any a, "
 "and we notice that the types of `foldl` and `foldr` become the types we saw "
 "when we first encountered folds over arrays."
 msgstr ""
-"この定義は `f`を配列の型構築子として特殊化して考えてみるとわかりやすくなりま"
-"す。\n"
-"この場合、全ての `a`について `f a`を `Array a`に置き換える事ができますが、"
-"`foldl`と `foldr`の型が、最初に見た配列に対する畳み込みの型になるとわかりま"
-"す。"
+"`f`を配列の型構築子として特殊化すると分かりやすいです。\n"
+"この場合、任意の`a`について`f a`を`Array a`に置き換えられますが、そうすると`foldl`と`foldr`の型が、最初に配列に対する畳み込みで見た型になると気付きます。"
 
 #. type: Plain text
 #: text/chapter6.md:262
-#, fuzzy, no-wrap
-#| msgid "What about `foldMap`? Well, that becomes `forall a m. Monoid m => (a -> m) -> Array a -> m`. This type signature says that we can choose any type `m` for our result type, as long as that type is an instance of the `Monoid` type class. If we can provide a function which turns our array elements into values in that monoid, then we can accumulate over our array using the structure of the monoid, and return a single value.\n"
+#, no-wrap
 msgid "What about `foldMap`? Well, that becomes `forall a m. Monoid m => (a -> m) -> Array a -> m`. This type signature says that we can choose any type `m` for our result type, as long as that type is an instance of the `Monoid` type class. If we can provide a function that turns our array elements into values in that monoid, then we can accumulate over our array using the structure of the monoid and return a single value.\n"
 msgstr ""
 "`foldMap`についてはどうでしょうか。\n"
 "これは `forall a m. Monoid m => (a -> m) -> Array a -> m`になります。\n"
-"この型シグネチャは、型 `m`が `Monoid`型クラスのインスタンスであればどんな型でも返り値の型として選ぶことができると言っています。\n"
-"配列の要素をそのモノイドの値へと変換する関数を与えれば、そのモノイドの構造を利用して配列を畳み込み、1つの値にして返すことができます。\n"
+"この型シグネチャでは、型`m`が`Monoid`型クラスのインスタンスであれば、返り値の型として任意に選べると書かれています。\n"
+"配列の要素をそのモノイドの値へと変える関数を与えられれば、そのモノイドの構造を利用して配列上で累算し、1つの値にして返せます。\n"
 
 #. type: Plain text
 #: text/chapter6.md:264
@@ -22650,60 +22560,36 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:273
-#, fuzzy
-#| msgid ""
-#| "Here, we choose the monoid for strings, which concatenates strings "
-#| "together, and the `show` function which renders an `Int` as a `String`. "
-#| "Then, passing in an array of integers, we see that the results of "
-#| "`show`ing each integer have been concatenated into a single `String`."
 msgid ""
 "Here, we choose the monoid for strings, which concatenates strings together, "
 "and the `show` function, which renders an `Int` as a `String`. Then, passing "
 "in an array of integers, we see that the results of `show`ing each integer "
 "have been concatenated into a single `String`."
 msgstr ""
-"ここでは繋ぎ合わせるためのモノイドとして文字列を、そして`Int`を文字列として表"
-"示する `show`関数を選びました。そうして数の配列を渡すと、それぞれの数を "
-"`show`して1つの文字列へと連結した結果が出力されました。"
+"ここでは文字列用のモノイドと`show`関数を選んでいます。\n"
+"前者は文字列を連結するもので、後者は`Int`を文字列として書き出すものです。\n"
+"そうして数の配列を渡すと、それぞれの数を`show`して1つの文字列へと連結した結果を得ました。"
 
 #. type: Plain text
 #: text/chapter6.md:275
-#, fuzzy
-#| msgid ""
-#| "But arrays are not the only types which are foldable. `foldable-"
-#| "traversable` also defines `Foldable` instances for types like `Maybe` and "
-#| "`Tuple`, and other libraries like `lists` define `Foldable` instances for "
-#| "their own data types. `Foldable` captures the notion of an _ordered "
-#| "container_."
 msgid ""
 "But arrays are not the only types that are foldable. `foldable-traversable` "
 "also defines `Foldable` instances for types like `Maybe` and `Tuple`, and "
 "other libraries like `lists` define `Foldable` instances for their own data "
 "types. `Foldable` captures the notion of an _ordered container_."
 msgstr ""
-"しかし畳み込み可能な型は配列だけではありません。`foldable-traversable`では "
-"`Maybe`や `Tuple`のような型の `Foldable`インスタンスが定義されており、`lists`"
-"のような他のライブラリでは、そのライブラリのそれぞれのデータ型に対して "
-"`Foldable`インスタンスが定義されています。`Foldable`は _順序付きコンテナ_ "
-"(ordered container) の概念を見据えたものなのです。"
+"しかし畳み込み可能な型は配列だけではありません。\n"
+"`foldable-traversable`では`Maybe`や`Tuple`のような型にも`Foldable`インスタンスが定義されており、`lists`のような他のライブラリでは、各々のデータ型に対して`Foldable`インスタンスが定義されています。\n"
+"`Foldable`は*順序付きコンテナ*の概念を見据えたものなのです。"
 
 #. type: Title ###
 #: text/chapter6.md:276
-#, fuzzy, no-wrap
-#| msgid "Functor, and Type Class Laws"
+#, no-wrap
 msgid "Functor and Type Class Laws"
 msgstr "関手と型クラス則"
 
 #. type: Plain text
 #: text/chapter6.md:279
-#, fuzzy
-#| msgid ""
-#| "The Prelude also defines a collection of type classes which enable a "
-#| "functional style of programming with side-effects in PureScript: "
-#| "`Functor`, `Applicative` and `Monad`. We will cover these abstractions "
-#| "later in the book, but for now, let's look at the definition of the "
-#| "`Functor` type class, which we have seen already in the form of the `map` "
-#| "function:"
 msgid ""
 "The Prelude also defines a collection of type classes that enable a "
 "functional style of programming with side-effects in PureScript: `Functor`, "
@@ -22711,10 +22597,10 @@ msgid ""
 "book, but for now, let's look at the definition of the `Functor` type class, "
 "which we have seen already in the form of the `map` function:"
 msgstr ""
-"PureScriptで副作用を伴う関数型プログラミングのスタイルを可能にするための"
-"`Functor`と `Applicative`、 `Monad`といった型クラスがPreludeでは定義されてい"
-"ます。これらの抽象化については後ほど本書で扱いますが、まずは`map`関数の形で既"
-"に見てきた`Functor`型クラスの定義を見てみましょう。"
+"PureScriptでは、副作用を伴う関数型プログラミングのスタイルを可能にするための型クラスの集まりも定義されています。\n"
+"`Functor`や`Applicative`、`Monad`といったものです。\n"
+"これらの抽象化については後ほど本書で扱いますが、ここでは`Functor`型クラスの定義を見てみましょう。\n"
+"既に`map`関数の形で見たものです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:280
@@ -22814,12 +22700,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:312
-#, fuzzy
 msgid ""
 "The second law is the _composition law_. It states that mapping one function "
 "over a structure and then mapping a second is the same as mapping the "
 "composition of the two functions over the structure."
-msgstr "第2の法則は _合成律_ (composition law) です。構造を1つの関数で写してから2つめの関数で写すのは、2つの関数の合成で構造を写すのと同じだ、と言っています。"
+msgstr ""
+"第2の法則は*合成律*です。\n"
+"構造を1つの関数で写してから2つめの関数で写すのは、2つの関数の合成で構造を写すのと同じだ、と言っています。"
 
 #. type: Plain text
 #: text/chapter6.md:314
@@ -22969,20 +22856,14 @@ msgstr "型クラス制約"
 
 #. type: Plain text
 #: text/chapter6.md:348
-#, fuzzy
-#| msgid ""
-#| "Types of functions can be constrained by using type classes. Here is an "
-#| "example: suppose we want to write a function which tests if three values "
-#| "are equal, by using equality defined using an `Eq` type class instance."
 msgid ""
 "Types of functions can be constrained by using type classes. Here is an "
 "example: suppose we want to write a function that tests if three values are "
 "equal, by using equality defined using an `Eq` type class instance."
 msgstr ""
-"型クラスを使うと、関数の型に制約を加えることができます。\n"
+"型クラスを使うと、関数の型に制約を加えられます。\n"
 "例を示しましょう。\n"
-"`Eq`型クラスのインスタンスで定義された等値性を使って、3つの値が等しいかどうか"
-"を調べる関数を書きたいとします。"
+"`Eq`型クラスインスタンスを使って定義された等値性を使って、3つの値が等しいかどうかを調べる関数を書きたいとします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:349
@@ -23104,10 +22985,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:388
-#, fuzzy, no-wrap
-#| msgid "Here, we might have annotated this function as `Int -> Int`, or `Number -> Number`, but PSCi shows us that the most general type works for any `Semiring`, allowing us to use our function with both `Int`s and `Number`s.\n"
+#, no-wrap
 msgid "Here, we might have annotated this function as `Int -> Int` or `Number -> Number`, but PSCi shows us that the most general type works for any `Semiring`, allowing us to use our function with both `Int`s and `Number.\n"
-msgstr "ここで、この関数には`Int -> Int`または`Number -> Number`と注釈を付けることが考えられますが、最も一般的な型が`Semiring`で動作するため、PSCiでは`Int`と `Number`の両方で関数を実行させることができます。\n"
+msgstr ""
+"ここで、この関数に`Int -> Int`または`Number -> Number`と註釈を付けることはできます。\n"
+"しかし、PSCiでは最も一般的な型が`Semiring`で動作することが示されています。\n"
+"こうすると`Int`と`Number`の両方で関数を使えます。\n"
 
 #. type: Title ##
 #: text/chapter6.md:389
@@ -23152,12 +23035,9 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:401
-#, fuzzy, no-wrap
-#| msgid ""
-#| "If a type class instance depends on multiple other instances, those instances should be grouped in parentheses and separated by\n"
-#| "commas on the left hand side of the `=>` symbol:\n"
+#, no-wrap
 msgid "If a type class instance depends on multiple other instances, those instances should be grouped in parentheses and separated by commas on the left-hand side of the `=>` symbol:\n"
-msgstr "型クラスインスタンスが複数の他のインスタンスに依存する場合、括弧で囲んでそれらのインスタンスをコンマで区切り、それを`=>`シンボルの左側に置く必要があります。\n"
+msgstr "型クラスインスタンスが複数の他のインスタンスに依存する場合、括弧で囲んでそれらのインスタンスをコンマで区切り、それを`=>`シンボルの左側に置くことになります。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:402
@@ -23208,12 +23088,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:420
-#, fuzzy, no-wrap
-#| msgid "    Write an `Eq` instance for the type `NonEmpty a` which reuses the instances for `Eq a` and `Eq (Array a)`. _Note:_ you may instead derive the `Eq` instance.\n"
+#, no-wrap
 msgid "    Write an `Eq` instance for the type `NonEmpty a` that reuses the instances for `Eq a` and `Eq (Array a)`. _Note:_ you may instead derive the `Eq` instance.\n"
 msgstr ""
 "    `Eq a`と`Eq (Array a)`のインスタンスを再利用し、型`NonEmpty`に`Eq`インスタンスを書いてください。\n"
-"    *補足*：代わりに`Eq`インスタンスも導出できます。\n"
+"    *補足*：代わりに`Eq`インスタンスを導出できます。\n"
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:422
@@ -23231,10 +23110,6 @@ msgstr "（普通）`NonEmpty`に`Functor`インスタンスを書いてくだ�
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:426
-#, fuzzy
-#| msgid ""
-#| "(Medium) Given any type `a` with an instance of `Ord`, we can add a new "
-#| "\"infinite\" value which is greater than any other value:"
 msgid ""
 "(Medium) Given any type `a` with an instance of `Ord`, we can add a new "
 "\"infinite\" value that is greater than any other value:"
@@ -23256,8 +23131,7 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:432
-#, fuzzy, no-wrap
-#| msgid "    Write an `Ord` instance for `Extended a` which reuses the `Ord` instance for `a`.\n"
+#, no-wrap
 msgid "    Write an `Ord` instance for `Extended a` that reuses the `Ord` instance for `a`.\n"
 msgstr "    `a`への`Ord`インスタンスを再利用して、`Extended a`に`Ord`インスタンスを書いてください。\n"
 
@@ -23272,19 +23146,11 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:436
-#, fuzzy
-#| msgid ""
-#| "(Difficult) Given a type constructor `f` which defines an ordered "
-#| "container (and so has a `Foldable` instance), we can create a new "
-#| "container type which includes an extra element at the front:"
 msgid ""
 "(Difficult) Given a type constructor `f` which defines an ordered container "
 "(and so has a `Foldable` instance), we can create a new container type that "
 "includes an extra element at the front:"
-msgstr ""
-"（難しい）順序付きコンテナを定義する（そして `Foldable`のインスタンスを持って"
-"いる）ような型構築子 `f`が与えられたとき、追加の要素を先頭に含めるような新た"
-"なコンテナ型を作ることができます。"
+msgstr "（難しい）順序付きコンテナを定義する（そして `Foldable`のインスタンスを持っている）ような型構築子 `f`が与えられたとき、追加の要素を先頭に含める新たなコンテナ型を作れます。"
 
 #. type: Plain text
 #: text/chapter6.md:440
@@ -23323,10 +23189,6 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:449
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a `dedupShapes :: Array Shape -> Array Shape` function "
-#| "which removes duplicate `Shape`s from an array using the `nubEq` function."
 msgid ""
 "(Medium) Write a `dedupShapes :: Array Shape -> Array Shape` function that "
 "removes duplicate `Shape`s from an array using the `nubEq` function."
@@ -23345,26 +23207,19 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter6.md:452
-#, fuzzy, no-wrap
-#| msgid "Multi Parameter Type Classes"
+#, no-wrap
 msgid "Multi-Parameter Type Classes"
 msgstr "多変数型クラス"
 
 #. type: Plain text
 #: text/chapter6.md:455
-#, fuzzy
-#| msgid ""
-#| "It's not the case that a type class can only take a single type as an "
-#| "argument. This is the most common case, but in fact, a type class can be "
-#| "parameterized by _zero or more_ type arguments."
 msgid ""
 "It's not the case that a type class can only take a single type as an "
 "argument. This is the most common case, but a type class can be "
 "parameterized by _zero or more_ type arguments."
 msgstr ""
-"型クラスは必ずしも1つの型だけを型変数としてとるわけではありません。型変数が1"
-"つだけなのが最も一般的ですが、実際には型クラスは*ゼロ個以上の*型変数を持つこ"
-"とができます。"
+"型クラスが引数として1つの型だけを取れるのかというと、そうではありません。\n"
+"その場合がほとんどですが、型クラスは*ゼロ個以上の*型変数を持てます。"
 
 #. type: Plain text
 #: text/chapter6.md:457
@@ -23407,11 +23262,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:476
-#, fuzzy
-#| msgid ""
-#| "The `Stream` module defines a class `Stream` which identifies types which "
-#| "look like streams of elements, where elements can be pulled from the "
-#| "front of the stream using the `uncons` function."
 msgid ""
 "The `Stream` module defines a class `Stream` which identifies types that "
 "look like streams of elements, where elements can be pulled from the front "
@@ -23445,7 +23295,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:482
-#, fuzzy
 msgid ""
 "We can write functions that work over arbitrary streams. For example, here "
 "is a function that accumulates a result in some `Monoid` based on the "
@@ -23493,22 +23342,14 @@ msgstr "関数従属性"
 
 #. type: Plain text
 #: text/chapter6.md:499
-#, fuzzy
-#| msgid ""
-#| "Multi-parameter type classes can be very useful, but can easily lead to "
-#| "confusing types and even issues with type inference. As a simple example, "
-#| "consider writing a generic `tail` function on streams using the `Stream` "
-#| "class given above:"
 msgid ""
 "Multi-parameter type classes can be very useful but can easily lead to "
 "confusing types and even issues with type inference. As a simple example, "
 "consider writing a generic `tail` function on streams using the `Stream` "
 "class given above:"
 msgstr ""
-"多変数型クラスは非常に便利ですが、混乱しやすい型や型推論の問題にも繋がりま"
-"す。\n"
-"簡単な例として、上記の `Stream`クラスを使って汎用的な`tail`関数をストリームに"
-"書くことを考えてみましょう。"
+"多変数型クラスは非常に便利ですが、紛らわしい型や型推論の問題にも繋がります。\n"
+"単純な例として、上記で与えられた`Stream`クラスを使い、ストリームに対して汎用的な`tail`関数を書くことを考えてみましょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:500
@@ -23589,20 +23430,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:531
-#, fuzzy
-#| msgid ""
-#| "The compiler is unable to make that deduction automatically, and cannot "
-#| "commit to the `streamString` instance. However, we can help the compiler "
-#| "by adding a hint to the type class definition:"
 msgid ""
 "The compiler cannot make that deduction automatically or commit to the "
 "`streamString` instance. However, we can help the compiler by adding a hint "
 "to the type class definition:"
 msgstr ""
-"コンパイラは自動的にそう推論できず、`streamString`インスタンスを割り当てるこ"
-"とができません。\n"
-"しかし、型クラス定義に手掛かりを追加すると、コンパイラを助けることができま"
-"す。"
+"コンパイラは自動的にそう推論できず、`streamString`インスタンスに目が向きません。\n"
+"しかし、型クラス定義に手掛かりを追加すると、コンパイラを補助できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:532
@@ -23647,16 +23481,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:550
-#, fuzzy
-#| msgid ""
-#| "Functional dependencies can be quite useful when using multi-parameter "
-#| "type classes to design certain APIs."
 msgid ""
 "Functional dependencies can be useful when designing certain APIs using "
 "multi-parameter type classes."
-msgstr ""
-"多種の型のクラスを使用して何らかのAPIを設計する場合、関数従属性は非常に有用で"
-"す。"
+msgstr "多変数の型クラスを使用して何らかのAPIを設計する場合、関数従属性が便利なことがあります。"
 
 #. type: Title ##
 #: text/chapter6.md:551
@@ -23666,29 +23494,16 @@ msgstr "型変数のない型クラス"
 
 #. type: Plain text
 #: text/chapter6.md:554
-#, fuzzy
-#| msgid ""
-#| "We can even define type classes with zero type arguments! These "
-#| "correspond to compile-time assertions about our functions, allowing us to "
-#| "track global properties of our code in the type system."
 msgid ""
 "We can even define type classes with zero-type arguments! These correspond "
 "to compile-time assertions about our functions, allowing us to track the "
 "global properties of our code in the type system."
 msgstr ""
 "ゼロ個の型変数を持つ型クラスさえも定義できます。\n"
-"これらは関数に対するコンパイル時のアサーションに対応しており、型システム内の"
-"コードの大域的な性質を把握できます。"
+"これらは関数に対するコンパイル時の表明に対応しており、型システム内においてそのコードの大域的な性質を把握できます。"
 
 #. type: Plain text
 #: text/chapter6.md:556
-#, fuzzy
-#| msgid ""
-#| "An important example is the `Partial` class which we saw earlier when "
-#| "discussing partial functions. Take for example the functions `head` and "
-#| "`tail` defined in `Data.Array.Partial` that allow us to get the head or "
-#| "tail of an array without wrapping them in a `Maybe`, so they can fail if "
-#| "the array is empty:"
 msgid ""
 "An important example is the `Partial` class we saw earlier when discussing "
 "partial functions. Take, for example, the functions `head` and `tail` "
@@ -23696,10 +23511,10 @@ msgid ""
 "array without wrapping them in a `Maybe`, so they can fail if the array is "
 "empty:"
 msgstr ""
-"重要な一例として、前に部分関数についてお話しした際に見た`Partial`クラスがあり"
-"ます。`Data.Array.Partial`に定義されている関数`head`と`tail`を例に取りましょ"
-"う。この関数は配列の先頭と尾鰭を`Maybe`に包むことなく取得できます。なので配列"
-"が空のときに失敗する可能性があります。"
+"重要な一例として、前に部分関数についてお話しした際に見た`Partial`クラスがあります。\n"
+"`Data.Array.Partial`に定義されている関数`head`と`tail`を例に取りましょう。\n"
+"この関数は配列の先頭と尾鰭を`Maybe`に包むことなく取得できます。\n"
+"そのため配列が空のときに失敗する可能性があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:557
@@ -23830,15 +23645,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:603
-#, fuzzy
-#| msgid ""
-#| "We've [already seen an example of superclass relationships](#ord): the "
-#| "`Eq` class is a superclass of `Ord`, and the `Semigroup` class is a "
-#| "superclass of `Monoid`. For every type class instance of the `Ord` class, "
-#| "there must be a corresponding `Eq` instance for the same type. This makes "
-#| "sense, since in many cases, when the `compare` function reports that two "
-#| "values are incomparable, we often want to use the `Eq` class to determine "
-#| "if they are in fact equal."
 msgid ""
 "We've [already seen an example of superclass relationships](#ord): the `Eq` "
 "class is a superclass of `Ord`, and the `Semigroup` class is a superclass of "
@@ -23849,26 +23655,13 @@ msgid ""
 "equal."
 msgstr ""
 "[既に上位クラスの関係の例を目にしました](#ord)。\n"
-"`Eq`クラスは `Ord`の上位クラスですし、`Semigroup`クラスは`Monoid`の上位クラス"
-"です。\n"
-"`Ord`クラスの全ての型クラスインスタンスについて、その同じ型に対応する `Eq`イ"
-"ンスタンスが存在しなければなりません。\n"
+"`Eq`クラスは`Ord`の上位クラスですし、`Semigroup`クラスは`Monoid`の上位クラスです。\n"
+"`Ord`クラスの全ての型クラスインスタンスについて、その同じ型に対応する `Eq`インスタンスが存在しなければなりません。\n"
 "これは理に適っています。\n"
-"`compare`関数が2つの値の大小を付けられないと報告した時は、それらが実は同値で"
-"あるかどうかを判定するために `Eq`クラスを使いたいことが多いでしょうから。"
+"多くの場合、`compare`関数が2つの値の大小を付けられないと報告した時は、同値であるかを判定するために`Eq`クラスを使うことでしょう。"
 
 #. type: Plain text
 #: text/chapter6.md:605
-#, fuzzy
-#| msgid ""
-#| "In general, it makes sense to define a superclass relationship when the "
-#| "laws for the subclass mention the members of the superclass. For example, "
-#| "it is reasonable to assume, for any pair of `Ord` and `Eq` instances, "
-#| "that if two values are equal under the `Eq` instance, then the `compare` "
-#| "function should return `EQ`. In other words, `a == b` should be true "
-#| "exactly when `compare a b` evaluates to `EQ`. This relationship on the "
-#| "level of laws justifies the superclass relationship between `Eq` and "
-#| "`Ord`."
 msgid ""
 "In general, it makes sense to define a superclass relationship when the laws "
 "for the subclass mention the superclass members. For example, for any pair "
@@ -23878,62 +23671,40 @@ msgid ""
 "evaluates to `EQ`. This relationship on the level of laws justifies the "
 "superclass relationship between `Eq` and `Ord`."
 msgstr ""
-"一般に、下位クラスの法則が上位クラスのメンバに言及しているとき、上位クラス関"
-"係を定義するのは筋が通っています。\n"
-"例えば、任意の`Ord`と`Eq`のインスタンスの対について、もし2つの値が`Eq`インス"
-"タンスの下で同値であるなら、`compare`関数は `EQ`を返すはずだと見做すのは理に"
-"適っています。\n"
-"言い換えれば、`a == b`が真であるのはちょうど`compare a b`が`EQ`に評価されると"
-"きなのです。\n"
-"法則のレベルでのこの関係は`Eq`と`Ord`の間の上位クラス関係の正当性を示します。"
+"一般に、下位クラスの法則が上位クラスの構成要素に言及しているとき、上位クラス関係を定義するのは筋が通っています。\n"
+"例えば、任意の`Ord`と`Eq`のインスタンスの対について、もし2つの値が`Eq`インスタンスの下で同値であるなら、`compare`関数は`EQ`を返すはずだと推定するのは理に適っています。\n"
+"言い換えれば、`a == b`が真であるのは`compare a b`が厳密に`EQ`に評価されるときなのです。\n"
+"法則のレベルでのこの関係は、`Eq`と`Ord`の間の上位クラス関係の正当性を示します。"
 
 #. type: Plain text
 #: text/chapter6.md:607
-#, fuzzy
-#| msgid ""
-#| "Another reason to define a superclass relationship is in the case where "
-#| "there is a clear \"is-a\" relationship between the two classes. That is, "
-#| "every member of the subclass _is a_ member of the superclass as well."
 msgid ""
 "Another reason to define a superclass relationship is when there is a clear "
 "\"is-a\" relationship between the two classes. That is, every member of the "
 "subclass _is a_ member of the superclass as well."
 msgstr ""
-"上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明らかに "
-"\"is-a\" の関係があることです。\n"
-"下位クラスの全てのメンバは、上位クラスのメンバでもあるということです。"
+"上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明白な \"is-a\" の関係があることです。\n"
+"下位クラスの全ての構成要素は、上位クラスの構成要素でもあるということです。"
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:611
-#, fuzzy
-#| msgid ""
-#| "(Medium) Define a partial function `unsafeMaximum :: Partial => Array Int "
-#| "-> Int` which finds the maximum of a non-empty array of integers. Test "
-#| "out your function in PSCi using `unsafePartial`. _Hint_: Use the "
-#| "`maximum` function from `Data.Foldable`."
 msgid ""
 "(Medium) Define a partial function `unsafeMaximum :: Partial => Array Int -> "
 "Int` that finds the maximum of a non-empty array of integers. Test out your "
 "function in PSCi using `unsafePartial`. _Hint_: Use the `maximum` function "
 "from `Data.Foldable`."
 msgstr ""
-"（普通）部分関数`unsafeMaximum :: Partial => Array Int -> Int`を定義してくだ"
-"さい。この関数は空でない整数の配列の最大値を求めます。`unsafePartial`を使って"
-"PSCiで関数をテストしてください。*手掛かり*：`Data.Foldable`の `maximum`関数を"
-"使います。"
+"（普通）部分関数`unsafeMaximum :: Partial => Array Int -> Int`を定義してください。\n"
+"この関数は空でない整数の配列の最大値を求めます。\n"
+"`unsafePartial`を使ってPSCiで関数を試してください。\n"
+"*手掛かり*：`Data.Foldable`の`maximum`関数を使います。"
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:613
-#, fuzzy
-#| msgid ""
-#| "(Medium) The `Action` class is a multi-parameter type class which defines "
-#| "an action of one type on another:"
 msgid ""
 "(Medium) The `Action` class is a multi-parameter type class that defines an "
 "action of one type on another:"
-msgstr ""
-"（普通）次の `Action`クラスは、ある型の別の型での動作 (action) を定義する、多"
-"変数型クラスです。"
+msgstr "（普通）次の `Action`クラスは、ある型の別の型での動作を定義する、多変数型クラスです。"
 
 #. type: Plain text
 #: text/chapter6.md:617
@@ -23949,10 +23720,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:619
-#, fuzzy, no-wrap
-#| msgid "    An _action_ is a function which describes how monoidal values are used to determine how to modify a value of another type. There are two laws for the `Action` type class:\n"
+#, no-wrap
 msgid "    An _action_ is a function that describes how monoidal values are used to determine how to modify a value of another type. There are two laws for the `Action` type class:\n"
-msgstr "   *動作*はモノイドな値を使って他の型の値を変更する方法を決めるやり方を記述する関数です。`Action`型クラスには2つの法則があります。\n"
+msgstr ""
+"   *動作*とは、他の型の値を変更する方法を決めるために使われるモノイドな値を記述する関数です。\n"
+"   `Action`型クラスには2つの法則があります。\n"
 
 #. type: Bullet: '    - '
 #: text/chapter6.md:622
@@ -24007,8 +23779,7 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:636
-#, fuzzy, no-wrap
-#| msgid "    Write an instance which implements this action:\n"
+#, no-wrap
 msgid "    Write an instance that implements this action:\n"
 msgstr "    この動作を実装するインスタンスを書いてください。\n"
 
@@ -24032,34 +23803,22 @@ msgstr ""
 msgid "    Remember, your instance must satisfy the laws listed above.\n"
 msgstr "    インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。\n"
 
+# FIXME: PureScriptではなくPurescriptになっています。
 #. type: Bullet: '1. '
 #: text/chapter6.md:645
-#, fuzzy
-#| msgid ""
-#| "(Difficult) There are actually multiple ways to implement an instance of "
-#| "`Action Multiply Int`. How many can you think of? Purescript does not "
-#| "allow multiple implementations of a same instance, so you will have to "
-#| "replace your original implementation. _Note_: the tests cover 4 "
-#| "implementations."
 msgid ""
 "(Difficult) There are multiple ways to implement an instance of `Action "
 "Multiply Int`. How many can you think of? Purescript does not allow multiple "
 "implementations of the same instance, so you will have to replace your "
 "original implementation. _Note_: the tests cover 4 implementations."
 msgstr ""
-"（難しい）実は`Action Multiply Int`のインスタンスを実装するには複数の方法があ"
-"ります。\n"
+"（難しい）`Action Multiply Int`のインスタンスを実装するには複数の方法があります。\n"
 "どれだけ思い付きますか。\n"
-"PureScriptは同じインスタンスの複数の実装を許さないため、元の実装を置き換える"
-"必要があります。\n"
+"PureScriptは同じインスタンスの複数の実装を許さないため、元の実装を置き換える必要があるでしょう。\n"
 "*補足*：テストでは4つの実装を押さえています。"
 
 #. type: Bullet: '1. '
 #: text/chapter6.md:647
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write an `Action` instance which repeats an input string some "
-#| "number of times:"
 msgid ""
 "(Medium) Write an `Action` instance that repeats an input string some number "
 "of times:"
@@ -24162,10 +23921,9 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:674
-#, fuzzy, no-wrap
-#| msgid "Note that this library is for demonstration purposes only, and is not intended to provide a robust hashing mechanism."
+#, no-wrap
 msgid "> Note that this library is for demonstration purposes only and is not intended to provide a robust hashing mechanism.\n"
-msgstr "なお、このライブラリの説明だけを目的としており、堅牢なハッシュ化の仕組みの提供は目的としていません。"
+msgstr "> なお、このライブラリは説明だけを目的としており、堅牢なハッシュ化の仕組みの提供は意図していません。\n"
 
 #. type: Plain text
 #: text/chapter6.md:676
@@ -24174,16 +23932,12 @@ msgstr "ハッシュ関数に期待される性質とはどのようなもので
 
 #. type: Bullet: '- '
 #: text/chapter6.md:679
-#, fuzzy
-#| msgid ""
-#| "A hash function should be deterministic, and map equal values to equal "
-#| "hash codes."
 msgid ""
 "A hash function should be deterministic and map equal values to equal hash "
 "codes."
 msgstr ""
 "ハッシュ関数は決定的でなくてはなりません。\n"
-"つまり、同じ値には同じハッシュ値を対応させなければなりません。"
+"つまり、同じ値は同じハッシュコードに写さなければなりません。"
 
 #. type: Bullet: '- '
 #: text/chapter6.md:679
@@ -24196,22 +23950,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:681
-#, fuzzy
-#| msgid ""
-#| "The first property looks a lot like a law for a type class, whereas the "
-#| "second property is more along the lines of an informal contract, and "
-#| "certainly would not be enforceable by PureScript's type system. However, "
-#| "this should provide the intuition for the following type class:"
 msgid ""
 "The first property looks a lot like a law for a type class, whereas the "
 "second property is more along the lines of an informal contract and "
 "certainly would not be enforceable by PureScript's type system. However, "
 "this should provide the intuition for the following type class:"
 msgstr ""
-"最初の性質はまさに型クラスの法則のように見える一方で、2番目の性質はよりくだけ"
-"た規約の条項のようなもので、PureScriptの型システムによって確実に強制できるよ"
-"うなものではなさそうです。\n"
-"しかし、これは型クラスについて次のような直感的理解を与えるはずです。"
+"最初の性質はちゃんとした型クラスの法則のように見えます。\n"
+"その一方で、2番目の性質はよりくだけた規約の条項のようなもので、PureScriptの型システムによって確実に強制できるようなものではなさそうです。\n"
+"しかし、これは型クラスから次のような直感が得られるでしょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:682
@@ -24256,21 +24003,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:699
-#, fuzzy
-#| msgid ""
-#| "Let's write a function which uses the `Hashable` constraint to restrict "
-#| "the types of its inputs. One common task which requires a hashing "
-#| "function is to determine if two values hash to the same hash code. The "
-#| "`hashEqual` relation provides such a capability:"
 msgid ""
 "Let's write a function that uses the `Hashable` constraint to restrict the "
 "types of its inputs. One common task which requires a hashing function is to "
 "determine if two values hash to the same hash code. The `hashEqual` relation "
 "provides such a capability:"
 msgstr ""
-"それでは、入力の種類を制限する `Hashable`制約を使う関数を書いてみましょう。\n"
-"ハッシュ関数を必要とするよくある目的としては、2つの値が同じハッシュ値にハッ"
-"シュ化されるかどうかを決定することです。\n"
+"それでは、`Hashable`制約を使って入力の種類を制限する関数を書いてみましょう。\n"
+"ハッシュ関数を必要とするよくある目的としては、2つの値が同じハッシュコードにハッシュ化されるかどうかを判定することです。\n"
 "`hashEqual`関係はそのような機能を提供します。"
 
 #. type: Fenced code block (haskell)
@@ -24281,13 +24021,6 @@ msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashEqual}}\n"
 
 #. type: Plain text
 #: text/chapter6.md:705
-#, fuzzy
-#| msgid ""
-#| "This function uses the `on` function from `Data.Function` to define hash-"
-#| "equality in terms of equality of hash codes, and should read like a "
-#| "declarative definition of hash-equality: two values are \"hash-equal\" if "
-#| "they are equal after each value has been passed through the `hash` "
-#| "function."
 msgid ""
 "This function uses the `on` function from `Data.Function` to define hash-"
 "equality in terms of equality of hash codes, and should read like a "
@@ -24302,12 +24035,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:707
-#, fuzzy
-#| msgid ""
-#| "Let's write some `Hashable` instances for some primitive types. Let's "
-#| "start with an instance for integers. Since a `HashCode` is really just a "
-#| "wrapped integer, this is simple - we can use the `hashCode` helper "
-#| "function:"
 msgid ""
 "Let's write some `Hashable` instances for some primitive types. Let's start "
 "with an instance for integers. Since a `HashCode` is really just a wrapped "
@@ -24315,8 +24042,8 @@ msgid ""
 msgstr ""
 "原始型の `Hashable`インスタンスを幾つか書いてみましょう。\n"
 "まずは整数のインスタンスです。\n"
-"`HashCode`は実際には単なる梱包された整数なので、これは簡単です。\n"
-"`hashCode`補助関数を使うことができます。"
+"`HashCode`は実際には単なる梱包された整数なので、単純です。\n"
+"`hashCode`補助関数を使えます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter6.md:708
@@ -24390,13 +24117,6 @@ msgstr "{{#include ../exercises/chapter6/src/Data/Hashable.purs:hashString}}\n"
 
 #. type: Plain text
 #: text/chapter6.md:737
-#, fuzzy
-#| msgid ""
-#| "How can we prove that these `Hashable` instances satisfy the type class "
-#| "law that we stated above? We need to make sure that equal values have "
-#| "equal hash codes. In cases like `Int`, `Char`, `String` and `Boolean`, "
-#| "this is simple because there are no values of those types which are equal "
-#| "in the sense of `Eq` but not equal identically."
 msgid ""
 "How can we prove that these `Hashable` instances satisfy the type class law "
 "that we stated above? We need to make sure that equal values have equal hash "
@@ -24404,25 +24124,13 @@ msgid ""
 "because there are no values of those types that are equal in the sense of "
 "`Eq` but not equal identically."
 msgstr ""
-"これらの `Hashable`インスタンスが先ほどの型クラスの法則を満たしていることを証"
-"明するにはどうしたらいいでしょうか。\n"
-"同じ値が等しいハッシュ値を持っていることを確認する必要があります。\n"
-"`Int`、 `Char`、 `String`、 `Boolean`の場合は、`Eq`の意味では同じ値でも厳密に"
-"は同じではない、というような型の値は存在しないので簡単です。"
+"これらの `Hashable`インスタンスが先ほどの型クラスの法則を満たしていることを証明するにはどうしたらいいでしょうか。\n"
+"同じ値が等しいハッシュコードを持っていることを確認する必要があります。\n"
+"`Int`、`Char`、`String`、`Boolean`のような場合は単純です。\n"
+"`Eq`の意味では同じ値でも厳密には同じではない、というような型の値は存在しないからです。"
 
 #. type: Plain text
 #: text/chapter6.md:739
-#, fuzzy
-#| msgid ""
-#| "What about some more interesting types? To prove the type class law for "
-#| "the `Array` instance, we can use induction on the length of the array. "
-#| "The only array with length zero is `[]`. Any two non-empty arrays are "
-#| "equal only if they have equal head elements and equal tails, by the "
-#| "definition of `Eq` on arrays. By the inductive hypothesis, the tails have "
-#| "equal hashes, and we know that the head elements have equal hashes if the "
-#| "`Hashable a` instance must satisfy the law. Therefore, the two arrays "
-#| "have equal hashes, and so the `Hashable (Array a)` obeys the type class "
-#| "law as well."
 msgid ""
 "What about some more interesting types? To prove the type class law for the "
 "`Array` instance, we can use induction on the length of the array. The only "
@@ -24434,15 +24142,11 @@ msgid ""
 "the `Hashable (Array a)` obeys the type class law as well."
 msgstr ""
 "もっと面白い型についてはどうでしょうか。\n"
-"この場合、配列の長さに関する帰納を使うと、型クラスの法則を証明できます。\n"
+"`Array`インスタンスの型クラスの法則を証明するにあたっては、配列の長さに関する帰納を使えます。\n"
 "長さゼロの唯一の配列は `[]`です。\n"
-"配列の `Eq`の定義により、任意の2つの空でない配列は、それらの先頭の要素が同じ"
-"で配列の残りの部分が等しいとき、またその時に限り等しくなります。\n"
-"この帰納的な仮定により、配列の残りの部分は同じハッシュ値を持ちますし、もし "
-"`Hashable a`インスタンスがこの法則を満たすなら、先頭の要素も同じハッシュ値を"
-"もつことがわかります。\n"
-"したがって、2つの配列は同じハッシュ値を持ち、`Hashable (Array a)`も同様に型ク"
-"ラス法則を満たしています。"
+"配列の `Eq`の定義により、任意の2つの空でない配列は、それらの先頭の要素が同じで配列の残りの部分が等しいとき、またその時に限り等しくなります。\n"
+"この帰納的な仮定により、配列の残りの部分は同じハッシュ値を持ちますし、もし `Hashable a`インスタンスがこの法則を満たすなら、先頭の要素も同じハッシュ値を持つことがわかります。\n"
+"したがって、2つの配列は同じハッシュ値を持ち、`Hashable (Array a)`も同様に型クラス法則に従います。"
 
 #. type: Plain text
 #: text/chapter6.md:741
@@ -24465,13 +24169,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter6.md:747
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a function `arrayHasDuplicates` which tests if an array "
-#| "has any duplicate elements based on both hash and value equality. First "
-#| "check for hash equality with the `hashEqual` function, then check for "
-#| "value equality with `==` if a duplicate pair of hashes is found. _Hint_: "
-#| "the `nubByEq` function in `Data.Array` should make this task much simpler."
 msgid ""
 "(Medium) Write a function `arrayHasDuplicates`, which tests if an array has "
 "any duplicate elements based on both hash and value equality. First, check "
@@ -24479,12 +24176,10 @@ msgid ""
 "equality with `==` if a duplicate pair of hashes is found. _Hint_: the "
 "`nubByEq` function in `Data.Array` should make this task much simpler."
 msgstr ""
-"（普通）ハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうか"
-"を調べる関数`arrayHasDuplicates`を書いてください。\n"
-"まずハッシュ同値性を`hashEqual`関数で確認し、それからもし重複するハッシュの対"
-"が見付かったら`==`で値の同値性を確認してください。\n"
-"*手掛かり*：`Data.Array`の `nubByEq`関数はこの問題をずっと簡単にしてくれるで"
-"しょう。"
+"（普通）関数`arrayHasDuplicates`を書いてください。\n"
+"この関数はハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうかを調べます。\n"
+"まずハッシュ同値性を`hashEqual`関数で確認し、それからもし重複するハッシュの対が見付かったら`==`で値の同値性を確認してください。\n"
+"*手掛かり*：`Data.Array`の `nubByEq`関数はこの問題をずっと簡単にしてくれるでしょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter6.md:747
@@ -24530,35 +24225,19 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter6.md:760
-#, fuzzy
-#| msgid ""
-#| "In this chapter, we've been introduced to _type classes_, a type-oriented "
-#| "form of abstraction which enables powerful forms of code reuse. We've "
-#| "seen a collection of standard type classes from the PureScript standard "
-#| "libraries, and defined our own library based on a type class for "
-#| "computing hash codes."
 msgid ""
 "In this chapter, we've been introduced to _type classes_, a type-oriented "
 "form of abstraction that enables powerful forms of code reuse. We've seen a "
 "collection of standard type classes from the PureScript standard libraries "
 "and defined our own library based on a type class for computing hash codes."
 msgstr ""
-"この章では、型に基づく抽象化で、コードの再利用のための強力な形式化を可能にす"
-"る _型クラス_ を導入しました。PureScriptの標準ライブラリから標準の型クラスを"
-"幾つか見てきました。また、ハッシュ値を計算する型クラスに基づく独自のライブラ"
-"リを定義しました。"
+"この章では*型クラス*を導入しました。\n"
+"型クラスは型に基づく抽象化で、コードの再利用のために強力な形式化ができます。\n"
+"PureScriptの標準ライブラリから標準の型クラスを幾つか見てきました。\n"
+"また、ハッシュ値を計算するための型クラスに基づく独自のライブラリを定義しました。"
 
 #. type: Plain text
 #: text/chapter6.md:761
-#, fuzzy
-#| msgid ""
-#| "This chapter also gave an introduction to the notion of type class laws, "
-#| "a technique for proving properties about code which uses type classes for "
-#| "abstraction. Type class laws are part of a larger subject called "
-#| "_equational reasoning_, in which the properties of a programming language "
-#| "and its type system are used to enable logical reasoning about its "
-#| "programs. This is an important idea, and will be a theme which we will "
-#| "return to throughout the rest of the book."
 msgid ""
 "This chapter also introduced type class laws, a technique for proving "
 "properties about code that uses type classes for abstraction. Type class "
@@ -24567,10 +24246,9 @@ msgid ""
 "enable logical reasoning about its programs. This is an important idea and a "
 "theme that we will return to throughout the rest of the book."
 msgstr ""
-"この章では型クラス法則の考え方も導入しましたが、これは抽象化に型クラスを使う"
-"コードについての性質を証明する手法でした。\n"
-"型クラス法則は*等式推論*と呼ばれる大きな分野の一部であり、プログラミング言語"
-"の性質と型システムがプログラムを論理的に推論するために使われています。\n"
+"この章では型クラス法則も導入しましたが、これは抽象化に型クラスを使うコードについての性質を証明する手法でした。\n"
+"型クラス法則は*等式推論*と呼ばれるより大きな分野の一部です。\n"
+"そちらではプログラミング言語の性質と型システムがプログラムを論理的に追究するために使われています。\n"
 "これは重要な考え方で、本書では今後あらゆる箇所で立ち返る話題となるでしょう。"
 
 #. type: Title ##
@@ -25852,7 +25530,7 @@ msgid ""
 msgstr ""
 "（難しい）型`combineMaybe : forall a f. (Applicative f) => Maybe (f a) -> f (Maybe a)`\n"
 "を持つ関数`combineMaybe`を書いてください。\n"
-"この関数は副作用をもつ省略可能な計算をとり、省略可能な結果をもつ副作用のある計算を返します。"
+"この関数は副作用を持つ省略可能な計算をとり、省略可能な結果を持つ副作用のある計算を返します。"
 
 #. type: Plain text
 #: text/chapter7.md:390
@@ -28037,21 +27715,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:292
 #, fuzzy
-#| msgid ""
-#| "But monads allow us to do more than we could do with just applicative "
-#| "functors, and the key difference is highlighted by the syntax of do "
-#| "notation. Consider the `userCity` example again, in which we looked for a "
-#| "user's city in an XML document which encoded their user profile:"
 msgid ""
 "But monads allow us to do more than we could do with just applicative "
 "functors, and the key difference is highlighted by the syntax of do "
 "notation. Consider the `userCity` example again, in which we looked for a "
 "user's city in an XML document that encoded their user profile:"
 msgstr ""
-"しかし、モナドはアプリカティブ関手でできること以上を行うことができ、重要な違"
-"いはdo記法の構文で強調されています。\n"
-"利用者情報をエンコードしたXML文書から利用者の都市を検索する、`userCity`の例に"
-"ついてもう一度考えてみましょう。"
+"しかし、モナドはアプリカティブ関手でできること以上ができ、重要な違いはdo記法の構文で強調されています。\n"
+"利用者情報をエンコードしたXML文書から利用者の都市を検索する、`userCity`の例についてもう一度考えてみましょう。"
 
 #. type: Plain text
 #: text/chapter8.md:303
@@ -31435,7 +31106,7 @@ msgstr "`aff`ライブラリを使って`Aff`モナド中で非同期コード�
 #. type: Bullet: '- '
 #: text/chapter9.md:244
 msgid "Make HTTP requests asynchronously with the `affjax` library."
-msgstr "`affjax`ライブラリを使って非同期にHTTPリクエストを行う。"
+msgstr "`affjax`ライブラリを使って非同期にHTTPリクエストする。"
 
 #. type: Bullet: '- '
 #: text/chapter9.md:244
