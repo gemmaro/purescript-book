@@ -5,3 +5,6 @@ accumulator: 累算器。一般には「累積」とされることもあるよ�
 pattern match: パターン照合
 JavaScript runtime: 実行器
 hash code: ハッシュコード。「ハッシュ値」とされていました。
+context: 文脈。一般には単に「コンテキスト」とされるようです。
+synonym: 同義語。
+canvas: 固有名詞、HTML 5で導入された機能としてのCanvasは英単語として、一般名詞としては「キャンバス」と片仮名にします。

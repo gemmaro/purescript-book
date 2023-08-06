@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-04 12:11+0900\n"
+"PO-Revision-Date: 2023-08-06 23:23+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -164,10 +164,8 @@ msgid ""
 "answers to the exercises are correct. See [#79](https://github.com/"
 "purescript-contrib/purescript-book/issues/79) for the latest status on tests."
 msgstr ""
-"それぞれの章には単体テストも加えられているので、演習への自分の回答が正しいか"
-"どうか確かめることができます。\n"
-"テストの最新の状態については[#79](https://github.com/purescript-contrib/"
-"purescript-book/issues/79)を見てください。"
+"各章には単体テストも加えられているので、演習への自分の回答が正しいかどうか確かめることができます。\n"
+"テストの最新の状態については[#79](https://github.com/purescript-contrib/purescript-book/issues/79)を見てください。"
 
 #. type: Title ##
 #: README.md:13
@@ -218,7 +216,7 @@ msgid ""
 "be introduced. Here are some examples of problems that will be solved in "
 "this book:"
 msgstr ""
-"それぞれの章は特定の課題により動機付けられており、その問題を解いていく過程において、新しい関数型プログラミングの道具と技法が導入されていきます。\n"
+"各章は特定の課題により動機付けられており、その問題を解いていく過程において、新しい関数型プログラミングの道具と技法が導入されていきます。\n"
 "以下は本書で解いていく課題の幾つかの例です。"
 
 #. type: Bullet: '- '
@@ -854,7 +852,7 @@ msgid ""
 "is strongly recommended that you attempt the exercises in each chapter to "
 "fully understand the material."
 msgstr ""
-"各章には演習が含まれており、それぞれ難易度も示されています。\n"
+"各章には演習が含まれており、難易度も示されています。\n"
 "内容を完全に理解するために、各章の演習に取り組むことを強くお勧めします。"
 
 #. type: Plain text
@@ -1691,12 +1689,6 @@ msgstr "カリー化されていない関数についての補足"
 #. type: Plain text
 #: text/chapter10.md:181
 #, fuzzy
-#| msgid ""
-#| "PureScript's curried functions has certain advantages. It allows us to "
-#| "partially apply functions, and to give type class instances for function "
-#| "types - but it comes with a performance penalty. For performance critical "
-#| "code, it is sometimes necessary to define uncurried JavaScript functions "
-#| "which accept multiple arguments."
 msgid ""
 "PureScript's curried functions have certain advantages. It allows us to "
 "partially apply functions, and to give type class instances for function "
@@ -1704,10 +1696,10 @@ msgid ""
 "code, it is sometimes necessary to define uncurried JavaScript functions "
 "which accept multiple arguments."
 msgstr ""
-"PureScriptのカリー化された関数にはもちろん利点があります。部分的に関数を適用"
-"でき、関数型に型クラスインスタンスを与えられます。しかし効率上の代償も付いて"
-"くるのです。効率性が決定的に重要なコードでは多変数を受け付けるカリー化されて"
-"いないJavaScript関数を定義する必要が時々あります。"
+"PureScriptのカリー化された関数には勿論利点があります。\n"
+"部分的に関数を適用でき、関数型に型クラスインスタンスを与えられるのです。\n"
+"しかし効率上の代償も付いてきます。\n"
+"効率性が決定的に重要なコードでは多変数を受け付けるカリー化されていないJavaScript関数を定義する必要が時々あります。"
 
 #. type: Plain text
 #: text/chapter10.md:183
@@ -4205,9 +4197,7 @@ msgstr ""
 msgid ""
 "As a finishing touch, we'll improve the quality of our error messages by "
 "appending to the `String` of each `Left` value with `lmap`."
-msgstr ""
-"仕上げとして、それぞれの`Left`値の`String`に`lmap`を使って前置し、エラー文言"
-"の質を向上させます。"
+msgstr "仕上げとして、各`Left`値の`String`に`lmap`を使って前置し、エラー文言の質を向上させます。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:1042
@@ -4228,12 +4218,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter10.md:1051
 #, fuzzy
-#| msgid ""
-#| "Only the first error should ever occur during normal operation of this "
-#| "app. You can trigger the other errors by opening your web browser's dev "
-#| "tools, editing the saved \"person\" string in local storage, and "
-#| "refreshing the page. How you modify the JSON string determines which "
-#| "error is triggered. See if you can trigger each of them."
 msgid ""
 "Only the first error should ever occur during the normal operation of this "
 "app. You can trigger the other errors by opening your web browser's dev "
@@ -4242,22 +4226,13 @@ msgid ""
 "triggered. See if you can trigger each of them."
 msgstr ""
 "最初のエラーのみがこのアプリの通常の操作内で起こります。\n"
-"他のエラーはWebブラウザの開発ツールを開いてローカルストレージ中に保存された"
-"「person」文字列を編集し、そのページを参照することで引き起こせます。\n"
-"どのようにJSON文字列を変更したかが、どのエラーの引き金になるかを決定しま"
-"す。\n"
-"それぞれのエラーを引き起こせるかどうかやってみてください。"
+"他のエラーはWebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。\n"
+"どのようにJSON文字列を変更したかが、どのエラーの引き金になるかを決定します。\n"
+"各エラーを引き起こせるかどうかやってみてください。"
 
 #. type: Plain text
 #: text/chapter10.md:1053
 #, fuzzy
-#| msgid ""
-#| "That covers local storage. Next we'll implement the `alert` action, which "
-#| "is very similar to the `log` action from the `Effect.Console` module. The "
-#| "only difference is that the `alert` action uses the `window.alert` "
-#| "method, whereas the `log` action uses the `console.log` method. As such, "
-#| "`alert` can only be used in environments where `window.alert` is defined, "
-#| "such as a web browser."
 msgid ""
 "That covers local storage. Next, we'll implement the `alert` action, similar "
 "to the `log` action from the `Effect.Console` module. The only difference is "
@@ -4266,13 +4241,10 @@ msgid ""
 "environments where `window.alert` is defined, such as a web browser."
 msgstr ""
 "これでローカルストレージについては押さえました。\n"
-"次に`alert`アクションを実装していきます。\n"
-"このアクションは`Effect.Console`モジュールの`log`アクションによく似ていま"
-"す。\n"
-"唯一の相違点は`alert`アクションが`window.alert`メソッドを使うことで、対して"
-"`log`アクションは`console.log`メソッドを使っています。\n"
-"そういうわけで`alert`は`window.alert`が定義された環境でのみ使うことができま"
-"す。\n"
+"次に`alert`動作を実装していきます。\n"
+"この動作は`Effect.Console`モジュールの`log`動作によく似ています。\n"
+"唯一の相違点は`alert`動作が`window.alert`メソッドを使うことで、対して`log`動作は`console.log`メソッドを使っています。\n"
+"そういうわけで`alert`は`window.alert`が定義された環境でのみ使うことができます。\n"
 "例えばWebブラウザなどです。"
 
 #. type: Fenced code block (hs)
@@ -4819,12 +4791,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter10.md:1176
 #, fuzzy
-#| msgid ""
-#| "We've already seen that PureScript's records evaluate to JavaScript "
-#| "objects. Just as for functions and arrays, we can reason about the "
-#| "runtime representation of data in a record's fields by considering the "
-#| "types associated with its labels. Of course, the fields of a record are "
-#| "not required to be of the same type."
 msgid ""
 "We've already seen that PureScript's records evaluate to JavaScript objects. "
 "As for functions and arrays, we can reason about the runtime representation "
@@ -4832,11 +4798,9 @@ msgid ""
 "labels. Of course, the fields of a record are not required to be of the same "
 "type."
 msgstr ""
-"PureScriptのレコードがJavaScriptのオブジェクトへと評価されることは既に見てき"
-"ました。\n"
-"ちょうど関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれ"
-"ば、レコードのフィールドのデータの実行時の表現についても推論できます。\n"
-"もちろん、レコードのそれぞれのフィールドは、同じ型である必要はありません。"
+"PureScriptのレコードがJavaScriptのオブジェクトへと評価されることは既に見てきました。\n"
+"ちょうど関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれば、レコードのフィールドのデータの実行時の表現についても推論できます。\n"
+"勿論、レコードの各フィールドは、同じ型である必要はありません。"
 
 #. type: Title ###
 #: text/chapter10.md:1177
@@ -4847,21 +4811,14 @@ msgstr "ADTの表現"
 #. type: Plain text
 #: text/chapter10.md:1180
 #, fuzzy
-#| msgid ""
-#| "For every constructor of an algebraic data type, the PureScript compiler "
-#| "creates a new JavaScript object type by defining a function. Its "
-#| "constructors correspond to functions which create new JavaScript objects "
-#| "based on those prototypes."
 msgid ""
 "For every constructor of an algebraic data type, the PureScript compiler "
 "creates a new JavaScript object type by defining a function. Its "
 "constructors correspond to functions that create new JavaScript objects "
 "based on those prototypes."
 msgstr ""
-"PureScriptコンパイラは、代数的データ型の全ての構築子についてそれぞれを関数と"
-"して定義し、新たなJavaScriptオブジェクト型を作成します。\n"
-"これらの構築子は雛形に基づいて新しいJavaScriptオブジェクトを作成する関数に対"
-"応しています。"
+"代数的データ型の全ての構築子について、PureScriptコンパイラは関数を定義することで新たなJavaScriptオブジェクト型を作成します。\n"
+"これらの構築子は雛形に基づいて新しいJavaScriptオブジェクトを作成する関数に対応しています。"
 
 #. type: Plain text
 #: text/chapter10.md:1182
@@ -4917,10 +4874,9 @@ msgid ""
 "constructors with arguments, the compiler stores the associated data in "
 "fields called `value0`, `value1`, etc."
 msgstr ""
-"ここで2つのJavaScriptオブジェクト型 `Zero`と `One`を見てください。\n"
-"JavaScriptのキーワード`new`を使用すると、それぞれの型の値を作成できます。\n"
-"引数を持つ構築子については、コンパイラは `value0`、 `value1`などという名前の"
-"フィールドに、対応するデータを格納します。"
+"ここで2つのJavaScriptオブジェクト型`Zero`と`One`を見てください。\n"
+"JavaScriptのキーワード`new`を使用すると、各型の値を作成できます。\n"
+"引数を持つ構築子については、コンパイラは`value0`、`value1`などという名前のフィールドに、対応するデータを格納します。"
 
 #. type: Plain text
 #: text/chapter10.md:1207
@@ -5896,11 +5852,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:109
 #, fuzzy
-#| msgid ""
-#| "Let's see an example. One use of the `State` monad might be to add the "
-#| "values in an array of integers to the current state. We could do that by "
-#| "choosing `Int` as the state type `s`, and using `traverse_` to traverse "
-#| "the array, with a call to `modify` for each array element:"
 msgid ""
 "Let's see an example. One use of the `State` monad might be to add the "
 "values in an array of integers to the current state. We could do that by "
@@ -5908,10 +5859,8 @@ msgid ""
 "array, with a call to `modify` for each array element:"
 msgstr ""
 "例を見てみましょう。\n"
-"`State`モナドの使いかたの1つとしては、整数の配列中の値を現在の状態に加えるも"
-"のが考えられます。\n"
-"状態の型`s`として`Int`を選択し、配列の走査に `traverse_`を使って、配列の要素"
-"それぞれについて `modify`を呼び出すと、これを実現できます。"
+"`State`モナドの使いかたの1つとしては、整数の配列中の値を現在の状態に加えるものが考えられます。\n"
+"状態の型`s`として`Int`を選択し、配列の走査に`traverse_`を使って、配列の各要素について`modify`を呼び出すと、これを実現できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:110
@@ -5955,20 +5904,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:128
 #, fuzzy
-#| msgid ""
-#| "Each of these functions takes an initial state of type `s` and a "
-#| "computation of type `State s a`. `evalState` only returns the return "
-#| "value, `execState` only returns the final state, and `runState` returns "
-#| "both, expressed as a value of type `Tuple a s`."
 msgid ""
 "Each function takes an initial state of type `s` and a computation of type "
 "`State s a`. `evalState` only returns the return value, `execState` only "
 "returns the final state, and `runState` returns both, expressed as a value "
 "of type `Tuple a s`."
 msgstr ""
-"3つの関数はそれぞれ型`s`の初期状態と型`State s a`の計算を引数にとります。\n"
-"`evalState`は返り値だけを返し、 `execState`は最終的な状態だけを返し、 "
-"`runState`は `Tuple a s`型の値として表現された両方を返します。"
+"3つの各関数は型`s`の初期状態と型`State s a`の計算を引数に取ります。\n"
+"`evalState`は返り値だけを返し、`execState`は最終的な状態だけを返し、`runState`は`Tuple a s`型の値として表現された両方を返します。"
 
 #. type: Plain text
 #: text/chapter11.md:130
@@ -6156,9 +6099,7 @@ msgid ""
 "The `ask` action can be used to read the current configuration, and the "
 "`local` action can be used to run a computation with a modified "
 "configuration."
-msgstr ""
-"`ask`アクションは現在の設定を読み取るために使い、 `local`アクションは変更され"
-"た設定で計算するために使います。"
+msgstr "`ask`動作は現在の設定を読み取るために使い、`local`動作は変更された設定で計算するために使います。"
 
 #. type: Plain text
 #: text/chapter11.md:186
@@ -6216,9 +6157,7 @@ msgstr ""
 msgid ""
 "To elevate the user's permissions, we might use the `local` action to modify "
 "the `Permissions` object during the execution of some computation:"
-msgstr ""
-"`local`アクションを使うと、計算の実行中に `Permissions`オブジェクトを変更し、"
-"ユーザーの権限を昇格させることもできます。"
+msgstr "`local`動作を使うと、計算の実行中に `Permissions`オブジェクトを変更し、ユーザーの権限を昇格させることもできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:205
@@ -6466,7 +6405,7 @@ msgstr "tell :: forall w a. Monoid w => w -> Writer w Unit\n"
 msgid ""
 "The `tell` action appends the provided value to the current accumulated "
 "result."
-msgstr "`tell`アクションは、与えられた値を現在の累算結果に付け加えます。"
+msgstr "`tell`動作は与えられた値を現在の累算結果に付け加えます。"
 
 #. type: Plain text
 #: text/chapter11.md:292
@@ -6653,7 +6592,7 @@ msgstr "     数列が `1`に到達するまでに何回のコラッツ関数の
 #: text/chapter11.md:356
 #, no-wrap
 msgid "     Modify your function to use the `Writer` monad to log each application of the Collatz function.\n"
-msgstr "     `Writer`モナドを使用してコラッツ関数のそれぞれの適用の経過を記録するように、関数を変更してください。\n"
+msgstr "     `Writer`モナドを使用してコラッツ関数の各適用の経過を記録するように、関数を変更してください。\n"
 
 #. type: Title ##
 #: text/chapter11.md:357
@@ -6664,19 +6603,13 @@ msgstr "モナド変換子"
 #. type: Plain text
 #: text/chapter11.md:360
 #, fuzzy
-#| msgid ""
-#| "Each of the three monads above: `State`, `Reader` and `Writer`, are also "
-#| "examples of so-called _monad transformers_. The equivalent monad "
-#| "transformers are called `StateT`, `ReaderT`, and `WriterT` respectively."
 msgid ""
 "Each of the three monads above: `State`, `Reader`, and `Writer`, are also "
 "examples of so-called _monad transformers_. The equivalent monad "
 "transformers are called `StateT`, `ReaderT`, and `WriterT`, respectively."
 msgstr ""
-"上の3つのモナド、`State`、`Reader`、`Writer`は、何れもいわゆる*モナド変換子*"
-"の例となっています。\n"
-"対応するモナド変換子はそれぞれ `StateT`、 `ReaderT`、 `WriterT`と呼ばれていま"
-"す。"
+"上の3つのモナド、`State`、`Reader`、`Writer`は、何れもいわゆる*モナド変換子*の例となっています。\n"
+"対応する各モナド変換子は`StateT`、`ReaderT`、`WriterT`と呼ばれています。"
 
 #. type: Plain text
 #: text/chapter11.md:362
@@ -6708,19 +6641,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:364
 #, fuzzy
-#| msgid ""
-#| "Note that we have already seen that the `Effect` monad provides a partial "
-#| "solution to this problem. Monad transformers provide another solution, "
-#| "and each approach has its own benefits and limitations."
 msgid ""
 "Note that we have already seen that the `Effect` monad partially solves this "
 "problem. Monad transformers provide another solution, and each approach has "
 "its own benefits and limitations."
 msgstr ""
-"ただし`Effect`モナドがこの問題に対する部分的な解決策を提供していたことは既に"
-"見てきました。\n"
-"モナド変換子はまた違った解決策を提供しますが、これらの手法にはそれぞれ利点と"
-"制約があります。"
+"ただし`Effect`モナドがこの問題に対する部分的な解決策を提供していたことは既に見てきました。\n"
+"モナド変換子はまた違った解決策を提供しますが、これらの各手法には利点と制約があります。"
 
 #. type: Plain text
 #: text/chapter11.md:366
@@ -6857,13 +6784,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:403
 #, fuzzy
-#| msgid ""
-#| "We can use the actions of the outer `StateT String` monad (`get`, `put`, "
-#| "and `modify`) directly, but in order to use the effects of the wrapped "
-#| "monad (`Either String`), we need to \"lift\" them over the monad "
-#| "transformer. The `Control.Monad.Trans` module defines the `MonadTrans` "
-#| "type class, which captures those type constructors which are monad "
-#| "transformers, as follows:"
 msgid ""
 "We can use the actions of the outer `StateT String` monad (`get`, `put`, and "
 "`modify`) directly, but to use the effects of the wrapped monad (`Either "
@@ -6871,12 +6791,8 @@ msgid ""
 "Monad.Trans` module defines the `MonadTrans` type class, which captures "
 "those type constructors which are monad transformers, as follows:"
 msgstr ""
-"外側の `StateT String (Either String)`モナドのアクション（`get`、`put`、"
-"`modify`）は直接使うことができますが、梱包されている内側のモナド (`Either "
-"String`) の作用を使うためには、これらの関数をモナド変換子まで「持ち上げ」なく"
-"てはいけません。\n"
-"`Control.MonadTrans`モジュールでは、モナド変換子であるような型構築子を捉える"
-"`MonadTrans`型クラスを次のように定義しています。"
+"外側の `StateT String (Either String)`モナドの動作（`get`、`put`、`modify`）は直接使えますが、梱包されている内側のモナド (`Either String`) の作用を使うためには、これらの関数をモナド変換子まで「持ち上げ」なくてはいけません。\n"
+"`Control.MonadTrans`モジュールでは、モナド変換子であるような型構築子を捉える`MonadTrans`型クラスを次のように定義しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:404
@@ -6891,15 +6807,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:410
 #, fuzzy
-#| msgid ""
-#| "This class contains a single member, `lift`, which takes computations in "
-#| "any underlying monad `m` and lifts them into the wrapped monad `t m`. In "
-#| "our case, the type constructor `t` is `StateT String`, and `m` is the "
-#| "`Either String` monad, so `lift` provides a way to lift computations of "
-#| "type `Either String a` to computations of type `StateT String (Either "
-#| "String) a`. This means that we can use the effects of `StateT String` and "
-#| "`Either String` side-by-side, as long as we use `lift` every time we use "
-#| "a computation of type `Either String a`."
 msgid ""
 "This class contains a single member, `lift`, which takes computations in any "
 "underlying monad `m` and lifts them into the wrapped monad `t m`. In our "
@@ -6910,13 +6817,9 @@ msgid ""
 "side-by-side, as long as we use `lift` every time we use a computation of "
 "type `Either String a`."
 msgstr ""
-"このクラスは、基礎となる任意のモナド `m`の計算をとり、それを梱包されたモナド "
-"`t m`へと持ち上げる、 `lift`という1つの関数だけを持っています。\n"
-"今回の場合、型構築子 `t`は `StateT String`で、 `m`は `Either String`モナドと"
-"なり、 `lift`は型 `Either String a`の計算を、型 `State String (Either "
-"String) a`の計算へと持ち上げる方法を提供することになります。\n"
-"これは、型 `Either String a`の計算を使うときは、 `lift`を使えばいつでも作用 "
-"`StateT String`と `Either String`を一緒に使うことができることを意味します。"
+"このクラスは、基礎となる任意のモナド `m`の計算を取り、それを梱包されたモナド `t m`へと持ち上げる、 `lift`という1つの関数だけを持っています。\n"
+"今回の場合、型構築子 `t`は `StateT String`で、 `m`は `Either String`モナドとなり、 `lift`は型 `Either String a`の計算を、型 `State String (Either String) a`の計算へと持ち上げる方法を提供することになります。\n"
+"これは、型 `Either String a`の計算を使うときは、 `lift`を使えばいつでも作用 `StateT String`と `Either String`を一緒に使うことができることを意味します。"
 
 #. type: Plain text
 #: text/chapter11.md:412
@@ -7028,13 +6931,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:446
 #, fuzzy
-#| msgid ""
-#| "We can use the `split` function with a handful of other actions to build "
-#| "a basic parsing library. In fact, this is the approach taken by the "
-#| "`parsing` library. This is the power of monad transformers - we can "
-#| "create custom-built monads for a variety of problems, choosing the side-"
-#| "effects that we need, and keeping the expressiveness of do notation and "
-#| "applicative combinators."
 msgid ""
 "We can use the `split` function with a handful of other actions to build a "
 "basic parsing library. In fact, this is the approach taken by the `parsing` "
@@ -7042,11 +6938,10 @@ msgid ""
 "built monads for various problems, choose the side-effects we need, and keep "
 "the expressiveness of do notation and applicative combinators."
 msgstr ""
-"他にもアクションを沢山用意すれば、 `split`関数を使って、基本的な構文解析ライ"
-"ブラリを構築できます。これは実際に `parsing`ライブラリで採用されている手法で"
-"す。これがモナド変換子の力なのです。必要な副作用を選択して、do記法とアプリカ"
-"ティブコンビネータで表現力を維持しながら、様々な問題のための特注のモナドを作"
-"成できるのです。"
+"他にも動作を沢山用意すれば、`split`関数を使って、基本的な構文解析ライブラリを構築できます。\n"
+"これは実際に`parsing`ライブラリで採用されている手法です。\n"
+"これがモナド変換子の力なのです。\n"
+"必要な副作用を選択して、do記法とアプリカティブコンビネータで表現力を維持しながら、様々な問題のための特注のモナドを作成できるのです。"
 
 #. type: Title ##
 #: text/chapter11.md:447
@@ -7092,13 +6987,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:462
 #, fuzzy
-#| msgid ""
-#| "The `MonadError` class captures those monads which support throwing and "
-#| "catching of errors of some type `e`, and an instance is provided for the "
-#| "`ExceptT e` monad transformer. The `throwError` action can be used to "
-#| "indicate failure, just like `Left` in the `Either e` monad. The "
-#| "`catchError` action allows us to continue after an error is thrown using "
-#| "`throwError`."
 msgid ""
 "The `MonadError` class captures those monads that support throwing and "
 "catching errors of some type `e`, and an instance is provided for the "
@@ -7106,12 +6994,9 @@ msgid ""
 "like `Left` in the `Either e` monad. The `catchError` action allows us to "
 "continue after an error is thrown using `throwError`."
 msgstr ""
-"`MonadError`クラスは `e`型のエラーを投げたりキャッチに対応したりするモナドを"
-"取得し、 `ExceptT e`モナド変換子のインスタンスが提供されます。\n"
-"`Either e`モナドの `Left`と同じように、 `throwError`アクションは失敗を示すた"
-"めに使われます。\n"
-"`catchError`アクションを使うと、 `throwError`でエラーが投げられたあとでも処理"
-"を継続できるようになります。"
+"`MonadError`クラスは`e`型のエラーを投げたりキャッチに対応したりするモナドを取得し、`ExceptT e`モナド変換子のインスタンスが提供されます。\n"
+"`Either e`モナドの`Left`と同じように、`throwError`動作は失敗を示すために使われます。\n"
+"`catchError`動作を使うと、`throwError`でエラーが投げられたあとでも処理を継続できるようになります。"
 
 #. type: Plain text
 #: text/chapter11.md:464
@@ -7157,9 +7042,8 @@ msgid ""
 "are free to use actions from the monad transformer `ExceptT e` directly, but "
 "computations in the `Writer` monad should be lifted using `lift`:"
 msgstr ""
-"試しに `ExceptT`を使って `Writer`モナドを包んでみましょう。\n"
-"ここでもモナド変換子 `ExceptT e`のアクションを直接使うことも自由にできます"
-"が、`Writer`モナドの計算は `lift`を使って持ちあげるべきです。"
+"試しに`ExceptT`を使って`Writer`モナドを包んでみましょう。\n"
+"ここでもモナド変換子`ExceptT e`の動作を直接使うことも自由にできますが、`Writer`モナドの計算は`lift`を使って持ち上げるべきです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:472
@@ -7550,9 +7434,7 @@ msgstr "型クラスが助けに来たぞっ"
 msgid ""
 "When we looked at the `State` monad at the start of this chapter, I gave the "
 "following types for the actions of the `State` monad:"
-msgstr ""
-"本章の最初で扱った `State`モナドを見てみると、 `State`モナドのアクションには"
-"次のような型が与えられていました。"
+msgstr "本章の最初で扱った `State`モナドを見てみると、 `State`モナドの動作には次のような型が与えられていました。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:575
@@ -7635,31 +7517,19 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:594
 #, fuzzy
-#| msgid ""
-#| "Indeed, the same is true of the actions we covered for the `ReaderT`, "
-#| "`WriterT`, and `ExceptT` transformers. `transformers` defines a type "
-#| "class for each of the major transformers, allowing us to abstract over "
-#| "monads which support their operations."
 msgid ""
 "Indeed, the same is true of the actions we covered for the `ReaderT`, "
 "`WriterT`, and `ExceptT` transformers. `transformers` defines a type class "
 "for each of the major transformers, allowing us to abstract over monads that "
 "support their operations."
 msgstr ""
-"当然ですが、これまで扱ってきた `ReaderT`、 `WriterT`、 `ExceptT`変換子につい"
-"ても、同じことが成り立っています。`transformers`では主な変換子それぞれについ"
-"ての型クラスが定義されています。これによりそれらの操作に対応するモナドの上に"
-"抽象化できるのです。"
+"当然ですが、これまで扱ってきた`ReaderT`、`WriterT`、`ExceptT`変換子についても、同じことが成り立っています。\n"
+"`transformers`では主な変換子について各々型クラスが定義されています。\n"
+"これによりそれらの操作に対応するモナドの上に抽象化できるのです。"
 
 #. type: Plain text
 #: text/chapter11.md:596
 #, fuzzy
-#| msgid ""
-#| "In the case of the `split` function above, the monad stack we constructed "
-#| "is an instance of each of the `MonadState`, `MonadWriter` and "
-#| "`MonadError` type classes. This means that we don't need to call `lift` "
-#| "at all! We can just use the actions `get`, `put`, `tell` and `throwError` "
-#| "as if they were defined on the monad stack itself:"
 msgid ""
 "In the case of the `split` function above, the monad stack we constructed is "
 "an instance of each of the `MonadState`, `MonadWriter`, and `MonadError` "
@@ -7667,11 +7537,9 @@ msgid ""
 "just use the actions `get`, `put`, `tell`, and `throwError` as if they were "
 "defined on the monad stack itself:"
 msgstr ""
-"上の `split`関数の場合、構築されたこのモナドスタックは型クラス`MonadState`、 "
-"`MonadWriter`、 `MonadError`それぞれのインスタンスです。\n"
+"上の`split`関数の場合、構築されたこのモナドスタックは各型クラス`MonadState`、`MonadWriter`、`MonadError`のインスタンスです。\n"
 "これはつまり、`lift`は全く呼び出す必要がないのです。\n"
-"まるでモナドスタック自体に定義されていたかのように、アクション `get`、"
-"`put`、 `tell`、 `throwError`をそのまま使用できます。"
+"まるでモナドスタック自体に定義されていたかのように、動作`get`、`put`、`tell`、`throwError`をそのまま使用できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:597
@@ -8300,9 +8168,7 @@ msgstr ""
 msgid ""
 "We will see how the `Map` and `Set` structures are used as we write the "
 "actions for our game."
-msgstr ""
-"ゲームのアクションを書く上で`Map`と `Set`構造をどのように使っていくのかを見て"
-"いきます。"
+msgstr "ゲームの動作を書く上で`Map`と`Set`構造をどのように使っていくのかを見ていきます。"
 
 #. type: Plain text
 #: text/chapter11.md:773
@@ -8328,13 +8194,6 @@ msgstr "ゲームロジックの実装"
 #. type: Plain text
 #: text/chapter11.md:781
 #, fuzzy
-#| msgid ""
-#| "Our game is going to be built from simple actions defined in the `Game` "
-#| "monad, by reusing the actions from the `Reader`, `Writer` and `State` "
-#| "monads. At the top level of our application, we will run the pure "
-#| "computations in the `Game` monad, and use the `Effect` monad to turn the "
-#| "results into observable side-effects, such as printing text to the "
-#| "console."
 msgid ""
 "Our game will be built from simple actions defined in the `Game` monad by "
 "reusing the actions from the `Reader`, `Writer`, and `State` monads. At the "
@@ -8342,12 +8201,8 @@ msgid ""
 "`Game` monad and use the `Effect` monad to turn the results into observable "
 "side-effects, such as printing text to the console."
 msgstr ""
-"今回は`Reader`モナドと`Writer`モナドと`State`モナドのアクションを再利用し、"
-"`Game`モナドで定義されている単純なアクションを組み合わせてゲームを構築してい"
-"きます。\n"
-"このアプリケーションの最上位では`Game`モナドで純粋に計算しており、`Effect`モ"
-"ナドはコンソールにテキストを出力するような観測可能な副作用へと結果を変換する"
-"ために使っています。"
+"今回は`Reader`モナドと`Writer`モナドと`State`モナドの動作を再利用し、`Game`モナドで定義されている単純な動作を組み合わせてゲームを構築していきます。\n"
+"このアプリケーションの最上位では`Game`モナドで純粋に計算しており、`Effect`モナドはコンソールにテキストを出力するような観測可能な副作用へと結果を変換するために使っています。"
 
 #. type: Plain text
 #: text/chapter11.md:783
@@ -8356,9 +8211,9 @@ msgid ""
 "tests whether the player's inventory contains a particular game item. It is "
 "defined as follows:"
 msgstr ""
-"このゲームで最も簡単なアクションの1つは `has`アクションです。このアクションは"
-"プレイヤーの持ち物に特定のゲームアイテムが含まれているかどうかを調べます。こ"
-"れは次のように定義されます。"
+"このゲームで最も簡単な動作の1つは `has`動作です。\n"
+"この動作はプレイヤーの持ち物に特定のゲームアイテムが含まれているかどうかを調べます。\n"
+"これは次のように定義されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:784
@@ -8369,21 +8224,14 @@ msgstr "{{#include ../exercises/chapter11/src/Game.purs:has}}\n"
 #. type: Plain text
 #: text/chapter11.md:789
 #, fuzzy
-#| msgid ""
-#| "This function uses the `get` action defined in the `MonadState` type "
-#| "class to read the current game state, and then uses the `member` function "
-#| "defined in `Data.Set` to test whether the specified `GameItem` appears in "
-#| "the `Set` of inventory items."
 msgid ""
 "This function uses the `get` action defined in the `MonadState` type class "
 "to read the current game state and then uses the `member` function defined "
 "in `Data.Set` to test whether the specified `GameItem` appears in the `Set` "
 "of inventory items."
 msgstr ""
-"この関数は、現在のゲームの状態を読み取るために `MonadState`型クラスで定義され"
-"ている `get`アクションを使っています。\n"
-"またそれから指定した`GameItem`が持ち物アイテムの`Set`に出現するかどうかを調べ"
-"るために`Data.Set`で定義されている `member`関数を使っています。"
+"この関数は、現在のゲームの状態を読み取るために `MonadState`型クラスで定義されている`get`動作を使っています。\n"
+"またそれから指定した`GameItem`が持ち物アイテムの`Set`に出現するかどうかを調べるために`Data.Set`で定義されている `member`関数を使っています。"
 
 #. type: Plain text
 #: text/chapter11.md:791
@@ -8393,10 +8241,9 @@ msgid ""
 "`MonadWriter` and `MonadState` type classes. First of all, it reads the "
 "current game state:"
 msgstr ""
-"他にも `pickUp`アクションがあります。\n"
-"現在の位置にゲームアイテムがある場合、プレイヤーの持ち物にそのアイテムを追加"
-"します。\n"
-"これには`MonadWriter`と `MonadState`型クラスのアクションを使っています。\n"
+"他にも`pickUp`動作があります。\n"
+"現在の位置にゲームアイテムがある場合、プレイヤーの持ち物にそのアイテムを追加します。\n"
+"これには`MonadWriter`と`MonadState`型クラスの動作を使っています。\n"
 "一番最初に現在のゲームの状態を読み取ります。"
 
 #. type: Fenced code block (haskell)
@@ -8543,21 +8390,14 @@ msgstr "{{#include ../exercises/chapter11/src/Game.purs:debug}}\n"
 #. type: Plain text
 #: text/chapter11.md:833
 #, fuzzy
-#| msgid ""
-#| "Here, we use the `ask` action to read the game configuration. Again, note "
-#| "that we don't need to `lift` any computation, and we can use actions "
-#| "defined in the `MonadState`, `MonadReader` and `MonadWriter` type classes "
-#| "in the same do notation block."
 msgid ""
 "Here, we use the `ask` action to read the game configuration. Again, note "
 "that we don't need to `lift` any computation, and we can use actions defined "
 "in the `MonadState`, `MonadReader`, and `MonadWriter` type classes in the "
 "same do notation block."
 msgstr ""
-"ここでは、ゲームの設定を読み込むために `ask`アクションを使用しています。\n"
-"繰り返しますが、どの計算でも`lift`は必要がなく、同じdo記法ブロック内で"
-"`MonadState`、 `MonadReader`、 `MonadWriter`型クラスで定義されているアクショ"
-"ンを使うことができることに注意してください。"
+"ここでは、ゲームの設定を読み込むために`ask`動作を使用しています。\n"
+"繰り返しますが、どの計算でも`lift`は必要がなく、同じdo記法ブロック内で`MonadState`、`MonadReader`、`MonadWriter`型クラスで定義されている動作を使える点に注意してください。"
 
 #. type: Plain text
 #: text/chapter11.md:835
@@ -8566,24 +8406,17 @@ msgid ""
 "If the `debugMode` flag is set, the `tell` action is used to write the state "
 "to the log. Otherwise, an error message is added."
 msgstr ""
-"`debugMode`フラグが設定されている場合、 `tell`アクションを使うとログに状態が追加されます。\n"
+"`debugMode`フラグが設定されている場合、`tell`動作を使うとログに状態が追加されます。\n"
 "そうでなければ、エラー文言が追加されます。"
 
 #. type: Plain text
 #: text/chapter11.md:837
 #, fuzzy
-#| msgid ""
-#| "The remainder of the `Game` module defines a set of similar actions, each "
-#| "using only the actions defined by the `MonadState`, `MonadReader` and "
-#| "`MonadWriter` type classes."
 msgid ""
 "The remainder of the `Game` module defines a set of similar actions, each "
 "using only the actions defined by the `MonadState`, `MonadReader`, and "
 "`MonadWriter` type classes."
-msgstr ""
-"`Game.purs`モジュールの残りの部分では、`MonadState`型クラスと`MonadReader`型"
-"クラスと`MonadWriter`型クラスでそれぞれ定義されたアクションだけを使い、同様の"
-"アクションが定義されています。"
+msgstr "`Game.purs`モジュールの残りの部分では、`MonadState`型クラスと`MonadReader`型クラスと`MonadWriter`型クラスでそれぞれ定義された動作だけを使い、同様の動作が定義されています。"
 
 #. type: Title ##
 #: text/chapter11.md:838
@@ -8661,21 +8494,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:859
 #, fuzzy
-#| msgid ""
-#| "`runRWS` looks like a combination of `runReader`, `runWriter` and "
-#| "`runState`. It takes a global configuration and an initial state as an "
-#| "argument, and returns a data structure containing the log, the result and "
-#| "the final state."
 msgid ""
 "`runRWS` looks like a combination of `runReader`, `runWriter`, and "
 "`runState`. It takes a global configuration and an initial state as an "
 "argument and returns a data structure containing the log, the result, and "
 "the final state."
 msgstr ""
-"`runRWS`は `runReader`、 `runWriter`、 `runState`を組み合わせたように見えま"
-"す。\n"
-"これは、引数として大域的な設定及び初期状態をとり、ログ、結果、最的な終状態を"
-"含むデータ構造を返します。"
+"`runRWS`は `runReader`、 `runWriter`、 `runState`を組み合わせたように見えます。\n"
+"これは、引数として大域的な設定及び初期状態を取り、ログ、結果、最的な終状態を含むデータ構造を返します。"
 
 #. type: Plain text
 #: text/chapter11.md:861
@@ -8706,17 +8532,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:869
 #, fuzzy
-#| msgid ""
-#| "The `node-readline` package provides the `LineHandler` type, which "
-#| "represents actions in the `Effect` monad which handle user input from the "
-#| "terminal. Here is the corresponding API:"
 msgid ""
 "The `node-readline` package provides the `LineHandler` type, which "
 "represents actions in the `Effect` monad, which handle user input from the "
 "terminal. Here is the corresponding API:"
 msgstr ""
 "`node-readline`パッケージでは`LineHandler`型が提供されています。\n"
-"これは端末からのユーザ入力を扱う `Effect`モナドのアクションを表します。\n"
+"これは端末からのユーザ入力を扱う `Effect`モナドの動作を表します。\n"
 "対応するAPIは次の通りです。"
 
 #. type: Fenced code block (haskell)
@@ -8826,10 +8648,8 @@ msgid ""
 "run the `game` action (in the `RWS` monad), passing the game environment and "
 "current game state."
 msgstr ""
-"このアクションが最初に行うことは、 `Data.String`モジュールの `split`関数を使"
-"用して、ユーザーの入力を単語に分割することです。\n"
-"それから、ゲームの環境と現在のゲームの状態を渡し、 `runRWS`を使用して（`RWS`"
-"モナドで）`game`アクションを実行しています。"
+"この動作が最初に行うことは、`Data.String`モジュールの `split`関数を使用して、ユーザーの入力を単語に分割することです。\n"
+"それから、ゲームの環境と現在のゲームの状態を渡し、 `runRWS`を使用して（`RWS`モナドで）`game`動作を実行しています。"
 
 #. type: Plain text
 #: text/chapter11.md:907
@@ -8842,8 +8662,8 @@ msgid ""
 "prompt is displayed again using the `prompt` action."
 msgstr ""
 "純粋な計算であるゲームロジックを実行するには、画面に全てのログ文言を出力して、ユーザに次のコマンドのためのプロンプトを表示する必要があります。\n"
-"`for_`アクションが（`List String`型の）ログを走査し、コンソールにその内容を出力するために使われています。\n"
-"最後に`setLineHandler`を使って行制御関数を更新することでゲームの状態を更新し、`prompt`アクションを使ってプロンプトを再び表示しています。"
+"`for_`動作が（`List String`型の）ログを走査し、コンソールにその内容を出力するために使われています。\n"
+"最後に`setLineHandler`を使って行制御関数を更新することでゲームの状態を更新し、`prompt`動作を使ってプロンプトを再び表示しています。"
 
 #. type: Plain text
 #: text/chapter11.md:909
@@ -9081,13 +8901,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:970
 #, fuzzy
-#| msgid ""
-#| "We have seen how monad transformers allow us to write safe code in an "
-#| "imperative style, where effects are tracked by the type system. In "
-#| "addition, type classes provide a powerful way to abstract over the "
-#| "actions provided by a monad, enabling code reuse. We were able to use "
-#| "standard abstractions like `Alternative` and `MonadPlus` to build useful "
-#| "monads by combining standard monad transformers."
 msgid ""
 "We have seen how monad transformers allow us to write safe code in an "
 "imperative style, where the type system tracks effects. In addition, type "
@@ -9096,14 +8909,11 @@ msgid ""
 "and `MonadPlus` to build useful monads by combining standard monad "
 "transformers."
 msgstr ""
-"モナド変換子によって命令型のスタイルで安全なコードを書くことができることを見"
-"てきました。\n"
+"モナド変換子によって命令型のスタイルで安全なコードを書くことができることを見てきました。\n"
 "このスタイルでは型システムによって作用が追跡されています。\n"
-"また、型クラスはモナドが提供するアクションへと抽象化する強力な方法を提供しま"
-"す。\n"
+"また、型クラスはモナドが提供する動作へと抽象化する強力な方法を提供します。\n"
 "このモナドのお陰でコードの再利用が可能になりました。\n"
-"標準的なモナド変換子を組み合わせることにより、`Alternative`や`MonadPlus`のよ"
-"うな標準的な抽象化を使用して、役に立つモナドを構築できました。"
+"標準的なモナド変換子を組み合わせることにより、`Alternative`や`MonadPlus`のような標準的な抽象化を使用して、役に立つモナドを構築できました。"
 
 #. type: Plain text
 #: text/chapter11.md:971
@@ -9159,11 +8969,8 @@ msgid ""
 "modifying the Spago build command to run the appropriate file's `main` "
 "method at each point."
 msgstr ""
-"この章のソースコードは、それぞれに `main`メソッドが定義されているモジュールの"
-"集合へと分割されています。\n"
-"この章のそれぞれの節の内容は個別のファイルで実装されており、それぞれの時点で"
-"の適切なファイルの`main`メソッドを実行できるように、Spagoビルドコマンドを変更"
-"することで`Main`モジュールを合わせられるようになっています。"
+"この章の各ソースコードは、`main`メソッドが定義されているモジュールの集合へと分割されています。\n"
+"この章の各節の内容は個別のファイルで実装されており、各時点での適切なファイルの`main`メソッドを実行できるように、Spagoビルドコマンドを変更することで、`Main`モジュールを合わせられるようになっています。"
 
 #. type: Plain text
 #: text/chapter12.md:17
@@ -9202,28 +9009,19 @@ msgid ""
 "with the Canvas API."
 msgstr ""
 "`Example/Rectangle.purs`ファイルには簡単な導入例が含まれています。\n"
-"この例ではcanvasの中心に青い四角形を1つ描画します。\n"
-"このモジュールへは、`Effect`モジュールからの`Effect`型と、Canvas APIを扱うた"
-"めの`Effect`モナドのアクションを含む`Graphics.Canvas`モジュールをインポートし"
-"ます。"
+"この例ではキャンバスの中心に青い四角形を1つ描画します。\n"
+"このモジュールへは、`Effect`モジュールからの`Effect`型と、Canvas APIを扱うための`Effect`モナドの動作を含む`Graphics.Canvas`モジュールをインポートします。"
 
 #. type: Plain text
 #: text/chapter12.md:23
 #, fuzzy
-#| msgid ""
-#| "The `main` action starts, like in the other modules, by using the "
-#| "`getCanvasElementById` action to get a reference to the canvas object, "
-#| "and the `getContext2D` action to access the 2D rendering context for the "
-#| "canvas:"
 msgid ""
 "The `main` action starts, like in the other modules, by using the "
 "`getCanvasElementById` action to get a reference to the canvas object and "
 "the `getContext2D` action to access the 2D rendering context for the canvas:"
 msgstr ""
-"他のモジュールでも同様ですが、 `main`アクションは最初に`getCanvasElementById`"
-"アクションを使ってcanvasオブジェクトへの参照を取得します。\n"
-"また、 `getContext2D`アクションを使ってキャンバスの2D描画コンテキストを参照し"
-"ます。"
+"他のモジュールでも同様ですが、`main`動作は最初に`getCanvasElementById`動作を使ってキャンバスオブジェクトへの参照を取得します。\n"
+"また、`getContext2D`動作を使ってキャンバスの2D描画文脈を参照します。"
 
 #. type: Plain text
 #: text/chapter12.md:25
@@ -9262,7 +9060,7 @@ msgstr ""
 msgid ""
 "The types of these actions can be found using PSCi or by looking at the "
 "documentation:"
-msgstr "これらのアクションの型はPSCiを使うかドキュメントを見ると確認できます。"
+msgstr "これらの動作の型はPSCiを使うかドキュメントを見ると確認できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:34
@@ -9291,17 +9089,11 @@ msgstr ""
 #. type: Plain text
 #: text/chapter12.md:43
 #, fuzzy
-#| msgid ""
-#| "The graphics context `ctx` manages the state of the canvas, and provides "
-#| "methods to render primitive shapes, set styles and colors, and apply "
-#| "transformations."
 msgid ""
 "The graphics context `ctx` manages the state of the canvas and provides "
 "methods to render primitive shapes, set styles and colors, and apply "
 "transformations."
-msgstr ""
-"グラフィックスコンテキスト`ctx`はcanvasの状態を管理し、原始的な図形を描画した"
-"り、スタイルや色を設定したり、座標変換を適用するためのメソッドを提供します。"
+msgstr "グラフィックス文脈`ctx`はキャンバスの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用するためのメソッドを提供します。"
 
 #. type: Plain text
 #: text/chapter12.md:45
@@ -9310,10 +9102,8 @@ msgid ""
 "action. The longer hex notation of `#0000FF` may also be used for blue, but "
 "shorthand notation is easier for simple colors:"
 msgstr ""
-"話を進めると、`setFillStyle`アクションを使うことで塗り潰しスタイルを濃い青に"
-"設定できます。\n"
-"より長い16進数記法の`#0000FF`も青には使えますが、単純な色については略記法がよ"
-"り簡単です。"
+"話を進めると、`setFillStyle`動作を使うことで塗り潰しスタイルを濃い青に設定できます。\n"
+"より長い16進数記法の`#0000FF`も青には使えますが、単純な色については略記法がより簡単です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:46
@@ -9327,9 +9117,8 @@ msgid ""
 "Note that the `setFillStyle` action takes the graphics context as an "
 "argument. This is a common pattern in the `Graphics.Canvas` module."
 msgstr ""
-"`setFillStyle`アクションがグラフィックスコンテキストを引数として取っているこ"
-"とに注意してください。\n"
-"これは `Graphics.Canvas`ではよくあるパターンです。"
+"`setFillStyle`動作がグラフィックス文脈を引数として取っていることに注意してください。\n"
+"これは`Graphics.Canvas`ではよくあるパターンです。"
 
 #. type: Plain text
 #: text/chapter12.md:53
@@ -9337,7 +9126,7 @@ msgid ""
 "Finally, we use the `fillPath` action to fill the rectangle. `fillPath` has "
 "the following type:"
 msgstr ""
-"最後に、 `fillPath`アクションを使用して矩形を塗り潰しています。\n"
+"最後に、`fillPath`動作を使用して矩形を塗り潰しています。\n"
 "`fillPath`は次のような型を持っています。"
 
 #. type: Fenced code block (haskell)
@@ -9349,22 +9138,15 @@ msgstr "fillPath :: forall a. Context2D -> Effect a -> Effect a\n"
 #. type: Plain text
 #: text/chapter12.md:59
 #, fuzzy
-#| msgid ""
-#| "`fillPath` takes a graphics context and another action which builds the "
-#| "path to render. To build a path, we can use the `rect` action. `rect` "
-#| "takes a graphics context, and a record which provides the position and "
-#| "size of the rectangle:"
 msgid ""
 "`fillPath` takes a graphics context and another action that builds the path "
 "to render. To build a path, we can use the `rect` action. `rect` takes a "
 "graphics context and a record that provides the position and size of the "
 "rectangle:"
 msgstr ""
-"`fillPath`はグラフィックスコンテキストと描画するパスを構築する別のアクション"
-"を引数にとります。\n"
-"`rect`アクションを使うとパスを構築できます。\n"
-"`rect`はグラフィックスコンテキストと矩形の位置及びサイズを格納するレコードを"
-"引数にとります。"
+"`fillPath`はグラフィックスの文脈と描画するパスを構築する別の動作を引数に取ります。\n"
+"`rect`動作を使うとパスを構築できます。\n"
+"`rect`はグラフィックスの文脈と矩形の位置及びサイズを格納するレコードを引数に取ります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:60
@@ -9392,9 +9174,7 @@ msgstr "$ spago bundle-app --main Example.Rectangle --to dist/Main.js\n"
 msgid ""
 "Now, open the `html/index.html` file and verify that this code renders a "
 "blue rectangle in the center of the canvas."
-msgstr ""
-"それでは `html/index.html`ファイルを開き、このコードによってcanvasの中央に青"
-"い四角形が描画されていることを確認してみましょう。"
+msgstr "それでは `html/index.html`ファイルを開き、このコードによってキャンバスの中央に青い四角形が描画されていることを確認してみましょう。"
 
 #. type: Title ##
 #: text/chapter12.md:72
@@ -9520,22 +9300,16 @@ msgstr ""
 #. type: Plain text
 #: text/chapter12.md:106
 #, fuzzy
-#| msgid ""
-#| "For example, this code fills an arc segment centered at `(300, 300)` with "
-#| "radius `50`. The arc completes 2/3rds of a rotation. Note that the unit "
-#| "circle is flipped vertically, since the y-axis increases towards the "
-#| "bottom of the canvas:"
 msgid ""
 "For example, this code fills an arc segment centered at `(300, 300)` with "
 "radius `50`. The arc completes 2/3rds of a rotation. Note that the unit "
 "circle is flipped vertically since the y-axis increases towards the bottom "
 "of the canvas:"
 msgstr ""
-"例えばこのコードは中心が`(300, 300)`に中心があり半径`50`の円弧を塗り潰しま"
-"す。\n"
+"例えばこのコードは中心が`(300, 300)`に中心があり半径`50`の円弧を塗り潰します。\n"
 "弧は1回転のうち2/3ラジアン分あります。\n"
 "単位円が上下逆様になっている点に注意してください。\n"
-"これはy軸がcanvasの下向きに伸びるためです。"
+"これはy軸がキャンバスの下向きに伸びるためです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:107
@@ -9702,21 +9476,16 @@ msgid ""
 "and open `html/index.html` again to see the result. You should see the three "
 "different types of shapes rendered to the canvas."
 msgstr ""
-"そしてもう一度 `html/index.html`を開き、結果を確認してください。canvas\n"
-"に3つの異なる図形が描画されるはずです。"
+"そしてもう一度`html/index.html`を開き、結果を確認してください。\n"
+"キャンバスに3つの異なる図形が描画されるはずです。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:158
 #, fuzzy
-#| msgid ""
-#| "(Easy) Experiment with the `strokePath` and `setStrokeStyle` functions in "
-#| "each of the examples so far."
 msgid ""
 "(Easy) Experiment with the `strokePath` and `setStrokeStyle` functions in "
 "each example so far."
-msgstr ""
-"（簡単）これまでの例のそれぞれについて、 `strokePath`関数や`setStrokeStyle`関"
-"数を使ってみましょう。"
+msgstr "（簡単）これまでの各例について、`strokePath`関数や`setStrokeStyle`関数を使ってみましょう。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:158
@@ -9805,12 +9574,11 @@ msgstr ""
 #. type: Plain text
 #: text/chapter12.md:179
 #, fuzzy, no-wrap
-#| msgid "     which takes a `Number` between `0` and `1` as its argument and returns a `Point`, write an action which plots `f` by using your `renderPath` function. Your action should approximate the path by sampling `f` at a finite set of points.\n"
 msgid "     which takes a `Number` between `0` and `1` as its argument and returns a `Point`, write an action that plots `f` by using your `renderPath` function. Your action should approximate the path by sampling `f` at a finite set of points.\n"
 msgstr ""
-"    この関数は引数として `1`から `0`の間の `Number`をとり、 `Point`を返します。\n"
-"    `renderPath`関数を利用して関数 `f`のグラフを描くアクションを書いてください。\n"
-"    そのアクションでは有限個の点を `f`からサンプリングすることによって近似しなければなりません。\n"
+"    この関数は引数として `1`から `0`の間の `Number`を取り、 `Point`を返します。\n"
+"    `renderPath`関数を利用して関数`f`のグラフを描く動作を書いてください。\n"
+"    その動作では有限個の点を`f`からサンプリングすることによって近似しなければなりません。\n"
 
 #. type: Plain text
 #: text/chapter12.md:181
@@ -9827,34 +9595,23 @@ msgstr "無作為に円を描く"
 #. type: Plain text
 #: text/chapter12.md:185
 #, fuzzy
-#| msgid ""
-#| "The `Example/Random.purs` file contains an example which uses the "
-#| "`Effect` monad to interleave two different types of side-effect: random "
-#| "number generation, and canvas manipulation. The example renders one "
-#| "hundred randomly generated circles onto the canvas."
 msgid ""
 "The `Example/Random.purs` file contains an example that uses the `Effect` "
 "monad to interleave two types of side-effect: random number generation and "
 "canvas manipulation. The example renders one hundred randomly generated "
 "circles onto the canvas."
 msgstr ""
-"`Example/Random.purs`ファイルには2種類の異なる副作用が混在した`Effect`モナド"
-"を使う例が含まれています。\n"
-"1つは乱数生成で、もう1つはcanvasの操作です。\n"
+"`Example/Random.purs`ファイルには2種類の異なる副作用が混在した`Effect`モナドを使う例が含まれています。\n"
+"1つは乱数生成で、もう1つはキャンバスの操作です。\n"
 "この例では無作為に生成された円をキャンバスに100個描画します。"
 
 #. type: Plain text
 #: text/chapter12.md:187
 #, fuzzy
-#| msgid ""
-#| "The `main` action obtains a reference to the graphics context as before, "
-#| "and then sets the stroke and fill styles:"
 msgid ""
 "The `main` action obtains a reference to the graphics context as before and "
 "then sets the stroke and fill styles:"
-msgstr ""
-"`main`アクションではこれまでのようにグラフィックスコンテキストへの参照を取得"
-"し、ストロークと塗り潰しスタイルを設定します。"
+msgstr "`main`動作ではこれまでのようにグラフィックス文脈への参照を取得し、線描きと塗り潰しスタイルを設定します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:188
@@ -9867,9 +9624,7 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Random.purs:style}}\n"
 msgid ""
 "Next, the code uses the `for_` function to loop over the integers between "
 "`0` and `100`:"
-msgstr ""
-"次のコードでは `for_`アクションを使って `0`から `100`までの整数について反復し"
-"ています。"
+msgstr "次のコードでは`for_`動作を使って`0`から`100`までの整数について反復しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:194
@@ -9880,19 +9635,13 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Random.purs:for}}\n"
 #. type: Plain text
 #: text/chapter12.md:199
 #, fuzzy
-#| msgid ""
-#| "On each iteration, the do notation block starts by generating three "
-#| "random numbers distributed between `0` and `1`. These numbers represent "
-#| "the `x` and `y` coordinates, and the radius of a circle:"
 msgid ""
 "On each iteration, the do notation block starts by generating three random "
 "numbers distributed between `0` and `1`. These numbers represent the `x` and "
 "`y` coordinates and the radius of a circle:"
 msgstr ""
-"それぞれの繰り返しでのdo記法ブロックは、`0`と`1`の間に分布する3つの乱数を生成"
-"することから始まります。\n"
-"これらの数は `0`から `1`の間に無作為に分布しており、それぞれ `x`座標、 `y`座"
-"標、半径 `r`を表しています。"
+"各繰り返しでのdo記法ブロックは、`0`と`1`の間に分布する3つの乱数を生成することから始まります。\n"
+"これらの数は`0`から`1`の間に無作為に分布しており、それぞれ`x`座標、`y`座標、半径`r`を表しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:200
@@ -9905,9 +9654,7 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Random.purs:random}}\n"
 msgid ""
 "Next, for each circle, the code creates an `Arc` based on these parameters "
 "and finally fills and strokes the arc with the current styles:"
-msgstr ""
-"次のコードではそれぞれの円について、これらの変数に基づいて `Arc`を作成し、最"
-"後に現在のスタイルに従って円弧を塗り潰し線描きします。"
+msgstr "次のコードでは各円について、これらの変数に基づいて`Arc`を作成し、最後に現在のスタイルに従って円弧を塗り潰し線描きします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:206
@@ -10005,22 +9752,15 @@ msgstr ""
 msgid ""
 "The `translate` action performs a translation whose components are specified "
 "by the properties of the `TranslateTransform` record."
-msgstr ""
-"`translate`アクションは`TranslateTransform`レコードのプロパティで指定した大き"
-"さだけ平行移動します。"
+msgstr "`translate`動作は`TranslateTransform`レコードのプロパティで指定した大きさだけ平行移動します。"
 
 #. type: Plain text
 #: text/chapter12.md:245
 #, fuzzy
-#| msgid ""
-#| "The `rotate` action performs a rotation around the origin, through some "
-#| "number of radians specified by the first argument."
 msgid ""
 "The `rotate` action rotates around the origin through some number of radians "
 "specified by the first argument."
-msgstr ""
-"`rotate`アクションは最初の引数で指定されたラジアンの値に応じて、原点を中心と"
-"して回転します。"
+msgstr "`rotate`動作は最初の引数で指定されたラジアンの値に応じて、原点を中心として回転します。"
 
 #. type: Plain text
 #: text/chapter12.md:247
@@ -10029,9 +9769,8 @@ msgid ""
 "`ScaleTransform` record specifies the scale factors along the `x` and `y` "
 "axes."
 msgstr ""
-"`scale`アクションは原点を中心として拡大縮小します。\n"
-"`ScaleTransform`レコードは `X`軸と `y`軸に沿った拡大率を指定するのに使いま"
-"す。"
+"`scale`動作は原点を中心として拡大縮小します。\n"
+"`ScaleTransform`レコードは`x`軸と`y`軸に沿った拡大率を指定するのに使います。"
 
 #. type: Plain text
 #: text/chapter12.md:249
@@ -10039,17 +9778,15 @@ msgid ""
 "Finally, `transform` is the most general action of the four here. It "
 "performs an affine transformation specified by a matrix."
 msgstr ""
-"最後の `transform`はこの4つのうちで最も一般化されたアクションです。\n"
-"このアクションでは行列に従ってアフィン変換します。"
+"最後の `transform`はこの4つのうちで最も一般化された動作です。\n"
+"この動作では行列に従ってアフィン変換します。"
 
 #. type: Plain text
 #: text/chapter12.md:251
 msgid ""
 "Any shapes rendered after these actions have been invoked will automatically "
 "have the appropriate transformation applied."
-msgstr ""
-"これらのアクションが呼び出された後に描画される図形は、自動的に適切な座標変換"
-"が適用されます。"
+msgstr "これらの動作が呼び出された後に描画される図形は、自動的に適切な座標変換が適用されます。"
 
 #. type: Plain text
 #: text/chapter12.md:253
@@ -10059,10 +9796,8 @@ msgid ""
 "if multiple transformations applied after one another, then their effects "
 "are actually applied in reverse:"
 msgstr ""
-"実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列に対し"
-"て変換行列を*右から乗算*していきます。\n"
-"つまり、もしある作用の変換をしていくと、その作用は実際には逆順に適用されてい"
-"きます。"
+"実際には、これらの関数の各作用は、文脈の現在の変換行列に対して変換行列を*右から乗算*していきます。\n"
+"つまり、もしある作用の変換をしていくと、その作用は実際には逆順に適用されていきます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:254
@@ -10087,15 +9822,13 @@ msgstr ""
 msgid ""
 "The effect of this sequence of actions is that the scene is rotated, then "
 "scaled, and finally translated."
-msgstr ""
-"この一連のアクションの作用では、まずシーンが回転され、それから拡大縮小され、"
-"最後に平行移動されます。"
+msgstr "この一連の動作の作用では、まずシーンが回転され、それから拡大縮小され、最後に平行移動されます。"
 
 #. type: Title ##
 #: text/chapter12.md:265
 #, no-wrap
 msgid "Preserving the Context"
-msgstr "コンテキストの保存"
+msgstr "文脈の保存"
 
 #. type: Plain text
 #: text/chapter12.md:268
@@ -10147,20 +9880,11 @@ msgid ""
 "The `save` action pushes the current state of the context (including the "
 "current transformation and any styles) onto the stack, and the `restore` "
 "action pops the top state from the stack and restores it."
-msgstr ""
-"`save`アクションは現在のコンテキストの状態（現在の変換行列や描画スタイル）を"
-"スタックにプッシュし、 `restore`アクションはスタックの一番上の状態をポップ"
-"し、コンテキストの状態を復元します。"
+msgstr "`save`動作は現在の文脈の状態（現在の変換行列や描画スタイル）をスタックにプッシュし、`restore`動作はスタックの一番上の状態をポップし、文脈の状態を復元します。"
 
 #. type: Plain text
 #: text/chapter12.md:284
 #, fuzzy
-#| msgid ""
-#| "This allows us to save the current state, apply some styles and "
-#| "transformations, render some primitives, and finally restore the original "
-#| "transformation and state. For example, the following function performs "
-#| "some canvas action, but applies a rotation before doing so, and restores "
-#| "the transformation afterwards:"
 msgid ""
 "This allows us to save the current state, apply some styles and "
 "transformations, render some primitives, and finally restore the original "
@@ -10168,10 +9892,8 @@ msgid ""
 "canvas action but applies a rotation before doing so and restores the "
 "transformation afterwards:"
 msgstr ""
-"これらのアクションにより、現在の状態を保存し、いろいろなスタイルや変換を適用"
-"してから原始的な図形を描画し、最後に元の変換と状態を復元できます。\n"
-"例えば、次の関数は回転を適用してから幾つかのキャンバスアクションを実行し、そ"
-"のあとに変換を復元します。"
+"これらの動作により、現在の状態を保存し、いろいろなスタイルや変換を適用してから原始的な図形を描画し、最後に元の変換と状態を復元できます。\n"
+"例えば、次の関数は回転を適用してから幾つかのキャンバス動作を実行し、そのあとに変換を復元します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:285
@@ -10195,10 +9917,7 @@ msgid ""
 "In the interest of abstracting over common use cases using higher-order "
 "functions, the `canvas` library provides the `withContext` function, which "
 "performs some canvas action while preserving the original context state:"
-msgstr ""
-"こういったよくある高階関数の使われ方の抽象化として、`canvas`ライブラリでは元"
-"のコンテキスト状態を保存しつつ幾つかのキャンバスアクションを実行する "
-"`withContext`関数が提供されています。"
+msgstr "こういったよくある高階関数の使われ方の抽象化として、`canvas`ライブラリでは元の文脈状態を保存しつつ幾つかのキャンバス動作を実行する`withContext`関数が提供されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:295
@@ -10305,15 +10024,10 @@ msgstr ""
 #. type: Plain text
 #: text/chapter12.md:329
 #, fuzzy
-#| msgid ""
-#| "The code starts by creating a new reference containing the value `0`, by "
-#| "using the `new` action:"
 msgid ""
 "The code starts by creating a new reference containing the value `0` by "
 "using the `new` action:"
-msgstr ""
-"このコードでは最初に`new`アクションを使って値`0`を含む新しい参照を作成してい"
-"ます。"
+msgstr "このコードでは最初に`new`動作を使って値`0`を含む新しい参照を作成しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:330
@@ -10326,9 +10040,7 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Refs.purs:clickCount}}\n"
 msgid ""
 "Inside the click event handler, the `modify` action is used to update the "
 "click count, and the updated value is returned."
-msgstr ""
-"クリックイベント制御子の内部では、 `modify`アクションを使用してクリック数を更"
-"新し、更新された値が返されています。"
+msgstr "クリックイベント制御子の内部では、`modify`動作を使用してクリック数を更新し、更新された値が返されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:336
@@ -10352,18 +10064,11 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Refs.purs:withContext}}\n"
 #. type: Plain text
 #: text/chapter12.md:347
 #, fuzzy
-#| msgid ""
-#| "This action uses `withContext` to preserve the original transformation, "
-#| "and then applies the following sequence of transformations (remember that "
-#| "transformations are applied bottom-to-top):"
 msgid ""
 "This action uses `withContext` to preserve the original transformation and "
 "then applies the following sequence of transformations (remember that "
 "transformations are applied bottom-to-top):"
-msgstr ""
-"このアクションでは元の変換を保存するために `withContext`を使用しており、それ"
-"から一連の変換を適用しています（変換が下から上に適用されることを思い出してく"
-"ださい）。"
+msgstr "この動作では元の変換を保存するために `withContext`を使用しており、それから一連の変換を適用しています（変換が下から上に適用されることを思い出してください）。"
 
 #. type: Bullet: '- '
 #: text/chapter12.md:352
@@ -10391,13 +10096,10 @@ msgstr "矩形が原点を中心に`10`の倍数分の角度で回転します�
 #. type: Bullet: '- '
 #: text/chapter12.md:352
 #, fuzzy
-#| msgid ""
-#| "The rectangle is translated through `(300, 300)` so that it center lies "
-#| "at the center of the canvas."
 msgid ""
 "The rectangle is translated through `(300, 300)`, so its center lies at the "
 "center of the canvas."
-msgstr "矩形が`(300, 300)`だけ平行移動し、中心がcanvasの中心に来ます。"
+msgstr "矩形が`(300, 300)`だけ平行移動し、中心がキャンバスの中心に来ます。"
 
 #. type: Plain text
 #: text/chapter12.md:354
@@ -10482,12 +10184,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter12.md:372
 #, fuzzy
-#| msgid ""
-#| "An L-system is defined by an _alphabet_, an initial sequence of letters "
-#| "from the alphabet, and a set of _production rules_. Each production rule "
-#| "takes a letter of the alphabet and returns a sequence of replacement "
-#| "letters. This process is iterated some number of times starting with the "
-#| "initial sequence of letters."
 msgid ""
 "An L-system is defined by an _alphabet_, an initial sequence of letters from "
 "the alphabet, and a set of _production rules_. Each production rule takes a "
@@ -10495,10 +10191,8 @@ msgid ""
 "process is iterated some number of times, starting with the initial sequence "
 "of letters."
 msgstr ""
-"L-Systemは*アルファベット*、つまり初期状態となるアルファベットの文字列と、*生"
-"成規則*の集合で定義されています。\n"
-"各生成規則は、アルファベットの文字をとり、それを置き換える文字の配列を返しま"
-"す。\n"
+"L-Systemは*アルファベット*、つまり初期状態となるアルファベットの文字列と、*生成規則*の集合で定義されています。\n"
+"各生成規則は、アルファベットの文字を取り、それを置き換える文字の配列を返します。\n"
 "この処理は文字の初期配列から始まり、複数回繰り返されます。"
 
 #. type: Plain text
@@ -10507,9 +10201,7 @@ msgid ""
 "If each letter of the alphabet is associated with some instruction to "
 "perform on the canvas, the L-system can be rendered by following the "
 "instructions in order."
-msgstr ""
-"もしアルファベットの各文字がcanvas上で実行される命令と対応付けられていれば、"
-"その指示に順番に従うことでL-Systemを描画できます。"
+msgstr "もしアルファベットの各文字がキャンバス上で実行される命令と対応付けられていれば、その指示に順番に従うことでL-Systemを描画できます。"
 
 #. type: Plain text
 #: text/chapter12.md:376
@@ -10644,23 +10336,15 @@ msgstr "これはまさに上記の仕様をそのまま書き写したもので
 #. type: Plain text
 #: text/chapter12.md:420
 #, fuzzy
-#| msgid ""
-#| "Now we can implement a function `lsystem` which will take a specification "
-#| "in this form, and render it to the canvas. What type should `lsystem` "
-#| "have? Well, it needs to take values like `initial` and `productions` as "
-#| "arguments, as well as a function which can render a letter of the "
-#| "alphabet to the canvas."
 msgid ""
 "Now we can implement a function `lsystem` that will take a specification in "
 "this form and render it to the canvas. What type should `lsystem` have? "
 "Well, it needs to take values like `initial` and `productions` as arguments, "
 "as well as a function that can render a letter of the alphabet to the canvas."
 msgstr ""
-"これで、この形式の仕様を受け取りcanvasに描画する関数 `lsystem`を実装できま"
-"す。\n"
+"これで、この形式の仕様を受け取ってキャンバスに描画する関数 `lsystem`を実装できます。\n"
 "`lsystem`はどのような型を持っているべきでしょうか。\n"
-"この関数は初期状態 `initial`や生成規則 `productions`のような値だけでなく、ア"
-"ルファベットの文字をcanvasに描画する関数を引数に取る必要があります。"
+"この関数は初期状態 `initial`や生成規則 `productions`のような値だけでなく、アルファベットの文字をキャンバスに描画する関数を引数に取る必要があります。"
 
 #. type: Plain text
 #: text/chapter12.md:422
@@ -10693,12 +10377,6 @@ msgstr "最初の2つの引数の型は、値 `initial`と `productions`に対�
 #. type: Plain text
 #: text/chapter12.md:434
 #, fuzzy
-#| msgid ""
-#| "The third argument represents a function which takes a letter of the "
-#| "alphabet and _interprets_ it by performing some actions on the canvas. In "
-#| "our example, this would mean turning left in the case of the letter `L`, "
-#| "turning right in the case of the letter `R`, and moving forward in the "
-#| "case of a letter `F`."
 msgid ""
 "The third argument represents a function that takes a letter of the alphabet "
 "and _interprets_ it by performing some actions on the canvas. In our "
@@ -10706,8 +10384,7 @@ msgid ""
 "right in the case of the letter `R`, and moving forward in the case of a "
 "letter `F`."
 msgstr ""
-"3番目の引数は、アルファベットの文字を取り、canvas上の幾つかのアクションを実行"
-"することによって*解釈*する関数を表します。\n"
+"3番目の引数は、アルファベットの文字を取り、キャンバス上の幾つかの動作を実行することによって*解釈*する関数を表します。\n"
 "この例では、文字`L`は左回転、文字 `R`で右回転、文字 `F`は前進を意味します。"
 
 #. type: Plain text
@@ -10969,8 +10646,7 @@ msgid ""
 msgstr ""
 "しかし、話はこれで終わりではありません。\n"
 "ここで与えた型は、実際はまだ特殊化されすぎています。\n"
-"この定義ではcanvasの操作が実装のどこにも使われていないことに注目してくださ"
-"い。\n"
+"この定義ではキャンバスの操作が実装のどこにも使われていないことに注目してください。\n"
 "それに、全く`Effecta`モナドの構造を利用していません。\n"
 "実際には、この関数は*どんな*モナド`m`についても動作します。"
 
@@ -11103,14 +10779,12 @@ msgid ""
 "part of the state of the system."
 msgstr ""
 "なお、この章のソースコードでは、名前 `ctx`がスコープに入るように、`interpret`関数は `main`関数内で `let`束縛を使用して定義されています。\n"
-"`State`型がコンテキストを持つように変更できるでしょうが、それはこのシステムの状態の変化する部分ではないので不適切でしょう。"
+"`State`型が文脈を持つように変更できるでしょうが、それはこのシステムの状態の変化する部分ではないので不適切でしょう。"
 
 #. type: Plain text
 #: text/chapter12.md:542
 msgid "To render this L-system, we can simply use the `strokePath` action:"
-msgstr ""
-"このL-Systemを描画するには、次のような `strokePath`アクションを使用するだけで"
-"す。"
+msgstr "このL-Systemを描画するには、次のような`strokePath`動作を使用するだけです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:543
@@ -11177,19 +10851,12 @@ msgstr ""
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:562
 #, fuzzy
-#| msgid ""
-#| "(Medium) Add a drop shadow to the filled shape, by using the "
-#| "`setShadowOffsetX`, `setShadowOffsetY`, `setShadowBlur` and "
-#| "`setShadowColor` actions. _Hint_: use PSCi to find the types of these "
-#| "functions."
 msgid ""
 "(Medium) Add a drop shadow to the filled shape using the `setShadowOffsetX`, "
 "`setShadowOffsetY`, `setShadowBlur`, and `setShadowColor` actions. _Hint_: "
 "use PSCi to find the types of these functions."
 msgstr ""
-"（普通）`setShadowOffsetX`アクション、 `setShadowOffsetY`アクション、"
-"`setShadowBlur`アクション、 `setShadowColor`アクションを使い、塗りつぶされた"
-"図形にドロップシャドウを追加してください。\n"
+"（普通）`setShadowOffsetX`動作、`setShadowOffsetY`動作、`setShadowBlur`動作、`setShadowColor`動作を使い、塗りつぶされた図形にドロップシャドウを追加してください。\n"
 "*手掛かり*：PSCiを使って、これらの関数の型を調べてみましょう。"
 
 #. type: Bullet: ' 1. '
@@ -11371,10 +11038,7 @@ msgid ""
 "For examples of games rendered to the canvas, see the \"Behavior\" and "
 "\"Signal\" recipes in the [cookbook](https://github.com/JordanMartinez/"
 "purescript-cookbook/blob/master/README.md#recipes)."
-msgstr ""
-"canvasに描画されるゲームの例については[cookbook](https://github.com/"
-"JordanMartinez/purescript-cookbook/blob/master/README.md#recipes)の"
-"「Behavior」と「Signal」のレシピを見てください。"
+msgstr "キャンバスに描画されるゲームの例については[cookbook](https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes)の「Behavior」と「Signal」のレシピを見てください。"
 
 #. type: Title #
 #: text/chapter13.md:1
@@ -11971,10 +11635,9 @@ msgid ""
 "function over the `arbitrary` action. The type of the inner `arbitrary` "
 "action is inferred as `Gen Int`."
 msgstr ""
-"ここでは、0から255までの間の整数値であるような型 `Byte`を定義しています。\n"
-"`Arbitrary`インスタンスは `map`演算子を使って、 `intToByte`関数を `arbitrary`"
-"アクションまで持ち上げています。\n"
-"`arbitrary`アクション内部の型は `Gen Int`と推論されます。"
+"ここでは、0から255までの間の整数値であるような型`Byte`を定義しています。\n"
+"`Arbitrary`インスタンスは`map`演算子を使って、`intToByte`関数を`arbitrary`動作まで持ち上げています。\n"
+"`arbitrary`動作内部の型は`Gen Int`と推論されます。"
 
 #. type: Plain text
 #: text/chapter13.md:172
@@ -12335,21 +11998,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter13.md:275
 #, fuzzy
-#| msgid ""
-#| "The `coarbitrary` function takes a function argument of type `t`, and a "
-#| "random generator for a function result of type `r`, and uses the function "
-#| "argument to _perturb_ the random generator. That is, it uses the function "
-#| "argument to modify the random output of the random generator for the "
-#| "result."
 msgid ""
 "The `coarbitrary` function takes a function argument of type `t` and a "
 "random generator for a function result of type `r`. It uses the function "
 "argument to _perturb_ the random generator. That is, it uses the function "
 "argument to modify the random output of the random generator for the result."
 msgstr ""
-"`coarbitrary`関数は、型 `t`と、関数の結果の型 `r`についての乱数生成器を関数の"
-"引数としてとり、乱数生成器を _かき乱す_ のにこの引数を使います。つまり関数の"
-"引数を使って、乱数生成器の無作為な出力を変更しているのです。"
+"`coarbitrary`関数は、型 `t`と、関数の結果の型 `r`についての乱数生成器を関数の引数として取り、乱数生成器を*かき乱す*のにこの引数を使います。\n"
+"つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。"
 
 #. type: Plain text
 #: text/chapter13.md:277
@@ -12649,12 +12305,6 @@ msgstr "副作用のないテスト"
 #. type: Plain text
 #: text/chapter13.md:365
 #, fuzzy
-#| msgid ""
-#| "For the purposes of testing, we usually include calls to the `quickCheck` "
-#| "function in the `main` action of our test suite. However, there is a "
-#| "variant of the `quickCheck` function, called `quickCheckPure` which does "
-#| "not use side-effects. Instead, it is a pure function which takes a random "
-#| "seed as an input, and returns an array of test results."
 msgid ""
 "For the purposes of testing, we usually include calls to the `quickCheck` "
 "function in the `main` action of our test suite. However, there is a variant "
@@ -12662,12 +12312,9 @@ msgid ""
 "side-effects. Instead, it is a pure function that takes a random seed as an "
 "input and returns an array of test results."
 msgstr ""
-"通常、テストの目的ではテストスイートの `main`アクションに`quickCheck`関数の呼"
-"び出しが含まれています。\n"
-"しかし、副作用を使わない`quickCheckPure`と呼ばれる `quickCheck`関数の亜種もあ"
-"ります。\n"
-"`quickCheckPure`は、入力として乱数の種をとり、テスト結果の配列を返す純粋な関"
-"数です。"
+"通常、テストの目的ではテストスイートの`main`動作に`quickCheck`関数の呼び出しが含まれています。\n"
+"しかし、副作用を使わない`quickCheckPure`と呼ばれる`quickCheck`関数の亜種もあります。\n"
+"`quickCheckPure`は、入力として乱数の種を取り、テスト結果の配列を返す純粋な関数です。"
 
 #. type: Plain text
 #: text/chapter13.md:367
@@ -12715,10 +12362,8 @@ msgid ""
 "cases to generate, and the property to test. If all tests pass, you should "
 "see an array of `Success` data constructors printed to the console."
 msgstr ""
-"`quickCheckPure`は乱数の種、生成するテスト項目数、テストする性質の3つの引数を"
-"とります。\n"
-"もし全てのテスト項目が成功したら、`Success`データ構築子の配列がコンソールに出"
-"力されます。"
+"`quickCheckPure`は乱数の種、生成するテスト項目数、テストする性質の3つの引数を取ります。\n"
+"もし全てのテスト項目が成功したら、`Success`データ構築子の配列がコンソールに出力されます。"
 
 #. type: Plain text
 #: text/chapter13.md:386
@@ -12884,9 +12529,7 @@ msgid ""
 "The `Game` monad and its associated actions, developed in chapter 11, "
 "constitute a domain-specific language for the domain of _text adventure game "
 "development_."
-msgstr ""
-"第11章で開発された `Game`モナドと関連するアクションは、 _テキストアドベン"
-"チャーゲーム開発_ という領域に対しての領域特化言語を構成しています。"
+msgstr "第11章で開発された`Game`モナドと関連する動作は、*テキストアドベンチャーゲーム開発*という領域に対しての領域特化言語を構成しています。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:11
@@ -13340,9 +12983,7 @@ msgstr "既にライブラリに幾つもの大きな改良が加わっている
 msgid ""
 "It is impossible to represent HTML elements with invalid names (of course, "
 "we are restricted to the set of element names provided by the library)."
-msgstr ""
-"不正な名前を持つHTML要素は表現できません（もちろん、ライブラリが提供する要素"
-"名に制限されています）。"
+msgstr "不正な名前を持つHTML要素は表現できません（勿論ライブラリが提供する要素名に制限されています）。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:148
@@ -14031,20 +13672,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:392
 #, fuzzy
-#| msgid ""
-#| "However, do notation is not the only benefit of a free monad. The free "
-#| "monad allows us to separate the _representation_ of our monadic actions "
-#| "from their _interpretation_, and even support _multiple interpretations_ "
-#| "of the same actions."
 msgid ""
 "However, do notation is not the only benefit of a free monad. The free monad "
 "allows us to separate the _representation_ of our monadic actions from their "
 "_interpretation_ and even support _multiple interpretations_ of the same "
 "actions."
 msgstr ""
-"しかし、do記法だけがFreeモナドの恩恵だというわけではありません。Freeモナドが"
-"あれば、モナドのアクションの _表現_ をその _解釈_ から分離し、同じアクション"
-"に _複数の解釈_ を持たせることさえできます。"
+"しかし、do記法だけがFreeモナドの恩恵だというわけではありません。\n"
+"Freeモナドがあれば、モナドの動作の*表現*をその*解釈*から分離し、同じ動作に*複数の解釈*を持たせることさえできます。"
 
 #. type: Plain text
 #: text/chapter14.md:394
@@ -14096,23 +13731,16 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:405
 #, fuzzy
-#| msgid ""
-#| "We begin by defining the _representation_ of our monadic actions. To do "
-#| "this, we need to create a `Functor` with one data constructor for each "
-#| "monadic action we wish to support. In our case, our two monadic actions "
-#| "will be `elem` and `text`. In fact, we can simply modify our `Content` "
-#| "type as follows:"
 msgid ""
 "We begin by defining the _representation_ of our monadic actions. To do "
 "this, we need to create a `Functor` with one data constructor for each "
 "monadic action we wish to support. In our case, our two monadic actions will "
 "be `elem` and `text`. We can simply modify our `Content` type as follows:"
 msgstr ""
-"モナドのアクションの*表現*の定義から始めます。\n"
-"こうするには、対応する各モナドアクションそれぞれについて、1つのデータ構築子を"
-"持つ `Functor`を作成する必要があります。\n"
-"今回の場合、2つのモナドのアクションは `elem`と `text`になります。\n"
-"実際には、 `Content`型を次のように変更するだけです。"
+"モナドの動作の*表現*の定義から始めます。\n"
+"こうするには、対応する各モナド動作それぞれについて、1つのデータ構築子を持つ`Functor`を作成する必要があります。\n"
+"今回の場合、2つのモナドの動作は`elem`と`text`になります。\n"
+"実際には、`Content`型を次のように変更するだけです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:406
@@ -14176,21 +13804,14 @@ msgstr "type Content = Free ContentF\n"
 #. type: Plain text
 #: text/chapter14.md:425
 #, fuzzy
-#| msgid ""
-#| "Instead of a type synonym, we might use a `newtype` to avoid exposing the "
-#| "internal representation of our library to our users - by hiding the "
-#| "`Content` data constructor, we restrict our users to only using the "
-#| "monadic actions we provide."
 msgid ""
 "Instead of a type synonym, we might use a `newtype` to avoid exposing the "
 "internal representation of our library to our users – by hiding the "
 "`Content` data constructor, we restrict our users to only using the monadic "
 "actions we provide."
 msgstr ""
-"型シノニムの代わりにnewtypeを使用して、使用者に対してライブラリの内部表現を露"
-"出することを避けられます。\n"
-"`Content`データ構築子を隠すことで、提供しているモナドのアクションだけを使うこ"
-"とを使用者に制限しています。"
+"型同義語の代わりにnewtypeを使用して、使用者に対してライブラリの内部表現を露出することを避けられます。\n"
+"`Content`データ構築子を隠すことで、提供しているモナドの動作だけを使うことを使用者に制限しています。"
 
 #. type: Plain text
 #: text/chapter14.md:427
@@ -14231,21 +13852,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:439
 #, fuzzy
-#| msgid ""
-#| "In addition, we have to modify our `elem` and `text` functions, which "
-#| "become our new monadic actions for the `Content` monad. To do this, we "
-#| "can use the `liftF` function, provided by the `Control.Monad.Free` "
-#| "module. Here is its type:"
 msgid ""
 "In addition, we have to modify our `elem` and `text` functions, which become "
 "our new monadic actions for the `Content` monad. To do this, we can use the "
 "`liftF` function provided by the `Control.Monad.Free` module. Here is its "
 "type:"
 msgstr ""
-"また、 `Content`モナドについての新しいモナドのアクションになる `elem`と "
-"`text`関数を変更する必要があります。\n"
-"これには`Control.Monad.Free`モジュールで提供されている `liftF`関数が使えま"
-"す。\n"
+"また、`Content`モナドについての新しいモナドの動作になる`elem`と`text`関数を変更する必要があります。\n"
+"これには`Control.Monad.Free`モジュールで提供されている `liftF`関数が使えます。\n"
 "この関数の型は次のようになっています。"
 
 #. type: Fenced code block (haskell)
@@ -14257,18 +13871,13 @@ msgstr "liftF :: forall f a. f a -> Free f a\n"
 #. type: Plain text
 #: text/chapter14.md:445
 #, fuzzy
-#| msgid ""
-#| "`liftF` allows us to construct an action in our free monad from a value "
-#| "of type `f a` for some type `a`. In our case, we can simply use the data "
-#| "constructors of our `ContentF` type constructor directly:"
 msgid ""
 "`liftF` allows us to construct an action in our free monad from a value of "
 "type `f a` for some type `a`. In our case, we can use the data constructors "
 "of our `ContentF` type constructor directly:"
 msgstr ""
-"`liftF`により、何らかの型 `a`について、型 `f a`の値からFreeモナドのアクション"
-"を構築できるようになります。\n"
-"今回の場合、 `ContentF`型構築子のデータ構築子をそのまま使うだけです。"
+"`liftF`により、何らかの型`a`について、型`f a`の値からFreeモナドの動作を構築できるようになります。\n"
+"今回の場合、`ContentF`型構築子のデータ構築子をそのまま使うだけです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:446
@@ -14349,8 +13958,8 @@ msgid ""
 "The `runFree` function is used to compute a _pure_ result. The `runFreeM` "
 "function allows us to use a monad to interpret the actions of our free monad."
 msgstr ""
-"`runFree`関数は、 _純粋な_ 結果を計算するために使用されます。 `runFreeM`関数"
-"があればFreeモナドのアクションを解釈するためにモナドが使えます。"
+"`runFree`関数は、*純粋な*結果を計算するために使用されます。\n"
+"`runFreeM`関数があればFreeモナドの動作を解釈するためにモナドが使えます。"
 
 #. type: Plain text
 #: text/chapter14.md:479
@@ -14379,7 +13988,7 @@ msgid ""
 "will use the `Writer String` monad to accumulate an HTML string as our "
 "result."
 msgstr ""
-"まず、アクションを解釈できるモナドを選ばなければなりません。\n"
+"まず、動作を解釈できるモナドを選ばなければなりません。\n"
 "`Writer String`モナドを使って、結果のHTML文字列を累算することにします。"
 
 #. type: Plain text
@@ -14424,7 +14033,7 @@ msgstr ""
 msgid ""
 "The definition of `renderElement` is straightforward, using the `tell` "
 "action from the `Writer` monad to accumulate several small strings:"
-msgstr "`renderElement`の定義は直感的で、複数の小さな文字列を累算するために `Writer`モナドの `tell`アクションを使っています。"
+msgstr "`renderElement`の定義は直感的で、複数の小さな文字列を累算するために`Writer`モナドの`tell`動作を使っています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:499
@@ -14558,18 +14167,13 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:551
 #, fuzzy
-#| msgid ""
-#| "In each case, the expression `rest` has the type `Content Unit`, and "
-#| "represents the remainder of the interpreted computation. We can complete "
-#| "each case by returning the `rest` action."
 msgid ""
 "In each case, the expression `rest` has the type `Content Unit` and "
 "represents the remainder of the interpreted computation. We can complete "
 "each case by returning the `rest` action."
 msgstr ""
-"それぞれの場合において、式 `rest`は型 `Content Unit`を持っており、解釈計算の"
-"残りを表しています。\n"
-"`rest`アクションを呼び出すことによってそれぞれの場合を完了できます。"
+"それぞれの場合において、式`rest`は型`Content Unit`を持っており、解釈計算の残りを表しています。\n"
+"`rest`動作を呼び出すことによってそれぞれの場合を完了できます。"
 
 #. type: Plain text
 #: text/chapter14.md:553
@@ -14616,11 +14220,9 @@ msgid ""
 "the new action using `liftF`. Update the interpretation `renderContentItem` "
 "to interpret your new constructor appropriately."
 msgstr ""
-"（普通）`ContentF`型に新しいデータ構築子を追加して、生成されたHTMLにコメント"
-"を出力する新しいアクション `comment`に対応してください。\n"
-"`liftF`を使ってこの新しいアクションを実装してください。\n"
-"新しい構築子を適切に解釈するように、解釈 `renderContentItem`を更新してくださ"
-"い。"
+"（普通）`ContentF`型に新しいデータ構築子を追加して、生成されたHTMLにコメントを出力する新しい動作`comment`に対応してください。\n"
+"`liftF`を使ってこの新しい動作を実装してください。\n"
+"新しい構築子を適切に解釈するように、解釈`renderContentItem`を更新してください。"
 
 #. type: Title ##
 #: text/chapter14.md:573
@@ -14635,23 +14237,16 @@ msgid ""
 "particularly interesting. In fact, aside from an arguably nicer syntax, our "
 "monad adds no extra functionality over a `Monoid`."
 msgstr ""
-"全てのアクションが型 `Unit`の何かを返すようなモナドは、さほど興味深いものでは"
-"ありません。\n"
-"実際のところ、概ね良くなったと思われる構文は別として、このモナドは `Monoid`以"
-"上の機能を何ら追加していません。"
+"全動作が型`Unit`の何かを返すようなモナドは、さほど興味深いものではありません。\n"
+"実際のところ、概ね良くなったと思われる構文は別として、このモナドは`Monoid`以上の機能を何ら追加していません。"
 
 #. type: Plain text
 #: text/chapter14.md:578
 #, fuzzy
-#| msgid ""
-#| "Let's illustrate the power of the free monad construction by extending "
-#| "our language with a new monadic action which returns a non-trivial result."
 msgid ""
 "Let's illustrate the power of the free monad construction by extending our "
 "language with a new monadic action that returns a non-trivial result."
-msgstr ""
-"非自明な結果を返す新しいモナドアクションでこの言語を拡張することで、Freeモナ"
-"ド構造の威力をお見せしましょう。"
+msgstr "非自明な結果を返す新しいモナド動作でこの言語を拡張することで、Freeモナド構造の威力をお見せしましょう。"
 
 #. type: Plain text
 #: text/chapter14.md:580
@@ -14682,17 +14277,11 @@ msgstr "開発者がアンカー名を1つ以上の箇所で打ち間違うか�
 #. type: Plain text
 #: text/chapter14.md:585
 #, fuzzy
-#| msgid ""
-#| "In the interest of protecting the developer from their own mistakes, we "
-#| "can introduce a new type which represents anchor names, and provide a "
-#| "monadic action for generating new unique names."
 msgid ""
 "To protect the developer from their mistakes, we can introduce a new type "
 "that represents anchor names and provide a monadic action for generating new "
 "unique names."
-msgstr ""
-"開発者が誤ちを犯すことを防ぐために、アンカー名を表す新しい型を導入し、新しい"
-"一意な名前を生成するためのモナドアクションを提供できます。"
+msgstr "開発者が誤ちを犯すことを防ぐために、アンカー名を表す新しい型を導入し、新しい一意な名前を生成するためのモナド動作を提供できます。"
 
 #. type: Plain text
 #: text/chapter14.md:587
@@ -14832,7 +14421,10 @@ msgstr ""
 #: text/chapter14.md:636
 #, no-wrap
 msgid "The `NewName` data constructor corresponds to an action which returns a value of type `Name`. Notice that instead of requiring a `Name` as a data constructor argument, we require the user to provide a _function_ of type `Name -> a`. Remembering that the type `a` represents the _rest of the computation_, we can see that this function provides a way to continue computation after a value of type `Name` has been returned.\n"
-msgstr "`NewName`データ構築子は型 `Name`の値を返すアクションに対応しています。データ構築子の引数として `Name`を要求するのではなく、型 `Name -> a`の _関数_ を提供するように使用者に要求していることに注意してください。型 `a`は _計算の残り_ を表していることを思い出すと、この関数は、型 `Name`の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。\n"
+msgstr ""
+"`NewName`データ構築子は型`Name`の値を返す動作に対応しています。\n"
+"データ構築子の引数として`Name`を要求するのではなく、型`Name -> a`の*関数*を提供するように使用者に要求していることに注意してください。\n"
+"型`a`は*計算の残り*を表していることを思い出すと、この関数は、型`Name`の値が返されたあとで、計算を継続する方法を提供しているのだとわかります。\n"
 
 #. type: Plain text
 #: text/chapter14.md:638
@@ -14861,8 +14453,7 @@ msgstr ""
 #: text/chapter14.md:647
 msgid ""
 "Now we can build our new action by using the `liftF` function, as before:"
-msgstr ""
-"これで、以前と同じように`liftF`関数を使って新しいアクションを構築できます。"
+msgstr "これで、以前と同じように`liftF`関数を使って新しい動作を構築できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:648
@@ -14890,14 +14481,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:656
 #, fuzzy
-#| msgid ""
-#| "Finally, we need to update our interpretation function, to interpret the "
-#| "new action. We previously used the `Writer String` monad to interpret our "
-#| "computations, but that monad does not have the ability to generate new "
-#| "names, so we must switch to something else. The `WriterT` monad "
-#| "transformer can be used with the `State` monad to combine the effects we "
-#| "need. We can define our interpretation monad as a type synonym to keep "
-#| "our type signatures short:"
 msgid ""
 "Finally, we need to update our interpretation function to interpret the new "
 "action. We previously used the `Writer String` monad to interpret our "
@@ -14906,12 +14489,9 @@ msgid ""
 "monad to combine the effects we need. We can define our interpretation monad "
 "as a type synonym to keep our type signatures short:"
 msgstr ""
-"最後に、新しいアクションを解釈するために解釈関数を更新する必要があります。\n"
-"以前は計算を解釈するために `Writer String`モナドを使っていましたが、このモナ"
-"ドは新しい名前を生成する能力を持っていないので、何か他のものに切り替えなけれ"
-"ばなりません。\n"
-"`WriterT`モナド変換子を`State`モナドと一緒に使うと、必要な作用を組み合わせる"
-"ことができます。\n"
+"最後に、新しい動作を解釈するために解釈関数を更新する必要があります。\n"
+"以前は計算を解釈するために `Writer String`モナドを使っていましたが、このモナドは新しい名前を生成する能力を持っていないので、何か他のものに切り替えなければなりません。\n"
+"`WriterT`モナド変換子を`State`モナドと一緒に使うと、必要な作用を組み合わせることができます。\n"
 "型注釈を短く保てるように、この解釈モナドを型同義語として定義しておきます。"
 
 #. type: Fenced code block (haskell)
@@ -14932,12 +14512,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter14.md:664
 #, fuzzy
-#| msgid ""
-#| "Because the `Writer` and `WriterT` monads use the same type class members "
-#| "to abstract their actions, we do not need to change any actions - we only "
-#| "need to replace every reference to `Writer String` with `Interp`. We do, "
-#| "however, need to modify the handler used to run our computation. Instead "
-#| "of just `execWriter`, we now need to use `evalState` as well:"
 msgid ""
 "Because the `Writer` and `WriterT` monads use the same type class members to "
 "abstract their actions, we do not need to change any actions – we only need "
@@ -14945,13 +14519,10 @@ msgid ""
 "need to modify the handler used to run our computation. Instead of just "
 "`execWriter`, we now need to use `evalState` as well:"
 msgstr ""
-"`Writer`と `WriterT`モナドはそれらのアクションを抽象化するのに同じ型クラスメ"
-"ンバを使うので、どのアクションも変更する必要がありません。\n"
-"必要なのは、 `Writer String`への参照全てを `Interp`で置き換えることだけで"
-"す。\n"
+"`Writer`と `WriterT`モナドはそれらの動作を抽象化するのに同じ型クラスメンバを使うので、どの動作も変更する必要がありません。\n"
+"必要なのは、 `Writer String`への参照全てを `Interp`で置き換えることだけです。\n"
 "しかし、これを計算するために使われる制御子を変更しなければいけません。\n"
-"こうなると単なる`execWriter`の代わりに、ここでも`evalState`を使う必要がありま"
-"す。"
+"こうなると単なる`execWriter`の代わりに、ここでも`evalState`を使う必要があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:665
@@ -15077,9 +14648,7 @@ msgstr ""
 msgid ""
 "Combine functions like `p` and `img` (with return type `Element`) with the "
 "`elem` action to create new actions with return type `Content Unit`."
-msgstr ""
-"`p`や `img`のような（返る型が `Element`の）関数を `elem`アクションと結合し"
-"て、型 `Content Unit`を返す新しいアクションを作ってください。"
+msgstr "`p`や`img`のような（返る型が`Element`の）関数を`elem`動作と結合して、型`Content Unit`を返す新しい動作を作ってください。"
 
 #. type: Bullet: '     - '
 #: text/chapter14.md:711
@@ -15093,26 +14662,19 @@ msgstr ""
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:711
 #, fuzzy
-#| msgid ""
-#| " 1. (Medium) Hide the implementation of the `Content` monad by using a "
-#| "`newtype` instead of a type synonym. You should not export the data\n"
-#| "     constructor for your `newtype`.\n"
-#| " 1. (Difficult) Modify the `ContentF` type to support a new action\n"
 msgid ""
 "(Medium) Hide the implementation of the `Content` monad using a `newtype` "
 "instead of a type synonym. You should not export the data constructor for "
 "your `newtype`."
 msgstr ""
-" 1. （普通）型同義語の代わりに`newtype`を使うことによって`Content`モナドの実"
-"装を隠してください。\n"
+" 1. （普通）型同義語の代わりに`newtype`を使うことによって`Content`モナドの実装を隠してください。\n"
 "    `newtype`用のデータ構築子はエクスポートすべきではありません。\n"
-" 1. （難しい）`ContentF`型を変更して以下の新しいアクションに対応してくださ"
-"い。\n"
+" 1. （難しい）`ContentF`型を変更して以下の新しい動作に対応してください。\n"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:711
 msgid "(Difficult) Modify the `ContentF` type to support a new action"
-msgstr "（難しい）`ContentF`型を変更して以下の新しいアクションに対応してください。"
+msgstr "（難しい）`ContentF`型を変更して以下の新しい動作に対応してください。"
 
 #. type: Plain text
 #: text/chapter14.md:715
@@ -15130,14 +14692,14 @@ msgstr ""
 #: text/chapter14.md:717
 #, no-wrap
 msgid "     which returns a boolean value indicating whether or not the document is being rendered for display on a mobile device.\n"
-msgstr "     このアクションは、この文書がモバイルデバイス上での表示のためにレンダリングされているかどうかを示す真偽値を返します。\n"
+msgstr "     この動作は、この文書がモバイルデバイス上での表示のために描画されているかどうかを示す真偽値を返します。\n"
 
 #. type: Plain text
 #: text/chapter14.md:719
 #, no-wrap
 msgid "     _Hint_: use the `ask` action and the `ReaderT` monad transformer to interpret this action. Alternatively, you might prefer to use the `RWS` monad.\n"
 msgstr ""
-"     *手掛かり*：`ask`アクションと`ReaderT`モナド変換子を使って、このアクションを解釈してください。\n"
+"     *手掛かり*：`ask`動作と`ReaderT`モナド変換子を使って、この動作を解釈してください。\n"
 "     あるいは、`RWS`モナドを使うほうが好みの人もいるかもしれません。\n"
 
 #. type: Plain text
@@ -15193,20 +14755,14 @@ msgstr ""
 #. type: Bullet: '- '
 #: text/chapter14.md:728
 #, fuzzy
-#| msgid ""
-#| "We used the _free monad_ to turn our array representation of a collection "
-#| "of content into a monadic representation supporting do notation. We then "
-#| "extended this representation to support a new monadic action, and "
-#| "interpreted the monadic computations using standard monad transformers."
 msgid ""
 "We used the _free monad_ to turn our array representation of a collection of "
 "content into a monadic representation supporting do notation. We then "
 "extended this representation to support a new monadic action and interpreted "
 "the monadic computations using standard monad transformers."
 msgstr ""
-"_Freeモナド_ を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変"
-"えました。それからこの表現を新しいモナドアクションに対応するよう拡張し、標準"
-"モナド変換子を使ってモナドの計算を解釈しました。"
+"*Freeモナド*を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。\n"
+"それからこの表現を新しいモナド動作に対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。"
 
 #. type: Plain text
 #: text/chapter14.md:730
@@ -16411,10 +15967,9 @@ msgid ""
 "`List` directly, but rather `List a` for some type `a`. That is, `List` "
 "takes a _type argument_ `a` and _constructs_ a new type `List a`."
 msgstr ""
-"`List`は*型構築子*（type constructor、型コンストラクタ）の一例になっていま"
-"す。`List`そのものは型ではなく、何らかの型 `a`があるとき `List a`が型になって"
-"います。つまり、 `List`は _型引数_ (type argument) `a`をとり、新たな型 `List "
-"a`を _構築_ するのです。"
+"`List`は*型構築子*の一例になっています。\n"
+"`List`そのものは型ではなく、何らかの型 `a`があるとき `List a`が型になっています。\n"
+"つまり、 `List`は*型引数*`a`を取り、新たな型 `List a`を*構築*するのです。"
 
 #. type: Plain text
 #: text/chapter3.md:254
@@ -21641,7 +21196,7 @@ msgid ""
 "the bounds of a single shape using pattern matching."
 msgstr ""
 "累算関数`combine`は`where`ブロックで定義されています。\n"
-"`combine`は`foldl`の再帰呼び出しで計算された外接矩形と、配列内の次の `Shape`を引数にとり、ユーザ定義の演算子`union`を使って2つの外接矩形の和を計算しています。\n"
+"`combine`は`foldl`の再帰呼び出しで計算された外接矩形と、配列内の次の `Shape`を引数に取り、ユーザ定義の演算子`union`を使って2つの外接矩形の和を計算しています。\n"
 "`shapeBounds`関数は、パターン照合を使用して、単一の図形の外接矩形を計算します。"
 
 #. type: Bullet: '1. '
@@ -24259,14 +23814,6 @@ msgstr "アプリカティブによる検証"
 
 #. type: Plain text
 #: text/chapter7.md:6
-#, fuzzy
-#| msgid ""
-#| "In this chapter, we will meet an important new abstraction - the "
-#| "_applicative functor_, described by the `Applicative` type class. Don't "
-#| "worry if the name sounds confusing - we will motivate the concept with a "
-#| "practical example - validating form data. This technique allows us to "
-#| "convert code which usually involves a lot of boilerplate checking into a "
-#| "simple, declarative description of our form."
 msgid ""
 "In this chapter, we will meet an important new abstraction – the "
 "_applicative functor_, described by the `Applicative` type class. Don't "
@@ -24275,12 +23822,11 @@ msgid ""
 "convert code which usually involves a lot of boilerplate checking into a "
 "simple, declarative description of our form."
 msgstr ""
-"この章では、`Applicative`型クラスによって表現される _アプリカティブ関手_ "
-"(applicative functor) という重要な抽象化と新たに出会うことになります。名前が"
-"難しそうに思えても心配しないでください。フォームデータの検証という実用的な例"
-"を使ってこの概念の動機付けをします。アプリカティブ関手を使うと、通常であれば"
-"大量の決まり文句を伴うようなコードを、簡潔で宣言的な記述へと変えることができ"
-"るようになります。"
+"この章では重要な抽象化と新たに出会うことになります。\n"
+"`Applicative`型クラスによって表現される*アプリカティブ関手*です。\n"
+"名前が難しそうに思えても心配しないでください。\n"
+"フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。\n"
+"アプリカティブ関手の技法があることにより、通常であれば大量の決まり文句の検証を伴うようなコードを、簡潔で宣言的なフォームの記述へと変えられます。"
 
 #. type: Plain text
 #: text/chapter7.md:8
@@ -24294,14 +23840,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:10
-#, fuzzy
-#| msgid ""
-#| "The example code for this chapter will be a continuation of the address "
-#| "book example from chapter 3. This time, we will extend our address book "
-#| "data types, and write functions to validate values for those types. The "
-#| "understanding is that these functions could be used, for example in a web "
-#| "user interface, to display errors to the user as part of a data entry "
-#| "form."
 msgid ""
 "The example code for this chapter will be a continuation of the address book "
 "example from Chapter 3. This time, we will extend our address book data "
@@ -24309,10 +23847,10 @@ msgid ""
 "understanding is that these functions could be used, for example, in a web "
 "user interface, to display errors to the user as part of a data entry form."
 msgstr ""
-"この章では第3章に引き続き住所録を例として扱います。\n"
+"この章のコードでは第3章に引き続き住所録を例とします。\n"
 "今回は住所録のデータ型を拡張し、これらの型の値を検証する関数を書きます。\n"
-"これらの関数は、例えばデータ入力フォームの一部で、使用者へエラーを表示するweb"
-"ユーザインターフェースで使われると考えてください。"
+"これらの関数は、例えばwebユーザインターフェースで使えることが分かります。\n"
+"データ入力フォームの一部として、使用者へエラーを表示するのに使われます。"
 
 #. type: Plain text
 #: text/chapter7.md:14
@@ -24353,19 +23891,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:21
-#, fuzzy
-#| msgid ""
-#| "The `Data.AddressBook` module defines data types and `Show` instances for "
-#| "the types in our project, and the `Data.AddressBook.Validation` module "
-#| "contains validation rules for those types."
 msgid ""
 "The `Data.AddressBook` module defines data types and `Show` instances for "
 "the types in our project and the `Data.AddressBook.Validation` module "
 "contains validation rules for those types."
 msgstr ""
-"`Data.AddressBook`モジュールには、このプロジェクトのデータ型とそれらの型に対"
-"する`Show`インスタンスが定義されており、`Data.AddressBook.Validation`モジュー"
-"ルにはそれらの型の検証規則が含まれています。"
+"`Data.AddressBook`モジュールにはこのプロジェクトのデータ型とそれらの型に対する`Show`インスタンスが定義されています。\n"
+"また、`Data.AddressBook.Validation`モジュールにはそれらの型の検証規則が含まれています。"
 
 #. type: Title ##
 #: text/chapter7.md:22
@@ -24384,16 +23916,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:27
-#, fuzzy
-#| msgid ""
-#| "The source code for this module defines a function `address` which has "
-#| "the following type:"
 msgid ""
 "The source code for this module defines a function `address` that has the "
 "following type:"
-msgstr ""
-"このモジュールのソースコードでは、次のような型を持つ`address`関数が定義されて"
-"います。"
+msgstr "このモジュールのソースコードでは、次の型を持つ`address`関数が定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:28
@@ -24476,16 +24002,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:61
-#, fuzzy
-#| msgid ""
-#| "Of course, this is an expected type error - `address` takes strings as "
-#| "arguments, not values of type `Maybe String`."
 msgid ""
 "Of course, this is an expected type error – `address` takes strings as "
 "arguments, not values of type `Maybe String`."
 msgstr ""
-"`address`は`Maybe String`型ではなく文字列型の引数を取るので、もちろんこれは期"
-"待通り型エラーになります。"
+"勿論、これは期待通り型エラーになります。\n"
+"`address`は`Maybe String`型の値ではなく、文字列を引数として取るためです。"
 
 #. type: Plain text
 #: text/chapter7.md:63
@@ -24596,18 +24118,11 @@ msgstr "forall a b c d. (a -> b -> c -> d) -> Maybe a -> Maybe b -> Maybe c -> M
 
 #. type: Plain text
 #: text/chapter7.md:99
-#, fuzzy
-#| msgid ""
-#| "This type says that we can take any function with three arguments, and "
-#| "lift it to give a new function whose argument and result types are "
-#| "wrapped with `Maybe`."
 msgid ""
 "This type says that we can take any function with three arguments and lift "
 "it to give a new function whose argument and result types are wrapped with "
 "`Maybe`."
-msgstr ""
-"この型が言っているのは、3引数の任意の関数を取り、その関数を引数と返り値が"
-"`Maybe`で包まれた新しい関数へと持ち上げる、ということです。"
+msgstr "この型で書かれているのは、3引数の任意の関数を取り、その関数を引数と返り値が`Maybe`で包まれた新しい関数へと持ち上げられる、ということです。"
 
 #. type: Plain text
 #: text/chapter7.md:101
@@ -24617,10 +24132,8 @@ msgid ""
 "the type above, we removed a type class constraint on `f` from the `Apply` "
 "type class. `Apply` is defined in the Prelude as follows:"
 msgstr ""
-"もちろんどんな型構築子`f`についても持ち上げができるわけではないのですが、それ"
-"では`Maybe`型を持ち上げができるようにしているものは何なのでしょうか。\n"
-"さて、先ほどの型の特殊化では、`f`に対する型クラス制約から`Apply`型クラスを取"
-"り除いていました。\n"
+"勿論、どんな型構築子`f`についても持ち上げができるわけではないのですが、それでは`Maybe`型を持ち上げができるようにしているものは何なのでしょうか。\n"
+"さて、先ほどの型の特殊化では、`f`に対する型クラス制約から`Apply`型クラスを取り除いていました。\n"
 "`Apply`はPreludeで次のように定義されています。"
 
 #. type: Fenced code block (haskell)
@@ -24702,10 +24215,6 @@ msgstr "この型クラスのインスタンスで書かれているのは、任
 
 #. type: Plain text
 #: text/chapter7.md:129
-#, fuzzy
-#| msgid ""
-#| "Now we'll see how `map` and `apply` can be used together to lift "
-#| "functions of arbitrary number of arguments."
 msgid ""
 "Now we'll see how `map` and `apply` can be used together to lift functions "
 "of an arbitrary number of arguments."
@@ -24715,8 +24224,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:131
-#, fuzzy
-#| msgid "For functions of one argument, we can just use `map` directly."
 msgid "For functions of one argument, we can use `map` directly."
 msgstr "1引数の関数については、`map`をそのまま使うだけです。"
 
@@ -24762,10 +24269,9 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:150
-#, fuzzy, no-wrap
-#| msgid "It is left as an exercise for the reader to verify the types involved in this expression."
+#, no-wrap
 msgid "> It is left as an exercise for the reader to verify the types involved in this expression.\n"
-msgstr "この式の型がちゃんと整合しているかの確認は、読者への演習として残しておきます。"
+msgstr "> この式に関する型の検証は、読者への演習として残しておきます。\n"
 
 #. type: Plain text
 #: text/chapter7.md:152
@@ -24800,22 +24306,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:164
-#, fuzzy
-#| msgid ""
-#| "Alternatively _applicative do notation_ can be used for the same purpose "
-#| "in a way that looks similar to the familiar _do notation_. Here is "
-#| "`lift3` using _applicative do notation_. Note `ado` is used instead of "
-#| "`do`, and `in` is used on the final line to denote the yielded value:"
 msgid ""
 "Alternatively, _applicative do notation_ can be used for the same purpose in "
 "a way that looks similar to the familiar _do notation_. Here is `lift3` "
 "using _applicative do notation_. Note `ado` is used instead of `do`, and "
 "`in` is used on the final line to denote the yielded value:"
 msgstr ""
-"この代わりにお馴染の _do記法_ に似た見た目の _アプリカティブdo記法_ が同じ目"
-"的で使えます。以下では`lift3`に _アプリカティブdo記法_ を使っています。なお、"
-"`ado`が`do`の代わりに使われており、生み出された値を示すために最後の行で`in`が"
-"使われています。"
+"この代わりに、お馴染の*do記法*に似た見た目の*アプリカティブdo記法*が同じ目的で使えます。\n"
+"以下では`lift3`に*アプリカティブdo記法*を使っています。\n"
+"なお、`ado`が`do`の代わりに使われており、生み出された値を示すために最後の行で`in`が使われています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:165
@@ -24897,18 +24396,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:199
-#, fuzzy
-#| msgid ""
-#| "If we think of applicative functors as functors which allow lifting of "
-#| "functions, then `pure` can be thought of as lifting functions of zero "
-#| "arguments."
 msgid ""
 "If we think of applicative functors as functors that allow lifting of "
 "functions, then `pure` can be thought of as lifting functions of zero "
 "arguments."
-msgstr ""
-"アプリカティブ関手は関数を持ち上げることを可能にする関手だと考えるとすると、"
-"`pure`は引数のない関数の持ち上げだというように考えることができます。"
+msgstr "アプリカティブ関手は関数を持ち上げることを可能にする関手だと考えるとすると、`pure`は引数のない関数の持ち上げだというように考えられます。"
 
 #. type: Title ##
 #: text/chapter7.md:200
@@ -24929,10 +24421,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:205
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "As an example, the functor `Maybe` represents the side effect of possibly-missing values. Some other examples include `Either err`, which represents the side effect of possible errors of type `err`, and the arrow functor `r ->`, which represents the side-effect of reading from a global configuration. For now, we'll only consider the `Maybe` functor.\n"
 msgstr ""
-"例えば関手`Maybe`は省略可能な値の副作用を表現しています。\n"
+"例えば関手`Maybe`は欠けている可能性がある値の副作用を表現しています。\n"
 "その他の例としては、型`err`のエラーの可能性の副作用を表す`Either err`や、大域的な構成を読み取る副作用を表すArrow関手 (arrow functor) `r ->`があります。\n"
 "ここでは`Maybe`関手についてのみ考えることにします。\n"
 
@@ -24950,16 +24442,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:209
-#, fuzzy
-#| msgid ""
-#| "`pure` lifts pure (side-effect free) values into the larger language, and "
-#| "for functions, we can use `map` and `apply` as described above."
 msgid ""
 "`pure` lifts pure (side-effect free) values into the larger language; for "
 "functions, we can use `map` and `apply` as described above."
-msgstr ""
-"`pure`は純粋な（副作用がない）値をより大きな言語へと持ち上げますし、関数につ"
-"いては上で述べた通り`map`と`apply`を使うことができます。"
+msgstr "`pure`は純粋な（副作用がない）値をより大きな言語へと持ち上げますし、関数については上で述べた通り`map`と`apply`を使えます。"
 
 #. type: Plain text
 #: text/chapter7.md:211
@@ -25032,17 +24518,9 @@ msgstr ""
 "> fullName \"Phillip\" \"A\" \"Freeman\"\n"
 "Freeman, Phillip A\n"
 
+# XXX: Maybeを行中コードとしてマークアップしたいです。
 #. type: Plain text
 #: text/chapter7.md:230
-#, fuzzy
-#| msgid ""
-#| "Now suppose that this function forms the implementation of a (very "
-#| "simple!) web service with the three arguments provided as query "
-#| "parameters. We want to make sure that the user provided each of the three "
-#| "parameters, so we might use the `Maybe` type to indicate the presence or "
-#| "otherwise absence of a parameter. We can lift `fullName` over `Maybe` to "
-#| "create an implementation of the web service which checks for missing "
-#| "parameters:"
 msgid ""
 "Suppose that this function forms the implementation of a (very simple!) web "
 "service with the three arguments provided as query parameters. We want to "
@@ -25051,12 +24529,9 @@ msgid ""
 "lift `fullName` over `Maybe` to create an implementation of the web service "
 "which checks for missing parameters:"
 msgstr ""
-"この関数は、クエリパラメータとして与えられた3つの引数を持つ、（とっても簡単"
-"な）webサービスの実装であるとしましょう。\n"
-"使用者が3つの引数全てを与えたことを確かめたいので、引数が存在するかどうかを表"
-"す`Maybe`型を使うことになるでしょう。\n"
-"`fullName`を`Maybe`の上へ持ち上げると、省略された引数を確認するwebサービスを"
-"実装できます。"
+"この関数が、クエリパラメータとして与えられた3つの引数を持つ、（とっても簡単な）webサービスの実装を形成しているとしましょう。\n"
+"使用者が3つの各引数を与えたことを確かめたいので、引数が存在するかどうかを表す`Maybe`型を使うことになるでしょう。\n"
+"`fullName`を`Maybe`の上へ持ち上げると、欠けている引数を検査するwebサービスの実装を作成できます。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:231
@@ -25081,8 +24556,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter7.md:242 text/chapter7.md:292 text/chapter7.md:444
 #: text/chapter7.md:479 text/chapter7.md:525
-#, fuzzy
-#| msgid "or with _applicative do_"
 msgid "Or with _applicative do_:"
 msgstr "または*アプリカティブdo*で次のようにします。"
 
@@ -25139,20 +24612,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:267
-#, fuzzy
-#| msgid ""
-#| "This is good, because now we can send an error response back from our web "
-#| "service if the parameters are invalid. However, it would be better if we "
-#| "could indicate which field was incorrect in the response."
 msgid ""
 "This is good because now we can send an error response back from our web "
 "service if the parameters are invalid. However, it would be better if we "
 "could indicate which field was incorrect in the response."
 msgstr ""
-"これで、もし引数が不正ならWebサービスからエラー応答を送信できるので、なかなか"
-"いい感じです。\n"
-"しかし、どのフィールドが間違っていたのかを応答で示せると、もっと良くなるで"
-"しょう。"
+"引数が不正のときにWebサービスからエラー応答を送り返せるのは良いことです。\n"
+"しかし、どのフィールドが不正確なのかを応答で示せると、もっと良くなるでしょう。"
 
 #. type: Plain text
 #: text/chapter7.md:269
@@ -25241,13 +24707,13 @@ msgstr ""
 "> :type fullNameEither\n"
 "Maybe String -> Maybe String -> Maybe String -> Either String String\n"
 
+# FIXME: Maybeの行中コードのマークアップが崩れている気がします。
 #. type: Plain text
 #: text/chapter7.md:307
-#, fuzzy
 msgid ""
 "Now our function takes three optional arguments using `Maybe, and returns "
 "either a`String` error message or a `String` result."
-msgstr "これでこの関数は`Maybe`の3つの省略可能な引数を取り、`String`のエラー文言か`String`の結果のどちらかを返します。"
+msgstr "これでこの関数は`Maybe`を使う3つの省略可能な引数を取り、`String`のエラー文言か`String`の結果のどちらかを返します。"
 
 #. type: Plain text
 #: text/chapter7.md:309
@@ -25278,14 +24744,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:322
-#, fuzzy
 msgid ""
 "In this case, we see the error message corresponding to the first missing "
 "field or a successful result if every field was provided. However, if we are "
 "missing multiple inputs, we still only see the first error:"
 msgstr ""
 "このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラー文言が表示されます。\n"
-"しかし、もし複数の入力が省略されているとき、最初のエラーしか見ることができません。"
+"しかし、もし複数の入力が省略されているとき、最初のエラーしか見れません。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:323
@@ -25316,18 +24781,11 @@ msgstr "作用の結合"
 
 #. type: Plain text
 #: text/chapter7.md:333
-#, fuzzy
-#| msgid ""
-#| "As an example of working with applicative functors abstractly, this "
-#| "section will show how to write a function which will generically combine "
-#| "side-effects encoded by an applicative functor `f`."
 msgid ""
 "As an example of working with applicative functors abstractly, this section "
 "will show how to write a function that generically combines side-effects "
 "encoded by an applicative functor `f`."
-msgstr ""
-"抽象的にアプリカティブ関手を扱う例として、アプリカティブ関手`f`によって表現さ"
-"れた副作用を一般的に組み合わせる関数を書く方法をこの節では示します。"
+msgstr "抽象的にアプリカティブ関手を扱う例として、この節ではアプリカティブ関手`f`によって表現された副作用を一般的に組み合わせる関数を書く方法を示します。"
 
 #. type: Plain text
 #: text/chapter7.md:335
@@ -25354,14 +24812,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:337
-#, fuzzy, no-wrap
-#| msgid "For any fixed list size `n`, there is a function of `n` arguments which builds a list of size `n` out of those arguments. For example, if `n` is `3`, the function is `\\x y z -> x : y : z : Nil`. This function has type `a -> a -> a -> List a`. We can use the `Applicative` instance for `List` to lift this function over `f`, to get a function of type `f a -> f a -> f a -> f (List a)`. But, since we can do this for any `n`, it makes sense that we should be able to perform the same lifting for any _list_ of arguments.\n"
+#, no-wrap
 msgid "For any fixed list size `n`, there is a function of `n` arguments that builds a list of size `n` out of those arguments. For example, if `n` is `3`, the function is `\\x y z -> x : y : z : Nil`. This function has type `a -> a -> a -> List a`. We can use the `Applicative` instance for `List` to lift this function over `f`, to get a function of type `f a -> f a -> f a -> f (List a)`. But, since we can do this for any `n`, it makes sense that we should be able to perform the same lifting for any _list_ of arguments.\n"
 msgstr ""
-"任意の固定長リストの長さ`n`について、その引数を要素に持った長さ`n`のリストを構築するような`n`引数の関数が存在します。\n"
+"任意の固定長リストの長さ`n`について、`n`引数からその引数を要素に持つ長さ`n`のリストを構築する関数が存在します。\n"
 "例えばもし`n`が`3`なら、関数は`\\x y z -> x : y : z : Nil`です。\n"
-"この関数の型は`a -> a -> a -> List a`です。\n"
-"`Applicative`インスタンスを使うと、この関数を`f`の上へ持ち上げて関数型`f a -> f a -> f a -> f (List a)`を得ることができます。\n"
+"この関数は型`a -> a -> a -> List a`を持ちます。\n"
+"`Applicative`インスタンスを使うと、この関数を`f`の上へ持ち上げられ、関数型`f a -> f a -> f a -> f (List a)`が得られます。\n"
 "しかし、いかなる`n`についてもこれが可能なので、いかなる引数の*リスト*についても同じように持ち上げられることが確かめられます。\n"
 
 #. type: Plain text
@@ -25460,7 +24917,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:376
-#, fuzzy
 msgid ""
 "When specialized to `Maybe`, our function returns a `Just` only if every "
 "list element is `Just`; otherwise, it returns `Nothing`. This is consistent "
@@ -25468,25 +24924,20 @@ msgid ""
 "values – a list of computations that produce optional results only has a "
 "result itself if every computation contained a result."
 msgstr ""
-"`Meybe`へ特殊化して考えると、リストの全ての要素が`Just`であるときに限りこの関数は`Just`を返しますし、そうでなければ`Nothing`を返します。\n"
-"これは省略可能な値に対応する、より大きな言語に取り組む上での直感から一貫しています。\n"
-"省略可能な結果を返す計算のリストは、全ての計算が結果を持っているならばそれ自身の結果のみを持つのです。"
+"`Meybe`へ特殊化すると、リストの全ての要素が`Just`であるときに限りこの関数は`Just`を返しますし、そうでなければ`Nothing`を返します。\n"
+"これは省略可能な値に対応する、より大きな言語に取り組む上での直感と一貫しています。\n"
+"省略可能な結果を生む計算のリストは、全ての計算が結果を持っているならばそれ自身の結果のみを持つのです。"
 
 #. type: Plain text
 #: text/chapter7.md:378
-#, fuzzy, no-wrap
-#| msgid "But the `combineList` function works for any `Applicative`! We can use it to combine computations which possibly signal an error using `Either err`, or which read from a global configuration using `r ->`.\n"
+#, no-wrap
 msgid "But the `combineList` function works for any `Applicative`! We can use it to combine computations that possibly signal an error using `Either err`, or which read from a global configuration using `r ->`.\n"
 msgstr ""
-"しかし、`combineList`関数はどんな`Applicative`に対しても機能します。\n"
-"`Either err`を使ってエラーを発信する可能性を持たせたり、`r ->`を使って大域的な状態を読み取る計算を連鎖させるときにも使えるのです。\n"
+"ところが`combineList`関数はどんな`Applicative`に対しても機能するのです。\n"
+"`Either err`を使ってエラーを発信する可能性を持たせたり、`r ->`を使って大域的な構成を読み取る計算を組み合わせるためにも使えます。\n"
 
 #. type: Plain text
 #: text/chapter7.md:380
-#, fuzzy
-#| msgid ""
-#| "We will see the `combineList` function again later, when we consider "
-#| "`Traversable` functors."
 msgid ""
 "We will see the `combineList` function again later when we consider "
 "`Traversable` functors."
@@ -25496,15 +24947,15 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:386
-#, fuzzy
 msgid ""
 "(Medium) Write versions of the numeric operators `+`, `-`, `*`, and `/` "
 "which work with optional arguments (i.e., arguments wrapped in `Maybe`) and "
 "return a value wrapped in `Maybe`. Name these functions `addMaybe`, "
 "`subMaybe`, `mulMaybe`, and `divMaybe`. _Hint_: Use `lift2`."
 msgstr ""
-"（普通）数値演算子`+`、`-`、`*`、`/`の省略可能な引数（つまり`Maybe`に包まれた引数）を扱って`Maybe`に包まれた値を返す版を書いてください。\n"
-"これらの関数には`addMaybe`、`subMaybe`、`mulMaybe`、`divMaybe`と名前を付けます。\n"
+"（普通）数値演算子`+`、`-`、`*`、`/`の別のバージョンを書いてください。\n"
+"ただし省略可能な引数（つまり`Maybe`に包まれた引数）を扱って`Maybe`に包まれた値を返します。\n"
+"これらの関数には`addMaybe`、`subMaybe`、`mulMaybe`、`divMaybe`と名前を付けてください。\n"
 "*手掛かり*：`lift2`を使ってください。"
 
 #. type: Bullet: ' 1. '
@@ -25521,35 +24972,25 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:386
-#, fuzzy
 msgid ""
 "(Difficult) Write a function `combineMaybe` which has type `forall a f. "
 "Applicative f => Maybe (f a) -> f (Maybe a)`. This function takes an "
 "optional computation with side-effects and returns a side-effecting "
 "computation with an optional result."
 msgstr ""
-"（難しい）型`combineMaybe : forall a f. (Applicative f) => Maybe (f a) -> f (Maybe a)`\n"
-"を持つ関数`combineMaybe`を書いてください。\n"
-"この関数は副作用を持つ省略可能な計算をとり、省略可能な結果を持つ副作用のある計算を返します。"
+"（難しい）型`forall a f. Applicative f => Maybe (f a) -> f (Maybe a)`を持つ関数`combineMaybe`を書いてください。\n"
+"この関数は副作用を持つ省略可能な計算を取り、省略可能な結果を持つ副作用のある計算を返します。"
 
 #. type: Plain text
 #: text/chapter7.md:390
-#, fuzzy
-#| msgid ""
-#| "The source code for this chapter defines several data types which might "
-#| "be used in an address book application. The details are omitted here, but "
-#| "the key functions which are exported by the `Data.AddressBook` module "
-#| "have the following types:"
 msgid ""
 "The source code for this chapter defines several data types which might be "
 "used in an address book application. The details are omitted here, but the "
 "key functions exported by the `Data.AddressBook` module have the following "
 "types:"
 msgstr ""
-"この章のソースコードでは住所録アプリケーションで使うことのできるいろいろな"
-"データ型が定義されています。\n"
-"詳細はここでは割愛しますが、`Data.AddressBook`モジュールからエクスポートされ"
-"る重要な関数は次のような型を持っています。"
+"この章のソースコードでは住所録アプリケーションで使うであろう幾つかのデータ型が定義されています。\n"
+"詳細はここでは割愛しますが、`Data.AddressBook`モジュールからエクスポートされる鍵となる関数は次のような型を持ちます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:391
@@ -25569,8 +25010,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:400
-#, fuzzy
-#| msgid "where `PhoneType` is defined as an algebraic data type:"
 msgid "Where `PhoneType` is defined as an algebraic data type:"
 msgstr "ここで、`PhoneType`は次のような代数的データ型として定義されています。"
 
@@ -25582,17 +25021,12 @@ msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook.purs:PhoneType}}\n
 
 #. type: Plain text
 #: text/chapter7.md:406
-#, fuzzy
-#| msgid ""
-#| "These functions can be used to construct a `Person` representing an "
-#| "address book entry. For example, the following value is defined in `Data."
-#| "AddressBook`:"
 msgid ""
 "These functions can construct a `Person` representing an address book entry. "
 "For example, the following value is defined in `Data.AddressBook`:"
 msgstr ""
-"これらの関数は住所録の項目を表す`Person`を構築するのに使えます。\n"
-"例えば、`Data.AddressBook`には次のような値が定義されています。"
+"これらの関数は住所録の項目を表す`Person`を構築できます。\n"
+"例えば、`Data.AddressBook`では以下の値が定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:407
@@ -25681,21 +25115,15 @@ msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:va
 
 #. type: Plain text
 #: text/chapter7.md:450
-#, fuzzy
-#| msgid ""
-#| "In the first two lines, we use the `nonEmpty1` function to validate a non-"
-#| "empty string. `nonEmpty1` returns an error indicated with the `Left` "
-#| "constructor if its input is empty, otherwise it returns the value wrapped "
-#| "with the `Right` constructor."
 msgid ""
 "In the first two lines, we use the `nonEmpty1` function to validate a non-"
 "empty string. `nonEmpty1` returns an error indicated with the `Left` "
 "constructor if its input is empty. Otherwise, it returns the value wrapped "
 "with the `Right` constructor."
 msgstr ""
-"最初の2行では`nonEmpty`関数を使って空文字列でないことを検証しています。\n"
-"もし入力が空なら`nonEMpty`はエラーを返し（`Left`構築子で示されています）、そ"
-"うでなければ`Right`構築子を使って値を包んで返します。"
+"最初の2行では`nonEmpty1`関数を使って空文字列でないことを検証しています。\n"
+"もし入力が空なら`nonEmpty1`は`Left`構築子で示されるエラーを返します。\n"
+"そうでなければ`Right`構築子で包まれた値を返します。"
 
 #. type: Plain text
 #: text/chapter7.md:452
@@ -25709,10 +25137,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:454
-#, fuzzy
-#| msgid ""
-#| "This function can be seen to work in PSCi, but has a limitation which we "
-#| "have seen before:"
 msgid ""
 "This function can be seen to work in PSCi, but it has a limitation that we "
 "have seen before:"
@@ -25732,29 +25156,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:461
-#, fuzzy
-#| msgid ""
-#| "The `Either String` applicative functor only provides the first error "
-#| "encountered. Given the input here, we would prefer to see two errors - "
-#| "one for the missing first name, and a second for the missing last name."
 msgid ""
 "The `Either String` applicative functor only provides the first error "
 "encountered. Given the input here, we would prefer to see two errors – one "
 "for the missing first name and a second for the missing last name."
 msgstr ""
-"`Either String`アプリカティブ関手は遭遇した最初のエラーだけを返します。\n"
-"でもこの入力では、名前の不足と姓の不足という2つのエラーがわかるようにしたくな"
-"るでしょう。"
+"`Either String`アプリカティブ関手は最初に遭遇したエラーだけを返します。\n"
+"仮にこの入力だったとすると、2つのエラーが分かったほうが良いでしょう。\n"
+"1つは名前の不足で、2つ目は姓の不足です。"
 
 #. type: Plain text
 #: text/chapter7.md:463
-#, fuzzy
-#| msgid ""
-#| "There is another applicative functor which is provided by the "
-#| "`validation` library. This functor is called `V`, and it provides the "
-#| "ability to return errors in any _semigroup_. For example, we can use `V "
-#| "(Array String)` to return an array of `String`s as errors, concatenating "
-#| "new errors onto the end of the array."
 msgid ""
 "There is another applicative functor that the `validation` library provides. "
 "This functor is called `V`, and it can return errors in any _semigroup_. For "
@@ -25762,9 +25174,8 @@ msgid ""
 "errors, concatenating new errors onto the end of the array."
 msgstr ""
 "`validation`ライブラリでは別のアプリカティブ関手も提供されています。\n"
-"これは単に`V`と呼ばれていて、何らかの*半群*でエラーを返す機能があります。\n"
-"例えば`V (Array String)`を使うと、新しいエラーを配列の最後に連結していき、"
-"`String`の配列をエラーとして返すことができます。"
+"これは`V`という名前で、何らかの*半群*でエラーを返せます。\n"
+"例えば`V (Array String)`を使うと、新しいエラーを配列の最後に連結していき、`String`の配列をエラーとして返せます。"
 
 #. type: Plain text
 #: text/chapter7.md:465
@@ -25813,11 +25224,6 @@ msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:va
 
 #. type: Plain text
 #: text/chapter7.md:485
-#, fuzzy
-#| msgid ""
-#| "`validateAddress` validates an `Address` structure. It checks that the "
-#| "`street` and `city` fields are non-empty, and checks that the string in "
-#| "the `state` field has length 2."
 msgid ""
 "`validateAddress` validates an `Address` structure. It checks that the "
 "`street` and `city` fields are non-empty and that the string in the `state` "
@@ -25973,12 +25379,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:545
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a regular expression `nonEmptyRegex :: Regex` to check "
-#| "that a string is not entirely whitespace. _Hint_: If you need help "
-#| "developing this regex expression, check out [RegExr](https://regexr.com) "
-#| "which has a great cheatsheet and interactive test environment."
 msgid ""
 "(Medium) Write a regular expression `nonEmptyRegex :: Regex` to check that a "
 "string is not entirely whitespace. _Hint_: If you need help developing this "
@@ -26048,16 +25448,10 @@ msgstr "{{#include ../exercises/chapter7/src/Data/AddressBook/Validation.purs:va
 
 #. type: Plain text
 #: text/chapter7.md:563
-#, fuzzy
-#| msgid ""
-#| "`validatePhoneNumbers` uses a new function we haven't seen before - "
-#| "`traverse`."
 msgid ""
 "`validatePhoneNumbers` uses a new function we haven't seen before – "
 "`traverse`."
-msgstr ""
-"`validatePhoneNumbers`はこれまでに見たことのない新しい関数、`traverse`を使い"
-"ます。"
+msgstr "`validatePhoneNumbers`はこれまでに見たことのない新しい関数である`traverse`を使っています。"
 
 #. type: Plain text
 #: text/chapter7.md:565
@@ -26093,24 +25487,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:575
-#, fuzzy
-#| msgid ""
-#| "Every traversable functor is both a `Functor` and `Foldable` (recall that "
-#| "a _foldable functor_ was a type constructor which supported a fold "
-#| "operation, reducing a structure to a single value). In addition, a "
-#| "traversable functor provides the ability to combine a collection of side-"
-#| "effects which depend on its structure."
 msgid ""
 "Every traversable functor is both a `Functor` and `Foldable` (recall that a "
 "_foldable functor_ was a type constructor that supported a fold operation, "
 "reducing a structure to a single value). In addition, a traversable functor "
 "can combine a collection of side-effects that depend on its structure."
 msgstr ""
-"全ての巡回可能関手は`Functor`と`Foldable`のどちらでもあります（*畳み込み可能"
-"関手*は、構造を1つの値へと纏める畳み込み操作を提供する型構築子であったことを"
-"思い出してください）。\n"
-"それに加えて、`Traversable`関手はその構造に依存した副作用の集まりを連結する機"
-"能を提供します。"
+"全ての巡回可能関手は`Functor`と`Foldable`のどちらでもあります（*畳み込み可能関手*は畳み込み操作に対応する型構築子であったことを思い出してください。\n"
+"畳み込みとは構造を1つの値へと簡約するものでした）。\n"
+"それに加えて、巡回可能関手はその構造に依存した副作用の集まりを組み合わせられます。"
 
 #. type: Plain text
 #: text/chapter7.md:577
@@ -26161,14 +25546,6 @@ msgstr "traverse :: forall a b. (a -> V Errors b) -> Array a -> V Errors (Array 
 
 #. type: Plain text
 #: text/chapter7.md:591
-#, fuzzy
-#| msgid ""
-#| "This type signature says that if we have a validation function `m` for a "
-#| "type `a`, then `traverse m` is a validation function for arrays of type "
-#| "`Array a`. But that's exactly what we need to be able to validate the "
-#| "`phones` field of the `Person` data structure! We pass "
-#| "`validatePhoneNumber` to `traverse` to create a validation function which "
-#| "validates each element successively."
 msgid ""
 "This type signature says that if we have a validation function `m` for a "
 "type `a`, then `traverse m` is a validation function for arrays of type "
@@ -26177,12 +25554,9 @@ msgid ""
 "to `traverse` to create a validation function that validates each element "
 "successively."
 msgstr ""
-"この型シグネチャは、型`a`についての検証関数`m`があれば、`traverse m`は型"
-"`Array a`の配列についての検証関数であるということを言っています。\n"
-"これはまさに、今必要になっている`Person`データ構造体の`phones`フィールドを検"
-"証する検証器そのものです。\n"
-"それぞれの要素が成功するかどうかを検証する検証関数を作るために、"
-"`validatePhoneNumber`を`traverse`へ渡しています。"
+"この型シグネチャでは、型`a`についての検証関数`m`があれば、`traverse m`は型`Array a`の配列についての検証関数であると書かれています。\n"
+"ところがこれは正に`Person`データ構造体の`phones`フィールドを検証できるようにするのに必要なものです。\n"
+"各要素が成功するかを検証する検証関数を作るために、`validatePhoneNumber`を`traverse`へ渡しています。"
 
 #. type: Plain text
 #: text/chapter7.md:593
@@ -26220,13 +25594,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:607
-#, fuzzy
-#| msgid ""
-#| "Traversable functors capture the idea of traversing a data structure, "
-#| "collecting a set of effectful computations, and combining their effects. "
-#| "In fact, `sequence` and `traverse` are equally important to the "
-#| "definition of `Traversable` - each can be implemented in terms of each "
-#| "other. This is left as an exercise for the interested reader."
 msgid ""
 "Traversable functors capture the idea of traversing a data structure, "
 "collecting a set of effectful computations, and combining their effects. In "
@@ -26234,10 +25601,11 @@ msgid ""
 "`Traversable` – each can be implemented in terms of the other. This is left "
 "as an exercise for the interested reader."
 msgstr ""
-"巡回可能関手は、作用のある計算を集めてその作用を結合するという、データ構造走"
-"査の考え方を見据えたものです。実際、`sequence`と`traversable`は`Traversable`"
-"を定義する上でどちらも同じくらい重要です。これらはお互いがお互いを利用して実"
-"装できます。これについては興味ある読者への演習として残しておきます。"
+"巡回可能関手はデータ構造走査の考え方を見据えたものです。\n"
+"これにより作用のある計算の集合を集めてその作用を結合します。\n"
+"実際、`sequence`と`traversable`は`Traversable`を定義する上でどちらも同じくらい重要です。\n"
+"これらはお互いがお互いを利用して実装できます。\n"
+"これについては興味ある読者への演習として残しておきます。"
 
 #. type: Plain text
 #: text/chapter7.md:609
@@ -26273,13 +25641,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:620
-#, fuzzy
-#| msgid ""
-#| "In the case of an empty list, we can simply return an empty list using "
-#| "`pure`. If the list is non-empty, we can use the function `f` to create a "
-#| "computation of type `f b` from the head element. We can also call "
-#| "`traverse` recursively on the tail. Finally, we can lift the `Cons` "
-#| "constructor over the applicative functor `m` to combine the two results."
 msgid ""
 "In the case of an empty list, we can return an empty list using `pure`. If "
 "the list is non-empty, we can use the function `f` to create a computation "
@@ -26287,11 +25648,10 @@ msgid ""
 "on the tail. Finally, we can lift the `Cons` constructor over the "
 "applicative functor `m` to combine the two results."
 msgstr ""
-"入力が空のリストのときには、単に`pure`を使って空の配列を返すことができます。"
-"配列が空でないときは、関数`f`を使うと先頭の要素から型`f b`の計算を作成できま"
-"す。また、配列の残りに対して`traverse`を再帰的に呼び出すことができます。最後"
-"に、アプリカティブ関手`m`まで`Cons`構築子を持ち上げて、2つの結果を組み合わせ"
-"ます。"
+"入力が空のリストのときには、`pure`を使って空のリストを返せます。\n"
+"リストが空でないときは、関数`f`を使うと先頭の要素から型`f b`の計算を作成できます。\n"
+"また、尾鰭に対して`traverse`を再帰的に呼び出せます。\n"
+"最後に、アプリカティブ関手`m`まで`Cons`構築子を持ち上げて、2つの結果を組み合わせられます。"
 
 #. type: Plain text
 #: text/chapter7.md:622
@@ -26336,7 +25696,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:639
-#, fuzzy
 msgid ""
 "These examples show that traversing the `Nothing` value returns `Nothing` "
 "with no validation, and traversing `Just x` uses the validation function to "
@@ -26345,26 +25704,20 @@ msgid ""
 "for optional values of type `a`."
 msgstr ""
 "これらの例では、`Nothing`の値の走査は検証なしで`Nothing`の値を返し、`Just x`を走査すると`x`を検証するのに検証関数が使われるということを示しています。\n"
-"要は、`traverse`は型`a`についての検証関数をとり、`Maybe a`についての検証関数、つまり型`a`の省略可能な値についての検証関数を返すのです。"
+"要は、`traverse`は型`a`についての検証関数を取り、`Maybe a`についての検証関数、つまり型`a`の省略可能な値についての検証関数を返すのです。"
 
+# FIXME: Arrayに型変数を入れた方が種として分かりやすそうです。
 #. type: Plain text
 #: text/chapter7.md:641
-#, fuzzy
-#| msgid ""
-#| "Other traversable functors include `Array`, and `Tuple a` and `Either a` "
-#| "for any type `a`. Generally, most \"container\" data type constructors "
-#| "have `Traversable` instances. As an example, the exercises will include "
-#| "writing a `Traversable` instance for a type of binary trees."
 msgid ""
 "Other traversable functors include `Array`, `Tuple a`, and `Either a` for "
 "any type `a`. Generally, most \"container\" data type constructors have "
 "`Traversable` instances. As an example, the exercises will include writing a "
 "`Traversable` instance for a type of binary trees."
 msgstr ""
-"他の巡回可能関手には`Array`、また任意の型`a`について`Tuple a`、`Either a`が含"
-"まれます。一般的に、「容器」のようなデータの型構築子は大抵`Traversable`インス"
-"タンスを持っています。例として、演習では二分木の型の`Traversable`インスタンス"
-"を書くことになります。"
+"他の巡回可能関手には、任意の型`a`についての`Array a`、`Tuple a`、`Either a`が含まれます。\n"
+"一般に、「容器」のようなほとんどのデータ型構築子は`Traversable`インスタンスを持っています。\n"
+"一例として、演習には二分木の型の`Traversable`インスタンスを書くことが含まれます。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:645
@@ -26389,20 +25742,18 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:651
-#, fuzzy, no-wrap
-#| msgid "     Recall from the previous chapter that you may either write these instances manually or let the compiler derive them for you.\n"
+#, no-wrap
 msgid "     Recall from the previous chapter that you may either write these instances manually or let the compiler derive them.\n"
 msgstr "     これらのインスタンスを手作業で書くこともできますし、コンパイラに導出してもらうこともできることを前の章から思い起こしてください。\n"
 
 #. type: Plain text
 #: text/chapter7.md:653
-#, fuzzy, no-wrap
-#| msgid "     There are many \"correct\" formatting options for `Show` output. The test for this exercise expects the following whitespace style. This happens to match the default formatting of generic show, so you only need to make note of this if you're planning on writing this instance manually.\n"
+#, no-wrap
 msgid "     There are many \"correct\" formatting options for `Show` output. The test for this exercise expects the following whitespace style. This matches the default formatting of the generic show, so you only need to note this if you're planning on writing this instance manually.\n"
 msgstr ""
 "     `Show`の出力には多くの「正しい」書式の選択肢があります。\n"
 "     この演習のテストでは以下の空白スタイルを期待しています。\n"
-"     これはたまたま一般化されたshowの既定の書式と合致しているため、このインスタンスを手作業で書くつもりのときだけ、このことを念頭に置いておいてください。\n"
+"     これは一般化されたshowの既定の書式と合致しているため、このインスタンスを手作業で書くつもりのときだけ、このことを念頭に置いておいてください。\n"
 
 #. type: Plain text
 #: text/chapter7.md:657
@@ -26418,11 +25769,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:659
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a `Traversable` instance for `Tree a`, which combines side-"
-#| "effects from left-to-right. _Hint_: There are some additional instance "
-#| "dependencies that need to be defined for `Traversable`."
 msgid ""
 "(Medium) Write a `Traversable` instance for `Tree a`, which combines side-"
 "effects left-to-right. _Hint_: There are some additional instance "
@@ -26435,16 +25781,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter7.md:661
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a function `traversePreOrder :: forall a m b. Applicative "
-#| "m => (a -> m b) -> Tree a -> m (Tree b)` that performs a pre-order "
-#| "traversal of the tree. This means the order of effect execution is root-"
-#| "left-right, instead of left-root-right as was done for the previous in-"
-#| "order traverse exercise. _Hint_: No additional instances need to be "
-#| "defined, and you don't need to call any of the the functions defined "
-#| "earlier. Applicative do notation (`ado`) is the easiest way to write this "
-#| "function."
 msgid ""
 "(Medium) Write a function `traversePreOrder :: forall a m b. Applicative m "
 "=> (a -> m b) -> Tree a -> m (Tree b)` that performs a pre-order traversal "
@@ -26529,12 +25865,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:675
-#, fuzzy
-#| msgid ""
-#| "However, in general, applicative functors are more general than this. The "
-#| "applicative functor laws do not impose any ordering on the side-effects "
-#| "that their computations perform. In fact, it would be valid for an "
-#| "applicative functor to perform its side-effects in parallel."
 msgid ""
 "However, in general, applicative functors are more general than this. The "
 "applicative functor laws do not impose any ordering on the side-effects that "
@@ -26542,10 +25872,8 @@ msgid ""
 "perform its side-effects in parallel."
 msgstr ""
 "しかし一般には、アプリカティブ関手はこれよりももっと一般的です。\n"
-"アプリカティブ関手の規則は、その計算の副作用にどんな順序付けも強制しませ"
-"ん。\n"
-"実際、並列に副作用を実行するためのアプリカティブ関手というものは妥当になりえ"
-"ます。"
+"アプリカティブ関手の規則は、その計算の副作用にどんな順序付けも強制しません。\n"
+"実際、並列に副作用を実行するアプリカティブ関手は妥当でしょう。"
 
 #. type: Plain text
 #: text/chapter7.md:677
@@ -26555,29 +25883,19 @@ msgid ""
 "it would not matter what order we ran the various validators. We could even "
 "run them in parallel over the data structure!"
 msgstr ""
-"例えば`V`検証関手はエラーの*配列*を返しますが、その代わりに`Set`半群を選んだ"
-"としてもやはり正常に動き、このときどんな順序でそれぞれの検証器を実行しても問"
-"題はありません。\n"
+"例えば`V`検証関手はエラーの*配列*を返しますが、その代わりに`Set`半群を選んだとしてもやはり正常に動き、このときどんな順序で各検証器を実行しても問題はありません。\n"
 "データ構造に対して並列にこれの実行さえできるのです。"
 
 #. type: Plain text
 #: text/chapter7.md:679
-#, fuzzy
-#| msgid ""
-#| "As a second example, the `parallel` package provides a type class "
-#| "`Parallel` which supports _parallel computations_. `Parallel` provides a "
-#| "function `parallel` which uses some `Applicative` functor to compute the "
-#| "result of its input computation _in parallel_:"
 msgid ""
 "As a second example, the `parallel` package provides a type class `Parallel` "
 "which supports _parallel computations_. `Parallel` provides a function "
 "`parallel` that uses some `Applicative` functor to compute the result of its "
 "input computation _in parallel_:"
 msgstr ""
-"別の例として、`parallel`パッケージは、*並列計算*に対応する`Parallel`型クラス"
-"を与えます。\n"
-"`Parallel`は関数`parallel`を提供しており、何らかの`Applicative`関手を使って入"
-"力の計算を*並列に*計算できます。"
+"2つ目の例として、`parallel`パッケージは*並列計算*に対応する`Parallel`型クラスを提供します。\n"
+"`Parallel`は関数`parallel`を提供しており、何らかの`Applicative`関手を使って入力の計算の結果を*並列に*計算します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter7.md:680
@@ -26611,15 +25929,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter7.md:690
-#, fuzzy
-#| msgid ""
-#| "Applicative functors are a natural way to capture side-effects which can "
-#| "be combined in parallel."
 msgid ""
 "Applicative functors are a natural way to capture side-effects that can be "
 "combined in parallel."
-msgstr ""
-"アプリカティブ関手は並列に結合できる副作用を一纏めにする自然な方法です。"
+msgstr "アプリカティブ関手は並列に結合できる副作用を捉える自然な方法です。"
 
 #. type: Plain text
 #: text/chapter7.md:694
@@ -26628,36 +25941,24 @@ msgstr "この章では新しい考え方を沢山扱いました。"
 
 #. type: Bullet: '- '
 #: text/chapter7.md:698
-#, fuzzy
-#| msgid ""
-#| "We introduced the concept of an _applicative functor_ which generalizes "
-#| "the idea of function application to type constructors which capture some "
-#| "notion of side-effect."
 msgid ""
 "We introduced the concept of an _applicative functor_ which generalizes the "
 "idea of function application to type constructors that captures some notion "
 "of side-effect."
 msgstr ""
-"関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、 _アプリカティブ"
-"関手_ の概念を導入しました。"
+"*アプリカティブ関手*の概念を導入しました。\n"
+"これは、関数適用の概念から副作用の観念を捉えた型構築子へと一般化するものです。"
 
 #. type: Bullet: '- '
 #: text/chapter7.md:698
-#, fuzzy
-#| msgid ""
-#| "We saw how applicative functors gave a solution to the problem of "
-#| "validating data structures, and how by switching the applicative functor "
-#| "we could change from reporting a single error to reporting all errors "
-#| "across a data structure."
 msgid ""
 "We saw how applicative functors solved the problem of validating data "
 "structures and how by switching the applicative functor, we could change "
 "from reporting a single error to reporting all errors across a data "
 "structure."
 msgstr ""
-"データ構造の検証という課題にアプリカティブ関手がどのような解決策を与えるか、"
-"どうすれば単一のエラーの報告からデータ構造を横断する全てのエラーの報告へ変換"
-"できるのかを見てきました。"
+"データ構造の検証という課題をアプリカティブ関手やその切り替えで解く方法を見てきました。\n"
+"単一のエラーの報告からデータ構造を横断する全てのエラーの報告へ変更できました。"
 
 #. type: Bullet: '- '
 #: text/chapter7.md:698
@@ -26669,17 +25970,9 @@ msgstr ""
 "`Traversable`型クラスに出会いました。*巡回可能関手*の考え方を内包するものであ"
 "り、要素が副作用を持つ値の結合に使うことができる容れ物でした。"
 
+# FIXME: DSLの行中強調が欠けています。
 #. type: Plain text
 #: text/chapter7.md:700
-#, fuzzy
-#| msgid ""
-#| "Applicative functors are an interesting abstraction which provide neat "
-#| "solutions to a number of problems. We will see them a few more times "
-#| "throughout the book. In this case, the validation applicative functor "
-#| "provided a way to write validators in a declarative style, allowing us to "
-#| "define _what_ our validators should validate and not _how_ they should "
-#| "perform that validation. In general, we will see that applicative "
-#| "functors are a useful tool for the design of _domain specific languages_."
 msgid ""
 "Applicative functors are an interesting abstraction that provides neat "
 "solutions to a number of problems. We will see them a few more times "
@@ -26689,14 +25982,10 @@ msgid ""
 "perform that validation. In general, we will see that applicative functors "
 "are a useful tool for the design of _domain specific languages."
 msgstr ""
-"アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化で"
-"す。\n"
+"アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。\n"
 "本書を通じて何度も見ることになるでしょう。\n"
-"今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、"
-"これにより検証器が*どうやって*検証するかではなく、*何を*検証すべきなのかを定"
-"義できました。\n"
-"一般に、アプリカティブ関手は*領域特化言語*を設計する上で便利な道具になりま"
-"す。"
+"今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、これにより検証器が*どうやって*検証を実施するかではなく、*何を*検証すべきなのかを定義できました。\n"
+"一般にアプリカティブ関手が*領域特化言語*を設計する上で便利な道具になることを見ていきます。"
 
 #. type: Plain text
 #: text/chapter7.md:701
@@ -27335,27 +26624,20 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:192
 #, fuzzy
-#| msgid ""
-#| "Each of these computations involves three monadic expression `m1`, `m2` "
-#| "and `m3`. In each case, the result of `m1` is eventually bound to the "
-#| "name `x`, and the result of `m2` is bound to the name `y`."
 msgid ""
 "Each of these computations involves three monadic expressions `m1`, `m2`, "
 "and `m3`. In each case, the result of `m1` is eventually bound to the name "
 "`x`, and the result of `m2` is bound to the name `y`."
 msgstr ""
-"これらの計算にはそれぞれ、3つのモナドの式`m1`、`m2`、`m3`が含まれています。\n"
-"どちらの場合でも`m1`の結果は名前`x`に束縛され、`m2`の結果は名前`y`に束縛され"
-"ます。"
+"これらの各計算には3つのモナドの式`m1`、`m2`、`m3`が含まれています。\n"
+"どちらの場合でも`m1`の結果は名前`x`に束縛され、`m2`の結果は名前`y`に束縛されます。"
 
 #. type: Plain text
 #: text/chapter8.md:194
 msgid ""
 "In `c1`, the two expressions `m1` and `m2` are grouped into their own do "
 "notation block."
-msgstr ""
-"`c1`では2つの式 `m1`と `m2`がそれぞれのdo記法ブロック内にグループ化されていま"
-"す。"
+msgstr "`c1`では2つの式`m1`と`m2`が各do記法ブロック内にグループ化されています。"
 
 #. type: Plain text
 #: text/chapter8.md:196
@@ -27479,18 +26761,12 @@ msgid ""
 "to fail by returning `Nothing` at any stage – every step returns an optional "
 "result, and the result of the fold is therefore also optional."
 msgstr ""
-"例として `m`が `Maybe`であるとすると、この畳み込みはそれぞれの段階で `Nothing`を返すことで失敗させられます。\n"
-"それぞれの段階では省略可能な結果を返しますから、それゆえ畳み込みの結果も省略可能になります。"
+"例として`m`が`Maybe`であるとすると、この畳み込みは各段階で`Nothing`を返すことで失敗させられます。\n"
+"各段階では省略可能な結果を返しますから、それゆえ畳み込みの結果も省略可能になります。"
 
 #. type: Plain text
 #: text/chapter8.md:227
 #, fuzzy
-#| msgid ""
-#| "If we picked `m` to be the `Array` type constructor, then every step of "
-#| "the fold would be allowed to return zero or more results, and the fold "
-#| "would proceed to the next step independently for each result. At the end, "
-#| "the set of results would consist of all folds over all possible paths. "
-#| "This corresponds to a traversal of a graph!"
 msgid ""
 "If we picked `m` to be the `Array` type constructor, then every step of the "
 "fold would be allowed to return zero or more results, and the fold would "
@@ -27498,11 +26774,8 @@ msgid ""
 "of results would consist of all folds over all possible paths. This "
 "corresponds to a traversal of a graph!"
 msgstr ""
-"もし `m`として配列の型構築子 `Array`を選ぶとすると、畳み込みのそれぞれの段階"
-"で複数の結果を返すことができ、畳み込みは結果それぞれに対して次の手順を継続し"
-"ます。\n"
-"最後に、結果の集まりは、可能な経路全ての畳み込みから構成されることになりま"
-"す。\n"
+"もし`m`として配列の型構築子`Array`を選ぶとすると、畳み込みの各段階で複数の結果を返すことができ、畳み込みは各結果に対して次の手順を継続します。\n"
+"最後に、結果の集まりは、可能な経路全ての畳み込みから構成されることになります。\n"
 "これはグラフの走査と対応しています。"
 
 #. type: Plain text
@@ -28320,17 +27593,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:443
 #, fuzzy
-#| msgid ""
-#| "As mentioned previously, the `Effect` monad is of central importance to "
-#| "PureScript. The reason why it's central is because it is the conventional "
-#| "way to interoperate with PureScript's `Foreign Function Interface`, which "
-#| "provides the mechanism to execute a program and perform side effects. "
-#| "While it's desireable to avoid using the `Foreign Function Interface`, "
-#| "it's fairly critical to understand how it works and how to use it, so I "
-#| "recommend reading that chapter before doing any serious PureScript work. "
-#| "That said, the `Effect` monad is fairly simple. It has a few helper "
-#| "functions, but aside from that it doesn't do much except encapsulate side "
-#| "effects."
 msgid ""
 "As mentioned previously, the `Effect` monad is of central importance to "
 "PureScript. The reason why it's central is that it is the conventional way "
@@ -28343,15 +27605,10 @@ msgid ""
 "doesn't do much except encapsulate side effects."
 msgstr ""
 "以前言及したように`Effect`モナドはPureScriptで核心的な重要さがあります。\n"
-"なぜ核心かというと、それはPureScriptの`外部関数インターフェース`とやりとりす"
-"る上での常套手段だからです。\n"
-"`外部関数インターフェース`はプログラムを実行したり副作用を発生させたりする仕"
-"組みを提供します。\n"
-"`外部関数インターフェース`を使うことは避けるのが望ましいのですが、どのように"
-"動作しどう使うのか理解することもまた極めて大事なことですので、実際に"
-"PureScriptで何か動かす前にその章を読まれることをお勧めします。\n"
-"要は`Effect`モナドは結構単純なのです。幾つかの補助関数がありますが、それを差"
-"し置いても副作用を内包すること以外には大したことはしません。"
+"なぜ核心かというと、それはPureScriptの`外部関数インターフェース`とやり取りする上での常套手段だからです。\n"
+"`外部関数インターフェース`はプログラムを実行したり副作用を発生させたりする仕組みを提供します。\n"
+"`外部関数インターフェース`を使うことは避けるのが望ましいのですが、どのように動作しどう使うのか理解することもまた極めて大事なことですので、実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。\n"
+"要は`Effect`モナドは結構単純なのです。幾つかの補助関数がありますが、それを差し置いても副作用を内包すること以外には大したことはしません。"
 
 #. type: Plain text
 #: text/chapter8.md:447
@@ -28541,8 +27798,8 @@ msgid ""
 "The `ST` effect is defined in the `Control.Monad.ST` module. To see how it "
 "works, we need to look at the types of its actions:"
 msgstr ""
-"`ST`作用は `Control.Monad.ST`モジュールで定義されています。これがどのように動"
-"作するかを確認するには、そのアクションの型を見る必要があります。"
+"`ST`作用は `Control.Monad.ST`モジュールで定義されています。\n"
+"この挙動を確認するには、その動作の型を見る必要があります。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:513
@@ -28567,12 +27824,6 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:524
 #, fuzzy
-#| msgid ""
-#| "`new` is used to create a new mutable reference cell of type `STRef r a`, "
-#| "which can be read using the `read` action, and modified using the `write` "
-#| "and `modify` actions. The type `a` is the type of the value stored in the "
-#| "cell, and the type `r` is used to indicate a _memory region_ (or _heap_) "
-#| "in the type system."
 msgid ""
 "`new` is used to create a new mutable reference cell of type `STRef r a`, "
 "which can be read using the `read` action and modified using the `write` and "
@@ -28581,10 +27832,8 @@ msgid ""
 "type system."
 msgstr ""
 "`new`は型`STRef r a`の変更可能な参照領域を新しく作るのに使われます。\n"
-"`STRef r a`は `read`アクションを使って状態を読み取ったり、`write`アクション"
-"や `modify`アクションで状態を変更するのに使われます。\n"
-"型`a`は領域に格納された値の型で、型 `r`は型システムで*メモリ領域*（または*"
-"ヒープ*）を表しています。"
+"`STRef r a`は`read`動作を使って状態を読み取ったり、`write`動作や`modify`動作で状態を変更するのに使われます。\n"
+"型`a`は領域に格納された値の型で、型 `r`は型システムで*メモリ領域*（または*ヒープ*）を表しています。"
 
 #. type: Plain text
 #: text/chapter8.md:526
@@ -28702,10 +27951,8 @@ msgid ""
 "the parentheses_ on the left of the function arrow. That means that whatever "
 "action we pass to `run` has to work with _any region_ `r` whatsoever."
 msgstr ""
-"ここで注目して欲しいのは、領域型 `r`が関数矢印の左辺にある*括弧の内側で*量化"
-"されているということです。\n"
-"`run`に渡したどんなアクションでも、*任意の領域*`r`が何であれ動作するというこ"
-"とを意味しています。"
+"ここで注目して欲しいのは、領域型 `r`が関数矢印の左辺にある*括弧の内側で*量化されているということです。\n"
+"`run`に渡したどんな動作でも、*任意の領域*`r`が何であれ動作するということを意味しています。"
 
 #. type: Plain text
 #: text/chapter8.md:563
@@ -28958,18 +28205,11 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:666
 #, fuzzy
-#| msgid ""
-#| "The `ST` effect is a good way to generate short JavaScript when working "
-#| "with locally-scoped mutable state, especially when used together with "
-#| "actions like `for`, `foreach`, and `while` which generate efficient loops."
 msgid ""
 "The `ST` effect is a good way to generate short JavaScript when working with "
 "locally-scoped mutable state, especially when used together with actions "
 "like `for`, `foreach`, and `while`, which generate efficient loops."
-msgstr ""
-"局所的な変更可能状態を扱うとき、特に作用が絡むループを生成する`for`、 "
-"`foreach`、 `while`のようなアクションを一緒に使うときには、`ST`作用は短い"
-"JavaScriptを生成する良い方法となります。"
+msgstr "局所的な変更可能状態を扱うとき、特に作用が絡むループを生成する`for`、 `foreach`、 `while`のような動作を一緒に使うときには、`ST`作用は短いJavaScriptを生成する良い方法となります。"
 
 #. type: Bullet: '1. '
 #: text/chapter8.md:672
@@ -29543,24 +28783,15 @@ msgstr "Tuple person setPerson <- useState examplePerson\n"
 #. type: Plain text
 #: text/chapter8.md:815
 #, fuzzy
-#| msgid ""
-#| "Note that you are free to break-up component state into multiple pieces "
-#| "of state with multiple calls to `useState`. For example, we could rewrite "
-#| "this app to use a separate piece of state for each record field of "
-#| "`Person`, but that happens to result in a slightly less convenient "
-#| "architecture in this case."
 msgid ""
 "Note that you are free to break-up component state into multiple pieces of "
 "state with multiple calls to `useState`. For example, we could rewrite this "
 "app to use a separate piece of state for each record field of `Person`, but "
 "that results in a slightly less convenient architecture in this case."
 msgstr ""
-"なお、複数回`useState`を呼び出すことで、コンポーネントの状態を複数の状態の部"
-"品に分解することが自在にできます。\n"
-"例えば`Person`のそれぞれのレコードフィールドについて分離した状態の部品を使っ"
-"て、このアプリを書き直すことができるでしょう。\n"
-"しかしこの場合にそうすると僅かに利便性を損なうアーキテクチャになってしまいま"
-"す。"
+"なお、複数回`useState`を呼び出すことで、コンポーネントの状態を複数の状態の部品に分解することが自在にできます。\n"
+"例えば`Person`の各レコードフィールドについて分離した状態の部品を使って、このアプリを書き直すことができるでしょう。\n"
+"しかしこの場合にそうすると僅かに利便性を損なうアーキテクチャになってしまいます。"
 
 #. type: Plain text
 #: text/chapter8.md:817
@@ -29640,7 +28871,7 @@ msgstr ""
 #. type: Plain text
 #: text/chapter8.md:843
 msgid "`person` is how we access the current state at each rerender."
-msgstr "`person`はそれぞれの再描画の時点で現在の状態にアクセスする方法です。"
+msgstr "`person`は各再描画の時点で現在の状態にアクセスする方法です。"
 
 #. type: Plain text
 #: text/chapter8.md:845
@@ -30014,9 +29245,7 @@ msgstr ""
 msgid ""
 "`setValue` is the function we provided to each `formField` call that takes a "
 "string and makes the appropriate record-update call to the `setPerson` hook."
-msgstr ""
-"`setValue`はそれぞれの`formField`の呼び出しに与えた関数で、文字列を取り"
-"`setPerson`フックに適切なレコード更新呼び出しを実施します。"
+msgstr "`setValue`は`formField`の各呼び出しに与えた関数で、文字列を取り`setPerson`フックに適切なレコード更新呼び出しを実施します。"
 
 #. type: Plain text
 #: text/chapter8.md:963
@@ -30082,19 +29311,13 @@ msgstr ""
 #. type: Bullet: '1. '
 #: text/chapter8.md:980
 #, fuzzy
-#| msgid ""
-#| "(Medium) Right now the application shows validation errors collected in a "
-#| "single \"pink-alert\" background.  Modify to give each validation error "
-#| "its own pink-alert background by separating them with blank lines."
 msgid ""
 "(Medium) Right now, the application shows validation errors collected in a "
 "single \"pink-alert\" background.  Modify to give each validation error its "
 "own pink-alert background by separating them with blank lines."
 msgstr ""
-"（普通）現時点でアプリケーションは検証エラーを単一の「pink-alert」背景に集め"
-"て表示させています。\n"
-"空の線で分割することにより、それぞれの検証エラーにpink-alert背景を持たせるよ"
-"うに変更してください。"
+"（普通）現時点でアプリケーションは検証エラーを単一の「pink-alert」背景に集めて表示させています。\n"
+"空の線で分割することにより、各検証エラーにpink-alert背景を持たせるように変更してください。"
 
 #. type: Plain text
 #: text/chapter8.md:983
@@ -30103,8 +29326,9 @@ msgid ""
 "    _Hint_: Instead of using a `ul` element to show the validation errors in a list, modify the code to create one `div` with the `alert` and `alert-danger` styles for each error.\n"
 "1. (Difficult, Extended) One problem with this user interface is that the validation errors are not displayed next to the form fields they originated from. Modify the code to fix this problem.\n"
 msgstr ""
-"    *手掛かり*：リスト中の検証エラーを表示するのに`ul`要素を使う代わりに、コードを変更し、それぞれのエラーに`alert`と`alert-danger`装飾を持つ`div`を作ってください。\n"
-"1. （難しい、発展）このユーザーインターフェイスの問題の1つは、検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。コードを変更してこの問題を解決してください。\n"
+"    *手掛かり*：リスト中の検証エラーを表示するのに`ul`要素を使う代わりに、コードを変更し、各エラーに`alert`と`alert-danger`装飾を持つ`div`を作ってください。\n"
+"1. （難しい、発展）このユーザーインターフェイスの問題の1つは、検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。\n"
+"   コードを変更してこの問題を解決してください。\n"
 
 #. type: Plain text
 #: text/chapter8.md:985
@@ -30244,12 +29468,6 @@ msgstr "非同期作用"
 #. type: Plain text
 #: text/chapter9.md:6
 #, fuzzy
-#| msgid ""
-#| "This chapter focuses on the `Aff` monad, which is similar to the `Effect` "
-#| "monad, but represents _asynchronous_ side-effects. We'll demonstrate "
-#| "examples of asynchronously interacting with the filesystem and making "
-#| "HTTP requests. We'll also cover how to manage sequential and parallel "
-#| "execution of asynchronous effects."
 msgid ""
 "This chapter focuses on the `Aff` monad, which is similar to the `Effect` "
 "monad, but represents _asynchronous_ side-effects. We'll demonstrate "
@@ -30257,10 +29475,10 @@ msgid ""
 "requests. We'll also cover managing sequential and parallel execution of "
 "asynchronous effects."
 msgstr ""
-"この章では`Aff`モナドに集中します。これは`Effect`モナドに似ていますが、*非同"
-"期*な副作用を表現するものです。ファイルシステムとやりとりしてHTTPリクエストを"
-"作る、非同期な例を実演していきます。また非同期作用の直列ないし並列な実行の管"
-"理方法も押さえます。"
+"この章では`Aff`モナドに集中します。\n"
+"これは`Effect`モナドに似ていますが、*非同期*な副作用を表現するものです。\n"
+"ファイルシステムとやり取りしてHTTPリクエストを作る、非同期な例を実演していきます。\n"
+"また非同期作用の直列ないし並列な実行の管理方法も押さえます。"
 
 #. type: Plain text
 #: text/chapter9.md:10
@@ -30822,12 +30040,6 @@ msgstr "`sequential`：反対方向に変換します。"
 #. type: Plain text
 #: text/chapter9.md:156
 #, fuzzy
-#| msgid ""
-#| "The `aff` library provides a `Parallel` instance for the `Aff` monad. It "
-#| "uses mutable references to combine `Aff` actions in parallel, by keeping "
-#| "track of which of the two continuations has been called. When both "
-#| "results have been returned, we can compute the final result and pass it "
-#| "to the main continuation."
 msgid ""
 "The `aff` library provides a `Parallel` instance for the `Aff` monad. It "
 "uses mutable references to combine `Aff` actions in parallel by keeping "
@@ -30836,8 +30048,7 @@ msgid ""
 "continuation."
 msgstr ""
 "`aff`ライブラリは `Aff`モナドの `Parallel`インスタンスを提供します。\n"
-"これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによっ"
-"て、変更可能な参照を使用して並列に `Aff`アクションを組み合わせます。\n"
+"これは、2つの継続のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に `Aff`動作を組み合わせます。\n"
 "両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。"
 
 #. type: Plain text
