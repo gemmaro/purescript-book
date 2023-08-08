@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-06 23:23+0900\n"
+"PO-Revision-Date: 2023-08-12 18:56+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -26004,28 +26004,22 @@ msgstr "作用モナド"
 
 #. type: Plain text
 #: text/chapter8.md:6
-#, fuzzy
 msgid ""
 "In the last chapter, we introduced applicative functors, an abstraction we "
 "used to deal with _side-effects_: optional values, error messages, and "
 "validation. This chapter will introduce another abstraction for dealing with "
 "side-effects more expressively: _monads_."
 msgstr ""
-"前章では、省略可能な型やエラー文言、データの検証など、*副作用*を扱いを抽象化するアプリカティブ関手を導入しました。\n"
-"この章では、より表現力の高い方法で副作用を扱うための別の抽象化、*モナド*を導入します。"
+"前章では、*副作用*を扱うのに使う抽象化であるアプリカティブ関手を導入しました。\n"
+"副作用とは省略可能な値、エラー文言、検証などです。\n"
+"この章では、副作用を扱うためのより表現力の高い別の抽象化である*モナド*を導入します。"
 
 #. type: Plain text
 #: text/chapter8.md:8
-#, fuzzy
-#| msgid ""
-#| "The goal of this chapter is to explain why monads are a useful "
-#| "abstraction, and their connection with _do notation_."
 msgid ""
 "The goal of this chapter is to explain why monads are a useful abstraction "
 "and their connection with _do notation_."
-msgstr ""
-"この章の目的は、なぜモナドが便利な抽象化なのかということと、 _do記法_ との関"
-"係を説明することです。"
+msgstr "この章の目的は、なぜモナドが便利な抽象化なのかということと、*do記法*との関係を説明することです。"
 
 #. type: Plain text
 #: text/chapter8.md:12
@@ -26034,31 +26028,20 @@ msgstr "このプロジェクトでは、以下の依存関係が追加されて
 
 #. type: Bullet: '- '
 #: text/chapter8.md:15
-#, fuzzy
-#| msgid ""
-#| "`effect` - defines the `Effect` monad, the subject of the second half of "
-#| "the chapter. This dependency is often listed in every starter project "
-#| "(it's been a dependency of every chapter so far), so you'll rarely have "
-#| "to explicitly install it."
 msgid ""
 "`effect` – defines the `Effect` monad, the subject of the second half of the "
 "chapter. This dependency is often listed in every starter project (it's been "
 "a dependency of every chapter so far), so you'll rarely have to install it "
 "explicitly."
 msgstr ""
-"`effect`: 章の後半の主題である`Effect`モナドを定義しています。この依存関係は"
-"全てのプロジェクトで始めから入っているものなので（これまでの全ての章でも依存"
-"関係にありました）、明示的にインストールしなければいけないことは稀です。"
+"`effect`: 章の後半の主題である`Effect`モナドを定義しています。\n"
+"この依存関係は全てのプロジェクトで始めから入っているものなので（これまでの全ての章でも依存関係にありました）、明示的にインストールしなければいけないことは稀です。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:15
-#, fuzzy
-#| msgid ""
-#| "`react-basic-hooks` - a web framework that we will use for our Address "
-#| "Book app."
 msgid ""
 "`react-basic-hooks` – a web framework we will use for our Address Book app."
-msgstr "`react-basic-hooks`: アドレス帳アプリに使うWebフレームワークです。"
+msgstr "`react-basic-hooks`: アドレス帳アプリに使うwebフレームワークです。"
 
 #. type: Title ##
 #: text/chapter8.md:16
@@ -26100,24 +26083,15 @@ msgstr "2回目の投擲で値 `y`を _選択_ します。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:25
-#, fuzzy
-#| msgid ""
-#| "If the sum of `x` and `y` is `n` then return the pair `[x, y]`, else fail."
 msgid "If the sum of `x` and `y` is `n`, return the pair `[x, y]`, else fail."
-msgstr ""
-"もし `x`と `y`の和が `n`なら組 `[x, y]`を返し、そうでなければ失敗します。"
+msgstr "もし`x`と`y`の和が`n`なら組`[x, y]`を返し、そうでなければ失敗します。"
 
 #. type: Plain text
 #: text/chapter8.md:27
-#, fuzzy
-#| msgid ""
-#| "Array comprehensions allow us to write this non-deterministic algorithm "
-#| "in a natural way:"
 msgid ""
 "Array comprehensions allow us to write this non-deterministic algorithm "
 "naturally:"
-msgstr ""
-"配列内包表記を使うと、この非決定的アルゴリズムを自然に書くことができます。"
+msgstr "配列内包表記を使うと、この非決定的アルゴリズムを自然に書けます。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:28
@@ -26176,16 +26150,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:52
-#, fuzzy
-#| msgid ""
-#| "In general, a _monad_ for some type constructor `m` provides a way to use "
-#| "do notation with values of type `m a`. Note that in the array "
-#| "comprehension above, every line contains a computation of type `Array a` "
-#| "for some type `a`. In general, every line of a do notation block will "
-#| "contain a computation of type `m a` for some type `a` and our monad `m`. "
-#| "The monad `m` must be the same on every line (i.e. we fix the side-"
-#| "effect), but the types `a` can differ (i.e. individual computations can "
-#| "have different result types)."
 msgid ""
 "Generally, a _monad_ for some type constructor `m` provides a way to use do "
 "notation with values of type `m a`. Note that in the array comprehension "
@@ -26196,15 +26160,10 @@ msgid ""
 "`a` can differ (i.e., individual computations can have different result "
 "types)."
 msgstr ""
-"一般に、ある型構築子 `m`のモナドは、型 `m a`の値を持つdo記法を使う手段を提供"
-"します。\n"
-"上の配列内包表記では、全ての行に何らかの型 `a`についての型 `Array a`の計算が"
-"含まれていることに注目してください。\n"
-"一般に、do記法ブロックの全ての行は、何らかの型 `a`とモナド `m`について、型 "
-"`m a`の計算を含んでいます。\n"
-"モナド `m`は全ての行で同じでなければなりません（つまり、副作用の種類は固定さ"
-"れます）が、型 `a`は異なることもあります（言い換えると、個々の計算は異なる型"
-"の結果を持つことができます）。"
+"一般に、ある型構築子`m`のモナドは、型`m a`の値を持つdo記法を使う手段を提供します。\n"
+"上の配列内包表記に注意すると、何らかの型`a`について全行に型`Array a`の計算が含まれています。\n"
+"一般に、do記法ブロックの全行は、何らかの型`a`とモナド`m`について、型`m a`の計算を含みます。\n"
+"モナド`m`は全行で同じでなければなりません（つまり副作用は固定）が、型`a`は異なることもあります（つまり個々の計算は異なる型の結果にできる）。"
 
 #. type: Plain text
 #: text/chapter8.md:54
@@ -26225,10 +26184,6 @@ msgstr "child :: XML -> String -> Maybe XML\n"
 
 #. type: Plain text
 #: text/chapter8.md:60
-#, fuzzy
-#| msgid ""
-#| "which looks for a child element of a node, and returns `Nothing` if no "
-#| "such element exists."
 msgid ""
 "Which looks for a child element of a node and returns `Nothing` if no such "
 "element exists."
@@ -26238,11 +26193,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:62
-#, fuzzy
-#| msgid ""
-#| "In this case, we can look for a deeply-nested element by using do "
-#| "notation. Suppose we wanted to read a user's city from a user profile "
-#| "which had been encoded as an XML document:"
 msgid ""
 "In this case, we can look for a deeply-nested element using do notation. "
 "Suppose we wanted to read a user's city from a user profile that had been "
@@ -26272,13 +26222,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:73
-#, fuzzy
-#| msgid ""
-#| "The `userCity` function looks for a child element `profile`, an element "
-#| "`address` inside the `profile` element, and finally an element `city` "
-#| "inside the `address` element. If any of these elements are missing, the "
-#| "return value will be `Nothing`. Otherwise, the return value is "
-#| "constructed using `Just` from the `city` node."
 msgid ""
 "The `userCity` function looks for a child element `profile`, an element "
 "`address` inside the `profile` element, and finally, an element `city` "
@@ -26286,10 +26229,9 @@ msgid ""
 "return value will be `Nothing`. Otherwise, the return value is constructed "
 "using `Just` from the `city` node."
 msgstr ""
-"`userCity`関数は子の要素である `profile`を探し、 `profile`要素の中にある "
-"`address`要素、最後に `address`要素から `city`要素を探します。\n"
-"これらの要素の何れかが欠落している場合は、返り値は `Nothing`になります。\n"
-"そうでなければ、返り値は `city`ノードから `Just`を使って構築されています。"
+"`userCity`関数は子の`profile`要素、`profile`要素の中にある`address`要素、最後に`address`要素の中にある`city`要素を探します。\n"
+"これらの要素の何れかが欠落している場合、返り値は`Nothing`になります。\n"
+"そうでなければ、返り値は`city`ノードから`Just`を使って構築されます。"
 
 #. type: Plain text
 #: text/chapter8.md:75
@@ -26337,16 +26279,10 @@ msgstr "ここで鍵となる関数は `Bind`型クラスで定義されてい�
 
 #. type: Plain text
 #: text/chapter8.md:90
-#, fuzzy
-#| msgid ""
-#| "The `Monad` type class extends `Bind` with the operations of the "
-#| "`Applicative` type class that we have already seen."
 msgid ""
 "The `Monad` type class extends `Bind` with the operations of the "
 "`Applicative` type class we've already seen."
-msgstr ""
-"`Monad`型クラスは、既に見てきた `Applicative`型クラスの操作で `Bind`を拡張し"
-"ます。"
+msgstr "`Monad`型クラスは、既に見てきた`Applicative`型クラスの操作で`Bind`を拡張します。"
 
 #. type: Plain text
 #: text/chapter8.md:92
@@ -26404,19 +26340,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:111
-#, fuzzy
-#| msgid ""
-#| "Let's see how the `Bind` type class is related to do notation. Consider a "
-#| "simple do notation block which starts by binding a value from the result "
-#| "of some computation:"
 msgid ""
 "Let's see how the `Bind` type class is related to do notation. Consider a "
 "simple do notation block that starts by binding a value from the result of "
 "some computation:"
 msgstr ""
-"`Bind`型クラスとdo記法がどのように関係しているかを見て行きましょう。最初に何"
-"らかの計算結果からの値の束縛から始まる簡単なdo記法ブロックについて考えてみま"
-"しょう。"
+"`Bind`型クラスとdo記法がどのように関係しているかを見て行きましょう。\n"
+"最初に、何らかの計算結果からの値の束縛から始まる、単純なdo記法ブロックについて考えてみましょう。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:112
@@ -26489,10 +26419,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:143
-#, fuzzy, no-wrap
-#| msgid "It is worth noting that code expressed using do notation is often much clearer than the equivalent code using the `>>=` operator. However, writing binds explicitly using `>>=` can often lead to opportunities to write code in _point-free_ form - but the usual warnings about readability apply.\n"
+#, no-wrap
 msgid "Notably, code expressed using do notation is often much clearer than the equivalent code using the `>>=` operator. However, writing binds explicitly using `>>=` can often lead to opportunities to write code in _point-free_ form – but the usual warnings about readability apply.\n"
-msgstr "do記法を使って表現されたコードは、`>>=`演算子を使って書かれた同じ意味のコードよりしばしば読みやすくなることも特筆すべき点です。一方で、明示的に `>>=`を使って束縛を書くと、しばしば*ポイントフリー*形式でコードが書けるようになります。ただし、読みやすさにはやはり注意がいります。\n"
+msgstr ""
+"do記法を使って表現されたコードは、`>>=`演算子を使う等価なコードより遥かに読みやすくなることがよくあることも特筆すべき点です。\n"
+"しかしながら、明示的に`>>=`を使って束縛を書くと、*ポイントフリー*形式でコードが書けるようになることがよくあります。\n"
+"ただし、読みやすさにはやはり注意が要ります。\n"
 
 #. type: Title ##
 #: text/chapter8.md:144
@@ -26623,14 +26555,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:192
-#, fuzzy
 msgid ""
 "Each of these computations involves three monadic expressions `m1`, `m2`, "
 "and `m3`. In each case, the result of `m1` is eventually bound to the name "
 "`x`, and the result of `m2` is bound to the name `y`."
 msgstr ""
 "これらの各計算には3つのモナドの式`m1`、`m2`、`m3`が含まれています。\n"
-"どちらの場合でも`m1`の結果は名前`x`に束縛され、`m2`の結果は名前`y`に束縛されます。"
+"どちらの場合でも`m1`の結果は結局は名前`x`に束縛され、`m2`の結果は名前`y`に束縛されます。"
 
 #. type: Plain text
 #: text/chapter8.md:194
@@ -26641,10 +26572,6 @@ msgstr "`c1`では2つの式`m1`と`m2`が各do記法ブロック内にグルー
 
 #. type: Plain text
 #: text/chapter8.md:196
-#, fuzzy
-#| msgid ""
-#| "In `c2`, all three expressions `m1`, `m2` and `m3` appear in the same do "
-#| "notation block."
 msgid ""
 "In `c2`, all three expressions `m1`, `m2`, and `m3` appear in the same do "
 "notation block."
@@ -26693,13 +26620,6 @@ msgstr "モナドで畳み込む"
 
 #. type: Plain text
 #: text/chapter8.md:212
-#, fuzzy
-#| msgid ""
-#| "As an example of working with monads abstractly, this section will "
-#| "present a function which works with any type constructor in the `Monad` "
-#| "type class. This should serve to solidify the intuition that monadic code "
-#| "corresponds to programming \"in a larger language\" with side-effects, "
-#| "and also illustrate the generality which programming with monads brings."
 msgid ""
 "As an example of working with monads abstractly, this section will present a "
 "function that works with any type constructor in the `Monad` type class. "
@@ -26707,25 +26627,18 @@ msgid ""
 "programming \"in a larger language\" with side-effects, and also illustrate "
 "the generality which programming with monads brings."
 msgstr ""
-"抽象的にモナドを扱う例として、この節では `Monad`型クラス中の任意の型構築子で"
-"機能する関数を紹介していきます。\n"
-"これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと"
-"対応しているという直感的理解を補強しますし、モナドによるプログラミングがもた"
-"らす一般性も示しています。"
+"抽象的にモナドを扱う例として、この節では `Monad`型クラス中の任意の型構築子で機能する関数を紹介していきます。\n"
+"これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと対応しているという直感的理解を補強しますし、モナドによるプログラミングが齎す一般性も示しています。"
 
 #. type: Plain text
 #: text/chapter8.md:214
-#, fuzzy
-#| msgid ""
-#| "The function we will write is called `foldM`. It generalizes the `foldl` "
-#| "function that we met earlier to a monadic context. Here is its type "
-#| "signature:"
 msgid ""
 "The function we will write is called `foldM`. It generalizes the `foldl` "
 "function we met earlier to a monadic context. Here is its type signature:"
 msgstr ""
-"これから `foldM`と呼ばれる関数を書いてみます。これは以前扱った `foldl`関数を"
-"モナドの文脈へと一般化します。型シグネチャは次のようになっています。"
+"これから書いていく関数は`foldM`という名前です。\n"
+"以前見た`foldl`関数をモナドの文脈へと一般化するものです。\n"
+"型シグネチャは以下です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:215
@@ -26755,18 +26668,16 @@ msgstr "直感的には、`foldM`は様々な副作用の組み合わせに対�
 
 #. type: Plain text
 #: text/chapter8.md:225
-#, fuzzy
 msgid ""
 "For example, if we picked `m` to be `Maybe`, then our fold would be allowed "
 "to fail by returning `Nothing` at any stage – every step returns an optional "
 "result, and the result of the fold is therefore also optional."
 msgstr ""
-"例として`m`が`Maybe`であるとすると、この畳み込みは各段階で`Nothing`を返すことで失敗させられます。\n"
-"各段階では省略可能な結果を返しますから、それゆえ畳み込みの結果も省略可能になります。"
+"例として`m`として`Maybe`を選ぶとすると、各段階で`Nothing`を返すことでこの畳み込みを失敗させられます。\n"
+"各段階では省略可能な結果を返しますから、それ故畳み込みの結果も省略可能になります。"
 
 #. type: Plain text
 #: text/chapter8.md:227
-#, fuzzy
 msgid ""
 "If we picked `m` to be the `Array` type constructor, then every step of the "
 "fold would be allowed to return zero or more results, and the fold would "
@@ -26774,9 +26685,9 @@ msgid ""
 "of results would consist of all folds over all possible paths. This "
 "corresponds to a traversal of a graph!"
 msgstr ""
-"もし`m`として配列の型構築子`Array`を選ぶとすると、畳み込みの各段階で複数の結果を返すことができ、畳み込みは各結果に対して次の手順を継続します。\n"
-"最後に、結果の集まりは、可能な経路全ての畳み込みから構成されることになります。\n"
-"これはグラフの走査と対応しています。"
+"もし`m`として型構築子`Array`を選ぶとすると、畳み込みの各段階で0以上の結果を返せるため、畳み込みは各結果に対して独立に次の手順を継続します。\n"
+"最後に、結果の集まりは可能な経路の全ての畳み込みから構成されることになります。\n"
+"これはグラフの走査と対応していますね。"
 
 #. type: Plain text
 #: text/chapter8.md:229
@@ -26834,33 +26745,24 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:249
-#, fuzzy
-#| msgid ""
-#| "Note that this implementation is almost identical to that of `foldl` on "
-#| "lists, with the exception of do notation."
 msgid ""
 "Note that this implementation is almost identical to that of `foldl` on "
 "lists, except for do notation."
 msgstr ""
-"なお、do記法を除けば、この実装は配列に対する `foldl`の実装とほとんど同じで"
-"す。"
+"なお、この実装はリストに対する`foldl`の実装とほとんど同じです。\n"
+"ただしdo記法である点を除きます。"
 
 #. type: Plain text
 #: text/chapter8.md:251
-#, fuzzy
-#| msgid ""
-#| "We can define and test this function in PSCi. Here is an example - "
-#| "suppose we defined a \"safe division\" function on integers, which tested "
-#| "for division by zero and used the `Maybe` type constructor to indicate "
-#| "failure:"
 msgid ""
 "We can define and test this function in PSCi. Here is an example – suppose "
 "we defined a \"safe division\" function on integers, which tested for "
 "division by zero and used the `Maybe` type constructor to indicate failure:"
 msgstr ""
-"PSCiでこれを定義し、試してみましょう。\n"
-"以下では例として、除算可能かどうかを調べて、失敗を示すために `Maybe`型構築子"
-"を使う、整数の「安全な除算」関数を定義するとしましょう。"
+"PSCiでこの関数を定義して試せます。\n"
+"以下は一例です。\n"
+"整数の「安全な除算」関数を定義するとします。\n"
+"0による除算かを確認し、失敗を示すために `Maybe`型構築子を使うのです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:252
@@ -26897,14 +26799,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:270
-#, fuzzy
 msgid ""
 "The `foldM safeDivide` function returns `Nothing` if a division by zero was "
 "attempted at any point. Otherwise, it returns the result of repeatedly "
 "dividing the accumulator, wrapped in the `Just` constructor."
 msgstr ""
-"もし何れかの時点で整数にならない除算が行われようとしたら、`foldM safeDivide`関数は `Nothing`を返します。\n"
-"そうでなければ、除算を繰り返した累算の結果を`Just`構築子に包んで返します。"
+"もし何れかの時点で0による除算が試みられたら、`foldM safeDivide`関数は`Nothing`を返します。\n"
+"そうでなければ、累算値を繰り返し除算した結果を`Just`構築子に包んで返します。"
 
 #. type: Title ##
 #: text/chapter8.md:271
@@ -26957,16 +26858,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:288
-#, fuzzy
-#| msgid ""
-#| "The interested reader can check that `ap` agrees with `apply` for the "
-#| "monads we have already encountered: `Array`, `Maybe` and `Either e`."
 msgid ""
 "The interested reader can check that `ap` agrees with `apply` for the monads "
 "we have already encountered: `Array`, `Maybe`, and `Either e`."
 msgstr ""
-"興味のある読者は、これまで登場した `Array`、 `Maybe`、 `Either e`といったモナ"
-"ドについて、この `ap`が `apply`と一致することを確かめてみてください。"
+"興味のある読者はこれまで登場したモナドについてこの`ap`が`apply`として充足することを確かめてみてください。\n"
+"モナドは`Array`、`Maybe`、`Either e`といったものです。"
 
 #. type: Plain text
 #: text/chapter8.md:290
@@ -26987,7 +26884,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:292
-#, fuzzy
 msgid ""
 "But monads allow us to do more than we could do with just applicative "
 "functors, and the key difference is highlighted by the syntax of do "
@@ -26995,7 +26891,8 @@ msgid ""
 "user's city in an XML document that encoded their user profile:"
 msgstr ""
 "しかし、モナドはアプリカティブ関手でできること以上ができ、重要な違いはdo記法の構文で強調されています。\n"
-"利用者情報をエンコードしたXML文書から利用者の都市を検索する、`userCity`の例についてもう一度考えてみましょう。"
+"`userCity`の例についてもう一度考えてみましょう。\n"
+"利用者情報をエンコードしたXML文書から利用者の市町村を検索するものでした。"
 
 #. type: Plain text
 #: text/chapter8.md:303
@@ -27026,14 +26923,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:307
-#, fuzzy
-#| msgid ""
-#| "In the last chapter, we saw that the `Applicative` type class can be used "
-#| "to express parallelism. This was precisely because the function arguments "
-#| "being lifted were independent of one another. Since the `Monad` type "
-#| "class allows computations to depend on the results of previous "
-#| "computations, the same does not apply - a monad has to combine its side-"
-#| "effects in sequence."
 msgid ""
 "In the last chapter, we saw that the `Applicative` type class can be used to "
 "express parallelism. This was precisely because the function arguments being "
@@ -27041,22 +26930,13 @@ msgid ""
 "computations to depend on the results of previous computations, the same "
 "does not apply – a monad has to combine its side-effects in sequence."
 msgstr ""
-"前の章では `Applicative`型クラスは並列処理を表現できることを見ました。\n"
-"持ち上げられた関数の引数は互いに独立していますから、これはまさにその通りで"
-"す。\n"
-"`Monad`型クラスは計算が前の計算の結果に依存できるようにしますから、同じように"
-"はなりません。\n"
-"モナドは副作用を順番に組み合わせなければいけません。"
+"前の章では`Applicative`型クラスは並列処理を表現できることを見ました。\n"
+"持ち上げられた関数の引数は互いに独立していますから、これはまさにその通りです。\n"
+"`Monad`型クラスは計算が前の計算の結果に依存できるようになっており、同じようにはなりません。\n"
+"つまりモナドは副作用を順番に組み合わせなければならないのです。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter8.md:312
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a function `third` which returns the third element of an "
-#| "array with three or more elements. Your function should return an "
-#| "appropriate `Maybe` type. _Hint:_ Look up the types of the `head` and "
-#| "`tail` functions from the `Data.Array` module in the `arrays` package. "
-#| "Use do notation with the `Maybe` monad to combine these functions."
 msgid ""
 "(Easy) Write a function `third` that returns the third element of an array "
 "with three or more elements. Your function should return an appropriate "
@@ -27064,12 +26944,10 @@ msgid ""
 "from the `Data.Array` module in the `arrays` package. Use do notation with "
 "the `Maybe` monad to combine these functions."
 msgstr ""
-"（簡単）3つ以上の要素がある配列の3つ目の要素を返す関数`third`を書いてくださ"
-"い。\n"
+"（簡単）3つ以上の要素がある配列の3つ目の要素を返す関数`third`を書いてください。\n"
 "関数は適切な`Maybe`型で返します。\n"
-"*手掛かり*：`arrays`パッケージの`Data.Array`モジュールから`head`と`tail`関数"
-"の型を見つけ出してください。\n"
-"これらの関数を繋げるには`Maybe`モナドと共にdo記法を使ってください。"
+"*手掛かり*：`arrays`パッケージの`Data.Array`モジュールから`head`と`tail`関数の型を見つけ出してください。\n"
+"これらの関数を組み合わせるには`Maybe`モナドと共にdo記法を使ってください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter8.md:312
@@ -27110,25 +26988,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:325
-#, fuzzy, no-wrap
-#| msgid ""
-#| "     _Hint_: This function can be written as a one-liner using `foldM`. You might want to use the `nub` and `sort` functions to remove duplicates and sort the result respectively.\n"
-#| " 1. (Medium) Confirm that the `ap` function and the `apply` operator agree for the `Maybe` monad. _Note:_ There are no tests for this exercise.\n"
-#| " 1. (Medium) Verify that the monad laws hold for the `Monad` instance for the `Maybe` type, as defined in the `maybe` package. _Note:_ There are no tests for this exercise.\n"
-#| " 1. (Medium) Write a function `filterM` which generalizes the `filter` function on lists. Your function should have the following type signature:\n"
+#, no-wrap
 msgid ""
 "     _Hint_: This function can be written as a one-liner using `foldM`. You might want to use the `nub` and `sort` functions to remove duplicates and sort the result.\n"
 " 1. (Medium) Confirm that the `ap` function and the `apply` operator agree for the `Maybe` monad. _Note:_ There are no tests for this exercise.\n"
 " 1. (Medium) Verify that the monad laws hold for the `Monad` instance for the `Maybe` type, as defined in the `maybe` package. _Note:_ There are no tests for this exercise.\n"
 " 1. (Medium) Write a function `filterM` which generalizes the `filter` function on lists. Your function should have the following type signature:\n"
 msgstr ""
-"     *手掛かり*：`foldM`を使うと1行でこの関数を書くことが可能です。\n"
-"     重複を取り除いたり、結果を並び替えたりするのに、`nub`関数や `sort`関数を使いたくなるかもしれません。\n"
-"1. （普通）`Maybe`型構築子について、 `ap`関数と `apply`演算子が一致することを確認してください。\n"
+"     *手掛かり*：`foldM`を使うと1行でこの関数を書けます。\n"
+"     重複を取り除いたり、結果を並び替えたりするのに、`nub`関数や`sort`関数を使うことでしょう。\n"
+"1. （普通）`ap`関数と`apply`演算子が`Maybe`モナドを充足することを確かめてください。\n"
 "   *補足*：この演習にはテストがありません。\n"
-"1. （普通）`maybe`パッケージで定義されている`Maybe`型についての `Monad`インスタンスが、モナド則を満たしていることを検証してください。\n"
+"1. （普通）`Maybe`型についての`Monad`インスタンスが、モナド則を満たしていることを検証してください。\n"
+"   このインスタンスは`maybe`パッケージで定義されています。\n"
 "   *補足*：この演習にはテストがありません。\n"
-"1. （普通）配列上の `filter`の関数を一般化した関数`filterM`を書いてください。\n"
+"1. （普通）リスト上の`filter`の関数を一般化した関数`filterM`を書いてください。\n"
 "   この関数は次の型シグネチャを持ちます。\n"
 
 #. type: Plain text
@@ -27186,11 +27060,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:345
-#, fuzzy, no-wrap
-#| msgid "     where the `Apply` instance uses the `ap` function defined above. Recall that `lift2` was defined as follows:\n"
+#, no-wrap
 msgid "     Where the `Apply` instance uses the `ap` function defined above. Recall that `lift2` was defined as follows:\n"
 msgstr ""
-"     ここで、 `Applly`インスタンスは上で定義された `ap`関数を使用しています。\n"
+"     ここで、`Applly`インスタンスは上で定義された`ap`関数を使用しています。\n"
 "     `lift2`が次のように定義されていたことを思い出してください。\n"
 
 #. type: Plain text
@@ -27221,16 +27094,10 @@ msgstr "ネイティブな作用"
 
 #. type: Plain text
 #: text/chapter8.md:356
-#, fuzzy
-#| msgid ""
-#| "We will now look at one particular monad which is of central importance "
-#| "in PureScript - the `Effect` monad."
 msgid ""
 "We will now look at one particular monad of central importance in PureScript "
 "– the `Effect` monad."
-msgstr ""
-"ここではPureScriptの中核となる重要なモナド、 `Effect`モナドについて見ていきま"
-"す。"
+msgstr "ここではPureScriptで中心的な重要性のあるモナドの1つ、`Effect`モナドについて見ていきます。"
 
 #. type: Plain text
 #: text/chapter8.md:358
@@ -27245,18 +27112,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:360
-#, fuzzy
-#| msgid ""
-#| "What are native side-effects? They are the side-effects which distinguish "
-#| "JavaScript expressions from idiomatic PureScript expressions, which "
-#| "typically are free from side-effects. Some examples of native effects are:"
 msgid ""
 "What are native side-effects? They are the side-effects that distinguish "
 "JavaScript expressions from idiomatic PureScript expressions, which "
 "typically are free from side-effects. Some examples of native effects are:"
 msgstr ""
 "ネイティブな副作用とは何でしょうか。\n"
-"この副作用はPureScript特有の式からJavaScriptの式を区別するものです。\n"
+"この副作用はPureScript特有の式とJavaScriptの式とを2分するものです。\n"
 "PureScriptの式は概して副作用とは無縁なのです。\n"
 "ネイティブな作用の例を以下に示します。"
 
@@ -27322,7 +27184,6 @@ msgstr "配列やリストで表現される多値関数"
 
 #. type: Plain text
 #: text/chapter8.md:380
-#, fuzzy
 msgid ""
 "Note that the distinction is subtle. It is true, for example, that an error "
 "message is a possible side-effect of a JavaScript expression in the form of "
@@ -27334,9 +27195,9 @@ msgid ""
 "is implemented at runtime."
 msgstr ""
 "これらの区別はわかりにくいので注意してください。\n"
-"エラー文言は例外の形でJavaScriptの式の副作用となることがあります。\n"
-"その意味では例外はネイティブな副作用を表していて、 `Effect`を使用して表現できます。\n"
-"しかし、 `Either`を使用して実装されたエラー文言はJavaScript実行器の副作用ではなく、 `Effect`を使うスタイルでエラー文言を実装するのは適切ではありません。\n"
+"例えば、エラー文言は例外の形でJavaScriptの式の副作用となることがあると言えます。\n"
+"その意味では例外はネイティブな副作用を表していて、`Effect`を使用して表現できます。\n"
+"しかし、`Either`を使用して実装されたエラー文言はJavaScript実行時の副作用ではなく、`Effect`を使うスタイルでエラー文言を実装するのは不適切です。\n"
 "そのため、ネイティブなのは作用自体というより、実行時にどのように実装されているかです。"
 
 #. type: Title ##
@@ -27347,81 +27208,51 @@ msgstr "副作用と純粋性"
 
 #. type: Plain text
 #: text/chapter8.md:384
-#, fuzzy
-#| msgid ""
-#| "In a pure language like PureScript, one question which presents itself "
-#| "is: without side-effects, how can one write useful real-world code?"
 msgid ""
 "In a pure language like PureScript, one question presents itself: without "
 "side-effects, how can one write useful real-world code?"
 msgstr ""
-"PureScriptのような言語が純粋であるとすると、疑問が浮かんできます。副作用がな"
-"いなら、どうやって役に立つ実際のコードを書くことができるというのでしょうか。"
+"PureScriptのような純粋な言語では、ある疑問が浮かんできます。\n"
+"副作用がないなら、どうやって役に立つ実際のコードを書くことができるのでしょうか。"
 
 #. type: Plain text
 #: text/chapter8.md:386
-#, fuzzy
-#| msgid ""
-#| "The answer is that PureScript does not aim to eliminate side-effects. It "
-#| "aims to represent side-effects in such a way that pure computations can "
-#| "be distinguished from computations with side-effects in the type system. "
-#| "In this sense, the language is still pure."
 msgid ""
 "The answer is that PureScript does not aim to eliminate side-effects but to "
 "represent them in such a way that pure computations can be distinguished "
 "from computations with side-effects in the type system. In this sense, the "
 "language is still pure."
 msgstr ""
-"その答えはPureScriptの目的は副作用を排除することではないということです。これ"
-"は、純粋な計算と副作用のある計算とを型システムにおいて区別できるような方法"
-"で、副作用を表現することを目的としているのです。この意味で、言語はあくまで純"
-"粋だということです。"
+"その答えはPureScriptの目的は副作用を排除することではないということです。\n"
+"純粋な計算と副作用のある計算とを、型システムにおいて区別できるような方法で表現します。\n"
+"この意味で、言語はあくまで純粋なのです。"
 
 #. type: Plain text
 #: text/chapter8.md:388
-#, fuzzy
-#| msgid ""
-#| "Values with side-effects have different types from pure values. As such, "
-#| "it is not possible to pass a side-effecting argument to a function, for "
-#| "example, and have side-effects performed unexpectedly."
 msgid ""
 "Values with side-effects have different types from pure values. As such, it "
 "is impossible to pass a side-effecting argument to a function, for example, "
 "and have side-effects performed unexpectedly."
 msgstr ""
-"副作用のある値は、純粋な値とは異なる型を持っています。そういうわけで、例えば"
-"副作用のある引数を関数に渡すことはできず、予期せず副作用を持つようなことが起"
-"こらなくなります。"
+"副作用のある値は、純粋な値とは異なる型を持っています。\n"
+"そういうわけで、例えば副作用のある引数を関数に渡すことはできず、予期せず副作用を持つようなことが起こらなくなります。"
 
 #. type: Plain text
 #: text/chapter8.md:390
-#, fuzzy
-#| msgid ""
-#| "The only way in which side-effects managed by the `Effect` monad will be "
-#| "presented is to run a computation of type `Effect a` from JavaScript."
 msgid ""
 "The only way side-effects managed by the `Effect` monad will be presented is "
 "to run a computation of type `Effect a` from JavaScript."
-msgstr ""
-"`Effect`モナドで管理された副作用を実行する唯一の方法は、型 `Effect a`の計算を"
-"JavaScriptから実行することです。"
+msgstr "`Effect`モナドで管理された副作用を現す手段は、型`Effect a`の計算をJavaScriptから実行することです。"
 
 #. type: Plain text
 #: text/chapter8.md:392
-#, fuzzy
-#| msgid ""
-#| "The Spago build tool (and other tools) provide a shortcut, by generating "
-#| "additional JavaScript to invoke the `main` computation when the "
-#| "application starts. `main` is required to be a computation in the "
-#| "`Effect` monad."
 msgid ""
 "The Spago build tool (and other tools) provide a shortcut by generating "
 "additional JavaScript to invoke the `main` computation when the application "
 "starts. `main` is required to be a computation in the `Effect` monad."
 msgstr ""
-"Spagoビルドツール（や他のツール）は早道を用意しており、アプリケーションの起動"
-"時に`main`計算を呼び出すための追加のJavaScriptコードを生成します。\n"
-"`main`は `Effect`モナドでの計算であることが要求されます。"
+"Spagoビルドツール（や他のツール）は早道を用意しており、アプリケーションの起動時に`main`計算を呼び出すための追加のJavaScriptコードを生成します。\n"
+"`main`は`Effect`モナドでの計算であることが要求されます。"
 
 #. type: Plain text
 #: text/chapter8.md:396
@@ -27434,45 +27265,23 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:398
-#, fuzzy
-#| msgid ""
-#| "Let's take a closer look at the return type of the familiar `log` "
-#| "function. `Effect` indicates that this function produces a native effect, "
-#| "console IO in this case.  `Unit` indicates that no _meaningful_ data is "
-#| "returned. You can think of `Unit` as being analogous to the `void` "
-#| "keyword in other languages, such as C, Java, etc."
 msgid ""
 "Let's look at the return type of the familiar `log` function. `Effect` "
 "indicates that this function produces a native effect, console IO in this "
 "case."
 msgstr ""
-"馴染みのある`log`関数から返る型をもう少し見てみましょう。\n"
-"`Effect`はこの関数がネイティブな作用を生み出すことを示しており、この場合はコ"
-"ンソールIOです。\n"
-"`Unit`はいかなる*意味のある*データも返らないことを示しています。\n"
-"`Unit`はC、Javaなど他の言語での`void`キーワードと似たようなものとして考えられ"
-"ます。"
+"馴染みのある`log`関数から返る型を見てみましょう。\n"
+"`Effect`はこの関数がネイティブな作用を生み出すことを示しており、この場合はコンソールIOです。"
 
 #. type: Plain text
 #: text/chapter8.md:400
-#, fuzzy
-#| msgid ""
-#| "Let's take a closer look at the return type of the familiar `log` "
-#| "function. `Effect` indicates that this function produces a native effect, "
-#| "console IO in this case.  `Unit` indicates that no _meaningful_ data is "
-#| "returned. You can think of `Unit` as being analogous to the `void` "
-#| "keyword in other languages, such as C, Java, etc."
 msgid ""
 "`Unit` indicates that no _meaningful_ data is returned. You can think of "
 "`Unit` as analogous to the `void` keyword in other languages, such as C, "
 "Java, etc."
 msgstr ""
-"馴染みのある`log`関数から返る型をもう少し見てみましょう。\n"
-"`Effect`はこの関数がネイティブな作用を生み出すことを示しており、この場合はコ"
-"ンソールIOです。\n"
 "`Unit`はいかなる*意味のある*データも返らないことを示しています。\n"
-"`Unit`はC、Javaなど他の言語での`void`キーワードと似たようなものとして考えられ"
-"ます。"
+"`Unit`はC、Javaなど他の言語での`void`キーワードと似たものとして考えられます。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:401
@@ -27571,13 +27380,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:439
-#, fuzzy, no-wrap
-#| msgid "> _Aside:_ `spago run` defaults to searching in the `Main` module for a `main` function. You may also specify an alternate module as an entry point with the `--main` flag, as is done in the above example. Just be sure that this alternate module also contains a `main` function.\n"
+#, no-wrap
 msgid "> _Aside:_ `spago run` defaults to searching in the `Main` module for a `main` function. You may also specify an alternate module as an entry point with the `--main` flag, as in the above example. Just be sure that this alternate module also contains a `main` function.\n"
 msgstr ""
-"> 余談：`spago run`は既定で`Main`モジュールとその中の`main`関数を探索します。\n"
-"`--main`フラグで代替のモジュールを入口として指定でき、上の例ではそうしています。\n"
-"この代替のモジュールもまた`main`関数を含んでいることに注目してください。\n"
+"> 余談：`spago run`は既定で`main`関数を`Main`モジュールの中から探索します。\n"
+"> `--main`フラグで代替のモジュールを入口として指定することも可能で、上の例ではそうしています。\n"
+"> この代替のモジュールにも`main`関数が含まれているようにはしてください。\n"
 
 #. type: Plain text
 #: text/chapter8.md:441
@@ -27592,7 +27400,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:443
-#, fuzzy
 msgid ""
 "As mentioned previously, the `Effect` monad is of central importance to "
 "PureScript. The reason why it's central is that it is the conventional way "
@@ -27608,20 +27415,17 @@ msgstr ""
 "なぜ核心かというと、それはPureScriptの`外部関数インターフェース`とやり取りする上での常套手段だからです。\n"
 "`外部関数インターフェース`はプログラムを実行したり副作用を発生させたりする仕組みを提供します。\n"
 "`外部関数インターフェース`を使うことは避けるのが望ましいのですが、どのように動作しどう使うのか理解することもまた極めて大事なことですので、実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。\n"
-"要は`Effect`モナドは結構単純なのです。幾つかの補助関数がありますが、それを差し置いても副作用を内包すること以外には大したことはしません。"
+"要は`Effect`モナドは結構単純なのです。\n"
+"幾つかの補助関数がありますが、副作用を内包すること以外には大したことはしません。"
 
 #. type: Plain text
 #: text/chapter8.md:447
-#, fuzzy
-#| msgid ""
-#| "Let's examine a function from the `node-fs` package that involves two "
-#| "_native_ side effects: reading mutable state, and exceptions:"
 msgid ""
 "Let's examine a function from the `node-fs` package that involves two "
 "_native_ side effects: reading mutable state and exceptions:"
 msgstr ""
-"2つの _ネイティブな_ 副作用が絡む`node-fs`パッケージの関数を調べましょう。こ"
-"こでの副作用は可変状態の読み取りと例外です。"
+"2つの*ネイティブな*副作用が絡む`node-fs`パッケージの関数を調べましょう。\n"
+"ここでの副作用は可変状態の読み取りと例外です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:448
@@ -27725,11 +27529,6 @@ msgstr "try :: forall a. Effect a -> Effect (Either Error a)\n"
 
 #. type: Plain text
 #: text/chapter8.md:495
-#, fuzzy
-#| msgid ""
-#| "We can also generate our own exceptions. Here is an alternative "
-#| "implementation of `Data.List.head` which throws an exception if the list "
-#| "is empty, rather than returning a `Maybe` value of `Nothing`."
 msgid ""
 "We can also generate our own exceptions. Here is an alternative "
 "implementation of `Data.List.head` that throws an exception if the list is "
@@ -27823,7 +27622,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:524
-#, fuzzy
 msgid ""
 "`new` is used to create a new mutable reference cell of type `STRef r a`, "
 "which can be read using the `read` action and modified using the `write` and "
@@ -27831,24 +27629,20 @@ msgid ""
 "and the type `r` is used to indicate a _memory region_ (or _heap_) in the "
 "type system."
 msgstr ""
-"`new`は型`STRef r a`の変更可能な参照領域を新しく作るのに使われます。\n"
-"`STRef r a`は`read`動作を使って状態を読み取ったり、`write`動作や`modify`動作で状態を変更するのに使われます。\n"
-"型`a`は領域に格納された値の型で、型 `r`は型システムで*メモリ領域*（または*ヒープ*）を表しています。"
+"`new`は型`STRef r a`の可変参照領域を新規作成するのに使われます。\n"
+"この領域は`read`動作を使って読み取ったり、`write`動作や`modify`動作で状態を変更するのに使えます。\n"
+"型`a`は領域に格納された値の型を、型`r`は*メモリ領域*（または*ヒープ*）を、それぞれ型システムで表しています。"
 
 #. type: Plain text
 #: text/chapter8.md:526
-#, fuzzy
-#| msgid ""
-#| "Here is an example. Suppose we want to simulate the movement of a "
-#| "particle falling under gravity by iterating a simple update function over "
-#| "a large number of small time steps."
 msgid ""
 "Here is an example. Suppose we want to simulate the movement of a particle "
 "falling under gravity by iterating a simple update function over many small "
 "time steps."
 msgstr ""
-"例を示します。小さな時間刻みで簡単な更新関数の実行を何度も繰り返すことによっ"
-"て、重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。"
+"例を示します。\n"
+"重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。\n"
+"これには小さな時間刻みで簡単な更新関数の実行を何度も繰り返します。"
 
 #. type: Plain text
 #: text/chapter8.md:528
@@ -27904,10 +27698,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:551
-#, fuzzy
-#| msgid ""
-#| "At the end of the computation, we read the final value of the reference "
-#| "cell, and return the position of the particle."
 msgid ""
 "At the end of the computation, we read the final value of the reference cell "
 "and return the position of the particle."
@@ -27916,21 +27706,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:553
-#, fuzzy
-#| msgid ""
-#| "Note that even though this function uses mutable state, it is still a "
-#| "pure function, so long as the reference cell `ref` is not allowed to be "
-#| "used by other parts of the program. We will see that this is exactly what "
-#| "the `ST` effect disallows."
 msgid ""
 "Note that even though this function uses a mutable state, it is still a pure "
 "function, so long as the reference cell `ref` is not allowed to be used by "
 "other program parts. We will see that this is exactly what the `ST` effect "
 "disallows."
 msgstr ""
-"なお、この関数が変更可能な状態を使っていても、その参照領域`ref`がプログラムの"
-"他の部分で使われるのが許されない限り、これは純粋な関数のままです。\n"
-"`ST`作用が禁止するものが正確には何であるのかについては後ほど見ます。"
+"なお、この関数が変更可能な状態を使っていても、その参照領域`ref`がプログラムの他の部分での使用が許されない限り、これは純粋な関数のままです。\n"
+"このことが正に`ST`作用が禁止するものであることを見ていきます。"
 
 #. type: Plain text
 #: text/chapter8.md:555
@@ -27956,23 +27739,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:563
-#, fuzzy
-#| msgid ""
-#| "However, once a reference cell has been created by `new`, its region type "
-#| "is already fixed, so it would be a type error to try to use the reference "
-#| "cell outside the code delimited by `run`.  This is what allows `run` to "
-#| "safely remove the `ST` effect, and turn `simulate` into a pure function!"
 msgid ""
 "However, once a reference cell has been created by `new`, its region type is "
 "already fixed, so it would be a type error to try to use the reference cell "
 "outside the code delimited by `run`.  This allows `run` to safely remove the "
 "`ST` effect and turn `simulate` into a pure function!"
 msgstr ""
-"しかし、ひとたび参照領域が `new`によって作成されると、その領域の型は既に固定"
-"されており、`run`によって限定されたコードの外側で参照領域を使おうとしても型エ"
-"ラーになるでしょう。\n"
-"`run`が安全に `ST`作用を除去でき、`simulate`を純粋関数にできるのはこれが理由"
-"なのです。"
+"しかし、ひとたび参照領域が`new`によって作成されると、その領域の型は既に固定されており、`run`によって限定されたコードの外側で参照領域を使おうとしても型エラーになるでしょう。\n"
+"`run`が安全に`ST`作用を除去でき、`simulate`を純粋関数にできるのはこれが理由なのです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:564
@@ -28072,20 +27846,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:610
-#, fuzzy
-#| msgid ""
-#| "then the compiler will notice that the reference cell is not allowed to "
-#| "escape its scope, and can safely turn `ref` into a `var`. Here is the "
-#| "generated JavaScript for `simulate` inlined with `run`:"
 msgid ""
 "Then the compiler will notice that the reference cell cannot escape its "
 "scope and can safely turn `ref` into a `var`. Here is the generated "
 "JavaScript for `simulate` inlined with `run`:"
 msgstr ""
-"参照領域はそのスコープから逃れることができないことがコンパイラにわかります"
-"し、安全に`ref`を`var`に変換できます。\n"
-"`run`が埋め込まれた`simulate`に対して生成されたJavaScriptは次のようになりま"
-"す。"
+"そうして、参照領域はそのスコープから逃れられないことと、安全に`ref`を`var`に変換できることにコンパイラが気付きます。\n"
+"`run`が埋め込まれた`simulate`に対して生成されたJavaScriptは次のようになります。"
 
 #. type: Fenced code block (javascript)
 #: text/chapter8.md:611
@@ -28139,12 +27906,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:637
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "> Note that this resulting JavaScript is not as optimal as it could be. See [this issue](https://github.com/purescript-contrib/purescript-book/issues/121) for more details. The above snippet should be updated once that issue is resolved.\n"
 msgstr ""
-"なお、この結果として得られたJavaScriptは最適化の余地があります。\n"
-"詳細は[この課題](https://github.com/purescript-contrib/purescript-book/issues/121)を参照してください。\n"
-"上記の抜粋はその課題が解決されたら更新されるでしょう。"
+"> なお、この結果として得られたJavaScriptは最適化の余地があります。\n"
+"> 詳細は[こちらの課題](https://github.com/purescript-contrib/purescript-book/issues/121)を参照してください。\n"
+"> 上記の抜粋はそちらの課題が解決されたら更新されるでしょう。\n"
 
 #. type: Plain text
 #: text/chapter8.md:639
@@ -28204,12 +27971,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:666
-#, fuzzy
 msgid ""
 "The `ST` effect is a good way to generate short JavaScript when working with "
 "locally-scoped mutable state, especially when used together with actions "
 "like `for`, `foreach`, and `while`, which generate efficient loops."
-msgstr "局所的な変更可能状態を扱うとき、特に作用が絡むループを生成する`for`、 `foreach`、 `while`のような動作を一緒に使うときには、`ST`作用は短いJavaScriptを生成する良い方法となります。"
+msgstr ""
+"局所的な変更可能状態を扱うとき、`ST`作用は短いJavaScriptを生成する良い方法となります。\n"
+"作用を持つ繰り返しを生成する`for`、`foreach`、`while`のような動作を一緒に使うときは特にそうです。"
 
 #. type: Bullet: '1. '
 #: text/chapter8.md:672
@@ -28267,10 +28035,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:678
-#, fuzzy
-#| msgid ""
-#| "There are a number of PureScript packages for working directly with the "
-#| "DOM, or with open-source DOM libraries. For example:"
 msgid ""
 "There are several PureScript packages for working directly with the DOM or "
 "open-source DOM libraries. For example:"
@@ -28281,26 +28045,14 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: text/chapter8.md:682
-#, fuzzy
-#| msgid ""
-#| "[`web-dom`](https://github.com/purescript-web/purescript-web-dom) "
-#| "provides type definitions and low level interface implementations for the "
-#| "W3C DOM spec."
 msgid ""
 "[`web-dom`](https://github.com/purescript-web/purescript-web-dom) provides "
 "type definitions and low-level interface implementations for the W3C DOM "
 "spec."
-msgstr ""
-"[`web-dom`](https://github.com/purescript-web/purescript-web-dom)はW3C\n"
-"のDOM規格に向けた型定義と低水準インターフェース実装を提供します。"
+msgstr "[`web-dom`](https://github.com/purescript-web/purescript-web-dom)はW3CのDOM規格に向けた型定義と低水準インターフェース実装を提供します。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:682
-#, fuzzy
-#| msgid ""
-#| "[`web-html`](https://github.com/purescript-web/purescript-web-html) "
-#| "provides type definitions and low level interface implementations for the "
-#| "W3C HTML5 spec."
 msgid ""
 "[`web-html`](https://github.com/purescript-web/purescript-web-html) provides "
 "type definitions and low-level interface implementations for the W3C HTML5 "
@@ -28320,23 +28072,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:684
-#, fuzzy
-#| msgid ""
-#| "There are also PureScript libraries which build abstractions on top of "
-#| "these libraries, such as"
 msgid ""
 "There are also PureScript libraries that build abstractions on top of these "
 "libraries, such as"
 msgstr ""
-"上記のライブラリを抽象化するPureScriptライブラリもあります。\n"
+"上記のライブラリを土台に抽象化を進めたPureScriptライブラリもあります。\n"
 "以下のようなものです。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:688
-#, fuzzy
-#| msgid ""
-#| "[`thermite`](https://github.com/paf31/purescript-thermite), which builds "
-#| "on [`react`](https://github.com/purescript-contrib/purescript-react)"
 msgid ""
 "[`thermite`](https://github.com/paf31/purescript-thermite) builds on "
 "[`react`](https://github.com/purescript-contrib/purescript-react)"
@@ -28347,11 +28091,6 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: text/chapter8.md:688
-#, fuzzy
-#| msgid ""
-#| "[`react-basic-hooks`](https://github.com/megamaddu/purescript-react-basic-"
-#| "hooks), which builds on [`react-basic`](https://github.com/lumihq/"
-#| "purescript-react-basic)"
 msgid ""
 "[`react-basic-hooks`](https://github.com/megamaddu/purescript-react-basic-"
 "hooks) builds on [`react-basic`](https://github.com/lumihq/purescript-react-"
@@ -28363,11 +28102,6 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: text/chapter8.md:688
-#, fuzzy
-#| msgid ""
-#| "[`halogen`](https://github.com/purescript-halogen/purescript-halogen) "
-#| "which provides a type-safe set of abstractions on top of a custom virtual "
-#| "DOM library."
 msgid ""
 "[`halogen`](https://github.com/purescript-halogen/purescript-halogen) "
 "provides a type-safe set of abstractions on top of a custom virtual DOM "
@@ -28424,7 +28158,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:698
-#, fuzzy
 msgid ""
 "We are going to build a form that will allow a user to add a new entry into "
 "our address book. The form will contain text boxes for the various fields "
@@ -28433,8 +28166,8 @@ msgid ""
 "validation errors will be updated."
 msgstr ""
 "利用者が住所録に新しい項目を追加できるフォームを構築することにしましょう。\n"
-"フォームには、様々なフィールド（姓、名前、都市、州など）のテキストボックス、及び検証エラーが表示される領域が含まれます。\n"
-"テキストボックスに利用者がテキストを入力すると、検証エラーが更新されます。"
+"フォームには、様々なフィールド（姓、名、市町村、州など）のテキストボックス、及び検証エラーが表示される領域が含まれます。\n"
+"テキストボックスに利用者がテキストを入力する度に、検証エラーが更新されます。"
 
 #. type: Plain text
 #: text/chapter8.md:700
@@ -28482,17 +28215,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:712
-#, fuzzy
-#| msgid ""
-#| "`parcel` should launch a browser window with our \"Address Book\" app. If "
-#| "you keep the `parcel` terminal open, and rebuild with `spago` in another "
-#| "terminal, the page should automatically refresh with your latest edits. "
-#| "You can also configure automatic rebuilds (and therefore automatic page "
-#| "refresh) on file-save if you're using an [editor](https://github.com/"
-#| "purescript/documentation/blob/master/ecosystem/Editor-and-tool-support."
-#| "md#editors) that supports [`purs ide`](https://github.com/purescript/"
-#| "purescript/tree/master/psc-ide) or are running [`pscid`](https://github."
-#| "com/kRITZCREEK/pscid)."
 msgid ""
 "`parcel` should launch a browser window with our \"Address Book\" app. If "
 "you keep the `parcel` terminal open and rebuild with `spago` in another "
@@ -28515,16 +28237,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:714
-#, fuzzy
-#| msgid ""
-#| "In this Address Book app, you should be able to enter some values into "
-#| "the form fields and see the validation errors printed onto the page."
 msgid ""
 "In this Address Book app, you can enter some values into the form fields and "
 "see the validation errors printed onto the page."
-msgstr ""
-"このアドレス帳アプリでフォームフィールドにいろいろな値を入力すると、ページ上"
-"に出力された検証エラーを見ることができるでしょう。"
+msgstr "このアドレス帳アプリでフォームフィールドにいろいろな値を入力すると、ページ上で出力された検証エラーが見られます。"
 
 #. type: Plain text
 #: text/chapter8.md:716
@@ -28640,10 +28356,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:763
-#, fuzzy
-#| msgid ""
-#| "Let's dig into our AddressBook `reactComponent`. We'll start with a "
-#| "simplified component, and then build up to the actual code in `Main.purs`."
 msgid ""
 "Let's dig into our AddressBook `reactComponent`. We'll start with a "
 "simplified component and then build up to the actual code in `Main.purs`."
@@ -28739,16 +28451,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:798
-#, fuzzy
-#| msgid ""
-#| "Next we'll examine some of the additional complexities of the full "
-#| "Address Book component."
 msgid ""
 "Next, we'll examine some of the additional complexities of the full Address "
 "Book component."
-msgstr ""
-"次に完全なアドレス帳コンポーネントにある幾つかの複雑な事柄をもう少し調べてい"
-"きます。"
+msgstr "次に、完全なアドレス帳コンポーネントにある幾つかの複雑な事柄を調べていきます。"
 
 #. type: Plain text
 #: text/chapter8.md:800
@@ -28782,7 +28488,6 @@ msgstr "Tuple person setPerson <- useState examplePerson\n"
 
 #. type: Plain text
 #: text/chapter8.md:815
-#, fuzzy
 msgid ""
 "Note that you are free to break-up component state into multiple pieces of "
 "state with multiple calls to `useState`. For example, we could rewrite this "
@@ -28875,12 +28580,6 @@ msgstr "`person`は各再描画の時点で現在の状態にアクセスする�
 
 #. type: Plain text
 #: text/chapter8.md:845
-#, fuzzy
-#| msgid ""
-#| "`setPerson` is how we update the state. We simply provide a function that "
-#| "describes how to transform the current state to the new state. The record "
-#| "update syntax is perfect for this when the type of `state` happens to be "
-#| "a `Record`, for example:"
 msgid ""
 "`setPerson` is how we update the state. We provide a function describing how "
 "to transform the current state into the new one. The record update syntax is "
@@ -28905,8 +28604,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:852
-#, fuzzy
-#| msgid "or as shorthand:"
 msgid "Or as shorthand:"
 msgstr "あるいは短かく以下です。"
 
@@ -29024,14 +28721,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:897
-#, fuzzy
-#| msgid ""
-#| "Here we produce `JSX` which represents the intended state of the DOM. "
-#| "This JSX is typically created by applying functions corresponding to HTML "
-#| "tags (e.g. `div`, `form`, `h3`, `li`, `ul`, `label`, `input`) which "
-#| "create single HTML elements. These HTML elements are actually React "
-#| "components themselves, converted to JSX. There are usually three variants "
-#| "of each of these functions:"
 msgid ""
 "Here we produce `JSX`, which represents the intended state of the DOM. This "
 "JSX is typically created by applying functions corresponding to HTML tags (e."
@@ -29040,11 +28729,10 @@ msgid ""
 "converted to JSX. There are usually three variants of each of these "
 "functions:"
 msgstr ""
-"ここでDOMの意図した状態を表現する`JSX`を生成しています。このJSXはHTMLタグ"
-"（例：`div`、`form`、`h3`、`li`、`ul`、`label`、`input`）に対応し、典型的には"
-"単一のHTML要素を作る関数を適用することで作られます。これらのHTML要素は実は"
-"ReactコンポーネントそのものによりJSXに変換されます。通常これらの関数にはそれ"
-"ぞれ3つの種類があります。"
+"ここでDOMの意図した状態を表現する`JSX`を生成しています。\n"
+"このJSXは単一のHTML要素を作るHTMLタグ（例：`div`、`form`、`h3`、`li`、`ul`、`label`、`input`）に対応する関数を適用することで作られるのが普通です。\n"
+"これらのHTML要素はそれ自体がReactコンポーネントであり、JSXに変換されます。\n"
+"通常これらの関数にはそれぞれ3つの種類があります。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:901
@@ -29183,19 +28871,13 @@ msgstr "targetValue :: EventFn SyntheticEvent (Maybe String)\n"
 
 #. type: Plain text
 #: text/chapter8.md:941
-#, fuzzy
-#| msgid ""
-#| "In JavaScript, the `input` element's `onChange` event is actually "
-#| "accompanied by a `String` value, but since strings in JavaScript can be "
-#| "null, `Maybe` is used for safety."
 msgid ""
 "In JavaScript, the `input` element's `onChange` event is accompanied by a "
 "`String` value, but since strings in JavaScript can be null, `Maybe` is used "
 "for safety."
 msgstr ""
-"JavaScriptでは`input`要素の`onChange`イベントは実は`String`値と一緒になってい"
-"るのですが、JavaScriptの文字列はnullになりえるので、安全のために`Maybe`が使わ"
-"れています。"
+"JavaScriptでは`input`要素の`onChange`イベントには`String`値が伴います。\n"
+"しかし、JavaScriptの文字列はnullになり得るので、安全のために`Maybe`が使われています。"
 
 #. type: Plain text
 #: text/chapter8.md:943
@@ -29267,20 +28949,16 @@ msgstr ""
 "`traverse_`の定義を調査して、両方の形式が確かに等価であることをご確認くださ"
 "い。"
 
+# ここでのsourceはソースコードを意味していると思われます。
 #. type: Plain text
 #: text/chapter8.md:971
-#, fuzzy
-#| msgid ""
-#| "That covers the basics of our component implementation. However, you "
-#| "should read the source accompanying this chapter in order to get a full "
-#| "understanding of the way the component works."
 msgid ""
 "That covers the basics of our component implementation. However, you should "
 "read the source accompanying this chapter to get a full understanding of the "
 "way the component works."
 msgstr ""
-"これでコンポーネント実装の基本を押さえました。しかし、コンポーネントの仕組み"
-"を完全に理解するためには、この章に付随する出典元をお読みください。"
+"これでコンポーネント実装の基本を押さえました。\n"
+"しかし、コンポーネントの仕組みを完全に理解するためには、この章に付随するソースをお読みください。"
 
 #. type: Plain text
 #: text/chapter8.md:973
@@ -29310,14 +28988,13 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: text/chapter8.md:980
-#, fuzzy
 msgid ""
 "(Medium) Right now, the application shows validation errors collected in a "
 "single \"pink-alert\" background.  Modify to give each validation error its "
 "own pink-alert background by separating them with blank lines."
 msgstr ""
 "（普通）現時点でアプリケーションは検証エラーを単一の「pink-alert」背景に集めて表示させています。\n"
-"空の線で分割することにより、各検証エラーにpink-alert背景を持たせるように変更してください。"
+"空行で分離することにより、各検証エラーにpink-alert背景を持たせるように変更してください。"
 
 #. type: Plain text
 #: text/chapter8.md:983
@@ -29332,10 +29009,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:985
-#, fuzzy, no-wrap
-#| msgid "    _Hint_: the error type returned by the validator should be extended to indicate which field caused the error. You might want to use the following modified `Errors` type:\n"
+#, no-wrap
 msgid "    _Hint_: The error type returned by the validator should be extended to indicate which field caused the error. You might want to use the following modified `Errors` type:\n"
-msgstr "    *手掛かり*：検証器によって返されるエラーの型は、エラーの原因となっているフィールドを示すために拡張する必要があります。次のような変更されたエラー型を使用したくなるでしょう。\n"
+msgstr ""
+"    *手掛かり*：検証器によって返されるエラーの型を、エラーの原因となっているフィールドを示すために拡張するべきです。\n"
+"    以下の変更されたエラー型を使うと良いでしょう。\n"
 
 #. type: Plain text
 #: text/chapter8.md:993
@@ -29375,8 +29053,7 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter8.md:1000
-#, fuzzy, no-wrap
-#| msgid "    You will need to write a function which extracts the validation error for a particular `Field` from the `Errors` structure.\n"
+#, no-wrap
 msgid "    You will need to write a function that extracts the validation error for a particular `Field` from the `Errors` structure.\n"
 msgstr "   `Error`構造体から特定の`Field`のための検証エラーを取り出す関数を書く必要があるでしょう。\n"
 
@@ -29390,56 +29067,40 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: text/chapter8.md:1011
-#, fuzzy
-#| msgid "We met the `Monad` type class, and its connection to do notation."
 msgid "We met the `Monad` type class and its connection to do notation."
-msgstr "`Monad`型クラスとdo記法との関係性に出会いました。"
+msgstr "`Monad`型クラスとdo記法との関係性を見ました。"
 
+# they allow usが訳せているかどうか……
 #. type: Bullet: '- '
 #: text/chapter8.md:1011
-#, fuzzy
-#| msgid ""
-#| "We introduced the monad laws, and saw how they allow us to transform code "
-#| "written using do notation."
 msgid ""
 "We introduced the monad laws and saw how they allow us to transform code "
 "written using do notation."
-msgstr ""
-"モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。"
+msgstr "モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。"
 
+# monads can be usedが訳せているかどうか……
 #. type: Bullet: '- '
 #: text/chapter8.md:1011
-#, fuzzy
-#| msgid ""
-#| "We saw how monads can be used abstractly, to write code which works with "
-#| "different side-effects."
 msgid ""
 "We saw how monads can be used abstractly to write code that works with "
 "different side-effects."
-msgstr ""
-"異なる副作用を扱うコードを書くために、モナドを抽象的に使う方法を見ました。"
+msgstr "異なる副作用を扱うコードを書く上で、モナドを抽象的に使う方法を見ました。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:1011
 msgid ""
 "We saw how monads are examples of applicative functors, how both allow us to "
 "compute with side-effects, and the differences between the two approaches."
-msgstr ""
-"モナドがアプリカティブ関手の一例であること、両者がどのように副作用のある計算"
-"を可能にするのかということ、そして2つの手法の違いを説明しました。"
+msgstr "モナドがアプリカティブ関手の一例であること、両者がどのように副作用のある計算を可能にするのかということ、そして2つの手法の違いを説明しました。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:1011
-#, fuzzy
-#| msgid ""
-#| "The concept of native effects was defined, and we met the `Effect` monad, "
-#| "which is used to handle native side-effects."
 msgid ""
 "The concept of native effects was defined, and we met the `Effect` monad, "
 "which handles native side-effects."
 msgstr ""
-"ネイティブな作用の概念を定義し、ネイティブな副作用を処理するために使用する "
-"`Effect`モナドを導入しました。"
+"ネイティブな作用の概念を定義し、`Effect`モナドを見ました。\n"
+"これはネイティブな副作用を扱うものでした。"
 
 #. type: Bullet: '- '
 #: text/chapter8.md:1011
