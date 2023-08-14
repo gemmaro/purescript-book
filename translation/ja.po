@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-12 18:56+0900\n"
+"PO-Revision-Date: 2023-08-15 06:48+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -29128,7 +29128,6 @@ msgstr "非同期作用"
 
 #. type: Plain text
 #: text/chapter9.md:6
-#, fuzzy
 msgid ""
 "This chapter focuses on the `Aff` monad, which is similar to the `Effect` "
 "monad, but represents _asynchronous_ side-effects. We'll demonstrate "
@@ -29138,7 +29137,7 @@ msgid ""
 msgstr ""
 "この章では`Aff`モナドに集中します。\n"
 "これは`Effect`モナドに似ていますが、*非同期*な副作用を表現するものです。\n"
-"ファイルシステムとやり取りしてHTTPリクエストを作る、非同期な例を実演していきます。\n"
+"非同期にファイルシステムとやり取りしたりHTTPリクエストしたりする例を実演していきます。\n"
 "また非同期作用の直列ないし並列な実行の管理方法も押さえます。"
 
 #. type: Plain text
@@ -29168,18 +29167,12 @@ msgstr "`parallel` - `Aff`の並列実行。"
 
 #. type: Plain text
 #: text/chapter9.md:17
-#, fuzzy
-#| msgid ""
-#| "When running outside of the browser (such as in our Node.js environment), "
-#| "the `affjax` library requires the `xhr2` NPM module, which is listed as "
-#| "dependency in the `package.json` of this chapter. Install that by running:"
 msgid ""
 "When running outside of the browser (such as in our Node.js environment), "
 "the `affjax` library requires the `xhr2` NPM module, which is listed as a "
 "dependency in the `package.json` of this chapter. Install that by running:"
 msgstr ""
-"（Node.js環境のような）ブラウザ外で実行する場合、`affjax`ライブラリは"
-"`xhr2`NPMモジュールが必要です。\n"
+"（Node.js環境のような）ブラウザ外で実行する場合、`affjax`ライブラリには`xhr2`NPMモジュールが必要です。\n"
 "このモジュールはこの章の`package.json`中の依存関係に挙げられています。\n"
 "以下を走らせてインストールします。"
 
@@ -29249,10 +29242,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter9.md:43
-#, fuzzy
-#| msgid ""
-#| "It is also possible to use callbacks or synchronous functions, but those "
-#| "are less desireable because:"
 msgid ""
 "It is also possible to use callbacks or synchronous functions, but those are "
 "less desirable because:"
@@ -29308,36 +29297,23 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter9.md:58
-#, fuzzy
-#| msgid ""
-#| "It is also possible to re-write the above snippet using callbacks or "
-#| "synchronous functions (for example with `Node.FS.Async` and `Node.FS."
-#| "Sync` respectively), but those share the same downsides as discussed "
-#| "earlier with JavaScript, and so that coding style is not recommended."
 msgid ""
 "It is also possible to re-write the above snippet using callbacks or "
 "synchronous functions (for example, with `Node.FS.Async` and `Node.FS.Sync`, "
 "respectively), but those share the same downsides as discussed earlier with "
 "JavaScript, so that coding style is not recommended."
 msgstr ""
-"上のコード片をコールバックや同期関数を使って書き換えることも可能ですが（例え"
-"ば`Node.FS.Async`や`Node.FS.Sync`をそれぞれ使います）、JavaScriptで前にお話し"
-"したのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されま"
-"せん。"
+"上のコード片をコールバックや同期関数を使って書き換えることも可能です（例えば`Node.FS.Async`や`Node.FS.Sync`をそれぞれ使います）。\n"
+"しかし、JavaScriptで前にお話ししたのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されません。"
 
 #. type: Plain text
 #: text/chapter9.md:60
-#, fuzzy
-#| msgid ""
-#| "The syntax for working with `Aff` is very similar to working with "
-#| "`Effect`. They are both monads, and can therefore be written with do "
-#| "notation."
 msgid ""
 "The syntax for working with `Aff` is very similar to working with `Effect`. "
 "They are both monads and can therefore be written with do notation."
 msgstr ""
 "`Aff`を扱う文法は`Effect`を扱うものと大変似ています。\n"
-"どちらもモナドですし、したがってdo記法で書くことができます。"
+"どちらもモナドですし、したがってdo記法で書けます。"
 
 #. type: Plain text
 #: text/chapter9.md:62
@@ -29406,10 +29382,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter9.md:90
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a `concatenateFiles` function which concatenates two text "
-#| "files."
 msgid ""
 "(Easy) Write a `concatenateFiles` function that concatenates two text files."
 msgstr ""
@@ -29418,17 +29390,12 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter9.md:92
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a function `concatenateMany` to concatenate multiple text "
-#| "files, given an array of input file names and an output file name. "
-#| "_Hint_: use `traverse`."
 msgid ""
 "(Medium) Write a function `concatenateMany` to concatenate multiple text "
 "files, given an array of input and output file names. _Hint_: use `traverse`."
 msgstr ""
-"（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、複数のテキスト"
-"ファイルを連結する関数`concatenateMany`を書いてください。\n"
+"（普通）複数のテキストファイルを連結する関数`concatenateMany`を書いてください。\n"
+"入力ファイル名の配列と出力ファイル名が与えられます。\n"
 "*手掛かり*：`traverse`を使ってください。"
 
 #. type: Bullet: ' 1. '
@@ -29449,23 +29416,14 @@ msgstr "更なるAffの資料"
 
 #. type: Plain text
 #: text/chapter9.md:98
-#, fuzzy
-#| msgid ""
-#| "If you haven't already taken a look at the [official Aff guide](https://"
-#| "pursuit.purescript.org/packages/purescript-aff/), skim through that now. "
-#| "It's not a direct prerequisite for completing the remaining exercises in "
-#| "this chapter, but you may find it helpful to lookup some functions on "
-#| "Pursuit."
 msgid ""
 "If you haven't already looked at the [official Aff guide](https://pursuit."
 "purescript.org/packages/purescript-aff/), skim through that now. It's not a "
 "direct prerequisite for completing the remaining exercises in this chapter, "
 "but you may find it helpful to lookup some functions on Pursuit."
 msgstr ""
-"もしまだ[公式のAffの手引き](https://pursuit.purescript.org/packages/"
-"purescript-aff/)を見ていなければ、今ざっと目を通してください。\n"
-"この章の残りの演習を完了する上で事前に必要なことではありませんが、Pursuitで何"
-"らかの関数を見付けだす助けになるかもしれません。"
+"もしまだ[公式のAffの手引き](https://pursuit.purescript.org/packages/purescript-aff/)を見ていなければ、今ざっと目を通してください。\n"
+"この章の残りの演習を完了する上で事前に直接必要なことではありませんが、Pursuitで何らかの関数を見付けだす助けになるかもしれません。"
 
 #. type: Plain text
 #: text/chapter9.md:100
@@ -29500,18 +29458,6 @@ msgstr "HTTPクライアント"
 
 #. type: Plain text
 #: text/chapter9.md:107
-#, fuzzy
-#| msgid ""
-#| "The `affjax` library offers a convenient way to make asynchronous AJAX "
-#| "HTTP requests with `Aff`. Depending on what environment you are targeting "
-#| "you need to use either the [purescript-affjax-web](https://github.com/"
-#| "purescript-contrib/purescript-affjax-web) or the [purescript-affjax-node]"
-#| "(https://github.com/purescript-contrib/purescript-affjax-node) library.  "
-#| "In the rest of this chapter we will be targeting node and thus using "
-#| "`purescript-affjax-node`.  Consult the [Affjax docs](https://pursuit."
-#| "purescript.org/packages/purescript-affjax) for more usage information. "
-#| "Here is an example that makes HTTP GET requests at a provided URL and "
-#| "returns the response body or an error message:"
 msgid ""
 "The `affjax` library offers a convenient way to make asynchronous AJAX HTTP "
 "requests with `Aff`. Depending on what environment you are targeting, you "
@@ -29519,32 +29465,11 @@ msgid ""
 "contrib/purescript-affjax-web) or the [purescript-affjax-node](https://"
 "github.com/purescript-contrib/purescript-affjax-node) library."
 msgstr ""
-"`affjax`ライブラリは`Aff`で非同期AJAX HTTP要求する便利な手段を提供します。\n"
-"対象としている環境が何であるかによって、[purescript-affjax-web](https://"
-"github.com/purescript-contrib/purescript-affjax-web)または[purescript-affjax-"
-"node](https://github.com/purescript-contrib/purescript-affjax-node)のどちらか"
-"のライブラリを使う必要があります。\n"
-"この章の以降ではNodeを対象としていくので、`purescript-affjax-node`を使いま"
-"す。\n"
-"より詳しい使用上の情報は[affjaxのドキュメント](https://pursuit.purescript."
-"org/packages/purescript-affjax)にあたってください。\n"
-"以下は与えられたURLに向けてHTTP GETを要求し、応答本文ないしエラー文言を返す例"
-"です。"
+"`affjax`ライブラリは`Aff`で非同期なAJAXのHTTP要求をする上での便利な手段を提供します。\n"
+"対象としている環境が何であるかによって、[purescript-affjax-web](https://github.com/purescript-contrib/purescript-affjax-web)または[purescript-affjax-node](https://github.com/purescript-contrib/purescript-affjax-node)のどちらかのライブラリを使う必要があります。"
 
 #. type: Plain text
 #: text/chapter9.md:110
-#, fuzzy
-#| msgid ""
-#| "The `affjax` library offers a convenient way to make asynchronous AJAX "
-#| "HTTP requests with `Aff`. Depending on what environment you are targeting "
-#| "you need to use either the [purescript-affjax-web](https://github.com/"
-#| "purescript-contrib/purescript-affjax-web) or the [purescript-affjax-node]"
-#| "(https://github.com/purescript-contrib/purescript-affjax-node) library.  "
-#| "In the rest of this chapter we will be targeting node and thus using "
-#| "`purescript-affjax-node`.  Consult the [Affjax docs](https://pursuit."
-#| "purescript.org/packages/purescript-affjax) for more usage information. "
-#| "Here is an example that makes HTTP GET requests at a provided URL and "
-#| "returns the response body or an error message:"
 msgid ""
 "In the rest of this chapter, we will be targeting node and thus using "
 "`purescript-affjax-node`.  Consult the [Affjax docs](https://pursuit."
@@ -29552,17 +29477,9 @@ msgid ""
 "is an example that makes HTTP GET requests at a provided URL and returns the "
 "response body or an error message:"
 msgstr ""
-"`affjax`ライブラリは`Aff`で非同期AJAX HTTP要求する便利な手段を提供します。\n"
-"対象としている環境が何であるかによって、[purescript-affjax-web](https://"
-"github.com/purescript-contrib/purescript-affjax-web)または[purescript-affjax-"
-"node](https://github.com/purescript-contrib/purescript-affjax-node)のどちらか"
-"のライブラリを使う必要があります。\n"
-"この章の以降ではNodeを対象としていくので、`purescript-affjax-node`を使いま"
-"す。\n"
-"より詳しい使用上の情報は[affjaxのドキュメント](https://pursuit.purescript."
-"org/packages/purescript-affjax)にあたってください。\n"
-"以下は与えられたURLに向けてHTTP GETを要求し、応答本文ないしエラー文言を返す例"
-"です。"
+"この章の以降ではnodeを対象としていくので、`purescript-affjax-node`を使います。\n"
+"より詳しい使用上の情報は[affjaxのドキュメント](https://pursuit.purescript.org/packages/purescript-affjax)にあたってください。\n"
+"以下は与えられたURLに向けてHTTPのGET要求をして、応答本文ないしエラー文言を返す例です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:111
@@ -29643,15 +29560,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter9.md:143
-#, fuzzy
-#| msgid ""
-#| "The `parallel` package defines a type class `Parallel` for monads like "
-#| "`Aff` which support parallel execution. When we met applicative functors "
-#| "earlier in the book, we observed how applicative functors can be useful "
-#| "for combining parallel computations. In fact, an instance for `Parallel` "
-#| "defines a correspondence between a monad `m` (such as `Aff`) and an "
-#| "applicative functor `f` which can be used to combine computations in "
-#| "parallel:"
 msgid ""
 "The `parallel` package defines a type class `Parallel` for monads like "
 "`Aff`, which support parallel execution. When we met applicative functors "
@@ -29660,12 +29568,9 @@ msgid ""
 "a correspondence between a monad `m` (such as `Aff`) and an applicative "
 "functor `f` that can be used to combine computations in parallel:"
 msgstr ""
-"`parallel`パッケージは`Aff`のようなモナドのための型クラス`Parallel`を定義して"
-"おり、並列実行に対応しています。\n"
-"以前に本書でアプリカティブ関手に出会ったとき、並列計算を合成するときにアプリ"
-"カティブ関手がどれほど便利なのかを見ました。\n"
-"実は`Parallel`のインスタンスは、（`Aff`のような）モナド`m`と、並列に計算を合"
-"成するために使われるアプリカティブ関手`f`との対応関係を定義しているのです。"
+"`parallel`パッケージは`Aff`のようなモナドのための型クラス`Parallel`を定義しており、並列実行に対応しています。\n"
+"以前に本書でアプリカティブ関手に出会ったとき、並列計算を合成するときにアプリカティブ関手がどれほど便利なのかを見ました。\n"
+"実は`Parallel`のインスタンスは、（`Aff`のような）モナド`m`と、並列に計算を組み合わせるために使えるアプリカティブ関手`f`との対応関係を定義しているのです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter9.md:144
@@ -29700,7 +29605,6 @@ msgstr "`sequential`：反対方向に変換します。"
 
 #. type: Plain text
 #: text/chapter9.md:156
-#, fuzzy
 msgid ""
 "The `aff` library provides a `Parallel` instance for the `Aff` monad. It "
 "uses mutable references to combine `Aff` actions in parallel by keeping "
@@ -29708,9 +29612,9 @@ msgid ""
 "have been returned, we can compute the final result and pass it to the main "
 "continuation."
 msgstr ""
-"`aff`ライブラリは `Aff`モナドの `Parallel`インスタンスを提供します。\n"
-"これは、2つの継続のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に `Aff`動作を組み合わせます。\n"
-"両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。"
+"`aff`ライブラリは`Aff`モナドの`Parallel`インスタンスを提供します。\n"
+"これは、2つの継続のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に`Aff`動作を組み合わせます。\n"
+"両方の結果が返されたら、最終結果を計算してメインの継続に渡せます。"
 
 #. type: Plain text
 #: text/chapter9.md:158
@@ -29727,21 +29631,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter9.md:160
-#, fuzzy
-#| msgid ""
-#| "We can also combine parallel computations with sequential portions of "
-#| "code, by using applicative combinators in a do notation block, or vice "
-#| "versa, using `parallel` and `sequential` to change type constructors "
-#| "where appropriate."
 msgid ""
 "We can also combine parallel computations with sequential portions of code "
 "by using applicative combinators in a do notation block, or vice versa, "
 "using `parallel` and `sequential` to change type constructors where "
 "appropriate."
 msgstr ""
-"必要に応じて `parralel`と`sequential`を使って型構築子を変更することで、do記法"
-"ブロック中でアプリカティブコンビネータを使い、直列的なコードの一部で並列計算"
-"を結合したり、またはその逆を行ったりできます。"
+"直列的なコードの一部と並列計算を組み合わせることもできます。\n"
+"それにはdo記法ブロック中でアプリカティブコンビネータを使います。\n"
+"その逆も然りで、必要に応じて`parralel`と`sequential`を使って型構築子を変更すれば良いのです。"
 
 #. type: Plain text
 #: text/chapter9.md:164
@@ -29847,11 +29745,6 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: text/chapter9.md:204
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a `concatenateManyParallel` function which has the same "
-#| "signature as the earlier `concatenateMany` function, but reads all input "
-#| "files in parallel."
 msgid ""
 "(Easy) Write a `concatenateManyParallel` function with the same signature as "
 "the earlier `concatenateMany` function but reads all input files in parallel."
@@ -29887,13 +29780,6 @@ msgstr "文字列の応答：時間制限を越える前に要求が成功した
 
 #. type: Bullet: '1. '
 #: text/chapter9.md:210
-#, fuzzy
-#| msgid ""
-#| "(Difficult) Write a `recurseFiles` function which takes a \"root\" file "
-#| "and returns an array of all paths listed in that file (and listed in the "
-#| "listed files too). Read listed files in parallel. Paths are relative to "
-#| "the directory of the file they appear in. _Hint:_ The `node-path` module "
-#| "has some helpful functions for negotiating directories."
 msgid ""
 "(Difficult) Write a `recurseFiles` function that takes a \"root\" file and "
 "returns an array of all paths listed in that file (and listed in the listed "
@@ -29901,13 +29787,10 @@ msgid ""
 "directory of the file they appear in. _Hint:_ The `node-path` module has "
 "some helpful functions for negotiating directories."
 msgstr ""
-"（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして"
-"一覧にあるファイルの中の一覧も）の配列を返す`recurseFiles`関数を書いてくださ"
-"い。\n"
+"（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す`recurseFiles`関数を書いてください。\n"
 "一覧にあるファイルを並列に読んでください。\n"
-"パスはそのファイルが表れたディレクトリから相対的なものです。\n"
-"*手掛かり*：`node_path`モジュールにはディレクトリを扱う上で便利な関数がありま"
-"す。"
+"パスはそのファイルが現れたディレクトリから相対的なものです。\n"
+"*手掛かり*：`node-path`モジュールにはディレクトリを扱う上で便利な関数があります。"
 
 #. type: Plain text
 #: text/chapter9.md:212
@@ -29965,10 +29848,8 @@ msgstr "[\"root.txt\",\"a.txt\",\"b/a.txt\",\"b/b.txt\",\"b/c/a.txt\",\"c/a/a.tx
 
 #. type: Plain text
 #: text/chapter9.md:241
-#, fuzzy
-#| msgid "In this chapter we covered asynchronous effects and learned how to:"
 msgid "In this chapter, we covered asynchronous effects and learned how to:"
-msgstr "この章では非同期エフェクトと以下の方法を押さえました。"
+msgstr "この章では非同期作用と以下の方法を押さえました。"
 
 #. type: Bullet: '- '
 #: text/chapter9.md:244
