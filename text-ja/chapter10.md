@@ -2,9 +2,9 @@
 
 ## この章の目標
 
-This chapter will introduce PureScript's _foreign function interface_ (or
-_FFI_), which enables communication from PureScript code to JavaScript code
-and vice versa. We will cover how to:
+本章ではPureScriptの*外部関数インターフェース* (foreign function interface; *FFI*) を紹介します。
+これによりPureScriptコードからJavaScriptコードへの呼び出し、及びその逆が可能になります。
+以下の方法を押さえていきます。
 
 - 純粋で、作用のある、非同期なJavaScript関数をPureScriptから呼び出す。
 - 型付けされていないデータを扱う。
@@ -16,19 +16,16 @@ and vice versa. We will cover how to:
 - 利用者にポップアップ通知で警告する。
 - フォームのデータを直列化してブラウザのローカルストレージに保存し、アプリケーションが再起動したときにそれを再読み込みする
 
-There is also an addendum covering some additional topics that are not as
-commonly sought-after. Feel free to read these sections, but don't let them
-stand in the way of progressing through the remainder of the book if they're
-less relevant to your learning objectives:
+さらに一般にはそこまで重用されない幾つかの追加の話題を押さえた補遺もあります。
+ご自由にこれらの節を読んで構いませんが、学習目標にあまり関係しなければ、本書の残りを読み進める妨げにならないようにしてください。
 
 - 実行時のPureScriptの値の表現を理解する。
 - JavaScriptからPureScriptを呼び出す。
 
 ## プロジェクトの準備
 
-The source code for this module is a continuation of the source code from
-chapters 3, 7, and 8. As such, the source tree includes the appropriate
-source files from those chapters.
+このモジュールのソースコードは、第3章、第7章及び第8章の続きになります。
+そうしたわけでソースツリーにはこれらの章からの適切なソースファイルが含まれています。
 
 この章は`argonaut`ライブラリを依存関係として導入しています。
 このライブラリはJSONにエンコードしたりJSONをデコードしたりするために使います。
@@ -41,18 +38,14 @@ test`を走らせることによって`test/Main.purs`中の単体試験につ�
 
 ## 免責事項
 
-PureScript provides a straightforward foreign function interface to make
-working with JavaScript as simple as possible. However, it should be noted
-that the FFI is an _advanced_ feature of the language. To use it safely and
-effectively, you should understand the runtime representation of the data
-you plan to work with. This chapter aims to impart such an understanding as
-pertains to code in PureScript's standard libraries.
+JavaScriptの扱いをできる限り単純にするため、PureScriptは直感的な外部関数インターフェースを提供しています。
+しかし、FFIはこの言語の*応用的な*機能であることには心に留めておかれると良いでしょう。
+安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現について理解していなければなりません。
+この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝授することを目指します。
 
-PureScript's FFI is designed to be very flexible. In practice, this means
-that developers have a choice between giving their foreign functions very
-simple types or using the type system to protect against accidental misuses
-of foreign code. Code in the standard libraries tends to favor the latter
-approach.
+PureScriptのFFIはとても柔軟に設計されています。
+実際には、外部関数にとても単純な型を与えるか、型システムを利用して外部のコードの誤った使い方を防ぐようにするか、開発者が選べるようになっています。
+標準ライブラリのコードは、後者の手法を採る傾向にあります。
 
 簡単な例としては、JavaScriptの関数で戻り値が `null`にならないことは保証できません。
 実のところ、JavaScriptらしさのあるコードはかなり頻繁に `null`を返します。
@@ -76,7 +69,8 @@ node> encodeURIComponent('Hello World')
 'Hello%20World'
 ```
 
-This function has the correct runtime representation for the function type `String -> String`, since it takes non-null strings to non-null strings and has no other side-effects.
+この関数は関数の型`String -> String`について適切な実行時表現を持っています。
+`null`でない文字列を取って`null`でない文字列にするもので、副作用を持たないからです。
 
 次のような外部インポート宣言を使うと、この関数に型を割り当てることができます。
 
@@ -84,12 +78,10 @@ This function has the correct runtime representation for the function type `Stri
 {{#include ../exercises/chapter10/test/URI.purs}}
 ```
 
-We also need to write a foreign JavaScript module to import it from. A
-corresponding foreign JavaScript module is one of the same name but the
-extension changed from `.purs` to `.js`. If the Purescript module above is
-saved as `URI.purs`, then the foreign JavaScript module is saved as
-`URI.js`.  Since `encodeURIComponent` is already defined, we have to export
-it as `_encodeURIComponent`:
+インポートしてくるための外部JavaScriptモジュールを書く必要もあります。
+対応する外部JavaScriptモジュールは、同名で拡張子が`.purs`から`.js`に変わったものです。
+上のPureScriptモジュールが`URI.purs`として保存されているなら、外部JavaScriptモジュールを`URI.js`として保存します。
+`encodeURIComponent`は既に定義されているので、`_encodeURIComponent`としてエクスポートせねばなりません。
 
 ```javascript
 {{#include ../exercises/chapter10/test/URI.js}}
@@ -145,9 +137,9 @@ $ spago repl
 {{#include ../exercises/chapter10/test/Examples.purs:diagonal}}
 ```
 
-Recall that functions in PureScript are _curried_. `diagonal` is a function
-that takes a `Number` and returns a _function_ that takes a `Number` and
-returns a `Number`.
+PureScriptの関数は*カリー化*されていることを思い出してください。
+`diagonal`は`Number`を取って*関数*を返す関数です。
+そして返された関数は`Number`を取って`Number`を返します。
 
 ```js
 {{#include ../exercises/chapter10/test/Examples.js:diagonal}}
@@ -199,11 +191,11 @@ Type -> Type -> Type -> Type
 ```
 
 `Fn2`は3つの型引数を取ります。
-`Fn2 a b c`は、型 `a`と `b`の2つの引数、返り値の型 `c`をもつカリー化されていない関数の型を表現しています。
+`Fn2 a b c`は、型`a`と`b`の2つの引数、返り値の型`c`を持つカリー化されていない関数の型を表現しています。
 これを使って外部モジュールから`diagonalUncurried`をインポートしました。
 
-We can then call it with `runFn2`, which takes the uncurried function and
-then the arguments.
+そうして`runFn2`を使って呼び出せます。
+これはカリー化されていない関数と引数を取るものです。
 
 ```text
 $ spago repl
@@ -218,11 +210,10 @@ $ spago repl
 
 ## カリー化されていない関数についての補足
 
-PureScript's curried functions have certain advantages. It allows us to
-partially apply functions, and to give type class instances for function
-types – but it comes with a performance penalty. For performance-critical
-code, it is sometimes necessary to define uncurried JavaScript functions
-which accept multiple arguments.
+PureScriptのカリー化された関数には勿論利点があります。
+部分的に関数を適用でき、関数型に型クラスインスタンスを与えられるのです。
+しかし効率上の代償も付いてきます。
+効率性が決定的に重要なコードでは時々、多変数を受け付けるカリー化されていないJavaScript関数を定義する必要があります。
 
 PureScriptでカリー化されていない関数を作ることもできます。
 2引数の関数については`mkFn2`関数が使えます。
@@ -254,8 +245,8 @@ var uncurriedSum = uncurriedAdd(3, 10);
 {{#include ../exercises/chapter10/test/Examples.purs:curried_add}}
 ```
 
-And the resulting generated code, which is less compact due to the nested
-functions:
+そして生成結果のコードが以下です。
+入れ子の関数のため比較的簡潔ではありません。
 
 ```javascript
 var curriedAdd = function (n) {
@@ -269,19 +260,13 @@ var curriedSum = curriedAdd(3)(10);
 
 ## 現代的なJavaScriptの構文についての補足
 
-The arrow function syntax we saw earlier is an ES6 feature, which is
-incompatible with some older browsers (namely IE11). As of writing, it is
-[estimated that arrow functions are unavailable for the 6% of
-users](https://caniuse.com/#feat=arrow-functions) who have not yet updated
-their web browser.
+前に見た矢印関数構文はES6の機能であり、そのため幾つかの古いブラウザ（名指しすればIE11）と互換性がありません。
+執筆時点でwebブラウザをまだ更新していない[6%の利用者が矢印関数を使うことができないと推計](https://caniuse.com/#feat=arrow-functions)されています。
 
-To be compatible with the most users, the JavaScript code generated by the
-PureScript compiler does not use arrow functions. It is also recommended to
-**avoid arrow functions in public libraries** for the same reason.
+ほとんどの利用者にとって互換性があるようにするため、PureScriptコンパイラによって生成されるJavaScriptコードは矢印関数を使っていません。
+また、同じ理由で**公開するライブラリでも矢印関数を避ける**ことが推奨されます。
 
-You may still use arrow functions in your own FFI code, but then you should
-include a tool such as [Babel](https://github.com/babel/babel#intro) in your
-deployment workflow to convert these back to ES5 compatible functions.
+それでも自分のFFIコードで矢印関数を使うこともできますが、デプロイの作業工程でES5に互換性のある関数へ変換するために[Babel](https://github.com/babel/babel#intro)などのツールを含めると良いでしょう。
 
 ES6の矢印関数がより読みやすく感じたら[Lebab](https://github.com/lebab/lebab)のようなツールを使ってコンパイラの`output`ディレクトリにJavaScriptのコードを変換できます。
 
@@ -320,10 +305,8 @@ Record      | Object
 `String`と`Number`という原始型の例は既に見てきました。
 ここから`Array`や`Record`（JavaScriptでは`Object`）といった構造的な型を眺めていきます。
 
-To demonstrate passing `Array`s, here's how to call a JavaScript function
-that takes an `Array` of `Int` and returns the cumulative sum as another
-array. Recall that since JavaScript does not have a separate type for `Int`,
-both `Int` and `Number` in PureScript translate to `Number` in JavaScript.
+`Array`を渡すところを実演するために、以下に`Int`の`Array`を取って別の配列として累計の和を返すJavaScriptの関数の呼び出し方を示します。
+前にありましたが、JavaScriptは`Int`のための分離した型を持たないため、PureScriptでの`Int`と`Number`は両方共JavaScriptでの`Number`に翻訳されます。
 
 ```hs
 foreign import cumulativeSums :: Array Int -> Array Int
@@ -349,10 +332,8 @@ $ spago repl
 [1,3,6]
 ```
 
-To demonstrate passing `Records`, here's how to call a JavaScript function
-that takes two `Complex` numbers as records and returns their sum as another
-record. Note that a `Record` in PureScript is represented as an `Object` in
-JavaScript:
+`Record`を渡すところを実演するために、以下に2つの`Complex`な数をレコードとして取り、和を別のレコードとして返すJavaScriptの呼び出し方を示します。
+PureScriptでの`Record`がJavaScriptでは`Object`として表現されることに注意してください。
 
 ```hs
 type Complex = {
@@ -380,11 +361,10 @@ $ spago repl
 { imag: 6.0, real: 4.0 }
 ```
 
-Note that the above techniques require trusting that JavaScript will return
-the expected types, as PureScript cannot apply type checking to JavaScript
-code. We will describe this type safety concern in more detail later on in
-the JSON section, as well as cover techniques to protect against type
-mismatches.
+なお、上の手法にはJavaScriptが期待通りの型を返すことを信用する必要があります。
+PureScriptはJavaScriptのコードに型検査を適用できないからです。
+この型安全性の配慮について後のJSONの節でより詳しく解説していきます。
+型の不整合から身を守る手法についても押さえます。
 
 ## 演習
 
@@ -457,14 +437,13 @@ maybeHead arr = maybeHeadImpl Just Nothing arr
 forall a. (forall x. x -> Maybe x) -> (forall x. Maybe x) -> Array a -> Maybe a
 ```
 
-And not:
+以下ではないことに注意です。
 
 ```hs
 forall a. (a -> Maybe a) -> Maybe a -> Array a -> Maybe a
 ```
 
-While both forms work, the latter is more vulnerable to unwanted inputs in
-place of `Just` and `Nothing`.
+どちらの形式でも動きますが、後者は`Just`と`Nothing`の場所での招かれざる入力に対してより脆弱です。
 
 例えば、比較的脆い方では、以下のように呼び出せるでしょう。
 
@@ -474,15 +453,15 @@ maybeHeadImpl (\_ -> Just 1000) (Just 1000) [1,2,3]
 
 これは如何なる配列の入力に対しても`Just 1000`を返します。
 
-This vulnerability is allowed because `(\_ -> Just 1000)` and `Just 1000` match the signatures of `(a -> Maybe a)` and `Maybe a`, respectively, when `a` is `Int` (based on input array).
+この脆弱性では、`a`が`Int`のときに（これは入力の配列に基づきます）`(\_ -> Just 1000)`と`Just 1000`がシグネチャ`(a -> Maybe a)`と`Maybe a`にそれぞれ照合するために許容されてしまっています。
 
 より安全な型シグネチャでは、入力の配列に基づいて`a`が`Int`に決定されたとしても、`forall x`に絡むシグネチャに合致する妥当な関数を提供する必要があります。`(forall x. Maybe x)`の *唯一* の選択肢は`Nothing`ですが、それは`Just`値が`x`の型を前提にしてしまうと、もはや全ての`x`については妥当でなくなってしまうからです。`(forall x. x -> Maybe x)`の唯一の選択肢は`Just`（望まれている引数）と`(\_ -> Nothing)`であり、後者は唯一残っている脆弱性になるのです。
 
 ## 外部型の定義
 
-Suppose instead of returning a `Maybe a`, we want to return `arr[0]`. We
-want a type that represents a value either of type `a` or the `undefined`
-value (but not `null`). We'll call this type `Undefined a`.
+`Maybe a`を返す代わりに`arr[0]`を返したいのだとしましょう。
+型`a`ないし`undefined`値（ただし`null`ではありません）の何れかの値を表現する型がほしいです。
+この型を`Undefined a`と呼びましょう。
 
 _外部インポート宣言_ を使うと、*外部型* (foreign type) を定義できます。構文は外部関数を定義するのと似ています。
 
@@ -496,7 +475,7 @@ foreign import data Undefined :: Type -> Type
 この場合は`Undefined`の種が `Type -> Type`であると宣言しています。
 言い換えれば`Undefined`は型構築子です。
 
-We can now reuse our original definition for `head`:
+これで元の`head`の定義を再利用できます。
 
 ```javascript
 export const undefinedHead = arr =>
@@ -509,12 +488,12 @@ PureScriptモジュールには以下を追加します。
 foreign import undefinedHead :: forall a. Array a -> Undefined a
 ```
 
-The body of the `undefinedHead` function returns `arr[0]`, which may be
-`undefined`, and the type signature correctly reflects that fact.
+`undefinedHead`関数の本体は`undefined`かもしれない`arr[0]`を返します。
+そしてこの型シグネチャはその事実を正しく反映しています。
 
-This function has the correct runtime representation for its type, but it's
-quite useless since we have no way to use a value of type `Undefined
-a`. Well, not exactly. We can use this type in another FFI!
+この関数はその型の適切な実行時表現を持っていますが、型`Undefined a`の値を使用する方法がないので、全く役に立ちません。
+いや、言い過ぎました。
+別のFFIでこの型を使えますからね。
 
 値が未定義かどうかを教えてくれる関数を書くことができます。
 
@@ -536,11 +515,9 @@ isEmpty :: forall a. Array a -> Boolean
 isEmpty = isUndefined <<< undefinedHead
 ```
 
-Here, the foreign function we defined is very simple, which means we can
-benefit from using PureScript's typechecker as much as possible. This is
-good practice in general: foreign functions should be kept as small as
-possible, and application logic moved into PureScript code wherever
-possible.
+このように、定義したこの外部関数はとても単純です。
+つまりPureScriptの型検査器を使うことによる利益が最大限得られるのです。
+一般に、外部関数は可能な限り小さく保ち、できるだけアプリケーションの処理はPureScriptコードへ移動しておくことをお勧めします。
 
 ## 例外
 
@@ -595,13 +572,11 @@ export const unsafeHead = arr => {
 
 ## 型クラスメンバー関数を使う
 
-Like our earlier guide on passing the `Maybe` constructor over FFI, this is
-another case of writing PureScript that calls JavaScript, which calls
-PureScript functions again. Here we will explore how to pass type class
-member functions over the FFI.
+つい先程までFFI越しに`Maybe`の構築子を渡す手引きをしましたが、今回はJavaScriptを呼び出すPureScriptを書く別の場合です。
+JavaScriptの呼び出しでも続けざまにPureScriptの関数を呼び出します。
+ここでは型クラスのメンバー関数をFFI越しに渡す方法を探ります。
 
-We start with writing a foreign JavaScript function that expects the
-appropriate instance of `show` to match the type of `x`.
+型`x`に合う適切な`show`のインスタンスを期待する外部JavaScript関数を書くことから始めます。
 
 ```js
 export const boldImpl = show => x =>
@@ -614,14 +589,14 @@ export const boldImpl = show => x =>
 foreign import boldImpl :: forall a. (a -> String) -> a -> String
 ```
 
-And a wrapper function that passes the correct instance of `show`:
+そして`show`の正しいインスタンスを渡す梱包関数も書きます。
 
 ```hs
 bold :: forall a. Show a => a -> String
 bold x = boldImpl show x
 ```
 
-Alternatively, in point-free form:
+代えてポイントフリー形式だとこうです。
 
 ```hs
 bold :: forall a. Show a => a -> String
@@ -688,8 +663,7 @@ yell :: forall a. Show a => a -> Effect Unit
 yell = yellImpl show
 ```
 
-When testing this in the repl, notice that the string is printed directly to
-the console (instead of being quoted), and a `unit` value is returned.
+REPLで試すと文字列が（引用符で囲まれず）直接コンソールに印字され`unit`値が返ることがわかります。
 
 ```text
 $ spago repl
@@ -705,11 +679,9 @@ unit
 これらは既に見た`Data.Function.Uncurried`の梱包`Fn`に似ています。
 これらの梱包があればカリー化されていない作用のある関数をPureScriptで呼び出すことができます。
 
-You'd generally only use these if you want to call existing JavaScript
-library APIs directly rather than wrapping those APIs in curried
-functions. So it doesn't make much sense to present an example of uncurried
-`yell`, where the JavaScript relies on PureScript type class members since
-you wouldn't find that in the existing JavaScript ecosystem.
+一般的にこれらを使うのは、こうしたAPIをカリー化された関数に包むのではなく、既存のJavaScriptライブラリのAPIを直接呼び出したいときぐらいです。
+したがってカリー化していない`yell`の例を見せてもあまり意味がありません。
+というのもJavaScriptがPureScriptの型クラスのメンバーに依っているからで、更にそれは既存のJavaScriptの生態系にそのメンバーが見付からないためです。
 
 翻って以前の`diagonal`の例を変更し、結果を返すことに加えてログ出力を含めるとこうなります。
 
@@ -784,9 +756,8 @@ unit
 done waiting
 ```
 
-Note that asynchronous logging in the repl waits to print until the entire
-block has finished executing. This code behaves more predictably when run
-with `spago test` where there is a slight delay _between_ prints.
+REPLでの非同期ログ出力はブロック全体が実行を終了するまで印字を待機する点に注意しましょう。
+このコードを`spago test`で走らせた場合、印字の*合間に*僅かな遅延があり、より予測に近い挙動をします。
 
 他にプロミスから値を返す例を見てみましょう。
 この関数は`async`と`await`を使って書かれていますが、これはプロミスの糖衣構文に過ぎません。
@@ -833,10 +804,10 @@ unit
 
 ## JSON
 
-There are many reasons to use JSON in an application; for example, it's a
-common means of communicating with web APIs. This section will discuss other
-use-cases, too, beginning with a technique to improve type safety when
-passing structural data over the FFI.
+アプリケーションでJSONを使うことには多くの理由があります。
+例えばwebのAPIと疎通するよくある手段であるためです。
+この節では他の用例についてもお話ししましょう。
+構造的なデータをFFI越しに渡す場合に型安全性を向上させる手法から始めます。
 
 少し前のFFI関数`cumulativeSums`と`addComplex`を再訪し、それぞれに1つバグを混入させてみましょう。
 
@@ -860,8 +831,7 @@ export const addComplexBroken = a => b => {
 };
 ```
 
-We can use the original type signatures, and the code will still compile,
-despite the incorrect return types.
+実際は返る型が正しくないのですが、元々の型シグネチャを使うことができ、依然としてコードはコンパイルされます。
 
 ```hs
 foreign import cumulativeSumsBroken :: Array Int -> Array Int
@@ -907,7 +877,7 @@ PureScriptのコードにバグ一匹通さないようにするため、JavaScr
 `argonaut`ライブラリにはこのために必要なJSONのデコードとエンコードの機能が備わっています。
 このライブラリには素晴らしい[ドキュメント](https://github.com/purescript-contrib/purescript-argonaut#documentation)があるので、本書では基本的な用法だけを押さえます。
 
-返る型を`Json`として定義するようにして、代わりとなる外部インポートをつくるとこうなります。
+返る型を`Json`として定義するようにして、代わりとなる外部インポートを作るとこうなります。
 
 ```hs
 foreign import cumulativeSumsJson :: Array Int -> Json
@@ -1026,13 +996,20 @@ Map String Int
    JsonDecodeError (Set v)`です。
    なお、`k`と`v`に幾つかの型クラス制約を加える必要があるでしょう。
    コンパイラが導いてくれます。
-1. (Medium) Rewrite the earlier `quadraticRoots` function as
-   `quadraticRootsSet` that returns the `Complex` roots as a `Set` via JSON
-   (instead of as a `Pair`).
-1. (Difficult) Rewrite the earlier `quadraticRoots` function as `quadraticRootsSafe` that uses JSON to pass the `Pair` of `Complex` roots over FFI. Don't use the `Pair` constructor in JavaScript, but instead, just return the pair in a decoder-compatible format.
-_Hint_: You'll need to write a `DecodeJson` instance for `Pair`. Consult the [argonaut docs](https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances) for instruction on writing your own decode instance. Their [decodeJsonTuple](https://github.com/purescript-contrib/purescript-argonaut-codecs/blob/master/src/Data/Argonaut/Decode/Class.purs) instance may also be a helpful reference.  Note that you'll need a `newtype` wrapper for `Pair` to avoid creating an "orphan instance".
-1. (Medium) Write a `parseAndDecodeArray2D :: String -> Either String (Array (Array Int))` function to parse and decode a JSON string containing a 2D array, such as `"[[1, 2, 3], [4, 5], [6]]"`. _Hint_: You'll need to use `jsonParser` to convert the `String` into `Json` before decoding.
-1. (Medium) The following data type represents a binary tree with values at the leaves:
+1. （普通）少し前の`quadraticRoots`関数を書き換えて`quadraticRootSet`としてください。
+   この関数は`Complex`の根をJSONを介して（`Pair`の代わりに）`Set`として返します。
+1. （難しい）少し前の`quadraticRoots`関数を書き換えて`quadraticRootsSafe`としてください。
+   この関数はJSONを使って`Complex`の根の`Pair`をFFI越しに渡します。
+   JavaScriptでは`Pair`構築子を使わないでください。
+   その代わり、デコーダーに互換性のある形式で対を返すだけにしてください。
+   *手掛かり*：`DecodeJson`インタンスを`Pair`用に書く必要があるでしょう。
+   独自のデコードインスタンスを書く上での説明については[argonautのドキュメント](https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances)をあたってください。
+   [decodeJsonTuple](https://github.com/purescript-contrib/purescript-argonaut-codecs/blob/master/src/Data/Argonaut/Decode/Class.purs)インスタンスも参考になるかもしれません。
+  「孤立インスタンス」を作ることを避けるために、`Pair`に`newtype`の梱包が必要になる点に注意してください。
+1. （普通）2次元配列を含むJSON文字列を構文解析してデコードする`parseAndDecodeArray2D :: String -> Either String (Array (Array Int))`関数を書いてください。
+   例えば`"[[1, 2, 3], [4, 5], [6]]"`です。
+   *手掛かり*：デコードの前に`jsonParser`を使って`String`を`Json`に変換する必要があるでしょう。
+1. （普通）以下のデータ型は値が葉にある二分木を表現します。
 
      ```haskell
      data Tree a
@@ -1057,16 +1034,15 @@ _Hint_: You'll need to write a `DecodeJson` instance for `Pair`. Consult the [ar
 
 ## 住所録
 
-In this section, we will apply our newly-acquired FFI and JSON knowledge to
-build on our address book example from Chapter 8. We will add the following
-features:
+この節では新しく獲得したFFIとJSONの知識を応用して、第8章の住所録の例を構築していきたいと思います。
+以下の機能を加えていきます。
 
 - 保存ボタンをフォームの一番下に配置し、クリックしたときにフォームの状態をJSONに直列化してローカルストレージに保存します。
 - ページの再読み込み時にローカルストレージからJSON文書を自動的に取得します。
   フォームのフィールドにはこの文書の内容を入れます。
 - フォームの状態を保存したり読み込んだりするのに問題があればポップアップの警告を出します。
 
-`Effect.Storage`モジュールに以下のWebストレージAPIのためのFFIの梱包をつくることから始めていきます。
+`Effect.Storage`モジュールに以下のwebストレージAPIのためのFFIの梱包を作ることから始めていきます。
 
 - `setItem`はキーと値（両方とも文字列）を受け取り、指定されたキーでローカルストレージに値を格納する計算を返します。
 - `getItem`はキーを取り、ローカルストレージから関連付けられたバリューの取得を試みます。
@@ -1125,10 +1101,9 @@ validateAndSave = do
     Data.Argonaut.Encode.Class.EncodeJson PhoneType
 ```
 
-This is because `PhoneType` in the `Person` record needs an `EncodeJson`
-instance. We'll also derive a generic encode instance and a decode instance
-while we're at it. More information on how this works is available in the
-argonaut docs:
+これはなぜかというと`Person`レコード中の`PhoneType`が`EncodeJson`インスタンスを必要としているからです。
+また、ついでに汎用のエンコードインスタンスとデコードインスタンスを導出していきます。
+この仕組みについての詳細情報はargonautのドキュメントにあります。
 
 ```hs
 {{#include ../exercises/chapter10/src/Data/AddressBook.purs:import}}
@@ -1146,12 +1121,10 @@ argonaut docs:
 item <- getItem "person"
 ```
 
-Then we'll create a helper function to convert the string from local storage
-to our `Person` record. Note that this string in storage may be `null`, so
-we represent it as a foreign `Json` until it is successfully decoded as a
-`String`. There are a number of other conversion steps along the way – each
-of which returns an `Either` value, so it makes sense to organize these
-together in a `do` block.
+そうしてローカルストレージ由来の文字列から`Person`レコードへ変換する補助関数を作ります。
+なお、このストレージ中の文字列は`null`かもしれないので、正常に`String`としてデコードされるまでは外部の`Json`として表現します。
+道中には他にも多くの変換工程があり、それぞれで`Either`の値を返します。
+そのためこれらをまとめて`do`ブロックの中に纏めるのは理に適っています。
 
 ```hs
 processItem :: Json -> Either String Person
@@ -1161,9 +1134,9 @@ processItem item = do
   decodeJson j
 ```
 
-Then we inspect this result to see if it succeeded. If it fails, we'll log
-the errors and use our default `examplePerson`, otherwise, we'll use the
-person retrieved from local storage.
+そうしてこの結果が成功しているかどうか調べます。
+もし失敗していればエラーをログ出力し、既定の`examplePerson`を使います。
+そうでなければローカルストレージから取得した人物を使います。
 
 ```hs
 initialPerson <- case processItem item of
@@ -1189,7 +1162,7 @@ mkAddressBookApp =
     Tuple person setPerson <- useState props.initialPerson
 ```
 
-仕上げとして、それぞれの`Left`値の`String`に`lmap`を使って前置し、エラー文言の質を向上させます。
+仕上げとして、各`Left`値の`String`に`lmap`を使って前置し、エラー文言の質を向上させます。
 
 ```hs
 processItem :: Json -> Either String Person
@@ -1199,17 +1172,17 @@ processItem item = do
   lmap               ("Cannot decode Person: "       <> _) $ decodeJson j
 ```
 
-Only the first error should ever occur during the normal operation of this
-app. You can trigger the other errors by opening your web browser's dev
-tools, editing the saved "person" string in local storage, and refreshing
-the page. How you modify the JSON string determines which error is
-triggered. See if you can trigger each of them.
+最初のエラーのみがこのアプリの通常の操作内で起こります。
+他のエラーはwebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。
+どのようにJSON文字列を変更したかが、どのエラーを引き起こすかを決定します。
+各エラーを引き起こせるかご確認ください。
 
-That covers local storage. Next, we'll implement the `alert` action, similar
-to the `log` action from the `Effect.Console` module. The only difference is
-that the `alert` action uses the `window.alert` method, whereas the `log`
-action uses the `console.log` method. As such, `alert` can only be used in
-environments where `window.alert` is defined, such as a web browser.
+これでローカルストレージについては押さえました。
+次に`alert`動作を実装していきます。
+この動作は`Effect.Console`モジュールの`log`動作に似ています。
+唯一の相違点は`alert`動作が`window.alert`メソッドを使うことで、対して`log`動作は`console.log`メソッドを使っています。
+そういうわけで`alert`は`window.alert`が定義された環境でのみ使うことができます。
+webブラウザなどです。
 
 ```hs
 foreign import alert :: String -> Effect Unit
@@ -1245,19 +1218,15 @@ alert $ "Error: " <> err <> ". Loading examplePerson"
 
 ## まとめ
 
-In this chapter, we've learned how to work with foreign JavaScript code from
-PureScript, and we've seen the issues involved with writing trustworthy code
-using the FFI:
+この章では、PureScriptから外部のJavaScriptコードを扱う方法を学びました。
+また、FFIを使用して信頼できるコードを書く時に生じる問題について見てきました。
 
 - 外部関数が正しい表現を持っていることを確かめる重要性を見てきました。
-- We learned how to deal with corner cases like null values and other types
-  of JavaScript data by using foreign types or the `Json` data type.
+- 外部型や`Json`データ型を使用することによって、null値やJavaScriptの他の型のデータのような特殊な場合に対処する方法を学びました。
 - 安全にJSONデータを直列化・直列化復元する方法を見ました。
 
-For more examples, the `purescript`, `purescript-contrib`, and
-`purescript-node` GitHub organizations provide plenty of examples of
-libraries that use the FFI. In the remaining chapters, we will see some of
-these libraries put to use to solve real-world problems in a type-safe way.
+より多くの例については、GitHubの`purescript`組織、`purescript-contrib`組織、及び`purescript-node`組織が、FFIを使用するライブラリの例を多数提供しています。
+残りの章では、型安全な方法で現実世界の問題を解決するために使うライブラリを幾つか見ていきます。
 
 ## 補遺
 
@@ -1289,10 +1258,9 @@ import Test from 'Test.js';
 Test.gcd(15)(20);
 ```
 
-Here, I assume the code was compiled with `spago build`, which compiles
-PureScript modules to ES modules. For that reason, I could reference the
-`gcd` function on the `Test` object, after importing the `Test` module using
-`import`.
+ここでは`spago build`でコンパイルされていることを前提としています。
+SpagoはPureScriptモジュールをESモジュールにコンパイルするものです。
+そのため、`import`を使って`Test`モジュールをインポートした後、`Test`オブジェクトの`gcd`関数を参照できました。
 
 `spago bundle-app`や`spago
 bundle-module`コマンドを使って生成されたJavaScriptを単一のファイルにまとめることもできます。
@@ -1300,10 +1268,9 @@ bundle-module`コマンドを使って生成されたJavaScriptを単一のフ�
 
 ### 名前の生成を理解する
 
-PureScript aims to preserve names during code generation as much as
-possible. In particular, most identifiers that are neither PureScript nor
-JavaScript keywords can be expected to be preserved, at least for names of
-top-level declarations.
+PureScriptはコード生成時にできるだけ名前を保持することを目指します。
+とりわけ、PureScriptやJavaScriptのキーワードでなければほとんどの識別子が保存されることが期待できます。
+少なくとも最上位で宣言される名前についてはそうです。
 
 識別子としてJavaScriptのキーワードを使う場合は、名前は2重のドル記号でエスケープされます。
 例えば次のPureScriptコードを考えてみます。
@@ -1312,7 +1279,7 @@ top-level declarations.
 null = []
 ```
 
-Generates the following JavaScript:
+これは以下のJavaScriptを生成します。
 
 ```javascript
 var $$null = [];
@@ -1325,24 +1292,21 @@ var $$null = [];
 example' = 100
 ```
 
-Generates the following JavaScript:
+これは以下のJavaScriptを生成します。
 
 ```javascript
 var example$prime = 100;
 ```
 
-Where compiled PureScript code is intended to be called from JavaScript, it
-is recommended that identifiers only use alphanumeric characters and avoid
-JavaScript keywords. If user-defined operators are provided for use in
-PureScript code, it is good practice to provide an alternative function with
-an alphanumeric name for use in JavaScript.
+コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図している場合、識別子は英数字のみを使用し、JavaScriptの予約語を避けることをお勧めします。
+ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。
 
 ### 実行時のデータ表現
 
-Types allow us to reason at compile-time that our programs are "correct" in
-some sense – that is, they will not break at runtime. But what does that
-mean? In PureScript, it means that the type of an expression should be
-compatible with its representation at runtime.
+型はプログラムがある意味で「正しい」ことをコンパイル時に論証できるようにします。
+つまり、その点については壊れることがありません。
+しかし、これは何を意味するのでしょうか。
+PureScriptでは、式の型は実行時の表現と互換性があることを意味します。
 
 そのため、PureScriptとJavaScriptコードを一緒に効率的に使用できるように、実行時のデータ表現について理解することが重要です。
 これはつまり、与えられた任意のPureScriptの式について、その値が実行時にどのように評価されるかという挙動を理解できるべきだということです。
@@ -1355,43 +1319,38 @@ compatible with its representation at runtime.
 つまり、型 `Boolean`の式は `true`もしくは `false`のどちらか一方の（JavaScriptの）値へと評価されます。
 特に`null`や `undefined`に評価される型`Boolean`なPureScriptの式はありません。
 
-A similar law holds for expressions of type `Int`, `Number`, and `String` –
-expressions of type `Int` or `Number` evaluate to non-null JavaScript
-numbers, and expressions of type `String` evaluate to non-null JavaScript
-strings. Expressions of type `Int` will evaluate to integers at runtime,
-even though they cannot be distinguished from values of type `Number` by
-using `typeof`.
+`Int`や`Number`や`String`の型の式についても似た法則が成り立ちます。
+`Int`や`Number`型の式はnullでないJavaScriptの数へと評価されますし、`String`型の式はnullでないJavaScriptの文字列へと評価されます。
+`typeof`を使った場合に型`Number`の値と見分けがつかなくなるにせよ、型`Int`の式は実行時に整数に評価されます。
 
-What about `Unit`? Well, since `Unit` has only one inhabitant (`unit`) and
-its value is not observable, it doesn't matter what it's represented with at
-runtime. Old code tends to represent it using `{}`. Newer code, however,
-tends to use `undefined`. So, although it doesn't matter what you use to
-represent `Unit`, it is recommended to use `undefined` (not returning
-anything from a function also returns `undefined`).
+`Unit`についてはどうでしょうか。
+`Unit`には現住 (`unit`) が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。
+古いコードは`{}`を使って表現する傾向がありました。
+しかし比較的新しいコードでは`undefined`を使う傾向にあります。
+なので、`Unit`を表現するのに使うものは何であれ差し支えありませんが、`undefined`を使うことが推奨されます（関数から何も返さないときも`undefined`を返します）。
 
 もっと複雑な型についてはどうでしょうか。
 
-As we have already seen, PureScript functions correspond to JavaScript functions of a single argument. More precisely, if an expression `f` has type `a -> b` for some types `a` and `b`, and an expression `x` evaluates to a value with the correct runtime representation for type `a`, then `f` evaluates to a JavaScript function, which, when applied to the result of evaluating `x`, has the correct runtime representation for type `b`. As a simple example, an expression of type `String -> String` evaluates to a function that takes non-null JavaScript strings to non-null JavaScript strings.
+既に見てきたように、PureScriptの関数は引数が1つのJavaScriptの関数に対応しています。
+厳密に言えばこうなります。
+ある型`a`と`b`について、式`f`の型が`a -> b`で、式`x`が型`a`についての適切な実行時表現の値へと評価されるとします。
+このとき`f`はJavaScriptの関数へと評価されますが、この関数は`x`を評価した結果に`f`を適用すると型`b`の適切な実行時表現を持ちます。
+単純な例としては、`String -> String`型の式は、nullでないJavaScript文字列からnullでないJavaScript文字列への関数へと評価されます。
 
-As you might expect, PureScript's arrays correspond to JavaScript
-arrays. But remember – PureScript arrays are homogeneous, so every element
-has the same type. Concretely, if a PureScript expression `e` has type
-`Array a` for some type `a`, then `e` evaluates to a (non-null) JavaScript
-array, all of whose elements have the correct runtime representation for
-type `a`.
+ご想像の通り、PureScriptの配列はJavaScriptの配列に対応しています。
+しかし、PureScriptの配列は均質である、つまり全ての要素が同じ型を持っていることは覚えておいてください。
+具体的には、もしPureScriptの式`e`が何らかの型`a`について型`Array
+a`を持つなら、`e`は（nullでない）JavaScript配列へと評価されます。
+この配列の全ての要素は型`a`の適切な実行時表現を持ちます。
 
-We've already seen that PureScript's records evaluate to JavaScript
-objects. As for functions and arrays, we can reason about the runtime
-representation of data in a record's fields by considering the types
-associated with its labels. Of course, the fields of a record are not
-required to be of the same type.
+PureScriptのレコードがJavaScriptのオブジェクトへと評価されることは既に見てきました。
+関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれば、レコードのフィールド中のデータの実行時の表現について論証できます。
+勿論、レコードのフィールドは、同じ型である必要はありません。
 
 ### ADTの表現
 
-For every constructor of an algebraic data type, the PureScript compiler
-creates a new JavaScript object type by defining a function. Its
-constructors correspond to functions that create new JavaScript objects
-based on those prototypes.
+代数的データ型の全ての構築子について、PureScriptコンパイラは関数を定義することで新たなJavaScriptオブジェクト型を作成します。
+これらの構築子はプロトタイプに基づいて新しいJavaScriptオブジェクトを作成する関数に対応しています。
 
 例えば次のような単純なADTを考えてみましょう。
 
@@ -1416,25 +1375,25 @@ function Zero() {
 Zero.value = new Zero();
 ```
 
-ここで2つのJavaScriptオブジェクト型 `Zero`と `One`を見てください。
-JavaScriptのキーワード`new`を使用すると、それぞれの型の値を作成できます。
-引数を持つ構築子については、コンパイラは `value0`、 `value1`などという名前のフィールドに、対応するデータを格納します。
+ここで2つのJavaScriptオブジェクト型`Zero`と`One`を見てください。
+JavaScriptのキーワード`new`を使用すると、各型の値を作成できます。
+引数を持つ構築子については、コンパイラは`value0`、`value1`などという名前のフィールドに、対応するデータを格納します。
 
 PureScriptコンパイラは補助関数も生成します。
 引数のない構築子については、コンパイラは構築子が使われるたびに `new`演算子を使うのではなく、データを再利用できるように
 `value`プロパティを生成します。
 1つ以上の引数を持つ構築子では、コンパイラは適切な表現を持つ引数を取り適切な構築子を適用する `create`関数を生成します。
 
-What about constructors with more than one argument? In that case, the
-PureScript compiler also creates a new object type, and a helper
-function. This time, however, the helper function is a curried function of
-two arguments. For example, this algebraic data type:
+1引数より多く取る構築子についてはどうでしょうか。
+その場合でも、PureScriptコンパイラは新しいオブジェクト型と補助関数を作成します。
+ただしこの場合、補助関数は2引数のカリー化された関数です。
+例えば次のような代数的データ型を考えます。
 
 ```haskell
 data Two a b = Two a b
 ```
 
-Generates this JavaScript code:
+このコードからは、次のようなJavaScriptコードが生成されます。
 
 ```javascript
 function Two(value0, value1) {
@@ -1449,23 +1408,19 @@ Two.create = function (value0) {
 };
 ```
 
-Here, values of the object type `Two` can be created using the `new` keyword
-or by using the `Two.create` function.
+ここで、オブジェクト型`Two`の値はキーワード`new`または`Two.create`関数を使用すると作成できます。
 
-The case of newtypes is slightly different. Recall that a newtype is like an
-algebraic data type, restricted to having a single constructor taking a
-single argument. In this case, the runtime representation of the newtype is
-the same as its argument type.
+newtypeの場合はまた少し異なります。
+newtypeは代数的データ型のようなもので、単一の引数を取る単一の構築子を持つよう制限されていたことを思い出してください。
+この場合、newtypeの実行時表現は、その引数の型と同じになります。
 
-For example, this newtype represents telephone numbers is represented as a
-JavaScript string at runtime:
+例えば、以下の電話番号を表すnewtypeは実行時にJavaScriptの文字列として表現されます。
 
 ```haskell
 newtype PhoneNumber = PhoneNumber String
 ```
 
-This is useful for designing libraries since newtypes provide an additional
-layer of type safety without the runtime overhead of another function call.
+newtypeは、関数呼び出しによる実行時のオーバーヘッドなく更なる型安全性のための層を提供するため、ライブラリを設計するのに便利です。
 
 ### 量化された型の表現
 
@@ -1494,12 +1449,11 @@ identity a = a
 
 量化された型 `forall a. t`の実行時表現はどうなっているのでしょうか。さて、この型の実行時表現を持つ任意の式は、型 `a`をどのように選んでも型 `t`の適切な実行時表現を持っていなければなりません。上の例では、型 `forall a. a -> a`の関数は、 `String -> String`、 `Number -> Number`、 `Array Boolean -> Array Boolean`などといった型について、適切な実行時表現を持っていなければなりません。 これらは、文字列から文字列、数から数の関数でなくてはなりません。
 
-But that is not enough – the runtime representation of a quantified type is
-more strict than this. We require any expression to be _parametrically
-polymorphic_ – that is, it cannot use any information about the type of its
-argument in its implementation. This additional condition prevents
-problematic implementations such as the following JavaScript function from
-inhabiting a polymorphic type:
+しかし、それだけでは充分ではありません。
+量化された型の実行時表現は、これよりも更に厳しいものです。
+任意の式が*パラメトリック多相的*であることを要求しています。
+つまり、その実装において、引数の型についてのどんな情報も使うことができないのです。
+この追加の条件は、以下のJavaScriptの関数のような問題のある実装が多相型に現住することを防止します。
 
 ```javascript
 function invalid(a) {
@@ -1511,26 +1465,23 @@ function invalid(a) {
 }
 ```
 
-Certainly, this function takes strings to strings, numbers to numbers, etc. But it does not meet the additional condition, since it inspects the (runtime) type of its argument, so this function would not be a valid inhabitant of the type `forall a. a -> a`.
+確かにこの関数は文字列を取って文字列を返し、数を取って数を返す、といったものです。
+しかしこの関数は追加条件を満たしていません。
+引数の実行時の型を調べており、型`forall a. a -> a`の正しい現住にはならないからです。
 
-Without being able to inspect the runtime type of our function argument, our only option is to return the argument unchanged. So `identity` is indeed the only inhabitant of the type `forall a. a -> a`.
+関数の引数の実行時の型を検査できなければ、唯一の選択肢は引数をそのまま返すことだけです。
+したがって`id`は確かに`forall a. a -> a`の唯一の現住なのです。
 
-A full discussion of _parametric polymorphism_ and _parametricity_ is beyond
-the scope of this book. Note, however, that since PureScript's types are
-_erased_ at runtime, a polymorphic function in PureScript _cannot_ inspect
-the runtime representation of its arguments (without using the FFI), so this
-representation of polymorphic data is appropriate.
+*パラメトリック多相*と*パラメトリック性*についての詳しい議論は本書の範囲を超えています。
+ただ、PureScriptの型は実行時に*消去*されており、PureScriptの多相関数は（FFIを使わない限り）引数の実行時表現を検査*できない*ため、この多相的なデータの表現が適切になっているという点にはご留意ください。
 
 ### 制約のある型の表現
 
-Functions with a type class constraint have an interesting representation at
-runtime. Because the function's behavior might depend on the type class
-instance chosen by the compiler, the function is given an additional
-argument, called a _type class dictionary_, which contains the
-implementation of the type class functions provided by the chosen instance.
+型クラス制約を持つ関数は、実行時に面白い表現を持っています。
+関数の挙動はコンパイラによって選ばれた型クラスのインスタンスに依存する可能性があるため、関数には*型クラス辞書*と呼ばれる追加の引数が与えられます。
+この辞書には選ばれたインスタンスから提供される型クラスの関数の実装が含まれます。
 
-For example, here is a simple PureScript function with a constrained type
-that uses the `Show` type class:
+例えば以下は、`Show`型クラスを使う制約付きの型を持つ、単純なPureScript関数です。
 
 ```haskell
 shout :: forall a. Show a => a -> String
@@ -1574,11 +1525,10 @@ shout(showNumber)(42);
 
 ### 副作用の表現
 
-The `Effect` monad is also defined as a foreign type. Its runtime
-representation is quite simple – an expression of type `Effect a` should
-evaluate to a JavaScript function of **no arguments**, which performs any
-side-effects and returns a value with the correct runtime representation for
-type `a`.
+`Effect`モナドも外部型として定義されています。
+その実行時表現はとても単純です。
+型`Effect a`の式は**引数なしの**JavaScript関数へと評価されます。
+この関数はあらゆる副作用を実行し、型`a`の適切な実行時表現を持つ値を返します。
 
 `Effect`型構築子の定義は、 `Effect`モジュールで次のように与えられています。
 
@@ -1598,10 +1548,9 @@ foreign import random :: Effect Number
 export const random = Math.random;
 ```
 
-Notice that the `random` function is represented at runtime as a function of
-no arguments. It performs the side effect of generating a random number,
-returns it, and the return value matches the runtime representation of the
-`Number` type: it is a non-null JavaScript number.
+`random`関数は実行時には引数なしの関数として表現されていることに注目してください。
+この関数は乱数生成という副作用を実行して返しますが、返り値は`Number`型の実行時表現と一致します。
+`Number`型はnullでないJavaScriptの数です。
 
 もう少し興味深い例として、`console`パッケージ中の`Effect.Console`モジュールで定義された `log`関数を考えてみましょう。
 `log`関数は次の型を持っています。
@@ -1632,5 +1581,5 @@ import { main } from 'Main'
 main();
 ```
 
-When using `spago bundle-app --to` or `spago run`, this call to `main` is
-generated automatically whenever the `Main` module is defined.
+`spago bundle-app --to`または`spago
+run`を使用する場合、`Main`モジュールが定義されている場合は常に、この`main`の呼び出しを自動的に生成できます。

@@ -84,7 +84,7 @@ iterate f n x = iterate f (n - 1) (f x)
 実際に、根本的に型駆動な抽象化の強力な形式である型クラスをPureScriptは提供しています。
 この型クラスとは、関数型プログラミング言語Haskellによって有名になりました。
 
-## 多言語Webプログラミング
+## 多言語webプログラミング
 
 関数型プログラミングは成功を収めてきました。
 特に成功している応用例を挙げると、データ解析、構文解析、コンパイラの実装、ジェネリックプログラミング、並列処理といった具合に、枚挙に暇がありません。
@@ -169,7 +169,7 @@ PSCi対話式モードプロンプトに入力するコマンドは、行の先�
 3
 ```
 
-各章には演習が含まれており、それぞれ難易度も示されています。
+各章には演習が含まれており、難易度も示されています。
 内容を完全に理解するために、各章の演習に取り組むことを強くお勧めします。
 
 本書は初心者にPureScriptへの導入を提供することを目的としており、課題に対するお決まりの解決策の一覧を提供するような類の本ではありません。
@@ -192,10 +192,10 @@ PSCi対話式モードプロンプトに入力するコマンドは、行の先�
 - 非公式の[PureScript
   Cookbook](https://github.com/JordanMartinez/purescript-cookbook)は「Xするにはどうするの」といった類の質問にコードを混じえて答えを提供します。
 - [PureScriptドキュメントリポジトリ](https://github.com/purescript/documentation)には、PureScriptの開発者や利用者が書いた幅広い話題の記事と例が集まっています。
-- [PureScriptのWebサイト](https://www.purescript.org)には幾つかの学習資料へのリンクがあります。
+- [PureScriptのwebサイト](https://www.purescript.org)には幾つかの学習資料へのリンクがあります。
   コード例、映像、他の初心者向け資料などです。
 - [Try
-  PureScript!](https://try.purescript.org)は利用者がWebブラウザでPureScriptのコードをコンパイルできるWebサイトです。
+  PureScript!](https://try.purescript.org)は利用者がwebブラウザでPureScriptのコードをコンパイルできるwebサイトです。
   幾つかの簡単なコードの例もあります。
 
 もし例を読んで学ぶ方が好きでしたら、GitHubの`purescript`組織、`purescript-node`組織及び`purescript-contrib`組織にはPureScriptコードの例が沢山あります。

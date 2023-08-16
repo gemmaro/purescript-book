@@ -9,3 +9,6 @@ context: 文脈。一般には単に「コンテキスト」とされるよう�
 synonym: 同義語。
 canvas: 固有名詞、HTML 5で導入された機能としてのCanvasは英単語として、一般名詞としては「キャンバス」と片仮名にします。
 pair: 組
+corner case: 特殊な場合
+top level: 最上位
+inhabitant: 現住

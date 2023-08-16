@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-15 06:48+0900\n"
+"PO-Revision-Date: 2023-08-19 19:52+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -578,7 +578,7 @@ msgstr ""
 #: text/chapter1.md:66
 #, no-wrap
 msgid "Polyglot Web Programming"
-msgstr "多言語Webプログラミング"
+msgstr "多言語webプログラミング"
 
 #. type: Plain text
 #: text/chapter1.md:69
@@ -953,7 +953,7 @@ msgid ""
 "several learning resources, including code samples, videos, and other "
 "resources for beginners."
 msgstr ""
-"[PureScriptのWebサイト](https://www.purescript.org)には幾つかの学習資料へのリンクがあります。\n"
+"[PureScriptのwebサイト](https://www.purescript.org)には幾つかの学習資料へのリンクがあります。\n"
 "コード例、映像、他の初心者向け資料などです。"
 
 #. type: Bullet: '- '
@@ -963,7 +963,7 @@ msgid ""
 "to compile PureScript code in the web browser and contains several simple "
 "examples of code."
 msgstr ""
-"[Try PureScript!](https://try.purescript.org)は利用者がWebブラウザでPureScriptのコードをコンパイルできるWebサイトです。\n"
+"[Try PureScript!](https://try.purescript.org)は利用者がwebブラウザでPureScriptのコードをコンパイルできるwebサイトです。\n"
 "幾つかの簡単なコードの例もあります。"
 
 #. type: Plain text
@@ -1082,21 +1082,14 @@ msgstr "この章の目標"
 
 #. type: Plain text
 #: text/chapter10.md:6
-#, fuzzy
-#| msgid ""
-#| "This chapter will introduce PureScript's _foreign function interface_ (or "
-#| "_FFI_), which enables communication from PureScript code to JavaScript "
-#| "code, and vice versa. We will cover how to:"
 msgid ""
 "This chapter will introduce PureScript's _foreign function interface_ (or "
 "_FFI_), which enables communication from PureScript code to JavaScript code "
 "and vice versa. We will cover how to:"
 msgstr ""
-"この章でPureScriptの _外部関数インターフェース_ (foreign function interface; "
-"_FFI_) を紹介します。\n"
-"これによりPureScriptコードからJavaScriptコードへの呼び出し、及びその逆が可能"
-"になります。\n"
-"これから扱うのは次のようなものです。"
+"本章ではPureScriptの*外部関数インターフェース* (foreign function interface; *FFI*) を紹介します。\n"
+"これによりPureScriptコードからJavaScriptコードへの呼び出し、及びその逆が可能になります。\n"
+"以下の方法を押さえていきます。"
 
 #. type: Bullet: '- '
 #: text/chapter10.md:10
@@ -1140,16 +1133,20 @@ msgstr ""
 "フォームのデータを直列化してブラウザのローカルストレージに保存し、アプリケー"
 "ションが再起動したときにそれを再読み込みする"
 
+# From WordNet (r) 3.0 (2006) [wn]:
+#
+# sought-after
+#     adj 1: being searched for; "the most sought-after item was the
+#            silver candelabrum" [syn: sought, sought-after(a)]
 #. type: Plain text
 #: text/chapter10.md:17
-#, fuzzy
 msgid ""
 "There is also an addendum covering some additional topics that are not as "
 "commonly sought-after. Feel free to read these sections, but don't let them "
 "stand in the way of progressing through the remainder of the book if they're "
 "less relevant to your learning objectives:"
 msgstr ""
-"さらに一般にはそこまで重用されない幾つかの話題を押さえた補遺もあります。\n"
+"さらに一般にはそこまで重用されない幾つかの追加の話題を押さえた補遺もあります。\n"
 "ご自由にこれらの節を読んで構いませんが、学習目標にあまり関係しなければ、本書の残りを読み進める妨げにならないようにしてください。"
 
 #. type: Bullet: '- '
@@ -1173,19 +1170,13 @@ msgstr "プロジェクトの準備"
 
 #. type: Plain text
 #: text/chapter10.md:24
-#, fuzzy
-#| msgid ""
-#| "The source code for this module is a continuation of the source code from "
-#| "chapters 3, 7 and 8. As such, the source tree includes the appropriate "
-#| "source files from those chapters."
 msgid ""
 "The source code for this module is a continuation of the source code from "
 "chapters 3, 7, and 8. As such, the source tree includes the appropriate "
 "source files from those chapters."
 msgstr ""
-"このモジュールのソースコードは、第3章、第7章及び第8章の続きになります。そうし"
-"たわけでソースツリーにはこれらの章からの適切なソースファイルが含まれていま"
-"す。"
+"このモジュールのソースコードは、第3章、第7章及び第8章の続きになります。\n"
+"そうしたわけでソースツリーにはこれらの章からの適切なソースファイルが含まれています。"
 
 #. type: Plain text
 #: text/chapter10.md:26
@@ -1226,15 +1217,6 @@ msgstr "免責事項"
 
 #. type: Plain text
 #: text/chapter10.md:34
-#, fuzzy
-#| msgid ""
-#| "PureScript provides a straightforward foreign function interface to make "
-#| "working with JavaScript as simple as possible. However, it should be "
-#| "noted that the FFI is an _advanced_ feature of the language. To use it "
-#| "safely and effectively, you should have an understanding of the runtime "
-#| "representation of the data you plan to work with. This chapter aims to "
-#| "impart such an understanding as pertains to code in PureScript's standard "
-#| "libraries."
 msgid ""
 "PureScript provides a straightforward foreign function interface to make "
 "working with JavaScript as simple as possible. However, it should be noted "
@@ -1243,24 +1225,13 @@ msgid ""
 "you plan to work with. This chapter aims to impart such an understanding as "
 "pertains to code in PureScript's standard libraries."
 msgstr ""
-"JavaScriptを扱う作業をできる限り簡単にするため、PureScriptは直感的な外部関数"
-"インターフェースを提供しています。\n"
-"しかし、FFIはPureScriptの*応用的な*機能であることには留意していただきたいと思"
-"います。\n"
-"FFIを安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現につい"
-"てよく理解していなければなりません。\n"
-"この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝"
-"授することを目指します。"
+"JavaScriptの扱いをできる限り単純にするため、PureScriptは直感的な外部関数インターフェースを提供しています。\n"
+"しかし、FFIはこの言語の*応用的な*機能であることには心に留めておかれると良いでしょう。\n"
+"安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現について理解していなければなりません。\n"
+"この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝授することを目指します。"
 
 #. type: Plain text
 #: text/chapter10.md:36
-#, fuzzy
-#| msgid ""
-#| "PureScript's FFI is designed to be very flexible. In practice, this means "
-#| "that developers have a choice, between giving their foreign functions "
-#| "very simple types, or using the type system to protect against accidental "
-#| "misuses of foreign code. Code in the standard libraries tends to favor "
-#| "the latter approach."
 msgid ""
 "PureScript's FFI is designed to be very flexible. In practice, this means "
 "that developers have a choice between giving their foreign functions very "
@@ -1269,10 +1240,8 @@ msgid ""
 "approach."
 msgstr ""
 "PureScriptのFFIはとても柔軟に設計されています。\n"
-"実際には、外部関数に最低限の型だけを与えるか、それとも型システムを利用して外"
-"部のコードの誤った使い方を防ぐようにするか、開発者が選べるということを意味し"
-"ています。\n"
-"標準ライブラリのコードは、後者の手法を好む傾向にあります。"
+"実際には、外部関数にとても単純な型を与えるか、型システムを利用して外部のコードの誤った使い方を防ぐようにするか、開発者が選べるようになっています。\n"
+"標準ライブラリのコードは、後者の手法を採る傾向にあります。"
 
 #. type: Plain text
 #: text/chapter10.md:38
@@ -1337,10 +1306,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:53
-#, fuzzy, no-wrap
-#| msgid "This function has the correct runtime representation for the function type `String -> String`, since it takes non-null strings to non-null strings, and has no other side-effects.\n"
+#, no-wrap
 msgid "This function has the correct runtime representation for the function type `String -> String`, since it takes non-null strings to non-null strings and has no other side-effects.\n"
-msgstr "`null`でない文字列から `null`でない文字列への関数であり、副作用を持っていないので、この関数は型 `String -> String`について適切な実行時表現を持っています。\n"
+msgstr ""
+"この関数は関数の型`String -> String`について適切な実行時表現を持っています。\n"
+"`null`でない文字列を取って`null`でない文字列にするもので、副作用を持たないからです。\n"
 
 #. type: Plain text
 #: text/chapter10.md:55
@@ -1359,14 +1329,6 @@ msgstr "{{#include ../exercises/chapter10/test/URI.purs}}\n"
 
 #. type: Plain text
 #: text/chapter10.md:62
-#, fuzzy
-#| msgid ""
-#| "We also need to write a foreign JavaScript module to import it from. A "
-#| "corresponding foreign JavaScript module is one of the same name but "
-#| "extension changed from `.purs` to `.js`. If the Purescript module above "
-#| "is saved as `URI.purs`, then the foreign JavaScript module is saved as "
-#| "`URI.js`.  Since `encodeURIComponent` is already defined, we have to "
-#| "export it as `_encodeURIComponent`:"
 msgid ""
 "We also need to write a foreign JavaScript module to import it from. A "
 "corresponding foreign JavaScript module is one of the same name but the "
@@ -1511,18 +1473,13 @@ msgstr "{{#include ../exercises/chapter10/test/Examples.purs:diagonal}}\n"
 
 #. type: Plain text
 #: text/chapter10.md:114
-#, fuzzy
-#| msgid ""
-#| "Recall that functions in PureScript are _curried_. `diagonal` is a "
-#| "function that takes a `Number` and returns a _function_, that takes a "
-#| "`Number` and returns a `Number`."
 msgid ""
 "Recall that functions in PureScript are _curried_. `diagonal` is a function "
 "that takes a `Number` and returns a _function_ that takes a `Number` and "
 "returns a `Number`."
 msgstr ""
-"PureScriptの関数は _カリー化_ されていることを思い出してください。\n"
-"`diagonal`は`Number`を取って _関数_ を返す関数です。\n"
+"PureScriptの関数は*カリー化*されていることを思い出してください。\n"
+"`diagonal`は`Number`を取って*関数*を返す関数です。\n"
 "そして返された関数は`Number`を取って`Number`を返します。"
 
 #. type: Fenced code block (js)
@@ -1644,14 +1601,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:166
-#, fuzzy
-#| msgid ""
-#| "We can then call it with `runFn2` which takes the uncurried function then "
-#| "the arguments."
 msgid ""
 "We can then call it with `runFn2`, which takes the uncurried function and "
 "then the arguments."
-msgstr "カリー化されていない関数と引数を取る`runFn2`で呼び出すことができます。"
+msgstr ""
+"そうして`runFn2`を使って呼び出せます。\n"
+"これはカリー化されていない関数と引数を取るものです。"
 
 #. type: Fenced code block (text)
 #: text/chapter10.md:167
@@ -1688,7 +1643,6 @@ msgstr "カリー化されていない関数についての補足"
 
 #. type: Plain text
 #: text/chapter10.md:181
-#, fuzzy
 msgid ""
 "PureScript's curried functions have certain advantages. It allows us to "
 "partially apply functions, and to give type class instances for function "
@@ -1699,7 +1653,7 @@ msgstr ""
 "PureScriptのカリー化された関数には勿論利点があります。\n"
 "部分的に関数を適用でき、関数型に型クラスインスタンスを与えられるのです。\n"
 "しかし効率上の代償も付いてきます。\n"
-"効率性が決定的に重要なコードでは多変数を受け付けるカリー化されていないJavaScript関数を定義する必要が時々あります。"
+"効率性が決定的に重要なコードでは時々、多変数を受け付けるカリー化されていないJavaScript関数を定義する必要があります。"
 
 #. type: Plain text
 #: text/chapter10.md:183
@@ -1771,10 +1725,6 @@ msgstr "{{#include ../exercises/chapter10/test/Examples.purs:curried_add}}\n"
 
 #. type: Plain text
 #: text/chapter10.md:211
-#, fuzzy
-#| msgid ""
-#| "and the resulting generated code, which is less compact due to the nested "
-#| "functions:"
 msgid ""
 "And the resulting generated code, which is less compact due to the nested "
 "functions:"
@@ -1810,13 +1760,6 @@ msgstr "現代的なJavaScriptの構文についての補足"
 
 #. type: Plain text
 #: text/chapter10.md:225
-#, fuzzy
-#| msgid ""
-#| "The arrow function syntax we saw earlier is an ES6 feature, and so it is "
-#| "incompatible with some older browsers (namely IE11). As of writing, it is "
-#| "[estimated that arrow functions are unavailable for the 6% of users]"
-#| "(https://caniuse.com/#feat=arrow-functions) who have not yet updated "
-#| "their web browser."
 msgid ""
 "The arrow function syntax we saw earlier is an ES6 feature, which is "
 "incompatible with some older browsers (namely IE11). As of writing, it is "
@@ -1824,19 +1767,11 @@ msgid ""
 "caniuse.com/#feat=arrow-functions) who have not yet updated their web "
 "browser."
 msgstr ""
-"前に見た矢印関数構文はES6の機能であり、そのため幾つかの古いブラウザ（名指しす"
-"ればIE11）と互換性がありません。\n"
-"執筆時点でWebブラウザをまだ更新していない[6%の利用者が矢印関数を使うことがで"
-"きないと推計](https://caniuse.com/#feat=arrow-functions)されています。"
+"前に見た矢印関数構文はES6の機能であり、そのため幾つかの古いブラウザ（名指しすればIE11）と互換性がありません。\n"
+"執筆時点でwebブラウザをまだ更新していない[6%の利用者が矢印関数を使うことができないと推計](https://caniuse.com/#feat=arrow-functions)されています。"
 
 #. type: Plain text
 #: text/chapter10.md:227
-#, fuzzy
-#| msgid ""
-#| "In order to be compatible with the most users, the JavaScript code "
-#| "generated by the PureScript compiler does not use arrow functions. It is "
-#| "also recommended to **avoid arrow functions in public libraries** for the "
-#| "same reason."
 msgid ""
 "To be compatible with the most users, the JavaScript code generated by the "
 "PureScript compiler does not use arrow functions. It is also recommended to "
@@ -1849,20 +1784,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:229
-#, fuzzy
-#| msgid ""
-#| "You may still use arrow functions in your own FFI code, but then should "
-#| "include a tool such as [Babel](https://github.com/babel/babel#intro) in "
-#| "your deployment workflow to convert these back to ES5 compatible "
-#| "functions."
 msgid ""
 "You may still use arrow functions in your own FFI code, but then you should "
 "include a tool such as [Babel](https://github.com/babel/babel#intro) in your "
 "deployment workflow to convert these back to ES5 compatible functions."
-msgstr ""
-"それでも自分のFFIコードで矢印関数を使うこともできますが、デプロイの作業工程で"
-"ES5に互換性のある関数へ変換するために[Babel](https://github.com/babel/"
-"babel#intro)などのツールを含めるべきです。"
+msgstr "それでも自分のFFIコードで矢印関数を使うこともできますが、デプロイの作業工程でES5に互換性のある関数へ変換するために[Babel](https://github.com/babel/babel#intro)などのツールを含めると良いでしょう。"
 
 #. type: Plain text
 #: text/chapter10.md:231
@@ -1987,23 +1913,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:266
-#, fuzzy
-#| msgid ""
-#| "To demonstrate passing `Array`s, here's how to call a JavaScript function "
-#| "which takes an `Array` of `Int` and returns the cumulative sum as another "
-#| "array. Recall that, since JavaScript does not have a separate type for "
-#| "`Int`, both `Int` and `Number` in PureScript translate to `Number` in "
-#| "JavaScript."
 msgid ""
 "To demonstrate passing `Array`s, here's how to call a JavaScript function "
 "that takes an `Array` of `Int` and returns the cumulative sum as another "
 "array. Recall that since JavaScript does not have a separate type for `Int`, "
 "both `Int` and `Number` in PureScript translate to `Number` in JavaScript."
 msgstr ""
-"`Array`の受け渡しを実演するために、以下に`Int`の`Array`を取って別の配列として"
-"累計の和を返すJavaScriptの関数の呼び出し方を示します。前にありましたが、"
-"JavaScriptは`Int`のための分離した型を持たないため、PureScriptでの`Int`と"
-"`Number`はJavaScriptでの`Number`に翻訳されます。"
+"`Array`を渡すところを実演するために、以下に`Int`の`Array`を取って別の配列として累計の和を返すJavaScriptの関数の呼び出し方を示します。\n"
+"前にありましたが、JavaScriptは`Int`のための分離した型を持たないため、PureScriptでの`Int`と`Number`は両方共JavaScriptでの`Number`に翻訳されます。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:267
@@ -2053,22 +1970,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:292
-#, fuzzy
-#| msgid ""
-#| "To demonstrate passing `Records`, here's how to call a JavaScript "
-#| "function which takes two `Complex` numbers as records, and returns their "
-#| "sum as another record. Note that a `Record` in PureScript is represented "
-#| "as an `Object` in JavaScript:"
 msgid ""
 "To demonstrate passing `Records`, here's how to call a JavaScript function "
 "that takes two `Complex` numbers as records and returns their sum as another "
 "record. Note that a `Record` in PureScript is represented as an `Object` in "
 "JavaScript:"
 msgstr ""
-"`Record`の受け渡しを実演するために、以下に2つの`Complex`な数をレコードとして"
-"取り、和を別のレコードとして返すJavaScriptの呼び出し方を示します。\n"
-"PureScriptでの`Record`がJavaScriptでは`Object`として表現されることに注意して"
-"ください。"
+"`Record`を渡すところを実演するために、以下に2つの`Complex`な数をレコードとして取り、和を別のレコードとして返すJavaScriptの呼び出し方を示します。\n"
+"PureScriptでの`Record`がJavaScriptでは`Object`として表現されることに注意してください。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:293
@@ -2124,13 +2033,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:320
-#, fuzzy
-#| msgid ""
-#| "Note that the above techniques require trusting that JavaScript will "
-#| "return the expected types, as PureScript is not able to apply type "
-#| "checking to JavaScript code. We will describe this type safety concern in "
-#| "more detail later on in the JSON section, as well as cover techniques to "
-#| "protect against type mismatches."
 msgid ""
 "Note that the above techniques require trusting that JavaScript will return "
 "the expected types, as PureScript cannot apply type checking to JavaScript "
@@ -2138,10 +2040,10 @@ msgid ""
 "the JSON section, as well as cover techniques to protect against type "
 "mismatches."
 msgstr ""
-"なお、上の手法にはJavaScriptが期待通りの型を返すことを信用する必要がありま"
-"す。PureScriptはJavaScriptのコードに型検査を適用できないからです。この型安全"
-"性の配慮について後のJSONの節でより詳しく記述していきます。型の不整合から身を"
-"守る手法についても押さえます。"
+"なお、上の手法にはJavaScriptが期待通りの型を返すことを信用する必要があります。\n"
+"PureScriptはJavaScriptのコードに型検査を適用できないからです。\n"
+"この型安全性の配慮について後のJSONの節でより詳しく解説していきます。\n"
+"型の不整合から身を守る手法についても押さえます。"
 
 #. type: Bullet: '1. '
 #: text/chapter10.md:324
@@ -2316,32 +2218,21 @@ msgstr "forall a. (forall x. x -> Maybe x) -> (forall x. Maybe x) -> Array a -> 
 
 #. type: Plain text
 #: text/chapter10.md:387
-#, fuzzy
-#| msgid "and not:"
 msgid "And not:"
 msgstr "以下ではないことに注意です。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:388
-#, fuzzy, no-wrap
-#| msgid "forall a. ( a -> Maybe a) -> Maybe a -> Array a -> Maybe a\n"
+#, no-wrap
 msgid "forall a. (a -> Maybe a) -> Maybe a -> Array a -> Maybe a\n"
-msgstr "forall a. ( a -> Maybe a) -> Maybe a -> Array a -> Maybe a\n"
+msgstr "forall a. (a -> Maybe a) -> Maybe a -> Array a -> Maybe a\n"
 
 #. type: Plain text
 #: text/chapter10.md:393
-#, fuzzy
-#| msgid ""
-#| "While both forms work, the latter is more vulnerable to unwanted inputs "
-#| "in place of `Just` and `Nothing`.  For example, in the more vulnerable "
-#| "case we could call it as follows:"
 msgid ""
 "While both forms work, the latter is more vulnerable to unwanted inputs in "
 "place of `Just` and `Nothing`."
-msgstr ""
-"どちらの形式でも動きますが、後者は`Just`と`Nothing`の場所での招かれざる入力に"
-"侵されやすくなります。例えばより脆弱な場合では以下のようにして呼ぶことができ"
-"ます。"
+msgstr "どちらの形式でも動きますが、後者は`Just`と`Nothing`の場所での招かれざる入力に対してより脆弱です。"
 
 #. type: Plain text
 #: text/chapter10.md:395
@@ -2361,14 +2252,9 @@ msgstr "これは如何なる配列の入力に対しても`Just 1000`を返し�
 
 #. type: Plain text
 #: text/chapter10.md:403
-#, fuzzy, no-wrap
-#| msgid ""
-#| "which returns `Just 1000` for any array input.\n"
-#| "This vulnerability is allowed because `(\\_ -> Just 1000)` and `Just 1000` match the signatures of `(a -> Maybe a)` and `Maybe a` respectively when `a` is `Int` (based on input array).\n"
+#, no-wrap
 msgid "This vulnerability is allowed because `(\\_ -> Just 1000)` and `Just 1000` match the signatures of `(a -> Maybe a)` and `Maybe a`, respectively, when `a` is `Int` (based on input array).\n"
-msgstr ""
-"これはいかなる配列についても`Just 1000`を返します。\n"
-"この脆弱性は`a`が`Int`のときに（これは入力の配列に基づきます）`(\\_ -> Just 1000)`と`Just 1000`がシグネチャ`(a -> Maybe a)`と`Maybe a`にそれぞれ合致しているために許されているのです。\n"
+msgstr "この脆弱性では、`a`が`Int`のときに（これは入力の配列に基づきます）`(\\_ -> Just 1000)`と`Just 1000`がシグネチャ`(a -> Maybe a)`と`Maybe a`にそれぞれ照合するために許容されてしまっています。\n"
 
 #. type: Plain text
 #: text/chapter10.md:406
@@ -2386,20 +2272,13 @@ msgstr "外部型の定義"
 
 #. type: Plain text
 #: text/chapter10.md:410
-#, fuzzy
-#| msgid ""
-#| "Suppose instead of returning a `Maybe a`, we want to actually return "
-#| "`arr[0]`. We want a type that represents a value either of type `a` or "
-#| "the `undefined` value (but not `null`). We'll call this type `Undefined "
-#| "a`."
 msgid ""
 "Suppose instead of returning a `Maybe a`, we want to return `arr[0]`. We "
 "want a type that represents a value either of type `a` or the `undefined` "
 "value (but not `null`). We'll call this type `Undefined a`."
 msgstr ""
-"`Maybe a`を返す代わりに実は`arr[0]`を返したいのだとしましょう。\n"
-"型`a`ないし`undefined`値（ただし`null`ではありません）の何れかの値を表現する"
-"型がほしいです。\n"
+"`Maybe a`を返す代わりに`arr[0]`を返したいのだとしましょう。\n"
+"型`a`ないし`undefined`値（ただし`null`ではありません）の何れかの値を表現する型がほしいです。\n"
 "この型を`Undefined a`と呼びましょう。"
 
 #. type: Plain text
@@ -2430,10 +2309,8 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:420
-#, fuzzy
-#| msgid "We can now simply reuse our original definition for `head`:"
 msgid "We can now reuse our original definition for `head`:"
-msgstr "これで元の`head`の定義を単に再利用できます。"
+msgstr "これで元の`head`の定義を再利用できます。"
 
 #. type: Fenced code block (javascript)
 #: text/chapter10.md:421
@@ -2458,10 +2335,6 @@ msgstr "foreign import undefinedHead :: forall a. Array a -> Undefined a\n"
 
 #. type: Plain text
 #: text/chapter10.md:433
-#, fuzzy
-#| msgid ""
-#| "The body of the `undefinedHead` function returns `arr[0]` which may be "
-#| "`undefined`, and the type signature correctly reflects that fact."
 msgid ""
 "The body of the `undefinedHead` function returns `arr[0]`, which may be "
 "`undefined`, and the type signature correctly reflects that fact."
@@ -2471,18 +2344,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:435
-#, fuzzy
-#| msgid ""
-#| "This function has the correct runtime representation for its type, but is "
-#| "quite useless since we have no way to use a value of type `Undefined a`. "
-#| "Well, not exactly. We can use this type in another FFI!"
 msgid ""
 "This function has the correct runtime representation for its type, but it's "
 "quite useless since we have no way to use a value of type `Undefined a`. "
 "Well, not exactly. We can use this type in another FFI!"
 msgstr ""
-"この関数はその型の適切な実行時表現を持っていますが、型 `Undefined a`の値を使"
-"用する方法がないので、全く役に立ちません。\n"
+"この関数はその型の適切な実行時表現を持っていますが、型`Undefined a`の値を使用する方法がないので、全く役に立ちません。\n"
 "いや、言い過ぎました。\n"
 "別のFFIでこの型を使えますからね。"
 
@@ -2535,23 +2402,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:457
-#, fuzzy
-#| msgid ""
-#| "Here, the foreign function we defined is very simple, which means we can "
-#| "benefit from the use of PureScript's typechecker as much as possible. "
-#| "This is good practice in general: foreign functions should be kept as "
-#| "small as possible, and application logic moved into PureScript code "
-#| "wherever possible."
 msgid ""
 "Here, the foreign function we defined is very simple, which means we can "
 "benefit from using PureScript's typechecker as much as possible. This is "
 "good practice in general: foreign functions should be kept as small as "
 "possible, and application logic moved into PureScript code wherever possible."
 msgstr ""
-"このように、定義したこの外部関数はとても簡単です。\n"
+"このように、定義したこの外部関数はとても単純です。\n"
 "つまりPureScriptの型検査器を使うことによる利益が最大限得られるのです。\n"
-"一般に、外部関数は可能な限り小さく保ち、できるだけアプリケーションの処理は"
-"PureScriptコードへ移動しておくことをお勧めします。"
+"一般に、外部関数は可能な限り小さく保ち、できるだけアプリケーションの処理はPureScriptコードへ移動しておくことをお勧めします。"
 
 #. type: Title ##
 #: text/chapter10.md:458 text/chapter8.md:365 text/chapter8.md:444
@@ -2687,12 +2546,6 @@ msgstr "型クラスメンバー関数を使う"
 
 #. type: Plain text
 #: text/chapter10.md:506
-#, fuzzy
-#| msgid ""
-#| "Just like our earlier guide on passing the `Maybe` constructor over FFI, "
-#| "this is another case of writing PureScript that calls JavaScript, which "
-#| "in turn calls PureScript functions again. Here we will explore how to "
-#| "pass type class member functions over the FFI."
 msgid ""
 "Like our earlier guide on passing the `Maybe` constructor over FFI, this is "
 "another case of writing PureScript that calls JavaScript, which calls "
@@ -2706,10 +2559,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:508
-#, fuzzy
-#| msgid ""
-#| "We start with writing a foreign JavaScript function which expects the "
-#| "appropriate instance of `show` to match the type of `x`."
 msgid ""
 "We start with writing a foreign JavaScript function that expects the "
 "appropriate instance of `show` to match the type of `x`."
@@ -2740,8 +2589,6 @@ msgstr "foreign import boldImpl :: forall a. (a -> String) -> a -> String\n"
 
 #. type: Plain text
 #: text/chapter10.md:521
-#, fuzzy
-#| msgid "and a wrapper function that passes the correct instance of `show`:"
 msgid "And a wrapper function that passes the correct instance of `show`:"
 msgstr "そして`show`の正しいインスタンスを渡す梱包関数も書きます。"
 
@@ -2757,10 +2604,8 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:528
-#, fuzzy
-#| msgid "Alternatively in point-free form:"
 msgid "Alternatively, in point-free form:"
-msgstr "代わりにポイントフリー形式だとこうです。"
+msgstr "代えてポイントフリー形式だとこうです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:529
@@ -2909,10 +2754,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:592
-#, fuzzy
-#| msgid ""
-#| "When testing this in the repl, notice that the string is printed directly "
-#| "to the console (instead of being quoted) and a `unit` value is returned."
 msgid ""
 "When testing this in the repl, notice that the string is printed directly to "
 "the console (instead of being quoted), and a `unit` value is returned."
@@ -2955,14 +2796,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:606
-#, fuzzy
-#| msgid ""
-#| "You'd generally only use these if you want to call existing JavaScript "
-#| "library APIs directly, rather than wrapping those APIs in curried "
-#| "functions. So it doesn't make much sense to present an example of "
-#| "uncurried `yell`, where the JavaScript relies on PureScript type class "
-#| "members, since you wouldn't find that in the existing JavaScript "
-#| "ecosystem."
 msgid ""
 "You'd generally only use these if you want to call existing JavaScript "
 "library APIs directly rather than wrapping those APIs in curried functions. "
@@ -3144,20 +2977,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:678
-#, fuzzy
-#| msgid ""
-#| "Note that asynchronous logging in the repl just waits to print until the "
-#| "entire block has finished executing. This code behaves more predictably "
-#| "when run with `spago test` where there is a slight delay _between_ prints."
 msgid ""
 "Note that asynchronous logging in the repl waits to print until the entire "
 "block has finished executing. This code behaves more predictably when run "
 "with `spago test` where there is a slight delay _between_ prints."
 msgstr ""
-"REPLでの非同期ログ出力はブロック全体が実行を終了するまで印字を待機する点に注"
-"意しましょう。\n"
-"このコードを`spago test`で走らせた場合、印字の _合間に_ 僅かな遅延があり、よ"
-"り予測に近い挙動をします。"
+"REPLでの非同期ログ出力はブロック全体が実行を終了するまで印字を待機する点に注意しましょう。\n"
+"このコードを`spago test`で走らせた場合、印字の*合間に*僅かな遅延があり、より予測に近い挙動をします。"
 
 #. type: Plain text
 #: text/chapter10.md:680
@@ -3260,12 +3086,6 @@ msgstr "JSON"
 
 #. type: Plain text
 #: text/chapter10.md:723
-#, fuzzy
-#| msgid ""
-#| "There are many reasons to use JSON in an application, for example, it's a "
-#| "common means of communicating with web APIs. This section will discuss "
-#| "other use-cases too, beginning with a technique to improve type safety "
-#| "when passing structural data over the FFI."
 msgid ""
 "There are many reasons to use JSON in an application; for example, it's a "
 "common means of communicating with web APIs. This section will discuss other "
@@ -3273,9 +3093,9 @@ msgid ""
 "passing structural data over the FFI."
 msgstr ""
 "アプリケーションでJSONを使うことには多くの理由があります。\n"
-"例えばWebのAPIと疎通するよくある手段であるためです。\n"
+"例えばwebのAPIと疎通するよくある手段であるためです。\n"
 "この節では他の用例についてもお話ししましょう。\n"
-"構造的なデータをFFI越しに渡すことで型安全性を向上させる手法から始めます。"
+"構造的なデータをFFI越しに渡す場合に型安全性を向上させる手法から始めます。"
 
 #. type: Plain text
 #: text/chapter10.md:725
@@ -3328,10 +3148,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:747
-#, fuzzy
-#| msgid ""
-#| "We can use the original type signatures, and the code will still compile, "
-#| "despite the fact that the return types are incorrect."
 msgid ""
 "We can use the original type signatures, and the code will still compile, "
 "despite the incorrect return types."
@@ -3461,9 +3277,7 @@ msgstr ""
 msgid ""
 "If we create an alternate foreign import that defines the return type as "
 "`Json`:"
-msgstr ""
-"返る型を`Json`として定義するようにして、代わりとなる外部インポートをつくると"
-"こうなります。"
+msgstr "返る型を`Json`として定義するようにして、代わりとなる外部インポートを作るとこうなります。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:789
@@ -3744,36 +3558,24 @@ msgstr ""
 
 #. type: Bullet: '1. '
 #: text/chapter10.md:902
-#, fuzzy
-#| msgid ""
-#| "(Medium) Rewrite the earlier `quadraticRoots` function as "
-#| "`quadraticRootsSet` which returns the `Complex` roots as a `Set` via JSON "
-#| "(instead of as a `Pair`)."
 msgid ""
 "(Medium) Rewrite the earlier `quadraticRoots` function as "
 "`quadraticRootsSet` that returns the `Complex` roots as a `Set` via JSON "
 "(instead of as a `Pair`)."
 msgstr ""
-"（普通）少し前の`quadraticRoots`を書き換えて`quadraticRootSet`としてくださ"
-"い。\n"
-"この関数は`Complex`の根をJSONを介して（`Pair`の代わりに）`Set`として返しま"
-"す。"
+"（普通）少し前の`quadraticRoots`関数を書き換えて`quadraticRootSet`としてください。\n"
+"この関数は`Complex`の根をJSONを介して（`Pair`の代わりに）`Set`として返します。"
 
 #. type: Plain text
 #: text/chapter10.md:902
-#, fuzzy, no-wrap
-#| msgid ""
-#| "1. (Difficult) Rewrite the earlier `quadraticRoots` function as `quadraticRootsSafe` which uses JSON to pass the `Pair` of `Complex` roots over FFI. Don't use the `Pair` constructor in JavaScript, but instead, just return the pair in a decoder-compatible format.\n"
-#| "_Hint_: You'll need to write a `DecodeJson` instance for `Pair`. Consult the [argonaut docs](https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances) for instruction on writing your own decode instance. Their [decodeJsonTuple](https://github.com/purescript-contrib/purescript-argonaut-codecs/blob/master/src/Data/Argonaut/Decode/Class.purs) instance may also be a helpful reference.  Note that you'll need a `newtype` wrapper for `Pair` to avoid creating an \"orphan instance\".\n"
-#| "1. (Medium) Write a `parseAndDecodeArray2D :: String -> Either String (Array (Array Int))` function to parse and decode a JSON string containing a 2D array, such as `\"[[1, 2, 3], [4, 5], [6]]\"`. _Hint_: You'll need to use `jsonParser` to convert the `String` into `Json` before decoding.\n"
-#| "1. (Medium) The following data type represents a binary tree with values at the leaves:\n"
+#, no-wrap
 msgid ""
 "1. (Difficult) Rewrite the earlier `quadraticRoots` function as `quadraticRootsSafe` that uses JSON to pass the `Pair` of `Complex` roots over FFI. Don't use the `Pair` constructor in JavaScript, but instead, just return the pair in a decoder-compatible format.\n"
 "_Hint_: You'll need to write a `DecodeJson` instance for `Pair`. Consult the [argonaut docs](https://github.com/purescript-contrib/purescript-argonaut-codecs/tree/main/docs#writing-new-instances) for instruction on writing your own decode instance. Their [decodeJsonTuple](https://github.com/purescript-contrib/purescript-argonaut-codecs/blob/master/src/Data/Argonaut/Decode/Class.purs) instance may also be a helpful reference.  Note that you'll need a `newtype` wrapper for `Pair` to avoid creating an \"orphan instance\".\n"
 "1. (Medium) Write a `parseAndDecodeArray2D :: String -> Either String (Array (Array Int))` function to parse and decode a JSON string containing a 2D array, such as `\"[[1, 2, 3], [4, 5], [6]]\"`. _Hint_: You'll need to use `jsonParser` to convert the `String` into `Json` before decoding.\n"
 "1. (Medium) The following data type represents a binary tree with values at the leaves:\n"
 msgstr ""
-"1. （難しい）少し前の`quadraticRoots`を書き換えて`quadraticRootsSafe`としてください。\n"
+"1. （難しい）少し前の`quadraticRoots`関数を書き換えて`quadraticRootsSafe`としてください。\n"
 "   この関数はJSONを使って`Complex`の根の`Pair`をFFI越しに渡します。\n"
 "   JavaScriptでは`Pair`構築子を使わないでください。\n"
 "   その代わり、デコーダーに互換性のある形式で対を返すだけにしてください。\n"
@@ -3849,11 +3651,6 @@ msgstr "住所録"
 
 #. type: Plain text
 #: text/chapter10.md:925
-#, fuzzy
-#| msgid ""
-#| "In this section we will apply our newly-acquired FFI and JSON knowledge "
-#| "to build on our address book example from chapter 8. We will add the "
-#| "following features:"
 msgid ""
 "In this section, we will apply our newly-acquired FFI and JSON knowledge to "
 "build on our address book example from Chapter 8. We will add the following "
@@ -3893,9 +3690,7 @@ msgstr ""
 msgid ""
 "We'll start by creating FFI wrappers for the following Web Storage APIs in "
 "our `Effect.Storage` module:"
-msgstr ""
-"`Effect.Storage`モジュールに以下のWebストレージAPIのためのFFIの梱包をつくるこ"
-"とから始めていきます。"
+msgstr "`Effect.Storage`モジュールに以下のwebストレージAPIのためのFFIの梱包を作ることから始めていきます。"
 
 #. type: Bullet: '- '
 #: text/chapter10.md:934
@@ -4040,23 +3835,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:989
-#, fuzzy
-#| msgid ""
-#| "This is because `PhoneType` in the `Person` record needs an `EncodeJson` "
-#| "instance. We'll just derive a generic encode instance, and a decode "
-#| "instance too while we're at it. More information how this works is "
-#| "available in the argonaut docs:"
 msgid ""
 "This is because `PhoneType` in the `Person` record needs an `EncodeJson` "
 "instance. We'll also derive a generic encode instance and a decode instance "
 "while we're at it. More information on how this works is available in the "
 "argonaut docs:"
 msgstr ""
-"これはなぜかというと`Person`レコード中の`PhoneType`が`EncodeJson`インスタンス"
-"を必要としているからです。\n"
-"単純に汎用のエンコードインスタンスとデコードインスタンスを導出すれば完了で"
-"す。\n"
-"この仕組みについて、より詳しくはargonautのドキュメントで見られます。"
+"これはなぜかというと`Person`レコード中の`PhoneType`が`EncodeJson`インスタンスを必要としているからです。\n"
+"また、ついでに汎用のエンコードインスタンスとデコードインスタンスを導出していきます。\n"
+"この仕組みについての詳細情報はargonautのドキュメントにあります。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:990
@@ -4093,7 +3880,6 @@ msgstr "item <- getItem \"person\"\n"
 
 #. type: Plain text
 #: text/chapter10.md:1005
-#, fuzzy
 msgid ""
 "Then we'll create a helper function to convert the string from local storage "
 "to our `Person` record. Note that this string in storage may be `null`, so "
@@ -4102,10 +3888,10 @@ msgid ""
 "of which returns an `Either` value, so it makes sense to organize these "
 "together in a `do` block."
 msgstr ""
-"そうしてローカルストレージから、文字列から`Person`レコードへの変換を扱う補助関数をつくります。\n"
-"なお、このストレージ中の文字列は`null`かもしれないので、うまく`String`としてデコードされるまでは外部の`Json`として表現します。\n"
+"そうしてローカルストレージ由来の文字列から`Person`レコードへ変換する補助関数を作ります。\n"
+"なお、このストレージ中の文字列は`null`かもしれないので、正常に`String`としてデコードされるまでは外部の`Json`として表現します。\n"
 "道中には他にも多くの変換工程があり、それぞれで`Either`の値を返します。\n"
-"そのためこれらを`do`ブロックの中に纏めるのは理に適っています。"
+"そのためこれらをまとめて`do`ブロックの中に纏めるのは理に適っています。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:1006
@@ -4125,11 +3911,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1015
-#, fuzzy
-#| msgid ""
-#| "Then we inspect this result to see if it succeeded. If it failed, we'll "
-#| "log the errors and use our default `examplePerson`, otherwise we'll use "
-#| "the person retrieved from local storage."
 msgid ""
 "Then we inspect this result to see if it succeeded. If it fails, we'll log "
 "the errors and use our default `examplePerson`, otherwise, we'll use the "
@@ -4217,7 +3998,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1051
-#, fuzzy
 msgid ""
 "Only the first error should ever occur during the normal operation of this "
 "app. You can trigger the other errors by opening your web browser's dev "
@@ -4226,13 +4006,12 @@ msgid ""
 "triggered. See if you can trigger each of them."
 msgstr ""
 "最初のエラーのみがこのアプリの通常の操作内で起こります。\n"
-"他のエラーはWebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。\n"
-"どのようにJSON文字列を変更したかが、どのエラーの引き金になるかを決定します。\n"
-"各エラーを引き起こせるかどうかやってみてください。"
+"他のエラーはwebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。\n"
+"どのようにJSON文字列を変更したかが、どのエラーを引き起こすかを決定します。\n"
+"各エラーを引き起こせるかご確認ください。"
 
 #. type: Plain text
 #: text/chapter10.md:1053
-#, fuzzy
 msgid ""
 "That covers local storage. Next, we'll implement the `alert` action, similar "
 "to the `log` action from the `Effect.Console` module. The only difference is "
@@ -4242,10 +4021,10 @@ msgid ""
 msgstr ""
 "これでローカルストレージについては押さえました。\n"
 "次に`alert`動作を実装していきます。\n"
-"この動作は`Effect.Console`モジュールの`log`動作によく似ています。\n"
+"この動作は`Effect.Console`モジュールの`log`動作に似ています。\n"
 "唯一の相違点は`alert`動作が`window.alert`メソッドを使うことで、対して`log`動作は`console.log`メソッドを使っています。\n"
 "そういうわけで`alert`は`window.alert`が定義された環境でのみ使うことができます。\n"
-"例えばWebブラウザなどです。"
+"webブラウザなどです。"
 
 #. type: Fenced code block (hs)
 #: text/chapter10.md:1054
@@ -4345,18 +4124,13 @@ msgstr "まとめ"
 
 #. type: Plain text
 #: text/chapter10.md:1086
-#, fuzzy
-#| msgid ""
-#| "In this chapter, we've learned how to work with foreign JavaScript code "
-#| "from PureScript and we've seen the issues involved with writing "
-#| "trustworthy code using the FFI:"
 msgid ""
 "In this chapter, we've learned how to work with foreign JavaScript code from "
 "PureScript, and we've seen the issues involved with writing trustworthy code "
 "using the FFI:"
 msgstr ""
-"この章では、PureScriptから外部のJavaScriptコードを扱う方法を学びました。ま"
-"た、FFIを使用して信頼できるコードを書く時に生じる問題について見てきました。"
+"この章では、PureScriptから外部のJavaScriptコードを扱う方法を学びました。\n"
+"また、FFIを使用して信頼できるコードを書く時に生じる問題について見てきました。"
 
 #. type: Bullet: '- '
 #: text/chapter10.md:1090
@@ -4367,10 +4141,6 @@ msgstr "外部関数が正しい表現を持っていることを確かめる重
 
 #. type: Bullet: '- '
 #: text/chapter10.md:1090
-#, fuzzy
-#| msgid ""
-#| "We learned how to deal with corner cases like null values and other types "
-#| "of JavaScript data, by using foreign types, or the `Json` data type."
 msgid ""
 "We learned how to deal with corner cases like null values and other types of "
 "JavaScript data by using foreign types or the `Json` data type."
@@ -4385,22 +4155,14 @@ msgstr "安全にJSONデータを直列化・直列化復元する方法を見�
 
 #. type: Plain text
 #: text/chapter10.md:1092
-#, fuzzy
-#| msgid ""
-#| "For more examples, the `purescript`, `purescript-contrib` and `purescript-"
-#| "node` GitHub organizations provide plenty of examples of libraries which "
-#| "use the FFI. In the remaining chapters, we will see some of these "
-#| "libraries put to use to solve real-world problems in a type-safe way."
 msgid ""
 "For more examples, the `purescript`, `purescript-contrib`, and `purescript-"
 "node` GitHub organizations provide plenty of examples of libraries that use "
 "the FFI. In the remaining chapters, we will see some of these libraries put "
 "to use to solve real-world problems in a type-safe way."
 msgstr ""
-"より多くの例については、Githubの `purescript`組織、`purescript-contrib`組織お"
-"よび `purescript-node`組織が、FFIを使用するライブラリの例を多数提供していま"
-"す。残りの章では、型安全な方法で現実世界の問題を解決するために使うライブラリ"
-"を幾つか見ていきます。"
+"より多くの例については、GitHubの`purescript`組織、`purescript-contrib`組織、及び`purescript-node`組織が、FFIを使用するライブラリの例を多数提供しています。\n"
+"残りの章では、型安全な方法で現実世界の問題を解決するために使うライブラリを幾つか見ていきます。"
 
 #. type: Title ##
 #: text/chapter10.md:1093
@@ -4430,16 +4192,7 @@ msgstr "例として以下のような簡単なモジュールを見てみまし
 
 #. type: Fenced code block (haskell)
 #: text/chapter10.md:1101
-#, fuzzy, no-wrap
-#| msgid ""
-#| "module Test where\n"
-#| "\n"
-#| "gcd :: Int -> Int -> Int\n"
-#| "gcd 0 m = m\n"
-#| "gcd n 0 = n\n"
-#| "gcd n m\n"
-#| "  | n > m     = gcd (n - m) m\n"
-#| "  | otherwise = gcd (m - n) n\n"
+#, no-wrap
 msgid ""
 "module Test where\n"
 "\n"
@@ -4457,7 +4210,7 @@ msgstr ""
 "gcd n 0 = n\n"
 "gcd n m\n"
 "  | n > m     = gcd (n - m) m\n"
-"  | otherwise = gcd (m - n) n\n"
+"  | otherwise = gcd (m – n) n\n"
 
 #. type: Plain text
 #: text/chapter10.md:1113
@@ -4499,22 +4252,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1122
-#, fuzzy
-#| msgid ""
-#| "Here, I am assuming that the code was compiled with `spago build`, which "
-#| "compiles PureScript modules to ES modules. For that reason, I was able to "
-#| "reference the `gcd` function on the `Test` object, after importing the "
-#| "`Test` module using `import`."
 msgid ""
 "Here, I assume the code was compiled with `spago build`, which compiles "
 "PureScript modules to ES modules. For that reason, I could reference the "
 "`gcd` function on the `Test` object, after importing the `Test` module using "
 "`import`."
 msgstr ""
-"ここでは、コードがPureScriptモジュールをESモジュールにコンパイルする `spago "
-"build`でコンパイルされていると仮定しています。そのため、 `import`を使って "
-"`Test`モジュールをインポートした後、 `Test`オブジェクトの `gcd`関数を参照でき"
-"ました。"
+"ここでは`spago build`でコンパイルされていることを前提としています。\n"
+"SpagoはPureScriptモジュールをESモジュールにコンパイルするものです。\n"
+"そのため、`import`を使って`Test`モジュールをインポートした後、`Test`オブジェクトの`gcd`関数を参照できました。"
 
 #. type: Plain text
 #: text/chapter10.md:1124
@@ -4537,21 +4283,15 @@ msgstr "名前の生成を理解する"
 
 #. type: Plain text
 #: text/chapter10.md:1128
-#, fuzzy
-#| msgid ""
-#| "PureScript aims to preserve names during code generation as much as "
-#| "possible. In particular, most identifiers which are neither PureScript "
-#| "nor JavaScript keywords can be expected to be preserved, at least for "
-#| "names of top-level declarations."
 msgid ""
 "PureScript aims to preserve names during code generation as much as "
 "possible. In particular, most identifiers that are neither PureScript nor "
 "JavaScript keywords can be expected to be preserved, at least for names of "
 "top-level declarations."
 msgstr ""
-"PureScriptはコード生成時にできるだけ名前を保存することを目的としています。具"
-"体的には、少なくともトップレベルで宣言される名前については、PureScriptや"
-"JavaScriptのキーワードでなければほとんどの識別子が保存されます。"
+"PureScriptはコード生成時にできるだけ名前を保持することを目指します。\n"
+"とりわけ、PureScriptやJavaScriptのキーワードでなければほとんどの識別子が保存されることが期待できます。\n"
+"少なくとも最上位で宣言される名前についてはそうです。"
 
 #. type: Plain text
 #: text/chapter10.md:1130
@@ -4571,8 +4311,6 @@ msgstr "null = []\n"
 
 #. type: Plain text
 #: text/chapter10.md:1136 text/chapter10.md:1148
-#, fuzzy
-#| msgid "generates the following JavaScript:"
 msgid "Generates the following JavaScript:"
 msgstr "これは以下のJavaScriptを生成します。"
 
@@ -4606,13 +4344,6 @@ msgstr "var example$prime = 100;\n"
 
 #. type: Plain text
 #: text/chapter10.md:1154
-#, fuzzy
-#| msgid ""
-#| "Where compiled PureScript code is intended to be called from JavaScript, "
-#| "it is recommended that identifiers only use alphanumeric characters, and "
-#| "avoid JavaScript keywords. If user-defined operators are provided for use "
-#| "in PureScript code, it is good practice to provide an alternative "
-#| "function with an alphanumeric name for use in JavaScript."
 msgid ""
 "Where compiled PureScript code is intended to be called from JavaScript, it "
 "is recommended that identifiers only use alphanumeric characters and avoid "
@@ -4620,12 +4351,8 @@ msgid ""
 "PureScript code, it is good practice to provide an alternative function with "
 "an alphanumeric name for use in JavaScript."
 msgstr ""
-"コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図してい"
-"る場合、識別子は英数字のみを使用し、JavaScriptの予約語を避けることをお勧めし"
-"ます。\n"
-"ユーザ定義演算子がPureScriptコードでの使用のために提供される場合でも、"
-"JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧め"
-"します。"
+"コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図している場合、識別子は英数字のみを使用し、JavaScriptの予約語を避けることをお勧めします。\n"
+"ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。"
 
 #. type: Title ###
 #: text/chapter10.md:1155
@@ -4635,24 +4362,16 @@ msgstr "実行時のデータ表現"
 
 #. type: Plain text
 #: text/chapter10.md:1158
-#, fuzzy
-#| msgid ""
-#| "Types allow us to reason at compile-time that our programs are "
-#| "\"correct\" in some sense - that is, they will not break at runtime. But "
-#| "what does that mean? In PureScript, it means that the type of an "
-#| "expression should be compatible with its representation at runtime."
 msgid ""
 "Types allow us to reason at compile-time that our programs are \"correct\" "
 "in some sense – that is, they will not break at runtime. But what does that "
 "mean? In PureScript, it means that the type of an expression should be "
 "compatible with its representation at runtime."
 msgstr ""
-"型はプログラムがある意味で「正しい」ことをコンパイル時に判断できるようにしま"
-"す。\n"
+"型はプログラムがある意味で「正しい」ことをコンパイル時に論証できるようにします。\n"
 "つまり、その点については壊れることがありません。\n"
 "しかし、これは何を意味するのでしょうか。\n"
-"PureScriptでは式の型は実行時の表現と互換性がなければならないことを意味しま"
-"す。"
+"PureScriptでは、式の型は実行時の表現と互換性があることを意味します。"
 
 #. type: Plain text
 #: text/chapter10.md:1160
@@ -4697,14 +4416,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1166
-#, fuzzy
-#| msgid ""
-#| "A similar law holds for expressions of type `Int`, `Number`, and `String` "
-#| "- expressions of type `Int` or `Number` evaluate to non-null JavaScript "
-#| "numbers, and expressions of type `String` evaluate to non-null JavaScript "
-#| "strings. Expressions of type `Int` will evaluate to integers at runtime, "
-#| "even though they cannot be distinguished from values of type `Number` by "
-#| "using `typeof`."
 msgid ""
 "A similar law holds for expressions of type `Int`, `Number`, and `String` – "
 "expressions of type `Int` or `Number` evaluate to non-null JavaScript "
@@ -4713,23 +4424,12 @@ msgid ""
 "even though they cannot be distinguished from values of type `Number` by "
 "using `typeof`."
 msgstr ""
-"`Int`や`Number`や`String`の型の式についても同様のことが成り立ちます。\n"
-"`Int`や`Number`型の式は `null`でないJavaScriptの数へと評価されますし、 "
-"`String`型の式は `null`でないJavaScriptの文字列へと評価されます。\n"
-"`typeof`を使った場合に型`Number`の値と見分けがつかなくなるにせよ、型`Int`の式"
-"は実行時に整数に評価されます。"
+"`Int`や`Number`や`String`の型の式についても似た法則が成り立ちます。\n"
+"`Int`や`Number`型の式はnullでないJavaScriptの数へと評価されますし、`String`型の式はnullでないJavaScriptの文字列へと評価されます。\n"
+"`typeof`を使った場合に型`Number`の値と見分けがつかなくなるにせよ、型`Int`の式は実行時に整数に評価されます。"
 
 #. type: Plain text
 #: text/chapter10.md:1168
-#, fuzzy
-#| msgid ""
-#| "What about `Unit`? Well, since `Unit` has only one inhabitant (`unit`) "
-#| "and its value is not observable, it doesn't actually matter what it's "
-#| "represented with at runtime. Old code tends to represent it using `{}`. "
-#| "Newer code, however, tends to use `undefined`. So, although it doesn't "
-#| "really matter what you use to represent `Unit`, it is recommended to use "
-#| "`undefined` (not returning anything from a function also returns "
-#| "`undefined`)."
 msgid ""
 "What about `Unit`? Well, since `Unit` has only one inhabitant (`unit`) and "
 "its value is not observable, it doesn't matter what it's represented with at "
@@ -4739,13 +4439,10 @@ msgid ""
 "anything from a function also returns `undefined`)."
 msgstr ""
 "`Unit`についてはどうでしょうか。\n"
-"`Unit`には現住 (`unit`) が1つのみで値が観測できないため、実のところ実行時に何"
-"で表現されるかは重要ではありません。\n"
+"`Unit`には現住 (`unit`) が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。\n"
 "古いコードは`{}`を使って表現する傾向がありました。\n"
 "しかし比較的新しいコードでは`undefined`を使う傾向にあります。\n"
-"なので、`Unit`を表現するのに使うものは本当に何でも問題にならないのですが、"
-"`undefined`を使うことが推奨されます（関数から何も返さないときも`undefined`を"
-"返します）。"
+"なので、`Unit`を表現するのに使うものは何であれ差し支えありませんが、`undefined`を使うことが推奨されます（関数から何も返さないときも`undefined`を返します）。"
 
 #. type: Plain text
 #: text/chapter10.md:1170
@@ -4754,26 +4451,17 @@ msgstr "もっと複雑な型についてはどうでしょうか。"
 
 #. type: Plain text
 #: text/chapter10.md:1172
-#, fuzzy, no-wrap
-#| msgid "As we have already seen, PureScript functions correspond to JavaScript functions of a single argument. More precisely, if an expression `f` has type `a -> b` for some types `a` and `b`, and an expression `x` evaluates to a value with the correct runtime representation for type `a`, then `f` evaluates to a JavaScript function, which when applied to the result of evaluating `x`, has the correct runtime representation for type `b`. As a simple example, an expression of type `String -> String` evaluates to a function which takes non-null JavaScript strings to non-null JavaScript strings.\n"
+#, no-wrap
 msgid "As we have already seen, PureScript functions correspond to JavaScript functions of a single argument. More precisely, if an expression `f` has type `a -> b` for some types `a` and `b`, and an expression `x` evaluates to a value with the correct runtime representation for type `a`, then `f` evaluates to a JavaScript function, which, when applied to the result of evaluating `x`, has the correct runtime representation for type `b`. As a simple example, an expression of type `String -> String` evaluates to a function that takes non-null JavaScript strings to non-null JavaScript strings.\n"
 msgstr ""
 "既に見てきたように、PureScriptの関数は引数が1つのJavaScriptの関数に対応しています。\n"
 "厳密に言えばこうなります。\n"
-"任意の型`a`と`b`について、式`f`の型が`a -> b`で、式`x`が型`a`についての適切な実行時表現の値へと評価されるとします。\n"
-"このとき`f`はJavaScriptの関数へと評価され、`x`を評価した結果に`f`を適用すると型`b`の適切な実行時表現を持ちます。\n"
-"簡単な例としては、 `String -> String`型の式は、 `null`でないJavaScript文字列から `null`でないJavaScript文字列への関数へと評価されます。\n"
+"ある型`a`と`b`について、式`f`の型が`a -> b`で、式`x`が型`a`についての適切な実行時表現の値へと評価されるとします。\n"
+"このとき`f`はJavaScriptの関数へと評価されますが、この関数は`x`を評価した結果に`f`を適用すると型`b`の適切な実行時表現を持ちます。\n"
+"単純な例としては、`String -> String`型の式は、nullでないJavaScript文字列からnullでないJavaScript文字列への関数へと評価されます。\n"
 
 #. type: Plain text
 #: text/chapter10.md:1174
-#, fuzzy
-#| msgid ""
-#| "As you might expect, PureScript's arrays correspond to JavaScript arrays. "
-#| "But remember - PureScript arrays are homogeneous, so every element has "
-#| "the same type. Concretely, if a PureScript expression `e` has type `Array "
-#| "a` for some type `a`, then `e` evaluates to a (non-null) JavaScript "
-#| "array, all of whose elements have the correct runtime representation for "
-#| "type `a`."
 msgid ""
 "As you might expect, PureScript's arrays correspond to JavaScript arrays. "
 "But remember – PureScript arrays are homogeneous, so every element has the "
@@ -4782,15 +4470,12 @@ msgid ""
 "whose elements have the correct runtime representation for type `a`."
 msgstr ""
 "ご想像の通り、PureScriptの配列はJavaScriptの配列に対応しています。\n"
-"しかし、PureScriptの配列は均質である、つまり全ての要素が同じ型を持っているこ"
-"とは覚えておいてください。\n"
-"具体的には、もしPureScriptの式 `e`が何らかの型 `a`について型 `Array a`を持つ"
-"なら、 `e`は全ての要素が（`null`でない）型 `a`の適切な実行時表現を持った"
-"JavaScript配列へと評価されます。"
+"しかし、PureScriptの配列は均質である、つまり全ての要素が同じ型を持っていることは覚えておいてください。\n"
+"具体的には、もしPureScriptの式`e`が何らかの型`a`について型`Array a`を持つなら、`e`は（nullでない）JavaScript配列へと評価されます。\n"
+"この配列の全ての要素は型`a`の適切な実行時表現を持ちます。"
 
 #. type: Plain text
 #: text/chapter10.md:1176
-#, fuzzy
 msgid ""
 "We've already seen that PureScript's records evaluate to JavaScript objects. "
 "As for functions and arrays, we can reason about the runtime representation "
@@ -4799,8 +4484,8 @@ msgid ""
 "type."
 msgstr ""
 "PureScriptのレコードがJavaScriptのオブジェクトへと評価されることは既に見てきました。\n"
-"ちょうど関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれば、レコードのフィールドのデータの実行時の表現についても推論できます。\n"
-"勿論、レコードの各フィールドは、同じ型である必要はありません。"
+"関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれば、レコードのフィールド中のデータの実行時の表現について論証できます。\n"
+"勿論、レコードのフィールドは、同じ型である必要はありません。"
 
 #. type: Title ###
 #: text/chapter10.md:1177
@@ -4810,7 +4495,6 @@ msgstr "ADTの表現"
 
 #. type: Plain text
 #: text/chapter10.md:1180
-#, fuzzy
 msgid ""
 "For every constructor of an algebraic data type, the PureScript compiler "
 "creates a new JavaScript object type by defining a function. Its "
@@ -4818,7 +4502,7 @@ msgid ""
 "based on those prototypes."
 msgstr ""
 "代数的データ型の全ての構築子について、PureScriptコンパイラは関数を定義することで新たなJavaScriptオブジェクト型を作成します。\n"
-"これらの構築子は雛形に基づいて新しいJavaScriptオブジェクトを作成する関数に対応しています。"
+"これらの構築子はプロトタイプに基づいて新しいJavaScriptオブジェクトを作成する関数に対応しています。"
 
 #. type: Plain text
 #: text/chapter10.md:1182
@@ -4896,22 +4580,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1209
-#, fuzzy
-#| msgid ""
-#| "What about constructors with more than one argument? In that case, the "
-#| "PureScript compiler also creates a new object type, and a helper "
-#| "function. This time, however, the helper function is curried function of "
-#| "two arguments. For example, this algebraic data type:"
 msgid ""
 "What about constructors with more than one argument? In that case, the "
 "PureScript compiler also creates a new object type, and a helper function. "
 "This time, however, the helper function is a curried function of two "
 "arguments. For example, this algebraic data type:"
 msgstr ""
-"2引数以上の構築子についてはどうでしょうか。\n"
-"その場合でも、PureScriptコンパイラは新しいオブジェクト型と補助関数を作成しま"
-"す。\n"
-"ここでは補助関数は2引数のカリー化された関数なのです。\n"
+"1引数より多く取る構築子についてはどうでしょうか。\n"
+"その場合でも、PureScriptコンパイラは新しいオブジェクト型と補助関数を作成します。\n"
+"ただしこの場合、補助関数は2引数のカリー化された関数です。\n"
 "例えば次のような代数的データ型を考えます。"
 
 #. type: Fenced code block (haskell)
@@ -4922,8 +4599,6 @@ msgstr "data Two a b = Two a b\n"
 
 #. type: Plain text
 #: text/chapter10.md:1215
-#, fuzzy
-#| msgid "generates this JavaScript code:"
 msgid "Generates this JavaScript code:"
 msgstr "このコードからは、次のようなJavaScriptコードが生成されます。"
 
@@ -4955,25 +4630,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1230
-#, fuzzy
-#| msgid ""
-#| "Here, values of the object type `Two` can be created using the `new` "
-#| "keyword, or by using the `Two.create` function."
 msgid ""
 "Here, values of the object type `Two` can be created using the `new` keyword "
 "or by using the `Two.create` function."
-msgstr ""
-"ここで、オブジェクト型 `Two`の値はキーワード`new`または `Two.create`関数を使"
-"用すると作成できます。"
+msgstr "ここで、オブジェクト型`Two`の値はキーワード`new`または`Two.create`関数を使用すると作成できます。"
 
 #. type: Plain text
 #: text/chapter10.md:1232
-#, fuzzy
-#| msgid ""
-#| "The case of newtypes is slightly different. Recall that a newtype is like "
-#| "an algebraic data type, restricted to having a single constructor taking "
-#| "a single argument. In this case, the runtime representation of the "
-#| "newtype is actually the same as the type of its argument."
 msgid ""
 "The case of newtypes is slightly different. Recall that a newtype is like an "
 "algebraic data type, restricted to having a single constructor taking a "
@@ -4981,18 +4644,15 @@ msgid ""
 "the same as its argument type."
 msgstr ""
 "newtypeの場合はまた少し異なります。\n"
-"newtypeは単一の引数を取る単一の構築子を持つよう制限された代数的データ型である"
-"ことを思い出してください。\n"
-"この場合、実際のnewtypeの実行時表現は、その引数の型と同じになります。"
+"newtypeは代数的データ型のようなもので、単一の引数を取る単一の構築子を持つよう制限されていたことを思い出してください。\n"
+"この場合、newtypeの実行時表現は、その引数の型と同じになります。"
 
 #. type: Plain text
 #: text/chapter10.md:1234
-#, fuzzy
-#| msgid "For example, this newtype representing telephone numbers:"
 msgid ""
 "For example, this newtype represents telephone numbers is represented as a "
 "JavaScript string at runtime:"
-msgstr "例えば、電話番号を表す次のようなnewtypeを考えます。"
+msgstr "例えば、以下の電話番号を表すnewtypeは実行時にJavaScriptの文字列として表現されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter10.md:1235
@@ -5002,18 +4662,10 @@ msgstr "newtype PhoneNumber = PhoneNumber String\n"
 
 #. type: Plain text
 #: text/chapter10.md:1240
-#, fuzzy
-#| msgid ""
-#| "is actually represented as a JavaScript string at runtime. This is useful "
-#| "for designing libraries, since newtypes provide an additional layer of "
-#| "type safety, but without the runtime overhead of another function call."
 msgid ""
 "This is useful for designing libraries since newtypes provide an additional "
 "layer of type safety without the runtime overhead of another function call."
-msgstr ""
-"これは実行時にJavaScriptの文字列として表されます。\n"
-"newtypeは更なる型安全性のための層を提供しますが、実行時の関数呼び出しのオー"
-"バーヘッドがないので、ライブラリを設計するのに役に立ちます。"
+msgstr "newtypeは、関数呼び出しによる実行時のオーバーヘッドなく更なる型安全性のための層を提供するため、ライブラリを設計するのに便利です。"
 
 #. type: Title ###
 #: text/chapter10.md:1241
@@ -5091,14 +4743,6 @@ msgstr "量化された型 `forall a. t`の実行時表現はどうなってい�
 
 #. type: Plain text
 #: text/chapter10.md:1265
-#, fuzzy
-#| msgid ""
-#| "But that is not enough - the runtime representation of a quantified type "
-#| "is more strict than this. We require any expression to be _parametrically "
-#| "polymorphic_ - that is, it cannot use any information about the type of "
-#| "its argument in its implementation. This additional condition prevents "
-#| "problematic implementations such as the following JavaScript function "
-#| "from inhabiting a polymorphic type:"
 msgid ""
 "But that is not enough – the runtime representation of a quantified type is "
 "more strict than this. We require any expression to be _parametrically "
@@ -5108,12 +4752,10 @@ msgid ""
 "inhabiting a polymorphic type:"
 msgstr ""
 "しかし、それだけでは充分ではありません。\n"
-"量化された型の実行時表現は、これよりも更に厳しくなります。\n"
-"任意の式が*パラメトリック多相的*でなければなりません。\n"
-"つまり、その実装において、引数の型についてのどんな情報も使うことができないの"
-"です。\n"
-"この追加の条件は、考えられる多相型のうち、以下のJavaScriptの関数のような問題"
-"のある実装を防止します。"
+"量化された型の実行時表現は、これよりも更に厳しいものです。\n"
+"任意の式が*パラメトリック多相的*であることを要求しています。\n"
+"つまり、その実装において、引数の型についてのどんな情報も使うことができないのです。\n"
+"この追加の条件は、以下のJavaScriptの関数のような問題のある実装が多相型に現住することを防止します。"
 
 #. type: Fenced code block (javascript)
 #: text/chapter10.md:1266
@@ -5137,30 +4779,23 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1277
-#, fuzzy, no-wrap
-#| msgid "Certainly, this function takes strings to strings, numbers to numbers, etc. but it does not meet the additional condition, since it inspects the (runtime) type of its argument, so this function would not be a valid inhabitant of the type `forall a. a -> a`.\n"
+#, no-wrap
 msgid "Certainly, this function takes strings to strings, numbers to numbers, etc. But it does not meet the additional condition, since it inspects the (runtime) type of its argument, so this function would not be a valid inhabitant of the type `forall a. a -> a`.\n"
 msgstr ""
-"確かにこの関数は文字列から文字列、数から数へというような関数ではありますが、追加条件を満たしていません。\n"
-"引数の実行時の型を調べており、したがって、この関数は型 `forall a. a -> a`の正しい実装だとはいえないのです。\n"
+"確かにこの関数は文字列を取って文字列を返し、数を取って数を返す、といったものです。\n"
+"しかしこの関数は追加条件を満たしていません。\n"
+"引数の実行時の型を調べており、型`forall a. a -> a`の正しい現住にはならないからです。\n"
 
 #. type: Plain text
 #: text/chapter10.md:1279
-#, fuzzy, no-wrap
-#| msgid "Without being able to inspect the runtime type of our function argument, our only option is to return the argument unchanged, and so `identity` is indeed the only inhabitant of the type `forall a. a -> a`.\n"
+#, no-wrap
 msgid "Without being able to inspect the runtime type of our function argument, our only option is to return the argument unchanged. So `identity` is indeed the only inhabitant of the type `forall a. a -> a`.\n"
-msgstr "関数の引数の実行時の型を検査できなければ、唯一の選択肢は引数をそのまま返すことだけであり、したがって `id`はたしかに `forall a. a -> a`の唯一の実装なのです。\n"
+msgstr ""
+"関数の引数の実行時の型を検査できなければ、唯一の選択肢は引数をそのまま返すことだけです。\n"
+"したがって`id`は確かに`forall a. a -> a`の唯一の現住なのです。\n"
 
 #. type: Plain text
 #: text/chapter10.md:1281
-#, fuzzy
-#| msgid ""
-#| "A full discussion of _parametric polymorphism_ and _parametricity_ is "
-#| "beyond the scope of this book. Note however, that since PureScript's "
-#| "types are _erased_ at runtime, a polymorphic function in PureScript "
-#| "_cannot_ inspect the runtime representation of its arguments (without "
-#| "using the FFI), and so this representation of polymorphic data is "
-#| "appropriate."
 msgid ""
 "A full discussion of _parametric polymorphism_ and _parametricity_ is beyond "
 "the scope of this book. Note, however, that since PureScript's types are "
@@ -5182,14 +4817,6 @@ msgstr "制約のある型の表現"
 
 #. type: Plain text
 #: text/chapter10.md:1285
-#, fuzzy
-#| msgid ""
-#| "Functions with a type class constraint have an interesting representation "
-#| "at runtime. Because the behavior of the function might depend on the type "
-#| "class instance chosen by the compiler, the function is given an "
-#| "additional argument, called a _type class dictionary_, which contains the "
-#| "implementation of the type class functions provided by the chosen "
-#| "instance."
 msgid ""
 "Functions with a type class constraint have an interesting representation at "
 "runtime. Because the function's behavior might depend on the type class "
@@ -5205,16 +4832,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1287
-#, fuzzy
-#| msgid ""
-#| "For example, here is a simple PureScript function with a constrained type "
-#| "which uses the `Show` type class:"
 msgid ""
 "For example, here is a simple PureScript function with a constrained type "
 "that uses the `Show` type class:"
-msgstr ""
-"例えば、 `Show`型クラスを使った制約のある型を持つ、次のような単純なPureScript"
-"関数について考えます。"
+msgstr "例えば以下は、`Show`型クラスを使う制約付きの型を持つ、単純なPureScript関数です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter10.md:1288
@@ -5320,13 +4941,6 @@ msgstr "副作用の表現"
 
 #. type: Plain text
 #: text/chapter10.md:1329
-#, fuzzy
-#| msgid ""
-#| "The `Effect` monad is also defined as a foreign type. Its runtime "
-#| "representation is quite simple - an expression of type `Effect a` should "
-#| "evaluate to a JavaScript function of **no arguments**, which performs any "
-#| "side-effects and returns a value with the correct runtime representation "
-#| "for type `a`."
 msgid ""
 "The `Effect` monad is also defined as a foreign type. Its runtime "
 "representation is quite simple – an expression of type `Effect a` should "
@@ -5335,9 +4949,9 @@ msgid ""
 "type `a`."
 msgstr ""
 "`Effect`モナドも外部型として定義されています。\n"
-"その実行時表現はとても簡単です。\n"
-"型 `Effect a`の式は**引数なしの**JavaScript関数へと評価されます。\n"
-"この関数はあらゆる副作用を実行し型 `a`の適切な実行時表現で値を返します。"
+"その実行時表現はとても単純です。\n"
+"型`Effect a`の式は**引数なしの**JavaScript関数へと評価されます。\n"
+"この関数はあらゆる副作用を実行し、型`a`の適切な実行時表現を持つ値を返します。"
 
 #. type: Plain text
 #: text/chapter10.md:1331
@@ -5381,23 +4995,15 @@ msgstr "export const random = Math.random;\n"
 
 #. type: Plain text
 #: text/chapter10.md:1349
-#, fuzzy
-#| msgid ""
-#| "Notice that the `random` function is represented at runtime as a function "
-#| "of no arguments. It performs the side effect of generating a random "
-#| "number, and returns it, and the return value matches the runtime "
-#| "representation of the `Number` type: it is a non-null JavaScript number."
 msgid ""
 "Notice that the `random` function is represented at runtime as a function of "
 "no arguments. It performs the side effect of generating a random number, "
 "returns it, and the return value matches the runtime representation of the "
 "`Number` type: it is a non-null JavaScript number."
 msgstr ""
-"`random`関数は実行時には引数なしの関数として表現されていることに注目してくだ"
-"さい。\n"
-"この関数は乱数生成という副作用を実行して返しますが、返り値は `Number`型の実行"
-"時表現と一致します。\n"
-"`Number`型は`null`でないJavaScriptの数です。"
+"`random`関数は実行時には引数なしの関数として表現されていることに注目してください。\n"
+"この関数は乱数生成という副作用を実行して返しますが、返り値は`Number`型の実行時表現と一致します。\n"
+"`Number`型はnullでないJavaScriptの数です。"
 
 #. type: Plain text
 #: text/chapter10.md:1351
@@ -5471,16 +5077,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter10.md:1376
-#, fuzzy
-#| msgid ""
-#| "When using `spago bundle-app --to` or `spago run`, this call to `main` is "
-#| "generated automatically, whenever the `Main` module is defined."
 msgid ""
 "When using `spago bundle-app --to` or `spago run`, this call to `main` is "
 "generated automatically whenever the `Main` module is defined."
-msgstr ""
-"`spago bundle-app --to`または `spago run`を使用するときは、`Main`モジュールが"
-"定義されている場合は常に、この `main`の呼び出しを自動的に生成できます。"
+msgstr "`spago bundle-app --to`または`spago run`を使用する場合、`Main`モジュールが定義されている場合は常に、この`main`の呼び出しを自動的に生成できます。"
 
 #. type: Title #
 #: text/chapter11.md:1
@@ -6379,15 +5979,10 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:282
 #, fuzzy
-#| msgid ""
-#| "The `Writer` type constructor takes two type arguments: a type `w` which "
-#| "should be an instance of the `Monoid` type class, and the return type `a`."
 msgid ""
 "The `Writer` type constructor takes two type arguments: a type `w` that "
 "should be an instance of the `Monoid` type class, and the return type `a`."
-msgstr ""
-"`Writer`型の構築子は、 `Monoid`型クラスのインスタンスである型 `w`、および返り"
-"値の型 `a`という2つの型引数を取ります。"
+msgstr "`Writer`型の構築子は、`Monoid`型クラスのインスタンスである型`w`、及び返り値の型`a`という2つの型引数を取ります。"
 
 #. type: Plain text
 #: text/chapter11.md:284
@@ -15571,9 +15166,7 @@ msgstr ""
 msgid ""
 "Functions can be defined at the top-level of a file by specifying arguments "
 "before the equals sign:"
-msgstr ""
-"ファイルのトップレベルでは、等号の直前に引数を指定することで関数を定義できま"
-"す。"
+msgstr "ファイルの最上位では、等号の直前に引数を指定することで関数を定義できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:118
@@ -16091,10 +15684,8 @@ msgid ""
 msgstr ""
 "それでは最初に、文字列で住所録の項目を表現する関数を書いてみましょう。\n"
 "まずは関数に型を与えることから始めます。\n"
-"型の定義は省略できますが、ドキュメントとしても役立つので型を書いておくように"
-"すると良いでしょう。\n"
-"実際、トップレベルの宣言に型註釈が含まれていないと、PureScriptコンパイラが警"
-"告を出します。\n"
+"型の定義は省略できますが、ドキュメントとしても役立つので型を書いておくようにすると良いでしょう。\n"
+"実際、最上位の宣言に型註釈が含まれていないと、PureScriptコンパイラが警告を出します。\n"
 "型宣言は関数の名前とその型を `::`記号で区切るようにして書きます。"
 
 #. type: Fenced code block (haskell)
@@ -19854,7 +19445,7 @@ msgstr ""
 "数式\\\\( n! / k! (n - k)! \\\\)を使ってください。\n"
 "ここで \\\\( ! \\\\) は前に書いた階乗関数です。\n"
 "*手掛かり*：パターン照合を使って特殊な場合を取り扱ってください。\n"
-"長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、コーナーケースを更に追加してみてください。"
+"長い時間が掛かったりコールスタックのエラーでクラッシュしたりしたら、特殊な場合を更に追加してみてください。"
 
 #. type: Bullet: '1. '
 #: text/chapter5.md:104
@@ -22348,11 +21939,9 @@ msgid ""
 "solution. If you do so, you will also need to import `class Newtype` from "
 "`Data.Newtype` and derive a `Newtype` instance for `Complex`."
 msgstr ""
-"（普通）`Semiring`インタンスを`Complex`に定義してください。*補足*：[`Data."
-"Newtype`](https://pursuit.purescript.org/packages/purescript-newtype/docs/"
-"Data.Newtype)の`wrap`と`over2`を使ってより簡潔な解答をつくることができます。"
-"もしそうするのでしたら、`Data.Newtype`から`class Newtype`をインポートしたり、"
-"`Newtype`インスタンスを`Complex`に導出したりする必要も出てくるでしょう。"
+"（普通）`Semiring`インタンスを`Complex`に定義してください。\n"
+"*補足*：[`Data.Newtype`](https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype)の`wrap`と`over2`を使ってより簡潔な解答を作れます。\n"
+"もしそうするのでしたら、`Data.Newtype`から`class Newtype`をインポートしたり、`Newtype`インスタンスを`Complex`に導出したりする必要も出てくるでしょう。"
 
 #. type: Bullet: '4. '
 #: text/chapter6.md:336
@@ -24617,7 +24206,7 @@ msgid ""
 "service if the parameters are invalid. However, it would be better if we "
 "could indicate which field was incorrect in the response."
 msgstr ""
-"引数が不正のときにWebサービスからエラー応答を送り返せるのは良いことです。\n"
+"引数が不正のときにwebサービスからエラー応答を送り返せるのは良いことです。\n"
 "しかし、どのフィールドが不正確なのかを応答で示せると、もっと良くなるでしょう。"
 
 #. type: Plain text
@@ -28184,9 +27773,7 @@ msgstr ""
 msgid ""
 "You can launch the web app from the `exercises/chapter8` directory with the "
 "following commands:"
-msgstr ""
-"`exercises/chapter8`ディレクトリから以下のコマンドでWebアプリを立ち上げること"
-"ができます。"
+msgstr "`exercises/chapter8`ディレクトリから以下のコマンドでwebアプリを立ち上げることができます。"
 
 #. type: Fenced code block (shell)
 #: text/chapter8.md:703
