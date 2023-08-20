@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-20 08:59+0900\n"
+"PO-Revision-Date: 2023-08-22 08:54+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -8175,13 +8175,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:17
-#, fuzzy
-#| msgid ""
-#| "The HTML file `html/index.html` contains a single `canvas` element which "
-#| "will be used in each example, and a `script` element to load the compiled "
-#| "PureScript code. To test the code for each section, open the HTML file in "
-#| "your browser. Because most exercises target the browser, there are no "
-#| "unit tests for this chapter."
 msgid ""
 "The HTML file `html/index.html` contains a single `canvas` element which "
 "will be used in each example, and a `script` element to load the compiled "
@@ -8189,10 +8182,9 @@ msgid ""
 "your browser. Because most exercises target the browser, this chapter has no "
 "unit tests."
 msgstr ""
-"HTMLファイル `html/index.html`には、各例で使用される単一の `canvas`要素、及び"
-"コンパイルされたPureScriptコードを読み込む `script`要素が含まれています。\n"
-"ほとんどの演習はブラウザを対象にしているので、この章には単体試験はありませ"
-"ん。"
+"HTMLファイル`html/index.html`には、各例で使用される単一の`canvas`要素、及びコンパイルされたPureScriptコードを読み込む`script`要素が含まれています。\n"
+"各節のコードを試すにはブラウザでHTMLファイルを開きます。\n"
+"ほとんどの演習はブラウザを対象にしているので、この章には単体試験はありません。"
 
 #. type: Title ##
 #: text/chapter12.md:18
@@ -8215,21 +8207,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:23
-#, fuzzy
 msgid ""
 "The `main` action starts, like in the other modules, by using the "
 "`getCanvasElementById` action to get a reference to the canvas object and "
 "the `getContext2D` action to access the 2D rendering context for the canvas:"
-msgstr ""
-"他のモジュールでも同様ですが、`main`動作は最初に`getCanvasElementById`動作を使ってキャンバスオブジェクトへの参照を取得します。\n"
-"また、`getContext2D`動作を使ってキャンバスの2D描画文脈を参照します。"
+msgstr "他のモジュールでも同様ですが、`main`動作は最初に`getCanvasElementById`動作を使ってキャンバスオブジェクトへの参照を取得し、`getContext2D`動作を使ってキャンバスの2D描画文脈にアクセスします。"
 
 #. type: Plain text
 #: text/chapter12.md:25
-#, fuzzy
-#| msgid ""
-#| "The `void` function takes a functor and replaces its value with `Unit`. "
-#| "In the example it is used to make `main` conform with its signature."
 msgid ""
 "The `void` function takes a functor and replaces its value with `Unit`. In "
 "the example, it is used to make `main` conform with its signature."
@@ -8289,12 +8274,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:43
-#, fuzzy
 msgid ""
 "The graphics context `ctx` manages the state of the canvas and provides "
 "methods to render primitive shapes, set styles and colors, and apply "
 "transformations."
-msgstr "グラフィックス文脈`ctx`はキャンバスの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用するためのメソッドを提供します。"
+msgstr "グラフィックス文脈`ctx`はキャンバスの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用したりするための手段を提供します。"
 
 #. type: Plain text
 #: text/chapter12.md:45
@@ -8338,16 +8322,15 @@ msgstr "fillPath :: forall a. Context2D -> Effect a -> Effect a\n"
 
 #. type: Plain text
 #: text/chapter12.md:59
-#, fuzzy
 msgid ""
 "`fillPath` takes a graphics context and another action that builds the path "
 "to render. To build a path, we can use the `rect` action. `rect` takes a "
 "graphics context and a record that provides the position and size of the "
 "rectangle:"
 msgstr ""
-"`fillPath`はグラフィックスの文脈と描画するパスを構築する別の動作を引数に取ります。\n"
+"`fillPath`はグラフィックスの文脈と描画するパスを構築する他の動作を引数に取ります。\n"
 "`rect`動作を使うとパスを構築できます。\n"
-"`rect`はグラフィックスの文脈と矩形の位置及びサイズを格納するレコードを引数に取ります。"
+"`rect`はグラフィックスの文脈と矩形の位置及びサイズを格納するレコードを取ります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:60
@@ -8385,26 +8368,17 @@ msgstr "行多相を利用する"
 
 #. type: Plain text
 #: text/chapter12.md:75
-#, fuzzy
-#| msgid ""
-#| "There are other ways to render paths. The `arc` function renders an arc "
-#| "segment, and the `moveTo`, `lineTo` and `closePath` functions can be used "
-#| "to render piecewise-linear paths."
 msgid ""
 "There are other ways to render paths. The `arc` function renders an arc "
 "segment, and the `moveTo`, `lineTo`, and `closePath` functions can render "
 "piecewise-linear paths."
 msgstr ""
-"パスを描画する方法は他にもあります。 `arc`関数は円弧を描画します。\n"
-"`moveTo`関数、 `lineTo`関数、 `closePath`関数は断片的な線分のパスを描画するの"
-"に使えます。"
+"パスを描画する方法は他にもあります。\n"
+"`arc`関数は円弧を描画します。\n"
+"`moveTo`関数、`lineTo`関数、`closePath`関数は断片的な線分のパスを描画できます。"
 
 #. type: Plain text
 #: text/chapter12.md:77
-#, fuzzy
-#| msgid ""
-#| "The `Shapes.purs` file renders three shapes: a rectangle, an arc segment "
-#| "and a triangle."
 msgid ""
 "The `Shapes.purs` file renders three shapes: a rectangle, an arc segment, "
 "and a triangle."
@@ -8441,18 +8415,11 @@ msgstr ""
 # FIXME: w, hとなっていますが、上のコードではwidthとheightになっています。
 #. type: Plain text
 #: text/chapter12.md:90
-#, fuzzy
-#| msgid ""
-#| "The `x` and `y` properties represent the location of the top-left corner, "
-#| "while the `w` and `h` properties represent the width and height "
-#| "respectively."
 msgid ""
 "The `x` and `y` properties represent the location of the top-left corner, "
 "while the `w` and `h` properties represent the width and height, "
 "respectively."
-msgstr ""
-"`x`と `y`プロパティは左上隅の位置を表しており、 `w`と `h`のプロパティはそれぞ"
-"れ幅と高さを表しています。"
+msgstr "`x`と`y`プロパティは左上隅の位置を表しており、`w`と`h`のプロパティはそれぞれ幅と高さを表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:92
@@ -8486,21 +8453,13 @@ msgstr ""
 # FIXME: これも半径がrとradiusで違います。
 #. type: Plain text
 #: text/chapter12.md:104
-#, fuzzy
-#| msgid ""
-#| "Here, the `x` and `y` properties represent the center point, `r` is the "
-#| "radius, and `start` and `end` represent the endpoints of the arc in "
-#| "radians."
 msgid ""
 "Here, the `x` and `y` properties represent the center point, `r` is the "
 "radius, `start` and `end` represent the endpoints of the arc in radians."
-msgstr ""
-"ここで、 `x`と `y`プロパティは弧の中心、 `r`は半径、 `start`と `end`は弧の両"
-"端の角度を弧度法で表しています。"
+msgstr "ここで、`x`と`y`プロパティは弧の中心、`r`は半径、`start`と`end`は弧の両端の角度を弧度法で表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:106
-#, fuzzy
 msgid ""
 "For example, this code fills an arc segment centered at `(300, 300)` with "
 "radius `50`. The arc completes 2/3rds of a rotation. Note that the unit "
@@ -8534,36 +8493,22 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:118
-#, fuzzy
-#| msgid ""
-#| "Notice that both the `Rectangle` and `Arc` record types contain `x` and "
-#| "`y` properties of type `Number`. In both cases, this pair represents a "
-#| "point. This means that we can write row-polymorphic functions which can "
-#| "act on either type of record."
 msgid ""
 "Notice that both the `Rectangle` and `Arc` record types contain `x` and `y` "
 "properties of type `Number`. In both cases, this pair represents a point. "
 "This means we can write row-polymorphic functions acting on either type of "
 "record."
 msgstr ""
-"`Number`型の `x`と `y`というプロパティが `Rectangle`レコード型と`Arc`レコード"
-"型の両方に含まれていますね。\n"
+"`Rectangle`レコード型と`Arc`レコード型の両方共、`Number`型の`x`と`y`というプロパティを含んでいますね。\n"
 "どちらの場合でもこの組は点を表しています。\n"
-"これは、何れのレコード型にも適用できる、行多相な関数を書くことができることを"
-"意味します。"
+"つまり、何れのレコード型にも作用する行多相な関数を書けます。"
 
 #. type: Plain text
 #: text/chapter12.md:120
-#, fuzzy
-#| msgid ""
-#| "For example, the `Shapes` module defines a `translate` function which "
-#| "translates a shape by modifying its `x` and `y` properties:"
 msgid ""
 "For example, the `Shapes` module defines a `translate` function that "
 "translates a shape by modifying its `x` and `y` properties:"
-msgstr ""
-"例えば`Shapes`モジュールでは `x`と `y`のプロパティを変更し図形を並行移動する "
-"`translate`関数を定義されています。"
+msgstr "例えば`Shapes`モジュールでは`x`と`y`のプロパティを変更し図形を並行移動する`translate`関数が定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:121
@@ -8602,16 +8547,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:130
-#, fuzzy
-#| msgid ""
-#| "The `translate` function can be used with both the `Rectangle` and `Arc` "
-#| "records, as can be seen in the `Shapes` example."
 msgid ""
 "The `translate` function can be used with both the `Rectangle` and `Arc` "
 "records, as seen in the `Shapes` example."
-msgstr ""
-"`Shapes`の例からわかるように、 `translate`関数は `Rectangle`レコードと`Arc`レ"
-"コード双方に対して使うことができます。"
+msgstr "`Shapes`の例からわかるように、`translate`関数は`Rectangle`レコードと`Arc`レコード双方に対して使えます。"
 
 #. type: Plain text
 #: text/chapter12.md:132
@@ -8682,7 +8621,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:158
-#, fuzzy
 msgid ""
 "(Easy) Experiment with the `strokePath` and `setStrokeStyle` functions in "
 "each example so far."
@@ -8690,14 +8628,6 @@ msgstr "（簡単）これまでの各例について、`strokePath`関数や`se
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:158
-#, fuzzy
-#| msgid ""
-#| "(Easy) The `fillPath` and `strokePath` functions can be used to render "
-#| "complex paths with a common style by using a do notation block inside the "
-#| "function argument. Try changing the `Rectangle` example to render two "
-#| "rectangles side-by-side using the same call to `fillPath`. Try rendering "
-#| "a sector of a circle by using a combination of a piecewise-linear path "
-#| "and an arc segment."
 msgid ""
 "(Easy) The `fillPath` and `strokePath` functions can render complex paths "
 "with a common style using a do notation block inside the function argument. "
@@ -8705,11 +8635,9 @@ msgid ""
 "using the same call to `fillPath`. Try rendering a sector of a circle by "
 "using a combination of a piecewise-linear path and an arc segment."
 msgstr ""
-"（簡単）関数の引数の内部のdo記法ブロックにより、`fillPath`関数と`strokePath`"
-"関数を使って共通のスタイルを持つ複雑なパスを描画できます。\n"
-"同じ `fillPath`呼び出しで隣り合った2つの矩形を描画するように、`Rectangle`の"
-"コード例を変更してみてください。\n"
-"線分と円弧を組み合わせて、扇形を描画してみてください。"
+"（簡単）関数の引数の内部でdo記法ブロックを使うと、`fillPath`関数と`strokePath`関数は共通のスタイルを持つ複雑なパスを描画できます。\n"
+"同じ`fillPath`呼び出しを使って隣り合う2つの矩形を描画するように、`Rectangle`の例を変更してみてください。\n"
+"線分と円弧の組み合わせを使って、扇形を描画してみてください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:158
@@ -8774,12 +8702,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:179
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "     which takes a `Number` between `0` and `1` as its argument and returns a `Point`, write an action that plots `f` by using your `renderPath` function. Your action should approximate the path by sampling `f` at a finite set of points.\n"
 msgstr ""
-"    この関数は引数として `1`から `0`の間の `Number`を取り、 `Point`を返します。\n"
-"    `renderPath`関数を利用して関数`f`のグラフを描く動作を書いてください。\n"
-"    その動作では有限個の点を`f`からサンプリングすることによって近似しなければなりません。\n"
+"    この関数は引数として`1`から`0`の間の`Number`を取り、`Point`を返します。\n"
+"    `renderPath`関数を使い、関数`f`のグラフを描く動作を書いてください。\n"
+"    その動作では有限個の点で`f`を標本化することによって近似しなければなりません。\n"
 
 #. type: Plain text
 #: text/chapter12.md:181
@@ -8795,24 +8723,22 @@ msgstr "無作為に円を描く"
 
 #. type: Plain text
 #: text/chapter12.md:185
-#, fuzzy
 msgid ""
 "The `Example/Random.purs` file contains an example that uses the `Effect` "
 "monad to interleave two types of side-effect: random number generation and "
 "canvas manipulation. The example renders one hundred randomly generated "
 "circles onto the canvas."
 msgstr ""
-"`Example/Random.purs`ファイルには2種類の異なる副作用が混在した`Effect`モナドを使う例が含まれています。\n"
-"1つは乱数生成で、もう1つはキャンバスの操作です。\n"
+"`Example/Random.purs`ファイルには、`Effect`モナドを使って2種類の副作用を綴じ合わせる例が含まれています。\n"
+"1つの副作用は乱数生成で、もう1つはキャンバスの操作です。\n"
 "この例では無作為に生成された円をキャンバスに100個描画します。"
 
 #. type: Plain text
 #: text/chapter12.md:187
-#, fuzzy
 msgid ""
 "The `main` action obtains a reference to the graphics context as before and "
 "then sets the stroke and fill styles:"
-msgstr "`main`動作ではこれまでのようにグラフィックス文脈への参照を取得し、線描きと塗り潰しスタイルを設定します。"
+msgstr "`main`動作ではこれまでのようにグラフィックス文脈への参照を取得し、線描きと塗り潰しのスタイルを設定します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:188
@@ -8835,14 +8761,13 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Random.purs:for}}\n"
 
 #. type: Plain text
 #: text/chapter12.md:199
-#, fuzzy
 msgid ""
 "On each iteration, the do notation block starts by generating three random "
 "numbers distributed between `0` and `1`. These numbers represent the `x` and "
 "`y` coordinates and the radius of a circle:"
 msgstr ""
-"各繰り返しでのdo記法ブロックは、`0`と`1`の間に分布する3つの乱数を生成することから始まります。\n"
-"これらの数は`0`から`1`の間に無作為に分布しており、それぞれ`x`座標、`y`座標、半径`r`を表しています。"
+"各繰り返しで、do記法ブロックは`0`と`1`の間に分布する3つの乱数を生成することから始まります。\n"
+"これらの数はそれぞれ`x`座標、`y`座標、半径`r`を表しています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:200
@@ -8890,19 +8815,13 @@ msgstr "座標変換"
 
 #. type: Plain text
 #: text/chapter12.md:221
-#, fuzzy
-#| msgid ""
-#| "There is more to the canvas than just rendering simple shapes. Every "
-#| "canvas maintains a transformation which is used to transform shapes "
-#| "before rendering. Shapes can be translated, rotated, scaled, and skewed."
 msgid ""
 "There is more to the canvas than just rendering simple shapes. Every canvas "
 "maintains a transformation that is used to transform shapes before "
 "rendering. Shapes can be translated, rotated, scaled, and skewed."
 msgstr ""
 "キャンバスは簡単な図形を描画するだけのものではありません。\n"
-"キャンバスは変換行列を扱うことができ、描画の前に形状を変形してから図形を描画"
-"できます。\n"
+"キャンバスは座標変換を管理しており、描画の前に図形を変形するのに使えます。\n"
 "図形は平行移動、回転、拡大縮小、及び斜めに変形できます。"
 
 #. type: Plain text
@@ -8957,11 +8876,10 @@ msgstr "`translate`動作は`TranslateTransform`レコードのプロパティ�
 
 #. type: Plain text
 #: text/chapter12.md:245
-#, fuzzy
 msgid ""
 "The `rotate` action rotates around the origin through some number of radians "
 "specified by the first argument."
-msgstr "`rotate`動作は最初の引数で指定されたラジアンの値に応じて、原点を中心として回転します。"
+msgstr "`rotate`動作は最初の引数で指定されたラジアンの数値に応じて、原点を中心として回転します。"
 
 #. type: Plain text
 #: text/chapter12.md:247
@@ -9033,16 +8951,10 @@ msgstr "文脈の保存"
 
 #. type: Plain text
 #: text/chapter12.md:268
-#, fuzzy
-#| msgid ""
-#| "A common use case is to render some subset of the scene using a "
-#| "transformation, and then to reset the transformation afterwards."
 msgid ""
 "A common use case is to render some subset of the scene using a "
 "transformation and then reset the transformation."
-msgstr ""
-"変換を適用してシーンの一部を描画し、それからその変換を元に戻す、という使い方"
-"はよくあります。"
+msgstr "座標変換を使ってシーンの一部を描画し、それからその変換を元に戻す、という使い方はよくあります。"
 
 #. type: Plain text
 #: text/chapter12.md:270
@@ -9085,7 +8997,6 @@ msgstr "`save`動作は現在の文脈の状態（現在の変換行列や描画
 
 #. type: Plain text
 #: text/chapter12.md:284
-#, fuzzy
 msgid ""
 "This allows us to save the current state, apply some styles and "
 "transformations, render some primitives, and finally restore the original "
@@ -9094,7 +9005,7 @@ msgid ""
 "transformation afterwards:"
 msgstr ""
 "これらの動作により、現在の状態を保存し、いろいろなスタイルや変換を適用してから原始的な図形を描画し、最後に元の変換と状態を復元できます。\n"
-"例えば、次の関数は回転を適用してから幾つかのキャンバス動作を実行し、そのあとに変換を復元します。"
+"例えば次の関数は幾つかのキャンバス動作を実行しますが、その前に回転を適用し、その後に変換を復元します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:285
@@ -9173,16 +9084,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:316
-#, fuzzy
-#| msgid ""
-#| "The `Effect.Ref` module provides a type constructor for global mutable "
-#| "references, and an associated effect:"
 msgid ""
 "The `Effect.Ref` module provides a type constructor for global mutable "
 "references and an associated effect:"
-msgstr ""
-"`Effect.Ref`モジュールでは、大域的に変更可能な参照のための型構築子、及び関連"
-"する作用を提供します。"
+msgstr "`Effect.Ref`モジュールでは、大域的に変更可能な参照のための型構築子、及びそれに紐付く作用を提供します。"
 
 #. type: Fenced code block (text)
 #: text/chapter12.md:317
@@ -9211,20 +9116,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:327
-#, fuzzy
-#| msgid ""
-#| "The `Example/Refs.purs` file contains an example which uses a `Ref` to "
-#| "track mouse clicks on the `canvas` element."
 msgid ""
 "The `Example/Refs.purs` file contains an example that uses a `Ref` to track "
 "mouse clicks on the `canvas` element."
-msgstr ""
-"`Example/Refs.purs`ファイルには `canvas`要素上のマウスクリックを追跡するのに "
-"`Ref`作用を使用する例が含まれています。"
+msgstr "`Example/Refs.purs`ファイルには `canvas`要素上のマウスクリックを追跡するのに `Ref`を使う例が含まれます。"
 
 #. type: Plain text
 #: text/chapter12.md:329
-#, fuzzy
 msgid ""
 "The code starts by creating a new reference containing the value `0` by "
 "using the `new` action:"
@@ -9264,19 +9162,14 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Refs.purs:withContext}}\n"
 
 #. type: Plain text
 #: text/chapter12.md:347
-#, fuzzy
 msgid ""
 "This action uses `withContext` to preserve the original transformation and "
 "then applies the following sequence of transformations (remember that "
 "transformations are applied bottom-to-top):"
-msgstr "この動作では元の変換を保存するために `withContext`を使用しており、それから一連の変換を適用しています（変換が下から上に適用されることを思い出してください）。"
+msgstr "この動作では元の変換を保存するために`withContext`を使用しており、それから一連の変換を適用しています（変換が下から上に適用されることを思い出してください）。"
 
 #. type: Bullet: '- '
 #: text/chapter12.md:352
-#, fuzzy
-#| msgid ""
-#| "The rectangle is translated through `(-100, -100)` so that its center "
-#| "lies at the origin."
 msgid ""
 "The rectangle is translated through `(-100, -100)`, so its center lies at "
 "the origin."
@@ -9296,7 +9189,6 @@ msgstr "矩形が原点を中心に`10`の倍数分の角度で回転します�
 
 #. type: Bullet: '- '
 #: text/chapter12.md:352
-#, fuzzy
 msgid ""
 "The rectangle is translated through `(300, 300)`, so its center lies at the "
 "center of the canvas."
@@ -9325,47 +9217,30 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:366
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a higher-order function which strokes and fills a path "
-#| "simultaneously. Rewrite the `Random.purs` example using your function."
 msgid ""
 "(Easy) Write a higher-order function that simultaneously strokes and fills a "
 "path. Rewrite the `Random.purs` example using your function."
 msgstr ""
 "（簡単）パスの線描と塗り潰しを同時に行う高階関数を書いてください。\n"
-"その関数を使用して `Random.purs`例を書き直してください。"
+"その関数を使用して`Random.purs`の例を書き直してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:366
-#, fuzzy
-#| msgid ""
-#| "(Medium) Use `Random` and `Dom` to create an application which renders a "
-#| "circle with random position, color and radius to the canvas when the "
-#| "mouse is clicked."
 msgid ""
 "(Medium) Use `Random` and `Dom` to create an application that renders a "
 "circle with random position, color, and radius to the canvas when the mouse "
 "is clicked."
-msgstr ""
-"（普通）`Random`作用と `Dom`作用を使用して、マウスがクリックされたときに、"
-"キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを作成してく"
-"ださい。"
+msgstr "（普通）`Random`作用と`Dom`作用を使用して、マウスがクリックされたときに、キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを作成してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:366
-#, fuzzy
-#| msgid ""
-#| "(Medium) Write a function which transforms the scene by rotating it "
-#| "around a point with specified coordinates. _Hint_: use a translation to "
-#| "first translate the scene to the origin."
 msgid ""
 "(Medium) Write a function that transforms the scene by rotating it around a "
 "point with specified coordinates. _Hint_: use a translation to first "
 "translate the scene to the origin."
 msgstr ""
-"（普通）指定された座標を中心としてシーンを回転させる関数を書いてください。\n"
-"*手掛かり*：最初にシーンを原点まで平行移動しましょう。"
+"（普通）指定された座標の点を中心として回転させることでシーンを変換する関数を書いてください。\n"
+"*手掛かり*：変換を使い、最初にシーンを原点まで平行移動しましょう。"
 
 #. type: Title ##
 #: text/chapter12.md:367
@@ -9384,7 +9259,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:372
-#, fuzzy
 msgid ""
 "An L-system is defined by an _alphabet_, an initial sequence of letters from "
 "the alphabet, and a set of _production rules_. Each production rule takes a "
@@ -9392,9 +9266,9 @@ msgid ""
 "process is iterated some number of times, starting with the initial sequence "
 "of letters."
 msgstr ""
-"L-Systemは*アルファベット*、つまり初期状態となるアルファベットの文字列と、*生成規則*の集合で定義されています。\n"
-"各生成規則は、アルファベットの文字を取り、それを置き換える文字の配列を返します。\n"
-"この処理は文字の初期配列から始まり、複数回繰り返されます。"
+"1つのL-Systemは*アルファベット*、つまりアルファベット由来の文字の初期の並びと、*生成規則*の集合で定義されます。\n"
+"各生成規則は、アルファベットの文字を取り、それを置き換える文字の並びを返します。\n"
+"この処理は文字の初期の並びから始まり、複数回繰り返されます。"
 
 #. type: Plain text
 #: text/chapter12.md:374
@@ -9406,19 +9280,13 @@ msgstr "もしアルファベットの各文字がキャンバス上で実行さ
 
 #. type: Plain text
 #: text/chapter12.md:376
-#, fuzzy
-#| msgid ""
-#| "For example, suppose the alphabet consists of the letters `L` (turn "
-#| "left), `R` (turn right) and `F` (move forward). We might define the "
-#| "following production rules:"
 msgid ""
 "For example, suppose the alphabet consists of the letters `L` (turn left), "
 "`R` (turn right), and `F` (move forward). We might define the following "
 "production rules:"
 msgstr ""
-"例えばアルファベットが文字 `L`（左回転）、 `R`（右回転）、 `F`（前進）で構成"
-"されているとします。\n"
-"また、次のような生成規則を定義します。"
+"例えばアルファベットが文字`L`（左回転）、`R`（右回転）、`F`（前進）で構成されているとします。\n"
+"次のような生成規則を定義できます。"
 
 #. type: Fenced code block (text)
 #: text/chapter12.md:377
@@ -9454,18 +9322,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:392
-#, fuzzy
-#| msgid ""
-#| "and so on. Plotting a piecewise-linear path corresponding to this set of "
-#| "instruction approximates a curve called the _Koch curve_. Increasing the "
-#| "number of iterations increases the resolution of the curve."
 msgid ""
 "and so on. Plotting a piecewise-linear path corresponding to this set of "
 "instructions approximates the _Koch curve_. Increasing the number of "
 "iterations increases the resolution of the curve."
 msgstr ""
-"この命令群に対応する線分パスをプロットすると、*コッホ曲線*と呼ばれる曲線に近"
-"似されます。\n"
+"というように続きます。\n"
+"この命令群に対応する線分パスをプロットすると、*コッホ曲線*に近似されます。\n"
 "反復回数を増やすと、曲線の解像度が増していきます。"
 
 #. type: Plain text
@@ -9536,16 +9399,15 @@ msgstr "これはまさに上記の仕様をそのまま書き写したもので
 
 #. type: Plain text
 #: text/chapter12.md:420
-#, fuzzy
 msgid ""
 "Now we can implement a function `lsystem` that will take a specification in "
 "this form and render it to the canvas. What type should `lsystem` have? "
 "Well, it needs to take values like `initial` and `productions` as arguments, "
 "as well as a function that can render a letter of the alphabet to the canvas."
 msgstr ""
-"これで、この形式の仕様を受け取ってキャンバスに描画する関数 `lsystem`を実装できます。\n"
+"これで、この形式の仕様を受け取ってキャンバスに描画する関数`lsystem`を実装できます。\n"
 "`lsystem`はどのような型を持っているべきでしょうか。\n"
-"この関数は初期状態 `initial`や生成規則 `productions`のような値だけでなく、アルファベットの文字をキャンバスに描画する関数を引数に取る必要があります。"
+"`initial`や`productions`のような値だけでなく、アルファベットの文字をキャンバスに描画できる関数を引数に取る必要があります。"
 
 #. type: Plain text
 #: text/chapter12.md:422
@@ -9577,7 +9439,6 @@ msgstr "最初の2つの引数の型は、値 `initial`と `productions`に対�
 
 #. type: Plain text
 #: text/chapter12.md:434
-#, fuzzy
 msgid ""
 "The third argument represents a function that takes a letter of the alphabet "
 "and _interprets_ it by performing some actions on the canvas. In our "
@@ -9586,7 +9447,7 @@ msgid ""
 "letter `F`."
 msgstr ""
 "3番目の引数は、アルファベットの文字を取り、キャンバス上の幾つかの動作を実行することによって*解釈*する関数を表します。\n"
-"この例では、文字`L`は左回転、文字 `R`で右回転、文字 `F`は前進を意味します。"
+"この例では、文字`L`は左回転、文字`R`で右回転、文字`F`は前進を意味します。"
 
 #. type: Plain text
 #: text/chapter12.md:436
@@ -9627,14 +9488,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:448
-#, fuzzy
-#| msgid ""
-#| "The second observation is that, in order to implement instructions like "
-#| "\"turn left\" and \"turn right\", we will need to maintain some state, "
-#| "namely the direction in which the path is moving at any time. We need to "
-#| "modify our function to pass the state through the computation. Again, the "
-#| "`lsystem` function should work for any type of state, so we will "
-#| "represent it using the type variable `s`."
 msgid ""
 "The second observation is that, to implement instructions like \"turn left\" "
 "and \"turn right\", we will need to maintain some state, namely the "
@@ -9643,13 +9496,10 @@ msgid ""
 "function should work for any type of state, so we will represent it using "
 "the type variable `s`."
 msgstr ""
-"次に気付くこととしては、「左回転」と「右回転」のような命令を実装するために"
-"は、幾つかの状態を管理する必要があります。\n"
-"具体的に言えば、その時点でパスが向いている方向を状態として持たなければなりま"
-"せん。\n"
-"計算を通じて状態を関数に渡すように変更する必要があります。\n"
-"ここでも `lsystem`関数は状態がどんな型でも動作したほうがよいので、型変数 `s`"
-"を使用してそれを表しています。"
+"次に気付くこととしては、「左回転」と「右回転」のような命令を実装するためには、幾つかの状態を管理する必要があります。\n"
+"具体的に言えば、その時点でパスが動いている方向を状態として持たなければなりません。\n"
+"計算を通じて状態を渡すように関数を変更する必要があります。\n"
+"ここでも`lsystem`関数は状態がどんな型でも動作したほうがよいので、型変数`s`を使用してそれを表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:450
@@ -9778,26 +9628,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:494
-#, fuzzy
-#| msgid ""
-#| "The `go` function works by recursion on its second argument. There are "
-#| "two cases: when `n` is zero, and when `n` is non-zero."
 msgid ""
 "The `go` function works by recursion on its second argument. There are two "
 "cases: when `n` is zero and `n` is non-zero."
 msgstr ""
-"`go`関数は第2引数に応じて再帰することで動作します。\n"
-"場合分けは2つであり、`n`がゼロであるときと `n`がゼロでないときです。"
+"`go`関数は第2引数について再帰することで動作します。\n"
+"場合分けは2つであり、`n`がゼロであるときと`n`がゼロでないときです。"
 
 #. type: Plain text
 #: text/chapter12.md:496
-#, fuzzy, no-wrap
-#| msgid "In the first case, the recursion is complete, and we simply need to interpret the current sentence according to the interpretation function. We have a sentence of type `Array a`, a state of type `s`, and a function of type `s -> a -> Effect s`. This sounds like a job for the `foldM` function which we defined earlier, and which is available from the `control` package:\n"
+#, no-wrap
 msgid "In the first case, the recursion is complete, and we need to interpret the current sentence according to the interpretation function. We have a sentence of type `Array a`, a state of type `s`, and a function of type `s -> a -> Effect s`. This sounds like a job for the `foldM` function which we defined earlier, and which is available from the `control` package:\n"
 msgstr ""
 "1つ目の場合は再帰は完了し、解釈関数に応じて現在の文を解釈します。\n"
-"型`Array a`の文、型 `s`の状態、型 `s -> a -> Effect s`の関数があります。\n"
-"以前定義した `foldM`でやったことみたいです。\n"
+"型`Array a`の文、型`s`の状態、型`s -> a -> Effect s`の関数があります。\n"
+"以前定義した`foldM`の出番のようです。\n"
 "この関数は`control`パッケージで手に入ります。\n"
 
 #. type: Fenced code block (haskell)
@@ -9825,17 +9670,12 @@ msgstr "{{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_go_s_
 
 #. type: Plain text
 #: text/chapter12.md:508
-#, fuzzy
-#| msgid ""
-#| "That's it! Note how the use of higher order functions like `foldM` and "
-#| "`concatMap` allowed us to communicate our ideas concisely."
 msgid ""
 "That's it! Note how using higher-order functions like `foldM` and "
 "`concatMap` allowed us to communicate our ideas concisely."
 msgstr ""
 "これだけです。\n"
-"`foldM`や `concatMap`のような高階関数を使うと、このようにアイデアを簡潔に表現"
-"できるのです。"
+"`foldM`や`concatMap`のような高階関数を使うと、アイデアを簡潔に表現できるのです。"
 
 #. type: Plain text
 #: text/chapter12.md:510
@@ -9868,13 +9708,6 @@ msgstr "{{#include ../exercises/chapter12/src/Example/LSystem.purs:lsystem_anno}
 
 #. type: Plain text
 #: text/chapter12.md:518
-#, fuzzy
-#| msgid ""
-#| "We can understand this type as saying that our interpretation function is "
-#| "free to have any side-effects at all, captured by the monad `m`. It might "
-#| "render to the canvas, or print information to the console, or support "
-#| "failure or multiple return values. The reader is encouraged to try "
-#| "writing L-systems which use these various types of side-effect."
 msgid ""
 "We can understand this type as saying that our interpretation function is "
 "free to have any side-effects at all, captured by the monad `m`. It might "
@@ -9882,24 +9715,12 @@ msgid ""
 "or multiple return values. The reader is encouraged to try writing L-systems "
 "that use these various types of side-effect."
 msgstr ""
-"この型で書かれていることは、この解釈関数はモナド `m`が持つ任意の副作用を完全"
-"に自由に持つことができる、ということだと理解できます。\n"
-"キャンバスに描画したり、またはコンソールに情報を出力したりするかもしれません"
-"し、失敗や複数の戻り値に対応しているかもしれません。\n"
-"こういった様々な型の副作用を使ったL-Systemを記述してみることを読者にお勧めし"
-"ます。"
+"この型で書かれていることは、この解釈関数はモナド`m`が持つ任意の副作用を完全に自由に持つことができる、ということだと理解できます。\n"
+"キャンバスに描画したり、またはコンソールに情報を出力したりするかもしれませんし、失敗や複数の戻り値に対応しているかもしれません。\n"
+"こういった様々な型の副作用を使ったL-Systemを記述してみることを読者にお勧めします。"
 
 #. type: Plain text
 #: text/chapter12.md:520
-#, fuzzy
-#| msgid ""
-#| "This function is a good example of the power of separating data from "
-#| "implementation. The advantage of this approach is that we gain the "
-#| "freedom to interpret our data in multiple different ways. We might even "
-#| "factor `lsystem` into two smaller functions: the first would build the "
-#| "sentence using repeated application of `concatMap`, and the second would "
-#| "interpret the sentence using `foldM`. This is also left as an exercise "
-#| "for the reader."
 msgid ""
 "This function is a good example of the power of separating data from "
 "implementation. The advantage of this approach is that we can interpret our "
@@ -9909,11 +9730,9 @@ msgid ""
 "is also left as an exercise for the reader."
 msgstr ""
 "この関数は実装からデータを分離することの威力を示す良い例となっています。\n"
-"この手法の利点は、複数の異なる方法でデータを解釈する自由が得られることで"
-"す。\n"
-"`lsystem`は2つの小さな関数へと分解さえできるかもしれません。\n"
-"1つ目は `concatMap`の適用の繰り返しを使って文を構築するもので、2つ目は "
-"`foldM`を使って文を解釈するものです。\n"
+"この手法の利点は、複数の異なる方法でデータを解釈できることです。\n"
+"さらに`lsystem`を2つの小さな関数へと分解できます。\n"
+"1つ目は`concatMap`の適用の繰り返しを使って文を構築するもの、2つ目は`foldM`を使って文を解釈するものです。\n"
 "これは読者の演習として残しておきます。"
 
 #. type: Plain text
@@ -9952,17 +9771,10 @@ msgstr "{{#include ../exercises/chapter12/src/Example/LSystem.purs:interpretLR}}
 
 #. type: Plain text
 #: text/chapter12.md:534
-#, fuzzy
-#| msgid ""
-#| "To interpret the letter `F` (move forward), we can calculate the new "
-#| "position of the path, render a line segment, and update the state, as "
-#| "follows:"
 msgid ""
 "To interpret the letter `F` (move forward), we can calculate the new "
 "position of the path, render a line segment, and update the state as follows:"
-msgstr ""
-"文字 `F`（前進）を解釈するには、パスの新しい位置を計算し、線分を描画し、状態"
-"を次のように更新します。"
+msgstr "文字`F`（前進）を解釈するには、次のようにパスの新しい位置を計算し、線分を描画し、状態を更新します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:535
@@ -10027,10 +9839,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:562
-#, fuzzy
-#| msgid ""
-#| "(Easy) Try changing the various numerical constants in the code, to "
-#| "understand their effect on the rendered system."
 msgid ""
 "(Easy) Try changing the various numerical constants in the code to "
 "understand their effect on the rendered system."
@@ -10051,13 +9859,12 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:562
-#, fuzzy
 msgid ""
 "(Medium) Add a drop shadow to the filled shape using the `setShadowOffsetX`, "
 "`setShadowOffsetY`, `setShadowBlur`, and `setShadowColor` actions. _Hint_: "
 "use PSCi to find the types of these functions."
 msgstr ""
-"（普通）`setShadowOffsetX`動作、`setShadowOffsetY`動作、`setShadowBlur`動作、`setShadowColor`動作を使い、塗りつぶされた図形にドロップシャドウを追加してください。\n"
+"（普通）`setShadowOffsetX`、`setShadowOffsetY`、`setShadowBlur`、`setShadowColor`動作を使い、塗りつぶされた図形にドロップシャドウを追加してください。\n"
 "*手掛かり*：PSCiを使って、これらの関数の型を調べてみましょう。"
 
 #. type: Bullet: ' 1. '
@@ -10093,16 +9900,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:571
-#, fuzzy, no-wrap
-#| msgid ""
-#| "     How can this new information be used in the production rules to create interesting shapes?\n"
-#| " 1. (Difficult) An L-system is given by an alphabet with four letters: `L` (turn left through 60 degrees), `R` (turn right through 60 degrees), `F` (move forward) and `M` (also move forward).\n"
+#, no-wrap
 msgid ""
 "     How can this new information be used in the production rules to create interesting shapes?\n"
 " 1. (Difficult) An L-system is given by an alphabet with four letters: `L` (turn left through 60 degrees), `R` (turn right through 60 degrees), `F` (move forward), and `M` (also move forward).\n"
 msgstr ""
-"     生成規則でこの新しい情報を使うと、どんな面白い図形を作ることができるでしょうか。\n"
-"1. （難しい）`L`（60度左回転）、 `R`（60度右回転）、`F`（前進）、 `M`（これも前進）という4つの文字からなるアルファベットでL-Systemが与えられたとします。\n"
+"     この新しい情報を生成規則でどう使うと、面白い図形を作ることができるでしょうか。\n"
+"1. （難しい）4つの文字からなるアルファベットでL-Systemが与えられたとします。\n"
+"   それぞれ`L`（60度左回転）、`R`（60度右回転）、`F`（前進）、`M`（これも前進）です。\n"
 
 #. type: Plain text
 #: text/chapter12.md:573
@@ -10136,8 +9941,7 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:584
-#, fuzzy, no-wrap
-#| msgid "     Render this L-system. _Note_: you will need to decrease the number of iterations of the production rules, since the size of the final sentence grows exponentially with the number of iterations.\n"
+#, no-wrap
 msgid "     Render this L-system. _Note_: you will need to decrease the number of iterations of the production rules since the size of the final sentence grows exponentially with the number of iterations.\n"
 msgstr ""
 "     このL-Systemを描画してください。\n"
@@ -10173,24 +9977,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:597
-#, fuzzy
-#| msgid ""
-#| "In this chapter, we learned how to use the HTML5 Canvas API from "
-#| "PureScript by using the `canvas` library. We also saw a practical "
-#| "demonstration of many of the techniques we have learned already: maps and "
-#| "folds, records and row polymorphism, and the `Effect` monad for handling "
-#| "side-effects."
 msgid ""
 "In this chapter, we learned how to use the HTML5 Canvas API from PureScript "
 "by using the `canvas` library. We also saw a practical demonstration of many "
 "techniques we have learned already: maps and folds, records and row "
 "polymorphism, and the `Effect` monad for handling side-effects."
 msgstr ""
-"この章では、 `canvas`ライブラリを使用することにより、PureScriptからHTML5 "
-"Canvas APIを使う方法について学びました。\n"
-"また、これまで学んできた手法の多くを利用した実用的な例について見ました。\n"
-"マップや畳み込み、レコードと行多相、副作用を扱うための `Effect`モナドなどで"
-"す。"
+"この章では、`canvas`ライブラリを使用することにより、PureScriptからHTML5 Canvas APIを使う方法について学びました。\n"
+"また、これまで学んできた多くの手法からなる実用的な実演を見ました。\n"
+"マップや畳み込み、レコードと行多相、副作用を扱うための`Effect`モナドです。"
 
 #. type: Plain text
 #: text/chapter12.md:599
@@ -10226,12 +10021,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter12.md:611
-#, fuzzy
 msgid ""
 "This approach is taken in the `drawing` package, and it brings the "
 "flexibility of manipulating the scene as data in various ways before "
 "rendering."
-msgstr "この手法は `drawing`パッケージでも採用されており、描画前に様々な方法でデータとしてシーンを操作できる柔軟性を齎しています。"
+msgstr "この手法は`drawing`パッケージで取られており、描画前に様々な方法でシーンをデータとして操作できる柔軟性を齎しています。"
 
 #. type: Plain text
 #: text/chapter12.md:612
