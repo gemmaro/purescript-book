@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-22 08:54+0900\n"
+"PO-Revision-Date: 2023-08-24 22:41+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -10116,10 +10116,6 @@ msgstr "merge :: Array Int -> Array Int -> Array Int\n"
 
 #. type: Plain text
 #: text/chapter13.md:24
-#, fuzzy
-#| msgid ""
-#| "`merge` takes two sorted arrays of integers, and merges their elements so "
-#| "that the result is also sorted. For example:"
 msgid ""
 "`merge` takes two sorted arrays of integers and merges their elements so "
 "that the result is also sorted. For example:"
@@ -10144,22 +10140,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:33
-#, fuzzy
-#| msgid ""
-#| "In a typical test suite, we might test `merge` by generating a few small "
-#| "test cases like this by hand, and asserting that the results were equal "
-#| "to the appropriate values. However, everything we need to know about the "
-#| "`merge` function can be summarized by this property:"
 msgid ""
 "In a typical test suite, we might test `merge` by generating a few small "
 "test cases like this by hand and asserting that the results were equal to "
 "the appropriate values. However, everything we need to know about the "
 "`merge` function can be summarized by this property:"
 msgstr ""
-"典型的なテストスイートでは、手作業でこのような小さなテスト項目を幾つも作成"
-"し、結果が正しい値と等しいことを確認することでテストを実施します。\n"
-"しかし、 `merge`関数について知る必要があるものは全て、この性質に要約できま"
-"す。"
+"典型的なテストスイートでは、手作業でこのような小さなテスト項目を幾つも作成し、結果が正しい値と等しいことを確認することでテストを実施します。\n"
+"しかし、`merge`関数について知る必要があるものは全て、この性質に要約できます。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:35
@@ -10172,11 +10160,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:37
-#, fuzzy
-#| msgid ""
-#| "`quickcheck` allows us to test this property directly, by generating "
-#| "random test cases. We simply state the properties that we want our code "
-#| "to have, as functions. In this case, we have a single property:"
 msgid ""
 "`quickcheck` allows us to test this property directly by generating random "
 "test cases. We state the properties we want our code to have as functions. "
@@ -10201,14 +10184,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:45
-#, fuzzy
-#| msgid ""
-#| "When we run this code, `quickcheck` will attempt to disprove the "
-#| "properties we claimed, by generating random inputs `xs` and `ys`, and "
-#| "passing them to our functions. If our function returns `false` for any "
-#| "inputs, the property will be incorrect, and the library will raise an "
-#| "error. Fortunately, the library is unable to disprove our properties "
-#| "after generating 100 random test cases:"
 msgid ""
 "When we run this code, `quickcheck` will attempt to disprove the properties "
 "we claimed by generating random inputs `xs` and `ys` and passing them to our "
@@ -10216,12 +10191,9 @@ msgid ""
 "be incorrect, and the library will raise an error. Fortunately, the library "
 "is unable to disprove our properties after generating 100 random test cases:"
 msgstr ""
-"このコードを実行すると、 `quickcheck`は無作為な入力 `xs`と `ys`を生成してこの"
-"関数に渡すことで、主張しようとしている性質を反証しようとします。\n"
-"何らかの入力に対して関数が `false`を返した場合、性質は正しくないことが示さ"
-"れ、ライブラリはエラーを発生させます。\n"
-"幸いなことに、次のように100個の無作為なテスト項目を生成しても、ライブラリはこ"
-"の性質を反証できません。"
+"このコードを実行すると、`quickcheck`は無作為な入力`xs`と`ys`を生成してこの関数に渡すことで、主張した性質を反証しようとします。\n"
+"何らかの入力に対して関数が`false`を返した場合、性質は正しくなく、ライブラリはエラーを発生させます。\n"
+"幸いなことに、次のように100個の無作為なテスト項目を生成しても、ライブラリはこの性質を反証できません。"
 
 #. type: Fenced code block (text)
 #: text/chapter13.md:46
@@ -10337,13 +10309,6 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:94
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a property which asserts that merging an array with the "
-#| "empty array does not modify the original array. _Note_: This new property "
-#| "is redundant, since this situation is already covered by our existing "
-#| "property. We're just trying to give you readers a simple way to practice "
-#| "using quickCheck."
 msgid ""
 "(Easy) Write a property that asserts that merging an array with an empty one "
 "does not modify the original array. _Note_: This new property is redundant "
@@ -10414,7 +10379,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:115
-#, fuzzy
 msgid ""
 "This error message indicates that the compiler could not generate random "
 "test cases because it did not know what type of elements we wanted our "
@@ -10437,11 +10401,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:122
-#, fuzzy
-#| msgid ""
-#| "We can alternatively use a helper function to specify type, which may "
-#| "result in cleaner code. For example, if we define a function `ints` as a "
-#| "synonym for the identity function:"
 msgid ""
 "We can alternatively use a helper function to specify the type, which may "
 "result in cleaner code. For example, if we define a function `ints` as a "
@@ -10449,7 +10408,7 @@ msgid ""
 msgstr ""
 "代替案として型を指定する補助関数を使うこともできます。\n"
 "こうするとより見通しのよいコードになることがあります。\n"
-"例えば同値関数の同義な関数`ints`を定義したとしましょう。"
+"例えば同値関数の同義語として関数`ints`を定義したとしましょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:123
@@ -10482,31 +10441,18 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:136
-#, fuzzy
-#| msgid ""
-#| "Here, `xs` and `ys` both have type `Array Int`, since the `ints` function "
-#| "has been used to disambiguate the unknown type."
 msgid ""
 "Here, `xs` and `ys` have type `Array Int` since the `ints` function has been "
 "used to disambiguate the unknown type."
-msgstr ""
-"ここで、 `ints`関数が不明な型を解消するために使われているため、 `xs`と `ys`は"
-"どちらも型 `Array Int`を持っています。"
+msgstr "ここで、`ints`関数が不明な型の曖昧さを解消するために使われているため、`xs`と`ys`は型`Array Int`を持っています。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:141
-#, fuzzy
-#| msgid ""
-#| "(Easy) Write a function `bools` which forces the types of `xs` and `ys` "
-#| "to be `Array Boolean`, and add additional properties which test "
-#| "`mergePoly` at that type."
 msgid ""
 "(Easy) Write a function `bools` that forces the types of `xs` and `ys` to be "
 "`Array Boolean`, and add additional properties that test `mergePoly` at that "
 "type."
-msgstr ""
-"（簡単）`xs`と `ys`の型を `Array Boolean`に強制する関数 `bools`を書き、 "
-"`mergePoly`をその型でテストする性質を追加してください。"
+msgstr "（簡単）`xs`と`ys`の型を`Array Boolean`に強制する関数`bools`を書き、`mergePoly`をその型でテストする性質を追加してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:141
@@ -10527,16 +10473,10 @@ msgstr "任意のデータの生成"
 
 #. type: Plain text
 #: text/chapter13.md:145
-#, fuzzy
-#| msgid ""
-#| "Now we will see how the `quickcheck` library is able to randomly generate "
-#| "test cases for our properties."
 msgid ""
 "Now we will see how the `quickcheck` library can randomly generate test "
 "cases for our properties."
-msgstr ""
-"`quickcheck`ライブラリを使って性質に対するテスト項目を無作為に生成する方法に"
-"ついて説明します。"
+msgstr "それでは`quickcheck`ライブラリが性質に対するテスト項目をどのように無作為に生成できているのかを見ていきます。"
 
 #. type: Plain text
 #: text/chapter13.md:147
@@ -10585,22 +10525,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:158
-#, fuzzy
-#| msgid ""
-#| "For example, we can use the `Arbitrary` instance for the `Int` type, "
-#| "provided in the `quickcheck` library, to create a distribution on the 256 "
-#| "byte values, using the `Functor` instance for `Gen` to map a function "
-#| "from integers to bytes over arbitrary integer values:"
 msgid ""
 "For example, we can use the `Arbitrary` instance for the `Int` type, "
 "provided in the `quickcheck` library, to create a distribution on the 256-"
 "byte values, using the `Functor` instance for `Gen` to map a function from "
 "integers to bytes over arbitrary integer values:"
 msgstr ""
-"例えば、 `quickcheck`ライブラリで提供されている `Int`型用の `Arbitrary`インス"
-"タンスを使い、256個のバイト値上の分布を作ることができます。\n"
-"これには`Gen`用に`Functor`インスタンスを使って整数から任意の整数値のバイトま"
-"でマップします。"
+"例えば、`quickcheck`ライブラリで提供されている`Int`型用の`Arbitrary`インスタンスを使い、256個のバイト値上の分布を作れます。\n"
+"これには`Gen`用の`Functor`インスタンスを使い、整数からバイトへの関数を任意の整数値に写します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:159
@@ -10651,22 +10583,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:179
-#, fuzzy
-#| msgid ""
-#| "In this test, we generated arbitrary arrays `xs` and `ys`, but had to "
-#| "sort them, since `merge` expects sorted input. On the other hand, we "
-#| "could create a newtype representing sorted arrays, and write an "
-#| "`Arbitrary` instance which generates sorted data:"
 msgid ""
 "In this test, we generated arbitrary arrays `xs` and `ys`, but had to sort "
 "them, since `merge` expects sorted input. On the other hand, we could create "
 "a newtype representing sorted arrays and write an `Arbitrary` instance that "
 "generates sorted data:"
 msgstr ""
-"このテストでは、任意の配列 `xs`と `ys`を生成しますが、 `merge`は整列済みの入"
-"力を期待しているので、 `xs`と `ys`を整列しておかなければなりません。\n"
-"一方で、整列された配列を表すnewtypeを作成し、整列されたデータを生成する "
-"`Arbitrary`インスタンスを書くこともできます。"
+"このテストでは、任意の配列`xs`と`ys`を生成しますが、`merge`は整列済みの入力を期待しているので、これらを整列しておかなければなりません。\n"
+"一方で、整列された配列を表すnewtypeを作成し、整列されたデータを生成する`Arbitrary`インスタンスを書くこともできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:180
@@ -10705,13 +10629,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:198
-#, fuzzy
-#| msgid ""
-#| "This may look like a small change, but the types of `xs` and `ys` have "
-#| "changed to `Sorted Int`, instead of just `Array Int`. This communicates "
-#| "our _intent_ in a clearer way - the `mergePoly` function takes sorted "
-#| "input. Ideally, the type of the `mergePoly` function itself would be "
-#| "updated to use the `Sorted` type constructor."
 msgid ""
 "This may look like a small change, but the types of `xs` and `ys` have "
 "changed to `Sorted Int` instead of just `Array Int`. This communicates our "
@@ -10719,12 +10636,9 @@ msgid ""
 "Ideally, the type of the `mergePoly` function itself would be updated to use "
 "the `Sorted` type constructor."
 msgstr ""
-"これは些細な変更に見えるかもしれませんが、 `xs`と `ys`の型はただの `Array "
-"Int`から `Sorted Int`へと変更されています。\n"
-"これにより、 `mergePoly`関数は整列済みの入力を取る、という*意図*を、わかりや"
-"すく示すことができます。\n"
-"理想的には、 `mergePoly`関数自体の型が `Sorted`型構築子を使うようにするといい"
-"でしょう。"
+"これは些細な変更に見えるかもしれませんが、`xs`と`ys`の型はただの`Array Int`から`Sorted Int`へと変更されています。\n"
+"これにより、`mergePoly`関数は整列済みの入力を取る、という*意図*をわかりやすく示すことができます。\n"
+"理想的には、`mergePoly`関数自体の型が`Sorted`型構築子を使うようにするといいでしょう。"
 
 #. type: Plain text
 #: text/chapter13.md:200
@@ -10768,17 +10682,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:217
-#, fuzzy
-#| msgid ""
-#| "The `insert` function is used to insert a new element into a sorted tree, "
-#| "and the `member` function can be used to query a tree for a particular "
-#| "value. For example:"
 msgid ""
 "The `insert` function inserts a new element into a sorted tree, and the "
 "`member` function can query a tree for a particular value. For example:"
 msgstr ""
-"`insert`関数は新しい要素を整列済みの二分木に挿入するのに使われ、 `member`関数"
-"は特定の値の有無を木に問い合わせるのに使われます。\n"
+"`insert`関数は新しい要素を整列済みの木に挿入し、`member`関数は特定の値について木に問い合わせます。\n"
 "例えば次のようになります。"
 
 #. type: Fenced code block (text)
@@ -10803,19 +10711,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:229
-#, fuzzy
-#| msgid ""
-#| "The `toArray` and `fromArray` functions can be used to convert sorted "
-#| "trees to and from arrays. We can use `fromArray` to write an `Arbitrary` "
-#| "instance for trees:"
 msgid ""
 "The `toArray` and `fromArray` functions can convert sorted trees to and from "
 "arrays. We can use `fromArray` to write an `Arbitrary` instance for trees:"
 msgstr ""
-"`toArray`関数と `fromArray`関数は、整列された木と整列された配列を相互に変換す"
-"るために使われます。\n"
-"`fromArray`を使うと、木についての `Arbitrary`インスタンスを書くことができま"
-"す。"
+"`toArray`関数と`fromArray`関数は、整列された木と配列を相互に変換できます。\n"
+"`fromArray`を使うと、木についての`Arbitrary`インスタンスを書けます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:230
@@ -10829,21 +10730,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:236
-#, fuzzy
-#| msgid ""
-#| "We can now use `Tree a` as the type of an argument to our test "
-#| "properties, whenever there is an `Arbitrary` instance available for the "
-#| "type `a`. For example, we can test that the `member` test always returns "
-#| "`true` after inserting a value:"
 msgid ""
 "We can now use `Tree a` as the type of an argument to our test properties "
 "whenever there is an `Arbitrary` instance available for the type `a`. For "
 "example, we can test that the `member` test always returns `true` after "
 "inserting a value:"
 msgstr ""
-"型 `a`についての`Arbitary`インスタンスが使えるなら、テストする性質の引数の型"
-"として `Tree a`を使うことができます。例えば、 `member`テストは値を挿入した後"
-"は常に `true`を返すことをテストできます。"
+"型`a`用に使える`Arbitary`インスタンスがあるなら、テストする性質の引数の型として`Tree a`を使えます。\n"
+"例えば、`member`による木の確認については、値を挿入した後は常に`true`を返すことをテストできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:237
@@ -10879,17 +10773,10 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:248
-#, fuzzy
-#| msgid ""
-#| "(Difficult) Write a property which asserts that a value inserted into a "
-#| "tree is still a member of that tree after arbitrarily many more "
-#| "insertions."
 msgid ""
 "(Difficult) Write a property that asserts that a value inserted into a tree "
 "is still a member of that tree after arbitrarily many more insertions."
-msgstr ""
-"（難しい）木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素で"
-"あることを主張する性質を書いてください。"
+msgstr "（難しい）木に挿入された値は、どれだけ沢山の挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。"
 
 #. type: Title ##
 #: text/chapter13.md:249
@@ -10899,38 +10786,25 @@ msgstr "高階関数のテスト"
 
 #. type: Plain text
 #: text/chapter13.md:252
-#, fuzzy
-#| msgid ""
-#| "The `Merge` module defines another generalization of the `merge` function "
-#| "- the `mergeWith` function takes an additional function as an argument "
-#| "which is used to determine the order in which elements should be merged. "
-#| "That is, `mergeWith` is a higher-order function."
 msgid ""
 "The `Merge` module defines another generalization of the `merge` function – "
 "the `mergeWith` function takes an additional function as an argument to "
 "determine the order in which elements should be merged. That is, `mergeWith` "
 "is a higher-order function."
 msgstr ""
-"`Merge`モジュールは `merge`関数の別の一般化も定義しています。\n"
-"`mergeWith`関数は追加の関数を引数として取り、統合される要素の順序を決定するの"
-"に使われます。\n"
-"つまり `mergeWith`は高階関数です。"
+"`Merge`モジュールは`merge`関数の別の一般化も定義しています。\n"
+"`mergeWith`関数は追加の関数を引数として取り、統合される要素の順序を判定します。\n"
+"つまり`mergeWith`は高階関数です。"
 
 #. type: Plain text
 #: text/chapter13.md:254
-#, fuzzy
-#| msgid ""
-#| "For example, we can pass the `length` function as the first argument, to "
-#| "merge two arrays which are already in length-increasing order. The result "
-#| "should also be in length-increasing order:"
 msgid ""
 "For example, we can pass the `length` function as the first argument to "
 "merge two arrays already in length-increasing order. The result should also "
 "be in length-increasing order:"
 msgstr ""
-"例えば`length`関数を最初の引数として渡し、既に長さの昇順になっている2つの配列"
-"を統合できます。\n"
-"このとき、結果も長さの昇順になっていなければなりません。"
+"例えば`length`関数を最初の引数として渡し、既に長さの昇順になっている2つの配列を統合できます。\n"
+"その結果もまた長さの昇順になっているでしょう。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:255
@@ -10954,31 +10828,21 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:266
-#, fuzzy
-#| msgid ""
-#| "How might we test such a function? Ideally, we would like to generate "
-#| "values for all three arguments, including the first argument which is a "
-#| "function."
 msgid ""
 "How might we test such a function? Ideally, we would like to generate values "
 "for all three arguments, including the first argument, which is a function."
 msgstr ""
 "このような関数をテストするにはどうしたらいいでしょうか。\n"
-"理想的には、関数である最初の引数を含めた、3つの引数全てについて、値を生成した"
-"いと思うでしょう。"
+"理想的には、関数である最初の引数を含めた3つの引数全てについて、値を生成したいところです。"
 
 #. type: Plain text
 #: text/chapter13.md:268
-#, fuzzy
-#| msgid ""
-#| "There is a second type class which allows us to create randomly-generated "
-#| "functions. It is called `Coarbitrary`, and it is defined as follows:"
 msgid ""
 "There is a second type class that allows us to create randomly-generated "
 "functions. It is called `Coarbitrary`, and it is defined as follows:"
 msgstr ""
-"関数を無作為に生成できるようにする、もう1つの型クラスがあります。\n"
-"この型クラスは `Coarbitrary`と呼ばれており、次のように定義されています。"
+"無作為に生成された関数を作れるようにする、2つ目の型クラスがあります。\n"
+"`Coarbitrary`という名前で次のように定義されています。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:269
@@ -10992,30 +10856,23 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:275
-#, fuzzy
 msgid ""
 "The `coarbitrary` function takes a function argument of type `t` and a "
 "random generator for a function result of type `r`. It uses the function "
 "argument to _perturb_ the random generator. That is, it uses the function "
 "argument to modify the random output of the random generator for the result."
 msgstr ""
-"`coarbitrary`関数は、型 `t`と、関数の結果の型 `r`についての乱数生成器を関数の引数として取り、乱数生成器を*かき乱す*のにこの引数を使います。\n"
-"つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。"
+"`coarbitrary`関数は、型`t`の関数の引数と、型`r`の関数の結果の乱数生成器を取ります。\n"
+"この関数引数を使って乱数生成器を*かき乱し*ます。\n"
+"つまり、関数の引数を使って乱数生成器の無作為な出力を変更し、結果としているのです。"
 
 #. type: Plain text
 #: text/chapter13.md:277
-#, fuzzy
-#| msgid ""
-#| "In addition, there is a type class instance which gives us `Arbitrary` "
-#| "functions if the function domain is `Coarbitrary` and the function "
-#| "codomain is `Arbitrary`:"
 msgid ""
 "In addition, there is a type class instance that gives us `Arbitrary` "
 "functions if the function domain is `Coarbitrary` and the function codomain "
 "is `Arbitrary`:"
-msgstr ""
-"また、もし関数の定義域が `Coarbitrary`で、値域が `Arbitrary`なら、`Arbitrary`"
-"の関数を与える型クラスインスタンスが存在します。"
+msgstr "また、もし関数の定義域が`Coarbitrary`で値域が`Arbitrary`なら、`Arbitrary`の関数を与える型クラスインスタンスが存在します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:278
@@ -11025,31 +10882,16 @@ msgstr "instance (Coarbitrary a, Arbitrary b) => Arbitrary (a -> b)\n"
 
 #. type: Plain text
 #: text/chapter13.md:283
-#, fuzzy
-#| msgid ""
-#| "In practice, this means that we can write properties which take functions "
-#| "as arguments. In the case of the `mergeWith` function, we can generate "
-#| "the first argument randomly, modifying our tests to take account of the "
-#| "new argument."
 msgid ""
 "In practice, we can write properties that take functions as arguments. In "
 "the case of the `mergeWith` function, we can generate the first argument "
 "randomly, modifying our tests to take account of the new argument."
 msgstr ""
-"実は、これが意味しているのは、引数として関数を取るような性質を記述できるとい"
-"うことです。 `mergeWith`関数の場合では、新しい引数を考慮するようにテストを修"
-"正すると、最初の引数を無作為に生成できます。"
+"実際のところ、引数として関数を取るような性質を記述できます。\n"
+"`mergeWith`関数の場合では、新しい引数を考慮するようにテストを修正すると、最初の引数を無作為に生成できます。"
 
 #. type: Plain text
 #: text/chapter13.md:285
-#, fuzzy
-#| msgid ""
-#| "We cannot guarantee that the result will be sorted - we do not even "
-#| "necessarily have an `Ord` instance - but we can expect that the result be "
-#| "sorted with respect to the function `f` that we pass in as an argument. "
-#| "In addition, we need the two input arrays to be sorted with respect to "
-#| "`f`, so we use the `sortBy` function to sort `xs` and `ys` based on "
-#| "comparison after the function `f` has been applied:"
 msgid ""
 "We cannot guarantee that the result will be sorted – we do not even "
 "necessarily have an `Ord` instance – but we can expect that the result be "
@@ -11059,11 +10901,9 @@ msgid ""
 "the function `f` has been applied:"
 msgstr ""
 "結果が整列されていることは保証できません。\n"
-"必ずしも`Ord`インスタンスを持っているとさえ限らないのです。\n"
-"しかし、引数として渡す関数 `f`に従って結果が整列されていることは期待されま"
-"す。\n"
-"更に、2つの入力配列が `f`に従って整列されている必要がありますので、`sortBy`関"
-"数を使って関数 `f`が適用されたあとの比較に基づいて `xs`と`ys`を整列します。"
+"`Ord`インスタンスを持っているとさえ限らないのです。\n"
+"しかし、引数として渡す関数`f`に従って結果が整列されていることは期待されます。\n"
+"更に、2つの入力配列が`f`に従って整列されている必要がありますので、`sortBy`関数を使って関数`f`が適用されたあとの比較に基づいて`xs`と`ys`を整列します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:286
@@ -11126,20 +10966,13 @@ msgstr "instance (Arbitrary a, Coarbitrary b) => Coarbitrary (a -> b)\n"
 
 #. type: Plain text
 #: text/chapter13.md:315
-#, fuzzy
-#| msgid ""
-#| "This means that we are not limited to just values and functions - we can "
-#| "also randomly generate _higher-order functions_, or functions whose "
-#| "arguments are higher-order functions, and so on."
 msgid ""
 "This means that we are not limited to just values and functions – we can "
 "also randomly generate _higher-order functions_, or functions whose "
 "arguments are higher-order functions, and so on."
 msgstr ""
-"これは値の生成が単純な関数だけに限定されるものではないことを意味していま"
-"す。\n"
-"つまり*高階関数*や、引数が高階関数であるような関数もまた、無作為に生成できる"
-"のです。"
+"つまり値や関数だけに制限されません。\n"
+"*高階関数*や、引数が高階関数であるような関数やその他諸々もまた、無作為に生成できるのです。"
 
 #. type: Title ##
 #: text/chapter13.md:316
@@ -11178,19 +11011,13 @@ msgstr "instance Coarbitrary a => Coarbitrary (Tree a) where\n"
 
 #. type: Plain text
 #: text/chapter13.md:327
-#, fuzzy
-#| msgid ""
-#| "We have to write a function which perturbs a random generator given a "
-#| "value of type `Tree a`. If the input value is a `Leaf`, then we will just "
-#| "return the generator unchanged:"
 msgid ""
 "We have to write a function that perturbs a random generator given a value "
 "of type `Tree a`. If the input value is a `Leaf`, then we will return the "
 "generator unchanged:"
 msgstr ""
-"型 `Tree a`の値が与えられたときに、乱数発生器をかき乱す関数を記述する必要があ"
-"ります。\n"
-"入力値が `Leaf`であれば、そのままにしておく生成器を返します。"
+"型`Tree a`の値が与えられたときに、乱数発生器をかき乱す関数を記述する必要があります。\n"
+"入力値が`Leaf`であれば、そのままにしておく生成器を返します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:328
@@ -11225,21 +11052,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:342
-#, fuzzy
-#| msgid ""
-#| "Now we are free to write properties whose arguments include functions "
-#| "taking trees as arguments. For example, the `Tree` module defines a "
-#| "function `anywhere`, which tests if a predicate holds on any subtree of "
-#| "its argument:"
 msgid ""
 "Now we can write properties whose arguments include functions taking trees "
 "as arguments. For example, the `Tree` module defines a function `anywhere`, "
 "which tests if a predicate holds on any subtree of its argument:"
 msgstr ""
-"これで、木を引数にとるような関数を引数に含む性質を自由に書くことができるよう"
-"になりました。\n"
-"例えば`Tree`モジュールでは`anywhere`が定義されており、これは述語が引数のどん"
-"な部分木についても成り立っているかを調べる関数です。"
+"これで、木を引数にとるような関数を引数に含む性質を自由に書くことができるようになりました。\n"
+"例えば`Tree`モジュールでは関数`anywhere`が定義されています。\n"
+"これは述語が引数のどんな部分木についても満たされるかを調べます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:343
@@ -11249,16 +11069,12 @@ msgstr "anywhere :: forall a. (Tree a -> Boolean) -> Tree a -> Boolean\n"
 
 #. type: Plain text
 #: text/chapter13.md:348
-#, fuzzy
-#| msgid ""
-#| "Now we are able to generate the predicate function randomly. For example, "
-#| "we expect the `anywhere` function to _respect disjunction_:"
 msgid ""
 "Now we can generate the predicate function randomly. For example, we expect "
 "the `anywhere` function to _respect disjunction_:"
 msgstr ""
-"これで、この述語関数`anywhere`を無作為に生成できるようになりました。\n"
-"例えば、 `anywhere`関数は*ある命題のもとで不変*であることが期待されます。"
+"今となっては述語関数を無作為に生成できます。\n"
+"例えば、`anywhere`関数は*選言の法則を満たす*ことが期待されます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter13.md:349
@@ -11299,7 +11115,6 @@ msgstr "副作用のないテスト"
 
 #. type: Plain text
 #: text/chapter13.md:365
-#, fuzzy
 msgid ""
 "For the purposes of testing, we usually include calls to the `quickCheck` "
 "function in the `main` action of our test suite. However, there is a variant "
@@ -11308,8 +11123,8 @@ msgid ""
 "input and returns an array of test results."
 msgstr ""
 "通常、テストの目的ではテストスイートの`main`動作に`quickCheck`関数の呼び出しが含まれています。\n"
-"しかし、副作用を使わない`quickCheckPure`と呼ばれる`quickCheck`関数の亜種もあります。\n"
-"`quickCheckPure`は、入力として乱数の種を取り、テスト結果の配列を返す純粋な関数です。"
+"しかし`quickCheck`関数には亜種があり、`quickCheckPure`という名前です。\n"
+"副作用を使わない代わりに、入力として乱数の種を取ってテスト結果の配列を返す純粋な関数です。"
 
 #. type: Plain text
 #: text/chapter13.md:367
@@ -11362,18 +11177,11 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:386
-#, fuzzy
-#| msgid ""
-#| "`quickCheckPure` might be useful in other situations, such as generating "
-#| "random input data for performance benchmarks, or generating sample form "
-#| "data for web applications."
 msgid ""
 "`quickCheckPure` might be useful in other situations, such as generating "
 "random input data for performance benchmarks or sample form data for web "
 "applications."
-msgstr ""
-"`quickCheckPure`は、性能ベンチマークの入力データ生成や、webアプリケーションの"
-"フォームデータ例を無作為に生成するというような状況で便利かもしれません。"
+msgstr "`quickCheckPure`は、性能ベンチマークの入力データ生成や、webアプリケーションのフォームデータ例を無作為に生成するというような状況で便利かもしれません。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter13.md:392
@@ -11418,21 +11226,17 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter13.md:400
-#, fuzzy, no-wrap
-#| msgid ""
-#| "     _Hint_: Use the `oneOf` function defined in `Test.QuickCheck.Gen` to define your `Arbitrary` instance.\n"
-#| " 1. (Medium) Use `all` to simplify the result of the `quickCheckPure` function - your new function should have type `List Result -> Boolean` and should return `true` if every test passes and `false` otherwise.\n"
-#| " 1. (Medium) As another approach to simplifying the result of `quickCheckPure`, try writing a function `squashResults :: List Result -> Result`. Consider using the `First` monoid from `Data.Maybe.First` with the `foldMap` function to preserve the first error in case of failure.\n"
+#, no-wrap
 msgid ""
 "     _Hint_: Use the `oneOf` function defined in `Test.QuickCheck.Gen` to define your `Arbitrary` instance.\n"
 " 1. (Medium) Use `all` to simplify the result of the `quickCheckPure` function – your new function should have the type `List Result -> Boolean` and should return `true` if every test passes and `false` otherwise.\n"
 " 1. (Medium) As another approach to simplifying the result of `quickCheckPure`, try writing a function `squashResults :: List Result -> Result`. Consider using the `First` monoid from `Data.Maybe.First` with the `foldMap` function to preserve the first error in case of failure.\n"
 msgstr ""
-"     *手掛かり*：`Test.QuickCheck.Gen`で定義された `oneOf`関数を使って `Arbitrary`インスタンスを定義してください。\n"
-" 1. （普通）`all`を使って `quickCheckPure`関数の結果を単純化してください。\n"
+"     *手掛かり*：`Test.QuickCheck.Gen`で定義された`oneOf`関数を使って`Arbitrary`インスタンスを定義してください。\n"
+" 1. （普通）`all`を使って`quickCheckPure`関数の結果を単純化してください。\n"
 "    この新しい関数は型`List Result -> Boolean`を持ち、全てのテストが通れば`true`を、そうでなければ`false`を返します。\n"
 " 2. （普通）`quickCheckPure`の結果を単純にする別の手法として、関数`squashResults :: List Result -> Result`を書いてみてください。\n"
-"    `Data.Maybe.First`の`First`モノイドと共に`foldMap`関数を使うことで、失敗した場合の最初のエラーを保存することを検討してください。\n"
+"    `Data.Maybe.First`の`First`モノイドと共に`foldMap`関数を使うことで、失敗した場合の最初のエラーを保持することを検討してください。\n"
 
 #. type: Plain text
 #: text/chapter13.md:404
@@ -11452,27 +11256,18 @@ msgstr "`spago test`を使ってQuickCheckのテストを自動化する方法�
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
-#, fuzzy
 msgid ""
 "We saw how to write properties as functions and how to use the `<?>` "
 "operator to improve error messages."
-msgstr "性質を関数として書く方法とエラー文言を改良する `<?>`演算子の使い方を説明しました。"
+msgstr "性質を関数として書く方法とエラー文言を改良する`<?>`演算子の使い方を説明しました。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
-#, fuzzy
-#| msgid ""
-#| "We saw how the `Arbitrary` and `Coarbitrary` type classes enable "
-#| "generation of boilerplate testing code, and how they allow us to test "
-#| "higher-order properties."
 msgid ""
 "We saw how the `Arbitrary` and `Coarbitrary` type classes enable generation "
 "of boilerplate testing code and how they allow us to test higher-order "
 "properties."
-msgstr ""
-"`Arbitrary`と `Coarbitrary`型クラスによって、如何にして定型的なテストコードの"
-"自動生成を可能にし、またどうすれば高階な性質関数が可能になるかを見てきまし"
-"た。"
+msgstr "`Arbitrary`と`Coarbitrary`型クラスによって定型的なテストコードの自動生成を可能にする方法や、高階な性質のテストを可能にする方法を見ました。"
 
 #. type: Bullet: '- '
 #: text/chapter13.md:408
