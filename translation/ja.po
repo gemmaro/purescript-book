@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-07-10 21:30+0900\n"
-"PO-Revision-Date: 2023-08-24 22:41+0900\n"
+"PO-Revision-Date: 2023-08-25 08:38+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -11295,13 +11295,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:8
-#, fuzzy
-#| msgid ""
-#| "A domain-specific language is a language which is well-suited to "
-#| "development in a particular problem domain. Its syntax and functions are "
-#| "chosen to maximize readability of code used to express ideas in that "
-#| "domain. We have already seen a number of examples of domain-specific "
-#| "languages in this book:"
 msgid ""
 "A domain-specific language is a language that is well-suited to development "
 "in a particular problem domain. Its syntax and functions are chosen to "
@@ -11309,8 +11302,7 @@ msgid ""
 "have already seen several examples of domain-specific languages in this book:"
 msgstr ""
 "領域特化言語とは、特定の問題領域での開発に適した言語のことです。\n"
-"領域特化言語の構文及び機能は、その領域内の考え方を表現するコードの読みやすさ"
-"を最大限に発揮すべく選択されます。\n"
+"構文及び機能は、その領域内の考え方を表現するに使われるコードの読みやすさを最大化すべく選択されます。\n"
 "本書の中では、既に領域特化言語の例を幾つか見てきています。"
 
 #. type: Bullet: '- '
@@ -11323,63 +11315,44 @@ msgstr "第11章で開発された`Game`モナドと関連する動作は、*テ
 
 #. type: Bullet: '- '
 #: text/chapter14.md:11
-#, fuzzy
-#| msgid ""
-#| "The `quickcheck` package, covered in chapter 13, is a domain-specific "
-#| "language for the domain of _generative testing_. Its combinators enable a "
-#| "particularly expressive notation for test properties."
 msgid ""
 "The `quickcheck` package, covered in Chapter 13, is a domain-specific "
 "language for the domain of _generative testing_. Its combinators enable a "
 "particularly expressive notation for test properties."
 msgstr ""
-"第13章で扱った `quickcheck`パッケージは、 _生成的テスティング_ の領域の領域特"
-"化言語です。このコンビネータはテストの性質に対して特に表現力の高い記法を可能"
-"にします。"
+"第13章で扱った`quickcheck`パッケージは、*生成的テスティング*の領域に向けた領域特化言語です。\n"
+"このコンビネータはテストの性質に対して特に表現力の高い記法を可能にします。"
 
 #. type: Plain text
 #: text/chapter14.md:13
-#, fuzzy
 msgid ""
 "This chapter will take a more structured approach to some standard "
 "techniques in implementing domain-specific languages. It is by no means a "
 "complete exposition of the subject, but should provide you with enough "
 "knowledge to build some practical DSLs for your own tasks."
 msgstr ""
-"この章では、領域特化言語の実装において、幾つかの標準的な技法による構造的な手法に迫ります。\n"
-"これがこの話題の完全な説明だということでは決してありませんが、自分の目的に合う具体的なDSLを構築するのには充分な知識を齎すことでしょう。"
+"この章では、領域特化言語の実装において、幾つかの標準的な技法にについて構造的な手法を取ります。\n"
+"この話題の完全な解説では決してありませんが、目的に合う実践的なDSLを構築するのに充分な知識は得られるでしょう。"
 
 #. type: Plain text
 #: text/chapter14.md:15
-#, fuzzy
-#| msgid ""
-#| "Our running example will be a domain-specific language for creating HTML "
-#| "documents. Our aim will be to develop a type-safe language for describing "
-#| "correct HTML documents, and we will work by improving a naive "
-#| "implementation in small steps."
 msgid ""
 "Our running example will be a domain-specific language for creating HTML "
 "documents. We will aim to develop a type-safe language for describing "
 "correct HTML documents, and we will work by improving a naive implementation "
 "in small steps."
 msgstr ""
-"この章で実行している例は、HTML文書を作成するための領域特化言語です。\n"
-"正しいHTML文書を記述するための型安全な言語を開発することが目的で、素朴な実装"
-"を徐々に改善しつつ進めていきます。"
+"ここでの実行例はHTML文書を作成するための領域特化言語です。\n"
+"正しいHTML文書を記述するための型安全な言語を開発することが目的で、素朴な実装を徐々に改善しつつ進めていきます。"
 
 #. type: Plain text
 #: text/chapter14.md:19
-#, fuzzy
-#| msgid ""
-#| "The project accompanying this chapter adds one new dependency - the "
-#| "`free` library, which defines the _free monad_, one of the tools which we "
-#| "will be using."
 msgid ""
 "The project accompanying this chapter adds one new dependency – the `free` "
 "library, which defines the _free monad_, one of the tools we will use."
 msgstr ""
-"この章で使うプロジェクトには新しい依存性が1つ追加されます。これから使う道具の"
-"1つである*Freeモナド*が定義されている `free`ライブラリです。"
+"この章に付随するプロジェクトには新しい依存性が1つ追加されます。\n"
+"これから使う道具の1つである*Freeモナド*が定義されている`free`ライブラリです。"
 
 #. type: Plain text
 #: text/chapter14.md:21
@@ -11388,8 +11361,7 @@ msgstr "このプロジェクトをPSCiを使って試していきます。"
 
 #. type: Title ##
 #: text/chapter14.md:22
-#, fuzzy, no-wrap
-#| msgid "A HTML Data Type"
+#, no-wrap
 msgid "An HTML Data Type"
 msgstr "HTMLデータ型"
 
@@ -11438,22 +11410,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:44
-#, fuzzy
-#| msgid ""
-#| "The `Element` type represents HTML elements. Each element consists of an "
-#| "element name, an array of attribute pairs and some content. The content "
-#| "property uses the `Maybe` type to indicate that an element might be open "
-#| "(containing other elements and text) or closed."
 msgid ""
 "The `Element` type represents HTML elements. Each element consists of an "
 "element name, an array of attribute pairs, and some content. The content "
 "property uses the `Maybe` type to indicate that an element might be open "
 "(containing other elements and text) or closed."
 msgstr ""
-"`Element`型はHTMLの要素を表しています。\n"
-"各要素は要素名、属性の対の配列と、要素の内容で構成されています。\n"
-"contentプロパティは、`Maybe`タイプを適切に使って、要素が開いている（他の要素"
-"やテキストを含む）か閉じているかを示しています。"
+"`Element`型はHTMLの要素を表します。\n"
+"各要素は要素名、属性の対の配列と、内容で構成されます。\n"
+"内容のプロパティには`Maybe`型を適切に使い、要素が開いている（他の要素やテキストを含む）か閉じているかを示します。"
 
 #. type: Plain text
 #: text/chapter14.md:46
@@ -11538,7 +11503,6 @@ msgstr "現状のライブラリには幾つもの問題があります。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:87
-#, fuzzy
 msgid ""
 "Creating HTML documents is difficult – every new element requires at least "
 "one record and one data constructor."
@@ -11584,13 +11548,6 @@ msgstr "スマート構築子"
 
 #. type: Plain text
 #: text/chapter14.md:93
-#, fuzzy
-#| msgid ""
-#| "The first technique we will apply is simple but can be very effective. "
-#| "Instead of exposing the representation of the data to the module's users, "
-#| "we can use the module exports list to hide the `Element`, `Content` and "
-#| "`Attribute` data constructors, and only export so-called _smart "
-#| "constructors_, which construct data which is known to be correct."
 msgid ""
 "The first technique we will apply is simple but can be very effective. "
 "Instead of exposing the representation of the data to the module's users, we "
@@ -11598,11 +11555,9 @@ msgid ""
 "`Attribute` data constructors, and only export so-called _smart "
 "constructors_, which construct data known to be correct."
 msgstr ""
-"最初に導入する手法は方法こそ単純なものですが、とても効果的です。\n"
-"モジュールの使用者にデータの表現を露出する代わりに、モジュールエクスポートリ"
-"ストを使ってデータ構築子 `Element`、 `Content`、 `Attribute`を隠蔽し、正しい"
-"ことが明らかなデータだけ構築する、いわゆる*スマート構築子*だけをエクスポート"
-"します。"
+"最初に導入する手法は単純ですがとても効果的です。\n"
+"モジュールの使用者にデータの表現を露出する代わりに、モジュールエクスポートリストを使ってデータ構築子`Element`、`Content`、`Attribute`を隠蔽します。\n"
+"そして正しいことが分かっているデータを構築する、いわゆる*スマート構築子*だけをエクスポートします。"
 
 #. type: Plain text
 #: text/chapter14.md:95
@@ -11632,16 +11587,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:106
-#, fuzzy
-#| msgid ""
-#| "Next, we create smart constructors for those HTML elements we want our "
-#| "users to be able to create, by applying the `element` function:"
 msgid ""
 "Next, we create smart constructors for those HTML elements we want our users "
 "to be able to create by applying the `element` function:"
 msgstr ""
-"次に、欲しいHTML要素を利用者が作れるように、スマート構築子を作成します。\n"
-"これには`element`関数を適用します。"
+"次にHTML要素のためのスマート構築子を作成します。\n"
+"この要素は利用者が`element`関数を適用して作成できるようになってほしいものです。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:107
@@ -11723,34 +11674,22 @@ msgstr "型クラス。クラス名により指定されます。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:139
-#, fuzzy
-#| msgid ""
-#| "A type constructor and any associated data constructors, indicated by the "
-#| "name of the type followed by a parenthesized list of exported data "
-#| "constructors."
 msgid ""
 "A type constructor and any associated data constructors indicated by the "
 "name of the type followed by a parenthesized list of exported data "
 "constructors."
 msgstr ""
-"型構築子と関連するデータ構築子。型名とそれに続くエクスポートされるデータ構築"
-"子の括弧で囲まれたリストで指定されます。"
+"型構築子とそれに紐付くデータ構築子。\n"
+"型名とそれに続くエクスポートされるデータ構築子の括弧で囲まれたリストで指定されます。"
 
 #. type: Plain text
 #: text/chapter14.md:141
-#, fuzzy
-#| msgid ""
-#| "Here, we export the `Element` _type_, but we do not export its data "
-#| "constructors. If we did, the user would be able to construct invalid HTML "
-#| "elements."
 msgid ""
 "Here, we export the `Element` _type_, but we do not export its data "
 "constructors. If we did, the user could construct invalid HTML elements."
 msgstr ""
-"ここでは、 `Element`の*型*をエクスポートしていますが、データ構築子はエクス"
-"ポートしていません。\n"
-"もしデータ構築子をエクスポートすると、モジュールの使用者が不正なHTML要素を構"
-"築できてしまいます。"
+"ここでは、`Element`の*型*をエクスポートしていますが、データ構築子はエクスポートしていません。\n"
+"もしデータ構築子をエクスポートすると、使用者が不正なHTML要素を構築できてしまいます。"
 
 #. type: Plain text
 #: text/chapter14.md:143
@@ -11782,19 +11721,13 @@ msgstr "閉じた要素は構築するときに内容を含められません。
 
 #. type: Plain text
 #: text/chapter14.md:150
-#, fuzzy
-#| msgid ""
-#| "We can apply this technique to the `Content` type very easily. We simply "
-#| "remove the data constructors for the `Content` type from the exports "
-#| "list, and provide the following smart constructors:"
 msgid ""
 "We can apply this technique to the `Content` type very easily. We simply "
 "remove the data constructors for the `Content` type from the exports list "
 "and provide the following smart constructors:"
 msgstr ""
 "`Content`型にとても簡単にこの手法を適用できます。\n"
-"単にエクスポートリストから `Content`型のデータ構築子を取り除き、次のスマート"
-"構築子を提供します。"
+"単にエクスポートリストから`Content`型のデータ構築子を取り除き、次のスマート構築子を提供します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:151
@@ -11844,20 +11777,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:172
-#, fuzzy
-#| msgid ""
-#| "This representation suffers from the same problem as the original "
-#| "`Element` type - it is possible to represent attributes which do not "
-#| "exist or whose names were entered incorrectly. To solve this problem, we "
-#| "can create a newtype which represents attribute names:"
 msgid ""
 "This representation suffers from the same problem as the original `Element` "
 "type – it is possible to represent attributes that do not exist or whose "
 "names were entered incorrectly. To solve this problem, we can create a "
 "newtype that represents attribute names:"
 msgstr ""
-"この定義では元の `Element`型と同じ問題に直面しています。\n"
-"存在しなかったり、名前が間違っているような属性を表現できます。\n"
+"この定義では元の`Element`型と同じ問題に直面しています。\n"
+"存在しなかったり、名前が間違って入力された属性を表現できます。\n"
 "この問題を解決するために、属性名を表すnewtypeを作成します。"
 
 #. type: Fenced code block (haskell)
@@ -12027,13 +11954,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:248
-#, fuzzy
-#| msgid ""
-#| "Note, however, that no changes had to be made to the `render` function, "
-#| "because the underlying data representation never changed. This is one of "
-#| "the benefits of the smart constructors approach - it allows us to "
-#| "separate the internal data representation for a module from the "
-#| "representation which is perceived by users of its external API."
 msgid ""
 "Note, however, that no changes had to be made to the `render` function, "
 "because the underlying data representation never changed. This is one of the "
@@ -12041,11 +11961,9 @@ msgid ""
 "internal data representation for a module from the representation perceived "
 "by users of its external API."
 msgstr ""
-"しかし、基盤をなすデータ表現は変更されなかったので、 `render`関数を変更する必"
-"要はなかったことにも注目してください。\n"
+"しかし、基盤をなすデータ表現は全く変更されなかったので、`render`関数を変更する必要はなかったことにも注目してください。\n"
 "これはスマート構築子による手法の利点のひとつです。\n"
-"外部APIの使用者によって認識される表現からモジュールの内部データ表現を分離でき"
-"るのです。"
+"外部APIの使用者によって認識される表現から、モジュールの内部データ表現を分離できるのです。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:253
@@ -12058,16 +11976,10 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:253
-#, fuzzy
-#| msgid ""
-#| "(Medium) Some HTML attributes such as `checked` and `disabled` do not "
-#| "require values, and may be rendered as _empty attributes_:"
 msgid ""
 "(Medium) Some HTML attributes, such as `checked` and `disabled`, do not "
 "require values and may be rendered as _empty attributes_:"
-msgstr ""
-"（普通）`checked`と `disabled`など、値を要求しないHTML属性がありますが、これ"
-"らは次のような _空の属性_ として表示されるかもしれません。"
+msgstr "（普通）`checked`や`disabled`といったHTML属性は値を要求せず、*空の属性*として書き出せます。"
 
 #. type: Plain text
 #: text/chapter14.md:257
@@ -12335,38 +12247,23 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:356
-#, fuzzy
-#| msgid ""
-#| "(Easy) Create a data type which represents either pixel or percentage "
-#| "lengths. Write an instance of `IsValue` for your type. Modify the `width` "
-#| "and `height` attributes to use your new type."
 msgid ""
 "(Easy) Create a data type representing either pixel or percentage lengths. "
 "Write an instance of `IsValue` for your type. Modify the `width` and "
 "`height` attributes to use your new type."
 msgstr ""
-"（簡単）ピクセルまたはパーセントの長さの何れかを表すデータ型を作成してくださ"
-"い。\n"
-"その型について `IsValue`のインスタンスを書いてください。\n"
-"この型を使うように `width`と `height`属性を変更してください。"
+"（簡単）ピクセルまたはパーセントの何れかの長さを表すデータ型を作成してください。\n"
+"その型について`IsValue`のインスタンスを書いてください。\n"
+"この新しい型を使うように`width`と`height`属性を変更してください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:356
-#, fuzzy
-#| msgid ""
-#| "(Difficult) By defining type-level representatives for the Boolean values "
-#| "`true` and `false`, we can use a phantom type to encode whether an "
-#| "`AttributeKey` represents an _empty attribute_ such as `disabled` or "
-#| "`checked`."
 msgid ""
 "(Difficult) By defining type-level representatives for the Boolean values "
 "`true` and `false`, we can use a phantom type to encode whether an "
 "`AttributeKey` represents an _empty attribute_, such as `disabled` or "
 "`checked`."
-msgstr ""
-"（難しい）幻影型を使って真偽値 `true`、 `false`用の最上位の表現を定義すること"
-"で、 `AttributeKey`が `disabled`や `checked`のような*空の属性*を表現している"
-"かどうかをエンコードできます。"
+msgstr "（難しい）真偽値`true`、`false`用の最上位の表現を定義することで、幻影型を使って`AttributeKey`が`disabled`や`checked`のような*空の属性*を表現しているかどうかをエンコードできます。"
 
 #. type: Plain text
 #: text/chapter14.md:361
@@ -12396,21 +12293,15 @@ msgstr "Freeモナド"
 
 #. type: Plain text
 #: text/chapter14.md:367
-#, fuzzy
-#| msgid ""
-#| "In our final set of modifications to our API, we will use a construction "
-#| "called the _free monad_ to turn our `Content` type into a monad, enabling "
-#| "do notation. This will allow us to structure our HTML documents in a form "
-#| "in which the nesting of elements becomes clearer - instead of this:"
 msgid ""
 "In our final set of modifications to our API, we will use a construction "
 "called the _free monad_ to turn our `Content` type into a monad, enabling do "
 "notation. This will allow us to structure our HTML documents in a form in "
 "which the nesting of elements becomes clearer – instead of this:"
 msgstr ""
-"APIに施す最後の変更は、 `Content`型をモナドにしてdo記法を使えるようにするため"
-"に、 _Freeモナド_ と呼ばれる構造を使うことです。これによって入れ子になった要"
-"素がわかりやすくなるようにHTML文書を構造化できます。以下の代わりに……"
+"APIに施す最後の変更では、`Content`型をモナドにしてdo記法を使えるようにするために、*Freeモナド*と呼ばれる構造を使っていきます。\n"
+"これによって入れ子になった要素がわかりやすくなるような形式でHTML文書を構造化できます。\n"
+"以下の代わりに……"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:368
@@ -12461,32 +12352,24 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:392
-#, fuzzy
 msgid ""
 "However, do notation is not the only benefit of a free monad. The free monad "
 "allows us to separate the _representation_ of our monadic actions from their "
 "_interpretation_ and even support _multiple interpretations_ of the same "
 "actions."
 msgstr ""
-"しかし、do記法だけがFreeモナドの恩恵だというわけではありません。\n"
+"しかし、do記法だけがFreeモナドの恩恵ではありません。\n"
 "Freeモナドがあれば、モナドの動作の*表現*をその*解釈*から分離し、同じ動作に*複数の解釈*を持たせることさえできます。"
 
 #. type: Plain text
 #: text/chapter14.md:394
-#, fuzzy
-#| msgid ""
-#| "The `Free` monad is defined in the `free` library, in the `Control.Monad."
-#| "Free` module. We can find out some basic information about it using PSCi, "
-#| "as follows:"
 msgid ""
 "The `Free` monad is defined in the `free` library in the `Control.Monad."
 "Free` module. We can find out some basic information about it using PSCi, as "
 "follows:"
 msgstr ""
-"`Free`モナドは `free`ライブラリの `Control.Monad.Free`モジュールで定義されて"
-"います。\n"
-"PSCiを使うと、次のようにFreeモナドについての基本的な情報を見ることができま"
-"す。"
+"`Free`モナドは`free`ライブラリの`Control.Monad.Free`モジュールで定義されています。\n"
+"PSCiを使うと、次のようにFreeモナドについての基本的な情報を見ることができます。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:395
@@ -12504,23 +12387,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:403
-#, fuzzy
-#| msgid ""
-#| "The kind of `Free` indicates that it takes a type constructor as an "
-#| "argument, and returns another type constructor. In fact, the `Free` monad "
-#| "can be used to turn any `Functor` into a `Monad`!"
 msgid ""
 "The kind of `Free` indicates that it takes a type constructor as an argument "
 "and returns another type constructor. In fact, the `Free` monad can be used "
 "to turn any `Functor` into a `Monad`!"
 msgstr ""
-"`Free`の種は、引数として型構築子を取り、別の型構築子を返すことを示していま"
-"す。\n"
-"実は、`Free`モナドを使えば任意の`Functor`を`Monad`にできます。"
+"`Free`の種は、引数として型構築子を取り、別の型構築子を返すことを示しています。\n"
+"実はなんと、`Free`モナドを使えば任意の`Functor`を`Monad`にできるのです。"
 
 #. type: Plain text
 #: text/chapter14.md:405
-#, fuzzy
 msgid ""
 "We begin by defining the _representation_ of our monadic actions. To do "
 "this, we need to create a `Functor` with one data constructor for each "
@@ -12528,9 +12404,9 @@ msgid ""
 "be `elem` and `text`. We can simply modify our `Content` type as follows:"
 msgstr ""
 "モナドの動作の*表現*の定義から始めます。\n"
-"こうするには、対応する各モナド動作それぞれについて、1つのデータ構築子を持つ`Functor`を作成する必要があります。\n"
+"これには対応したい各モナド動作について、1つのデータ構築子を持つ`Functor`を作成する必要があります。\n"
 "今回の場合、2つのモナドの動作は`elem`と`text`になります。\n"
-"実際には、`Content`型を次のように変更するだけです。"
+"`Content`型を次のように変更するだけでできます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:406
@@ -12554,13 +12430,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:417
-#, fuzzy
-#| msgid ""
-#| "Here, the `ContentF` type constructor looks just like our old `Content` "
-#| "data type - however, it now takes a type argument `a`, and each data "
-#| "constructor has been modified to take a value of type `a` as an "
-#| "additional argument. The `Functor` instance simply applies the function "
-#| "`f` to the value of type `a` in each data constructor."
 msgid ""
 "Here, the `ContentF` type constructor looks just like our old `Content` data "
 "type – however, it now takes a type argument `a`, and each data constructor "
@@ -12568,11 +12437,9 @@ msgid ""
 "`Functor` instance simply applies the function `f` to the value of type `a` "
 "in each data constructor."
 msgstr ""
-"ここで、この `ContentF`型構築子は以前の `Content`データ型とよく似ています。\n"
-"しかし、ここでは型引数`a`を取り、それぞれのデータ構築子は型`a`の値を追加の引"
-"数として取るように変更されています。\n"
-"`Functor`インスタンスでは、単に各データ構築子で型 `a`の構成要素に関数 `f`を適"
-"用します。"
+"ここで、この`ContentF`型構築子は以前の`Content`データ型とよく似ています。\n"
+"しかし、ここでは型引数`a`を取り、それぞれのデータ構築子は型`a`の値を追加の引数として取るように変更されています。\n"
+"`Functor`インスタンスでは、単に各データ構築子で型`a`の値に関数`f`を適用します。"
 
 #. type: Plain text
 #: text/chapter14.md:419
@@ -12593,14 +12460,13 @@ msgstr "type Content = Free ContentF\n"
 
 #. type: Plain text
 #: text/chapter14.md:425
-#, fuzzy
 msgid ""
 "Instead of a type synonym, we might use a `newtype` to avoid exposing the "
 "internal representation of our library to our users – by hiding the "
 "`Content` data constructor, we restrict our users to only using the monadic "
 "actions we provide."
 msgstr ""
-"型同義語の代わりにnewtypeを使用して、使用者に対してライブラリの内部表現を露出することを避けられます。\n"
+"型同義語の代わりに`newtype`を使用して、使用者に対してライブラリの内部表現を露出することを避けられます。\n"
 "`Content`データ構築子を隠すことで、提供しているモナドの動作だけを使うことを使用者に制限しています。"
 
 #. type: Plain text
@@ -12641,16 +12507,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:439
-#, fuzzy
 msgid ""
 "In addition, we have to modify our `elem` and `text` functions, which become "
 "our new monadic actions for the `Content` monad. To do this, we can use the "
 "`liftF` function provided by the `Control.Monad.Free` module. Here is its "
 "type:"
 msgstr ""
-"また、`Content`モナドについての新しいモナドの動作になる`elem`と`text`関数を変更する必要があります。\n"
+"また、`Content`モナドについての新しいモナドの動作になるよう、`elem`と`text`関数を変更する必要があります。\n"
 "これには`Control.Monad.Free`モジュールで提供されている `liftF`関数が使えます。\n"
-"この関数の型は次のようになっています。"
+"以下がその型です。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:440
@@ -12660,14 +12525,13 @@ msgstr "liftF :: forall f a. f a -> Free f a\n"
 
 #. type: Plain text
 #: text/chapter14.md:445
-#, fuzzy
 msgid ""
 "`liftF` allows us to construct an action in our free monad from a value of "
 "type `f a` for some type `a`. In our case, we can use the data constructors "
 "of our `ContentF` type constructor directly:"
 msgstr ""
 "`liftF`により、何らかの型`a`について、型`f a`の値からFreeモナドの動作を構築できるようになります。\n"
-"今回の場合、`ContentF`型構築子のデータ構築子をそのまま使うだけです。"
+"今回の場合、`ContentF`型構築子のデータ構築子をそのまま使えます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:446
@@ -12753,26 +12617,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:479
-#, fuzzy
-#| msgid ""
-#| "_Note_: Technically, we are restricted to using monads `m` which satisfy "
-#| "the stronger `MonadRec` constraint. In practice, this means that we don't "
-#| "need to worry about stack overflow, since `m` supports safe _monadic tail "
-#| "recursion_."
 msgid ""
 "_Note_: Technically, we are restricted to monads `m` that satisfy the "
 "stronger `MonadRec` constraint. In practice, we don't need to worry about "
 "stack overflow since `m` supports safe _monadic tail recursion_."
 msgstr ""
-"*補足*：厳密には、より強い`MonadRec`制約を満たすモナド `m`を使用するよう制限"
-"されています。\n"
-"実際には、これはスタックオーバーフローを心配する必要がないことを意味しま"
-"す。\n"
-"なぜなら `m`は安全な*末尾再帰モナド*に対応しているからです。"
+"*補足*：厳密には、より強い`MonadRec`制約を満たすモナド`m`に制限されています。\n"
+"実際、ら`m`は安全な*末尾再帰モナド*に対応してため、スタックオーバーフローを心配する必要はありません。"
 
 #. type: Plain text
 #: text/chapter14.md:481
-#, fuzzy
 msgid ""
 "First, we have to choose a monad in which we can interpret our actions. We "
 "will use the `Writer String` monad to accumulate an HTML string as our "
@@ -12924,15 +12778,10 @@ msgstr "      renderContentItem :: ContentF (Content Unit) -> Writer String (Con
 
 #. type: Plain text
 #: text/chapter14.md:540
-#, fuzzy
-#| msgid ""
-#| "We can implement this function by simply pattern matching on the two data "
-#| "constructors of `ContentF`:"
 msgid ""
 "We can implement this function by pattern matching on the two data "
 "constructors of `ContentF`:"
-msgstr ""
-"`ContentF`の2つのデータ構築子でパターン照合するだけでこの関数を実装できます。"
+msgstr "`ContentF`の2つのデータ構築子でパターン照合すればこの関数を実装できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:541
@@ -12954,14 +12803,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:551
-#, fuzzy
 msgid ""
 "In each case, the expression `rest` has the type `Content Unit` and "
 "represents the remainder of the interpreted computation. We can complete "
 "each case by returning the `rest` action."
 msgstr ""
-"それぞれの場合において、式`rest`は型`Content Unit`を持っており、解釈計算の残りを表しています。\n"
-"`rest`動作を呼び出すことによってそれぞれの場合を完了できます。"
+"それぞれの場合において、式`rest`は型`Content Unit`を持っており、解釈された計算の残りを表しています。\n"
+"`rest`動作を返すことでそれぞれの場合を完成できます。"
 
 #. type: Plain text
 #: text/chapter14.md:553
@@ -13030,15 +12878,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:578
-#, fuzzy
 msgid ""
 "Let's illustrate the power of the free monad construction by extending our "
 "language with a new monadic action that returns a non-trivial result."
-msgstr "非自明な結果を返す新しいモナド動作でこの言語を拡張することで、Freeモナド構造の威力をお見せしましょう。"
+msgstr "非自明な結果を返す新しいモナド動作でこの言語を拡張することで、Freeモナドを構築する威力をお見せしましょう。"
 
 #. type: Plain text
 #: text/chapter14.md:580
-#, fuzzy
 msgid ""
 "Suppose we want to generate HTML documents that contain hyperlinks to "
 "different sections of the document using _anchors_. We can accomplish this "
@@ -13046,11 +12892,10 @@ msgid ""
 "document: once at the anchor's definition and once in each hyperlink. "
 "However, this approach has some basic issues:"
 msgstr ""
-"*アンカー*を使用して文書の様々な節へのハイパーリンクが含まれているHTML文書を生成するとします。\n"
-"これは既に達成できています。\n"
-"手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めればよいのです。\n"
-"1つはアンカーの定義自身に、もう1つはそれぞれのハイパーリンクにあります。\n"
-"しかし、この方法には根本的な問題が幾つかあります。"
+"*アンカー*を使用して文書の様々な節へのハイパーリンクが含まれているHTML文書を生成したいとします。\n"
+"手作業でアンカーの名前を生成して文書中で少なくとも2回それらを含めれば、これは達成できます。\n"
+"1つはアンカーの定義自身に、もう1つは各ハイパーリンクにあります。\n"
+"しかし、この手法には基本的な問題が幾つかあります。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:583
@@ -13064,7 +12909,6 @@ msgstr "開発者がアンカー名を1つ以上の箇所で打ち間違うか�
 
 #. type: Plain text
 #: text/chapter14.md:585
-#, fuzzy
 msgid ""
 "To protect the developer from their mistakes, we can introduce a new type "
 "that represents anchor names and provide a monadic action for generating new "
@@ -13102,16 +12946,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:598
-#, fuzzy
-#| msgid ""
-#| "Next, we define an instance for the `IsValue` type class for our new "
-#| "type, so that we are able to use names in attribute values:"
 msgid ""
 "Next, we define an instance for the `IsValue` type class for our new type so "
 "that we can use names in attribute values:"
-msgstr ""
-"次に、属性値として `Name`を使うことができるように、新しい型に`IsValue`型クラ"
-"スのインスタンスを定義します。"
+msgstr "次に、属性値に`Name`を使えるよう、新しい型に`IsValue`型クラスのインスタンスを定義します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:599
@@ -13255,20 +13093,15 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:654
-#, fuzzy
-#| msgid ""
-#| "Notice that we provide the `id` function as our continuation, meaning "
-#| "that we return the result of type `Name` unchanged."
 msgid ""
 "Notice that we provide the `id` function as our continuation, meaning we "
 "return the result of type `Name` unchanged."
 msgstr ""
 "`id`関数を継続として提供していることに注意してください。\n"
-"これは型 `Name`の結果を変更せずに返すということを意味しています。"
+"つまり型`Name`の結果を変更せずに返しています。"
 
 #. type: Plain text
 #: text/chapter14.md:656
-#, fuzzy
 msgid ""
 "Finally, we need to update our interpretation function to interpret the new "
 "action. We previously used the `Writer String` monad to interpret our "
@@ -13277,10 +13110,10 @@ msgid ""
 "monad to combine the effects we need. We can define our interpretation monad "
 "as a type synonym to keep our type signatures short:"
 msgstr ""
-"最後に、新しい動作を解釈するために解釈関数を更新する必要があります。\n"
-"以前は計算を解釈するために `Writer String`モナドを使っていましたが、このモナドは新しい名前を生成する能力を持っていないので、何か他のものに切り替えなければなりません。\n"
-"`WriterT`モナド変換子を`State`モナドと一緒に使うと、必要な作用を組み合わせることができます。\n"
-"型注釈を短く保てるように、この解釈モナドを型同義語として定義しておきます。"
+"最後に、新しい動作を解釈させるように解釈関数を更新する必要があります。\n"
+"以前は計算を解釈するために`Writer String`モナドを使っていましたが、このモナドは新しい名前を生成できないので、何か他のものに切り替えなければなりません。\n"
+"`WriterT`モナド変換子を`State`モナドと一緒に使うと、必要な作用を組み合わせられます。\n"
+"型注釈が短く保たれるよう、この解釈モナドを型同義語として定義できます。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:657
@@ -13299,7 +13132,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:664
-#, fuzzy
 msgid ""
 "Because the `Writer` and `WriterT` monads use the same type class members to "
 "abstract their actions, we do not need to change any actions – we only need "
@@ -13307,10 +13139,10 @@ msgid ""
 "need to modify the handler used to run our computation. Instead of just "
 "`execWriter`, we now need to use `evalState` as well:"
 msgstr ""
-"`Writer`と `WriterT`モナドはそれらの動作を抽象化するのに同じ型クラスメンバを使うので、どの動作も変更する必要がありません。\n"
-"必要なのは、 `Writer String`への参照全てを `Interp`で置き換えることだけです。\n"
-"しかし、これを計算するために使われる制御子を変更しなければいけません。\n"
-"こうなると単なる`execWriter`の代わりに、ここでも`evalState`を使う必要があります。"
+"`Writer`と`WriterT`モナドはそれらの動作を抽象化するのに同じ型クラスの構成要素を使うので、どの動作も変更する必要がありません。\n"
+"必要なのは、`Writer String`への参照全てを`Interp`で置き換えることだけです。\n"
+"しかし、計算に使われる制御子は変更する必要があります。\n"
+"単なる`execWriter`の代わりに、`evalState`も使う必要があります。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter14.md:665
@@ -13359,19 +13191,13 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:683
-#, fuzzy
-#| msgid ""
-#| "With that, we can try out our new functionality in PSCi, by generating a "
-#| "unique name inside the `Content` monad, and using it as both the name of "
-#| "an element and the target of a hyperlink:"
 msgid ""
 "With that, we can try out our new functionality in PSCi, by generating a "
 "unique name inside the `Content` monad and using it as both the name of an "
 "element and the target of a hyperlink:"
 msgstr ""
-"以上をもって、この新しい機能をPSCiで試すことができます。\n"
-"これには`Content`モナドの内部で一意な名前を生成し、要素の名前とハイパーリンク"
-"のリンク先の両方として使います。"
+"以上をもって、この新しい機能をPSCiで試せます。\n"
+"これには`Content`モナドの内部で一意な名前を生成し、要素の名前とハイパーリンクのリンク先の両方として使います。"
 
 #. type: Fenced code block (text)
 #: text/chapter14.md:684
@@ -13411,16 +13237,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:703
-#, fuzzy
-#| msgid ""
-#| "You can verify that multiple calls to `newName` do in fact result in "
-#| "unique names."
 msgid ""
 "You can verify that multiple calls to `newName` do, in fact, result in "
 "unique names."
-msgstr ""
-"複数回の `newName`の呼び出しの結果が、実際に一意な名前になっていることも確か"
-"められます。"
+msgstr "複数回の`newName`の呼び出しの結果が、実際に一意な名前になっていることも確かめられます。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:711
@@ -13449,15 +13269,13 @@ msgstr ""
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:711
-#, fuzzy
 msgid ""
 "(Medium) Hide the implementation of the `Content` monad using a `newtype` "
 "instead of a type synonym. You should not export the data constructor for "
 "your `newtype`."
 msgstr ""
-" 1. （普通）型同義語の代わりに`newtype`を使うことによって`Content`モナドの実装を隠してください。\n"
-"    `newtype`用のデータ構築子はエクスポートすべきではありません。\n"
-" 1. （難しい）`ContentF`型を変更して以下の新しい動作に対応してください。\n"
+"（普通）型同義語の代わりに`newtype`を使って`Content`モナドの実装を隠してください。\n"
+"`newtype`用のデータ構築子はエクスポートすべきではありません。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter14.md:711
@@ -13492,11 +13310,6 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:723
-#, fuzzy
-#| msgid ""
-#| "In this chapter, we developed a domain-specific language for creating "
-#| "HTML documents, by incrementally improving a naive implementation using "
-#| "some standard techniques:"
 msgid ""
 "In this chapter, we developed a domain-specific language for creating HTML "
 "documents by incrementally improving a naive implementation using some "
@@ -13507,25 +13320,14 @@ msgstr ""
 
 #. type: Bullet: '- '
 #: text/chapter14.md:728
-#, fuzzy
-#| msgid ""
-#| "We used _smart constructors_ to hide the details of our data "
-#| "representation, only permitting the user to create documents which were "
-#| "_correct-by-construction_."
 msgid ""
 "We used _smart constructors_ to hide the details of our data representation, "
 "only permitting the user to create documents that were _correct-by-"
 "construction_."
-msgstr ""
-"_スマート構築子_ を使ってデータ表現の詳細を隠し、利用者には _構築により正しい"
-"_ 文書だけを作ることを許しました。"
+msgstr "*スマート構築子*を使ってデータ表現の詳細を隠し、利用者には*構築により正しい*文書だけを作ることを許しました。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:728
-#, fuzzy
-#| msgid ""
-#| "We used an _user-defined infix binary operator_ to improve the syntax of "
-#| "the language."
 msgid ""
 "We used a _user-defined infix binary operator_ to improve the syntax of the "
 "language."
@@ -13537,12 +13339,11 @@ msgid ""
 "We used _phantom types_ to encode additional information in the types of our "
 "data, preventing the user from providing attribute values of the wrong type."
 msgstr ""
-"_幻影型_ を使ってデータの型の中に追加の情報を折り込みました。これにより利用者"
-"が誤った型の属性値を与えることを防いでいます。"
+"*幻影型*を使ってデータの型の中に追加の情報を折り込みました。\n"
+"これにより利用者が誤った型の属性値を与えることを防いでいます。"
 
 #. type: Bullet: '- '
 #: text/chapter14.md:728
-#, fuzzy
 msgid ""
 "We used the _free monad_ to turn our array representation of a collection of "
 "content into a monadic representation supporting do notation. We then "
@@ -13550,7 +13351,7 @@ msgid ""
 "the monadic computations using standard monad transformers."
 msgstr ""
 "*Freeモナド*を使って内容の集まりの配列表現をdo記法に対応したモナドな表現に変えました。\n"
-"それからこの表現を新しいモナド動作に対応するよう拡張し、標準モナド変換子を使ってモナドの計算を解釈しました。"
+"それからこの表現を新しいモナド動作に対応するよう拡張し、標準的なモナド変換子を使ってモナドの計算を解釈しました。"
 
 #. type: Plain text
 #: text/chapter14.md:730
@@ -13564,21 +13365,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter14.md:731
-#, fuzzy
-#| msgid ""
-#| "The implementation of domain-specific languages in functional programming "
-#| "languages is an area of active research, but hopefully this provides a "
-#| "useful introduction some simple techniques, and illustrates the power of "
-#| "working in a language with expressive types."
 msgid ""
 "Implementing domain-specific languages in functional programming languages "
 "is an area of active research. Still, hopefully, this provides a useful "
 "introduction to some simple techniques and illustrates the power of working "
 "in a language with expressive types."
 msgstr ""
-"関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野で"
-"すが、幾つかの簡単な技法に対して役に立つ導入を提供し、表現力豊かな型を持つ言"
-"語で作業することの威力を示すことができていれば幸いです。"
+"関数型プログラミング言語による領域特化言語の実装は活発に研究されている分野です。\n"
+"それでも、幾つかの単純な技法に対して役に立つ導入を提供し、表現力豊かな型を持つ言語で作業することの威力を示すことができていれば幸いです。"
 
 #. type: Title #
 #: text/chapter2.md:1
@@ -20387,7 +20181,7 @@ msgstr ""
 msgid ""
 "We can annotate the expression with a type using the `::` operator, so that "
 "PSCi can choose the correct type class instance:"
-msgstr "`::`演算子を使って式に註釈を付け、、PSCiが正しい型クラスインスタンスを選べるようにできます。"
+msgstr "`::`演算子を使って式に註釈を付けてPSCiが正しい型クラスインスタンスを選べるようにできます。"
 
 #. type: Fenced code block (text)
 #: text/chapter6.md:112

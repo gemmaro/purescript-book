@@ -118,7 +118,7 @@ has type variables which are not mentioned in the body of the type. Consider add
 `Show`インスタンスが存在しないということではなく、PSCiがこの型を推論できなかったということです。
 これは推論された型で*未知の型*`a`とされていることが示しています。
 
-`::`演算子を使って式に註釈を付け、、PSCiが正しい型クラスインスタンスを選べるようにできます。
+`::`演算子を使って式に註釈を付けてPSCiが正しい型クラスインスタンスを選べるようにできます。
 
 ```text
 > show (Left 10 :: Either Int String)
