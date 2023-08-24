@@ -687,7 +687,7 @@ s`型クラスのインスタンスになっており、このクラスには他
 
 特に、`transformers`パッケージではモナド変換子`WriterT`、`ReaderT`、`ExceptT`についての`MonadState`のインスタンスがあります。
 通底する`Monad`が`MonadState`インスタンスを持つなら常に、これらもインスタンスを持ちます。
-実践的には、`StateT`がモナド変換子スタックの*どこか*に現れ、`StateT`より上の全てが`MonadState`のインスタンスであれば、`lift`を使う必要なく、`get`、`put`、`modify`を直接自由に使用できます。
+つまり実際には、`StateT`がモナド変換子スタックの*どこか*に現れ、`StateT`より上の全てが`MonadState`のインスタンスであれば、`lift`を使う必要なく`get`や`put`や`modify`を直接自由に使用できます。
 
 当然ですが、これまで扱ってきた`ReaderT`、`WriterT`、`ExceptT`変換子についても、同じことが言えます。
 `transformers`では主な各変換子について型クラスが定義されています。

@@ -353,7 +353,7 @@ Maybe String -> Maybe String -> Maybe String -> Either String String
 ```
 
 このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラー文言が表示されます。
-しかし、もし複数の入力が省略されているとき、最初のエラーしか見れません。
+しかし、もし複数の入力が省略されているとき、最初のエラーしか見られません。
 
 ```text
 > fullNameEither Nothing Nothing Nothing

@@ -656,7 +656,7 @@ findEntry firstName lastName book = head (filter filterEntry book)
 ```
 
 しかし本章には*中置*[2引数演算子](https://github.com/purescript/documentation/blob/master/language/Syntax.md#binary-operators)の例も含まれています。
-例えば`filterEntry`の定義中の`==`演算子で、2つの引数の*間*に置かれています。
+`filterEntry`の定義中の`==`演算子がそうで、2つの引数の*間*に置かれています。
 PureScriptのソースコードでこうした中置演算子は隠れた*前置*の実装への中置別称として定義されています。
 例えば`==`は以下の行により前置の`eq`関数の中置別称として定義されています。
 

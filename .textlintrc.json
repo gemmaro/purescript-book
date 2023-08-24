@@ -5,10 +5,15 @@
     },
     "preset-ja-technical-writing": {
       "ja-no-mixed-period": {
-        "allowPeriodMarks": ["、", "…"]
+        "allowPeriodMarks": [
+          "、",
+          "…"
+        ]
       },
       "ja-no-successive-word": {
-        "allow": ["…"]
+        "allow": [
+          "…"
+        ]
       },
       "ja-no-weak-phrase": false,
       "max-kanji-continuous-len": {
@@ -34,7 +39,8 @@
           "配列内包表記",
           "配列型構築子",
           "関数合成演算子",
-          "領域特化言語"
+          "領域特化言語",
+          "可変参照領域"
         ]
       },
       "no-doubled-joshi": false,
@@ -42,7 +48,17 @@
         "allowHalfWidthExclamation": true,
         "allowFullWidthExclamation": true
       },
-      "sentence-length": false
+      "sentence-length": false,
+      "ja-no-redundant-expression": {
+        "dictOptions": {
+          "dict6": {
+            "allows": [
+              "動作を実行",
+              "プログラムを実行"
+            ]
+          }
+        }
+      }
     }
   }
 }
