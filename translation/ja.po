@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-08-25 20:42+0900\n"
-"PO-Revision-Date: 2023-08-25 08:51+0900\n"
+"PO-Revision-Date: 2023-08-25 21:26+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -475,7 +475,7 @@ msgstr ""
 #: text/chapter1.md:42
 #, no-wrap
 msgid "> Note that PureScript can target other backends, not only JavaScript, but this book focuses on targeting web browser and node environments.\n"
-msgstr ""
+msgstr "> なお、PureScriptはJavaScriptのみならず他のバックエンドを対象にできますが、本書ではwebブラウザとnode環境に焦点を絞ります。\n"
 
 #. type: Title ##
 #: text/chapter1.md:43
@@ -1028,19 +1028,12 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter1.md:150
-#, fuzzy
-#| msgid ""
-#| "If you prefer to learn by reading examples, the `purescript`, `purescript-"
-#| "node`, and `purescript-contrib` GitHub organizations contain plenty of "
-#| "examples of PureScript code."
 msgid ""
 "If you prefer to learn by reading examples, the [purescript](https://github."
 "com/purescript), [purescript-node](https://github.com/purescript-node), and "
 "[purescript-contrib](https://github.com/purescript-contrib) GitHub "
 "organizations contain plenty of examples of PureScript code."
-msgstr ""
-"もし例を読んで学ぶ方が好きでしたら、GitHubの`purescript`組織、`purescript-"
-"node`組織及び`purescript-contrib`組織にはPureScriptコードの例が沢山あります。"
+msgstr "もし例を読んで学ぶ方が好きでしたら、GitHubの[purescript](https://github.com/purescript)、[purescript-node](https://github.com/purescript-node)、[purescript-contrib](https://github.com/purescript-contrib)組織にはPureScriptコードの例が沢山あります。"
 
 #. type: Title ##
 #: text/chapter1.md:151
@@ -4484,11 +4477,8 @@ msgid ""
 "PureScript code, it is good practice to provide an alternative function with "
 "an alphanumeric name for use in JavaScript."
 msgstr ""
-"コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図してい"
-"る場合、識別子は英数字のみを使用し、JavaScriptの予約語を避けることをお勧めし"
-"ます。\n"
-"ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScript"
-"から使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。"
+"コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図している場合、識別子は英数字のみを使用し、JavaScriptのキーワードを避けることをお勧めします。\n"
+"ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。"
 
 #. type: Title ###
 #: text/chapter10.md:1155
@@ -14462,6 +14452,8 @@ msgid ""
 "functions. It re-exports many foundational modules from the `purescript-"
 "prelude` library."
 msgstr ""
+"`Prelude`モジュールには標準的な定義と関数の小さな集合が含まれます。\n"
+"`purescript-prelude`ライブラリから多くの基礎的なモジュールを再エクスポートしているのです。"
 
 #. type: Bullet: '- '
 #: text/chapter3.md:25
@@ -14490,20 +14482,14 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:27
-#, fuzzy
-#| msgid ""
-#| "Notice that the imports for these modules are listed explicitly in "
-#| "parentheses. This is generally a good practice, as it helps to avoid "
-#| "conflicting imports."
 msgid ""
 "Notice that the imports for these modules are listed explicitly in "
 "parentheses (except for `Prelude`, which is typically imported as an open "
 "import). This is generally a good practice, as it helps to avoid conflicting "
 "imports."
 msgstr ""
-"このモジュールのインポート内容が括弧内で明示的に列挙されていることに注目して"
-"ください。明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に"
-"良い習慣です。"
+"これらのモジュールのインポート内容が括弧内で明示的に列挙されていることに注目してください（`Prelude`は除きます。これは一括インポートされるのが普通です）。\n"
+"明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣です。"
 
 #. type: Plain text
 #: text/chapter3.md:29
@@ -14723,29 +14709,25 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:107
-#, fuzzy
-#| msgid ""
-#| "Functions can be defined at the top-level of a file by specifying "
-#| "arguments before the equals sign:"
 msgid ""
 "PureScript's functions correspond to JavaScript's functions. Functions can "
 "be defined at the top-level of a file by specifying arguments before the "
 "equals sign:"
 msgstr ""
-"ファイルの最上位では、等号の直前に引数を指定することで関数を定義できます。"
+"PureScriptの関数はJavaScriptの関数に対応します。\n"
+"関数はファイルの最上位で定義でき、等号の前に引数を指定します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:108
-#, fuzzy, no-wrap
-#| msgid ""
-#| "add :: Int -> Int -> Int\n"
-#| "add x y = x + y\n"
+#, no-wrap
 msgid ""
 "import Prelude -- bring the (+) operator into scope\n"
 "\n"
 "add :: Int -> Int -> Int\n"
 "add x y = x + y\n"
 msgstr ""
+"import Prelude -- (+) 演算子をスコープに持ち込みます\n"
+"\n"
 "add :: Int -> Int -> Int\n"
 "add x y = x + y\n"
 
@@ -14765,12 +14747,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:117
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> :paste\n"
-#| "… add :: Int -> Int -> Int\n"
-#| "… add = \\x y -> x + y\n"
-#| "… ^D\n"
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "> :paste\n"
@@ -14778,6 +14755,7 @@ msgid ""
 "… add = \\x y -> x + y\n"
 "… ^D\n"
 msgstr ""
+"> import Prelude\n"
 "> :paste\n"
 "… add :: Int -> Int -> Int\n"
 "… add = \\x y -> x + y\n"
@@ -14823,16 +14801,10 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:137
-#, fuzzy
-#| msgid ""
-#| "If a declaration spans multiple lines, then any lines except the first "
-#| "must be indented past the indentation level of the first line."
 msgid ""
 "If a declaration spans multiple lines, any lines except the first must be "
 "indented past the indentation level of the first line."
-msgstr ""
-"宣言が複数行にわたる場合は、最初の行以外は最初の行の字下げより深くしなければ"
-"なりません。"
+msgstr "宣言が複数行にわたる場合、最初の行以外は最初の行の字下げより深くしなければなりません。"
 
 #. type: Plain text
 #: text/chapter3.md:139
@@ -14920,26 +14892,16 @@ msgstr ""
 
 #. type: Plain text
 #: text/chapter3.md:173
-#, fuzzy
-#| msgid ""
-#| "Certain PureScript keywords (such as `where`, `of` and `let`) introduce a "
-#| "new block of code, in which declarations must be further-indented:"
 msgid ""
 "Certain PureScript keywords introduce a new block of code, in which "
 "declarations must be further-indented:"
 msgstr ""
-"PureScriptの幾つかの予約語（例えば `where`や `of`、 `let`）は新たなコードのま"
-"とまりを導入しますが、そのコードのまとまり内の宣言はそれより深く字下げされて"
-"いる必要があります。"
+"PureScriptの幾つかのキーワードは新たなコードのまとまりを導入します。\n"
+"その中での宣言はそれより深く字下げされなければなりません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:174
-#, fuzzy, no-wrap
-#| msgid ""
-#| "example x y z = foo + bar\n"
-#| "  where\n"
-#| "    foo = x * y\n"
-#| "    bar = y * z\n"
+#, no-wrap
 msgid ""
 "example x y z =\n"
 "  let\n"
@@ -14948,24 +14910,21 @@ msgid ""
 "  in\n"
 "    foo + bar\n"
 msgstr ""
-"example x y z = foo + bar\n"
-"  where\n"
+"example x y z =\n"
+"  let\n"
 "    foo = x * y\n"
 "    bar = y * z\n"
+"  in\n"
+"    foo + bar\n"
 
 #. type: Plain text
 #: text/chapter3.md:184
 msgid "This doesn't compile:"
-msgstr ""
+msgstr "これはコンパイルされません。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:185
-#, fuzzy, no-wrap
-#| msgid ""
-#| "example x y z = foo + bar\n"
-#| "  where\n"
-#| "    foo = x * y\n"
-#| "    bar = y * z\n"
+#, no-wrap
 msgid ""
 "example x y z =\n"
 "  let\n"
@@ -14974,10 +14933,12 @@ msgid ""
 "  in\n"
 "    foo + bar\n"
 msgstr ""
-"example x y z = foo + bar\n"
-"  where\n"
+"example x y z =\n"
+"  let\n"
 "    foo = x * y\n"
-"    bar = y * z\n"
+"  bar = y * z\n"
+"  in\n"
+"    foo + bar\n"
 
 #. type: Plain text
 #: text/chapter3.md:195
@@ -14985,7 +14946,7 @@ msgid ""
 "If you want to learn more (or encounter any problems), see the [Syntax]"
 "(https://github.com/purescript/documentation/blob/master/language/Syntax."
 "md#syntax) documentation."
-msgstr ""
+msgstr "より多くを学びたければ（あるいは何か問題に遭遇したら）[構文](https://github.com/purescript/documentation/blob/master/language/Syntax.md#syntax)のドキュメントを参照してください。"
 
 #. type: Title ##
 #: text/chapter3.md:196
@@ -15194,7 +15155,7 @@ msgstr "量化された型"
 msgid ""
 "For illustration purposes, let's define a primitive function that takes any "
 "two arguments and returns the first one:"
-msgstr ""
+msgstr "説明しやすくするため、任意の2つの引数を取り最初のものを返す原始的な関数を定義しましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:260
@@ -15205,6 +15166,10 @@ msgid ""
 "… constantlyFirst = \\a b -> a\n"
 "… ^D\n"
 msgstr ""
+"> :paste\n"
+"… constantlyFirst :: forall a b. a -> b -> a\n"
+"… constantlyFirst = \\a b -> a\n"
+"… ^D\n"
 
 #. type: Plain text
 #: text/chapter3.md:275
@@ -15219,52 +15184,44 @@ msgid ""
 ">\n"
 "> The type signature contains additional kind information, which explicitly notes that `a` and `b` should be concrete types.\n"
 msgstr ""
+"> なお、`:type`を使って`constantlyfirst`の型について尋ねた場合、もっと冗長になります。\n"
+">\n"
+"> ```text\n"
+"> : type constantlyFirst\n"
+"> forall (a :: Type) (b :: Type). a -> b -> a\n"
+"> ```\n"
+">\n"
+"> 型シグネチャには追加で種の情報が含まれます。\n"
+"> `a`と`b`が具体的な型であることが明記されています。\n"
 
 #. type: Plain text
 #: text/chapter3.md:277
-#, fuzzy
-#| msgid ""
-#| "The keyword `forall` here indicates that `flip` has a _universally "
-#| "quantified type_. It means we can substitute any types for `a`, `b`, and "
-#| "`c`, and `flip` will work with those types."
 msgid ""
 "The keyword `forall` indicates that `constantlyFirst` has a _universally "
 "quantified type_. It means we can substitute any types for `a` and `b` – "
 "`constantlyFirst` will work with these types."
 msgstr ""
-"この`forall`キーワードは、`flip`が*全称量化された型*を持つことを示していま"
-"す。\n"
-"つまり`a`や`b`や`c`をどの型に置き換えても良く、`flip`はその型で動作するので"
-"す。"
+"この`forall`キーワードは、`constantlyFirst`が*全称量化された型*を持つことを示しています。\n"
+"つまり`a`や`b`をどの型に置き換えても良く、`constantlyFirst`はその型で動作するのです。"
 
+# FIXME: `b` - `String`は`b` to be `String`のような気がします。
 #. type: Plain text
 #: text/chapter3.md:279
-#, fuzzy
-#| msgid ""
-#| "For example, we might choose the type `a` to be `Int`, `b` to be "
-#| "`String`, and `c` to be `String`. In that case, we could _specialize_ the "
-#| "type of `flip` to"
 msgid ""
 "For example, we might choose the type `a` to be `Int` and `b` – `String`. In "
 "that case, we can _specialize_ the type of `constantlyFirst` to"
 msgstr ""
-"例えば、`a`を`Int`、`b`を`String`、`c`を`String`と選んだとします。\n"
-"その場合、`flip`の型を次のように*特殊化*できます。"
+"例えば、`a`を`Int`、`b`を`String`と選んだとします。\n"
+"その場合、`constantlyFirst`の型を次のように*特殊化*できます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:280
-#, fuzzy, no-wrap
-#| msgid "log :: String -> Effect Unit\n"
+#, no-wrap
 msgid "Int -> String -> Int\n"
-msgstr "log :: String -> Effect Unit\n"
+msgstr "Int -> String -> Int\n"
 
 #. type: Plain text
 #: text/chapter3.md:285
-#, fuzzy
-#| msgid ""
-#| "We don't have to indicate in code that we want to specialize a quantified "
-#| "type – it happens automatically. For example, we can use `flip` as if it "
-#| "had this type already:"
 msgid ""
 "We don't have to indicate in code that we want to specialize a quantified "
 "type – it happens automatically. For example, we can use `constantlyFirst` "
@@ -15272,7 +15229,7 @@ msgid ""
 msgstr ""
 "量化された型を特殊化したいということをコードで示す必要はありません。\n"
 "特殊化は自動的に行われます。\n"
-"例えば、あたかも既にその型の`flip`を持っていたかのように、`flip`を使えます。"
+"例えば、あたかも既にその型に備わっていたかの如く`constantlyFirst`を使えます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:286
@@ -15282,6 +15239,9 @@ msgid ""
 "\n"
 "3\n"
 msgstr ""
+"> constantlyFirst 3 \"ignored\"\n"
+"\n"
+"3\n"
 
 #. type: Plain text
 #: text/chapter3.md:293
@@ -15289,7 +15249,7 @@ msgid ""
 "While we can choose any types for `a` and `b`, the return type of "
 "`constantlyFirst` has to be the same as the type of the first argument "
 "(because both of them are \"tied\" to the same `a`):"
-msgstr ""
+msgstr "`a`と`b`にはどんな型でも選べますが、`constantlyFirst`が返す型は最初の引数の型と同じでなければなりません（両方とも同じ`a`に「紐付く」からです）。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:294
@@ -15301,6 +15261,11 @@ msgid ""
 ":type constantlyFirst \"keep\" 3\n"
 "String\n"
 msgstr ""
+":type constantlyFirst true \"ignored\"\n"
+"Boolean\n"
+"\n"
+":type constantlyFirst \"keep\" 3\n"
+"String\n"
 
 #. type: Title ##
 #: text/chapter3.md:302
@@ -15542,14 +15507,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:385
-#, fuzzy, no-wrap
-#| msgid ""
-#| "$ spago repl\n"
-#| "\n"
-#| "> import Data.List\n"
-#| "> :type Cons\n"
-#| "\n"
-#| "forall a. a -> List a -> List a\n"
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -15563,7 +15521,7 @@ msgstr ""
 "> import Data.List\n"
 "> :type Cons\n"
 "\n"
-"forall a. a -> List a -> List a\n"
+"forall (a :: Type). a -> List a -> List a\n"
 
 #. type: Plain text
 #: text/chapter3.md:395
@@ -15636,19 +15594,14 @@ msgstr "カリー化された関数"
 
 #. type: Plain text
 #: text/chapter3.md:419
-#, fuzzy
-#| msgid ""
-#| "Functions in PureScript take exactly one argument. While it looks like "
-#| "the `insertEntry` function takes two arguments, it is an example of a "
-#| "_curried function_."
 msgid ""
 "Functions in PureScript take exactly one argument. While it looks like the "
 "`insertEntry` function takes two arguments, it is an example of a _curried "
 "function_. In PureScript, all functions are considered curried."
 msgstr ""
-"PureScriptでは、関数は常に1つの引数だけを取ります。\n"
-"`insertEntry`関数は2つの引数を取るように見えますが、*カリー化された関数*の一"
-"例なのです。"
+"PureScriptの関数はきっかり1つの引数を取ります。\n"
+"`insertEntry`関数は2つの引数を取るように見えますが、*カリー化された関数*の一例なのです。\n"
+"PureScriptでは全ての関数はカリー化されたものと見做されます。"
 
 #. type: Plain text
 #: text/chapter3.md:421
@@ -15658,6 +15611,8 @@ msgid ""
 "one argument, and it returns another function that also takes one argument "
 "until all arguments are passed."
 msgstr ""
+"カリー化が意味するのは複数の引数を取る関数を1度に1つ取る関数に変換することです。\n"
+"関数を呼ぶときに1つの引数を渡し、これまた1つの引数を取る別の関数を返し、といったことを全ての引数が渡されるまで続けます。"
 
 #. type: Plain text
 #: text/chapter3.md:423
@@ -15665,13 +15620,12 @@ msgid ""
 "For example, when we pass `5` to `add`, we get another function, which takes "
 "an int, adds 5 to it, and returns the sum as a result:"
 msgstr ""
+"例えば`add`に`5`に渡すと別の関数が得られます。\n"
+"その関数は整数を取り、5を足し、合計を結果として返します。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:424
-#, fuzzy, no-wrap
-#| msgid ""
-#| "add :: Int -> Int -> Int\n"
-#| "add x y = x + y\n"
+#, no-wrap
 msgid ""
 "add :: Int -> Int -> Int\n"
 "add x y = x + y\n"
@@ -15681,6 +15635,9 @@ msgid ""
 msgstr ""
 "add :: Int -> Int -> Int\n"
 "add x y = x + y\n"
+"\n"
+"addFive :: Int -> Int\n"
+"addFive = add 5\n"
 
 #. type: Plain text
 #: text/chapter3.md:433
@@ -15689,6 +15646,9 @@ msgid ""
 "than the total number of arguments to a function that takes multiple "
 "arguments. Let's give it a try:"
 msgstr ""
+"`addFive`は*部分適用*の結果です。\n"
+"つまり複数の引数を取る関数に、引数の全個数より少ない数だけ渡すのです。\n"
+"試してみましょう。"
 
 #. type: Plain text
 #: text/chapter3.md:443
@@ -15704,15 +15664,19 @@ msgid ""
 ">… ^D\n"
 "> ```\n"
 msgstr ""
+"> なお、お済みでなければ`add`関数を定義しなくてはなりません。\n"
+">\n"
+"> ```text\n"
+"> > import Prelude\n"
+"> > :paste\n"
+">… add :: Int -> Int -> Int\n"
+">… add x y = x + y\n"
+">… ^D\n"
+"> ```\n"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:444
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> :paste\n"
-#| "… add :: Int -> Int -> Int\n"
-#| "… add = \\x y -> x + y\n"
-#| "… ^D\n"
+#, no-wrap
 msgid ""
 "> :paste\n"
 "… addFive :: Int -> Int\n"
@@ -15726,9 +15690,15 @@ msgid ""
 "6\n"
 msgstr ""
 "> :paste\n"
-"… add :: Int -> Int -> Int\n"
-"… add = \\x y -> x + y\n"
+"… addFive :: Int -> Int\n"
+"… addFive = add 5\n"
 "… ^D\n"
+"\n"
+"> addFive 1\n"
+"6\n"
+"\n"
+"> add 5 1\n"
+"6\n"
 
 #. type: Plain text
 #: text/chapter3.md:458
@@ -15737,13 +15707,16 @@ msgid ""
 "other functions, for example, out of `add`. And when you're done, let's "
 "return to the `insertEntry`."
 msgstr ""
+"カリー化と部分適用をもっと理解するには、例にあった`add`とは別の関数を2、3作ってみてください。\n"
+"そしてそれができたら`insertEntry`に戻りましょう。"
 
 #. type: Plain text
 #: text/chapter3.md:464
-#, fuzzy, no-wrap
-#| msgid "The `->` operator in the type of `insertEntry` associates to the right, which means that the compiler parses the type as\n"
+#, no-wrap
 msgid "The `->` operator (in the type signature) associates to the right, which means that the compiler parses the type as\n"
-msgstr "`insertEntry`の型に含まれる `->`は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。\n"
+msgstr ""
+"（型シグネチャ中の）`->`演算子は右結合です。\n"
+"つまりコンパイラは型を次のように解釈します。\n"
 
 #. type: Fenced code block (haskell)
 #: text/chapter3.md:465
@@ -15753,20 +15726,13 @@ msgstr "Entry -> (AddressBook -> AddressBook)\n"
 
 #. type: Plain text
 #: text/chapter3.md:470
-#, fuzzy
-#| msgid ""
-#| "That is, `insertEntry` is a function that returns a function! It takes a "
-#| "single argument, an `Entry`, and returns a new function, which in turn "
-#| "takes a single `AddressBook` argument and returns a new `AddressBook`."
 msgid ""
 "`insertEntry` takes a single argument, an `Entry`, and returns a new "
 "function, which in turn takes a single `AddressBook` argument and returns a "
 "new `AddressBook`."
 msgstr ""
-"すなわち、`insertEntry`は関数を返す関数なのです。\n"
-"この関数は単一の引数`Entry`を取り、新しい関数を返します。\n"
-"今度はこの関数が単一の引数`AddressBook`を取り、新しい`AddressBook`を返しま"
-"す。"
+"`insertEntry`は単一の引数`Entry`を取り、新しい関数を返します。\n"
+"そして今度はその関数が単一の引数`AddressBook`を取り、新しい`AddressBook`を返します。"
 
 #. type: Plain text
 #: text/chapter3.md:472
@@ -16058,18 +16024,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:563
-#, fuzzy, no-wrap
-#| msgid ""
-#| "$ spago repl\n"
-#| "\n"
-#| "> import Data.List\n"
-#| "> :type filter\n"
-#| "\n"
-#| "forall a. (a -> Boolean) -> List a -> List a\n"
-#| "\n"
-#| "> :type head\n"
-#| "\n"
-#| "forall a. List a -> Maybe a\n"
+#, no-wrap
 msgid ""
 "$ spago repl\n"
 "\n"
@@ -16087,11 +16042,11 @@ msgstr ""
 "> import Data.List\n"
 "> :type filter\n"
 "\n"
-"forall a. (a -> Boolean) -> List a -> List a\n"
+"forall (a :: Type). (a -> Boolean) -> List a -> List a\n"
 "\n"
 "> :type head\n"
 "\n"
-"forall a. List a -> Maybe a\n"
+"forall (a :: Type). List a -> Maybe a\n"
 
 #. type: Plain text
 #: text/chapter3.md:577
@@ -17255,16 +17210,13 @@ msgstr "それでは`map`の型を見てみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:113
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> :type map\n"
-#| "forall a b f. Functor f => (a -> b) -> f a -> f b\n"
+#, no-wrap
 msgid ""
 "> :type map\n"
 "forall (f :: Type -> Type) (a :: Type) (b :: Type). Functor f => (a -> b) -> f a -> f b\n"
 msgstr ""
 "> :type map\n"
-"forall a b f. Functor f => (a -> b) -> f a -> f b\n"
+"forall (f :: Type -> Type) (a :: Type) (b :: Type). Functor f => (a -> b) -> f a -> f b\n"
 
 #. type: Plain text
 #: text/chapter4.md:119
@@ -17279,10 +17231,9 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:120
-#, fuzzy, no-wrap
-#| msgid "forall a b. (a -> b) -> Array a -> Array b\n"
+#, no-wrap
 msgid "forall (a :: Type) (b :: Type). (a -> b) -> Array a -> Array b\n"
-msgstr "forall a b. (a -> b) -> Array a -> Array b\n"
+msgstr "forall (a :: Type) (b :: Type). (a -> b) -> Array a -> Array b\n"
 
 #. type: Plain text
 #: text/chapter4.md:125
@@ -17387,7 +17338,7 @@ msgid "In the example above, we parenthesized the expression `1 .. 5`, but this 
 msgstr ""
 "上記の例では、`1 .. 5`という式は括弧で囲まれていましたが、実際にはこれは必要ありません。\n"
 "なぜなら、`Data.Array`モジュールは、`<$>`に割り当てられた優先順位より高い優先順位を`..`演算子に割り当てているからです。\n"
-"上の例では、`..`の優先順位は、予約語`infix`のあとに書かれた数の`8` と定義されていました。\n"
+"上の例では、`..`の優先順位は、キーワード`infix`のあとに書かれた数の`8` と定義されていました。\n"
 "ここでは`<$>`の優先順位よりも高い優先順位を`..`に割り当てており、このため括弧を付け加える必要がないということです。\n"
 
 #. type: Fenced code block (text)
@@ -17409,10 +17360,8 @@ msgid ""
 "any expression using the same operator multiple times or using multiple "
 "operators of the same precedence."
 msgstr ""
-"中置演算子に（左または右の）*結合性*を与えたい場合は、代わりに予約語`infixl`"
-"と`infixr`を使います。`infix`を使うと何ら結合性は割り当てられず、同じ演算子を"
-"複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まな"
-"ければいけなくなります。"
+"中置演算子に（左または右の）*結合性*を与えたい場合は、代わりにキーワード`infixl`と`infixr`を使います。\n"
+"`infix`を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。"
 
 #. type: Title ##
 #: text/chapter4.md:168
@@ -17526,15 +17475,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:194
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> import Data.Array\n"
-#| "\n"
-#| "> :type concat\n"
-#| "forall a. Array (Array a) -> Array a\n"
-#| "\n"
-#| "> concat [[1, 2, 3], [4, 5], [6]]\n"
-#| "[1, 2, 3, 4, 5, 6]\n"
+#, no-wrap
 msgid ""
 "> import Data.Array\n"
 "\n"
@@ -17547,7 +17488,7 @@ msgstr ""
 "> import Data.Array\n"
 "\n"
 "> :type concat\n"
-"forall a. Array (Array a) -> Array a\n"
+"forall (a :: Type). Array (Array a) -> Array a\n"
 "\n"
 "> concat [[1, 2, 3], [4, 5], [6]]\n"
 "[1, 2, 3, 4, 5, 6]\n"
@@ -17572,15 +17513,7 @@ msgstr "実際に動かして見てみましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:208
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> import Data.Array\n"
-#| "\n"
-#| "> :type concatMap\n"
-#| "forall a b. (a -> Array b) -> Array a -> Array b\n"
-#| "\n"
-#| "> concatMap (\\n -> [n, n * n]) (1 .. 5)\n"
-#| "[1,1,2,4,3,9,4,16,5,25]\n"
+#, no-wrap
 msgid ""
 "> import Data.Array\n"
 "\n"
@@ -17593,7 +17526,7 @@ msgstr ""
 "> import Data.Array\n"
 "\n"
 "> :type concatMap\n"
-"forall a b. (a -> Array b) -> Array a -> Array b\n"
+"forall (a :: Type) (b :: Type). (a -> Array b) -> Array a -> Array b\n"
 "\n"
 "> concatMap (\\n -> [n, n * n]) (1 .. 5)\n"
 "[1,1,2,4,3,9,4,16,5,25]\n"
@@ -17972,12 +17905,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:334
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> import Control.Alternative\n"
-#| "\n"
-#| "> :type guard\n"
-#| "forall m. Alternative m => Boolean -> m Unit\n"
+#, no-wrap
 msgid ""
 "> import Control.Alternative\n"
 "\n"
@@ -17987,7 +17915,7 @@ msgstr ""
 "> import Control.Alternative\n"
 "\n"
 "> :type guard\n"
-"forall m. Alternative m => Boolean -> m Unit\n"
+"forall (m :: Type -> Type). Alternative m => Boolean -> m Unit\n"
 
 #. type: Plain text
 #: text/chapter4.md:342
@@ -18140,15 +18068,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:376
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> import Data.Foldable\n"
-#| "\n"
-#| "> :type foldl\n"
-#| "forall a b f. Foldable f => (b -> a -> b) -> b -> f a -> b\n"
-#| "\n"
-#| "> :type foldr\n"
-#| "forall a b f. Foldable f => (a -> b -> b) -> b -> f a -> b\n"
+#, no-wrap
 msgid ""
 "> import Data.Foldable\n"
 "\n"
@@ -18161,36 +18081,24 @@ msgstr ""
 "> import Data.Foldable\n"
 "\n"
 "> :type foldl\n"
-"forall a b f. Foldable f => (b -> a -> b) -> b -> f a -> b\n"
+"forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (b -> a -> b) -> b -> f a -> b\n"
 "\n"
 "> :type foldr\n"
-"forall a b f. Foldable f => (a -> b -> b) -> b -> f a -> b\n"
+"forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (a -> b -> b) -> b -> f a -> b\n"
 
 #. type: Plain text
 #: text/chapter4.md:387
-#, fuzzy
-#| msgid ""
-#| "These types are more general than we are interested in right now. For "
-#| "this chapter, we can assume that PSCi has given the following (more "
-#| "specific) answer:"
 msgid ""
 "These types are more general than we are interested in right now. For this "
 "chapter, we can simplify and assume the following (more specific) type "
 "signatures:"
 msgstr ""
 "これらの型は、現在興味があるものよりも一般化されています。\n"
-"この章では、PSCiは以下の（より具体的な）答えをくれていると考えておきましょ"
-"う。"
+"この章では単純化して以下の（より具体的な）型シグネチャと見て構いません。"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:388
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> :type foldl\n"
-#| "forall a b. (b -> a -> b) -> b -> Array a -> b\n"
-#| "\n"
-#| "> :type foldr\n"
-#| "forall a b. (a -> b -> b) -> b -> Array a -> b\n"
+#, no-wrap
 msgid ""
 "-- foldl\n"
 "forall a b. (b -> a -> b) -> b -> Array a -> b\n"
@@ -18198,10 +18106,10 @@ msgid ""
 "-- foldr\n"
 "forall a b. (a -> b -> b) -> b -> Array a -> b\n"
 msgstr ""
-"> :type foldl\n"
+"-- foldl\n"
 "forall a b. (b -> a -> b) -> b -> Array a -> b\n"
 "\n"
-"> :type foldr\n"
+"-- foldr\n"
 "forall a b. (a -> b -> b) -> b -> Array a -> b\n"
 
 #. type: Plain text
@@ -19536,12 +19444,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter5.md:153
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> showPerson { first: x, last: y } = y <> \", \" <> x\n"
-#| "\n"
-#| "> :type showPerson\n"
-#| "forall r. { first :: String, last :: String | r } -> String\n"
+#, no-wrap
 msgid ""
 "> showPerson { first: x, last: y } = y <> \", \" <> x\n"
 "\n"
@@ -19551,7 +19454,7 @@ msgstr ""
 "> showPerson { first: x, last: y } = y <> \", \" <> x\n"
 "\n"
 "> :type showPerson\n"
-"forall r. { first :: String, last :: String | r } -> String\n"
+"forall (r :: Row Type). { first :: String, last :: String | r } -> String\n"
 
 #. type: Plain text
 #: text/chapter5.md:161
@@ -22121,12 +22024,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter6.md:380
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> import Prelude\n"
-#| "\n"
-#| "> :type \\x -> x + x\n"
-#| "forall a. Semiring a => a -> a\n"
+#, no-wrap
 msgid ""
 "> import Prelude\n"
 "\n"
@@ -22136,7 +22034,7 @@ msgstr ""
 "> import Prelude\n"
 "\n"
 "> :type \\x -> x + x\n"
-"forall a. Semiring a => a -> a\n"
+"forall (a :: Type). Semiring a => a -> a\n"
 
 #. type: Plain text
 #: text/chapter6.md:388
@@ -22627,13 +22525,7 @@ msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter6.md:541
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> :type genericTail\n"
-#| "forall stream element. Stream stream element => stream -> Maybe stream\n"
-#| "\n"
-#| "> genericTail \"testing\"\n"
-#| "(Just \"esting\")\n"
+#, no-wrap
 msgid ""
 "> :type genericTail\n"
 "forall (stream :: Type) (element :: Type). Stream stream element => stream -> Maybe stream\n"
@@ -22642,7 +22534,7 @@ msgid ""
 "(Just \"esting\")\n"
 msgstr ""
 "> :type genericTail\n"
-"forall stream element. Stream stream element => stream -> Maybe stream\n"
+"forall (stream :: Type) (element :: Type). Stream stream element => stream -> Maybe stream\n"
 "\n"
 "> genericTail \"testing\"\n"
 "(Just \"esting\")\n"
@@ -23746,16 +23638,13 @@ msgstr "`lift3`の型を見てみるとわかりやすいでしょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter7.md:87
-#, fuzzy, no-wrap
-#| msgid ""
-#| "> :type lift3\n"
-#| "forall a b c d f. Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d\n"
+#, no-wrap
 msgid ""
 "> :type lift3\n"
 "forall (a :: Type) (b :: Type) (c :: Type) (d :: Type) (f :: Type -> Type). Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d\n"
 msgstr ""
 "> :type lift3\n"
-"forall a b c d f. Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d\n"
+"forall (a :: Type) (b :: Type) (c :: Type) (d :: Type) (f :: Type -> Type). Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d\n"
 
 #. type: Plain text
 #: text/chapter7.md:93
@@ -29793,6 +29682,4 @@ msgstr "`parallel`ライブラリを使って並列に非同期コードを走�
 #~ msgid ""
 #~ "The only exception to this rule is the `where` keyword in the initial "
 #~ "`module` declaration at the top of a source file."
-#~ msgstr ""
-#~ "ただし、ソースファイルの先頭、最初の `module`宣言における予約語 `where`だ"
-#~ "けは、この規則の唯一の例外になっています。"
+#~ msgstr "ただし、ソースファイルの先頭、最初の`module`宣言におけるキーワード`where`だけは、この規則の唯一の例外になっています。"

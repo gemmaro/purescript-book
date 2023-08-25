@@ -16,3 +16,5 @@ type synonym: 型同義語
 configure: 構成。設定はsettingで一応区別したいです。
 handle: 制御対象
 help message: ヘルプ文言。「使用方法の文言」と噛み砕くのもありそうですが、ややまどろっこしい感じがします。
+open import: 一括インポート
+keyword: キーワード。予約語はまた意味が違ってくるようです。
