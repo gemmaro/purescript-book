@@ -457,7 +457,7 @@ PSCiで `Semiring`のような標準の型クラスの何れかを使って、�
 > import Prelude
 
 > :type \x -> x + x
-forall a. Semiring a => a -> a
+forall (a :: Type). Semiring a => a -> a
 ```
 
 ここで、この関数に`Int -> Int`または`Number -> Number`と註釈を付けることはできます。
@@ -635,7 +635,7 @@ class Stream stream element | stream -> element where
 
 ```text
 > :type genericTail
-forall stream element. Stream stream element => stream -> Maybe stream
+forall (stream :: Type) (element :: Type). Stream stream element => stream -> Maybe stream
 
 > genericTail "testing"
 (Just "esting")

@@ -137,13 +137,13 @@ $ spago repl
 
 ```text
 > :type map
-forall a b f. Functor f => (a -> b) -> f a -> f b
+forall (f :: Type -> Type) (a :: Type) (b :: Type). Functor f => (a -> b) -> f a -> f b
 ```
 
 実は`map`の型は、この章で必要とされているものよりも一般的な型になっています。今回の目的では、`map`は次のようなもっと具体的な型であるかのように考えるとよいでしょう。
 
 ```text
-forall a b. (a -> b) -> Array a -> Array b
+forall (a :: Type) (b :: Type). (a -> b) -> Array a -> Array b
 ```
 
 この型では、`map`関数に適用するときには`a`と`b`という2つの型を自由に選ぶことができる、ということも示されています。
@@ -236,7 +236,7 @@ infix 8 range as ..
 > import Data.Array
 
 > :type concat
-forall a. Array (Array a) -> Array a
+forall (a :: Type). Array (Array a) -> Array a
 
 > concat [[1, 2, 3], [4, 5], [6]]
 [1, 2, 3, 4, 5, 6]
@@ -251,7 +251,7 @@ forall a. Array (Array a) -> Array a
 > import Data.Array
 
 > :type concatMap
-forall a b. (a -> Array b) -> Array a -> Array b
+forall (a :: Type) (b :: Type). (a -> Array b) -> Array a -> Array b
 
 > concatMap (\n -> [n, n * n]) (1 .. 5)
 [1,1,2,4,3,9,4,16,5,25]
@@ -398,7 +398,7 @@ import Control.Alternative (guard)
 > import Control.Alternative
 
 > :type guard
-forall m. Alternative m => Boolean -> m Unit
+forall (m :: Type -> Type). Alternative m => Boolean -> m Unit
 ```
 
 今回の場合は、PSCiは次の型を報告するものと考えてください。
@@ -455,20 +455,21 @@ PSCiを使って、`Data.Foldable`モジュールをインポートし、`foldl`
 > import Data.Foldable
 
 > :type foldl
-forall a b f. Foldable f => (b -> a -> b) -> b -> f a -> b
+forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (b -> a -> b) -> b -> f a -> b
 
 > :type foldr
-forall a b f. Foldable f => (a -> b -> b) -> b -> f a -> b
+forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (a -> b -> b) -> b -> f a -> b
 ```
 
-これらの型は、現在興味があるものよりも一般化されています。
-この章では、PSCiは以下の（より具体的な）答えをくれていると考えておきましょう。
+These types are more general than we are interested in right now. For this
+chapter, we can simplify and assume the following (more specific) type
+signatures:
 
 ```text
-> :type foldl
+-- foldl
 forall a b. (b -> a -> b) -> b -> Array a -> b
 
-> :type foldr
+-- foldr
 forall a b. (a -> b -> b) -> b -> Array a -> b
 ```
 

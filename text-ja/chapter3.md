@@ -21,6 +21,9 @@
 
 ここでは、幾つかのモジュールをインポートします。
 
+- The `Prelude` module, which contains a small set of standard definitions
+  and functions. It re-exports many foundational modules from
+  the `purescript-prelude` library.
 - `Control.Plus`モジュールには`empty`値が定義されています。
 - `Data.List`モジュールは`lists`パッケージで提供されています。
   またこのパッケージはSpagoを使ってインストールできます。
@@ -30,7 +33,10 @@
 訳者注：ダブルドット (`..`) を使用すると、
 指定された型コンストラクタのすべてのデータコンストラクタをインポートできます。
 
-このモジュールのインポート内容が括弧内で明示的に列挙されていることに注目してください。明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣です。
+Notice that the imports for these modules are listed explicitly in
+parentheses (except for `Prelude`, which is typically imported as an open
+import). This is generally a good practice, as it helps to avoid conflicting
+imports.
 
 ソースコードリポジトリをクローンしたと仮定すると、この章のプロジェクトは次のコマンドでSpagoを使用して構築できます。
 
@@ -115,20 +121,13 @@ String`型のフィールド`interests`で、後者は`String`の配列という
 ["Functional Programming","JavaScript"]
 ```
 
-PureScriptの関数はJavaScriptの関数に対応しています。PureScriptの標準ライブラリは多くの関数の例を提供しており、この章ではそれらをもう少し詳しく見ていきます。
-
-```text
-> import Prelude
-> :type flip
-forall a b c. (a -> b -> c) -> b -> a -> c
-
-> :type const
-forall a b. a -> b -> a
-```
-
-ファイルの最上位では、等号の直前に引数を指定することで関数を定義できます。
+PureScript's functions correspond to JavaScript's functions. Functions can
+be defined at the top-level of a file by specifying arguments before the
+equals sign:
 
 ```haskell
+import Prelude -- bring the (+) operator into scope
+
 add :: Int -> Int -> Int
 add x y = x + y
 ```
@@ -138,6 +137,7 @@ PSCiで複数行の宣言を入力するには、`:paste`コマンドを使用�
 このモードでは、*Control-D*キーシーケンスを使って宣言を終了します。
 
 ```text
+> import Prelude
 > :paste
 … add :: Int -> Int -> Int
 … add = \x y -> x + y
@@ -151,52 +151,12 @@ PSCiでこの関数が定義されていると、次のように関数の隣に2
 30
 ```
 
-## 量化された型
-
-前の節ではPreludeで定義された関数の型を幾つか見てきました。
-例えば`flip`関数は次のような型を持っていました。
-
-```text
-> :type flip
-forall a b c. (a -> b -> c) -> b -> a -> c
-```
-
-この`forall`キーワードは、`flip`が*全称量化された型*を持つことを示しています。
-つまり`a`や`b`や`c`をどの型に置き換えても良く、`flip`はその型で動作するのです。
-
-例えば、`a`を`Int`、`b`を`String`、`c`を`String`と選んだとします。
-その場合、`flip`の型を次のように*特殊化*できます。
-
-```text
-(Int -> String -> String) -> String -> Int -> String
-```
-
-量化された型を特殊化したいということをコードで示す必要はありません。
-特殊化は自動的に行われます。
-例えば、あたかも既にその型の`flip`を持っていたかのように、`flip`を使えます。
-
-```text
-> flip (\n s -> show n <> s) "Ten" 10
-
-"10Ten"
-```
-
-`a`、`b`、`c`の型はどんな型でも選べるといっても、一貫していなければなりません。
-`flip`に渡す関数の型は他の引数の型と整合性がなくてはなりません。
-第2引数として文字列`"Ten"`、第3引数として数`10`を渡したのはそれが理由です。
-もし引数が逆になっているとうまくいかないでしょう。
-
-```text
-> flip (\n s -> show n <> s) 10 "Ten"
-
-Could not match type Int with type String
-```
-
 ## 字下げについての注意
 
 PureScriptのコードは字下げの大きさに意味があります。ちょうどHaskellと同じで、JavaScriptとは異なります。コード内の空白の多寡は無意味ではなく、Cのような言語で中括弧によってコードのまとまりを示しているように、PureScriptでは空白がコードのまとまりを示すために使われているということです。
 
-宣言が複数行にわたる場合は、最初の行以外は最初の行の字下げより深くしなければなりません。
+If a declaration spans multiple lines, any lines except the first must be
+indented past the indentation level of the first line.
 
 したがって、次は正しいPureScriptコードです。
 
@@ -234,19 +194,32 @@ y + z
 … ^D
 ```
 
-PureScriptの幾つかの予約語（例えば `where`や `of`、
-`let`）は新たなコードのまとまりを導入しますが、そのコードのまとまり内の宣言はそれより深く字下げされている必要があります。
+Certain PureScript keywords introduce a new block of code, in which
+declarations must be further-indented:
 
 ```haskell
-example x y z = foo + bar
-  where
+example x y z =
+  let
     foo = x * y
     bar = y * z
+  in
+    foo + bar
 ```
 
-ここで `foo`や `bar`の宣言は `example`の宣言より深く字下げされていることに注意してください。
+This doesn't compile:
 
-ただし、ソースファイルの先頭、最初の `module`宣言における予約語 `where`だけは、この規則の唯一の例外になっています。
+```haskell
+example x y z =
+  let
+    foo = x * y
+  bar = y * z
+  in
+    foo + bar
+```
+
+If you want to learn more (or encounter any problems), see the
+[Syntax](https://github.com/purescript/documentation/blob/master/language/Syntax.md#syntax)
+documentation.
 
 ## 独自の型の定義
 
@@ -317,6 +290,60 @@ Type
 ```
 
 PureScriptの _種システム_ は他にも面白い種に対応していますが、それらについては本書の他の部分で見ていくことになるでしょう。
+
+## 量化された型
+
+For illustration purposes, let's define a primitive function that takes any
+two arguments and returns the first one:
+
+```text
+> :paste
+… constantlyFirst :: forall a b. a -> b -> a
+… constantlyFirst = \a b -> a
+… ^D
+```
+
+> Note that if you use `:type` to ask about the type of `constantlyFirst`, it will be more verbose:
+>
+> ```text
+> : type constantlyFirst
+> forall (a :: Type) (b :: Type). a -> b -> a
+> ```
+>
+> The type signature contains additional kind information, which explicitly notes that `a` and `b` should be concrete types.
+
+The keyword `forall` indicates that `constantlyFirst` has a _universally
+quantified type_. It means we can substitute any types for `a` and `b` –
+`constantlyFirst` will work with these types.
+
+For example, we might choose the type `a` to be `Int` and `b` – `String`. In
+that case, we can _specialize_ the type of `constantlyFirst` to
+
+```text
+Int -> String -> Int
+```
+
+We don't have to indicate in code that we want to specialize a quantified
+type – it happens automatically. For example, we can use `constantlyFirst`
+as if it had this type already:
+
+```text
+> constantlyFirst 3 "ignored"
+
+3
+```
+
+While we can choose any types for `a` and `b`, the return type of
+`constantlyFirst` has to be the same as the type of the first argument
+(because both of them are "tied" to the same `a`):
+
+```text
+:type constantlyFirst true "ignored"
+Boolean
+
+:type constantlyFirst "keep" 3
+String
+```
 
 ## 住所録の項目の表示
 
@@ -422,7 +449,7 @@ $ spago repl
 > import Data.List
 > :type Cons
 
-forall a. a -> List a -> List a
+forall (a :: Type). a -> List a -> List a
 ```
 
 この型シグネチャで書かれているのは、`Cons`が何らかの型`a`の値と型`a`の要素のリストを取り、同じ型の項目を持つ新しいリストを返すということです。
@@ -453,18 +480,70 @@ insertEntry entry book = Cons entry book
 
 ## カリー化された関数
 
-PureScriptでは、関数は常に1つの引数だけを取ります。
-`insertEntry`関数は2つの引数を取るように見えますが、*カリー化された関数*の一例なのです。
+Functions in PureScript take exactly one argument. While it looks like the
+`insertEntry` function takes two arguments, it is an example of a _curried
+function_. In PureScript, all functions are considered curried.
 
-`insertEntry`の型に含まれる `->`は右結合の演算子であり、つまりこの型はコンパイラによって次のように解釈されます。
+Currying means converting a function that takes multiple arguments into a
+function that takes them one at a time. When we call a function, we pass it
+one argument, and it returns another function that also takes one argument
+until all arguments are passed.
+
+For example, when we pass `5` to `add`, we get another function, which takes
+an int, adds 5 to it, and returns the sum as a result:
+
+```haskell
+add :: Int -> Int -> Int
+add x y = x + y
+
+addFive :: Int -> Int
+addFive = add 5
+```
+
+`addFive` is the result of _partial application_, which means we pass less
+than the total number of arguments to a function that takes multiple
+arguments. Let's give it a try:
+
+> Note that you must define the `add` function if you haven't already:
+>
+> ```text
+> > import Prelude
+> > :paste
+>… add :: Int -> Int -> Int
+>… add x y = x + y
+>… ^D
+> ```
+
+```text
+> :paste
+… addFive :: Int -> Int
+… addFive = add 5
+… ^D
+
+> addFive 1
+6
+
+> add 5 1
+6
+```
+
+To better understand currying and partial application, try making a few
+other functions, for example, out of `add`. And when you're done, let's
+return to the `insertEntry`.
+
+```haskell
+{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry_signature}}
+```
+
+The `->` operator (in the type signature) associates to the right, which means that the compiler parses the type as
 
 ```haskell
 Entry -> (AddressBook -> AddressBook)
 ```
 
-すなわち、`insertEntry`は関数を返す関数なのです。
-この関数は単一の引数`Entry`を取り、新しい関数を返します。
-今度はこの関数が単一の引数`AddressBook`を取り、新しい`AddressBook`を返します。
+`insertEntry` takes a single argument, an `Entry`, and returns a new
+function, which in turn takes a single `AddressBook` argument and returns a
+new `AddressBook`.
 
 これはつまり、最初の引数だけを与えて`insertEntry`を*部分適用*できたりするということです。
 PSCiで結果の型が見られます。
@@ -579,11 +658,11 @@ $ spago repl
 > import Data.List
 > :type filter
 
-forall a. (a -> Boolean) -> List a -> List a
+forall (a :: Type). (a -> Boolean) -> List a -> List a
 
 > :type head
 
-forall a. List a -> Maybe a
+forall (a :: Type). List a -> Maybe a
 ```
 
 型の意味を理解するために、これらの2つの型の一部を取り出してみましょう。

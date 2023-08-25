@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-07-10 21:30+0900\n"
+"POT-Creation-Date: 2023-08-25 20:42+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -408,14 +408,22 @@ msgid ""
 "JavaScript."
 msgstr ""
 
+#. type: Plain text
+#: text/chapter1.md:42
+#, markdown-text, no-wrap
+msgid ""
+"> Note that PureScript can target other backends, not only JavaScript, but "
+"this book focuses on targeting web browser and node environments.\n"
+msgstr ""
+
 #. type: Title ##
-#: text/chapter1.md:41
+#: text/chapter1.md:43
 #, markdown-text, no-wrap
 msgid "Types and Type Inference"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:44
+#: text/chapter1.md:46
 #, markdown-text
 msgid ""
 "The debate over statically typed languages versus dynamically typed "
@@ -428,7 +436,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:46
+#: text/chapter1.md:48
 #, markdown-text
 msgid ""
 "It is important to note that, in many ways, the types in PureScript are "
@@ -444,7 +452,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter1.md:47
+#: text/chapter1.md:49
 #, no-wrap
 msgid ""
 "iAmANumber =\n"
@@ -453,7 +461,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:54
+#: text/chapter1.md:56
 #, markdown-text
 msgid ""
 "A more involved example shows that type-correctness can be confirmed without "
@@ -462,7 +470,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter1.md:55
+#: text/chapter1.md:57
 #, no-wrap
 msgid ""
 "iterate f 0 x = x\n"
@@ -470,7 +478,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:61
+#: text/chapter1.md:63
 #, markdown-text
 msgid ""
 "Here, the type of `x` is unknown, but the compiler can still verify that "
@@ -479,7 +487,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:63
+#: text/chapter1.md:65
 #, markdown-text
 msgid ""
 "In this book, I will try to convince you (or reaffirm your belief) that "
@@ -492,7 +500,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:65
+#: text/chapter1.md:67
 #, markdown-text
 msgid ""
 "In addition, the safety net provided by a type system enables more advanced "
@@ -502,13 +510,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:66
+#: text/chapter1.md:68
 #, markdown-text, no-wrap
 msgid "Polyglot Web Programming"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:69
+#: text/chapter1.md:71
 #, markdown-text
 msgid ""
 "Functional programming has its success stories – applications where it has "
@@ -517,7 +525,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:71
+#: text/chapter1.md:73
 #, markdown-text
 msgid ""
 "It would be possible to practice end-to-end application development in a "
@@ -528,7 +536,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:73
+#: text/chapter1.md:75
 #, markdown-text
 msgid ""
 "However, one of PureScript's strengths is its interoperability with other "
@@ -538,13 +546,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:75
+#: text/chapter1.md:77
 #, markdown-text
 msgid "Here are some examples:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:79
+#: text/chapter1.md:81
 #, markdown-text
 msgid ""
 "Core logic written in PureScript, with the user interface written in "
@@ -552,7 +560,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:79
+#: text/chapter1.md:81
 #, markdown-text
 msgid ""
 "Application written in JavaScript or another compile-to-JS language, with "
@@ -560,7 +568,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:79
+#: text/chapter1.md:81
 #, markdown-text
 msgid ""
 "PureScript used to automate user interface tests for an existing "
@@ -568,7 +576,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:81
+#: text/chapter1.md:83
 #, markdown-text
 msgid ""
 "In this book, we'll focus on solving small problems with PureScript. The "
@@ -577,13 +585,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:82
+#: text/chapter1.md:84
 #, markdown-text, no-wrap
 msgid "Prerequisites"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:85
+#: text/chapter1.md:87
 #, markdown-text
 msgid ""
 "The software requirements for this book are minimal: the first chapter will "
@@ -593,7 +601,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:87
+#: text/chapter1.md:89
 #, markdown-text
 msgid ""
 "The PureScript compiler itself can be downloaded as a binary distribution or "
@@ -603,7 +611,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:90
+#: text/chapter1.md:92
 #, markdown-text
 msgid ""
 "The code in this version of the book is compatible with versions `0.15.*` of "
@@ -611,13 +619,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:91
+#: text/chapter1.md:93
 #, markdown-text, no-wrap
 msgid "About You"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:94
+#: text/chapter1.md:96
 #, markdown-text
 msgid ""
 "I will assume that you are familiar with the basics of JavaScript. Any prior "
@@ -627,7 +635,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:96
+#: text/chapter1.md:98
 #, markdown-text
 msgid ""
 "No prior knowledge of functional programming is required, but it certainly "
@@ -637,7 +645,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:98
+#: text/chapter1.md:100
 #, markdown-text
 msgid ""
 "Readers who are familiar with the Haskell programming language will "
@@ -650,13 +658,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:99
+#: text/chapter1.md:101
 #, markdown-text, no-wrap
 msgid "How to Read This Book"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:102
+#: text/chapter1.md:104
 #, markdown-text
 msgid ""
 "The chapters in this book are largely self-contained. A beginner with little "
@@ -670,7 +678,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:104
+#: text/chapter1.md:106
 #, markdown-text
 msgid ""
 "Each chapter will focus on a single practical example, providing the "
@@ -685,13 +693,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:106
+#: text/chapter1.md:108
 #, markdown-text
 msgid "Code samples will appear in a monospaced font as follows:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter1.md:107
+#: text/chapter1.md:109
 #, no-wrap
 msgid ""
 "module Example where\n"
@@ -702,7 +710,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:116
+#: text/chapter1.md:118
 #, markdown-text
 msgid ""
 "Commands which should be typed at the command line will be preceded by a "
@@ -710,13 +718,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter1.md:117 text/chapter3.md:313
+#: text/chapter1.md:119 text/chapter3.md:330
 #, no-wrap
 msgid "$ spago build\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:122
+#: text/chapter1.md:124
 #, markdown-text
 msgid ""
 "Usually, these commands will be tailored to Linux/Mac OS users, so Windows "
@@ -725,7 +733,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:124
+#: text/chapter1.md:126
 #, markdown-text
 msgid ""
 "Commands which should be typed at the PSCi interactive mode prompt will be "
@@ -733,7 +741,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter1.md:125
+#: text/chapter1.md:127
 #, no-wrap
 msgid ""
 "> 1 + 2\n"
@@ -741,7 +749,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:131
+#: text/chapter1.md:133
 #, markdown-text
 msgid ""
 "Each chapter will contain exercises labelled with their difficulty level. It "
@@ -750,7 +758,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:133
+#: text/chapter1.md:135
 #, markdown-text
 msgid ""
 "This book aims to provide an introduction to the PureScript language for "
@@ -761,13 +769,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:134
+#: text/chapter1.md:136
 #, markdown-text, no-wrap
 msgid "Getting Help"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:137
+#: text/chapter1.md:139
 #, markdown-text
 msgid ""
 "If you get stuck at any point, there are a number of resources available "
@@ -775,7 +783,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "The [PureScript Discord server](https://discord.gg/vKn9up84bp) is a great "
@@ -784,7 +792,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "The [Purescript Discourse Forum](https://discourse.purescript.org/) is "
@@ -792,7 +800,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "[PureScript: Jordan's "
@@ -803,7 +811,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "[Pursuit](https://pursuit.purescript.org) is a searchable database of "
@@ -812,7 +820,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "The unofficial [PureScript "
@@ -821,7 +829,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "The [PureScript documentation "
@@ -831,7 +839,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "The [PureScript website](https://www.purescript.org) contains links to "
@@ -840,7 +848,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter1.md:146
+#: text/chapter1.md:148
 #, markdown-text
 msgid ""
 "[Try PureScript!](https://try.purescript.org) is a website that allows users "
@@ -849,22 +857,24 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:148
+#: text/chapter1.md:150
 #, markdown-text
 msgid ""
-"If you prefer to learn by reading examples, the `purescript`, "
-"`purescript-node`, and `purescript-contrib` GitHub organizations contain "
-"plenty of examples of PureScript code."
+"If you prefer to learn by reading examples, the "
+"[purescript](https://github.com/purescript), "
+"[purescript-node](https://github.com/purescript-node), and "
+"[purescript-contrib](https://github.com/purescript-contrib) GitHub "
+"organizations contain plenty of examples of PureScript code."
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:149
+#: text/chapter1.md:151
 #, markdown-text, no-wrap
 msgid "About the Author"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:152
+#: text/chapter1.md:154
 #, markdown-text
 msgid ""
 "I am the original developer of the PureScript compiler. I'm based in Los "
@@ -875,7 +885,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:154
+#: text/chapter1.md:156
 #, markdown-text
 msgid ""
 "Not long into my professional career, I began to appreciate functional "
@@ -884,7 +894,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:156
+#: text/chapter1.md:158
 #, markdown-text
 msgid ""
 "I started working on the PureScript compiler in response to my experience "
@@ -899,7 +909,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:158
+#: text/chapter1.md:160
 #, markdown-text
 msgid ""
 "I maintain [a blog](https://blog.functorial.com), and can be [reached on "
@@ -907,13 +917,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter1.md:159
+#: text/chapter1.md:161
 #, markdown-text, no-wrap
 msgid "Acknowledgements"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:162
+#: text/chapter1.md:164
 #, markdown-text
 msgid ""
 "I would like to thank the many contributors who helped PureScript to reach "
@@ -923,7 +933,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:164
+#: text/chapter1.md:166
 #, markdown-text
 msgid ""
 "The PureScript logo which appears on the cover of this book was created by "
@@ -933,7 +943,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter1.md:165
+#: text/chapter1.md:167
 #, markdown-text
 msgid ""
 "Finally, I would like to thank everyone who has given me feedback and "
@@ -1603,7 +1613,7 @@ msgstr ""
 #: text/chapter12.md:361 text/chapter12.md:555 text/chapter13.md:90
 #: text/chapter13.md:137 text/chapter13.md:244 text/chapter13.md:387
 #: text/chapter14.md:249 text/chapter14.md:352 text/chapter14.md:569
-#: text/chapter14.md:704 text/chapter2.md:124 text/chapter3.md:714
+#: text/chapter14.md:704 text/chapter2.md:124 text/chapter3.md:774
 #: text/chapter4.md:70 text/chapter4.md:181 text/chapter4.md:363
 #: text/chapter4.md:521 text/chapter4.md:615 text/chapter5.md:99
 #: text/chapter5.md:228 text/chapter5.md:392 text/chapter5.md:465
@@ -3462,7 +3472,7 @@ msgstr ""
 #. type: Title ##
 #: text/chapter10.md:1083 text/chapter11.md:963 text/chapter12.md:594
 #: text/chapter13.md:401 text/chapter14.md:720 text/chapter2.md:129
-#: text/chapter3.md:722 text/chapter4.md:631 text/chapter5.md:529
+#: text/chapter3.md:782 text/chapter4.md:631 text/chapter5.md:529
 #: text/chapter6.md:757 text/chapter7.md:691 text/chapter8.md:1001
 #: text/chapter9.md:238
 #, markdown-text, no-wrap
@@ -11824,13 +11834,22 @@ msgid "Here, we import several modules:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:24
+#: text/chapter3.md:25
+#, markdown-text
+msgid ""
+"The `Prelude` module, which contains a small set of standard definitions and "
+"functions. It re-exports many foundational modules from "
+"the `purescript-prelude` library."
+msgstr ""
+
+#. type: Bullet: '- '
+#: text/chapter3.md:25
 #, markdown-text
 msgid "The `Control.Plus` module, which defines the `empty` value."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:24
+#: text/chapter3.md:25
 #, markdown-text
 msgid ""
 "The `Data.List` module, provided by the `lists` package, which can be "
@@ -11839,7 +11858,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:24
+#: text/chapter3.md:25
 #, markdown-text
 msgid ""
 "The `Data.Maybe` module, which defines data types and functions for working "
@@ -11847,16 +11866,17 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:26
+#: text/chapter3.md:27
 #, markdown-text
 msgid ""
 "Notice that the imports for these modules are listed explicitly in "
-"parentheses. This is generally a good practice, as it helps to avoid "
-"conflicting imports."
+"parentheses (except for `Prelude`, which is typically imported as an open "
+"import). This is generally a good practice, as it helps to avoid conflicting "
+"imports."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:28
+#: text/chapter3.md:29
 #, markdown-text
 msgid ""
 "Assuming you have cloned the book's source code repository, the project for "
@@ -11864,7 +11884,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:29
+#: text/chapter3.md:30
 #, no-wrap
 msgid ""
 "$ cd chapter3\n"
@@ -11872,13 +11892,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:34
+#: text/chapter3.md:35
 #, markdown-text, no-wrap
 msgid "Simple Types"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:37
+#: text/chapter3.md:38
 #, markdown-text
 msgid ""
 "PureScript defines three built-in types corresponding to JavaScript's "
@@ -11889,7 +11909,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:38
+#: text/chapter3.md:39
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -11905,7 +11925,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:52
+#: text/chapter3.md:53
 #, markdown-text
 msgid ""
 "PureScript defines other built-in types: integers, characters, arrays, "
@@ -11913,7 +11933,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:54
+#: text/chapter3.md:55
 #, markdown-text
 msgid ""
 "Integers are differentiated from floating point values of type `Number` by "
@@ -11921,7 +11941,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:55
+#: text/chapter3.md:56
 #, no-wrap
 msgid ""
 "> :type 1\n"
@@ -11929,7 +11949,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:61
+#: text/chapter3.md:62
 #, markdown-text
 msgid ""
 "Character literals are wrapped in single quotes, unlike string literals "
@@ -11937,7 +11957,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:62
+#: text/chapter3.md:63
 #, no-wrap
 msgid ""
 "> :type 'a'\n"
@@ -11945,7 +11965,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:68
+#: text/chapter3.md:69
 #, markdown-text
 msgid ""
 "Arrays correspond to JavaScript arrays, but unlike in JavaScript, all "
@@ -11953,7 +11973,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:69
+#: text/chapter3.md:70
 #, no-wrap
 msgid ""
 "> :type [1, 2, 3]\n"
@@ -11967,7 +11987,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:81
+#: text/chapter3.md:82
 #, markdown-text
 msgid ""
 "The last example shows an error from the type checker, which failed to "
@@ -11975,7 +11995,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:83
+#: text/chapter3.md:84
 #, markdown-text
 msgid ""
 "Records correspond to JavaScript's objects, and record literals have the "
@@ -11983,7 +12003,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:84
+#: text/chapter3.md:85
 #, no-wrap
 msgid ""
 "> author = { name: \"Phil\", interests: [\"Functional Programming\", "
@@ -11996,7 +12016,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:94
+#: text/chapter3.md:95
 #, markdown-text
 msgid ""
 "This type indicates that the specified object has two _fields_: a `name` "
@@ -12005,7 +12025,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:96
+#: text/chapter3.md:97
 #, markdown-text
 msgid ""
 "Fields of records can be accessed using a dot, followed by the label of the "
@@ -12013,7 +12033,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:97
+#: text/chapter3.md:98
 #, no-wrap
 msgid ""
 "> author.name\n"
@@ -12024,44 +12044,26 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:106
-#, markdown-text
-msgid ""
-"PureScript's functions correspond to JavaScript's functions. The PureScript "
-"standard libraries provide plenty of examples of functions, and we will see "
-"more in this chapter:"
-msgstr ""
-
-#. type: Fenced code block (text)
 #: text/chapter3.md:107
-#, no-wrap
-msgid ""
-"> import Prelude\n"
-"> :type flip\n"
-"forall a b c. (a -> b -> c) -> b -> a -> c\n"
-"\n"
-"> :type const\n"
-"forall a b. a -> b -> a\n"
-msgstr ""
-
-#. type: Plain text
-#: text/chapter3.md:117
 #, markdown-text
 msgid ""
-"Functions can be defined at the top-level of a file by specifying arguments "
-"before the equals sign:"
+"PureScript's functions correspond to JavaScript's functions. Functions can "
+"be defined at the top-level of a file by specifying arguments before the "
+"equals sign:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:118
+#: text/chapter3.md:108
 #, no-wrap
 msgid ""
+"import Prelude -- bring the (+) operator into scope\n"
+"\n"
 "add :: Int -> Int -> Int\n"
 "add x y = x + y\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:124
+#: text/chapter3.md:116
 #, markdown-text
 msgid ""
 "Alternatively, functions can be defined inline using a backslash character "
@@ -12072,9 +12074,10 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:125
+#: text/chapter3.md:117
 #, no-wrap
 msgid ""
+"> import Prelude\n"
 "> :paste\n"
 "… add :: Int -> Int -> Int\n"
 "… add = \\x y -> x + y\n"
@@ -12082,7 +12085,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:133
+#: text/chapter3.md:126
 #, markdown-text
 msgid ""
 "Having defined this function in PSCi, we can _apply_ it to its arguments by "
@@ -12090,7 +12093,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:134
+#: text/chapter3.md:127
 #, no-wrap
 msgid ""
 "> add 10 20\n"
@@ -12098,97 +12101,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:139
-#, markdown-text, no-wrap
-msgid "Quantified Types"
-msgstr ""
-
-#. type: Plain text
-#: text/chapter3.md:142
-#, markdown-text
-msgid ""
-"In the previous section, we saw the types of some functions defined in the "
-"Prelude. For example, the `flip` function had the following type:"
-msgstr ""
-
-#. type: Fenced code block (text)
-#: text/chapter3.md:143
-#, no-wrap
-msgid ""
-"> :type flip\n"
-"forall a b c. (a -> b -> c) -> b -> a -> c\n"
-msgstr ""
-
-#. type: Plain text
-#: text/chapter3.md:149
-#, markdown-text
-msgid ""
-"The keyword `forall` here indicates that `flip` has a _universally "
-"quantified type_. It means we can substitute any types for `a`, `b`, and "
-"`c`, and `flip` will work with those types."
-msgstr ""
-
-#. type: Plain text
-#: text/chapter3.md:151
-#, markdown-text
-msgid ""
-"For example, we might choose the type `a` to be `Int`, `b` to be `String`, "
-"and `c` to be `String`. In that case, we could _specialize_ the type of "
-"`flip` to"
-msgstr ""
-
-#. type: Fenced code block (text)
-#: text/chapter3.md:152
-#, no-wrap
-msgid "(Int -> String -> String) -> String -> Int -> String\n"
-msgstr ""
-
-#. type: Plain text
-#: text/chapter3.md:157
-#, markdown-text
-msgid ""
-"We don't have to indicate in code that we want to specialize a quantified "
-"type – it happens automatically. For example, we can use `flip` as if it had "
-"this type already:"
-msgstr ""
-
-#. type: Fenced code block (text)
-#: text/chapter3.md:158
-#, no-wrap
-msgid ""
-"> flip (\\n s -> show n <> s) \"Ten\" 10\n"
-"\n"
-"\"10Ten\"\n"
-msgstr ""
-
-#. type: Plain text
-#: text/chapter3.md:165
-#, markdown-text
-msgid ""
-"While we can choose any types for `a`, `b`, and `c`, we have to be "
-"consistent. The type of function passed to `flip` had to be consistent with "
-"the types of the other arguments. That is why we passed the string `\"Ten\"` "
-"as the second argument and the number `10` as the third. It would not work "
-"if the arguments were reversed:"
-msgstr ""
-
-#. type: Fenced code block (text)
-#: text/chapter3.md:166
-#, no-wrap
-msgid ""
-"> flip (\\n s -> show n <> s) 10 \"Ten\"\n"
-"\n"
-"Could not match type Int with type String\n"
-msgstr ""
-
-#. type: Title ##
-#: text/chapter3.md:172
+#: text/chapter3.md:132
 #, markdown-text, no-wrap
 msgid "Notes On Indentation"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:175
+#: text/chapter3.md:135
 #, markdown-text
 msgid ""
 "PureScript code is _indentation-sensitive_, just like Haskell, but unlike "
@@ -12198,21 +12117,21 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:177
+#: text/chapter3.md:137
 #, markdown-text
 msgid ""
-"If a declaration spans multiple lines, then any lines except the first must "
-"be indented past the indentation level of the first line."
+"If a declaration spans multiple lines, any lines except the first must be "
+"indented past the indentation level of the first line."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:179
+#: text/chapter3.md:139
 #, markdown-text
 msgid "Therefore, the following is a valid PureScript code:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:180
+#: text/chapter3.md:140
 #, no-wrap
 msgid ""
 "add x y z = x +\n"
@@ -12220,13 +12139,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:186
+#: text/chapter3.md:146
 #, markdown-text
 msgid "But this is not a valid code:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:187
+#: text/chapter3.md:147
 #, no-wrap
 msgid ""
 "add x y z = x +\n"
@@ -12234,7 +12153,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:193
+#: text/chapter3.md:153
 #, markdown-text
 msgid ""
 "In the second case, the PureScript compiler will try to parse _two_ "
@@ -12242,7 +12161,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:195
+#: text/chapter3.md:155
 #, markdown-text
 msgid ""
 "Generally, any declarations defined in the same block should be indented at "
@@ -12251,7 +12170,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:196
+#: text/chapter3.md:156
 #, no-wrap
 msgid ""
 "> :paste\n"
@@ -12261,13 +12180,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:204
+#: text/chapter3.md:164
 #, markdown-text
 msgid "But this is not:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:205
+#: text/chapter3.md:165
 #, no-wrap
 msgid ""
 "> :paste\n"
@@ -12277,47 +12196,60 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:213
+#: text/chapter3.md:173
 #, markdown-text
 msgid ""
-"Certain PureScript keywords (such as `where`, `of` and `let`) introduce a "
-"new block of code, in which declarations must be further-indented:"
+"Certain PureScript keywords introduce a new block of code, in which "
+"declarations must be further-indented:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:214
+#: text/chapter3.md:174
 #, no-wrap
 msgid ""
-"example x y z = foo + bar\n"
-"  where\n"
+"example x y z =\n"
+"  let\n"
 "    foo = x * y\n"
 "    bar = y * z\n"
+"  in\n"
+"    foo + bar\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:222
+#: text/chapter3.md:184
 #, markdown-text
+msgid "This doesn't compile:"
+msgstr ""
+
+#. type: Fenced code block (haskell)
+#: text/chapter3.md:185
+#, no-wrap
 msgid ""
-"Note how the declarations for `foo` and `bar` are indented past the "
-"declaration of `example`."
+"example x y z =\n"
+"  let\n"
+"    foo = x * y\n"
+"  bar = y * z\n"
+"  in\n"
+"    foo + bar\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:224
+#: text/chapter3.md:195
 #, markdown-text
 msgid ""
-"The only exception to this rule is the `where` keyword in the initial "
-"`module` declaration at the top of a source file."
+"If you want to learn more (or encounter any problems), see the "
+"[Syntax](https://github.com/purescript/documentation/blob/master/language/Syntax.md#syntax) "
+"documentation."
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:225
+#: text/chapter3.md:196
 #, markdown-text, no-wrap
 msgid "Defining Our Types"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:228
+#: text/chapter3.md:199
 #, markdown-text
 msgid ""
 "A good first step when tackling a new problem in PureScript is to write out "
@@ -12326,13 +12258,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:229
+#: text/chapter3.md:200
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:Entry}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:234
+#: text/chapter3.md:205
 #, markdown-text
 msgid ""
 "This defines a _type synonym_ called `Entry` – the type `Entry` is "
@@ -12343,19 +12275,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:235
+#: text/chapter3.md:206
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:Address}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:240
+#: text/chapter3.md:211
 #, markdown-text
 msgid "Note that records can contain other records."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:242
+#: text/chapter3.md:213
 #, markdown-text
 msgid ""
 "Now let's define a third type synonym for our address book data structure, "
@@ -12363,13 +12295,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:243
+#: text/chapter3.md:214
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:AddressBook}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:248
+#: text/chapter3.md:219
 #, markdown-text
 msgid ""
 "Note that `List Entry` differs from `Array Entry`, which represents an "
@@ -12377,13 +12309,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:249
+#: text/chapter3.md:220
 #, markdown-text, no-wrap
 msgid "Type Constructors and Kinds"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:252
+#: text/chapter3.md:223
 #, markdown-text
 msgid ""
 "`List` is an example of a _type constructor_. Values do not have the type "
@@ -12392,7 +12324,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:254
+#: text/chapter3.md:225
 #, markdown-text
 msgid ""
 "Note that just like function application, type constructors are applied to "
@@ -12402,7 +12334,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:256
+#: text/chapter3.md:227
 #, markdown-text
 msgid ""
 "If we try to incorrectly define a value of type `List` (by using the type "
@@ -12410,7 +12342,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:257
+#: text/chapter3.md:228
 #, no-wrap
 msgid ""
 "> import Data.List\n"
@@ -12419,7 +12351,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:264
+#: text/chapter3.md:235
 #, markdown-text
 msgid ""
 "This is a _kind error_. Just like values are distinguished by their _types_, "
@@ -12428,7 +12360,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:266
+#: text/chapter3.md:237
 #, markdown-text
 msgid ""
 "There is a special kind called `Type` which represents the kind of all types "
@@ -12436,7 +12368,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:268
+#: text/chapter3.md:239
 #, markdown-text, no-wrap
 msgid ""
 "There are also kinds for type constructors. For example, the kind `Type -> "
@@ -12446,7 +12378,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:270
+#: text/chapter3.md:241
 #, markdown-text
 msgid ""
 "To find out the kind of a type, use the `:kind` command in PSCi. For "
@@ -12454,7 +12386,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:271
+#: text/chapter3.md:242
 #, no-wrap
 msgid ""
 "> :kind Number\n"
@@ -12469,7 +12401,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:284
+#: text/chapter3.md:255
 #, markdown-text
 msgid ""
 "PureScript's _kind system_ supports other interesting kinds, which we will "
@@ -12477,13 +12409,114 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
+#: text/chapter3.md:256
+#, markdown-text, no-wrap
+msgid "Quantified Types"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:259
+#, markdown-text
+msgid ""
+"For illustration purposes, let's define a primitive function that takes any "
+"two arguments and returns the first one:"
+msgstr ""
+
+#. type: Fenced code block (text)
+#: text/chapter3.md:260
+#, no-wrap
+msgid ""
+"> :paste\n"
+"… constantlyFirst :: forall a b. a -> b -> a\n"
+"… constantlyFirst = \\a b -> a\n"
+"… ^D\n"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:275
+#, markdown-text, no-wrap
+msgid ""
+"> Note that if you use `:type` to ask about the type of `constantlyFirst`, "
+"it will be more verbose:\n"
+">\n"
+"> ```text\n"
+"> : type constantlyFirst\n"
+"> forall (a :: Type) (b :: Type). a -> b -> a\n"
+"> ```\n"
+">\n"
+"> The type signature contains additional kind information, which explicitly "
+"notes that `a` and `b` should be concrete types.\n"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:277
+#, markdown-text
+msgid ""
+"The keyword `forall` indicates that `constantlyFirst` has a _universally "
+"quantified type_. It means we can substitute any types for `a` and `b` – "
+"`constantlyFirst` will work with these types."
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:279
+#, markdown-text
+msgid ""
+"For example, we might choose the type `a` to be `Int` and `b` – `String`. In "
+"that case, we can _specialize_ the type of `constantlyFirst` to"
+msgstr ""
+
+#. type: Fenced code block (text)
+#: text/chapter3.md:280
+#, no-wrap
+msgid "Int -> String -> Int\n"
+msgstr ""
+
+#. type: Plain text
 #: text/chapter3.md:285
+#, markdown-text
+msgid ""
+"We don't have to indicate in code that we want to specialize a quantified "
+"type – it happens automatically. For example, we can use `constantlyFirst` "
+"as if it had this type already:"
+msgstr ""
+
+#. type: Fenced code block (text)
+#: text/chapter3.md:286
+#, no-wrap
+msgid ""
+"> constantlyFirst 3 \"ignored\"\n"
+"\n"
+"3\n"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:293
+#, markdown-text
+msgid ""
+"While we can choose any types for `a` and `b`, the return type of "
+"`constantlyFirst` has to be the same as the type of the first argument "
+"(because both of them are \"tied\" to the same `a`):"
+msgstr ""
+
+#. type: Fenced code block (text)
+#: text/chapter3.md:294
+#, no-wrap
+msgid ""
+":type constantlyFirst true \"ignored\"\n"
+"Boolean\n"
+"\n"
+":type constantlyFirst \"keep\" 3\n"
+"String\n"
+msgstr ""
+
+#. type: Title ##
+#: text/chapter3.md:302
 #, markdown-text, no-wrap
 msgid "Displaying Address Book Entries"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:288
+#: text/chapter3.md:305
 #, markdown-text
 msgid ""
 "Let's write our first function, which will render an address book entry as a "
@@ -12495,7 +12528,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:289
+#: text/chapter3.md:306
 #, no-wrap
 msgid ""
 "{{#include "
@@ -12503,7 +12536,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:294
+#: text/chapter3.md:311
 #, markdown-text
 msgid ""
 "This type signature says that `showEntry` is a function that takes an "
@@ -12512,7 +12545,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:295
+#: text/chapter3.md:312
 #, no-wrap
 msgid ""
 "{{#include "
@@ -12520,7 +12553,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:300
+#: text/chapter3.md:317
 #, markdown-text
 msgid ""
 "This function concatenates the three fields of the `Entry` record into a "
@@ -12529,13 +12562,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:301
+#: text/chapter3.md:318
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:showAddress}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:306
+#: text/chapter3.md:323
 #, markdown-text, no-wrap
 msgid ""
 "A function definition begins with the name of the function, followed by a "
@@ -12546,13 +12579,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:307
+#: text/chapter3.md:324
 #, markdown-text, no-wrap
 msgid "Test Early, Test Often"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:310
+#: text/chapter3.md:327
 #, markdown-text
 msgid ""
 "The PSCi interactive mode allows for rapid prototyping with immediate "
@@ -12561,19 +12594,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:312
+#: text/chapter3.md:329
 #, markdown-text
 msgid "First, build the code you've written:"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:318
+#: text/chapter3.md:335
 #, markdown-text
 msgid "Next, load PSCi, and use the `import` command to import your new module:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:319
+#: text/chapter3.md:336
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -12582,7 +12615,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:326
+#: text/chapter3.md:343
 #, markdown-text
 msgid ""
 "We can create an entry by using a record literal, which looks just like an "
@@ -12590,7 +12623,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:327
+#: text/chapter3.md:344
 #, no-wrap
 msgid ""
 "> address = { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" "
@@ -12598,13 +12631,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:332
+#: text/chapter3.md:349
 #, markdown-text
 msgid "Now, try applying our function to the example:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:333
+#: text/chapter3.md:350
 #, no-wrap
 msgid ""
 "> showAddress address\n"
@@ -12613,7 +12646,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:340
+#: text/chapter3.md:357
 #, markdown-text
 msgid ""
 "Let's also test `showEntry` by creating an address book entry record "
@@ -12621,7 +12654,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:341
+#: text/chapter3.md:358
 #, no-wrap
 msgid ""
 "> entry = { firstName: \"John\", lastName: \"Smith\", address: address }\n"
@@ -12631,13 +12664,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:348
+#: text/chapter3.md:365
 #, markdown-text, no-wrap
 msgid "Creating Address Books"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:351
+#: text/chapter3.md:368
 #, markdown-text
 msgid ""
 "Now let's write some utility functions for working with address books. We "
@@ -12645,13 +12678,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:352
+#: text/chapter3.md:369
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:emptyBook}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:357
+#: text/chapter3.md:374
 #, markdown-text
 msgid ""
 "We will also need a function for inserting a value into an existing address "
@@ -12659,7 +12692,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:358
+#: text/chapter3.md:375 text/chapter3.md:459
 #, no-wrap
 msgid ""
 "{{#include "
@@ -12667,7 +12700,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:363
+#: text/chapter3.md:380
 #, markdown-text
 msgid ""
 "This type signature says that `insertEntry` takes an `Entry` as its first "
@@ -12676,7 +12709,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:365
+#: text/chapter3.md:382
 #, markdown-text
 msgid ""
 "We don't modify the existing `AddressBook` directly. Instead, we return a "
@@ -12688,7 +12721,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:367
+#: text/chapter3.md:384
 #, markdown-text
 msgid ""
 "To implement `insertEntry`, we can use the `Cons` function from "
@@ -12696,7 +12729,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:368
+#: text/chapter3.md:385
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -12704,11 +12737,11 @@ msgid ""
 "> import Data.List\n"
 "> :type Cons\n"
 "\n"
-"forall a. a -> List a -> List a\n"
+"forall (a :: Type). a -> List a -> List a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:378
+#: text/chapter3.md:395
 #, markdown-text
 msgid ""
 "This type signature says that `Cons` takes a value of some type `a`, takes a "
@@ -12717,25 +12750,25 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:379
+#: text/chapter3.md:396
 #, no-wrap
 msgid "Entry -> List Entry -> List Entry\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:384
+#: text/chapter3.md:401
 #, markdown-text
 msgid "But `List Entry` is the same as `AddressBook`, so this is equivalent to"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:385
+#: text/chapter3.md:402
 #, no-wrap
 msgid "Entry -> AddressBook -> AddressBook\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:390
+#: text/chapter3.md:407
 #, markdown-text
 msgid ""
 "In our case, we already have the appropriate inputs: an `Entry`, and an "
@@ -12744,19 +12777,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:392
+#: text/chapter3.md:409
 #, markdown-text
 msgid "Here is our implementation of `insertEntry`:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:393
+#: text/chapter3.md:410
 #, no-wrap
 msgid "insertEntry entry book = Cons entry book\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:398
+#: text/chapter3.md:415
 #, markdown-text
 msgid ""
 "This brings the two arguments `entry` and `book` into scope – on the "
@@ -12765,45 +12798,123 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:399
+#: text/chapter3.md:416
 #, markdown-text, no-wrap
 msgid "Curried Functions"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:402
+#: text/chapter3.md:419
 #, markdown-text
 msgid ""
 "Functions in PureScript take exactly one argument. While it looks like the "
 "`insertEntry` function takes two arguments, it is an example of a _curried "
-"function_."
+"function_. In PureScript, all functions are considered curried."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:404
-#, markdown-text, no-wrap
+#: text/chapter3.md:421
+#, markdown-text
 msgid ""
-"The `->` operator in the type of `insertEntry` associates to the right, "
-"which means that the compiler parses the type as\n"
+"Currying means converting a function that takes multiple arguments into a "
+"function that takes them one at a time. When we call a function, we pass it "
+"one argument, and it returns another function that also takes one argument "
+"until all arguments are passed."
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:423
+#, markdown-text
+msgid ""
+"For example, when we pass `5` to `add`, we get another function, which takes "
+"an int, adds 5 to it, and returns the sum as a result:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:405
+#: text/chapter3.md:424
+#, no-wrap
+msgid ""
+"add :: Int -> Int -> Int\n"
+"add x y = x + y\n"
+"\n"
+"addFive :: Int -> Int\n"
+"addFive = add 5\n"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:433
+#, markdown-text
+msgid ""
+"`addFive` is the result of _partial application_, which means we pass less "
+"than the total number of arguments to a function that takes multiple "
+"arguments. Let's give it a try:"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:443
+#, markdown-text, no-wrap
+msgid ""
+"> Note that you must define the `add` function if you haven't already:\n"
+">\n"
+"> ```text\n"
+"> > import Prelude\n"
+"> > :paste\n"
+">… add :: Int -> Int -> Int\n"
+">… add x y = x + y\n"
+">… ^D\n"
+"> ```\n"
+msgstr ""
+
+#. type: Fenced code block (text)
+#: text/chapter3.md:444
+#, no-wrap
+msgid ""
+"> :paste\n"
+"… addFive :: Int -> Int\n"
+"… addFive = add 5\n"
+"… ^D\n"
+"\n"
+"> addFive 1\n"
+"6\n"
+"\n"
+"> add 5 1\n"
+"6\n"
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:458
+#, markdown-text
+msgid ""
+"To better understand currying and partial application, try making a few "
+"other functions, for example, out of `add`. And when you're done, let's "
+"return to the `insertEntry`."
+msgstr ""
+
+#. type: Plain text
+#: text/chapter3.md:464
+#, markdown-text, no-wrap
+msgid ""
+"The `->` operator (in the type signature) associates to the right, which "
+"means that the compiler parses the type as\n"
+msgstr ""
+
+#. type: Fenced code block (haskell)
+#: text/chapter3.md:465
 #, no-wrap
 msgid "Entry -> (AddressBook -> AddressBook)\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:410
+#: text/chapter3.md:470
 #, markdown-text
 msgid ""
-"That is, `insertEntry` is a function that returns a function! It takes a "
-"single argument, an `Entry`, and returns a new function, which in turn takes "
-"a single `AddressBook` argument and returns a new `AddressBook`."
+"`insertEntry` takes a single argument, an `Entry`, and returns a new "
+"function, which in turn takes a single `AddressBook` argument and returns a "
+"new `AddressBook`."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:412
+#: text/chapter3.md:472
 #, markdown-text
 msgid ""
 "This means we can _partially apply_ `insertEntry` by specifying only its "
@@ -12811,7 +12922,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:413
+#: text/chapter3.md:473
 #, no-wrap
 msgid ""
 "> :type insertEntry entry\n"
@@ -12820,7 +12931,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:420
+#: text/chapter3.md:480
 #, markdown-text
 msgid ""
 "As expected, the return type was a function. We can apply the resulting "
@@ -12828,7 +12939,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:421
+#: text/chapter3.md:481
 #, no-wrap
 msgid ""
 "> :type (insertEntry entry) emptyBook\n"
@@ -12836,7 +12947,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:427
+#: text/chapter3.md:487
 #, markdown-text
 msgid ""
 "Note though, that the parentheses here are unnecessary – the following is "
@@ -12844,7 +12955,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:428
+#: text/chapter3.md:488
 #, no-wrap
 msgid ""
 "> :type insertEntry entry emptyBook\n"
@@ -12852,7 +12963,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:434
+#: text/chapter3.md:494
 #, markdown-text
 msgid ""
 "This is because function application associates to the left, which explains "
@@ -12861,7 +12972,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:436
+#: text/chapter3.md:496
 #, markdown-text, no-wrap
 msgid ""
 "The `->` operator in function types is a _type constructor_ for "
@@ -12870,7 +12981,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:438
+#: text/chapter3.md:498
 #, markdown-text
 msgid ""
 "Note that in the rest of the book, I will talk about things like \"functions "
@@ -12880,13 +12991,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:440
+#: text/chapter3.md:500
 #, markdown-text
 msgid "Now consider the definition of `insertEntry`:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:441
+#: text/chapter3.md:501
 #, no-wrap
 msgid ""
 "insertEntry :: Entry -> AddressBook -> AddressBook\n"
@@ -12894,7 +13005,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:447
+#: text/chapter3.md:507
 #, markdown-text
 msgid ""
 "If we explicitly parenthesize the right-hand side, we get `(Cons entry) "
@@ -12905,7 +13016,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:448
+#: text/chapter3.md:508
 #, no-wrap
 msgid ""
 "insertEntry :: Entry -> AddressBook -> AddressBook\n"
@@ -12913,19 +13024,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:454
+#: text/chapter3.md:514
 #, markdown-text
 msgid "But now, by the same argument, we can remove `entry` from both sides:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:455
+#: text/chapter3.md:515
 #, no-wrap
 msgid "{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry}}\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:460
+#: text/chapter3.md:520
 #, markdown-text
 msgid ""
 "This process, called _eta conversion_, can be used (along with other "
@@ -12934,7 +13045,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:462
+#: text/chapter3.md:522
 #, markdown-text
 msgid ""
 "In the case of `insertEntry`, _eta conversion_ has resulted in a very clear "
@@ -12944,13 +13055,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:463
+#: text/chapter3.md:523
 #, markdown-text, no-wrap
 msgid "Property Accessors"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:466
+#: text/chapter3.md:526
 #, markdown-text
 msgid ""
 "One common pattern is to use a function to access individual fields (or "
@@ -12959,13 +13070,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:467
+#: text/chapter3.md:527
 #, no-wrap
 msgid "\\entry -> entry.address\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:472
+#: text/chapter3.md:532
 #, markdown-text
 msgid ""
 "PureScript also allows [_property "
@@ -12975,13 +13086,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:473
+#: text/chapter3.md:533
 #, no-wrap
 msgid "_.address\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:478
+#: text/chapter3.md:538
 #, markdown-text
 msgid ""
 "This works with any number of levels or properties, so a function to extract "
@@ -12989,19 +13100,19 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:479
+#: text/chapter3.md:539
 #, no-wrap
 msgid "_.address.city\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:484 text/chapter5.md:247
+#: text/chapter3.md:544 text/chapter5.md:247
 #, markdown-text
 msgid "For example:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:485
+#: text/chapter3.md:545
 #, no-wrap
 msgid ""
 "> address = { street: \"123 Fake St.\", city: \"Faketown\", state: \"CA\" "
@@ -13015,13 +13126,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:495
+#: text/chapter3.md:555
 #, markdown-text, no-wrap
 msgid "Querying the Address Book"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:498
+#: text/chapter3.md:558
 #, markdown-text
 msgid ""
 "The last function we need to implement for our minimal address book "
@@ -13031,7 +13142,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:500
+#: text/chapter3.md:560
 #, markdown-text
 msgid ""
 "We can filter the address book, keeping only those entries with the correct "
@@ -13040,7 +13151,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:502
+#: text/chapter3.md:562
 #, markdown-text
 msgid ""
 "With this high-level specification of our approach, we can calculate the "
@@ -13049,7 +13160,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:503
+#: text/chapter3.md:563
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -13057,21 +13168,21 @@ msgid ""
 "> import Data.List\n"
 "> :type filter\n"
 "\n"
-"forall a. (a -> Boolean) -> List a -> List a\n"
+"forall (a :: Type). (a -> Boolean) -> List a -> List a\n"
 "\n"
 "> :type head\n"
 "\n"
-"forall a. List a -> Maybe a\n"
+"forall (a :: Type). List a -> Maybe a\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:517
+#: text/chapter3.md:577
 #, markdown-text
 msgid "Let's pick apart these two types to understand their meaning."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:519
+#: text/chapter3.md:579
 #, markdown-text
 msgid ""
 "`filter` is a curried function of two arguments. Its first argument is a "
@@ -13081,7 +13192,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:521
+#: text/chapter3.md:581
 #, markdown-text
 msgid ""
 "`head` takes a list as its argument and returns a type we haven't seen "
@@ -13092,7 +13203,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:523
+#: text/chapter3.md:583
 #, markdown-text
 msgid ""
 "The universally quantified types of `filter` and `head` can be _specialized_ "
@@ -13100,7 +13211,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:524
+#: text/chapter3.md:584
 #, no-wrap
 msgid ""
 "filter :: (Entry -> Boolean) -> AddressBook -> AddressBook\n"
@@ -13109,7 +13220,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:531
+#: text/chapter3.md:591
 #, markdown-text
 msgid ""
 "We know that we will need to pass the first and last names that we want to "
@@ -13117,7 +13228,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:533
+#: text/chapter3.md:593
 #, markdown-text, no-wrap
 msgid ""
 "We also know that we will need a function to pass to `filter`. Let's call "
@@ -13128,7 +13239,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:535
+#: text/chapter3.md:595
 #, markdown-text
 msgid ""
 "Putting these facts together, a reasonable type signature for our function, "
@@ -13136,7 +13247,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:536
+#: text/chapter3.md:596
 #, no-wrap
 msgid ""
 "{{#include "
@@ -13144,7 +13255,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:541
+#: text/chapter3.md:601
 #, markdown-text
 msgid ""
 "This type signature says that `findEntry` takes two strings: the first and "
@@ -13154,13 +13265,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:543
+#: text/chapter3.md:603
 #, markdown-text
 msgid "And here is the definition of `findEntry`:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:544
+#: text/chapter3.md:604
 #, no-wrap
 msgid ""
 "findEntry firstName lastName book = head (filter filterEntry book)\n"
@@ -13171,13 +13282,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:552
+#: text/chapter3.md:612
 #, markdown-text
 msgid "Let's go over this code step by step."
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:554
+#: text/chapter3.md:614
 #, markdown-text
 msgid ""
 "`findEntry` brings three names into scope: `firstName` and `lastName`, both "
@@ -13185,7 +13296,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:556
+#: text/chapter3.md:616
 #, markdown-text
 msgid ""
 "The right-hand side of the definition combines the `filter` and `head` "
@@ -13194,7 +13305,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:558
+#: text/chapter3.md:618
 #, markdown-text
 msgid ""
 "The predicate function `filterEntry` is defined as an auxiliary declaration "
@@ -13206,7 +13317,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:560
+#: text/chapter3.md:620
 #, markdown-text
 msgid ""
 "Note that, just like for top-level declarations, it was unnecessary to "
@@ -13215,13 +13326,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:561
+#: text/chapter3.md:621
 #, markdown-text, no-wrap
 msgid "Infix Function Application"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:564
+#: text/chapter3.md:624
 #, markdown-text
 msgid ""
 "Most functions discussed so far used _prefix_ function application, where "
@@ -13231,13 +13342,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:565
+#: text/chapter3.md:625
 #, no-wrap
 msgid "> book1 = insertEntry john emptyBook\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:570
+#: text/chapter3.md:630
 #, markdown-text
 msgid ""
 "However, this chapter has also included examples of _infix_ [binary "
@@ -13250,13 +13361,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:571
+#: text/chapter3.md:631
 #, no-wrap
 msgid "infix 4 eq as ==\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:576
+#: text/chapter3.md:636
 #, markdown-text
 msgid ""
 "Therefore `entry.firstName == firstName` in `filterEntry` could be replaced "
@@ -13265,7 +13376,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:578
+#: text/chapter3.md:638
 #, markdown-text
 msgid ""
 "In some situations, putting a prefix function in an infix position as an "
@@ -13273,7 +13384,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:579
+#: text/chapter3.md:639
 #, no-wrap
 msgid ""
 "> mod 8 3\n"
@@ -13281,7 +13392,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:585
+#: text/chapter3.md:645
 #, markdown-text
 msgid ""
 "The above usage works fine but is awkward to read. A more familiar phrasing "
@@ -13290,7 +13401,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:586
+#: text/chapter3.md:646
 #, no-wrap
 msgid ""
 "> 8 `mod` 3\n"
@@ -13298,7 +13409,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:592
+#: text/chapter3.md:652
 #, markdown-text
 msgid ""
 "In the same way, wrapping `insertEntry` in backticks turns it into an infix "
@@ -13306,7 +13417,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:593
+#: text/chapter3.md:653
 #, no-wrap
 msgid ""
 "book1 = insertEntry john emptyBook\n"
@@ -13314,7 +13425,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:599
+#: text/chapter3.md:659
 #, markdown-text
 msgid ""
 "We can make an `AddressBook` with multiple entries by using multiple "
@@ -13323,7 +13434,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:600
+#: text/chapter3.md:660
 #, no-wrap
 msgid ""
 "book3 = insertEntry john (insertEntry peggy (insertEntry ned emptyBook))\n"
@@ -13332,7 +13443,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:606
+#: text/chapter3.md:666
 #, markdown-text
 msgid ""
 "We can also define an infix operator alias (or synonym) for `insertEntry.` "
@@ -13344,25 +13455,25 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:607
+#: text/chapter3.md:667
 #, no-wrap
 msgid "infixr 5 insertEntry as ++\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:612
+#: text/chapter3.md:672
 #, markdown-text
 msgid "This new operator lets us rewrite the above `book4` example as:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:613
+#: text/chapter3.md:673
 #, no-wrap
 msgid "book5 = john ++ (peggy ++ (ned ++ emptyBook))\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:618
+#: text/chapter3.md:678
 #, markdown-text
 msgid ""
 "The right associativity of our new `++` operator lets us get rid of the "
@@ -13370,13 +13481,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:619
+#: text/chapter3.md:679
 #, no-wrap
 msgid "book6 = john ++ peggy ++ ned ++ emptyBook\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:624
+#: text/chapter3.md:684
 #, markdown-text
 msgid ""
 "Another common technique for eliminating parens is to use `apply`'s infix "
@@ -13384,19 +13495,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:626
+#: text/chapter3.md:686
 #, markdown-text
 msgid "For example, the earlier `book3` example could be rewritten as:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:627
+#: text/chapter3.md:687
 #, no-wrap
 msgid "book7 = insertEntry john $ insertEntry peggy $ insertEntry ned emptyBook\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:632
+#: text/chapter3.md:692
 #, markdown-text
 msgid ""
 "Substituting `$` for parens is usually easier to type and (arguably) easier "
@@ -13406,7 +13517,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:634
+#: text/chapter3.md:694
 #, markdown-text
 msgid ""
 "Note that `$` isn't a special syntax hardcoded into the language. It's "
@@ -13415,7 +13526,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:635
+#: text/chapter3.md:695
 #, no-wrap
 msgid ""
 "apply :: forall a b. (a -> b) -> a -> b\n"
@@ -13425,7 +13536,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:643
+#: text/chapter3.md:703
 #, markdown-text, no-wrap
 msgid ""
 "The `apply` function takes another function (of type `(a -> b)`) as its "
@@ -13441,7 +13552,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:645
+#: text/chapter3.md:705
 #, markdown-text
 msgid ""
 "Another parens-busting opportunity for the `$` operator is in our earlier "
@@ -13449,13 +13560,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:646
+#: text/chapter3.md:706
 #, no-wrap
 msgid "findEntry firstName lastName book = head $ filter filterEntry book\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:651
+#: text/chapter3.md:711
 #, markdown-text
 msgid ""
 "We'll see an even more elegant way to rewrite this line with \"function "
@@ -13463,7 +13574,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:653
+#: text/chapter3.md:713
 #, markdown-text
 msgid ""
 "If you'd like to use a concise infix operator alias as a prefix function, "
@@ -13471,7 +13582,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:654
+#: text/chapter3.md:714
 #, no-wrap
 msgid ""
 "> 8 + 3\n"
@@ -13482,7 +13593,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:663
+#: text/chapter3.md:723
 #, markdown-text
 msgid ""
 "Alternatively, operators can be partially applied by surrounding the "
@@ -13494,7 +13605,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: text/chapter3.md:664
+#: text/chapter3.md:724
 #, no-wrap
 msgid ""
 "> add3 = (3 + _)\n"
@@ -13503,7 +13614,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:671
+#: text/chapter3.md:731
 #, markdown-text
 msgid ""
 "To summarize, the following are equivalent definitions of a function that "
@@ -13511,7 +13622,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:672
+#: text/chapter3.md:732
 #, no-wrap
 msgid ""
 "add5 x = 5 + x\n"
@@ -13526,13 +13637,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: text/chapter3.md:683
+#: text/chapter3.md:743
 #, markdown-text, no-wrap
 msgid "Function Composition"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:686
+#: text/chapter3.md:746
 #, markdown-text
 msgid ""
 "Just like we were able to simplify the `insertEntry` function by using eta "
@@ -13541,7 +13652,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:688
+#: text/chapter3.md:748
 #, markdown-text
 msgid ""
 "Note that the `book` argument is passed to the `filter filterEntry` "
@@ -13551,7 +13662,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:690
+#: text/chapter3.md:750
 #, markdown-text, no-wrap
 msgid ""
 "In PureScript, the function composition operators are `<<<` and `>>>`. The "
@@ -13560,7 +13671,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:692
+#: text/chapter3.md:752
 #, markdown-text
 msgid ""
 "We can rewrite the right-hand side of `findEntry` using either "
@@ -13568,13 +13679,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:693
+#: text/chapter3.md:753
 #, no-wrap
 msgid "(head <<< filter filterEntry) book\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:698
+#: text/chapter3.md:758
 #, markdown-text
 msgid ""
 "In this form, we can apply the eta conversion trick from earlier, to arrive "
@@ -13582,7 +13693,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:699
+#: text/chapter3.md:759
 #, no-wrap
 msgid ""
 "{{#include "
@@ -13591,19 +13702,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:705
+#: text/chapter3.md:765
 #, markdown-text
 msgid "An equally valid right-hand side would be:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: text/chapter3.md:706
+#: text/chapter3.md:766
 #, no-wrap
 msgid "filter filterEntry >>> head\n"
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:711
+#: text/chapter3.md:771
 #, markdown-text
 msgid ""
 "Either way, this gives a clear definition of the `findEntry` function: "
@@ -13612,7 +13723,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:713
+#: text/chapter3.md:773
 #, markdown-text
 msgid ""
 "I will let you decide which definition is easier to understand, but it is "
@@ -13622,7 +13733,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter3.md:721
+#: text/chapter3.md:781
 #, markdown-text
 msgid ""
 "(Easy) Test your understanding of the `findEntry` function by writing down "
@@ -13632,7 +13743,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter3.md:721
+#: text/chapter3.md:781
 #, markdown-text
 msgid ""
 "(Medium) Write a function `findEntryByStreet :: String -> AddressBook -> "
@@ -13642,7 +13753,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter3.md:721
+#: text/chapter3.md:781
 #, markdown-text
 msgid ""
 "(Medium) Rewrite `findEntryByStreet` to replace `filterEntry` with the "
@@ -13652,7 +13763,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter3.md:721
+#: text/chapter3.md:781
 #, markdown-text
 msgid ""
 "(Medium) Write a function `isInBook` that tests whether a name appears in a "
@@ -13662,7 +13773,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: text/chapter3.md:721
+#: text/chapter3.md:781
 #, markdown-text
 msgid ""
 "(Difficult) Write a function `removeDuplicates` which removes \"duplicate\" "
@@ -13675,7 +13786,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:725
+#: text/chapter3.md:785
 #, markdown-text
 msgid ""
 "In this chapter, we covered several new functional programming concepts and "
@@ -13683,43 +13794,43 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid "Use the interactive mode PSCi to experiment with functions and test ideas."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid "Use types as both a correctness tool and an implementation tool."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid "Use curried functions to represent functions of multiple arguments."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid "Create programs from smaller components by composition."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid "Structure code neatly using `where` expressions."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid "Avoid null values by using the `Maybe` type."
 msgstr ""
 
 #. type: Bullet: '- '
-#: text/chapter3.md:733
+#: text/chapter3.md:793
 #, markdown-text
 msgid ""
 "Use techniques like eta conversion and function composition to refactor code "
@@ -13727,7 +13838,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: text/chapter3.md:734
+#: text/chapter3.md:794
 #, markdown-text
 msgid "In the following chapters, we'll build on these ideas."
 msgstr ""
@@ -14087,7 +14198,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "> :type map\n"
-"forall a b f. Functor f => (a -> b) -> f a -> f b\n"
+"forall (f :: Type -> Type) (a :: Type) (b :: Type). Functor f => (a -> b) -> "
+"f a -> f b\n"
 msgstr ""
 
 #. type: Plain text
@@ -14102,7 +14214,7 @@ msgstr ""
 #. type: Fenced code block (text)
 #: text/chapter4.md:120
 #, no-wrap
-msgid "forall a b. (a -> b) -> Array a -> Array b\n"
+msgid "forall (a :: Type) (b :: Type). (a -> b) -> Array a -> Array b\n"
 msgstr ""
 
 #. type: Plain text
@@ -14322,7 +14434,7 @@ msgid ""
 "> import Data.Array\n"
 "\n"
 "> :type concat\n"
-"forall a. Array (Array a) -> Array a\n"
+"forall (a :: Type). Array (Array a) -> Array a\n"
 "\n"
 "> concat [[1, 2, 3], [4, 5], [6]]\n"
 "[1, 2, 3, 4, 5, 6]\n"
@@ -14351,7 +14463,7 @@ msgid ""
 "> import Data.Array\n"
 "\n"
 "> :type concatMap\n"
-"forall a b. (a -> Array b) -> Array a -> Array b\n"
+"forall (a :: Type) (b :: Type). (a -> Array b) -> Array a -> Array b\n"
 "\n"
 "> concatMap (\\n -> [n, n * n]) (1 .. 5)\n"
 "[1,1,2,4,3,9,4,16,5,25]\n"
@@ -14682,7 +14794,7 @@ msgid ""
 "> import Control.Alternative\n"
 "\n"
 "> :type guard\n"
-"forall m. Alternative m => Boolean -> m Unit\n"
+"forall (m :: Type -> Type). Alternative m => Boolean -> m Unit\n"
 msgstr ""
 
 #. type: Plain text
@@ -14808,10 +14920,12 @@ msgid ""
 "> import Data.Foldable\n"
 "\n"
 "> :type foldl\n"
-"forall a b f. Foldable f => (b -> a -> b) -> b -> f a -> b\n"
+"forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (b -> a -> "
+"b) -> b -> f a -> b\n"
 "\n"
 "> :type foldr\n"
-"forall a b f. Foldable f => (a -> b -> b) -> b -> f a -> b\n"
+"forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (a -> b -> "
+"b) -> b -> f a -> b\n"
 msgstr ""
 
 #. type: Plain text
@@ -14819,18 +14933,18 @@ msgstr ""
 #, markdown-text
 msgid ""
 "These types are more general than we are interested in right now. For this "
-"chapter, we can assume that PSCi has given the following (more specific) "
-"answer:"
+"chapter, we can simplify and assume the following (more specific) type "
+"signatures:"
 msgstr ""
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:388
 #, no-wrap
 msgid ""
-"> :type foldl\n"
+"-- foldl\n"
 "forall a b. (b -> a -> b) -> b -> Array a -> b\n"
 "\n"
-"> :type foldr\n"
+"-- foldr\n"
 "forall a b. (a -> b -> b) -> b -> Array a -> b\n"
 msgstr ""
 
@@ -15958,7 +16072,7 @@ msgid ""
 "> showPerson { first: x, last: y } = y <> \", \" <> x\n"
 "\n"
 "> :type showPerson\n"
-"forall r. { first :: String, last :: String | r } -> String\n"
+"forall (r :: Row Type). { first :: String, last :: String | r } -> String\n"
 msgstr ""
 
 #. type: Plain text
@@ -18093,7 +18207,7 @@ msgid ""
 "> import Prelude\n"
 "\n"
 "> :type \\x -> x + x\n"
-"forall a. Semiring a => a -> a\n"
+"forall (a :: Type). Semiring a => a -> a\n"
 msgstr ""
 
 #. type: Plain text
@@ -18523,7 +18637,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "> :type genericTail\n"
-"forall stream element. Stream stream element => stream -> Maybe stream\n"
+"forall (stream :: Type) (element :: Type). Stream stream element => stream "
+"-> Maybe stream\n"
 "\n"
 "> genericTail \"testing\"\n"
 "(Just \"esting\")\n"
@@ -19454,8 +19569,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "> :type lift3\n"
-"forall a b c d f. Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f "
-"d\n"
+"forall (a :: Type) (b :: Type) (c :: Type) (d :: Type) (f :: Type -> "
+"Type). Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d\n"
 msgstr ""
 
 #. type: Plain text

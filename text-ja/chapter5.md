@@ -196,7 +196,7 @@ true
 > showPerson { first: x, last: y } = y <> ", " <> x
 
 > :type showPerson
-forall r. { first :: String, last :: String | r } -> String
+forall (r :: Row Type). { first :: String, last :: String | r } -> String
 ```
 
 この型変数 `r`は何でしょうか。

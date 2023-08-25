@@ -46,6 +46,8 @@ PureScriptは軽量な構文を備えていますが、この構文によりと�
 また、JavaScriptやJavaScriptへとコンパイルされる他の言語と相互運用するときに重要な、高速で理解しやすいコードを生成します。
 概してPureScriptとは、純粋関数型プログラミングの理論的な強力さと、JavaScriptのお手軽で緩いプログラミングスタイルとの、とても現実的なバランスを狙った言語だということを理解して頂けたらと思います。
 
+> Note that PureScript can target other backends, not only JavaScript, but this book focuses on targeting web browser and node environments.
+
 ## 型と型推論
 
 動的型付けの言語と静的型付けの言語をめぐる議論については充分に文書化されています。
@@ -198,7 +200,11 @@ PSCi対話式モードプロンプトに入力するコマンドは、行の先�
   PureScript!](https://try.purescript.org)は利用者がwebブラウザでPureScriptのコードをコンパイルできるwebサイトです。
   幾つかの簡単なコードの例もあります。
 
-もし例を読んで学ぶ方が好きでしたら、GitHubの`purescript`組織、`purescript-node`組織及び`purescript-contrib`組織にはPureScriptコードの例が沢山あります。
+If you prefer to learn by reading examples, the
+[purescript](https://github.com/purescript),
+[purescript-node](https://github.com/purescript-node), and
+[purescript-contrib](https://github.com/purescript-contrib) GitHub
+organizations contain plenty of examples of PureScript code.
 
 ## 著者について
 

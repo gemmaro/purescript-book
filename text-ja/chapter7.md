@@ -99,7 +99,7 @@ Just ({ street: "123 Fake St.", city: "Faketown", state: "CA" })
 
 ```text
 > :type lift3
-forall a b c d f. Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d
+forall (a :: Type) (b :: Type) (c :: Type) (d :: Type) (f :: Type -> Type). Apply f => (a -> b -> c -> d) -> f a -> f b -> f c -> f d
 ```
 
 上の`Maybe`の例では型構築子`f`は`Maybe`ですから、`lift3`は次のように特殊化されます。
