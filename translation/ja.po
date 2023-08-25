@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-08-25 21:33+0900\n"
-"PO-Revision-Date: 2023-08-25 21:30+0900\n"
+"PO-Revision-Date: 2023-08-25 21:37+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -29614,43 +29614,43 @@ msgstr "`parallel`ライブラリを使って並列に非同期コードを走�
 #: CONTRIBUTING.md:1
 #, no-wrap
 msgid "Contributing"
-msgstr ""
+msgstr "貢献"
 
 #. type: Plain text
 #: CONTRIBUTING.md:4
 msgid "Please open PRs or Issues if you find anything to improve in the book."
-msgstr ""
+msgstr "本書で何かしら改善になるものを見付けたらPRやイシューを開いてください。"
 
 #. type: Plain text
 #: CONTRIBUTING.md:6
 msgid "We appreciate your feedback."
-msgstr ""
+msgstr "フィードバックに感謝します。"
 
 #. type: Title ##
 #: CONTRIBUTING.md:7
 #, no-wrap
 msgid "Editing chapter text"
-msgstr ""
+msgstr "章のテキストを編集する"
 
 #. type: Plain text
 #: CONTRIBUTING.md:10
 msgid ""
 "To test changes to the text locally, install [mdbook](https://github.com/"
 "rust-lang/mdBook), then run this command from repo root:"
-msgstr ""
+msgstr "テキストの変更をローカルで見てみるには、[mdbook](https://github.com/rust-lang/mdBook)をインストールし、以下のコマンドをリポジトリのルートで走らせます。"
 
 #. type: Fenced code block (sh)
 #: CONTRIBUTING.md:11
 #, no-wrap
 msgid "mdbook serve -o\n"
-msgstr ""
+msgstr "mdbook serve -o\n"
 
 #. type: Plain text
 #: CONTRIBUTING.md:15
 msgid ""
 "The rendered webpage will automatically refresh with any changes to readme "
 "files."
-msgstr ""
+msgstr "readmeファイルへの変更毎に描画されたwebページが自動的に再読み込みされます。"
 
 #~ msgid ""
 #~ "PureScript's functions correspond to JavaScript's functions. The "
