@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-08-25 20:42+0900\n"
+"POT-Creation-Date: 2023-08-25 21:33+0900\n"
 "PO-Revision-Date: 2023-08-25 21:30+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
@@ -284,7 +284,10 @@ msgid ""
 "The text of this book is licensed under the Creative Commons Attribution-"
 "NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
 "licenses/by-nc-sa/3.0/deed.en_US>."
-msgstr "The text of this book is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>."
+msgstr ""
+"The text of this book is licensed under the Creative Commons Attribution-"
+"NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
+"licenses/by-nc-sa/3.0/deed.en_US>."
 
 #. type: Plain text
 #: README.md:39
@@ -293,7 +296,11 @@ msgid ""
 "com/purescript/documentation), which uses the same license, and is copyright "
 "[various contributors](https://github.com/purescript/documentation/blob/"
 "master/CONTRIBUTORS.md)."
-msgstr "Some text is derived from the [PureScript Documentation Repo](https://github.com/purescript/documentation), which uses the same license, and is copyright [various contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md)."
+msgstr ""
+"Some text is derived from the [PureScript Documentation Repo](https://github."
+"com/purescript/documentation), which uses the same license, and is copyright "
+"[various contributors](https://github.com/purescript/documentation/blob/"
+"master/CONTRIBUTORS.md)."
 
 #. type: Plain text
 #: README.md:40
@@ -1012,7 +1019,11 @@ msgid ""
 "com/purescript), [purescript-node](https://github.com/purescript-node), and "
 "[purescript-contrib](https://github.com/purescript-contrib) GitHub "
 "organizations contain plenty of examples of PureScript code."
-msgstr "もし例を読んで学ぶ方が好きでしたら、GitHubの[purescript](https://github.com/purescript)、[purescript-node](https://github.com/purescript-node)、[purescript-contrib](https://github.com/purescript-contrib)組織にはPureScriptコードの例が沢山あります。"
+msgstr ""
+"もし例を読んで学ぶ方が好きでしたら、GitHubの[purescript](https://github.com/"
+"purescript)、[purescript-node](https://github.com/purescript-node)、"
+"[purescript-contrib](https://github.com/purescript-contrib)組織にはPureScript"
+"コードの例が沢山あります。"
 
 #. type: Title ##
 #: text/chapter1.md:151
@@ -4456,8 +4467,11 @@ msgid ""
 "PureScript code, it is good practice to provide an alternative function with "
 "an alphanumeric name for use in JavaScript."
 msgstr ""
-"コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図している場合、識別子は英数字のみを使用し、JavaScriptのキーワードを避けることをお勧めします。\n"
-"ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。"
+"コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図してい"
+"る場合、識別子は英数字のみを使用し、JavaScriptのキーワードを避けることをお勧"
+"めします。\n"
+"ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScript"
+"から使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。"
 
 #. type: Title ###
 #: text/chapter10.md:1155
@@ -14432,7 +14446,8 @@ msgid ""
 "prelude` library."
 msgstr ""
 "`Prelude`モジュールには標準的な定義と関数の小さな集合が含まれます。\n"
-"`purescript-prelude`ライブラリから多くの基礎的なモジュールを再エクスポートしているのです。"
+"`purescript-prelude`ライブラリから多くの基礎的なモジュールを再エクスポートし"
+"ているのです。"
 
 #. type: Bullet: '- '
 #: text/chapter3.md:25
@@ -14467,8 +14482,11 @@ msgid ""
 "import). This is generally a good practice, as it helps to avoid conflicting "
 "imports."
 msgstr ""
-"これらのモジュールのインポート内容が括弧内で明示的に列挙されていることに注目してください（`Prelude`は除きます。これは一括インポートされるのが普通です）。\n"
-"明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣です。"
+"これらのモジュールのインポート内容が括弧内で明示的に列挙されていることに注目"
+"してください（`Prelude`は除きます。これは一括インポートされるのが普通で"
+"す）。\n"
+"明示的な列挙はインポート内容の衝突を避けるのに役に立つので、一般に良い習慣で"
+"す。"
 
 #. type: Plain text
 #: text/chapter3.md:29
@@ -14783,7 +14801,9 @@ msgstr ""
 msgid ""
 "If a declaration spans multiple lines, any lines except the first must be "
 "indented past the indentation level of the first line."
-msgstr "宣言が複数行にわたる場合、最初の行以外は最初の行の字下げより深くしなければなりません。"
+msgstr ""
+"宣言が複数行にわたる場合、最初の行以外は最初の行の字下げより深くしなければな"
+"りません。"
 
 #. type: Plain text
 #: text/chapter3.md:139
@@ -14925,7 +14945,10 @@ msgid ""
 "If you want to learn more (or encounter any problems), see the [Syntax]"
 "(https://github.com/purescript/documentation/blob/master/language/Syntax."
 "md#syntax) documentation."
-msgstr "より多くを学びたければ（あるいは何か問題に遭遇したら）[構文](https://github.com/purescript/documentation/blob/master/language/Syntax.md#syntax)のドキュメントを参照してください。"
+msgstr ""
+"より多くを学びたければ（あるいは何か問題に遭遇したら）[構文](https://github."
+"com/purescript/documentation/blob/master/language/Syntax.md#syntax)のドキュメ"
+"ントを参照してください。"
 
 #. type: Title ##
 #: text/chapter3.md:196
@@ -15134,7 +15157,9 @@ msgstr "量化された型"
 msgid ""
 "For illustration purposes, let's define a primitive function that takes any "
 "two arguments and returns the first one:"
-msgstr "説明しやすくするため、任意の2つの引数を取り最初のものを返す原始的な関数を定義しましょう。"
+msgstr ""
+"説明しやすくするため、任意の2つの引数を取り最初のものを返す原始的な関数を定義"
+"しましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:260
@@ -15180,8 +15205,10 @@ msgid ""
 "quantified type_. It means we can substitute any types for `a` and `b` – "
 "`constantlyFirst` will work with these types."
 msgstr ""
-"この`forall`キーワードは、`constantlyFirst`が*全称量化された型*を持つことを示しています。\n"
-"つまり`a`や`b`をどの型に置き換えても良く、`constantlyFirst`はその型で動作するのです。"
+"この`forall`キーワードは、`constantlyFirst`が*全称量化された型*を持つことを示"
+"しています。\n"
+"つまり`a`や`b`をどの型に置き換えても良く、`constantlyFirst`はその型で動作する"
+"のです。"
 
 # FIXME: `b` - `String`は`b` to be `String`のような気がします。
 #. type: Plain text
@@ -15228,7 +15255,9 @@ msgid ""
 "While we can choose any types for `a` and `b`, the return type of "
 "`constantlyFirst` has to be the same as the type of the first argument "
 "(because both of them are \"tied\" to the same `a`):"
-msgstr "`a`と`b`にはどんな型でも選べますが、`constantlyFirst`が返す型は最初の引数の型と同じでなければなりません（両方とも同じ`a`に「紐付く」からです）。"
+msgstr ""
+"`a`と`b`にはどんな型でも選べますが、`constantlyFirst`が返す型は最初の引数の型"
+"と同じでなければなりません（両方とも同じ`a`に「紐付く」からです）。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:294
@@ -15579,7 +15608,8 @@ msgid ""
 "function_. In PureScript, all functions are considered curried."
 msgstr ""
 "PureScriptの関数はきっかり1つの引数を取ります。\n"
-"`insertEntry`関数は2つの引数を取るように見えますが、*カリー化された関数*の一例なのです。\n"
+"`insertEntry`関数は2つの引数を取るように見えますが、*カリー化された関数*の一"
+"例なのです。\n"
 "PureScriptでは全ての関数はカリー化されたものと見做されます。"
 
 #. type: Plain text
@@ -15590,8 +15620,10 @@ msgid ""
 "one argument, and it returns another function that also takes one argument "
 "until all arguments are passed."
 msgstr ""
-"カリー化が意味するのは複数の引数を取る関数を1度に1つ取る関数に変換することです。\n"
-"関数を呼ぶときに1つの引数を渡し、これまた1つの引数を取る別の関数を返し、といったことを全ての引数が渡されるまで続けます。"
+"カリー化が意味するのは複数の引数を取る関数を1度に1つ取る関数に変換することで"
+"す。\n"
+"関数を呼ぶときに1つの引数を渡し、これまた1つの引数を取る別の関数を返し、と"
+"いったことを全ての引数が渡されるまで続けます。"
 
 #. type: Plain text
 #: text/chapter3.md:423
@@ -15686,7 +15718,8 @@ msgid ""
 "other functions, for example, out of `add`. And when you're done, let's "
 "return to the `insertEntry`."
 msgstr ""
-"カリー化と部分適用をもっと理解するには、例にあった`add`とは別の関数を2、3作ってみてください。\n"
+"カリー化と部分適用をもっと理解するには、例にあった`add`とは別の関数を2、3作っ"
+"てみてください。\n"
 "そしてそれができたら`insertEntry`に戻りましょう。"
 
 #. type: Plain text
@@ -15711,7 +15744,8 @@ msgid ""
 "new `AddressBook`."
 msgstr ""
 "`insertEntry`は単一の引数`Entry`を取り、新しい関数を返します。\n"
-"そして今度はその関数が単一の引数`AddressBook`を取り、新しい`AddressBook`を返します。"
+"そして今度はその関数が単一の引数`AddressBook`を取り、新しい`AddressBook`を返"
+"します。"
 
 #. type: Plain text
 #: text/chapter3.md:472
@@ -17339,8 +17373,11 @@ msgid ""
 "any expression using the same operator multiple times or using multiple "
 "operators of the same precedence."
 msgstr ""
-"中置演算子に（左または右の）*結合性*を与えたい場合は、代わりにキーワード`infixl`と`infixr`を使います。\n"
-"`infix`を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。"
+"中置演算子に（左または右の）*結合性*を与えたい場合は、代わりにキーワード"
+"`infixl`と`infixr`を使います。\n"
+"`infix`を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同"
+"じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなりま"
+"す。"
 
 #. type: Title ##
 #: text/chapter4.md:168
@@ -29573,6 +29610,48 @@ msgstr "`affjax`ライブラリを使って非同期にHTTPリクエストする
 msgid "Run asynchronous code in parallel with the `parallel` library."
 msgstr "`parallel`ライブラリを使って並列に非同期コードを走らせる。"
 
+#. type: Title #
+#: CONTRIBUTING.md:1
+#, no-wrap
+msgid "Contributing"
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:4
+msgid "Please open PRs or Issues if you find anything to improve in the book."
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:6
+msgid "We appreciate your feedback."
+msgstr ""
+
+#. type: Title ##
+#: CONTRIBUTING.md:7
+#, no-wrap
+msgid "Editing chapter text"
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:10
+msgid ""
+"To test changes to the text locally, install [mdbook](https://github.com/"
+"rust-lang/mdBook), then run this command from repo root:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: CONTRIBUTING.md:11
+#, no-wrap
+msgid "mdbook serve -o\n"
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:15
+msgid ""
+"The rendered webpage will automatically refresh with any changes to readme "
+"files."
+msgstr ""
+
 #~ msgid ""
 #~ "PureScript's functions correspond to JavaScript's functions. The "
 #~ "PureScript standard libraries provide plenty of examples of functions, "
@@ -29661,4 +29740,6 @@ msgstr "`parallel`ライブラリを使って並列に非同期コードを走�
 #~ msgid ""
 #~ "The only exception to this rule is the `where` keyword in the initial "
 #~ "`module` declaration at the top of a source file."
-#~ msgstr "ただし、ソースファイルの先頭、最初の`module`宣言におけるキーワード`where`だけは、この規則の唯一の例外になっています。"
+#~ msgstr ""
+#~ "ただし、ソースファイルの先頭、最初の`module`宣言におけるキーワード`where`"
+#~ "だけは、この規則の唯一の例外になっています。"

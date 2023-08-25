@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-25 20:42+0900\n"
+"POT-Creation-Date: 2023-08-25 21:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24514,4 +24514,51 @@ msgstr ""
 #: text/chapter9.md:244
 #, markdown-text
 msgid "Run asynchronous code in parallel with the `parallel` library."
+msgstr ""
+
+#. type: Title #
+#: CONTRIBUTING.md:1
+#, markdown-text, no-wrap
+msgid "Contributing"
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:4
+#, markdown-text
+msgid "Please open PRs or Issues if you find anything to improve in the book."
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:6
+#, markdown-text
+msgid "We appreciate your feedback."
+msgstr ""
+
+#. type: Title ##
+#: CONTRIBUTING.md:7
+#, markdown-text, no-wrap
+msgid "Editing chapter text"
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:10
+#, markdown-text
+msgid ""
+"To test changes to the text locally, install "
+"[mdbook](https://github.com/rust-lang/mdBook), then run this command from "
+"repo root:"
+msgstr ""
+
+#. type: Fenced code block (sh)
+#: CONTRIBUTING.md:11
+#, no-wrap
+msgid "mdbook serve -o\n"
+msgstr ""
+
+#. type: Plain text
+#: CONTRIBUTING.md:15
+#, markdown-text
+msgid ""
+"The rendered webpage will automatically refresh with any changes to readme "
+"files."
 msgstr ""
