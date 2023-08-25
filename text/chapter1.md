@@ -38,6 +38,8 @@ Functions enable a simple form of abstraction that can yield great productivity 
 
 PureScript is a programming language that aims to address these issues. It features lightweight syntax, which allows us to write very expressive code which is still clear and readable. It uses a rich type system to support powerful abstractions. It also generates fast, understandable code, which is important when interoperating with JavaScript or other languages that compile to JavaScript. All in all, I hope to convince you that PureScript strikes a very practical balance between the theoretical power of purely functional programming and the fast-and-loose programming style of JavaScript.
 
+> Note that PureScript can target other backends, not only JavaScript, but this book focuses on targeting web browser and node environments.
+
 ## Types and Type Inference
 
 The debate over statically typed languages versus dynamically typed languages is well-documented. PureScript is a _statically typed_ language, meaning that a correct program can be given a _type_ by the compiler, which indicates its behavior. Conversely, programs that cannot be given a type are _incorrect programs_, and will be rejected by the compiler. In PureScript, unlike in dynamically typed languages, types exist only at _compile-time_ and have no representation at runtime.
@@ -144,7 +146,7 @@ If you get stuck at any point, there are a number of resources available online 
 - The [PureScript website](https://www.purescript.org) contains links to several learning resources, including code samples, videos, and other resources for beginners.
 - [Try PureScript!](https://try.purescript.org) is a website that allows users to compile PureScript code in the web browser and contains several simple examples of code.
 
-If you prefer to learn by reading examples, the `purescript`, `purescript-node`, and `purescript-contrib` GitHub organizations contain plenty of examples of PureScript code.
+If you prefer to learn by reading examples, the [purescript](https://github.com/purescript), [purescript-node](https://github.com/purescript-node), and [purescript-contrib](https://github.com/purescript-contrib) GitHub organizations contain plenty of examples of PureScript code.
 
 ## About the Author
 

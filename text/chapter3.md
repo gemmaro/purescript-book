@@ -18,11 +18,12 @@ The source code for this chapter is contained in the file `src/Data/AddressBook.
 
 Here, we import several modules:
 
+- The `Prelude` module, which contains a small set of standard definitions and functions. It re-exports many foundational modules from the `purescript-prelude` library.
 - The `Control.Plus` module, which defines the `empty` value.
 - The `Data.List` module, provided by the `lists` package, which can be installed using Spago. It contains a few functions that we will need for working with linked lists.
 - The `Data.Maybe` module, which defines data types and functions for working with optional values.
 
-Notice that the imports for these modules are listed explicitly in parentheses. This is generally a good practice, as it helps to avoid conflicting imports.
+Notice that the imports for these modules are listed explicitly in parentheses (except for `Prelude`, which is typically imported as an open import). This is generally a good practice, as it helps to avoid conflicting imports.
 
 Assuming you have cloned the book's source code repository, the project for this chapter can be built using Spago, with the following commands:
 
@@ -102,20 +103,11 @@ Fields of records can be accessed using a dot, followed by the label of the fiel
 ["Functional Programming","JavaScript"]
 ```
 
-PureScript's functions correspond to JavaScript's functions. The PureScript standard libraries provide plenty of examples of functions, and we will see more in this chapter:
-
-```text
-> import Prelude
-> :type flip
-forall a b c. (a -> b -> c) -> b -> a -> c
-
-> :type const
-forall a b. a -> b -> a
-```
-
-Functions can be defined at the top-level of a file by specifying arguments before the equals sign:
+PureScript's functions correspond to JavaScript's functions. Functions can be defined at the top-level of a file by specifying arguments before the equals sign:
 
 ```haskell
+import Prelude -- bring the (+) operator into scope
+
 add :: Int -> Int -> Int
 add x y = x + y
 ```
@@ -123,6 +115,7 @@ add x y = x + y
 Alternatively, functions can be defined inline using a backslash character followed by a space-delimited list of argument names. To enter a multi-line declaration in PSCi, we can enter "paste mode" using the `:paste` command. In this mode, declarations are terminated using the _Control-D_ key sequence:
 
 ```text
+> import Prelude
 > :paste
 … add :: Int -> Int -> Int
 … add = \x y -> x + y
@@ -136,44 +129,11 @@ Having defined this function in PSCi, we can _apply_ it to its arguments by sepa
 30
 ```
 
-## Quantified Types
-
-In the previous section, we saw the types of some functions defined in the Prelude. For example, the `flip` function had the following type:
-
-```text
-> :type flip
-forall a b c. (a -> b -> c) -> b -> a -> c
-```
-
-The keyword `forall` here indicates that `flip` has a _universally quantified type_. It means we can substitute any types for `a`, `b`, and `c`, and `flip` will work with those types.
-
-For example, we might choose the type `a` to be `Int`, `b` to be `String`, and `c` to be `String`. In that case, we could _specialize_ the type of `flip` to
-
-```text
-(Int -> String -> String) -> String -> Int -> String
-```
-
-We don't have to indicate in code that we want to specialize a quantified type – it happens automatically. For example, we can use `flip` as if it had this type already:
-
-```text
-> flip (\n s -> show n <> s) "Ten" 10
-
-"10Ten"
-```
-
-While we can choose any types for `a`, `b`, and `c`, we have to be consistent. The type of function passed to `flip` had to be consistent with the types of the other arguments. That is why we passed the string `"Ten"` as the second argument and the number `10` as the third. It would not work if the arguments were reversed:
-
-```text
-> flip (\n s -> show n <> s) 10 "Ten"
-
-Could not match type Int with type String
-```
-
 ## Notes On Indentation
 
 PureScript code is _indentation-sensitive_, just like Haskell, but unlike JavaScript. This means that the whitespace in your code is not meaningless, but rather is used to group regions of code, just like curly braces in C-like languages.
 
-If a declaration spans multiple lines, then any lines except the first must be indented past the indentation level of the first line.
+If a declaration spans multiple lines, any lines except the first must be indented past the indentation level of the first line.
 
 Therefore, the following is a valid PureScript code:
 
@@ -209,18 +169,29 @@ But this is not:
 … ^D
 ```
 
-Certain PureScript keywords (such as `where`, `of` and `let`) introduce a new block of code, in which declarations must be further-indented:
+Certain PureScript keywords introduce a new block of code, in which declarations must be further-indented:
 
 ```haskell
-example x y z = foo + bar
-  where
+example x y z =
+  let
     foo = x * y
     bar = y * z
+  in
+    foo + bar
 ```
 
-Note how the declarations for `foo` and `bar` are indented past the declaration of `example`.
+This doesn't compile:
 
-The only exception to this rule is the `where` keyword in the initial `module` declaration at the top of a source file.
+```haskell
+example x y z =
+  let
+    foo = x * y
+  bar = y * z
+  in
+    foo + bar
+```
+
+If you want to learn more (or encounter any problems), see the [Syntax](https://github.com/purescript/documentation/blob/master/language/Syntax.md#syntax) documentation.
 
 ## Defining Our Types
 
@@ -281,6 +252,52 @@ Type
 ```
 
 PureScript's _kind system_ supports other interesting kinds, which we will see later in the book.
+
+## Quantified Types
+
+For illustration purposes, let's define a primitive function that takes any two arguments and returns the first one:
+
+```text
+> :paste
+… constantlyFirst :: forall a b. a -> b -> a
+… constantlyFirst = \a b -> a
+… ^D
+```
+
+> Note that if you use `:type` to ask about the type of `constantlyFirst`, it will be more verbose:
+>
+> ```text
+> : type constantlyFirst
+> forall (a :: Type) (b :: Type). a -> b -> a
+> ```
+>
+> The type signature contains additional kind information, which explicitly notes that `a` and `b` should be concrete types.
+
+The keyword `forall` indicates that `constantlyFirst` has a _universally quantified type_. It means we can substitute any types for `a` and `b` – `constantlyFirst` will work with these types.
+
+For example, we might choose the type `a` to be `Int` and `b` – `String`. In that case, we can _specialize_ the type of `constantlyFirst` to
+
+```text
+Int -> String -> Int
+```
+
+We don't have to indicate in code that we want to specialize a quantified type – it happens automatically. For example, we can use `constantlyFirst` as if it had this type already:
+
+```text
+> constantlyFirst 3 "ignored"
+
+3
+```
+
+While we can choose any types for `a` and `b`, the return type of `constantlyFirst` has to be the same as the type of the first argument (because both of them are "tied" to the same `a`):
+
+```text
+:type constantlyFirst true "ignored"
+Boolean
+
+:type constantlyFirst "keep" 3
+String
+```
 
 ## Displaying Address Book Entries
 
@@ -371,7 +388,7 @@ $ spago repl
 > import Data.List
 > :type Cons
 
-forall a. a -> List a -> List a
+forall (a :: Type). a -> List a -> List a
 ```
 
 This type signature says that `Cons` takes a value of some type `a`, takes a list of elements of type `a`, and returns a new list with entries of the same type. Let's specialize this with `a` as our `Entry` type:
@@ -398,15 +415,58 @@ This brings the two arguments `entry` and `book` into scope – on the left-hand
 
 ## Curried Functions
 
-Functions in PureScript take exactly one argument. While it looks like the `insertEntry` function takes two arguments, it is an example of a _curried function_.
+Functions in PureScript take exactly one argument. While it looks like the `insertEntry` function takes two arguments, it is an example of a _curried function_. In PureScript, all functions are considered curried.
 
-The `->` operator in the type of `insertEntry` associates to the right, which means that the compiler parses the type as
+Currying means converting a function that takes multiple arguments into a function that takes them one at a time. When we call a function, we pass it one argument, and it returns another function that also takes one argument until all arguments are passed.
+
+For example, when we pass `5`  to `add`, we get another function, which takes an int, adds 5 to it, and returns the sum as a result:
+
+```haskell
+add :: Int -> Int -> Int
+add x y = x + y
+
+addFive :: Int -> Int
+addFive = add 5
+```
+
+`addFive` is the result of _partial application_, which means we pass less than the total number of arguments to a function that takes multiple arguments. Let's give it a try:
+
+> Note that you must define the `add` function if you haven't already:
+>
+> ```text
+> > import Prelude
+> > :paste
+>… add :: Int -> Int -> Int
+>… add x y = x + y
+>… ^D
+> ```
+
+```text
+> :paste
+… addFive :: Int -> Int
+… addFive = add 5
+… ^D
+
+> addFive 1
+6
+
+> add 5 1
+6
+```
+
+To better understand currying and partial application, try making a few other functions, for example, out of `add`. And when you're done, let's return to the `insertEntry`.
+
+```haskell
+{{#include ../exercises/chapter3/src/Data/AddressBook.purs:insertEntry_signature}}
+```
+
+The `->` operator (in the type signature) associates to the right, which means that the compiler parses the type as
 
 ```haskell
 Entry -> (AddressBook -> AddressBook)
 ```
 
-That is, `insertEntry` is a function that returns a function! It takes a single argument, an `Entry`, and returns a new function, which in turn takes a single `AddressBook` argument and returns a new `AddressBook`.
+`insertEntry` takes a single argument, an `Entry`, and returns a new function, which in turn takes a single `AddressBook` argument and returns a new `AddressBook`.
 
 This means we can _partially apply_ `insertEntry` by specifying only its first argument, for example. In PSCi, we can see the result type:
 
@@ -506,11 +566,11 @@ $ spago repl
 > import Data.List
 > :type filter
 
-forall a. (a -> Boolean) -> List a -> List a
+forall (a :: Type). (a -> Boolean) -> List a -> List a
 
 > :type head
 
-forall a. List a -> Maybe a
+forall (a :: Type). List a -> Maybe a
 ```
 
 Let's pick apart these two types to understand their meaning.
