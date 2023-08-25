@@ -47,22 +47,12 @@ The text of this book is licensed under the Creative Commons
 Attribution-NonCommercial-ShareAlike 3.0 Unported License:
 <https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>.
 
-<small>※以降の原文の使用許諾に関する和訳は法的効力を持ちません。<br>
-本書のテキストは<a
-href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.ja">表示 - 非営利 -
-継承3.0非移植 (CC BY-NC-SA 3.0)</a>のもとに使用が許諾される。</small>
-
 Some text is derived from the [PureScript Documentation
 Repo](https://github.com/purescript/documentation), which uses the same
 license, and is copyright [various
 contributors](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md).
 
-<small>幾つかのテキストは[PureScriptのドキュメントリポジトリ](https://github.com/purescript/documentation)から派生している。
-派生元も同じ使用許諾であり、[様々な形で貢献された方々](https://github.com/purescript/documentation/blob/master/CONTRIBUTORS.md)の著作権が含まれる。</small>
-
 The exercises are licensed under the MIT license.
-
-<small>演習はMITライセンスの下に使用が許諾される。</small>
 
 - - -
 
