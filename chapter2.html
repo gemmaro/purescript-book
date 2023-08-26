@@ -173,8 +173,8 @@
                     <main>
                         <h1 id="はじめよう"><a class="header" href="#はじめよう">はじめよう</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、この本で提供されているテストを使って答えを確認します。
-もし映像を見る学習の仕方が合っているようでしたら、<a href="https://www.youtube.com/watch?v=GPjPwb6d-70">この章を通しで進めるビデオ</a>が役に立つでしょう。</p>
+<p>本章では実際のPureScriptの開発環境を立ち上げ、幾つかの演習を解き、本書で提供されているテストを使って答えを確認します。
+もし映像を見る学習の仕方が合っているようでしたら、<a href="https://www.youtube.com/watch?v=GPjPwb6d-70">本章を通しで進めるビデオ</a>が役に立つでしょう。</p>
 <h2 id="環境構築"><a class="header" href="#環境構築">環境構築</a></h2>
 <p>最初にドキュメンテーションリポジトリにあるこの<a href="https://github.com/purescript/documentation/blob/master/guides/Getting-Started.md">はじめの手引き</a>を通しで進め、環境の構築と言語の基礎を学んでください。<a href="http://projecteuler.net/problem=1">Project
 Euler</a>の解答例にあるコードがわかりにくかったり見慣れない構文を含んでいたとしても心配要りません。来たる章でこの全ての内容をとても丁寧に押さえていきます。</p>
@@ -182,15 +182,18 @@ Euler</a>の解答例にあるコードがわかりにくかったり見慣れ�
 <p>PureScriptを書く上で（例えば本書の演習を解くなど）お好みのエディタを使えます。
 <a href="https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editor-support">エディタの対応についてのドキュメント</a>を参照してください。</p>
 <blockquote>
-<p>なお、完全なIDEの対応をするために、開いたプロジェクトのルートに<code>spago.dhall</code>があることを期待するエディタもあります。
+<p>なお、完全なIDE対応のため、開いたプロジェクトのルートに<code>spago.dhall</code>があることを期待するエディタもあります。
 例えば本章の演習に取り組む場合、<code>chapter2</code>ディレクトリを開くとよいでしょう。</p>
 <p>VS Codeを使っている場合、提供されているワークスペースを使って全ての章を同時に開くことができます。</p>
 </blockquote>
 <h2 id="演習を解く"><a class="header" href="#演習を解く">演習を解く</a></h2>
-<p>ここまでで必要な開発ツールをインストールできているので、この本のリポジトリをクローンしてください。</p>
+<p>ここまでで必要な開発ツールをインストールできているので、本書のリポジトリをクローンしてください。</p>
 <pre><code class="language-sh">git clone https://github.com/purescript-contrib/purescript-book.git
 </code></pre>
-<p>本のリポジトリにはPureScriptのコード例とそれぞれの章に付属する演習のための単体テストが含まれます。演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。この工程は<code>resetSolutions.sh</code>スクリプトを使えば簡単にできます。また<code>removeAnchors.sh</code>スクリプトで全てのアンカーコメントを取り除いておくのもよいでしょう（これらのアンカーはコードスニペットを本の変換後のMarkdownにコピーするために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうがよいでしょう）。</p>
+<p>本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テストが含まれます。
+演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。
+この工程は<code>resetSolutions.sh</code>スクリプトを使えば簡単にできます。
+また<code>removeAnchors.sh</code>スクリプトで全てのアンカーコメントを取り除いておくと良いでしょう（これらのアンカーはコード片を本書の表示用のMarkdownへ複製するために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうが良いでしょう）。</p>
 <pre><code class="language-sh">cd purescript-book
 ./scripts/resetSolutions.sh
 ./scripts/removeAnchors.sh
@@ -208,13 +211,13 @@ spago test
 
 All 2 tests passed! 🎉
 </code></pre>
-<p>なお、<code>answer</code>関数（<code>src/Euler.purs</code>にあります）は、任意の整数以下の3と5の倍数を見付けるように変更されています。
-この<code>answer</code>関数のためのテストスート（<code>test/Main.purs</code>にあります）ははじめの手引きの冒頭にあるテストよりも網羅的です。
-はじめの章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。</p>
-<p>本の残りの部分には多くの演習が含まれます。
+<p>なお、（<code>src/Euler.purs</code>にある）<code>answer</code>関数は任意の整数以下の3と5の倍数を見付けるように変更されています。
+（<code>test/Main.purs</code>にある）この<code>answer</code>関数のためのテストスートははじめの手引きの冒頭にあるテストよりも網羅的です。
+前の方の章を読んでいる間はこのテストフレームワークの仕組みを理解しようと思い詰めなくて大丈夫です。</p>
+<p>本書の残りの部分には多くの演習が含まれます。
 <code>Test.MySolutions</code>モジュール (<code>test/MySolutions.purs</code>)
 に自分の解法を書けば、提供されているテストスートを使って確認できます。</p>
-<p>テスト駆動開発のスタイルでこの次の演習を一緒に進めてみましょう。</p>
+<p>テスト駆動開発でこの次の演習を一緒に進めてみましょう。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
 <li>（普通）直角三角形の対角線（あるいは斜辺）の長さを他の2つの辺の長さを使って計算する<code>diagonal</code>関数を書いてください。</li>
@@ -240,7 +243,8 @@ at test/Main.purs:21:27 - 21:35 (line 21, column 27 - line 21, column 35)
 
   Unknown value diagonal
 </code></pre>
-<p>まずは、この関数が欠陥のあるバージョンになっているときに何が起こるのか見てみましょう。以下のコードを<code>test/MySolutions.purs</code>に追加してください。</p>
+<p>まずはこの関数に欠陥があるときに何が起こるのか見てみましょう。
+以下のコードを<code>test/MySolutions.purs</code>に追加してください。</p>
 <pre><code class="language-hs">import Data.Number (sqrt)
 
 diagonal w h = sqrt (w * w + h)
@@ -279,14 +283,14 @@ All 4 tests passed! 🎉
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章ではPureScriptコンパイラとSpagoツールをインストールしました。
 演習の解答の書き方と正しさの確認方法も学びました。</p>
-<p>この先の章にはもっと沢山の演習があり、それらに取り組むうちに学習の助けになっているでしょう。
-演習のどこかでお手上げになったら、この本の<a href="chapter1.ja.html#getting-help">困ったときは</a>の節に挙げられているコミュニティの資料のどれかを見てみたり、この<a href="https://github.com/purescript-contrib/purescript-book/issues">本のリポジトリ</a>にイシューを報告したりできます。
-こうした演習の敷居を下げることに繋がる読者のフィードバックが、本の向上の助けになっています。</p>
+<p>この先の章にはもっと沢山の演習があり、それらに取り組むうちに内容を学ぶ助けになっているでしょう。
+演習のどこかでお手上げになったら、本書の<a href="chapter1.ja.html#getting-help">困ったときは</a>の節に挙げられているコミュニティの資料のどれかに手を伸ばしたり、<a href="https://github.com/purescript-contrib/purescript-book/issues">本書のリポジトリ</a>でイシューを報告したりできます。
+こうした演習の敷居を下げることに繋がる読者のフィードバックのお陰で本書が改善されています。</p>
 <p>章の全ての演習を解いたら、<code>no-peeking/Solutions.purs</code>にあるものと解答とを比べられます。
-ただしカンニングしてはだめで、これらの演習を誠実に自力で解く労力を払わないことがないようにしてください。
+カンニングはせず、演習を誠実に自力で解く労力を割いてください。
 そしてたとえ行き詰まったにしても、まずはコミュニティメンバーに尋ねてみるようにしてください。
-演習のネタバレをするよりも、小さな手掛かりをあげたいからです。
-もっとエレガントな解法（とはいえ本の内容で押さえられている知識のみを必要とするもの）を見つけたときはPRを送ってください。</p>
+ネタバレをするよりも小さな手掛かりをあげたいからです。
+もっとエレガントな解法（とはいえ本書で押さえられている知識のみで済むもの）を見つけたときはPRを送ってください。</p>
 <p>リポジトリは継続して改訂されているため、それぞれの新しい章を始める前に更新を確認するようにしてください。</p>
 
                     </main>

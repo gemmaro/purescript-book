@@ -173,9 +173,9 @@
                     <main>
                         <h1 id="外部関数インターフェース"><a class="header" href="#外部関数インターフェース">外部関数インターフェース</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章でPureScriptの <em>外部関数インターフェース</em> (foreign function interface; <em>FFI</em>) を紹介します。
+<p>本章ではPureScriptの<em>外部関数インターフェース</em> (foreign function interface; <em>FFI</em>) を紹介します。
 これによりPureScriptコードからJavaScriptコードへの呼び出し、及びその逆が可能になります。
-これから扱うのは次のようなものです。</p>
+以下の方法を押さえていきます。</p>
 <ul>
 <li>純粋で、作用のある、非同期なJavaScript関数をPureScriptから呼び出す。</li>
 <li>型付けされていないデータを扱う。</li>
@@ -187,26 +187,27 @@
 <li>利用者にポップアップ通知で警告する。</li>
 <li>フォームのデータを直列化してブラウザのローカルストレージに保存し、アプリケーションが再起動したときにそれを再読み込みする</li>
 </ul>
-<p>さらに一般にはそこまで重用されない幾つかの話題を押さえた補遺もあります。
-ご自由にこれらの節を読んで構いませんが、学習目標にあまり関係しなければ、本の残りを読み進める妨げにならないようにしてください。</p>
+<p>さらに一般にはそこまで重用されない幾つかの追加の話題を押さえた補遺もあります。
+ご自由にこれらの節を読んで構いませんが、学習目標にあまり関係しなければ、本書の残りを読み進める妨げにならないようにしてください。</p>
 <ul>
 <li>実行時のPureScriptの値の表現を理解する。</li>
 <li>JavaScriptからPureScriptを呼び出す。</li>
 </ul>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
-<p>このモジュールのソースコードは、第3章、第7章及び第8章の続きになります。そうしたわけでソースツリーにはこれらの章からの適切なソースファイルが含まれています。</p>
+<p>このモジュールのソースコードは、第3章、第7章及び第8章の続きになります。
+そうしたわけでソースツリーにはこれらの章からの適切なソースファイルが含まれています。</p>
 <p>この章は<code>argonaut</code>ライブラリを依存関係として導入しています。
 このライブラリはJSONにエンコードしたりJSONをデコードしたりするために使います。</p>
 <p>この章の演習は<code>test/MySolutions.purs</code>に書き、<code>spago test</code>を走らせることによって<code>test/Main.purs</code>中の単体試験について確認できます。</p>
 <p>住所録アプリは<code>parcel src/index.html --open</code>で立ち上げることができます。8章と同じ作業の流れになっているので、より詳しい説明についてはそちらの章を参照してください。</p>
 <h2 id="免責事項"><a class="header" href="#免責事項">免責事項</a></h2>
-<p>JavaScriptを扱う作業をできる限り簡単にするため、PureScriptは直感的な外部関数インターフェースを提供しています。
-しかし、FFIはPureScriptの<em>応用的な</em>機能であることには留意していただきたいと思います。
-FFIを安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現についてよく理解していなければなりません。
+<p>JavaScriptの扱いをできる限り単純にするため、PureScriptは直感的な外部関数インターフェースを提供しています。
+しかし、FFIはこの言語の<em>応用的な</em>機能であることには心に留めておかれると良いでしょう。
+安全かつ効率的に使用するには、扱うつもりであるデータの実行時の表現について理解していなければなりません。
 この章では、PureScriptの標準ライブラリのコードに付いて回るそのような理解を伝授することを目指します。</p>
 <p>PureScriptのFFIはとても柔軟に設計されています。
-実際には、外部関数に最低限の型だけを与えるか、それとも型システムを利用して外部のコードの誤った使い方を防ぐようにするか、開発者が選べるということを意味しています。
-標準ライブラリのコードは、後者の手法を好む傾向にあります。</p>
+実際には、外部関数にとても単純な型を与えるか、型システムを利用して外部のコードの誤った使い方を防ぐようにするか、開発者が選べるようになっています。
+標準ライブラリのコードは、後者の手法を採る傾向にあります。</p>
 <p>簡単な例としては、JavaScriptの関数で戻り値が <code>null</code>にならないことは保証できません。
 実のところ、JavaScriptらしさのあるコードはかなり頻繁に <code>null</code>を返します。
 しかし、大抵PureScriptの型にnull値が巣喰うことはありません。
@@ -223,7 +224,8 @@ declaration) を使用し、既存のJavaScriptの値に型を与えることで
 node&gt; encodeURIComponent('Hello World')
 'Hello%20World'
 </code></pre>
-<p><code>null</code>でない文字列から <code>null</code>でない文字列への関数であり、副作用を持っていないので、この関数は型 <code>String -&gt; String</code>について適切な実行時表現を持っています。</p>
+<p>この関数は関数の型<code>String -&gt; String</code>について適切な実行時表現を持っています。
+<code>null</code>でない文字列を取って<code>null</code>でない文字列にするもので、副作用を持たないからです。</p>
 <p>次のような外部インポート宣言を使うと、この関数に型を割り当てることができます。</p>
 <pre><code class="language-haskell">module Test.URI where
 
@@ -272,8 +274,8 @@ foreign import square :: Number -&gt; Number
 この関数は直角三角形の対角線を計算します。</p>
 <pre><code class="language-hs">foreign import diagonal :: Number -&gt; Number -&gt; Number
 </code></pre>
-<p>PureScriptの関数は <em>カリー化</em> されていることを思い出してください。
-<code>diagonal</code>は<code>Number</code>を取って <em>関数</em> を返す関数です。
+<p>PureScriptの関数は<em>カリー化</em>されていることを思い出してください。
+<code>diagonal</code>は<code>Number</code>を取って<em>関数</em>を返す関数です。
 そして返された関数は<code>Number</code>を取って<code>Number</code>を返します。</p>
 <pre><code class="language-js">export const diagonal = function (w) {
   return function (h) {
@@ -313,9 +315,10 @@ foreign import square :: Number -&gt; Number
 Type -&gt; Type -&gt; Type -&gt; Type
 </code></pre>
 <p><code>Fn2</code>は3つの型引数を取ります。
-<code>Fn2 a b c</code>は、型 <code>a</code>と <code>b</code>の2つの引数、返り値の型 <code>c</code>をもつカリー化されていない関数の型を表現しています。
+<code>Fn2 a b c</code>は、型<code>a</code>と<code>b</code>の2つの引数、返り値の型<code>c</code>を持つカリー化されていない関数の型を表現しています。
 これを使って外部モジュールから<code>diagonalUncurried</code>をインポートしました。</p>
-<p>カリー化されていない関数と引数を取る<code>runFn2</code>で呼び出すことができます。</p>
+<p>そうして<code>runFn2</code>を使って呼び出せます。
+これはカリー化されていない関数と引数を取るものです。</p>
 <pre><code class="language-text">$ spago repl
 
 &gt; import Test.Examples
@@ -325,7 +328,10 @@ Type -&gt; Type -&gt; Type -&gt; Type
 </code></pre>
 <p><code>functions</code>パッケージでは0引数から10引数までの関数について同様の型構築子が定義されています。</p>
 <h2 id="カリー化されていない関数についての補足"><a class="header" href="#カリー化されていない関数についての補足">カリー化されていない関数についての補足</a></h2>
-<p>PureScriptのカリー化された関数にはもちろん利点があります。部分的に関数を適用でき、関数型に型クラスインスタンスを与えられます。しかし効率上の代償も付いてくるのです。効率性が決定的に重要なコードでは多変数を受け付けるカリー化されていないJavaScript関数を定義する必要が時々あります。</p>
+<p>PureScriptのカリー化された関数には勿論利点があります。
+部分的に関数を適用でき、関数型に型クラスインスタンスを与えられるのです。
+しかし効率上の代償も付いてきます。
+効率性が決定的に重要なコードでは時々、多変数を受け付けるカリー化されていないJavaScript関数を定義する必要があります。</p>
 <p>PureScriptでカリー化されていない関数を作ることもできます。
 2引数の関数については<code>mkFn2</code>関数が使えます。</p>
 <pre><code class="language-haskell">uncurriedAdd :: Fn2 Int Int Int
@@ -362,10 +368,10 @@ var curriedSum = curriedAdd(3)(10);
 </code></pre>
 <h2 id="現代的なjavascriptの構文についての補足"><a class="header" href="#現代的なjavascriptの構文についての補足">現代的なJavaScriptの構文についての補足</a></h2>
 <p>前に見た矢印関数構文はES6の機能であり、そのため幾つかの古いブラウザ（名指しすればIE11）と互換性がありません。
-執筆時点でWebブラウザをまだ更新していない<a href="https://caniuse.com/#feat=arrow-functions">6%の利用者が矢印関数を使うことができないと推計</a>されています。</p>
+執筆時点でwebブラウザをまだ更新していない<a href="https://caniuse.com/#feat=arrow-functions">6%の利用者が矢印関数を使うことができないと推計</a>されています。</p>
 <p>ほとんどの利用者にとって互換性があるようにするため、PureScriptコンパイラによって生成されるJavaScriptコードは矢印関数を使っていません。
 また、同じ理由で<strong>公開するライブラリでも矢印関数を避ける</strong>ことが推奨されます。</p>
-<p>それでも自分のFFIコードで矢印関数を使うこともできますが、デプロイの作業工程でES5に互換性のある関数へ変換するために<a href="https://github.com/babel/babel#intro">Babel</a>などのツールを含めるべきです。</p>
+<p>それでも自分のFFIコードで矢印関数を使うこともできますが、デプロイの作業工程でES5に互換性のある関数へ変換するために<a href="https://github.com/babel/babel#intro">Babel</a>などのツールを含めると良いでしょう。</p>
 <p>ES6の矢印関数がより読みやすく感じたら<a href="https://github.com/lebab/lebab">Lebab</a>のようなツールを使ってコンパイラの<code>output</code>ディレクトリにJavaScriptのコードを変換できます。</p>
 <pre><code class="language-sh">npm i -g lebab
 lebab --replace output/ --transform arrow,arrow-return
@@ -393,7 +399,8 @@ lebab --replace output/ --transform arrow,arrow-return
 </div>
 <p><code>String</code>と<code>Number</code>という原始型の例は既に見てきました。
 ここから<code>Array</code>や<code>Record</code>（JavaScriptでは<code>Object</code>）といった構造的な型を眺めていきます。</p>
-<p><code>Array</code>の受け渡しを実演するために、以下に<code>Int</code>の<code>Array</code>を取って別の配列として累計の和を返すJavaScriptの関数の呼び出し方を示します。前にありましたが、JavaScriptは<code>Int</code>のための分離した型を持たないため、PureScriptでの<code>Int</code>と<code>Number</code>はJavaScriptでの<code>Number</code>に翻訳されます。</p>
+<p><code>Array</code>を渡すところを実演するために、以下に<code>Int</code>の<code>Array</code>を取って別の配列として累計の和を返すJavaScriptの関数の呼び出し方を示します。
+前にありましたが、JavaScriptは<code>Int</code>のための分離した型を持たないため、PureScriptでの<code>Int</code>と<code>Number</code>は両方共JavaScriptでの<code>Number</code>に翻訳されます。</p>
 <pre><code class="language-hs">foreign import cumulativeSums :: Array Int -&gt; Array Int
 </code></pre>
 <pre><code class="language-js">export const cumulativeSums = arr =&gt; {
@@ -412,7 +419,7 @@ lebab --replace output/ --transform arrow,arrow-return
 &gt; cumulativeSums [1, 2, 3]
 [1,3,6]
 </code></pre>
-<p><code>Record</code>の受け渡しを実演するために、以下に2つの<code>Complex</code>な数をレコードとして取り、和を別のレコードとして返すJavaScriptの呼び出し方を示します。
+<p><code>Record</code>を渡すところを実演するために、以下に2つの<code>Complex</code>な数をレコードとして取り、和を別のレコードとして返すJavaScriptの呼び出し方を示します。
 PureScriptでの<code>Record</code>がJavaScriptでは<code>Object</code>として表現されることに注意してください。</p>
 <pre><code class="language-hs">type Complex = {
   real :: Number,
@@ -434,7 +441,10 @@ foreign import addComplex :: Complex -&gt; Complex -&gt; Complex
 &gt; addComplex { real: 1.0, imag: 2.0 } { real: 3.0, imag: 4.0 }
 { imag: 6.0, real: 4.0 }
 </code></pre>
-<p>なお、上の手法にはJavaScriptが期待通りの型を返すことを信用する必要があります。PureScriptはJavaScriptのコードに型検査を適用できないからです。この型安全性の配慮について後のJSONの節でより詳しく記述していきます。型の不整合から身を守る手法についても押さえます。</p>
+<p>なお、上の手法にはJavaScriptが期待通りの型を返すことを信用する必要があります。
+PureScriptはJavaScriptのコードに型検査を適用できないからです。
+この型安全性の配慮について後のJSONの節でより詳しく解説していきます。
+型の不整合から身を守る手法についても押さえます。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
 <li>（普通）<code>Complex</code>な数の配列を取って別の複素数の配列として累計の和を返すJavaScriptの関数<code>cumulativeSumsComplex</code>（と対応するPureScriptの外部インポート）を書いてください。</li>
@@ -485,16 +495,17 @@ maybeHead arr = maybeHeadImpl Just Nothing arr
 <pre><code class="language-hs">forall a. (forall x. x -&gt; Maybe x) -&gt; (forall x. Maybe x) -&gt; Array a -&gt; Maybe a
 </code></pre>
 <p>以下ではないことに注意です。</p>
-<pre><code class="language-hs">forall a. ( a -&gt; Maybe a) -&gt; Maybe a -&gt; Array a -&gt; Maybe a
+<pre><code class="language-hs">forall a. (a -&gt; Maybe a) -&gt; Maybe a -&gt; Array a -&gt; Maybe a
 </code></pre>
-<p>どちらの形式でも動きますが、後者は<code>Just</code>と<code>Nothing</code>の場所での招かれざる入力に侵されやすくなります。例えばより脆弱な場合では以下のようにして呼ぶことができます。</p>
+<p>どちらの形式でも動きますが、後者は<code>Just</code>と<code>Nothing</code>の場所での招かれざる入力に対してより脆弱です。</p>
+<p>例えば、比較的脆い方では、以下のように呼び出せるでしょう。</p>
 <pre><code class="language-hs">maybeHeadImpl (\_ -&gt; Just 1000) (Just 1000) [1,2,3]
 </code></pre>
-<p>これはいかなる配列についても<code>Just 1000</code>を返します。
-この脆弱性は<code>a</code>が<code>Int</code>のときに（これは入力の配列に基づきます）<code>(\_ -&gt; Just 1000)</code>と<code>Just 1000</code>がシグネチャ<code>(a -&gt; Maybe a)</code>と<code>Maybe a</code>にそれぞれ合致しているために許されているのです。</p>
+<p>これは如何なる配列の入力に対しても<code>Just 1000</code>を返します。</p>
+<p>この脆弱性では、<code>a</code>が<code>Int</code>のときに（これは入力の配列に基づきます）<code>(\_ -&gt; Just 1000)</code>と<code>Just 1000</code>がシグネチャ<code>(a -&gt; Maybe a)</code>と<code>Maybe a</code>にそれぞれ照合するために許容されてしまっています。</p>
 <p>より安全な型シグネチャでは、入力の配列に基づいて<code>a</code>が<code>Int</code>に決定されたとしても、<code>forall x</code>に絡むシグネチャに合致する妥当な関数を提供する必要があります。<code>(forall x. Maybe x)</code>の <em>唯一</em> の選択肢は<code>Nothing</code>ですが、それは<code>Just</code>値が<code>x</code>の型を前提にしてしまうと、もはや全ての<code>x</code>については妥当でなくなってしまうからです。<code>(forall x. x -&gt; Maybe x)</code>の唯一の選択肢は<code>Just</code>（望まれている引数）と<code>(\_ -&gt; Nothing)</code>であり、後者は唯一残っている脆弱性になるのです。</p>
 <h2 id="外部型の定義"><a class="header" href="#外部型の定義">外部型の定義</a></h2>
-<p><code>Maybe a</code>を返す代わりに実は<code>arr[0]</code>を返したいのだとしましょう。
+<p><code>Maybe a</code>を返す代わりに<code>arr[0]</code>を返したいのだとしましょう。
 型<code>a</code>ないし<code>undefined</code>値（ただし<code>null</code>ではありません）の何れかの値を表現する型がほしいです。
 この型を<code>Undefined a</code>と呼びましょう。</p>
 <p><em>外部インポート宣言</em> を使うと、<em>外部型</em> (foreign type) を定義できます。構文は外部関数を定義するのと似ています。</p>
@@ -505,7 +516,7 @@ maybeHead arr = maybeHeadImpl Just Nothing arr
 型シグネチャの代わりに、新しい型の<em>種</em>を与えます。
 この場合は<code>Undefined</code>の種が <code>Type -&gt; Type</code>であると宣言しています。
 言い換えれば<code>Undefined</code>は型構築子です。</p>
-<p>これで元の<code>head</code>の定義を単に再利用できます。</p>
+<p>これで元の<code>head</code>の定義を再利用できます。</p>
 <pre><code class="language-javascript">export const undefinedHead = arr =&gt;
   arr[0];
 </code></pre>
@@ -514,7 +525,7 @@ maybeHead arr = maybeHeadImpl Just Nothing arr
 </code></pre>
 <p><code>undefinedHead</code>関数の本体は<code>undefined</code>かもしれない<code>arr[0]</code>を返します。
 そしてこの型シグネチャはその事実を正しく反映しています。</p>
-<p>この関数はその型の適切な実行時表現を持っていますが、型 <code>Undefined a</code>の値を使用する方法がないので、全く役に立ちません。
+<p>この関数はその型の適切な実行時表現を持っていますが、型<code>Undefined a</code>の値を使用する方法がないので、全く役に立ちません。
 いや、言い過ぎました。
 別のFFIでこの型を使えますからね。</p>
 <p>値が未定義かどうかを教えてくれる関数を書くことができます。</p>
@@ -528,7 +539,7 @@ maybeHead arr = maybeHeadImpl Just Nothing arr
 <pre><code class="language-haskell">isEmpty :: forall a. Array a -&gt; Boolean
 isEmpty = isUndefined &lt;&lt;&lt; undefinedHead
 </code></pre>
-<p>このように、定義したこの外部関数はとても簡単です。
+<p>このように、定義したこの外部関数はとても単純です。
 つまりPureScriptの型検査器を使うことによる利益が最大限得られるのです。
 一般に、外部関数は可能な限り小さく保ち、できるだけアプリケーションの処理はPureScriptコードへ移動しておくことをお勧めします。</p>
 <h2 id="例外"><a class="header" href="#例外">例外</a></h2>
@@ -588,7 +599,7 @@ JavaScriptの呼び出しでも続けざまにPureScriptの関数を呼び出し
 <pre><code class="language-hs">bold :: forall a. Show a =&gt; a -&gt; String
 bold x = boldImpl show x
 </code></pre>
-<p>代わりにポイントフリー形式だとこうです。</p>
+<p>代えてポイントフリー形式だとこうです。</p>
 <pre><code class="language-hs">bold :: forall a. Show a =&gt; a -&gt; String
 bold = boldImpl show
 </code></pre>
@@ -649,7 +660,7 @@ unit
 これらの梱包があればカリー化されていない作用のある関数をPureScriptで呼び出すことができます。</p>
 <p>一般的にこれらを使うのは、こうしたAPIをカリー化された関数に包むのではなく、既存のJavaScriptライブラリのAPIを直接呼び出したいときぐらいです。
 したがってカリー化していない<code>yell</code>の例を見せてもあまり意味がありません。
-というのもJavaScriptがPureScriptの型クラスのメンバーに依っているからで、更にそれは既存のJavaScriptの生態系にそのメンバーが見付からないためです。</p>
+というのもJavaScriptがPureScriptの型クラスのメンバーに依っているからで、更にそれは既存のJavaScriptのエコシステムにそのメンバーが見付からないためです。</p>
 <p>翻って以前の<code>diagonal</code>の例を変更し、結果を返すことに加えてログ出力を含めるとこうなります。</p>
 <pre><code class="language-js">export const diagonalLog = function(w, h) {
   let result = Math.sqrt(w * w + h * h);
@@ -703,7 +714,7 @@ unit
 done waiting
 </code></pre>
 <p>REPLでの非同期ログ出力はブロック全体が実行を終了するまで印字を待機する点に注意しましょう。
-このコードを<code>spago test</code>で走らせた場合、印字の <em>合間に</em> 僅かな遅延があり、より予測に近い挙動をします。</p>
+このコードを<code>spago test</code>で走らせた場合、印字の<em>合間に</em>僅かな遅延があり、より予測に近い挙動をします。</p>
 <p>他にプロミスから値を返す例を見てみましょう。
 この関数は<code>async</code>と<code>await</code>を使って書かれていますが、これはプロミスの糖衣構文に過ぎません。</p>
 <pre><code class="language-js">async function diagonalWait(delay, w, h) {
@@ -739,9 +750,9 @@ unit
 もし何か良い演習の考えがあればご提案ください。</p>
 <h2 id="json"><a class="header" href="#json">JSON</a></h2>
 <p>アプリケーションでJSONを使うことには多くの理由があります。
-例えばWebのAPIと疎通するよくある手段であるためです。
+例えばwebのAPIと疎通するよくある手段であるためです。
 この節では他の用例についてもお話ししましょう。
-構造的なデータをFFI越しに渡すことで型安全性を向上させる手法から始めます。</p>
+構造的なデータをFFI越しに渡す場合に型安全性を向上させる手法から始めます。</p>
 <p>少し前のFFI関数<code>cumulativeSums</code>と<code>addComplex</code>を再訪し、それぞれに1つバグを混入させてみましょう。</p>
 <pre><code class="language-js">export const cumulativeSumsBroken = arr =&gt; {
   let sum = 0
@@ -797,7 +808,7 @@ TypeError: Cannot read property 'toString' of undefined
 <p>PureScriptのコードにバグ一匹通さないようにするため、JavaScriptのコードでJSONを使いましょう。</p>
 <p><code>argonaut</code>ライブラリにはこのために必要なJSONのデコードとエンコードの機能が備わっています。
 このライブラリには素晴らしい<a href="https://github.com/purescript-contrib/purescript-argonaut#documentation">ドキュメント</a>があるので、本書では基本的な用法だけを押さえます。</p>
-<p>返る型を<code>Json</code>として定義するようにして、代わりとなる外部インポートをつくるとこうなります。</p>
+<p>返る型を<code>Json</code>として定義するようにして、代わりとなる外部インポートを作るとこうなります。</p>
 <pre><code class="language-hs">foreign import cumulativeSumsJson :: Array Int -&gt; Json
 foreign import addComplexJson :: Complex -&gt; Complex -&gt; Json
 </code></pre>
@@ -889,15 +900,15 @@ Map String Int
 <li>
 <p>（簡単）より広い種類のマップに関して動作するよう、前のJavaScriptの関数の新しい梱包を書いてください。
 シグネチャは<code>valuesOfMapGeneric :: forall k v. Map k v -&gt; Either JsonDecodeError (Set v)</code>です。
-なお<code>k</code>と<code>v</code>に幾つかの型クラス制約を加える必要があるでしょう。
+なお、<code>k</code>と<code>v</code>に幾つかの型クラス制約を加える必要があるでしょう。
 コンパイラが導いてくれます。</p>
 </li>
 <li>
-<p>（普通）少し前の<code>quadraticRoots</code>を書き換えて<code>quadraticRootSet</code>としてください。
+<p>（普通）少し前の<code>quadraticRoots</code>関数を書き換えて<code>quadraticRootSet</code>としてください。
 この関数は<code>Complex</code>の根をJSONを介して（<code>Pair</code>の代わりに）<code>Set</code>として返します。</p>
 </li>
 <li>
-<p>（難しい）少し前の<code>quadraticRoots</code>を書き換えて<code>quadraticRootsSafe</code>としてください。
+<p>（難しい）少し前の<code>quadraticRoots</code>関数を書き換えて<code>quadraticRootsSafe</code>としてください。
 この関数はJSONを使って<code>Complex</code>の根の<code>Pair</code>をFFI越しに渡します。
 JavaScriptでは<code>Pair</code>構築子を使わないでください。
 その代わり、デコーダーに互換性のある形式で対を返すだけにしてください。
@@ -941,7 +952,7 @@ JavaScriptでは<code>Pair</code>構築子を使わないでください。
 フォームのフィールドにはこの文書の内容を入れます。</li>
 <li>フォームの状態を保存したり読み込んだりするのに問題があればポップアップの警告を出します。</li>
 </ul>
-<p><code>Effect.Storage</code>モジュールに以下のWebストレージAPIのためのFFIの梱包をつくることから始めていきます。</p>
+<p><code>Effect.Storage</code>モジュールに以下のwebストレージAPIのためのFFIの梱包を作ることから始めていきます。</p>
 <ul>
 <li><code>setItem</code>はキーと値（両方とも文字列）を受け取り、指定されたキーでローカルストレージに値を格納する計算を返します。</li>
 <li><code>getItem</code>はキーを取り、ローカルストレージから関連付けられたバリューの取得を試みます。
@@ -982,13 +993,13 @@ validateAndSave = do
       setItem &quot;person&quot; $ stringify $ encodeJson validPerson
       log &quot;Saved&quot;
 </code></pre>
-<p>なおこの段階でコンパイルしようとすると以下のエラーに遭遇します。</p>
+<p>なお、この段階でコンパイルしようとすると以下のエラーに遭遇します。</p>
 <pre><code class="language-text">  No type class instance was found for
     Data.Argonaut.Encode.Class.EncodeJson PhoneType
 </code></pre>
 <p>これはなぜかというと<code>Person</code>レコード中の<code>PhoneType</code>が<code>EncodeJson</code>インスタンスを必要としているからです。
-単純に汎用のエンコードインスタンスとデコードインスタンスを導出すれば完了です。
-この仕組みについて、より詳しくはargonautのドキュメントで見られます。</p>
+また、ついでに汎用のエンコードインスタンスとデコードインスタンスを導出していきます。
+この仕組みについての詳細情報はargonautのドキュメントにあります。</p>
 <pre><code class="language-hs">import Data.Argonaut (class DecodeJson, class EncodeJson)
 import Data.Argonaut.Decode.Generic (genericDecodeJson)
 import Data.Argonaut.Encode.Generic (genericEncodeJson)
@@ -1005,10 +1016,10 @@ instance DecodeJson PhoneType where decodeJson = genericDecodeJson
 <p>ローカルストレージから「person」文字列で取得することから始めましょう。</p>
 <pre><code class="language-hs">item &lt;- getItem &quot;person&quot;
 </code></pre>
-<p>そうしてローカルストレージから、文字列から<code>Person</code>レコードへの変換を扱う補助関数をつくります。
-なおこのストレージ中の文字列は<code>null</code>かもしれないので、うまく<code>String</code>としてデコードされるまでは外部の<code>Json</code>として表現します。
+<p>そうしてローカルストレージ由来の文字列から<code>Person</code>レコードへ変換する補助関数を作ります。
+なお、このストレージ中の文字列は<code>null</code>かもしれないので、正常に<code>String</code>としてデコードされるまでは外部の<code>Json</code>として表現します。
 道中には他にも多くの変換工程があり、それぞれで<code>Either</code>の値を返します。
-そのためこれらを<code>do</code>ブロックの中に纏めるのは理に適っています。</p>
+そのためこれらをまとめて<code>do</code>ブロックの中に纏めるのは理に適っています。</p>
 <pre><code class="language-hs">processItem :: Json -&gt; Either String Person
 processItem item = do
   jsonString &lt;- decodeJson item
@@ -1025,7 +1036,7 @@ processItem item = do
   Right p   -&gt; pure p
 </code></pre>
 <p>最後にこの<code>initialPerson</code>を<code>props</code>レコードを介してコンポーネントに渡します。</p>
-<pre><code class="language-hs">-- Create JSX node from react component.
+<pre><code class="language-hs">-- reactコンポーネントからJSXノードを作成します。
 app = element addressBookApp { initialPerson }
 </code></pre>
 <p>そして状態フックで使うために別の箇所で拾い上げます。</p>
@@ -1034,7 +1045,7 @@ mkAddressBookApp =
   reactComponent &quot;AddressBookApp&quot; \props -&gt; R.do
     Tuple person setPerson &lt;- useState props.initialPerson
 </code></pre>
-<p>仕上げとして、それぞれの<code>Left</code>値の<code>String</code>に<code>lmap</code>を使って前置し、エラー文言の質を向上させます。</p>
+<p>仕上げとして、各<code>Left</code>値の<code>String</code>に<code>lmap</code>を使って前置し、エラー文言の質を向上させます。</p>
 <pre><code class="language-hs">processItem :: Json -&gt; Either String Person
 processItem item = do
   jsonString &lt;- lmap (&quot;No string in local storage: &quot; &lt;&gt; _) $ decodeJson item
@@ -1042,15 +1053,15 @@ processItem item = do
   lmap               (&quot;Cannot decode Person: &quot;       &lt;&gt; _) $ decodeJson j
 </code></pre>
 <p>最初のエラーのみがこのアプリの通常の操作内で起こります。
-他のエラーはWebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。
-どのようにJSON文字列を変更したかが、どのエラーの引き金になるかを決定します。
-それぞれのエラーを引き起こせるかどうかやってみてください。</p>
+他のエラーはwebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。
+どのようにJSON文字列を変更したかが、どのエラーを引き起こすかを決定します。
+各エラーを引き起こせるかご確認ください。</p>
 <p>これでローカルストレージについては押さえました。
-次に<code>alert</code>アクションを実装していきます。
-このアクションは<code>Effect.Console</code>モジュールの<code>log</code>アクションによく似ています。
-唯一の相違点は<code>alert</code>アクションが<code>window.alert</code>メソッドを使うことで、対して<code>log</code>アクションは<code>console.log</code>メソッドを使っています。
+次に<code>alert</code>動作を実装していきます。
+この動作は<code>Effect.Console</code>モジュールの<code>log</code>動作に似ています。
+唯一の相違点は<code>alert</code>動作が<code>window.alert</code>メソッドを使うことで、対して<code>log</code>動作は<code>console.log</code>メソッドを使っています。
 そういうわけで<code>alert</code>は<code>window.alert</code>が定義された環境でのみ使うことができます。
-例えばWebブラウザなどです。</p>
+webブラウザなどです。</p>
 <pre><code class="language-hs">foreign import alert :: String -&gt; Effect Unit
 </code></pre>
 <pre><code class="language-js">export const alert = msg =&gt; () =&gt;
@@ -1074,17 +1085,18 @@ alert $ &quot;Error: &quot; &lt;&gt; err &lt;&gt; &quot;. Loading examplePerson&
 このボタンをクリックすると新しく作った<code>removeItem</code>関数を呼び出してローカルストレージから「人物」の項目を削除します。</li>
 <li>（簡単）JavaScriptの <code>Window</code>オブジェクトの <code>confirm</code>メソッドの梱包を書き、
 <code>Effect.Alert</code>モジュールにその外部関数を追加してください。</li>
-<li>（普通）利用者が「リセット」ボタンをクリックしたときにこの<code>confirm</code>関数を呼び出し、本当にアドレス帳を白紙にしたいか尋ねるようにしてください。</li>
+<li>（普通）利用者が「リセット」ボタンをクリックしたときにこの<code>confirm</code>関数を呼び出し、本当に住所録を白紙にしたいか尋ねるようにしてください。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、PureScriptから外部のJavaScriptコードを扱う方法を学びました。また、FFIを使用して信頼できるコードを書く時に生じる問題について見てきました。</p>
+<p>この章では、PureScriptから外部のJavaScriptコードを扱う方法を学びました。
+また、FFIを使用して信頼できるコードを書く時に生じる問題について見てきました。</p>
 <ul>
 <li>外部関数が正しい表現を持っていることを確かめる重要性を見てきました。</li>
 <li>外部型や<code>Json</code>データ型を使用することによって、null値やJavaScriptの他の型のデータのような特殊な場合に対処する方法を学びました。</li>
 <li>安全にJSONデータを直列化・直列化復元する方法を見ました。</li>
 </ul>
-<p>より多くの例については、Githubの <code>purescript</code>組織、<code>purescript-contrib</code>組織および
-<code>purescript-node</code>組織が、FFIを使用するライブラリの例を多数提供しています。残りの章では、型安全な方法で現実世界の問題を解決するために使うライブラリを幾つか見ていきます。</p>
+<p>より多くの例については、GitHubの<code>purescript</code>組織、<code>purescript-contrib</code>組織、及び<code>purescript-node</code>組織が、FFIを使用するライブラリの例を多数提供しています。
+残りの章では、型安全な方法で現実世界の問題を解決するために使うライブラリを幾つか見ていきます。</p>
 <h2 id="補遺"><a class="header" href="#補遺">補遺</a></h2>
 <h3 id="javascriptからpurescriptを呼び出す"><a class="header" href="#javascriptからpurescriptを呼び出す">JavaScriptからPureScriptを呼び出す</a></h3>
 <p>少なくとも単純な型を持つ関数については、JavaScriptからPureScript関数を呼び出すのはとても簡単です。</p>
@@ -1096,7 +1108,7 @@ gcd 0 m = m
 gcd n 0 = n
 gcd n m
   | n &gt; m     = gcd (n - m) m
-  | otherwise = gcd (m - n) n
+  | otherwise = gcd (m – n) n
 </code></pre>
 <p>この関数は、減算を繰り返すことによって2つの数の最大公約数を見つけます。
 PureScriptでパターン照合と再帰を使用してこの関数を定義するのは簡単で、実装する開発者は型検証器の恩恵を受けることができます。
@@ -1105,12 +1117,15 @@ PureScriptでパターン照合と再帰を使用してこの関数を定義す�
 <pre><code class="language-javascript">import Test from 'Test.js';
 Test.gcd(15)(20);
 </code></pre>
-<p>ここでは、コードがPureScriptモジュールをESモジュールにコンパイルする <code>spago build</code>でコンパイルされていると仮定しています。そのため、 <code>import</code>を使って <code>Test</code>モジュールをインポートした後、
-<code>Test</code>オブジェクトの <code>gcd</code>関数を参照できました。</p>
+<p>ここでは<code>spago build</code>でコンパイルされていることを前提としています。
+SpagoはPureScriptモジュールをESモジュールにコンパイルするものです。
+そのため、<code>import</code>を使って<code>Test</code>モジュールをインポートした後、<code>Test</code>オブジェクトの<code>gcd</code>関数を参照できました。</p>
 <p><code>spago bundle-app</code>や<code>spago bundle-module</code>コマンドを使って生成されたJavaScriptを単一のファイルにまとめることもできます。
 詳細な情報については<a href="https://github.com/purescript/spago#bundle-a-project-into-a-single-js-file">ドキュメント</a>をあたってください。</p>
 <h3 id="名前の生成を理解する"><a class="header" href="#名前の生成を理解する">名前の生成を理解する</a></h3>
-<p>PureScriptはコード生成時にできるだけ名前を保存することを目的としています。具体的には、少なくともトップレベルで宣言される名前については、PureScriptやJavaScriptのキーワードでなければほとんどの識別子が保存されます。</p>
+<p>PureScriptはコード生成時にできるだけ名前を保持することを目指します。
+とりわけ、PureScriptやJavaScriptのキーワードでなければほとんどの識別子が保存されることが期待できます。
+少なくとも最上位で宣言される名前についてはそうです。</p>
 <p>識別子としてJavaScriptのキーワードを使う場合は、名前は2重のドル記号でエスケープされます。
 例えば次のPureScriptコードを考えてみます。</p>
 <pre><code class="language-haskell">null = []
@@ -1125,13 +1140,13 @@ Test.gcd(15)(20);
 <p>これは以下のJavaScriptを生成します。</p>
 <pre><code class="language-javascript">var example$prime = 100;
 </code></pre>
-<p>コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図している場合、識別子は英数字のみを使用し、JavaScriptの予約語を避けることをお勧めします。
-ユーザ定義演算子がPureScriptコードでの使用のために提供される場合でも、JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。</p>
+<p>コンパイルされたPureScriptコードがJavaScriptから呼び出されることを意図している場合、識別子は英数字のみを使用し、JavaScriptのキーワードを避けることをお勧めします。
+ユーザ定義演算子がPureScriptコードでの使用のために提供される場合、JavaScriptから使うための英数字の名前を持つ代替関数を提供しておくことをお勧めします。</p>
 <h3 id="実行時のデータ表現"><a class="header" href="#実行時のデータ表現">実行時のデータ表現</a></h3>
-<p>型はプログラムがある意味で「正しい」ことをコンパイル時に判断できるようにします。
+<p>型はプログラムがある意味で「正しい」ことをコンパイル時に論証できるようにします。
 つまり、その点については壊れることがありません。
 しかし、これは何を意味するのでしょうか。
-PureScriptでは式の型は実行時の表現と互換性がなければならないことを意味します。</p>
+PureScriptでは、式の型は実行時の表現と互換性があることを意味します。</p>
 <p>そのため、PureScriptとJavaScriptコードを一緒に効率的に使用できるように、実行時のデータ表現について理解することが重要です。
 これはつまり、与えられた任意のPureScriptの式について、その値が実行時にどのように評価されるかという挙動を理解できるべきだということです。</p>
 <p>幸いにもPureScriptの式はとりわけ実行時に単純な表現を持っています。
@@ -1140,31 +1155,30 @@ PureScriptでは式の型は実行時の表現と互換性がなければなら�
 例えば式が型 <code>Boolean</code>を持っていれば、実行時のその値 <code>v</code>は <code>typeof v === 'boolean'</code>を満たします。
 つまり、型 <code>Boolean</code>の式は <code>true</code>もしくは <code>false</code>のどちらか一方の（JavaScriptの）値へと評価されます。
 特に<code>null</code>や <code>undefined</code>に評価される型<code>Boolean</code>なPureScriptの式はありません。</p>
-<p><code>Int</code>や<code>Number</code>や<code>String</code>の型の式についても同様のことが成り立ちます。
-<code>Int</code>や<code>Number</code>型の式は <code>null</code>でないJavaScriptの数へと評価されますし、 <code>String</code>型の式は
-<code>null</code>でないJavaScriptの文字列へと評価されます。
+<p><code>Int</code>や<code>Number</code>や<code>String</code>の型の式についても似た法則が成り立ちます。
+<code>Int</code>や<code>Number</code>型の式はnullでないJavaScriptの数へと評価されますし、<code>String</code>型の式はnullでないJavaScriptの文字列へと評価されます。
 <code>typeof</code>を使った場合に型<code>Number</code>の値と見分けがつかなくなるにせよ、型<code>Int</code>の式は実行時に整数に評価されます。</p>
 <p><code>Unit</code>についてはどうでしょうか。
 <code>Unit</code>には現住 (<code>unit</code>) が1つのみで値が観測できないため、実のところ実行時に何で表現されるかは重要ではありません。
 古いコードは<code>{}</code>を使って表現する傾向がありました。
 しかし比較的新しいコードでは<code>undefined</code>を使う傾向にあります。
-なので、<code>Unit</code>を表現するのに使うものは本当に何でも問題にならないのですが、<code>undefined</code>を使うことが推奨されます（関数から何も返さないときも<code>undefined</code>を返します）。</p>
+なので、<code>Unit</code>を表現するのに使うものは何であれ差し支えありませんが、<code>undefined</code>を使うことが推奨されます（関数から何も返さないときも<code>undefined</code>を返します）。</p>
 <p>もっと複雑な型についてはどうでしょうか。</p>
 <p>既に見てきたように、PureScriptの関数は引数が1つのJavaScriptの関数に対応しています。
 厳密に言えばこうなります。
-任意の型<code>a</code>と<code>b</code>について、式<code>f</code>の型が<code>a -&gt; b</code>で、式<code>x</code>が型<code>a</code>についての適切な実行時表現の値へと評価されるとします。
-このとき<code>f</code>はJavaScriptの関数へと評価され、<code>x</code>を評価した結果に<code>f</code>を適用すると型<code>b</code>の適切な実行時表現を持ちます。
-簡単な例としては、 <code>String -&gt; String</code>型の式は、 <code>null</code>でないJavaScript文字列から <code>null</code>でないJavaScript文字列への関数へと評価されます。</p>
+ある型<code>a</code>と<code>b</code>について、式<code>f</code>の型が<code>a -&gt; b</code>で、式<code>x</code>が型<code>a</code>についての適切な実行時表現の値へと評価されるとします。
+このとき<code>f</code>はJavaScriptの関数へと評価されますが、この関数は<code>x</code>を評価した結果に<code>f</code>を適用すると型<code>b</code>の適切な実行時表現を持ちます。
+単純な例としては、<code>String -&gt; String</code>型の式は、nullでないJavaScript文字列からnullでないJavaScript文字列への関数へと評価されます。</p>
 <p>ご想像の通り、PureScriptの配列はJavaScriptの配列に対応しています。
 しかし、PureScriptの配列は均質である、つまり全ての要素が同じ型を持っていることは覚えておいてください。
-具体的には、もしPureScriptの式 <code>e</code>が何らかの型 <code>a</code>について型 <code>Array a</code>を持つなら、
-<code>e</code>は全ての要素が（<code>null</code>でない）型 <code>a</code>の適切な実行時表現を持ったJavaScript配列へと評価されます。</p>
+具体的には、もしPureScriptの式<code>e</code>が何らかの型<code>a</code>について型<code>Array a</code>を持つなら、<code>e</code>は（nullでない）JavaScript配列へと評価されます。
+この配列の全ての要素は型<code>a</code>の適切な実行時表現を持ちます。</p>
 <p>PureScriptのレコードがJavaScriptのオブジェクトへと評価されることは既に見てきました。
-ちょうど関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれば、レコードのフィールドのデータの実行時の表現についても推論できます。
-もちろん、レコードのそれぞれのフィールドは、同じ型である必要はありません。</p>
+関数や配列の場合のように、そのラベルに関連付けられている型を考慮すれば、レコードのフィールド中のデータの実行時の表現について論証できます。
+勿論、レコードのフィールドは、同じ型である必要はありません。</p>
 <h3 id="adtの表現"><a class="header" href="#adtの表現">ADTの表現</a></h3>
-<p>PureScriptコンパイラは、代数的データ型の全ての構築子についてそれぞれを関数として定義し、新たなJavaScriptオブジェクト型を作成します。
-これらの構築子は雛形に基づいて新しいJavaScriptオブジェクトを作成する関数に対応しています。</p>
+<p>代数的データ型の全ての構築子について、PureScriptコンパイラは関数を定義することで新たなJavaScriptオブジェクト型を作成します。
+これらの構築子はプロトタイプに基づいて新しいJavaScriptオブジェクトを作成する関数に対応しています。</p>
 <p>例えば次のような単純なADTを考えてみましょう。</p>
 <pre><code class="language-haskell">data ZeroOrOne a = Zero | One a
 </code></pre>
@@ -1182,16 +1196,16 @@ function Zero() {
 
 Zero.value = new Zero();
 </code></pre>
-<p>ここで2つのJavaScriptオブジェクト型 <code>Zero</code>と <code>One</code>を見てください。
-JavaScriptのキーワード<code>new</code>を使用すると、それぞれの型の値を作成できます。
-引数を持つ構築子については、コンパイラは <code>value0</code>、 <code>value1</code>などという名前のフィールドに、対応するデータを格納します。</p>
+<p>ここで2つのJavaScriptオブジェクト型<code>Zero</code>と<code>One</code>を見てください。
+JavaScriptのキーワード<code>new</code>を使用すると、各型の値を作成できます。
+引数を持つ構築子については、コンパイラは<code>value0</code>、<code>value1</code>などという名前のフィールドに、対応するデータを格納します。</p>
 <p>PureScriptコンパイラは補助関数も生成します。
 引数のない構築子については、コンパイラは構築子が使われるたびに <code>new</code>演算子を使うのではなく、データを再利用できるように
 <code>value</code>プロパティを生成します。
 1つ以上の引数を持つ構築子では、コンパイラは適切な表現を持つ引数を取り適切な構築子を適用する <code>create</code>関数を生成します。</p>
-<p>2引数以上の構築子についてはどうでしょうか。
+<p>1引数より多く取る構築子についてはどうでしょうか。
 その場合でも、PureScriptコンパイラは新しいオブジェクト型と補助関数を作成します。
-ここでは補助関数は2引数のカリー化された関数なのです。
+ただしこの場合、補助関数は2引数のカリー化された関数です。
 例えば次のような代数的データ型を考えます。</p>
 <pre><code class="language-haskell">data Two a b = Two a b
 </code></pre>
@@ -1207,15 +1221,14 @@ Two.create = function (value0) {
     };
 };
 </code></pre>
-<p>ここで、オブジェクト型 <code>Two</code>の値はキーワード<code>new</code>または <code>Two.create</code>関数を使用すると作成できます。</p>
+<p>ここで、オブジェクト型<code>Two</code>の値はキーワード<code>new</code>または<code>Two.create</code>関数を使用すると作成できます。</p>
 <p>newtypeの場合はまた少し異なります。
-newtypeは単一の引数を取る単一の構築子を持つよう制限された代数的データ型であることを思い出してください。
-この場合、実際のnewtypeの実行時表現は、その引数の型と同じになります。</p>
-<p>例えば、電話番号を表す次のようなnewtypeを考えます。</p>
+newtypeは代数的データ型のようなもので、単一の引数を取る単一の構築子を持つよう制限されていたことを思い出してください。
+この場合、newtypeの実行時表現は、その引数の型と同じになります。</p>
+<p>例えば、以下の電話番号を表すnewtypeは実行時にJavaScriptの文字列として表現されます。</p>
 <pre><code class="language-haskell">newtype PhoneNumber = PhoneNumber String
 </code></pre>
-<p>これは実行時にJavaScriptの文字列として表されます。
-newtypeは更なる型安全性のための層を提供しますが、実行時の関数呼び出しのオーバーヘッドがないので、ライブラリを設計するのに役に立ちます。</p>
+<p>newtypeは、関数呼び出しによる実行時のオーバーヘッドなく更なる型安全性のための層を提供するため、ライブラリを設計するのに便利です。</p>
 <h3 id="量化された型の表現"><a class="header" href="#量化された型の表現">量化された型の表現</a></h3>
 <p>量化された型（多相型）の式は、実行時は制限された表現になっています。
 実際、所与の量化された型を持つ式がより少なくなりますが、それによりかなり効率的に推論できるのです。</p>
@@ -1235,10 +1248,10 @@ identity a = a
 型の実行時表現を考えることによって確かめられます。</p>
 <p>量化された型 <code>forall a. t</code>の実行時表現はどうなっているのでしょうか。さて、この型の実行時表現を持つ任意の式は、型 <code>a</code>をどのように選んでも型 <code>t</code>の適切な実行時表現を持っていなければなりません。上の例では、型 <code>forall a. a -&gt; a</code>の関数は、 <code>String -&gt; String</code>、 <code>Number -&gt; Number</code>、 <code>Array Boolean -&gt; Array Boolean</code>などといった型について、適切な実行時表現を持っていなければなりません。 これらは、文字列から文字列、数から数の関数でなくてはなりません。</p>
 <p>しかし、それだけでは充分ではありません。
-量化された型の実行時表現は、これよりも更に厳しくなります。
-任意の式が<em>パラメトリック多相的</em>でなければなりません。
+量化された型の実行時表現は、これよりも更に厳しいものです。
+任意の式が<em>パラメトリック多相的</em>であることを要求しています。
 つまり、その実装において、引数の型についてのどんな情報も使うことができないのです。
-この追加の条件は、考えられる多相型のうち、以下のJavaScriptの関数のような問題のある実装を防止します。</p>
+この追加の条件は、以下のJavaScriptの関数のような問題のある実装が多相型に現住することを防止します。</p>
 <pre><code class="language-javascript">function invalid(a) {
     if (typeof a === 'string') {
         return &quot;Argument was a string.&quot;;
@@ -1247,16 +1260,18 @@ identity a = a
     }
 }
 </code></pre>
-<p>確かにこの関数は文字列から文字列、数から数へというような関数ではありますが、追加条件を満たしていません。
-引数の実行時の型を調べており、したがって、この関数は型 <code>forall a. a -&gt; a</code>の正しい実装だとはいえないのです。</p>
-<p>関数の引数の実行時の型を検査できなければ、唯一の選択肢は引数をそのまま返すことだけであり、したがって <code>id</code>はたしかに <code>forall a. a -&gt; a</code>の唯一の実装なのです。</p>
+<p>確かにこの関数は文字列を取って文字列を返し、数を取って数を返す、といったものです。
+しかしこの関数は追加条件を満たしていません。
+引数の実行時の型を調べており、型<code>forall a. a -&gt; a</code>の正しい現住にはならないからです。</p>
+<p>関数の引数の実行時の型を検査できなければ、唯一の選択肢は引数をそのまま返すことだけです。
+したがって<code>id</code>は確かに<code>forall a. a -&gt; a</code>の唯一の現住なのです。</p>
 <p><em>パラメトリック多相</em>と<em>パラメトリック性</em>についての詳しい議論は本書の範囲を超えています。
 ただ、PureScriptの型は実行時に<em>消去</em>されており、PureScriptの多相関数は（FFIを使わない限り）引数の実行時表現を検査<em>できない</em>ため、この多相的なデータの表現が適切になっているという点にはご留意ください。</p>
 <h3 id="制約のある型の表現"><a class="header" href="#制約のある型の表現">制約のある型の表現</a></h3>
 <p>型クラス制約を持つ関数は、実行時に面白い表現を持っています。
 関数の挙動はコンパイラによって選ばれた型クラスのインスタンスに依存する可能性があるため、関数には<em>型クラス辞書</em>と呼ばれる追加の引数が与えられます。
 この辞書には選ばれたインスタンスから提供される型クラスの関数の実装が含まれます。</p>
-<p>例えば、 <code>Show</code>型クラスを使った制約のある型を持つ、次のような単純なPureScript関数について考えます。</p>
+<p>例えば以下は、<code>Show</code>型クラスを使う制約付きの型を持つ、単純なPureScript関数です。</p>
 <pre><code class="language-haskell">shout :: forall a. Show a =&gt; a -&gt; String
 shout a = show a &lt;&gt; &quot;!!!&quot;
 </code></pre>
@@ -1291,9 +1306,9 @@ forall a. Ord a =&gt; Array a -&gt; Boolean
 </ol>
 <h3 id="副作用の表現"><a class="header" href="#副作用の表現">副作用の表現</a></h3>
 <p><code>Effect</code>モナドも外部型として定義されています。
-その実行時表現はとても簡単です。
-型 <code>Effect a</code>の式は<strong>引数なしの</strong>JavaScript関数へと評価されます。
-この関数はあらゆる副作用を実行し型 <code>a</code>の適切な実行時表現で値を返します。</p>
+その実行時表現はとても単純です。
+型<code>Effect a</code>の式は<strong>引数なしの</strong>JavaScript関数へと評価されます。
+この関数はあらゆる副作用を実行し、型<code>a</code>の適切な実行時表現を持つ値を返します。</p>
 <p><code>Effect</code>型構築子の定義は、 <code>Effect</code>モジュールで次のように与えられています。</p>
 <pre><code class="language-haskell">foreign import data Effect :: Type -&gt; Type
 </code></pre>
@@ -1304,8 +1319,8 @@ forall a. Ord a =&gt; Array a -&gt; Boolean
 <pre><code class="language-javascript">export const random = Math.random;
 </code></pre>
 <p><code>random</code>関数は実行時には引数なしの関数として表現されていることに注目してください。
-この関数は乱数生成という副作用を実行して返しますが、返り値は <code>Number</code>型の実行時表現と一致します。
-<code>Number</code>型は<code>null</code>でないJavaScriptの数です。</p>
+この関数は乱数生成という副作用を実行して返しますが、返り値は<code>Number</code>型の実行時表現と一致します。
+<code>Number</code>型はnullでないJavaScriptの数です。</p>
 <p>もう少し興味深い例として、<code>console</code>パッケージ中の<code>Effect.Console</code>モジュールで定義された <code>log</code>関数を考えてみましょう。
 <code>log</code>関数は次の型を持っています。</p>
 <pre><code class="language-haskell">foreign import log :: String -&gt; Effect Unit
@@ -1317,16 +1332,15 @@ forall a. Ord a =&gt; Array a -&gt; Boolean
   };
 };
 </code></pre>
-<p>実行時の
-<code>log</code>の表現は、単一の引数のJavaScript関数で、引数なしの関数を返します。内側の関数はコンソールにメッセージを書き込むという副作用を実行します。</p>
+<p>実行時の <code>log</code>の表現は、単一の引数のJavaScript関数で、引数なしの関数を返します。
+内側の関数はコンソールに文言を書き込むという副作用を実行します。</p>
 <p><code>Effect a</code>型の式は、通常のJavaScriptのメソッドのようにJavaScriptから呼び出すことができます。例えば、この
 <code>main</code>関数は何らかの型<code>a</code>について<code>Effect a</code>という型でなければならないので、次のように実行できます。</p>
 <pre><code class="language-javascript">import { main } from 'Main'
 
 main();
 </code></pre>
-<p><code>spago bundle-app --to</code>または <code>spago run</code>を使用するときは、<code>Main</code>モジュールが定義されている場合は常に、この
-<code>main</code>の呼び出しを自動的に生成できます。</p>
+<p><code>spago bundle-app --to</code>または<code>spago run</code>を使用する場合、<code>Main</code>モジュールが定義されている場合は常に、この<code>main</code>の呼び出しを自動的に生成できます。</p>
 
                     </main>
 

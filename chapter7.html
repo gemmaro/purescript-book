@@ -173,12 +173,16 @@
                     <main>
                         <h1 id="アプリカティブによる検証"><a class="header" href="#アプリカティブによる検証">アプリカティブによる検証</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、<code>Applicative</code>型クラスによって表現される <em>アプリカティブ関手</em> (applicative functor)
-という重要な抽象化と新たに出会うことになります。名前が難しそうに思えても心配しないでください。フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。アプリカティブ関手を使うと、通常であれば大量の決まり文句を伴うようなコードを、簡潔で宣言的な記述へと変えることができるようになります。</p>
+<p>この章では重要な抽象化と新たに出会うことになります。
+<code>Applicative</code>型クラスによって表現される<em>アプリカティブ関手</em>です。
+名前が難しそうに思えても心配しないでください。
+フォームデータの検証という実用的な例を使ってこの概念の動機付けをします。
+アプリカティブ関手の技法があることにより、通常であれば大量の決まり文句の検証を伴うようなコードを、簡潔で宣言的なフォームの記述へと変えられます。</p>
 <p>また、<em>巡回可能関手</em>を表現する<code>Traversable</code>という別の型クラスにも出会います。現実の問題への解決策からこの概念が自然に生じることがわかるでしょう。</p>
-<p>この章では第3章に引き続き住所録を例として扱います。
+<p>この章のコードでは第3章に引き続き住所録を例とします。
 今回は住所録のデータ型を拡張し、これらの型の値を検証する関数を書きます。
-これらの関数は、例えばデータ入力フォームの一部で、使用者へエラーを表示するwebユーザインターフェースで使われると考えてください。</p>
+これらの関数は、例えばwebユーザインターフェースで使えることが分かります。
+データ入力フォームの一部として、使用者へエラーを表示するのに使われます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>この章のソースコードは、2つのファイル<code>src/Data/AddressBook.purs</code>、及び<code>src/Data/AddressBook/Validation.purs</code>で定義されています。</p>
 <p>このプロジェクトには多くの依存関係がありますが、その大半は既に見てきたものです。
@@ -187,10 +191,11 @@
 <li><code>control</code> - <code>Applicative</code>のような、型クラスを使用して制御フローを抽象化する関数が定義されています。</li>
 <li><code>validation</code> - この章の主題である <em>アプリカティブによる検証</em> のための関手が定義されています。</li>
 </ul>
-<p><code>Data.AddressBook</code>モジュールには、このプロジェクトのデータ型とそれらの型に対する<code>Show</code>インスタンスが定義されており、<code>Data.AddressBook.Validation</code>モジュールにはそれらの型の検証規則が含まれています。</p>
+<p><code>Data.AddressBook</code>モジュールにはこのプロジェクトのデータ型とそれらの型に対する<code>Show</code>インスタンスが定義されています。
+また、<code>Data.AddressBook.Validation</code>モジュールにはそれらの型の検証規則が含まれています。</p>
 <h2 id="関数適用の一般化"><a class="header" href="#関数適用の一般化">関数適用の一般化</a></h2>
 <p><em>アプリカティブ関手</em> の概念を理解するために、以前扱った型構築子<code>Maybe</code>について考えてみましょう。</p>
-<p>このモジュールのソースコードでは、次のような型を持つ<code>address</code>関数が定義されています。</p>
+<p>このモジュールのソースコードでは、次の型を持つ<code>address</code>関数が定義されています。</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
 </code></pre>
 <p>この関数は、通りの名前、市、州という3つの文字列から型<code>Address</code>の値を構築するために使います。</p>
@@ -214,7 +219,8 @@ with type
 
   String
 </code></pre>
-<p><code>address</code>は<code>Maybe String</code>型ではなく文字列型の引数を取るので、もちろんこれは期待通り型エラーになります。</p>
+<p>勿論、これは期待通り型エラーになります。
+<code>address</code>は<code>Maybe String</code>型の値ではなく、文字列を引数として取るためです。</p>
 <p>しかし、もし<code>address</code>関数を「持ち上げる」ことができれば、<code>Maybe</code>型で示される省略可能な値を扱うことができるはずだという予想は理に適っています。実際それは可能で、<code>Control.Apply</code>で提供されている関数<code>lift3</code>が、まさに求めているものです。</p>
 <pre><code class="language-text">&gt; import Control.Apply
 &gt; lift3 address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
@@ -233,13 +239,13 @@ Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &qu
 でも、これを任意個の引数の関数へと一般化できるのでしょうか。</p>
 <p><code>lift3</code>の型を見てみるとわかりやすいでしょう。</p>
 <pre><code class="language-text">&gt; :type lift3
-forall a b c d f. Apply f =&gt; (a -&gt; b -&gt; c -&gt; d) -&gt; f a -&gt; f b -&gt; f c -&gt; f d
+forall (a :: Type) (b :: Type) (c :: Type) (d :: Type) (f :: Type -&gt; Type). Apply f =&gt; (a -&gt; b -&gt; c -&gt; d) -&gt; f a -&gt; f b -&gt; f c -&gt; f d
 </code></pre>
 <p>上の<code>Maybe</code>の例では型構築子<code>f</code>は<code>Maybe</code>ですから、<code>lift3</code>は次のように特殊化されます。</p>
 <pre><code class="language-haskell">forall a b c d. (a -&gt; b -&gt; c -&gt; d) -&gt; Maybe a -&gt; Maybe b -&gt; Maybe c -&gt; Maybe d
 </code></pre>
-<p>この型が言っているのは、3引数の任意の関数を取り、その関数を引数と返り値が<code>Maybe</code>で包まれた新しい関数へと持ち上げる、ということです。</p>
-<p>もちろんどんな型構築子<code>f</code>についても持ち上げができるわけではないのですが、それでは<code>Maybe</code>型を持ち上げができるようにしているものは何なのでしょうか。
+<p>この型で書かれているのは、3引数の任意の関数を取り、その関数を引数と返り値が<code>Maybe</code>で包まれた新しい関数へと持ち上げられる、ということです。</p>
+<p>勿論、どんな型構築子<code>f</code>についても持ち上げができるわけではないのですが、それでは<code>Maybe</code>型を持ち上げができるようにしているものは何なのでしょうか。
 さて、先ほどの型の特殊化では、<code>f</code>に対する型クラス制約から<code>Apply</code>型クラスを取り除いていました。
 <code>Apply</code>はPreludeで次のように定義されています。</p>
 <pre><code class="language-haskell">class Functor f where
@@ -249,7 +255,8 @@ class Functor f &lt;= Apply f where
   apply :: forall a b. f (a -&gt; b) -&gt; f a -&gt; f b
 </code></pre>
 <p><code>Apply</code>型クラスは<code>Functor</code>の下位クラスであり、追加の関数<code>apply</code>を定義しています。<code>&lt;$&gt;</code>が<code>map</code>の別名として定義されているように、<code>Prelude</code>モジュールでは<code>&lt;*&gt;</code>を<code>apply</code>の別名として定義しています。これから見ていきますが、これら2つの演算子はよく一緒に使われます。</p>
-<p>なおこの<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Apply#v:apply"><code>apply</code></a>は<code>Data.Function</code>の<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply"><code>apply</code></a>（中置で<code>$</code>）とは異なります。幸いにも後者はほぼ常に中置記法として使われるので、名前の衝突については心配ご無用です。</p>
+<p>なお、この<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Control.Apply#v:apply"><code>apply</code></a>は<code>Data.Function</code>の<a href="https://pursuit.purescript.org/packages/purescript-prelude/docs/Data.Function#v:apply"><code>apply</code></a>（中置で<code>$</code>）とは異なります。
+幸いにも後者はほぼ常に中置記法として使われるので、名前の衝突については心配ご無用です。</p>
 <p><code>apply</code>の型は<code>map</code>の型と実によく似ています。
 <code>map</code>と<code>apply</code>の違いは、<code>map</code>がただの関数を引数に取るのに対し、<code>apply</code>の最初の引数は型構築子<code>f</code>で包まれているという点です。
 これをどのように使うのかはこれからすぐに見ていきますが、その前にまず<code>Maybe</code>型について<code>Apply</code>型クラスをどう実装するのかを見ていきましょう。</p>
@@ -261,7 +268,7 @@ instance Apply Maybe where
   apply (Just f) (Just x) = Just (f x)
   apply _        _        = Nothing
 </code></pre>
-<p>この型クラスのインスタンスで書かれているのは、任意のオプショナルな値にオプショナルな関数を適用でき、その両方が定義されている時に限り結果も定義される、ということです。</p>
+<p>この型クラスのインスタンスで書かれているのは、任意の省略可能な値に省略可能な関数を適用でき、その両方が定義されている時に限り結果も定義される、ということです。</p>
 <p>それでは、<code>map</code>と<code>apply</code>を一緒に使い、引数が任意個の関数を持ち上げる方法を見ていきましょう。</p>
 <p>1引数の関数については、<code>map</code>をそのまま使うだけです。</p>
 <p>2引数関数については、型<code>a -&gt; b -&gt; c</code>のカリー化された関数<code>g</code>があるとします。これは型<code>a -&gt; (b -&gt; c)</code>と同じですから、<code>Functor</code>インスタンス付きのあらゆる型構築子<code>f</code>について、<code>map</code>を<code>f</code>に適用すると型<code>f a -&gt; f (b -&gt; c)</code>の新たな関数を得ることになります。持ち上げられた（型<code>f a</code>の）最初の引数にその関数を部分適用すると、型<code>f (b -&gt; c)</code>の新たな包まれた関数が得られます。<code>f</code>に<code>Apply</code>インスタンスもあるなら、そこから、2番目の持ち上げられた（型<code>f b</code>の）引数へ<code>apply</code>を適用でき、型<code>f c</code>の最終的な値を得ます。</p>
@@ -276,7 +283,9 @@ instance Apply Maybe where
       -&gt; f d
 lift3 f x y z = f &lt;$&gt; x &lt;*&gt; y &lt;*&gt; z
 </code></pre>
-<p>この式の型がちゃんと整合しているかの確認は、読者への演習として残しておきます。</p>
+<blockquote>
+<p>この式に関する型の検証は、読者への演習として残しておきます。</p>
+</blockquote>
 <p>例として、<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>をそのまま使うと、<code>Maybe</code>上に<code>address</code>関数を持ち上げることができます。</p>
 <pre><code class="language-text">&gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Just &quot;Faketown&quot; &lt;*&gt; Just &quot;CA&quot;
 Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
@@ -285,9 +294,9 @@ Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &qu
 Nothing
 </code></pre>
 <p>同様にして、引数が異なる他のいろいろな関数を<code>Maybe</code>上に持ち上げてみてください。</p>
-<p>この代わりにお馴染の <em>do記法</em> に似た見た目の <em>アプリカティブdo記法</em> が同じ目的で使えます。以下では<code>lift3</code>に
-<em>アプリカティブdo記法</em>
-を使っています。なお、<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
+<p>この代わりに、お馴染の<em>do記法</em>に似た見た目の<em>アプリカティブdo記法</em>が同じ目的で使えます。
+以下では<code>lift3</code>に<em>アプリカティブdo記法</em>を使っています。
+なお、<code>ado</code>が<code>do</code>の代わりに使われており、生み出された値を示すために最後の行で<code>in</code>が使われています。</p>
 <pre><code class="language-haskell">lift3 :: forall a b c d f
        . Apply f
       =&gt; (a -&gt; b -&gt; c -&gt; d)
@@ -312,15 +321,15 @@ lift3 f x y z = ado
 <pre><code class="language-haskell">instance Applicative Maybe where
   pure x = Just x
 </code></pre>
-<p>アプリカティブ関手は関数を持ち上げることを可能にする関手だと考えるとすると、<code>pure</code>は引数のない関数の持ち上げだというように考えることができます。</p>
+<p>アプリカティブ関手は関数を持ち上げることを可能にする関手だと考えるとすると、<code>pure</code>は引数のない関数の持ち上げだというように考えられます。</p>
 <h2 id="アプリカティブに対する直感的理解"><a class="header" href="#アプリカティブに対する直感的理解">アプリカティブに対する直感的理解</a></h2>
 <p>PureScriptの関数は純粋であり、副作用は持っていません。Applicative関手は、関手<code>f</code>によって表現されるある種の副作用を提供するような、より大きな「プログラミング言語」を扱えるようにします。</p>
-<p>例えば関手<code>Maybe</code>はオプショナルな値の副作用を表現しています。
+<p>例えば関手<code>Maybe</code>は欠けている可能性がある値の副作用を表現しています。
 その他の例としては、型<code>err</code>のエラーの可能性の副作用を表す<code>Either err</code>や、大域的な構成を読み取る副作用を表すArrow関手 (arrow functor) <code>r -&gt;</code>があります。
 ここでは<code>Maybe</code>関手についてのみ考えることにします。</p>
 <p>もし関手<code>f</code>が作用を持つ、より大きなプログラミング言語を表すとすると、<code>Apply</code>と<code>Applicative</code>インスタンスは小さなプログラミング言語
 (PureScript) から新しい大きな言語へと値や関数を持ち上げることを可能にします。</p>
-<p><code>pure</code>は純粋な（副作用がない）値をより大きな言語へと持ち上げますし、関数については上で述べた通り<code>map</code>と<code>apply</code>を使うことができます。</p>
+<p><code>pure</code>は純粋な（副作用がない）値をより大きな言語へと持ち上げますし、関数については上で述べた通り<code>map</code>と<code>apply</code>を使えます。</p>
 <p>ここで疑問が生まれます。
 もしPureScriptの関数と値を新たな言語へ埋め込むのに<code>Applicative</code>が使えるなら、どうやって新たな言語は大きくなっているというのでしょうか。
 この答えは関手<code>f</code>に依存します。
@@ -338,9 +347,9 @@ lift3 f x y z = ado
 &gt; fullName &quot;Phillip&quot; &quot;A&quot; &quot;Freeman&quot;
 Freeman, Phillip A
 </code></pre>
-<p>この関数は、クエリパラメータとして与えられた3つの引数を持つ、（とっても簡単な）webサービスの実装であるとしましょう。
-使用者が3つの引数全てを与えたことを確かめたいので、引数が存在するかどうかを表す<code>Maybe</code>型を使うことになるでしょう。
-<code>fullName</code>を<code>Maybe</code>の上へ持ち上げると、省略された引数を確認するwebサービスを実装できます。</p>
+<p>この関数が、クエリ引数として与えられた3つの引数を持つ、（とっても簡単な）webサービスの実装を形成しているとしましょう。
+使用者が3つの各引数を与えたことを確かめたいので、引数が存在するかどうかを表す<code>Maybe</code>型を使うことになるでしょう。
+<code>fullName</code>を<code>Maybe</code>の上へ持ち上げると、欠けている引数を検査するwebサービスの実装を作成できます。</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
 &gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Just &quot;A&quot; &lt;*&gt; Just &quot;Freeman&quot;
@@ -370,10 +379,10 @@ Nothing
 Nothing
 </code></pre>
 <p>この持ち上げた関数は、引数の何れかが<code>Nothing</code>なら<code>Nothing</code>を返すことに注意してください。</p>
-<p>これで、もし引数が不正ならWebサービスからエラー応答を送信できるので、なかなかいい感じです。
-しかし、どのフィールドが間違っていたのかを応答で示せると、もっと良くなるでしょう。</p>
-<p><code>Meybe</code>上へ持ち上げる代わりに<code>Either String</code>上へ持ち上げるようにすると、エラーメッセージを返すことができるようになります。
-まずは<code>Either String</code>を使ってオプショナルな入力をエラーを発信できる計算に変換する演算子を書きましょう。</p>
+<p>引数が不正のときにwebサービスからエラー応答を送り返せるのは良いことです。
+しかし、どのフィールドが不正確なのかを応答で示せると、もっと良くなるでしょう。</p>
+<p><code>Meybe</code>上へ持ち上げる代わりに<code>Either String</code>上へ持ち上げるようにすると、エラー文言を返せるようになります。
+まずは<code>Either String</code>を使い、省略可能な入力からエラーを発信できる計算に変換する演算子を書きましょう。</p>
 <pre><code class="language-text">&gt; import Data.Either
 &gt; :paste
 … withError Nothing  err = Left err
@@ -381,7 +390,7 @@ Nothing
 … ^D
 </code></pre>
 <p><em>補足</em>：<code>Either err</code>アプリカティブ関手において、<code>Left</code>構築子は失敗を表しており、<code>Right</code>構築子は成功を表しています。</p>
-<p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラーメッセージを提供できるようになります。</p>
+<p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラー文言を提供できるようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last =
 …   fullName &lt;$&gt; (first  `withError` &quot;First name was missing&quot;)
@@ -401,7 +410,7 @@ Nothing
 &gt; :type fullNameEither
 Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 </code></pre>
-<p>これでこの関数は<code>Maybe</code>の3つの省略可能な引数を取り、<code>String</code>のエラーメッセージか<code>String</code>の結果のどちらかを返します。</p>
+<p>これでこの関数は<code>Maybe</code>を使う3つの省略可能な引数を取り、<code>String</code>のエラー文言か<code>String</code>の結果のどちらかを返します。</p>
 <p>いろいろな入力でこの関数を試してみましょう。</p>
 <pre><code class="language-text">&gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) (Just &quot;Freeman&quot;)
 (Right &quot;Freeman, Phillip A&quot;)
@@ -412,14 +421,14 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 &gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) Nothing
 (Left &quot;Last name was missing&quot;)
 </code></pre>
-<p>このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラーメッセージが表示されます。
-しかし、もし複数の入力が省略されているとき、最初のエラーしか見ることができません。</p>
+<p>このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラー文言が表示されます。
+しかし、もし複数の入力が省略されているとき、最初のエラーしか見られません。</p>
 <pre><code class="language-text">&gt; fullNameEither Nothing Nothing Nothing
 (Left &quot;First name was missing&quot;)
 </code></pre>
 <p>これでも充分なときもありますが、エラー時に<em>全ての</em>省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半で解決策を見ていきます。</p>
 <h2 id="作用の結合"><a class="header" href="#作用の結合">作用の結合</a></h2>
-<p>抽象的にアプリカティブ関手を扱う例として、アプリカティブ関手<code>f</code>によって表現された副作用を一般的に組み合わせる関数を書く方法をこの節では示します。</p>
+<p>抽象的にアプリカティブ関手を扱う例として、この節ではアプリカティブ関手<code>f</code>によって表現された副作用を一般的に組み合わせる関数を書く方法を示します。</p>
 <p>これはどういう意味でしょうか。
 何らかの<code>a</code>について型<code>f a</code>で包まれた引数のリストがあるとしましょう。
 それは型<code>List (f a)</code>のリストがあるということです。
@@ -427,10 +436,10 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 これらの計算の全てを順番に実行できれば、<code>List a</code>型の結果のリストを得るでしょう。
 しかし、まだ<code>f</code>によって追跡される副作用が残ります。
 つまり、元のリストの中の作用を「結合する」ことにより、型<code>List (f a)</code>の何かを型<code>f (List a)</code>の何かへと変換できると考えられます。</p>
-<p>任意の固定長リストの長さ<code>n</code>について、その引数を要素に持った長さ<code>n</code>のリストを構築するような<code>n</code>引数の関数が存在します。
+<p>任意の固定長リストの長さ<code>n</code>について、<code>n</code>引数からその引数を要素に持つ長さ<code>n</code>のリストを構築する関数が存在します。
 例えばもし<code>n</code>が<code>3</code>なら、関数は<code>\x y z -&gt; x : y : z : Nil</code>です。
-この関数の型は<code>a -&gt; a -&gt; a -&gt; List a</code>です。
-<code>Applicative</code>インスタンスを使うと、この関数を<code>f</code>の上へ持ち上げて関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>を得ることができます。
+この関数は型<code>a -&gt; a -&gt; a -&gt; List a</code>を持ちます。
+<code>Applicative</code>インスタンスを使うと、この関数を<code>f</code>の上へ持ち上げられ、関数型<code>f a -&gt; f a -&gt; f a -&gt; f (List a)</code>が得られます。
 しかし、いかなる<code>n</code>についてもこれが可能なので、いかなる引数の<em>リスト</em>についても同じように持ち上げられることが確かめられます。</p>
 <p>したがって、次のような関数を書くことができるはずです。</p>
 <pre><code class="language-haskell">combineList :: forall f a. Applicative f =&gt; List (f a) -&gt; f (List a)
@@ -440,7 +449,7 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 リストが空の場合はどんな作用も実行する必要がありませんから、<code>pure</code>を使用して単に空のリストを返すことができます。</p>
 <pre><code class="language-haskell">combineList Nil = pure Nil
 </code></pre>
-<p>実際のところこれがたった1つのできることです。</p>
+<p>実際のところ、これが唯一できることです。</p>
 <p>入力のリストが空でないならば、型<code>f a</code>の包まれた引数である先頭要素と、型<code>List (f a)</code>の尾鰭について考えます。
 また、再帰的にリストの残りを結合すると、型<code>f (List a)</code>の結果が得られます。
 それから<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>を使うと、<code>Cons</code>構築子を先頭と新しい尾鰭の上に持ち上げることができます。</p>
@@ -457,26 +466,26 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 &gt; combineList (fromFoldable [Just 1, Nothing, Just 2])
 Nothing
 </code></pre>
-<p><code>Meybe</code>へ特殊化して考えると、リストの全ての要素が<code>Just</code>であるときに限りこの関数は<code>Just</code>を返しますし、そうでなければ<code>Nothing</code>を返します。
-これはオプショナルな値に対応する、より大きな言語に取り組む上での直感から一貫しています。
-オプショナルな結果を返す計算のリストは、全ての計算が結果を持っているならばそれ自身の結果のみを持つのです。</p>
-<p>しかし、<code>combineList</code>関数はどんな<code>Applicative</code>に対しても機能します。
-<code>Either err</code>を使ってエラーを発信する可能性を持たせたり、<code>r -&gt;</code>を使って大域的な状態を読み取る計算を連鎖させるときにも使えるのです。</p>
+<p><code>Meybe</code>へ特殊化すると、リストの全ての要素が<code>Just</code>であるときに限りこの関数は<code>Just</code>を返しますし、そうでなければ<code>Nothing</code>を返します。
+これは省略可能な値に対応する、より大きな言語に取り組む上での直感と一貫しています。
+省略可能な結果を生む計算のリストは、全ての計算が結果を持っているならばそれ自身の結果のみを持つのです。</p>
+<p>ところが<code>combineList</code>関数はどんな<code>Applicative</code>に対しても機能するのです。
+<code>Either err</code>を使ってエラーを発信する可能性を持たせたり、<code>r -&gt;</code>を使って大域的な構成を読み取る計算を組み合わせるためにも使えます。</p>
 <p><code>combineList</code>関数については、後ほど<code>Traversable</code>関手について考えるときに再訪します。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>のオプショナル引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返す版を書いてください。
-これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けます。
+<li>（普通）数値演算子<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>の別のバージョンを書いてください。
+ただし省略可能な引数（つまり<code>Maybe</code>に包まれた引数）を扱って<code>Maybe</code>に包まれた値を返します。
+これらの関数には<code>addMaybe</code>、<code>subMaybe</code>、<code>mulMaybe</code>、<code>divMaybe</code>と名前を付けてください。
 <em>手掛かり</em>：<code>lift2</code>を使ってください。</li>
 <li>（普通）上の演習を（<code>Maybe</code>だけでなく）全ての<code>Apply</code>型で動くように拡張してください。
 これらの新しい関数には<code>addApply</code>、<code>subApply</code>、<code>mulApply</code>、<code>divApply</code>と名前を付けます。</li>
-<li>（難しい）型<code>combineMaybe : forall a f. (Applicative f) =&gt; Maybe (f a) -&gt; f (Maybe a)</code>
-を持つ関数<code>combineMaybe</code>を書いてください。
-この関数は副作用をもつオプショナルな計算をとり、オプショナルな結果をもつ副作用のある計算を返します。</li>
+<li>（難しい）型<code>forall a f. Applicative f =&gt; Maybe (f a) -&gt; f (Maybe a)</code>を持つ関数<code>combineMaybe</code>を書いてください。
+この関数は副作用を持つ省略可能な計算を取り、省略可能な結果を持つ副作用のある計算を返します。</li>
 </ol>
 <h2 id="アプリカティブによる検証-1"><a class="header" href="#アプリカティブによる検証-1">アプリカティブによる検証</a></h2>
-<p>この章のソースコードでは住所録アプリケーションで使うことのできるいろいろなデータ型が定義されています。
-詳細はここでは割愛しますが、<code>Data.AddressBook</code>モジュールからエクスポートされる重要な関数は次のような型を持っています。</p>
+<p>この章のソースコードでは住所録アプリケーションで使うであろう幾つかのデータ型が定義されています。
+詳細はここでは割愛しますが、<code>Data.AddressBook</code>モジュールからエクスポートされる鍵となる関数は次のような型を持ちます。</p>
 <pre><code class="language-haskell">address :: String -&gt; String -&gt; String -&gt; Address
 
 phoneNumber :: PhoneType -&gt; String -&gt; PhoneNumber
@@ -490,8 +499,8 @@ person :: String -&gt; String -&gt; Address -&gt; Array PhoneNumber -&gt; Person
   | CellPhone
   | OtherPhone
 </code></pre>
-<p>これらの関数は住所録の項目を表す<code>Person</code>を構築するのに使えます。
-例えば、<code>Data.AddressBook</code>には次のような値が定義されています。</p>
+<p>これらの関数は住所録の項目を表す<code>Person</code>を構築できます。
+例えば、<code>Data.AddressBook</code>では以下の値が定義されています。</p>
 <pre><code class="language-haskell">examplePerson :: Person
 examplePerson =
   person &quot;John&quot; &quot;Smith&quot;
@@ -540,18 +549,20 @@ validatePerson1Ado p = ado
   l &lt;- nonEmpty1 p.lastName
   in person f l p.homeAddress p.phones
 </code></pre>
-<p>最初の2行では<code>nonEmpty</code>関数を使って空文字列でないことを検証しています。
-もし入力が空なら<code>nonEMpty</code>はエラーを返し（<code>Left</code>構築子で示されています）、そうでなければ<code>Right</code>構築子を使って値を包んで返します。</p>
+<p>最初の2行では<code>nonEmpty1</code>関数を使って空文字列でないことを検証しています。
+もし入力が空なら<code>nonEmpty1</code>は<code>Left</code>構築子で示されるエラーを返します。
+そうでなければ<code>Right</code>構築子で包まれた値を返します。</p>
 <p>最後の2行では何の検証も実行せず、単に<code>address</code>フィールドと<code>phones</code>フィールドを残りの引数として<code>person</code>関数へと提供しています。</p>
 <p>この関数はPSCiでうまく動作するように見えますが、以前見たような制限があります。</p>
 <pre><code class="language-text">&gt; validatePerson $ person &quot;&quot; &quot;&quot; (address &quot;&quot; &quot;&quot; &quot;&quot;) []
 (Left &quot;Field cannot be empty&quot;)
 </code></pre>
-<p><code>Either String</code>アプリカティブ関手は遭遇した最初のエラーだけを返します。
-でもこの入力では、名前の不足と姓の不足という2つのエラーがわかるようにしたくなるでしょう。</p>
+<p><code>Either String</code>アプリカティブ関手は最初に遭遇したエラーだけを返します。
+仮にこの入力だったとすると、2つのエラーが分かったほうが良いでしょう。
+1つは名前の不足で、2つ目は姓の不足です。</p>
 <p><code>validation</code>ライブラリでは別のアプリカティブ関手も提供されています。
-これは単に<code>V</code>と呼ばれていて、何らかの<em>半群</em>でエラーを返す機能があります。
-例えば<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、<code>String</code>の配列をエラーとして返すことができます。</p>
+これは<code>V</code>という名前で、何らかの<em>半群</em>でエラーを返せます。
+例えば<code>V (Array String)</code>を使うと、新しいエラーを配列の最後に連結していき、<code>String</code>の配列をエラーとして返せます。</p>
 <p><code>Data.Validation</code>モジュールは<code>Data.AddressBook</code>モジュールのデータ構造を検証するために<code>V (Array String)</code>アプリカティブ関手を使っています。</p>
 <p><code>Data.AddressBook.Validation</code>モジュールから取材した検証器の例は次のようになります。</p>
 <pre><code class="language-haskell">type Errors
@@ -663,7 +674,7 @@ validatePersonAdo p = ado
   numbers   &lt;- validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
   in person firstName lastName address numbers
 </code></pre>
-<p><code>validatePhoneNumbers</code>はこれまでに見たことのない新しい関数、<code>traverse</code>を使います。</p>
+<p><code>validatePhoneNumbers</code>はこれまでに見たことのない新しい関数である<code>traverse</code>を使っています。</p>
 <p><code>traverse</code>は<code>Data.Traversable</code>モジュールの<code>Traversable</code>型クラスで定義されています。</p>
 <pre><code class="language-haskell">class (Functor t, Foldable t) &lt;= Traversable t where
   traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; t a -&gt; m (t b)
@@ -671,8 +682,9 @@ validatePersonAdo p = ado
 </code></pre>
 <p><code>Traversable</code>は <em>巡回可能関手</em>
 の型クラスを定義します。これらの関数の型は少し難しそうに見えるかもしれませんが、<code>validatePerson</code>は良いきっかけとなる例です。</p>
-<p>全ての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<em>畳み込み可能関手</em>は、構造を1つの値へと纏める畳み込み操作を提供する型構築子であったことを思い出してください）。
-それに加えて、<code>Traversable</code>関手はその構造に依存した副作用の集まりを連結する機能を提供します。</p>
+<p>全ての巡回可能関手は<code>Functor</code>と<code>Foldable</code>のどちらでもあります（<em>畳み込み可能関手</em>は畳み込み操作に対応する型構築子であったことを思い出してください。
+畳み込みとは構造を1つの値へと簡約するものでした）。
+それに加えて、巡回可能関手はその構造に依存した副作用の集まりを組み合わせられます。</p>
 <p>複雑そうに聞こえるかもしれませんが、配列の場合に特殊化して簡単にした上で考えてみましょう。配列型構築子は<code>Traversable</code>であり、つまりは次のような関数が存在するということです。</p>
 <pre><code class="language-haskell">traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; Array a -&gt; m (Array b)
 </code></pre>
@@ -682,10 +694,10 @@ validatePersonAdo p = ado
 <p>まだよくわからないでしょうか。それでは更に、<code>f</code>を上記の<code>V Errors</code>アプリカティブ関手に特殊化して考えてみましょう。これで次の型を持つ関数が得られます。</p>
 <pre><code class="language-haskell">traverse :: forall a b. (a -&gt; V Errors b) -&gt; Array a -&gt; V Errors (Array b)
 </code></pre>
-<p>この型シグネチャは、型<code>a</code>についての検証関数<code>m</code>があれば、<code>traverse m</code>は型<code>Array a</code>の配列についての検証関数であるということを言っています。
-これはまさに、今必要になっている<code>Person</code>データ構造体の<code>phones</code>フィールドを検証する検証器そのものです。
-それぞれの要素が成功するかどうかを検証する検証関数を作るために、<code>validatePhoneNumber</code>を<code>traverse</code>へ渡しています。</p>
-<p>一般に、<code>traverse</code>はデータ構造の要素を1つずつ辿っていき、副作用を伴いつつ計算し、結果を累積します。</p>
+<p>この型シグネチャでは、型<code>a</code>についての検証関数<code>m</code>があれば、<code>traverse m</code>は型<code>Array a</code>の配列についての検証関数であると書かれています。
+ところがこれは正に<code>Person</code>データ構造体の<code>phones</code>フィールドを検証できるようにするのに必要なものです。
+各要素が成功するかを検証する検証関数を作るために、<code>validatePhoneNumber</code>を<code>traverse</code>へ渡しています。</p>
+<p>一般に、<code>traverse</code>はデータ構造の要素を1つずつ辿っていき、副作用を伴いつつ計算し、結果を累算します。</p>
 <p><code>Traversable</code>のもう1つの関数、<code>sequence</code>の型シグネチャには見覚えがあるかもしれません。</p>
 <pre><code class="language-haskell">sequence :: forall a m. Applicative m =&gt; t (m a) -&gt; m (t a)
 </code></pre>
@@ -693,7 +705,11 @@ validatePersonAdo p = ado
 <code>t</code>を型構築子<code>List</code>だとすると、<code>combineList</code>関数の型が復元されます。</p>
 <pre><code class="language-haskell">combineList :: forall f a. Applicative f =&gt; List (f a) -&gt; f (List a)
 </code></pre>
-<p>巡回可能関手は、作用のある計算を集めてその作用を結合するという、データ構造走査の考え方を見据えたものです。実際、<code>sequence</code>と<code>traversable</code>は<code>Traversable</code>を定義する上でどちらも同じくらい重要です。これらはお互いがお互いを利用して実装できます。これについては興味ある読者への演習として残しておきます。</p>
+<p>巡回可能関手はデータ構造走査の考え方を見据えたものです。
+これにより作用のある計算の集合を集めてその作用を結合します。
+実際、<code>sequence</code>と<code>traversable</code>は<code>Traversable</code>を定義する上でどちらも同じくらい重要です。
+これらはお互いがお互いを利用して実装できます。
+これについては興味ある読者への演習として残しておきます。</p>
 <p><code>Data.List</code>で与えられているリストの<code>Traversable</code>インスタンスは次の通り。</p>
 <pre><code class="language-haskell">instance Traversable List where
 -- traverse :: forall a b m. Applicative m =&gt; (a -&gt; m b) -&gt; List a -&gt; m (List b)
@@ -701,7 +717,10 @@ traverse _ Nil         = pure Nil
 traverse f (Cons x xs) = Cons &lt;$&gt; f x &lt;*&gt; traverse f xs
 </code></pre>
 <p>（実際の定義は後にスタック安全性を向上するために変更されました。その変更についてより詳しくは<a href="https://github.com/purescript/purescript-lists/pull/87">こちら</a>で読むことができます）</p>
-<p>入力が空のリストのときには、単に<code>pure</code>を使って空の配列を返すことができます。配列が空でないときは、関数<code>f</code>を使うと先頭の要素から型<code>f b</code>の計算を作成できます。また、配列の残りに対して<code>traverse</code>を再帰的に呼び出すことができます。最後に、アプリカティブ関手<code>m</code>まで<code>Cons</code>構築子を持ち上げて、2つの結果を組み合わせます。</p>
+<p>入力が空のリストのときには、<code>pure</code>を使って空のリストを返せます。
+リストが空でないときは、関数<code>f</code>を使うと先頭の要素から型<code>f b</code>の計算を作成できます。
+また、尾鰭に対して<code>traverse</code>を再帰的に呼び出せます。
+最後に、アプリカティブ関手<code>m</code>まで<code>Cons</code>構築子を持ち上げて、2つの結果を組み合わせられます。</p>
 <p>巡回可能関手の例はただの配列やリスト以外にもあります。
 以前に見た<code>Maybe</code>型構築子も<code>Traversable</code>のインスタンスを持っています。
 PSCiで試してみましょう。</p>
@@ -719,8 +738,10 @@ invalid ([&quot;Field 'Example' cannot be empty&quot;])
 pure ((Just &quot;Testing&quot;))
 </code></pre>
 <p>これらの例では、<code>Nothing</code>の値の走査は検証なしで<code>Nothing</code>の値を返し、<code>Just x</code>を走査すると<code>x</code>を検証するのに検証関数が使われるということを示しています。
-要は、<code>traverse</code>は型<code>a</code>についての検証関数をとり、<code>Maybe a</code>についての検証関数、つまり型<code>a</code>のオプショナルな値についての検証関数を返すのです。</p>
-<p>他の巡回可能関手には<code>Array</code>、また任意の型<code>a</code>について<code>Tuple a</code>、<code>Either a</code>が含まれます。一般的に、「容器」のようなデータの型構築子は大抵<code>Traversable</code>インスタンスを持っています。例として、演習では二分木の型の<code>Traversable</code>インスタンスを書くことになります。</p>
+要は、<code>traverse</code>は型<code>a</code>についての検証関数を取り、<code>Maybe a</code>についての検証関数、つまり型<code>a</code>の省略可能な値についての検証関数を返すのです。</p>
+<p>他の巡回可能関手には、任意の型<code>a</code>についての<code>Array a</code>、<code>Tuple a</code>、<code>Either a</code>が含まれます。
+一般に、「容器」のようなほとんどのデータ型構築子は<code>Traversable</code>インスタンスを持っています。
+一例として、演習には二分木の型の<code>Traversable</code>インスタンスを書くことが含まれます。</p>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
 <li>
@@ -730,7 +751,7 @@ pure ((Just &quot;Testing&quot;))
 <p>これらのインスタンスを手作業で書くこともできますし、コンパイラに導出してもらうこともできることを前の章から思い起こしてください。</p>
 <p><code>Show</code>の出力には多くの「正しい」書式の選択肢があります。
 この演習のテストでは以下の空白スタイルを期待しています。
-これはたまたま一般化されたshowの既定の書式と合致しているため、このインスタンスを手作業で書くつもりのときだけ、このことを念頭に置いておいてください。</p>
+これは一般化されたshowの既定の書式と合致しているため、このインスタンスを手作業で書くつもりのときだけ、このことを念頭に置いておいてください。</p>
 <pre><code class="language-haskell">(Branch (Branch Leaf 8 Leaf) 42 Leaf)
 </code></pre>
 </li>
@@ -749,7 +770,7 @@ pure ((Just &quot;Testing&quot;))
 <p>（普通）木を帰り掛け順に巡回する関数<code>traversePostOrder</code>を書いてください。作用は左右根と実行されます。</p>
 </li>
 <li>
-<p>（普通）<code>homeAddress</code>フィールドがオプショナル（<code>Maybe</code>を使用）な新しい版の<code>Person</code>型をつくってください。
+<p>（普通）<code>homeAddress</code>フィールドが省略可能（<code>Maybe</code>を使用）な新しい版の<code>Person</code>型をつくってください。
 それからこの新しい<code>Person</code>を検証する新しい版の<code>validatePerson</code>（<code>validatePersonOptionalAddress</code>と改名します）を書いてください。
 <em>手掛かり</em>：<code>traverse</code>を使って型<code>Maybe a</code>のフィールドを検証してください。</p>
 </li>
@@ -768,29 +789,31 @@ pure ((Just &quot;Testing&quot;))
 巡回可能関手がデータ構造に従って作用を順番に結合させる<code>sequence</code>関数を提供していることと、この直感的理解とは一致するでしょう。</p>
 <p>しかし一般には、アプリカティブ関手はこれよりももっと一般的です。
 アプリカティブ関手の規則は、その計算の副作用にどんな順序付けも強制しません。
-実際、並列に副作用を実行するためのアプリカティブ関手というものは妥当になりえます。</p>
-<p>例えば<code>V</code>検証関手はエラーの<em>配列</em>を返しますが、その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、このときどんな順序でそれぞれの検証器を実行しても問題はありません。
+実際、並列に副作用を実行するアプリカティブ関手は妥当でしょう。</p>
+<p>例えば<code>V</code>検証関手はエラーの<em>配列</em>を返しますが、その代わりに<code>Set</code>半群を選んだとしてもやはり正常に動き、このときどんな順序で各検証器を実行しても問題はありません。
 データ構造に対して並列にこれの実行さえできるのです。</p>
-<p>別の例として、<code>parallel</code>パッケージは、<em>並列計算</em>に対応する<code>Parallel</code>型クラスを与えます。
-<code>Parallel</code>は関数<code>parallel</code>を提供しており、何らかの<code>Applicative</code>関手を使って入力の計算を<em>並列に</em>計算できます。</p>
+<p>2つ目の例として、<code>parallel</code>パッケージは<em>並列計算</em>に対応する<code>Parallel</code>型クラスを提供します。
+<code>Parallel</code>は関数<code>parallel</code>を提供しており、何らかの<code>Applicative</code>関手を使って入力の計算の結果を<em>並列に</em>計算します。</p>
 <pre><code class="language-haskell">f &lt;$&gt; parallel computation1
   &lt;*&gt; parallel computation2
 </code></pre>
 <p>この計算は<code>computation1</code>と<code>computation2</code>を非同期に使って値の計算を始めるでしょう。そして両方の結果の計算が終わった時に、関数<code>f</code>を使って1つの結果へと結合するでしょう。</p>
 <p>この考え方の詳細は、本書の後半で <em>コールバック地獄</em> の問題に対してアプリカティブ関手を応用するときに見ていきます。</p>
-<p>アプリカティブ関手は並列に結合できる副作用を一纏めにする自然な方法です。</p>
+<p>アプリカティブ関手は並列に結合できる副作用を捉える自然な方法です。</p>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章では新しい考え方を沢山扱いました。</p>
 <ul>
-<li>関数適用の概念を副作用の観念を捉えた型構築子へと一般化する、 <em>アプリカティブ関手</em> の概念を導入しました。</li>
-<li>データ構造の検証という課題にアプリカティブ関手がどのような解決策を与えるか、どうすれば単一のエラーの報告からデータ構造を横断する全てのエラーの報告へ変換できるのかを見てきました。</li>
+<li><em>アプリカティブ関手</em>の概念を導入しました。
+これは、関数適用の概念から副作用の観念を捉えた型構築子へと一般化するものです。</li>
+<li>データ構造の検証という課題をアプリカティブ関手やその切り替えで解く方法を見てきました。
+単一のエラーの報告からデータ構造を横断する全てのエラーの報告へ変更できました。</li>
 <li><code>Traversable</code>型クラスに出会いました。<em>巡回可能関手</em>の考え方を内包するものであり、要素が副作用を持つ値の結合に使うことができる容れ物でした。</li>
 </ul>
 <p>アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化です。
 本書を通じて何度も見ることになるでしょう。
-今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、これにより検証器が<em>どうやって</em>検証するかではなく、<em>何を</em>検証すべきなのかを定義できました。
-一般に、アプリカティブ関手は<em>領域特化言語</em>を設計する上で便利な道具になります。</p>
-<p>次の章では、これに関連する考え方である<em>モナド</em>クラスを見て、アドレス帳の例をブラウザで実行させられるように拡張しましょう。</p>
+今回の場合、アプリカティブ関手は宣言的な流儀で書く手段を提供していましたが、これにより検証器が<em>どうやって</em>検証を実施するかではなく、<em>何を</em>検証すべきなのかを定義できました。
+一般にアプリカティブ関手が<em>領域特化言語</em>を設計する上で便利な道具になることを見ていきます。</p>
+<p>次の章では、これに関連する考え方である<em>モナド</em>クラスを見て、住所録の例をブラウザで実行させられるように拡張しましょう。</p>
 
                     </main>
 

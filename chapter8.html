@@ -173,15 +173,16 @@
                     <main>
                         <h1 id="作用モナド"><a class="header" href="#作用モナド">作用モナド</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>前章では、オプショナルな型やエラーメッセージ、データの検証など、 <em>副作用</em>
-を扱いを抽象化するアプリカティブ関手を導入しました。この章では、より表現力の高い方法で副作用を扱うための別の抽象化、 <em>モナド</em> を導入します。</p>
-<p>この章の目的は、なぜモナドが便利な抽象化なのかということと、 <em>do記法</em> との関係を説明することです。</p>
+<p>前章では、<em>副作用</em>を扱うのに使う抽象化であるアプリカティブ関手を導入しました。
+副作用とは省略可能な値、エラー文言、検証などです。
+この章では、副作用を扱うためのより表現力の高い別の抽象化である<em>モナド</em>を導入します。</p>
+<p>この章の目的は、なぜモナドが便利な抽象化なのかということと、<em>do記法</em>との関係を説明することです。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>このプロジェクトでは、以下の依存関係が追加されています。</p>
 <ul>
-<li><code>effect</code>:
-章の後半の主題である<code>Effect</code>モナドを定義しています。この依存関係は全てのプロジェクトで始めから入っているものなので（これまでの全ての章でも依存関係にありました）、明示的にインストールしなければいけないことは稀です。</li>
-<li><code>react-basic-hooks</code>: アドレス帳アプリに使うWebフレームワークです。</li>
+<li><code>effect</code>: 章の後半の主題である<code>Effect</code>モナドを定義しています。
+この依存関係は全てのプロジェクトで始めから入っているものなので（これまでの全ての章でも依存関係にありました）、明示的にインストールしなければいけないことは稀です。</li>
+<li><code>react-basic-hooks</code>: 住所録アプリに使うwebフレームワークです。</li>
 </ul>
 <h2 id="モナドとdo記法"><a class="header" href="#モナドとdo記法">モナドとdo記法</a></h2>
 <p>do記法は<em>配列内包表記</em>を扱うときに初めて導入されました。
@@ -191,9 +192,9 @@
 <ul>
 <li>最初の投擲で値 <code>x</code>を <em>選択</em> します。</li>
 <li>2回目の投擲で値 <code>y</code>を <em>選択</em> します。</li>
-<li>もし <code>x</code>と <code>y</code>の和が <code>n</code>なら組 <code>[x, y]</code>を返し、そうでなければ失敗します。</li>
+<li>もし<code>x</code>と<code>y</code>の和が<code>n</code>なら組<code>[x, y]</code>を返し、そうでなければ失敗します。</li>
 </ul>
-<p>配列内包表記を使うと、この非決定的アルゴリズムを自然に書くことができます。</p>
+<p>配列内包表記を使うと、この非決定的アルゴリズムを自然に書けます。</p>
 <pre><code class="language-hs">import Prelude
 
 import Control.Plus (empty)
@@ -216,13 +217,12 @@ countThrows n = do
 &gt; countThrows 12
 [[6,6]]
 </code></pre>
-<p>前の章では、<em>オプショナルな値</em>に対応したより大きなプログラミング言語へとPureScriptの関数を埋め込む、<code>Maybe</code>アプリカティブ関手についての直感的理解を養いました。
+<p>前の章では、<em>省略可能な値</em>に対応したより大きなプログラミング言語へとPureScriptの関数を埋め込む、<code>Maybe</code>アプリカティブ関手についての直感的理解を養いました。
 同様に<em>配列モナド</em>についても、<em>非決定選択</em>に対応したより大きなプログラミング言語へPureScriptの関数を埋め込む、というような直感的理解を得ることができます。</p>
-<p>一般に、ある型構築子 <code>m</code>のモナドは、型 <code>m a</code>の値を持つdo記法を使う手段を提供します。
-上の配列内包表記では、全ての行に何らかの型 <code>a</code>についての型 <code>Array a</code>の計算が含まれていることに注目してください。
-一般に、do記法ブロックの全ての行は、何らかの型 <code>a</code>とモナド <code>m</code>について、型 <code>m a</code>の計算を含んでいます。
-モナド <code>m</code>は全ての行で同じでなければなりません（つまり、副作用の種類は固定されます）が、型
-<code>a</code>は異なることもあります（言い換えると、個々の計算は異なる型の結果を持つことができます）。</p>
+<p>一般に、ある型構築子<code>m</code>のモナドは、型<code>m a</code>の値を持つdo記法を使う手段を提供します。
+上の配列内包表記に注意すると、何らかの型<code>a</code>について全行に型<code>Array a</code>の計算が含まれています。
+一般に、do記法ブロックの全行は、何らかの型<code>a</code>とモナド<code>m</code>について、型<code>m a</code>の計算を含みます。
+モナド<code>m</code>は全行で同じでなければなりません（つまり副作用は固定）が、型<code>a</code>は異なることもあります（つまり個々の計算は異なる型の結果にできる）。</p>
 <p>以下はdo記法の別の例です。
 今回は型構築子 <code>Maybe</code>に適用されています。
 XMLノードを表す型 <code>XML</code>と次の関数があるとします。</p>
@@ -238,10 +238,9 @@ userCity root = do
   city &lt;- child addr &quot;city&quot;
   pure city
 </code></pre>
-<p><code>userCity</code>関数は子の要素である <code>profile</code>を探し、 <code>profile</code>要素の中にある <code>address</code>要素、最後に
-<code>address</code>要素から <code>city</code>要素を探します。
-これらの要素の何れかが欠落している場合は、返り値は <code>Nothing</code>になります。
-そうでなければ、返り値は <code>city</code>ノードから <code>Just</code>を使って構築されています。</p>
+<p><code>userCity</code>関数は子の<code>profile</code>要素、<code>profile</code>要素の中にある<code>address</code>要素、最後に<code>address</code>要素の中にある<code>city</code>要素を探します。
+これらの要素の何れかが欠落している場合、返り値は<code>Nothing</code>になります。
+そうでなければ、返り値は<code>city</code>ノードから<code>Just</code>を使って構築されます。</p>
 <p>最後の行にある<code>pure</code>関数は、全ての<code>Applicative</code>関手について定義されているのでした。
 <code>Maybe</code>の<code>Applicative</code>関手の<code>pure</code>関数は<code>Just</code>として定義されており、最後の行を <code>Just city</code>へ変更しても同じように正しく動きます。</p>
 <h2 id="モナド型クラス"><a class="header" href="#モナド型クラス">モナド型クラス</a></h2>
@@ -252,7 +251,7 @@ userCity root = do
 class (Applicative m, Bind m) &lt;= Monad m
 </code></pre>
 <p>ここで鍵となる関数は <code>Bind</code>型クラスで定義されている演算子 <code>bind</code>で、<code>Functor</code>及び <code>Apply</code>型クラスにある <code>&lt;$&gt;</code>や <code>&lt;*&gt;</code>などの演算子と同様に、<code>Prelude</code>では <code>&gt;&gt;=</code>として <code>bind</code>の中置の別名が定義されています。</p>
-<p><code>Monad</code>型クラスは、既に見てきた <code>Applicative</code>型クラスの操作で <code>Bind</code>を拡張します。</p>
+<p><code>Monad</code>型クラスは、既に見てきた<code>Applicative</code>型クラスの操作で<code>Bind</code>を拡張します。</p>
 <p><code>Bind</code>型クラスの例を幾つか見てみるのがわかりやすいでしょう。
 配列についての <code>Bind</code>の妥当な定義は次のようになります。</p>
 <pre><code class="language-hs">instance Bind Array where
@@ -265,7 +264,8 @@ class (Applicative m, Bind m) &lt;= Monad m
   bind (Just a) f = f a
 </code></pre>
 <p>この定義は欠落した値がdo記法ブロックを通じて伝播するという直感的理解を裏付けるものです。</p>
-<p><code>Bind</code>型クラスとdo記法がどのように関係しているかを見て行きましょう。最初に何らかの計算結果からの値の束縛から始まる簡単なdo記法ブロックについて考えてみましょう。</p>
+<p><code>Bind</code>型クラスとdo記法がどのように関係しているかを見て行きましょう。
+最初に、何らかの計算結果からの値の束縛から始まる、単純なdo記法ブロックについて考えてみましょう。</p>
 <pre><code class="language-hs">do value &lt;- someComputation
    whatToDoNext
 </code></pre>
@@ -284,7 +284,9 @@ userCity root =
       child addr &quot;city&quot; &gt;&gt;= \city -&gt;
         pure city
 </code></pre>
-<p>do記法を使って表現されたコードは、<code>&gt;&gt;=</code>演算子を使って書かれた同じ意味のコードよりしばしば読みやすくなることも特筆すべき点です。一方で、明示的に <code>&gt;&gt;=</code>を使って束縛を書くと、しばしば<em>ポイントフリー</em>形式でコードが書けるようになります。ただし、読みやすさにはやはり注意がいります。</p>
+<p>do記法を使って表現されたコードは、<code>&gt;&gt;=</code>演算子を使う等価なコードより遥かに読みやすくなることがよくあることも特筆すべき点です。
+しかしながら、明示的に<code>&gt;&gt;=</code>を使って束縛を書くと、<em>ポイントフリー</em>形式でコードが書けるようになることがよくあります。
+ただし、読みやすさにはやはり注意が要ります。</p>
 <h2 id="モナド則"><a class="header" href="#モナド則">モナド則</a></h2>
 <p><code>Monad</code>型クラスは<em>モナド則</em>と呼ばれる3つの規則を持っています。これらは
 <code>Monad</code>型クラスの合理的な実装から何を期待できるかを教えてくれます。</p>
@@ -318,9 +320,9 @@ userCity root =
   y &lt;- m2
   m3
 </code></pre>
-<p>これらの計算にはそれぞれ、3つのモナドの式<code>m1</code>、<code>m2</code>、<code>m3</code>が含まれています。
-どちらの場合でも<code>m1</code>の結果は名前<code>x</code>に束縛され、<code>m2</code>の結果は名前<code>y</code>に束縛されます。</p>
-<p><code>c1</code>では2つの式 <code>m1</code>と <code>m2</code>がそれぞれのdo記法ブロック内にグループ化されています。</p>
+<p>これらの各計算には3つのモナドの式<code>m1</code>、<code>m2</code>、<code>m3</code>が含まれています。
+どちらの場合でも<code>m1</code>の結果は結局は名前<code>x</code>に束縛され、<code>m2</code>の結果は名前<code>y</code>に束縛されます。</p>
+<p><code>c1</code>では2つの式<code>m1</code>と<code>m2</code>が各do記法ブロック内にグループ化されています。</p>
 <p><code>c2</code>では<code>m1</code>、<code>m2</code>、<code>m3</code>の3つ全ての式が同じdo記法ブロックに現れています。</p>
 <p>結合法則は入れ子になったdo記法ブロックをこのように単純化しても問題ないことを言っています。</p>
 <p><em>補足</em>：do記法を<code>bind</code>の呼び出しへと脱糖する定義により、 <code>c1</code>と <code>c2</code>は何れも次のコードと同じです。</p>
@@ -332,25 +334,25 @@ userCity root =
 </code></pre>
 <h2 id="モナドで畳み込む"><a class="header" href="#モナドで畳み込む">モナドで畳み込む</a></h2>
 <p>抽象的にモナドを扱う例として、この節では <code>Monad</code>型クラス中の任意の型構築子で機能する関数を紹介していきます。
-これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと対応しているという直感的理解を補強しますし、モナドによるプログラミングがもたらす一般性も示しています。</p>
-<p>これから <code>foldM</code>と呼ばれる関数を書いてみます。これは以前扱った
-<code>foldl</code>関数をモナドの文脈へと一般化します。型シグネチャは次のようになっています。</p>
+これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと対応しているという直感的理解を補強しますし、モナドによるプログラミングが齎す一般性も示しています。</p>
+<p>これから書いていく関数は<code>foldM</code>という名前です。
+以前見た<code>foldl</code>関数をモナドの文脈へと一般化するものです。
+型シグネチャは以下です。</p>
 <pre><code class="language-hs">foldM :: forall m a b. Monad m =&gt; (a -&gt; b -&gt; m a) -&gt; a -&gt; List b -&gt; m a
 foldl :: forall   a b.            (a -&gt; b -&gt;   a) -&gt; a -&gt; List b -&gt;   a
 </code></pre>
 <p>モナド <code>m</code>が現れている点を除いて、 <code>foldl</code>の型と同じであることに注意しましょう。</p>
-<p>直感的には、 <code>foldM</code>はさまざまな副作用の組み合わせに対応した文脈での配列の畳み込みを行うと捉えることができます。</p>
-<p>例として <code>m</code>が <code>Maybe</code>であるとすると、この畳み込みはそれぞれの段階で <code>Nothing</code>を返すことで失敗させられます。
-それぞれの段階ではオプショナルな結果を返しますから、それゆえ畳み込みの結果もオプショナルになります。</p>
-<p>もし <code>m</code>として配列の型構築子
-<code>Array</code>を選ぶとすると、畳み込みのそれぞれの段階で複数の結果を返すことができ、畳み込みは結果それぞれに対して次の手順を継続します。
-最後に、結果の集まりは、可能な経路全ての畳み込みから構成されることになります。
-これはグラフの走査と対応しています。</p>
+<p>直感的には、<code>foldM</code>は様々な副作用の組み合わせに対応した文脈で配列を畳み込むものと捉えられます。</p>
+<p>例として<code>m</code>として<code>Maybe</code>を選ぶとすると、各段階で<code>Nothing</code>を返すことでこの畳み込みを失敗させられます。
+各段階では省略可能な結果を返しますから、それ故畳み込みの結果も省略可能になります。</p>
+<p>もし<code>m</code>として型構築子<code>Array</code>を選ぶとすると、畳み込みの各段階で0以上の結果を返せるため、畳み込みは各結果に対して独立に次の手順を継続します。
+最後に、結果の集まりは可能な経路の全ての畳み込みから構成されることになります。
+これはグラフの走査と対応していますね。</p>
 <p><code>foldM</code>を書くには、単に入力のリストについて場合分けをするだけです。</p>
 <p>リストが空なら、型 <code>a</code>の結果を生成するための選択肢は1つしかありません。第2引数を返します。</p>
 <pre><code class="language-hs">foldM _ a Nil = pure a
 </code></pre>
-<p>なお<code>a</code>をモナド <code>m</code>まで持ち上げるために <code>pure</code>を使わなくてはいけません。</p>
+<p>なお、<code>a</code>をモナド <code>m</code>まで持ち上げるために <code>pure</code>を使わなくてはいけません。</p>
 <p>リストが空でない場合はどうでしょうか。
 その場合、型 <code>a</code>の値、型 <code>b</code>の値、型 <code>a -&gt; b -&gt; m a</code>の関数があります。
 もしこの関数を適用すると、型 <code>m a</code>のモナドの結果を手に入れることになります。
@@ -360,9 +362,12 @@ foldl :: forall   a b.            (a -&gt; b -&gt;   a) -&gt; a -&gt; List b -&g
   a' &lt;- f a b
   foldM f a' bs
 </code></pre>
-<p>なお、do記法を除けば、この実装は配列に対する <code>foldl</code>の実装とほとんど同じです。</p>
-<p>PSCiでこれを定義し、試してみましょう。
-以下では例として、除算可能かどうかを調べて、失敗を示すために <code>Maybe</code>型構築子を使う、整数の「安全な除算」関数を定義するとしましょう。</p>
+<p>なお、この実装はリストに対する<code>foldl</code>の実装とほとんど同じです。
+ただしdo記法である点を除きます。</p>
+<p>PSCiでこの関数を定義して試せます。
+以下は一例です。
+整数の「安全な除算」関数を定義するとします。
+0による除算かを確認し、失敗を示すために <code>Maybe</code>型構築子を使うのです。</p>
 <pre><code class="language-hs">safeDivide :: Int -&gt; Int -&gt; Maybe Int
 safeDivide _ 0 = Nothing
 safeDivide a b = Just (a / b)
@@ -377,8 +382,8 @@ safeDivide a b = Just (a / b)
 &gt; foldM safeDivide 100 (fromFoldable [2, 0, 4])
 Nothing
 </code></pre>
-<p>もし何れかの時点で整数にならない除算が行われようとしたら、<code>foldM safeDivide</code>関数は <code>Nothing</code>を返します。
-そうでなければ、除算を繰り返した累積の結果を<code>Just</code>構築子に包んで返します。</p>
+<p>もし何れかの時点で0による除算が試みられたら、<code>foldM safeDivide</code>関数は<code>Nothing</code>を返します。
+そうでなければ、累算値を繰り返し除算した結果を<code>Just</code>構築子に包んで返します。</p>
 <h2 id="モナドとアプリカティブ"><a class="header" href="#モナドとアプリカティブ">モナドとアプリカティブ</a></h2>
 <p>クラス間に上位クラス関係の効能があるため、<code>Monad</code>型クラスの全てのインスタンスは <code>Apply</code>型クラスのインスタンスでもあります。</p>
 <p>しかし、あらゆる<code>Monad</code>のインスタンスに「無料で」ついてくる<code>Apply</code>型クラスの実装もあります。これは<code>ap</code>関数により与えられます。</p>
@@ -389,13 +394,14 @@ ap mf ma = do
   pure (f a)
 </code></pre>
 <p>もし<code>m</code>に<code>Monad</code>型クラスの法則の縛りがあれば、<code>ap</code>で与えられる<code>m</code>について妥当な <code>Apply</code>インスタンスが存在します。</p>
-<p>興味のある読者は、これまで登場した <code>Array</code>、 <code>Maybe</code>、 <code>Either e</code>といったモナドについて、この <code>ap</code>が
-<code>apply</code>と一致することを確かめてみてください。</p>
+<p>興味のある読者はこれまで登場したモナドについてこの<code>ap</code>が<code>apply</code>として充足することを確かめてみてください。
+モナドは<code>Array</code>、<code>Maybe</code>、<code>Either e</code>といったものです。</p>
 <p>もし全てのモナドがアプリカティブ関手でもあるなら、アプリカティブ関手についての直感的理解を全てのモナドについても適用できるはずです。
 特に、モナドが更なる副作用の組み合わせで増強された「より大きな言語」でのプログラミングといろいろな意味で一致することを予想するのはもっともです。
 <code>map</code>と <code>apply</code>を使って、引数が任意個の関数をこの新しい言語へと持ち上げることができるはずです。</p>
-<p>しかし、モナドはアプリカティブ関手でできること以上を行うことができ、重要な違いはdo記法の構文で強調されています。
-利用者情報をエンコードしたXML文書から利用者の都市を検索する、<code>userCity</code>の例についてもう一度考えてみましょう。</p>
+<p>しかし、モナドはアプリカティブ関手でできること以上ができ、重要な違いはdo記法の構文で強調されています。
+<code>userCity</code>の例についてもう一度考えてみましょう。
+利用者情報をエンコードしたXML文書から利用者の市町村を検索するものでした。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root = do
   prof &lt;- child root &quot;profile&quot;
@@ -407,17 +413,17 @@ userCity root = do
 <code>Applicative</code>型クラスのインターフェイスだけを使うのでは、このように以前の値へ依存できません。</p>
 <p><code>pure</code>と <code>apply</code>だけを使って <code>userCity</code>を書こうとしてみれば、これが不可能であることがわかるでしょう。
 アプリカティブ関手ができるのは関数の互いに独立した引数を持ち上げることだけですが、モナドはもっと興味深いデータの依存関係に関わる計算を書くことを可能にします。</p>
-<p>前の章では <code>Applicative</code>型クラスは並列処理を表現できることを見ました。
+<p>前の章では<code>Applicative</code>型クラスは並列処理を表現できることを見ました。
 持ち上げられた関数の引数は互いに独立していますから、これはまさにその通りです。
-<code>Monad</code>型クラスは計算が前の計算の結果に依存できるようにしますから、同じようにはなりません。
-モナドは副作用を順番に組み合わせなければいけません。</p>
+<code>Monad</code>型クラスは計算が前の計算の結果に依存できるようになっており、同じようにはなりません。
+つまりモナドは副作用を順番に組み合わせなければならないのです。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
 <li>
 <p>（簡単）3つ以上の要素がある配列の3つ目の要素を返す関数<code>third</code>を書いてください。
 関数は適切な<code>Maybe</code>型で返します。
 <em>手掛かり</em>：<code>arrays</code>パッケージの<code>Data.Array</code>モジュールから<code>head</code>と<code>tail</code>関数の型を見つけ出してください。
-これらの関数を繋げるには<code>Maybe</code>モナドと共にdo記法を使ってください。</p>
+これらの関数を組み合わせるには<code>Maybe</code>モナドと共にdo記法を使ってください。</p>
 </li>
 <li>
 <p>（普通）一掴みの硬貨を使ってできる可能な全ての合計を決定する関数 <code>possibleSums</code>を、 <code>foldM</code>を使って書いてみましょう。
@@ -428,19 +434,20 @@ userCity root = do
 &gt; possibleSums [1, 2, 10]
 [0,1,2,3,10,11,12,13]
 </code></pre>
-<p><em>手掛かり</em>：<code>foldM</code>を使うと1行でこの関数を書くことが可能です。
-重複を取り除いたり、結果を並び替えたりするのに、<code>nub</code>関数や <code>sort</code>関数を使いたくなるかもしれません。</p>
+<p><em>手掛かり</em>：<code>foldM</code>を使うと1行でこの関数を書けます。
+重複を取り除いたり、結果を並び替えたりするのに、<code>nub</code>関数や<code>sort</code>関数を使うことでしょう。</p>
 </li>
 <li>
-<p>（普通）<code>Maybe</code>型構築子について、 <code>ap</code>関数と <code>apply</code>演算子が一致することを確認してください。
+<p>（普通）<code>ap</code>関数と<code>apply</code>演算子が<code>Maybe</code>モナドを充足することを確かめてください。
 <em>補足</em>：この演習にはテストがありません。</p>
 </li>
 <li>
-<p>（普通）<code>maybe</code>パッケージで定義されている<code>Maybe</code>型についての <code>Monad</code>インスタンスが、モナド則を満たしていることを検証してください。
+<p>（普通）<code>Maybe</code>型についての<code>Monad</code>インスタンスが、モナド則を満たしていることを検証してください。
+このインスタンスは<code>maybe</code>パッケージで定義されています。
 <em>補足</em>：この演習にはテストがありません。</p>
 </li>
 <li>
-<p>（普通）配列上の <code>filter</code>の関数を一般化した関数<code>filterM</code>を書いてください。
+<p>（普通）リスト上の<code>filter</code>の関数を一般化した関数<code>filterM</code>を書いてください。
 この関数は次の型シグネチャを持ちます。</p>
 <pre><code class="language-hs">filterM :: forall m a. Monad m =&gt; (a -&gt; m Boolean) -&gt; List a -&gt; m (List a)
 </code></pre>
@@ -454,7 +461,7 @@ userCity root = do
 <p>モナド則を使って、全てのモナドが次を満たすことを証明してください。</p>
 <pre><code class="language-hs">lift2 f (pure a) (pure b) = pure (f a b)
 </code></pre>
-<p>ここで、 <code>Applly</code>インスタンスは上で定義された <code>ap</code>関数を使用しています。
+<p>ここで、<code>Applly</code>インスタンスは上で定義された<code>ap</code>関数を使用しています。
 <code>lift2</code>が次のように定義されていたことを思い出してください。</p>
 <pre><code class="language-hs">lift2 :: forall f a b c. Apply f =&gt; (a -&gt; b -&gt; c) -&gt; f a -&gt; f b -&gt; f c
 lift2 f a b = f &lt;$&gt; a &lt;*&gt; b
@@ -463,11 +470,11 @@ lift2 f a b = f &lt;$&gt; a &lt;*&gt; b
 </li>
 </ol>
 <h2 id="ネイティブな作用"><a class="header" href="#ネイティブな作用">ネイティブな作用</a></h2>
-<p>ここではPureScriptの中核となる重要なモナド、 <code>Effect</code>モナドについて見ていきます。</p>
+<p>ここではPureScriptで中心的な重要性のあるモナドの1つ、<code>Effect</code>モナドについて見ていきます。</p>
 <p><code>Effect</code>モナドは <code>Effect</code>モジュールで定義されています。かつてはいわゆる <em>ネイティブ</em>
 副作用を管理していました。Haskellに馴染みがあれば、これは<code>IO</code>モナドと同等のものです。</p>
 <p>ネイティブな副作用とは何でしょうか。
-この副作用はPureScript特有の式からJavaScriptの式を区別するものです。
+この副作用はPureScript特有の式とJavaScriptの式とを2分するものです。
 PureScriptの式は概して副作用とは無縁なのです。
 ネイティブな作用の例を以下に示します。</p>
 <ul>
@@ -490,24 +497,27 @@ PureScriptの式は概して副作用とは無縁なのです。
 <li>配列やリストで表現される多値関数</li>
 </ul>
 <p>これらの区別はわかりにくいので注意してください。
-エラーメッセージは例外の形でJavaScriptの式の副作用となることがあります。
-その意味では例外はネイティブな副作用を表していて、 <code>Effect</code>を使用して表現できます。
-しかし、 <code>Either</code>を使用して実装されたエラーメッセージはJavaScriptランタイムの副作用ではなく、
-<code>Effect</code>を使うスタイルでエラーメッセージを実装するのは適切ではありません。
+例えば、エラー文言は例外の形でJavaScriptの式の副作用となることがあると言えます。
+その意味では例外はネイティブな副作用を表していて、<code>Effect</code>を使用して表現できます。
+しかし、<code>Either</code>を使用して実装されたエラー文言はJavaScript実行時の副作用ではなく、<code>Effect</code>を使うスタイルでエラー文言を実装するのは不適切です。
 そのため、ネイティブなのは作用自体というより、実行時にどのように実装されているかです。</p>
 <h2 id="副作用と純粋性"><a class="header" href="#副作用と純粋性">副作用と純粋性</a></h2>
-<p>PureScriptのような言語が純粋であるとすると、疑問が浮かんできます。副作用がないなら、どうやって役に立つ実際のコードを書くことができるというのでしょうか。</p>
-<p>その答えはPureScriptの目的は副作用を排除することではないということです。これは、純粋な計算と副作用のある計算とを型システムにおいて区別できるような方法で、副作用を表現することを目的としているのです。この意味で、言語はあくまで純粋だということです。</p>
-<p>副作用のある値は、純粋な値とは異なる型を持っています。そういうわけで、例えば副作用のある引数を関数に渡すことはできず、予期せず副作用を持つようなことが起こらなくなります。</p>
-<p><code>Effect</code>モナドで管理された副作用を実行する唯一の方法は、型 <code>Effect a</code>の計算をJavaScriptから実行することです。</p>
+<p>PureScriptのような純粋な言語では、ある疑問が浮かんできます。
+副作用がないなら、どうやって役に立つ実際のコードを書くことができるのでしょうか。</p>
+<p>その答えはPureScriptの目的は副作用を排除することではないということです。
+純粋な計算と副作用のある計算とを、型システムにおいて区別できるような方法で表現します。
+この意味で、言語はあくまで純粋なのです。</p>
+<p>副作用のある値は、純粋な値とは異なる型を持っています。
+そういうわけで、例えば副作用のある引数を関数に渡すことはできず、予期せず副作用を持つようなことが起こらなくなります。</p>
+<p><code>Effect</code>モナドで管理された副作用を現す手段は、型<code>Effect a</code>の計算をJavaScriptから実行することです。</p>
 <p>Spagoビルドツール（や他のツール）は早道を用意しており、アプリケーションの起動時に<code>main</code>計算を呼び出すための追加のJavaScriptコードを生成します。
-<code>main</code>は <code>Effect</code>モナドでの計算であることが要求されます。</p>
+<code>main</code>は<code>Effect</code>モナドでの計算であることが要求されます。</p>
 <h2 id="作用モナド-1"><a class="header" href="#作用モナド-1">作用モナド</a></h2>
 <p><code>Effect</code>は副作用のある計算を充分に型付けするAPIを提供すると同時に、効率的なJavaScriptを生成します。</p>
-<p>馴染みのある<code>log</code>関数から返る型をもう少し見てみましょう。
-<code>Effect</code>はこの関数がネイティブな作用を生み出すことを示しており、この場合はコンソールIOです。
-<code>Unit</code>はいかなる<em>意味のある</em>データも返らないことを示しています。
-<code>Unit</code>はC、Javaなど他の言語での<code>void</code>キーワードと似たようなものとして考えられます。</p>
+<p>馴染みのある<code>log</code>関数から返る型を見てみましょう。
+<code>Effect</code>はこの関数がネイティブな作用を生み出すことを示しており、この場合はコンソールIOです。</p>
+<p><code>Unit</code>はいかなる<em>意味のある</em>データも返らないことを示しています。
+<code>Unit</code>はC、Javaなど他の言語での<code>void</code>キーワードと似たものとして考えられます。</p>
 <pre><code class="language-hs">log :: String -&gt; Effect Unit
 </code></pre>
 <blockquote>
@@ -545,19 +555,21 @@ main = random &gt;&gt;= logShow
 </code></pre>
 <p>コンソールに出力 <code>0.0</code>と <code>1.0</code>の間で無作為に選ばれた数が表示されるでしょう。</p>
 <blockquote>
-<p>余談：<code>spago run</code>は既定で<code>Main</code>モジュールとその中の<code>main</code>関数を探索します。
-<code>--main</code>フラグで代替のモジュールを入口として指定でき、上の例ではそうしています。
-この代替のモジュールもまた<code>main</code>関数を含んでいることに注目してください。</p>
+<p>余談：<code>spago run</code>は既定で<code>main</code>関数を<code>Main</code>モジュールの中から探索します。
+<code>--main</code>フラグで代替のモジュールを入口として指定することも可能で、上の例ではそうしています。
+この代替のモジュールにも<code>main</code>関数が含まれているようにはしてください。</p>
 </blockquote>
 <p>なお、不浄な作用付きのコードに訴えることなく、「乱択された」（技術的には疑似乱択された）データも生成できます。
 この技法は「テストを生成する」章で押さえます。</p>
 <p>以前言及したように<code>Effect</code>モナドはPureScriptで核心的な重要さがあります。
-なぜ核心かというと、それはPureScriptの<code>外部関数インターフェース</code>とやりとりする上での常套手段だからです。
+なぜ核心かというと、それはPureScriptの<code>外部関数インターフェース</code>とやり取りする上での常套手段だからです。
 <code>外部関数インターフェース</code>はプログラムを実行したり副作用を発生させたりする仕組みを提供します。
 <code>外部関数インターフェース</code>を使うことは避けるのが望ましいのですが、どのように動作しどう使うのか理解することもまた極めて大事なことですので、実際にPureScriptで何か動かす前にその章を読まれることをお勧めします。
-要は<code>Effect</code>モナドは結構単純なのです。幾つかの補助関数がありますが、それを差し置いても副作用を内包すること以外には大したことはしません。</p>
+要は<code>Effect</code>モナドは結構単純なのです。
+幾つかの補助関数がありますが、副作用を内包すること以外には大したことはしません。</p>
 <h2 id="例外"><a class="header" href="#例外">例外</a></h2>
-<p>2つの <em>ネイティブな</em> 副作用が絡む<code>node-fs</code>パッケージの関数を調べましょう。ここでの副作用は可変状態の読み取りと例外です。</p>
+<p>2つの<em>ネイティブな</em>副作用が絡む<code>node-fs</code>パッケージの関数を調べましょう。
+ここでの副作用は可変状態の読み取りと例外です。</p>
 <pre><code class="language-hs">readTextFile :: Encoding -&gt; String -&gt; Effect String
 </code></pre>
 <p>もし存在しないファイルを読もうとすると……</p>
@@ -605,8 +617,8 @@ exceptionHead l = case l of
 <p><code>ST</code>作用は変更可能な状態を操作するために使われます。
 純粋関数プログラミングを知っているなら、共有される変更可能な状態は問題を引き起こしやすいということも知っているでしょう。
 しかし、<code>ST</code>作用は型システムを使って安全で<em>局所的な</em>状態変化を可能にし、状態の共有を制限するのです。</p>
-<p><code>ST</code>作用は
-<code>Control.Monad.ST</code>モジュールで定義されています。これがどのように動作するかを確認するには、そのアクションの型を見る必要があります。</p>
+<p><code>ST</code>作用は <code>Control.Monad.ST</code>モジュールで定義されています。
+この挙動を確認するには、その動作の型を見る必要があります。</p>
 <pre><code class="language-hs">new :: forall a r. a -&gt; ST r (STRef r a)
 
 read :: forall a r. STRef r a -&gt; ST r a
@@ -615,11 +627,12 @@ write :: forall a r. a -&gt; STRef r a -&gt; ST r a
 
 modify :: forall r a. (a -&gt; a) -&gt; STRef r a -&gt; ST r a
 </code></pre>
-<p><code>new</code>は型<code>STRef r a</code>の変更可能な参照領域を新しく作るのに使われます。
-<code>STRef r a</code>は <code>read</code>アクションを使って状態を読み取ったり、<code>write</code>アクションや
-<code>modify</code>アクションで状態を変更するのに使われます。
-型<code>a</code>は領域に格納された値の型で、型 <code>r</code>は型システムで<em>メモリ領域</em>（または<em>ヒープ</em>）を表しています。</p>
-<p>例を示します。小さな時間刻みで簡単な更新関数の実行を何度も繰り返すことによって、重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。</p>
+<p><code>new</code>は型<code>STRef r a</code>の可変参照領域を新規作成するのに使われます。
+この領域は<code>read</code>動作を使って読み取ったり、<code>write</code>動作や<code>modify</code>動作で状態を変更するのに使えます。
+型<code>a</code>は領域に格納された値の型を、型<code>r</code>は<em>メモリ領域</em>（または<em>ヒープ</em>）を、それぞれ型システムで表しています。</p>
+<p>例を示します。
+重力に従って落下する粒子の落下の動きをシミュレートしたいとしましょう。
+これには小さな時間刻みで簡単な更新関数の実行を何度も繰り返します。</p>
 <p>粒子の位置と速度を保持する変更可能な参照領域を作成し、領域に格納された値を更新するのにforループを使うことでこれを実現できます。</p>
 <pre><code class="language-hs">import Prelude
 
@@ -641,16 +654,15 @@ simulate x0 v0 time = do
   pure final.x
 </code></pre>
 <p>計算の最後では、参照領域の最終的な値を読み取り、粒子の位置を返しています。</p>
-<p>なお、この関数が変更可能な状態を使っていても、その参照領域<code>ref</code>がプログラムの他の部分で使われるのが許されない限り、これは純粋な関数のままです。
-<code>ST</code>作用が禁止するものが正確には何であるのかについては後ほど見ます。</p>
+<p>なお、この関数が変更可能な状態を使っていても、その参照領域<code>ref</code>がプログラムの他の部分での使用が許されない限り、これは純粋な関数のままです。
+このことが正に<code>ST</code>作用が禁止するものであることを見ていきます。</p>
 <p><code>ST</code>作用付きで計算するには、<code>run</code>関数を使用する必要があります。</p>
 <pre><code class="language-hs">run :: forall a. (forall r. ST r a) -&gt; a
 </code></pre>
 <p>ここで注目して欲しいのは、領域型 <code>r</code>が関数矢印の左辺にある<em>括弧の内側で</em>量化されているということです。
-<code>run</code>に渡したどんなアクションでも、<em>任意の領域</em><code>r</code>が何であれ動作するということを意味しています。</p>
-<p>しかし、ひとたび参照領域が
-<code>new</code>によって作成されると、その領域の型は既に固定されており、<code>run</code>によって限定されたコードの外側で参照領域を使おうとしても型エラーになるでしょう。
-<code>run</code>が安全に <code>ST</code>作用を除去でき、<code>simulate</code>を純粋関数にできるのはこれが理由なのです。</p>
+<code>run</code>に渡したどんな動作でも、<em>任意の領域</em><code>r</code>が何であれ動作するということを意味しています。</p>
+<p>しかし、ひとたび参照領域が<code>new</code>によって作成されると、その領域の型は既に固定されており、<code>run</code>によって限定されたコードの外側で参照領域を使おうとしても型エラーになるでしょう。
+<code>run</code>が安全に<code>ST</code>作用を除去でき、<code>simulate</code>を純粋関数にできるのはこれが理由なのです。</p>
 <pre><code class="language-hs">simulate' :: Number -&gt; Number -&gt; Int -&gt; Number
 simulate' x0 v0 time = run (simulate x0 v0 time)
 </code></pre>
@@ -688,7 +700,7 @@ simulate x0 v0 time =
     final &lt;- read ref
     pure final.x
 </code></pre>
-<p>参照領域はそのスコープから逃れることができないことがコンパイラにわかりますし、安全に<code>ref</code>を<code>var</code>に変換できます。
+<p>そうして、参照領域はそのスコープから逃れられないことと、安全に<code>ref</code>を<code>var</code>に変換できることにコンパイラが気付きます。
 <code>run</code>が埋め込まれた<code>simulate</code>に対して生成されたJavaScriptは次のようになります。</p>
 <pre><code class="language-javascript">var simulate = function (x0) {
   return function (v0) {
@@ -713,9 +725,11 @@ simulate x0 v0 time =
   };
 };
 </code></pre>
-<p>なおこの結果として得られたJavaScriptは最適化の余地があります。
-詳細は<a href="https://github.com/purescript-contrib/purescript-book/issues/121">この課題</a>を参照してください。
-上記の抜粋はその課題が解決されたら更新されるでしょう。</p>
+<blockquote>
+<p>なお、この結果として得られたJavaScriptは最適化の余地があります。
+詳細は<a href="https://github.com/purescript-contrib/purescript-book/issues/121">こちらの課題</a>を参照してください。
+上記の抜粋はそちらの課題が解決されたら更新されるでしょう。</p>
+</blockquote>
 <p>比較としてこちらが埋め込まれていない形式で生成されたJavaScriptです。</p>
 <pre><code class="language-js">var simulate = function (x0) {
   return function (v0) {
@@ -740,8 +754,8 @@ simulate x0 v0 time =
   };
 };
 </code></pre>
-<p>局所的な変更可能状態を扱うとき、特に作用が絡むループを生成する<code>for</code>、 <code>foreach</code>、
-<code>while</code>のようなアクションを一緒に使うときには、<code>ST</code>作用は短いJavaScriptを生成する良い方法となります。</p>
+<p>局所的な変更可能状態を扱うとき、<code>ST</code>作用は短いJavaScriptを生成する良い方法となります。
+作用を持つ繰り返しを生成する<code>for</code>、<code>foreach</code>、<code>while</code>のような動作を一緒に使うときは特にそうです。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
 <li>（普通）<code>safeDivide</code>関数を書き直し、もし分母がゼロなら<code>throwException</code>を使って文言<code>&quot;div zero&quot;</code>の例外を投げるようにしたものを<code>exceptionDivide</code>としてください。</li>
@@ -757,12 +771,11 @@ Series</a>を使って<code>pi</code>の近似を計算するものです。
 <p>DOMを直接扱ったり、オープンソースのDOMライブラリを扱ったりするPureScriptパッケージが沢山あります。
 例えば以下です。</p>
 <ul>
-<li><a href="https://github.com/purescript-web/purescript-web-dom"><code>web-dom</code></a>はW3C
-のDOM規格に向けた型定義と低水準インターフェース実装を提供します。</li>
+<li><a href="https://github.com/purescript-web/purescript-web-dom"><code>web-dom</code></a>はW3CのDOM規格に向けた型定義と低水準インターフェース実装を提供します。</li>
 <li><a href="https://github.com/purescript-web/purescript-web-html"><code>web-html</code></a>はW3CのHTML5規格に向けた型定義と低水準インターフェース実装を提供します。</li>
 <li><a href="http://github.com/paf31/purescript-jquery"><code>jquery</code></a>は<a href="http://jquery.org">jQuery</a>ライブラリのバインディングの集まりです。</li>
 </ul>
-<p>上記のライブラリを抽象化するPureScriptライブラリもあります。
+<p>上記のライブラリを土台に抽象化を進めたPureScriptライブラリもあります。
 以下のようなものです。</p>
 <ul>
 <li><a href="https://github.com/paf31/purescript-thermite"><code>thermite</code></a>は<a href="https://github.com/purescript-contrib/purescript-react"><code>react</code></a>を土台に構築されています。</li>
@@ -776,20 +789,20 @@ Series</a>を使って<code>pi</code>の近似を計算するものです。
 <p>Reactライブラリの完全な入門はこの章の範囲をはるかに超えていますが、読者は必要に応じて説明書を参照することをお勧めします。
 目的に応じて、Reactは <code>Effect</code>モナドの実用的な例を提供してくれます。</p>
 <p>利用者が住所録に新しい項目を追加できるフォームを構築することにしましょう。
-フォームには、さまざまなフィールド（姓、名前、都市、州など）のテキストボックス、及び検証エラーが表示される領域が含まれます。
-テキストボックスに利用者がテキストを入力すると、検証エラーが更新されます。</p>
+フォームには、様々なフィールド（姓、名、市町村、州など）のテキストボックス、及び検証エラーが表示される領域が含まれます。
+テキストボックスに利用者がテキストを入力する度に、検証エラーが更新されます。</p>
 <p>簡潔さを保つために、フォームは固定の形状とします。電話番号は種類（自宅、携帯電話、仕事、その他）ごとに別々のテキストボックスへ分けることにします。</p>
-<p><code>exercises/chapter8</code>ディレクトリから以下のコマンドでWebアプリを立ち上げることができます。</p>
+<p><code>exercises/chapter8</code>ディレクトリから以下のコマンドでwebアプリを立ち上げることができます。</p>
 <pre><code class="language-shell">$ npm install
 $ npx spago build
 $ npx parcel src/index.html --open
 </code></pre>
 <p>もし<code>spago</code>や<code>parcel</code>のような開発ツールが大域的にインストールされていれば、<code>npx</code>の前置は省けるでしょう。
 恐らく既に<code>spago</code>を<code>npm i -g spago</code>で大域的にインストールしていますし、<code>parcel</code>についても同じことができるでしょう。</p>
-<p><code>parcel</code>は「アドレス帳」アプリのブラウザ窓を立ち上げます。
+<p><code>parcel</code>は「住所録」アプリのブラウザ窓を立ち上げます。
 <code>parcel</code>の端末を開いたままにし、他の端末で<code>spago</code>で再構築すると、最新の編集を含むページが自動的に再読み込みされるでしょう。
 また、<a href="https://github.com/purescript/purescript/tree/master/psc-ide"><code>purs ide</code></a>に対応していたり<a href="https://github.com/kRITZCREEK/pscid"><code>pscid</code></a>を走らせていたりする<a href="https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editors">エディタ</a>を使っていれば、ファイルを保存したときに自動的にページが再構築される（そして自動的にページが再読み込みされる）ように設定できます。</p>
-<p>このアドレス帳アプリでフォームフィールドにいろいろな値を入力すると、ページ上に出力された検証エラーを見ることができるでしょう。</p>
+<p>この住所録アプリでフォームフィールドにいろいろな値を入力すると、ページ上で出力された検証エラーが見られます。</p>
 <p>動作の仕組みを散策しましょう。</p>
 <p><code>src/index.html</code>ファイルは最小限です。</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -812,8 +825,7 @@ main();
 </code></pre>
 <p><code>module Main</code> (<code>src/main.purs</code>) の<code>main</code>関数と等価な、生成したJavaScriptを呼び出しています。
 <code>spago build</code>は生成された全てのJavaScriptを<code>output</code>ディレクトリに置くことを思い出してください。</p>
-<p><code>main</code>関数はDOMとHTML
-APIを使い、<code>index.html</code>に定義した<code>container</code>要素の中にアドレス帳コンポーネントを描画します。</p>
+<p><code>main</code>関数はDOMとHTML APIを使い、<code>index.html</code>に定義した<code>container</code>要素の中に住所録コンポーネントを描画します。</p>
 <pre><code class="language-hs">main :: Effect Unit
 main = do
   log &quot;Rendering address book component&quot;
@@ -876,7 +888,7 @@ mkAddressBookApp =
 </code></pre>
 <p><code>props</code>は無視されており、<code>D.text</code>は<code>JSX</code>を返し、そして<code>pure</code>は描画されたJSXに持ち上げます。
 これで<code>component</code>には<code>ReactComponent</code>を生成するのに必要な全てがあります。</p>
-<p>次に完全なアドレス帳コンポーネントにある幾つかの複雑な事柄をもう少し調べていきます。</p>
+<p>次に、完全な住所録コンポーネントにある幾つかの複雑な事柄を調べていきます。</p>
 <p>これらは完全なコンポーネントの最初の数行です。</p>
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
 mkAddressBookApp = do
@@ -887,7 +899,7 @@ mkAddressBookApp = do
 <pre><code class="language-hs">Tuple person setPerson &lt;- useState examplePerson
 </code></pre>
 <p>なお、複数回<code>useState</code>を呼び出すことで、コンポーネントの状態を複数の状態の部品に分解することが自在にできます。
-例えば<code>Person</code>のそれぞれのレコードフィールドについて分離した状態の部品を使って、このアプリを書き直すことができるでしょう。
+例えば<code>Person</code>の各レコードフィールドについて分離した状態の部品を使って、このアプリを書き直すことができるでしょう。
 しかしこの場合にそうすると僅かに利便性を損なうアーキテクチャになってしまいます。</p>
 <p>他の例では<code>Tuple</code>用の<code>/\</code>中置演算子に出喰わすかもしれません。
 これは先の行と等しいものです。</p>
@@ -908,7 +920,7 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
 </code></pre>
 <p><code>state</code>の限定された型は初期の既定値によって決定されます。
 これは<code>examplePerson</code>の型なのでこの場合は<code>Person</code> <code>Record</code>です。</p>
-<p><code>person</code>はそれぞれの再描画の時点で現在の状態にアクセスする方法です。</p>
+<p><code>person</code>は各再描画の時点で現在の状態にアクセスする方法です。</p>
 <p><code>setPerson</code>は状態を更新する方法です。
 単に現在の状態を新しい状態に変形する方法を記述する関数を提供します。
 <code>state</code>の型が偶然<code>Record</code>のときは、レコード更新構文がこれにぴったり合います。
@@ -957,7 +969,10 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
               ]
       }
 </code></pre>
-<p>ここでDOMの意図した状態を表現する<code>JSX</code>を生成しています。このJSXはHTMLタグ（例：<code>div</code>、<code>form</code>、<code>h3</code>、<code>li</code>、<code>ul</code>、<code>label</code>、<code>input</code>）に対応し、典型的には単一のHTML要素を作る関数を適用することで作られます。これらのHTML要素は実はReactコンポーネントそのものによりJSXに変換されます。通常これらの関数にはそれぞれ3つの種類があります。</p>
+<p>ここでDOMの意図した状態を表現する<code>JSX</code>を生成しています。
+このJSXは単一のHTML要素を作るHTMLタグ（例：<code>div</code>、<code>form</code>、<code>h3</code>、<code>li</code>、<code>ul</code>、<code>label</code>、<code>input</code>）に対応する関数を適用することで作られるのが普通です。
+これらのHTML要素はそれ自体がReactコンポーネントであり、JSXに変換されます。
+通常これらの関数にはそれぞれ3つの種類があります。</p>
 <ul>
 <li><code>div_</code>: 子要素の配列を受け付けます。
 既定の属性を使います。</li>
@@ -1028,7 +1043,8 @@ formField name placeholder value setValue =
 この場合は型変数<code>a</code>が<code>Maybe String</code>で、<code>handler</code>が期待するシグネチャに合致しています。</p>
 <pre><code class="language-hs">targetValue :: EventFn SyntheticEvent (Maybe String)
 </code></pre>
-<p>JavaScriptでは<code>input</code>要素の<code>onChange</code>イベントは実は<code>String</code>値と一緒になっているのですが、JavaScriptの文字列はnullになりえるので、安全のために<code>Maybe</code>が使われています。</p>
+<p>JavaScriptでは<code>input</code>要素の<code>onChange</code>イベントには<code>String</code>値が伴います。
+しかし、JavaScriptの文字列はnullになり得るので、安全のために<code>Maybe</code>が使われています。</p>
 <p>したがって<code>(a -&gt; Effect Unit)</code>の<code>handler</code>への2つ目の引数は、このシグネチャを持ちます。</p>
 <pre><code class="language-hs">Maybe String -&gt; Effect Unit
 </code></pre>
@@ -1042,12 +1058,13 @@ formField name placeholder value setValue =
   in
     handler targetValue handleValue
 </code></pre>
-<p><code>setValue</code>はそれぞれの<code>formField</code>の呼び出しに与えた関数で、文字列を取り<code>setPerson</code>フックに適切なレコード更新呼び出しを実施します。</p>
-<p>なお<code>handleValue</code>は以下のようにも置き換えられます。</p>
+<p><code>setValue</code>は<code>formField</code>の各呼び出しに与えた関数で、文字列を取り<code>setPerson</code>フックに適切なレコード更新呼び出しを実施します。</p>
+<p>なお、<code>handleValue</code>は以下のようにも置き換えられます。</p>
 <pre><code class="language-hs">onChange: handler targetValue $ traverse_ setValue
 </code></pre>
 <p><code>traverse_</code>の定義を調査して、両方の形式が確かに等価であることをご確認ください。</p>
-<p>これでコンポーネント実装の基本を押さえました。しかし、コンポーネントの仕組みを完全に理解するためには、この章に付随する出典元をお読みください。</p>
+<p>これでコンポーネント実装の基本を押さえました。
+しかし、コンポーネントの仕組みを完全に理解するためには、この章に付随するソースをお読みください。</p>
 <p>明らかに、このユーザーインターフェースには改善すべき点が沢山あります。
 演習ではアプリケーションがより使いやすくなるような方法を追究していきます。</p>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
@@ -1059,12 +1076,14 @@ formField name placeholder value setValue =
 </li>
 <li>
 <p>（普通）現時点でアプリケーションは検証エラーを単一の「pink-alert」背景に集めて表示させています。
-空の線で分割することにより、それぞれの検証エラーにpink-alert背景を持たせるように変更してください。</p>
-<p><em>手掛かり</em>：リスト中の検証エラーを表示するのに<code>ul</code>要素を使う代わりに、コードを変更し、それぞれのエラーに<code>alert</code>と<code>alert-danger</code>装飾を持つ<code>div</code>を作ってください。</p>
+空行で分離することにより、各検証エラーにpink-alert背景を持たせるように変更してください。</p>
+<p><em>手掛かり</em>：リスト中の検証エラーを表示するのに<code>ul</code>要素を使う代わりに、コードを変更し、各エラーに<code>alert</code>と<code>alert-danger</code>装飾を持つ<code>div</code>を作ってください。</p>
 </li>
 <li>
-<p>（難しい、発展）このユーザーインターフェイスの問題の1つは、検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。コードを変更してこの問題を解決してください。</p>
-<p><em>手掛かり</em>：検証器によって返されるエラーの型は、エラーの原因となっているフィールドを示すために拡張する必要があります。次のような変更されたエラー型を使用したくなるでしょう。</p>
+<p>（難しい、発展）このユーザーインターフェイスの問題の1つは、検証エラーがその発生源であるフォームフィールドの隣に表示されていないことです。
+コードを変更してこの問題を解決してください。</p>
+<p><em>手掛かり</em>：検証器によって返されるエラーの型を、エラーの原因となっているフィールドを示すために拡張するべきです。
+以下の変更されたエラー型を使うと良いでしょう。</p>
 <pre><code class="language-hs">data Field = FirstNameField
            | LastNameField
            | StreetField
@@ -1082,12 +1101,13 @@ type Errors = Array ValidationError
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章ではPureScriptでの副作用の扱いについての多くの考え方を導入しました。</p>
 <ul>
-<li><code>Monad</code>型クラスとdo記法との関係性に出会いました。</li>
+<li><code>Monad</code>型クラスとdo記法との関係性を見ました。</li>
 <li>モナド則を導入し、do記法を使って書かれたコードを変換する方法を見ました。</li>
-<li>異なる副作用を扱うコードを書くために、モナドを抽象的に使う方法を見ました。</li>
+<li>異なる副作用を扱うコードを書く上で、モナドを抽象的に使う方法を見ました。</li>
 <li>モナドがアプリカティブ関手の一例であること、両者がどのように副作用のある計算を可能にするのかということ、そして2つの手法の違いを説明しました。</li>
-<li>ネイティブな作用の概念を定義し、ネイティブな副作用を処理するために使用する <code>Effect</code>モナドを導入しました。</li>
-<li>乱数生成、例外、コンソール入出力、変更可能な状態、及びReactを使ったDOM操作といった、さまざまな作用を扱うために
+<li>ネイティブな作用の概念を定義し、<code>Effect</code>モナドを見ました。
+これはネイティブな副作用を扱うものでした。</li>
+<li>乱数生成、例外、コンソール入出力、変更可能な状態、及びReactを使ったDOM操作といった、様々な作用を扱うために
 <code>Effect</code>モナドを使いました。</li>
 </ul>
 <p><code>Effect</code>モナドは実際のPureScriptコードにおける基本的なツールです。本書ではこのあとも、多くの場面で副作用を処理するために使っていきます。</p>

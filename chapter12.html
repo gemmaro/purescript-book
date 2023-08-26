@@ -181,19 +181,17 @@
 <li><code>canvas</code>はHTML5のCanvas APIメソッドの型を与えます。</li>
 <li><code>refs</code>は <em>大域的な変更可能領域への参照</em> を使うための副作用を提供します。</li>
 </ul>
-<p>この章のソースコードは、それぞれに <code>main</code>メソッドが定義されているモジュールの集合へと分割されています。
-この章のそれぞれの節の内容は個別のファイルで実装されており、それぞれの時点での適切なファイルの<code>main</code>メソッドを実行できるように、Spagoビルドコマンドを変更することで<code>Main</code>モジュールを合わせられるようになっています。</p>
-<p>HTMLファイル <code>html/index.html</code>には、各例で使用される単一の
-<code>canvas</code>要素、及びコンパイルされたPureScriptコードを読み込む <code>script</code>要素が含まれています。
+<p>この章の各ソースコードは、<code>main</code>メソッドが定義されているモジュールの集合へと分割されています。
+この章の各節の内容は個別のファイルで実装されており、各時点での適切なファイルの<code>main</code>メソッドを実行できるように、Spagoビルドコマンドを変更することで、<code>Main</code>モジュールを合わせられるようになっています。</p>
+<p>HTMLファイル<code>html/index.html</code>には、各例で使用される単一の<code>canvas</code>要素、及びコンパイルされたPureScriptコードを読み込む<code>script</code>要素が含まれています。
+各節のコードを試すにはブラウザでHTMLファイルを開きます。
 ほとんどの演習はブラウザを対象にしているので、この章には単体試験はありません。</p>
 <h2 id="単純な図形"><a class="header" href="#単純な図形">単純な図形</a></h2>
 <p><code>Example/Rectangle.purs</code>ファイルには簡単な導入例が含まれています。
-この例ではcanvasの中心に青い四角形を1つ描画します。
+この例ではキャンバスの中心に青い四角形を1つ描画します。
 このモジュールへは、<code>Effect</code>モジュールからの<code>Effect</code>型と、Canvas
-APIを扱うための<code>Effect</code>モナドのアクションを含む<code>Graphics.Canvas</code>モジュールをインポートします。</p>
-<p>他のモジュールでも同様ですが、
-<code>main</code>アクションは最初に<code>getCanvasElementById</code>アクションを使ってcanvasオブジェクトへの参照を取得します。
-また、 <code>getContext2D</code>アクションを使ってキャンバスの2D描画コンテキストを参照します。</p>
+APIを扱うための<code>Effect</code>モナドの動作を含む<code>Graphics.Canvas</code>モジュールをインポートします。</p>
+<p>他のモジュールでも同様ですが、<code>main</code>動作は最初に<code>getCanvasElementById</code>動作を使ってキャンバスオブジェクトへの参照を取得し、<code>getContext2D</code>動作を使ってキャンバスの2D描画文脈にアクセスします。</p>
 <p><code>void</code>関数は関手を取り値を<code>Unit</code>で置き換えます。
 例では<code>main</code>がシグネチャに沿うようにするために使われています。</p>
 <pre><code class="language-haskell">main :: Effect Unit
@@ -203,28 +201,28 @@ main = void $ unsafePartial do
 </code></pre>
 <p><em>補足</em>：この<code>unsafePartial</code>の呼び出しは必須です。
 これは<code>getCanvasElementById</code>の結果のパターン照合部分で、<code>Just</code>値構築子のみと照合するためです。
-ここではこれで問題ありませんが、恐らく実際の製品のコードでは<code>Nothing</code>値構築子と照合させ、適切なエラーメッセージを提供したほうがよいでしょう。</p>
-<p>これらのアクションの型はPSCiを使うかドキュメントを見ると確認できます。</p>
+ここではこれで問題ありませんが、恐らく実際の製品のコードでは<code>Nothing</code>値構築子と照合させ、適切なエラー文言を提供したほうがよいでしょう。</p>
+<p>これらの動作の型はPSCiを使うかドキュメントを見ると確認できます。</p>
 <pre><code class="language-haskell">getCanvasElementById :: String -&gt; Effect (Maybe CanvasElement)
 
 getContext2D :: CanvasElement -&gt; Effect Context2D
 </code></pre>
 <p><code>CanvasElement</code>と <code>Context2D</code>は <code>Graphics.Canvas</code>モジュールで定義されている型です。
 このモジュールでは<code>Canvas</code>作用も定義されており、モジュール内の全てのアクションで使用されています。</p>
-<p>グラフィックスコンテキスト<code>ctx</code>はcanvasの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用するためのメソッドを提供します。</p>
-<p>話を進めると、<code>setFillStyle</code>アクションを使うことで塗り潰しスタイルを濃い青に設定できます。
+<p>グラフィックス文脈<code>ctx</code>はキャンバスの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用したりするための手段を提供します。</p>
+<p>話を進めると、<code>setFillStyle</code>動作を使うことで塗り潰しスタイルを濃い青に設定できます。
 より長い16進数記法の<code>#0000FF</code>も青には使えますが、単純な色については略記法がより簡単です。</p>
 <pre><code class="language-haskell">  setFillStyle ctx &quot;#00F&quot;
 </code></pre>
-<p><code>setFillStyle</code>アクションがグラフィックスコンテキストを引数として取っていることに注意してください。
-これは <code>Graphics.Canvas</code>ではよくあるパターンです。</p>
-<p>最後に、 <code>fillPath</code>アクションを使用して矩形を塗り潰しています。
+<p><code>setFillStyle</code>動作がグラフィックス文脈を引数として取っていることに注意してください。
+これは<code>Graphics.Canvas</code>ではよくあるパターンです。</p>
+<p>最後に、<code>fillPath</code>動作を使用して矩形を塗り潰しています。
 <code>fillPath</code>は次のような型を持っています。</p>
 <pre><code class="language-haskell">fillPath :: forall a. Context2D -&gt; Effect a -&gt; Effect a
 </code></pre>
-<p><code>fillPath</code>はグラフィックスコンテキストと描画するパスを構築する別のアクションを引数にとります。
-<code>rect</code>アクションを使うとパスを構築できます。
-<code>rect</code>はグラフィックスコンテキストと矩形の位置及びサイズを格納するレコードを引数にとります。</p>
+<p><code>fillPath</code>はグラフィックスの文脈と描画するパスを構築する他の動作を引数に取ります。
+<code>rect</code>動作を使うとパスを構築できます。
+<code>rect</code>はグラフィックスの文脈と矩形の位置及びサイズを格納するレコードを取ります。</p>
 <pre><code class="language-haskell">  fillPath ctx $ rect ctx
     { x: 250.0
     , y: 250.0
@@ -235,10 +233,11 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
 <p>mainモジュールの名前として<code>Example.Rectangle</code>を与えてこの長方形のコード例をビルドしましょう。</p>
 <pre><code class="language-text">$ spago bundle-app --main Example.Rectangle --to dist/Main.js
 </code></pre>
-<p>それでは <code>html/index.html</code>ファイルを開き、このコードによってcanvasの中央に青い四角形が描画されていることを確認してみましょう。</p>
+<p>それでは <code>html/index.html</code>ファイルを開き、このコードによってキャンバスの中央に青い四角形が描画されていることを確認してみましょう。</p>
 <h2 id="行多相を利用する"><a class="header" href="#行多相を利用する">行多相を利用する</a></h2>
-<p>パスを描画する方法は他にもあります。 <code>arc</code>関数は円弧を描画します。
-<code>moveTo</code>関数、 <code>lineTo</code>関数、 <code>closePath</code>関数は断片的な線分のパスを描画するのに使えます。</p>
+<p>パスを描画する方法は他にもあります。
+<code>arc</code>関数は円弧を描画します。
+<code>moveTo</code>関数、<code>lineTo</code>関数、<code>closePath</code>関数は断片的な線分のパスを描画できます。</p>
 <p><code>Shapes.purs</code>ファイルでは長方形と円弧と三角形の、3つの図形を描画しています。</p>
 <p><code>rect</code>関数は引数としてレコードをとることを見てきました。
 実際には、長方形のプロパティは型同義語で定義されています。</p>
@@ -249,7 +248,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
   , height :: Number
   }
 </code></pre>
-<p><code>x</code>と <code>y</code>プロパティは左上隅の位置を表しており、 <code>w</code>と <code>h</code>のプロパティはそれぞれ幅と高さを表しています。</p>
+<p><code>x</code>と<code>y</code>プロパティは左上隅の位置を表しており、<code>w</code>と<code>h</code>のプロパティはそれぞれ幅と高さを表しています。</p>
 <p><code>arc</code>関数に以下のような型を持つレコードを渡して呼び出すと、円弧を描画できます。</p>
 <pre><code class="language-haskell">type Arc =
   { x      :: Number
@@ -259,11 +258,11 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
   , end    :: Number
   }
 </code></pre>
-<p>ここで、 <code>x</code>と <code>y</code>プロパティは弧の中心、 <code>r</code>は半径、 <code>start</code>と <code>end</code>は弧の両端の角度を弧度法で表しています。</p>
+<p>ここで、<code>x</code>と<code>y</code>プロパティは弧の中心、<code>r</code>は半径、<code>start</code>と<code>end</code>は弧の両端の角度を弧度法で表しています。</p>
 <p>例えばこのコードは中心が<code>(300, 300)</code>に中心があり半径<code>50</code>の円弧を塗り潰します。
 弧は1回転のうち2/3ラジアン分あります。
 単位円が上下逆様になっている点に注意してください。
-これはy軸がcanvasの下向きに伸びるためです。</p>
+これはy軸がキャンバスの下向きに伸びるためです。</p>
 <pre><code class="language-haskell">  fillPath ctx $ arc ctx
     { x      : 300.0
     , y      : 300.0
@@ -272,10 +271,10 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
     , end    : Math.tau * 2.0 / 3.0
     }
 </code></pre>
-<p><code>Number</code>型の <code>x</code>と <code>y</code>というプロパティが <code>Rectangle</code>レコード型と<code>Arc</code>レコード型の両方に含まれていますね。
+<p><code>Rectangle</code>レコード型と<code>Arc</code>レコード型の両方共、<code>Number</code>型の<code>x</code>と<code>y</code>というプロパティを含んでいますね。
 どちらの場合でもこの組は点を表しています。
-これは、何れのレコード型にも適用できる、行多相な関数を書くことができることを意味します。</p>
-<p>例えば<code>Shapes</code>モジュールでは <code>x</code>と <code>y</code>のプロパティを変更し図形を並行移動する <code>translate</code>関数を定義されています。</p>
+つまり、何れのレコード型にも作用する行多相な関数を書けます。</p>
+<p>例えば<code>Shapes</code>モジュールでは<code>x</code>と<code>y</code>のプロパティを変更し図形を並行移動する<code>translate</code>関数が定義されています。</p>
 <pre><code class="language-haskell">translate
   :: forall r
    . Number
@@ -294,7 +293,7 @@ translate dx dy shape = shape
 <p>これは<em>レコード更新構文</em>の例です。
 <code>shape { ... }</code>という式は、<code>shape</code>を元にして、括弧の中で指定された値で更新されたフィールドを持つ新たなレコードを作ります。
 なお、波括弧の中の式はレコード直値のようなコロンではなく、等号でラベルと式を区切って書きます。</p>
-<p><code>Shapes</code>の例からわかるように、 <code>translate</code>関数は <code>Rectangle</code>レコードと<code>Arc</code>レコード双方に対して使うことができます。</p>
+<p><code>Shapes</code>の例からわかるように、<code>translate</code>関数は<code>Rectangle</code>レコードと<code>Arc</code>レコード双方に対して使えます。</p>
 <p><code>Shape</code>の例で描画される3つ目の型は線分の断片からなるパスです。
 対応するコードは次のようになります。</p>
 <pre><code class="language-haskell">  setFillStyle ctx &quot;#F00&quot;
@@ -315,17 +314,17 @@ translate dx dy shape = shape
 <p>mainモジュールとして<code>Example.Shapes</code>を指定して、この例をビルドしましょう。</p>
 <pre><code class="language-text">$ spago bundle-app --main Example.Shapes --to dist/Main.js
 </code></pre>
-<p>そしてもう一度 <code>html/index.html</code>を開き、結果を確認してください。canvas
-に3つの異なる図形が描画されるはずです。</p>
+<p>そしてもう一度<code>html/index.html</code>を開き、結果を確認してください。
+キャンバスに3つの異なる図形が描画されるはずです。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）これまでの例のそれぞれについて、 <code>strokePath</code>関数や<code>setStrokeStyle</code>関数を使ってみましょう。</p>
+<p>（簡単）これまでの各例について、<code>strokePath</code>関数や<code>setStrokeStyle</code>関数を使ってみましょう。</p>
 </li>
 <li>
-<p>（簡単）関数の引数の内部のdo記法ブロックにより、<code>fillPath</code>関数と<code>strokePath</code>関数を使って共通のスタイルを持つ複雑なパスを描画できます。
-同じ <code>fillPath</code>呼び出しで隣り合った2つの矩形を描画するように、<code>Rectangle</code>のコード例を変更してみてください。
-線分と円弧を組み合わせて、扇形を描画してみてください。</p>
+<p>（簡単）関数の引数の内部でdo記法ブロックを使うと、<code>fillPath</code>関数と<code>strokePath</code>関数は共通のスタイルを持つ複雑なパスを描画できます。
+同じ<code>fillPath</code>呼び出しを使って隣り合う2つの矩形を描画するように、<code>Rectangle</code>の例を変更してみてください。
+線分と円弧の組み合わせを使って、扇形を描画してみてください。</p>
 </li>
 <li>
 <p>（普通）次のような2次元の点を表すレコードが与えられたとします。</p>
@@ -341,30 +340,30 @@ translate dx dy shape = shape
 <p>次のような関数を考えます。</p>
 <pre><code class="language-haskell">f :: Number -&gt; Point
 </code></pre>
-<p>この関数は引数として <code>1</code>から <code>0</code>の間の <code>Number</code>をとり、 <code>Point</code>を返します。
-<code>renderPath</code>関数を利用して関数 <code>f</code>のグラフを描くアクションを書いてください。
-そのアクションでは有限個の点を <code>f</code>からサンプリングすることによって近似しなければなりません。</p>
+<p>この関数は引数として<code>1</code>から<code>0</code>の間の<code>Number</code>を取り、<code>Point</code>を返します。
+<code>renderPath</code>関数を使い、関数<code>f</code>のグラフを描く動作を書いてください。
+その動作では有限個の点で<code>f</code>を標本化することによって近似しなければなりません。</p>
 <p>関数 <code>f</code>を変更し、様々なパスが描画されることを確かめてください。</p>
 </li>
 </ol>
 <h2 id="無作為に円を描く"><a class="header" href="#無作為に円を描く">無作為に円を描く</a></h2>
-<p><code>Example/Random.purs</code>ファイルには2種類の異なる副作用が混在した<code>Effect</code>モナドを使う例が含まれています。
-1つは乱数生成で、もう1つはcanvasの操作です。
+<p><code>Example/Random.purs</code>ファイルには、<code>Effect</code>モナドを使って2種類の副作用を綴じ合わせる例が含まれています。
+1つの副作用は乱数生成で、もう1つはキャンバスの操作です。
 この例では無作為に生成された円をキャンバスに100個描画します。</p>
-<p><code>main</code>アクションではこれまでのようにグラフィックスコンテキストへの参照を取得し、ストロークと塗り潰しスタイルを設定します。</p>
+<p><code>main</code>動作ではこれまでのようにグラフィックス文脈への参照を取得し、線描きと塗り潰しのスタイルを設定します。</p>
 <pre><code class="language-haskell">  setFillStyle ctx &quot;#F00&quot;
   setStrokeStyle ctx &quot;#000&quot;
 </code></pre>
-<p>次のコードでは <code>for_</code>アクションを使って <code>0</code>から <code>100</code>までの整数について反復しています。</p>
+<p>次のコードでは<code>for_</code>動作を使って<code>0</code>から<code>100</code>までの整数について反復しています。</p>
 <pre><code class="language-haskell">  for_ (1 .. 100) \_ -&gt; do
 </code></pre>
-<p>それぞれの繰り返しでのdo記法ブロックは、<code>0</code>と<code>1</code>の間に分布する3つの乱数を生成することから始まります。
-これらの数は <code>0</code>から <code>1</code>の間に無作為に分布しており、それぞれ <code>x</code>座標、 <code>y</code>座標、半径 <code>r</code>を表しています。</p>
+<p>各繰り返しで、do記法ブロックは<code>0</code>と<code>1</code>の間に分布する3つの乱数を生成することから始まります。
+これらの数はそれぞれ<code>x</code>座標、<code>y</code>座標、半径<code>r</code>を表しています。</p>
 <pre><code class="language-haskell">    x &lt;- random
     y &lt;- random
     r &lt;- random
 </code></pre>
-<p>次のコードではそれぞれの円について、これらの変数に基づいて <code>Arc</code>を作成し、最後に現在のスタイルに従って円弧を塗り潰し線描きします。</p>
+<p>次のコードでは各円について、これらの変数に基づいて<code>Arc</code>を作成し、最後に現在のスタイルに従って円弧を塗り潰し、線描きします。</p>
 <pre><code class="language-haskell">    let path = arc ctx
          { x                  : x * 600.0
          , y                  : y * 600.0
@@ -383,7 +382,7 @@ translate dx dy shape = shape
 <p><code>html/index.html</code>を開いて、結果を確認してみましょう。</p>
 <h2 id="座標変換"><a class="header" href="#座標変換">座標変換</a></h2>
 <p>キャンバスは簡単な図形を描画するだけのものではありません。
-キャンバスは変換行列を扱うことができ、描画の前に形状を変形してから図形を描画できます。
+キャンバスは座標変換を管理しており、描画の前に図形を変形するのに使えます。
 図形は平行移動、回転、拡大縮小、及び斜めに変形できます。</p>
 <p><code>canvas</code>ライブラリではこれらの変換を以下の関数で提供しています。</p>
 <pre><code class="language-haskell">translate :: Context2D
@@ -402,14 +401,14 @@ transform :: Context2D
           -&gt; Transform
           -&gt; Effect Context2D
 </code></pre>
-<p><code>translate</code>アクションは<code>TranslateTransform</code>レコードのプロパティで指定した大きさだけ平行移動します。</p>
-<p><code>rotate</code>アクションは最初の引数で指定されたラジアンの値に応じて、原点を中心として回転します。</p>
-<p><code>scale</code>アクションは原点を中心として拡大縮小します。
-<code>ScaleTransform</code>レコードは <code>X</code>軸と <code>y</code>軸に沿った拡大率を指定するのに使います。</p>
-<p>最後の <code>transform</code>はこの4つのうちで最も一般化されたアクションです。
-このアクションでは行列に従ってアフィン変換します。</p>
-<p>これらのアクションが呼び出された後に描画される図形は、自動的に適切な座標変換が適用されます。</p>
-<p>実際には、これらの関数のそれぞれの作用は、コンテキストの現在の変換行列に対して変換行列を<em>右から乗算</em>していきます。
+<p><code>translate</code>動作は<code>TranslateTransform</code>レコードのプロパティで指定した大きさだけ平行移動します。</p>
+<p><code>rotate</code>動作は最初の引数で指定されたラジアンの数値に応じて、原点を中心として回転します。</p>
+<p><code>scale</code>動作は原点を中心として拡大縮小します。
+<code>ScaleTransform</code>レコードは<code>x</code>軸と<code>y</code>軸に沿った拡大率を指定するのに使います。</p>
+<p>最後の <code>transform</code>はこの4つのうちで最も一般化された動作です。
+この動作では行列に従ってアフィン変換します。</p>
+<p>これらの動作が呼び出された後に描画される図形は、自動的に適切な座標変換が適用されます。</p>
+<p>実際には、これらの関数の各作用は、文脈の現在の変換行列に対して変換行列を<em>右から乗算</em>していきます。
 つまり、もしある作用の変換をしていくと、その作用は実際には逆順に適用されていきます。</p>
 <pre><code class="language-haskell">transformations ctx = do
   translate ctx { translateX: 10.0, translateY: 10.0 }
@@ -418,9 +417,9 @@ transform :: Context2D
 
   renderScene
 </code></pre>
-<p>この一連のアクションの作用では、まずシーンが回転され、それから拡大縮小され、最後に平行移動されます。</p>
-<h2 id="コンテキストの保存"><a class="header" href="#コンテキストの保存">コンテキストの保存</a></h2>
-<p>変換を適用してシーンの一部を描画し、それからその変換を元に戻す、という使い方はよくあります。</p>
+<p>この一連の動作の作用では、まずシーンが回転され、それから拡大縮小され、最後に平行移動されます。</p>
+<h2 id="文脈の保存"><a class="header" href="#文脈の保存">文脈の保存</a></h2>
+<p>座標変換を使ってシーンの一部を描画し、それからその変換を元に戻す、という使い方はよくあります。</p>
 <p>Canvas APIにはキャンバスの状態の<em>スタック</em>を操作する<code>save</code>と<code>restore</code>メソッドが備わっています。
 <code>canvas</code>ではこの機能を次のような関数で梱包しています。</p>
 <pre><code class="language-haskell">save
@@ -431,18 +430,16 @@ restore
   :: Context2D
   -&gt; Effect Context2D
 </code></pre>
-<p><code>save</code>アクションは現在のコンテキストの状態（現在の変換行列や描画スタイル）をスタックにプッシュし、
-<code>restore</code>アクションはスタックの一番上の状態をポップし、コンテキストの状態を復元します。</p>
-<p>これらのアクションにより、現在の状態を保存し、いろいろなスタイルや変換を適用してから原始的な図形を描画し、最後に元の変換と状態を復元できます。
-例えば、次の関数は回転を適用してから幾つかのキャンバスアクションを実行し、そのあとに変換を復元します。</p>
+<p><code>save</code>動作は現在の文脈の状態（現在の変換行列や描画スタイル）をスタックにプッシュし、<code>restore</code>動作はスタックの一番上の状態をポップし、文脈の状態を復元します。</p>
+<p>これらの動作により、現在の状態を保存し、いろいろなスタイルや変換を適用してから原始的な図形を描画し、最後に元の変換と状態を復元できます。
+例えば次の関数は幾つかのキャンバス動作を実行しますが、その前に回転を適用し、その後に変換を復元します。</p>
 <pre><code class="language-haskell">rotated ctx render = do
   save ctx
   rotate (Math.tau / 3.0) ctx
   render
   restore ctx
 </code></pre>
-<p>こういったよくある高階関数の使われ方の抽象化として、<code>canvas</code>ライブラリでは元のコンテキスト状態を保存しつつ幾つかのキャンバスアクションを実行する
-<code>withContext</code>関数が提供されています。</p>
+<p>こういったよくある高階関数の使われ方の抽象化として、<code>canvas</code>ライブラリでは元の文脈状態を保存しつつ幾つかのキャンバス動作を実行する<code>withContext</code>関数が提供されています。</p>
 <pre><code class="language-haskell">withContext
   :: Context2D
   -&gt; Effect a
@@ -456,7 +453,7 @@ restore
 </code></pre>
 <h2 id="大域的な変更可能状態"><a class="header" href="#大域的な変更可能状態">大域的な変更可能状態</a></h2>
 <p>この節では <code>refs</code>パッケージを使って <code>Effect</code>モナドの別の作用について実演してみます。</p>
-<p><code>Effect.Ref</code>モジュールでは、大域的に変更可能な参照のための型構築子、及び関連する作用を提供します。</p>
+<p><code>Effect.Ref</code>モジュールでは、大域的に変更可能な参照のための型構築子、及びそれに紐付く作用を提供します。</p>
 <pre><code class="language-text">&gt; import Effect.Ref
 
 &gt; :kind Ref
@@ -464,11 +461,11 @@ Type -&gt; Type
 </code></pre>
 <p>型<code>Ref a</code>の値は型<code>a</code>の値を含む可変参照セルであり、大域的な変更を追跡するのに使われます。
 そういったわけでこれは少しだけ使う分に留めておくべきです。</p>
-<p><code>Example/Refs.purs</code>ファイルには <code>canvas</code>要素上のマウスクリックを追跡するのに <code>Ref</code>作用を使用する例が含まれています。</p>
-<p>このコードでは最初に<code>new</code>アクションを使って値<code>0</code>を含む新しい参照を作成しています。</p>
+<p><code>Example/Refs.purs</code>ファイルには <code>canvas</code>要素上のマウスクリックを追跡するのに <code>Ref</code>を使う例が含まれます。</p>
+<p>このコードでは最初に<code>new</code>動作を使って値<code>0</code>を含む新しい参照を作成しています。</p>
 <pre><code class="language-haskell">  clickCount &lt;- Ref.new 0
 </code></pre>
-<p>クリックイベント制御子の内部では、 <code>modify</code>アクションを使用してクリック数を更新し、更新された値が返されています。</p>
+<p>クリックイベント制御子の内部では、<code>modify</code>動作を使用してクリック数を更新し、更新された値が返されています。</p>
 <pre><code class="language-haskell">    count &lt;- Ref.modify (\count -&gt; count + 1) clickCount
 </code></pre>
 <p><code>render</code>関数ではクリック数に応じた変換を矩形に適用しています。</p>
@@ -488,13 +485,12 @@ Type -&gt; Type
       , height: 200.0
       }
 </code></pre>
-<p>このアクションでは元の変換を保存するために
-<code>withContext</code>を使用しており、それから一連の変換を適用しています（変換が下から上に適用されることを思い出してください）。</p>
+<p>この動作では元の変換を保存するために<code>withContext</code>を使用しており、それから一連の変換を適用しています（変換が下から上に適用されることを思い出してください）。</p>
 <ul>
 <li>矩形が<code>(-100, -100)</code>だけ平行移動し、中心が原点に来ます。</li>
 <li>矩形が原点を中心に拡大されます。</li>
 <li>矩形が原点を中心に<code>10</code>の倍数分の角度で回転します。</li>
-<li>矩形が<code>(300, 300)</code>だけ平行移動し、中心がcanvasの中心に来ます。</li>
+<li>矩形が<code>(300, 300)</code>だけ平行移動し、中心がキャンバスの中心に来ます。</li>
 </ul>
 <p>このコード例をビルドしてみましょう。</p>
 <pre><code class="language-text">$ spago bundle-app --main Example.Refs --to dist/Main.js
@@ -504,21 +500,20 @@ Type -&gt; Type
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
 <li>（簡単）パスの線描と塗り潰しを同時に行う高階関数を書いてください。
-その関数を使用して <code>Random.purs</code>例を書き直してください。</li>
-<li>（普通）<code>Random</code>作用と
-<code>Dom</code>作用を使用して、マウスがクリックされたときに、キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを作成してください。</li>
-<li>（普通）指定された座標を中心としてシーンを回転させる関数を書いてください。
-<em>手掛かり</em>：最初にシーンを原点まで平行移動しましょう。</li>
+その関数を使用して<code>Random.purs</code>の例を書き直してください。</li>
+<li>（普通）<code>Random</code>作用と<code>Dom</code>作用を使用して、マウスがクリックされたときに、キャンバスに無作為な位置、色、半径の円を描画するアプリケーションを作成してください。</li>
+<li>（普通）指定された座標の点を中心として回転させることでシーンを変換する関数を書いてください。
+<em>手掛かり</em>：変換を使い、最初にシーンを原点まで平行移動しましょう。</li>
 </ol>
 <h2 id="l-system"><a class="header" href="#l-system">L-System</a></h2>
 <p>この章の最後の例として、 <code>canvas</code>パッケージを使用して<em>L-system</em>（またの名を<em>Lindenmayer
 system</em>）を描画する関数を記述します。</p>
-<p>L-Systemは<em>アルファベット</em>、つまり初期状態となるアルファベットの文字列と、<em>生成規則</em>の集合で定義されています。
-各生成規則は、アルファベットの文字をとり、それを置き換える文字の配列を返します。
-この処理は文字の初期配列から始まり、複数回繰り返されます。</p>
-<p>もしアルファベットの各文字がcanvas上で実行される命令と対応付けられていれば、その指示に順番に従うことでL-Systemを描画できます。</p>
-<p>例えばアルファベットが文字 <code>L</code>（左回転）、 <code>R</code>（右回転）、 <code>F</code>（前進）で構成されているとします。
-また、次のような生成規則を定義します。</p>
+<p>1つのL-Systemは<em>アルファベット</em>、つまりアルファベット由来の文字の初期の並びと、<em>生成規則</em>の集合で定義されます。
+各生成規則は、アルファベットの文字を取り、それを置き換える文字の並びを返します。
+この処理は文字の初期の並びから始まり、複数回繰り返されます。</p>
+<p>もしアルファベットの各文字がキャンバス上で実行される命令と対応付けられていれば、その指示に順番に従うことでL-Systemを描画できます。</p>
+<p>例えばアルファベットが文字<code>L</code>（左回転）、<code>R</code>（右回転）、<code>F</code>（前進）で構成されているとします。
+次のような生成規則を定義できます。</p>
 <pre><code class="language-text">L -&gt; L
 R -&gt; R
 F -&gt; FLFRRFLF
@@ -528,7 +523,8 @@ F -&gt; FLFRRFLF
 FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...
 </code></pre>
-<p>この命令群に対応する線分パスをプロットすると、<em>コッホ曲線</em>と呼ばれる曲線に近似されます。
+<p>というように続きます。
+この命令群に対応する線分パスをプロットすると、<em>コッホ曲線</em>に近似されます。
 反復回数を増やすと、曲線の解像度が増していきます。</p>
 <p>それでは型と関数のある言語へとこれを翻訳してみましょう。</p>
 <p>アルファベットの文字は以下のADTで表現できます。</p>
@@ -550,10 +546,9 @@ productions R = [R]
 productions F = [F, L, F, R, R, F, L, F]
 </code></pre>
 <p>これはまさに上記の仕様をそのまま書き写したものです。</p>
-<p>これで、この形式の仕様を受け取りcanvasに描画する関数 <code>lsystem</code>を実装できます。
+<p>これで、この形式の仕様を受け取ってキャンバスに描画する関数<code>lsystem</code>を実装できます。
 <code>lsystem</code>はどのような型を持っているべきでしょうか。
-この関数は初期状態 <code>initial</code>や生成規則
-<code>productions</code>のような値だけでなく、アルファベットの文字をcanvasに描画する関数を引数に取る必要があります。</p>
+<code>initial</code>や<code>productions</code>のような値だけでなく、アルファベットの文字をキャンバスに描画できる関数を引数に取る必要があります。</p>
 <p><code>lsystem</code>の型の最初の大まかな設計は以下です。</p>
 <pre><code class="language-haskell">Sentence
 -&gt; (Letter -&gt; Sentence)
@@ -562,8 +557,8 @@ productions F = [F, L, F, R, R, F, L, F]
 -&gt; Effect Unit
 </code></pre>
 <p>最初の2つの引数の型は、値 <code>initial</code>と <code>productions</code>に対応しています。</p>
-<p>3番目の引数は、アルファベットの文字を取り、canvas上の幾つかのアクションを実行することによって<em>解釈</em>する関数を表します。
-この例では、文字<code>L</code>は左回転、文字 <code>R</code>で右回転、文字 <code>F</code>は前進を意味します。</p>
+<p>3番目の引数は、アルファベットの文字を取り、キャンバス上の幾つかの動作を実行することによって<em>解釈</em>する関数を表します。
+この例では、文字<code>L</code>は左回転、文字<code>R</code>で右回転、文字<code>F</code>は前進を意味します。</p>
 <p>最後の引数は、実行したい生成規則の繰り返し回数を表す数です。</p>
 <p>最初に気付くことは、この<code>lsystem</code>関数は1つの型<code>Letter</code>に対してのみ動作するのですが、どんなアルファベットについても機能すべきですから、この型はもっと一般化されるべきです。
 それでは、量子化された型変数 <code>a</code>について、<code>Letter</code>と <code>Sentence</code>を <code>a</code>と <code>Array a</code>で置き換えましょう。</p>
@@ -574,9 +569,9 @@ productions F = [F, L, F, R, R, F, L, F]
           -&gt; Effect Unit
 </code></pre>
 <p>次に気付くこととしては、「左回転」と「右回転」のような命令を実装するためには、幾つかの状態を管理する必要があります。
-具体的に言えば、その時点でパスが向いている方向を状態として持たなければなりません。
-計算を通じて状態を関数に渡すように変更する必要があります。
-ここでも <code>lsystem</code>関数は状態がどんな型でも動作したほうがよいので、型変数 <code>s</code>を使用してそれを表しています。</p>
+具体的に言えば、その時点でパスが動いている方向を状態として持たなければなりません。
+計算を通じて状態を渡すように関数を変更する必要があります。
+ここでも<code>lsystem</code>関数は状態がどんな型でも動作したほうがよいので、型変数<code>s</code>を使用してそれを表しています。</p>
 <p>型 <code>s</code>を追加する必要があるのは3箇所で、次のようになります。</p>
 <pre><code class="language-haskell">forall a s. Array a
             -&gt; (a -&gt; Array a)
@@ -616,11 +611,11 @@ initialState = { x: 120.0, y: 200.0, theta: 0.0 }
 lsystem init prod interpret n state = go init n
   where
 </code></pre>
-<p><code>go</code>関数は第2引数に応じて再帰することで動作します。
-場合分けは2つであり、<code>n</code>がゼロであるときと <code>n</code>がゼロでないときです。</p>
+<p><code>go</code>関数は第2引数について再帰することで動作します。
+場合分けは2つであり、<code>n</code>がゼロであるときと<code>n</code>がゼロでないときです。</p>
 <p>1つ目の場合は再帰は完了し、解釈関数に応じて現在の文を解釈します。
-型<code>Array a</code>の文、型 <code>s</code>の状態、型 <code>s -&gt; a -&gt; Effect s</code>の関数があります。
-以前定義した <code>foldM</code>でやったことみたいです。
+型<code>Array a</code>の文、型<code>s</code>の状態、型<code>s -&gt; a -&gt; Effect s</code>の関数があります。
+以前定義した<code>foldM</code>の出番のようです。
 この関数は<code>control</code>パッケージで手に入ります。</p>
 <pre><code class="language-haskell">  go s 0 = foldM interpret state s
 </code></pre>
@@ -629,10 +624,10 @@ lsystem init prod interpret n state = go init n
 <pre><code class="language-haskell">  go s i = go (concatMap prod s) (i - 1)
 </code></pre>
 <p>これだけです。
-<code>foldM</code>や <code>concatMap</code>のような高階関数を使うと、このようにアイデアを簡潔に表現できるのです。</p>
+<code>foldM</code>や<code>concatMap</code>のような高階関数を使うと、アイデアを簡潔に表現できるのです。</p>
 <p>しかし、話はこれで終わりではありません。
 ここで与えた型は、実際はまだ特殊化されすぎています。
-この定義ではcanvasの操作が実装のどこにも使われていないことに注目してください。
+この定義ではキャンバスの操作が実装のどこにも使われていないことに注目してください。
 それに、全く<code>Effecta</code>モナドの構造を利用していません。
 実際には、この関数は<em>どんな</em>モナド<code>m</code>についても動作します。</p>
 <p>この章に添付されたソースコードで指定されている<code>lsystem</code>の型はもっと一般的になっています。</p>
@@ -645,13 +640,13 @@ lsystem init prod interpret n state = go init n
          -&gt; s
          -&gt; m s
 </code></pre>
-<p>この型で書かれていることは、この解釈関数はモナド <code>m</code>が持つ任意の副作用を完全に自由に持つことができる、ということだと理解できます。
+<p>この型で書かれていることは、この解釈関数はモナド<code>m</code>が持つ任意の副作用を完全に自由に持つことができる、ということだと理解できます。
 キャンバスに描画したり、またはコンソールに情報を出力したりするかもしれませんし、失敗や複数の戻り値に対応しているかもしれません。
 こういった様々な型の副作用を使ったL-Systemを記述してみることを読者にお勧めします。</p>
 <p>この関数は実装からデータを分離することの威力を示す良い例となっています。
-この手法の利点は、複数の異なる方法でデータを解釈する自由が得られることです。
-<code>lsystem</code>は2つの小さな関数へと分解さえできるかもしれません。
-1つ目は <code>concatMap</code>の適用の繰り返しを使って文を構築するもので、2つ目は <code>foldM</code>を使って文を解釈するものです。
+この手法の利点は、複数の異なる方法でデータを解釈できることです。
+さらに<code>lsystem</code>を2つの小さな関数へと分解できます。
+1つ目は<code>concatMap</code>の適用の繰り返しを使って文を構築するもの、2つ目は<code>foldM</code>を使って文を解釈するものです。
 これは読者の演習として残しておきます。</p>
 <p>それでは解釈関数を実装して、この章の例を完成させましょう。
 <code>lsystem</code>の型が教えてくれているのは、型シグネチャが、何らかの型 <code>a</code>と <code>s</code>、型構築子 <code>m</code>について、 <code>s -&gt; a -&gt; m s</code>でなければならないということです。
@@ -664,7 +659,7 @@ lsystem init prod interpret n state = go init n
 <pre><code class="language-haskell">    interpret state L = pure $ state { theta = state.theta - Number.tau / 6.0 }
     interpret state R = pure $ state { theta = state.theta + Number.tau / 6.0 }
 </code></pre>
-<p>文字 <code>F</code>（前進）を解釈するには、パスの新しい位置を計算し、線分を描画し、状態を次のように更新します。</p>
+<p>文字<code>F</code>（前進）を解釈するには、次のようにパスの新しい位置を計算し、線分を描画し、状態を更新します。</p>
 <pre><code class="language-haskell">    interpret state F = do
       let x = state.x + Number.cos state.theta * 1.5
           y = state.y + Number.sin state.theta * 1.5
@@ -672,10 +667,10 @@ lsystem init prod interpret n state = go init n
       lineTo ctx x y
       pure { x, y, theta: state.theta }
 </code></pre>
-<p>なおこの章のソースコードでは、名前 <code>ctx</code>がスコープに入るように、<code>interpret</code>関数は <code>main</code>関数内で
+<p>なお、この章のソースコードでは、名前 <code>ctx</code>がスコープに入るように、<code>interpret</code>関数は <code>main</code>関数内で
 <code>let</code>束縛を使用して定義されています。
-<code>State</code>型がコンテキストを持つように変更できるでしょうが、それはこのシステムの状態の変化する部分ではないので不適切でしょう。</p>
-<p>このL-Systemを描画するには、次のような <code>strokePath</code>アクションを使用するだけです。</p>
+<code>State</code>型が文脈を持つように変更できるでしょうが、それはこのシステムの状態の変化する部分ではないので不適切でしょう。</p>
+<p>このL-Systemを描画するには、次のような<code>strokePath</code>動作を使用するだけです。</p>
 <pre><code class="language-haskell">  strokePath ctx $ lsystem initial productions interpret 5 initialState
 </code></pre>
 <p>次のコマンドを使ってL-Systemをコンパイルします。</p>
@@ -698,9 +693,7 @@ lsystem init prod interpret n state = go init n
 <code>foldM</code>を使用して結果を解釈するものでなくてはなりません。</p>
 </li>
 <li>
-<p>（普通）<code>setShadowOffsetX</code>アクション、
-<code>setShadowOffsetY</code>アクション、<code>setShadowBlur</code>アクション、
-<code>setShadowColor</code>アクションを使い、塗りつぶされた図形にドロップシャドウを追加してください。
+<p>（普通）<code>setShadowOffsetX</code>、<code>setShadowOffsetY</code>、<code>setShadowBlur</code>、<code>setShadowColor</code>動作を使い、塗りつぶされた図形にドロップシャドウを追加してください。
 <em>手掛かり</em>：PSCiを使って、これらの関数の型を調べてみましょう。</p>
 </li>
 <li>
@@ -710,10 +703,11 @@ lsystem init prod interpret n state = go init n
 
 data Letter = L Angle | R Angle | F
 </code></pre>
-<p>生成規則でこの新しい情報を使うと、どんな面白い図形を作ることができるでしょうか。</p>
+<p>この新しい情報を生成規則でどう使うと、面白い図形を作ることができるでしょうか。</p>
 </li>
 <li>
-<p>（難しい）<code>L</code>（60度左回転）、 <code>R</code>（60度右回転）、<code>F</code>（前進）、 <code>M</code>（これも前進）という4つの文字からなるアルファベットでL-Systemが与えられたとします。</p>
+<p>（難しい）4つの文字からなるアルファベットでL-Systemが与えられたとします。
+それぞれ<code>L</code>（60度左回転）、<code>R</code>（60度右回転）、<code>F</code>（前進）、<code>M</code>（これも前進）です。</p>
 <p>このシステムの文の初期状態は、単一の文字 <code>M</code>です。</p>
 <p>このシステムの生成規則は次のように指定されています。</p>
 <pre><code class="language-text">L -&gt; L
@@ -733,9 +727,9 @@ M -&gt; MRFRMLFLMLFLMRFRM
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、 <code>canvas</code>ライブラリを使用することにより、PureScriptからHTML5 Canvas APIを使う方法について学びました。
-また、これまで学んできた手法の多くを利用した実用的な例について見ました。
-マップや畳み込み、レコードと行多相、副作用を扱うための <code>Effect</code>モナドなどです。</p>
+<p>この章では、<code>canvas</code>ライブラリを使用することにより、PureScriptからHTML5 Canvas APIを使う方法について学びました。
+また、これまで学んできた多くの手法からなる実用的な実演を見ました。
+マップや畳み込み、レコードと行多相、副作用を扱うための<code>Effect</code>モナドです。</p>
 <p>この章の例では、高階関数の威力を示すとともに、 <em>実装からのデータの分離</em>
 も実演してみせました。これは例えば、代数データ型を使用してこれらの概念を次のように拡張し、描画関数からシーンの表現を完全に分離できるようになります。</p>
 <pre><code class="language-haskell">data Scene
@@ -746,8 +740,8 @@ M -&gt; MRFRMLFLMLFLMRFRM
   | Clipped Rectangle Scene
   | ...
 </code></pre>
-<p>この手法は <code>drawing</code>パッケージでも採用されており、描画前にさまざまな方法でデータとしてシーンを操作できる柔軟性をもたらしています。</p>
-<p>canvasに描画されるゲームの例については<a href="https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes">cookbook</a>の「Behavior」と「Signal」のレシピを見てください。</p>
+<p>この手法は<code>drawing</code>パッケージで採られており、描画前に様々な方法でシーンをデータとして操作できる柔軟性を齎しています。</p>
+<p>キャンバスに描画されるゲームの例については<a href="https://github.com/JordanMartinez/purescript-cookbook/blob/master/README.md#recipes">cookbook</a>の「Behavior」と「Signal」のレシピを見てください。</p>
 
                     </main>
 

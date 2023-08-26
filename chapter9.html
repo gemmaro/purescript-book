@@ -173,7 +173,10 @@
                     <main>
                         <h1 id="非同期作用"><a class="header" href="#非同期作用">非同期作用</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では<code>Aff</code>モナドに集中します。これは<code>Effect</code>モナドに似ていますが、<em>非同期</em>な副作用を表現するものです。ファイルシステムとやりとりしてHTTPリクエストを作る、非同期な例を実演していきます。また非同期作用の直列ないし並列な実行の管理方法も押さえます。</p>
+<p>この章では<code>Aff</code>モナドに集中します。
+これは<code>Effect</code>モナドに似ていますが、<em>非同期</em>な副作用を表現するものです。
+非同期にファイルシステムとやり取りしたりHTTPリクエストしたりする例を実演していきます。
+また非同期作用の直列ないし並列な実行の管理方法も押さえます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>この章で導入する新しいPureScriptライブラリは以下です。</p>
 <ul>
@@ -182,7 +185,7 @@
 <li><code>affjax</code> - AJAXと<code>Aff</code>を使ったHTTPリクエスト。</li>
 <li><code>parallel</code> - <code>Aff</code>の並列実行。</li>
 </ul>
-<p>（Node.js環境のような）ブラウザ外で実行する場合、<code>affjax</code>ライブラリは<code>xhr2</code>NPMモジュールが必要です。
+<p>（Node.js環境のような）ブラウザ外で実行する場合、<code>affjax</code>ライブラリには<code>xhr2</code>NPMモジュールが必要です。
 このモジュールはこの章の<code>package.json</code>中の依存関係に挙げられています。
 以下を走らせてインストールします。</p>
 <pre><code class="language-shell">$ npm install
@@ -235,9 +238,10 @@ copyFile file1 file2 = do
   writeTextFile UTF8 file2 my_data
 </code></pre>
 <p>なお、<code>main</code>は<code>Effect Unit</code>でなければならないので、<code>launchAff_</code>を使って<code>Aff</code>から<code>Effect</code>へと変換せねばなりません。</p>
-<p>上のコード片をコールバックや同期関数を使って書き換えることも可能ですが（例えば<code>Node.FS.Async</code>や<code>Node.FS.Sync</code>をそれぞれ使います）、JavaScriptで前にお話ししたのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されません。</p>
+<p>上のコード片をコールバックや同期関数を使って書き換えることも可能です（例えば<code>Node.FS.Async</code>や<code>Node.FS.Sync</code>をそれぞれ使います）。
+しかし、JavaScriptで前にお話ししたのと同じ短所がここでも通用するため、それらのコーディング形式は推奨されません。</p>
 <p><code>Aff</code>を扱う文法は<code>Effect</code>を扱うものと大変似ています。
-どちらもモナドですし、したがってdo記法で書くことができます。</p>
+どちらもモナドですし、したがってdo記法で書けます。</p>
 <p>例えば<code>readTextFile</code>のシグネチャを見れば、これがファイルの内容を<code>String</code>とし、<code>Aff</code>に包んで返していることがわかります。</p>
 <pre><code class="language-hs">readTextFile :: Encoding -&gt; FilePath -&gt; Aff String
 </code></pre>
@@ -257,7 +261,8 @@ copyFile file1 file2 = do
 <p>（簡単）2つのテキストファイルを連結する関数<code>concatenateFiles</code>を書いてください。</p>
 </li>
 <li>
-<p>（普通）入力ファイル名の配列と出力ファイル名が与えられたとき、複数のテキストファイルを連結する関数<code>concatenateMany</code>を書いてください。
+<p>（普通）複数のテキストファイルを連結する関数<code>concatenateMany</code>を書いてください。
+入力ファイル名の配列と出力ファイル名が与えられます。
 <em>手掛かり</em>：<code>traverse</code>を使ってください。</p>
 </li>
 <li>
@@ -266,18 +271,18 @@ copyFile file1 file2 = do
 </ol>
 <h2 id="更なるaffの資料"><a class="header" href="#更なるaffの資料">更なるAffの資料</a></h2>
 <p>もしまだ<a href="https://pursuit.purescript.org/packages/purescript-aff/">公式のAffの手引き</a>を見ていなければ、今ざっと目を通してください。
-この章の残りの演習を完了する上で事前に必要なことではありませんが、Pursuitで何らかの関数を見付けだす助けになるかもしれません。</p>
+この章の残りの演習を完了する上で事前に直接必要なことではありませんが、Pursuitで何らかの関数を見付けだす助けになるかもしれません。</p>
 <p>以下の補足資料についてもあたってみるとよいでしょう。しかし繰り返しになりますがこの章の演習はこれらの内容に依りません。</p>
 <ul>
 <li><a href="https://blog.drewolson.org/asynchronous-purescript">DrewのAffに関する投稿</a></li>
 <li><a href="https://github.com/JordanMartinez/purescript-jordans-reference/tree/latestRelease/21-Hello-World/02-Effect-and-Aff/src/03-Aff">更なるAffの説明と例</a></li>
 </ul>
 <h2 id="httpクライアント"><a class="header" href="#httpクライアント">HTTPクライアント</a></h2>
-<p><code>affjax</code>ライブラリは<code>Aff</code>で非同期AJAX HTTP要求する便利な手段を提供します。
-対象としている環境が何であるかによって、<a href="https://github.com/purescript-contrib/purescript-affjax-web">purescript-affjax-web</a>または<a href="https://github.com/purescript-contrib/purescript-affjax-node">purescript-affjax-node</a>のどちらかのライブラリを使う必要があります。
-この章の以降ではNodeを対象としていくので、<code>purescript-affjax-node</code>を使います。
+<p><code>affjax</code>ライブラリは<code>Aff</code>で非同期なAJAXのHTTP要求をする上での便利な手段を提供します。
+対象としている環境が何であるかによって、<a href="https://github.com/purescript-contrib/purescript-affjax-web">purescript-affjax-web</a>または<a href="https://github.com/purescript-contrib/purescript-affjax-node">purescript-affjax-node</a>のどちらかのライブラリを使う必要があります。</p>
+<p>この章の以降ではnodeを対象としていくので、<code>purescript-affjax-node</code>を使います。
 より詳しい使用上の情報は<a href="https://pursuit.purescript.org/packages/purescript-affjax">affjaxのドキュメント</a>にあたってください。
-以下は与えられたURLに向けてHTTP GETを要求し、応答本文ないしエラー文言を返す例です。</p>
+以下は与えられたURLに向けてHTTPのGET要求をして、応答本文ないしエラー文言を返す例です。</p>
 <pre><code class="language-hs">import Prelude
 import Affjax.Node as AN
 import Affjax.ResponseFormat as ResponseFormat
@@ -317,7 +322,7 @@ unit
 <code>Aff</code>があれば2つの計算を次々に開始するだけで並列に計算できます。</p>
 <p><code>parallel</code>パッケージは<code>Aff</code>のようなモナドのための型クラス<code>Parallel</code>を定義しており、並列実行に対応しています。
 以前に本書でアプリカティブ関手に出会ったとき、並列計算を合成するときにアプリカティブ関手がどれほど便利なのかを見ました。
-実は<code>Parallel</code>のインスタンスは、（<code>Aff</code>のような）モナド<code>m</code>と、並列に計算を合成するために使われるアプリカティブ関手<code>f</code>との対応関係を定義しているのです。</p>
+実は<code>Parallel</code>のインスタンスは、（<code>Aff</code>のような）モナド<code>m</code>と、並列に計算を組み合わせるために使えるアプリカティブ関手<code>f</code>との対応関係を定義しているのです。</p>
 <pre><code class="language-hs">class (Monad m, Applicative f) &lt;= Parallel f m | m -&gt; f, f -&gt; m where
   sequential :: forall a. f a -&gt; m a
   parallel :: forall a. m a -&gt; f a
@@ -327,14 +332,14 @@ unit
 <li><code>parallel</code>：モナド<code>m</code>中の計算を取り、アプリカティブ関手<code>f</code>中の計算に変えます。</li>
 <li><code>sequential</code>：反対方向に変換します。</li>
 </ul>
-<p><code>aff</code>ライブラリは <code>Aff</code>モナドの <code>Parallel</code>インスタンスを提供します。
-これは、2つの継続 (continuation) のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に
-<code>Aff</code>アクションを組み合わせます。
-両方の結果が返されたら、最終結果を計算してメインの継続に渡すことができます。</p>
+<p><code>aff</code>ライブラリは<code>Aff</code>モナドの<code>Parallel</code>インスタンスを提供します。
+これは、2つの継続のどちらが呼び出されたかを把握することによって、変更可能な参照を使用して並列に<code>Aff</code>動作を組み合わせます。
+両方の結果が返されたら、最終結果を計算してメインの継続に渡せます。</p>
 <p>アプリカティブ関手では任意個の引数の関数の持ち上げができるので、このアプリカティブコンビネータを使ってより多くの計算を並列に実行できます。
 <code>traverse</code>や<code>sequence</code>といった、アプリカティブ関手を扱う全ての標準ライブラリ関数から恩恵を受けることもできます。</p>
-<p>必要に応じて
-<code>parralel</code>と<code>sequential</code>を使って型構築子を変更することで、do記法ブロック中でアプリカティブコンビネータを使い、直列的なコードの一部で並列計算を結合したり、またはその逆を行ったりできます。</p>
+<p>直列的なコードの一部と並列計算を組み合わせることもできます。
+それにはdo記法ブロック中でアプリカティブコンビネータを使います。
+その逆も然りで、必要に応じて<code>parralel</code>と<code>sequential</code>を使って型構築子を変更すれば良いのです。</p>
 <p>直列実行と並列実行の間の違いを実演するために、100個の10ミリ秒の遅延からなる配列をつくり、それからその遅延を両方の手法で実行します。REPLで試すと<code>seqDelay</code>が<code>parDelay</code>より遥かに遅いことに気付くでしょう。並列実行が<code>sequence_</code>を<code>parSequence_</code>で置き換えるだけで有効になるところに注目です。</p>
 <pre><code class="language-hs">import Prelude
 
@@ -410,8 +415,8 @@ unit
 <li>
 <p>（難しい）「根」のファイルを取り、そのファイルの中の全てのパスの一覧（そして一覧にあるファイルの中の一覧も）の配列を返す<code>recurseFiles</code>関数を書いてください。
 一覧にあるファイルを並列に読んでください。
-パスはそのファイルが表れたディレクトリから相対的なものです。
-<em>手掛かり</em>：<code>node_path</code>モジュールにはディレクトリを扱う上で便利な関数があります。</p>
+パスはそのファイルが現れたディレクトリから相対的なものです。
+<em>手掛かり</em>：<code>node-path</code>モジュールにはディレクトリを扱う上で便利な関数があります。</p>
 </li>
 </ol>
 <p>例えば次のような<code>root.txt</code>ファイルから始まるとします。</p>
@@ -436,10 +441,10 @@ $ cat c/a/a.txt
 <pre><code class="language-hs">[&quot;root.txt&quot;,&quot;a.txt&quot;,&quot;b/a.txt&quot;,&quot;b/b.txt&quot;,&quot;b/c/a.txt&quot;,&quot;c/a/a.txt&quot;]
 </code></pre>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では非同期エフェクトと以下の方法を押さえました。</p>
+<p>この章では非同期作用と以下の方法を押さえました。</p>
 <ul>
 <li><code>aff</code>ライブラリを使って<code>Aff</code>モナド中で非同期コードを走らせる。</li>
-<li><code>affjax</code>ライブラリを使って非同期にHTTPリクエストを行う。</li>
+<li><code>affjax</code>ライブラリを使って非同期にHTTPリクエストする。</li>
 <li><code>parallel</code>ライブラリを使って並列に非同期コードを走らせる。</li>
 </ul>
 

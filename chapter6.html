@@ -173,8 +173,10 @@
                     <main>
                         <h1 id="型クラス"><a class="header" href="#型クラス">型クラス</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、PureScriptの型システムによって可能になる強力な抽象化の手法である、型クラスを導入します。</p>
-<p>この章ではデータ構造をハッシュ化するためのライブラリを題材に説明していきます。データ自身の構造について直接考えることなく複雑な構造のデータのハッシュ値を求める上で、型クラスの仕組みがどのようにして働くのかを見ていきます。</p>
+<p>この章では、PureScriptの型システムにより可能になっている強力な抽象化の形式を導入します。
+そう、型クラスです。</p>
+<p>データ構造をハッシュ化するためのライブラリを本章の動機付けの例とします。
+データ自体の構造について直接考えることなく複雑な構造のデータのハッシュ値を求める上で、型クラスの仕組みがどのように働くかを見ていきます。</p>
 <p>また、PureScriptのPreludeや標準ライブラリに含まれる、標準的な型クラスも見ていきます。PureScriptのコードは概念を簡潔に表現するために型クラスの強力さに大きく依存しているので、これらのクラスに慣れておくと役に立つでしょう。</p>
 <p>オブジェクト指向の方面から入って来た方は、「クラス」という単語がそれまで馴染みのあるものとこの文脈とでは <em>かなり</em>
 異なるものを意味していることに注意してください。</p>
@@ -182,7 +184,7 @@
 <p>この章のソースコードは、ファイル <code>src/data/Hashable.purs</code>で定義されています。</p>
 <p>このプロジェクトには以下の依存関係があります。</p>
 <ul>
-<li><code>maybe</code>: オプショナルな値を表す <code>Maybe</code>データ型が定義されています。</li>
+<li><code>maybe</code>: 省略可能な値を表す <code>Maybe</code>データ型が定義されています。</li>
 <li><code>tuples</code>: 値の組を表す <code>Tuple</code>データ型が定義されています。</li>
 <li><code>either</code>: 非交和を表す <code>Either</code>データ型が定義されています。</li>
 <li><code>strings</code>: 文字列を操作する関数が定義されています。</li>
@@ -196,7 +198,7 @@
 <pre><code class="language-haskell">class Show a where
   show :: a -&gt; String
 </code></pre>
-<p>このコードでは、型変数 <code>a</code>でパラメータ化された、<code>Show</code>という新しい <em>型クラス</em> (type class) を宣言しています。</p>
+<p>このコードでは、型変数<code>a</code>を引数に取る<code>Show</code>という新しい<em>型クラス</em>を宣言しています。</p>
 <p>型クラス <em>インスタンス</em> には、型クラスで定義された関数の、その型に特殊化された実装が含まれています。</p>
 <p>例えば、Preludeにある <code>Boolean</code>値に対する <code>Show</code>型クラスインスタンスの定義は次の通りです。</p>
 <pre><code class="language-haskell">instance Show Boolean where
@@ -204,8 +206,8 @@
   show false = &quot;false&quot;
 </code></pre>
 <p>このコードは <code>showBool​​ean</code>という名前の型クラスのインスタンスを宣言します。
-PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前をつけます。このとき、
-<em><code>Boolean</code>型は <code>Show</code>型クラスに属している</em> といいます。</p>
+PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前を付けられます。
+このとき、<code>Boolean</code>型は <em><code>Show</code>型クラスに属している</em> といいます。</p>
 <p>PSCiで、いろいろな型の値を<code>Show</code>型クラスを使って表示してみましょう。</p>
 <pre><code class="language-text">&gt; import Prelude
 
@@ -218,7 +220,7 @@ PureScriptでは、生成されたJavaScriptの可読性を良くするために
 &gt; show &quot;Hello World&quot;
 &quot;\&quot;Hello World\&quot;&quot;
 </code></pre>
-<p>この例ではさまざまなプリミティブ型の値を <code>show</code>しましたが、もっと複雑な型を持つ値も<code>show</code>できます。</p>
+<p>この例では様々な原始型の値を <code>show</code>しましたが、もっと複雑な型を持つ値も<code>show</code>できます。</p>
 <pre><code class="language-text">&gt; import Data.Tuple
 
 &gt; show (Tuple 1 true)
@@ -229,7 +231,10 @@ PureScriptでは、生成されたJavaScriptの可読性を良くするために
 &gt; show (Just &quot;testing&quot;)
 &quot;(Just \&quot;testing\&quot;)&quot;
 </code></pre>
-<p><code>show</code>の出力は、REPLに（あるいは<code>.purs</code>ファイルに）もう一度貼り付ければ、表示されたものを再作成できるような文字列であるべきです。以下では<code>logShow</code>を使っていますが、これは単に<code>show</code>と<code>log</code>を順に呼び出して、引用符なしに文字列を表示するものです。<code>unit</code>の表示は無視してください。第8章で<code>Effect</code>を調べるときに押さえます。<code>Effect</code>を持つものには<code>log</code>などがあります。</p>
+<p><code>show</code>の出力は、REPLに（あるいは<code>.purs</code>ファイルに）貼り戻せば、表示されたものを再作成できるような文字列であるべきです。
+以下では<code>logShow</code>を使っていますが、これは単に<code>show</code>と<code>log</code>を順に呼び出すものであり、引用符なしに文字列が表示されます。
+<code>unit</code>の表示は無視してください。
+第8章で<code>log</code>のような<code>Effect</code>を調べるときに押さえます。</p>
 <pre><code class="language-text">&gt; import Effect.Console
 
 &gt; logShow (Tuple 1 true)
@@ -240,7 +245,7 @@ unit
 (Just &quot;testing&quot;)
 unit
 </code></pre>
-<p>型 <code>Data.Either</code>の値を表示しようとすると、興味深いエラーメッセージが表示されます。</p>
+<p>型 <code>Data.Either</code>の値を表示しようとすると、興味深いエラー文言が表示されます。</p>
 <pre><code class="language-text">&gt; import Data.Either
 &gt; show (Left 10)
 
@@ -251,15 +256,15 @@ The inferred type
 has type variables which are not mentioned in the body of the type. Consider adding a type annotation.
 </code></pre>
 <p>ここでの問題は <code>show</code>しようとしている型に対する
-<code>Show</code>インスタンスが存在しないということではなく、PSCiがこの型を推論できなかったということです。このエラーメッセージで <em>未知の型</em>
-<code>a</code>と表示されているのがそれです。</p>
-<p><code>::</code>演算子を使って式に対して型注釈を加えると、PSCiが正しい型クラスインスタンスを選ぶことができるようになります。</p>
+<code>Show</code>インスタンスが存在しないということではなく、PSCiがこの型を推論できなかったということです。
+これは推論された型で<em>未知の型</em><code>a</code>とされていることが示しています。</p>
+<p><code>::</code>演算子を使って式に註釈を付けてPSCiが正しい型クラスインスタンスを選べるようにできます。</p>
 <pre><code class="language-text">&gt; show (Left 10 :: Either Int String)
 &quot;(Left 10)&quot;
 </code></pre>
 <p><code>Show</code>インスタンスを全く持っていない型もあります。
 関数の型 <code>-&gt;</code>がその一例です。
-<code>Int</code>から <code>Int</code>への関数を <code>show</code>しようとすると、型検証器によってその旨のエラーメッセージが表示されます。</p>
+<code>Int</code>から <code>Int</code>への関数を <code>show</code>しようとすると、型検証器によってその旨のエラー文言が表示されます。</p>
 <pre><code class="language-text">&gt; import Prelude
 &gt; show $ \n -&gt; n + 1
 
@@ -292,12 +297,14 @@ No type class instance was found for
 これらの型クラスはPureScript特有の抽象化をする上で多くのよくあるパターンの基礎を形成しています。
 そのため、これらの関数の基本についてよく理解しておくことを強くお勧めします。</p>
 <h3 id="eq"><a class="header" href="#eq">Eq</a></h3>
-<p><code>Eq</code>型クラスは、2つの値が等しいかどうかを調べる<code>eq</code>関数を定義しています。
-等値演算子 (<code>==</code>) は<code>eq</code>の別名にすぎません。</p>
+<p><code>Eq</code>型クラスは<code>eq</code>関数を定義しています。
+この関数は2つの値について等値性を調べます。
+実は<code>==</code>演算子は<code>eq</code>の別名です。</p>
 <pre><code class="language-haskell">class Eq a where
   eq :: a -&gt; a -&gt; Boolean
 </code></pre>
-<p>なお、異なる型の2つの値を比較しても意味がありませんから、等しいにせよ等しくないにせよ2つの引数は同じ型を持つ必要があります。</p>
+<p>何れにせよ、2つの引数は同じ型を持つ必要があります。
+異なる型の2つの値を等値性に関して比較しても意味がありません。</p>
 <p>PSCiで <code>Eq</code>型クラスを試してみましょう。</p>
 <pre><code class="language-text">&gt; 1 == 2
 false
@@ -306,7 +313,9 @@ false
 true
 </code></pre>
 <h3 id="ord"><a class="header" href="#ord">Ord</a></h3>
-<p><code>Ord</code>型クラスは順序付け可能な型に対して2つの値を比較する <code>compare</code>関数を定義します。比較演算子 <code>&lt;</code>、 <code>&gt;</code>と、その仲間の厳密な大小比較ではない<code>&lt;=</code>、 <code>&gt;=</code>も、<code>compare</code>を使って定義されます。</p>
+<p><code>Ord</code>型クラスは<code>compare</code>関数を定義します。
+この関数は2つの値を比較するのに使えるもので、その値の型は順序付けに対応したものです。
+比較演算子<code>&lt;</code>、<code>&gt;</code>と厳密な大小比較ではない<code>&lt;=</code>、<code>&gt;=</code>は<code>compare</code>を用いて定義されます。</p>
 <p><em>補足</em>：以下の例ではクラスシグネチャに<code>&lt;=</code>が含まれています。
 この文脈での<code>&lt;=</code>の使われ方はEqがOrdの上位クラスであり、比較演算子としての<code>&lt;=</code>の用途を表す意図はありません。
 後述の<a href="#%E4%B8%8A%E4%BD%8D%E3%82%AF%E3%83%A9%E3%82%B9">上位クラス</a>の節を参照してください。</p>
@@ -315,11 +324,12 @@ true
 class Eq a &lt;= Ord a where
   compare :: a -&gt; a -&gt; Ordering
 </code></pre>
-<p><code>compare</code>関数は2つの値を比較して <code>Ordering</code>の3つの値のうち何れかを返します。</p>
+<p><code>compare</code>関数は2つの値を比較して<code>Ordering</code>を返します。
+これには3つ選択肢があります。</p>
 <ul>
-<li><code>LT</code>- 最初の引数が2番目の値より小さいとき</li>
-<li><code>EQ</code>- 最初の引数が2番目の値と等しい（または比較できない）とき</li>
-<li><code>GT</code>- 最初の引数が2番目の値より大きいとき</li>
+<li><code>LT</code>- 最初の引数が2番目の値より小さいとき。</li>
+<li><code>EQ</code>- 最初の引数が2番目の値と等しいとき。</li>
+<li><code>GT</code>- 最初の引数が2番目の値より大きいとき。</li>
 </ul>
 <p>ここでも<code>compare</code>関数についてPSCiで試してみましょう。</p>
 <pre><code class="language-text">&gt; compare 1 2
@@ -329,14 +339,17 @@ LT
 LT
 </code></pre>
 <h3 id="field"><a class="header" href="#field">Field</a></h3>
-<p><code>Field</code>型クラスは加算、減算、乗算、除算などの数値演算子が使える型を示します。必要に応じて再利用できるように、これらの演算子を抽象化するわけです。</p>
-<p><em>補足</em>：型クラス <code>Eq</code>や <code>Ord</code>のクラスとちょうど同じように、<code>Field</code>型のクラスはPureScriptコンパイラで特別に扱われ、<code>1 + 2 * 3</code>のような単純な式は単純なJavaScriptへと変換されます。
+<p><code>Field</code>型クラスは加算、減算、乗算、除算などの数値演算子に対応した型を示します。
+これらの演算子を抽象化して提供されているので、適切な場合に再利用できるのです。</p>
+<blockquote>
+<p><em>補足</em>：型クラス<code>Eq</code>ないし<code>Ord</code>とちょうど同じように、<code>Field</code>型クラスはPureScriptコンパイラで特別に扱われ、<code>1 + 2 * 3</code>のような単純な式は単純なJavaScriptへと変換されます。
 型クラスの実装に基いて呼び出される関数呼び出しとは対照的です。</p>
+</blockquote>
 <pre><code class="language-haskell">class EuclideanRing a &lt;= Field a
 </code></pre>
-<p><code>Field</code>型クラスは、幾つかのより抽象的な<em>上位クラス</em> (Super Class) が組み合わさってできています。
-これは、その型は<code>Field</code>型クラスの操作の全てを提供しているわけではないが、その一部を提供する、というように抽象的に説明できます。
-例えば、自然数の型は加算及び乗算については閉じていますが、減算については閉じていません。
+<p><code>Field</code>型クラスは、幾つかのより抽象的な<em>上位クラス</em>が組み合わさってできています。
+このため、<code>Field</code>の操作の全てを提供しているわけではないが、その一部を提供する型について抽象的に説明できます。
+例えば、自然数の型は加算及び乗算については閉じていますが、減算については必ずしも閉じていません。
 そのため、この型は<code>Semiring</code>クラス（これは<code>Num</code>の上位クラスです）のインスタンスですが、<code>Ring</code>や<code>Field</code>のインスタンスではありません。</p>
 <p>上位クラスについては、この章の後半で詳しく説明します。
 しかし、全ての<a href="https://a-guide-to-the-purescript-numeric-hierarchy.readthedocs.io/en/latest/introduction.html">数値型クラスの階層</a>（<a href="https://harry.garrood.me/numeric-hierarchy-overview/">チートシート</a>）について述べるのはこの章の目的から外れています。
@@ -346,17 +359,17 @@ LT
 <pre><code class="language-haskell">class Semigroup a where
   append :: a -&gt; a -&gt; a
 </code></pre>
-<p>文字列は普通の文字列連結について半群をなし、同様に配列も半群をなします。その他の標準的なインスタンスの幾つかは、
-<code>prelude</code>パッケージで提供されています。</p>
+<p>文字列は普通の文字列連結について半群をなし、配列も同様です。
+その他の標準的なインスタンスは<code>prelude</code>パッケージで提供されています。</p>
 <p>以前に見た <code>&lt;&gt;</code>連結演算子は、 <code>append</code>の別名として提供されています。</p>
 <p>（<code>prelude</code>パッケージで提供されている）<code>Monoid</code>型クラスには<code>mempty</code>という名前の空の値の概念があり、<code>Semigroup</code>型クラスを拡張します。</p>
 <pre><code class="language-haskell">class Semigroup m &lt;= Monoid m where
   mempty :: m
 </code></pre>
 <p>ここでも文字列や配列はモノイドの簡単な例になっています。</p>
-<p><code>Monoid</code>型クラスインスタンスでは、「空」の値から始めて新たな値を合成していき、その型で<em>累積</em>した結果を返すにはどうするかを記述する型クラスです。
-例えば、畳み込みを使って幾つかのモノイドの値の配列を連結する関数を書くことができます。
-PSCiで試すと次のようになります。</p>
+<p>ある型にとっての<code>Monoid</code>型クラスインスタンスとは、「空」の値から始めて新たな結果に組み合わせ、その型を持つ結果を<em>累算</em>する方法を記述するものです。
+例えば、畳み込みを使って何らかのモノイドの値の配列を連結する関数を書けます。
+PSCiで以下の通りです。</p>
 <pre><code class="language-haskell">&gt; import Prelude
 &gt; import Data.Monoid
 &gt; import Data.Foldable
@@ -378,28 +391,29 @@ PSCiで試すと次のようになります。</p>
   foldl :: forall a b. (b -&gt; a -&gt; b) -&gt; b -&gt; f a -&gt; b
   foldMap :: forall a m. Monoid m =&gt; (a -&gt; m) -&gt; f a -&gt; m
 </code></pre>
-<p>この定義は <code>f</code>を配列の型構築子として特殊化して考えてみるとわかりやすくなります。
-この場合、全ての <code>a</code>について <code>f a</code>を <code>Array a</code>に置き換える事ができますが、<code>foldl</code>と
-<code>foldr</code>の型が、最初に見た配列に対する畳み込みの型になるとわかります。</p>
+<p><code>f</code>を配列の型構築子として特殊化すると分かりやすいです。
+この場合、任意の<code>a</code>について<code>f a</code>を<code>Array a</code>に置き換えられますが、そうすると<code>foldl</code>と<code>foldr</code>の型が、最初に配列に対する畳み込みで見た型になると気付きます。</p>
 <p><code>foldMap</code>についてはどうでしょうか。
 これは <code>forall a m. Monoid m =&gt; (a -&gt; m) -&gt; Array a -&gt; m</code>になります。
-この型シグネチャは、型 <code>m</code>が <code>Monoid</code>型クラスのインスタンスであればどんな型でも返り値の型として選ぶことができると言っています。
-配列の要素をそのモノイドの値へと変換する関数を与えれば、そのモノイドの構造を利用して配列を畳み込み、1つの値にして返すことができます。</p>
+この型シグネチャでは、型<code>m</code>が<code>Monoid</code>型クラスのインスタンスであれば、返り値の型として任意に選べると書かれています。
+配列の要素をそのモノイドの値へと変える関数を与えられれば、そのモノイドの構造を利用して配列上で累算し、1つの値にして返せます。</p>
 <p>それではPSCiで <code>foldMap</code>を試してみましょう。</p>
 <pre><code class="language-text">&gt; import Data.Foldable
 
 &gt; foldMap show [1, 2, 3, 4, 5]
 &quot;12345&quot;
 </code></pre>
-<p>ここでは繋ぎ合わせるためのモノイドとして文字列を、そして<code>Int</code>を文字列として表示する
-<code>show</code>関数を選びました。そうして数の配列を渡すと、それぞれの数を <code>show</code>して1つの文字列へと連結した結果が出力されました。</p>
-<p>しかし畳み込み可能な型は配列だけではありません。<code>foldable-traversable</code>では <code>Maybe</code>や <code>Tuple</code>のような型の
-<code>Foldable</code>インスタンスが定義されており、<code>lists</code>のような他のライブラリでは、そのライブラリのそれぞれのデータ型に対して
-<code>Foldable</code>インスタンスが定義されています。<code>Foldable</code>は <em>順序付きコンテナ</em> (ordered container)
-の概念を見据えたものなのです。</p>
+<p>ここでは文字列用のモノイドと<code>show</code>関数を選んでいます。
+前者は文字列を連結するもので、後者は<code>Int</code>を文字列として書き出すものです。
+そうして数の配列を渡すと、それぞれの数を<code>show</code>して1つの文字列へと連結した結果を得ました。</p>
+<p>しかし畳み込み可能な型は配列だけではありません。
+<code>foldable-traversable</code>では<code>Maybe</code>や<code>Tuple</code>のような型にも<code>Foldable</code>インスタンスが定義されており、<code>lists</code>のような他のライブラリでは、各々のデータ型に対して<code>Foldable</code>インスタンスが定義されています。
+<code>Foldable</code>は<em>順序付きコンテナ</em>の概念を見据えたものなのです。</p>
 <h3 id="関手と型クラス則"><a class="header" href="#関手と型クラス則">関手と型クラス則</a></h3>
-<p>PureScriptで副作用を伴う関数型プログラミングのスタイルを可能にするための<code>Functor</code>と <code>Applicative</code>、
-<code>Monad</code>といった型クラスがPreludeでは定義されています。これらの抽象化については後ほど本書で扱いますが、まずは<code>map</code>関数の形で既に見てきた<code>Functor</code>型クラスの定義を見てみましょう。</p>
+<p>PureScriptでは、副作用を伴う関数型プログラミングのスタイルを可能にするための型クラスの集まりも定義されています。
+<code>Functor</code>や<code>Applicative</code>、<code>Monad</code>といったものです。
+これらの抽象化については後ほど本書で扱いますが、ここでは<code>Functor</code>型クラスの定義を見てみましょう。
+既に<code>map</code>関数の形で見たものです。</p>
 <pre><code class="language-haskell">class Functor f where
   map :: forall a b. (a -&gt; b) -&gt; f a -&gt; f b
 </code></pre>
@@ -426,8 +440,8 @@ PSCiで試すと次のようになります。</p>
 </ul>
 <p>最初の法則は <em>恒等射律</em> (identity law)
 です。これは、恒等関数（引数を変えずに返す関数）をその構造まで持ち上げると、元の構造をそのまま返すという意味です。恒等関数は入力を変更しませんから、これは理にかなっています。</p>
-<p>第二の法則は <em>合成律</em> (composition law)
-です。構造を1つの関数で写してから2つめの関数で写すのは、2つの関数の合成で構造を写すのと同じだ、と言っています。</p>
+<p>第2の法則は<em>合成律</em>です。
+構造を1つの関数で写してから2つめの関数で写すのは、2つの関数の合成で構造を写すのと同じだ、と言っています。</p>
 <p>「持ち上げ」の一般的な意味が何であれ、データ構造に対する持ち上げ関数の正しい定義はこれらの法則に従っていなければなりません。</p>
 <p>標準の型クラスの多くには、このような法則が付随しています。
 一般に、型クラスに与えられた法則は、型クラスの関数に構造を与え、普遍的にインスタンスについて調べられるようにします。
@@ -454,7 +468,9 @@ PSCiで試すと次のようになります。</p>
 <em>補足</em>：代わりにこのインスタンスを手作業で書いてもよいですが、しなくていいのになぜすることがありましょう。</p>
 </li>
 <li>
-<p>（普通）<code>Semiring</code>インタンスを<code>Complex</code>に定義してください。<em>補足</em>：<a href="https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype"><code>Data.Newtype</code></a>の<code>wrap</code>と<code>over2</code>を使ってより簡潔な解答をつくることができます。もしそうするのでしたら、<code>Data.Newtype</code>から<code>class Newtype</code>をインポートしたり、<code>Newtype</code>インスタンスを<code>Complex</code>に導出したりする必要も出てくるでしょう。</p>
+<p>（普通）<code>Semiring</code>インタンスを<code>Complex</code>に定義してください。
+<em>補足</em>：<a href="https://pursuit.purescript.org/packages/purescript-newtype/docs/Data.Newtype"><code>Data.Newtype</code></a>の<code>wrap</code>と<code>over2</code>を使ってより簡潔な解答を作れます。
+もしそうするのでしたら、<code>Data.Newtype</code>から<code>class Newtype</code>をインポートしたり、<code>Newtype</code>インスタンスを<code>Complex</code>に導出したりする必要も出てくるでしょう。</p>
 </li>
 <li>
 <p>（簡単）（<code>newtype</code>を介して）<code>Ring</code>インスタンスを<code>Complex</code>に導出してください。
@@ -475,9 +491,9 @@ PSCiで試すと次のようになります。</p>
 </li>
 </ol>
 <h2 id="型クラス制約"><a class="header" href="#型クラス制約">型クラス制約</a></h2>
-<p>型クラスを使うと、関数の型に制約を加えることができます。
+<p>型クラスを使うと、関数の型に制約を加えられます。
 例を示しましょう。
-<code>Eq</code>型クラスのインスタンスで定義された等値性を使って、3つの値が等しいかどうかを調べる関数を書きたいとします。</p>
+<code>Eq</code>型クラスインスタンスを使って定義された等値性を使って、3つの値が等しいかどうかを調べる関数を書きたいとします。</p>
 <pre><code class="language-haskell">threeAreEqual :: forall a. Eq a =&gt; a -&gt; a -&gt; a -&gt; Boolean
 threeAreEqual a1 a2 a3 = a1 == a2 &amp;&amp; a2 == a3
 </code></pre>
@@ -507,9 +523,11 @@ showCompare a1 a2 =
 <pre><code class="language-text">&gt; import Prelude
 
 &gt; :type \x -&gt; x + x
-forall a. Semiring a =&gt; a -&gt; a
+forall (a :: Type). Semiring a =&gt; a -&gt; a
 </code></pre>
-<p>ここで、この関数には<code>Int -&gt; Int</code>または<code>Number -&gt; Number</code>と注釈を付けることが考えられますが、最も一般的な型が<code>Semiring</code>で動作するため、PSCiでは<code>Int</code>と <code>Number</code>の両方で関数を実行させることができます。</p>
+<p>ここで、この関数に<code>Int -&gt; Int</code>または<code>Number -&gt; Number</code>と註釈を付けることはできます。
+しかし、PSCiでは最も一般的な型が<code>Semiring</code>で動作することが示されています。
+こうすると<code>Int</code>と<code>Number</code>の両方で関数を使えます。</p>
 <h2 id="インスタンスの依存関係"><a class="header" href="#インスタンスの依存関係">インスタンスの依存関係</a></h2>
 <p>制約された型を使うと関数の実装が型クラスインスタンスに依存できるように、型クラスインスタンスの実装は他の型クラスインスタンスに依存できます。これにより、型を使ってプログラムの実装を推論するという、プログラム推論の強力な形式を提供します。</p>
 <p><code>Show</code>型クラスを例に考えてみましょう。
@@ -517,7 +535,7 @@ forall a. Semiring a =&gt; a -&gt; a
 <pre><code class="language-haskell">instance Show a =&gt; Show (Array a) where
   ...
 </code></pre>
-<p>型クラスインスタンスが複数の他のインスタンスに依存する場合、括弧で囲んでそれらのインスタンスをコンマで区切り、それを<code>=&gt;</code>シンボルの左側に置く必要があります。</p>
+<p>型クラスインスタンスが複数の他のインスタンスに依存する場合、括弧で囲んでそれらのインスタンスをコンマで区切り、それを<code>=&gt;</code>シンボルの左側に置くことになります。</p>
 <pre><code class="language-haskell">instance (Show a, Show b) =&gt; Show (Either a b) where
   ...
 </code></pre>
@@ -531,7 +549,7 @@ forall a. Semiring a =&gt; a -&gt; a
 <pre><code class="language-haskell">data NonEmpty a = NonEmpty a (Array a)
 </code></pre>
 <p><code>Eq a</code>と<code>Eq (Array a)</code>のインスタンスを再利用し、型<code>NonEmpty</code>に<code>Eq</code>インスタンスを書いてください。
-<em>補足</em>：代わりに<code>Eq</code>インスタンスも導出できます。</p>
+<em>補足</em>：代わりに<code>Eq</code>インスタンスを導出できます。</p>
 </li>
 <li>
 <p>（普通）<code>Array</code>の<code>Semigroup</code>インスタンスを再利用して、<code>NonEmpty</code>への<code>Semigroup</code>インスタンスを書いてください。</p>
@@ -551,7 +569,7 @@ forall a. Semiring a =&gt; a -&gt; a
 </li>
 <li>
 <p>（難しい）順序付きコンテナを定義する（そして <code>Foldable</code>のインスタンスを持っている）ような型構築子
-<code>f</code>が与えられたとき、追加の要素を先頭に含めるような新たなコンテナ型を作ることができます。</p>
+<code>f</code>が与えられたとき、追加の要素を先頭に含める新たなコンテナ型を作れます。</p>
 <pre><code class="language-haskell">data OneMore f a = OneMore a (f a)
 </code></pre>
 <p>このコンテナ <code>OneMore f</code>もまた順序を持っています。
@@ -570,7 +588,8 @@ forall a. Semiring a =&gt; a -&gt; a
 </li>
 </ol>
 <h2 id="多変数型クラス"><a class="header" href="#多変数型クラス">多変数型クラス</a></h2>
-<p>型クラスは必ずしも1つの型だけを型変数としてとるわけではありません。型変数が1つだけなのが最も一般的ですが、実際には型クラスは<em>ゼロ個以上の</em>型変数を持つことができます。</p>
+<p>型クラスが引数として1つの型だけを取れるのかというと、そうではありません。
+その場合がほとんどですが、型クラスは<em>ゼロ個以上の</em>型変数を持てます。</p>
 <p>それでは2つの型引数を持つ型クラスの例を見てみましょう。</p>
 <pre><code class="language-haskell">module Stream where
 
@@ -592,7 +611,8 @@ instance Stream String Char where
 <p><code>Stream</code>型クラスは、ストリーム自身の型だけでなくその要素の型も型変数として持っていることに注意してください。これによって、ストリームの型が同じでも要素の型について異なる型クラスインスタンスを定義できます。</p>
 <p>このモジュールでは2つの型クラスインスタンスが定義されています。
 <code>uncons</code>がパターン照合で配列の先頭の要素を取り除くような配列のインスタンスと、文字列から最初の文字を取り除くような文字列のインスタンスです。</p>
-<p>任意のストリーム上で動作する関数を記述できます。例えば、ストリームの要素に基づいて <code>Monoid</code>に結果を累積する関数は次のようになります。</p>
+<p>任意のストリーム上で動作する関数を記述できます。
+例えば、ストリームの要素に基づいて <code>Monoid</code>に結果を累算する関数は次のようになります。</p>
 <pre><code class="language-haskell">import Prelude
 import Data.Monoid (class Monoid, mempty)
 
@@ -604,11 +624,11 @@ foldStream f list =
 </code></pre>
 <p>PSCiで使って、異なる <code>Stream</code>の型や異なる <code>Monoid</code>の型について <code>foldStream</code>を呼び出してみましょう。</p>
 <h2 id="関数従属性"><a class="header" href="#関数従属性">関数従属性</a></h2>
-<p>多変数型クラスは非常に便利ですが、混乱しやすい型や型推論の問題にも繋がります。
-簡単な例として、上記の <code>Stream</code>クラスを使って汎用的な<code>tail</code>関数をストリームに書くことを考えてみましょう。</p>
+<p>多変数型クラスは非常に便利ですが、紛らわしい型や型推論の問題にも繋がります。
+単純な例として、上記で与えられた<code>Stream</code>クラスを使い、ストリームに対して汎用的な<code>tail</code>関数を書くことを考えてみましょう。</p>
 <pre><code class="language-haskell">genericTail xs = map _.tail (uncons xs)
 </code></pre>
-<p>これはやや複雑なエラーメッセージを出力します。</p>
+<p>これはやや複雑なエラー文言を出力します。</p>
 <pre><code class="language-text">The inferred type
 
   forall stream a. Stream stream a =&gt; stream -&gt; Maybe stream
@@ -628,24 +648,27 @@ has type variables which are not mentioned in the body of the type. Consider add
 </code></pre>
 <p>ここでは、コンパイラが <code>streamString</code>インスタンスを選択することを期待しています。
 結局のところ、 <code>String</code>は <code>Char</code>のストリームであり、他の型のストリームであってはなりません。</p>
-<p>コンパイラは自動的にそう推論できず、<code>streamString</code>インスタンスを割り当てることができません。
-しかし、型クラス定義に手掛かりを追加すると、コンパイラを助けることができます。</p>
+<p>コンパイラは自動的にそう推論できず、<code>streamString</code>インスタンスに目が向きません。
+しかし、型クラス定義に手掛かりを追加すると、コンパイラを補助できます。</p>
 <pre><code class="language-haskell">class Stream stream element | stream -&gt; element where
   uncons :: stream -&gt; Maybe { head :: element, tail :: stream }
 </code></pre>
 <p>ここで、 <code>stream -&gt; element</code>は <em>関数従属性</em> (functional dependency) と呼ばれます。関数従属性は、多変数型クラスの型引数間の関数関係を宣言します。この関数の依存関係は、ストリーム型から（一意の）要素型への関数があることをコンパイラに伝えるので、コンパイラがストリーム型を知っていれば要素の型を割り当てられます。</p>
 <p>この手掛かりがあれば、コンパイラが上記の汎用的な尾鰭関数の正しい型を推論するのに充分です。</p>
 <pre><code class="language-text">&gt; :type genericTail
-forall stream element. Stream stream element =&gt; stream -&gt; Maybe stream
+forall (stream :: Type) (element :: Type). Stream stream element =&gt; stream -&gt; Maybe stream
 
 &gt; genericTail &quot;testing&quot;
 (Just &quot;esting&quot;)
 </code></pre>
-<p>多種の型のクラスを使用して何らかのAPIを設計する場合、関数従属性は非常に有用です。</p>
+<p>多変数の型クラスを使用して何らかのAPIを設計する場合、関数従属性が便利なことがあります。</p>
 <h2 id="型変数のない型クラス"><a class="header" href="#型変数のない型クラス">型変数のない型クラス</a></h2>
 <p>ゼロ個の型変数を持つ型クラスさえも定義できます。
-これらは関数に対するコンパイル時のアサーションに対応しており、型システム内のコードの大域的な性質を把握できます。</p>
-<p>重要な一例として、前に部分関数についてお話しした際に見た<code>Partial</code>クラスがあります。<code>Data.Array.Partial</code>に定義されている関数<code>head</code>と<code>tail</code>を例に取りましょう。この関数は配列の先頭と尾鰭を<code>Maybe</code>に包むことなく取得できます。なので配列が空のときに失敗する可能性があります。</p>
+これらは関数に対するコンパイル時の表明に対応しており、型システム内においてそのコードの大域的な性質を把握できます。</p>
+<p>重要な一例として、前に部分関数についてお話しした際に見た<code>Partial</code>クラスがあります。
+<code>Data.Array.Partial</code>に定義されている関数<code>head</code>と<code>tail</code>を例に取りましょう。
+この関数は配列の先頭と尾鰭を<code>Maybe</code>に包むことなく取得できます。
+そのため配列が空のときに失敗する可能性があります。</p>
 <pre><code class="language-haskell">head :: forall a. Partial =&gt; Array a -&gt; a
 
 tail :: forall a. Partial =&gt; Array a -&gt; Array a
@@ -680,30 +703,31 @@ secondElement xs = head (tail xs)
 <p>あるクラスのどんなインスタンスも、別のクラスのインスタンスである必要があるとき、後者の型クラスは前者の型クラスの上位クラスであるといいます。
 そしてクラス定義で逆向きの太い矢印 (<code>&lt;=</code>) を使って上位クラス関係を示します。</p>
 <p><a href="#ord">既に上位クラスの関係の例を目にしました</a>。
-<code>Eq</code>クラスは <code>Ord</code>の上位クラスですし、<code>Semigroup</code>クラスは<code>Monoid</code>の上位クラスです。
+<code>Eq</code>クラスは<code>Ord</code>の上位クラスですし、<code>Semigroup</code>クラスは<code>Monoid</code>の上位クラスです。
 <code>Ord</code>クラスの全ての型クラスインスタンスについて、その同じ型に対応する <code>Eq</code>インスタンスが存在しなければなりません。
 これは理に適っています。
-<code>compare</code>関数が2つの値の大小を付けられないと報告した時は、それらが実は同値であるかどうかを判定するために
-<code>Eq</code>クラスを使いたいことが多いでしょうから。</p>
-<p>一般に、下位クラスの法則が上位クラスのメンバに言及しているとき、上位クラス関係を定義するのは筋が通っています。
-例えば、任意の<code>Ord</code>と<code>Eq</code>のインスタンスの対について、もし2つの値が<code>Eq</code>インスタンスの下で同値であるなら、<code>compare</code>関数は
-<code>EQ</code>を返すはずだと見做すのは理に適っています。
-言い換えれば、<code>a == b</code>が真であるのはちょうど<code>compare a b</code>が<code>EQ</code>に評価されるときなのです。
-法則のレベルでのこの関係は<code>Eq</code>と<code>Ord</code>の間の上位クラス関係の正当性を示します。</p>
-<p>上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明らかに &quot;is-a&quot; の関係があることです。
-下位クラスの全てのメンバは、上位クラスのメンバでもあるということです。</p>
+多くの場合、<code>compare</code>関数が2つの値の大小を付けられないと報告した時は、同値であるかを判定するために<code>Eq</code>クラスを使うことでしょう。</p>
+<p>一般に、下位クラスの法則が上位クラスの構成要素に言及しているとき、上位クラス関係を定義するのは筋が通っています。
+例えば、任意の<code>Ord</code>と<code>Eq</code>のインスタンスの対について、もし2つの値が<code>Eq</code>インスタンスの下で同値であるなら、<code>compare</code>関数は<code>EQ</code>を返すはずだと推定するのは理に適っています。
+言い換えれば、<code>a == b</code>が真であるのは<code>compare a b</code>が厳密に<code>EQ</code>に評価されるときなのです。
+法則のレベルでのこの関係は、<code>Eq</code>と<code>Ord</code>の間の上位クラス関係の正当性を示します。</p>
+<p>上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明白な &quot;is-a&quot; の関係があることです。
+下位クラスの全ての構成要素は、上位クラスの構成要素でもあるということです。</p>
 <h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
 <ol>
 <li>
-<p>（普通）部分関数<code>unsafeMaximum :: Partial =&gt; Array Int -&gt; Int</code>を定義してください。この関数は空でない整数の配列の最大値を求めます。<code>unsafePartial</code>を使ってPSCiで関数をテストしてください。<em>手掛かり</em>：<code>Data.Foldable</code>の
-<code>maximum</code>関数を使います。</p>
+<p>（普通）部分関数<code>unsafeMaximum :: Partial =&gt; Array Int -&gt; Int</code>を定義してください。
+この関数は空でない整数の配列の最大値を求めます。
+<code>unsafePartial</code>を使ってPSCiで関数を試してください。
+<em>手掛かり</em>：<code>Data.Foldable</code>の<code>maximum</code>関数を使います。</p>
 </li>
 <li>
-<p>（普通）次の <code>Action</code>クラスは、ある型の別の型での動作 (action) を定義する、多変数型クラスです。</p>
+<p>（普通）次の <code>Action</code>クラスは、ある型の別の型での動作を定義する、多変数型クラスです。</p>
 <pre><code class="language-haskell">class Monoid m &lt;= Action m a where
   act :: m -&gt; a -&gt; a
 </code></pre>
-<p><em>動作</em>はモノイドな値を使って他の型の値を変更する方法を決めるやり方を記述する関数です。<code>Action</code>型クラスには2つの法則があります。</p>
+<p><em>動作</em>とは、他の型の値を変更する方法を決めるために使われるモノイドな値を記述する関数です。
+<code>Action</code>型クラスには2つの法則があります。</p>
 <ul>
 <li><code>act mempty a = a</code></li>
 <li><code>act (m1 &lt;&gt; m2) a = act m1 (act m2 a)</code></li>
@@ -727,9 +751,9 @@ instance Monoid Multiply where
 <p>インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。</p>
 </li>
 <li>
-<p>（難しい）実は<code>Action Multiply Int</code>のインスタンスを実装するには複数の方法があります。
+<p>（難しい）<code>Action Multiply Int</code>のインスタンスを実装するには複数の方法があります。
 どれだけ思い付きますか。
-PureScriptは同じインスタンスの複数の実装を許さないため、元の実装を置き換える必要があります。
+PureScriptは同じインスタンスの複数の実装を許さないため、元の実装を置き換える必要があるでしょう。
 <em>補足</em>：テストでは4つの実装を押さえています。</p>
 </li>
 <li>
@@ -738,7 +762,7 @@ PureScriptは同じインスタンスの複数の実装を許さないため、�
   ...
 </code></pre>
 <p><em>手掛かり</em>：Pursuitでシグネチャが<a href="https://pursuit.purescript.org/search?q=String%20-%3E%20Int%20-%3E%20String"><code>String -&gt; Int -&gt; String</code></a>の補助関数を検索してください。
-なお<code>String</code>は（<code>Monoid</code>のような）より汎用的な型として現れます。</p>
+なお、<code>String</code>は（<code>Monoid</code>のような）より汎用的な型として現れます。</p>
 <p>このインスタンスは上に挙げた法則を満たすでしょうか。</p>
 </li>
 <li>
@@ -761,15 +785,18 @@ PureScriptは同じインスタンスの複数の実装を許さないため、�
 </ol>
 <h2 id="ハッシュの型クラス"><a class="header" href="#ハッシュの型クラス">ハッシュの型クラス</a></h2>
 <p>この最後の節では、章の残りを使ってデータ構造をハッシュ化するライブラリを作ります。</p>
-<p>なお、このライブラリの説明だけを目的としており、堅牢なハッシュ化の仕組みの提供は目的としていません。</p>
+<blockquote>
+<p>なお、このライブラリは説明だけを目的としており、堅牢なハッシュ化の仕組みの提供は意図していません。</p>
+</blockquote>
 <p>ハッシュ関数に期待される性質とはどのようなものでしょうか。</p>
 <ul>
 <li>ハッシュ関数は決定的でなくてはなりません。
-つまり、同じ値には同じハッシュ値を対応させなければなりません。</li>
+つまり、同じ値は同じハッシュコードに写さなければなりません。</li>
 <li>ハッシュ関数はいろいろなハッシュ値の集合で結果が一様に分布しなければなりません。</li>
 </ul>
-<p>最初の性質はまさに型クラスの法則のように見える一方で、2番目の性質はよりくだけた規約の条項のようなもので、PureScriptの型システムによって確実に強制できるようなものではなさそうです。
-しかし、これは型クラスについて次のような直感的理解を与えるはずです。</p>
+<p>最初の性質はちゃんとした型クラスの法則のように見えます。
+その一方で、2番目の性質はよりくだけた規約の条項のようなもので、PureScriptの型システムによって確実に強制できるようなものではなさそうです。
+しかし、これは型クラスから次のような直感が得られるでしょう。</p>
 <pre><code class="language-haskell">newtype HashCode = HashCode Int
 
 instance Eq HashCode where
@@ -788,8 +815,8 @@ class Eq a &lt;= Hashable a where
 combineHashes (HashCode h1) (HashCode h2) = hashCode (73 * h1 + 51 * h2)
 </code></pre>
 <p><code>combineHashes</code>関数は2つのハッシュ値を混ぜて結果を0-65535の間に分布します。</p>
-<p>それでは、入力の種類を制限する <code>Hashable</code>制約を使う関数を書いてみましょう。
-ハッシュ関数を必要とするよくある目的としては、2つの値が同じハッシュ値にハッシュ化されるかどうかを決定することです。
+<p>それでは、<code>Hashable</code>制約を使って入力の種類を制限する関数を書いてみましょう。
+ハッシュ関数を必要とするよくある目的としては、2つの値が同じハッシュコードにハッシュ化されるかどうかを判定することです。
 <code>hashEqual</code>関係はそのような機能を提供します。</p>
 <pre><code class="language-haskell">hashEqual :: forall a. Hashable a =&gt; a -&gt; a -&gt; Boolean
 hashEqual = eq `on` hash
@@ -799,8 +826,8 @@ hashEqual = eq `on` hash
 つまり、それぞれの値が <code>hash</code>関数に渡されたあとで2つの値が等しいなら、それらの値は「ハッシュ同値」です。</p>
 <p>原始型の <code>Hashable</code>インスタンスを幾つか書いてみましょう。
 まずは整数のインスタンスです。
-<code>HashCode</code>は実際には単なる梱包された整数なので、これは簡単です。
-<code>hashCode</code>補助関数を使うことができます。</p>
+<code>HashCode</code>は実際には単なる梱包された整数なので、単純です。
+<code>hashCode</code>補助関数を使えます。</p>
 <pre><code class="language-haskell">instance Hashable Int where
   hash = hashCode
 </code></pre>
@@ -824,15 +851,15 @@ hashEqual = eq `on` hash
   hash = hash &lt;&lt;&lt; toCharArray
 </code></pre>
 <p>これらの <code>Hashable</code>インスタンスが先ほどの型クラスの法則を満たしていることを証明するにはどうしたらいいでしょうか。
-同じ値が等しいハッシュ値を持っていることを確認する必要があります。
-<code>Int</code>、 <code>Char</code>、 <code>String</code>、
-<code>Boolean</code>の場合は、<code>Eq</code>の意味では同じ値でも厳密には同じではない、というような型の値は存在しないので簡単です。</p>
+同じ値が等しいハッシュコードを持っていることを確認する必要があります。
+<code>Int</code>、<code>Char</code>、<code>String</code>、<code>Boolean</code>のような場合は単純です。
+<code>Eq</code>の意味では同じ値でも厳密には同じではない、というような型の値は存在しないからです。</p>
 <p>もっと面白い型についてはどうでしょうか。
-この場合、配列の長さに関する帰納を使うと、型クラスの法則を証明できます。
+<code>Array</code>インスタンスの型クラスの法則を証明するにあたっては、配列の長さに関する帰納を使えます。
 長さゼロの唯一の配列は <code>[]</code>です。
 配列の <code>Eq</code>の定義により、任意の2つの空でない配列は、それらの先頭の要素が同じで配列の残りの部分が等しいとき、またその時に限り等しくなります。
-この帰納的な仮定により、配列の残りの部分は同じハッシュ値を持ちますし、もし <code>Hashable a</code>インスタンスがこの法則を満たすなら、先頭の要素も同じハッシュ値をもつことがわかります。
-したがって、2つの配列は同じハッシュ値を持ち、<code>Hashable (Array a)</code>も同様に型クラス法則を満たしています。</p>
+この帰納的な仮定により、配列の残りの部分は同じハッシュ値を持ちますし、もし <code>Hashable a</code>インスタンスがこの法則を満たすなら、先頭の要素も同じハッシュ値を持つことがわかります。
+したがって、2つの配列は同じハッシュ値を持ち、<code>Hashable (Array a)</code>も同様に型クラス法則に従います。</p>
 <p>この章のソースコードには、 <code>Maybe</code>と <code>Tuple</code>型のインスタンスなど、他にも <code>Hashable</code>インスタンスの例が含まれています。</p>
 <h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
@@ -841,7 +868,8 @@ hashEqual = eq `on` hash
 <em>補足</em>：この演習には単体試験がありません。</p>
 </li>
 <li>
-<p>（普通）ハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうかを調べる関数<code>arrayHasDuplicates</code>を書いてください。
+<p>（普通）関数<code>arrayHasDuplicates</code>を書いてください。
+この関数はハッシュと値の同値性に基づいて配列が重複する要素を持っているかどうかを調べます。
 まずハッシュ同値性を<code>hashEqual</code>関数で確認し、それからもし重複するハッシュの対が見付かったら<code>==</code>で値の同値性を確認してください。
 <em>手掛かり</em>：<code>Data.Array</code>の <code>nubByEq</code>関数はこの問題をずっと簡単にしてくれるでしょう。</p>
 </li>
@@ -862,10 +890,13 @@ instance Eq Hour where
 <em>補足</em>：この演習にテストはありません。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、型に基づく抽象化で、コードの再利用のための強力な形式化を可能にする <em>型クラス</em>
-を導入しました。PureScriptの標準ライブラリから標準の型クラスを幾つか見てきました。また、ハッシュ値を計算する型クラスに基づく独自のライブラリを定義しました。</p>
-<p>この章では型クラス法則の考え方も導入しましたが、これは抽象化に型クラスを使うコードについての性質を証明する手法でした。
-型クラス法則は<em>等式推論</em>と呼ばれる大きな分野の一部であり、プログラミング言語の性質と型システムがプログラムを論理的に推論するために使われています。
+<p>この章では<em>型クラス</em>を導入しました。
+型クラスは型に基づく抽象化で、コードの再利用のために強力な形式化ができます。
+PureScriptの標準ライブラリから標準の型クラスを幾つか見てきました。
+また、ハッシュ値を計算するための型クラスに基づく独自のライブラリを定義しました。</p>
+<p>この章では型クラス法則も導入しましたが、これは抽象化に型クラスを使うコードについての性質を証明する手法でした。
+型クラス法則は<em>等式推論</em>と呼ばれる、より大きな分野の一部です。
+そちらではプログラミング言語の性質と型システムがプログラムを論理的に追究するために使われています。
 これは重要な考え方で、本書では今後あらゆる箇所で立ち返る話題となるでしょう。</p>
 
                     </main>

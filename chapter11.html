@@ -175,19 +175,19 @@
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
 <p>この章の目標は<em>モナド変換子</em>について学ぶことです。
 モナド変換子は異なるモナドから提供された副作用を合成する方法を提供します。
-NodeJSのコンソール上で遊ぶことができるテキストアドベンチャーゲームを題材として扱います。
-ゲームの様々な副作用（ロギング、状態、及び設定）が全てモナド変換子スタックによって提供されます。</p>
+動機付けとする例は、NodeJSのコンソール上で遊ぶことができるテキストアドベンチャーゲームです。
+ゲームの様々な副作用（ロギング、状態、及び構成）が全てモナド変換子スタックによって提供されます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>このモジュールのプロジェクトでは以下の新しい依存関係が導入されます。</p>
 <ul>
 <li><code>ordered-collections</code> は不変のマップと集合のためのデータ型を提供します</li>
 <li><code>transformers</code> は標準的なモナド変換子の実装を提供します</li>
 <li><code>node-readline</code>はNodeJSが提供する<a href="http://nodejs.org/api/readline.html"><code>readline</code></a>インターフェイスへのFFIバインディングを提供します</li>
-<li><code>optparse</code> はコマンドライン引数を処理するアプリカティブ構文解析器を提供します</li>
+<li><code>optparse</code>はコマンドライン引数を処理するアプリカティブ構文解析器を提供します</li>
 </ul>
 <h2 id="ゲームの遊びかた"><a class="header" href="#ゲームの遊びかた">ゲームの遊びかた</a></h2>
 <p>プロジェクトを走らせるには<code>spago run</code>を使います。</p>
-<p>既定では使い方が表示されます。</p>
+<p>既定では使い方の文言が表示されます。</p>
 <pre><code class="language-text">Monadic Adventures! A game to learn monad transformers
 
 Usage: run.js (-p|--player &lt;player name&gt;) [-d|--debug]
@@ -200,8 +200,8 @@ Available options:
   -h,--help                Show this help text
 </code></pre>
 <p>コマンドライン引数を与えるためには、追加の引数を直接アプリケーションに渡す<code>-a</code>オプション付きで<code>spago run</code>を呼び出すか、<code>spago bundle-app</code>とすればよいです。
-2つ目の方法では<code>node</code>で直接走らせられるindex.jsファイルが作られます。
-例えば<code>-p</code>オプションを使ってプレイヤー名を与えるには次のようにします。</p>
+2つ目の方法では<code>node</code>で直接走らせられるindex.jsファイルが作られます。</p>
+<p>例えば<code>-p</code>オプションを使ってプレイヤー名を与えるには次のようにします。</p>
 <pre><code class="language-text">$ spago run -a &quot;-p Phil&quot;
 &gt;
 </code></pre>
@@ -209,13 +209,11 @@ Available options:
 $ node index.js -p Phil
 &gt;
 </code></pre>
-<p>プロンプトからは、 <code>look</code>、 <code>inventory</code>、 <code>take</code>、 <code>use</code>、 <code>north</code>、<code>south</code>、 <code>east</code>、
-<code>west</code>などのコマンドを入力できます。
-<code>debug</code>コマンドもあり、<code>--debug</code>コマンドラインオプションを与えられていた場合に、ゲームの状態を出力するのに使えます。</p>
-<p>ゲームは2次元の碁盤の目の上が舞台で、コマンド <code>north</code>、 <code>south</code>、<code>east</code>、
-<code>west</code>を発行することによってプレイヤーが移動します。
-ゲームにはアイテムの集まりがあり、プレイヤーの所持アイテム一覧を表したり、ゲーム盤上のその位置にあるアイテムの一覧を表すのに使われます。
-<code>take</code>コマンドを使うと、プレイヤーの位置にあるアイテムを拾い上げることができます。</p>
+<p>プロンプトからは、<code>look</code>、<code>inventory</code>、<code>take</code>、<code>use</code>、<code>north</code>、<code>south</code>、<code>east</code>、<code>west</code>などのコマンドを入力できます。
+<code>debug</code>コマンドもあり、<code>--debug</code>コマンドラインオプションを与えられていた場合に、ゲームの状態を出力できます。</p>
+<p>ゲームは2次元の碁盤の目の上が舞台で、コマンド<code>north</code>、<code>south</code>、<code>east</code>、<code>west</code>を発行することによってプレイヤーが移動します。
+ゲームにはアイテムの集まりがあり、プレイヤーの所有物であったり、ゲームの盤上の特定の位置にあったりします。
+<code>take</code>コマンドを使うと、プレイヤーはアイテムを拾い上げられます。</p>
 <p>参考までに、このゲームのひと通りの流れは次のようになります。</p>
 <pre><code class="language-text">$ spago run -a &quot;-p Phil&quot;
 
@@ -245,16 +243,15 @@ You light the candle.
 Congratulations, Phil!
 You win!
 </code></pre>
-<p>このゲームはとても単純ですが、この章の目的は
-<code>transformers</code>パッケージを使用してこのようなゲームを素早く開発できるようにするライブラリを構築することです。</p>
+<p>このゲームはとても単純ですが、この章の目的は<code>transformers</code>パッケージを使用してこのような種類のゲームを素早く開発できるようにするライブラリを構築することです。</p>
 <h2 id="stateモナド"><a class="header" href="#stateモナド">Stateモナド</a></h2>
 <p><code>transformers</code>パッケージで提供されている幾つかのモナドを眺めることから始めましょう。</p>
 <p>最初の例は<code>State</code>モナドです。
 これは純粋なコードで<em>変更可能状態</em>をモデル化する手段を提供します。
 既に<code>Effect</code>モナドによって提供される変更可能状態の手法について見てきました。
 <code>State</code>はその代替を提供します。</p>
-<p><code>State</code>型構築子は、状態の型 <code>s</code>、及び返り値の型 <code>a</code>という2種類の引数を取ります。
-「<code>State</code>モナド」というように説明はしていますが、実際には<code>Monad</code>型クラスのインスタンスが任意の型<code>s</code>についての <code>State s</code>型構築子に対して提供されています。</p>
+<p><code>State</code>型構築子は、状態の型<code>s</code>、及び返り値の型<code>a</code>という2種類の引数を取ります。
+「<code>State</code>モナド」というように説明はしていますが、実際には<code>Monad</code>型クラスのインスタンスが任意の型<code>s</code>についての<code>State s</code>型構築子に対して提供されています。</p>
 <p><code>Control.Monad.State</code>モジュールは以下のAPIを提供しています。</p>
 <pre><code class="language-haskell">get     :: forall s.             State s s
 gets    :: forall s. (s -&gt; a) -&gt; State s a
@@ -262,13 +259,12 @@ put     :: forall s. s        -&gt; State s Unit
 modify  :: forall s. (s -&gt; s) -&gt; State s s
 modify_ :: forall s. (s -&gt; s) -&gt; State s Unit
 </code></pre>
-<p>なおここではこれらのAPIシグネチャは<code>State</code>型構築子を使った、単純化された形式で表されています。
+<p>なお、ここではこれらのAPIシグネチャは<code>State</code>型構築子を使った、単純化された形式で表されています。
 実際のAPIは本章の後にある「型クラス」節で押さえる<code>MonadState</code>が関わってきます。
 ですからIDEのツールチップやPursuitで違うシグネチャを見たとしても心配しないでください。</p>
 <p>例を見てみましょう。
-<code>State</code>モナドの使いかたの1つとしては、整数の配列中の値を現在の状態に加えるものが考えられます。
-状態の型<code>s</code>として<code>Int</code>を選択し、配列の走査に <code>traverse_</code>を使って、配列の要素それぞれについて
-<code>modify</code>を呼び出すと、これを実現できます。</p>
+<code>State</code>モナドの使い方の1つとしては、整数の配列中の値を現在の状態に加えるものが考えられます。
+状態の型<code>s</code>として<code>Int</code>を選択し、配列の走査に<code>traverse_</code>を使い、配列の各要素について<code>modify</code>を呼び出すと、これを実現できます。</p>
 <pre><code class="language-haskell">import Data.Foldable (traverse_)
 import Control.Monad.State
 import Control.Monad.State.Class
@@ -281,8 +277,8 @@ sumArray = traverse_ \n -&gt; modify \sum -&gt; sum + n
 execState :: forall s a. State s a -&gt; s -&gt; s
 runState  :: forall s a. State s a -&gt; s -&gt; Tuple a s
 </code></pre>
-<p>3つの関数はそれぞれ型<code>s</code>の初期状態と型<code>State s a</code>の計算を引数にとります。
-<code>evalState</code>は返り値だけを返し、 <code>execState</code>は最終的な状態だけを返し、 <code>runState</code>は <code>Tuple a s</code>型の値として表現された両方を返します。</p>
+<p>3つの各関数は型<code>s</code>の初期状態と型<code>State s a</code>の計算を引数に取ります。
+<code>evalState</code>は返り値だけを返し、<code>execState</code>は最終的な状態だけを返し、<code>runState</code>は<code>Tuple a s</code>型の値として表現された両方を返します。</p>
 <p>先ほどの <code>sumArray</code>関数が与えられているとき、PSCiで <code>execState</code>を使うと次のように複数の配列内の数字を合計できます。</p>
 <pre><code class="language-text">&gt; :paste
 … execState (do
@@ -298,14 +294,12 @@ runState  :: forall s a. State s a -&gt; s -&gt; Tuple a s
 <p>（簡単）上の例で、<code>execState</code>を<code>runState</code>や<code>evalState</code>で置き換えると結果はどうなるでしょうか。</p>
 </li>
 <li>
-<p>（普通）括弧からなる文字列について、次の何れかであれば<em>平衡している</em>とします。
-1つは0個以上のより短い平衡した文字列を連結したもので、もう1つはより短い平衡した文字列を一対の括弧で囲んだものです。</p>
+<p>（普通）括弧からなる文字列が<em>平衡している</em>のは、0個以上のより短い平衡した文字列を連結したものか、より短い平衡した文字列を一対の括弧で囲んだものかの何れかです。</p>
 <p><code>State</code>モナドと <code>traverse_</code>関数を使用して、次のような関数を書いてください。</p>
 <pre><code class="language-haskell">testParens :: String -&gt; Boolean
 </code></pre>
-<p>これは <code>String</code>が括弧の対応が正しく付けられているかどうかを調べる関数です。
-調べるにはまだ閉じられていない開括弧の数を把握しておきます。
-この関数は次のように動作しなくてはなりません。</p>
+<p>これは、まだ閉じられていない開括弧の数を把握することで、括弧の<code>String</code>が平衡しているかどうかを調べる関数です。
+この関数は次のように動作します。</p>
 <pre><code class="language-text">&gt; testParens &quot;&quot;
 true
 
@@ -330,7 +324,7 @@ false
 <pre><code class="language-haskell">ask   :: forall r. Reader r r
 local :: forall r a. (r -&gt; r) -&gt; Reader r a -&gt; Reader r a
 </code></pre>
-<p><code>ask</code>アクションは現在の設定を読み取るために使い、 <code>local</code>アクションは変更された設定で計算するために使います。</p>
+<p><code>ask</code>動作は現在の設定を読み取るために使い、<code>local</code>動作は変更された設定で計算するために使います。</p>
 <p>例えば、権限で制御するアプリケーションを開発しており、現在の利用者の権限オブジェクトを保持するのに <code>Reader</code>モナドを使いたいとしましょう。
 型 <code>r</code>を次のようなAPIを備えた型 <code>Permission</code>として選択できます。</p>
 <pre><code class="language-haskell">hasPermission :: String -&gt; Permissions -&gt; Boolean
@@ -345,7 +339,7 @@ createUser = do
     then map Just newUser
     else pure Nothing
 </code></pre>
-<p><code>local</code>アクションを使うと、計算の実行中に <code>Permissions</code>オブジェクトを変更し、ユーザーの権限を昇格させることもできます。</p>
+<p><code>local</code>動作を使うと、計算の実行中に <code>Permissions</code>オブジェクトを変更し、ユーザーの権限を昇格させることもできます。</p>
 <pre><code class="language-haskell">runAsAdmin :: forall a. Reader Permissions a -&gt; Reader Permissions a
 runAsAdmin = local (addPermission &quot;admin&quot;)
 </code></pre>
@@ -365,8 +359,8 @@ type Doc = Reader Level String
 </code></pre>
 <ol>
 <li>
-<p>（簡単）現在の字下げの深さで文字列を出力する関数 <code>line</code>を書いてください。
-関数は以下の型を持つ必要があります。</p>
+<p>（簡単）現在の字下げの深さで関数を書き出す関数<code>line</code>を書いてください。
+関数は以下の型を持ちます。</p>
 <pre><code class="language-haskell">line :: String -&gt; Doc
 </code></pre>
 <p><em>手掛かり</em>：現在の字下げの深さを読み取るためには <code>ask</code>関数を使用します。
@@ -391,7 +385,7 @@ type Doc = Reader Level String
 <p>この関数は文書を文字列として出力します。</p>
 </li>
 </ol>
-<p>これで、このライブラリを次のように使うと、簡単な文書を書くことができるでしょう。</p>
+<p>これでライブラリを使って以下のような単純な文書を書けるようになりました。</p>
 <pre><code class="language-haskell">render $ cat
   [ line &quot;Here is some indented text:&quot;
   , indent $ cat
@@ -402,16 +396,17 @@ type Doc = Reader Level String
   ]
 </code></pre>
 <h2 id="writerモナド"><a class="header" href="#writerモナド">Writerモナド</a></h2>
-<p><code>Writer</code>モナドは、計算の返り値に加えて、もう1つの値を累積していく機能を提供します。</p>
-<p>よくある使い方としては型 <code>String</code>もしくは <code>Array String</code>でログを累積していくというものなどがありますが、
-<code>Writer</code>モナドはこれよりもっと一般的なものです。
-累積するのに任意のモノイドの値を使うことができ、<code>Additive Int</code>モノイドを使って、合計を追跡し続けるのに使ったり、 <code>Disj Boolean</code>モノイドを使って途中の <code>Boolean</code>値の何れかが真であるかどうかを追跡するのに使うことができます。</p>
-<p><code>Writer</code>型の構築子は、 <code>Monoid</code>型クラスのインスタンスである型 <code>w</code>、および返り値の型 <code>a</code>という2つの型引数を取ります。</p>
+<p><code>Writer</code>モナドでは、計算の返り値に加えてもう1つの値を累算できます。</p>
+<p>よくある使い方としては型<code>String</code>もしくは<code>Array String</code>でログを累算していくというものなどがありますが、<code>Writer</code>モナドはこれよりもっと一般的なものです。
+累算するのに任意のモノイドの値を使うことができるので、<code>Additive Int</code>モノイドを使って整数の合計を追跡するのに使ったり、<code>Disj Boolean</code>モノイドを使って途中の<code>Boolean</code>値の何れかが真であるかどうかを追跡するのに使えます。</p>
+<p><code>Writer</code>型構築子は2つの型引数を取ります。
+<code>Monoid</code>型クラスのインスタンスである型<code>w</code>と返り値の型<code>a</code>です。</p>
 <p><code>Writer</code>のAPIで重要なのは <code>tell</code>関数です。</p>
 <pre><code class="language-haskell">tell :: forall w a. Monoid w =&gt; w -&gt; Writer w Unit
 </code></pre>
-<p><code>tell</code>アクションは、与えられた値を現在の累積結果に付け加えます。</p>
-<p>例として、 <code>Array String</code>モノイドを使用して、既存の関数にログ機能を追加してみましょう。 <em>最大公約数</em> 関数の以前の実装を考えてみます。</p>
+<p><code>tell</code>動作は与えられた値を現在の累算結果に付け加えます。</p>
+<p>例として、<code>Array String</code>モノイドを使用して、既存の関数にログを追加してみましょう。
+<em>最大公約数</em>関数の以前の実装を考えてみます。</p>
 <pre><code class="language-haskell">gcd :: Int -&gt; Int -&gt; Int
 gcd n 0 = n
 gcd 0 m = m
@@ -438,8 +433,8 @@ gcdLog :: Int -&gt; Int -&gt; Writer (Array String) Int
 <pre><code class="language-haskell">execWriter :: forall w a. Writer w a -&gt; w
 runWriter  :: forall w a. Writer w a -&gt; Tuple a w
 </code></pre>
-<p>ちょうど <code>State</code>モナドの場合と同じように、 <code>execWriter</code>が累積されたログだけを返すのに対して、
-<code>runWriter</code>は累積されたログと結果の両方を返します。</p>
+<p>ちょうど <code>State</code>モナドの場合と同じように、 <code>execWriter</code>が累算されたログだけを返すのに対して、
+<code>runWriter</code>は累算されたログと結果の両方を返します。</p>
 <p>PSCiで改変した関数を試してみましょう。</p>
 <pre><code class="language-text">&gt; import Control.Monad.Writer
 &gt; import Control.Monad.Writer.Class
@@ -454,18 +449,18 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 <code>sumArray</code>関数を書き換えてください。</p>
 </li>
 <li>
-<p>（普通）<em>コラッツ関数</em>は、自然数 <code>n</code>が偶数なら <code>n / 2</code>、 <code>n</code>が奇数なら <code>3 * n + 1</code>であると定義されています。
-例えば<code>10</code>で始まるコラッツ数列は次のようになります。</p>
+<p>（普通）<em>コラッツ</em>関数は自然数<code>n</code>上で定義され、<code>n</code>が偶数なら<code>n / 2</code>、<code>n</code>が奇数なら<code>3 * n + 1</code>です。
+例えば<code>10</code>で始まるコラッツ数列は以下です。</p>
 <pre><code class="language-text">10, 5, 16, 8, 4, 2, 1, ...
 </code></pre>
 <p>コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的に <code>1</code>になるということが予想されています。</p>
-<p>数列が <code>1</code>に到達するまでに何回のコラッツ関数の適用が必要かを計算する再帰的な関数を書いてください。</p>
-<p><code>Writer</code>モナドを使用してコラッツ関数のそれぞれの適用の経過を記録するように、関数を変更してください。</p>
+<p>再帰を使い、数列が<code>1</code>に到達するまでに何回のコラッツ関数の適用が必要かを計算する関数を書いてください。</p>
+<p><code>Writer</code>モナドを使用してコラッツ関数の各適用の経過を記録するように、関数を変更してください。</p>
 </li>
 </ol>
 <h2 id="モナド変換子"><a class="header" href="#モナド変換子">モナド変換子</a></h2>
 <p>上の3つのモナド、<code>State</code>、<code>Reader</code>、<code>Writer</code>は、何れもいわゆる<em>モナド変換子</em>の例となっています。
-対応するモナド変換子はそれぞれ <code>StateT</code>、 <code>ReaderT</code>、 <code>WriterT</code>と呼ばれています。</p>
+対応する各モナド変換子はそれぞれ<code>StateT</code>、<code>ReaderT</code>、<code>WriterT</code>という名前です。</p>
 <p>モナド変換子とは何でしょうか。
 さて、これまで見てきたように、モナドはPureScriptのコードを何らかの種類の副作用で拡張するものでした。
 このモナドはPureScriptで適切な制御子（<code>runState</code>、 <code>runReader</code>、<code>runWriter</code>など）を使って解釈できます。
@@ -474,9 +469,10 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 例えば、 <code>Maybe</code>と<code>Reader</code>を一緒に使用すると、ある大域的な設定の文脈で<em>省略可能な結果</em>を表現できます。
 もしくは、 <code>Either</code>モナドの純粋なエラー追跡機能と、 <code>State</code>モナドが提供する変更可能な状態が同時に欲しくなるかもしれません。
 この問題を解決するのが<em>モナド変換子</em>です。</p>
-<p>ただし<code>Effect</code>モナドがこの問題に対する部分的な解決策を提供していたことは既に見てきました。
-モナド変換子はまた違った解決策を提供しますが、これらの手法にはそれぞれ利点と制約があります。</p>
-<p>モナド変換子は型だけでなく別の型構築子もパラメータに取る型構築子です。モナド変換子はモナドを1つ取り、独自のいろいろな副作用を追加した別のモナドへと変換します。</p>
+<p>ただし<code>Effect</code>モナドがこの問題を部分的に解決することは既に見ました。
+モナド変換子はまた違った解決策を提供しますが、これらの各手法には利点と制約があります。</p>
+<p>モナド変換子は型と別の型構築子を引数に取る型構築子です。
+モナドを1つ取り、独自の様々な副作用を追加した別のモナドへと変換します。</p>
 <p>例を見てみましょう。<code>State</code>のモナド変換子版は<code>Control.Monad.State.Trans</code>モジュールで定義されている<code>StateT</code>です。
 PSCiを使って <code>StateT</code>の種を見てみましょう。</p>
 <pre><code class="language-text">&gt; import Control.Monad.State.Trans
@@ -500,19 +496,20 @@ Type -&gt; Type
 <pre><code class="language-text">&gt; :kind StateT String (Either String) Number
 Type
 </code></pre>
-<p>最後に、種 <code>Type</code>の何かが残りましたが、これはつまりこの型の値を探してみることができるということです。</p>
-<p>構築したモナド <code>StateT String (Either String)</code>は、エラーで失敗する可能性があり、変更可能な状態を使える計算を表しています。</p>
-<p>外側の <code>StateT String (Either String)</code>モナドのアクション（<code>get</code>、<code>put</code>、<code>modify</code>）は直接使うことができますが、梱包されている内側のモナド (<code>Either String</code>) の作用を使うためには、これらの関数をモナド変換子まで「持ち上げ」なくてはいけません。
-<code>Control.MonadTrans</code>モジュールでは、モナド変換子であるような型構築子を捉える<code>MonadTrans</code>型クラスを次のように定義しています。</p>
+<p>最後に種<code>Type</code>の何かが残りました。
+つまりこの型の値を探してみることができます。</p>
+<p>構築したモナド<code>StateT String (Either String)</code>は、エラーで失敗する可能性があり、変更可能な状態を使える計算を表しています。</p>
+<p>外側の<code>StateT String</code>モナドの動作（<code>get</code>、<code>put</code>、<code>modify</code>）は直接使えますが、梱包されているモナド (<code>Either String</code>) の作用を使うためには、これらの関数をモナド変換子まで「持ち上げ」る必要があります。
+<code>Control.Monad.Trans</code>モジュールは<code>MonadTrans</code>型クラスを定義しています。
+これはモナド変換子であるそうした型構築子を捕捉します。</p>
 <pre><code class="language-haskell">class MonadTrans t where
   lift :: forall m a. Monad m =&gt; m a -&gt; t m a
 </code></pre>
-<p>このクラスは、基礎となる任意のモナド <code>m</code>の計算をとり、それを梱包されたモナド <code>t m</code>へと持ち上げる、
-<code>lift</code>という1つの関数だけを持っています。
-今回の場合、型構築子 <code>t</code>は <code>StateT String</code>で、 <code>m</code>は <code>Either String</code>モナドとなり、 <code>lift</code>は型
-<code>Either String a</code>の計算を、型 <code>State String (Either String) a</code>の計算へと持ち上げる方法を提供することになります。
-これは、型 <code>Either String a</code>の計算を使うときは、 <code>lift</code>を使えばいつでも作用 <code>StateT String</code>と <code>Either String</code>を一緒に使うことができることを意味します。</p>
-<p>例えば、次の計算は <code>StateT</code>モナド変換子で導入されている状態を読み込み、状態が空の文字列である場合はエラーを投げます。</p>
+<p>このクラスは単一のメンバー<code>lift</code>を含みます。
+これは通底する任意のモナド<code>m</code>の計算を取り、梱包されたモナド<code>t m</code>へと持ち上げるものです。
+今回の場合、型構築子<code>t</code>は<code>StateT String</code>で、<code>m</code>は<code>Either String</code>モナドとなるので、<code>lift</code>は型<code>Either String a</code>の計算を、型<code>StateT String (Either String) a</code>の計算へと持ち上げる方法を提供することになります。
+つまり、型<code>Either String a</code>の計算を使う場合に毎回<code>lift</code>を使うのであれば、<code>StateT String</code>と<code>Either String</code>の作用を使えます。</p>
+<p>例えば、次の計算は通底する状態を読み、状態が空文字列であればエラーを投げます。</p>
 <pre><code class="language-haskell">import Data.String (drop, take)
 
 split :: StateT String (Either String) String
@@ -524,7 +521,7 @@ split = do
       put (drop 1 s)
       pure (take 1 s)
 </code></pre>
-<p>状態が空でなければ、この計算は <code>put</code>を使って状態を <code>drop 1 s</code>（最初の文字を取り除いた <code>s</code>）へと更新し、 <code>take 1 s</code>（<code>s</code>の最初の文字）を返します。</p>
+<p>状態が空でなければ、この計算は<code>put</code>を使って状態を<code>drop 1 s</code>（つまり<code>s</code>から最初の文字を取り除いたもの）へと更新し、<code>take 1 s</code>（<code>s</code>の最初の文字）を返します。</p>
 <p>それではPSCiでこれを試してみましょう。</p>
 <pre><code class="language-text">&gt; runStateT split &quot;test&quot;
 Right (Tuple &quot;t&quot; &quot;est&quot;)
@@ -532,17 +529,19 @@ Right (Tuple &quot;t&quot; &quot;est&quot;)
 &gt; runStateT split &quot;&quot;
 Left &quot;Empty string&quot;
 </code></pre>
-<p>これは <code>StateT</code>を使わなくても実装できるので、さほど驚くようなことはありません。
-しかし、モナドとして扱っているので、do記法やアプリカティブコンビネータを使って、小さな計算から大きな計算を構築していくことができます。
-例えば、2回 <code>split</code>を適用すると、文字列から最初の2文字を読むことができます。</p>
+<p>これは<code>StateT</code>を使わなくても実装できるので、さほど驚くようなことはありません。
+しかし、モナドの中で扱っているので、do記法やアプリカティブコンビネータを使って、小さな計算から大きな計算を構築できます。
+例えば、2回<code>split</code>を適用すると、文字列から最初の2文字を読めます。</p>
 <pre><code class="language-text">&gt; runStateT ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) &quot;test&quot;
 (Right (Tuple &quot;te&quot; &quot;st&quot;))
 </code></pre>
-<p>他にもアクションを沢山用意すれば、 <code>split</code>関数を使って、基本的な構文解析ライブラリを構築できます。これは実際に
-<code>parsing</code>ライブラリで採用されている手法です。これがモナド変換子の力なのです。必要な副作用を選択して、do記法とアプリカティブコンビネータで表現力を維持しながら、様々な問題のための特注のモナドを作成できるのです。</p>
+<p><code>split</code>関数とその他沢山の動作を使えば基本的な構文解析ライブラリを構築できます。
+実際、これは<code>parsing</code>ライブラリで採用されている手法です。
+これがモナド変換子の力なのです。
+必要な副作用を選択し、do記法とアプリカティブコンビネータで表現力を維持しながら、様々な問題のための特注のモナドを作成できるのです。</p>
 <h2 id="excepttモナド変換子"><a class="header" href="#excepttモナド変換子">ExceptTモナド変換子</a></h2>
-<p><code>transformers</code>パッケージでは、 <code>Either e</code>モナドに対応する変換子である<code>ExceptT e</code>モナド変換子も定義されています。
-これは次のAPIを提供します。</p>
+<p><code>transformers</code>パッケージでは<code>ExceptT e</code>モナド変換子も定義されています。
+これは<code>Either e</code>モナドに対応するもので、以下のAPIを提供します。</p>
 <pre><code class="language-haskell">class MonadError e m where
   throwError :: forall a. e -&gt; m a
   catchError :: forall a. m a -&gt; (e -&gt; m a) -&gt; m a
@@ -551,9 +550,9 @@ instance Monad m =&gt; MonadError e (ExceptT e m)
 
 runExceptT :: forall e m a. ExceptT e m a -&gt; m (Either e a)
 </code></pre>
-<p><code>MonadError</code>クラスは <code>e</code>型のエラーを投げたりキャッチに対応したりするモナドを取得し、 <code>ExceptT e</code>モナド変換子のインスタンスが提供されます。
-<code>Either e</code>モナドの <code>Left</code>と同じように、 <code>throwError</code>アクションは失敗を示すために使われます。
-<code>catchError</code>アクションを使うと、 <code>throwError</code>でエラーが投げられたあとでも処理を継続できるようになります。</p>
+<p><code>MonadError</code>クラスは<code>e</code>型のエラーを投げたり捕えたりに対応するモナドを捕捉し、<code>ExceptT e</code>モナド変換子のインスタンスが提供されます。
+<code>Either e</code>モナドの<code>Left</code>と同じように、<code>throwError</code>動作では失敗を示せます。
+<code>catchError</code>動作では<code>throwError</code>を使ってエラーが投げられた後に処理を継続できます。</p>
 <p><code>runExceptT</code>制御子を使うと、型 <code>ExceptT e m a</code>を計算できます。</p>
 <p>このAPIは <code>exceptions</code>パッケージの <code>Exception</code>作用によって提供されているものと似ています。
 しかし、幾つかの重要な違いがあります。</p>
@@ -562,9 +561,8 @@ runExceptT :: forall e m a. ExceptT e m a -&gt; m (Either e a)
 <li><code>Exception</code>作用がJavaScriptの<code>Error</code>型という1つの例外の型だけを扱うのに対して、<code>ExceptT</code>は<code>Error</code>型クラスのどんな型のエラーでも扱います。つまり、
 <code>ExceptT</code>では新たなエラー型を自由に定義できます。</li>
 </ul>
-<p>試しに <code>ExceptT</code>を使って <code>Writer</code>モナドを包んでみましょう。
-ここでもモナド変換子 <code>ExceptT e</code>のアクションを直接使うことも自由にできますが、<code>Writer</code>モナドの計算は
-<code>lift</code>を使って持ちあげるべきです。</p>
+<p>試しに<code>ExceptT</code>を使って<code>Writer</code>モナドを包んでみましょう。
+ここでもモナド変換子<code>ExceptT e</code>の動作を直接使うことも自由にできますが、<code>Writer</code>モナドの計算は<code>lift</code>を使って持ち上げるべきです。</p>
 <pre><code class="language-haskell">import Control.Monad.Except
 import Control.Monad.Writer
 
@@ -581,18 +579,18 @@ writerAndExceptT = do
 <pre><code class="language-text">&gt; runWriter $ runExceptT writerAndExceptT
 Tuple (Left &quot;Error!&quot;) [&quot;Before the error&quot;]
 </code></pre>
-<p>実際に追加されるログは、エラーが投げられる前に書かれたログメッセージだけであることにも注目してください。</p>
+<p>なお、エラーが投げられる前に書き出されるログ文言だけがログに追記されます。</p>
 <h2 id="モナド変換子スタック"><a class="header" href="#モナド変換子スタック">モナド変換子スタック</a></h2>
-<p>これまで見てきたように、モナド変換子を使うと既存のモナドを土台に新しいモナドを構築できます。
-任意のモナド変換子 <code>t1</code>と任意のモナド<code>m</code>について、その適用 <code>t1 m</code>もまたモナドになります。
-これは<em>2つめの</em>モナド変換子 <code>t2</code>を先ほどの結果 <code>t1 m</code>に適用すると、3つ目のモナド <code>t2 (t1 m)</code>を作れることを意味しています。
-このように、構成するモナドによって提供された副作用を組み合わせる、モナド変換子の<em>スタック</em>を構築できます。</p>
-<p>実際には、基本となるモナド<code>m</code>は、ネイティブの副作用が必要なら<code>Effect</code>モナド、さもなくば
-<code>Data.Identity</code>モジュールで定義されている<code>Identity</code>モナドになります。
+<p>これまで見てきたように、モナド変換子を使って既存のモナドを土台に新しいモナドを構築できます。
+何かのモナド変換子<code>t1</code>とモナド<code>m</code>について、その適用<code>t1 m</code>もまたモナドになります。
+つまり、<em>2つめの</em>モナド変換子<code>t2</code>を結果<code>t1 m</code>に適用すると、3つ目のモナド<code>t2 (t1 m)</code>を作れます。
+このようにしてモナド変換子の<em>スタック</em>を構築できます。
+これは構成されるモナドによって提供される副作用を組み合わせるものです。</p>
+<p>実際には、通底するモナド<code>m</code>は、ネイティブの副作用が必要なら<code>Effect</code>モナド、さもなくば<code>Data.Identity</code>モジュールで定義されている<code>Identity</code>モナドになります。
 <code>Identity</code>モナドは何の新しい副作用も追加しませんから、<code>Identity</code>モナドの変換はモナド変換子の作用だけを提供します。
-実際に、<code>State</code>モナドと<code>Reader</code>モナドと<code>Writer</code>モナドは、<code>Identity</code>モナドをそれぞれ<code>StateT</code>と<code>ReaderT</code>と<code>WriterT</code>で変換することによって実装されています。</p>
-<p>それでは3つの副作用が組み合わされている例を見てみましょう。
-<code>Identity</code>モナドをスタックの底にして、 <code>StateT</code>作用、 <code>WriterT</code>作用、<code>ExceptT</code>作用を使います。
+<code>State</code>、<code>Reader</code>、<code>Writer</code>モナドは、<code>Identity</code>モナドをそれぞれ<code>StateT</code>、<code>ReaderT</code>、<code>WriterT</code>で変換することによって実装されています。</p>
+<p>3つの副作用が組み合わっている例を見てみましょう。
+<code>Identity</code>モナドをスタックの底にして、<code>StateT</code>、<code>WriterT</code>、<code>ExceptT</code>作用を使います。
 このモナド変換子スタックは、可変状態、ログの蓄積、そして純粋なエラーの副作用を提供します。</p>
 <p>このモナド変換子スタックを使うと、ロギングの機能が追加された <code>split</code>アクションに作り変えられます。</p>
 <pre><code class="language-haskell">type Errors = Array String
@@ -612,10 +610,9 @@ split = do
       pure (take 1 s)
 </code></pre>
 <p>この計算をPSCiで試してみると、 <code>split</code>が実行されるたびに状態がログに追加されることがわかります。</p>
-<p>モナド変換子スタックに現れる順序に従って、副作用を取り除いていかなければならないことに注意してください。
-最初に <code>StateT</code>型構築子を取り除くために <code>runStateT</code>を使い、それから
-<code>runtWriteT</code>を使い、その後<code>runExceptT</code>を使います。
-最後に <code>unwrap</code>を使用して <code>Identity</code>モナドを演算します。</p>
+<p>なお、モナド変換子スタックに現れる順序で副作用を取り除いていかなければなりません。
+最初に<code>StateT</code>型構築子を取り除くために<code>runStateT</code>を、それから<code>runtWriteT</code>、<code>runExceptT</code>を使います。
+最後に<code>unwrap</code>を使用して<code>Identity</code>モナド中で計算します。</p>
 <pre><code class="language-text">&gt; runParser p s = unwrap $ runExceptT $ runWriterT $ runStateT p s
 
 &gt; runParser split &quot;test&quot;
@@ -628,13 +625,12 @@ split = do
 <pre><code class="language-text">&gt; runParser split &quot;&quot;
 (Left [&quot;Empty string&quot;])
 </code></pre>
-<p>これは、 <code>ExceptT</code>モナド変換子が提供する副作用が、 <code>WriterT</code>モナド変換子が提供する副作用と干渉するためです。
-これはモナド変換子スタックが構成されている順序を変更することで解決できます。
-スタックの最上部に <code>ExceptT</code>変換子を移動すると、先ほど <code>Writer</code>を
-<code>ExceptT</code>に変換したときと同じように、最初のエラーまでに書かれた全てのメッセージが含まれるようになります。</p>
-<p>このコードの問題の1つは、複数のモナド変換子の上まで計算を持ち上げるために、 <code>lift</code>関数を複数回使わなければならないということです。
-例えば<code>throwError</code>の呼び出しは、1回目は <code>WriteT</code>へ、2回目は <code>StateT</code>へと、2回持ちあげなければなりません。
-小さなモナド変換子スタックならなんとかなりますが、そのうち不便だと感じるようになるでしょう。</p>
+<p>これは、<code>ExceptT</code>モナド変換子が提供する副作用と<code>WriterT</code>モナド変換子が提供する副作用との関係によるものです。
+これはモナド変換子スタックが構成されている順序を変更することで対処できます。
+スタックの最上部に<code>ExceptT</code>変換子を移動すると、先ほど<code>Writer</code>を<code>ExceptT</code>に変換したときに見たように、最初のエラーまでに書かれた全ての文言がログに含まれるようになります。</p>
+<p>このコードの問題の1つは、複数のモナド変換子の上まで計算を持ち上げるために、<code>lift</code>関数を複数回使わなければならないということです。
+例えば<code>throwError</code>の呼び出しは、1回目は<code>WriteT</code>へ、2回目は<code>StateT</code>へ、と2回持ちあげなければなりません。
+小さなモナド変換子スタックならなんとかなりますが、そのうちすぐに不便になるでしょう。</p>
 <p>幸いなことに、これから見るような型クラス推論によって提供されるコードの自動生成を使うと、ほとんどの「重労働」を任せられます。</p>
 <h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
 <ol>
@@ -647,22 +643,23 @@ split = do
 <p>（普通）次のような構文解析関数を書いてください。</p>
 <pre><code class="language-haskell">string :: String -&gt; Parser String
 </code></pre>
-<p>これは現在の状態が接頭辞に適合するか、もしくはエラーメッセージとともに失敗します。</p>
+<p>これは現在の状態が接頭辞に照合するか、もしくはエラー文言とともに失敗します。</p>
 <p>この構文解析器は次のように動作します。</p>
 <pre><code class="language-text">&gt; runParser (string &quot;abc&quot;) &quot;abcdef&quot;
 (Right (Tuple (Tuple &quot;abc&quot; &quot;def&quot;) [&quot;The state is abcdef&quot;]))
 </code></pre>
-<p><em>手掛かり</em>：出発点として<code>split</code>の実装を使うといいでしょう。
-<code>stripPrefix</code>関数も役に立ちます。</p>
+<p><em>手掛かり</em>：出発点として<code>split</code>の実装が使えます。
+<code>stripPrefix</code>関数も役に立つかもしれません。</p>
 </li>
 <li>
-<p>（難しい）以前 <code>Reader</code>モナドを使用して書いた文書表示ライブラリを、<code>ReaderT</code>と <code>WriterT</code>モナド変換子を使用して再実装してください。</p>
+<p>（難しい）文書表示ライブラリを、<code>ReaderT</code>と<code>WriterT</code>モナド変換子を使用して再実装してください。
+以前<code>Reader</code>モナドを使用して書いたものです。</p>
 <p>文字列を出力する <code>line</code>や文字列を連結する <code>cat</code>を使うのではなく、<code>WriteT</code>モナド変換子と一緒に <code>Array String</code>モノイドを使い、結果へ行を追加するのに <code>tell</code>を使ってください。
 アポストロフィ (<code>'</code>) を付ける以外は元の実装と同じ名前を使ってください。</p>
 </li>
 </ol>
 <h2 id="型クラスが助けに来たぞっ"><a class="header" href="#型クラスが助けに来たぞっ">型クラスが助けに来たぞっ</a></h2>
-<p>本章の最初で扱った <code>State</code>モナドを見てみると、 <code>State</code>モナドのアクションには次のような型が与えられていました。</p>
+<p>本章の最初で扱った <code>State</code>モナドを見てみると、 <code>State</code>モナドの動作には次のような型が与えられていました。</p>
 <pre><code class="language-haskell">get    :: forall s.             State s s
 put    :: forall s. s        -&gt; State s Unit
 modify :: forall s. (s -&gt; s) -&gt; State s Unit
@@ -675,18 +672,15 @@ modify :: forall m s. MonadState s m =&gt; (s -&gt; s) -&gt; m Unit
 <p><code>Control.Monad.State.Class</code>モジュールには<code>MonadState</code>（多変数）型クラスが定義されています。
 この型クラスは「変更可能な状態を提供する純粋なモナド」への抽象化を可能にします。
 予想できると思いますが、 <code>State s</code>型構築子は <code>MonadState s</code>型クラスのインスタンスになっており、このクラスには他にも興味深いインスタンスが数多くあります。</p>
-<p>特に、 <code>transformers</code>パッケージではモナド変換子 <code>WriterT</code>、 <code>ReaderT</code>、<code>ExceptT</code>についての
-<code>MonadState</code>のインスタンスが提供されています。
-通底する<code>Monad</code>が<code>MonadState</code>インスタンスを持っていれば常に、これらのモナド変換子にもインスタンスがあります。
-実践的には、 <code>StateT</code>がモナド変換子スタックの<em>どこか</em>に現れ、 <code>StateT</code>より上の全てが
-<code>MonadState</code>のインスタンスであれば、 <code>get</code>、 <code>put</code>、 <code>modify</code>を直接自由に使用できます。</p>
-<p>当然ですが、これまで扱ってきた <code>ReaderT</code>、 <code>WriterT</code>、
-<code>ExceptT</code>変換子についても、同じことが成り立っています。<code>transformers</code>では主な変換子それぞれについての型クラスが定義されています。これによりそれらの操作に対応するモナドの上に抽象化できるのです。</p>
-<p>上の <code>split</code>関数の場合、構築されたこのモナドスタックは型クラス<code>MonadState</code>、 <code>MonadWriter</code>、
-<code>MonadError</code>それぞれのインスタンスです。
-これはつまり、<code>lift</code>は全く呼び出す必要がないのです。
-まるでモナドスタック自体に定義されていたかのように、アクション <code>get</code>、<code>put</code>、 <code>tell</code>、
-<code>throwError</code>をそのまま使用できます。</p>
+<p>特に、<code>transformers</code>パッケージではモナド変換子<code>WriterT</code>、<code>ReaderT</code>、<code>ExceptT</code>についての<code>MonadState</code>のインスタンスがあります。
+通底する<code>Monad</code>が<code>MonadState</code>インスタンスを持つなら常に、これらもインスタンスを持ちます。
+つまり実際には、<code>StateT</code>がモナド変換子スタックの<em>どこか</em>に現れ、<code>StateT</code>より上の全てが<code>MonadState</code>のインスタンスであれば、<code>lift</code>を使う必要なく<code>get</code>や<code>put</code>や<code>modify</code>を直接自由に使用できます。</p>
+<p>当然ですが、これまで扱ってきた<code>ReaderT</code>、<code>WriterT</code>、<code>ExceptT</code>変換子についても、同じことが言えます。
+<code>transformers</code>では主な各変換子について型クラスが定義されています。
+これによりそれらの操作に対応するモナドの上に抽象化できるのです。</p>
+<p>上の<code>split</code>関数の場合、構築したモナドスタックは各型クラス<code>MonadState</code>、<code>MonadWriter</code>、<code>MonadError</code>のインスタンスです。
+つまり<code>lift</code>は全く呼び出す必要がないのです。
+まるでモナドスタック自体に定義されていたかのように、動作<code>get</code>、<code>put</code>、<code>tell</code>、<code>throwError</code>をそのまま使用できます。</p>
 <pre><code class="language-haskell">split :: Parser String
 split = do
   s &lt;- get
@@ -697,11 +691,11 @@ split = do
       put (drop 1 s)
       pure (take 1 s)
 </code></pre>
-<p>この計算はまるで、可変状態、ロギング、エラー処理という3つの副作用に対応した、独自のプログラミング言語を拡張したかのようにみえます。
-しかし、内部的には全てはあくまで純粋な関数と普通のデータを使って実装されているのです。</p>
+<p>この計算は、独自のプログラミング言語を拡張し、可変状態、ロギング、エラー処理という3つの新しい副作用に対応したように見えます。
+しかし、内部的には全てはあくまで純粋な関数と不変のデータを使って実装されているのです。</p>
 <h2 id="代替"><a class="header" href="#代替">代替</a></h2>
-<p><code>control</code>パッケージでは失敗しうる計算を制御するための抽象化が幾つか定義されています。
-その1つは <code>Alternative</code>型クラスです。</p>
+<p><code>control</code>パッケージでは失敗しうる計算を扱う抽象化が数多く定義されています。
+その1つは<code>Alternative</code>型クラスです。</p>
 <pre><code class="language-haskell">class Functor f &lt;= Alt f where
   alt :: forall a. f a -&gt; f a -&gt; f a
 
@@ -718,8 +712,8 @@ class (Applicative f, Plus f) &lt;= Alternative f
 some :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Array a)
 </code></pre>
 <p><code>Data.List</code>にも等価な<code>many</code>と<code>some</code>があります。</p>
-<p><code>many</code>コンビネータは計算を <em>ゼロ回以上</em> 繰り返し実行するために<code>Alternative</code>型クラスを使用しています。
-<code>some</code>コンビネータも似ていますが、成功するために少なくとも1回の計算を必要とします。</p>
+<p><code>many</code>コンビネータは計算を<em>ゼロ回以上</em>繰り返し実行するために<code>Alternative</code>型クラスを使います。
+<code>some</code>コンビネータも似ていますが、最低1回は計算が成功する必要があります。</p>
 <p><code>Parser</code>モナド変換子スタックの場合は、<code>ExceptT</code>コンポーネントによる<code>Alternative</code>のインスタンスがあります。
 このコンポーネントでは異なる分枝のエラーに<code>Monoid</code>インスタンスを使って組み合わせることによって対応しています（だから<code>Errors</code>型に<code>Array String</code>を選ぶ必要があったんですね）。
 これは、構文解析器を複数回実行するのに<code>many</code>関数と<code>some</code>関数を使うことができることを意味します。</p>
@@ -741,21 +735,22 @@ some :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Ar
 <pre><code class="language-haskell">class (Monad m, Alternative m) &lt;= MonadPlus m
 </code></pre>
 <p>実際、<code>Parser</code>モナドは <code>MonadPlus</code>のインスタンスです。</p>
-<p>以前本書中で配列内包表記を扱ったとき、不要な結果を除いて絞り込むために使われる<code>guard</code>関数を導入しました。
-実際には<code>guard</code>関数はもっと一般的で、 <code>MonadPlus</code>のインスタンスである全てのモナドに対して使うことができます。</p>
+<p>以前本書中で配列内包表記を押さえたとき、<code>guard</code>関数を導入しました。
+これは欲しくない結果を取り除けるのに使えました。
+実際には<code>guard</code>関数はもっと一般的で、<code>MonadPlus</code>のインスタンスである任意のモナドに対して使えます。</p>
 <pre><code class="language-haskell">guard :: forall m. Alternative m =&gt; Boolean -&gt; m Unit
 </code></pre>
 <p><code>&lt;|&gt;</code>演算子は失敗時にバックトラッキングできるようにします。
-これがどのように役立つかを見るために、大文字だけに適合する <code>split</code>コンビネータの亜種を定義してみましょう。</p>
+これがどのように役立つかを見るために、大文字だけに照合する<code>split</code>コンビネータの亜種を定義してみましょう。</p>
 <pre><code class="language-haskell">upper :: Parser String
 upper = do
   s &lt;- split
   guard $ toUpper s == s
   pure s
 </code></pre>
-<p>ここで、文字列が大文字でない場合に失敗するよう
-<code>guard</code>を使用しています。このコードは前に見た配列内包表記とよく似ていることに注目してください。このように<code>MonadPlus</code>を使うことは、
-<em>モナド内包表記</em> (monad comprehensions) の構築と呼ばれることがあります。</p>
+<p>ここで、文字列が大文字でない場合に失敗するよう、<code>guard</code>を使用しています。
+なお、このコードは前に見た配列内包表記とよく似ています。
+このように<code>MonadPlus</code>を使うことは、<em>モナド内包表記</em>の構築と呼ばれることがあります。</p>
 <h2 id="バックトラッキング"><a class="header" href="#バックトラッキング">バックトラッキング</a></h2>
 <p><code>&lt;|&gt;</code>演算子を使うと、失敗したときに別の代替計算へとバックトラックできます。
 これを確かめるために、小文字に一致するもう1つの構文解析器を定義してみましょう。</p>
@@ -765,10 +760,10 @@ lower = do
   guard $ toLower s == s
   pure s
 </code></pre>
-<p>これにより、まずもし最初の文字が大文字なら複数の大文字に適合し、さもなくばもし最初の文字が小文字なら複数の小文字に適合する、という構文解析器を定義できます。</p>
+<p>これにより、まずもし最初の文字が大文字なら複数の大文字に照合し、さもなくばもし最初の文字が小文字なら複数の小文字に照合する、という構文解析器を定義できます。</p>
 <pre><code class="language-text">&gt; upperOrLower = some upper &lt;|&gt; some lower
 </code></pre>
-<p>この構文解析器は、大文字と小文字が切り替わるまで、文字に適合し続けます。</p>
+<p>この構文解析器は、大文字と小文字が切り替わるまで、文字に照合し続けます。</p>
 <pre><code class="language-text">&gt; runParser upperOrLower &quot;abcDEF&quot;
 (Right (Tuple (Tuple [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;] (&quot;DEF&quot;))
               [ &quot;The state is \&quot;abcDEF\&quot;&quot;
@@ -791,21 +786,21 @@ lower = do
               , &quot;The state is \&quot;h\&quot;&quot;
               ]))
 </code></pre>
-<p>繰り返しになりますが、これはモナド変換子がもたらす再利用性の威力を示しています。
+<p>繰り返しになりますが、これはモナド変換子が齎す再利用性の威力を示しています。
 標準的な抽象化を再利用することで、宣言型スタイルのバックトラック構文解析器を、ほんの数行のコードで書くことができました。</p>
 <h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
 <li>
-<p>（簡単）<code>string</code>構文解析器の実装から <code>lift</code>関数の呼び出しを取り除いてください。
-新しい実装の型が整合していることを確認し、なぜそのようになるのかをよく納得しておきましょう。</p>
+<p>（簡単）<code>string</code>構文解析器の実装から<code>lift</code>関数の呼び出しを取り除いてください。
+新しい実装の型検査が通ることを確認し、そうなることを納得するまで確かめましょう。</p>
 </li>
 <li>
-<p>（普通）<code>string</code>構文解析器と <code>many</code>コンビネータを使って、文字列<code>&quot;a&quot;</code>の連続と、それに続く文字列
-<code>&quot;b&quot;</code>の連続からなる文字列を認識する構文解析器<code>asFollowedByBs</code>を書いてください。</p>
+<p>（普通）<code>string</code>構文解析器と<code>some</code>コンビネータを使って構文解析器<code>asFollowedByBs</code>を書いてください。
+これは文字列<code>&quot;a&quot;</code>の連続と、それに続く文字列<code>&quot;b&quot;</code>の連続からなる文字列を認識するものです。</p>
 </li>
 <li>
-<p>（普通）<code>&lt;|&gt;</code>演算子を使って、文字 <code>a</code>と文字
-<code>b</code>が任意の順序で現れるような文字列を認識する構文解析器<code>asOrBs</code>を書いてください。</p>
+<p>（普通）<code>&lt;|&gt;</code>演算子を使って構文解析器<code>asOrBs</code>を書いてください。
+これは文字<code>a</code>と文字<code>b</code>が任意の順序で現れる文字列を認識します。</p>
 </li>
 <li>
 <p>（難しい）<code>Parser</code>モナドを次のようにも定義できます。</p>
@@ -816,16 +811,17 @@ lower = do
 </ol>
 <h2 id="rwsモナド"><a class="header" href="#rwsモナド">RWSモナド</a></h2>
 <p>モナド変換子のとある特定の組み合わせは頻出なので、<code>transformers</code>パッケージ内の単一のモナド変換子として提供されています。
-<code>Reader</code>、
-<code>Writer</code>、<code>State</code>のモナドは、<em>Reader-Writer-State</em>モナドに組み合わさり、より単純に<code>RWS</code>モナドともされます。
-このモナドは <code>RWST</code>モナド変換子と呼ばれる、対応するモナド変換子を持っています。</p>
+<code>Reader</code>、<code>Writer</code>、<code>State</code>のモナドは、<em>Reader-Writer-State</em>モナドに組み合わさり、より単純に<code>RWS</code>モナドともされます。
+このモナドは<code>RWST</code>モナド変換子という名前の、対応するモナド変換子を持ちます。</p>
 <p>ここでは <code>RWS</code>モナドを使ってテキストアドベンチャーゲームの処理を設計していきます。</p>
 <p><code>RWS</code>モナドは（戻り値の型に加えて）3つの型変数を使って定義されています。</p>
 <pre><code class="language-haskell">type RWS r w s = RWST r w s Identity
 </code></pre>
-<p>ここで、副作用を提供しない<code>Identity</code>を基底のモナドに設定することで、 <code>RWS</code>モナドが独自のモナド変換子を用いて定義されています。</p>
-<p>第1型引数 <code>r</code>は大域的な設定の型を表します。
-第2型引数 <code>w</code>はログを蓄積するために使用するモノイド、第3型引数 <code>s</code>は可変状態の型を表しています。</p>
+<p>なお、<code>RWS</code>モナドは基底のモナドを<code>Identity</code>に設定することで独自のモナド変換子として定義されています。
+<code>Identity</code>は副作用を提供しないのでした。</p>
+<p>最初の型引数<code>r</code>は大域的な構成の型を表します。
+2つ目の<code>w</code>はログを蓄積するために使用するモノイドを表します。
+3つ目の<code>s</code>は可変状態の型です。</p>
 <p>このゲームの場合には、大域的な設定は
 <code>Data.GameEnvironment</code>モジュールの<code>GameEnvironment</code>という名前の型で定義されています。</p>
 <pre><code class="language-haskell">type PlayerName = String
@@ -836,7 +832,7 @@ newtype GameEnvironment = GameEnvironment
   }
 </code></pre>
 <p>プレイヤー名と、ゲームがデバッグモードで動作しているか否かを示すフラグが定義されています。
-これらのオプションは、モナド変換子を実行するときにコマンドラインから設定されます。</p>
+モナド変換子を実行するとなると、これらのオプションがコマンドラインから設定されます。</p>
 <p>可変状態は <code>Data.GameState</code>モジュールの <code>GameState</code>と呼ばれる型で定義されています。</p>
 <pre><code class="language-haskell">import Data.Map as M
 import Data.Set as S
@@ -852,11 +848,11 @@ newtype GameState = GameState
 </code></pre>
 <p><code>GameState</code>型は2つの新しいデータ構造を使っています。
 <code>Map</code>と<code>Set</code>はそれぞれ整列されたマップと整列された集合を表します。
-<code>items</code>属性は、そのゲーム平面上の座標からゲームアイテムの集合への対応付けになっています。
-<code>player</code>属性はプレイヤーの現在の座標を格納しており、 <code>inventory</code>属性は現在プレイヤーが保有するゲームアイテムの集合です。</p>
-<p><code>Map</code>と <code>Set</code>のデータ構造はキーによって整列され、
-<code>Ord</code>型クラスの任意の型をキーとして使用できます。これは今回のデータ構造のキーが完全に順序付けできることを意味します。</p>
-<p>ゲームのアクションを書く上で<code>Map</code>と <code>Set</code>構造をどのように使っていくのかを見ていきます。</p>
+<code>items</code>属性は、ゲーム平面上の座標からその位置にあるゲームアイテムの集合への対応付けです。
+<code>player</code>属性はプレイヤーの現在の座標を格納し、<code>inventory</code>属性は現在プレイヤーが保有するゲームアイテムの集合を格納します。</p>
+<p><code>Map</code>と<code>Set</code>のデータ構造はキーによって整列され、このキーには<code>Ord</code>型クラスの任意の型を使えます。
+つまりデータ構造中のキーは完全に順序付けされます。</p>
+<p>ゲームの動作を書く上で<code>Map</code>と<code>Set</code>構造をどのように使っていくのかを見ていきます。</p>
 <p>ログとしては <code>List String</code>モノイドを使います。
 <code>Game</code>モナド用の型同義語を定義し、<code>RWS</code>を使って実装できます。</p>
 <pre><code class="language-haskell">type Log = L.List String
@@ -864,21 +860,21 @@ newtype GameState = GameState
 type Game = RWS GameEnvironment Log GameState
 </code></pre>
 <h2 id="ゲームロジックの実装"><a class="header" href="#ゲームロジックの実装">ゲームロジックの実装</a></h2>
-<p>今回は<code>Reader</code>モナドと<code>Writer</code>モナドと<code>State</code>モナドのアクションを再利用し、<code>Game</code>モナドで定義されている単純なアクションを組み合わせてゲームを構築していきます。
-このアプリケーションの最上位では<code>Game</code>モナドで純粋に計算しており、<code>Effect</code>モナドはコンソールにテキストを出力するような観測可能な副作用へと結果を変換するために使っています。</p>
-<p>このゲームで最も簡単なアクションの1つは
-<code>has</code>アクションです。このアクションはプレイヤーの持ち物に特定のゲームアイテムが含まれているかどうかを調べます。これは次のように定義されます。</p>
+<p><code>Reader</code>、<code>Writer</code>、<code>State</code>モナドの動作を再利用することで、<code>Game</code>モナドで定義されている単純な動作を組み合わせてゲームを構築していきます。
+このアプリケーションの最上位では<code>Game</code>モナドで純粋に計算しており、<code>Effect</code>モナドは結果からコンソールにテキストを出力するような観測可能な副作用へと変換するために使っています。</p>
+<p>このゲームで最も簡単な動作の1つは <code>has</code>動作です。
+この動作はプレイヤーの持ち物に特定のゲームアイテムが含まれているかどうかを調べます。
+これは次のように定義されます。</p>
 <pre><code class="language-haskell">has :: GameItem -&gt; Game Boolean
 has item = do
   GameState state &lt;- get
   pure $ item `S.member` state.inventory
 </code></pre>
-<p>この関数は、現在のゲームの状態を読み取るために <code>MonadState</code>型クラスで定義されている <code>get</code>アクションを使っています。
-またそれから指定した<code>GameItem</code>が持ち物アイテムの<code>Set</code>に出現するかどうかを調べるために<code>Data.Set</code>で定義されている
-<code>member</code>関数を使っています。</p>
-<p>他にも <code>pickUp</code>アクションがあります。
+<p>この関数は、現在のゲームの状態を読み取るために<code>MonadState</code>型クラスで定義されている<code>get</code>動作を使っています。
+それから指定した<code>GameItem</code>が持ち物のアイテムの<code>Set</code>に出現するかどうかを調べるために<code>Data.Set</code>で定義されている<code>member</code>関数を使っています。</p>
+<p>他にも<code>pickUp</code>動作があります。
 現在の位置にゲームアイテムがある場合、プレイヤーの持ち物にそのアイテムを追加します。
-これには<code>MonadWriter</code>と <code>MonadState</code>型クラスのアクションを使っています。
+これには<code>MonadWriter</code>と<code>MonadState</code>型クラスの動作を使っています。
 一番最初に現在のゲームの状態を読み取ります。</p>
 <pre><code class="language-haskell">pickUp :: GameItem -&gt; Game Unit
 pickUp item = do
@@ -888,13 +884,14 @@ pickUp item = do
 これは<code>Data.Map</code>で定義された <code>lookup</code>関数を使って行います。</p>
 <pre><code class="language-haskell">  case state.player `M.lookup` state.items of
 </code></pre>
-<p><code>lookup</code>関数は <code>Maybe</code>型構築子で示されたオプショナルな結果を返します。
-<code>lookup</code>関数は、キーがマップにない場合は <code>Nothing</code>を返し、それ以外の場合は <code>Just</code>構築子で対応する値を返します。</p>
+<p><code>lookup</code>関数は<code>Maybe</code>型構築子で示される省略可能な結果を返します。
+<code>lookup</code>関数は、キーがマップにない場合は<code>Nothing</code>を返します。
+それ以外の場合は<code>Just</code>構築子で対応する値を返します。</p>
 <p>関心があるのは、指定されたゲームアイテムが対応するアイテムの集合に含まれている場合です。
 ここでも<code>member</code>関数を使うとこれを調べることができます。</p>
 <pre><code class="language-haskell">    Just items | item `S.member` items -&gt; do
 </code></pre>
-<p>この場合、 <code>put</code>を使ってゲームの状態を更新し、 <code>tell</code>を使ってログにメッセージを追加できます。</p>
+<p>この場合、<code>put</code>を使ってゲームの状態を更新し、<code>tell</code>を使ってログに文言を追加できます。</p>
 <pre><code class="language-haskell">          let newItems = M.update (Just &lt;&lt;&lt; S.delete item) state.player state.items
               newInventory = S.insert item state.inventory
           put $ GameState state { items     = newItems
@@ -903,12 +900,12 @@ pickUp item = do
           tell (L.singleton (&quot;You now have the &quot; &lt;&gt; show item))
 </code></pre>
 <p>ここで2つの計算のどちらも<code>lift</code>が必要ないことに注意してください。
-なぜなら<code>MonadState</code>と <code>MonadWriter</code>の両方について <code>Game</code>モナド変換子スタック用の適切なインスタンスが存在するからです。</p>
-<p><code>put</code>への引数では、レコード更新を使ってゲームの状態の <code>items</code>と<code>inventory</code>フィールドを変更しています。
-また、特定のキーの値を変更する<code>Data.Map</code>の <code>update</code>関数を使っています。
-このとき、プレイヤーの現在の位置にあるアイテムの集合を変更するのに、<code>delete</code>関数を使って指定したアイテムを集合から取り除いています。
-<code>insert</code>を使って新しいアイテムをプレイヤーの持ち物集合に加えるときにも、<code>inventory</code>は更新されます。</p>
-<p>最後に、<code>pickUp</code>関数は <code>tell</code>を使ってユーザに次のように通知することにより、残りの場合を処理します。</p>
+なぜなら<code>MonadState</code>と<code>MonadWriter</code>の両方について<code>Game</code>モナド変換子スタック用の適切なインスタンスが存在するからです。</p>
+<p><code>put</code>への引数では、レコード更新を使ってゲームの状態の<code>items</code>及び<code>inventory</code>フィールドを変更しています。
+また、特定のキーの値を変更する<code>Data.Map</code>の<code>update</code>関数を使っています。
+今回の場合、プレイヤーの現在の位置にあるアイテムの集合を変更するのに、<code>delete</code>関数を使って指定したアイテムを集合から取り除いています。
+<code>insert</code>を使って新しいアイテムをプレイヤーの持ち物の集合に加えるときにも、<code>inventory</code>は更新されます。</p>
+<p>最後に、<code>pickUp</code>関数は<code>tell</code>を使ってユーザに通知することにより、残りの場合を処理します。</p>
 <pre><code class="language-haskell">    _ -&gt; tell (L.singleton &quot;I don't see that item here.&quot;)
 </code></pre>
 <p><code>Reader</code>モナドを使う例として、 <code>debug</code>コマンドのコードを見てみましょう。
@@ -920,34 +917,34 @@ pickUp item = do
       tell (L.singleton (show state))
     else tell (L.singleton &quot;Not running in debug mode.&quot;)
 </code></pre>
-<p>ここでは、ゲームの設定を読み込むために <code>ask</code>アクションを使用しています。
-繰り返しますが、どの計算でも<code>lift</code>は必要がなく、同じdo記法ブロック内で<code>MonadState</code>、 <code>MonadReader</code>、
-<code>MonadWriter</code>型クラスで定義されているアクションを使うことができることに注意してください。</p>
-<p><code>debugMode</code>フラグが設定されている場合、 <code>tell</code>アクションを使うとログに状態が追加されます。
-そうでなければ、エラーメッセージが追加されます。</p>
-<p><code>Game.purs</code>モジュールの残りの部分では、<code>MonadState</code>型クラスと<code>MonadReader</code>型クラスと<code>MonadWriter</code>型クラスでそれぞれ定義されたアクションだけを使い、同様のアクションが定義されています。</p>
+<p>ここでは、ゲームの構成を読み込むために<code>ask</code>動作を使用しています。
+繰り返しますが、どの計算でも<code>lift</code>する必要がなく、同じdo記法ブロック内で<code>MonadState</code>、<code>MonadReader</code>、<code>MonadWriter</code>型クラスで定義されている動作を使える点に注意してください。</p>
+<p><code>debugMode</code>フラグが設定されている場合、<code>tell</code>動作を使うとログに状態が書き込まれます。
+そうでなければ、エラー文言が追加されます。</p>
+<p><code>Game</code>モジュールの残りの部分では同様の動作の集合が定義されています。
+各動作は<code>MonadState</code>、<code>MonadReader</code>、<code>MonadWriter</code>型クラスにより定義された動作のみを使っています。</p>
 <h2 id="計算の実行"><a class="header" href="#計算の実行">計算の実行</a></h2>
-<p>このゲームロジックは <code>RWS</code>モナドで動くため、ユーザのコマンドに応答するためには計算する必要があります。</p>
+<p>このゲームロジックは<code>RWS</code>モナドで動くため、ユーザのコマンドに応答するために計算する必要があります。</p>
 <p>このゲームのフロントエンドは2つのパッケージで構成されています。
 アプリカティブなコマンドライン構文解析を提供する<code>optparse</code>と、対話的なコンソールベースのアプリケーションを書くことを可能にする、NodeJSの
 <code>readline</code>モジュールを梱包する <code>node-readline</code>パッケージです。</p>
 <p>このゲームロジックへのインターフェースは <code>Game</code>モジュール内の関数<code>game</code>によって提供されます。</p>
 <pre><code class="language-haskell">game :: Array String -&gt; Game Unit
 </code></pre>
-<p>これを計算するには、ユーザが入力した単語のリストを文字列の配列として渡してから、 <code>runRWS</code>を使って <code>RWS</code>の計算結果を実行します。</p>
+<p>これを計算するには、ユーザが入力した単語のリストを文字列の配列として渡してから、<code>runRWS</code>を使って結果の<code>RWS</code>を計算します。</p>
 <pre><code class="language-haskell">data RWSResult state result writer = RWSResult state result writer
 
 runRWS :: forall r w s a. RWS r w s a -&gt; r -&gt; s -&gt; RWSResult s a w
 </code></pre>
-<p><code>runRWS</code>は <code>runReader</code>、 <code>runWriter</code>、 <code>runState</code>を組み合わせたように見えます。
-これは、引数として大域的な設定及び初期状態をとり、ログ、結果、最的な終状態を含むデータ構造を返します。</p>
+<p><code>runRWS</code>は<code>runReader</code>、<code>runWriter</code>、<code>runState</code>を組み合わせたように見えます。
+引数として大域的な構成及び初期状態を取り、ログ、結果、最終的な状態を含むデータ構造を返します。</p>
 <p>このアプリケーションのフロントエンドは、次の型シグネチャを持つ関数<code>runGame</code>によって定義されます。</p>
 <pre><code class="language-haskell">runGame :: GameEnvironment -&gt; Effect Unit
 </code></pre>
 <p>この関数は（<code>node-readline</code>と<code>console</code>パッケージを使って）コンソールを介してユーザとやり取りします。
 <code>runGame</code>は関数の引数としてのゲームの設定を取ります。</p>
 <p><code>node-readline</code>パッケージでは<code>LineHandler</code>型が提供されています。
-これは端末からのユーザ入力を扱う <code>Effect</code>モナドのアクションを表します。
+これは端末からのユーザ入力を扱う<code>Effect</code>モナドの動作を表します。
 対応するAPIは次の通りです。</p>
 <pre><code class="language-haskell">type LineHandler a = String -&gt; Effect a
 
@@ -957,8 +954,8 @@ foreign import setLineHandler
   -&gt; LineHandler a
   -&gt; Effect Unit
 </code></pre>
-<p><code>Interface</code>型はコンソールの制御対象を表しており、コンソールとやり取りする関数への引数として渡されます。
-<code>createConsoleInterface</code>関数を使用すると <code>Interface</code>を作成できます。</p>
+<p><code>Interface</code>型はコンソールの制御子を表しており、コンソールとやり取りする関数への引数として渡されます。
+<code>createConsoleInterface</code>関数を使用すると<code>Interface</code>を作成できます。</p>
 <pre><code class="language-haskell">import Node.ReadLine as RL
 
 runGame env = do
@@ -982,12 +979,12 @@ runGame env = do
 <p><code>let</code>束縛が<code>env</code>という名前のゲーム構成や<code>interface</code>という名前のコンソール制御対象を包み込んでいます。</p>
 <p>この制御子は追加の最初の引数としてゲームの状態を取ります。
 ゲームのロジックを実行するために<code>runRWS</code>にゲームの状態を渡さなければならないので、これは必要となっています。</p>
-<p>このアクションが最初に行うことは、 <code>Data.String</code>モジュールの <code>split</code>関数を使用して、ユーザーの入力を単語に分割することです。
-それから、ゲームの環境と現在のゲームの状態を渡し、 <code>runRWS</code>を使用して（<code>RWS</code>モナドで）<code>game</code>アクションを実行しています。</p>
-<p>純粋な計算であるゲームロジックを実行するには、画面に全てのログメッセージを出力して、ユーザに次のコマンドのためのプロンプトを表示する必要があります。
-<code>for_</code>アクションが（<code>List String</code>型の）ログを走査し、コンソールにその内容を出力するために使われています。
-最後に<code>setLineHandler</code>を使って行制御関数を更新することでゲームの状態を更新し、<code>prompt</code>アクションを使ってプロンプトを再び表示しています。</p>
-<p><code>runGame</code>関数は最終的にコンソールインターフェイスに最初の行制御子を取り付けて、最初のプロンプトを表示します。</p>
+<p>この動作が最初に行うことは、<code>Data.String</code>モジュールの <code>split</code>関数を使用して、ユーザーの入力を単語に分割することです。
+それから、ゲームの環境と現在のゲームの状態を渡し、 <code>runRWS</code>を使用して（<code>RWS</code>モナドで）<code>game</code>動作を実行しています。</p>
+<p>純粋な計算であるゲームロジックを実行するには、画面に全てのログ文言を出力して、ユーザに次のコマンドのためのプロンプトを表示する必要があります。
+<code>for_</code>動作が（<code>List String</code>型の）ログを走査し、コンソールにその内容を出力するために使われています。
+最後に<code>setLineHandler</code>を使って行制御関数を更新することでゲームの状態を更新し、<code>prompt</code>動作を使ってプロンプトを再び表示しています。</p>
+<p><code>runGame</code>関数は最終的にコンソールインターフェイスに最初の行制御子を取り付けて、初期プロンプトを表示します。</p>
 <pre><code class="language-haskell">  RL.setLineHandler (lineHandler initialGameState) interface
   RL.prompt interface
 </code></pre>
@@ -998,10 +995,11 @@ runGame env = do
 関数<code>cheat :: Game Unit</code>を<code>Game</code>モジュールに作り、この関数を<code>game</code>から使ってください。</p>
 </li>
 <li>
-<p>（難しい）<code>RWS</code>モナドの <code> Writer</code>コンポーネントは、エラーメッセージと情報メッセージの2つの種類のメッセージのために使われています。
+<p>（難しい）<code>RWS</code>モナドの <code> Writer</code>コンポーネントは、エラー文言とお知らせ文言の2つの種類の文言のために使われています。
 このため、コードの幾つかの箇所では、エラーの場合を扱うためにcase式を使用しています。</p>
-<p>エラーメッセージを扱うのに <code>ExceptT</code>モナド変換子を使うようにし、情報メッセージを扱うのに<code>RWS</code>を使うようにするよう、コードをリファクタリングしてください。
-<em>補足</em>：この演習にはテストはありません。</p>
+<p>コードをリファクタリングしてください。
+エラー文言を扱うのに<code>ExceptT</code>モナド変換子を使い、お知らせ文言を扱うのに<code>RWS</code>を使います。
+<em>補足</em>：この演習にはテストがありません。</p>
 </li>
 </ol>
 <h2 id="コマンドラインオプションの扱い"><a class="header" href="#コマンドラインオプションの扱い">コマンドラインオプションの扱い</a></h2>
@@ -1018,7 +1016,7 @@ runGame env = do
 <pre><code class="language-haskell">main = OP.customExecParser prefs argParser &gt;&gt;= runGame 
 </code></pre>
 <p>最初の引数は<code>optparse</code>ライブラリを設定するために使用されます。
-今回の場合、アプリケーションが引数なしで走らされたときは、（「missing argument」エラーを表示する代わりに）<code>OP.prefs OP.showHelpOnEmpty</code>を使って使用方法のメッセージを表示するように設定していますが、<code>Options.Applicative.Builder</code>モジュールには他にも幾つかの選択肢を提供しています。</p>
+今回の場合、アプリケーションが引数なしで走らされたときは、（「missing argument」エラーを表示する代わりに）<code>OP.prefs OP.showHelpOnEmpty</code>を使って使用方法の文言を表示するように設定していますが、<code>Options.Applicative.Builder</code>モジュールには他にも幾つかの選択肢を提供しています。</p>
 <p>2つ目の引数は解析プログラムの完全な説明です。</p>
 <pre><code class="language-haskell">  argParser :: OP.ParserInfo GameEnvironment
   argParser = OP.info (env &lt;**&gt; OP.helper) parserOptions
@@ -1029,9 +1027,9 @@ runGame env = do
     , OP.header &quot;Monadic Adventures! A game to learn monad transformers&quot; 
     ]
 </code></pre>
-<p>ここで<code>OP.info</code>は使用方法のメッセージの書式方法のオプションの集合と共に<code>Parser</code>を結合します。
+<p>ここで<code>OP.info</code>は、<code>Parser</code>をヘルプ文言の書式方法のためのオプションの集合と組み合わせます。
 <code>env &lt;**&gt; OP.helper</code>は<code>env</code>と名付けられた任意のコマンドライン引数<code>Parser</code>を取り、自動的に<code>--help</code>オプションを加えます。
-使用方法のメッセージ用のオプションは型が<code>InfoMod</code>であり、これはモノイドなので<code>fold</code>関数を使って複数のオプションを一緒に追加できます。</p>
+ヘルプ文言用のオプションは型が<code>InfoMod</code>であり、これはモノイドなので、<code>fold</code>関数を使って複数のオプションを一緒に追加できます。</p>
 <p>解析器の面白い部分は<code>GameEnvironment</code>の構築にあります。</p>
 <pre><code class="language-haskell">  env :: OP.Parser GameEnvironment
   env = gameEnvironment &lt;$&gt; player &lt;*&gt; debug
@@ -1051,30 +1049,30 @@ runGame env = do
     , OP.help &quot;Use debug mode&quot;
     ]
 </code></pre>
-<p><code>player</code>と<code>debug</code>は両方とも<code>Parser</code>なので、アプリカティブ演算子<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>を使って<code>gameEnvironment</code>関数を持ち上げることができます。
+<p><code>player</code>と<code>debug</code>は両方とも<code>Parser</code>なので、アプリカティブ演算子<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>を使って<code>gameEnvironment</code>関数を持ち上げられます。
 この関数は<code>Parser</code>上で型<code>PlayerName -&gt; Boolean -&gt; GameEnvironment</code>を持ちます。
-<code>OP.strOption</code>は文字列値を期待するコマンドラインオプションを構築し、一緒に畳み込まれた<code>Mod</code>の集まりを介して設定されています。
+<code>OP.strOption</code>は文字列値を期待するコマンドラインオプションを構築し、一緒に畳み込まれた<code>Mod</code>の集まりを介して構成されています。
 <code>OP.flag</code>は似たような動作をしますが、関連付けられた値は期待しません。
-<code>optparse</code>は多種多様なコマンドライン解析器を構築するために使える様々な修飾子について、大部の<a href="https://pursuit.purescript.org/packages/purescript-optparse">ドキュメント</a>を提供しています。</p>
-<p>アプリカティブ演算子による記法を使うことで、コマンドラインインターフェイスに対して簡潔で宣言的な仕様を与えることが可能になったことに注目です。
-また、<code>runGame</code>に新しい関数引数を追加し、<code>env</code>の定義中で<code>&lt;*&gt;</code>を使って追加の引数まで <code>runGame</code>を持ち上げるだけで、簡単に新しいコマンドライン引数を追加できます。</p>
+<code>optparse</code>は多様なコマンドライン解析器を構築するために使える様々な修飾子について、大部の<a href="https://pursuit.purescript.org/packages/purescript-optparse">ドキュメント</a>を提供しています。</p>
+<p>アプリカティブ演算子による記法を使うことで、コマンドラインインターフェイスの簡潔で宣言的な仕様を与えられた点に注目です。
+加えて、新しいコマンドライン引数を追加するのは単純で、<code>runGame</code>に新しい関数引数を追加し、<code>env</code>の定義中で<code>&lt;*&gt;</code>を使って追加の引数まで<code>runGame</code>を持ち上げるだけでできます。</p>
 <h2 id="演習-6"><a class="header" href="#演習-6">演習</a></h2>
 <ol>
 <li>（普通）<code>GameEnvironment</code>レコードに新しい真偽値のプロパティ<code>cheatMode</code>を追加してください。
-また、 <code>optparse</code>設定に、チートモードを有効にする新しいコマンドラインフラグ <code>-c</code>を追加してください。
-チートモードが有効になっていない場合、 <code>cheat</code>コマンドは禁止されなければなりません。</li>
+また、<code>optparse</code>の構成に、チートモードを有効にする新しいコマンドラインフラグ<code>-c</code>を追加してください。
+チートモードが有効になっていない場合、前の演習の<code>cheat</code>コマンドは禁止されます。</li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章ではこれまで学んできた技術を実践的に実演しました。
-モナド変換子を使用したゲームの純粋な仕様の構築、コンソールを使用したフロントエンドを構築するための <code>Effect</code>モナドがそれです。</p>
+モナド変換子を使用したゲームの純粋な仕様の構築、コンソールを使用したフロントエンドを構築するための<code>Effect</code>モナドがそれです。</p>
 <p>ユーザインターフェイスからの実装を分離したので、ゲームの別のフロントエンドも作成できるでしょう。
 例えば、<code>Effect</code>モナドでCanvas APIやDOMを使用して、ブラウザでゲームを描画するようなことができるでしょう。</p>
-<p>モナド変換子によって命令型のスタイルで安全なコードを書くことができることを見てきました。
+<p>モナド変換子によって命令型のスタイルで安全なコードを書けることが分かりました。
 このスタイルでは型システムによって作用が追跡されています。
-また、型クラスはモナドが提供するアクションへと抽象化する強力な方法を提供します。
-このモナドのお陰でコードの再利用が可能になりました。
+加えて、型クラスはモナドが提供する動作へと抽象化する強力な方法を提供し、これによりコードの再利用が可能になりました。
 標準的なモナド変換子を組み合わせることにより、<code>Alternative</code>や<code>MonadPlus</code>のような標準的な抽象化を使用して、役に立つモナドを構築できました。</p>
-<p>モナド変換子は、高階多相や多変数型クラスなどの高度な型システムの機能を利用することによって記述でき、表現力の高いコードの優れた実演となっています。</p>
+<p>モナド変換子は表現力の高いコードの優れた実演となっています。
+これは高階多相や多変数型クラスなどの高度な型システムの機能を利用することによって記述できるものです。</p>
 
                     </main>
 

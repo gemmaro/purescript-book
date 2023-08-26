@@ -173,10 +173,12 @@
                     <main>
                         <h1 id="再帰マップ畳み込み"><a class="header" href="#再帰マップ畳み込み">再帰、マップ、畳み込み</a></h1>
 <h2 id="この章の目標"><a class="header" href="#この章の目標">この章の目標</a></h2>
-<p>この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて見ていきましょう。再帰は関数型プログラミングの基本的な手法であり、この本の全体に亙って使われます。</p>
+<p>この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて見ていきましょう。
+再帰は関数型プログラミングの基本的な手法であり、本書全体に亙って使われます。</p>
 <p>また、PureScriptの標準ライブラリから標準的な関数を幾つか取り扱います。
 <code>map</code>や<code>fold</code>といった関数だけでなく、<code>filter</code>や<code>concatMap</code>といった特別な場合において便利なものについても見ていきます。</p>
-<p>この章では、仮想的なファイルシステムを操作する関数のライブラリを動機付けに用います。この章で学ぶ手法を応用して、擬似的なファイルシステムによって表されるファイルのプロパティを計算する関数を記述します。</p>
+<p>この章では、仮想的なファイルシステムを操作する関数のライブラリを動機付けに用います。
+この章で学ぶ技術を応用し、ファイルシステムのモデルにより表現されるファイルのプロパティを計算する関数を書きます。</p>
 <h2 id="プロジェクトの準備"><a class="header" href="#プロジェクトの準備">プロジェクトの準備</a></h2>
 <p>この章のソースコードは<code>src/Data/Path.purs</code>と<code>test/Examples.purs</code>に含まれています。
 <code>Data.Path</code>モジュールは仮想ファイルシステムのモデルを含みます。
@@ -194,7 +196,7 @@
 <h2 id="導入"><a class="header" href="#導入">導入</a></h2>
 <p>再帰は一般のプログラミングでも重要な手法ですが、特に純粋関数型プログラミングでは当たり前のように用いられます。この章で見ていくように、再帰はプログラムの変更可能な状態を減らすために役立つからです。</p>
 <p>再帰は<em>分割統治</em>戦略と密接な関係があります。
-分割統治とはすなわち、何らかの入力としての問題を解くにあたり、入力を小さな部分に分割してそれぞれの部分について問題を解き、部分ごとの答えから最終的な答えを組み立てるということです。</p>
+分割統治とはすなわち、何らかの入力としての問題を解くにあたり、入力を小さな部分に分割してそれぞれの部分について問題を解き、部分毎の答えから最終的な答えを組み立てるということです。</p>
 <p>それでは、PureScriptにおける再帰の簡単な例を幾つか見てみましょう。</p>
 <p>次に示すのは<em>階乗関数</em>のありふれた例です。</p>
 <pre><code class="language-haskell">factorial :: Int -&gt; Int
@@ -204,8 +206,10 @@ factorial n =
   else
     n * factorial (n - 1)
 </code></pre>
-<p>部分問題へ問題を分割することによって階乗関数がどのように計算されるかがわかります。より小さい数へと階乗を計算していくということです。ゼロに到達すると、答えは直ちに求まります。</p>
-<p>次は、 <em>フィボナッチ関数</em> (Fibonacci function) を計算するという、これまたよくある例です。</p>
+<p>このように、問題を部分問題へ分割することによって階乗関数の計算方法が見てとれます。
+より小さい数の階乗を計算していくということです。
+ゼロに到達すると、答えは直ちに求まります。</p>
+<p>次は、<em>フィボナッチ関数</em>を計算するという、これまたよくある例です。</p>
 <pre><code class="language-haskell">fib :: Int -&gt; Int
 fib n =
   if n == 0 then
@@ -218,7 +222,10 @@ fib n =
 <p>やはり、部分問題の解決策を考えることで全体を解決していることがわかります。
 このとき、<code>fib (n - 1)</code>と<code>fib (n - 2)</code>という式に対応した、2つの部分問題があります。
 これらの2つの部分問題が解決されていれば、この部分的な答えを加算することで、全体の答えを組み立てることができます。</p>
-<p>なお上の<code>factorial</code>と<code>fib</code>の例は意図通りに動きますが、よりPureScriptらしい実装では<code>if</code>や<code>then</code>や<code>else</code>を使う代わりにパターン照合を使うものでしょう。パターン照合の技法は後の章でお話しします。</p>
+<blockquote>
+<p>なお、上の<code>factorial</code>と<code>fib</code>の例は意図通りに動きますが、よりPureScriptらしい実装では<code>if</code>や<code>then</code>や<code>else</code>を使う代わりにパターン照合を使うものでしょう。
+パターン照合の技法は後の章でお話しします。</p>
+</blockquote>
 <h2 id="配列上での再帰"><a class="header" href="#配列上での再帰">配列上での再帰</a></h2>
 <p>再帰関数の定義は<code>Int</code>型だけに限定されるものではありません。
 本書の後半で<em>パターン照合</em>を扱うときに、いろいろなデータ型の上での再帰関数について見ていきますが、ここでは数と配列に限っておきます。</p>
@@ -236,21 +243,25 @@ length arr =
     1 + (length $ fromMaybe [] $ tail arr)
 </code></pre>
 <p>この関数では配列が空かどうかで分岐するために<code>if ... then ... else</code>式を使っています。
-この<code>null</code>関数は配列が空のときに<code>true</code>を返します。
-空の配列の長さはゼロであり、空でない配列の長さは配列の先頭を取り除いた残りの部分の長さより1大きいというわけです。</p>
-<p><code>tail</code>関数は与えられた配列から最初の要素を除いたものを<code>Maybe</code>に包んで返します。配列が空であれば（つまり尾鰭がなければ）<code>Nothing</code>が返ります。<code>fromMaybe</code>関数は既定値と<code>Maybe</code>値を取ります。後者が<code>Nothing</code>であれば既定値を返し、そうでなければ<code>Just</code>に包まれた値を返します。</p>
-<p>JavaScriptで配列の長さを調べるのには、この例はどう見ても実用的な方法とはいえませんが、次の演習を完遂するための手がかりとしては充分でしょう。</p>
+この<code>null</code>関数は空の配列で<code>true</code>を返します。
+空の配列の長さはゼロであり、空でない配列の長さは尾鰭の長さより1大きいというわけです。</p>
+<p><code>tail</code>関数は与えられた配列から最初の要素を除いたものを<code>Maybe</code>に包んで返します。
+配列が空であれば（つまり尾鰭がなければ）<code>Nothing</code>が返ります。
+<code>fromMaybe</code>関数は既定値と<code>Maybe</code>値を取ります。
+後者が<code>Nothing</code>であれば既定値を返し、そうでなければ<code>Just</code>に包まれた値を返します。</p>
+<p>JavaScriptで配列の長さを調べるのには、この例はどう見ても実用的な方法とはいえませんが、次の演習を完遂するための手掛かりとしては充分でしょう。</p>
 <h2 id="演習"><a class="header" href="#演習">演習</a></h2>
 <ol>
-<li>（簡単）入力が偶数であるとき、かつそのときに限り<code>true</code>に返すような再帰関数を書いてみましょう。</li>
-<li>（少し難しい）配列内の偶数の数を数える再帰関数<code>countEven</code>を書いてみましょう。
-<em>手掛かり</em>：<code>Data.Array</code>モジュールの<code>head</code>関数を使うと、空でない配列の最初の要素を見つけることができます。</li>
+<li>（簡単）入力が偶数であるとき、かつそのときに限り<code>true</code>に返す再帰関数<code>isEven</code>を書いてみましょう。</li>
+<li>（普通）配列内の偶数の整数を数える再帰関数<code>countEven</code>を書いてみましょう。
+<em>手掛かり</em>：<code>head</code>関数（これも<code>Data.Array</code>モジュールから手に入ります）を使うと、空でない配列の最初の要素を見つけられます。</li>
 </ol>
 <h2 id="マップ"><a class="header" href="#マップ">マップ</a></h2>
-<p><code>map</code>関数は配列に対する再帰関数の1つです。この関数を使うと、配列の各要素に順番に関数を適用することで、配列の要素を変換できます。そのため、配列の<em>内容</em>は変更されますが、その<em>形状</em>（ここでは「長さ」）は保存されます。</p>
-<p>本書の後半で <em>型クラス</em> (type class)
-の内容を押さえるとき、<code>map</code>関数が形状保存関数のより一般的な様式の一例であることを見ていきます。これは <em>関手</em> (functor)
-と呼ばれる型構築子のクラスを変換するものです。</p>
+<p><code>map</code>関数は配列に対する再帰関数の一例です。
+配列の各要素に順番に関数を適用し、配列の要素を変換するのに使われます。
+そのため、配列の<em>内容</em>は変更されますが、その<em>形状</em>（ここでは「長さ」）は保存されます。</p>
+<p>本書の後半で<em>型クラス</em>の内容を押さえるとき、<code>map</code>関数が形状を保存する関数のより一般的な様式の一例であることを見ていきます。
+この関数は<em>関手</em>と呼ばれる型構築子のクラスを変換するものです。</p>
 <p>それでは、PSCiで<code>map</code>関数を試してみましょう。</p>
 <pre><code class="language-text">$ spago repl
 
@@ -266,16 +277,16 @@ length arr =
 [2, 3, 4, 5, 6]
 </code></pre>
 <p>この構文は <em>中置関数適用</em> と呼ばれ、どんな関数でもこのように中置できます。普通は2引数の関数に対して使うのが最適でしょう。</p>
-<p>配列を扱うときは、<code>map</code>関数と等価な<code>&lt;$&gt;</code>という演算子が存在します。この演算子は他の二項演算子と同じように中置で使用できます。</p>
+<p>配列を扱う際は<code>map</code>関数と等価な<code>&lt;$&gt;</code>という演算子が存在します。</p>
 <pre><code class="language-text">&gt; (\n -&gt; n + 1) &lt;$&gt; [1, 2, 3, 4, 5]
 [2, 3, 4, 5, 6]
 </code></pre>
 <p>それでは<code>map</code>の型を見てみましょう。</p>
 <pre><code class="language-text">&gt; :type map
-forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
+forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 </code></pre>
 <p>実は<code>map</code>の型は、この章で必要とされているものよりも一般的な型になっています。今回の目的では、<code>map</code>は次のようなもっと具体的な型であるかのように考えるとよいでしょう。</p>
-<pre><code class="language-text">forall a b. (a -&gt; b) -&gt; Array a -&gt; Array b
+<pre><code class="language-text">forall (a :: Type) (b :: Type). (a -&gt; b) -&gt; Array a -&gt; Array b
 </code></pre>
 <p>この型では、<code>map</code>関数に適用するときには<code>a</code>と<code>b</code>という2つの型を自由に選ぶことができる、ということも示されています。
 <code>a</code>は元の配列の要素の型で、<code>b</code>は目的の配列の要素の型です。
@@ -288,7 +299,7 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 <p>中置演算子<code>&lt;$&gt;</code>は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。
 中置構文を使用した単なる<em>適用</em>にすぎません。
 実際、括弧でその名前を囲むと、この関数を通常の関数のように使用できます。
-これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前を使って配列に関数を適用できるということです。</p>
+これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前が使えるということです。</p>
 <pre><code class="language-text">&gt; (&lt;$&gt;) show [1, 2, 3, 4, 5]
 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
 </code></pre>
@@ -308,15 +319,16 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 <p><em>補足</em>：独自の中置演算子は、自然な構文を備える領域特化言語を定義する上で優れた手段になりえます。ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。</p>
 <p>上記の例では、<code>1 .. 5</code>という式は括弧で囲まれていましたが、実際にはこれは必要ありません。
 なぜなら、<code>Data.Array</code>モジュールは、<code>&lt;$&gt;</code>に割り当てられた優先順位より高い優先順位を<code>..</code>演算子に割り当てているからです。
-上の例では、<code>..</code>の優先順位は、予約語<code>infix</code>のあとに書かれた数の<code>8</code> と定義されていました。
+上の例では、<code>..</code>の優先順位は、キーワード<code>infix</code>のあとに書かれた数の<code>8</code> と定義されていました。
 ここでは<code>&lt;$&gt;</code>の優先順位よりも高い優先順位を<code>..</code>に割り当てており、このため括弧を付け加える必要がないということです。</p>
 <pre><code class="language-text">&gt; show &lt;$&gt; 1 .. 5
 [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
 </code></pre>
-<p>中置演算子に（左または右の）<em>結合性</em>を与えたい場合は、代わりに予約語<code>infixl</code>と<code>infixr</code>を使います。<code>infix</code>を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
+<p>中置演算子に（左または右の）<em>結合性</em>を与えたい場合は、代わりにキーワード<code>infixl</code>と<code>infixr</code>を使います。
+<code>infix</code>を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
 <h2 id="配列の絞り込み"><a class="header" href="#配列の絞り込み">配列の絞り込み</a></h2>
 <p><code>Data.Array</code>モジュールでは他にも、よく<code>map</code>と一緒に使われる関数<code>filter</code>も提供しています。
-この関数は、述語関数に適合する要素のみを残し、既存の配列から新しい配列を作成する機能を提供します。</p>
+この関数は、述語関数に照合する要素のみを残し、既存の配列から新しい配列を作成する機能を提供します。</p>
 <p>例えば1から10までの数で、偶数であるような数の配列を計算したいとします。
 これは次のようにできます。</p>
 <pre><code class="language-text">&gt; import Data.Array
@@ -345,17 +357,18 @@ forall a b f. Functor f =&gt; (a -&gt; b) -&gt; f a -&gt; f b
 <pre><code class="language-text">&gt; import Data.Array
 
 &gt; :type concat
-forall a. Array (Array a) -&gt; Array a
+forall (a :: Type). Array (Array a) -&gt; Array a
 
 &gt; concat [[1, 2, 3], [4, 5], [6]]
 [1, 2, 3, 4, 5, 6]
 </code></pre>
-<p>関連する関数として、<code>concat</code>と<code>map</code>を組み合わせたような<code>concatMap</code>と呼ばれる関数もあります。<code>map</code>は（相異なる型の可能性がある）値からの値への関数を引数に取りますが、それに対して<code>concatMap</code>は値から値の配列への関数を取ります。</p>
+<p>関連する関数として、<code>concat</code>と<code>map</code>を組み合わせた<code>concatMap</code>と呼ばれる関数もあります。
+<code>map</code>は（相異なる型の可能性がある）値からの値への関数を引数に取りますが、それに対して<code>concatMap</code>は値から値の配列への関数を取ります。</p>
 <p>実際に動かして見てみましょう。</p>
 <pre><code class="language-text">&gt; import Data.Array
 
 &gt; :type concatMap
-forall a b. (a -&gt; Array b) -&gt; Array a -&gt; Array b
+forall (a :: Type) (b :: Type). (a -&gt; Array b) -&gt; Array a -&gt; Array b
 
 &gt; concatMap (\n -&gt; [n, n * n]) (1 .. 5)
 [1,1,2,4,3,9,4,16,5,25]
@@ -374,7 +387,7 @@ forall a b. (a -&gt; Array b) -&gt; Array a -&gt; Array b
 <p>配列内包表記を使用するとこれを計算できます。
 PSCiを対話式の開発環境として使用し、1つずつこの手順を進めていきましょう。</p>
 <p>最初の工程では<code>n</code>以下の数の組み合わせの配列を生成しますが、これには<code>concatMap</code>を使えばよいです。</p>
-<p><code>1 .. n</code>のそれぞれの数を配列<code>1 .. n</code>へとマッピングすることから始めましょう。</p>
+<p><code>1 .. n</code>のそれぞれの数を配列<code>1 .. n</code>へと対応付けるところから始めましょう。</p>
 <pre><code class="language-text">&gt; pairs n = concatMap (\i -&gt; 1 .. n) (1 .. n)
 </code></pre>
 <p>この関数をテストしてみましょう。</p>
@@ -420,9 +433,10 @@ PSCiを対話式の開発環境として使用し、1つずつこの手順を進
 <h2 id="do記法"><a class="header" href="#do記法">do記法</a></h2>
 <p>しかし、このコードの可読性は大幅に向上できます。<code>map</code>や<code>concatMap</code>は基本的な関数であり、 <em>do記法</em> (do notation)
 と呼ばれる特別な構文の基礎になっています（もっと厳密にいえば、それらの一般化である<code>map</code>と<code>bind</code>が基礎をなしています）。</p>
-<p><em>補足</em>：<code>map</code>と<code>concatMap</code>が <em>配列内包表記</em> を書けるようにしているように、もっと一般的な演算子である<code>map</code>と<code>bind</code>は
-<em>モナド内包表記</em> (monad comprehensions) と呼ばれているものを書けるようにします。本書の後半では <em>モナド</em> (monad)
-の例をたっぷり見ていくことになりますが、この章では配列のみを考えます。</p>
+<blockquote>
+<p><em>補足</em>：<code>map</code>と<code>concatMap</code>があることで<em>配列内包表記</em>を書けるように、もっと一般的な演算子である<code>map</code>と<code>bind</code>があることで<em>モナド内包表記</em>と呼ばれているものが書けます。
+本書の後半では<em>モナド</em>の例をたっぷり見ていくことになりますが、この章では配列のみを考えます。</p>
+</blockquote>
 <p>do記法を使うと、先ほどの<code>factors</code>関数を次のように書き直すことができます。</p>
 <pre><code class="language-haskell">factors :: Int -&gt; Array (Array Int)
 factors n = filter (\xs -&gt; product xs == n) do
@@ -430,12 +444,13 @@ factors n = filter (\xs -&gt; product xs == n) do
   j &lt;- i .. n
   pure [ i, j ]
 </code></pre>
-<p>キーワード<code>do</code>はdo記法を使うコードのブロックを導入します。このブロックは幾つかの種類の式で構成されています。</p>
+<p>キーワード<code>do</code>はdo記法を使うコードのブロックを導入します。
+このブロックは幾つかの種類の式で構成されています。</p>
 <ul>
 <li>配列の要素を名前に束縛する式。
-これは後ろ向きの矢印<code>&lt;-</code>で示されていて、その左側は名前、右側は配列の型を持つ式です。</li>
+これは後ろ向きの矢印<code>&lt;-</code>で示されており、左側には名前が、右側には配列の型を持つ式があります。</li>
 <li>名前に配列の要素を束縛しない式。
-<code>do</code>の <em>結果</em> はこの種類の式の一例であり、最後の行の<code>pure [i, j]</code>に示されています。</li>
+<code>do</code>の<em>結果</em>はこの種類の式の一例であり、最後の行の<code>pure [i, j]</code>に示されています。</li>
 <li><code>let</code>キーワードを使用し、式に名前を与える式。</li>
 </ul>
 <p>この新しい記法を使うと、アルゴリズムの構造がわかりやすくなることがあります。
@@ -445,7 +460,7 @@ factors n = filter (\xs -&gt; product xs == n) do
 [[1, 2]]
 </code></pre>
 <p>配列の場合、<code>pure</code>は単に1要素の配列を作成します。
-実際、<code>factors</code>関数を変更して、<code>pure</code>の代わりにこの形式も使うようにできます。</p>
+<code>factors</code>関数を変更して、<code>pure</code>の代わりにこの形式も使うようにできます。</p>
 <pre><code class="language-haskell">factorsV2 :: Int -&gt; Array (Array Int)
 factorsV2 n = filter (\xs -&gt; product xs == n) do
   i &lt;- 1 .. n
@@ -470,7 +485,7 @@ factorsV3 n = do
 <pre><code class="language-text">&gt; import Control.Alternative
 
 &gt; :type guard
-forall m. Alternative m =&gt; Boolean -&gt; m Unit
+forall (m :: Type -&gt; Type). Alternative m =&gt; Boolean -&gt; m Unit
 </code></pre>
 <p>今回の場合は、PSCiは次の型を報告するものと考えてください。</p>
 <pre><code class="language-haskell">Boolean -&gt; Array Unit
@@ -484,51 +499,62 @@ forall m. Alternative m =&gt; Boolean -&gt; m Unit
 &gt; length $ guard false
 0
 </code></pre>
-<p>つまり、<code>guard</code>が<code>true</code>に評価される式を渡された場合、単一の要素を持つ配列を返すのです。もし式が<code>false</code>と評価された場合は、その結果は空です。</p>
+<p>つまり、<code>guard</code>が<code>true</code>に評価される式を渡された場合、単一の要素を持つ配列を返すのです。
+もし式が<code>false</code>と評価された場合は、その結果は空です。</p>
 <p>ガードが失敗した場合、配列内包表記の現在の分岐は、結果なしで早めに終了されることを意味します。
 これは、<code>guard</code>の呼び出しが、途中の配列に対して<code>filter</code>を使用するのと同じだということです。
-実践の場面にもよりますが、<code>filter</code>の代わりに<code>guard</code>を使いたいことは多いでしょう。
+実践での場面にもよりますが、<code>filter</code>の代わりに<code>guard</code>を使いたいことは多いでしょう。
 これらが同じ結果になることを確認するために、<code>factors</code>の2つの定義を試してみてください。</p>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
-<li>（簡単）整数の引数が素数であるかどうかを調べる関数<code>isPrime</code>を定義してみましょう。
+<li>（簡単）関数<code>isPrime</code>を書いてください。
+この関数は整数の引数が素数であるかを調べます。
 <em>手掛かり</em>：<code>factors</code>関数を使ってください。</li>
 <li>（普通）do記法を使い、2つの配列の<em>直積集合</em>を見つけるための関数<code>cartesianProduct</code>を書いてみましょう。
 直積集合とは、要素<code>a</code>、<code>b</code>の全ての組み合わせの集合のことです。
 ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
-<li>（普通）数値<code>n</code>を取って構成要素（値<code>a</code>, <code>b</code>, <code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの3つ組
-(pythagorean triples) を返す関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
-<em>ピタゴラスの3つ組</em>は数値の配列<code>[a, b, c]</code>で <code>a² + b² = c²</code> です。
+<li>（普通）関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
+この関数は数値<code>n</code>を取り、構成要素（値<code>a</code>、<code>b</code>、<code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの3つ組
+(pythagorean triples) を返します。
+<em>ピタゴラスの3つ組</em>は<code>a² + b² = c²</code>であるような数値の配列<code>[a, b, c]</code>です。
 <em>手掛かり</em>：配列内包表記で<code>guard</code>関数を使ってください。</li>
-<li>（難しい）<code>factors</code>関数を使用して、数<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
-数<code>n</code>の素因数分解とは、素数の積が<code>n</code>であるような整数の配列のことです。
+<li>（難しい）<code>factors</code>関数を使用して、<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
+<code>n</code>の素因数分解とは、積が<code>n</code>であるような素数の配列のことです。
 <em>手掛かり</em>：1より大きい整数について、問題を2つの部分問題に分解してください。
 最初の因数を探し、それから残りの因数を探すのです。</li>
 </ol>
 <h2 id="畳み込み"><a class="header" href="#畳み込み">畳み込み</a></h2>
-<p>配列における左右の畳み込みは、再帰を用いて実装される別の興味深い一揃いの関数を提供します。</p>
+<p>配列における左右の畳み込みは、再帰を用いて実装できる別の興味深い一揃いの関数を提供します。</p>
 <p>PSCiを使って、<code>Data.Foldable</code>モジュールをインポートし、<code>foldl</code>と<code>foldr</code>関数の型を調べることから始めましょう。</p>
 <pre><code class="language-text">&gt; import Data.Foldable
 
 &gt; :type foldl
-forall a b f. Foldable f =&gt; (b -&gt; a -&gt; b) -&gt; b -&gt; f a -&gt; b
+forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Foldable f =&gt; (b -&gt; a -&gt; b) -&gt; b -&gt; f a -&gt; b
 
 &gt; :type foldr
-forall a b f. Foldable f =&gt; (a -&gt; b -&gt; b) -&gt; b -&gt; f a -&gt; b
+forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Foldable f =&gt; (a -&gt; b -&gt; b) -&gt; b -&gt; f a -&gt; b
 </code></pre>
 <p>これらの型は、現在興味があるものよりも一般化されています。
-この章の目的に対して、PSCiは以下の（より具体的な）答えをくれていると考えておきましょう。</p>
-<pre><code class="language-text">&gt; :type foldl
+この章では単純化して以下の（より具体的な）型シグネチャと見て構いません。</p>
+<pre><code class="language-text">-- foldl
 forall a b. (b -&gt; a -&gt; b) -&gt; b -&gt; Array a -&gt; b
 
-&gt; :type foldr
+-- foldr
 forall a b. (a -&gt; b -&gt; b) -&gt; b -&gt; Array a -&gt; b
 </code></pre>
-<p>どちらの型でも、<code>a</code>は配列の要素の型に対応しています。
-型<code>b</code>は、配列を走査 (traverse) したときの結果を累積する「累積器」(accumulator) の型だと考えることができます。</p>
+<p>どちらの場合でも、型<code>a</code>は配列の要素の型に対応しています。
+型<code>b</code>は「累算器」の型として考えることができます。
+累算器とは配列を走査しつつ結果を累算するものです。</p>
 <p><code>foldl</code>関数と<code>foldr</code>関数の違いは走査の方向です。
 <code>foldr</code>が「右から」配列を畳み込むのに対して、<code>foldl</code>は「左から」配列を畳み込みます。</p>
-<p>実際にこれらの関数の動きを見てみましょう。<code>foldl</code>を使用して数の配列の和を求めてみます。型<code>a</code>は<code>Int</code>になり、結果の型<code>b</code>も<code>Int</code>として選択できます。ここでは、次の要素を累積器に加算する<code>Int -&gt; Int -&gt; Int</code>という型の関数、<code>Int</code>型の累積器の初期値、和を求めたい<code>Int</code>の配列という、3つの引数を提供する必要があります。最初の引数としては、加算演算子を使用できますし、累積器の初期値はゼロになります。</p>
+<p>実際にこれらの関数の動きを見てみましょう。
+<code>foldl</code>を使用して数の配列の和を求めてみます。
+型<code>a</code>は<code>Int</code>になり、結果の型<code>b</code>も<code>Int</code>として選択できます。
+ここでは3つの引数を与える必要があります。
+1つ目は次の要素を累算器に加算する<code>Int -&gt; Int -&gt; Int</code>という型の関数です。
+2つ目は累算器の<code>Int</code>型の初期値です。
+3つ目は和を求めたい<code>Int</code>の配列です。
+最初の引数としては、加算演算子を使用できますし、累算器の初期値はゼロになります。</p>
 <pre><code class="language-text">&gt; foldl (+) 0 (1 .. 5)
 15
 </code></pre>
@@ -536,8 +562,8 @@ forall a b. (a -&gt; b -&gt; b) -&gt; b -&gt; Array a -&gt; b
 <pre><code class="language-text">&gt; foldr (+) 0 (1 .. 5)
 15
 </code></pre>
-<p><code>foldl</code>と<code>foldr</code>の違いを説明するために、畳み込み関数の選択が影響する例も書いてみましょう。
-加算関数の代わりに、文字列連結を使用して文字列を作ってみます。</p>
+<p>違いを説明するために、畳み込み関数の選択が大事になってくる例も書きましょう。
+加算関数の代わりに、文字列連結を使用して文字列を構築しましょう。</p>
 <pre><code class="language-text">&gt; foldl (\acc n -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
 &quot;12345&quot;
 
@@ -547,12 +573,12 @@ forall a b. (a -&gt; b -&gt; b) -&gt; b -&gt; Array a -&gt; b
 <p>これは、2つの関数の違いを示しています。左畳み込み式は、以下の関数適用と同等です。</p>
 <pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 1) &lt;&gt; show 2) &lt;&gt; show 3) &lt;&gt; show 4) &lt;&gt; show 5)
 </code></pre>
-<p>それに対し、右畳み込みは以下に相当します。</p>
+<p>それに対し、右畳み込みは以下と等価です。</p>
 <pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 5) &lt;&gt; show 4) &lt;&gt; show 3) &lt;&gt; show 2) &lt;&gt; show 1)
 </code></pre>
 <h2 id="末尾再帰"><a class="header" href="#末尾再帰">末尾再帰</a></h2>
-<p>再帰はアルゴリズムを定義するための強力な手法ですが、問題も抱えています。
-JavaScriptで再帰関数を評価するとき、入力が大きすぎるとスタックオーバーフローでエラーを起こす可能性があるのです。</p>
+<p>再帰はアルゴリズムを指定する強力な手法ですが、問題も抱えています。
+JavaScriptで再帰関数を評価するとき、入力が大き過ぎるとスタックオーバーフローでエラーを起こす可能性があるのです。</p>
 <p>PSCiで次のコードを入力すると、この問題を簡単に検証できます。</p>
 <pre><code class="language-text">&gt; :paste
 … f n =
@@ -567,15 +593,19 @@ JavaScriptで再帰関数を評価するとき、入力が大きすぎるとス�
 &gt; f 100000
 RangeError: Maximum call stack size exceeded
 </code></pre>
-<p>これは問題です。関数型プログラミングの基本的な手法として再帰を採用しようとするなら、境界がない可能性がある再帰でも扱える方法が必要です。</p>
-<p>PureScriptは <em>末尾再帰最適化</em> (tail recursion optimization)
-の形でこの問題に対する部分的な解決策を提供しています。</p>
-<p><em>補足</em>：この問題へのより完全な解決策としては、いわゆる<em>トランポリン</em>を使用したライブラリで実装する方法がありますが、それはこの章で扱う範囲を超えています。
-この内容に興味のある読者は<a href="https://pursuit.purescript.org/packages/purescript-free"><code>free</code></a>や<a href="https://pursuit.purescript.org/packages/purescript-tailrec"><code>tailrec</code></a>パッケージのドキュメントを参照してみてください。</p>
-<p>末尾再帰最適化を可能にする上で鍵となる観点は以下となります。 <em>末尾位置</em> (tail position)
-にある関数の再帰的な呼び出しは、スタックフレームが確保されない <em>ジャンプ</em>
-に置き換えることができます。関数が戻るより前の最後の呼び出しであるとき、呼び出しが <em>末尾位置</em>
-にあるといいます。なぜこの例でスタックオーバーフローが見られたのかはこれが理由です。この<code>f</code>の再帰呼び出しは、末尾位置 <em>ではない</em> からです。</p>
+<p>これは問題です。
+関数型プログラミングの標準的な手法として再帰を採用しようとするなら、境界がない再帰がありうるときでも扱える方法が必要です。</p>
+<p>PureScriptは<em>末尾再帰最適化</em>の形でこの問題に対する部分的な解決策を提供しています。</p>
+<blockquote>
+<p><em>補足</em>：この問題へのより完全な解決策としては、いわゆる<em>トランポリン</em>を使用するライブラリで実装できますが、それはこの章で扱う範囲を超えています。
+興味のある読者は<a href="https://pursuit.purescript.org/packages/purescript-free"><code>free</code></a>や<a href="https://pursuit.purescript.org/packages/purescript-tailrec"><code>tailrec</code></a>パッケージのドキュメントをあたると良いでしょう。</p>
+</blockquote>
+<p>末尾再帰最適化を可能にする上で鍵となる観点は以下となります。
+<em>末尾位置</em>にある関数の再帰的な呼び出しは<em>ジャンプ</em>に置き換えられます。
+このジャンプではスタックフレームが確保されません。
+関数が戻るより前の最後の呼び出しであるとき、呼び出しが<em>末尾位置</em>にあるといいます。
+先の例でスタックオーバーフローが見られたのはこれが理由です。
+<code>f</code>の再帰呼び出しが末尾位置<em>でなかった</em>からです。</p>
 <p>実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を <em>whileループ</em> に置き換えます。</p>
 <p>以下は全ての再帰呼び出しが末尾位置にある再帰関数の例です。</p>
 <pre><code class="language-haskell">factorialTailRec :: Int -&gt; Int -&gt; Int
@@ -584,11 +614,12 @@ factorialTailRec n acc =
     then acc
     else factorialTailRec (n - 1) (acc * n)
 </code></pre>
-<p><code>fact</code>への再帰呼び出しは、この関数の中で起こる最後のものである、つまり末尾位置にあることに注意してください。</p>
-<h2 id="累積器"><a class="header" href="#累積器">累積器</a></h2>
-<p>末尾再帰ではない関数を末尾再帰関数に変える一般的な方法としては、 <em>累積器引数</em> (accumulator parameter)
-を使用する方法があります。累積器引数は関数に追加される余剰の引数で返り値を <em>累積</em>
-するものです。これは結果を累積するために返り値を使うのとは対称的です。</p>
+<p><code>factorialTailRec</code>への再帰呼び出しがこの関数の最後にある点に注目してください。
+つまり末尾位置にあるのです。</p>
+<h2 id="累算器"><a class="header" href="#累算器">累算器</a></h2>
+<p>末尾再帰ではない関数を末尾再帰関数に変える一般的な方法は、<em>累算器引数</em>を使用することです。
+累算器引数は関数に追加される余剰の引数で、返り値を<em>累算</em>するものです。
+これは結果を累算するために返り値を使うのとは対照的です。</p>
 <p>例えば章の初めに示した<code>length</code>関数を再考しましょう。</p>
 <pre><code class="language-haskell">length :: forall a. Array a -&gt; Int
 length arr =
@@ -607,15 +638,19 @@ lengthTailRec arr = length' arr 0
       then acc
       else length' (fromMaybe [] $ tail arr') (acc + 1)
 </code></pre>
-<p>ここでは、配列を逆転させる作業を補助関数<code>length'</code>に委譲しています。<code>length'</code>は末尾再帰です。その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。これは、生成されたコードが
-<em>whileループ</em> となり、大きな入力でもスタックが溢れないことを意味します。</p>
-<p><code>lengthTailRec</code>の実装を理解するために補助関数<code>length'</code>に着目しましょう。この関数は必然的に累積器引数を使って追加の状態……これは部分的な結果です……を保持しています。0から始まり、入力の配列中の全ての要素それぞれについて1ずつ足されて大きくなっていきます。</p>
-<p>累積器を「状態」と考えることもできますが、直接には変更されているわけではないことにも注意してください。</p>
+<p>ここでは補助関数<code>length'</code>に委譲しています。
+この関数は末尾再帰です。
+その唯一の再帰呼び出しは、最後の場合の末尾位置にあります。
+つまり、生成されるコードは<em>whileループ</em>となり、大きな入力でもスタックが溢れません。</p>
+<p><code>lengthTailRec</code>の実装を理解する上では、補助関数<code>length'</code>が基本的に累算器引数を使って追加の状態を保持していることに注目してください。
+追加の状態とは、部分的な結果です。
+0から始まり、入力の配列中の全ての各要素について1ずつ足されて大きくなっていきます。</p>
+<p>なお、累算器を「状態」と考えることもできますが、直接には変更されていません。</p>
 <h2 id="明示的な再帰より畳み込みを選ぼう"><a class="header" href="#明示的な再帰より畳み込みを選ぼう">明示的な再帰より畳み込みを選ぼう</a></h2>
-<p>末尾再帰を使用して再帰関数を記述できれば末尾再帰最適化の恩恵を受けることができるので、全ての関数をこの形で書こうとする誘惑にかられます。
+<p>末尾再帰を使用して再帰関数を記述できれば末尾再帰最適化の恩恵を受けられるので、全ての関数をこの形で書こうとする誘惑に駆られます。
 しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。
 <code>map</code>や<code>fold</code>のような組み合わせの部品を使って直接アルゴリズムを書くことには、コードの単純さという利点があります。
-これらの部品はよく知られており、明示的な再帰よりもアルゴリズムの<em>意図</em>をよりはっきりとさせるのです。</p>
+これらの部品はよく知られており、だからこそ明示的な再帰よりもアルゴリズムの<em>意図</em>がより良く伝わるのです。</p>
 <p>例えば<code>foldr</code>を使って配列を反転できます。</p>
 <pre><code class="language-text">&gt; import Data.Foldable
 
@@ -634,19 +669,19 @@ lengthTailRec arr = length' arr 0
 <li>（普通。テストなし）関数<code>foldl (==) false xs</code>が真を返すような配列<code>xs</code>とはどのようなものか説明してください。
 言い換えると、「関数は<code>xs</code>が……を含むときに<code>true</code>を返す」という文を完成させることになります。</li>
 <li>（普通）末尾再帰の形式を取っていること以外は<code>fib</code>と同じような関数<code>fibTailRec</code>を書いてください。
-<em>手掛かり</em>：累積器引数を使ってください。</li>
+<em>手掛かり</em>：累算器引数を使ってください。</li>
 <li>（普通）<code>foldl</code>を使って<code>reverse</code>を書いてみましょう。</li>
 </ol>
 <h2 id="仮想ファイルシステム"><a class="header" href="#仮想ファイルシステム">仮想ファイルシステム</a></h2>
-<p>この節では、これまで学んだことを応用して、模擬的なファイルシステムで動作する関数を書いていきます。
-事前に定義されたAPIで動作するように、マップ、畳み込み、及びフィルタを使用します。</p>
+<p>この節ではこれまで学んだことを応用してファイルシステムのモデルを扱う関数を書きます。
+事前に定義されたAPIを扱う上でマップ、畳み込み、及びフィルタを使用します。</p>
 <p><code>Data.Path</code>モジュールでは、次のように仮想ファイルシステムのAPIが定義されています。</p>
 <ul>
 <li>ファイルシステム内のパスを表す型<code>Path</code>があります。</li>
 <li>ルートディレクトリを表すパス<code>root</code>があります。</li>
 <li><code>ls</code>関数はディレクトリ内のファイルを列挙します。</li>
 <li><code>filename</code>関数は<code>Path</code>のファイル名を返します。</li>
-<li><code>size</code>関数は<code>Path</code>が示すファイルの大きさを返します。</li>
+<li><code>size</code>関数はファイルを表す<code>Path</code>のファイルの大きさを返します。</li>
 <li><code>isDirectory</code>関数はファイルかディレクトリかを調べます。</li>
 </ul>
 <p>型について言うと、次のような型定義があります。</p>
@@ -674,19 +709,25 @@ true
 &gt; ls root
 [/bin/,/etc/,/home/]
 </code></pre>
-<p><code>Test.Examples</code>モジュールでは<code>Data.Path</code>APIを使用する関数を定義しています。
+<p><code>Test.Examples</code>モジュールでは<code>Data.Path</code> APIを使用する関数を定義しています。
 <code>Data.Path</code>モジュールを変更したり定義を理解したりする必要はありません。
 全て<code>Test.Examples</code>モジュールだけで作業します。</p>
 <h2 id="全てのファイルの一覧"><a class="header" href="#全てのファイルの一覧">全てのファイルの一覧</a></h2>
-<p>それでは、ディレクトリの中身を含めた全てのファイルを列挙する関数を書いてみましょう。この関数は以下のような型を持つでしょう。</p>
+<p>それでは、ディレクトリの中身を含めた全てのファイルを深く列挙する関数を書いてみましょう。
+この関数は以下のような型を持つでしょう。</p>
 <pre><code class="language-haskell">allFiles :: Path -&gt; Array Path
 </code></pre>
-<p>再帰を使ってこの関数を定義できます。まずは<code>ls</code>を使用してディレクトリの直接の子を列挙します。それぞれの子について再帰的に<code>allFiles</code>を適用すると、それぞれパスの配列が返ってくるでしょう。同時に<code>concatMap</code>を適用すると、この結果を平坦にできます。</p>
+<p>再帰を使ってこの関数を定義できます。
+<code>ls</code>を使うとディレクトリ直下の子が列挙されます。
+それぞれの子について再帰的に<code>allFiles</code>を適用すると、それぞれパスの配列が返ります。
+<code>concatMap</code>を使うと、<code>allFiles</code>を適用して平坦化するまでを一度にできます。</p>
 <p>最後に、cons演算子<code>:</code>を使って現在のファイルも含めます。</p>
 <pre><code class="language-haskell">allFiles file = file : concatMap allFiles (ls file)
 </code></pre>
+<blockquote>
 <p><em>補足</em>：実はcons演算子<code>:</code>は、不変な配列に対して効率性が悪いので、一般的には推奨されません。
-連結リストやシーケンスなどの他のデータ構造を使用すると、効率性を向上させることができます。</p>
+連結リストやシーケンスなどの他のデータ構造を使用すると、効率性を向上させられます。</p>
+</blockquote>
 <p>それではPSCiでこの関数を試してみましょう。</p>
 <pre><code class="language-text">&gt; import Test.Examples
 &gt; import Data.Path
@@ -699,15 +740,18 @@ true
 do記法で配列内包表記を使ってもこの関数を書くことができるので見ていきましょう。</p>
 <p>逆向きの矢印は配列から要素を選択するのに相当することを思い出してください。
 最初の工程は引数の直接の子から要素を選択することです。
-それから、単にそのファイルに対してこの再帰関数を呼びします。
-do記法を使用しているので、再帰的な結果を全て連結する<code>concatMap</code>が暗黙に呼び出されています。</p>
+それからそのファイルに対して再帰関数を呼び出します。
+do記法を使用しているので<code>concatMap</code>が暗黙に呼び出されています。
+この関数は再帰的な結果を全て連結します。</p>
 <p>新しいバージョンは次のようになります。</p>
 <pre><code class="language-haskell">allFiles' :: Path -&gt; Array Path
 allFiles' file = file : do
   child &lt;- ls file
   allFiles' child
 </code></pre>
-<p>PSCiで新しいコードを試してみてください。同じ結果が返ってくるはずです。どちらのほうがわかりやすいかの選定はお任せします。</p>
+<p>PSCiで新しいコードを試してみてください。
+同じ結果が返ってくるはずです。
+どちらのほうがわかりやすいかの選定はお任せします。</p>
 <h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
 <li>
@@ -727,14 +771,14 @@ Nothing
 <p><em>手掛かり</em>：この関数をdo記法を使った配列内包表記で書いてみましょう。</p>
 </li>
 <li>
-<p>（難しい）<code>Path</code>を取って<code>Path</code>に最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。
-<em>補足</em>：空配列や1要素の配列を返すことで、<code>Path</code>にゼロか1個のファイルがある場合についても考慮してください。</p>
+<p>（難しい）<code>Path</code>中の最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。
+<em>補足</em>：空配列や1要素の配列を返すことで、<code>Path</code>にそれぞれゼロか1個のファイルがある場合についても考慮してください。</p>
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
-<p>この章では、アルゴリズムを簡潔に表現する手段として、PureScriptでの再帰の基本を説明しました。
+<p>この章ではアルゴリズムを簡潔に表現するためにPureScriptでの再帰の基本を押さえました。
 また、独自の中置演算子や、マップ、絞り込みや畳み込みなどの配列に対する標準関数、及びこれらの概念を組み合わせた配列内包表記を導入しました。
-最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、累積器引数を使用して末尾再帰形に関数を変換する方法を示しました。</p>
+最後に、スタックオーバーフローエラーを回避するために末尾再帰を使用することの重要性、累算器引数を使用して末尾再帰形に関数を変換する方法を示しました。</p>
 
                     </main>
 

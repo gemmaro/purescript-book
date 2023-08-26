@@ -197,7 +197,7 @@ testing</em>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introdu
 [1, 2, 3, 4, 5, 5]
 </code></pre>
 <p>典型的なテストスイートでは、手作業でこのような小さなテスト項目を幾つも作成し、結果が正しい値と等しいことを確認することでテストを実施します。
-しかし、 <code>merge</code>関数について知る必要があるものは全て、この性質に要約できます。</p>
+しかし、<code>merge</code>関数について知る必要があるものは全て、この性質に要約できます。</p>
 <ul>
 <li><code>xs</code>と<code>ys</code>が整列済みなら、<code>merge xs ys</code>は両方の配列が一緒に結合されて整列された結果になります。</li>
 </ul>
@@ -208,9 +208,8 @@ testing</em>）と呼ばれ、Haskellの<a href="http://wiki.haskell.org/Introdu
   quickCheck \xs ys -&gt;
     eq (merge (sort xs) (sort ys)) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>このコードを実行すると、 <code>quickcheck</code>は無作為な入力 <code>xs</code>と
-<code>ys</code>を生成してこの関数に渡すことで、主張しようとしている性質を反証しようとします。
-何らかの入力に対して関数が <code>false</code>を返した場合、性質は正しくないことが示され、ライブラリはエラーを発生させます。
+<p>このコードを実行すると、<code>quickcheck</code>は無作為な入力<code>xs</code>と<code>ys</code>を生成してこの関数に渡すことで、主張した性質を反証しようとします。
+何らかの入力に対して関数が<code>false</code>を返した場合、性質は正しくなく、ライブラリはエラーを発生させます。
 幸いなことに、次のように100個の無作為なテスト項目を生成しても、ライブラリはこの性質を反証できません。</p>
 <pre><code class="language-text">$ spago test
 
@@ -225,9 +224,9 @@ Tests succeeded.
 <pre><code class="language-text">Error: Test 1 failed:
 Test returned false
 </code></pre>
-<p>見ての通りこのエラーメッセージではあまり役に立ちませんが、少し工夫するだけで改良できます。</p>
-<h2 id="エラーメッセージの改善"><a class="header" href="#エラーメッセージの改善">エラーメッセージの改善</a></h2>
-<p>テスト項目が失敗した時に同時にエラーメッセージを提供する上で、<code>quickcheck</code>は<code>&lt;?&gt;</code>演算子を提供しています。
+<p>見ての通りこのエラー文言ではあまり役に立ちませんが、少し工夫するだけで改良できます。</p>
+<h2 id="エラー文言の改善"><a class="header" href="#エラー文言の改善">エラー文言の改善</a></h2>
+<p>テスト項目が失敗した時に同時にエラー文言を提供する上で、<code>quickcheck</code>は<code>&lt;?&gt;</code>演算子を提供しています。
 次のように性質の定義とエラー文言を<code>&lt;?&gt;</code>で区切って書くだけです。</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   let
@@ -236,7 +235,7 @@ Test returned false
   in
     eq result expected &lt;?&gt; &quot;Result:\n&quot; &lt;&gt; show result &lt;&gt; &quot;\nnot equal to expected:\n&quot; &lt;&gt; show expected
 </code></pre>
-<p>このとき、もしバグを混入するようにコードを変更すると、最初のテスト項目が失敗したときに改良されたエラーメッセージが表示されます。</p>
+<p>このとき、もしバグを混入するようにコードを変更すると、最初のテスト項目が失敗したときに改良されたエラー文言が表示されます。</p>
 <pre><code class="language-text">Error: Test 1 (seed 534161891) failed:
 Result:
 [-822215,-196136,-116841,618343,887447,-888285]
@@ -250,14 +249,14 @@ not equal to expected:
 <em>補足</em>：この新しい性質は冗長です。
 というのもこの状況は既に既存の性質で押さえられているからです。
 ここでは読者がQuickCheckを使う練習のための簡単なやり方を示そうとしているだけです。</li>
-<li>（簡単）<code>merge</code>の残りの性質に対して、適切なエラーメッセージを追加してください。</li>
+<li>（簡単）<code>merge</code>の残りの性質に対して、適切なエラー文言を追加してください。</li>
 </ol>
 <h2 id="多相的なコードのテスト"><a class="header" href="#多相的なコードのテスト">多相的なコードのテスト</a></h2>
 <p><code>Merge</code>モジュールでは、数の配列だけでなく、 <code>Ord</code>型クラスに属するどんな型の配列に対しても動作する、 <code>merge</code>関数を一般化した
 <code>mergePoly</code>という関数が定義されています。</p>
 <pre><code class="language-haskell">mergePoly :: forall a. Ord a =&gt; Array a -&gt; Array a -&gt; Array a
 </code></pre>
-<p><code>merge</code>の代わりに <code>mergePoly</code>を使うように元のテストを変更すると、次のようなエラーメッセージが表示されます。</p>
+<p><code>merge</code>の代わりに <code>mergePoly</code>を使うように元のテストを変更すると、次のようなエラー文言が表示されます。</p>
 <pre><code class="language-text">No type class instance was found for
 
   Test.QuickCheck.Arbitrary.Arbitrary t0
@@ -265,7 +264,7 @@ not equal to expected:
 The instance head contains unknown type variables.
 Consider adding a type annotation.
 </code></pre>
-<p>このエラーメッセージは、配列に持たせたい要素の型が何なのかわからないので、コンパイラが無作為なテスト項目を生成できなかったということを示しています。
+<p>このエラー文言は、配列に持たせたい要素の型が何なのかわからないので、コンパイラが無作為なテスト項目を生成できなかったということを示しています。
 このような場合、型註釈を使ってコンパイラが特定の型を推論するように強制できます。
 例えば<code>Array Int</code>などです。</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
@@ -273,7 +272,7 @@ Consider adding a type annotation.
 </code></pre>
 <p>代替案として型を指定する補助関数を使うこともできます。
 こうするとより見通しのよいコードになることがあります。
-例えば同値関数の同義な関数<code>ints</code>を定義したとしましょう。</p>
+例えば同値関数の同義語として関数<code>ints</code>を定義したとしましょう。</p>
 <pre><code class="language-haskell">ints :: Array Int -&gt; Array Int
 ints = id
 </code></pre>
@@ -281,16 +280,15 @@ ints = id
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (ints $ mergePoly (sort xs) (sort ys)) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>ここで、 <code>ints</code>関数が不明な型を解消するために使われているため、 <code>xs</code>と <code>ys</code>はどちらも型 <code>Array Int</code>を持っています。</p>
+<p>ここで、<code>ints</code>関数が不明な型の曖昧さを解消するために使われているため、<code>xs</code>と<code>ys</code>は型<code>Array Int</code>を持っています。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（簡単）<code>xs</code>と <code>ys</code>の型を <code>Array Boolean</code>に強制する関数 <code>bools</code>を書き、
-<code>mergePoly</code>をその型でテストする性質を追加してください。</li>
-<li>（普通）標準関数から（例えば<code>arrays</code>パッケージから）1つ関数を選び、適切なエラーメッセージを含めてQuickCheckの性質を書いてください。
+<li>（簡単）<code>xs</code>と<code>ys</code>の型を<code>Array Boolean</code>に強制する関数<code>bools</code>を書き、<code>mergePoly</code>をその型でテストする性質を追加してください。</li>
+<li>（普通）標準関数から（例えば<code>arrays</code>パッケージから）1つ関数を選び、適切なエラー文言を含めてQuickCheckの性質を書いてください。
 その性質は、補助関数を使って多相型引数を <code>Int</code>か <code>Boolean</code>のどちらかに固定しなければいけません。</li>
 </ol>
 <h2 id="任意のデータの生成"><a class="header" href="#任意のデータの生成">任意のデータの生成</a></h2>
-<p><code>quickcheck</code>ライブラリを使って性質に対するテスト項目を無作為に生成する方法について説明します。</p>
+<p>それでは<code>quickcheck</code>ライブラリが性質に対するテスト項目をどのように無作為に生成できているのかを見ていきます。</p>
 <p>無作為に値を生成できるような型は、次のような型クラス <code>Arbitary</code>のインスタンスを持っています。</p>
 <pre><code class="language-haskell">class Arbitrary t where
   arbitrary :: Gen t
@@ -300,9 +298,8 @@ ints = id
 <code>Test.QuickCheck.Gen</code>モジュールは、生成器を構築するための幾つかの有用なコンビネータを定義しています。</p>
 <p><code>Gen</code>はモナドでもアプリカティブ関手でもあるので、
 <code>Arbitary</code>型クラスの新しいインスタンスを作成するのに、いつも使っているようなコンビネータを自由に使うことができます。</p>
-<p>例えば、 <code>quickcheck</code>ライブラリで提供されている <code>Int</code>型用の
-<code>Arbitrary</code>インスタンスを使い、256個のバイト値上の分布を作ることができます。
-これには<code>Gen</code>用に<code>Functor</code>インスタンスを使って整数から任意の整数値のバイトまでマップします。</p>
+<p>例えば、<code>quickcheck</code>ライブラリで提供されている<code>Int</code>型用の<code>Arbitrary</code>インスタンスを使い、256個のバイト値上の分布を作れます。
+これには<code>Gen</code>用の<code>Functor</code>インスタンスを使い、整数からバイトへの関数を任意の整数値に写します。</p>
 <pre><code class="language-haskell">newtype Byte = Byte Int
 
 instance Arbitrary Byte where
@@ -311,16 +308,15 @@ instance Arbitrary Byte where
     intToByte n | n &gt;= 0 = Byte (n `mod` 256)
                 | otherwise = intToByte (-n)
 </code></pre>
-<p>ここでは、0から255までの間の整数値であるような型 <code>Byte</code>を定義しています。
-<code>Arbitrary</code>インスタンスは <code>map</code>演算子を使って、 <code>intToByte</code>関数を <code>arbitrary</code>アクションまで持ち上げています。
-<code>arbitrary</code>アクション内部の型は <code>Gen Int</code>と推論されます。</p>
+<p>ここでは、0から255までの間の整数値であるような型<code>Byte</code>を定義しています。
+<code>Arbitrary</code>インスタンスは<code>map</code>演算子を使って、<code>intToByte</code>関数を<code>arbitrary</code>動作まで持ち上げています。
+<code>arbitrary</code>動作内部の型は<code>Gen Int</code>と推論されます。</p>
 <p>この考え方を <code>merge</code>用のテストに使うこともできます。</p>
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (numbers $ mergePoly (sort xs) (sort ys)) (sort $ xs &lt;&gt; ys)
 </code></pre>
-<p>このテストでは、任意の配列 <code>xs</code>と <code>ys</code>を生成しますが、 <code>merge</code>は整列済みの入力を期待しているので、 <code>xs</code>と
-<code>ys</code>を整列しておかなければなりません。
-一方で、整列された配列を表すnewtypeを作成し、整列されたデータを生成する <code>Arbitrary</code>インスタンスを書くこともできます。</p>
+<p>このテストでは、任意の配列<code>xs</code>と<code>ys</code>を生成しますが、<code>merge</code>は整列済みの入力を期待しているので、これらを整列しておかなければなりません。
+一方で、整列された配列を表すnewtypeを作成し、整列されたデータを生成する<code>Arbitrary</code>インスタンスを書くこともできます。</p>
 <pre><code class="language-haskell">newtype Sorted a = Sorted (Array a)
 
 sorted :: forall a. Sorted a -&gt; Array a
@@ -333,9 +329,9 @@ instance (Arbitrary a, Ord a) =&gt; Arbitrary (Sorted a) where
 <pre><code class="language-haskell">quickCheck \xs ys -&gt;
   eq (ints $ mergePoly (sorted xs) (sorted ys)) (sort $ sorted xs &lt;&gt; sorted ys)
 </code></pre>
-<p>これは些細な変更に見えるかもしれませんが、 <code>xs</code>と <code>ys</code>の型はただの <code>Array Int</code>から <code>Sorted Int</code>へと変更されています。
-これにより、 <code>mergePoly</code>関数は整列済みの入力を取る、という<em>意図</em>を、わかりやすく示すことができます。
-理想的には、 <code>mergePoly</code>関数自体の型が <code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
+<p>これは些細な変更に見えるかもしれませんが、<code>xs</code>と<code>ys</code>の型はただの<code>Array Int</code>から<code>Sorted Int</code>へと変更されています。
+これにより、<code>mergePoly</code>関数は整列済みの入力を取る、という<em>意図</em>をわかりやすく示すことができます。
+理想的には、<code>mergePoly</code>関数自体の型が<code>Sorted</code>型構築子を使うようにするといいでしょう。</p>
 <p>より興味深い例として、 <code>Tree</code>モジュールでは枝の値で整列された二分木の型が定義されています。</p>
 <pre><code class="language-haskell">data Tree a
   = Leaf
@@ -347,7 +343,7 @@ member    :: forall a. Ord a =&gt; a -&gt; Tree a -&gt; Boolean
 fromArray :: forall a. Ord a =&gt; Array a -&gt; Tree a
 toArray   :: forall a. Tree a -&gt; Array a
 </code></pre>
-<p><code>insert</code>関数は新しい要素を整列済みの二分木に挿入するのに使われ、 <code>member</code>関数は特定の値の有無を木に問い合わせるのに使われます。
+<p><code>insert</code>関数は新しい要素を整列済みの木に挿入し、<code>member</code>関数は特定の値について木に問い合わせます。
 例えば次のようになります。</p>
 <pre><code class="language-text">&gt; import Tree
 
@@ -357,13 +353,13 @@ true
 &gt; member 1 Leaf
 false
 </code></pre>
-<p><code>toArray</code>関数と <code>fromArray</code>関数は、整列された木と整列された配列を相互に変換するために使われます。
-<code>fromArray</code>を使うと、木についての <code>Arbitrary</code>インスタンスを書くことができます。</p>
+<p><code>toArray</code>関数と<code>fromArray</code>関数は、整列された木と配列を相互に変換できます。
+<code>fromArray</code>を使うと、木についての<code>Arbitrary</code>インスタンスを書けます。</p>
 <pre><code class="language-haskell">instance (Arbitrary a, Ord a) =&gt; Arbitrary (Tree a) where
   arbitrary = map fromArray arbitrary
 </code></pre>
-<p>型 <code>a</code>についての<code>Arbitary</code>インスタンスが使えるなら、テストする性質の引数の型として <code>Tree a</code>を使うことができます。例えば、
-<code>member</code>テストは値を挿入した後は常に <code>true</code>を返すことをテストできます。</p>
+<p>型<code>a</code>用に使える<code>Arbitary</code>インスタンスがあるなら、テストする性質の引数の型として<code>Tree a</code>を使えます。
+例えば、<code>member</code>による木の確認については、値を挿入した後は常に<code>true</code>を返すことをテストできます。</p>
 <pre><code class="language-haskell">quickCheck \t a -&gt;
   member a $ insert a $ treeOfInt t
 </code></pre>
@@ -374,14 +370,14 @@ false
 <li>（普通）<code>a-z</code>の範囲から無作為に選ばれた文字の集まりを生成する
 <code>Arbitrary</code>インスタンスを持つ、<code>String</code>のnewtypeを作ってください。
 <em>手掛かり</em>：<code>Test.QuickCheck.Gen</code>モジュールから <code>elements</code>と <code>arrayOf</code>関数を使います。</li>
-<li>（難しい）木に挿入された値は、どれだけ挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。</li>
+<li>（難しい）木に挿入された値は、どれだけ沢山の挿入があった後でも、その木の構成要素であることを主張する性質を書いてください。</li>
 </ol>
 <h2 id="高階関数のテスト"><a class="header" href="#高階関数のテスト">高階関数のテスト</a></h2>
-<p><code>Merge</code>モジュールは <code>merge</code>関数の別の一般化も定義しています。
-<code>mergeWith</code>関数は追加の関数を引数として取り、統合される要素の順序を決定するのに使われます。
-つまり <code>mergeWith</code>は高階関数です。</p>
+<p><code>Merge</code>モジュールは<code>merge</code>関数の別の一般化も定義しています。
+<code>mergeWith</code>関数は追加の関数を引数として取り、統合される要素の順序を判定します。
+つまり<code>mergeWith</code>は高階関数です。</p>
 <p>例えば<code>length</code>関数を最初の引数として渡し、既に長さの昇順になっている2つの配列を統合できます。
-このとき、結果も長さの昇順になっていなければなりません。</p>
+その結果もまた長さの昇順になっているでしょう。</p>
 <pre><code class="language-haskell">&gt; import Data.String
 
 &gt; mergeWith length
@@ -391,25 +387,24 @@ false
 [&quot;&quot;,&quot;x&quot;,&quot;ab&quot;,&quot;xyz&quot;,&quot;abcd&quot;]
 </code></pre>
 <p>このような関数をテストするにはどうしたらいいでしょうか。
-理想的には、関数である最初の引数を含めた、3つの引数全てについて、値を生成したいと思うでしょう。</p>
-<p>関数を無作為に生成できるようにする、もう1つの型クラスがあります。
-この型クラスは <code>Coarbitrary</code>と呼ばれており、次のように定義されています。</p>
+理想的には、関数である最初の引数を含めた3つの引数全てについて、値を生成したいところです。</p>
+<p>無作為に生成された関数を作れるようにする、2つ目の型クラスがあります。
+<code>Coarbitrary</code>という名前で次のように定義されています。</p>
 <pre><code class="language-haskell">class Coarbitrary t where
   coarbitrary :: forall r. t -&gt; Gen r -&gt; Gen r
 </code></pre>
-<p><code>coarbitrary</code>関数は、型 <code>t</code>と、関数の結果の型 <code>r</code>についての乱数生成器を関数の引数としてとり、乱数生成器を <em>かき乱す</em>
-のにこの引数を使います。つまり関数の引数を使って、乱数生成器の無作為な出力を変更しているのです。</p>
-<p>また、もし関数の定義域が <code>Coarbitrary</code>で、値域が
-<code>Arbitrary</code>なら、<code>Arbitrary</code>の関数を与える型クラスインスタンスが存在します。</p>
+<p><code>coarbitrary</code>関数は、型<code>t</code>の関数の引数と、型<code>r</code>の関数の結果の乱数生成器を取ります。
+この関数引数を使って乱数生成器を<em>かき乱し</em>ます。
+つまり、関数の引数を使って乱数生成器の無作為な出力を変更し、結果としているのです。</p>
+<p>また、もし関数の定義域が<code>Coarbitrary</code>で値域が<code>Arbitrary</code>なら、<code>Arbitrary</code>の関数を与える型クラスインスタンスが存在します。</p>
 <pre><code class="language-haskell">instance (Coarbitrary a, Arbitrary b) =&gt; Arbitrary (a -&gt; b)
 </code></pre>
-<p>実は、これが意味しているのは、引数として関数を取るような性質を記述できるということです。
+<p>実際のところ、引数として関数を取るような性質を記述できます。
 <code>mergeWith</code>関数の場合では、新しい引数を考慮するようにテストを修正すると、最初の引数を無作為に生成できます。</p>
 <p>結果が整列されていることは保証できません。
-必ずしも<code>Ord</code>インスタンスを持っているとさえ限らないのです。
-しかし、引数として渡す関数 <code>f</code>に従って結果が整列されていることは期待されます。
-更に、2つの入力配列が <code>f</code>に従って整列されている必要がありますので、<code>sortBy</code>関数を使って関数 <code>f</code>が適用されたあとの比較に基づいて
-<code>xs</code>と<code>ys</code>を整列します。</p>
+<code>Ord</code>インスタンスを持っているとさえ限らないのです。
+しかし、引数として渡す関数<code>f</code>に従って結果が整列されていることは期待されます。
+更に、2つの入力配列が<code>f</code>に従って整列されている必要がありますので、<code>sortBy</code>関数を使って関数<code>f</code>が適用されたあとの比較に基づいて<code>xs</code>と<code>ys</code>を整列します。</p>
 <pre><code class="language-haskell">quickCheck \xs ys f -&gt;
   let
     result =
@@ -430,8 +425,8 @@ intToBool = id
 <p>関数は <code>Arbitrary</code>であるだけでなく <code>Coarbitrary</code>でもあります。</p>
 <pre><code class="language-haskell">instance (Arbitrary a, Coarbitrary b) =&gt; Coarbitrary (a -&gt; b)
 </code></pre>
-<p>これは値の生成が単純な関数だけに限定されるものではないことを意味しています。
-つまり<em>高階関数</em>や、引数が高階関数であるような関数もまた、無作為に生成できるのです。</p>
+<p>つまり値や関数だけに制限されません。
+<em>高階関数</em>や、引数が高階関数であるような関数やその他諸々もまた、無作為に生成できるのです。</p>
 <h2 id="coarbitraryのインスタンスを書く"><a class="header" href="#coarbitraryのインスタンスを書く">Coarbitraryのインスタンスを書く</a></h2>
 <p><code>Gen</code>の <code>Monad</code>や <code>Applicative</code>インスタンスを使って独自のデータ型に対して
 <code>Arbitrary</code>インスタンスを書くことができるのとちょうど同じように、独自の <code>Coarbitrary</code>インスタンスを書くこともできます。
@@ -440,8 +435,8 @@ intToBool = id
 枝に格納されている要素の型に <code>Coarbitrary</code>インスタンスが必要になります。</p>
 <pre><code class="language-haskell">instance Coarbitrary a =&gt; Coarbitrary (Tree a) where
 </code></pre>
-<p>型 <code>Tree a</code>の値が与えられたときに、乱数発生器をかき乱す関数を記述する必要があります。
-入力値が <code>Leaf</code>であれば、そのままにしておく生成器を返します。</p>
+<p>型<code>Tree a</code>の値が与えられたときに、乱数発生器をかき乱す関数を記述する必要があります。
+入力値が<code>Leaf</code>であれば、そのままにしておく生成器を返します。</p>
 <pre><code class="language-haskell">  coarbitrary Leaf = id
 </code></pre>
 <p>もし木が <code>Branch</code>なら、左の部分木、値、右の部分木を使って生成器をかき乱します。
@@ -452,11 +447,12 @@ intToBool = id
     coarbitrary r
 </code></pre>
 <p>これで、木を引数にとるような関数を引数に含む性質を自由に書くことができるようになりました。
-例えば<code>Tree</code>モジュールでは<code>anywhere</code>が定義されており、これは述語が引数のどんな部分木についても成り立っているかを調べる関数です。</p>
+例えば<code>Tree</code>モジュールでは関数<code>anywhere</code>が定義されています。
+これは述語が引数のどんな部分木についても満たされるかを調べます。</p>
 <pre><code class="language-haskell">anywhere :: forall a. (Tree a -&gt; Boolean) -&gt; Tree a -&gt; Boolean
 </code></pre>
-<p>これで、この述語関数<code>anywhere</code>を無作為に生成できるようになりました。
-例えば、 <code>anywhere</code>関数は<em>ある命題のもとで不変</em>であることが期待されます。</p>
+<p>今や述語関数を無作為に生成できます。
+例えば、<code>anywhere</code>関数は<em>選言の法則を満たす</em>ことが期待されます。</p>
 <pre><code class="language-haskell">quickCheck \f g t -&gt;
   anywhere (\s -&gt; f s || g s) t ==
     anywhere f (treeOfInt t) || anywhere g t
@@ -466,9 +462,9 @@ intToBool = id
 treeOfInt = id
 </code></pre>
 <h2 id="副作用のないテスト"><a class="header" href="#副作用のないテスト">副作用のないテスト</a></h2>
-<p>通常、テストの目的ではテストスイートの <code>main</code>アクションに<code>quickCheck</code>関数の呼び出しが含まれています。
-しかし、副作用を使わない<code>quickCheckPure</code>と呼ばれる <code>quickCheck</code>関数の亜種もあります。
-<code>quickCheckPure</code>は、入力として乱数の種をとり、テスト結果の配列を返す純粋な関数です。</p>
+<p>通常、テストの目的ではテストスイートの<code>main</code>動作に<code>quickCheck</code>関数の呼び出しが含まれています。
+しかし<code>quickCheck</code>関数には亜種があり、<code>quickCheckPure</code>という名前です。
+副作用を使わない代わりに、入力として乱数の種を取ってテスト結果の配列を返す純粋な関数です。</p>
 <p>PSCiを使用して <code>quickCheckPure</code>を試せます。
 ここでは <code>merge</code>操作が結合法則を満たすことをテストします。</p>
 <pre><code class="language-text">&gt; import Prelude
@@ -484,7 +480,7 @@ treeOfInt = id
 
 Success : Success : ...
 </code></pre>
-<p><code>quickCheckPure</code>は乱数の種、生成するテスト項目数、テストする性質の3つの引数をとります。
+<p><code>quickCheckPure</code>は乱数の種、生成するテスト項目数、テストする性質の3つの引数を取ります。
 もし全てのテスト項目が成功したら、<code>Success</code>データ構築子の配列がコンソールに出力されます。</p>
 <p><code>quickCheckPure</code>は、性能ベンチマークの入力データ生成や、webアプリケーションのフォームデータ例を無作為に生成するというような状況で便利かもしれません。</p>
 <h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
@@ -500,15 +496,15 @@ Success : Success : ...
 <p>（普通）次のデータ型の<code>Arbitrary</code>と<code>Coarbitrary</code>インスタンスを書いてください。</p>
 <pre><code class="language-haskell">data OneTwoThree a = One a | Two a a | Three a a a
 </code></pre>
-<p><em>手掛かり</em>：<code>Test.QuickCheck.Gen</code>で定義された <code>oneOf</code>関数を使って <code>Arbitrary</code>インスタンスを定義してください。</p>
+<p><em>手掛かり</em>：<code>Test.QuickCheck.Gen</code>で定義された<code>oneOf</code>関数を使って<code>Arbitrary</code>インスタンスを定義してください。</p>
 </li>
 <li>
-<p>（普通）<code>all</code>を使って <code>quickCheckPure</code>関数の結果を単純化してください。
+<p>（普通）<code>all</code>を使って<code>quickCheckPure</code>関数の結果を単純化してください。
 この新しい関数は型<code>List Result -&gt; Boolean</code>を持ち、全てのテストが通れば<code>true</code>を、そうでなければ<code>false</code>を返します。</p>
 </li>
 <li>
 <p>（普通）<code>quickCheckPure</code>の結果を単純にする別の手法として、関数<code>squashResults :: List Result -&gt; Result</code>を書いてみてください。
-<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで、失敗した場合の最初のエラーを保存することを検討してください。</p>
+<code>Data.Maybe.First</code>の<code>First</code>モノイドと共に<code>foldMap</code>関数を使うことで、失敗した場合の最初のエラーを保持することを検討してください。</p>
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
@@ -516,9 +512,8 @@ Success : Success : ...
 これを使うと<em>生成的テスティング</em>のパラダイムを使って、宣言的な方法でテストを書くことができました。具体的には以下です。</p>
 <ul>
 <li><code>spago test</code>を使ってQuickCheckのテストを自動化する方法を見ました。</li>
-<li>性質を関数として書く方法とエラーメッセージを改良する <code>&lt;?&gt;</code>演算子の使い方を説明しました。</li>
-<li><code>Arbitrary</code>と
-<code>Coarbitrary</code>型クラスによって、如何にして定型的なテストコードの自動生成を可能にし、またどうすれば高階な性質関数が可能になるかを見てきました。</li>
+<li>性質を関数として書く方法とエラー文言を改良する<code>&lt;?&gt;</code>演算子の使い方を説明しました。</li>
+<li><code>Arbitrary</code>と<code>Coarbitrary</code>型クラスによって定型的なテストコードの自動生成を可能にする方法や、高階な性質のテストを可能にする方法を見ました。</li>
 <li>独自のデータ型に対して <code>Arbitrary</code>と <code>Coarbitrary</code>インスタンスを実装する方法を見ました。</li>
 </ul>
 
