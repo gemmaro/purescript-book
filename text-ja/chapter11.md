@@ -1100,7 +1100,7 @@ foreign import setLineHandler
 これは次のような制御子を提供しています。
 
 ```haskell
-customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
+customExecParser :: forall a. ParserPrefs -> ParserInfo a -> Effect a
 ```
 
 実例を見るのが一番です。

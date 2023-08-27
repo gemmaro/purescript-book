@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-08-25 21:33+0900\n"
-"PO-Revision-Date: 2023-08-26 10:46+0900\n"
+"POT-Creation-Date: 2023-08-27 21:39+0900\n"
+"PO-Revision-Date: 2023-08-27 21:43+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -936,11 +936,9 @@ msgstr ""
 #. type: Bullet: '- '
 #: text/chapter1.md:148
 msgid ""
-"The [Purescript Discourse Forum](https://discourse.purescript.org/) is "
+"The [PureScript Discourse Forum](https://discourse.purescript.org/) is "
 "another good place to search for solutions to common problems."
-msgstr ""
-"[PurescriptのDiscourseフォーラム](https://discourse.purescript.org/)もよくあ"
-"る問題への解決策を探すのに良い場所です。"
+msgstr "[PureScriptのDiscourseフォーラム](https://discourse.purescript.org/)もよくある問題への解決策を探すのに良い場所です。"
 
 #. type: Bullet: '- '
 #: text/chapter1.md:148
@@ -1406,7 +1404,7 @@ msgstr "{{#include ../exercises/chapter10/test/URI.purs}}\n"
 msgid ""
 "We also need to write a foreign JavaScript module to import it from. A "
 "corresponding foreign JavaScript module is one of the same name but the "
-"extension changed from `.purs` to `.js`. If the Purescript module above is "
+"extension changed from `.purs` to `.js`. If the PureScript module above is "
 "saved as `URI.purs`, then the foreign JavaScript module is saved as `URI."
 "js`.  Since `encodeURIComponent` is already defined, we have to export it as "
 "`_encodeURIComponent`:"
@@ -1428,7 +1426,7 @@ msgstr "{{#include ../exercises/chapter10/test/URI.js}}\n"
 #. type: Plain text
 #: text/chapter10.md:68
 msgid ""
-"Since version 0.15, Purescript uses the ES module system when interoperating "
+"Since version 0.15, PureScript uses the ES module system when interoperating "
 "with JavaScript. In ES modules, functions and values are exported from a "
 "module by providing the `export` keyword on an object."
 msgstr ""
@@ -2895,9 +2893,11 @@ msgid ""
 "where the JavaScript relies on PureScript type class members since you "
 "wouldn't find that in the existing JavaScript ecosystem."
 msgstr ""
-"一般的にこれらを使うのは、こうしたAPIをカリー化された関数に包むのではなく、既存のJavaScriptライブラリのAPIを直接呼び出したいときぐらいです。\n"
+"一般的にこれらを使うのは、こうしたAPIをカリー化された関数に包むのではなく、既"
+"存のJavaScriptライブラリのAPIを直接呼び出したいときぐらいです。\n"
 "したがってカリー化していない`yell`の例を見せてもあまり意味がありません。\n"
-"というのもJavaScriptがPureScriptの型クラスのメンバーに依っているからで、更にそれは既存のJavaScriptのエコシステムにそのメンバーが見付からないためです。"
+"というのもJavaScriptがPureScriptの型クラスのメンバーに依っているからで、更に"
+"それは既存のJavaScriptのエコシステムにそのメンバーが見付からないためです。"
 
 #. type: Plain text
 #: text/chapter10.md:608
@@ -4217,7 +4217,9 @@ msgstr ""
 msgid ""
 "(Medium) Call this `confirm` function when a users clicks the \"Reset\" "
 "button to ask if they're sure they want to reset their address book."
-msgstr "（普通）利用者が「リセット」ボタンをクリックしたときにこの`confirm`関数を呼び出し、本当に住所録を白紙にしたいか尋ねるようにしてください。"
+msgstr ""
+"（普通）利用者が「リセット」ボタンをクリックしたときにこの`confirm`関数を呼び"
+"出し、本当に住所録を白紙にしたいか尋ねるようにしてください。"
 
 #. type: Title ##
 #: text/chapter10.md:1083 text/chapter11.md:963 text/chapter12.md:594
@@ -7480,8 +7482,10 @@ msgid ""
 "bring – we were able to write a backtracking parser in a declarative style "
 "with only a few lines of code, by reusing standard abstractions!"
 msgstr ""
-"繰り返しになりますが、これはモナド変換子が齎す再利用性の威力を示しています。\n"
-"標準的な抽象化を再利用することで、宣言型スタイルのバックトラック構文解析器を、ほんの数行のコードで書くことができました。"
+"繰り返しになりますが、これはモナド変換子が齎す再利用性の威力を示していま"
+"す。\n"
+"標準的な抽象化を再利用することで、宣言型スタイルのバックトラック構文解析器"
+"を、ほんの数行のコードで書くことができました。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter11.md:721
@@ -8269,12 +8273,11 @@ msgstr ""
 "味深い関手になっています。\n"
 "これは次のような制御子を提供しています。"
 
-# TODO: 原文でもUnicodeの矢印になっています。
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:927
 #, no-wrap
-msgid "customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a\n"
-msgstr "customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a\n"
+msgid "customExecParser :: forall a. ParserPrefs -> ParserInfo a -> Effect a\n"
+msgstr "customExecParser :: forall a. ParserPrefs -> ParserInfo a -> Effect a\n"
 
 #. type: Plain text
 #: text/chapter11.md:932
@@ -8733,16 +8736,13 @@ msgstr ""
 "  , height :: Number\n"
 "  }\n"
 
-# FIXME: w, hとなっていますが、上のコードではwidthとheightになっています。
 #. type: Plain text
 #: text/chapter12.md:90
 msgid ""
 "The `x` and `y` properties represent the location of the top-left corner, "
-"while the `w` and `h` properties represent the width and height, "
-"respectively."
-msgstr ""
-"`x`と`y`プロパティは左上隅の位置を表しており、`w`と`h`のプロパティはそれぞれ"
-"幅と高さを表しています。"
+"while the `width` and `height` properties represent the lengths of the "
+"rectangle, respectively."
+msgstr "`x`と`y`プロパティは左上隅の位置を表しており、`width`と`height`のプロパティはそれぞれ幅と高さを表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:92
@@ -8773,15 +8773,12 @@ msgstr ""
 "  , end    :: Number\n"
 "  }\n"
 
-# FIXME: これも半径がrとradiusで違います。
 #. type: Plain text
 #: text/chapter12.md:104
 msgid ""
-"Here, the `x` and `y` properties represent the center point, `r` is the "
+"Here, the `x` and `y` properties represent the center point, `radius` is the "
 "radius, `start` and `end` represent the endpoints of the arc in radians."
-msgstr ""
-"ここで、`x`と`y`プロパティは弧の中心、`r`は半径、`start`と`end`は弧の両端の角"
-"度を弧度法で表しています。"
+msgstr "ここで、`x`と`y`プロパティは弧の中心、`radius`は半径、`start`と`end`は弧の両端の角度を弧度法で表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:106
@@ -9121,7 +9118,9 @@ msgstr "{{#include ../exercises/chapter12/src/Example/Random.purs:random}}\n"
 msgid ""
 "Next, for each circle, the code creates an `Arc` based on these parameters "
 "and finally fills and strokes the arc with the current styles:"
-msgstr "次のコードでは各円について、これらの変数に基づいて`Arc`を作成し、最後に現在のスタイルに従って円弧を塗り潰し、線描きします。"
+msgstr ""
+"次のコードでは各円について、これらの変数に基づいて`Arc`を作成し、最後に現在の"
+"スタイルに従って円弧を塗り潰し、線描きします。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter12.md:206
@@ -10426,7 +10425,9 @@ msgid ""
 "This approach is taken in the `drawing` package, and it brings the "
 "flexibility of manipulating the scene as data in various ways before "
 "rendering."
-msgstr "この手法は`drawing`パッケージで採られており、描画前に様々な方法でシーンをデータとして操作できる柔軟性を齎しています。"
+msgstr ""
+"この手法は`drawing`パッケージで採られており、描画前に様々な方法でシーンをデー"
+"タとして操作できる柔軟性を齎しています。"
 
 #. type: Plain text
 #: text/chapter12.md:612
@@ -12943,7 +12944,8 @@ msgid ""
 "`Free` monad, which we construct by using our `ContentF` type constructor as "
 "the first type argument:"
 msgstr ""
-"これにより、新しい`Content`モナドを`Free`モナド用の型同義語として定義できます。\n"
+"これにより、新しい`Content`モナドを`Free`モナド用の型同義語として定義できま"
+"す。\n"
 "これは最初の型引数として `ContentF`型構築子を使うことで構築されます。"
 
 #. type: Fenced code block (haskell)
@@ -14018,10 +14020,15 @@ msgid ""
 "rendered markdown, and you probably don't need this clutter in your local "
 "repo):"
 msgstr ""
-"本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テストが含まれます。\n"
-"演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。\n"
+"本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テス"
+"トが含まれます。\n"
+"演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準"
+"備ができます。\n"
 "この工程は`resetSolutions.sh`スクリプトを使えば簡単にできます。\n"
-"また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくと良いでしょう（これらのアンカーはコード片を本書の表示用のMarkdownへ複製するために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうが良いでしょう）。"
+"また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくと良"
+"いでしょう（これらのアンカーはコード片を本書の表示用のMarkdownへ複製するため"
+"に使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほ"
+"うが良いでしょう）。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:29
@@ -14508,9 +14515,12 @@ msgid ""
 "`Number`, `String`, and `Boolean`, respectively, and you can see them in "
 "PSCi by using the `:type` command to print the types of some simple values:"
 msgstr ""
-"JavaScriptの原始型に対応する組み込みデータ型として、PureScriptでは数値型と文字列型、真偽型の3つが定義されています。\n"
-"これらは`Prim`モジュールで定義されており、全てのモジュールに暗黙にインポートされます。\n"
-"それぞれ`Number`、`String`、`Boolean`と呼ばれており、PSCiで`:type`コマンドを使うと簡単な値の型を表示させて確認できます。"
+"JavaScriptの原始型に対応する組み込みデータ型として、PureScriptでは数値型と文"
+"字列型、真偽型の3つが定義されています。\n"
+"これらは`Prim`モジュールで定義されており、全てのモジュールに暗黙にインポート"
+"されます。\n"
+"それぞれ`Number`、`String`、`Boolean`と呼ばれており、PSCiで`:type`コマンドを"
+"使うと簡単な値の型を表示させて確認できます。"
 
 #. type: Fenced code block (text)
 #: text/chapter3.md:39
@@ -14657,7 +14667,8 @@ msgid ""
 "field with the type `String` and an `interests` field with the type `Array "
 "String`, i.e., an array of `String`s."
 msgstr ""
-"この型が示しているのは指定されたオブジェクトが2つの*フィールド*を持っているということです。\n"
+"この型が示しているのは指定されたオブジェクトが2つの*フィールド*を持っていると"
+"いうことです。\n"
 "`String`型のフィールド`name`と`Array String`型のフィールド`interests`です。\n"
 "後者はつまり`String`の配列です。"
 
@@ -14783,7 +14794,9 @@ msgstr ""
 msgid ""
 "If a declaration spans multiple lines, any lines except the first must be "
 "indented past the indentation level of the first line."
-msgstr "宣言が複数行に亙る場合、最初の行以外は最初の行の字下げより深くしなければなりません。"
+msgstr ""
+"宣言が複数行に亙る場合、最初の行以外は最初の行の字下げより深くしなければなり"
+"ません。"
 
 #. type: Plain text
 #: text/chapter3.md:139
@@ -15190,12 +15203,11 @@ msgstr ""
 "つまり`a`や`b`をどの型に置き換えても良く、`constantlyFirst`はその型で動作する"
 "のです。"
 
-# FIXME: `b` - `String`は`b` to be `String`のような気がします。
 #. type: Plain text
 #: text/chapter3.md:279
 msgid ""
-"For example, we might choose the type `a` to be `Int` and `b` – `String`. In "
-"that case, we can _specialize_ the type of `constantlyFirst` to"
+"For example, we might choose the type `a` to be `Int` and `b` to be "
+"`String`. In that case, we can _specialize_ the type of `constantlyFirst` to"
 msgstr ""
 "例えば、`a`を`Int`、`b`を`String`と選んだとします。\n"
 "その場合、`constantlyFirst`の型を次のように*特殊化*できます。"
@@ -15793,7 +15805,9 @@ msgid ""
 "This is because function application associates to the left, which explains "
 "why we can specify function arguments one after the other, separated by "
 "whitespace."
-msgstr "これは関数適用が左に結合するためで、空白で区切った引数を次々に関数に指定するだけでいい理由もこれで分かります。"
+msgstr ""
+"これは関数適用が左に結合するためで、空白で区切った引数を次々に関数に指定する"
+"だけでいい理由もこれで分かります。"
 
 #. type: Plain text
 #: text/chapter3.md:496
@@ -16810,7 +16824,8 @@ msgid ""
 "structure algorithms. Recursion is a basic technique used in functional "
 "programming, which we will use throughout this book."
 msgstr ""
-"この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて見ていきましょう。\n"
+"この章では、アルゴリズムを構造化するときに再帰関数をどのように使うかについて"
+"見ていきましょう。\n"
 "再帰は関数型プログラミングの基本的な手法であり、本書全体に亙って使われます。"
 
 #. type: Plain text
@@ -17594,7 +17609,8 @@ msgstr ""
 #. type: Plain text
 #: text/chapter4.md:233
 msgid "Let's start by mapping each number to the array `1 .. n`:"
-msgstr "`1 .. n`のそれぞれの数を配列`1 .. n`へと対応付けるところから始めましょう。"
+msgstr ""
+"`1 .. n`のそれぞれの数を配列`1 .. n`へと対応付けるところから始めましょう。"
 
 #. type: Fenced code block (text)
 #: text/chapter4.md:234
@@ -17969,10 +17985,14 @@ msgid ""
 "`filter`. Try the two definitions of `factors` to verify that they give the "
 "same results."
 msgstr ""
-"ガードが失敗した場合、配列内包表記の現在の分岐は、結果なしで早めに終了されることを意味します。\n"
-"これは、`guard`の呼び出しが、途中の配列に対して`filter`を使用するのと同じだということです。\n"
-"実践での場面にもよりますが、`filter`の代わりに`guard`を使いたいことは多いでしょう。\n"
-"これらが同じ結果になることを確認するために、`factors`の2つの定義を試してみてください。"
+"ガードが失敗した場合、配列内包表記の現在の分岐は、結果なしで早めに終了される"
+"ことを意味します。\n"
+"これは、`guard`の呼び出しが、途中の配列に対して`filter`を使用するのと同じだと"
+"いうことです。\n"
+"実践での場面にもよりますが、`filter`の代わりに`guard`を使いたいことは多いで"
+"しょう。\n"
+"これらが同じ結果になることを確認するために、`factors`の2つの定義を試してみて"
+"ください。"
 
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:369
@@ -18311,7 +18331,8 @@ msgstr ""
 "末尾再帰最適化を可能にする上で鍵となる観点は以下となります。\n"
 "*末尾位置*にある関数の再帰的な呼び出しは*ジャンプ*に置き換えられます。\n"
 "このジャンプではスタックフレームが確保されません。\n"
-"関数が戻るより前の最後の呼び出しであるとき、呼び出しが*末尾位置*にあるといいます。\n"
+"関数が戻るより前の最後の呼び出しであるとき、呼び出しが*末尾位置*にあるといい"
+"ます。\n"
 "先の例でスタックオーバーフローが見られたのはこれが理由です。\n"
 "`f`の再帰呼び出しが末尾位置*でなかった*からです。"
 
@@ -18463,10 +18484,14 @@ msgid ""
 "are well-understood, and as such, communicate the _intent_ of the algorithm "
 "much better than explicit recursion."
 msgstr ""
-"末尾再帰を使用して再帰関数を記述できれば末尾再帰最適化の恩恵を受けられるので、全ての関数をこの形で書こうとする誘惑に駆られます。\n"
-"しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書くことができることを忘れがちです。\n"
-"`map`や`fold`のような組み合わせの部品を使って直接アルゴリズムを書くことには、コードの単純さという利点があります。\n"
-"これらの部品はよく知られており、だからこそ明示的な再帰よりもアルゴリズムの*意図*がより良く伝わるのです。"
+"末尾再帰を使用して再帰関数を記述できれば末尾再帰最適化の恩恵を受けられるの"
+"で、全ての関数をこの形で書こうとする誘惑に駆られます。\n"
+"しかし、多くの関数は配列やそれに似たデータ構造に対する折り畳みとして直接書く"
+"ことができることを忘れがちです。\n"
+"`map`や`fold`のような組み合わせの部品を使って直接アルゴリズムを書くことには、"
+"コードの単純さという利点があります。\n"
+"これらの部品はよく知られており、だからこそ明示的な再帰よりもアルゴリズムの*意"
+"図*がより良く伝わるのです。"
 
 #. type: Plain text
 #: text/chapter4.md:506
@@ -20344,7 +20369,8 @@ msgid ""
 "the current produced by _two_ lightbulbs _without_ a voltage source."
 msgstr ""
 "これによりつまらないミスを防ぐことができます。\n"
-"例えば電源*なし*に*2つ*の電球により生み出される電流を計算しようとするなどです。"
+"例えば電源*なし*に*2つ*の電球により生み出される電流を計算しようとするなどで"
+"す。"
 
 #. type: Fenced code block (haskell)
 #: text/chapter5.md:418
@@ -20541,7 +20567,8 @@ msgid ""
 "For debugging purposes, we'll want to be able to turn a `Picture` into "
 "something readable. The `showPicture` function lets us do that:"
 msgstr ""
-"不具合を修正していると`Picture`を`String`として表示できるようにしたくなることもあるでしょう。\n"
+"不具合を修正していると`Picture`を`String`として表示できるようにしたくなること"
+"もあるでしょう。\n"
 "これはパターン照合を使用して定義された`showPicture`関数でできます。"
 
 #. type: Fenced code block (haskell)
@@ -20698,7 +20725,8 @@ msgid ""
 "types with new operations."
 msgstr ""
 "また、この章ではパターン照合に密接に関連する代数的データ型も紹介しました。\n"
-"代数的データ型のおかげでデータ構造を簡潔に記述でき、新たな操作でデータ型を拡張する上で、モジュール性のある方法が得られるのでした。"
+"代数的データ型のおかげでデータ構造を簡潔に記述でき、新たな操作でデータ型を拡"
+"張する上で、モジュール性のある方法が得られるのでした。"
 
 #. type: Plain text
 #: text/chapter5.md:536
@@ -20910,7 +20938,8 @@ msgid ""
 "type class_."
 msgstr ""
 "このコードは `showBool​​ean`という名前の型クラスのインスタンスを宣言します。\n"
-"PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前を付けられます。\n"
+"PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインス"
+"タンスに名前を付けられます。\n"
 "このとき、`Boolean`型は *`Show`型クラスに属している* といいます。"
 
 #. type: Plain text
@@ -22861,12 +22890,11 @@ msgstr ""
 msgid "    Remember, your instance must satisfy the laws listed above.\n"
 msgstr "    インスタンスが上で挙げた法則を見たさなくてはならないことを思い出してください。\n"
 
-# FIXME: PureScriptではなくPurescriptになっています。
 #. type: Bullet: '1. '
 #: text/chapter6.md:645
 msgid ""
 "(Difficult) There are multiple ways to implement an instance of `Action "
-"Multiply Int`. How many can you think of? Purescript does not allow multiple "
+"Multiply Int`. How many can you think of? PureScript does not allow multiple "
 "implementations of the same instance, so you will have to replace your "
 "original implementation. _Note_: the tests cover 4 implementations."
 msgstr ""
@@ -23321,9 +23349,11 @@ msgid ""
 "enable logical reasoning about its programs. This is an important idea and a "
 "theme that we will return to throughout the rest of the book."
 msgstr ""
-"この章では型クラス法則も導入しましたが、これは抽象化に型クラスを使うコードについての性質を証明する手法でした。\n"
+"この章では型クラス法則も導入しましたが、これは抽象化に型クラスを使うコードに"
+"ついての性質を証明する手法でした。\n"
 "型クラス法則は*等式推論*と呼ばれる、より大きな分野の一部です。\n"
-"そちらではプログラミング言語の性質と型システムがプログラムを論理的に追究するために使われています。\n"
+"そちらではプログラミング言語の性質と型システムがプログラムを論理的に追究する"
+"ために使われています。\n"
 "これは重要な考え方で、本書では今後あらゆる箇所で立ち返る話題となるでしょう。"
 
 #. type: Title ##
@@ -24257,12 +24287,11 @@ msgstr ""
 "> :type fullNameEither\n"
 "Maybe String -> Maybe String -> Maybe String -> Either String String\n"
 
-# FIXME: Maybeの行中コードのマークアップが崩れている気がします。
 #. type: Plain text
 #: text/chapter7.md:307
 msgid ""
-"Now our function takes three optional arguments using `Maybe, and returns "
-"either a`String` error message or a `String` result."
+"Now our function takes three optional arguments using `Maybe`, and returns "
+"either a `String` error message or a `String` result."
 msgstr ""
 "これでこの関数は`Maybe`を使う3つの省略可能な引数を取り、`String`のエラー文言"
 "か`String`の結果のどちらかを返します。"
@@ -25562,7 +25591,6 @@ msgstr ""
 "`Traversable`型クラスに出会いました。*巡回可能関手*の考え方を内包するものであ"
 "り、要素が副作用を持つ値の結合に使うことができる容れ物でした。"
 
-# FIXME: DSLの行中強調が欠けています。
 #. type: Plain text
 #: text/chapter7.md:700
 msgid ""
@@ -25572,7 +25600,7 @@ msgid ""
 "provided a way to write validators in a declarative style, allowing us to "
 "define _what_ our validators should validate and not _how_ they should "
 "perform that validation. In general, we will see that applicative functors "
-"are a useful tool for the design of _domain specific languages."
+"are a useful tool for the design of _domain specific languages_."
 msgstr ""
 "アプリカティブ関手は多くの問題に対して優れた解決策を与える興味深い抽象化で"
 "す。\n"
@@ -25588,7 +25616,9 @@ msgstr ""
 msgid ""
 "In the next chapter, we will see a related idea, the class of _monads_, and "
 "extend our address book example to run in the browser!"
-msgstr "次の章では、これに関連する考え方である*モナド*クラスを見て、住所録の例をブラウザで実行させられるように拡張しましょう。"
+msgstr ""
+"次の章では、これに関連する考え方である*モナド*クラスを見て、住所録の例をブラ"
+"ウザで実行させられるように拡張しましょう。"
 
 #. type: Title ##
 #: text/chapter8.md:1 text/chapter8.md:393
@@ -26241,8 +26271,11 @@ msgid ""
 "programming \"in a larger language\" with side-effects, and also illustrate "
 "the generality which programming with monads brings."
 msgstr ""
-"抽象的にモナドを扱う例として、この節では `Monad`型クラス中の任意の型構築子で機能する関数を紹介していきます。\n"
-"これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと対応しているという直感的理解を補強しますし、モナドによるプログラミングが齎す一般性も示しています。"
+"抽象的にモナドを扱う例として、この節では `Monad`型クラス中の任意の型構築子で"
+"機能する関数を紹介していきます。\n"
+"これはモナドによるコードが副作用を伴う「より大きな言語」でのプログラミングと"
+"対応しているという直感的理解を補強しますし、モナドによるプログラミングが齎す"
+"一般性も示しています。"
 
 #. type: Plain text
 #: text/chapter8.md:214
@@ -27887,15 +27920,23 @@ msgid ""
 "psc-ide) or are running [`pscid`](https://github.com/kRITZCREEK/pscid)."
 msgstr ""
 "`parcel`は「住所録」アプリのブラウザ窓を立ち上げます。\n"
-"`parcel`の端末を開いたままにし、他の端末で`spago`で再構築すると、最新の編集を含むページが自動的に再読み込みされるでしょう。\n"
-"また、[`purs ide`](https://github.com/purescript/purescript/tree/master/psc-ide)に対応していたり[`pscid`](https://github.com/kRITZCREEK/pscid)を走らせていたりする[エディタ](https://github.com/purescript/documentation/blob/master/ecosystem/Editor-and-tool-support.md#editors)を使っていれば、ファイルを保存したときに自動的にページが再構築される（そして自動的にページが再読み込みされる）ように設定できます。"
+"`parcel`の端末を開いたままにし、他の端末で`spago`で再構築すると、最新の編集を"
+"含むページが自動的に再読み込みされるでしょう。\n"
+"また、[`purs ide`](https://github.com/purescript/purescript/tree/master/psc-"
+"ide)に対応していたり[`pscid`](https://github.com/kRITZCREEK/pscid)を走らせて"
+"いたりする[エディタ](https://github.com/purescript/documentation/blob/master/"
+"ecosystem/Editor-and-tool-support.md#editors)を使っていれば、ファイルを保存し"
+"たときに自動的にページが再構築される（そして自動的にページが再読み込みされ"
+"る）ように設定できます。"
 
 #. type: Plain text
 #: text/chapter8.md:714
 msgid ""
 "In this Address Book app, you can enter some values into the form fields and "
 "see the validation errors printed onto the page."
-msgstr "この住所録アプリでフォームフィールドにいろいろな値を入力すると、ページ上で出力された検証エラーが見られます。"
+msgstr ""
+"この住所録アプリでフォームフィールドにいろいろな値を入力すると、ページ上で出"
+"力された検証エラーが見られます。"
 
 #. type: Plain text
 #: text/chapter8.md:716
@@ -27942,7 +27983,9 @@ msgstr ""
 msgid ""
 "The `main` function uses the DOM and HTML APIs to render our address book "
 "component within the `container` element we defined in `index.html`:"
-msgstr "`main`関数はDOMとHTML APIを使い、`index.html`に定義した`container`要素の中に住所録コンポーネントを描画します。"
+msgstr ""
+"`main`関数はDOMとHTML APIを使い、`index.html`に定義した`container`要素の中に"
+"住所録コンポーネントを描画します。"
 
 #. type: Fenced code block (hs)
 #: text/chapter8.md:733
@@ -28107,7 +28150,8 @@ msgstr ""
 msgid ""
 "Next, we'll examine some of the additional complexities of the full Address "
 "Book component."
-msgstr "次に、完全な住所録コンポーネントにある幾つかの複雑な事柄を調べていきます。"
+msgstr ""
+"次に、完全な住所録コンポーネントにある幾つかの複雑な事柄を調べていきます。"
 
 #. type: Plain text
 #: text/chapter8.md:800
@@ -29584,7 +29628,10 @@ msgstr "章のテキストを編集する"
 msgid ""
 "To test changes to the text locally, install [mdbook](https://github.com/"
 "rust-lang/mdBook), then run this command from repo root:"
-msgstr "テキストの変更をローカルで見てみるには、[mdbook](https://github.com/rust-lang/mdBook)をインストールし、以下のコマンドをリポジトリのルートで走らせます。"
+msgstr ""
+"テキストの変更をローカルで見てみるには、[mdbook](https://github.com/rust-"
+"lang/mdBook)をインストールし、以下のコマンドをリポジトリのルートで走らせま"
+"す。"
 
 #. type: Fenced code block (sh)
 #: CONTRIBUTING.md:11
@@ -29597,7 +29644,8 @@ msgstr "mdbook serve -o\n"
 msgid ""
 "The rendered webpage will automatically refresh with any changes to readme "
 "files."
-msgstr "readmeファイルへの変更毎に描画されたwebページが自動的に再読み込みされます。"
+msgstr ""
+"readmeファイルへの変更毎に描画されたwebページが自動的に再読み込みされます。"
 
 #~ msgid ""
 #~ "PureScript's functions correspond to JavaScript's functions. The "

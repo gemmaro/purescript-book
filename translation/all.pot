@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-25 21:33+0900\n"
+"POT-Creation-Date: 2023-08-27 21:39+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -795,7 +795,7 @@ msgstr ""
 #: text/chapter1.md:148
 #, markdown-text
 msgid ""
-"The [Purescript Discourse Forum](https://discourse.purescript.org/) is "
+"The [PureScript Discourse Forum](https://discourse.purescript.org/) is "
 "another good place to search for solutions to common problems."
 msgstr ""
 
@@ -1185,7 +1185,7 @@ msgstr ""
 msgid ""
 "We also need to write a foreign JavaScript module to import it from. A "
 "corresponding foreign JavaScript module is one of the same name but the "
-"extension changed from `.purs` to `.js`. If the Purescript module above is "
+"extension changed from `.purs` to `.js`. If the PureScript module above is "
 "saved as `URI.purs`, then the foreign JavaScript module is saved as "
 "`URI.js`.  Since `encodeURIComponent` is already defined, we have to export "
 "it as `_encodeURIComponent`:"
@@ -1201,7 +1201,7 @@ msgstr ""
 #: text/chapter10.md:68
 #, markdown-text
 msgid ""
-"Since version 0.15, Purescript uses the ES module system when interoperating "
+"Since version 0.15, PureScript uses the ES module system when interoperating "
 "with JavaScript. In ES modules, functions and values are exported from a "
 "module by providing the `export` keyword on an object."
 msgstr ""
@@ -6803,7 +6803,7 @@ msgstr ""
 #. type: Fenced code block (haskell)
 #: text/chapter11.md:927
 #, no-wrap
-msgid "customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a\n"
+msgid "customExecParser :: forall a. ParserPrefs -> ParserInfo a -> Effect a\n"
 msgstr ""
 
 #. type: Plain text
@@ -7205,8 +7205,8 @@ msgstr ""
 #, markdown-text
 msgid ""
 "The `x` and `y` properties represent the location of the top-left corner, "
-"while the `w` and `h` properties represent the width and height, "
-"respectively."
+"while the `width` and `height` properties represent the lengths of the "
+"rectangle, respectively."
 msgstr ""
 
 #. type: Plain text
@@ -7234,7 +7234,7 @@ msgstr ""
 #: text/chapter12.md:104
 #, markdown-text
 msgid ""
-"Here, the `x` and `y` properties represent the center point, `r` is the "
+"Here, the `x` and `y` properties represent the center point, `radius` is the "
 "radius, `start` and `end` represent the endpoints of the arc in radians."
 msgstr ""
 
@@ -12461,8 +12461,8 @@ msgstr ""
 #: text/chapter3.md:279
 #, markdown-text
 msgid ""
-"For example, we might choose the type `a` to be `Int` and `b` – `String`. In "
-"that case, we can _specialize_ the type of `constantlyFirst` to"
+"For example, we might choose the type `a` to be `Int` and `b` to be "
+"`String`. In that case, we can _specialize_ the type of `constantlyFirst` to"
 msgstr ""
 
 #. type: Fenced code block (text)
@@ -18936,7 +18936,7 @@ msgstr ""
 #, markdown-text
 msgid ""
 "(Difficult) There are multiple ways to implement an instance of `Action "
-"Multiply Int`. How many can you think of? Purescript does not allow multiple "
+"Multiply Int`. How many can you think of? PureScript does not allow multiple "
 "implementations of the same instance, so you will have to replace your "
 "original implementation. _Note_: the tests cover 4 implementations."
 msgstr ""
@@ -20093,8 +20093,8 @@ msgstr ""
 #: text/chapter7.md:307
 #, markdown-text
 msgid ""
-"Now our function takes three optional arguments using `Maybe, and returns "
-"either a`String` error message or a `String` result."
+"Now our function takes three optional arguments using `Maybe`, and returns "
+"either a `String` error message or a `String` result."
 msgstr ""
 
 #. type: Plain text
@@ -21181,7 +21181,7 @@ msgid ""
 "provided a way to write validators in a declarative style, allowing us to "
 "define _what_ our validators should validate and not _how_ they should "
 "perform that validation. In general, we will see that applicative functors "
-"are a useful tool for the design of _domain specific languages."
+"are a useful tool for the design of _domain specific languages_."
 msgstr ""
 
 #. type: Plain text

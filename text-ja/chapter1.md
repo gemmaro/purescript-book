@@ -185,7 +185,7 @@ PSCi対話式モードプロンプトに入力するコマンドは、行の先�
 
 - [PureScriptのDiscordサーバ](https://discord.gg/vKn9up84bp)は抱えている問題についてチャットするのに良い場所です。
   こちらのサーバはPureScriptについてのチャット専用です。
-- [PurescriptのDiscourseフォーラム](https://discourse.purescript.org/)もよくある問題への解決策を探すのに良い場所です。
+- [PureScriptのDiscourseフォーラム](https://discourse.purescript.org/)もよくある問題への解決策を探すのに良い場所です。
 - [PureScript: Jordan's
   Reference](https://github.com/jordanmartinez/purescript-jordans-reference)は別のかなり深く踏み込んだ学習資料です。
   本書中の概念で理解しにくいものがあったら、そちらの参考書の対応する節を読むとよいでしょう。
