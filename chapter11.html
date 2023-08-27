@@ -1009,7 +1009,7 @@ runGame env = do
 アプリカティブ関手を使うと、いろいろな副作用の型を表す型構築子まで任意個数の引数の関数を持ち上げられることを思い出してください。
 <code>optparse</code>パッケージの場合には、コマンドラインオプションからの読み取りの副作用を追加する<code>Parser</code>関手（optparseのモジュール<code>Options.Applicative</code>からインポートされたもの。<code>Split</code>モジュールで定義した<code>Parser</code>と混同しないように）が興味深い関手になっています。
 これは次のような制御子を提供しています。</p>
-<pre><code class="language-haskell">customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
+<pre><code class="language-haskell">customExecParser :: forall a. ParserPrefs -&gt; ParserInfo a -&gt; Effect a
 </code></pre>
 <p>実例を見るのが一番です。
 このアプリケーションの <code>main</code>関数は<code>customExecParser</code>を使って次のように定義されています。</p>

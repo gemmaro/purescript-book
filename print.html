@@ -370,7 +370,7 @@ main = log &quot;Hello, World!&quot;
 <ul>
 <li><a href="https://discord.gg/vKn9up84bp">PureScriptのDiscordサーバ</a>は抱えている問題についてチャットするのに良い場所です。
 こちらのサーバはPureScriptについてのチャット専用です。</li>
-<li><a href="https://discourse.purescript.org/">PurescriptのDiscourseフォーラム</a>もよくある問題への解決策を探すのに良い場所です。</li>
+<li><a href="https://discourse.purescript.org/">PureScriptのDiscourseフォーラム</a>もよくある問題への解決策を探すのに良い場所です。</li>
 <li><a href="https://github.com/jordanmartinez/purescript-jordans-reference">PureScript: Jordan's
 Reference</a>は別のかなり深く踏み込んだ学習資料です。
 本書中の概念で理解しにくいものがあったら、そちらの参考書の対応する節を読むとよいでしょう。</li>
@@ -6927,7 +6927,7 @@ runGame env = do
 アプリカティブ関手を使うと、いろいろな副作用の型を表す型構築子まで任意個数の引数の関数を持ち上げられることを思い出してください。
 <code>optparse</code>パッケージの場合には、コマンドラインオプションからの読み取りの副作用を追加する<code>Parser</code>関手（optparseのモジュール<code>Options.Applicative</code>からインポートされたもの。<code>Split</code>モジュールで定義した<code>Parser</code>と混同しないように）が興味深い関手になっています。
 これは次のような制御子を提供しています。</p>
-<pre><code class="language-haskell">customExecParser :: forall a. ParserPrefs → ParserInfo a → Effect a
+<pre><code class="language-haskell">customExecParser :: forall a. ParserPrefs -&gt; ParserInfo a -&gt; Effect a
 </code></pre>
 <p>実例を見るのが一番です。
 このアプリケーションの <code>main</code>関数は<code>customExecParser</code>を使って次のように定義されています。</p>
@@ -7068,7 +7068,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
   , height :: Number
   }
 </code></pre>
-<p><code>x</code>と<code>y</code>プロパティは左上隅の位置を表しており、<code>w</code>と<code>h</code>のプロパティはそれぞれ幅と高さを表しています。</p>
+<p><code>x</code>と<code>y</code>プロパティは左上隅の位置を表しており、<code>width</code>と<code>height</code>のプロパティはそれぞれ幅と高さを表しています。</p>
 <p><code>arc</code>関数に以下のような型を持つレコードを渡して呼び出すと、円弧を描画できます。</p>
 <pre><code class="language-haskell">type Arc =
   { x      :: Number
@@ -7078,7 +7078,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
   , end    :: Number
   }
 </code></pre>
-<p>ここで、<code>x</code>と<code>y</code>プロパティは弧の中心、<code>r</code>は半径、<code>start</code>と<code>end</code>は弧の両端の角度を弧度法で表しています。</p>
+<p>ここで、<code>x</code>と<code>y</code>プロパティは弧の中心、<code>radius</code>は半径、<code>start</code>と<code>end</code>は弧の両端の角度を弧度法で表しています。</p>
 <p>例えばこのコードは中心が<code>(300, 300)</code>に中心があり半径<code>50</code>の円弧を塗り潰します。
 弧は1回転のうち2/3ラジアン分あります。
 単位円が上下逆様になっている点に注意してください。

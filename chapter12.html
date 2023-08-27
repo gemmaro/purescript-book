@@ -248,7 +248,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
   , height :: Number
   }
 </code></pre>
-<p><code>x</code>と<code>y</code>プロパティは左上隅の位置を表しており、<code>w</code>と<code>h</code>のプロパティはそれぞれ幅と高さを表しています。</p>
+<p><code>x</code>と<code>y</code>プロパティは左上隅の位置を表しており、<code>width</code>と<code>height</code>のプロパティはそれぞれ幅と高さを表しています。</p>
 <p><code>arc</code>関数に以下のような型を持つレコードを渡して呼び出すと、円弧を描画できます。</p>
 <pre><code class="language-haskell">type Arc =
   { x      :: Number
@@ -258,7 +258,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
   , end    :: Number
   }
 </code></pre>
-<p>ここで、<code>x</code>と<code>y</code>プロパティは弧の中心、<code>r</code>は半径、<code>start</code>と<code>end</code>は弧の両端の角度を弧度法で表しています。</p>
+<p>ここで、<code>x</code>と<code>y</code>プロパティは弧の中心、<code>radius</code>は半径、<code>start</code>と<code>end</code>は弧の両端の角度を弧度法で表しています。</p>
 <p>例えばこのコードは中心が<code>(300, 300)</code>に中心があり半径<code>50</code>の円弧を塗り潰します。
 弧は1回転のうち2/3ラジアン分あります。
 単位円が上下逆様になっている点に注意してください。
