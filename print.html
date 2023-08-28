@@ -179,6 +179,7 @@ Example</em>の<a href="https://github.com/purescript-contrib/purescript-book/">
 このバージョンはコードと演習が最近のバージョンのコンパイラ、ライブラリ、ツールで動くように更新されています。
 PureScriptのエコシステムの最新の機能を紹介すべく書き直された章もあります。</p>
 <p>本書をお楽しみいただき、お役立ちいただけましたら、<a href="https://leanpub.com/purescript">Leanpubの原書</a>の購入をご検討ください。</p>
+<p>Translations: <a href="https://gemmaro.github.io/purescript-book/">日本語 (Japanese)</a></p>
 <h2 id="現状"><a class="header" href="#現状">現状</a></h2>
 <p>本書は言語の進化に伴って継続的に更新されているため、内容に関して発見したどんな<a href="https://github.com/purescript-contrib/purescript-book/issues">問題</a>でもご報告ください。
 より初心者にやさしくできそうな分かりづらい節を指摘するような単純なものであれ、共有いただいたどんなフィードバックにも感謝します。</p>
@@ -1505,9 +1506,10 @@ forall (m :: Type -&gt; Type). Alternative m =&gt; Boolean -&gt; m Unit
 直積集合とは、要素<code>a</code>、<code>b</code>の全ての組み合わせの集合のことです。
 ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
 <li>（普通）関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
-この関数は数値<code>n</code>を取り、構成要素（値<code>a</code>、<code>b</code>、<code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの3つ組
-(pythagorean triples) を返します。
-<em>ピタゴラスの3つ組</em>は<code>a² + b² = c²</code>であるような数値の配列<code>[a, b, c]</code>です。
+この関数は数値 \( n \) を取り、構成要素（値 \( a \)、 \( b \)、 \( c \)）がそれぞれ \( n
+\) 以下であるような全てのピタゴラスの3つ組 (pythagorean triples) を返します。
+<em>ピタゴラスの3つ組</em>は \( a ^ 2 + b ^ 2 = c ^ 2 \) であるような数値の配列 \( [ a, b, c ]
+\) です。
 <em>手掛かり</em>：配列内包表記で<code>guard</code>関数を使ってください。</li>
 <li>（難しい）<code>factors</code>関数を使用して、<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
 <code>n</code>の素因数分解とは、積が<code>n</code>であるような素数の配列のことです。
@@ -5308,7 +5310,7 @@ isEmpty = isUndefined &lt;&lt;&lt; undefinedHead
 <h2 id="演習-29"><a class="header" href="#演習-29">演習</a></h2>
 <ol>
 <li>
-<p>（普通）二次多項式<code>a*x^2 + b*x + c = 0</code>を表現するレコードが与えられているとします。</p>
+<p>（普通）二次多項式 \( a x ^ 2 + b x + c = 0 \) を表現するレコードが与えられているとします。</p>
 <pre><code class="language-hs">type Quadratic = {
   a :: Number,
   b :: Number,
@@ -6367,12 +6369,13 @@ Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;
 <code>sumArray</code>関数を書き換えてください。</p>
 </li>
 <li>
-<p>（普通）<em>コラッツ</em>関数は自然数<code>n</code>上で定義され、<code>n</code>が偶数なら<code>n / 2</code>、<code>n</code>が奇数なら<code>3 * n + 1</code>です。
-例えば<code>10</code>で始まるコラッツ数列は以下です。</p>
+<p>（普通）<em>コラッツ</em>関数は自然数 \( n \) 上で定義され、 \( n \) が偶数なら \( n / 2 \)、 \( n
+\) が奇数なら \( 3 n + 1 \)です。
+例えば \( 10 \) で始まるコラッツ数列は以下です。</p>
 <pre><code class="language-text">10, 5, 16, 8, 4, 2, 1, ...
 </code></pre>
-<p>コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的に <code>1</code>になるということが予想されています。</p>
-<p>再帰を使い、数列が<code>1</code>に到達するまでに何回のコラッツ関数の適用が必要かを計算する関数を書いてください。</p>
+<p>コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的に  \( 1 \) になるということが予想されています。</p>
+<p>再帰を使い、数列が \( 1 \) に到達するまでに何回のコラッツ関数の適用が必要かを計算する関数を書いてください。</p>
 <p><code>Writer</code>モナドを使用してコラッツ関数の各適用の経過を記録するように、関数を変更してください。</p>
 </li>
 </ol>
@@ -7517,7 +7520,7 @@ lsystem init prod interpret n state = go init n
 <em>手掛かり</em>：PSCiを使って、これらの関数の型を調べてみましょう。</p>
 </li>
 <li>
-<p>（普通）向きを変えるときの角度の大きさは今のところ一定 (<code>tau/6</code>) です。
+<p>（普通）向きを変えるときの角度の大きさは今のところ一定 \( tau / 6 \) です。
 これに代えて、<code>Letter</code>データ型の中に角度を移動させ、生成規則によって変更できるようにしてください。</p>
 <pre><code class="language-haskell">type Angle = Number
 

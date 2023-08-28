@@ -514,9 +514,10 @@ forall (m :: Type -&gt; Type). Alternative m =&gt; Boolean -&gt; m Unit
 直積集合とは、要素<code>a</code>、<code>b</code>の全ての組み合わせの集合のことです。
 ここで<code>a</code>は最初の配列の要素、<code>b</code>は2つ目の配列の要素です。</li>
 <li>（普通）関数<code>triples :: Int -&gt; Array (Array Int)</code>を書いてください。
-この関数は数値<code>n</code>を取り、構成要素（値<code>a</code>、<code>b</code>、<code>c</code>）がそれぞれ<code>n</code>以下であるような全てのピタゴラスの3つ組
-(pythagorean triples) を返します。
-<em>ピタゴラスの3つ組</em>は<code>a² + b² = c²</code>であるような数値の配列<code>[a, b, c]</code>です。
+この関数は数値 \( n \) を取り、構成要素（値 \( a \)、 \( b \)、 \( c \)）がそれぞれ \( n
+\) 以下であるような全てのピタゴラスの3つ組 (pythagorean triples) を返します。
+<em>ピタゴラスの3つ組</em>は \( a ^ 2 + b ^ 2 = c ^ 2 \) であるような数値の配列 \( [ a, b, c ]
+\) です。
 <em>手掛かり</em>：配列内包表記で<code>guard</code>関数を使ってください。</li>
 <li>（難しい）<code>factors</code>関数を使用して、<code>n</code>の<a href="https://www.mathsisfun.com/prime-factorization.html">素因数分解</a>を求める関数<code>primeFactors</code>を定義してみましょう。
 <code>n</code>の素因数分解とは、積が<code>n</code>であるような素数の配列のことです。
