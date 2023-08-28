@@ -8,6 +8,8 @@ PureScriptのエコシステムの最新の機能を紹介すべく書き直さ�
 
 本書をお楽しみいただき、お役立ちいただけましたら、[Leanpubの原書](https://leanpub.com/purescript)の購入をご検討ください。
 
+Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)
+
 ## 現状
 
 本書は言語の進化に伴って継続的に更新されているため、内容に関して発見したどんな[問題](https://github.com/purescript-contrib/purescript-book/issues)でもご報告ください。

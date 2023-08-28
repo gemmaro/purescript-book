@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-27 21:39+0900\n"
+"POT-Creation-Date: 2023-08-28 18:56+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,14 +139,20 @@ msgid ""
 "[the original on Leanpub](https://leanpub.com/purescript)."
 msgstr ""
 
+#. type: Plain text
+#: README.md:8
+#, markdown-text
+msgid "Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
+msgstr ""
+
 #. type: Title ##
-#: README.md:7
+#: README.md:9
 #, markdown-text, no-wrap
 msgid "Status"
 msgstr ""
 
 #. type: Plain text
-#: README.md:10
+#: README.md:12
 #, markdown-text
 msgid ""
 "This book is being continuously updated as the language evolves, so please "
@@ -158,7 +164,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: README.md:12
+#: README.md:14
 #, markdown-text
 msgid ""
 "Unit tests are also being added to each chapter so you can check if your "
@@ -168,13 +174,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: README.md:13
+#: README.md:15
 #, markdown-text, no-wrap
 msgid "About the Book"
 msgstr ""
 
 #. type: Plain text
-#: README.md:16
+#: README.md:18
 #, markdown-text
 msgid ""
 "PureScript is a small, strongly, statically typed programming language with "
@@ -183,7 +189,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: README.md:18
+#: README.md:20
 #, markdown-text
 msgid ""
 "Functional programming in JavaScript has seen quite a lot of popularity "
@@ -194,7 +200,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: README.md:20
+#: README.md:22
 #, markdown-text
 msgid ""
 "This book will show you how to get started with the PureScript programming "
@@ -203,7 +209,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: README.md:22
+#: README.md:24
 #, markdown-text
 msgid ""
 "Each chapter will be motivated by a particular problem, and in the course of "
@@ -213,67 +219,67 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Transforming data structures with maps and folds"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Form field validation using applicative functors"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Testing code with QuickCheck"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Using the canvas"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Domain specific language implementation"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Working with the DOM"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "JavaScript interoperability"
 msgstr ""
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 #, markdown-text
 msgid "Parallel asynchronous execution"
 msgstr ""
 
 #. type: Title ##
-#: README.md:32
+#: README.md:34
 #, markdown-text, no-wrap
 msgid "License"
 msgstr ""
 
 #. type: Plain text
-#: README.md:35
+#: README.md:37
 #, markdown-text
 msgid "Copyright (c) 2014-2017 Phil Freeman."
 msgstr ""
 
 #. type: Plain text
-#: README.md:37
+#: README.md:39
 #, markdown-text
 msgid ""
 "The text of this book is licensed under the Creative Commons "
@@ -282,7 +288,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: README.md:39
+#: README.md:41
 #, markdown-text
 msgid ""
 "Some text is derived from the [PureScript Documentation "
@@ -292,7 +298,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: README.md:40
+#: README.md:42
 #, markdown-text
 msgid "The exercises are licensed under the MIT license."
 msgstr ""
@@ -2155,8 +2161,8 @@ msgstr ""
 #: text/chapter10.md:481
 #, markdown-text
 msgid ""
-"(Medium) Given a record that represents a quadratic polynomial `a*x^2 + b*x "
-"+ c = 0`:"
+"(Medium) Given a record that represents a quadratic polynomial \\\\( a x ^ 2 "
+"+ b x + c = 0 \\\\):"
 msgstr ""
 
 #. type: Plain text
@@ -5147,9 +5153,10 @@ msgstr ""
 #: text/chapter11.md:346
 #, markdown-text
 msgid ""
-"(Medium) The _Collatz_ function is defined on natural numbers `n` as `n / 2` "
-"when `n` is even and `3 * n + 1` when `n` is odd. For example, the iterated "
-"Collatz sequence starting at `10` is as follows:"
+"(Medium) The _Collatz_ function is defined on natural numbers \\\\( n \\\\) "
+"as \\\\( n / 2 \\\\) when \\\\( n \\\\) is even and \\\\( 3 n + 1 \\\\) when "
+"\\\\( n \\\\) is odd. For example, the iterated Collatz sequence starting at "
+"\\\\( 10 \\\\) is as follows:"
 msgstr ""
 
 #. type: Plain text
@@ -5165,8 +5172,9 @@ msgstr ""
 #: text/chapter11.md:352
 #, markdown-text, no-wrap
 msgid ""
-"     It is conjectured that the iterated Collatz sequence always reaches `1` "
-"after some finite number of applications of the Collatz function.\n"
+"     It is conjectured that the iterated Collatz sequence always reaches "
+"\\\\( 1 \\\\) after some finite number of applications of the Collatz "
+"function.\n"
 msgstr ""
 
 #. type: Plain text
@@ -5174,7 +5182,8 @@ msgstr ""
 #, markdown-text, no-wrap
 msgid ""
 "     Write a function that uses recursion to calculate how many iterations "
-"of the Collatz function are required before the sequence reaches `1`.\n"
+"of the Collatz function are required before the sequence reaches \\\\( 1 "
+"\\\\).\n"
 msgstr ""
 
 #. type: Plain text
@@ -8519,9 +8528,9 @@ msgstr ""
 #: text/chapter12.md:562
 #, markdown-text
 msgid ""
-"(Medium) The angle of the corners is currently a constant "
-"(`tau/6`). Instead, it can be moved into the `Letter` data type, which "
-"allows it to be changed by the production rules:"
+"(Medium) The angle of the corners is currently a constant \\\\( \\\\tau / 6 "
+"\\\\). Instead, it can be moved into the `Letter` data type, which allows it "
+"to be changed by the production rules:"
 msgstr ""
 
 #. type: Plain text
@@ -14874,10 +14883,11 @@ msgstr ""
 #, markdown-text
 msgid ""
 "(Medium) Write a function `triples :: Int -> Array (Array Int)`, which takes "
-"a number `n` and returns all Pythagorean triples whose components (the `a`, "
-"`b`, and `c` values) are each less than or equal to `n`. A _Pythagorean "
-"triple_ is an array of numbers `[a, b, c]` such that `a² + b² = c²`. _Hint_: "
-"Use the `guard` function in an array comprehension."
+"a number \\\\( n \\\\) and returns all Pythagorean triples whose components "
+"(the \\\\( a \\\\), \\\\( b \\\\), and \\\\( c \\\\) values) are each less "
+"than or equal to \\\\( n \\\\). A _Pythagorean triple_ is an array of "
+"numbers \\\\( [ a, b, c ] \\\\) such that \\\\( a ^ 2 + b ^ 2 = c ^ 2 "
+"\\\\). _Hint_: Use the `guard` function in an array comprehension."
 msgstr ""
 
 #. type: Bullet: ' 1. '
@@ -15925,12 +15935,13 @@ msgstr ""
 #, markdown-text
 msgid ""
 "(Medium) Write a function `binomial` which finds the coefficient of the "
-"x^`k`th term in the polynomial expansion of (1 + x)^`n`. This is the same as "
-"the number of ways to choose a subset of `k` elements from a set of `n` "
-"elements. Use the formula `n! / k! (n - k)!`, where `!` is the factorial "
-"function written earlier. _Hint_: Use pattern matching to handle corner "
-"cases. If it takes a long time to complete or crashes with an error about "
-"the call stack, try adding more corner cases."
+"\\\\( x ^ k \\\\)th term in the polynomial expansion of \\\\( ( 1 + x ) ^ n "
+"\\\\). This is the same as the number of ways to choose a subset of \\\\( k "
+"\\\\) elements from a set of \\\\( n \\\\) elements. Use the formula \\\\( "
+"n! \\\\: / \\\\: k! \\\\, (n - k)! \\\\), where \\\\( ! \\\\) is the "
+"factorial function written earlier. _Hint_: Use pattern matching to handle "
+"corner cases. If it takes a long time to complete or crashes with an error "
+"about the call stack, try adding more corner cases."
 msgstr ""
 
 #. type: Bullet: '1. '

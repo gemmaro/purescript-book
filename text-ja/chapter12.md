@@ -655,7 +655,7 @@ $ spago bundle-app --main Example.LSystem --to dist/Main.js
     `foldM`を使用して結果を解釈するものでなくてはなりません。
  1. （普通）`setShadowOffsetX`、`setShadowOffsetY`、`setShadowBlur`、`setShadowColor`動作を使い、塗りつぶされた図形にドロップシャドウを追加してください。
     *手掛かり*：PSCiを使って、これらの関数の型を調べてみましょう。
- 1. （普通）向きを変えるときの角度の大きさは今のところ一定 (`tau/6`) です。
+ 1. （普通）向きを変えるときの角度の大きさは今のところ一定 \\( tau / 6 \\) です。
     これに代えて、`Letter`データ型の中に角度を移動させ、生成規則によって変更できるようにしてください。
 
      ```haskell

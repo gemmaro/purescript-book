@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-08-27 21:39+0900\n"
-"PO-Revision-Date: 2023-08-27 21:43+0900\n"
+"POT-Creation-Date: 2023-08-28 18:56+0900\n"
+"PO-Revision-Date: 2023-08-28 19:02+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -139,14 +139,20 @@ msgstr ""
 "本書をお楽しみいただき、お役立ちいただけましたら、[Leanpubの原書](https://"
 "leanpub.com/purescript)の購入をご検討ください。"
 
+#. type: Plain text
+#: README.md:8
+msgid ""
+"Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
+msgstr "Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
+
 #. type: Title ##
-#: README.md:7
+#: README.md:9
 #, no-wrap
 msgid "Status"
 msgstr "現状"
 
 #. type: Plain text
-#: README.md:10
+#: README.md:12
 msgid ""
 "This book is being continuously updated as the language evolves, so please "
 "report any [issues](https://github.com/purescript-contrib/purescript-book/"
@@ -161,7 +167,7 @@ msgstr ""
 "れ、共有いただいたどんなフィードバックにも感謝します。"
 
 #. type: Plain text
-#: README.md:12
+#: README.md:14
 msgid ""
 "Unit tests are also being added to each chapter so you can check if your "
 "answers to the exercises are correct. See [#79](https://github.com/"
@@ -173,13 +179,13 @@ msgstr ""
 "purescript-book/issues/79)を見てください。"
 
 #. type: Title ##
-#: README.md:13
+#: README.md:15
 #, no-wrap
 msgid "About the Book"
 msgstr "本書について"
 
 #. type: Plain text
-#: README.md:16
+#: README.md:18
 msgid ""
 "PureScript is a small, strongly, statically typed programming language with "
 "expressive types, written in and inspired by Haskell, and compiling to "
@@ -191,7 +197,7 @@ msgstr ""
 "そしてJavaScriptにコンパイルされます。"
 
 #. type: Plain text
-#: README.md:18
+#: README.md:20
 msgid ""
 "Functional programming in JavaScript has seen quite a lot of popularity "
 "recently, but large-scale application development is hindered by the lack of "
@@ -206,7 +212,7 @@ msgstr ""
 "の世界に持ち込むことにより、この問題の解決を目指しています。"
 
 #. type: Plain text
-#: README.md:20
+#: README.md:22
 msgid ""
 "This book will show you how to get started with the PureScript programming "
 "language, from the basics (setting up a development environment) to the "
@@ -216,7 +222,7 @@ msgstr ""
 "ング言語の始め方を示します。"
 
 #. type: Plain text
-#: README.md:22
+#: README.md:24
 msgid ""
 "Each chapter will be motivated by a particular problem, and in the course of "
 "solving that problem, new functional programming tools and techniques will "
@@ -228,70 +234,70 @@ msgstr ""
 "以下は本書で解いていく課題の幾つかの例です。"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Transforming data structures with maps and folds"
 msgstr "マップと畳み込みを使ったデータ構造の変換"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Form field validation using applicative functors"
 msgstr "アプリカティブ関手を使ったフォームフィールドの検証"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Testing code with QuickCheck"
 msgstr "QuickCheckによるコードの検査"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Using the canvas"
 msgstr "Canvasの使用"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Domain specific language implementation"
 msgstr "領域特化言語の実装"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Working with the DOM"
 msgstr "DOMの取り回し"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "JavaScript interoperability"
 msgstr "JavaScriptの相互運用性"
 
 #. type: Bullet: '- '
-#: README.md:31
+#: README.md:33
 msgid "Parallel asynchronous execution"
 msgstr "並列非同期実行"
 
 #. type: Title ##
-#: README.md:32
+#: README.md:34
 #, no-wrap
 msgid "License"
 msgstr "使用許諾"
 
 #. type: Plain text
-#: README.md:35
+#: README.md:37
 msgid "Copyright (c) 2014-2017 Phil Freeman."
 msgstr "Copyright (c) 2014-2017 Phil Freeman."
 
 #. type: Plain text
-#: README.md:37
-msgid ""
-"The text of this book is licensed under the Creative Commons Attribution-"
-"NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
-"licenses/by-nc-sa/3.0/deed.en_US>."
-msgstr ""
-"The text of this book is licensed under the Creative Commons Attribution-"
-"NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
-"licenses/by-nc-sa/3.0/deed.en_US>."
-
-#. type: Plain text
 #: README.md:39
 msgid ""
+"The text of this book is licensed under the Creative Commons Attribution-"
+"NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
+"licenses/by-nc-sa/3.0/deed.en_US>."
+msgstr ""
+"The text of this book is licensed under the Creative Commons Attribution-"
+"NonCommercial-ShareAlike 3.0 Unported License: <https://creativecommons.org/"
+"licenses/by-nc-sa/3.0/deed.en_US>."
+
+#. type: Plain text
+#: README.md:41
+msgid ""
 "Some text is derived from the [PureScript Documentation Repo](https://github."
 "com/purescript/documentation), which uses the same license, and is copyright "
 "[various contributors](https://github.com/purescript/documentation/blob/"
@@ -303,7 +309,7 @@ msgstr ""
 "master/CONTRIBUTORS.md)."
 
 #. type: Plain text
-#: README.md:40
+#: README.md:42
 msgid "The exercises are licensed under the MIT license."
 msgstr "The exercises are licensed under the MIT license."
 
@@ -938,7 +944,9 @@ msgstr ""
 msgid ""
 "The [PureScript Discourse Forum](https://discourse.purescript.org/) is "
 "another good place to search for solutions to common problems."
-msgstr "[PureScriptのDiscourseフォーラム](https://discourse.purescript.org/)もよくある問題への解決策を探すのに良い場所です。"
+msgstr ""
+"[PureScriptのDiscourseフォーラム](https://discourse.purescript.org/)もよくあ"
+"る問題への解決策を探すのに良い場所です。"
 
 #. type: Bullet: '- '
 #: text/chapter1.md:148
@@ -2552,15 +2560,12 @@ msgstr ""
 "  }\n"
 "};\n"
 
-# TODO: 数式で表現したいです。
 #. type: Bullet: '1. '
 #: text/chapter10.md:481
 msgid ""
-"(Medium) Given a record that represents a quadratic polynomial `a*x^2 + b*x "
-"+ c = 0`:"
-msgstr ""
-"（普通）二次多項式`a*x^2 + b*x + c = 0`を表現するレコードが与えられているとし"
-"ます。"
+"(Medium) Given a record that represents a quadratic polynomial \\\\( a x ^ 2 "
+"+ b x + c = 0 \\\\):"
+msgstr "（普通）二次多項式 \\\\( a x ^ 2 + b x + c = 0 \\\\) を表現するレコードが与えられているとします。"
 
 #. type: Plain text
 #: text/chapter10.md:489
@@ -6231,17 +6236,16 @@ msgstr ""
 "（普通）`Writer`モナドと `monoid`パッケージの `Additive Int`モノイドを使うよ"
 "うに、上の `sumArray`関数を書き換えてください。"
 
-# TODO: 数式で書きたいです。
 #. type: Bullet: ' 1. '
 #: text/chapter11.md:346
 msgid ""
-"(Medium) The _Collatz_ function is defined on natural numbers `n` as `n / 2` "
-"when `n` is even and `3 * n + 1` when `n` is odd. For example, the iterated "
-"Collatz sequence starting at `10` is as follows:"
+"(Medium) The _Collatz_ function is defined on natural numbers \\\\( n \\\\) "
+"as \\\\( n / 2 \\\\) when \\\\( n \\\\) is even and \\\\( 3 n + 1 \\\\) when "
+"\\\\( n \\\\) is odd. For example, the iterated Collatz sequence starting at "
+"\\\\( 10 \\\\) is as follows:"
 msgstr ""
-"（普通）*コラッツ*関数は自然数`n`上で定義され、`n`が偶数なら`n / 2`、`n`が奇"
-"数なら`3 * n + 1`です。\n"
-"例えば`10`で始まるコラッツ数列は以下です。"
+"（普通）*コラッツ*関数は自然数 \\\\( n \\\\) 上で定義され、 \\\\( n \\\\) が偶数なら \\\\( n / 2 \\\\)、 \\\\( n \\\\) が奇数なら \\\\( 3 n + 1 \\\\)です。\n"
+"例えば \\\\( 10 \\\\) で始まるコラッツ数列は以下です。"
 
 #. type: Plain text
 #: text/chapter11.md:350
@@ -6258,14 +6262,14 @@ msgstr ""
 #. type: Plain text
 #: text/chapter11.md:352
 #, no-wrap
-msgid "     It is conjectured that the iterated Collatz sequence always reaches `1` after some finite number of applications of the Collatz function.\n"
-msgstr "     コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的に `1`になるということが予想されています。\n"
+msgid "     It is conjectured that the iterated Collatz sequence always reaches \\\\( 1 \\\\) after some finite number of applications of the Collatz function.\n"
+msgstr "     コラッツ関数の有限回の適用を繰り返すと、コラッツ数列は必ず最終的に  \\\\( 1 \\\\) になるということが予想されています。\n"
 
 #. type: Plain text
 #: text/chapter11.md:354
 #, no-wrap
-msgid "     Write a function that uses recursion to calculate how many iterations of the Collatz function are required before the sequence reaches `1`.\n"
-msgstr "     再帰を使い、数列が`1`に到達するまでに何回のコラッツ関数の適用が必要かを計算する関数を書いてください。\n"
+msgid "     Write a function that uses recursion to calculate how many iterations of the Collatz function are required before the sequence reaches \\\\( 1 \\\\).\n"
+msgstr "     再帰を使い、数列が \\\\( 1 \\\\) に到達するまでに何回のコラッツ関数の適用が必要かを計算する関数を書いてください。\n"
 
 #. type: Plain text
 #: text/chapter11.md:356
@@ -8742,7 +8746,9 @@ msgid ""
 "The `x` and `y` properties represent the location of the top-left corner, "
 "while the `width` and `height` properties represent the lengths of the "
 "rectangle, respectively."
-msgstr "`x`と`y`プロパティは左上隅の位置を表しており、`width`と`height`のプロパティはそれぞれ幅と高さを表しています。"
+msgstr ""
+"`x`と`y`プロパティは左上隅の位置を表しており、`width`と`height`のプロパティは"
+"それぞれ幅と高さを表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:92
@@ -8778,7 +8784,9 @@ msgstr ""
 msgid ""
 "Here, the `x` and `y` properties represent the center point, `radius` is the "
 "radius, `start` and `end` represent the endpoints of the arc in radians."
-msgstr "ここで、`x`と`y`プロパティは弧の中心、`radius`は半径、`start`と`end`は弧の両端の角度を弧度法で表しています。"
+msgstr ""
+"ここで、`x`と`y`プロパティは弧の中心、`radius`は半径、`start`と`end`は弧の両"
+"端の角度を弧度法で表しています。"
 
 #. type: Plain text
 #: text/chapter12.md:106
@@ -10265,17 +10273,15 @@ msgstr ""
 "ださい。\n"
 "*手掛かり*：PSCiを使って、これらの関数の型を調べてみましょう。"
 
-# TODO: 数式にしてみる？
 #. type: Bullet: ' 1. '
 #: text/chapter12.md:562
 msgid ""
-"(Medium) The angle of the corners is currently a constant (`tau/6`). "
-"Instead, it can be moved into the `Letter` data type, which allows it to be "
-"changed by the production rules:"
+"(Medium) The angle of the corners is currently a constant \\\\( \\\\tau / 6 "
+"\\\\). Instead, it can be moved into the `Letter` data type, which allows it "
+"to be changed by the production rules:"
 msgstr ""
-"（普通）向きを変えるときの角度の大きさは今のところ一定 (`tau/6`) です。\n"
-"これに代えて、`Letter`データ型の中に角度を移動させ、生成規則によって変更でき"
-"るようにしてください。"
+"（普通）向きを変えるときの角度の大きさは今のところ一定 \\\\( tau / 6 \\\\) です。\n"
+"これに代えて、`Letter`データ型の中に角度を移動させ、生成規則によって変更できるようにしてください。"
 
 #. type: Plain text
 #: text/chapter12.md:565
@@ -18017,20 +18023,19 @@ msgstr ""
 "直積集合とは、要素`a`、`b`の全ての組み合わせの集合のことです。\n"
 "ここで`a`は最初の配列の要素、`b`は2つ目の配列の要素です。"
 
-# TODO: 数式で表現したいです。
 #. type: Bullet: ' 1. '
 #: text/chapter4.md:369
 msgid ""
 "(Medium) Write a function `triples :: Int -> Array (Array Int)`, which takes "
-"a number `n` and returns all Pythagorean triples whose components (the `a`, "
-"`b`, and `c` values) are each less than or equal to `n`. A _Pythagorean "
-"triple_ is an array of numbers `[a, b, c]` such that `a² + b² = c²`. _Hint_: "
-"Use the `guard` function in an array comprehension."
+"a number \\\\( n \\\\) and returns all Pythagorean triples whose components "
+"(the \\\\( a \\\\), \\\\( b \\\\), and \\\\( c \\\\) values) are each less "
+"than or equal to \\\\( n \\\\). A _Pythagorean triple_ is an array of "
+"numbers \\\\( [ a, b, c ] \\\\) such that \\\\( a ^ 2 + b ^ 2 = c ^ 2 \\\\). "
+"_Hint_: Use the `guard` function in an array comprehension."
 msgstr ""
 "（普通）関数`triples :: Int -> Array (Array Int)`を書いてください。\n"
-"この関数は数値`n`を取り、構成要素（値`a`、`b`、`c`）がそれぞれ`n`以下であるよ"
-"うな全てのピタゴラスの3つ組 (pythagorean triples) を返します。\n"
-"*ピタゴラスの3つ組*は`a² + b² = c²`であるような数値の配列`[a, b, c]`です。\n"
+"この関数は数値 \\\\( n \\\\) を取り、構成要素（値 \\\\( a \\\\)、 \\\\( b \\\\)、 \\\\( c \\\\)）がそれぞれ \\\\( n \\\\) 以下であるような全てのピタゴラスの3つ組 (pythagorean triples) を返します。\n"
+"*ピタゴラスの3つ組*は \\\\( a ^ 2 + b ^ 2 = c ^ 2 \\\\) であるような数値の配列 \\\\( [ a, b, c ] \\\\) です。\n"
 "*手掛かり*：配列内包表記で`guard`関数を使ってください。"
 
 #. type: Bullet: ' 1. '
@@ -19264,14 +19269,14 @@ msgstr ""
 "*補足*：これは前の章の例の反復ですが、ここでは自力で書き直せるかやってみてく"
 "ださい。"
 
-# TODO: 原文も数式で表現したいです。
 #. type: Bullet: '1. '
 #: text/chapter5.md:104
 msgid ""
-"(Medium) Write a function `binomial` which finds the coefficient of the "
-"x^`k`th term in the polynomial expansion of (1 + x)^`n`. This is the same as "
-"the number of ways to choose a subset of `k` elements from a set of `n` "
-"elements. Use the formula `n! / k! (n - k)!`, where `!` is the factorial "
+"(Medium) Write a function `binomial` which finds the coefficient of the \\"
+"\\( x ^ k \\\\)th term in the polynomial expansion of \\\\( ( 1 + x ) ^ n \\"
+"\\). This is the same as the number of ways to choose a subset of \\\\( k \\"
+"\\) elements from a set of \\\\( n \\\\) elements. Use the formula \\\\( n! "
+"\\\\: / \\\\: k! \\\\, (n - k)! \\\\), where \\\\( ! \\\\) is the factorial "
 "function written earlier. _Hint_: Use pattern matching to handle corner "
 "cases. If it takes a long time to complete or crashes with an error about "
 "the call stack, try adding more corner cases."
