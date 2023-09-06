@@ -17,6 +17,17 @@ jobs:
         with:
           mdbook-version: 'latest'
 
+      - name: Set up PureScript toolchain
+        uses: purescript-contrib/setup-purescript@main
+
+      - name: Add version section
+        run: |
+          version=$(purs --version)
+          today=$(date -I)
+          echo -e "\n## Release\n" >> README.md
+          echo -e "PureScript v$version\n" >> README.md
+          echo -e "Published on $today" >> README.md
+
       - run: mdbook build
 
       - name: Deploy
