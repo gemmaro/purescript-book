@@ -28,15 +28,13 @@ PureScriptを書く上で（例えば本書の演習を解くなど）お好み�
 git clone https://github.com/purescript-contrib/purescript-book.git
 ```
 
-本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テストが含まれます。
+本書のリポジトリには各章に付属してPureScriptのコード例と演習のための単体テストが含まれます。
 演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。
-この工程は`resetSolutions.sh`スクリプトを使えば簡単にできます。
-また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくと良いでしょう（これらのアンカーはコード片を本書の表示用のMarkdownへ複製するために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうが良いでしょう）。
+この工程は`prepareExercises.sh`スクリプトを使えば簡単にできます。
 
 ```sh
 cd purescript-book
-./scripts/resetSolutions.sh
-./scripts/removeAnchors.sh
+./scripts/prepareExercises.sh
 git add .
 git commit --all --message "Exercises ready to be solved"
 ```

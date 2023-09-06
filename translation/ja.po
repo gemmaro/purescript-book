@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-08-28 18:56+0900\n"
-"PO-Revision-Date: 2023-08-28 19:02+0900\n"
+"POT-Creation-Date: 2023-09-07 08:09+0900\n"
+"PO-Revision-Date: 2023-09-07 08:12+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -143,7 +143,8 @@ msgstr ""
 #: README.md:8
 msgid ""
 "Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
-msgstr "Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
+msgstr ""
+"Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
 
 #. type: Title ##
 #: README.md:9
@@ -1929,7 +1930,7 @@ msgstr "本書の残りの例では入れ子の関数の代わりに矢印関数
 #: text/chapter12.md:361 text/chapter12.md:555 text/chapter13.md:90
 #: text/chapter13.md:137 text/chapter13.md:244 text/chapter13.md:387
 #: text/chapter14.md:249 text/chapter14.md:352 text/chapter14.md:569
-#: text/chapter14.md:704 text/chapter2.md:124 text/chapter3.md:774
+#: text/chapter14.md:704 text/chapter2.md:123 text/chapter3.md:774
 #: text/chapter4.md:70 text/chapter4.md:181 text/chapter4.md:363
 #: text/chapter4.md:521 text/chapter4.md:615 text/chapter5.md:99
 #: text/chapter5.md:228 text/chapter5.md:392 text/chapter5.md:465
@@ -2565,7 +2566,9 @@ msgstr ""
 msgid ""
 "(Medium) Given a record that represents a quadratic polynomial \\\\( a x ^ 2 "
 "+ b x + c = 0 \\\\):"
-msgstr "（普通）二次多項式 \\\\( a x ^ 2 + b x + c = 0 \\\\) を表現するレコードが与えられているとします。"
+msgstr ""
+"（普通）二次多項式 \\\\( a x ^ 2 + b x + c = 0 \\\\) を表現するレコードが与え"
+"られているとします。"
 
 #. type: Plain text
 #: text/chapter10.md:489
@@ -4228,7 +4231,7 @@ msgstr ""
 
 #. type: Title ##
 #: text/chapter10.md:1083 text/chapter11.md:963 text/chapter12.md:594
-#: text/chapter13.md:401 text/chapter14.md:720 text/chapter2.md:129
+#: text/chapter13.md:401 text/chapter14.md:720 text/chapter2.md:128
 #: text/chapter3.md:782 text/chapter4.md:631 text/chapter5.md:529
 #: text/chapter6.md:757 text/chapter7.md:691 text/chapter8.md:1001
 #: text/chapter9.md:238
@@ -6244,7 +6247,9 @@ msgid ""
 "\\\\( n \\\\) is odd. For example, the iterated Collatz sequence starting at "
 "\\\\( 10 \\\\) is as follows:"
 msgstr ""
-"（普通）*コラッツ*関数は自然数 \\\\( n \\\\) 上で定義され、 \\\\( n \\\\) が偶数なら \\\\( n / 2 \\\\)、 \\\\( n \\\\) が奇数なら \\\\( 3 n + 1 \\\\)です。\n"
+"（普通）*コラッツ*関数は自然数 \\\\( n \\\\) 上で定義され、 \\\\( n \\\\) が"
+"偶数なら \\\\( n / 2 \\\\)、 \\\\( n \\\\) が奇数なら \\\\( 3 n + 1 \\\\)で"
+"す。\n"
 "例えば \\\\( 10 \\\\) で始まるコラッツ数列は以下です。"
 
 #. type: Plain text
@@ -10280,8 +10285,10 @@ msgid ""
 "\\\\). Instead, it can be moved into the `Letter` data type, which allows it "
 "to be changed by the production rules:"
 msgstr ""
-"（普通）向きを変えるときの角度の大きさは今のところ一定 \\\\( tau / 6 \\\\) です。\n"
-"これに代えて、`Letter`データ型の中に角度を移動させ、生成規則によって変更できるようにしてください。"
+"（普通）向きを変えるときの角度の大きさは今のところ一定 \\\\( tau / 6 \\\\) で"
+"す。\n"
+"これに代えて、`Letter`データ型の中に角度を移動させ、生成規則によって変更でき"
+"るようにしてください。"
 
 #. type: Plain text
 #: text/chapter12.md:565
@@ -14020,45 +14027,33 @@ msgid ""
 "The book repo contains PureScript example code and unit tests for the "
 "exercises that accompany each chapter. There's some initial setup required "
 "to reset the exercise solutions so they are ready to be solved by you. Use "
-"the `resetSolutions.sh` script to simplify this process. While at it, you "
-"should also strip out all the anchor comments with the `removeAnchors.sh` "
-"script (these anchors are used for copying code snippets into the book's "
-"rendered markdown, and you probably don't need this clutter in your local "
-"repo):"
+"the `prepareExercises.sh` script to simplify this process:"
 msgstr ""
-"本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テス"
-"トが含まれます。\n"
-"演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準"
-"備ができます。\n"
-"この工程は`resetSolutions.sh`スクリプトを使えば簡単にできます。\n"
-"また`removeAnchors.sh`スクリプトで全てのアンカーコメントを取り除いておくと良"
-"いでしょう（これらのアンカーはコード片を本書の表示用のMarkdownへ複製するため"
-"に使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほ"
-"うが良いでしょう）。"
+"本書のリポジトリには各章に付属してPureScriptのコード例と演習のための単体テストが含まれます。\n"
+"演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。\n"
+"この工程は`prepareExercises.sh`スクリプトを使えば簡単にできます。"
 
 #. type: Fenced code block (sh)
 #: text/chapter2.md:29
 #, no-wrap
 msgid ""
 "cd purescript-book\n"
-"./scripts/resetSolutions.sh\n"
-"./scripts/removeAnchors.sh\n"
+"./scripts/prepareExercises.sh\n"
 "git add .\n"
 "git commit --all --message \"Exercises ready to be solved\"\n"
 msgstr ""
 "cd purescript-book\n"
-"./scripts/resetSolutions.sh\n"
-"./scripts/removeAnchors.sh\n"
+"./scripts/prepareExercises.sh\n"
 "git add .\n"
 "git commit --all --message \"Exercises ready to be solved\"\n"
 
 #. type: Plain text
-#: text/chapter2.md:38
+#: text/chapter2.md:37
 msgid "Now run the tests for this chapter:"
 msgstr "それではこの章のテストを走らせましょう。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:39
+#: text/chapter2.md:38
 #, no-wrap
 msgid ""
 "cd exercises/chapter2\n"
@@ -14068,12 +14063,12 @@ msgstr ""
 "spago test\n"
 
 #. type: Plain text
-#: text/chapter2.md:45
+#: text/chapter2.md:44
 msgid "You should see the following successful test output:"
 msgstr "以下の成功した旨のテスト出力が出るでしょう。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:46
+#: text/chapter2.md:45
 #, no-wrap
 msgid ""
 "→ Suite: Euler - Sum of Multiples\n"
@@ -14089,7 +14084,7 @@ msgstr ""
 "All 2 tests passed! 🎉\n"
 
 #. type: Plain text
-#: text/chapter2.md:55
+#: text/chapter2.md:54
 msgid ""
 "Note that the `answer` function (found in `src/Euler.purs`) has been "
 "modified to find the multiples of 3 and 5 below any integer. The test suite "
@@ -14106,7 +14101,7 @@ msgstr ""
 "詰めなくて大丈夫です。"
 
 #. type: Plain text
-#: text/chapter2.md:57
+#: text/chapter2.md:56
 msgid ""
 "The remainder of the book contains lots of exercises. If you write your "
 "solutions in the `Test.MySolutions` module (`test/MySolutions.purs`), you "
@@ -14117,20 +14112,20 @@ msgstr ""
 "提供されているテストスートを使って確認できます。"
 
 #. type: Plain text
-#: text/chapter2.md:59
+#: text/chapter2.md:58
 msgid ""
 "Let's work through this next exercise together in a test-driven-development "
 "style."
 msgstr "テスト駆動開発でこの次の演習を一緒に進めてみましょう。"
 
 #. type: Title ##
-#: text/chapter2.md:60
+#: text/chapter2.md:59
 #, no-wrap
 msgid "Exercise"
 msgstr "演習"
 
 #. type: Bullet: '1. '
-#: text/chapter2.md:63
+#: text/chapter2.md:62
 msgid ""
 "(Medium) Write a `diagonal` function to compute the length of the diagonal "
 "(or hypotenuse) of a right-angled triangle when given the lengths of the two "
@@ -14140,13 +14135,13 @@ msgstr ""
 "算する`diagonal`関数を書いてください。"
 
 #. type: Title ##
-#: text/chapter2.md:64
+#: text/chapter2.md:63
 #, no-wrap
 msgid "Solution"
 msgstr "解法"
 
 #. type: Plain text
-#: text/chapter2.md:67
+#: text/chapter2.md:66
 msgid ""
 "We'll start by enabling the tests for this exercise. Move the start of the "
 "block-comment down a few lines, as shown below. Block comments start with `{-"
@@ -14157,7 +14152,7 @@ msgstr ""
 "ブロックコメントは`{-`から始まり`-}`で終わります。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:68
+#: text/chapter2.md:67
 #, no-wrap
 msgid ""
 "{{#include ../exercises/chapter2/test/Main.purs:diagonalTests}}\n"
@@ -14167,7 +14162,7 @@ msgstr ""
 "    {-  Move this block comment starting point to enable more tests\n"
 
 #. type: Plain text
-#: text/chapter2.md:74
+#: text/chapter2.md:73
 msgid ""
 "If we attempt to run the test now, we'll encounter a compilation error "
 "because we have not yet implemented our `diagonal` function."
@@ -14176,7 +14171,7 @@ msgstr ""
 "なぜなら`diagonal`関数をまだ実装していないからです。"
 
 #. type: Fenced code block (sh)
-#: text/chapter2.md:75
+#: text/chapter2.md:74
 #, no-wrap
 msgid ""
 "$ spago test\n"
@@ -14196,7 +14191,7 @@ msgstr ""
 "  Unknown value diagonal\n"
 
 #. type: Plain text
-#: text/chapter2.md:86
+#: text/chapter2.md:85
 msgid ""
 "Let's first look at what happens with a faulty version of this function. Add "
 "the following code to `test/MySolutions.purs`:"
@@ -14205,7 +14200,7 @@ msgstr ""
 "以下のコードを`test/MySolutions.purs`に追加してください。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:87
+#: text/chapter2.md:86
 #, no-wrap
 msgid ""
 "import Data.Number (sqrt)\n"
@@ -14217,12 +14212,12 @@ msgstr ""
 "diagonal w h = sqrt (w * w + h)\n"
 
 #. type: Plain text
-#: text/chapter2.md:94
+#: text/chapter2.md:93
 msgid "And check our work by running `spago test`:"
 msgstr "そして`spago test`を走らせて確認してください。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:95
+#: text/chapter2.md:94
 #, no-wrap
 msgid ""
 "→ Suite: diagonal\n"
@@ -14238,7 +14233,7 @@ msgstr ""
 "2 tests failed:\n"
 
 #. type: Plain text
-#: text/chapter2.md:104
+#: text/chapter2.md:103
 msgid ""
 "Uh-oh, that's not quite right. Let's fix this with the correct application "
 "of the Pythagorean formula by changing the function to:"
@@ -14248,18 +14243,18 @@ msgstr ""
 "関数を以下のように変えます。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:105
+#: text/chapter2.md:104
 #, no-wrap
 msgid "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
 msgstr "{{#include ../exercises/chapter2/test/no-peeking/Solutions.purs:diagonal}}\n"
 
 #. type: Plain text
-#: text/chapter2.md:110
+#: text/chapter2.md:109
 msgid "Trying `spago test` again now shows all tests are passing:"
 msgstr "ここでもう一度`spago test`としてみると全てのテストが通っています。"
 
 #. type: Fenced code block (hs)
-#: text/chapter2.md:111
+#: text/chapter2.md:110
 #, no-wrap
 msgid ""
 "→ Suite: Euler - Sum of Multiples\n"
@@ -14281,14 +14276,14 @@ msgstr ""
 "All 4 tests passed! 🎉\n"
 
 #. type: Plain text
-#: text/chapter2.md:123
+#: text/chapter2.md:122
 msgid "Success! Now you're ready to try these next exercises on your own."
 msgstr ""
 "成功です。\n"
 "これで次の演習を自力で解くための準備ができました。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter2.md:128
+#: text/chapter2.md:127
 msgid ""
 "(Easy) Write a function `circleArea` which computes the area of a circle "
 "with a given radius. Use the `pi` constant, which is defined in the "
@@ -14302,7 +14297,7 @@ msgstr ""
 "れないようにしましょう。"
 
 #. type: Bullet: ' 1. '
-#: text/chapter2.md:128
+#: text/chapter2.md:127
 msgid ""
 "(Medium) Write a function `leftoverCents` which takes an `Int` and returns "
 "what's leftover after dividing by `100`. Use the `rem` function. Search "
@@ -14317,7 +14312,7 @@ msgstr ""
 "インポートに対応しているかもしれません。"
 
 #. type: Plain text
-#: text/chapter2.md:132
+#: text/chapter2.md:131
 msgid ""
 "In this chapter, we installed the PureScript compiler and the Spago tool. We "
 "also learned how to write solutions to exercises and check these for "
@@ -14327,7 +14322,7 @@ msgstr ""
 "演習の解答の書き方と正しさの確認方法も学びました。"
 
 #. type: Plain text
-#: text/chapter2.md:134
+#: text/chapter2.md:133
 msgid ""
 "There will be many more exercises in the chapters ahead, and working through "
 "those helps with learning the material. If any of the exercises stumps you, "
@@ -14347,7 +14342,7 @@ msgstr ""
 "されています。"
 
 #. type: Plain text
-#: text/chapter2.md:136
+#: text/chapter2.md:135
 msgid ""
 "Once you solve all the exercises in a chapter, you may compare your answers "
 "against those in the `no-peeking/Solutions.purs`. No peeking, please, "
@@ -14367,7 +14362,7 @@ msgstr ""
 "見つけたときはPRを送ってください。"
 
 #. type: Plain text
-#: text/chapter2.md:137
+#: text/chapter2.md:136
 msgid ""
 "The repo is continuously being revised, so be sure to check for updates "
 "before starting each new chapter."
@@ -18034,8 +18029,11 @@ msgid ""
 "_Hint_: Use the `guard` function in an array comprehension."
 msgstr ""
 "（普通）関数`triples :: Int -> Array (Array Int)`を書いてください。\n"
-"この関数は数値 \\\\( n \\\\) を取り、構成要素（値 \\\\( a \\\\)、 \\\\( b \\\\)、 \\\\( c \\\\)）がそれぞれ \\\\( n \\\\) 以下であるような全てのピタゴラスの3つ組 (pythagorean triples) を返します。\n"
-"*ピタゴラスの3つ組*は \\\\( a ^ 2 + b ^ 2 = c ^ 2 \\\\) であるような数値の配列 \\\\( [ a, b, c ] \\\\) です。\n"
+"この関数は数値 \\\\( n \\\\) を取り、構成要素（値 \\\\( a \\\\)、 \\\\( b \\"
+"\\)、 \\\\( c \\\\)）がそれぞれ \\\\( n \\\\) 以下であるような全てのピタゴラ"
+"スの3つ組 (pythagorean triples) を返します。\n"
+"*ピタゴラスの3つ組*は \\\\( a ^ 2 + b ^ 2 = c ^ 2 \\\\) であるような数値の配"
+"列 \\\\( [ a, b, c ] \\\\) です。\n"
 "*手掛かり*：配列内包表記で`guard`関数を使ってください。"
 
 #. type: Bullet: ' 1. '
@@ -29661,50 +29659,12 @@ msgstr ""
 #~ "ラリは多くの関数の例を提供しており、この章ではそれらをもう少し詳しく見てい"
 #~ "きます。"
 
-#, no-wrap
-#~ msgid ""
-#~ "> import Prelude\n"
-#~ "> :type flip\n"
-#~ "forall a b c. (a -> b -> c) -> b -> a -> c\n"
-#~ "\n"
-#~ "> :type const\n"
-#~ "forall a b. a -> b -> a\n"
-#~ msgstr ""
-#~ "> import Prelude\n"
-#~ "> :type flip\n"
-#~ "forall a b c. (a -> b -> c) -> b -> a -> c\n"
-#~ "\n"
-#~ "> :type const\n"
-#~ "forall a b. a -> b -> a\n"
-
 #~ msgid ""
 #~ "In the previous section, we saw the types of some functions defined in "
 #~ "the Prelude. For example, the `flip` function had the following type:"
 #~ msgstr ""
 #~ "前の節ではPreludeで定義された関数の型を幾つか見てきました。\n"
 #~ "例えば`flip`関数は次のような型を持っていました。"
-
-#, no-wrap
-#~ msgid ""
-#~ "> :type flip\n"
-#~ "forall a b c. (a -> b -> c) -> b -> a -> c\n"
-#~ msgstr ""
-#~ "> :type flip\n"
-#~ "forall a b c. (a -> b -> c) -> b -> a -> c\n"
-
-#, no-wrap
-#~ msgid "(Int -> String -> String) -> String -> Int -> String\n"
-#~ msgstr "(Int -> String -> String) -> String -> Int -> String\n"
-
-#, no-wrap
-#~ msgid ""
-#~ "> flip (\\n s -> show n <> s) \"Ten\" 10\n"
-#~ "\n"
-#~ "\"10Ten\"\n"
-#~ msgstr ""
-#~ "> flip (\\n s -> show n <> s) \"Ten\" 10\n"
-#~ "\n"
-#~ "\"10Ten\"\n"
 
 #~ msgid ""
 #~ "While we can choose any types for `a`, `b`, and `c`, we have to be "
@@ -29719,16 +29679,6 @@ msgstr ""
 #~ "第2引数として文字列`\"Ten\"`、第3引数として数`10`を渡したのはそれが理由で"
 #~ "す。\n"
 #~ "もし引数が逆になっているとうまくいかないでしょう。"
-
-#, no-wrap
-#~ msgid ""
-#~ "> flip (\\n s -> show n <> s) 10 \"Ten\"\n"
-#~ "\n"
-#~ "Could not match type Int with type String\n"
-#~ msgstr ""
-#~ "> flip (\\n s -> show n <> s) 10 \"Ten\"\n"
-#~ "\n"
-#~ "Could not match type Int with type String\n"
 
 #~ msgid ""
 #~ "Note how the declarations for `foo` and `bar` are indented past the "
