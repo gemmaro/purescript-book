@@ -425,13 +425,11 @@ Euler</a>の解答例にあるコードがわかりにくかったり見慣れ�
 <p>ここまでで必要な開発ツールをインストールできているので、本書のリポジトリをクローンしてください。</p>
 <pre><code class="language-sh">git clone https://github.com/purescript-contrib/purescript-book.git
 </code></pre>
-<p>本書のリポジトリにはPureScriptのコード例と各章に付属する演習のための単体テストが含まれます。
+<p>本書のリポジトリには各章に付属してPureScriptのコード例と演習のための単体テストが含まれます。
 演習の解法を白紙に戻すために必要な初期設定があり、この設定をすることで解く準備ができます。
-この工程は<code>resetSolutions.sh</code>スクリプトを使えば簡単にできます。
-また<code>removeAnchors.sh</code>スクリプトで全てのアンカーコメントを取り除いておくと良いでしょう（これらのアンカーはコード片を本書の表示用のMarkdownへ複製するために使われており、自分のローカルリポジトリではこのアンカーで散らかっていないほうが良いでしょう）。</p>
+この工程は<code>prepareExercises.sh</code>スクリプトを使えば簡単にできます。</p>
 <pre><code class="language-sh">cd purescript-book
-./scripts/resetSolutions.sh
-./scripts/removeAnchors.sh
+./scripts/prepareExercises.sh
 git add .
 git commit --all --message &quot;Exercises ready to be solved&quot;
 </code></pre>
