@@ -10,6 +10,7 @@
     "prelint": "npm run translate",
     "lint:text": "textlint text-ja/*",
     "lint:md": "markdownlint text-ja/*.md",
-    "translate": "po4a --version > .po4a-version && po4a po4a.cfg"
+    "translate": "cd translation && po4a po4a.cfg",
+    "pretranslate": "po4a --version > translation/.po4a-version"
   }
 }

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
 "POT-Creation-Date: 2023-09-07 08:09+0900\n"
-"PO-Revision-Date: 2023-09-07 08:12+0900\n"
+"PO-Revision-Date: 2023-09-23 23:07+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -143,8 +143,7 @@ msgstr ""
 #: README.md:8
 msgid ""
 "Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
-msgstr ""
-"Translations: [日本語 (Japanese)](https://gemmaro.github.io/purescript-book/)"
+msgstr "翻訳：[日本語（本訳）](https://gemmaro.github.io/purescript-book/)"
 
 #. type: Title ##
 #: README.md:9
