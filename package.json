@@ -11,6 +11,7 @@
     "lint:text": "textlint text-ja/*",
     "lint:md": "markdownlint text-ja/*.md",
     "translate": "cd translation && po4a po4a.cfg",
-    "pretranslate": "po4a --version > translation/.po4a-version"
+    "pretranslate": "po4a --version > translation/.po4a-version",
+    "diff": "git diff --name-status master..ja | grep --extended-regexp --regexp='(text-ja|translation)/.*' --invert-match"
   }
 }
