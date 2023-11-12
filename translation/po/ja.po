@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.gemmaro.purescript-book.v0.1.0\n"
-"POT-Creation-Date: 2023-11-06 18:52+0900\n"
-"PO-Revision-Date: 2023-11-06 19:01+0900\n"
+"POT-Creation-Date: 2023-11-12 11:27+0900\n"
+"PO-Revision-Date: 2023-11-12 11:37+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -1933,8 +1933,8 @@ msgstr "本書の残りの例では入れ子の関数の代わりに矢印関数
 #: ../text/chapter14.md:704 ../text/chapter2.md:123 ../text/chapter3.md:774
 #: ../text/chapter4.md:101 ../text/chapter4.md:230 ../text/chapter4.md:394
 #: ../text/chapter4.md:467 ../text/chapter4.md:526 ../text/chapter5.md:72
-#: ../text/chapter5.md:183 ../text/chapter5.md:365 ../text/chapter5.md:523
-#: ../text/chapter5.md:617 ../text/chapter6.md:130 ../text/chapter6.md:321
+#: ../text/chapter5.md:183 ../text/chapter5.md:373 ../text/chapter5.md:531
+#: ../text/chapter5.md:625 ../text/chapter6.md:130 ../text/chapter6.md:321
 #: ../text/chapter6.md:411 ../text/chapter6.md:608 ../text/chapter6.md:742
 #: ../text/chapter7.md:381 ../text/chapter7.md:540 ../text/chapter7.md:642
 #: ../text/chapter8.md:308 ../text/chapter8.md:667 ../text/chapter8.md:974
@@ -4232,7 +4232,7 @@ msgstr ""
 #. type: Title ##
 #: ../text/chapter10.md:1083 ../text/chapter11.md:963 ../text/chapter12.md:594
 #: ../text/chapter13.md:401 ../text/chapter14.md:720 ../text/chapter2.md:128
-#: ../text/chapter3.md:782 ../text/chapter4.md:531 ../text/chapter5.md:633
+#: ../text/chapter3.md:782 ../text/chapter4.md:531 ../text/chapter5.md:641
 #: ../text/chapter6.md:757 ../text/chapter7.md:691 ../text/chapter8.md:1001
 #: ../text/chapter9.md:238
 #, no-wrap
@@ -19787,18 +19787,41 @@ msgstr ""
 "forall (m :: Type -> Type). Alternative m => Boolean -> m Unit\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:344
+#: ../text/chapter5.md:350
+#, no-wrap
+msgid ""
+"> The `Unit` type represents values with no computational content — the absence of a concrete meaningful value.\n"
+">\n"
+"> We often use `Unit` \"wrapped\" in a type constructor as the return type of a computation where we only care about the _effects_ of the computation (or a \"shape\" of the result) and not some concrete value.\n"
+">\n"
+"> For example, the `main` function has the type `Effect Unit`. Main is an entry point to the project — we don't call it directly.\n"
+">\n"
+"> We'll explain what `m` in the type signature means in Chapter 6.\n"
+msgstr ""
+"> `Unit`型は何ら計算する内容の無い値を表現します。\n"
+"> すなわち具体的で意味のある値が存在しないということです。\n"
+">\n"
+"> `Unit`はよく型構築子に「包んで」計算の返却型として使います。\n"
+"> その計算は具体的な値のためではなく、計算の*作用*（ないし結果の「形状」）のみに関心があるのです。\n"
+">\n"
+"> 例えば、`main`関数は型`Effect Unit`を持ちます。\n"
+"> この関数はプロジェクトへの入口であり、直接呼ぶものではありません。\n"
+">\n"
+"> 型シグネチャ中の`m`の意味については第6章で説明します。\n"
+
+#. type: Plain text
+#: ../text/chapter5.md:352
 msgid "In our case, we can assume that PSCi reported the following type:"
 msgstr "今回の場合は、PSCiは次の型を報告するものと考えてください。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:345
+#: ../text/chapter5.md:353
 #, no-wrap
 msgid "Boolean -> Array Unit\n"
 msgstr "Boolean -> Array Unit\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:350
+#: ../text/chapter5.md:358
 msgid ""
 "For our purposes, the following calculations tell us everything we need to "
 "know about the `guard` function on arrays:"
@@ -19807,7 +19830,7 @@ msgstr ""
 "とは全てわかります。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:351
+#: ../text/chapter5.md:359
 #, no-wrap
 msgid ""
 "> import Data.Array\n"
@@ -19827,7 +19850,7 @@ msgstr ""
 "0\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:362
+#: ../text/chapter5.md:370
 msgid ""
 "If we pass an expression to `guard` that evaluates to `true`, then it "
 "returns an array with a single element. If the expression evaluates to "
@@ -19838,7 +19861,7 @@ msgstr ""
 "もし式が`false`と評価された場合は、その結果は空です。"
 
 #. type: Plain text
-#: ../text/chapter5.md:364
+#: ../text/chapter5.md:372
 msgid ""
 "This means that if the guard fails, then the current branch of the array "
 "comprehension will terminate early with no results. This means that a call "
@@ -19857,7 +19880,7 @@ msgstr ""
 "ください。"
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 msgid ""
 "(Easy) Write a function `isPrime`, which tests whether its integer argument "
 "is prime. _Hint_: Use the `factors` function."
@@ -19867,7 +19890,7 @@ msgstr ""
 "*手掛かり*：`factors`関数を使ってください。"
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 msgid ""
 "(Medium) Write a function `cartesianProduct` which uses do notation to find "
 "the _cartesian product_ of two arrays, i.e., the set of all pairs of "
@@ -19880,7 +19903,7 @@ msgstr ""
 "ここで`a`は最初の配列の要素、`b`は2つ目の配列の要素です。"
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 msgid ""
 "(Medium) Write a function `triples :: Int -> Array (Array Int)`, which takes "
 "a number \\\\( n \\\\) and returns all Pythagorean triples whose components "
@@ -19898,7 +19921,7 @@ msgstr ""
 "*手掛かり*：配列内包表記で`guard`関数を使ってください。"
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 msgid ""
 "(Difficult) Write a function `primeFactors` which produces the [prime "
 "factorization](https://www.mathsisfun.com/prime-factorization.html) of `n`, "
@@ -19915,13 +19938,13 @@ msgstr ""
 "最初の因数を探し、それから残りの因数を探すのです。"
 
 #. type: Title ##
-#: ../text/chapter5.md:372
+#: ../text/chapter5.md:380
 #, no-wrap
 msgid "Folds"
 msgstr "畳み込み"
 
 #. type: Plain text
-#: ../text/chapter5.md:375
+#: ../text/chapter5.md:383
 msgid ""
 "Left and right folds over arrays provide another class of interesting "
 "functions that can be implemented using recursion."
@@ -19930,7 +19953,7 @@ msgstr ""
 "を提供します。"
 
 #. type: Plain text
-#: ../text/chapter5.md:377
+#: ../text/chapter5.md:385
 msgid ""
 "Start by importing the `Data.Foldable` module and inspecting the types of "
 "the `foldl` and `foldr` functions using PSCi:"
@@ -19939,7 +19962,7 @@ msgstr ""
 "型を調べることから始めましょう。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:378
+#: ../text/chapter5.md:386
 #, no-wrap
 msgid ""
 "> import Data.Foldable\n"
@@ -19959,7 +19982,7 @@ msgstr ""
 "forall (f :: Type -> Type) (a :: Type) (b :: Type). Foldable f => (a -> b -> b) -> b -> f a -> b\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:389
+#: ../text/chapter5.md:397
 msgid ""
 "These types are more general than we are interested in right now. For this "
 "chapter, we can simplify and assume the following (more specific) type "
@@ -19969,7 +19992,7 @@ msgstr ""
 "この章では単純化して以下の（より具体的な）型シグネチャと見て構いません。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:390
+#: ../text/chapter5.md:398
 #, no-wrap
 msgid ""
 "-- foldl\n"
@@ -19985,7 +20008,7 @@ msgstr ""
 "forall a b. (a -> b -> b) -> b -> Array a -> b\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:399
+#: ../text/chapter5.md:407
 msgid ""
 "In both cases, the type `a` corresponds to the type of elements of our "
 "array. The type `b` can be thought of as the type of an \"accumulator\", "
@@ -19996,7 +20019,7 @@ msgstr ""
 "累算器とは配列を走査しつつ結果を累算するものです。"
 
 #. type: Plain text
-#: ../text/chapter5.md:401
+#: ../text/chapter5.md:409
 msgid ""
 "The difference between the `foldl` and `foldr` functions is the direction of "
 "the traversal. `foldl` folds the array \"from the left\", whereas `foldr` "
@@ -20007,7 +20030,7 @@ msgstr ""
 "みます。"
 
 #. type: Plain text
-#: ../text/chapter5.md:403
+#: ../text/chapter5.md:411
 #, no-wrap
 msgid "Let's see these functions in action. Let's use `foldl` to sum an array of integers. The type `a` will be `Int`, and we can also choose the result type `b` to be `Int`. We need to provide three arguments: a function `Int -> Int -> Int`, which will add the next element to the accumulator, an initial value for the accumulator of type `Int`, and an array of `Int`s to add. For the first argument, we can use the addition operator, and the initial value of the accumulator will be zero:\n"
 msgstr ""
@@ -20021,7 +20044,7 @@ msgstr ""
 "最初の引数としては、加算演算子を使用できますし、累算器の初期値はゼロになります。\n"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:404
+#: ../text/chapter5.md:412
 #, no-wrap
 msgid ""
 "> foldl (+) 0 (1 .. 5)\n"
@@ -20031,7 +20054,7 @@ msgstr ""
 "15\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:410
+#: ../text/chapter5.md:418
 msgid ""
 "In this case, it didn't matter whether we used `foldl` or `foldr`, because "
 "the result is the same, no matter what order the additions happen in:"
@@ -20040,7 +20063,7 @@ msgstr ""
 "`foldr`のどちらでも問題ありません。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:411
+#: ../text/chapter5.md:419
 #, no-wrap
 msgid ""
 "> foldr (+) 0 (1 .. 5)\n"
@@ -20050,7 +20073,7 @@ msgstr ""
 "15\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:417
+#: ../text/chapter5.md:425
 msgid ""
 "Let's write an example where the choice of folding function matters to "
 "illustrate the difference. Instead of the addition function, let's use "
@@ -20061,7 +20084,7 @@ msgstr ""
 "加算関数の代わりに、文字列連結を使用して文字列を構築しましょう。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:418
+#: ../text/chapter5.md:426
 #, no-wrap
 msgid ""
 "> foldl (\\acc n -> acc <> show n) \"\" [1,2,3,4,5]\n"
@@ -20077,7 +20100,7 @@ msgstr ""
 "\"54321\"\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:427
+#: ../text/chapter5.md:435
 msgid ""
 "This illustrates the difference between the two functions. The left fold "
 "expression is equivalent to the following application:"
@@ -20086,30 +20109,30 @@ msgstr ""
 "す。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:428
+#: ../text/chapter5.md:436
 #, no-wrap
 msgid "(((((\"\" <> show 1) <> show 2) <> show 3) <> show 4) <> show 5)\n"
 msgstr "(((((\"\" <> show 1) <> show 2) <> show 3) <> show 4) <> show 5)\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:433
+#: ../text/chapter5.md:441
 msgid "Whereas the right fold is equivalent to this:"
 msgstr "それに対し、右畳み込みは以下と等価です。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:434
+#: ../text/chapter5.md:442
 #, no-wrap
 msgid "(((((\"\" <> show 5) <> show 4) <> show 3) <> show 2) <> show 1)\n"
 msgstr "(((((\"\" <> show 5) <> show 4) <> show 3) <> show 2) <> show 1)\n"
 
 #. type: Title ##
-#: ../text/chapter5.md:438
+#: ../text/chapter5.md:446
 #, no-wrap
 msgid "Tail Recursion"
 msgstr "末尾再帰"
 
 #. type: Plain text
-#: ../text/chapter5.md:441
+#: ../text/chapter5.md:449
 msgid ""
 "Recursion is a powerful technique for specifying algorithms but comes with a "
 "problem: evaluating recursive functions in JavaScript can lead to stack "
@@ -20120,12 +20143,12 @@ msgstr ""
 "でエラーを起こす可能性があるのです。"
 
 #. type: Plain text
-#: ../text/chapter5.md:443
+#: ../text/chapter5.md:451
 msgid "It is easy to verify this problem with the following code in PSCi:"
 msgstr "PSCiで次のコードを入力すると、この問題を簡単に検証できます。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:444
+#: ../text/chapter5.md:452
 #, no-wrap
 msgid ""
 "> :paste\n"
@@ -20155,7 +20178,7 @@ msgstr ""
 "RangeError: Maximum call stack size exceeded\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:460
+#: ../text/chapter5.md:468
 msgid ""
 "This is a problem. If we adopt recursion as a standard technique from "
 "functional programming, we need a way to deal with possibly unbounded "
@@ -20166,7 +20189,7 @@ msgstr ""
 "い再帰がありうるときでも扱える方法が必要です。"
 
 #. type: Plain text
-#: ../text/chapter5.md:462
+#: ../text/chapter5.md:470
 msgid ""
 "PureScript provides a partial solution to this problem through _tail "
 "recursion optimization_."
@@ -20175,7 +20198,7 @@ msgstr ""
 "ます。"
 
 #. type: Plain text
-#: ../text/chapter5.md:464
+#: ../text/chapter5.md:472
 #, no-wrap
 msgid "> _Note_: more complete solutions to the problem can be implemented in libraries using so-called _trampolining_, but that is beyond the scope of this chapter. The interested reader can consult the documentation for the [`free`](https://pursuit.purescript.org/packages/purescript-free) and [`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec) packages.\n"
 msgstr ""
@@ -20183,7 +20206,7 @@ msgstr ""
 "> 興味のある読者は[`free`](https://pursuit.purescript.org/packages/purescript-free)や[`tailrec`](https://pursuit.purescript.org/packages/purescript-tailrec)パッケージのドキュメントをあたると良いでしょう。\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:466
+#: ../text/chapter5.md:474
 msgid ""
 "The key observation that enables tail recursion optimization: a recursive "
 "call in _tail position_ to a function can be replaced with a _jump_, which "
@@ -20201,7 +20224,7 @@ msgstr ""
 "`f`の再帰呼び出しが末尾位置*でなかった*からです。"
 
 #. type: Plain text
-#: ../text/chapter5.md:468
+#: ../text/chapter5.md:476
 msgid ""
 "In practice, the PureScript compiler does not replace the recursive call "
 "with a jump, but rather replaces the entire recursive function with a _while "
@@ -20211,20 +20234,20 @@ msgstr ""
 "く、再帰的な関数全体を _whileループ_ に置き換えます。"
 
 #. type: Plain text
-#: ../text/chapter5.md:470
+#: ../text/chapter5.md:478
 msgid ""
 "Here is an example of a recursive function with all recursive calls in tail "
 "position:"
 msgstr "以下は全ての再帰呼び出しが末尾位置にある再帰関数の例です。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:471
+#: ../text/chapter5.md:479
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:factorialTailRec}}\n"
 msgstr "{{#include ../exercises/chapter5/test/Examples.purs:factorialTailRec}}\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:476
+#: ../text/chapter5.md:484
 msgid ""
 "Notice that the recursive call to `factorialTailRec` is the last thing in "
 "this function – it is in tail position."
@@ -20234,13 +20257,13 @@ msgstr ""
 "つまり末尾位置にあるのです。"
 
 #. type: Title ##
-#: ../text/chapter5.md:477
+#: ../text/chapter5.md:485
 #, no-wrap
 msgid "Accumulators"
 msgstr "累算器"
 
 #. type: Plain text
-#: ../text/chapter5.md:480
+#: ../text/chapter5.md:488
 msgid ""
 "One common way to turn a not tail recursive function into a tail recursive "
 "is to use an _accumulator parameter_. An accumulator parameter is an "
@@ -20253,14 +20276,14 @@ msgstr ""
 "これは結果を累算するために返り値を使うのとは対照的です。"
 
 #. type: Plain text
-#: ../text/chapter5.md:482
+#: ../text/chapter5.md:490
 msgid ""
 "For example, consider again the `length` function presented at the beginning "
 "of the chapter:"
 msgstr "例えば章の初めに示した`length`関数を再考しましょう。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:483
+#: ../text/chapter5.md:491
 #, no-wrap
 msgid ""
 "length :: forall a. Array a -> Int\n"
@@ -20276,7 +20299,7 @@ msgstr ""
 "    else 1 + (length $ fromMaybe [] $ tail arr)\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:492
+#: ../text/chapter5.md:500
 msgid ""
 "This implementation is not tail recursive, so the generated JavaScript will "
 "cause a stack overflow when executed on a large input array. However, we can "
@@ -20289,13 +20312,13 @@ msgstr ""
 "末尾再帰に変えることができます。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:493
+#: ../text/chapter5.md:501
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:lengthTailRec}}\n"
 msgstr "{{#include ../exercises/chapter5/test/Examples.purs:lengthTailRec}}\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:498
+#: ../text/chapter5.md:506
 msgid ""
 "In this case, we delegate to the helper function `length'`, which is tail "
 "recursive – its only recursive call is in the last case, in tail position. "
@@ -20309,7 +20332,7 @@ msgstr ""
 "せん。"
 
 #. type: Plain text
-#: ../text/chapter5.md:500
+#: ../text/chapter5.md:508
 msgid ""
 "To understand the implementation of `lengthTailRec`, note that the helper "
 "function `length'` essentially uses the accumulator parameter to maintain an "
@@ -20323,7 +20346,7 @@ msgstr ""
 "ます。"
 
 #. type: Plain text
-#: ../text/chapter5.md:502
+#: ../text/chapter5.md:510
 msgid ""
 "Note also that while we might think of the accumulator as a \"state\", there "
 "is no direct mutation."
@@ -20331,13 +20354,13 @@ msgstr ""
 "なお、累算器を「状態」と考えることもできますが、直接には変更されていません。"
 
 #. type: Title ##
-#: ../text/chapter5.md:503
+#: ../text/chapter5.md:511
 #, no-wrap
 msgid "Prefer Folds to Explicit Recursion"
 msgstr "明示的な再帰より畳み込みを選ぼう"
 
 #. type: Plain text
-#: ../text/chapter5.md:506
+#: ../text/chapter5.md:514
 msgid ""
 "If we can write our recursive functions using tail recursion, we can benefit "
 "from tail recursion optimization, so it becomes tempting to try to write all "
@@ -20358,12 +20381,12 @@ msgstr ""
 "図*がより良く伝わるのです。"
 
 #. type: Plain text
-#: ../text/chapter5.md:508
+#: ../text/chapter5.md:516
 msgid "For example, we can reverse an array using `foldr`:"
 msgstr "例えば`foldr`を使って配列を反転できます。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:509
+#: ../text/chapter5.md:517
 #, no-wrap
 msgid ""
 "> import Data.Foldable\n"
@@ -20387,7 +20410,7 @@ msgstr ""
 "[3,2,1]\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:522
+#: ../text/chapter5.md:530
 msgid ""
 "Writing `reverse` in terms of `foldl` will be left as an exercise for the "
 "reader."
@@ -20395,7 +20418,7 @@ msgstr ""
 "`foldl`を使って`reverse`を書くことは、読者への課題として残しておきます。"
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 msgid ""
 "(Easy) Write a function `allTrue` which uses `foldl` to test whether an "
 "array of boolean values are all true."
@@ -20404,7 +20427,7 @@ msgstr ""
 "ください。"
 
 #. type: Bullet: ' 2. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 msgid ""
 "(Medium - No Test) Characterize those arrays `xs` for which the function "
 "`foldl (==) false xs` returns `true`. In other words, complete the sentence: "
@@ -20416,7 +20439,7 @@ msgstr ""
 "ことになります。"
 
 #. type: Bullet: ' 3. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 msgid ""
 "(Medium) Write a function `fibTailRec` which is the same as `fib` but in "
 "tail recursive form. _Hint_: Use an accumulator parameter."
@@ -20426,18 +20449,18 @@ msgstr ""
 "*手掛かり*：累算器引数を使ってください。"
 
 #. type: Bullet: ' 4. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 msgid "(Medium) Write `reverse` in terms of `foldl`."
 msgstr "（普通）`foldl`を使って`reverse`を書いてみましょう。"
 
 #. type: Title ##
-#: ../text/chapter5.md:530
+#: ../text/chapter5.md:538
 #, no-wrap
 msgid "A Virtual Filesystem"
 msgstr "仮想ファイルシステム"
 
 #. type: Plain text
-#: ../text/chapter5.md:533
+#: ../text/chapter5.md:541
 msgid ""
 "In this section, we'll apply what we've learned, writing functions that will "
 "work with a model of a filesystem. We will use maps, folds, and filters to "
@@ -20448,7 +20471,7 @@ msgstr ""
 "事前に定義されたAPIを扱う上でマップ、畳み込み、及びフィルタを使用します。"
 
 #. type: Plain text
-#: ../text/chapter5.md:535
+#: ../text/chapter5.md:543
 msgid ""
 "The `Data.Path` module defines an API for a virtual filesystem as follows:"
 msgstr ""
@@ -20456,44 +20479,44 @@ msgstr ""
 "ます。"
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 msgid "There is a type `Path` which represents a path in the filesystem."
 msgstr "ファイルシステム内のパスを表す型`Path`があります。"
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 msgid "There is a path `root` which represents the root directory."
 msgstr "ルートディレクトリを表すパス`root`があります。"
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 msgid "The `ls` function enumerates the files in a directory."
 msgstr "`ls`関数はディレクトリ内のファイルを列挙します。"
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 msgid "The `filename` function returns the file name for a `Path`."
 msgstr "`filename`関数は`Path`のファイル名を返します。"
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 msgid ""
 "The `size` function returns the file size for a `Path` representing a file."
 msgstr "`size`関数はファイルを表す`Path`のファイルの大きさを返します。"
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 msgid ""
 "The `isDirectory` function tests whether a `Path` is a file or a directory."
 msgstr "`isDirectory`関数はファイルかディレクトリかを調べます。"
 
 #. type: Plain text
-#: ../text/chapter5.md:544
+#: ../text/chapter5.md:552
 msgid "In terms of types, we have the following type definitions:"
 msgstr "型について言うと、次のような型定義があります。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:545
+#: ../text/chapter5.md:553
 #, no-wrap
 msgid ""
 "root :: Path\n"
@@ -20517,12 +20540,12 @@ msgstr ""
 "isDirectory :: Path -> Boolean\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:558
+#: ../text/chapter5.md:566
 msgid "We can try out the API in PSCi:"
 msgstr "PSCiでこのAPIを試してみましょう。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:559
+#: ../text/chapter5.md:567
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -20552,7 +20575,7 @@ msgstr ""
 "[/bin/,/etc/,/home/]\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:575
+#: ../text/chapter5.md:583
 msgid ""
 "The `Test.Examples` module defines functions that use the `Data.Path` API. "
 "You do not need to modify the `Data.Path` module, or understand its "
@@ -20564,13 +20587,13 @@ msgstr ""
 "全て`Test.Examples`モジュールだけで作業します。"
 
 #. type: Title ##
-#: ../text/chapter5.md:576
+#: ../text/chapter5.md:584
 #, no-wrap
 msgid "Listing All Files"
 msgstr "全てのファイルの一覧"
 
 #. type: Plain text
-#: ../text/chapter5.md:579
+#: ../text/chapter5.md:587
 msgid ""
 "Let's write a function that performs a deep enumeration of all files inside "
 "a directory. This function will have the following type:"
@@ -20580,13 +20603,13 @@ msgstr ""
 "この関数は以下のような型を持つでしょう。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:580
+#: ../text/chapter5.md:588
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_signature}}\n"
 msgstr "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_signature}}\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:585
+#: ../text/chapter5.md:593
 msgid ""
 "We can define this function by recursion. First, we can use `ls` to "
 "enumerate the immediate children of the directory. For each child, we can "
@@ -20601,18 +20624,18 @@ msgstr ""
 "`concatMap`を使うと、`allFiles`を適用して平坦化するまでを一度にできます。"
 
 #. type: Plain text
-#: ../text/chapter5.md:587
+#: ../text/chapter5.md:595
 msgid "Finally, we use the cons operator `:` to include the current file:"
 msgstr "最後に、cons演算子`:`を使って現在のファイルも含めます。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:588
+#: ../text/chapter5.md:596
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_implementation}}\n"
 msgstr "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_implementation}}\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:593
+#: ../text/chapter5.md:601
 #, no-wrap
 msgid "> _Note_: the cons operator `:` has poor performance on immutable arrays, so it is not generally recommended. Performance can be improved by using other data structures, such as linked lists and sequences.\n"
 msgstr ""
@@ -20620,12 +20643,12 @@ msgstr ""
 "> 連結リストやシーケンスなどの他のデータ構造を使用すると、効率性を向上させられます。\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:595
+#: ../text/chapter5.md:603
 msgid "Let's try this function in PSCi:"
 msgstr "それではPSCiでこの関数を試してみましょう。"
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:596
+#: ../text/chapter5.md:604
 #, no-wrap
 msgid ""
 "> import Test.Examples\n"
@@ -20643,7 +20666,7 @@ msgstr ""
 "[/,/bin/,/bin/cp,/bin/ls,/bin/mv,/etc/,/etc/hosts, ...]\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:606
+#: ../text/chapter5.md:614
 msgid ""
 "Great! Now let's see if we can write this function using an array "
 "comprehension using do notation."
@@ -20653,7 +20676,7 @@ msgstr ""
 "う。"
 
 #. type: Plain text
-#: ../text/chapter5.md:608
+#: ../text/chapter5.md:616
 msgid ""
 "Recall that a backwards arrow corresponds to choosing an element from an "
 "array. The first step is to choose an element from the immediate children of "
@@ -20668,18 +20691,18 @@ msgstr ""
 "この関数は再帰的な結果を全て連結します。"
 
 #. type: Plain text
-#: ../text/chapter5.md:610
+#: ../text/chapter5.md:618
 msgid "Here is the new version:"
 msgstr "新しいバージョンは次のようになります。"
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:611
+#: ../text/chapter5.md:619
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_2}}\n"
 msgstr "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_2}}\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:616
+#: ../text/chapter5.md:624
 msgid ""
 "Try out the new version in PSCi – you should get the same result. I'll let "
 "you decide which version you find clearer."
@@ -20689,7 +20712,7 @@ msgstr ""
 "どちらのほうがわかりやすいかの選定はお任せします。"
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:621
+#: ../text/chapter5.md:629
 msgid ""
 "(Easy) Write a function `onlyFiles` which returns all _files_ (not "
 "directories) in all subdirectories of a directory."
@@ -20698,7 +20721,7 @@ msgstr ""
 "全てのファイルを返すような関数`onlyFiles`を書いてみてください。"
 
 #. type: Bullet: ' 2. '
-#: ../text/chapter5.md:621
+#: ../text/chapter5.md:629
 msgid ""
 "(Medium) Write a function `whereIs` to search for a file by name. The "
 "function should return a value of type `Maybe Path`, indicating the "
@@ -20711,7 +20734,7 @@ msgstr ""
 "この関数は次のように振る舞う必要があります。"
 
 #. type: Plain text
-#: ../text/chapter5.md:625
+#: ../text/chapter5.md:633
 #, no-wrap
 msgid ""
 "     ```text\n"
@@ -20723,7 +20746,7 @@ msgstr ""
 "     Just (/bin/)\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:629
+#: ../text/chapter5.md:637
 #, no-wrap
 msgid ""
 "     > whereIs root \"cat\"\n"
@@ -20735,7 +20758,7 @@ msgstr ""
 "     ```\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:632
+#: ../text/chapter5.md:640
 #, no-wrap
 msgid ""
 "     _Hint_: Try to write this function as an array comprehension using do notation.\n"
@@ -20746,7 +20769,7 @@ msgstr ""
 "    *補足*：空配列や1要素の配列を返すことで、`Path`にそれぞれゼロか1個のファイルがある場合についても考慮してください。\n"
 
 #. type: Plain text
-#: ../text/chapter5.md:635
+#: ../text/chapter5.md:643
 msgid ""
 "In this chapter, we covered the basics of recursion in PureScript to express "
 "algorithms concisely. We also introduced user-defined infix operators, "
@@ -27716,9 +27739,11 @@ msgid ""
 "Fibonacci numbers. Using PSCi, compare the speed of your new `ST`-based "
 "implementation against the recursive implementation (`fib`) from Chapter 5."
 msgstr ""
-"（普通）`n`番目のフィボナッチ数を計算する関数`fibonacci :: Int -> Int`を書いてください。\n"
+"（普通）`n`番目のフィボナッチ数を計算する関数`fibonacci :: Int -> Int`を書い"
+"てください。\n"
 "`ST`を使って前2つのフィボナッチ数の値を把握します。\n"
-"PSCiを使い、`ST`に基づく新しい実装の実行速度を第5章の再帰による実装と比較してください。"
+"PSCiを使い、`ST`に基づく新しい実装の実行速度を第5章の再帰による実装と比較して"
+"ください。"
 
 #. type: Title ##
 #: ../text/chapter8.md:673

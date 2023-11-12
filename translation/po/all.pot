@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-06 18:52+0900\n"
+"POT-Creation-Date: 2023-11-12 11:27+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1623,8 +1623,8 @@ msgstr ""
 #: ../text/chapter14.md:704 ../text/chapter2.md:123 ../text/chapter3.md:774
 #: ../text/chapter4.md:101 ../text/chapter4.md:230 ../text/chapter4.md:394
 #: ../text/chapter4.md:467 ../text/chapter4.md:526 ../text/chapter5.md:72
-#: ../text/chapter5.md:183 ../text/chapter5.md:365 ../text/chapter5.md:523
-#: ../text/chapter5.md:617 ../text/chapter6.md:130 ../text/chapter6.md:321
+#: ../text/chapter5.md:183 ../text/chapter5.md:373 ../text/chapter5.md:531
+#: ../text/chapter5.md:625 ../text/chapter6.md:130 ../text/chapter6.md:321
 #: ../text/chapter6.md:411 ../text/chapter6.md:608 ../text/chapter6.md:742
 #: ../text/chapter7.md:381 ../text/chapter7.md:540 ../text/chapter7.md:642
 #: ../text/chapter8.md:308 ../text/chapter8.md:667 ../text/chapter8.md:974
@@ -3479,7 +3479,7 @@ msgstr ""
 #. type: Title ##
 #: ../text/chapter10.md:1083 ../text/chapter11.md:963 ../text/chapter12.md:594
 #: ../text/chapter13.md:401 ../text/chapter14.md:720 ../text/chapter2.md:128
-#: ../text/chapter3.md:782 ../text/chapter4.md:531 ../text/chapter5.md:633
+#: ../text/chapter3.md:782 ../text/chapter4.md:531 ../text/chapter5.md:641
 #: ../text/chapter6.md:757 ../text/chapter7.md:691 ../text/chapter8.md:1001
 #: ../text/chapter9.md:238
 #, markdown-text, no-wrap
@@ -16347,19 +16347,36 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:344
+#: ../text/chapter5.md:350
+#, markdown-text, no-wrap
+msgid ""
+"> The `Unit` type represents values with no computational content — the "
+"absence of a concrete meaningful value.\n"
+">\n"
+"> We often use `Unit` \"wrapped\" in a type constructor as the return type "
+"of a computation where we only care about the _effects_ of the computation "
+"(or a \"shape\" of the result) and not some concrete value.\n"
+">\n"
+"> For example, the `main` function has the type `Effect Unit`. Main is an "
+"entry point to the project — we don't call it directly.\n"
+">\n"
+"> We'll explain what `m` in the type signature means in Chapter 6.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../text/chapter5.md:352
 #, markdown-text
 msgid "In our case, we can assume that PSCi reported the following type:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:345
+#: ../text/chapter5.md:353
 #, no-wrap
 msgid "Boolean -> Array Unit\n"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:350
+#: ../text/chapter5.md:358
 #, markdown-text
 msgid ""
 "For our purposes, the following calculations tell us everything we need to "
@@ -16367,7 +16384,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:351
+#: ../text/chapter5.md:359
 #, no-wrap
 msgid ""
 "> import Data.Array\n"
@@ -16380,7 +16397,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:362
+#: ../text/chapter5.md:370
 #, markdown-text
 msgid ""
 "If we pass an expression to `guard` that evaluates to `true`, then it "
@@ -16389,7 +16406,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:364
+#: ../text/chapter5.md:372
 #, markdown-text
 msgid ""
 "This means that if the guard fails, then the current branch of the array "
@@ -16401,7 +16418,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 #, markdown-text
 msgid ""
 "(Easy) Write a function `isPrime`, which tests whether its integer argument "
@@ -16409,7 +16426,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 #, markdown-text
 msgid ""
 "(Medium) Write a function `cartesianProduct` which uses do notation to find "
@@ -16419,7 +16436,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 #, markdown-text
 msgid ""
 "(Medium) Write a function `triples :: Int -> Array (Array Int)`, which takes "
@@ -16431,7 +16448,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:371
+#: ../text/chapter5.md:379
 #, markdown-text
 msgid ""
 "(Difficult) Write a function `primeFactors` which produces the [prime "
@@ -16442,13 +16459,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../text/chapter5.md:372
+#: ../text/chapter5.md:380
 #, markdown-text, no-wrap
 msgid "Folds"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:375
+#: ../text/chapter5.md:383
 #, markdown-text
 msgid ""
 "Left and right folds over arrays provide another class of interesting "
@@ -16456,7 +16473,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:377
+#: ../text/chapter5.md:385
 #, markdown-text
 msgid ""
 "Start by importing the `Data.Foldable` module and inspecting the types of "
@@ -16464,7 +16481,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:378
+#: ../text/chapter5.md:386
 #, no-wrap
 msgid ""
 "> import Data.Foldable\n"
@@ -16479,7 +16496,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:389
+#: ../text/chapter5.md:397
 #, markdown-text
 msgid ""
 "These types are more general than we are interested in right now. For this "
@@ -16488,7 +16505,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:390
+#: ../text/chapter5.md:398
 #, no-wrap
 msgid ""
 "-- foldl\n"
@@ -16499,7 +16516,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:399
+#: ../text/chapter5.md:407
 #, markdown-text
 msgid ""
 "In both cases, the type `a` corresponds to the type of elements of our "
@@ -16508,7 +16525,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:401
+#: ../text/chapter5.md:409
 #, markdown-text
 msgid ""
 "The difference between the `foldl` and `foldr` functions is the direction of "
@@ -16517,7 +16534,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:403
+#: ../text/chapter5.md:411
 #, markdown-text, no-wrap
 msgid ""
 "Let's see these functions in action. Let's use `foldl` to sum an array of "
@@ -16530,7 +16547,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:404
+#: ../text/chapter5.md:412
 #, no-wrap
 msgid ""
 "> foldl (+) 0 (1 .. 5)\n"
@@ -16538,7 +16555,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:410
+#: ../text/chapter5.md:418
 #, markdown-text
 msgid ""
 "In this case, it didn't matter whether we used `foldl` or `foldr`, because "
@@ -16546,7 +16563,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:411
+#: ../text/chapter5.md:419
 #, no-wrap
 msgid ""
 "> foldr (+) 0 (1 .. 5)\n"
@@ -16554,7 +16571,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:417
+#: ../text/chapter5.md:425
 #, markdown-text
 msgid ""
 "Let's write an example where the choice of folding function matters to "
@@ -16563,7 +16580,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:418
+#: ../text/chapter5.md:426
 #, no-wrap
 msgid ""
 "> foldl (\\acc n -> acc <> show n) \"\" [1,2,3,4,5]\n"
@@ -16574,7 +16591,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:427
+#: ../text/chapter5.md:435
 #, markdown-text
 msgid ""
 "This illustrates the difference between the two functions. The left fold "
@@ -16582,31 +16599,31 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:428
+#: ../text/chapter5.md:436
 #, no-wrap
 msgid "(((((\"\" <> show 1) <> show 2) <> show 3) <> show 4) <> show 5)\n"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:433
+#: ../text/chapter5.md:441
 #, markdown-text
 msgid "Whereas the right fold is equivalent to this:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:434
+#: ../text/chapter5.md:442
 #, no-wrap
 msgid "(((((\"\" <> show 5) <> show 4) <> show 3) <> show 2) <> show 1)\n"
 msgstr ""
 
 #. type: Title ##
-#: ../text/chapter5.md:438
+#: ../text/chapter5.md:446
 #, markdown-text, no-wrap
 msgid "Tail Recursion"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:441
+#: ../text/chapter5.md:449
 #, markdown-text
 msgid ""
 "Recursion is a powerful technique for specifying algorithms but comes with a "
@@ -16615,13 +16632,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:443
+#: ../text/chapter5.md:451
 #, markdown-text
 msgid "It is easy to verify this problem with the following code in PSCi:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:444
+#: ../text/chapter5.md:452
 #, no-wrap
 msgid ""
 "> :paste\n"
@@ -16639,7 +16656,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:460
+#: ../text/chapter5.md:468
 #, markdown-text
 msgid ""
 "This is a problem. If we adopt recursion as a standard technique from "
@@ -16648,7 +16665,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:462
+#: ../text/chapter5.md:470
 #, markdown-text
 msgid ""
 "PureScript provides a partial solution to this problem through _tail "
@@ -16656,7 +16673,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:464
+#: ../text/chapter5.md:472
 #, markdown-text, no-wrap
 msgid ""
 "> _Note_: more complete solutions to the problem can be implemented in "
@@ -16668,7 +16685,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:466
+#: ../text/chapter5.md:474
 #, markdown-text
 msgid ""
 "The key observation that enables tail recursion optimization: a recursive "
@@ -16680,7 +16697,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:468
+#: ../text/chapter5.md:476
 #, markdown-text
 msgid ""
 "In practice, the PureScript compiler does not replace the recursive call "
@@ -16689,7 +16706,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:470
+#: ../text/chapter5.md:478
 #, markdown-text
 msgid ""
 "Here is an example of a recursive function with all recursive calls in tail "
@@ -16697,13 +16714,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:471
+#: ../text/chapter5.md:479
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:factorialTailRec}}\n"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:476
+#: ../text/chapter5.md:484
 #, markdown-text
 msgid ""
 "Notice that the recursive call to `factorialTailRec` is the last thing in "
@@ -16711,13 +16728,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../text/chapter5.md:477
+#: ../text/chapter5.md:485
 #, markdown-text, no-wrap
 msgid "Accumulators"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:480
+#: ../text/chapter5.md:488
 #, markdown-text
 msgid ""
 "One common way to turn a not tail recursive function into a tail recursive "
@@ -16727,7 +16744,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:482
+#: ../text/chapter5.md:490
 #, markdown-text
 msgid ""
 "For example, consider again the `length` function presented at the beginning "
@@ -16735,7 +16752,7 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:483
+#: ../text/chapter5.md:491
 #, no-wrap
 msgid ""
 "length :: forall a. Array a -> Int\n"
@@ -16746,7 +16763,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:492
+#: ../text/chapter5.md:500
 #, markdown-text
 msgid ""
 "This implementation is not tail recursive, so the generated JavaScript will "
@@ -16756,13 +16773,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:493
+#: ../text/chapter5.md:501
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:lengthTailRec}}\n"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:498
+#: ../text/chapter5.md:506
 #, markdown-text
 msgid ""
 "In this case, we delegate to the helper function `length'`, which is tail "
@@ -16772,7 +16789,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:500
+#: ../text/chapter5.md:508
 #, markdown-text
 msgid ""
 "To understand the implementation of `lengthTailRec`, note that the helper "
@@ -16782,7 +16799,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:502
+#: ../text/chapter5.md:510
 #, markdown-text
 msgid ""
 "Note also that while we might think of the accumulator as a \"state\", there "
@@ -16790,13 +16807,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../text/chapter5.md:503
+#: ../text/chapter5.md:511
 #, markdown-text, no-wrap
 msgid "Prefer Folds to Explicit Recursion"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:506
+#: ../text/chapter5.md:514
 #, markdown-text
 msgid ""
 "If we can write our recursive functions using tail recursion, we can benefit "
@@ -16810,13 +16827,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:508
+#: ../text/chapter5.md:516
 #, markdown-text
 msgid "For example, we can reverse an array using `foldr`:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:509
+#: ../text/chapter5.md:517
 #, no-wrap
 msgid ""
 "> import Data.Foldable\n"
@@ -16831,7 +16848,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:522
+#: ../text/chapter5.md:530
 #, markdown-text
 msgid ""
 "Writing `reverse` in terms of `foldl` will be left as an exercise for the "
@@ -16839,7 +16856,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 #, markdown-text
 msgid ""
 "(Easy) Write a function `allTrue` which uses `foldl` to test whether an "
@@ -16847,7 +16864,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 2. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 #, markdown-text
 msgid ""
 "(Medium - No Test) Characterize those arrays `xs` for which the function "
@@ -16856,7 +16873,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 3. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 #, markdown-text
 msgid ""
 "(Medium) Write a function `fibTailRec` which is the same as `fib` but in "
@@ -16864,19 +16881,19 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 4. '
-#: ../text/chapter5.md:529
+#: ../text/chapter5.md:537
 #, markdown-text
 msgid "(Medium) Write `reverse` in terms of `foldl`."
 msgstr ""
 
 #. type: Title ##
-#: ../text/chapter5.md:530
+#: ../text/chapter5.md:538
 #, markdown-text, no-wrap
 msgid "A Virtual Filesystem"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:533
+#: ../text/chapter5.md:541
 #, markdown-text
 msgid ""
 "In this section, we'll apply what we've learned, writing functions that will "
@@ -16885,55 +16902,55 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:535
+#: ../text/chapter5.md:543
 #, markdown-text
 msgid "The `Data.Path` module defines an API for a virtual filesystem as follows:"
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 #, markdown-text
 msgid "There is a type `Path` which represents a path in the filesystem."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 #, markdown-text
 msgid "There is a path `root` which represents the root directory."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 #, markdown-text
 msgid "The `ls` function enumerates the files in a directory."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 #, markdown-text
 msgid "The `filename` function returns the file name for a `Path`."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 #, markdown-text
 msgid "The `size` function returns the file size for a `Path` representing a file."
 msgstr ""
 
 #. type: Bullet: '- '
-#: ../text/chapter5.md:542
+#: ../text/chapter5.md:550
 #, markdown-text
 msgid "The `isDirectory` function tests whether a `Path` is a file or a directory."
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:544
+#: ../text/chapter5.md:552
 #, markdown-text
 msgid "In terms of types, we have the following type definitions:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:545
+#: ../text/chapter5.md:553
 #, no-wrap
 msgid ""
 "root :: Path\n"
@@ -16948,13 +16965,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:558
+#: ../text/chapter5.md:566
 #, markdown-text
 msgid "We can try out the API in PSCi:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:559
+#: ../text/chapter5.md:567
 #, no-wrap
 msgid ""
 "$ spago repl\n"
@@ -16972,7 +16989,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:575
+#: ../text/chapter5.md:583
 #, markdown-text
 msgid ""
 "The `Test.Examples` module defines functions that use the `Data.Path` "
@@ -16981,13 +16998,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../text/chapter5.md:576
+#: ../text/chapter5.md:584
 #, markdown-text, no-wrap
 msgid "Listing All Files"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:579
+#: ../text/chapter5.md:587
 #, markdown-text
 msgid ""
 "Let's write a function that performs a deep enumeration of all files inside "
@@ -16995,13 +17012,13 @@ msgid ""
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:580
+#: ../text/chapter5.md:588
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_signature}}\n"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:585
+#: ../text/chapter5.md:593
 #, markdown-text
 msgid ""
 "We can define this function by recursion. First, we can use `ls` to "
@@ -17012,13 +17029,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:587
+#: ../text/chapter5.md:595
 #, markdown-text
 msgid "Finally, we use the cons operator `:` to include the current file:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:588
+#: ../text/chapter5.md:596
 #, no-wrap
 msgid ""
 "{{#include "
@@ -17026,7 +17043,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:593
+#: ../text/chapter5.md:601
 #, markdown-text, no-wrap
 msgid ""
 "> _Note_: the cons operator `:` has poor performance on immutable arrays, so "
@@ -17035,13 +17052,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:595
+#: ../text/chapter5.md:603
 #, markdown-text
 msgid "Let's try this function in PSCi:"
 msgstr ""
 
 #. type: Fenced code block (text)
-#: ../text/chapter5.md:596
+#: ../text/chapter5.md:604
 #, no-wrap
 msgid ""
 "> import Test.Examples\n"
@@ -17053,7 +17070,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:606
+#: ../text/chapter5.md:614
 #, markdown-text
 msgid ""
 "Great! Now let's see if we can write this function using an array "
@@ -17061,7 +17078,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:608
+#: ../text/chapter5.md:616
 #, markdown-text
 msgid ""
 "Recall that a backwards arrow corresponds to choosing an element from an "
@@ -17072,19 +17089,19 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:610
+#: ../text/chapter5.md:618
 #, markdown-text
 msgid "Here is the new version:"
 msgstr ""
 
 #. type: Fenced code block (haskell)
-#: ../text/chapter5.md:611
+#: ../text/chapter5.md:619
 #, no-wrap
 msgid "{{#include ../exercises/chapter5/test/Examples.purs:allFiles_2}}\n"
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:616
+#: ../text/chapter5.md:624
 #, markdown-text
 msgid ""
 "Try out the new version in PSCi – you should get the same result. I'll let "
@@ -17092,7 +17109,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 1. '
-#: ../text/chapter5.md:621
+#: ../text/chapter5.md:629
 #, markdown-text
 msgid ""
 "(Easy) Write a function `onlyFiles` which returns all _files_ (not "
@@ -17100,7 +17117,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: ' 2. '
-#: ../text/chapter5.md:621
+#: ../text/chapter5.md:629
 #, markdown-text
 msgid ""
 "(Medium) Write a function `whereIs` to search for a file by name. The "
@@ -17109,7 +17126,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:625
+#: ../text/chapter5.md:633
 #, markdown-text, no-wrap
 msgid ""
 "     ```text\n"
@@ -17118,7 +17135,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:629
+#: ../text/chapter5.md:637
 #, markdown-text, no-wrap
 msgid ""
 "     > whereIs root \"cat\"\n"
@@ -17127,7 +17144,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:632
+#: ../text/chapter5.md:640
 #, markdown-text, no-wrap
 msgid ""
 "     _Hint_: Try to write this function as an array comprehension using do "
@@ -17139,7 +17156,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../text/chapter5.md:635
+#: ../text/chapter5.md:643
 #, markdown-text
 msgid ""
 "In this chapter, we covered the basics of recursion in PureScript to express "
