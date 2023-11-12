@@ -495,6 +495,15 @@ factorsV3 n = do
 &gt; :type guard
 forall (m :: Type -&gt; Type). Alternative m =&gt; Boolean -&gt; m Unit
 </code></pre>
+<blockquote>
+<p><code>Unit</code>型は何ら計算する内容の無い値を表現します。
+すなわち具体的で意味のある値が存在しないということです。</p>
+<p><code>Unit</code>はよく型構築子に「包んで」計算の返却型として使います。
+その計算は具体的な値のためではなく、計算の<em>作用</em>（ないし結果の「形状」）のみに関心があるのです。</p>
+<p>例えば、<code>main</code>関数は型<code>Effect Unit</code>を持ちます。
+この関数はプロジェクトへの入口であり、直接呼ぶものではありません。</p>
+<p>型シグネチャ中の<code>m</code>の意味については第6章で説明します。</p>
+</blockquote>
 <p>今回の場合は、PSCiは次の型を報告するものと考えてください。</p>
 <pre><code class="language-haskell">Boolean -&gt; Array Unit
 </code></pre>
