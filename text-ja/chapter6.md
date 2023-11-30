@@ -51,11 +51,49 @@ instance Show Boolean where
   show false = "false"
 ```
 
-このコードは `showBool​​ean`という名前の型クラスのインスタンスを宣言します。
-PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前を付けられます。
-このとき、`Boolean`型は *`Show`型クラスに属している* といいます。
+このコードは型クラスのインスタンスを宣言します。
+`Boolean`型は *`Show`型クラスに属すもの* としています。
 
-PSCiで、いろいろな型の値を`Show`型クラスを使って表示してみましょう。
+> ピンとこなければ、生成されるJSのコードは以下のようになります。
+>
+> ```javascript
+> var showBoolean = {
+>     show: function (v) {
+>         if (v) {
+>             return "true";
+>         };
+>        if (!v) {
+>             return "false";
+>         };
+>         throw new Error("Failed pattern match at ...");
+>     }
+> };
+> ```
+>
+> 生成される名前が気に入らなければ、型クラスインスタンスに名前を与えられます。
+> 例えば次のようにします。
+>
+> ```haskell
+> instance myShowBoolean :: Show Boolean where
+>   show true = "true"
+>   show false = "false"
+> ```
+>
+> ```javascript
+> var myShowBoolean = {
+>     show: function (v) {
+>         if (v) {
+>             return "true";
+>         };
+>        if (!v) {
+>             return "false";
+>         };
+>         throw new Error("Failed pattern match at ...");
+>     }
+> };
+> ```
+
+PSCiでいろいろな型の値を`Show`型クラスを使って表示してみましょう。
 
 ```text
 > import Prelude
@@ -191,8 +229,9 @@ true
 この関数は2つの値を比較するのに使えるもので、その値の型は順序付けに対応したものです。
 比較演算子`<`、`>`と厳密な大小比較ではない`<=`、`>=`は`compare`を用いて定義されます。
 
-*補足*：以下の例ではクラスシグネチャに`<=`が含まれています。
-この文脈での`<=`の使われ方はEqがOrdの上位クラスであり、比較演算子としての`<=`の用途を表す意図はありません。
+*補足*：
+以下の例ではクラスシグネチャに`<=`が含まれています。
+この文脈での`<=`の使われ方は、`Eq`が`Ord`の上位クラスであり、比較演算子としての`<=`の用途を表す意図はありません。
 後述の[上位クラス](#上位クラス)の節を参照してください。
 
 ```haskell
