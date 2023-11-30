@@ -93,7 +93,9 @@
             <div class="sidebar-scrollbox">
                 <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">序文</a></li><li class="chapter-item expanded "><a href="chapter1.html"><strong aria-hidden="true">1.</strong> 導入</a></li><li class="chapter-item expanded "><a href="chapter2.html"><strong aria-hidden="true">2.</strong> はじめよう</a></li><li class="chapter-item expanded "><a href="chapter3.html"><strong aria-hidden="true">3.</strong> 関数とレコード</a></li><li class="chapter-item expanded "><a href="chapter4.html"><strong aria-hidden="true">4.</strong> パターン照合</a></li><li class="chapter-item expanded "><a href="chapter5.html"><strong aria-hidden="true">5.</strong> 再帰、マップ、畳み込み</a></li><li class="chapter-item expanded "><a href="chapter6.html"><strong aria-hidden="true">6.</strong> 型クラス</a></li><li class="chapter-item expanded "><a href="chapter7.html"><strong aria-hidden="true">7.</strong> アプリカティブによる検証</a></li><li class="chapter-item expanded "><a href="chapter8.html"><strong aria-hidden="true">8.</strong> 作用モナド</a></li><li class="chapter-item expanded "><a href="chapter9.html"><strong aria-hidden="true">9.</strong> 非同期作用</a></li><li class="chapter-item expanded "><a href="chapter10.html"><strong aria-hidden="true">10.</strong> 外部関数インターフェース</a></li><li class="chapter-item expanded "><a href="chapter11.html"><strong aria-hidden="true">11.</strong> モナドな冒険</a></li><li class="chapter-item expanded "><a href="chapter12.html"><strong aria-hidden="true">12.</strong> Canvasグラフィックス</a></li><li class="chapter-item expanded "><a href="chapter13.html"><strong aria-hidden="true">13.</strong> テストの自動生成</a></li><li class="chapter-item expanded "><a href="chapter14.html"><strong aria-hidden="true">14.</strong> 領域特化言語</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
 
         <!-- Track and set sidebar scroll position -->
@@ -2387,10 +2389,42 @@ Nothing
   show true = &quot;true&quot;
   show false = &quot;false&quot;
 </code></pre>
-<p>このコードは <code>showBool​​ean</code>という名前の型クラスのインスタンスを宣言します。
-PureScriptでは、生成されたJavaScriptの可読性を良くするために、型クラスインスタンスに名前を付けられます。
-このとき、<code>Boolean</code>型は <em><code>Show</code>型クラスに属している</em> といいます。</p>
-<p>PSCiで、いろいろな型の値を<code>Show</code>型クラスを使って表示してみましょう。</p>
+<p>このコードは型クラスのインスタンスを宣言します。
+<code>Boolean</code>型は <em><code>Show</code>型クラスに属すもの</em> としています。</p>
+<blockquote>
+<p>ピンとこなければ、生成されるJSのコードは以下のようになります。</p>
+<pre><code class="language-javascript">var showBoolean = {
+    show: function (v) {
+        if (v) {
+            return &quot;true&quot;;
+        };
+       if (!v) {
+            return &quot;false&quot;;
+        };
+        throw new Error(&quot;Failed pattern match at ...&quot;);
+    }
+};
+</code></pre>
+<p>生成される名前が気に入らなければ、型クラスインスタンスに名前を与えられます。
+例えば次のようにします。</p>
+<pre><code class="language-haskell">instance myShowBoolean :: Show Boolean where
+  show true = &quot;true&quot;
+  show false = &quot;false&quot;
+</code></pre>
+<pre><code class="language-javascript">var myShowBoolean = {
+    show: function (v) {
+        if (v) {
+            return &quot;true&quot;;
+        };
+       if (!v) {
+            return &quot;false&quot;;
+        };
+        throw new Error(&quot;Failed pattern match at ...&quot;);
+    }
+};
+</code></pre>
+</blockquote>
+<p>PSCiでいろいろな型の値を<code>Show</code>型クラスを使って表示してみましょう。</p>
 <pre><code class="language-text">&gt; import Prelude
 
 &gt; show true
@@ -2498,8 +2532,9 @@ true
 <p><code>Ord</code>型クラスは<code>compare</code>関数を定義します。
 この関数は2つの値を比較するのに使えるもので、その値の型は順序付けに対応したものです。
 比較演算子<code>&lt;</code>、<code>&gt;</code>と厳密な大小比較ではない<code>&lt;=</code>、<code>&gt;=</code>は<code>compare</code>を用いて定義されます。</p>
-<p><em>補足</em>：以下の例ではクラスシグネチャに<code>&lt;=</code>が含まれています。
-この文脈での<code>&lt;=</code>の使われ方はEqがOrdの上位クラスであり、比較演算子としての<code>&lt;=</code>の用途を表す意図はありません。
+<p><em>補足</em>：
+以下の例ではクラスシグネチャに<code>&lt;=</code>が含まれています。
+この文脈での<code>&lt;=</code>の使われ方は、<code>Eq</code>が<code>Ord</code>の上位クラスであり、比較演算子としての<code>&lt;=</code>の用途を表す意図はありません。
 後述の<a href="chapter6.html#%E4%B8%8A%E4%BD%8D%E3%82%AF%E3%83%A9%E3%82%B9">上位クラス</a>の節を参照してください。</p>
 <pre><code class="language-haskell">data Ordering = LT | EQ | GT
 
