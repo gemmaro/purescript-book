@@ -210,32 +210,21 @@
 <p>それでは、PureScriptにおける再帰の簡単な例を幾つか見てみましょう。</p>
 <p>次に示すのは<em>階乗関数</em>のありふれた例です。</p>
 <pre><code class="language-haskell">factorial :: Int -&gt; Int
-factorial n =
-  if n == 0 then
-    1
-  else
-    n * factorial (n - 1)
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
 </code></pre>
 <p>このように、問題を部分問題へ分割することによって階乗関数の計算方法が見てとれます。
 より小さい数の階乗を計算していくということです。
 ゼロに到達すると、答えは直ちに求まります。</p>
 <p>次は、<em>フィボナッチ関数</em>を計算するという、これまたよくある例です。</p>
 <pre><code class="language-haskell">fib :: Int -&gt; Int
-fib n =
-  if n == 0 then
-    0
-  else if n == 1 then
-    1
-  else
-    fib (n - 1) + fib (n - 2)
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n - 1) + fib (n - 2)
 </code></pre>
 <p>やはり、部分問題の解決策を考えることで全体を解決していることがわかります。
 このとき、<code>fib (n - 1)</code>と<code>fib (n - 2)</code>という式に対応した、2つの部分問題があります。
 これらの2つの部分問題が解決されていれば、この部分的な答えを加算することで、全体の答えを組み立てることができます。</p>
-<blockquote>
-<p>なお、上の<code>factorial</code>と<code>fib</code>の例は意図通りに動きますが、よりPureScriptらしい実装では<code>if</code>や<code>then</code>や<code>else</code>を使う代わりにパターン照合を使うものでしょう。
-パターン照合の技法は後の章でお話しします。</p>
-</blockquote>
 <h2 id="配列上での再帰"><a class="header" href="#配列上での再帰">配列上での再帰</a></h2>
 <p>再帰関数の定義は<code>Int</code>型だけに限定されるものではありません。
 本書の後半で<em>パターン照合</em>を扱うときに、いろいろなデータ型の上での再帰関数について見ていきますが、ここでは数と配列に限っておきます。</p>
@@ -246,15 +235,12 @@ import Data.Array (null, tail)
 import Data.Maybe (fromMaybe)
 
 length :: forall a. Array a -&gt; Int
-length arr =
-  if null arr then
-    0
-  else
-    1 + (length $ fromMaybe [] $ tail arr)
+length [] = 0
+length arr = 1 + (length $ fromMaybe [] $ tail arr)
 </code></pre>
-<p>この関数では配列が空かどうかで分岐するために<code>if ... then ... else</code>式を使っています。
-この<code>null</code>関数は空の配列で<code>true</code>を返します。
-空の配列の長さはゼロであり、空でない配列の長さは尾鰭の長さより1大きいというわけです。</p>
+<p>この関数では、配列が空かどうかに基づいて分岐しています。
+<code>null</code>関数は、空配列については<code>true</code>を返します。
+空配列は長さ0を、非空配列は尾鰭の長さより1大きい長さを持ちます。</p>
 <p><code>tail</code>関数は与えられた配列から最初の要素を除いたものを<code>Maybe</code>に包んで返します。
 配列が空であれば（つまり尾鰭がなければ）<code>Nothing</code>が返ります。
 <code>fromMaybe</code>関数は既定値と<code>Maybe</code>値を取ります。
@@ -629,10 +615,8 @@ RangeError: Maximum call stack size exceeded
 <p>実際には、PureScriptコンパイラは再帰呼び出しをジャンプに置き換えるのではなく、再帰的な関数全体を <em>whileループ</em> に置き換えます。</p>
 <p>以下は全ての再帰呼び出しが末尾位置にある再帰関数の例です。</p>
 <pre><code class="language-haskell">factorialTailRec :: Int -&gt; Int -&gt; Int
-factorialTailRec n acc =
-  if n == 0
-    then acc
-    else factorialTailRec (n - 1) (acc * n)
+factorialTailRec 0 acc = acc
+factorialTailRec n acc = factorialTailRec (n - 1) (acc * n)
 </code></pre>
 <p><code>factorialTailRec</code>への再帰呼び出しがこの関数の最後にある点に注目してください。
 つまり末尾位置にあるのです。</p>
@@ -642,10 +626,8 @@ factorialTailRec n acc =
 これは結果を累算するために返り値を使うのとは対照的です。</p>
 <p>例えば章の初めに示した<code>length</code>関数を再考しましょう。</p>
 <pre><code class="language-haskell">length :: forall a. Array a -&gt; Int
-length arr =
-  if null arr
-    then 0
-    else 1 + (length $ fromMaybe [] $ tail arr)
+length [] = 0
+length arr = 1 + (length $ fromMaybe [] $ tail arr)
 </code></pre>
 <p>この実装は末尾再帰ではないので、大きな入力配列に対して実行されると、生成されたJavaScriptはスタックオーバーフローを発生させるでしょう。
 しかし代わりに、結果を蓄積するための2つ目の引数を関数に導入することで、これを末尾再帰に変えることができます。</p>
@@ -653,10 +635,8 @@ length arr =
 lengthTailRec arr = length' arr 0
   where
   length' :: Array a -&gt; Int -&gt; Int
-  length' arr' acc =
-    if null arr'
-      then acc
-      else length' (fromMaybe [] $ tail arr') (acc + 1)
+  length' [] acc = acc
+  length' arr' acc = length' (fromMaybe [] $ tail arr') (acc + 1)
 </code></pre>
 <p>ここでは補助関数<code>length'</code>に委譲しています。
 この関数は末尾再帰です。
