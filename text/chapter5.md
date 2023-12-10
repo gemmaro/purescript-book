@@ -46,8 +46,6 @@ Here is another common example that computes the _Fibonacci function_:
 
 Again, this problem is solved by considering the solutions to subproblems. In this case, there are two subproblems, corresponding to the expressions `fib (n - 1)` and `fib (n - 2)`. When these two subproblems are solved, we assemble the result by adding the partial results.
 
-> Note that, while the above examples of `factorial` and `fib` work as intended, a more idiomatic implementation would use pattern matching instead of `if`/`then`/`else`. Pattern-matching techniques are discussed in a later chapter.
-
 ## Recursion on Arrays
 
 We are not limited to defining recursive functions over the `Int` type! We will see recursive functions defined over a wide array of data types when we cover _pattern matching_ later in the book, but for now, we will restrict ourselves to numbers and arrays.
@@ -63,7 +61,7 @@ import Data.Maybe (fromMaybe)
 {{#include ../exercises/chapter5/test/Examples.purs:length}}
 ```
 
-In this function, we use an `if .. then .. else` expression to branch based on the emptiness of the array. The `null` function returns `true` on an empty array. Empty arrays have a length of zero, and a non-empty array has a length that is one more than the length of its tail.
+In this function, we branch based on the emptiness of the array. The `null` function returns `true` on an empty array. Empty arrays have a length of zero, and a non-empty array has a length that is one more than the length of its tail.
 
 The `tail` function returns a `Maybe` wrapping the given array without its first element. If the array is empty (i.e., it doesn't have a tail), `Nothing` is returned. The `fromMaybe` function takes a default value and a `Maybe` value. If the latter is `Nothing` it returns the default; in the other case, it returns the value wrapped by `Just`.
 
@@ -489,11 +487,7 @@ One common way to turn a not tail recursive function into a tail recursive is to
 For example, consider again the `length` function presented at the beginning of the chapter:
 
 ```haskell
-length :: forall a. Array a -> Int
-length arr =
-  if null arr
-    then 0
-    else 1 + (length $ fromMaybe [] $ tail arr)
+{{#include ../exercises/chapter5/test/Examples.purs:length}}
 ```
 
 This implementation is not tail recursive, so the generated JavaScript will cause a stack overflow when executed on a large input array. However, we can make it tail recursive, by introducing a second function argument to accumulate the result instead:
