@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE
-# Copyright (C) YEAR Phil
+# Copyright (C) YEAR Phil Freeman
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-12-10 09:20+0900\n"
+"POT-Creation-Date: 2024-08-05 08:18+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17136,8 +17136,9 @@ msgid ""
 "notation.\n"
 " 3. (Difficult) Write a function `largestSmallest` which takes a `Path` and "
 "returns an array containing the single largest and single smallest files in "
-"the `Path`. _Note_: consider the cases where there are zero or one files in "
-"the `Path` by returning an empty or one-element array, respectively.\n"
+"the `Path`, including (recursively) any subdirectories. _Note_: consider the "
+"cases where there are zero or one files in the `Path` by returning an empty "
+"or one-element array, respectively.\n"
 msgstr ""
 
 #. type: Plain text
