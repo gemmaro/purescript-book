@@ -240,9 +240,9 @@ XMLノードを表す型 <code>XML</code>と次の関数があるとします。
 XML文書としてエンコードされた利用者情報から、利用者の住んでいる市町村を読み取りたいとします。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root = do
-  prof &lt;- child root &quot;profile&quot;
-  addr &lt;- child prof &quot;address&quot;
-  city &lt;- child addr &quot;city&quot;
+  prof &lt;- child root "profile"
+  addr &lt;- child prof "address"
+  city &lt;- child addr "city"
   pure city
 </code></pre>
 <p><code>userCity</code>関数は子の<code>profile</code>要素、<code>profile</code>要素の中にある<code>address</code>要素、最後に<code>address</code>要素の中にある<code>city</code>要素を探します。
@@ -286,9 +286,9 @@ class (Applicative m, Bind m) &lt;= Monad m
 <p>複数の束縛が関係している場合、この規則は先頭のほうから複数回適用されます。例えば、先ほど見た <code>userCity</code>の例では次のように脱糖されます。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root =
-  child root &quot;profile&quot; &gt;&gt;= \prof -&gt;
-    child prof &quot;address&quot; &gt;&gt;= \addr -&gt;
-      child addr &quot;city&quot; &gt;&gt;= \city -&gt;
+  child root "profile" &gt;&gt;= \prof -&gt;
+    child prof "address" &gt;&gt;= \addr -&gt;
+      child addr "city" &gt;&gt;= \city -&gt;
         pure city
 </code></pre>
 <p>do記法を使って表現されたコードは、<code>&gt;&gt;=</code>演算子を使う等価なコードより遥かに読みやすくなることがよくあることも特筆すべき点です。
@@ -411,9 +411,9 @@ ap mf ma = do
 利用者情報をエンコードしたXML文書から利用者の市町村を検索するものでした。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root = do
-  prof &lt;- child root &quot;profile&quot;
-  addr &lt;- child prof &quot;address&quot;
-  city &lt;- child addr &quot;city&quot;
+  prof &lt;- child root "profile"
+  addr &lt;- child prof "address"
+  city &lt;- child addr "city"
   pure city
 </code></pre>
 <p>do記法では2番目の計算が最初の結果 <code>prof</code>に依存し、3番目の計算が2番目の計算の結果<code>addr</code>に依存するというようなことができます。
@@ -585,7 +585,7 @@ import Node.FS.Sync (readTextFile)
 
 main :: Effect Unit
 main = do
-  lines &lt;- readTextFile UTF8 &quot;iDoNotExist.md&quot;
+  lines &lt;- readTextFile UTF8 "iDoNotExist.md"
   log lines
 </code></pre>
 <p>以下の例外に遭遇します。</p>
@@ -601,10 +601,10 @@ Error: ENOENT: no such file or directory, open 'iDoNotExist.md'
 <p>この例外をうまく管理するには、潜在的に問題があるコードを<code>try</code>に包めばどのような出力でも制御できます。</p>
 <pre><code class="language-hs">main :: Effect Unit
 main = do
-  result &lt;- try $ readTextFile UTF8 &quot;iDoNotExist.md&quot;
+  result &lt;- try $ readTextFile UTF8 "iDoNotExist.md"
   case result of
-    Right lines -&gt; log $ &quot;Contents: \n&quot; &lt;&gt; lines
-    Left  error -&gt; log $ &quot;Couldn't open file. Error was: &quot; &lt;&gt; message error
+    Right lines -&gt; log $ "Contents: \n" &lt;&gt; lines
+    Left  error -&gt; log $ "Couldn't open file. Error was: " &lt;&gt; message error
 </code></pre>
 <p><code>try</code>は<code>Effect</code>を走らせて起こりうる例外を<code>Left</code>値として返します。
 もし計算が成功すれば結果は<code>Right</code>に包まれます。</p>
@@ -615,7 +615,7 @@ main = do
 <pre><code class="language-hs">exceptionHead :: List Int -&gt; Effect Int
 exceptionHead l = case l of
   x : _ -&gt; pure x
-  Nil -&gt; throwException $ error &quot;empty list&quot;
+  Nil -&gt; throwException $ error "empty list"
 </code></pre>
 <p>ただし<code>exceptionHead</code>関数はどこかしら非実用的な例です。
 というのも、PureScriptのコードで例外を生成するのは避け、代わりに<code>Either</code>や<code>Maybe</code>のようなネイティブでない作用でエラーや欠けた値を使うのが一番だからです。</p>
@@ -716,7 +716,7 @@ simulate x0 v0 time =
 
         var ref = { value: { x: x0, v: v0 } };
 
-        Control_Monad_ST_Internal[&quot;for&quot;](0)(time * 1000 | 0)(function (v) {
+        Control_Monad_ST_Internal["for"](0)(time * 1000 | 0)(function (v) {
           return Control_Monad_ST_Internal.modify(function (o) {
             return {
               v: o.v - 9.81 * 1.0e-3,
@@ -743,9 +743,9 @@ simulate x0 v0 time =
     return function (time) {
       return function __do() {
 
-        var ref = Control_Monad_ST_Internal[&quot;new&quot;]({ x: x0, v: v0 })();
+        var ref = Control_Monad_ST_Internal["new"]({ x: x0, v: v0 })();
 
-        Control_Monad_ST_Internal[&quot;for&quot;](0)(time * 1000 | 0)(function (v) {
+        Control_Monad_ST_Internal["for"](0)(time * 1000 | 0)(function (v) {
           return Control_Monad_ST_Internal.modify(function (o) {
             return {
               v: o.v - 9.81 * 1.0e-3,
@@ -765,7 +765,7 @@ simulate x0 v0 time =
 作用を持つ繰り返しを生成する<code>for</code>、<code>foreach</code>、<code>while</code>のような動作を一緒に使うときは特にそうです。</p>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
-<li>（普通）<code>safeDivide</code>関数を書き直し、もし分母がゼロなら<code>throwException</code>を使って文言<code>&quot;div zero&quot;</code>の例外を投げるようにしたものを<code>exceptionDivide</code>としてください。</li>
+<li>（普通）<code>safeDivide</code>関数を書き直し、もし分母がゼロなら<code>throwException</code>を使って文言<code>"div zero"</code>の例外を投げるようにしたものを<code>exceptionDivide</code>としてください。</li>
 <li>（普通）関数<code>estimatePi :: Int -&gt; Number</code>を書いてください。
 この関数は<code>n</code>項<a href="https://mathworld.wolfram.com/GregorySeries.html">Gregory
 Series</a>を使って<code>pi</code>の近似を計算するものです。
@@ -817,18 +817,18 @@ $ npx parcel src/index.html --open
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta charset="UTF-8"&gt;
     &lt;title&gt;Address Book&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-    &lt;script type=&quot;module&quot; src=&quot;./index.js&quot;&gt;&lt;/script&gt;
+    &lt;div id="container"&gt;&lt;/div&gt;
+    &lt;script type="module" src="./index.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
 <p><code>&lt;script</code>の行にJavaScriptの入口が含まれており、<code>index.js</code>にはこの実質1行だけが含まれています。</p>
-<pre><code class="language-js">import { main } from &quot;../output/Main/index.js&quot;;
+<pre><code class="language-js">import { main } from "../output/Main/index.js";
 
 main();
 </code></pre>
@@ -837,37 +837,37 @@ main();
 <p><code>main</code>関数はDOMとHTML APIを使い、<code>index.html</code>に定義した<code>container</code>要素の中に住所録コンポーネントを描画します。</p>
 <pre><code class="language-hs">main :: Effect Unit
 main = do
-  log &quot;Rendering address book component&quot;
+  log "Rendering address book component"
   -- Get window object
   w &lt;- window
   -- Get window's HTML document
   doc &lt;- document w
-  -- Get &quot;container&quot; element in HTML
-  ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+  -- Get "container" element in HTML
+  ctr &lt;- getElementById "container" $ toNonElementParentNode doc
   case ctr of
-    Nothing -&gt; throw &quot;Container element not found.&quot;
+    Nothing -&gt; throw "Container element not found."
     Just c -&gt; do
       -- Create AddressBook react component
       addressBookApp &lt;- mkAddressBookApp
       let
         -- Create JSX node from react component. Pass-in empty props
         app = element addressBookApp {}
-      -- Render AddressBook JSX node in DOM &quot;container&quot; element
+      -- Render AddressBook JSX node in DOM "container" element
       D.render app c
 </code></pre>
 <p>これら3行に注目してください。</p>
 <pre><code class="language-hs">w &lt;- window
 doc &lt;- document w
-ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+ctr &lt;- getElementById "container" $ toNonElementParentNode doc
 </code></pre>
 <p>これは次のように統合できます。</p>
 <pre><code class="language-hs">doc &lt;- document =&lt;&lt; window
-ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+ctr &lt;- getElementById "container" $ toNonElementParentNode doc
 </code></pre>
 <p>あるいは更なる統合さえできます。</p>
-<pre><code class="language-hs">ctr &lt;- getElementById &quot;container&quot; &lt;&lt;&lt; toNonElementParentNode =&lt;&lt; document =&lt;&lt; window
+<pre><code class="language-hs">ctr &lt;- getElementById "container" &lt;&lt;&lt; toNonElementParentNode =&lt;&lt; document =&lt;&lt; window
 -- or, equivalently:
-ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt; getElementById &quot;container&quot;
+ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt; getElementById "container"
 </code></pre>
 <p>途中の<code>w</code>や<code>doc</code>変数が読みやすさの助けになるかは主観的な好みの問題です。</p>
 <p>AddressBookの<code>reactComponent</code>を深堀りしましょう。
@@ -877,15 +877,15 @@ ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
 mkAddressBookApp =
   reactComponent
-    &quot;AddressBookApp&quot;
-    (\props -&gt; pure $ D.text &quot;Hi! I'm an address book&quot;)
+    "AddressBookApp"
+    (\props -&gt; pure $ D.text "Hi! I'm an address book")
 </code></pre>
 <p><code>reactComponent</code>にはこのような威圧的なシグネチャがあります。</p>
 <pre><code class="language-hs">reactComponent ::
   forall hooks props.
-  Lacks &quot;children&quot; props =&gt;
-  Lacks &quot;key&quot; props =&gt;
-  Lacks &quot;ref&quot; props =&gt;
+  Lacks "children" props =&gt;
+  Lacks "key" props =&gt;
+  Lacks "ref" props =&gt;
   String -&gt;
   ({ | props } -&gt; Render Unit hooks JSX) -&gt;
   Effect (ReactComponent { | props })
@@ -893,7 +893,7 @@ mkAddressBookApp =
 <p>重要な注意点は全ての型クラス制約の後の引数にあります。
 <code>String</code>（任意のコンポーネント名）、<code>props</code>を描画された<code>JSX</code>に変換する方法を記述する関数を取り、そして<code>Effect</code>に包まれた<code>ReactComponent</code>を返します。</p>
 <p>propsからJSXへの関数は単にこうです。</p>
-<pre><code class="language-hs">\props -&gt; pure $ D.text &quot;Hi! I'm an address book&quot;
+<pre><code class="language-hs">\props -&gt; pure $ D.text "Hi! I'm an address book"
 </code></pre>
 <p><code>props</code>は無視されており、<code>D.text</code>は<code>JSX</code>を返し、そして<code>pure</code>は描画されたJSXに持ち上げます。
 これで<code>component</code>には<code>ReactComponent</code>を生成するのに必要な全てがあります。</p>
@@ -901,7 +901,7 @@ mkAddressBookApp =
 <p>これらは完全なコンポーネントの最初の数行です。</p>
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
 mkAddressBookApp = do
-  reactComponent &quot;AddressBookApp&quot; \props -&gt; R.do
+  reactComponent "AddressBookApp" \props -&gt; R.do
     Tuple person setPerson &lt;- useState examplePerson
 </code></pre>
 <p><code>person</code>を<code>useState</code>フックの状態の一部として追跡します。</p>
@@ -934,11 +934,11 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
 単に現在の状態を新しい状態に変形する方法を記述する関数を提供します。
 <code>state</code>の型が偶然<code>Record</code>のときは、レコード更新構文がこれにぴったり合います。
 例えば以下。</p>
-<pre><code class="language-hs">setPerson (\currentPerson -&gt; currentPerson {firstName = &quot;NewName&quot;})
+<pre><code class="language-hs">setPerson (\currentPerson -&gt; currentPerson {firstName = "NewName"})
 
 </code></pre>
 <p>あるいは短かく以下です。</p>
-<pre><code class="language-hs">setPerson _ {firstName = &quot;NewName&quot;}
+<pre><code class="language-hs">setPerson _ {firstName = "NewName"}
 </code></pre>
 <p><code>Record</code>でない状態もまた、この更新パターンに従います。
 ベストプラクティスについて、より詳しいことは<a href="https://github.com/megamaddu/purescript-react-basic-hooks/pull/24#issuecomment-620300541">この手引き</a>を参照してください。</p>
@@ -951,26 +951,26 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
 <p>以下では<code>JSX</code>の描画が行われています。</p>
 <pre><code class="language-hs">pure
   $ D.div
-      { className: &quot;container&quot;
+      { className: "container"
       , children:
           renderValidationErrors errors
             &lt;&gt; [ D.div
-                  { className: &quot;row&quot;
+                  { className: "row"
                   , children:
                       [ D.form_
-                          $ [ D.h3_ [ D.text &quot;Basic Information&quot; ]
-                            , formField &quot;First Name&quot; &quot;First Name&quot; person.firstName \s -&gt;
+                          $ [ D.h3_ [ D.text "Basic Information" ]
+                            , formField "First Name" "First Name" person.firstName \s -&gt;
                                 setPerson _ { firstName = s }
-                            , formField &quot;Last Name&quot; &quot;Last Name&quot; person.lastName \s -&gt;
+                            , formField "Last Name" "Last Name" person.lastName \s -&gt;
                                 setPerson _ { lastName = s }
-                            , D.h3_ [ D.text &quot;Address&quot; ]
-                            , formField &quot;Street&quot; &quot;Street&quot; person.homeAddress.street \s -&gt;
+                            , D.h3_ [ D.text "Address" ]
+                            , formField "Street" "Street" person.homeAddress.street \s -&gt;
                                 setPerson _ { homeAddress { street = s } }
-                            , formField &quot;City&quot; &quot;City&quot; person.homeAddress.city \s -&gt;
+                            , formField "City" "City" person.homeAddress.city \s -&gt;
                                 setPerson _ { homeAddress { city = s } }
-                            , formField &quot;State&quot; &quot;State&quot; person.homeAddress.state \s -&gt;
+                            , formField "State" "State" person.homeAddress.state \s -&gt;
                                 setPerson _ { homeAddress { state = s } }
-                            , D.h3_ [ D.text &quot;Contact Information&quot; ]
+                            , D.h3_ [ D.text "Contact Information" ]
                             ]
                           &lt;&gt; renderPhoneNumbers
                       ]
@@ -998,7 +998,7 @@ renderValidationErrors xs =
     renderError err = D.li_ [ D.text err ]
   in
     [ D.div
-        { className: &quot;alert alert-danger row&quot;
+        { className: "alert alert-danger row"
         , children: [ D.ul_ (map renderError xs) ]
         }
     ]
@@ -1009,25 +1009,25 @@ renderValidationErrors xs =
 <p><code>className</code>プロパティを使ってCSSスタイルのクラスを定義します。
 このプロジェクトでは<a href="https://getbootstrap.com/">Bootstrap</a>の<code>stylesheet</code>を使っており、これは<code>index.html</code>でインポートされています。
 例えばフォーム中のアイテムは<code>row</code>として配置されてほしいですし、検証エラーは<code>alert-danger</code>の装飾で強調されていてほしいです。</p>
-<pre><code class="language-hs">className: &quot;alert alert-danger row&quot;
+<pre><code class="language-hs">className: "alert alert-danger row"
 </code></pre>
 <p>2番目の補助関数は <code>formField</code>です。
 これは、単一フォームフィールドのテキスト入力を作ります。</p>
 <pre><code class="language-hs">formField :: String -&gt; String -&gt; String -&gt; (String -&gt; Effect Unit) -&gt; R.JSX
 formField name placeholder value setValue =
   D.div
-    { className: &quot;form-group row&quot;
+    { className: "form-group row"
     , children:
         [ D.label
-            { className: &quot;col-sm col-form-label&quot;
+            { className: "col-sm col-form-label"
             , htmlFor: name
             , children: [ D.text name ]
             }
         , D.div
-            { className: &quot;col-sm&quot;
+            { className: "col-sm"
             , children:
                 [ D.input
-                    { className: &quot;form-control&quot;
+                    { className: "form-control"
                     , id: name
                     , placeholder
                     , value

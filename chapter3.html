@@ -223,7 +223,7 @@ $ spago build
 &gt; :type 1.0
 Number
 
-&gt; :type &quot;test&quot;
+&gt; :type "test"
 String
 
 &gt; :type true
@@ -251,7 +251,7 @@ Could not match type Int with type Boolean.
 <p>最後の例は型検証器によるエラーを示しています。
 配列の2つの要素の型を<em>単一化</em>（つまり等価にする意）するのに失敗したのです。</p>
 <p>レコードはJavaScriptのオブジェクトに対応しており、レコード直値はJavaScriptのオブジェクト直値と同じ構文になっています。</p>
-<pre><code class="language-text">&gt; author = { name: &quot;Phil&quot;, interests: [&quot;Functional Programming&quot;, &quot;JavaScript&quot;] }
+<pre><code class="language-text">&gt; author = { name: "Phil", interests: ["Functional Programming", "JavaScript"] }
 
 &gt; :type author
 { name :: String
@@ -263,10 +263,10 @@ Could not match type Int with type Boolean.
 後者はつまり<code>String</code>の配列です。</p>
 <p>ドットに続けて参照したいフィールドのラベルを書くとレコードのフィールドを参照できます。</p>
 <pre><code class="language-text">&gt; author.name
-&quot;Phil&quot;
+"Phil"
 
 &gt; author.interests
-[&quot;Functional Programming&quot;,&quot;JavaScript&quot;]
+["Functional Programming","JavaScript"]
 </code></pre>
 <p>PureScriptの関数はJavaScriptの関数に対応します。
 関数はファイルの最上位で定義でき、等号の前に引数を指定します。</p>
@@ -409,15 +409,15 @@ forall (a :: Type) (b :: Type). a -&gt; b -&gt; a
 <p>量化された型を特殊化したいということをコードで示す必要はありません。
 特殊化は自動的に行われます。
 例えば、あたかも既にその型に備わっていたかの如く<code>constantlyFirst</code>を使えます。</p>
-<pre><code class="language-text">&gt; constantlyFirst 3 &quot;ignored&quot;
+<pre><code class="language-text">&gt; constantlyFirst 3 "ignored"
 
 3
 </code></pre>
 <p><code>a</code>と<code>b</code>にはどんな型でも選べますが、<code>constantlyFirst</code>が返す型は最初の引数の型と同じでなければなりません（両方とも同じ<code>a</code>に「紐付く」からです）。</p>
-<pre><code class="language-text">:type constantlyFirst true &quot;ignored&quot;
+<pre><code class="language-text">:type constantlyFirst true "ignored"
 Boolean
 
-:type constantlyFirst &quot;keep&quot; 3
+:type constantlyFirst "keep" 3
 String
 </code></pre>
 <h2 id="住所録の項目の表示"><a class="header" href="#住所録の項目の表示">住所録の項目の表示</a></h2>
@@ -430,16 +430,16 @@ String
 </code></pre>
 <p>この型シグネチャが言っているのは、<code>showEntry</code>は引数として<code>Entry</code>を取り<code>String</code>を返す関数であるということです。
 以下は<code>showEntry</code>のコードです。</p>
-<pre><code class="language-haskell">showEntry entry = entry.lastName &lt;&gt; &quot;, &quot; &lt;&gt;
-                  entry.firstName &lt;&gt; &quot;: &quot; &lt;&gt;
+<pre><code class="language-haskell">showEntry entry = entry.lastName &lt;&gt; ", " &lt;&gt;
+                  entry.firstName &lt;&gt; ": " &lt;&gt;
                   showAddress entry.address
 </code></pre>
 <p>この関数は<code>Entry</code>レコードの3つのフィールドを連結し、単一の文字列にします。
 ここで使用される<code>showAddress</code>関数は<code>address</code>フィールド中のレコードを文字列に変えます。
 <code>showAddress</code>の定義は次の通りです。</p>
 <pre><code class="language-haskell">showAddress :: Address -&gt; String
-showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
-                   addr.city &lt;&gt; &quot;, &quot; &lt;&gt;
+showAddress addr = addr.street &lt;&gt; ", " &lt;&gt;
+                   addr.city &lt;&gt; ", " &lt;&gt;
                    addr.state
 </code></pre>
 <p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照できます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（<code>&lt;&gt;</code>）を使用します。</p>
@@ -455,18 +455,18 @@ showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
 &gt; import Data.AddressBook
 </code></pre>
 <p>レコード直値を使うと、住所録の項目を作成できます。レコード直値はJavaScriptの無名オブジェクトと同じような構文で名前に束縛します。</p>
-<pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
+<pre><code class="language-text">&gt; address = { street: "123 Fake St.", city: "Faketown", state: "CA" }
 </code></pre>
 <p>それでは、この例に関数を適用してみてください。</p>
 <pre><code class="language-text">&gt; showAddress address
 
-&quot;123 Fake St., Faketown, CA&quot;
+"123 Fake St., Faketown, CA"
 </code></pre>
 <p><code>showEntry</code>も、住所の例を含む住所録項目レコードを作って試しましょう。</p>
-<pre><code class="language-text">&gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
+<pre><code class="language-text">&gt; entry = { firstName: "John", lastName: "Smith", address: address }
 &gt; showEntry entry
 
-&quot;Smith, John: 123 Fake St., Faketown, CA&quot;
+"Smith, John: 123 Fake St., Faketown, CA"
 </code></pre>
 <h2 id="住所録の作成"><a class="header" href="#住所録の作成">住所録の作成</a></h2>
 <p>今度は住所録を扱う補助関数を幾つか書いてみましょう。
@@ -608,13 +608,13 @@ insertEntry = Cons
 <pre><code class="language-haskell">_.address.city
 </code></pre>
 <p>以下は一例です。</p>
-<pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
-&gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
+<pre><code class="language-text">&gt; address = { street: "123 Fake St.", city: "Faketown", state: "CA" }
+&gt; entry = { firstName: "John", lastName: "Smith", address: address }
 &gt; _.lastName entry
-&quot;Smith&quot;
+"Smith"
 
 &gt; _.address.city entry
-&quot;Faketown&quot;
+"Faketown"
 </code></pre>
 <h2 id="住所録に問い合わせる"><a class="header" href="#住所録に問い合わせる">住所録に問い合わせる</a></h2>
 <p>最小限の住所録アプリケーションの実装で必要になる最後の関数は、名前で人を検索し適切な<code>Entry</code>を返すものです。

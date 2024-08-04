@@ -242,7 +242,7 @@ foreign import _encodeURIComponent :: String -&gt; String
 対応する外部JavaScriptモジュールは、同名で拡張子が<code>.purs</code>から<code>.js</code>に変わったものです。
 上のPureScriptモジュールが<code>URI.purs</code>として保存されているなら、外部JavaScriptモジュールを<code>URI.js</code>として保存します。
 <code>encodeURIComponent</code>は既に定義されているので、<code>_encodeURIComponent</code>としてエクスポートせねばなりません。</p>
-<pre><code class="language-javascript">&quot;use strict&quot;;
+<pre><code class="language-javascript">"use strict";
 
 export const _encodeURIComponent = encodeURIComponent;
 </code></pre>
@@ -253,13 +253,13 @@ ESモジュールではオブジェクトに<code>export</code>キーワード�
 <pre><code class="language-text">$ spago repl
 
 &gt; import Test.URI
-&gt; _encodeURIComponent &quot;Hello World&quot;
-&quot;Hello%20World&quot;
+&gt; _encodeURIComponent "Hello World"
+"Hello%20World"
 </code></pre>
 <p>外部モジュールには独自の関数も定義できます。
 以下は<code>Number</code>を平方する独自のJavaScript関数を作って呼び出す方法の一例です。</p>
 <p><code>test/Examples.js</code>:</p>
-<pre><code class="language-js">&quot;use strict&quot;;
+<pre><code class="language-js">"use strict";
 
 export const square = function (n) {
   return n * n;
@@ -597,7 +597,7 @@ JavaScriptの呼び出しでも続けざまにPureScriptの関数を呼び出し
 ここでは型クラスのメンバー関数をFFI越しに渡す方法を探ります。</p>
 <p>型<code>x</code>に合う適切な<code>show</code>のインスタンスを期待する外部JavaScript関数を書くことから始めます。</p>
 <pre><code class="language-js">export const boldImpl = show =&gt; x =&gt;
-  show(x).toUpperCase() + &quot;!!!&quot;;
+  show(x).toUpperCase() + "!!!";
 </code></pre>
 <p>それから対応するシグネチャを書きます。</p>
 <pre><code class="language-hs">foreign import boldImpl :: forall a. (a -&gt; String) -&gt; a -&gt; String
@@ -615,16 +615,16 @@ bold = boldImpl show
 
 &gt; import Test.Examples
 &gt; import Data.Tuple
-&gt; bold (Tuple 1 &quot;Hat&quot;)
-&quot;(TUPLE 1 \&quot;HAT\&quot;)!!!&quot;
+&gt; bold (Tuple 1 "Hat")
+"(TUPLE 1 \"HAT\")!!!"
 </code></pre>
 <p>以下は複数の関数を渡す別の実演例です。
 これらの関数には複数引数の関数 (<code>eq</code>) が含まれます。</p>
 <pre><code class="language-js">export const showEqualityImpl = eq =&gt; show =&gt; a =&gt; b =&gt; {
   if (eq(a)(b)) {
-    return &quot;Equivalent&quot;;
+    return "Equivalent";
   } else {
-    return show(a) + &quot; is not equal to &quot; + show(b);
+    return show(a) + " is not equal to " + show(b);
   }
 }
 </code></pre>
@@ -638,14 +638,14 @@ showEquality = showEqualityImpl eq show
 &gt; import Test.Examples
 &gt; import Data.Maybe
 &gt; showEquality Nothing (Just 5)
-&quot;Nothing is not equal to (Just 5)&quot;
+"Nothing is not equal to (Just 5)"
 </code></pre>
 <h2 id="作用のある関数"><a class="header" href="#作用のある関数">作用のある関数</a></h2>
 <p><code>bold</code>関数を拡張してコンソールにログ出力するようにしましょう。
 ログ出力は<code>Effect</code>であり、<code>Effect</code>はJavaScriptにおいて無引数関数として表現されます。
 つまり<code>()</code>と矢印記法だとこうです。</p>
 <pre><code class="language-js">export const yellImpl = show =&gt; x =&gt; () =&gt;
-  console.log(show(x).toUpperCase() + &quot;!!!&quot;);
+  console.log(show(x).toUpperCase() + "!!!");
 </code></pre>
 <p>新しくなった外部インポートは、返る型が<code>String</code>から<code>Effect Unit</code>に変わった点以外は以前と同じです。</p>
 <pre><code class="language-hs">foreign import yellImpl :: forall a. (a -&gt; String) -&gt; a -&gt; Effect Unit
@@ -658,8 +658,8 @@ yell = yellImpl show
 
 &gt; import Test.Examples
 &gt; import Data.Tuple
-&gt; yell (Tuple 1 &quot;Hat&quot;)
-(TUPLE 1 &quot;HAT&quot;)!!!
+&gt; yell (Tuple 1 "Hat")
+(TUPLE 1 "HAT")!!!
 unit
 </code></pre>
 <p><code>Effect.Uncurried</code>に梱包<code>EffectFn</code>というものもあります。
@@ -671,7 +671,7 @@ unit
 <p>翻って以前の<code>diagonal</code>の例を変更し、結果を返すことに加えてログ出力を含めるとこうなります。</p>
 <pre><code class="language-js">export const diagonalLog = function(w, h) {
   let result = Math.sqrt(w * w + h * h);
-  console.log(&quot;Diagonal is &quot; + result);
+  console.log("Diagonal is " + result);
   return result;
 };
 </code></pre>
@@ -712,9 +712,9 @@ sleep = sleepImpl &gt;&gt;&gt; toAffE
 &gt; import Effect.Aff
 &gt; :pa
 … launchAff_ do
-…   log &quot;waiting&quot;
+…   log "waiting"
 …   sleep 300
-…   log &quot;done waiting&quot;
+…   log "done waiting"
 …
 waiting
 unit
@@ -768,7 +768,7 @@ unit
     sum += x;
     sums.push(sum);
   });
-  sums.push(&quot;Broken&quot;); // Bug
+  sums.push("Broken"); // Bug
   return sums;
 };
 
@@ -836,10 +836,10 @@ addComplexDecoded a b = decodeJson $ addComplexJson a b
 &gt; import Test.Examples
 
 &gt; cumulativeSumsDecoded [1, 2, 3]
-(Left &quot;Couldn't decode Array (Failed at index 3): Value is not a Number&quot;)
+(Left "Couldn't decode Array (Failed at index 3): Value is not a Number")
 
 &gt; addComplexDecoded { real: 1.0, imag: 2.0 } { real: 3.0, imag: 4.0 }
-(Left &quot;JSON was missing expected field: imag&quot;)
+(Left "JSON was missing expected field: imag")
 </code></pre>
 <p>正常に動作するバージョンで呼び出すと<code>Right</code>の値が返ります。</p>
 <p>次のREPLブロックを走らせる前に、正常に動作するバージョンを指すように、<code>test/Examples.js</code>へ以下の変更を加えて、手元で試してみましょう。</p>
@@ -877,7 +877,7 @@ mapSetFoo = encodeJson &gt;&gt;&gt; mapSetFooJson &gt;&gt;&gt; decodeJson
 なお、<code>Array.from</code>の工程は、JavaScriptの<code>Map</code>をJSONに親和性のある形式に変換し、デコードでPureScriptの<code>Map</code>に変換し直すために必須です。</p>
 <pre><code class="language-js">export const mapSetFooJson = j =&gt; {
   let m = new Map(j);
-  m.set(&quot;Foo&quot;, 42);
+  m.set("Foo", 42);
   return Array.from(m);
 };
 </code></pre>
@@ -888,16 +888,16 @@ mapSetFoo = encodeJson &gt;&gt;&gt; mapSetFooJson &gt;&gt;&gt; decodeJson
 &gt; import Data.Map
 &gt; import Data.Tuple
 
-&gt; myMap = fromFoldable [ Tuple &quot;hat&quot; 1, Tuple &quot;cat&quot; 2 ]
+&gt; myMap = fromFoldable [ Tuple "hat" 1, Tuple "cat" 2 ]
 
 &gt; :type myMap
 Map String Int
 
 &gt; myMap
-(fromFoldable [(Tuple &quot;cat&quot; 2),(Tuple &quot;hat&quot; 1)])
+(fromFoldable [(Tuple "cat" 2),(Tuple "hat" 1)])
 
 &gt; mapSetFoo myMap
-(Right (fromFoldable [(Tuple &quot;Foo&quot; 42),(Tuple &quot;cat&quot; 2),(Tuple &quot;hat&quot; 1)]))
+(Right (fromFoldable [(Tuple "Foo" 42),(Tuple "cat" 2),(Tuple "hat" 1)]))
 </code></pre>
 <h2 id="演習-4"><a class="header" href="#演習-4">演習</a></h2>
 <ol>
@@ -926,7 +926,7 @@ JavaScriptでは<code>Pair</code>構築子を使わないでください。
 </li>
 <li>
 <p>（普通）2次元配列を含むJSON文字列を構文解析してデコードする<code>parseAndDecodeArray2D :: String -&gt; Either String (Array (Array Int))</code>関数を書いてください。
-例えば<code>&quot;[[1, 2, 3], [4, 5], [6]]&quot;</code>です。
+例えば<code>"[[1, 2, 3], [4, 5], [6]]"</code>です。
 <em>手掛かり</em>：デコードの前に<code>jsonParser</code>を使って<code>String</code>を<code>Json</code>に変換する必要があるでしょう。</p>
 </li>
 <li>
@@ -980,12 +980,12 @@ export const getItem = key =&gt; () =&gt;
 <pre><code class="language-hs">saveButton :: R.JSX
 saveButton =
   D.label
-    { className: &quot;form-group row col-form-label&quot;
+    { className: "form-group row col-form-label"
     , children:
         [ D.button
-            { className: &quot;btn-primary btn&quot;
+            { className: "btn-primary btn"
             , onClick: handler_ validateAndSave
-            , children: [ D.text &quot;Save&quot; ]
+            , children: [ D.text "Save" ]
             }
         ]
     }
@@ -993,12 +993,12 @@ saveButton =
 <p>そして<code>validateAndSave</code>関数中では、検証された<code>person</code>をJSON文字列とし、<code>setItem</code>を使って書き込みます。</p>
 <pre><code class="language-hs">validateAndSave :: Effect Unit
 validateAndSave = do
-  log &quot;Running validators&quot;
+  log "Running validators"
   case validatePerson' person of
-    Left errs -&gt; log $ &quot;There are &quot; &lt;&gt; show (length errs) &lt;&gt; &quot; validation errors.&quot;
+    Left errs -&gt; log $ "There are " &lt;&gt; show (length errs) &lt;&gt; " validation errors."
     Right validPerson -&gt; do
-      setItem &quot;person&quot; $ stringify $ encodeJson validPerson
-      log &quot;Saved&quot;
+      setItem "person" $ stringify $ encodeJson validPerson
+      log "Saved"
 </code></pre>
 <p>なお、この段階でコンパイルしようとすると以下のエラーに遭遇します。</p>
 <pre><code class="language-text">  No type class instance was found for
@@ -1021,7 +1021,7 @@ instance DecodeJson PhoneType where decodeJson = genericDecodeJson
 しかしデータを取得できない限りあまり便利ではありません。
 次はそれに取り掛かりましょう。</p>
 <p>ローカルストレージから「person」文字列で取得することから始めましょう。</p>
-<pre><code class="language-hs">item &lt;- getItem &quot;person&quot;
+<pre><code class="language-hs">item &lt;- getItem "person"
 </code></pre>
 <p>そうしてローカルストレージ由来の文字列から<code>Person</code>レコードへ変換する補助関数を作ります。
 なお、このストレージ中の文字列は<code>null</code>かもしれないので、正常に<code>String</code>としてデコードされるまでは外部の<code>Json</code>として表現します。
@@ -1038,7 +1038,7 @@ processItem item = do
 そうでなければローカルストレージから取得した人物を使います。</p>
 <pre><code class="language-hs">initialPerson &lt;- case processItem item of
   Left  err -&gt; do
-    log $ &quot;Error: &quot; &lt;&gt; err &lt;&gt; &quot;. Loading examplePerson&quot;
+    log $ "Error: " &lt;&gt; err &lt;&gt; ". Loading examplePerson"
     pure examplePerson
   Right p   -&gt; pure p
 </code></pre>
@@ -1049,15 +1049,15 @@ app = element addressBookApp { initialPerson }
 <p>そして状態フックで使うために別の箇所で拾い上げます。</p>
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent { initialPerson :: Person })
 mkAddressBookApp =
-  reactComponent &quot;AddressBookApp&quot; \props -&gt; R.do
+  reactComponent "AddressBookApp" \props -&gt; R.do
     Tuple person setPerson &lt;- useState props.initialPerson
 </code></pre>
 <p>仕上げとして、各<code>Left</code>値の<code>String</code>に<code>lmap</code>を使って前置し、エラー文言の質を向上させます。</p>
 <pre><code class="language-hs">processItem :: Json -&gt; Either String Person
 processItem item = do
-  jsonString &lt;- lmap (&quot;No string in local storage: &quot; &lt;&gt; _) $ decodeJson item
-  j          &lt;- lmap (&quot;Cannot parse JSON string: &quot;   &lt;&gt; _) $ jsonParser jsonString
-  lmap               (&quot;Cannot decode Person: &quot;       &lt;&gt; _) $ decodeJson j
+  jsonString &lt;- lmap ("No string in local storage: " &lt;&gt; _) $ decodeJson item
+  j          &lt;- lmap ("Cannot parse JSON string: "   &lt;&gt; _) $ jsonParser jsonString
+  lmap               ("Cannot decode Person: "       &lt;&gt; _) $ decodeJson j
 </code></pre>
 <p>最初のエラーのみがこのアプリの通常の操作内で起こります。
 他のエラーはwebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。
@@ -1080,9 +1080,9 @@ webブラウザなどです。</p>
 <li>状態がローカルストレージから取得できない。</li>
 </ul>
 <p>以上は単に以下の行で<code>log</code>を<code>alert</code>に置き換えるだけで達成できます。</p>
-<pre><code class="language-hs">Left errs -&gt; alert $ &quot;There are &quot; &lt;&gt; show (length errs) &lt;&gt; &quot; validation errors.&quot;
+<pre><code class="language-hs">Left errs -&gt; alert $ "There are " &lt;&gt; show (length errs) &lt;&gt; " validation errors."
 
-alert $ &quot;Error: &quot; &lt;&gt; err &lt;&gt; &quot;. Loading examplePerson&quot;
+alert $ "Error: " &lt;&gt; err &lt;&gt; ". Loading examplePerson"
 </code></pre>
 <h2 id="演習-5"><a class="header" href="#演習-5">演習</a></h2>
 <ol>
@@ -1261,7 +1261,7 @@ identity a = a
 この追加の条件は、以下のJavaScriptの関数のような問題のある実装が多相型に現住することを防止します。</p>
 <pre><code class="language-javascript">function invalid(a) {
     if (typeof a === 'string') {
-        return &quot;Argument was a string.&quot;;
+        return "Argument was a string.";
     } else {
         return a;
     }
@@ -1280,12 +1280,12 @@ identity a = a
 この辞書には選ばれたインスタンスから提供される型クラスの関数の実装が含まれます。</p>
 <p>例えば以下は、<code>Show</code>型クラスを使う制約付きの型を持つ、単純なPureScript関数です。</p>
 <pre><code class="language-haskell">shout :: forall a. Show a =&gt; a -&gt; String
-shout a = show a &lt;&gt; &quot;!!!&quot;
+shout a = show a &lt;&gt; "!!!"
 </code></pre>
 <p>生成されるJavaScriptは次のようになります。</p>
 <pre><code class="language-javascript">var shout = function (dict) {
     return function (a) {
-        return show(dict)(a) + &quot;!!!&quot;;
+        return show(dict)(a) + "!!!";
     };
 };
 </code></pre>

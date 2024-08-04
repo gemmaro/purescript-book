@@ -240,7 +240,7 @@ Test returned false
     result = merge (sort xs) (sort ys)
     expected = sort $ xs &lt;&gt; ys
   in
-    eq result expected &lt;?&gt; &quot;Result:\n&quot; &lt;&gt; show result &lt;&gt; &quot;\nnot equal to expected:\n&quot; &lt;&gt; show expected
+    eq result expected &lt;?&gt; "Result:\n" &lt;&gt; show result &lt;&gt; "\nnot equal to expected:\n" &lt;&gt; show expected
 </code></pre>
 <p>このとき、もしバグを混入するようにコードを変更すると、最初のテスト項目が失敗したときに改良されたエラー文言が表示されます。</p>
 <pre><code class="language-text">Error: Test 1 (seed 534161891) failed:
@@ -388,10 +388,10 @@ false
 <pre><code class="language-haskell">&gt; import Data.String
 
 &gt; mergeWith length
-    [&quot;&quot;, &quot;ab&quot;, &quot;abcd&quot;]
-    [&quot;x&quot;, &quot;xyz&quot;]
+    ["", "ab", "abcd"]
+    ["x", "xyz"]
 
-[&quot;&quot;,&quot;x&quot;,&quot;ab&quot;,&quot;xyz&quot;,&quot;abcd&quot;]
+["","x","ab","xyz","abcd"]
 </code></pre>
 <p>このような関数をテストするにはどうしたらいいでしょうか。
 理想的には、関数である最初の引数を含めた3つの引数全てについて、値を生成したいところです。</p>

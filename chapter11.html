@@ -209,7 +209,7 @@ Available options:
 <p>コマンドライン引数を与えるためには、追加の引数を直接アプリケーションに渡す<code>-a</code>オプション付きで<code>spago run</code>を呼び出すか、<code>spago bundle-app</code>とすればよいです。
 2つ目の方法では<code>node</code>で直接走らせられるindex.jsファイルが作られます。</p>
 <p>例えば<code>-p</code>オプションを使ってプレイヤー名を与えるには次のようにします。</p>
-<pre><code class="language-text">$ spago run -a &quot;-p Phil&quot;
+<pre><code class="language-text">$ spago run -a "-p Phil"
 &gt;
 </code></pre>
 <pre><code class="language-text">$ spago bundle-app 
@@ -222,7 +222,7 @@ $ node index.js -p Phil
 ゲームにはアイテムの集まりがあり、プレイヤーの所有物であったり、ゲームの盤上の特定の位置にあったりします。
 <code>take</code>コマンドを使うと、プレイヤーはアイテムを拾い上げられます。</p>
 <p>参考までに、このゲームのひと通りの流れは次のようになります。</p>
-<pre><code class="language-text">$ spago run -a &quot;-p Phil&quot;
+<pre><code class="language-text">$ spago run -a "-p Phil"
 
 &gt; look
 You are at (0, 0)
@@ -307,16 +307,16 @@ runState  :: forall s a. State s a -&gt; s -&gt; Tuple a s
 </code></pre>
 <p>これは、まだ閉じられていない開括弧の数を把握することで、括弧の<code>String</code>が平衡しているかどうかを調べる関数です。
 この関数は次のように動作します。</p>
-<pre><code class="language-text">&gt; testParens &quot;&quot;
+<pre><code class="language-text">&gt; testParens ""
 true
 
-&gt; testParens &quot;(()(())())&quot;
+&gt; testParens "(()(())())"
 true
 
-&gt; testParens &quot;)&quot;
+&gt; testParens ")"
 false
 
-&gt; testParens &quot;(()()&quot;
+&gt; testParens "(()()"
 false
 </code></pre>
 <p><em>手掛かり</em>：入力の文字列を文字の配列に変換するのに、<code>Data.String.CodeUnits</code>モジュールの <code>toCharArray</code>関数を使うと良いでしょう。</p>
@@ -342,13 +342,13 @@ addPermission :: String -&gt; Permissions -&gt; Permissions
 <pre><code class="language-haskell">createUser :: Reader Permissions (Maybe User)
 createUser = do
   permissions &lt;- ask
-  if hasPermission &quot;admin&quot; permissions
+  if hasPermission "admin" permissions
     then map Just newUser
     else pure Nothing
 </code></pre>
 <p><code>local</code>動作を使うと、計算の実行中に <code>Permissions</code>オブジェクトを変更し、ユーザーの権限を昇格させることもできます。</p>
 <pre><code class="language-haskell">runAsAdmin :: forall a. Reader Permissions a -&gt; Reader Permissions a
-runAsAdmin = local (addPermission &quot;admin&quot;)
+runAsAdmin = local (addPermission "admin")
 </code></pre>
 <p>こうすると、利用者が <code>admin</code>権限を持っていなかった場合であっても新しい利用者を作成できるような関数を書くことができます。</p>
 <pre><code class="language-haskell">createUserAsAdmin :: Reader Permissions (Maybe User)
@@ -394,11 +394,11 @@ type Doc = Reader Level String
 </ol>
 <p>これでライブラリを使って以下のような単純な文書を書けるようになりました。</p>
 <pre><code class="language-haskell">render $ cat
-  [ line &quot;Here is some indented text:&quot;
+  [ line "Here is some indented text:"
   , indent $ cat
-      [ line &quot;I am indented&quot;
-      , line &quot;So am I&quot;
-      , indent $ line &quot;I am even more indented&quot;
+      [ line "I am indented"
+      , line "So am I"
+      , indent $ line "I am even more indented"
       ]
   ]
 </code></pre>
@@ -431,7 +431,7 @@ gcdLog :: Int -&gt; Int -&gt; Writer (Array String) Int
 <pre><code class="language-haskell">    gcdLog n 0 = pure n
     gcdLog 0 m = pure m
     gcdLog n m = do
-      tell [&quot;gcdLog &quot; &lt;&gt; show n &lt;&gt; &quot; &quot; &lt;&gt; show m]
+      tell ["gcdLog " &lt;&gt; show n &lt;&gt; " " &lt;&gt; show m]
       if n &gt; m
         then gcdLog (n - m) m
         else gcdLog n (m - n)
@@ -447,7 +447,7 @@ runWriter  :: forall w a. Writer w a -&gt; Tuple a w
 &gt; import Control.Monad.Writer.Class
 
 &gt; runWriter (gcdLog 21 15)
-Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;,&quot;gcdLog 6 3&quot;,&quot;gcdLog 3 3&quot;]
+Tuple 3 ["gcdLog 21 15","gcdLog 6 15","gcdLog 6 9","gcdLog 6 3","gcdLog 3 3"]
 </code></pre>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
 <ol>
@@ -524,24 +524,24 @@ split :: StateT String (Either String) String
 split = do
   s &lt;- get
   case s of
-    &quot;&quot; -&gt; lift $ Left &quot;Empty string&quot;
+    "" -&gt; lift $ Left "Empty string"
     _ -&gt; do
       put (drop 1 s)
       pure (take 1 s)
 </code></pre>
 <p>状態が空でなければ、この計算は<code>put</code>を使って状態を<code>drop 1 s</code>（つまり<code>s</code>から最初の文字を取り除いたもの）へと更新し、<code>take 1 s</code>（<code>s</code>の最初の文字）を返します。</p>
 <p>それではPSCiでこれを試してみましょう。</p>
-<pre><code class="language-text">&gt; runStateT split &quot;test&quot;
-Right (Tuple &quot;t&quot; &quot;est&quot;)
+<pre><code class="language-text">&gt; runStateT split "test"
+Right (Tuple "t" "est")
 
-&gt; runStateT split &quot;&quot;
-Left &quot;Empty string&quot;
+&gt; runStateT split ""
+Left "Empty string"
 </code></pre>
 <p>これは<code>StateT</code>を使わなくても実装できるので、さほど驚くようなことはありません。
 しかし、モナドの中で扱っているので、do記法やアプリカティブコンビネータを使って、小さな計算から大きな計算を構築できます。
 例えば、2回<code>split</code>を適用すると、文字列から最初の2文字を読めます。</p>
-<pre><code class="language-text">&gt; runStateT ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) &quot;test&quot;
-(Right (Tuple &quot;te&quot; &quot;st&quot;))
+<pre><code class="language-text">&gt; runStateT ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) "test"
+(Right (Tuple "te" "st"))
 </code></pre>
 <p><code>split</code>関数とその他沢山の動作を使えば基本的な構文解析ライブラリを構築できます。
 実際、これは<code>parsing</code>ライブラリで採用されている手法です。
@@ -576,16 +576,16 @@ import Control.Monad.Writer
 
 writerAndExceptT :: ExceptT String (Writer (Array String)) String
 writerAndExceptT = do
-  lift $ tell [&quot;Before the error&quot;]
-  _ &lt;- throwError &quot;Error!&quot;
-  lift $ tell [&quot;After the error&quot;]
-  pure &quot;Return value&quot;
+  lift $ tell ["Before the error"]
+  _ &lt;- throwError "Error!"
+  lift $ tell ["After the error"]
+  pure "Return value"
 </code></pre>
 <p>PSCiでこの関数を試すと、ログの蓄積とエラーの送出という2つの作用がどのように相互作用しているのかを見ることができます。
 まず、 <code>runExceptT</code>を使って外側の<code>ExceptT</code>を計算し、型 <code>Writer (Array String) (Either String String)</code>の結果を残します。
 それから、 <code>runWriter</code>で内側の<code>Writer</code>を計算します。</p>
 <pre><code class="language-text">&gt; runWriter $ runExceptT writerAndExceptT
-Tuple (Left &quot;Error!&quot;) [&quot;Before the error&quot;]
+Tuple (Left "Error!") ["Before the error"]
 </code></pre>
 <p>なお、エラーが投げられる前に書き出されるログ文言だけがログに追記されます。</p>
 <h2 id="モナド変換子スタック"><a class="header" href="#モナド変換子スタック">モナド変換子スタック</a></h2>
@@ -610,9 +610,9 @@ type Parser = StateT String (WriterT Log (ExceptT Errors Identity))
 split :: Parser String
 split = do
   s &lt;- get
-  lift $ tell [&quot;The state is &quot; &lt;&gt; s]
+  lift $ tell ["The state is " &lt;&gt; s]
   case s of
-    &quot;&quot; -&gt; lift $ lift $ throwError [&quot;Empty string&quot;]
+    "" -&gt; lift $ lift $ throwError ["Empty string"]
     _ -&gt; do
       put (drop 1 s)
       pure (take 1 s)
@@ -623,15 +623,15 @@ split = do
 最後に<code>unwrap</code>を使用して<code>Identity</code>モナド中で計算します。</p>
 <pre><code class="language-text">&gt; runParser p s = unwrap $ runExceptT $ runWriterT $ runStateT p s
 
-&gt; runParser split &quot;test&quot;
-(Right (Tuple (Tuple &quot;t&quot; &quot;est&quot;) [&quot;The state is test&quot;]))
+&gt; runParser split "test"
+(Right (Tuple (Tuple "t" "est") ["The state is test"]))
 
-&gt; runParser ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) &quot;test&quot;
-(Right (Tuple (Tuple &quot;te&quot; &quot;st&quot;) [&quot;The state is test&quot;, &quot;The state is est&quot;]))
+&gt; runParser ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) "test"
+(Right (Tuple (Tuple "te" "st") ["The state is test", "The state is est"]))
 </code></pre>
 <p>しかし、状態が空であることが理由で解析が失敗した場合、ログは全く出力されません。</p>
-<pre><code class="language-text">&gt; runParser split &quot;&quot;
-(Left [&quot;Empty string&quot;])
+<pre><code class="language-text">&gt; runParser split ""
+(Left ["Empty string"])
 </code></pre>
 <p>これは、<code>ExceptT</code>モナド変換子が提供する副作用と<code>WriterT</code>モナド変換子が提供する副作用との関係によるものです。
 これはモナド変換子スタックが構成されている順序を変更することで対処できます。
@@ -653,8 +653,8 @@ split = do
 </code></pre>
 <p>これは現在の状態が接頭辞に照合するか、もしくはエラー文言とともに失敗します。</p>
 <p>この構文解析器は次のように動作します。</p>
-<pre><code class="language-text">&gt; runParser (string &quot;abc&quot;) &quot;abcdef&quot;
-(Right (Tuple (Tuple &quot;abc&quot; &quot;def&quot;) [&quot;The state is abcdef&quot;]))
+<pre><code class="language-text">&gt; runParser (string "abc") "abcdef"
+(Right (Tuple (Tuple "abc" "def") ["The state is abcdef"]))
 </code></pre>
 <p><em>手掛かり</em>：出発点として<code>split</code>の実装が使えます。
 <code>stripPrefix</code>関数も役に立つかもしれません。</p>
@@ -692,9 +692,9 @@ modify :: forall m s. MonadState s m =&gt; (s -&gt; s) -&gt; m Unit
 <pre><code class="language-haskell">split :: Parser String
 split = do
   s &lt;- get
-  tell [&quot;The state is &quot; &lt;&gt; show s]
+  tell ["The state is " &lt;&gt; show s]
   case s of
-    &quot;&quot; -&gt; throwError [&quot;Empty string&quot;]
+    "" -&gt; throwError ["Empty string"]
     _ -&gt; do
       put (drop 1 s)
       pure (take 1 s)
@@ -727,15 +727,15 @@ some :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Ar
 これは、構文解析器を複数回実行するのに<code>many</code>関数と<code>some</code>関数を使うことができることを意味します。</p>
 <pre><code class="language-text">&gt; import Data.Array (many)
 
-&gt; runParser (many split) &quot;test&quot;
-(Right (Tuple (Tuple [&quot;t&quot;, &quot;e&quot;, &quot;s&quot;, &quot;t&quot;] &quot;&quot;)
-              [ &quot;The state is \&quot;test\&quot;&quot;
-              , &quot;The state is \&quot;est\&quot;&quot;
-              , &quot;The state is \&quot;st\&quot;&quot;
-              , &quot;The state is \&quot;t\&quot;&quot;
+&gt; runParser (many split) "test"
+(Right (Tuple (Tuple ["t", "e", "s", "t"] "")
+              [ "The state is \"test\""
+              , "The state is \"est\""
+              , "The state is \"st\""
+              , "The state is \"t\""
               ]))
 </code></pre>
-<p>ここでは入力文字列 <code>&quot;test&quot;</code>は、1文字からなる文字列4つの配列を返すように繰り返し分割されています。
+<p>ここでは入力文字列 <code>"test"</code>は、1文字からなる文字列4つの配列を返すように繰り返し分割されています。
 残った状態は空で、ログは <code>split</code>コンビネータが4回適用されたことを示しています。</p>
 <h2 id="モナド内包表記"><a class="header" href="#モナド内包表記">モナド内包表記</a></h2>
 <p><code>Control.MonadPlus</code>モジュールには <code>MonadPlus</code>と呼ばれる<code>Alternative</code>型クラスの副クラスが定義されています。
@@ -772,26 +772,26 @@ lower = do
 <pre><code class="language-text">&gt; upperOrLower = some upper &lt;|&gt; some lower
 </code></pre>
 <p>この構文解析器は、大文字と小文字が切り替わるまで、文字に照合し続けます。</p>
-<pre><code class="language-text">&gt; runParser upperOrLower &quot;abcDEF&quot;
-(Right (Tuple (Tuple [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;] (&quot;DEF&quot;))
-              [ &quot;The state is \&quot;abcDEF\&quot;&quot;
-              , &quot;The state is \&quot;bcDEF\&quot;&quot;
-              , &quot;The state is \&quot;cDEF\&quot;&quot;
+<pre><code class="language-text">&gt; runParser upperOrLower "abcDEF"
+(Right (Tuple (Tuple ["a","b","c"] ("DEF"))
+              [ "The state is \"abcDEF\""
+              , "The state is \"bcDEF\""
+              , "The state is \"cDEF\""
               ]))
 </code></pre>
 <p>また、<code>many</code>を使うと文字列を小文字と大文字の要素に完全に分割できます。</p>
 <pre><code class="language-text">&gt; components = many upperOrLower
 
-&gt; runParser components &quot;abCDeFgh&quot;
-(Right (Tuple (Tuple [[&quot;a&quot;,&quot;b&quot;],[&quot;C&quot;,&quot;D&quot;],[&quot;e&quot;],[&quot;F&quot;],[&quot;g&quot;,&quot;h&quot;]] &quot;&quot;)
-              [ &quot;The state is \&quot;abCDeFgh\&quot;&quot;
-              , &quot;The state is \&quot;bCDeFgh\&quot;&quot;
-              , &quot;The state is \&quot;CDeFgh\&quot;&quot;
-              , &quot;The state is \&quot;DeFgh\&quot;&quot;
-              , &quot;The state is \&quot;eFgh\&quot;&quot;
-              , &quot;The state is \&quot;Fgh\&quot;&quot;
-              , &quot;The state is \&quot;gh\&quot;&quot;
-              , &quot;The state is \&quot;h\&quot;&quot;
+&gt; runParser components "abCDeFgh"
+(Right (Tuple (Tuple [["a","b"],["C","D"],["e"],["F"],["g","h"]] "")
+              [ "The state is \"abCDeFgh\""
+              , "The state is \"bCDeFgh\""
+              , "The state is \"CDeFgh\""
+              , "The state is \"DeFgh\""
+              , "The state is \"eFgh\""
+              , "The state is \"Fgh\""
+              , "The state is \"gh\""
+              , "The state is \"h\""
               ]))
 </code></pre>
 <p>繰り返しになりますが、これはモナド変換子が齎す再利用性の威力を示しています。
@@ -804,7 +804,7 @@ lower = do
 </li>
 <li>
 <p>（普通）<code>string</code>構文解析器と<code>some</code>コンビネータを使って構文解析器<code>asFollowedByBs</code>を書いてください。
-これは文字列<code>&quot;a&quot;</code>の連続と、それに続く文字列<code>&quot;b&quot;</code>の連続からなる文字列を認識するものです。</p>
+これは文字列<code>"a"</code>の連続と、それに続く文字列<code>"b"</code>の連続からなる文字列を認識するものです。</p>
 </li>
 <li>
 <p>（普通）<code>&lt;|&gt;</code>演算子を使って構文解析器<code>asOrBs</code>を書いてください。
@@ -905,7 +905,7 @@ pickUp item = do
           put $ GameState state { items     = newItems
                                 , inventory = newInventory
                                 }
-          tell (L.singleton (&quot;You now have the &quot; &lt;&gt; show item))
+          tell (L.singleton ("You now have the " &lt;&gt; show item))
 </code></pre>
 <p>ここで2つの計算のどちらも<code>lift</code>が必要ないことに注意してください。
 なぜなら<code>MonadState</code>と<code>MonadWriter</code>の両方について<code>Game</code>モナド変換子スタック用の適切なインスタンスが存在するからです。</p>
@@ -914,7 +914,7 @@ pickUp item = do
 今回の場合、プレイヤーの現在の位置にあるアイテムの集合を変更するのに、<code>delete</code>関数を使って指定したアイテムを集合から取り除いています。
 <code>insert</code>を使って新しいアイテムをプレイヤーの持ち物の集合に加えるときにも、<code>inventory</code>は更新されます。</p>
 <p>最後に、<code>pickUp</code>関数は<code>tell</code>を使ってユーザに通知することにより、残りの場合を処理します。</p>
-<pre><code class="language-haskell">    _ -&gt; tell (L.singleton &quot;I don't see that item here.&quot;)
+<pre><code class="language-haskell">    _ -&gt; tell (L.singleton "I don't see that item here.")
 </code></pre>
 <p><code>Reader</code>モナドを使う例として、 <code>debug</code>コマンドのコードを見てみましょう。
 ゲームがデバッグモードで実行されている場合、このコマンドを使うとユーザは実行時にゲームの状態を調べることができます。</p>
@@ -923,7 +923,7 @@ pickUp item = do
     then do
       state :: GameState &lt;- get
       tell (L.singleton (show state))
-    else tell (L.singleton &quot;Not running in debug mode.&quot;)
+    else tell (L.singleton "Not running in debug mode.")
 </code></pre>
 <p>ここでは、ゲームの構成を読み込むために<code>ask</code>動作を使用しています。
 繰り返しますが、どの計算でも<code>lift</code>する必要がなく、同じdo記法ブロック内で<code>MonadState</code>、<code>MonadReader</code>、<code>MonadWriter</code>型クラスで定義されている動作を使える点に注意してください。</p>
@@ -971,13 +971,13 @@ runGame env = do
 </code></pre>
 <p>最初の工程はコンソールにプロンプトを設定することです。
 <code>interface</code>制御対象を渡し、プロンプト文字列と字下げレベルを与えます。</p>
-<pre><code class="language-haskell">  RL.setPrompt &quot;&gt; &quot; interface
+<pre><code class="language-haskell">  RL.setPrompt "&gt; " interface
 </code></pre>
 <p>今回は行制御関数を実装することに関心があります。
 ここでの行制御は<code>let</code>宣言内の補助関数を使って次のように定義されています。</p>
 <pre><code class="language-haskell">    lineHandler :: GameState -&gt; String -&gt; Effect Unit
     lineHandler currentState input = do
-      case runRWS (game (split (wrap &quot; &quot;) input)) env currentState of
+      case runRWS (game (split (wrap " ") input)) env currentState of
         RWSResult state _ written -&gt; do
           for_ written log
           RL.setLineHandler (lineHandler state) $ interface
@@ -1031,8 +1031,8 @@ runGame env = do
 
   parserOptions = fold 
     [ OP.fullDesc
-    , OP.progDesc &quot;Play the game as &lt;player name&gt;&quot;
-    , OP.header &quot;Monadic Adventures! A game to learn monad transformers&quot; 
+    , OP.progDesc "Play the game as &lt;player name&gt;"
+    , OP.header "Monadic Adventures! A game to learn monad transformers" 
     ]
 </code></pre>
 <p>ここで<code>OP.info</code>は、<code>Parser</code>をヘルプ文言の書式方法のためのオプションの集合と組み合わせます。
@@ -1044,17 +1044,17 @@ runGame env = do
 
   player :: OP.Parser String
   player = OP.strOption $ fold 
-    [ OP.long &quot;player&quot;
+    [ OP.long "player"
     , OP.short 'p'
-    , OP.metavar &quot;&lt;player name&gt;&quot;
-    , OP.help &quot;The player's name &lt;String&gt;&quot;
+    , OP.metavar "&lt;player name&gt;"
+    , OP.help "The player's name &lt;String&gt;"
     ]
 
   debug :: OP.Parser Boolean
   debug = OP.switch $ fold 
-    [ OP.long &quot;debug&quot;
+    [ OP.long "debug"
     , OP.short 'd'
-    , OP.help &quot;Use debug mode&quot;
+    , OP.help "Use debug mode"
     ]
 </code></pre>
 <p><code>player</code>と<code>debug</code>は両方とも<code>Parser</code>なので、アプリカティブ演算子<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>を使って<code>gameEnvironment</code>関数を持ち上げられます。

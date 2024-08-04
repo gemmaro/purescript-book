@@ -253,12 +253,12 @@ gcd n m = if n &gt; m
 </ul>
 <p>これらの単純なパターンを使用する実演として、もう2つの例が以下です。</p>
 <pre><code class="language-haskell">fromString :: String -&gt; Boolean
-fromString &quot;true&quot; = true
+fromString "true" = true
 fromString _      = false
 
 toString :: Boolean -&gt; String
-toString true  = &quot;true&quot;
-toString false = &quot;false&quot;
+toString true  = "true"
+toString false = "false"
 </code></pre>
 <p>PSCiでこれらの関数を試してみてください。</p>
 <h2 id="ガード"><a class="header" href="#ガード">ガード</a></h2>
@@ -338,43 +338,43 @@ takeFive _ = 0
 <p>例えば次のパターンは<code>first</code>と<code>last</code>という名前のフィールドが含まれた任意のレコードに照合し、これらのフィールドの値はそれぞれ <code>x</code>と
 <code>y</code>という名前に束縛されます。</p>
 <pre><code class="language-haskell">showPerson :: { first :: String, last :: String } -&gt; String
-showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
+showPerson { first: x, last: y } = y &lt;&gt; ", " &lt;&gt; x
 </code></pre>
 <p>レコードパターンはPureScriptの型システムの興味深い機能である<em>行多相</em>の良い例となっています。
 もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、この型はどのように推論されるのでしょうか。
 面白いことに、推論される型は上で与えた型とは同じではありません。</p>
-<pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
+<pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; ", " &lt;&gt; x
 
 &gt; :type showPerson
 forall (r :: Row Type). { first :: String, last :: String | r } -&gt; String
 </code></pre>
 <p>この型変数 <code>r</code>は何でしょうか。
 PSCiで<code>showPerson</code>を使ってみると、面白いことがわかります。</p>
-<pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot; }
-&quot;Freeman, Phil&quot;
+<pre><code class="language-text">&gt; showPerson { first: "Phil", last: "Freeman" }
+"Freeman, Phil"
 
-&gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot;, location: &quot;Los Angeles&quot; }
-&quot;Freeman, Phil&quot;
+&gt; showPerson { first: "Phil", last: "Freeman", location: "Los Angeles" }
+"Freeman, Phil"
 </code></pre>
 <p>レコードにそれ以外のフィールドが追加されていても、<code>showPerson</code>関数はそのまま動作するのです。
 レコードに少なくとも型が<code>String</code>であるようなフィールド<code>first</code>と<code>last</code>が含まれていれば、関数適用は正しく型付けされます。
 しかし、フィールドが<em>不足</em>していると、<code>showPerson</code>の呼び出しは<em>不正</em>となります。</p>
-<pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot; }
+<pre><code class="language-text">&gt; showPerson { first: "Phil" }
 
-Type of expression lacks required label &quot;last&quot;
+Type of expression lacks required label "last"
 </code></pre>
 <p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド <em>と他のフィールドを何でも</em>
 持つあらゆるレコードを取り、<code>String</code>を返す」となります。なお、この挙動は元の<code>showPerson</code>のものとは異なります。行変数<code>r</code>がなければ<code>showPerson</code>は
 <em>厳密に</em> <code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
 <p>なお、次のように書くこともできます。</p>
-<pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; &quot;, &quot; &lt;&gt; p.first
+<pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; ", " &lt;&gt; p.first
 </code></pre>
 <p>そしてPSCiは同じ型を推論することでしょう。</p>
 <h2 id="レコード同名利用"><a class="header" href="#レコード同名利用">レコード同名利用</a></h2>
 <p><code>showPerson</code>関数は引数内のレコードと照合し、<code>first</code>と<code>last</code>フィールドを<code>x</code>と<code>y</code>という名前の値に束縛していたのでした。
 別の方法として、フィールド名自体を再利用してこのような類のパターン照合を次のように単純化できます。</p>
 <pre><code class="language-haskell">showPersonV2 :: { first :: String, last :: String } -&gt; String
-showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
+showPersonV2 { first, last } = last &lt;&gt; ", " &lt;&gt; first
 </code></pre>
 <p>ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。これは <em>レコード同名利用</em> (record pun)
 と呼ばれます。</p>
@@ -383,8 +383,8 @@ showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
 <pre><code class="language-haskell">unknownPerson :: { first :: String, last :: String }
 unknownPerson = { first, last }
   where
-    first = &quot;Jane&quot;
-    last  = &quot;Doe&quot;
+    first = "Jane"
+    last  = "Doe"
 </code></pre>
 <p>こうすると、状況によってはコードの可読性が向上します。</p>
 <h2 id="入れ子になったパターン"><a class="header" href="#入れ子になったパターン">入れ子になったパターン</a></h2>
@@ -398,7 +398,7 @@ unknownPerson = { first, last }
 type Person = { name :: String, address :: Address }
 
 livesInLA :: Person -&gt; Boolean
-livesInLA { address: { city: &quot;Los Angeles&quot; } } = true
+livesInLA { address: { city: "Los Angeles" } } = true
 livesInLA _ = false
 </code></pre>
 <h2 id="名前付きパターン"><a class="header" href="#名前付きパターン">名前付きパターン</a></h2>
@@ -579,17 +579,17 @@ exampleLine = Line p1 p2
 これには次のようにします。</p>
 <pre><code class="language-haskell">showShape :: Shape -&gt; String
 showShape (Circle c r) =
-  &quot;Circle [center: &quot; &lt;&gt; showPoint c &lt;&gt; &quot;, radius: &quot; &lt;&gt; show r &lt;&gt; &quot;]&quot;
+  "Circle [center: " &lt;&gt; showPoint c &lt;&gt; ", radius: " &lt;&gt; show r &lt;&gt; "]"
 showShape (Rectangle c w h) =
-  &quot;Rectangle [center: &quot; &lt;&gt; showPoint c &lt;&gt; &quot;, width: &quot; &lt;&gt; show w &lt;&gt; &quot;, height: &quot; &lt;&gt; show h &lt;&gt; &quot;]&quot;
+  "Rectangle [center: " &lt;&gt; showPoint c &lt;&gt; ", width: " &lt;&gt; show w &lt;&gt; ", height: " &lt;&gt; show h &lt;&gt; "]"
 showShape (Line start end) =
-  &quot;Line [start: &quot; &lt;&gt; showPoint start &lt;&gt; &quot;, end: &quot; &lt;&gt; showPoint end &lt;&gt; &quot;]&quot;
+  "Line [start: " &lt;&gt; showPoint start &lt;&gt; ", end: " &lt;&gt; showPoint end &lt;&gt; "]"
 showShape (Text loc text) =
-  &quot;Text [location: &quot; &lt;&gt; showPoint loc &lt;&gt; &quot;, text: &quot; &lt;&gt; show text &lt;&gt; &quot;]&quot;
+  "Text [location: " &lt;&gt; showPoint loc &lt;&gt; ", text: " &lt;&gt; show text &lt;&gt; "]"
 
 showPoint :: Point -&gt; String
 showPoint { x, y } =
-  &quot;(&quot; &lt;&gt; show x &lt;&gt; &quot;, &quot; &lt;&gt; show y &lt;&gt; &quot;)&quot;
+  "(" &lt;&gt; show x &lt;&gt; ", " &lt;&gt; show y &lt;&gt; ")"
 </code></pre>
 <p>各構築子はパターンとして使用でき、構築子への引数はそのパターンで束縛できます。
 <code>showShape</code>の最初の場合を考えてみましょう。
@@ -701,7 +701,7 @@ $ spago repl
 
 &gt; showPicture [ Line { x: 0.0, y: 0.0 } { x: 1.0, y: 1.0 } ]
 
-[&quot;Line [start: (0.0, 0.0), end: (1.0, 1.0)]&quot;]
+["Line [start: (0.0, 0.0), end: (1.0, 1.0)]"]
 </code></pre>
 <h2 id="外接矩形の算出"><a class="header" href="#外接矩形の算出">外接矩形の算出</a></h2>
 <p>このモジュールのコード例には、 <code>Picture</code>の最小外接矩形を計算する関数 <code>bounds</code>が含まれています。</p>

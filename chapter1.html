@@ -202,7 +202,7 @@ readFile(sourceFile, function (error, data) {
   if (!error) {
     writeFile(destFile, data, function (error) {
       if (!error) {
-        console.log(&quot;File copied&quot;);
+        console.log("File copied");
       }
     });
   }
@@ -299,7 +299,7 @@ Haskellコンパイラが動く任意のシステム上でソースからのビ�
 
 import Effect.Console (log)
 
-main = log &quot;Hello, World!&quot;
+main = log "Hello, World!"
 </code></pre>
 <p>先頭にドル記号がついた行は、コマンドラインに入力されたコマンドです。</p>
 <pre><code class="language-text">$ spago build

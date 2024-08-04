@@ -290,14 +290,14 @@ forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; 
 例えば<code>map</code>を使用すると数値を文字列に変換できます。</p>
 <pre><code class="language-text">&gt; show &lt;$&gt; [1, 2, 3, 4, 5]
 
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p>中置演算子<code>&lt;$&gt;</code>は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。
 中置構文を使用した単なる<em>適用</em>にすぎません。
 実際、括弧でその名前を囲むと、この関数を通常の関数のように使用できます。
 これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前が使えるということです。</p>
 <pre><code class="language-text">&gt; (&lt;$&gt;) show [1, 2, 3, 4, 5]
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p>中置関数は既存の関数名の別称として定義されます。
 例えば<code>Data.Array</code>モジュールでは次のように<code>range</code>関数の同義語として中置演算子<code>(..)</code>を定義しています。</p>
@@ -310,7 +310,7 @@ forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; 
 [1, 2, 3, 4, 5]
 
 &gt; show &lt;$&gt; (1 .. 5)
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p><em>補足</em>：独自の中置演算子は、自然な構文を備える領域特化言語を定義する上で優れた手段になりえます。ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。</p>
 <p>上記の例では、<code>1 .. 5</code>という式は括弧で囲まれていましたが、実際にはこれは必要ありません。
@@ -318,7 +318,7 @@ forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; 
 上の例では、<code>..</code>の優先順位は、キーワード<code>infix</code>のあとに書かれた数の<code>8</code> と定義されていました。
 ここでは<code>&lt;$&gt;</code>の優先順位よりも高い優先順位を<code>..</code>に割り当てており、このため括弧を付け加える必要がないということです。</p>
 <pre><code class="language-text">&gt; show &lt;$&gt; 1 .. 5
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p>中置演算子に（左または右の）<em>結合性</em>を与えたい場合は、代わりにキーワード<code>infixl</code>と<code>infixr</code>を使います。
 <code>infix</code>を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
@@ -570,17 +570,17 @@ forall a b. (a -&gt; b -&gt; b) -&gt; b -&gt; Array a -&gt; b
 </code></pre>
 <p>違いを説明するために、畳み込み関数の選択が大事になってくる例も書きましょう。
 加算関数の代わりに、文字列連結を使用して文字列を構築しましょう。</p>
-<pre><code class="language-text">&gt; foldl (\acc n -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
-&quot;12345&quot;
+<pre><code class="language-text">&gt; foldl (\acc n -&gt; acc &lt;&gt; show n) "" [1,2,3,4,5]
+"12345"
 
-&gt; foldr (\n acc -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
-&quot;54321&quot;
+&gt; foldr (\n acc -&gt; acc &lt;&gt; show n) "" [1,2,3,4,5]
+"54321"
 </code></pre>
 <p>これは、2つの関数の違いを示しています。左畳み込み式は、以下の関数適用と同等です。</p>
-<pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 1) &lt;&gt; show 2) &lt;&gt; show 3) &lt;&gt; show 4) &lt;&gt; show 5)
+<pre><code class="language-text">((((("" &lt;&gt; show 1) &lt;&gt; show 2) &lt;&gt; show 3) &lt;&gt; show 4) &lt;&gt; show 5)
 </code></pre>
 <p>それに対し、右畳み込みは以下と等価です。</p>
-<pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 5) &lt;&gt; show 4) &lt;&gt; show 3) &lt;&gt; show 2) &lt;&gt; show 1)
+<pre><code class="language-text">((((("" &lt;&gt; show 5) &lt;&gt; show 4) &lt;&gt; show 3) &lt;&gt; show 2) &lt;&gt; show 1)
 </code></pre>
 <h2 id="末尾再帰"><a class="header" href="#末尾再帰">末尾再帰</a></h2>
 <p>再帰はアルゴリズムを指定する強力な手法ですが、問題も抱えています。
@@ -762,17 +762,20 @@ allFiles' file = file : do
 この関数は型<code>Maybe Path</code>の値を返すものとします。
 この値が存在するなら、そのファイルがそのディレクトリに含まれているということを表します。
 この関数は次のように振る舞う必要があります。</p>
-<pre><code class="language-text">&gt; whereIs root &quot;ls&quot;
+<pre><code class="language-text">&gt; whereIs root "ls"
 Just (/bin/)
 
-&gt; whereIs root &quot;cat&quot;
+&gt; whereIs root "cat"
 Nothing
 </code></pre>
-<p><em>手掛かり</em>：この関数をdo記法を使った配列内包表記で書いてみましょう。</p>
+<p><em>手掛かり</em>：do記法を使う配列内包表記で、この関数を書いてみましょう。</p>
 </li>
 <li>
-<p>（難しい）<code>Path</code>中の最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。
-<em>補足</em>：空配列や1要素の配列を返すことで、<code>Path</code>にそれぞれゼロか1個のファイルがある場合についても考慮してください。</p>
+<p>（難しい）関数<code>largestSmallest</code>を書いてください。
+<code>Path</code>を1つ取り、その<code>Path</code>中の最大のファイルと最小のファイルが1つずつ含まれる配列を返します。
+<em>補足</em>：
+<code>Path</code>のファイル数がゼロや1個の場合も考慮してください。
+それぞれ、空配列や1要素の配列を返すとよいでしょう。</p>
 </li>
 </ol>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>

@@ -232,20 +232,20 @@ PSCiで明示的に適当な型の値を構築し、ライブラリのこのバ�
 
 &gt; :paste
 … log $ render $ Element
-…   { name: &quot;p&quot;
+…   { name: "p"
 …   , attribs: [
 …       Attribute
-…         { key: &quot;class&quot;
-…         , value: &quot;main&quot;
+…         { key: "class"
+…         , value: "main"
 …         }
 …     ]
 …   , content: Just [
-…       TextContent &quot;Hello World!&quot;
+…       TextContent "Hello World!"
 …     ]
 …   }
 … ^D
 
-&lt;p class=&quot;main&quot;&gt;Hello World!&lt;/p&gt;
+&lt;p class="main"&gt;Hello World!&lt;/p&gt;
 unit
 </code></pre>
 <p>現状のライブラリには幾つもの問題があります。</p>
@@ -276,13 +276,13 @@ element name attribs content = Element
 <p>次にHTML要素のためのスマート構築子を作成します。
 この要素は利用者が<code>element</code>関数を適用して作成できるようになってほしいものです。</p>
 <pre><code class="language-haskell">a :: Array Attribute -&gt; Array Content -&gt; Element
-a attribs content = element &quot;a&quot; attribs (Just content)
+a attribs content = element "a" attribs (Just content)
 
 p :: Array Attribute -&gt; Array Content -&gt; Element
-p attribs content = element &quot;p&quot; attribs (Just content)
+p attribs content = element "p" attribs (Just content)
 
 img :: Array Attribute -&gt; Element
-img attribs = element &quot;img&quot; attribs Nothing
+img attribs = element "img" attribs Nothing
 </code></pre>
 <p>最後に、正しいデータ構造だけが構築されることがわかっているこれらの関数をエクスポートするように、モジュールエクスポートリストを更新します。</p>
 <pre><code class="language-haskell">module Data.DOM.Smart
@@ -349,19 +349,19 @@ attribute (AttributeKey key) value = Attribute
 <code>AttributeKey</code>の値を構築する方法はありません。
 以下に幾つかの例を示します。</p>
 <pre><code class="language-haskell">href :: AttributeKey
-href = AttributeKey &quot;href&quot;
+href = AttributeKey "href"
 
 _class :: AttributeKey
-_class = AttributeKey &quot;class&quot;
+_class = AttributeKey "class"
 
 src :: AttributeKey
-src = AttributeKey &quot;src&quot;
+src = AttributeKey "src"
 
 width :: AttributeKey
-width = AttributeKey &quot;width&quot;
+width = AttributeKey "width"
 
 height :: AttributeKey
-height = AttributeKey &quot;height&quot;
+height = AttributeKey "height"
 </code></pre>
 <p>新しいモジュールの最終的なエクスポートリストは次のようになります。
 最早どのデータ構築子も直接エクスポートしていない点に注目です。</p>
@@ -394,9 +394,9 @@ height = AttributeKey &quot;height&quot;
 &gt; import Prelude
 &gt; import Data.DOM.Smart
 &gt; import Effect.Console
-&gt; log $ render $ p [ _class := &quot;main&quot; ] [ text &quot;Hello World!&quot; ]
+&gt; log $ render $ p [ _class := "main" ] [ text "Hello World!" ]
 
-&lt;p class=&quot;main&quot;&gt;Hello World!&lt;/p&gt;
+&lt;p class="main"&gt;Hello World!&lt;/p&gt;
 unit
 </code></pre>
 <p>しかし、基盤をなすデータ表現は全く変更されなかったので、<code>render</code>関数を変更する必要はなかったことにも注目してください。
@@ -418,12 +418,12 @@ unit
 <h2 id="幻影型"><a class="header" href="#幻影型">幻影型</a></h2>
 <p>次の手法の動機付けとして、以下のコードを考えます。</p>
 <pre><code class="language-text">&gt; log $ render $ img
-    [ src    := &quot;cat.jpg&quot;
-    , width  := &quot;foo&quot;
-    , height := &quot;bar&quot;
+    [ src    := "cat.jpg"
+    , width  := "foo"
+    , height := "bar"
     ]
 
-&lt;img src=&quot;cat.jpg&quot; width=&quot;foo&quot; height=&quot;bar&quot; /&gt;
+&lt;img src="cat.jpg" width="foo" height="bar" /&gt;
 unit
 </code></pre>
 <p>ここでの問題は、 <code>width</code>属性と<code>height</code>属性に文字列値を提供しているということです。
@@ -457,19 +457,19 @@ instance IsValue Int where
 </code></pre>
 <p>また、これらの型が新しい型変数を反映するように、 <code>AttributeKey</code>定数を更新しなければいけません。</p>
 <pre><code class="language-haskell">href :: AttributeKey String
-href = AttributeKey &quot;href&quot;
+href = AttributeKey "href"
 
 _class :: AttributeKey String
-_class = AttributeKey &quot;class&quot;
+_class = AttributeKey "class"
 
 src :: AttributeKey String
-src = AttributeKey &quot;src&quot;
+src = AttributeKey "src"
 
 width :: AttributeKey Int
-width = AttributeKey &quot;width&quot;
+width = AttributeKey "width"
 
 height :: AttributeKey Int
-height = AttributeKey &quot;height&quot;
+height = AttributeKey "height"
 </code></pre>
 <p>これで、不正なHTML文書を表現することが不可能になっていることがわかります。
 また、<code>width</code>と <code>height</code>属性を表現するのに文字列ではなく数を使うことが強制されていることがわかります。</p>
@@ -479,13 +479,13 @@ height = AttributeKey &quot;height&quot;
 
 &gt; :paste
 … log $ render $ img
-…   [ src    := &quot;cat.jpg&quot;
+…   [ src    := "cat.jpg"
 …   , width  := 100
 …   , height := 200
 …   ]
 … ^D
 
-&lt;img src=&quot;cat.jpg&quot; width=&quot;100&quot; height=&quot;200&quot; /&gt;
+&lt;img src="cat.jpg" width="100" height="200" /&gt;
 unit
 </code></pre>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
@@ -507,23 +507,23 @@ data False
 <p>APIに施す最後の変更では、<code>Content</code>型をモナドにしてdo記法を使えるようにするために、<em>Freeモナド</em>と呼ばれる構造を使っていきます。
 これによって入れ子になった要素がわかりやすくなるような形式でHTML文書を構造化できます。
 以下の代わりに……</p>
-<pre><code class="language-haskell">p [ _class := &quot;main&quot; ]
+<pre><code class="language-haskell">p [ _class := "main" ]
   [ elem $ img
-      [ src    := &quot;cat.jpg&quot;
+      [ src    := "cat.jpg"
       , width  := 100
       , height := 200
       ]
-  , text &quot;A cat&quot;
+  , text "A cat"
   ]
 </code></pre>
 <p>このように書くことができるようになります。</p>
-<pre><code class="language-haskell">p [ _class := &quot;main&quot; ] $ do
+<pre><code class="language-haskell">p [ _class := "main" ] $ do
   elem $ img
-    [ src    := &quot;cat.jpg&quot;
+    [ src    := "cat.jpg"
     , width  := 100
     , height := 200
     ]
-  text &quot;A cat&quot;
+  text "A cat"
 </code></pre>
 <p>しかし、do記法だけがFreeモナドの恩恵ではありません。
 Freeモナドがあれば、モナドの動作の<em>表現</em>をその<em>解釈</em>から分離し、同じ動作に<em>複数の解釈</em>を持たせることさえできます。</p>
@@ -614,10 +614,10 @@ render = execWriter &lt;&lt;&lt; renderElement
     renderElement (Element e) = do
 </code></pre>
 <p><code>renderElement</code>の定義は直感的で、複数の小さな文字列を累算するために<code>Writer</code>モナドの<code>tell</code>動作を使っています。</p>
-<pre><code class="language-haskell">      tell &quot;&lt;&quot;
+<pre><code class="language-haskell">      tell "&lt;"
       tell e.name
       for_ e.attribs $ \x -&gt; do
-        tell &quot; &quot;
+        tell " "
         renderAttribute x
       renderContent e.content
 </code></pre>
@@ -627,21 +627,21 @@ render = execWriter &lt;&lt;&lt; renderElement
       renderAttribute :: Attribute -&gt; Writer String Unit
       renderAttribute (Attribute x) = do
         tell x.key
-        tell &quot;=\&quot;&quot;
+        tell "=\""
         tell x.value
-        tell &quot;\&quot;&quot;
+        tell "\""
 </code></pre>
 <p><code>renderContent</code>関数は、もっと興味深いものです。
 ここでは<code>runFreeM</code>関数を使い、Freeモナドの内部で計算を解釈しています。
 計算は補助関数 <code>renderContentItem</code>に移譲しています。</p>
 <pre><code class="language-haskell">      renderContent :: Maybe (Content Unit) -&gt; Writer String Unit
-      renderContent Nothing = tell &quot; /&gt;&quot;
+      renderContent Nothing = tell " /&gt;"
       renderContent (Just content) = do
-        tell &quot;&gt;&quot;
+        tell "&gt;"
         runFreeM renderContentItem content
-        tell &quot;&lt;/&quot;
+        tell "&lt;/"
         tell e.name
-        tell &quot;&gt;&quot;
+        tell "&gt;"
 </code></pre>
 <p><code>renderContentItem</code>の型は <code>runFreeM</code>の型シグネチャから推測できます。
 関手 <code>f</code>は型構築子 <code>ContentF</code>で、モナド <code>m</code>は解釈している計算のモナド、つまり <code>Writer String</code>です。
@@ -666,11 +666,11 @@ PSCiで、次のようにすれば新しいモナドのAPIを試すことがで�
 
 &gt; :paste
 … log $ render $ p [] $ do
-…   elem $ img [ src := &quot;cat.jpg&quot; ]
-…   text &quot;A cat&quot;
+…   elem $ img [ src := "cat.jpg" ]
+…   text "A cat"
 … ^D
 
-&lt;p&gt;&lt;img src=&quot;cat.jpg&quot; /&gt;A cat&lt;/p&gt;
+&lt;p&gt;&lt;img src="cat.jpg" /&gt;A cat&lt;/p&gt;
 unit
 </code></pre>
 <h2 id="演習-2"><a class="header" href="#演習-2">演習</a></h2>
@@ -711,15 +711,15 @@ runName (Name n) = n
 
 instance IsValue Href where
   toValue (URLHref url) = url
-  toValue (AnchorHref (Name nm)) = &quot;#&quot; &lt;&gt; nm
+  toValue (AnchorHref (Name nm)) = "#" &lt;&gt; nm
 </code></pre>
 <p>この新しい型により、<code>href</code>属性の型の値を変更して、利用者にこの新しい <code>Href</code>型の使用を強制できます。
 また、新しい<code>name</code>属性も作成でき、要素をアンカーに変換するのに使えます。</p>
 <pre><code class="language-haskell">href :: AttributeKey Href
-href = AttributeKey &quot;href&quot;
+href = AttributeKey "href"
 
 name :: AttributeKey Name
-name = AttributeKey &quot;name&quot;
+name = AttributeKey "name"
 </code></pre>
 <p>残っている問題は、現在モジュールの使用者が新しい名前を生成する方法がないということです。
 <code>Content</code>モナドでこの機能を提供できます。まず、 <code>ContentF</code>型構築子に新しいデータ構築子を追加する必要があります。</p>
@@ -760,7 +760,7 @@ render e = evalState (execWriterT (renderElement e)) 0
 <p>また、新しい <code>NewName</code>データ構築子を解釈するために、 <code>renderContentItem</code>に新しい場合を追加しなければいけません。</p>
 <pre><code class="language-haskell">renderContentItem (NewName k) = do
   n &lt;- get
-  let fresh = Name $ &quot;name&quot; &lt;&gt; show n
+  let fresh = Name $ "name" &lt;&gt; show n
   put $ n + 1
   pure (k fresh)
 </code></pre>
@@ -778,12 +778,12 @@ render e = evalState (execWriterT (renderElement e)) 0
 … render $ p [ ] $ do
 …   top &lt;- newName
 …   elem $ a [ name := top ] $
-…     text &quot;Top&quot;
+…     text "Top"
 …   elem $ a [ href := AnchorHref top ] $
-…     text &quot;Back to top&quot;
+…     text "Back to top"
 … ^D
 
-&lt;p&gt;&lt;a name=&quot;name0&quot;&gt;Top&lt;/a&gt;&lt;a href=&quot;#name0&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name="name0"&gt;Top&lt;/a&gt;&lt;a href="#name0"&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 unit
 </code></pre>
 <p>複数回の<code>newName</code>の呼び出しの結果が、実際に一意な名前になっていることも確かめられます。</p>

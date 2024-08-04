@@ -182,7 +182,7 @@
                         <h1 id="実例によるpurescript"><a class="header" href="#実例によるpurescript">実例によるPureScript</a></h1>
 <p>このリポジトリには、Phil Freemanによる<em>PureScript by
 Example</em>の<a href="https://github.com/purescript-contrib/purescript-book/">コミュニティフォーク</a>が含まれます。
-同書は &quot;The PureScript book&quot; としても知られています。
+同書は "The PureScript book" としても知られています。
 このバージョンはコードと演習が最近のバージョンのコンパイラ、ライブラリ、ツールで動くように更新されています。
 PureScriptのエコシステムの最新の機能を紹介すべく書き直された章もあります。</p>
 <p>本書をお楽しみいただき、お役立ちいただけましたら、<a href="https://leanpub.com/purescript">Leanpubの原書</a>の購入をご検討ください。</p>
@@ -258,7 +258,7 @@ readFile(sourceFile, function (error, data) {
   if (!error) {
     writeFile(destFile, data, function (error) {
       if (!error) {
-        console.log(&quot;File copied&quot;);
+        console.log("File copied");
       }
     });
   }
@@ -355,7 +355,7 @@ Haskellコンパイラが動く任意のシステム上でソースからのビ�
 
 import Effect.Console (log)
 
-main = log &quot;Hello, World!&quot;
+main = log "Hello, World!"
 </code></pre>
 <p>先頭にドル記号がついた行は、コマンドラインに入力されたコマンドです。</p>
 <pre><code class="language-text">$ spago build
@@ -438,7 +438,7 @@ Euler</a>の解答例にあるコードがわかりにくかったり見慣れ�
 <pre><code class="language-sh">cd purescript-book
 ./scripts/prepareExercises.sh
 git add .
-git commit --all --message &quot;Exercises ready to be solved&quot;
+git commit --all --message "Exercises ready to be solved"
 </code></pre>
 <p>それではこの章のテストを走らせましょう。</p>
 <pre><code class="language-sh">cd exercises/chapter2
@@ -466,10 +466,10 @@ All 2 tests passed! 🎉
 <p>この演習のテストを有効にするところから始めます。
 以下に示すようにブロックコメントの開始を数行下に下げてください。
 ブロックコメントは<code>{-</code>から始まり<code>-}</code>で終わります。</p>
-<pre><code class="language-hs">    suite &quot;diagonal&quot; do
-      test &quot;3 4 5&quot; do
+<pre><code class="language-hs">    suite "diagonal" do
+      test "3 4 5" do
         Assert.equal 5.0 (diagonal 3.0 4.0)
-      test &quot;5 12 13&quot; do
+      test "5 12 13" do
         Assert.equal 13.0 (diagonal 5.0 12.0)
     {-  Move this block comment starting point to enable more tests
 </code></pre>
@@ -577,7 +577,7 @@ $ spago build
 &gt; :type 1.0
 Number
 
-&gt; :type &quot;test&quot;
+&gt; :type "test"
 String
 
 &gt; :type true
@@ -605,7 +605,7 @@ Could not match type Int with type Boolean.
 <p>最後の例は型検証器によるエラーを示しています。
 配列の2つの要素の型を<em>単一化</em>（つまり等価にする意）するのに失敗したのです。</p>
 <p>レコードはJavaScriptのオブジェクトに対応しており、レコード直値はJavaScriptのオブジェクト直値と同じ構文になっています。</p>
-<pre><code class="language-text">&gt; author = { name: &quot;Phil&quot;, interests: [&quot;Functional Programming&quot;, &quot;JavaScript&quot;] }
+<pre><code class="language-text">&gt; author = { name: "Phil", interests: ["Functional Programming", "JavaScript"] }
 
 &gt; :type author
 { name :: String
@@ -617,10 +617,10 @@ Could not match type Int with type Boolean.
 後者はつまり<code>String</code>の配列です。</p>
 <p>ドットに続けて参照したいフィールドのラベルを書くとレコードのフィールドを参照できます。</p>
 <pre><code class="language-text">&gt; author.name
-&quot;Phil&quot;
+"Phil"
 
 &gt; author.interests
-[&quot;Functional Programming&quot;,&quot;JavaScript&quot;]
+["Functional Programming","JavaScript"]
 </code></pre>
 <p>PureScriptの関数はJavaScriptの関数に対応します。
 関数はファイルの最上位で定義でき、等号の前に引数を指定します。</p>
@@ -763,15 +763,15 @@ forall (a :: Type) (b :: Type). a -&gt; b -&gt; a
 <p>量化された型を特殊化したいということをコードで示す必要はありません。
 特殊化は自動的に行われます。
 例えば、あたかも既にその型に備わっていたかの如く<code>constantlyFirst</code>を使えます。</p>
-<pre><code class="language-text">&gt; constantlyFirst 3 &quot;ignored&quot;
+<pre><code class="language-text">&gt; constantlyFirst 3 "ignored"
 
 3
 </code></pre>
 <p><code>a</code>と<code>b</code>にはどんな型でも選べますが、<code>constantlyFirst</code>が返す型は最初の引数の型と同じでなければなりません（両方とも同じ<code>a</code>に「紐付く」からです）。</p>
-<pre><code class="language-text">:type constantlyFirst true &quot;ignored&quot;
+<pre><code class="language-text">:type constantlyFirst true "ignored"
 Boolean
 
-:type constantlyFirst &quot;keep&quot; 3
+:type constantlyFirst "keep" 3
 String
 </code></pre>
 <h2 id="住所録の項目の表示"><a class="header" href="#住所録の項目の表示">住所録の項目の表示</a></h2>
@@ -784,16 +784,16 @@ String
 </code></pre>
 <p>この型シグネチャが言っているのは、<code>showEntry</code>は引数として<code>Entry</code>を取り<code>String</code>を返す関数であるということです。
 以下は<code>showEntry</code>のコードです。</p>
-<pre><code class="language-haskell">showEntry entry = entry.lastName &lt;&gt; &quot;, &quot; &lt;&gt;
-                  entry.firstName &lt;&gt; &quot;: &quot; &lt;&gt;
+<pre><code class="language-haskell">showEntry entry = entry.lastName &lt;&gt; ", " &lt;&gt;
+                  entry.firstName &lt;&gt; ": " &lt;&gt;
                   showAddress entry.address
 </code></pre>
 <p>この関数は<code>Entry</code>レコードの3つのフィールドを連結し、単一の文字列にします。
 ここで使用される<code>showAddress</code>関数は<code>address</code>フィールド中のレコードを文字列に変えます。
 <code>showAddress</code>の定義は次の通りです。</p>
 <pre><code class="language-haskell">showAddress :: Address -&gt; String
-showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
-                   addr.city &lt;&gt; &quot;, &quot; &lt;&gt;
+showAddress addr = addr.street &lt;&gt; ", " &lt;&gt;
+                   addr.city &lt;&gt; ", " &lt;&gt;
                    addr.state
 </code></pre>
 <p>関数定義は関数の名前で始まり、引数名のリストが続きます。関数の結果は等号の後ろに定義します。フィールドはドットに続けてフィールド名を書くことで参照できます。PureScriptでは、文字列連結はJavaScriptのような単一のプラス記号ではなく、ダイアモンド演算子（<code>&lt;&gt;</code>）を使用します。</p>
@@ -809,18 +809,18 @@ showAddress addr = addr.street &lt;&gt; &quot;, &quot; &lt;&gt;
 &gt; import Data.AddressBook
 </code></pre>
 <p>レコード直値を使うと、住所録の項目を作成できます。レコード直値はJavaScriptの無名オブジェクトと同じような構文で名前に束縛します。</p>
-<pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
+<pre><code class="language-text">&gt; address = { street: "123 Fake St.", city: "Faketown", state: "CA" }
 </code></pre>
 <p>それでは、この例に関数を適用してみてください。</p>
 <pre><code class="language-text">&gt; showAddress address
 
-&quot;123 Fake St., Faketown, CA&quot;
+"123 Fake St., Faketown, CA"
 </code></pre>
 <p><code>showEntry</code>も、住所の例を含む住所録項目レコードを作って試しましょう。</p>
-<pre><code class="language-text">&gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
+<pre><code class="language-text">&gt; entry = { firstName: "John", lastName: "Smith", address: address }
 &gt; showEntry entry
 
-&quot;Smith, John: 123 Fake St., Faketown, CA&quot;
+"Smith, John: 123 Fake St., Faketown, CA"
 </code></pre>
 <h2 id="住所録の作成"><a class="header" href="#住所録の作成">住所録の作成</a></h2>
 <p>今度は住所録を扱う補助関数を幾つか書いてみましょう。
@@ -962,13 +962,13 @@ insertEntry = Cons
 <pre><code class="language-haskell">_.address.city
 </code></pre>
 <p>以下は一例です。</p>
-<pre><code class="language-text">&gt; address = { street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
-&gt; entry = { firstName: &quot;John&quot;, lastName: &quot;Smith&quot;, address: address }
+<pre><code class="language-text">&gt; address = { street: "123 Fake St.", city: "Faketown", state: "CA" }
+&gt; entry = { firstName: "John", lastName: "Smith", address: address }
 &gt; _.lastName entry
-&quot;Smith&quot;
+"Smith"
 
 &gt; _.address.city entry
-&quot;Faketown&quot;
+"Faketown"
 </code></pre>
 <h2 id="住所録に問い合わせる"><a class="header" href="#住所録に問い合わせる">住所録に問い合わせる</a></h2>
 <p>最小限の住所録アプリケーションの実装で必要になる最後の関数は、名前で人を検索し適切な<code>Entry</code>を返すものです。
@@ -1243,12 +1243,12 @@ gcd n m = if n &gt; m
 </ul>
 <p>これらの単純なパターンを使用する実演として、もう2つの例が以下です。</p>
 <pre><code class="language-haskell">fromString :: String -&gt; Boolean
-fromString &quot;true&quot; = true
+fromString "true" = true
 fromString _      = false
 
 toString :: Boolean -&gt; String
-toString true  = &quot;true&quot;
-toString false = &quot;false&quot;
+toString true  = "true"
+toString false = "false"
 </code></pre>
 <p>PSCiでこれらの関数を試してみてください。</p>
 <h2 id="ガード"><a class="header" href="#ガード">ガード</a></h2>
@@ -1328,43 +1328,43 @@ takeFive _ = 0
 <p>例えば次のパターンは<code>first</code>と<code>last</code>という名前のフィールドが含まれた任意のレコードに照合し、これらのフィールドの値はそれぞれ <code>x</code>と
 <code>y</code>という名前に束縛されます。</p>
 <pre><code class="language-haskell">showPerson :: { first :: String, last :: String } -&gt; String
-showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
+showPerson { first: x, last: y } = y &lt;&gt; ", " &lt;&gt; x
 </code></pre>
 <p>レコードパターンはPureScriptの型システムの興味深い機能である<em>行多相</em>の良い例となっています。
 もし上の<code>showPerson</code>を型シグネチャなしで定義していたとすると、この型はどのように推論されるのでしょうか。
 面白いことに、推論される型は上で与えた型とは同じではありません。</p>
-<pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; &quot;, &quot; &lt;&gt; x
+<pre><code class="language-text">&gt; showPerson { first: x, last: y } = y &lt;&gt; ", " &lt;&gt; x
 
 &gt; :type showPerson
 forall (r :: Row Type). { first :: String, last :: String | r } -&gt; String
 </code></pre>
 <p>この型変数 <code>r</code>は何でしょうか。
 PSCiで<code>showPerson</code>を使ってみると、面白いことがわかります。</p>
-<pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot; }
-&quot;Freeman, Phil&quot;
+<pre><code class="language-text">&gt; showPerson { first: "Phil", last: "Freeman" }
+"Freeman, Phil"
 
-&gt; showPerson { first: &quot;Phil&quot;, last: &quot;Freeman&quot;, location: &quot;Los Angeles&quot; }
-&quot;Freeman, Phil&quot;
+&gt; showPerson { first: "Phil", last: "Freeman", location: "Los Angeles" }
+"Freeman, Phil"
 </code></pre>
 <p>レコードにそれ以外のフィールドが追加されていても、<code>showPerson</code>関数はそのまま動作するのです。
 レコードに少なくとも型が<code>String</code>であるようなフィールド<code>first</code>と<code>last</code>が含まれていれば、関数適用は正しく型付けされます。
 しかし、フィールドが<em>不足</em>していると、<code>showPerson</code>の呼び出しは<em>不正</em>となります。</p>
-<pre><code class="language-text">&gt; showPerson { first: &quot;Phil&quot; }
+<pre><code class="language-text">&gt; showPerson { first: "Phil" }
 
-Type of expression lacks required label &quot;last&quot;
+Type of expression lacks required label "last"
 </code></pre>
 <p><code>showPerson</code>の新しい型シグネチャを読むと、「<code>String</code>な<code>first</code>と<code>last</code>フィールド <em>と他のフィールドを何でも</em>
 持つあらゆるレコードを取り、<code>String</code>を返す」となります。なお、この挙動は元の<code>showPerson</code>のものとは異なります。行変数<code>r</code>がなければ<code>showPerson</code>は
 <em>厳密に</em> <code>first</code>と<code>last</code>フィールドしかないレコードのみを受け付けます。</p>
 <p>なお、次のように書くこともできます。</p>
-<pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; &quot;, &quot; &lt;&gt; p.first
+<pre><code class="language-haskell">&gt; showPerson p = p.last &lt;&gt; ", " &lt;&gt; p.first
 </code></pre>
 <p>そしてPSCiは同じ型を推論することでしょう。</p>
 <h2 id="レコード同名利用"><a class="header" href="#レコード同名利用">レコード同名利用</a></h2>
 <p><code>showPerson</code>関数は引数内のレコードと照合し、<code>first</code>と<code>last</code>フィールドを<code>x</code>と<code>y</code>という名前の値に束縛していたのでした。
 別の方法として、フィールド名自体を再利用してこのような類のパターン照合を次のように単純化できます。</p>
 <pre><code class="language-haskell">showPersonV2 :: { first :: String, last :: String } -&gt; String
-showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
+showPersonV2 { first, last } = last &lt;&gt; ", " &lt;&gt; first
 </code></pre>
 <p>ここでは、プロパティの名前のみを指定し、名前に導入したい値を指定する必要はありません。これは <em>レコード同名利用</em> (record pun)
 と呼ばれます。</p>
@@ -1373,8 +1373,8 @@ showPersonV2 { first, last } = last &lt;&gt; &quot;, &quot; &lt;&gt; first
 <pre><code class="language-haskell">unknownPerson :: { first :: String, last :: String }
 unknownPerson = { first, last }
   where
-    first = &quot;Jane&quot;
-    last  = &quot;Doe&quot;
+    first = "Jane"
+    last  = "Doe"
 </code></pre>
 <p>こうすると、状況によってはコードの可読性が向上します。</p>
 <h2 id="入れ子になったパターン"><a class="header" href="#入れ子になったパターン">入れ子になったパターン</a></h2>
@@ -1388,7 +1388,7 @@ unknownPerson = { first, last }
 type Person = { name :: String, address :: Address }
 
 livesInLA :: Person -&gt; Boolean
-livesInLA { address: { city: &quot;Los Angeles&quot; } } = true
+livesInLA { address: { city: "Los Angeles" } } = true
 livesInLA _ = false
 </code></pre>
 <h2 id="名前付きパターン"><a class="header" href="#名前付きパターン">名前付きパターン</a></h2>
@@ -1569,17 +1569,17 @@ exampleLine = Line p1 p2
 これには次のようにします。</p>
 <pre><code class="language-haskell">showShape :: Shape -&gt; String
 showShape (Circle c r) =
-  &quot;Circle [center: &quot; &lt;&gt; showPoint c &lt;&gt; &quot;, radius: &quot; &lt;&gt; show r &lt;&gt; &quot;]&quot;
+  "Circle [center: " &lt;&gt; showPoint c &lt;&gt; ", radius: " &lt;&gt; show r &lt;&gt; "]"
 showShape (Rectangle c w h) =
-  &quot;Rectangle [center: &quot; &lt;&gt; showPoint c &lt;&gt; &quot;, width: &quot; &lt;&gt; show w &lt;&gt; &quot;, height: &quot; &lt;&gt; show h &lt;&gt; &quot;]&quot;
+  "Rectangle [center: " &lt;&gt; showPoint c &lt;&gt; ", width: " &lt;&gt; show w &lt;&gt; ", height: " &lt;&gt; show h &lt;&gt; "]"
 showShape (Line start end) =
-  &quot;Line [start: &quot; &lt;&gt; showPoint start &lt;&gt; &quot;, end: &quot; &lt;&gt; showPoint end &lt;&gt; &quot;]&quot;
+  "Line [start: " &lt;&gt; showPoint start &lt;&gt; ", end: " &lt;&gt; showPoint end &lt;&gt; "]"
 showShape (Text loc text) =
-  &quot;Text [location: &quot; &lt;&gt; showPoint loc &lt;&gt; &quot;, text: &quot; &lt;&gt; show text &lt;&gt; &quot;]&quot;
+  "Text [location: " &lt;&gt; showPoint loc &lt;&gt; ", text: " &lt;&gt; show text &lt;&gt; "]"
 
 showPoint :: Point -&gt; String
 showPoint { x, y } =
-  &quot;(&quot; &lt;&gt; show x &lt;&gt; &quot;, &quot; &lt;&gt; show y &lt;&gt; &quot;)&quot;
+  "(" &lt;&gt; show x &lt;&gt; ", " &lt;&gt; show y &lt;&gt; ")"
 </code></pre>
 <p>各構築子はパターンとして使用でき、構築子への引数はそのパターンで束縛できます。
 <code>showShape</code>の最初の場合を考えてみましょう。
@@ -1691,7 +1691,7 @@ $ spago repl
 
 &gt; showPicture [ Line { x: 0.0, y: 0.0 } { x: 1.0, y: 1.0 } ]
 
-[&quot;Line [start: (0.0, 0.0), end: (1.0, 1.0)]&quot;]
+["Line [start: (0.0, 0.0), end: (1.0, 1.0)]"]
 </code></pre>
 <h2 id="外接矩形の算出"><a class="header" href="#外接矩形の算出">外接矩形の算出</a></h2>
 <p>このモジュールのコード例には、 <code>Picture</code>の最小外接矩形を計算する関数 <code>bounds</code>が含まれています。</p>
@@ -1846,14 +1846,14 @@ forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; 
 例えば<code>map</code>を使用すると数値を文字列に変換できます。</p>
 <pre><code class="language-text">&gt; show &lt;$&gt; [1, 2, 3, 4, 5]
 
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p>中置演算子<code>&lt;$&gt;</code>は特別な構文のように見えるかもしれませんが、実はPureScriptの普通の関数の別称です。
 中置構文を使用した単なる<em>適用</em>にすぎません。
 実際、括弧でその名前を囲むと、この関数を通常の関数のように使用できます。
 これは、<code>map</code>代わりに、括弧で囲まれた<code>(&lt;$&gt;)</code>という名前が使えるということです。</p>
 <pre><code class="language-text">&gt; (&lt;$&gt;) show [1, 2, 3, 4, 5]
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p>中置関数は既存の関数名の別称として定義されます。
 例えば<code>Data.Array</code>モジュールでは次のように<code>range</code>関数の同義語として中置演算子<code>(..)</code>を定義しています。</p>
@@ -1866,7 +1866,7 @@ forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; 
 [1, 2, 3, 4, 5]
 
 &gt; show &lt;$&gt; (1 .. 5)
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p><em>補足</em>：独自の中置演算子は、自然な構文を備える領域特化言語を定義する上で優れた手段になりえます。ただし、乱用すると初心者が読めないコードになることがありますから、新たな演算子の定義には慎重になるのが賢明です。</p>
 <p>上記の例では、<code>1 .. 5</code>という式は括弧で囲まれていましたが、実際にはこれは必要ありません。
@@ -1874,7 +1874,7 @@ forall (f :: Type -&gt; Type) (a :: Type) (b :: Type). Functor f =&gt; (a -&gt; 
 上の例では、<code>..</code>の優先順位は、キーワード<code>infix</code>のあとに書かれた数の<code>8</code> と定義されていました。
 ここでは<code>&lt;$&gt;</code>の優先順位よりも高い優先順位を<code>..</code>に割り当てており、このため括弧を付け加える必要がないということです。</p>
 <pre><code class="language-text">&gt; show &lt;$&gt; 1 .. 5
-[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;]
+["1","2","3","4","5"]
 </code></pre>
 <p>中置演算子に（左または右の）<em>結合性</em>を与えたい場合は、代わりにキーワード<code>infixl</code>と<code>infixr</code>を使います。
 <code>infix</code>を使うと何ら結合性は割り当てられず、同じ演算子を複数回使ったり複数の同じ優先度の演算子を使ったりするときに、式を括弧で囲まなければいけなくなります。</p>
@@ -2126,17 +2126,17 @@ forall a b. (a -&gt; b -&gt; b) -&gt; b -&gt; Array a -&gt; b
 </code></pre>
 <p>違いを説明するために、畳み込み関数の選択が大事になってくる例も書きましょう。
 加算関数の代わりに、文字列連結を使用して文字列を構築しましょう。</p>
-<pre><code class="language-text">&gt; foldl (\acc n -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
-&quot;12345&quot;
+<pre><code class="language-text">&gt; foldl (\acc n -&gt; acc &lt;&gt; show n) "" [1,2,3,4,5]
+"12345"
 
-&gt; foldr (\n acc -&gt; acc &lt;&gt; show n) &quot;&quot; [1,2,3,4,5]
-&quot;54321&quot;
+&gt; foldr (\n acc -&gt; acc &lt;&gt; show n) "" [1,2,3,4,5]
+"54321"
 </code></pre>
 <p>これは、2つの関数の違いを示しています。左畳み込み式は、以下の関数適用と同等です。</p>
-<pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 1) &lt;&gt; show 2) &lt;&gt; show 3) &lt;&gt; show 4) &lt;&gt; show 5)
+<pre><code class="language-text">((((("" &lt;&gt; show 1) &lt;&gt; show 2) &lt;&gt; show 3) &lt;&gt; show 4) &lt;&gt; show 5)
 </code></pre>
 <p>それに対し、右畳み込みは以下と等価です。</p>
-<pre><code class="language-text">(((((&quot;&quot; &lt;&gt; show 5) &lt;&gt; show 4) &lt;&gt; show 3) &lt;&gt; show 2) &lt;&gt; show 1)
+<pre><code class="language-text">((((("" &lt;&gt; show 5) &lt;&gt; show 4) &lt;&gt; show 3) &lt;&gt; show 2) &lt;&gt; show 1)
 </code></pre>
 <h2 id="末尾再帰"><a class="header" href="#末尾再帰">末尾再帰</a></h2>
 <p>再帰はアルゴリズムを指定する強力な手法ですが、問題も抱えています。
@@ -2318,17 +2318,20 @@ allFiles' file = file : do
 この関数は型<code>Maybe Path</code>の値を返すものとします。
 この値が存在するなら、そのファイルがそのディレクトリに含まれているということを表します。
 この関数は次のように振る舞う必要があります。</p>
-<pre><code class="language-text">&gt; whereIs root &quot;ls&quot;
+<pre><code class="language-text">&gt; whereIs root "ls"
 Just (/bin/)
 
-&gt; whereIs root &quot;cat&quot;
+&gt; whereIs root "cat"
 Nothing
 </code></pre>
-<p><em>手掛かり</em>：この関数をdo記法を使った配列内包表記で書いてみましょう。</p>
+<p><em>手掛かり</em>：do記法を使う配列内包表記で、この関数を書いてみましょう。</p>
 </li>
 <li>
-<p>（難しい）<code>Path</code>中の最大のファイルと最小のファイルを1つずつ含む配列を返す関数<code>largestSmallest</code>を書いてください。
-<em>補足</em>：空配列や1要素の配列を返すことで、<code>Path</code>にそれぞれゼロか1個のファイルがある場合についても考慮してください。</p>
+<p>（難しい）関数<code>largestSmallest</code>を書いてください。
+<code>Path</code>を1つ取り、その<code>Path</code>中の最大のファイルと最小のファイルが1つずつ含まれる配列を返します。
+<em>補足</em>：
+<code>Path</code>のファイル数がゼロや1個の場合も考慮してください。
+それぞれ、空配列や1要素の配列を返すとよいでしょう。</p>
 </li>
 </ol>
 <h2 id="まとめ-3"><a class="header" href="#まとめ-3">まとめ</a></h2>
@@ -2366,8 +2369,8 @@ Nothing
 <p>型クラス <em>インスタンス</em> には、型クラスで定義された関数の、その型に特殊化された実装が含まれています。</p>
 <p>例えば、Preludeにある <code>Boolean</code>値に対する <code>Show</code>型クラスインスタンスの定義は次の通りです。</p>
 <pre><code class="language-haskell">instance Show Boolean where
-  show true = &quot;true&quot;
-  show false = &quot;false&quot;
+  show true = "true"
+  show false = "false"
 </code></pre>
 <p>このコードは型クラスのインスタンスを宣言します。
 <code>Boolean</code>型は <em><code>Show</code>型クラスに属すもの</em> としています。</p>
@@ -2376,30 +2379,30 @@ Nothing
 <pre><code class="language-javascript">var showBoolean = {
     show: function (v) {
         if (v) {
-            return &quot;true&quot;;
+            return "true";
         };
        if (!v) {
-            return &quot;false&quot;;
+            return "false";
         };
-        throw new Error(&quot;Failed pattern match at ...&quot;);
+        throw new Error("Failed pattern match at ...");
     }
 };
 </code></pre>
 <p>生成される名前が気に入らなければ、型クラスインスタンスに名前を与えられます。
 例えば次のようにします。</p>
 <pre><code class="language-haskell">instance myShowBoolean :: Show Boolean where
-  show true = &quot;true&quot;
-  show false = &quot;false&quot;
+  show true = "true"
+  show false = "false"
 </code></pre>
 <pre><code class="language-javascript">var myShowBoolean = {
     show: function (v) {
         if (v) {
-            return &quot;true&quot;;
+            return "true";
         };
        if (!v) {
-            return &quot;false&quot;;
+            return "false";
         };
-        throw new Error(&quot;Failed pattern match at ...&quot;);
+        throw new Error("Failed pattern match at ...");
     }
 };
 </code></pre>
@@ -2408,24 +2411,24 @@ Nothing
 <pre><code class="language-text">&gt; import Prelude
 
 &gt; show true
-&quot;true&quot;
+"true"
 
 &gt; show 1.0
-&quot;1.0&quot;
+"1.0"
 
-&gt; show &quot;Hello World&quot;
-&quot;\&quot;Hello World\&quot;&quot;
+&gt; show "Hello World"
+"\"Hello World\""
 </code></pre>
 <p>この例では様々な原始型の値を <code>show</code>しましたが、もっと複雑な型を持つ値も<code>show</code>できます。</p>
 <pre><code class="language-text">&gt; import Data.Tuple
 
 &gt; show (Tuple 1 true)
-&quot;(Tuple 1 true)&quot;
+"(Tuple 1 true)"
 
 &gt; import Data.Maybe
 
-&gt; show (Just &quot;testing&quot;)
-&quot;(Just \&quot;testing\&quot;)&quot;
+&gt; show (Just "testing")
+"(Just \"testing\")"
 </code></pre>
 <p><code>show</code>の出力は、REPLに（あるいは<code>.purs</code>ファイルに）貼り戻せば、表示されたものを再作成できるような文字列であるべきです。
 以下では<code>logShow</code>を使っていますが、これは単に<code>show</code>と<code>log</code>を順に呼び出すものであり、引用符なしに文字列が表示されます。
@@ -2437,8 +2440,8 @@ Nothing
 (Tuple 1 true)
 unit
 
-&gt; logShow (Just &quot;testing&quot;)
-(Just &quot;testing&quot;)
+&gt; logShow (Just "testing")
+(Just "testing")
 unit
 </code></pre>
 <p>型 <code>Data.Either</code>の値を表示しようとすると、興味深いエラー文言が表示されます。</p>
@@ -2456,7 +2459,7 @@ has type variables which are not mentioned in the body of the type. Consider add
 これは推論された型で<em>未知の型</em><code>a</code>とされていることが示しています。</p>
 <p><code>::</code>演算子を使って式に註釈を付けてPSCiが正しい型クラスインスタンスを選べるようにできます。</p>
 <pre><code class="language-text">&gt; show (Left 10 :: Either Int String)
-&quot;(Left 10)&quot;
+"(Left 10)"
 </code></pre>
 <p><code>Show</code>インスタンスを全く持っていない型もあります。
 関数の型 <code>-&gt;</code>がその一例です。
@@ -2505,7 +2508,7 @@ No type class instance was found for
 <pre><code class="language-text">&gt; 1 == 2
 false
 
-&gt; &quot;Test&quot; == &quot;Test&quot;
+&gt; "Test" == "Test"
 true
 </code></pre>
 <h3 id="ord"><a class="header" href="#ord">Ord</a></h3>
@@ -2532,7 +2535,7 @@ class Eq a &lt;= Ord a where
 <pre><code class="language-text">&gt; compare 1 2
 LT
 
-&gt; compare &quot;A&quot; &quot;Z&quot;
+&gt; compare "A" "Z"
 LT
 </code></pre>
 <h3 id="field"><a class="header" href="#field">Field</a></h3>
@@ -2571,8 +2574,8 @@ PSCiで以下の通りです。</p>
 &gt; import Data.Monoid
 &gt; import Data.Foldable
 
-&gt; foldl append mempty [&quot;Hello&quot;, &quot; &quot;, &quot;World&quot;]
-&quot;Hello World&quot;
+&gt; foldl append mempty ["Hello", " ", "World"]
+"Hello World"
 
 &gt; foldl append mempty [[1, 2, 3], [4, 5], [6]]
 [1,2,3,4,5,6]
@@ -2598,7 +2601,7 @@ PSCiで以下の通りです。</p>
 <pre><code class="language-text">&gt; import Data.Foldable
 
 &gt; foldMap show [1, 2, 3, 4, 5]
-&quot;12345&quot;
+"12345"
 </code></pre>
 <p>ここでは文字列用のモノイドと<code>show</code>関数を選んでいます。
 前者は文字列を連結するもので、後者は<code>Int</code>を文字列として書き出すものです。
@@ -2624,7 +2627,7 @@ PSCiで以下の通りです。</p>
 &gt; import Data.Maybe
 &gt; import Data.String (length)
 
-&gt; map length (Just &quot;testing&quot;)
+&gt; map length (Just "testing")
 (Just 7)
 </code></pre>
 <p><code>map</code>演算子は様々な構造の上でそれぞれ異なる挙動をしますが、 <code>map</code>演算子の意味はどのように理解すればいいのでしょうか。</p>
@@ -2702,11 +2705,11 @@ threeAreEqual a1 a2 a3 = a1 == a2 &amp;&amp; a2 == a3
 <code>Show</code>のインスタンスを使って2つの値を比較する例を次に示します。</p>
 <pre><code class="language-haskell">showCompare :: forall a. Ord a =&gt; Show a =&gt; a -&gt; a -&gt; String
 showCompare a1 a2 | a1 &lt; a2 =
-  show a1 &lt;&gt; &quot; is less than &quot; &lt;&gt; show a2
+  show a1 &lt;&gt; " is less than " &lt;&gt; show a2
 showCompare a1 a2 | a1 &gt; a2 =
-  show a1 &lt;&gt; &quot; is greater than &quot; &lt;&gt; show a2
+  show a1 &lt;&gt; " is greater than " &lt;&gt; show a2
 showCompare a1 a2 =
-  show a1 &lt;&gt; &quot; is equal to &quot; &lt;&gt; show a2
+  show a1 &lt;&gt; " is equal to " &lt;&gt; show a2
 </code></pre>
 <p><code>=&gt;</code>シンボルを複数回使って複数の制約を指定できることに注意してください。
 複数の引数のカリー化された関数を定義するのと同様です。
@@ -2835,7 +2838,7 @@ has type variables which are not mentioned in the body of the type. Consider add
 <p>エラーは、 <code>genericTail</code>関数が <code>Stream</code>型クラスの定義で言及された
 <code>element</code>型を使用しないので、その型は未解決のままであることを指しています。</p>
 <p>更に残念なことに、特定の型のストリームに<code>genericTail</code>を適用できません。</p>
-<pre><code class="language-text">&gt; map _.tail (uncons &quot;testing&quot;)
+<pre><code class="language-text">&gt; map _.tail (uncons "testing")
 
 The inferred type
 
@@ -2855,8 +2858,8 @@ has type variables which are not mentioned in the body of the type. Consider add
 <pre><code class="language-text">&gt; :type genericTail
 forall (stream :: Type) (element :: Type). Stream stream element =&gt; stream -&gt; Maybe stream
 
-&gt; genericTail &quot;testing&quot;
-(Just &quot;esting&quot;)
+&gt; genericTail "testing"
+(Just "esting")
 </code></pre>
 <p>多変数の型クラスを使用して何らかのAPIを設計する場合、関数従属性が便利なことがあります。</p>
 <h2 id="型変数のない型クラス"><a class="header" href="#型変数のない型クラス">型変数のない型クラス</a></h2>
@@ -2908,7 +2911,7 @@ secondElement xs = head (tail xs)
 例えば、任意の<code>Ord</code>と<code>Eq</code>のインスタンスの対について、もし2つの値が<code>Eq</code>インスタンスの下で同値であるなら、<code>compare</code>関数は<code>EQ</code>を返すはずだと推定するのは理に適っています。
 言い換えれば、<code>a == b</code>が真であるのは<code>compare a b</code>が厳密に<code>EQ</code>に評価されるときなのです。
 法則のレベルでのこの関係は、<code>Eq</code>と<code>Ord</code>の間の上位クラス関係の正当性を示します。</p>
-<p>上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明白な &quot;is-a&quot; の関係があることです。
+<p>上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明白な "is-a" の関係があることです。
 下位クラスの全ての構成要素は、上位クラスの構成要素でもあるということです。</p>
 <h2 id="演習-16"><a class="header" href="#演習-16">演習</a></h2>
 <ol>
@@ -3126,14 +3129,14 @@ PureScriptの標準ライブラリから標準の型クラスを幾つか見て�
 <p>この関数は簡単に適用できますので、PSCiでどうなるか見てみましょう。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
-&gt; address &quot;123 Fake St.&quot; &quot;Faketown&quot; &quot;CA&quot;
-{ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
+&gt; address "123 Fake St." "Faketown" "CA"
+{ street: "123 Fake St.", city: "Faketown", state: "CA" }
 </code></pre>
 <p>しかし、通り、市、州の3つ全てが必ずしも入力されないものとすると、3つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
 <p>考えられる場合としては、市が省略されている場合があるでしょう。
 もし<code>address</code>関数を直接適用しようとすると、型検証器からエラーが表示されます。</p>
 <pre><code class="language-text">&gt; import Data.Maybe
-&gt; address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
+&gt; address (Just "123 Fake St.") Nothing (Just "CA")
 
 Could not match type
 
@@ -3147,15 +3150,15 @@ with type
 <code>address</code>は<code>Maybe String</code>型の値ではなく、文字列を引数として取るためです。</p>
 <p>しかし、もし<code>address</code>関数を「持ち上げる」ことができれば、<code>Maybe</code>型で示される省略可能な値を扱うことができるはずだという予想は理に適っています。実際それは可能で、<code>Control.Apply</code>で提供されている関数<code>lift3</code>が、まさに求めているものです。</p>
 <pre><code class="language-text">&gt; import Control.Apply
-&gt; lift3 address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
+&gt; lift3 address (Just "123 Fake St.") Nothing (Just "CA")
 
 Nothing
 </code></pre>
 <p>このとき、引数の1つ（市）が欠落していたので、結果は<code>Nothing</code>になります。
 もし3つの引数全てに<code>Just</code>構築子を使ったものが与えられたら、結果は値を含むことになります。</p>
-<pre><code class="language-text">&gt; lift3 address (Just &quot;123 Fake St.&quot;) (Just &quot;Faketown&quot;) (Just &quot;CA&quot;)
+<pre><code class="language-text">&gt; lift3 address (Just "123 Fake St.") (Just "Faketown") (Just "CA")
 
-Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
+Just ({ street: "123 Fake St.", city: "Faketown", state: "CA" })
 </code></pre>
 <p><code>lift3</code>という関数の名前は、3引数の関数を持ち上げるために使えることを示しています。関数を持ち上げる同様の関数で、引数の数が異なるものが<code>Control.Apply</code>で定義されています。</p>
 <h2 id="任意個の引数を持つ関数の持ち上げ"><a class="header" href="#任意個の引数を持つ関数の持ち上げ">任意個の引数を持つ関数の持ち上げ</a></h2>
@@ -3211,10 +3214,10 @@ lift3 f x y z = f &lt;$&gt; x &lt;*&gt; y &lt;*&gt; z
 <p>この式に関する型の検証は、読者への演習として残しておきます。</p>
 </blockquote>
 <p>例として、<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>をそのまま使うと、<code>Maybe</code>上に<code>address</code>関数を持ち上げることができます。</p>
-<pre><code class="language-text">&gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Just &quot;Faketown&quot; &lt;*&gt; Just &quot;CA&quot;
-Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
+<pre><code class="language-text">&gt; address &lt;$&gt; Just "123 Fake St." &lt;*&gt; Just "Faketown" &lt;*&gt; Just "CA"
+Just ({ street: "123 Fake St.", city: "Faketown", state: "CA" })
 
-&gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;CA&quot;
+&gt; address &lt;$&gt; Just "123 Fake St." &lt;*&gt; Nothing &lt;*&gt; Just "CA"
 Nothing
 </code></pre>
 <p>同様にして、引数が異なる他のいろいろな関数を<code>Maybe</code>上に持ち上げてみてください。</p>
@@ -3266,9 +3269,9 @@ lift3 f x y z = ado
 <p>以下は、PSCiで定義された3つの名前を結合して完全な名前を作る簡単な関数の例です。</p>
 <pre><code class="language-text">&gt; import Prelude
 
-&gt; fullName first middle last = last &lt;&gt; &quot;, &quot; &lt;&gt; first &lt;&gt; &quot; &quot; &lt;&gt; middle
+&gt; fullName first middle last = last &lt;&gt; ", " &lt;&gt; first &lt;&gt; " " &lt;&gt; middle
 
-&gt; fullName &quot;Phillip&quot; &quot;A&quot; &quot;Freeman&quot;
+&gt; fullName "Phillip" "A" "Freeman"
 Freeman, Phillip A
 </code></pre>
 <p>この関数が、クエリ引数として与えられた3つの引数を持つ、（とっても簡単な）webサービスの実装を形成しているとしましょう。
@@ -3276,10 +3279,10 @@ Freeman, Phillip A
 <code>fullName</code>を<code>Maybe</code>の上へ持ち上げると、欠けている引数を検査するwebサービスの実装を作成できます。</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
-&gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Just &quot;A&quot; &lt;*&gt; Just &quot;Freeman&quot;
-Just (&quot;Freeman, Phillip A&quot;)
+&gt; fullName &lt;$&gt; Just "Phillip" &lt;*&gt; Just "A" &lt;*&gt; Just "Freeman"
+Just ("Freeman, Phillip A")
 
-&gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;Freeman&quot;
+&gt; fullName &lt;$&gt; Just "Phillip" &lt;*&gt; Nothing &lt;*&gt; Just "Freeman"
 Nothing
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
@@ -3287,17 +3290,17 @@ Nothing
 
 &gt; :paste…
 … ado
-…   f &lt;- Just &quot;Phillip&quot;
-…   m &lt;- Just &quot;A&quot;
-…   l &lt;- Just &quot;Freeman&quot;
+…   f &lt;- Just "Phillip"
+…   m &lt;- Just "A"
+…   l &lt;- Just "Freeman"
 …   in fullName f m l
 … ^D
-(Just &quot;Freeman, Phillip A&quot;)
+(Just "Freeman, Phillip A")
 
 … ado
-…   f &lt;- Just &quot;Phillip&quot;
+…   f &lt;- Just "Phillip"
 …   m &lt;- Nothing
-…   l &lt;- Just &quot;Freeman&quot;
+…   l &lt;- Just "Freeman"
 …   in fullName f m l
 … ^D
 Nothing
@@ -3317,17 +3320,17 @@ Nothing
 <p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラー文言を提供できるようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last =
-…   fullName &lt;$&gt; (first  `withError` &quot;First name was missing&quot;)
-…            &lt;*&gt; (middle `withError` &quot;Middle name was missing&quot;)
-…            &lt;*&gt; (last   `withError` &quot;Last name was missing&quot;)
+…   fullName &lt;$&gt; (first  `withError` "First name was missing")
+…            &lt;*&gt; (middle `withError` "Middle name was missing")
+…            &lt;*&gt; (last   `withError` "Last name was missing")
 … ^D
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last = ado
-…  f &lt;- first  `withError` &quot;First name was missing&quot;
-…  m &lt;- middle `withError` &quot;Middle name was missing&quot;
-…  l &lt;- last   `withError` &quot;Last name was missing&quot;
+…  f &lt;- first  `withError` "First name was missing"
+…  m &lt;- middle `withError` "Middle name was missing"
+…  l &lt;- last   `withError` "Last name was missing"
 …  in fullName f m l
 … ^D
 
@@ -3336,19 +3339,19 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 </code></pre>
 <p>これでこの関数は<code>Maybe</code>を使う3つの省略可能な引数を取り、<code>String</code>のエラー文言か<code>String</code>の結果のどちらかを返します。</p>
 <p>いろいろな入力でこの関数を試してみましょう。</p>
-<pre><code class="language-text">&gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) (Just &quot;Freeman&quot;)
-(Right &quot;Freeman, Phillip A&quot;)
+<pre><code class="language-text">&gt; fullNameEither (Just "Phillip") (Just "A") (Just "Freeman")
+(Right "Freeman, Phillip A")
 
-&gt; fullNameEither (Just &quot;Phillip&quot;) Nothing (Just &quot;Freeman&quot;)
-(Left &quot;Middle name was missing&quot;)
+&gt; fullNameEither (Just "Phillip") Nothing (Just "Freeman")
+(Left "Middle name was missing")
 
-&gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) Nothing
-(Left &quot;Last name was missing&quot;)
+&gt; fullNameEither (Just "Phillip") (Just "A") Nothing
+(Left "Last name was missing")
 </code></pre>
 <p>このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラー文言が表示されます。
 しかし、もし複数の入力が省略されているとき、最初のエラーしか見られません。</p>
 <pre><code class="language-text">&gt; fullNameEither Nothing Nothing Nothing
-(Left &quot;First name was missing&quot;)
+(Left "First name was missing")
 </code></pre>
 <p>これでも充分なときもありますが、エラー時に<em>全ての</em>省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半で解決策を見ていきます。</p>
 <h2 id="作用の結合"><a class="header" href="#作用の結合">作用の結合</a></h2>
@@ -3427,36 +3430,36 @@ person :: String -&gt; String -&gt; Address -&gt; Array PhoneNumber -&gt; Person
 例えば、<code>Data.AddressBook</code>では以下の値が定義されています。</p>
 <pre><code class="language-haskell">examplePerson :: Person
 examplePerson =
-  person &quot;John&quot; &quot;Smith&quot;
-    (address &quot;123 Fake St.&quot; &quot;FakeTown&quot; &quot;CA&quot;)
-    [ phoneNumber HomePhone &quot;555-555-5555&quot;
-    , phoneNumber CellPhone &quot;555-555-0000&quot;
+  person "John" "Smith"
+    (address "123 Fake St." "FakeTown" "CA")
+    [ phoneNumber HomePhone "555-555-5555"
+    , phoneNumber CellPhone "555-555-0000"
     ]
 </code></pre>
 <p>PSCiでこれらの値を試してみましょう（結果は整形されています）。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
 &gt; examplePerson
-{ firstName: &quot;John&quot;
-, lastName: &quot;Smith&quot;
+{ firstName: "John"
+, lastName: "Smith"
 , homeAddress:
-    { street: &quot;123 Fake St.&quot;
-    , city: &quot;FakeTown&quot;
-    , state: &quot;CA&quot;
+    { street: "123 Fake St."
+    , city: "FakeTown"
+    , state: "CA"
     }
 , phones:
     [ { type: HomePhone
-      , number: &quot;555-555-5555&quot;
+      , number: "555-555-5555"
       }
     , { type: CellPhone
-      , number: &quot;555-555-0000&quot;
+      , number: "555-555-0000"
       }
     ]
 }
 </code></pre>
 <p>前の章では型<code>Person</code>のデータ構造を検証する上で<code>Either String</code>関手の使い方を見ました。例えば、データ構造の2つの名前を検証する関数が与えられたとき、データ構造全体を次のように検証できます。</p>
 <pre><code class="language-haskell">nonEmpty1 :: String -&gt; Either String String
-nonEmpty1 &quot;&quot;     = Left &quot;Field cannot be empty&quot;
+nonEmpty1 ""     = Left "Field cannot be empty"
 nonEmpty1 value  = Right value
 
 validatePerson1 :: Person -&gt; Either String Person
@@ -3478,8 +3481,8 @@ validatePerson1Ado p = ado
 そうでなければ<code>Right</code>構築子で包まれた値を返します。</p>
 <p>最後の2行では何の検証も実行せず、単に<code>address</code>フィールドと<code>phones</code>フィールドを残りの引数として<code>person</code>関数へと提供しています。</p>
 <p>この関数はPSCiでうまく動作するように見えますが、以前見たような制限があります。</p>
-<pre><code class="language-text">&gt; validatePerson $ person &quot;&quot; &quot;&quot; (address &quot;&quot; &quot;&quot; &quot;&quot;) []
-(Left &quot;Field cannot be empty&quot;)
+<pre><code class="language-text">&gt; validatePerson $ person "" "" (address "" "" "") []
+(Left "Field cannot be empty")
 </code></pre>
 <p><code>Either String</code>アプリカティブ関手は最初に遭遇したエラーだけを返します。
 仮にこの入力だったとすると、2つのエラーが分かったほうが良いでしょう。
@@ -3493,26 +3496,26 @@ validatePerson1Ado p = ado
   = Array String
 
 nonEmpty :: String -&gt; String -&gt; V Errors String
-nonEmpty field &quot;&quot;     = invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' cannot be empty&quot; ]
+nonEmpty field ""     = invalid [ "Field '" &lt;&gt; field &lt;&gt; "' cannot be empty" ]
 nonEmpty _     value  = pure value
 
 lengthIs :: String -&gt; Int -&gt; String -&gt; V Errors String
 lengthIs field len value | length value /= len =
-  invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' must have length &quot; &lt;&gt; show len ]
+  invalid [ "Field '" &lt;&gt; field &lt;&gt; "' must have length " &lt;&gt; show len ]
 lengthIs _     _   value = pure value
 
 validateAddress :: Address -&gt; V Errors Address
 validateAddress a =
-  address &lt;$&gt; nonEmpty &quot;Street&quot;  a.street
-          &lt;*&gt; nonEmpty &quot;City&quot;    a.city
-          &lt;*&gt; lengthIs &quot;State&quot; 2 a.state
+  address &lt;$&gt; nonEmpty "Street"  a.street
+          &lt;*&gt; nonEmpty "City"    a.city
+          &lt;*&gt; lengthIs "State" 2 a.state
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-haskell">validateAddressAdo :: Address -&gt; V Errors Address
 validateAddressAdo a = ado
-  street &lt;- nonEmpty &quot;Street&quot;  a.street
-  city   &lt;- nonEmpty &quot;City&quot;    a.city
-  state  &lt;- lengthIs &quot;State&quot; 2 a.state
+  street &lt;- nonEmpty "Street"  a.street
+  city   &lt;- nonEmpty "City"    a.city
+  state  &lt;- lengthIs "State" 2 a.state
   in address street city state
 </code></pre>
 <p><code>validateAddress</code>は<code>Address</code>の構造を検証します。
@@ -3523,15 +3526,15 @@ validateAddressAdo a = ado
 <pre><code class="language-text">&gt; import Data.AddressBook
 &gt; import Data.AddressBook.Validation
 
-&gt; validateAddress $ address &quot;&quot; &quot;&quot; &quot;&quot;
-(invalid [ &quot;Field 'Street' cannot be empty&quot;
-         , &quot;Field 'City' cannot be empty&quot;
-         , &quot;Field 'State' must have length 2&quot;
+&gt; validateAddress $ address "" "" ""
+(invalid [ "Field 'Street' cannot be empty"
+         , "Field 'City' cannot be empty"
+         , "Field 'State' must have length 2"
          ])
 
-&gt; validateAddress $ address &quot;&quot; &quot;&quot; &quot;CA&quot;
-(invalid [ &quot;Field 'Street' cannot be empty&quot;
-         , &quot;Field 'City' cannot be empty&quot;
+&gt; validateAddress $ address "" "" "CA"
+(invalid [ "Field 'Street' cannot be empty"
+         , "Field 'City' cannot be empty"
          ])
 </code></pre>
 <p>これで、全ての検証エラーの配列を受け取ることができるようになりました。</p>
@@ -3540,28 +3543,28 @@ validateAddressAdo a = ado
 <pre><code class="language-haskell">matches :: String -&gt; Regex -&gt; String -&gt; V Errors String
 matches _     regex value | test regex value
                           = pure value
-matches field _     _     = invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' did not match the required format&quot; ]
+matches field _     _     = invalid [ "Field '" &lt;&gt; field &lt;&gt; "' did not match the required format" ]
 </code></pre>
 <p>繰り返しになりますが、<code>pure</code>は常に成功する検証を表しており、エラーの配列の伝達には<code>invalid</code>が使われています。</p>
 <p>これまでと同様に、<code>validatePhoneNumber</code>は<code>matches</code>関数から構築されています。</p>
 <pre><code class="language-haskell">validatePhoneNumber :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumber pn =
-  phoneNumber &lt;$&gt; pure pn.&quot;type&quot;
-              &lt;*&gt; matches &quot;Number&quot; phoneNumberRegex pn.number
+  phoneNumber &lt;$&gt; pure pn."type"
+              &lt;*&gt; matches "Number" phoneNumberRegex pn.number
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-haskell">validatePhoneNumberAdo :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumberAdo pn = ado
-  tpe    &lt;- pure pn.&quot;type&quot;
-  number &lt;- matches &quot;Number&quot; phoneNumberRegex pn.number
+  tpe    &lt;- pure pn."type"
+  number &lt;- matches "Number" phoneNumberRegex pn.number
   in phoneNumber tpe number
 </code></pre>
 <p>また、PSCiでいろいろな有効な入力や無効な入力に対して、この検証器を実行してみてください。</p>
-<pre><code class="language-text">&gt; validatePhoneNumber $ phoneNumber HomePhone &quot;555-555-5555&quot;
-pure ({ type: HomePhone, number: &quot;555-555-5555&quot; })
+<pre><code class="language-text">&gt; validatePhoneNumber $ phoneNumber HomePhone "555-555-5555"
+pure ({ type: HomePhone, number: "555-555-5555" })
 
-&gt; validatePhoneNumber $ phoneNumber HomePhone &quot;555.555.5555&quot;
-invalid ([&quot;Field 'Number' did not match the required format&quot;])
+&gt; validatePhoneNumber $ phoneNumber HomePhone "555.555.5555"
+invalid (["Field 'Number' did not match the required format"])
 </code></pre>
 <h2 id="演習-19"><a class="header" href="#演習-19">演習</a></h2>
 <ol>
@@ -3578,24 +3581,24 @@ invalid ([&quot;Field 'Number' did not match the required format&quot;])
 これはこれまで見てきた検証器と以下の新しい<code>validatePhoneNumbers</code>関数を組み合わせて<code>Person</code>全体を検証するものです。</p>
 <pre><code class="language-haskell">validatePhoneNumbers :: String -&gt; Array PhoneNumber -&gt; V Errors (Array PhoneNumber)
 validatePhoneNumbers field []      =
-  invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' must contain at least one value&quot; ]
+  invalid [ "Field '" &lt;&gt; field &lt;&gt; "' must contain at least one value" ]
 validatePhoneNumbers _     phones  =
   traverse validatePhoneNumber phones
 
 validatePerson :: Person -&gt; V Errors Person
 validatePerson p =
-  person &lt;$&gt; nonEmpty &quot;First Name&quot; p.firstName
-         &lt;*&gt; nonEmpty &quot;Last Name&quot; p.lastName
+  person &lt;$&gt; nonEmpty "First Name" p.firstName
+         &lt;*&gt; nonEmpty "Last Name" p.lastName
          &lt;*&gt; validateAddress p.homeAddress
-         &lt;*&gt; validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
+         &lt;*&gt; validatePhoneNumbers "Phone Numbers" p.phones
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-haskell">validatePersonAdo :: Person -&gt; V Errors Person
 validatePersonAdo p = ado
-  firstName &lt;- nonEmpty &quot;First Name&quot; p.firstName
-  lastName  &lt;- nonEmpty &quot;Last Name&quot; p.lastName
+  firstName &lt;- nonEmpty "First Name" p.firstName
+  lastName  &lt;- nonEmpty "Last Name" p.lastName
   address   &lt;- validateAddress p.homeAddress
-  numbers   &lt;- validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
+  numbers   &lt;- validatePhoneNumbers "Phone Numbers" p.phones
   in person firstName lastName address numbers
 </code></pre>
 <p><code>validatePhoneNumbers</code>はこれまでに見たことのない新しい関数である<code>traverse</code>を使っています。</p>
@@ -3652,14 +3655,14 @@ PSCiで試してみましょう。</p>
 &gt; import Data.Traversable
 &gt; import Data.AddressBook.Validation
 
-&gt; traverse (nonEmpty &quot;Example&quot;) Nothing
+&gt; traverse (nonEmpty "Example") Nothing
 pure (Nothing)
 
-&gt; traverse (nonEmpty &quot;Example&quot;) (Just &quot;&quot;)
-invalid ([&quot;Field 'Example' cannot be empty&quot;])
+&gt; traverse (nonEmpty "Example") (Just "")
+invalid (["Field 'Example' cannot be empty"])
 
-&gt; traverse (nonEmpty &quot;Example&quot;) (Just &quot;Testing&quot;)
-pure ((Just &quot;Testing&quot;))
+&gt; traverse (nonEmpty "Example") (Just "Testing")
+pure ((Just "Testing"))
 </code></pre>
 <p>これらの例では、<code>Nothing</code>の値の走査は検証なしで<code>Nothing</code>の値を返し、<code>Just x</code>を走査すると<code>x</code>を検証するのに検証関数が使われるということを示しています。
 要は、<code>traverse</code>は型<code>a</code>についての検証関数を取り、<code>Maybe a</code>についての検証関数、つまり型<code>a</code>の省略可能な値についての検証関数を返すのです。</p>
@@ -3800,9 +3803,9 @@ XMLノードを表す型 <code>XML</code>と次の関数があるとします。
 XML文書としてエンコードされた利用者情報から、利用者の住んでいる市町村を読み取りたいとします。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root = do
-  prof &lt;- child root &quot;profile&quot;
-  addr &lt;- child prof &quot;address&quot;
-  city &lt;- child addr &quot;city&quot;
+  prof &lt;- child root "profile"
+  addr &lt;- child prof "address"
+  city &lt;- child addr "city"
   pure city
 </code></pre>
 <p><code>userCity</code>関数は子の<code>profile</code>要素、<code>profile</code>要素の中にある<code>address</code>要素、最後に<code>address</code>要素の中にある<code>city</code>要素を探します。
@@ -3846,9 +3849,9 @@ class (Applicative m, Bind m) &lt;= Monad m
 <p>複数の束縛が関係している場合、この規則は先頭のほうから複数回適用されます。例えば、先ほど見た <code>userCity</code>の例では次のように脱糖されます。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root =
-  child root &quot;profile&quot; &gt;&gt;= \prof -&gt;
-    child prof &quot;address&quot; &gt;&gt;= \addr -&gt;
-      child addr &quot;city&quot; &gt;&gt;= \city -&gt;
+  child root "profile" &gt;&gt;= \prof -&gt;
+    child prof "address" &gt;&gt;= \addr -&gt;
+      child addr "city" &gt;&gt;= \city -&gt;
         pure city
 </code></pre>
 <p>do記法を使って表現されたコードは、<code>&gt;&gt;=</code>演算子を使う等価なコードより遥かに読みやすくなることがよくあることも特筆すべき点です。
@@ -3971,9 +3974,9 @@ ap mf ma = do
 利用者情報をエンコードしたXML文書から利用者の市町村を検索するものでした。</p>
 <pre><code class="language-hs">userCity :: XML -&gt; Maybe XML
 userCity root = do
-  prof &lt;- child root &quot;profile&quot;
-  addr &lt;- child prof &quot;address&quot;
-  city &lt;- child addr &quot;city&quot;
+  prof &lt;- child root "profile"
+  addr &lt;- child prof "address"
+  city &lt;- child addr "city"
   pure city
 </code></pre>
 <p>do記法では2番目の計算が最初の結果 <code>prof</code>に依存し、3番目の計算が2番目の計算の結果<code>addr</code>に依存するというようなことができます。
@@ -4145,7 +4148,7 @@ import Node.FS.Sync (readTextFile)
 
 main :: Effect Unit
 main = do
-  lines &lt;- readTextFile UTF8 &quot;iDoNotExist.md&quot;
+  lines &lt;- readTextFile UTF8 "iDoNotExist.md"
   log lines
 </code></pre>
 <p>以下の例外に遭遇します。</p>
@@ -4161,10 +4164,10 @@ Error: ENOENT: no such file or directory, open 'iDoNotExist.md'
 <p>この例外をうまく管理するには、潜在的に問題があるコードを<code>try</code>に包めばどのような出力でも制御できます。</p>
 <pre><code class="language-hs">main :: Effect Unit
 main = do
-  result &lt;- try $ readTextFile UTF8 &quot;iDoNotExist.md&quot;
+  result &lt;- try $ readTextFile UTF8 "iDoNotExist.md"
   case result of
-    Right lines -&gt; log $ &quot;Contents: \n&quot; &lt;&gt; lines
-    Left  error -&gt; log $ &quot;Couldn't open file. Error was: &quot; &lt;&gt; message error
+    Right lines -&gt; log $ "Contents: \n" &lt;&gt; lines
+    Left  error -&gt; log $ "Couldn't open file. Error was: " &lt;&gt; message error
 </code></pre>
 <p><code>try</code>は<code>Effect</code>を走らせて起こりうる例外を<code>Left</code>値として返します。
 もし計算が成功すれば結果は<code>Right</code>に包まれます。</p>
@@ -4175,7 +4178,7 @@ main = do
 <pre><code class="language-hs">exceptionHead :: List Int -&gt; Effect Int
 exceptionHead l = case l of
   x : _ -&gt; pure x
-  Nil -&gt; throwException $ error &quot;empty list&quot;
+  Nil -&gt; throwException $ error "empty list"
 </code></pre>
 <p>ただし<code>exceptionHead</code>関数はどこかしら非実用的な例です。
 というのも、PureScriptのコードで例外を生成するのは避け、代わりに<code>Either</code>や<code>Maybe</code>のようなネイティブでない作用でエラーや欠けた値を使うのが一番だからです。</p>
@@ -4276,7 +4279,7 @@ simulate x0 v0 time =
 
         var ref = { value: { x: x0, v: v0 } };
 
-        Control_Monad_ST_Internal[&quot;for&quot;](0)(time * 1000 | 0)(function (v) {
+        Control_Monad_ST_Internal["for"](0)(time * 1000 | 0)(function (v) {
           return Control_Monad_ST_Internal.modify(function (o) {
             return {
               v: o.v - 9.81 * 1.0e-3,
@@ -4303,9 +4306,9 @@ simulate x0 v0 time =
     return function (time) {
       return function __do() {
 
-        var ref = Control_Monad_ST_Internal[&quot;new&quot;]({ x: x0, v: v0 })();
+        var ref = Control_Monad_ST_Internal["new"]({ x: x0, v: v0 })();
 
-        Control_Monad_ST_Internal[&quot;for&quot;](0)(time * 1000 | 0)(function (v) {
+        Control_Monad_ST_Internal["for"](0)(time * 1000 | 0)(function (v) {
           return Control_Monad_ST_Internal.modify(function (o) {
             return {
               v: o.v - 9.81 * 1.0e-3,
@@ -4325,7 +4328,7 @@ simulate x0 v0 time =
 作用を持つ繰り返しを生成する<code>for</code>、<code>foreach</code>、<code>while</code>のような動作を一緒に使うときは特にそうです。</p>
 <h2 id="演習-22"><a class="header" href="#演習-22">演習</a></h2>
 <ol>
-<li>（普通）<code>safeDivide</code>関数を書き直し、もし分母がゼロなら<code>throwException</code>を使って文言<code>&quot;div zero&quot;</code>の例外を投げるようにしたものを<code>exceptionDivide</code>としてください。</li>
+<li>（普通）<code>safeDivide</code>関数を書き直し、もし分母がゼロなら<code>throwException</code>を使って文言<code>"div zero"</code>の例外を投げるようにしたものを<code>exceptionDivide</code>としてください。</li>
 <li>（普通）関数<code>estimatePi :: Int -&gt; Number</code>を書いてください。
 この関数は<code>n</code>項<a href="https://mathworld.wolfram.com/GregorySeries.html">Gregory
 Series</a>を使って<code>pi</code>の近似を計算するものです。
@@ -4377,18 +4380,18 @@ $ npx parcel src/index.html --open
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta charset="UTF-8"&gt;
     &lt;title&gt;Address Book&lt;/title&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot; crossorigin=&quot;anonymous&quot;&gt;
+    &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-    &lt;script type=&quot;module&quot; src=&quot;./index.js&quot;&gt;&lt;/script&gt;
+    &lt;div id="container"&gt;&lt;/div&gt;
+    &lt;script type="module" src="./index.js"&gt;&lt;/script&gt;
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
 <p><code>&lt;script</code>の行にJavaScriptの入口が含まれており、<code>index.js</code>にはこの実質1行だけが含まれています。</p>
-<pre><code class="language-js">import { main } from &quot;../output/Main/index.js&quot;;
+<pre><code class="language-js">import { main } from "../output/Main/index.js";
 
 main();
 </code></pre>
@@ -4397,37 +4400,37 @@ main();
 <p><code>main</code>関数はDOMとHTML APIを使い、<code>index.html</code>に定義した<code>container</code>要素の中に住所録コンポーネントを描画します。</p>
 <pre><code class="language-hs">main :: Effect Unit
 main = do
-  log &quot;Rendering address book component&quot;
+  log "Rendering address book component"
   -- Get window object
   w &lt;- window
   -- Get window's HTML document
   doc &lt;- document w
-  -- Get &quot;container&quot; element in HTML
-  ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+  -- Get "container" element in HTML
+  ctr &lt;- getElementById "container" $ toNonElementParentNode doc
   case ctr of
-    Nothing -&gt; throw &quot;Container element not found.&quot;
+    Nothing -&gt; throw "Container element not found."
     Just c -&gt; do
       -- Create AddressBook react component
       addressBookApp &lt;- mkAddressBookApp
       let
         -- Create JSX node from react component. Pass-in empty props
         app = element addressBookApp {}
-      -- Render AddressBook JSX node in DOM &quot;container&quot; element
+      -- Render AddressBook JSX node in DOM "container" element
       D.render app c
 </code></pre>
 <p>これら3行に注目してください。</p>
 <pre><code class="language-hs">w &lt;- window
 doc &lt;- document w
-ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+ctr &lt;- getElementById "container" $ toNonElementParentNode doc
 </code></pre>
 <p>これは次のように統合できます。</p>
 <pre><code class="language-hs">doc &lt;- document =&lt;&lt; window
-ctr &lt;- getElementById &quot;container&quot; $ toNonElementParentNode doc
+ctr &lt;- getElementById "container" $ toNonElementParentNode doc
 </code></pre>
 <p>あるいは更なる統合さえできます。</p>
-<pre><code class="language-hs">ctr &lt;- getElementById &quot;container&quot; &lt;&lt;&lt; toNonElementParentNode =&lt;&lt; document =&lt;&lt; window
+<pre><code class="language-hs">ctr &lt;- getElementById "container" &lt;&lt;&lt; toNonElementParentNode =&lt;&lt; document =&lt;&lt; window
 -- or, equivalently:
-ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt; getElementById &quot;container&quot;
+ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt; getElementById "container"
 </code></pre>
 <p>途中の<code>w</code>や<code>doc</code>変数が読みやすさの助けになるかは主観的な好みの問題です。</p>
 <p>AddressBookの<code>reactComponent</code>を深堀りしましょう。
@@ -4437,15 +4440,15 @@ ctr &lt;- window &gt;&gt;= document &gt;&gt;= toNonElementParentNode &gt;&gt;&gt
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
 mkAddressBookApp =
   reactComponent
-    &quot;AddressBookApp&quot;
-    (\props -&gt; pure $ D.text &quot;Hi! I'm an address book&quot;)
+    "AddressBookApp"
+    (\props -&gt; pure $ D.text "Hi! I'm an address book")
 </code></pre>
 <p><code>reactComponent</code>にはこのような威圧的なシグネチャがあります。</p>
 <pre><code class="language-hs">reactComponent ::
   forall hooks props.
-  Lacks &quot;children&quot; props =&gt;
-  Lacks &quot;key&quot; props =&gt;
-  Lacks &quot;ref&quot; props =&gt;
+  Lacks "children" props =&gt;
+  Lacks "key" props =&gt;
+  Lacks "ref" props =&gt;
   String -&gt;
   ({ | props } -&gt; Render Unit hooks JSX) -&gt;
   Effect (ReactComponent { | props })
@@ -4453,7 +4456,7 @@ mkAddressBookApp =
 <p>重要な注意点は全ての型クラス制約の後の引数にあります。
 <code>String</code>（任意のコンポーネント名）、<code>props</code>を描画された<code>JSX</code>に変換する方法を記述する関数を取り、そして<code>Effect</code>に包まれた<code>ReactComponent</code>を返します。</p>
 <p>propsからJSXへの関数は単にこうです。</p>
-<pre><code class="language-hs">\props -&gt; pure $ D.text &quot;Hi! I'm an address book&quot;
+<pre><code class="language-hs">\props -&gt; pure $ D.text "Hi! I'm an address book"
 </code></pre>
 <p><code>props</code>は無視されており、<code>D.text</code>は<code>JSX</code>を返し、そして<code>pure</code>は描画されたJSXに持ち上げます。
 これで<code>component</code>には<code>ReactComponent</code>を生成するのに必要な全てがあります。</p>
@@ -4461,7 +4464,7 @@ mkAddressBookApp =
 <p>これらは完全なコンポーネントの最初の数行です。</p>
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent {})
 mkAddressBookApp = do
-  reactComponent &quot;AddressBookApp&quot; \props -&gt; R.do
+  reactComponent "AddressBookApp" \props -&gt; R.do
     Tuple person setPerson &lt;- useState examplePerson
 </code></pre>
 <p><code>person</code>を<code>useState</code>フックの状態の一部として追跡します。</p>
@@ -4494,11 +4497,11 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
 単に現在の状態を新しい状態に変形する方法を記述する関数を提供します。
 <code>state</code>の型が偶然<code>Record</code>のときは、レコード更新構文がこれにぴったり合います。
 例えば以下。</p>
-<pre><code class="language-hs">setPerson (\currentPerson -&gt; currentPerson {firstName = &quot;NewName&quot;})
+<pre><code class="language-hs">setPerson (\currentPerson -&gt; currentPerson {firstName = "NewName"})
 
 </code></pre>
 <p>あるいは短かく以下です。</p>
-<pre><code class="language-hs">setPerson _ {firstName = &quot;NewName&quot;}
+<pre><code class="language-hs">setPerson _ {firstName = "NewName"}
 </code></pre>
 <p><code>Record</code>でない状態もまた、この更新パターンに従います。
 ベストプラクティスについて、より詳しいことは<a href="https://github.com/megamaddu/purescript-react-basic-hooks/pull/24#issuecomment-620300541">この手引き</a>を参照してください。</p>
@@ -4511,26 +4514,26 @@ setPerson :: (state -&gt; state) -&gt; Effect Unit
 <p>以下では<code>JSX</code>の描画が行われています。</p>
 <pre><code class="language-hs">pure
   $ D.div
-      { className: &quot;container&quot;
+      { className: "container"
       , children:
           renderValidationErrors errors
             &lt;&gt; [ D.div
-                  { className: &quot;row&quot;
+                  { className: "row"
                   , children:
                       [ D.form_
-                          $ [ D.h3_ [ D.text &quot;Basic Information&quot; ]
-                            , formField &quot;First Name&quot; &quot;First Name&quot; person.firstName \s -&gt;
+                          $ [ D.h3_ [ D.text "Basic Information" ]
+                            , formField "First Name" "First Name" person.firstName \s -&gt;
                                 setPerson _ { firstName = s }
-                            , formField &quot;Last Name&quot; &quot;Last Name&quot; person.lastName \s -&gt;
+                            , formField "Last Name" "Last Name" person.lastName \s -&gt;
                                 setPerson _ { lastName = s }
-                            , D.h3_ [ D.text &quot;Address&quot; ]
-                            , formField &quot;Street&quot; &quot;Street&quot; person.homeAddress.street \s -&gt;
+                            , D.h3_ [ D.text "Address" ]
+                            , formField "Street" "Street" person.homeAddress.street \s -&gt;
                                 setPerson _ { homeAddress { street = s } }
-                            , formField &quot;City&quot; &quot;City&quot; person.homeAddress.city \s -&gt;
+                            , formField "City" "City" person.homeAddress.city \s -&gt;
                                 setPerson _ { homeAddress { city = s } }
-                            , formField &quot;State&quot; &quot;State&quot; person.homeAddress.state \s -&gt;
+                            , formField "State" "State" person.homeAddress.state \s -&gt;
                                 setPerson _ { homeAddress { state = s } }
-                            , D.h3_ [ D.text &quot;Contact Information&quot; ]
+                            , D.h3_ [ D.text "Contact Information" ]
                             ]
                           &lt;&gt; renderPhoneNumbers
                       ]
@@ -4558,7 +4561,7 @@ renderValidationErrors xs =
     renderError err = D.li_ [ D.text err ]
   in
     [ D.div
-        { className: &quot;alert alert-danger row&quot;
+        { className: "alert alert-danger row"
         , children: [ D.ul_ (map renderError xs) ]
         }
     ]
@@ -4569,25 +4572,25 @@ renderValidationErrors xs =
 <p><code>className</code>プロパティを使ってCSSスタイルのクラスを定義します。
 このプロジェクトでは<a href="https://getbootstrap.com/">Bootstrap</a>の<code>stylesheet</code>を使っており、これは<code>index.html</code>でインポートされています。
 例えばフォーム中のアイテムは<code>row</code>として配置されてほしいですし、検証エラーは<code>alert-danger</code>の装飾で強調されていてほしいです。</p>
-<pre><code class="language-hs">className: &quot;alert alert-danger row&quot;
+<pre><code class="language-hs">className: "alert alert-danger row"
 </code></pre>
 <p>2番目の補助関数は <code>formField</code>です。
 これは、単一フォームフィールドのテキスト入力を作ります。</p>
 <pre><code class="language-hs">formField :: String -&gt; String -&gt; String -&gt; (String -&gt; Effect Unit) -&gt; R.JSX
 formField name placeholder value setValue =
   D.div
-    { className: &quot;form-group row&quot;
+    { className: "form-group row"
     , children:
         [ D.label
-            { className: &quot;col-sm col-form-label&quot;
+            { className: "col-sm col-form-label"
             , htmlFor: name
             , children: [ D.text name ]
             }
         , D.div
-            { className: &quot;col-sm&quot;
+            { className: "col-sm"
             , children:
                 [ D.input
-                    { className: &quot;form-control&quot;
+                    { className: "form-control"
                     , id: name
                     , placeholder
                     , value
@@ -4736,9 +4739,9 @@ main = launchAff_ program
 
 program :: Aff Unit
 program = do
-  result &lt;- attempt $ copyFile &quot;file1.txt&quot; &quot;file2.txt&quot;
+  result &lt;- attempt $ copyFile "file1.txt" "file2.txt"
   case result of
-    Left e -&gt; log $ &quot;There was a problem with copyFile: &quot; &lt;&gt; message e
+    Left e -&gt; log $ "There was a problem with copyFile: " &lt;&gt; message e
     _ -&gt; pure unit
 
 copyFile :: FilePath -&gt; FilePath -&gt; Aff Unit
@@ -4802,7 +4805,7 @@ getUrl :: String -&gt; Aff String
 getUrl url = do
   result &lt;- AN.get ResponseFormat.string url
   pure case result of
-    Left err -&gt; &quot;GET /api response failed to decode: &quot; &lt;&gt; AN.printError err
+    Left err -&gt; "GET /api response failed to decode: " &lt;&gt; AN.printError err
     Right response -&gt; response.body
 </code></pre>
 <p>これをREPLで呼び出す際は、<code>launchAff_</code>で<code>Aff</code>からREPLに互換性のある<code>Effect</code>へと変換する必要があります。</p>
@@ -4815,11 +4818,11 @@ getUrl url = do
 … import Test.HTTP (getUrl)
 …
 … launchAff_ do
-…   str &lt;- getUrl &quot;https://reqres.in/api/users/1&quot;
+…   str &lt;- getUrl "https://reqres.in/api/users/1"
 …   log str
 …
 unit
-{&quot;data&quot;:{&quot;id&quot;:1,&quot;email&quot;:&quot;george.bluth@reqres.in&quot;,&quot;first_name&quot;:&quot;George&quot;,&quot;last_name&quot;:&quot;Bluth&quot;, ...}}
+{"data":{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth", ...}}
 </code></pre>
 <h2 id="演習-25"><a class="header" href="#演習-25">演習</a></h2>
 <ol>
@@ -4893,7 +4896,7 @@ fetchPar :: Effect Unit
 fetchPar =
   launchAff_ do
     let
-      urls = map (\n -&gt; &quot;https://reqres.in/api/users/&quot; &lt;&gt; show n) [ 1, 2 ]
+      urls = map (\n -&gt; "https://reqres.in/api/users/" &lt;&gt; show n) [ 1, 2 ]
     res &lt;- parTraverse getUrl urls
     logShow res
 </code></pre>
@@ -4903,8 +4906,8 @@ fetchPar =
 
 &gt; fetchPar
 unit
-[&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:1,\&quot;email\&quot;:\&quot;george.bluth@reqres.in\&quot;, ... }&quot;
-,&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:2,\&quot;email\&quot;:\&quot;janet.weaver@reqres.in\&quot;, ... }&quot;
+["{\"data\":{\"id\":1,\"email\":\"george.bluth@reqres.in\", ... }"
+,"{\"data\":{\"id\":2,\"email\":\"janet.weaver@reqres.in\", ... }"
 ]
 </code></pre>
 <p>利用できる並列関数の完全な一覧は<a href="https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel">Pursuitの<code>parallel</code>のドキュメント</a>にあります。<a href="https://github.com/purescript-contrib/purescript-aff#parallel-execution">parallelのaffのドキュメントの節</a>にもより多くの例が含まれています。</p>
@@ -4947,7 +4950,7 @@ $ cat b/a.txt
 $ cat c/a/a.txt
 </code></pre>
 <p>期待される出力は次の通り。</p>
-<pre><code class="language-hs">[&quot;root.txt&quot;,&quot;a.txt&quot;,&quot;b/a.txt&quot;,&quot;b/b.txt&quot;,&quot;b/c/a.txt&quot;,&quot;c/a/a.txt&quot;]
+<pre><code class="language-hs">["root.txt","a.txt","b/a.txt","b/b.txt","b/c/a.txt","c/a/a.txt"]
 </code></pre>
 <h2 id="まとめ-7"><a class="header" href="#まとめ-7">まとめ</a></h2>
 <p>この章では非同期作用と以下の方法を押さえました。</p>
@@ -5020,7 +5023,7 @@ foreign import _encodeURIComponent :: String -&gt; String
 対応する外部JavaScriptモジュールは、同名で拡張子が<code>.purs</code>から<code>.js</code>に変わったものです。
 上のPureScriptモジュールが<code>URI.purs</code>として保存されているなら、外部JavaScriptモジュールを<code>URI.js</code>として保存します。
 <code>encodeURIComponent</code>は既に定義されているので、<code>_encodeURIComponent</code>としてエクスポートせねばなりません。</p>
-<pre><code class="language-javascript">&quot;use strict&quot;;
+<pre><code class="language-javascript">"use strict";
 
 export const _encodeURIComponent = encodeURIComponent;
 </code></pre>
@@ -5031,13 +5034,13 @@ ESモジュールではオブジェクトに<code>export</code>キーワード�
 <pre><code class="language-text">$ spago repl
 
 &gt; import Test.URI
-&gt; _encodeURIComponent &quot;Hello World&quot;
-&quot;Hello%20World&quot;
+&gt; _encodeURIComponent "Hello World"
+"Hello%20World"
 </code></pre>
 <p>外部モジュールには独自の関数も定義できます。
 以下は<code>Number</code>を平方する独自のJavaScript関数を作って呼び出す方法の一例です。</p>
 <p><code>test/Examples.js</code>:</p>
-<pre><code class="language-js">&quot;use strict&quot;;
+<pre><code class="language-js">"use strict";
 
 export const square = function (n) {
   return n * n;
@@ -5375,7 +5378,7 @@ JavaScriptの呼び出しでも続けざまにPureScriptの関数を呼び出し
 ここでは型クラスのメンバー関数をFFI越しに渡す方法を探ります。</p>
 <p>型<code>x</code>に合う適切な<code>show</code>のインスタンスを期待する外部JavaScript関数を書くことから始めます。</p>
 <pre><code class="language-js">export const boldImpl = show =&gt; x =&gt;
-  show(x).toUpperCase() + &quot;!!!&quot;;
+  show(x).toUpperCase() + "!!!";
 </code></pre>
 <p>それから対応するシグネチャを書きます。</p>
 <pre><code class="language-hs">foreign import boldImpl :: forall a. (a -&gt; String) -&gt; a -&gt; String
@@ -5393,16 +5396,16 @@ bold = boldImpl show
 
 &gt; import Test.Examples
 &gt; import Data.Tuple
-&gt; bold (Tuple 1 &quot;Hat&quot;)
-&quot;(TUPLE 1 \&quot;HAT\&quot;)!!!&quot;
+&gt; bold (Tuple 1 "Hat")
+"(TUPLE 1 \"HAT\")!!!"
 </code></pre>
 <p>以下は複数の関数を渡す別の実演例です。
 これらの関数には複数引数の関数 (<code>eq</code>) が含まれます。</p>
 <pre><code class="language-js">export const showEqualityImpl = eq =&gt; show =&gt; a =&gt; b =&gt; {
   if (eq(a)(b)) {
-    return &quot;Equivalent&quot;;
+    return "Equivalent";
   } else {
-    return show(a) + &quot; is not equal to &quot; + show(b);
+    return show(a) + " is not equal to " + show(b);
   }
 }
 </code></pre>
@@ -5416,14 +5419,14 @@ showEquality = showEqualityImpl eq show
 &gt; import Test.Examples
 &gt; import Data.Maybe
 &gt; showEquality Nothing (Just 5)
-&quot;Nothing is not equal to (Just 5)&quot;
+"Nothing is not equal to (Just 5)"
 </code></pre>
 <h2 id="作用のある関数"><a class="header" href="#作用のある関数">作用のある関数</a></h2>
 <p><code>bold</code>関数を拡張してコンソールにログ出力するようにしましょう。
 ログ出力は<code>Effect</code>であり、<code>Effect</code>はJavaScriptにおいて無引数関数として表現されます。
 つまり<code>()</code>と矢印記法だとこうです。</p>
 <pre><code class="language-js">export const yellImpl = show =&gt; x =&gt; () =&gt;
-  console.log(show(x).toUpperCase() + &quot;!!!&quot;);
+  console.log(show(x).toUpperCase() + "!!!");
 </code></pre>
 <p>新しくなった外部インポートは、返る型が<code>String</code>から<code>Effect Unit</code>に変わった点以外は以前と同じです。</p>
 <pre><code class="language-hs">foreign import yellImpl :: forall a. (a -&gt; String) -&gt; a -&gt; Effect Unit
@@ -5436,8 +5439,8 @@ yell = yellImpl show
 
 &gt; import Test.Examples
 &gt; import Data.Tuple
-&gt; yell (Tuple 1 &quot;Hat&quot;)
-(TUPLE 1 &quot;HAT&quot;)!!!
+&gt; yell (Tuple 1 "Hat")
+(TUPLE 1 "HAT")!!!
 unit
 </code></pre>
 <p><code>Effect.Uncurried</code>に梱包<code>EffectFn</code>というものもあります。
@@ -5449,7 +5452,7 @@ unit
 <p>翻って以前の<code>diagonal</code>の例を変更し、結果を返すことに加えてログ出力を含めるとこうなります。</p>
 <pre><code class="language-js">export const diagonalLog = function(w, h) {
   let result = Math.sqrt(w * w + h * h);
-  console.log(&quot;Diagonal is &quot; + result);
+  console.log("Diagonal is " + result);
   return result;
 };
 </code></pre>
@@ -5490,9 +5493,9 @@ sleep = sleepImpl &gt;&gt;&gt; toAffE
 &gt; import Effect.Aff
 &gt; :pa
 … launchAff_ do
-…   log &quot;waiting&quot;
+…   log "waiting"
 …   sleep 300
-…   log &quot;done waiting&quot;
+…   log "done waiting"
 …
 waiting
 unit
@@ -5546,7 +5549,7 @@ unit
     sum += x;
     sums.push(sum);
   });
-  sums.push(&quot;Broken&quot;); // Bug
+  sums.push("Broken"); // Bug
   return sums;
 };
 
@@ -5614,10 +5617,10 @@ addComplexDecoded a b = decodeJson $ addComplexJson a b
 &gt; import Test.Examples
 
 &gt; cumulativeSumsDecoded [1, 2, 3]
-(Left &quot;Couldn't decode Array (Failed at index 3): Value is not a Number&quot;)
+(Left "Couldn't decode Array (Failed at index 3): Value is not a Number")
 
 &gt; addComplexDecoded { real: 1.0, imag: 2.0 } { real: 3.0, imag: 4.0 }
-(Left &quot;JSON was missing expected field: imag&quot;)
+(Left "JSON was missing expected field: imag")
 </code></pre>
 <p>正常に動作するバージョンで呼び出すと<code>Right</code>の値が返ります。</p>
 <p>次のREPLブロックを走らせる前に、正常に動作するバージョンを指すように、<code>test/Examples.js</code>へ以下の変更を加えて、手元で試してみましょう。</p>
@@ -5655,7 +5658,7 @@ mapSetFoo = encodeJson &gt;&gt;&gt; mapSetFooJson &gt;&gt;&gt; decodeJson
 なお、<code>Array.from</code>の工程は、JavaScriptの<code>Map</code>をJSONに親和性のある形式に変換し、デコードでPureScriptの<code>Map</code>に変換し直すために必須です。</p>
 <pre><code class="language-js">export const mapSetFooJson = j =&gt; {
   let m = new Map(j);
-  m.set(&quot;Foo&quot;, 42);
+  m.set("Foo", 42);
   return Array.from(m);
 };
 </code></pre>
@@ -5666,16 +5669,16 @@ mapSetFoo = encodeJson &gt;&gt;&gt; mapSetFooJson &gt;&gt;&gt; decodeJson
 &gt; import Data.Map
 &gt; import Data.Tuple
 
-&gt; myMap = fromFoldable [ Tuple &quot;hat&quot; 1, Tuple &quot;cat&quot; 2 ]
+&gt; myMap = fromFoldable [ Tuple "hat" 1, Tuple "cat" 2 ]
 
 &gt; :type myMap
 Map String Int
 
 &gt; myMap
-(fromFoldable [(Tuple &quot;cat&quot; 2),(Tuple &quot;hat&quot; 1)])
+(fromFoldable [(Tuple "cat" 2),(Tuple "hat" 1)])
 
 &gt; mapSetFoo myMap
-(Right (fromFoldable [(Tuple &quot;Foo&quot; 42),(Tuple &quot;cat&quot; 2),(Tuple &quot;hat&quot; 1)]))
+(Right (fromFoldable [(Tuple "Foo" 42),(Tuple "cat" 2),(Tuple "hat" 1)]))
 </code></pre>
 <h2 id="演習-31"><a class="header" href="#演習-31">演習</a></h2>
 <ol>
@@ -5704,7 +5707,7 @@ JavaScriptでは<code>Pair</code>構築子を使わないでください。
 </li>
 <li>
 <p>（普通）2次元配列を含むJSON文字列を構文解析してデコードする<code>parseAndDecodeArray2D :: String -&gt; Either String (Array (Array Int))</code>関数を書いてください。
-例えば<code>&quot;[[1, 2, 3], [4, 5], [6]]&quot;</code>です。
+例えば<code>"[[1, 2, 3], [4, 5], [6]]"</code>です。
 <em>手掛かり</em>：デコードの前に<code>jsonParser</code>を使って<code>String</code>を<code>Json</code>に変換する必要があるでしょう。</p>
 </li>
 <li>
@@ -5758,12 +5761,12 @@ export const getItem = key =&gt; () =&gt;
 <pre><code class="language-hs">saveButton :: R.JSX
 saveButton =
   D.label
-    { className: &quot;form-group row col-form-label&quot;
+    { className: "form-group row col-form-label"
     , children:
         [ D.button
-            { className: &quot;btn-primary btn&quot;
+            { className: "btn-primary btn"
             , onClick: handler_ validateAndSave
-            , children: [ D.text &quot;Save&quot; ]
+            , children: [ D.text "Save" ]
             }
         ]
     }
@@ -5771,12 +5774,12 @@ saveButton =
 <p>そして<code>validateAndSave</code>関数中では、検証された<code>person</code>をJSON文字列とし、<code>setItem</code>を使って書き込みます。</p>
 <pre><code class="language-hs">validateAndSave :: Effect Unit
 validateAndSave = do
-  log &quot;Running validators&quot;
+  log "Running validators"
   case validatePerson' person of
-    Left errs -&gt; log $ &quot;There are &quot; &lt;&gt; show (length errs) &lt;&gt; &quot; validation errors.&quot;
+    Left errs -&gt; log $ "There are " &lt;&gt; show (length errs) &lt;&gt; " validation errors."
     Right validPerson -&gt; do
-      setItem &quot;person&quot; $ stringify $ encodeJson validPerson
-      log &quot;Saved&quot;
+      setItem "person" $ stringify $ encodeJson validPerson
+      log "Saved"
 </code></pre>
 <p>なお、この段階でコンパイルしようとすると以下のエラーに遭遇します。</p>
 <pre><code class="language-text">  No type class instance was found for
@@ -5799,7 +5802,7 @@ instance DecodeJson PhoneType where decodeJson = genericDecodeJson
 しかしデータを取得できない限りあまり便利ではありません。
 次はそれに取り掛かりましょう。</p>
 <p>ローカルストレージから「person」文字列で取得することから始めましょう。</p>
-<pre><code class="language-hs">item &lt;- getItem &quot;person&quot;
+<pre><code class="language-hs">item &lt;- getItem "person"
 </code></pre>
 <p>そうしてローカルストレージ由来の文字列から<code>Person</code>レコードへ変換する補助関数を作ります。
 なお、このストレージ中の文字列は<code>null</code>かもしれないので、正常に<code>String</code>としてデコードされるまでは外部の<code>Json</code>として表現します。
@@ -5816,7 +5819,7 @@ processItem item = do
 そうでなければローカルストレージから取得した人物を使います。</p>
 <pre><code class="language-hs">initialPerson &lt;- case processItem item of
   Left  err -&gt; do
-    log $ &quot;Error: &quot; &lt;&gt; err &lt;&gt; &quot;. Loading examplePerson&quot;
+    log $ "Error: " &lt;&gt; err &lt;&gt; ". Loading examplePerson"
     pure examplePerson
   Right p   -&gt; pure p
 </code></pre>
@@ -5827,15 +5830,15 @@ app = element addressBookApp { initialPerson }
 <p>そして状態フックで使うために別の箇所で拾い上げます。</p>
 <pre><code class="language-hs">mkAddressBookApp :: Effect (ReactComponent { initialPerson :: Person })
 mkAddressBookApp =
-  reactComponent &quot;AddressBookApp&quot; \props -&gt; R.do
+  reactComponent "AddressBookApp" \props -&gt; R.do
     Tuple person setPerson &lt;- useState props.initialPerson
 </code></pre>
 <p>仕上げとして、各<code>Left</code>値の<code>String</code>に<code>lmap</code>を使って前置し、エラー文言の質を向上させます。</p>
 <pre><code class="language-hs">processItem :: Json -&gt; Either String Person
 processItem item = do
-  jsonString &lt;- lmap (&quot;No string in local storage: &quot; &lt;&gt; _) $ decodeJson item
-  j          &lt;- lmap (&quot;Cannot parse JSON string: &quot;   &lt;&gt; _) $ jsonParser jsonString
-  lmap               (&quot;Cannot decode Person: &quot;       &lt;&gt; _) $ decodeJson j
+  jsonString &lt;- lmap ("No string in local storage: " &lt;&gt; _) $ decodeJson item
+  j          &lt;- lmap ("Cannot parse JSON string: "   &lt;&gt; _) $ jsonParser jsonString
+  lmap               ("Cannot decode Person: "       &lt;&gt; _) $ decodeJson j
 </code></pre>
 <p>最初のエラーのみがこのアプリの通常の操作内で起こります。
 他のエラーはwebブラウザの開発ツールを開いてローカルストレージ中に保存された「person」文字列を編集し、そのページを参照することで引き起こせます。
@@ -5858,9 +5861,9 @@ webブラウザなどです。</p>
 <li>状態がローカルストレージから取得できない。</li>
 </ul>
 <p>以上は単に以下の行で<code>log</code>を<code>alert</code>に置き換えるだけで達成できます。</p>
-<pre><code class="language-hs">Left errs -&gt; alert $ &quot;There are &quot; &lt;&gt; show (length errs) &lt;&gt; &quot; validation errors.&quot;
+<pre><code class="language-hs">Left errs -&gt; alert $ "There are " &lt;&gt; show (length errs) &lt;&gt; " validation errors."
 
-alert $ &quot;Error: &quot; &lt;&gt; err &lt;&gt; &quot;. Loading examplePerson&quot;
+alert $ "Error: " &lt;&gt; err &lt;&gt; ". Loading examplePerson"
 </code></pre>
 <h2 id="演習-32"><a class="header" href="#演習-32">演習</a></h2>
 <ol>
@@ -6039,7 +6042,7 @@ identity a = a
 この追加の条件は、以下のJavaScriptの関数のような問題のある実装が多相型に現住することを防止します。</p>
 <pre><code class="language-javascript">function invalid(a) {
     if (typeof a === 'string') {
-        return &quot;Argument was a string.&quot;;
+        return "Argument was a string.";
     } else {
         return a;
     }
@@ -6058,12 +6061,12 @@ identity a = a
 この辞書には選ばれたインスタンスから提供される型クラスの関数の実装が含まれます。</p>
 <p>例えば以下は、<code>Show</code>型クラスを使う制約付きの型を持つ、単純なPureScript関数です。</p>
 <pre><code class="language-haskell">shout :: forall a. Show a =&gt; a -&gt; String
-shout a = show a &lt;&gt; &quot;!!!&quot;
+shout a = show a &lt;&gt; "!!!"
 </code></pre>
 <p>生成されるJavaScriptは次のようになります。</p>
 <pre><code class="language-javascript">var shout = function (dict) {
     return function (a) {
-        return show(dict)(a) + &quot;!!!&quot;;
+        return show(dict)(a) + "!!!";
     };
 };
 </code></pre>
@@ -6157,7 +6160,7 @@ Available options:
 <p>コマンドライン引数を与えるためには、追加の引数を直接アプリケーションに渡す<code>-a</code>オプション付きで<code>spago run</code>を呼び出すか、<code>spago bundle-app</code>とすればよいです。
 2つ目の方法では<code>node</code>で直接走らせられるindex.jsファイルが作られます。</p>
 <p>例えば<code>-p</code>オプションを使ってプレイヤー名を与えるには次のようにします。</p>
-<pre><code class="language-text">$ spago run -a &quot;-p Phil&quot;
+<pre><code class="language-text">$ spago run -a "-p Phil"
 &gt;
 </code></pre>
 <pre><code class="language-text">$ spago bundle-app 
@@ -6170,7 +6173,7 @@ $ node index.js -p Phil
 ゲームにはアイテムの集まりがあり、プレイヤーの所有物であったり、ゲームの盤上の特定の位置にあったりします。
 <code>take</code>コマンドを使うと、プレイヤーはアイテムを拾い上げられます。</p>
 <p>参考までに、このゲームのひと通りの流れは次のようになります。</p>
-<pre><code class="language-text">$ spago run -a &quot;-p Phil&quot;
+<pre><code class="language-text">$ spago run -a "-p Phil"
 
 &gt; look
 You are at (0, 0)
@@ -6255,16 +6258,16 @@ runState  :: forall s a. State s a -&gt; s -&gt; Tuple a s
 </code></pre>
 <p>これは、まだ閉じられていない開括弧の数を把握することで、括弧の<code>String</code>が平衡しているかどうかを調べる関数です。
 この関数は次のように動作します。</p>
-<pre><code class="language-text">&gt; testParens &quot;&quot;
+<pre><code class="language-text">&gt; testParens ""
 true
 
-&gt; testParens &quot;(()(())())&quot;
+&gt; testParens "(()(())())"
 true
 
-&gt; testParens &quot;)&quot;
+&gt; testParens ")"
 false
 
-&gt; testParens &quot;(()()&quot;
+&gt; testParens "(()()"
 false
 </code></pre>
 <p><em>手掛かり</em>：入力の文字列を文字の配列に変換するのに、<code>Data.String.CodeUnits</code>モジュールの <code>toCharArray</code>関数を使うと良いでしょう。</p>
@@ -6290,13 +6293,13 @@ addPermission :: String -&gt; Permissions -&gt; Permissions
 <pre><code class="language-haskell">createUser :: Reader Permissions (Maybe User)
 createUser = do
   permissions &lt;- ask
-  if hasPermission &quot;admin&quot; permissions
+  if hasPermission "admin" permissions
     then map Just newUser
     else pure Nothing
 </code></pre>
 <p><code>local</code>動作を使うと、計算の実行中に <code>Permissions</code>オブジェクトを変更し、ユーザーの権限を昇格させることもできます。</p>
 <pre><code class="language-haskell">runAsAdmin :: forall a. Reader Permissions a -&gt; Reader Permissions a
-runAsAdmin = local (addPermission &quot;admin&quot;)
+runAsAdmin = local (addPermission "admin")
 </code></pre>
 <p>こうすると、利用者が <code>admin</code>権限を持っていなかった場合であっても新しい利用者を作成できるような関数を書くことができます。</p>
 <pre><code class="language-haskell">createUserAsAdmin :: Reader Permissions (Maybe User)
@@ -6342,11 +6345,11 @@ type Doc = Reader Level String
 </ol>
 <p>これでライブラリを使って以下のような単純な文書を書けるようになりました。</p>
 <pre><code class="language-haskell">render $ cat
-  [ line &quot;Here is some indented text:&quot;
+  [ line "Here is some indented text:"
   , indent $ cat
-      [ line &quot;I am indented&quot;
-      , line &quot;So am I&quot;
-      , indent $ line &quot;I am even more indented&quot;
+      [ line "I am indented"
+      , line "So am I"
+      , indent $ line "I am even more indented"
       ]
   ]
 </code></pre>
@@ -6379,7 +6382,7 @@ gcdLog :: Int -&gt; Int -&gt; Writer (Array String) Int
 <pre><code class="language-haskell">    gcdLog n 0 = pure n
     gcdLog 0 m = pure m
     gcdLog n m = do
-      tell [&quot;gcdLog &quot; &lt;&gt; show n &lt;&gt; &quot; &quot; &lt;&gt; show m]
+      tell ["gcdLog " &lt;&gt; show n &lt;&gt; " " &lt;&gt; show m]
       if n &gt; m
         then gcdLog (n - m) m
         else gcdLog n (m - n)
@@ -6395,7 +6398,7 @@ runWriter  :: forall w a. Writer w a -&gt; Tuple a w
 &gt; import Control.Monad.Writer.Class
 
 &gt; runWriter (gcdLog 21 15)
-Tuple 3 [&quot;gcdLog 21 15&quot;,&quot;gcdLog 6 15&quot;,&quot;gcdLog 6 9&quot;,&quot;gcdLog 6 3&quot;,&quot;gcdLog 3 3&quot;]
+Tuple 3 ["gcdLog 21 15","gcdLog 6 15","gcdLog 6 9","gcdLog 6 3","gcdLog 3 3"]
 </code></pre>
 <h2 id="演習-36"><a class="header" href="#演習-36">演習</a></h2>
 <ol>
@@ -6472,24 +6475,24 @@ split :: StateT String (Either String) String
 split = do
   s &lt;- get
   case s of
-    &quot;&quot; -&gt; lift $ Left &quot;Empty string&quot;
+    "" -&gt; lift $ Left "Empty string"
     _ -&gt; do
       put (drop 1 s)
       pure (take 1 s)
 </code></pre>
 <p>状態が空でなければ、この計算は<code>put</code>を使って状態を<code>drop 1 s</code>（つまり<code>s</code>から最初の文字を取り除いたもの）へと更新し、<code>take 1 s</code>（<code>s</code>の最初の文字）を返します。</p>
 <p>それではPSCiでこれを試してみましょう。</p>
-<pre><code class="language-text">&gt; runStateT split &quot;test&quot;
-Right (Tuple &quot;t&quot; &quot;est&quot;)
+<pre><code class="language-text">&gt; runStateT split "test"
+Right (Tuple "t" "est")
 
-&gt; runStateT split &quot;&quot;
-Left &quot;Empty string&quot;
+&gt; runStateT split ""
+Left "Empty string"
 </code></pre>
 <p>これは<code>StateT</code>を使わなくても実装できるので、さほど驚くようなことはありません。
 しかし、モナドの中で扱っているので、do記法やアプリカティブコンビネータを使って、小さな計算から大きな計算を構築できます。
 例えば、2回<code>split</code>を適用すると、文字列から最初の2文字を読めます。</p>
-<pre><code class="language-text">&gt; runStateT ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) &quot;test&quot;
-(Right (Tuple &quot;te&quot; &quot;st&quot;))
+<pre><code class="language-text">&gt; runStateT ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) "test"
+(Right (Tuple "te" "st"))
 </code></pre>
 <p><code>split</code>関数とその他沢山の動作を使えば基本的な構文解析ライブラリを構築できます。
 実際、これは<code>parsing</code>ライブラリで採用されている手法です。
@@ -6524,16 +6527,16 @@ import Control.Monad.Writer
 
 writerAndExceptT :: ExceptT String (Writer (Array String)) String
 writerAndExceptT = do
-  lift $ tell [&quot;Before the error&quot;]
-  _ &lt;- throwError &quot;Error!&quot;
-  lift $ tell [&quot;After the error&quot;]
-  pure &quot;Return value&quot;
+  lift $ tell ["Before the error"]
+  _ &lt;- throwError "Error!"
+  lift $ tell ["After the error"]
+  pure "Return value"
 </code></pre>
 <p>PSCiでこの関数を試すと、ログの蓄積とエラーの送出という2つの作用がどのように相互作用しているのかを見ることができます。
 まず、 <code>runExceptT</code>を使って外側の<code>ExceptT</code>を計算し、型 <code>Writer (Array String) (Either String String)</code>の結果を残します。
 それから、 <code>runWriter</code>で内側の<code>Writer</code>を計算します。</p>
 <pre><code class="language-text">&gt; runWriter $ runExceptT writerAndExceptT
-Tuple (Left &quot;Error!&quot;) [&quot;Before the error&quot;]
+Tuple (Left "Error!") ["Before the error"]
 </code></pre>
 <p>なお、エラーが投げられる前に書き出されるログ文言だけがログに追記されます。</p>
 <h2 id="モナド変換子スタック"><a class="header" href="#モナド変換子スタック">モナド変換子スタック</a></h2>
@@ -6558,9 +6561,9 @@ type Parser = StateT String (WriterT Log (ExceptT Errors Identity))
 split :: Parser String
 split = do
   s &lt;- get
-  lift $ tell [&quot;The state is &quot; &lt;&gt; s]
+  lift $ tell ["The state is " &lt;&gt; s]
   case s of
-    &quot;&quot; -&gt; lift $ lift $ throwError [&quot;Empty string&quot;]
+    "" -&gt; lift $ lift $ throwError ["Empty string"]
     _ -&gt; do
       put (drop 1 s)
       pure (take 1 s)
@@ -6571,15 +6574,15 @@ split = do
 最後に<code>unwrap</code>を使用して<code>Identity</code>モナド中で計算します。</p>
 <pre><code class="language-text">&gt; runParser p s = unwrap $ runExceptT $ runWriterT $ runStateT p s
 
-&gt; runParser split &quot;test&quot;
-(Right (Tuple (Tuple &quot;t&quot; &quot;est&quot;) [&quot;The state is test&quot;]))
+&gt; runParser split "test"
+(Right (Tuple (Tuple "t" "est") ["The state is test"]))
 
-&gt; runParser ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) &quot;test&quot;
-(Right (Tuple (Tuple &quot;te&quot; &quot;st&quot;) [&quot;The state is test&quot;, &quot;The state is est&quot;]))
+&gt; runParser ((&lt;&gt;) &lt;$&gt; split &lt;*&gt; split) "test"
+(Right (Tuple (Tuple "te" "st") ["The state is test", "The state is est"]))
 </code></pre>
 <p>しかし、状態が空であることが理由で解析が失敗した場合、ログは全く出力されません。</p>
-<pre><code class="language-text">&gt; runParser split &quot;&quot;
-(Left [&quot;Empty string&quot;])
+<pre><code class="language-text">&gt; runParser split ""
+(Left ["Empty string"])
 </code></pre>
 <p>これは、<code>ExceptT</code>モナド変換子が提供する副作用と<code>WriterT</code>モナド変換子が提供する副作用との関係によるものです。
 これはモナド変換子スタックが構成されている順序を変更することで対処できます。
@@ -6601,8 +6604,8 @@ split = do
 </code></pre>
 <p>これは現在の状態が接頭辞に照合するか、もしくはエラー文言とともに失敗します。</p>
 <p>この構文解析器は次のように動作します。</p>
-<pre><code class="language-text">&gt; runParser (string &quot;abc&quot;) &quot;abcdef&quot;
-(Right (Tuple (Tuple &quot;abc&quot; &quot;def&quot;) [&quot;The state is abcdef&quot;]))
+<pre><code class="language-text">&gt; runParser (string "abc") "abcdef"
+(Right (Tuple (Tuple "abc" "def") ["The state is abcdef"]))
 </code></pre>
 <p><em>手掛かり</em>：出発点として<code>split</code>の実装が使えます。
 <code>stripPrefix</code>関数も役に立つかもしれません。</p>
@@ -6640,9 +6643,9 @@ modify :: forall m s. MonadState s m =&gt; (s -&gt; s) -&gt; m Unit
 <pre><code class="language-haskell">split :: Parser String
 split = do
   s &lt;- get
-  tell [&quot;The state is &quot; &lt;&gt; show s]
+  tell ["The state is " &lt;&gt; show s]
   case s of
-    &quot;&quot; -&gt; throwError [&quot;Empty string&quot;]
+    "" -&gt; throwError ["Empty string"]
     _ -&gt; do
       put (drop 1 s)
       pure (take 1 s)
@@ -6675,15 +6678,15 @@ some :: forall f a. Alternative f =&gt; Lazy (f (Array a)) =&gt; f a -&gt; f (Ar
 これは、構文解析器を複数回実行するのに<code>many</code>関数と<code>some</code>関数を使うことができることを意味します。</p>
 <pre><code class="language-text">&gt; import Data.Array (many)
 
-&gt; runParser (many split) &quot;test&quot;
-(Right (Tuple (Tuple [&quot;t&quot;, &quot;e&quot;, &quot;s&quot;, &quot;t&quot;] &quot;&quot;)
-              [ &quot;The state is \&quot;test\&quot;&quot;
-              , &quot;The state is \&quot;est\&quot;&quot;
-              , &quot;The state is \&quot;st\&quot;&quot;
-              , &quot;The state is \&quot;t\&quot;&quot;
+&gt; runParser (many split) "test"
+(Right (Tuple (Tuple ["t", "e", "s", "t"] "")
+              [ "The state is \"test\""
+              , "The state is \"est\""
+              , "The state is \"st\""
+              , "The state is \"t\""
               ]))
 </code></pre>
-<p>ここでは入力文字列 <code>&quot;test&quot;</code>は、1文字からなる文字列4つの配列を返すように繰り返し分割されています。
+<p>ここでは入力文字列 <code>"test"</code>は、1文字からなる文字列4つの配列を返すように繰り返し分割されています。
 残った状態は空で、ログは <code>split</code>コンビネータが4回適用されたことを示しています。</p>
 <h2 id="モナド内包表記"><a class="header" href="#モナド内包表記">モナド内包表記</a></h2>
 <p><code>Control.MonadPlus</code>モジュールには <code>MonadPlus</code>と呼ばれる<code>Alternative</code>型クラスの副クラスが定義されています。
@@ -6720,26 +6723,26 @@ lower = do
 <pre><code class="language-text">&gt; upperOrLower = some upper &lt;|&gt; some lower
 </code></pre>
 <p>この構文解析器は、大文字と小文字が切り替わるまで、文字に照合し続けます。</p>
-<pre><code class="language-text">&gt; runParser upperOrLower &quot;abcDEF&quot;
-(Right (Tuple (Tuple [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;] (&quot;DEF&quot;))
-              [ &quot;The state is \&quot;abcDEF\&quot;&quot;
-              , &quot;The state is \&quot;bcDEF\&quot;&quot;
-              , &quot;The state is \&quot;cDEF\&quot;&quot;
+<pre><code class="language-text">&gt; runParser upperOrLower "abcDEF"
+(Right (Tuple (Tuple ["a","b","c"] ("DEF"))
+              [ "The state is \"abcDEF\""
+              , "The state is \"bcDEF\""
+              , "The state is \"cDEF\""
               ]))
 </code></pre>
 <p>また、<code>many</code>を使うと文字列を小文字と大文字の要素に完全に分割できます。</p>
 <pre><code class="language-text">&gt; components = many upperOrLower
 
-&gt; runParser components &quot;abCDeFgh&quot;
-(Right (Tuple (Tuple [[&quot;a&quot;,&quot;b&quot;],[&quot;C&quot;,&quot;D&quot;],[&quot;e&quot;],[&quot;F&quot;],[&quot;g&quot;,&quot;h&quot;]] &quot;&quot;)
-              [ &quot;The state is \&quot;abCDeFgh\&quot;&quot;
-              , &quot;The state is \&quot;bCDeFgh\&quot;&quot;
-              , &quot;The state is \&quot;CDeFgh\&quot;&quot;
-              , &quot;The state is \&quot;DeFgh\&quot;&quot;
-              , &quot;The state is \&quot;eFgh\&quot;&quot;
-              , &quot;The state is \&quot;Fgh\&quot;&quot;
-              , &quot;The state is \&quot;gh\&quot;&quot;
-              , &quot;The state is \&quot;h\&quot;&quot;
+&gt; runParser components "abCDeFgh"
+(Right (Tuple (Tuple [["a","b"],["C","D"],["e"],["F"],["g","h"]] "")
+              [ "The state is \"abCDeFgh\""
+              , "The state is \"bCDeFgh\""
+              , "The state is \"CDeFgh\""
+              , "The state is \"DeFgh\""
+              , "The state is \"eFgh\""
+              , "The state is \"Fgh\""
+              , "The state is \"gh\""
+              , "The state is \"h\""
               ]))
 </code></pre>
 <p>繰り返しになりますが、これはモナド変換子が齎す再利用性の威力を示しています。
@@ -6752,7 +6755,7 @@ lower = do
 </li>
 <li>
 <p>（普通）<code>string</code>構文解析器と<code>some</code>コンビネータを使って構文解析器<code>asFollowedByBs</code>を書いてください。
-これは文字列<code>&quot;a&quot;</code>の連続と、それに続く文字列<code>&quot;b&quot;</code>の連続からなる文字列を認識するものです。</p>
+これは文字列<code>"a"</code>の連続と、それに続く文字列<code>"b"</code>の連続からなる文字列を認識するものです。</p>
 </li>
 <li>
 <p>（普通）<code>&lt;|&gt;</code>演算子を使って構文解析器<code>asOrBs</code>を書いてください。
@@ -6853,7 +6856,7 @@ pickUp item = do
           put $ GameState state { items     = newItems
                                 , inventory = newInventory
                                 }
-          tell (L.singleton (&quot;You now have the &quot; &lt;&gt; show item))
+          tell (L.singleton ("You now have the " &lt;&gt; show item))
 </code></pre>
 <p>ここで2つの計算のどちらも<code>lift</code>が必要ないことに注意してください。
 なぜなら<code>MonadState</code>と<code>MonadWriter</code>の両方について<code>Game</code>モナド変換子スタック用の適切なインスタンスが存在するからです。</p>
@@ -6862,7 +6865,7 @@ pickUp item = do
 今回の場合、プレイヤーの現在の位置にあるアイテムの集合を変更するのに、<code>delete</code>関数を使って指定したアイテムを集合から取り除いています。
 <code>insert</code>を使って新しいアイテムをプレイヤーの持ち物の集合に加えるときにも、<code>inventory</code>は更新されます。</p>
 <p>最後に、<code>pickUp</code>関数は<code>tell</code>を使ってユーザに通知することにより、残りの場合を処理します。</p>
-<pre><code class="language-haskell">    _ -&gt; tell (L.singleton &quot;I don't see that item here.&quot;)
+<pre><code class="language-haskell">    _ -&gt; tell (L.singleton "I don't see that item here.")
 </code></pre>
 <p><code>Reader</code>モナドを使う例として、 <code>debug</code>コマンドのコードを見てみましょう。
 ゲームがデバッグモードで実行されている場合、このコマンドを使うとユーザは実行時にゲームの状態を調べることができます。</p>
@@ -6871,7 +6874,7 @@ pickUp item = do
     then do
       state :: GameState &lt;- get
       tell (L.singleton (show state))
-    else tell (L.singleton &quot;Not running in debug mode.&quot;)
+    else tell (L.singleton "Not running in debug mode.")
 </code></pre>
 <p>ここでは、ゲームの構成を読み込むために<code>ask</code>動作を使用しています。
 繰り返しますが、どの計算でも<code>lift</code>する必要がなく、同じdo記法ブロック内で<code>MonadState</code>、<code>MonadReader</code>、<code>MonadWriter</code>型クラスで定義されている動作を使える点に注意してください。</p>
@@ -6919,13 +6922,13 @@ runGame env = do
 </code></pre>
 <p>最初の工程はコンソールにプロンプトを設定することです。
 <code>interface</code>制御対象を渡し、プロンプト文字列と字下げレベルを与えます。</p>
-<pre><code class="language-haskell">  RL.setPrompt &quot;&gt; &quot; interface
+<pre><code class="language-haskell">  RL.setPrompt "&gt; " interface
 </code></pre>
 <p>今回は行制御関数を実装することに関心があります。
 ここでの行制御は<code>let</code>宣言内の補助関数を使って次のように定義されています。</p>
 <pre><code class="language-haskell">    lineHandler :: GameState -&gt; String -&gt; Effect Unit
     lineHandler currentState input = do
-      case runRWS (game (split (wrap &quot; &quot;) input)) env currentState of
+      case runRWS (game (split (wrap " ") input)) env currentState of
         RWSResult state _ written -&gt; do
           for_ written log
           RL.setLineHandler (lineHandler state) $ interface
@@ -6979,8 +6982,8 @@ runGame env = do
 
   parserOptions = fold 
     [ OP.fullDesc
-    , OP.progDesc &quot;Play the game as &lt;player name&gt;&quot;
-    , OP.header &quot;Monadic Adventures! A game to learn monad transformers&quot; 
+    , OP.progDesc "Play the game as &lt;player name&gt;"
+    , OP.header "Monadic Adventures! A game to learn monad transformers" 
     ]
 </code></pre>
 <p>ここで<code>OP.info</code>は、<code>Parser</code>をヘルプ文言の書式方法のためのオプションの集合と組み合わせます。
@@ -6992,17 +6995,17 @@ runGame env = do
 
   player :: OP.Parser String
   player = OP.strOption $ fold 
-    [ OP.long &quot;player&quot;
+    [ OP.long "player"
     , OP.short 'p'
-    , OP.metavar &quot;&lt;player name&gt;&quot;
-    , OP.help &quot;The player's name &lt;String&gt;&quot;
+    , OP.metavar "&lt;player name&gt;"
+    , OP.help "The player's name &lt;String&gt;"
     ]
 
   debug :: OP.Parser Boolean
   debug = OP.switch $ fold 
-    [ OP.long &quot;debug&quot;
+    [ OP.long "debug"
     , OP.short 'd'
-    , OP.help &quot;Use debug mode&quot;
+    , OP.help "Use debug mode"
     ]
 </code></pre>
 <p><code>player</code>と<code>debug</code>は両方とも<code>Parser</code>なので、アプリカティブ演算子<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>を使って<code>gameEnvironment</code>関数を持ち上げられます。
@@ -7054,7 +7057,7 @@ APIを扱うための<code>Effect</code>モナドの動作を含む<code>Graphic
 例では<code>main</code>がシグネチャに沿うようにするために使われています。</p>
 <pre><code class="language-haskell">main :: Effect Unit
 main = void $ unsafePartial do
-  Just canvas &lt;- getCanvasElementById &quot;canvas&quot;
+  Just canvas &lt;- getCanvasElementById "canvas"
   ctx &lt;- getContext2D canvas
 </code></pre>
 <p><em>補足</em>：この<code>unsafePartial</code>の呼び出しは必須です。
@@ -7070,7 +7073,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
 <p>グラフィックス文脈<code>ctx</code>はキャンバスの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用したりするための手段を提供します。</p>
 <p>話を進めると、<code>setFillStyle</code>動作を使うことで塗り潰しスタイルを濃い青に設定できます。
 より長い16進数記法の<code>#0000FF</code>も青には使えますが、単純な色については略記法がより簡単です。</p>
-<pre><code class="language-haskell">  setFillStyle ctx &quot;#00F&quot;
+<pre><code class="language-haskell">  setFillStyle ctx "#00F"
 </code></pre>
 <p><code>setFillStyle</code>動作がグラフィックス文脈を引数として取っていることに注意してください。
 これは<code>Graphics.Canvas</code>ではよくあるパターンです。</p>
@@ -7154,7 +7157,7 @@ translate dx dy shape = shape
 <p><code>Shapes</code>の例からわかるように、<code>translate</code>関数は<code>Rectangle</code>レコードと<code>Arc</code>レコード双方に対して使えます。</p>
 <p><code>Shape</code>の例で描画される3つ目の型は線分の断片からなるパスです。
 対応するコードは次のようになります。</p>
-<pre><code class="language-haskell">  setFillStyle ctx &quot;#F00&quot;
+<pre><code class="language-haskell">  setFillStyle ctx "#F00"
 
   fillPath ctx $ do
     moveTo ctx 300.0 260.0
@@ -7209,8 +7212,8 @@ translate dx dy shape = shape
 1つの副作用は乱数生成で、もう1つはキャンバスの操作です。
 この例では無作為に生成された円をキャンバスに100個描画します。</p>
 <p><code>main</code>動作ではこれまでのようにグラフィックス文脈への参照を取得し、線描きと塗り潰しのスタイルを設定します。</p>
-<pre><code class="language-haskell">  setFillStyle ctx &quot;#F00&quot;
-  setStrokeStyle ctx &quot;#000&quot;
+<pre><code class="language-haskell">  setFillStyle ctx "#F00"
+  setStrokeStyle ctx "#000"
 </code></pre>
 <p>次のコードでは<code>for_</code>動作を使って<code>0</code>から<code>100</code>までの整数について反復しています。</p>
 <pre><code class="language-haskell">  for_ (1 .. 100) \_ -&gt; do
@@ -7376,7 +7379,7 @@ system</em>）を描画する関数を記述します。</p>
 R -&gt; R
 F -&gt; FLFRRFLF
 </code></pre>
-<p>配列 &quot;FRRFRRFRR&quot; から始めて処理を繰り返すと、次のような経過を辿ります。</p>
+<p>配列 "FRRFRRFRR" から始めて処理を繰り返すと、次のような経過を辿ります。</p>
 <pre><code class="language-text">FRRFRRFRR
 FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...
@@ -7662,7 +7665,7 @@ Test returned false
     result = merge (sort xs) (sort ys)
     expected = sort $ xs &lt;&gt; ys
   in
-    eq result expected &lt;?&gt; &quot;Result:\n&quot; &lt;&gt; show result &lt;&gt; &quot;\nnot equal to expected:\n&quot; &lt;&gt; show expected
+    eq result expected &lt;?&gt; "Result:\n" &lt;&gt; show result &lt;&gt; "\nnot equal to expected:\n" &lt;&gt; show expected
 </code></pre>
 <p>このとき、もしバグを混入するようにコードを変更すると、最初のテスト項目が失敗したときに改良されたエラー文言が表示されます。</p>
 <pre><code class="language-text">Error: Test 1 (seed 534161891) failed:
@@ -7810,10 +7813,10 @@ false
 <pre><code class="language-haskell">&gt; import Data.String
 
 &gt; mergeWith length
-    [&quot;&quot;, &quot;ab&quot;, &quot;abcd&quot;]
-    [&quot;x&quot;, &quot;xyz&quot;]
+    ["", "ab", "abcd"]
+    ["x", "xyz"]
 
-[&quot;&quot;,&quot;x&quot;,&quot;ab&quot;,&quot;xyz&quot;,&quot;abcd&quot;]
+["","x","ab","xyz","abcd"]
 </code></pre>
 <p>このような関数をテストするにはどうしたらいいでしょうか。
 理想的には、関数である最初の引数を含めた3つの引数全てについて、値を生成したいところです。</p>
@@ -7999,20 +8002,20 @@ PSCiで明示的に適当な型の値を構築し、ライブラリのこのバ�
 
 &gt; :paste
 … log $ render $ Element
-…   { name: &quot;p&quot;
+…   { name: "p"
 …   , attribs: [
 …       Attribute
-…         { key: &quot;class&quot;
-…         , value: &quot;main&quot;
+…         { key: "class"
+…         , value: "main"
 …         }
 …     ]
 …   , content: Just [
-…       TextContent &quot;Hello World!&quot;
+…       TextContent "Hello World!"
 …     ]
 …   }
 … ^D
 
-&lt;p class=&quot;main&quot;&gt;Hello World!&lt;/p&gt;
+&lt;p class="main"&gt;Hello World!&lt;/p&gt;
 unit
 </code></pre>
 <p>現状のライブラリには幾つもの問題があります。</p>
@@ -8043,13 +8046,13 @@ element name attribs content = Element
 <p>次にHTML要素のためのスマート構築子を作成します。
 この要素は利用者が<code>element</code>関数を適用して作成できるようになってほしいものです。</p>
 <pre><code class="language-haskell">a :: Array Attribute -&gt; Array Content -&gt; Element
-a attribs content = element &quot;a&quot; attribs (Just content)
+a attribs content = element "a" attribs (Just content)
 
 p :: Array Attribute -&gt; Array Content -&gt; Element
-p attribs content = element &quot;p&quot; attribs (Just content)
+p attribs content = element "p" attribs (Just content)
 
 img :: Array Attribute -&gt; Element
-img attribs = element &quot;img&quot; attribs Nothing
+img attribs = element "img" attribs Nothing
 </code></pre>
 <p>最後に、正しいデータ構造だけが構築されることがわかっているこれらの関数をエクスポートするように、モジュールエクスポートリストを更新します。</p>
 <pre><code class="language-haskell">module Data.DOM.Smart
@@ -8116,19 +8119,19 @@ attribute (AttributeKey key) value = Attribute
 <code>AttributeKey</code>の値を構築する方法はありません。
 以下に幾つかの例を示します。</p>
 <pre><code class="language-haskell">href :: AttributeKey
-href = AttributeKey &quot;href&quot;
+href = AttributeKey "href"
 
 _class :: AttributeKey
-_class = AttributeKey &quot;class&quot;
+_class = AttributeKey "class"
 
 src :: AttributeKey
-src = AttributeKey &quot;src&quot;
+src = AttributeKey "src"
 
 width :: AttributeKey
-width = AttributeKey &quot;width&quot;
+width = AttributeKey "width"
 
 height :: AttributeKey
-height = AttributeKey &quot;height&quot;
+height = AttributeKey "height"
 </code></pre>
 <p>新しいモジュールの最終的なエクスポートリストは次のようになります。
 最早どのデータ構築子も直接エクスポートしていない点に注目です。</p>
@@ -8161,9 +8164,9 @@ height = AttributeKey &quot;height&quot;
 &gt; import Prelude
 &gt; import Data.DOM.Smart
 &gt; import Effect.Console
-&gt; log $ render $ p [ _class := &quot;main&quot; ] [ text &quot;Hello World!&quot; ]
+&gt; log $ render $ p [ _class := "main" ] [ text "Hello World!" ]
 
-&lt;p class=&quot;main&quot;&gt;Hello World!&lt;/p&gt;
+&lt;p class="main"&gt;Hello World!&lt;/p&gt;
 unit
 </code></pre>
 <p>しかし、基盤をなすデータ表現は全く変更されなかったので、<code>render</code>関数を変更する必要はなかったことにも注目してください。
@@ -8185,12 +8188,12 @@ unit
 <h2 id="幻影型"><a class="header" href="#幻影型">幻影型</a></h2>
 <p>次の手法の動機付けとして、以下のコードを考えます。</p>
 <pre><code class="language-text">&gt; log $ render $ img
-    [ src    := &quot;cat.jpg&quot;
-    , width  := &quot;foo&quot;
-    , height := &quot;bar&quot;
+    [ src    := "cat.jpg"
+    , width  := "foo"
+    , height := "bar"
     ]
 
-&lt;img src=&quot;cat.jpg&quot; width=&quot;foo&quot; height=&quot;bar&quot; /&gt;
+&lt;img src="cat.jpg" width="foo" height="bar" /&gt;
 unit
 </code></pre>
 <p>ここでの問題は、 <code>width</code>属性と<code>height</code>属性に文字列値を提供しているということです。
@@ -8224,19 +8227,19 @@ instance IsValue Int where
 </code></pre>
 <p>また、これらの型が新しい型変数を反映するように、 <code>AttributeKey</code>定数を更新しなければいけません。</p>
 <pre><code class="language-haskell">href :: AttributeKey String
-href = AttributeKey &quot;href&quot;
+href = AttributeKey "href"
 
 _class :: AttributeKey String
-_class = AttributeKey &quot;class&quot;
+_class = AttributeKey "class"
 
 src :: AttributeKey String
-src = AttributeKey &quot;src&quot;
+src = AttributeKey "src"
 
 width :: AttributeKey Int
-width = AttributeKey &quot;width&quot;
+width = AttributeKey "width"
 
 height :: AttributeKey Int
-height = AttributeKey &quot;height&quot;
+height = AttributeKey "height"
 </code></pre>
 <p>これで、不正なHTML文書を表現することが不可能になっていることがわかります。
 また、<code>width</code>と <code>height</code>属性を表現するのに文字列ではなく数を使うことが強制されていることがわかります。</p>
@@ -8246,13 +8249,13 @@ height = AttributeKey &quot;height&quot;
 
 &gt; :paste
 … log $ render $ img
-…   [ src    := &quot;cat.jpg&quot;
+…   [ src    := "cat.jpg"
 …   , width  := 100
 …   , height := 200
 …   ]
 … ^D
 
-&lt;img src=&quot;cat.jpg&quot; width=&quot;100&quot; height=&quot;200&quot; /&gt;
+&lt;img src="cat.jpg" width="100" height="200" /&gt;
 unit
 </code></pre>
 <h2 id="演習-49"><a class="header" href="#演習-49">演習</a></h2>
@@ -8274,23 +8277,23 @@ data False
 <p>APIに施す最後の変更では、<code>Content</code>型をモナドにしてdo記法を使えるようにするために、<em>Freeモナド</em>と呼ばれる構造を使っていきます。
 これによって入れ子になった要素がわかりやすくなるような形式でHTML文書を構造化できます。
 以下の代わりに……</p>
-<pre><code class="language-haskell">p [ _class := &quot;main&quot; ]
+<pre><code class="language-haskell">p [ _class := "main" ]
   [ elem $ img
-      [ src    := &quot;cat.jpg&quot;
+      [ src    := "cat.jpg"
       , width  := 100
       , height := 200
       ]
-  , text &quot;A cat&quot;
+  , text "A cat"
   ]
 </code></pre>
 <p>このように書くことができるようになります。</p>
-<pre><code class="language-haskell">p [ _class := &quot;main&quot; ] $ do
+<pre><code class="language-haskell">p [ _class := "main" ] $ do
   elem $ img
-    [ src    := &quot;cat.jpg&quot;
+    [ src    := "cat.jpg"
     , width  := 100
     , height := 200
     ]
-  text &quot;A cat&quot;
+  text "A cat"
 </code></pre>
 <p>しかし、do記法だけがFreeモナドの恩恵ではありません。
 Freeモナドがあれば、モナドの動作の<em>表現</em>をその<em>解釈</em>から分離し、同じ動作に<em>複数の解釈</em>を持たせることさえできます。</p>
@@ -8381,10 +8384,10 @@ render = execWriter &lt;&lt;&lt; renderElement
     renderElement (Element e) = do
 </code></pre>
 <p><code>renderElement</code>の定義は直感的で、複数の小さな文字列を累算するために<code>Writer</code>モナドの<code>tell</code>動作を使っています。</p>
-<pre><code class="language-haskell">      tell &quot;&lt;&quot;
+<pre><code class="language-haskell">      tell "&lt;"
       tell e.name
       for_ e.attribs $ \x -&gt; do
-        tell &quot; &quot;
+        tell " "
         renderAttribute x
       renderContent e.content
 </code></pre>
@@ -8394,21 +8397,21 @@ render = execWriter &lt;&lt;&lt; renderElement
       renderAttribute :: Attribute -&gt; Writer String Unit
       renderAttribute (Attribute x) = do
         tell x.key
-        tell &quot;=\&quot;&quot;
+        tell "=\""
         tell x.value
-        tell &quot;\&quot;&quot;
+        tell "\""
 </code></pre>
 <p><code>renderContent</code>関数は、もっと興味深いものです。
 ここでは<code>runFreeM</code>関数を使い、Freeモナドの内部で計算を解釈しています。
 計算は補助関数 <code>renderContentItem</code>に移譲しています。</p>
 <pre><code class="language-haskell">      renderContent :: Maybe (Content Unit) -&gt; Writer String Unit
-      renderContent Nothing = tell &quot; /&gt;&quot;
+      renderContent Nothing = tell " /&gt;"
       renderContent (Just content) = do
-        tell &quot;&gt;&quot;
+        tell "&gt;"
         runFreeM renderContentItem content
-        tell &quot;&lt;/&quot;
+        tell "&lt;/"
         tell e.name
-        tell &quot;&gt;&quot;
+        tell "&gt;"
 </code></pre>
 <p><code>renderContentItem</code>の型は <code>runFreeM</code>の型シグネチャから推測できます。
 関手 <code>f</code>は型構築子 <code>ContentF</code>で、モナド <code>m</code>は解釈している計算のモナド、つまり <code>Writer String</code>です。
@@ -8433,11 +8436,11 @@ PSCiで、次のようにすれば新しいモナドのAPIを試すことがで�
 
 &gt; :paste
 … log $ render $ p [] $ do
-…   elem $ img [ src := &quot;cat.jpg&quot; ]
-…   text &quot;A cat&quot;
+…   elem $ img [ src := "cat.jpg" ]
+…   text "A cat"
 … ^D
 
-&lt;p&gt;&lt;img src=&quot;cat.jpg&quot; /&gt;A cat&lt;/p&gt;
+&lt;p&gt;&lt;img src="cat.jpg" /&gt;A cat&lt;/p&gt;
 unit
 </code></pre>
 <h2 id="演習-50"><a class="header" href="#演習-50">演習</a></h2>
@@ -8478,15 +8481,15 @@ runName (Name n) = n
 
 instance IsValue Href where
   toValue (URLHref url) = url
-  toValue (AnchorHref (Name nm)) = &quot;#&quot; &lt;&gt; nm
+  toValue (AnchorHref (Name nm)) = "#" &lt;&gt; nm
 </code></pre>
 <p>この新しい型により、<code>href</code>属性の型の値を変更して、利用者にこの新しい <code>Href</code>型の使用を強制できます。
 また、新しい<code>name</code>属性も作成でき、要素をアンカーに変換するのに使えます。</p>
 <pre><code class="language-haskell">href :: AttributeKey Href
-href = AttributeKey &quot;href&quot;
+href = AttributeKey "href"
 
 name :: AttributeKey Name
-name = AttributeKey &quot;name&quot;
+name = AttributeKey "name"
 </code></pre>
 <p>残っている問題は、現在モジュールの使用者が新しい名前を生成する方法がないということです。
 <code>Content</code>モナドでこの機能を提供できます。まず、 <code>ContentF</code>型構築子に新しいデータ構築子を追加する必要があります。</p>
@@ -8527,7 +8530,7 @@ render e = evalState (execWriterT (renderElement e)) 0
 <p>また、新しい <code>NewName</code>データ構築子を解釈するために、 <code>renderContentItem</code>に新しい場合を追加しなければいけません。</p>
 <pre><code class="language-haskell">renderContentItem (NewName k) = do
   n &lt;- get
-  let fresh = Name $ &quot;name&quot; &lt;&gt; show n
+  let fresh = Name $ "name" &lt;&gt; show n
   put $ n + 1
   pure (k fresh)
 </code></pre>
@@ -8545,12 +8548,12 @@ render e = evalState (execWriterT (renderElement e)) 0
 … render $ p [ ] $ do
 …   top &lt;- newName
 …   elem $ a [ name := top ] $
-…     text &quot;Top&quot;
+…     text "Top"
 …   elem $ a [ href := AnchorHref top ] $
-…     text &quot;Back to top&quot;
+…     text "Back to top"
 … ^D
 
-&lt;p&gt;&lt;a name=&quot;name0&quot;&gt;Top&lt;/a&gt;&lt;a href=&quot;#name0&quot;&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name="name0"&gt;Top&lt;/a&gt;&lt;a href="#name0"&gt;Back to top&lt;/a&gt;&lt;/p&gt;
 unit
 </code></pre>
 <p>複数回の<code>newName</code>の呼び出しの結果が、実際に一意な名前になっていることも確かめられます。</p>

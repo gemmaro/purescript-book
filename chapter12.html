@@ -203,7 +203,7 @@ APIを扱うための<code>Effect</code>モナドの動作を含む<code>Graphic
 例では<code>main</code>がシグネチャに沿うようにするために使われています。</p>
 <pre><code class="language-haskell">main :: Effect Unit
 main = void $ unsafePartial do
-  Just canvas &lt;- getCanvasElementById &quot;canvas&quot;
+  Just canvas &lt;- getCanvasElementById "canvas"
   ctx &lt;- getContext2D canvas
 </code></pre>
 <p><em>補足</em>：この<code>unsafePartial</code>の呼び出しは必須です。
@@ -219,7 +219,7 @@ getContext2D :: CanvasElement -&gt; Effect Context2D
 <p>グラフィックス文脈<code>ctx</code>はキャンバスの状態を管理し、原始的な図形を描画したり、スタイルや色を設定したり、座標変換を適用したりするための手段を提供します。</p>
 <p>話を進めると、<code>setFillStyle</code>動作を使うことで塗り潰しスタイルを濃い青に設定できます。
 より長い16進数記法の<code>#0000FF</code>も青には使えますが、単純な色については略記法がより簡単です。</p>
-<pre><code class="language-haskell">  setFillStyle ctx &quot;#00F&quot;
+<pre><code class="language-haskell">  setFillStyle ctx "#00F"
 </code></pre>
 <p><code>setFillStyle</code>動作がグラフィックス文脈を引数として取っていることに注意してください。
 これは<code>Graphics.Canvas</code>ではよくあるパターンです。</p>
@@ -303,7 +303,7 @@ translate dx dy shape = shape
 <p><code>Shapes</code>の例からわかるように、<code>translate</code>関数は<code>Rectangle</code>レコードと<code>Arc</code>レコード双方に対して使えます。</p>
 <p><code>Shape</code>の例で描画される3つ目の型は線分の断片からなるパスです。
 対応するコードは次のようになります。</p>
-<pre><code class="language-haskell">  setFillStyle ctx &quot;#F00&quot;
+<pre><code class="language-haskell">  setFillStyle ctx "#F00"
 
   fillPath ctx $ do
     moveTo ctx 300.0 260.0
@@ -358,8 +358,8 @@ translate dx dy shape = shape
 1つの副作用は乱数生成で、もう1つはキャンバスの操作です。
 この例では無作為に生成された円をキャンバスに100個描画します。</p>
 <p><code>main</code>動作ではこれまでのようにグラフィックス文脈への参照を取得し、線描きと塗り潰しのスタイルを設定します。</p>
-<pre><code class="language-haskell">  setFillStyle ctx &quot;#F00&quot;
-  setStrokeStyle ctx &quot;#000&quot;
+<pre><code class="language-haskell">  setFillStyle ctx "#F00"
+  setStrokeStyle ctx "#000"
 </code></pre>
 <p>次のコードでは<code>for_</code>動作を使って<code>0</code>から<code>100</code>までの整数について反復しています。</p>
 <pre><code class="language-haskell">  for_ (1 .. 100) \_ -&gt; do
@@ -525,7 +525,7 @@ system</em>）を描画する関数を記述します。</p>
 R -&gt; R
 F -&gt; FLFRRFLF
 </code></pre>
-<p>配列 &quot;FRRFRRFRR&quot; から始めて処理を繰り返すと、次のような経過を辿ります。</p>
+<p>配列 "FRRFRRFRR" から始めて処理を繰り返すと、次のような経過を辿ります。</p>
 <pre><code class="language-text">FRRFRRFRR
 FLFRRFLFRRFLFRRFLFRRFLFRRFLFRR
 FLFRRFLFLFLFRRFLFRRFLFRRFLFLFLFRRFLFRRFLFRRFLF...

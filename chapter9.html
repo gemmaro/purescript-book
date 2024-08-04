@@ -234,9 +234,9 @@ main = launchAff_ program
 
 program :: Aff Unit
 program = do
-  result &lt;- attempt $ copyFile &quot;file1.txt&quot; &quot;file2.txt&quot;
+  result &lt;- attempt $ copyFile "file1.txt" "file2.txt"
   case result of
-    Left e -&gt; log $ &quot;There was a problem with copyFile: &quot; &lt;&gt; message e
+    Left e -&gt; log $ "There was a problem with copyFile: " &lt;&gt; message e
     _ -&gt; pure unit
 
 copyFile :: FilePath -&gt; FilePath -&gt; Aff Unit
@@ -300,7 +300,7 @@ getUrl :: String -&gt; Aff String
 getUrl url = do
   result &lt;- AN.get ResponseFormat.string url
   pure case result of
-    Left err -&gt; &quot;GET /api response failed to decode: &quot; &lt;&gt; AN.printError err
+    Left err -&gt; "GET /api response failed to decode: " &lt;&gt; AN.printError err
     Right response -&gt; response.body
 </code></pre>
 <p>これをREPLで呼び出す際は、<code>launchAff_</code>で<code>Aff</code>からREPLに互換性のある<code>Effect</code>へと変換する必要があります。</p>
@@ -313,11 +313,11 @@ getUrl url = do
 … import Test.HTTP (getUrl)
 …
 … launchAff_ do
-…   str &lt;- getUrl &quot;https://reqres.in/api/users/1&quot;
+…   str &lt;- getUrl "https://reqres.in/api/users/1"
 …   log str
 …
 unit
-{&quot;data&quot;:{&quot;id&quot;:1,&quot;email&quot;:&quot;george.bluth@reqres.in&quot;,&quot;first_name&quot;:&quot;George&quot;,&quot;last_name&quot;:&quot;Bluth&quot;, ...}}
+{"data":{"id":1,"email":"george.bluth@reqres.in","first_name":"George","last_name":"Bluth", ...}}
 </code></pre>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
@@ -391,7 +391,7 @@ fetchPar :: Effect Unit
 fetchPar =
   launchAff_ do
     let
-      urls = map (\n -&gt; &quot;https://reqres.in/api/users/&quot; &lt;&gt; show n) [ 1, 2 ]
+      urls = map (\n -&gt; "https://reqres.in/api/users/" &lt;&gt; show n) [ 1, 2 ]
     res &lt;- parTraverse getUrl urls
     logShow res
 </code></pre>
@@ -401,8 +401,8 @@ fetchPar =
 
 &gt; fetchPar
 unit
-[&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:1,\&quot;email\&quot;:\&quot;george.bluth@reqres.in\&quot;, ... }&quot;
-,&quot;{\&quot;data\&quot;:{\&quot;id\&quot;:2,\&quot;email\&quot;:\&quot;janet.weaver@reqres.in\&quot;, ... }&quot;
+["{\"data\":{\"id\":1,\"email\":\"george.bluth@reqres.in\", ... }"
+,"{\"data\":{\"id\":2,\"email\":\"janet.weaver@reqres.in\", ... }"
 ]
 </code></pre>
 <p>利用できる並列関数の完全な一覧は<a href="https://pursuit.purescript.org/packages/purescript-parallel/docs/Control.Parallel">Pursuitの<code>parallel</code>のドキュメント</a>にあります。<a href="https://github.com/purescript-contrib/purescript-aff#parallel-execution">parallelのaffのドキュメントの節</a>にもより多くの例が含まれています。</p>
@@ -445,7 +445,7 @@ $ cat b/a.txt
 $ cat c/a/a.txt
 </code></pre>
 <p>期待される出力は次の通り。</p>
-<pre><code class="language-hs">[&quot;root.txt&quot;,&quot;a.txt&quot;,&quot;b/a.txt&quot;,&quot;b/b.txt&quot;,&quot;b/c/a.txt&quot;,&quot;c/a/a.txt&quot;]
+<pre><code class="language-hs">["root.txt","a.txt","b/a.txt","b/b.txt","b/c/a.txt","c/a/a.txt"]
 </code></pre>
 <h2 id="まとめ"><a class="header" href="#まとめ">まとめ</a></h2>
 <p>この章では非同期作用と以下の方法を押さえました。</p>

@@ -203,7 +203,7 @@ Euler</a>の解答例にあるコードがわかりにくかったり見慣れ�
 <pre><code class="language-sh">cd purescript-book
 ./scripts/prepareExercises.sh
 git add .
-git commit --all --message &quot;Exercises ready to be solved&quot;
+git commit --all --message "Exercises ready to be solved"
 </code></pre>
 <p>それではこの章のテストを走らせましょう。</p>
 <pre><code class="language-sh">cd exercises/chapter2
@@ -231,10 +231,10 @@ All 2 tests passed! 🎉
 <p>この演習のテストを有効にするところから始めます。
 以下に示すようにブロックコメントの開始を数行下に下げてください。
 ブロックコメントは<code>{-</code>から始まり<code>-}</code>で終わります。</p>
-<pre><code class="language-hs">    suite &quot;diagonal&quot; do
-      test &quot;3 4 5&quot; do
+<pre><code class="language-hs">    suite "diagonal" do
+      test "3 4 5" do
         Assert.equal 5.0 (diagonal 3.0 4.0)
-      test &quot;5 12 13&quot; do
+      test "5 12 13" do
         Assert.equal 13.0 (diagonal 5.0 12.0)
     {-  Move this block comment starting point to enable more tests
 </code></pre>

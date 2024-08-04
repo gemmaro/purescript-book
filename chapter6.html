@@ -209,8 +209,8 @@
 <p>型クラス <em>インスタンス</em> には、型クラスで定義された関数の、その型に特殊化された実装が含まれています。</p>
 <p>例えば、Preludeにある <code>Boolean</code>値に対する <code>Show</code>型クラスインスタンスの定義は次の通りです。</p>
 <pre><code class="language-haskell">instance Show Boolean where
-  show true = &quot;true&quot;
-  show false = &quot;false&quot;
+  show true = "true"
+  show false = "false"
 </code></pre>
 <p>このコードは型クラスのインスタンスを宣言します。
 <code>Boolean</code>型は <em><code>Show</code>型クラスに属すもの</em> としています。</p>
@@ -219,30 +219,30 @@
 <pre><code class="language-javascript">var showBoolean = {
     show: function (v) {
         if (v) {
-            return &quot;true&quot;;
+            return "true";
         };
        if (!v) {
-            return &quot;false&quot;;
+            return "false";
         };
-        throw new Error(&quot;Failed pattern match at ...&quot;);
+        throw new Error("Failed pattern match at ...");
     }
 };
 </code></pre>
 <p>生成される名前が気に入らなければ、型クラスインスタンスに名前を与えられます。
 例えば次のようにします。</p>
 <pre><code class="language-haskell">instance myShowBoolean :: Show Boolean where
-  show true = &quot;true&quot;
-  show false = &quot;false&quot;
+  show true = "true"
+  show false = "false"
 </code></pre>
 <pre><code class="language-javascript">var myShowBoolean = {
     show: function (v) {
         if (v) {
-            return &quot;true&quot;;
+            return "true";
         };
        if (!v) {
-            return &quot;false&quot;;
+            return "false";
         };
-        throw new Error(&quot;Failed pattern match at ...&quot;);
+        throw new Error("Failed pattern match at ...");
     }
 };
 </code></pre>
@@ -251,24 +251,24 @@
 <pre><code class="language-text">&gt; import Prelude
 
 &gt; show true
-&quot;true&quot;
+"true"
 
 &gt; show 1.0
-&quot;1.0&quot;
+"1.0"
 
-&gt; show &quot;Hello World&quot;
-&quot;\&quot;Hello World\&quot;&quot;
+&gt; show "Hello World"
+"\"Hello World\""
 </code></pre>
 <p>この例では様々な原始型の値を <code>show</code>しましたが、もっと複雑な型を持つ値も<code>show</code>できます。</p>
 <pre><code class="language-text">&gt; import Data.Tuple
 
 &gt; show (Tuple 1 true)
-&quot;(Tuple 1 true)&quot;
+"(Tuple 1 true)"
 
 &gt; import Data.Maybe
 
-&gt; show (Just &quot;testing&quot;)
-&quot;(Just \&quot;testing\&quot;)&quot;
+&gt; show (Just "testing")
+"(Just \"testing\")"
 </code></pre>
 <p><code>show</code>の出力は、REPLに（あるいは<code>.purs</code>ファイルに）貼り戻せば、表示されたものを再作成できるような文字列であるべきです。
 以下では<code>logShow</code>を使っていますが、これは単に<code>show</code>と<code>log</code>を順に呼び出すものであり、引用符なしに文字列が表示されます。
@@ -280,8 +280,8 @@
 (Tuple 1 true)
 unit
 
-&gt; logShow (Just &quot;testing&quot;)
-(Just &quot;testing&quot;)
+&gt; logShow (Just "testing")
+(Just "testing")
 unit
 </code></pre>
 <p>型 <code>Data.Either</code>の値を表示しようとすると、興味深いエラー文言が表示されます。</p>
@@ -299,7 +299,7 @@ has type variables which are not mentioned in the body of the type. Consider add
 これは推論された型で<em>未知の型</em><code>a</code>とされていることが示しています。</p>
 <p><code>::</code>演算子を使って式に註釈を付けてPSCiが正しい型クラスインスタンスを選べるようにできます。</p>
 <pre><code class="language-text">&gt; show (Left 10 :: Either Int String)
-&quot;(Left 10)&quot;
+"(Left 10)"
 </code></pre>
 <p><code>Show</code>インスタンスを全く持っていない型もあります。
 関数の型 <code>-&gt;</code>がその一例です。
@@ -348,7 +348,7 @@ No type class instance was found for
 <pre><code class="language-text">&gt; 1 == 2
 false
 
-&gt; &quot;Test&quot; == &quot;Test&quot;
+&gt; "Test" == "Test"
 true
 </code></pre>
 <h3 id="ord"><a class="header" href="#ord">Ord</a></h3>
@@ -375,7 +375,7 @@ class Eq a &lt;= Ord a where
 <pre><code class="language-text">&gt; compare 1 2
 LT
 
-&gt; compare &quot;A&quot; &quot;Z&quot;
+&gt; compare "A" "Z"
 LT
 </code></pre>
 <h3 id="field"><a class="header" href="#field">Field</a></h3>
@@ -414,8 +414,8 @@ PSCiで以下の通りです。</p>
 &gt; import Data.Monoid
 &gt; import Data.Foldable
 
-&gt; foldl append mempty [&quot;Hello&quot;, &quot; &quot;, &quot;World&quot;]
-&quot;Hello World&quot;
+&gt; foldl append mempty ["Hello", " ", "World"]
+"Hello World"
 
 &gt; foldl append mempty [[1, 2, 3], [4, 5], [6]]
 [1,2,3,4,5,6]
@@ -441,7 +441,7 @@ PSCiで以下の通りです。</p>
 <pre><code class="language-text">&gt; import Data.Foldable
 
 &gt; foldMap show [1, 2, 3, 4, 5]
-&quot;12345&quot;
+"12345"
 </code></pre>
 <p>ここでは文字列用のモノイドと<code>show</code>関数を選んでいます。
 前者は文字列を連結するもので、後者は<code>Int</code>を文字列として書き出すものです。
@@ -467,7 +467,7 @@ PSCiで以下の通りです。</p>
 &gt; import Data.Maybe
 &gt; import Data.String (length)
 
-&gt; map length (Just &quot;testing&quot;)
+&gt; map length (Just "testing")
 (Just 7)
 </code></pre>
 <p><code>map</code>演算子は様々な構造の上でそれぞれ異なる挙動をしますが、 <code>map</code>演算子の意味はどのように理解すればいいのでしょうか。</p>
@@ -545,11 +545,11 @@ threeAreEqual a1 a2 a3 = a1 == a2 &amp;&amp; a2 == a3
 <code>Show</code>のインスタンスを使って2つの値を比較する例を次に示します。</p>
 <pre><code class="language-haskell">showCompare :: forall a. Ord a =&gt; Show a =&gt; a -&gt; a -&gt; String
 showCompare a1 a2 | a1 &lt; a2 =
-  show a1 &lt;&gt; &quot; is less than &quot; &lt;&gt; show a2
+  show a1 &lt;&gt; " is less than " &lt;&gt; show a2
 showCompare a1 a2 | a1 &gt; a2 =
-  show a1 &lt;&gt; &quot; is greater than &quot; &lt;&gt; show a2
+  show a1 &lt;&gt; " is greater than " &lt;&gt; show a2
 showCompare a1 a2 =
-  show a1 &lt;&gt; &quot; is equal to &quot; &lt;&gt; show a2
+  show a1 &lt;&gt; " is equal to " &lt;&gt; show a2
 </code></pre>
 <p><code>=&gt;</code>シンボルを複数回使って複数の制約を指定できることに注意してください。
 複数の引数のカリー化された関数を定義するのと同様です。
@@ -678,7 +678,7 @@ has type variables which are not mentioned in the body of the type. Consider add
 <p>エラーは、 <code>genericTail</code>関数が <code>Stream</code>型クラスの定義で言及された
 <code>element</code>型を使用しないので、その型は未解決のままであることを指しています。</p>
 <p>更に残念なことに、特定の型のストリームに<code>genericTail</code>を適用できません。</p>
-<pre><code class="language-text">&gt; map _.tail (uncons &quot;testing&quot;)
+<pre><code class="language-text">&gt; map _.tail (uncons "testing")
 
 The inferred type
 
@@ -698,8 +698,8 @@ has type variables which are not mentioned in the body of the type. Consider add
 <pre><code class="language-text">&gt; :type genericTail
 forall (stream :: Type) (element :: Type). Stream stream element =&gt; stream -&gt; Maybe stream
 
-&gt; genericTail &quot;testing&quot;
-(Just &quot;esting&quot;)
+&gt; genericTail "testing"
+(Just "esting")
 </code></pre>
 <p>多変数の型クラスを使用して何らかのAPIを設計する場合、関数従属性が便利なことがあります。</p>
 <h2 id="型変数のない型クラス"><a class="header" href="#型変数のない型クラス">型変数のない型クラス</a></h2>
@@ -751,7 +751,7 @@ secondElement xs = head (tail xs)
 例えば、任意の<code>Ord</code>と<code>Eq</code>のインスタンスの対について、もし2つの値が<code>Eq</code>インスタンスの下で同値であるなら、<code>compare</code>関数は<code>EQ</code>を返すはずだと推定するのは理に適っています。
 言い換えれば、<code>a == b</code>が真であるのは<code>compare a b</code>が厳密に<code>EQ</code>に評価されるときなのです。
 法則のレベルでのこの関係は、<code>Eq</code>と<code>Ord</code>の間の上位クラス関係の正当性を示します。</p>
-<p>上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明白な &quot;is-a&quot; の関係があることです。
+<p>上位クラス関係を定義する別の理由となるのは、この2つのクラスの間に明白な "is-a" の関係があることです。
 下位クラスの全ての構成要素は、上位クラスの構成要素でもあるということです。</p>
 <h2 id="演習-3"><a class="header" href="#演習-3">演習</a></h2>
 <ol>

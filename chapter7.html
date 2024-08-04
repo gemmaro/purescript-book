@@ -209,14 +209,14 @@
 <p>この関数は簡単に適用できますので、PSCiでどうなるか見てみましょう。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
-&gt; address &quot;123 Fake St.&quot; &quot;Faketown&quot; &quot;CA&quot;
-{ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; }
+&gt; address "123 Fake St." "Faketown" "CA"
+{ street: "123 Fake St.", city: "Faketown", state: "CA" }
 </code></pre>
 <p>しかし、通り、市、州の3つ全てが必ずしも入力されないものとすると、3つの場合がそれぞれ省略可能であることを示すために<code>Maybe</code>型を使用したくなります。</p>
 <p>考えられる場合としては、市が省略されている場合があるでしょう。
 もし<code>address</code>関数を直接適用しようとすると、型検証器からエラーが表示されます。</p>
 <pre><code class="language-text">&gt; import Data.Maybe
-&gt; address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
+&gt; address (Just "123 Fake St.") Nothing (Just "CA")
 
 Could not match type
 
@@ -230,15 +230,15 @@ with type
 <code>address</code>は<code>Maybe String</code>型の値ではなく、文字列を引数として取るためです。</p>
 <p>しかし、もし<code>address</code>関数を「持ち上げる」ことができれば、<code>Maybe</code>型で示される省略可能な値を扱うことができるはずだという予想は理に適っています。実際それは可能で、<code>Control.Apply</code>で提供されている関数<code>lift3</code>が、まさに求めているものです。</p>
 <pre><code class="language-text">&gt; import Control.Apply
-&gt; lift3 address (Just &quot;123 Fake St.&quot;) Nothing (Just &quot;CA&quot;)
+&gt; lift3 address (Just "123 Fake St.") Nothing (Just "CA")
 
 Nothing
 </code></pre>
 <p>このとき、引数の1つ（市）が欠落していたので、結果は<code>Nothing</code>になります。
 もし3つの引数全てに<code>Just</code>構築子を使ったものが与えられたら、結果は値を含むことになります。</p>
-<pre><code class="language-text">&gt; lift3 address (Just &quot;123 Fake St.&quot;) (Just &quot;Faketown&quot;) (Just &quot;CA&quot;)
+<pre><code class="language-text">&gt; lift3 address (Just "123 Fake St.") (Just "Faketown") (Just "CA")
 
-Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
+Just ({ street: "123 Fake St.", city: "Faketown", state: "CA" })
 </code></pre>
 <p><code>lift3</code>という関数の名前は、3引数の関数を持ち上げるために使えることを示しています。関数を持ち上げる同様の関数で、引数の数が異なるものが<code>Control.Apply</code>で定義されています。</p>
 <h2 id="任意個の引数を持つ関数の持ち上げ"><a class="header" href="#任意個の引数を持つ関数の持ち上げ">任意個の引数を持つ関数の持ち上げ</a></h2>
@@ -294,10 +294,10 @@ lift3 f x y z = f &lt;$&gt; x &lt;*&gt; y &lt;*&gt; z
 <p>この式に関する型の検証は、読者への演習として残しておきます。</p>
 </blockquote>
 <p>例として、<code>&lt;$&gt;</code>と<code>&lt;*&gt;</code>をそのまま使うと、<code>Maybe</code>上に<code>address</code>関数を持ち上げることができます。</p>
-<pre><code class="language-text">&gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Just &quot;Faketown&quot; &lt;*&gt; Just &quot;CA&quot;
-Just ({ street: &quot;123 Fake St.&quot;, city: &quot;Faketown&quot;, state: &quot;CA&quot; })
+<pre><code class="language-text">&gt; address &lt;$&gt; Just "123 Fake St." &lt;*&gt; Just "Faketown" &lt;*&gt; Just "CA"
+Just ({ street: "123 Fake St.", city: "Faketown", state: "CA" })
 
-&gt; address &lt;$&gt; Just &quot;123 Fake St.&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;CA&quot;
+&gt; address &lt;$&gt; Just "123 Fake St." &lt;*&gt; Nothing &lt;*&gt; Just "CA"
 Nothing
 </code></pre>
 <p>同様にして、引数が異なる他のいろいろな関数を<code>Maybe</code>上に持ち上げてみてください。</p>
@@ -349,9 +349,9 @@ lift3 f x y z = ado
 <p>以下は、PSCiで定義された3つの名前を結合して完全な名前を作る簡単な関数の例です。</p>
 <pre><code class="language-text">&gt; import Prelude
 
-&gt; fullName first middle last = last &lt;&gt; &quot;, &quot; &lt;&gt; first &lt;&gt; &quot; &quot; &lt;&gt; middle
+&gt; fullName first middle last = last &lt;&gt; ", " &lt;&gt; first &lt;&gt; " " &lt;&gt; middle
 
-&gt; fullName &quot;Phillip&quot; &quot;A&quot; &quot;Freeman&quot;
+&gt; fullName "Phillip" "A" "Freeman"
 Freeman, Phillip A
 </code></pre>
 <p>この関数が、クエリ引数として与えられた3つの引数を持つ、（とっても簡単な）webサービスの実装を形成しているとしましょう。
@@ -359,10 +359,10 @@ Freeman, Phillip A
 <code>fullName</code>を<code>Maybe</code>の上へ持ち上げると、欠けている引数を検査するwebサービスの実装を作成できます。</p>
 <pre><code class="language-text">&gt; import Data.Maybe
 
-&gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Just &quot;A&quot; &lt;*&gt; Just &quot;Freeman&quot;
-Just (&quot;Freeman, Phillip A&quot;)
+&gt; fullName &lt;$&gt; Just "Phillip" &lt;*&gt; Just "A" &lt;*&gt; Just "Freeman"
+Just ("Freeman, Phillip A")
 
-&gt; fullName &lt;$&gt; Just &quot;Phillip&quot; &lt;*&gt; Nothing &lt;*&gt; Just &quot;Freeman&quot;
+&gt; fullName &lt;$&gt; Just "Phillip" &lt;*&gt; Nothing &lt;*&gt; Just "Freeman"
 Nothing
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
@@ -370,17 +370,17 @@ Nothing
 
 &gt; :paste…
 … ado
-…   f &lt;- Just &quot;Phillip&quot;
-…   m &lt;- Just &quot;A&quot;
-…   l &lt;- Just &quot;Freeman&quot;
+…   f &lt;- Just "Phillip"
+…   m &lt;- Just "A"
+…   l &lt;- Just "Freeman"
 …   in fullName f m l
 … ^D
-(Just &quot;Freeman, Phillip A&quot;)
+(Just "Freeman, Phillip A")
 
 … ado
-…   f &lt;- Just &quot;Phillip&quot;
+…   f &lt;- Just "Phillip"
 …   m &lt;- Nothing
-…   l &lt;- Just &quot;Freeman&quot;
+…   l &lt;- Just "Freeman"
 …   in fullName f m l
 … ^D
 Nothing
@@ -400,17 +400,17 @@ Nothing
 <p>これで<code>Either String</code>上へ持ち上げることで、それぞれの引数について適切なエラー文言を提供できるようになります。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last =
-…   fullName &lt;$&gt; (first  `withError` &quot;First name was missing&quot;)
-…            &lt;*&gt; (middle `withError` &quot;Middle name was missing&quot;)
-…            &lt;*&gt; (last   `withError` &quot;Last name was missing&quot;)
+…   fullName &lt;$&gt; (first  `withError` "First name was missing")
+…            &lt;*&gt; (middle `withError` "Middle name was missing")
+…            &lt;*&gt; (last   `withError` "Last name was missing")
 … ^D
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-text">&gt; :paste
 … fullNameEither first middle last = ado
-…  f &lt;- first  `withError` &quot;First name was missing&quot;
-…  m &lt;- middle `withError` &quot;Middle name was missing&quot;
-…  l &lt;- last   `withError` &quot;Last name was missing&quot;
+…  f &lt;- first  `withError` "First name was missing"
+…  m &lt;- middle `withError` "Middle name was missing"
+…  l &lt;- last   `withError` "Last name was missing"
 …  in fullName f m l
 … ^D
 
@@ -419,19 +419,19 @@ Maybe String -&gt; Maybe String -&gt; Maybe String -&gt; Either String String
 </code></pre>
 <p>これでこの関数は<code>Maybe</code>を使う3つの省略可能な引数を取り、<code>String</code>のエラー文言か<code>String</code>の結果のどちらかを返します。</p>
 <p>いろいろな入力でこの関数を試してみましょう。</p>
-<pre><code class="language-text">&gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) (Just &quot;Freeman&quot;)
-(Right &quot;Freeman, Phillip A&quot;)
+<pre><code class="language-text">&gt; fullNameEither (Just "Phillip") (Just "A") (Just "Freeman")
+(Right "Freeman, Phillip A")
 
-&gt; fullNameEither (Just &quot;Phillip&quot;) Nothing (Just &quot;Freeman&quot;)
-(Left &quot;Middle name was missing&quot;)
+&gt; fullNameEither (Just "Phillip") Nothing (Just "Freeman")
+(Left "Middle name was missing")
 
-&gt; fullNameEither (Just &quot;Phillip&quot;) (Just &quot;A&quot;) Nothing
-(Left &quot;Last name was missing&quot;)
+&gt; fullNameEither (Just "Phillip") (Just "A") Nothing
+(Left "Last name was missing")
 </code></pre>
 <p>このとき、全てのフィールドが与えられば成功の結果が表示され、そうでなければ省略されたフィールドのうち最初のものに対応するエラー文言が表示されます。
 しかし、もし複数の入力が省略されているとき、最初のエラーしか見られません。</p>
 <pre><code class="language-text">&gt; fullNameEither Nothing Nothing Nothing
-(Left &quot;First name was missing&quot;)
+(Left "First name was missing")
 </code></pre>
 <p>これでも充分なときもありますが、エラー時に<em>全ての</em>省略されたフィールドの一覧がほしいときは、<code>Either String</code>よりも強力なものが必要です。この章の後半で解決策を見ていきます。</p>
 <h2 id="作用の結合"><a class="header" href="#作用の結合">作用の結合</a></h2>
@@ -510,36 +510,36 @@ person :: String -&gt; String -&gt; Address -&gt; Array PhoneNumber -&gt; Person
 例えば、<code>Data.AddressBook</code>では以下の値が定義されています。</p>
 <pre><code class="language-haskell">examplePerson :: Person
 examplePerson =
-  person &quot;John&quot; &quot;Smith&quot;
-    (address &quot;123 Fake St.&quot; &quot;FakeTown&quot; &quot;CA&quot;)
-    [ phoneNumber HomePhone &quot;555-555-5555&quot;
-    , phoneNumber CellPhone &quot;555-555-0000&quot;
+  person "John" "Smith"
+    (address "123 Fake St." "FakeTown" "CA")
+    [ phoneNumber HomePhone "555-555-5555"
+    , phoneNumber CellPhone "555-555-0000"
     ]
 </code></pre>
 <p>PSCiでこれらの値を試してみましょう（結果は整形されています）。</p>
 <pre><code class="language-text">&gt; import Data.AddressBook
 
 &gt; examplePerson
-{ firstName: &quot;John&quot;
-, lastName: &quot;Smith&quot;
+{ firstName: "John"
+, lastName: "Smith"
 , homeAddress:
-    { street: &quot;123 Fake St.&quot;
-    , city: &quot;FakeTown&quot;
-    , state: &quot;CA&quot;
+    { street: "123 Fake St."
+    , city: "FakeTown"
+    , state: "CA"
     }
 , phones:
     [ { type: HomePhone
-      , number: &quot;555-555-5555&quot;
+      , number: "555-555-5555"
       }
     , { type: CellPhone
-      , number: &quot;555-555-0000&quot;
+      , number: "555-555-0000"
       }
     ]
 }
 </code></pre>
 <p>前の章では型<code>Person</code>のデータ構造を検証する上で<code>Either String</code>関手の使い方を見ました。例えば、データ構造の2つの名前を検証する関数が与えられたとき、データ構造全体を次のように検証できます。</p>
 <pre><code class="language-haskell">nonEmpty1 :: String -&gt; Either String String
-nonEmpty1 &quot;&quot;     = Left &quot;Field cannot be empty&quot;
+nonEmpty1 ""     = Left "Field cannot be empty"
 nonEmpty1 value  = Right value
 
 validatePerson1 :: Person -&gt; Either String Person
@@ -561,8 +561,8 @@ validatePerson1Ado p = ado
 そうでなければ<code>Right</code>構築子で包まれた値を返します。</p>
 <p>最後の2行では何の検証も実行せず、単に<code>address</code>フィールドと<code>phones</code>フィールドを残りの引数として<code>person</code>関数へと提供しています。</p>
 <p>この関数はPSCiでうまく動作するように見えますが、以前見たような制限があります。</p>
-<pre><code class="language-text">&gt; validatePerson $ person &quot;&quot; &quot;&quot; (address &quot;&quot; &quot;&quot; &quot;&quot;) []
-(Left &quot;Field cannot be empty&quot;)
+<pre><code class="language-text">&gt; validatePerson $ person "" "" (address "" "" "") []
+(Left "Field cannot be empty")
 </code></pre>
 <p><code>Either String</code>アプリカティブ関手は最初に遭遇したエラーだけを返します。
 仮にこの入力だったとすると、2つのエラーが分かったほうが良いでしょう。
@@ -576,26 +576,26 @@ validatePerson1Ado p = ado
   = Array String
 
 nonEmpty :: String -&gt; String -&gt; V Errors String
-nonEmpty field &quot;&quot;     = invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' cannot be empty&quot; ]
+nonEmpty field ""     = invalid [ "Field '" &lt;&gt; field &lt;&gt; "' cannot be empty" ]
 nonEmpty _     value  = pure value
 
 lengthIs :: String -&gt; Int -&gt; String -&gt; V Errors String
 lengthIs field len value | length value /= len =
-  invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' must have length &quot; &lt;&gt; show len ]
+  invalid [ "Field '" &lt;&gt; field &lt;&gt; "' must have length " &lt;&gt; show len ]
 lengthIs _     _   value = pure value
 
 validateAddress :: Address -&gt; V Errors Address
 validateAddress a =
-  address &lt;$&gt; nonEmpty &quot;Street&quot;  a.street
-          &lt;*&gt; nonEmpty &quot;City&quot;    a.city
-          &lt;*&gt; lengthIs &quot;State&quot; 2 a.state
+  address &lt;$&gt; nonEmpty "Street"  a.street
+          &lt;*&gt; nonEmpty "City"    a.city
+          &lt;*&gt; lengthIs "State" 2 a.state
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-haskell">validateAddressAdo :: Address -&gt; V Errors Address
 validateAddressAdo a = ado
-  street &lt;- nonEmpty &quot;Street&quot;  a.street
-  city   &lt;- nonEmpty &quot;City&quot;    a.city
-  state  &lt;- lengthIs &quot;State&quot; 2 a.state
+  street &lt;- nonEmpty "Street"  a.street
+  city   &lt;- nonEmpty "City"    a.city
+  state  &lt;- lengthIs "State" 2 a.state
   in address street city state
 </code></pre>
 <p><code>validateAddress</code>は<code>Address</code>の構造を検証します。
@@ -606,15 +606,15 @@ validateAddressAdo a = ado
 <pre><code class="language-text">&gt; import Data.AddressBook
 &gt; import Data.AddressBook.Validation
 
-&gt; validateAddress $ address &quot;&quot; &quot;&quot; &quot;&quot;
-(invalid [ &quot;Field 'Street' cannot be empty&quot;
-         , &quot;Field 'City' cannot be empty&quot;
-         , &quot;Field 'State' must have length 2&quot;
+&gt; validateAddress $ address "" "" ""
+(invalid [ "Field 'Street' cannot be empty"
+         , "Field 'City' cannot be empty"
+         , "Field 'State' must have length 2"
          ])
 
-&gt; validateAddress $ address &quot;&quot; &quot;&quot; &quot;CA&quot;
-(invalid [ &quot;Field 'Street' cannot be empty&quot;
-         , &quot;Field 'City' cannot be empty&quot;
+&gt; validateAddress $ address "" "" "CA"
+(invalid [ "Field 'Street' cannot be empty"
+         , "Field 'City' cannot be empty"
          ])
 </code></pre>
 <p>これで、全ての検証エラーの配列を受け取ることができるようになりました。</p>
@@ -623,28 +623,28 @@ validateAddressAdo a = ado
 <pre><code class="language-haskell">matches :: String -&gt; Regex -&gt; String -&gt; V Errors String
 matches _     regex value | test regex value
                           = pure value
-matches field _     _     = invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' did not match the required format&quot; ]
+matches field _     _     = invalid [ "Field '" &lt;&gt; field &lt;&gt; "' did not match the required format" ]
 </code></pre>
 <p>繰り返しになりますが、<code>pure</code>は常に成功する検証を表しており、エラーの配列の伝達には<code>invalid</code>が使われています。</p>
 <p>これまでと同様に、<code>validatePhoneNumber</code>は<code>matches</code>関数から構築されています。</p>
 <pre><code class="language-haskell">validatePhoneNumber :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumber pn =
-  phoneNumber &lt;$&gt; pure pn.&quot;type&quot;
-              &lt;*&gt; matches &quot;Number&quot; phoneNumberRegex pn.number
+  phoneNumber &lt;$&gt; pure pn."type"
+              &lt;*&gt; matches "Number" phoneNumberRegex pn.number
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-haskell">validatePhoneNumberAdo :: PhoneNumber -&gt; V Errors PhoneNumber
 validatePhoneNumberAdo pn = ado
-  tpe    &lt;- pure pn.&quot;type&quot;
-  number &lt;- matches &quot;Number&quot; phoneNumberRegex pn.number
+  tpe    &lt;- pure pn."type"
+  number &lt;- matches "Number" phoneNumberRegex pn.number
   in phoneNumber tpe number
 </code></pre>
 <p>また、PSCiでいろいろな有効な入力や無効な入力に対して、この検証器を実行してみてください。</p>
-<pre><code class="language-text">&gt; validatePhoneNumber $ phoneNumber HomePhone &quot;555-555-5555&quot;
-pure ({ type: HomePhone, number: &quot;555-555-5555&quot; })
+<pre><code class="language-text">&gt; validatePhoneNumber $ phoneNumber HomePhone "555-555-5555"
+pure ({ type: HomePhone, number: "555-555-5555" })
 
-&gt; validatePhoneNumber $ phoneNumber HomePhone &quot;555.555.5555&quot;
-invalid ([&quot;Field 'Number' did not match the required format&quot;])
+&gt; validatePhoneNumber $ phoneNumber HomePhone "555.555.5555"
+invalid (["Field 'Number' did not match the required format"])
 </code></pre>
 <h2 id="演習-1"><a class="header" href="#演習-1">演習</a></h2>
 <ol>
@@ -661,24 +661,24 @@ invalid ([&quot;Field 'Number' did not match the required format&quot;])
 これはこれまで見てきた検証器と以下の新しい<code>validatePhoneNumbers</code>関数を組み合わせて<code>Person</code>全体を検証するものです。</p>
 <pre><code class="language-haskell">validatePhoneNumbers :: String -&gt; Array PhoneNumber -&gt; V Errors (Array PhoneNumber)
 validatePhoneNumbers field []      =
-  invalid [ &quot;Field '&quot; &lt;&gt; field &lt;&gt; &quot;' must contain at least one value&quot; ]
+  invalid [ "Field '" &lt;&gt; field &lt;&gt; "' must contain at least one value" ]
 validatePhoneNumbers _     phones  =
   traverse validatePhoneNumber phones
 
 validatePerson :: Person -&gt; V Errors Person
 validatePerson p =
-  person &lt;$&gt; nonEmpty &quot;First Name&quot; p.firstName
-         &lt;*&gt; nonEmpty &quot;Last Name&quot; p.lastName
+  person &lt;$&gt; nonEmpty "First Name" p.firstName
+         &lt;*&gt; nonEmpty "Last Name" p.lastName
          &lt;*&gt; validateAddress p.homeAddress
-         &lt;*&gt; validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
+         &lt;*&gt; validatePhoneNumbers "Phone Numbers" p.phones
 </code></pre>
 <p>または<em>アプリカティブdo</em>で次のようにします。</p>
 <pre><code class="language-haskell">validatePersonAdo :: Person -&gt; V Errors Person
 validatePersonAdo p = ado
-  firstName &lt;- nonEmpty &quot;First Name&quot; p.firstName
-  lastName  &lt;- nonEmpty &quot;Last Name&quot; p.lastName
+  firstName &lt;- nonEmpty "First Name" p.firstName
+  lastName  &lt;- nonEmpty "Last Name" p.lastName
   address   &lt;- validateAddress p.homeAddress
-  numbers   &lt;- validatePhoneNumbers &quot;Phone Numbers&quot; p.phones
+  numbers   &lt;- validatePhoneNumbers "Phone Numbers" p.phones
   in person firstName lastName address numbers
 </code></pre>
 <p><code>validatePhoneNumbers</code>はこれまでに見たことのない新しい関数である<code>traverse</code>を使っています。</p>
@@ -735,14 +735,14 @@ PSCiで試してみましょう。</p>
 &gt; import Data.Traversable
 &gt; import Data.AddressBook.Validation
 
-&gt; traverse (nonEmpty &quot;Example&quot;) Nothing
+&gt; traverse (nonEmpty "Example") Nothing
 pure (Nothing)
 
-&gt; traverse (nonEmpty &quot;Example&quot;) (Just &quot;&quot;)
-invalid ([&quot;Field 'Example' cannot be empty&quot;])
+&gt; traverse (nonEmpty "Example") (Just "")
+invalid (["Field 'Example' cannot be empty"])
 
-&gt; traverse (nonEmpty &quot;Example&quot;) (Just &quot;Testing&quot;)
-pure ((Just &quot;Testing&quot;))
+&gt; traverse (nonEmpty "Example") (Just "Testing")
+pure ((Just "Testing"))
 </code></pre>
 <p>これらの例では、<code>Nothing</code>の値の走査は検証なしで<code>Nothing</code>の値を返し、<code>Just x</code>を走査すると<code>x</code>を検証するのに検証関数が使われるということを示しています。
 要は、<code>traverse</code>は型<code>a</code>についての検証関数を取り、<code>Maybe a</code>についての検証関数、つまり型<code>a</code>の省略可能な値についての検証関数を返すのです。</p>
